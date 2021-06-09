@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/*Color Declare Start*/
+$color-white:#fff;
+$color-red:#EB0444;
+
+$dark-blue:#243444;
+
+/*Color Declare End*/
+
+
+.header-top-block{
+  background-color: $dark-blue;
+  color:$color-white;
+}
+
+
+.trending-block{
+  //background-color: $dark-blue;
+}
+
+
+
+footer{
+  background-color: $dark-blue;
+  color:$color-white;
+  .footer-menu-block{
+    h2{
+      color:$color-red;
+      font-size: 25px;
+    }
+    ul{
+      padding: 0;
+      li{
+        list-style: none;
+        a{
+          text-decoration: none;
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
