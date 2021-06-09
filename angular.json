@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ui3:build:production"
+              "browserTarget": "1851-ui3:build:production"
             },
             "development": {
-              "browserTarget": "ui3:build:development"
+              "browserTarget": "1851-ui3:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ui3:build"
+            "browserTarget": "1851-ui3:build"
           }
         },
         "test": {
@@ -115,5 +115,5 @@
       }
     }
   },
-  "defaultProject": "ui3"
+  "defaultProject": "1851-ui3"
 }
