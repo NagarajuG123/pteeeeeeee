@@ -13,6 +13,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ErrorComponent } from './components/error/error.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TrendingComponent } from './components/trending/trending.component';
+import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
+import { AddBannerComponent } from './components/add-banner/add-banner.component';
+import { FiveColumnArticleComponent } from './components/five-column-article/five-column-article.component';
 
 // Modals Components
 
@@ -26,6 +29,9 @@ import { TrendingComponent } from './components/trending/trending.component';
     ErrorComponent,
     MenuComponent,
     TrendingComponent,
+    ScrollBannerComponent,
+    AddBannerComponent,
+    FiveColumnArticleComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +50,9 @@ import { TrendingComponent } from './components/trending/trending.component';
     SidebarComponent,
     MenuComponent,
     TrendingComponent,
+    ScrollBannerComponent,
+    AddBannerComponent,
+    FiveColumnArticleComponent,
   ],
 })
 export class SharedModule {}
