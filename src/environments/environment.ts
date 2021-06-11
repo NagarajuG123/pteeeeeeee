@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://api.1851franchise.com/v1',
+  imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
 };
 
 /*

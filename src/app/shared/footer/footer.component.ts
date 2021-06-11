@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  footerData: any =[];
 
-  constructor() { }
+  constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
+    this.getFooter();
   }
 
+  //Footer API 
+  getFooter() {
+    this.apiService.getFooter().subscribe((response) => {
+      this.footerData = response;
+    });
+  } 
 }
