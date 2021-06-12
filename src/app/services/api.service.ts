@@ -44,5 +44,16 @@ export class ApiService {
       })
     );
   };
+
+  //Publication API
+  getPublication() {
+    return this.http
+      .get<any>(`${environment.apiUrl}/1851/publication-instance`)
+      .pipe(
+        map((result: any) => {
+          return result;
+        })
+      );
+  };
 }
 

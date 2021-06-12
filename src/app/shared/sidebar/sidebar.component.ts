@@ -8,16 +8,30 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SidebarComponent implements OnInit {
   sidebarData: any =[];
+  publication: any=[];
 
-  constructor(private apiService: ApiService) { }
+  constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
-    this.getSidebar();
+     this.getSidebar();
+     this.getPublication();
   }
  
+  //Sidebar API
   getSidebar() {
     this.apiService.getSidebar().subscribe((response) => {
       this.sidebarData = response;
     });
+  }
+
+  //Publication Instance
+  getPublication() {
+    this.apiService.getPublication().subscribe((response: any) => {
+      this.publication = response;
+    });
+  }
+
+  closeMenu() {
+   
   }
 }

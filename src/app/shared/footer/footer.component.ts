@@ -7,18 +7,26 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  footerData: any =[];
+   footerData: any =[];
+   publication: any =[];
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
-    this.getFooter();
+     this.getFooter();
   }
 
-  //Footer API 
+ // Footer API 
   getFooter() {
     this.apiService.getFooter().subscribe((response) => {
       this.footerData = response;
     });
   } 
+
+  //Publication Instance
+  getPublication() {
+    this.apiService.getPublication().subscribe((response) => {
+      this.publication = response;
+    });
+  }
 }

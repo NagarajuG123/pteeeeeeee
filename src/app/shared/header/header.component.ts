@@ -7,18 +7,23 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  headerData: any = [];
+   headerData: any = [];
 
-  constructor( private apiService: ApiService, ) { }
+  constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
-    this.getHeader();
+     this.getHeader();
   }
 
   //Header API 
   getHeader() {
     this.apiService.getHeader().subscribe((response) => {
       this.headerData = response;
+      console.log(this.headerData);
     });
   }
+
+  openMenu() {
+    
+}
 }
