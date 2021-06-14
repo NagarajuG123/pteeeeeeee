@@ -1,42 +1,172 @@
 /* You can add global styles to this file, and also import other style files */
-
-
 /*Color Declare Start*/
-$color-white:#fff;
-$color-red:#EB0444;
+$color-white: #fff;
+$color-black: #000;
+$color-red: #EB0444;
+$dark-blue: #243444; /*Color Declare End*/
+/*header section start */
 
-$dark-blue:#243444;
-
-/*Color Declare End*/
-
-
-.header-top-block{
+.header-top-block {
   background-color: $dark-blue;
-  color:$color-white;
+  color: $color-white;
 }
 
+.header-block {
+  padding: 10px 0;
 
-.trending-block{
+  .logo {
+    float: left;
+  }
+
+  .nav-block {
+    float: left;
+  }
+
+  .header-r-block {
+    float: right;
+
+    .header-media {
+      float: left;
+    }
+
+    .header-img {
+      float: left;
+    }
+  }
+}
+/*header section end */
+
+.trending-block {
   //background-color: $dark-blue;
 }
+/*nav section start */
 
+.menu-block {
+  float: left;
+}
 
+.nav-block {
+  ul {
+    li {
+      a {
+        color: $color-black;
+        font-size: 11px;
+      }
+    }
+  }
+}
+/*nav section end */
+/*footer section start */
 
-footer{
+footer {
   background-color: $dark-blue;
-  color:$color-white;
-  .footer-menu-block{
-    h2{
-      color:$color-red;
+  color: $color-white;
+
+  .footer-menu-block {
+    h2 {
+      color: $color-red;
       font-size: 25px;
     }
-    ul{
+
+    ul {
       padding: 0;
-      li{
+
+      li {
         list-style: none;
-        a{
+
+        a {
           text-decoration: none;
           color: $color-white;
+        }
+      }
+    }
+  }
+}
+/*footer section end */
+/*side bar block start */
+.scroll-banner-block {
+  background: #FBF4F4;
+}
+
+.sidebar-block {
+  background: #243444;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: -250px;
+}
+@media (min-width: 200px) {
+  #sidebar-wrapper {
+    margin-left: -250px;
+    width: 250px;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: 0;
+  }
+}
+/*side bar block end */
+.trending-block {
+  background: #243444;
+}
+
+.spotlight-block {
+  .nav-tabs {
+    display: none;
+  }
+  @media(min-width:768px) {
+    .nav-tabs {
+      display: flex;
+    }
+
+    .card {
+      border: none;
+    }
+
+    .card .card-header {
+      display: none;
+    }
+
+    .card .collapse {
+      display: block;
+    }
+  }
+  @media(max-width:767px) {
+    .tab-pane {
+      display: block !important;
+      opacity: 1;
+    }
+  }
+
+  .spotlight-tabs {
+    ul {
+      background-color: red;
+
+      li {
+        a {
+          color: $color-white;
+          text-decoration: none;
+          padding: 0 20px;
         }
       }
     }
