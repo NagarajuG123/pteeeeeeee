@@ -66,5 +66,16 @@ export class ApiService {
         })
       );
   };
+
+  //Trending API
+  getTrending(){
+    return this.http
+    .get<any>(`${environment.apiUrl}/1851/trending`)
+    .pipe(
+      map((result: any) => {
+        return result;
+      })
+    );
+  };
 }
 
