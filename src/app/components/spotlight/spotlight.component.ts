@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { SpotlightService } from 'src/app/services/spotlight.service';
 
 @Component({
   selector: 'app-spotlight',
@@ -13,7 +13,7 @@ export class SpotlightComponent implements OnInit {
   industryData: any = [];
   columnsData: any = [];
 
-  constructor(private apiService: ApiService ) { }
+  constructor(private apiService: SpotlightService ) { }
 
   ngOnInit(): void {
     this.getPeopleSpotlight();
