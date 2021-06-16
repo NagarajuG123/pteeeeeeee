@@ -1,8 +1,7 @@
 <div class="spotlight-block">
-  <div class="container">
     <div class="spotlight-tabs">
+      <div class="spotlight-top">
 
-      <div class="container">
         <ul id="tabs" class="nav nav-tabs" role="tablist">
           <li class="nav-item">
             <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">SOPTLIGHT</a>
@@ -23,8 +22,8 @@
             <a id="tab-C" href="#pane-f" class="nav-link" data-toggle="tab" role="tab">COLUMNS</a>
           </li>
         </ul>
-
-
+        </div>
+      <div class="spotlight-content">
         <div id="content" class="tab-content" role="tablist">
           <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
             <div class="card-header" role="tab" id="heading-A">
@@ -51,9 +50,9 @@
             </div>
             <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
               <div class="card-body">
-                <img src="{{peopleData.data[0].media.url}}" />
+                <img src="{{peopleData.data[0].media.url}}" class="img-fluid" />
                 <p> {{ peopleData.data[0].title }} </p>
-                <p> {{ peopleData.data[0].short_description}} </p>  
+                <p> {{ peopleData.data[0].short_description}} </p>
               </div>
             </div>
           </div>
@@ -68,7 +67,7 @@
             </div>
             <div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
               <div class="card-body">
-                <img src="{{franchiseeData.data[0].media.url}}" />
+                <img src="{{franchiseeData.data[0].media.url}}" class="img-fluid" />
                 <p> {{ franchiseeData.data[0].title }} </p>
                 <p> {{ franchiseeData.data[0].short_description}}</p>
               </div>
@@ -85,7 +84,7 @@
             </div>
             <div id="collapse-d" class="collapse" role="tabpanel" aria-labelledby="heading-d">
               <div class="card-body">
-                <img src="{{franchisorData.data[0].media.url}}" />
+                <img src="{{franchisorData.data[0].media.url}}" class="img-fluid" />
                 <p> {{ franchisorData.data[0].title }} </p>
                 <p> {{ franchisorData.data[0].short_description}} </p>
               </div>
@@ -102,7 +101,7 @@
             </div>
             <div id="collapse-e" class="collapse" role="tabpanel" aria-labelledby="heading-e">
               <div class="card-body">
-                <img src="{{industryData.data[0].media.url}}" />
+                <img src="{{industryData.data[0].media.url}}" class="img-fluid" />
                 <p> {{ industryData.data[0].title }} </p>
                 <p>  {{ industryData.data[0].short_description}} </p>
               </div>
@@ -119,7 +118,7 @@
             </div>
             <div id="collapse-f" class="collapse" role="tabpanel" aria-labelledby="heading-f">
               <div class="card-body">
-                <img src="{{columnsData.data[0].media.url}}" />
+                <img src="{{columnsData.data[0].media.url}}" class="img-fluid" />
                 <p>{{ columnsData.data[0].title }} </p>
                 <p> {{ columnsData.data[0].short_description}}</p>
               </div>
@@ -132,6 +131,6 @@
 
     </div>
 
-  </div>
+
 
 </div>

@@ -2,10 +2,18 @@
 /*Color Declare Start*/
 $color-white: #fff;
 $color-black: #000;
-$color-red: #EB0444;
+$color-red: #ec0044;
 $dark-blue: #243444; /*Color Declare End*/
 /*header section start */
-
+.navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+a{
+  cursor: pointer;
+}
 .header-top-block {
   background-color: $dark-blue;
   color: $color-white;
@@ -13,6 +21,7 @@ $dark-blue: #243444; /*Color Declare End*/
 
 .header-block {
   padding: 10px 0;
+  background-color: $color-white;
 
   .logo {
     float: left;
@@ -35,17 +44,147 @@ $dark-blue: #243444; /*Color Declare End*/
   }
 }
 /*header section end */
-
 .trending-block {
-  //background-color: $dark-blue;
+  background-color: $dark-blue;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  .fran-top-block {
+    border-bottom: 2px solid #bbbcbf;
+    padding: 0 0 10px;
+    margin: 0 15px 15px 15px;
+    h4{
+      color: $color-white;
+    }
+    a{
+      text-align: right;
+      color:$color-white;
+      font-size: 12px;
+      width: 100%;
+      display: inline-block;
+      text-decoration: none;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        float: left;
+        padding: 0 31px 0 0;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 7px;
+          right: 16px;
+          background: #a6a8aa;
+          width: 2px;
+          height: 15px;
+        }
+
+        &:last-child {
+          content: none;
+
+          &:after {
+            content: none;
+          }
+        }
+
+        &.frannews-subtitle {
+          font-size: 15px;
+          line-height: 24px;
+          color: #a6a8aa;
+        }
+      }
+    }
+  }
+  .trending-block-slider{
+      position: relative;
+      bottom: -30px;
+    .trending-thumb {
+
+
+      .how-to-succeed {
+        background-color: $color-red;
+        padding: 25px 0 15px 40px;
+
+        h2 {
+          font-size: 31px;
+          color: $color-white;
+        }
+
+        p {
+          color: $color-white;
+          font-size: 18px;
+        }
+      }
+      .readmore-block{
+        background: #b00034;
+        padding: 12px 19px 11px;
+        a{
+          text-align: right;
+          color:$color-white;
+          font-size: 12px;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+    }
+  }
 }
 /*nav section start */
+.featured-block {
+  .featured-left {
+    height: 850px;
+
+    .how-to-succeed {
+      background-color: $color-red;
+      padding: 25px 0 15px 40px;
+
+      h2 {
+        font-size: 31px;
+        color: $color-white;
+      }
+
+      p {
+        color: $color-white;
+        font-size: 18px;
+      }
+    }
+    .readmore-block{
+      background: #b00034;
+      padding: 12px 19px 11px;
+      a{
+        text-align: right;
+        color:$color-white;
+        font-size: 12px;
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+
+  .featured-right {
+    background-color: $dark-blue;
+    height: 850px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .feature-block {
+      img {}
+
+      p {
+        color: $color-white;
+      }
+    }
+  }
+}
 
 .menu-block {
   float: left;
 }
-
-.nav-block {
+#navbarSupportedContent{
   ul {
     li {
       a {
@@ -55,12 +194,15 @@ $dark-blue: #243444; /*Color Declare End*/
     }
   }
 }
+.navbar{
+  float: right;
+}
+
 /*nav section end */
 /*footer section start */
-
 footer {
-  background-color: $dark-blue;
-  color: $color-white;
+  background-color: $color-white;
+  color: $dark-blue;
 
   .footer-menu-block {
     h2 {
@@ -76,7 +218,7 @@ footer {
 
         a {
           text-decoration: none;
-          color: $color-white;
+          color: $dark-blue;
         }
       }
     }
@@ -84,12 +226,14 @@ footer {
 }
 /*footer section end */
 /*side bar block start */
+
 .scroll-banner-block {
   background: #FBF4F4;
 }
 
 .sidebar-block {
   background: #243444;
+  z-index: 9999;
 }
 
 #sidebar-wrapper {
@@ -126,11 +270,19 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 /*side bar block end */
-.trending-block {
-  background: #243444;
-}
+
 
 .spotlight-block {
+  .spotlight-top{
+    background-color: $color-red;
+    padding: 60px 100px 0px 100px;
+  }
+  .spotlight-content{
+    background-color: $dark-blue;
+    .card{
+      background-color: transparent;
+    }
+  }
   .nav-tabs {
     display: none;
   }
@@ -160,13 +312,86 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
   .spotlight-tabs {
     ul {
-      background-color: red;
 
       li {
         a {
           color: $color-white;
           text-decoration: none;
           padding: 0 20px;
+        }
+      }
+    }
+  }
+}
+
+.fran-block {
+  padding: 50px 0;
+  .fran-top-block {
+    border-bottom: 2px solid #bbbcbf;
+    padding: 0 0 10px;
+    margin: 0 15px 15px 15px;
+    a{
+      text-align: right;
+      color:$color-black;
+      font-size: 12px;
+      width: 100%;
+      display: inline-block;
+      text-decoration: none;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        float: left;
+        padding: 0 31px 0 0;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 7px;
+          right: 16px;
+          background: #a6a8aa;
+          width: 2px;
+          height: 15px;
+        }
+
+        &:last-child {
+          content: none;
+
+          &:after {
+            content: none;
+          }
+        }
+
+        &.frannews-subtitle {
+          font-size: 15px;
+          line-height: 24px;
+          color: #a6a8aa;
+        }
+      }
+    }
+  }
+
+  .fran-content-block {
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        width: 20%;
+        float: left;
+        padding: 0 15px 40px 15px;
+
+        img {}
+
+        p {
+          font-size: 15px;
+          line-height: 18px;
+          color: #272525;
+          margin-top: 15px;
         }
       }
     }
