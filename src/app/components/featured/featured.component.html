@@ -4,10 +4,17 @@
       <div class="col-md-8">
         <div class="featured-left">
           <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" />
+          <!-- <img appyoutubeimage
+          sizes="(max-width: 576px) 600px,
+          (max-width: 768px) 800px,
+          (max-width: 992px) 600px,
+          (max-width: 1200px) 700px,
+          1300px"  
+          src="{{featuredData.data[0].media | defaultImage:1300:730}}"> -->
           <div class="how-to-succeed">
-            <h2>How To Succeed as A Multi-Unit Franchisee: Letha Tran, Togo’s</h2>
+            <h2>{{ featuredData.data[0].title }}</h2>
             <p>
-              Tran shares how she went from being a longtime Togo’s customer to a successful owner of four Togo’s franchises.
+              {{ featuredData.data[0].short_description }}
             </p>
           </div>
           <div class="readmore-block">
@@ -19,62 +26,12 @@
       <div class="col-md-4">
         <div class="featured-right">
           <div class="feature-block">
-            <div class="row">
+            <div class="row" *ngFor="let item of featuredData.data.slice(1)" >
               <div class="col-md-6">
                 <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
               </div>
               <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-block">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-              </div>
-              <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-block">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-              </div>
-              <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-block">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-              </div>
-              <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-block">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-              </div>
-              <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-block">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-              </div>
-              <div class="col-md-6">
-                <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                <p> {{ item.title }}</p>
               </div>
             </div>
           </div>
@@ -87,64 +44,3 @@
 
 </div>
 
-
-
-<div class="fran-block">
-  <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-          <div class="fran-top-block">
-            <div class="row">
-                <div class="col-md-9">
-                  <ul>
-                    <li>
-                      <h4>#FranchiseQ&A</h4>
-                      </li>
-                      <li class="frannews-subtitle">
-                        <span>The industry’s leading publication in franchise news</span>
-                        </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                      <a class="read-more-btn">READ MORE</a>
-                    </div>
-              </div>
-            </div>
-            <div class="fran-content-block">
-              <ul>
-                <li>
-                  <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
-                  <p>
-                    How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                    </p>
-                  </li>
-                  <li>
-                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid" />
-                    <p>
-                      How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                      </p>
-                    </li>
-                    <li>
-                      <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
-                      <p>
-                        How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                        </p>
-                      </li>
-                      <li>
-                        <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
-                        <p>
-                          How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                          </p>
-                        </li>
-                        <li>
-                          <img src="../assets/img/fran-1.jpg" alt=""class="img-fluid" />
-                          <p>
-                            How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                            </p>
-                          </li>
-                </ul>
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>

@@ -7,7 +7,7 @@
                   <div class="col-md-9">
                     <ul>
                       <li>
-                        <h4>TRENDING</h4>
+                        <h4>{{trendingData.title}}</h4>
                         </li>
                       </ul>
                     </div>
@@ -21,14 +21,14 @@
             </div>
         </div>
         <div class="trending-block-slider">
-          <div class="row">
-              <div class="col-md-4">
+          <div class="row" >
+              <div class="col-md-4" *ngFor="let item of trendingData.data.slice(0,3); let i = index">
                 <div class="trending-thumb">
                   <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" />
                   <div class="how-to-succeed">
-                    <h2>How To Succeed as A Multi-Unit Franchisee: Letha Tran, Togo’s</h2>
+                    <!-- <h2>{{ item.title }}</h2> -->
                     <p>
-                      Tran shares how she went from being a longtime Togo’s customer to a successful owner of four Togo’s franchises.
+                      {{ item.title }}
                     </p>
                   </div>
                   <div class="readmore-block">
@@ -36,34 +36,6 @@
                     </div>
                 </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="trending-thumb">
-                    <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" />
-                    <div class="how-to-succeed">
-                      <h2>How To Succeed as A Multi-Unit Franchisee: Letha Tran, Togo’s</h2>
-                      <p>
-                        Tran shares how she went from being a longtime Togo’s customer to a successful owner of four Togo’s franchises.
-                      </p>
-                    </div>
-                    <div class="readmore-block">
-                        <a class="">READ MORE</a>
-                      </div>
-                  </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="trending-thumb">
-                      <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" />
-                      <div class="how-to-succeed">
-                        <h2>How To Succeed as A Multi-Unit Franchisee: Letha Tran, Togo’s</h2>
-                        <p>
-                          Tran shares how she went from being a longtime Togo’s customer to a successful owner of four Togo’s franchises.
-                        </p>
-                      </div>
-                      <div class="readmore-block">
-                          <a class="">READ MORE</a>
-                        </div>
-                    </div>
-                    </div>
             </div>
           </div>
     </div>

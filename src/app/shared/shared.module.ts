@@ -16,6 +16,8 @@ import { TrendingComponent } from './components/trending/trending.component';
 import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
 import { AddBannerComponent } from './components/add-banner/add-banner.component';
 import { FiveColumnArticleComponent } from './components/five-column-article/five-column-article.component';
+import { FranchiseComponent } from './components/franchise/franchise.component';
+import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 
 // Modals Components
 
@@ -32,6 +34,8 @@ import { FiveColumnArticleComponent } from './components/five-column-article/fiv
     ScrollBannerComponent,
     AddBannerComponent,
     FiveColumnArticleComponent,
+    FranchiseComponent,
+    TrendingBuzzComponent,
   ],
   imports: [
     CommonModule,

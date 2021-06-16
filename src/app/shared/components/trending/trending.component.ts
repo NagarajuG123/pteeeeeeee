@@ -16,7 +16,8 @@ export class TrendingComponent implements OnInit {
   }
 
   getTrending() {
-    this.apiService.getTrending().subscribe((response) => {
+    let slug='1851';
+    this.apiService.getAPI(`${slug}/trending`).subscribe((response ) =>{
       this.trendingData = response;
       console.log(this.trendingData);
     });

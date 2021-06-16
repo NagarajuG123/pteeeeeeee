@@ -1,0 +1,37 @@
+<div class="fran-block">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="fran-top-block">
+              <div class="row">
+                  <div class="col-md-9">
+                    <ul>
+                      <li>
+                        <h4> {{ newsData.title }}</h4>
+                        </li>
+                        <li class="frannews-subtitle">
+                          <span>{{ newsData.subtitle }}</span>
+                          </li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="read-more-btn">READ MORE</a>
+                      </div>
+                </div>
+              </div>
+              <div class="fran-content-block">
+                <ul>
+                  <li *ngFor="let news of newsData.data">
+                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
+                    <p>
+                     {{ news.title }}
+                      </p>
+                      <span> {{ news.posted_on }}</span>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  

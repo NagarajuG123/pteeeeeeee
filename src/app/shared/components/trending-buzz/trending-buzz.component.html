@@ -1,0 +1,37 @@
+<div class="fran-block">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="fran-top-block">
+              <div class="row">
+                  <div class="col-md-9">
+                    <ul>
+                      <li>
+                        <h4>TRENDING BRAND BUZZ</h4>
+                        </li>
+                        <li class="frannews-subtitle">
+                          <span>SPONSORED</span>
+                          </li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="read-more-btn">READ MORE</a>
+                      </div>
+                </div>
+              </div>
+              <div class="fran-content-block">
+                <ul>
+                  <li *ngFor="let trending of trending.data">
+                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
+                    <p>
+                     {{ trending.title }}
+                      </p>
+                      <span> {{ trending.posted_on }}</span>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
