@@ -28,7 +28,7 @@
           <div class="feature-block">
             <div class="row" *ngFor="let item of featuredData.data.slice(1)" >
               <div class="col-md-6">
-                <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                <img  src="{{ item.media.url }}" class="img-fluid"/>
               </div>
               <div class="col-md-6">
                 <p> {{ item.title }}</p>

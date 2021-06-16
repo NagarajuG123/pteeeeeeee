@@ -22,7 +22,7 @@
               <div class="fran-content-block">
                 <ul>
                   <li *ngFor="let trending of trending.data">
-                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
+                    <img src="{{ trending.media.url }}" alt="" class="img-fluid"/>
                     <p>
                      {{ trending.title }}
                       </p>
