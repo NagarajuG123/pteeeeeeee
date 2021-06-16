@@ -279,12 +279,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
   .spotlight-content{
     background-color: $dark-blue;
+    p{
+      color:$color-white;
+    }
     .card{
       background-color: transparent;
     }
   }
   .nav-tabs {
     display: none;
+    border: none;
   }
   @media(min-width:768px) {
     .nav-tabs {
@@ -317,7 +321,15 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         a {
           color: $color-white;
           text-decoration: none;
-          padding: 0 20px;
+          padding: 10px 30px 10px 30px;
+          border: none;
+          &.active{
+            background-color: $dark-blue;
+            color: $color-white;
+            border: none;
+            border-radius: 0;
+            padding: 10px 30px 10px 30px;
+          }
         }
       }
     }
