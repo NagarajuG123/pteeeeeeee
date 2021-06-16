@@ -15,66 +15,36 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              HOME
+             {{ menu["Franchise Brands"].title.toUpperCase() }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
+              <ul>
+                  <li *ngFor="let item of menu['Franchise Brands'].dropdown" >
+                      <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''" class="text-uppercase">{{item.title}}</a>
+                  </li>
+              </ul>
+          </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              ABOUT
+              {{ menu.Learn.title.toUpperCase() }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              ARTICLES
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              COVERS
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              LOREM
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              LOREM
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">POWER RANKING</a>
-              <a class="dropdown-item" href="#">FRANCHISE OPPORTUNITY</a>
-              <a class="dropdown-item" href="#">BRAND NEWS</a>
-            </div>
+              <ul>
+                  <li *ngFor="let item of menu.Learn.dropdown" >
+                      <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''" class="text-uppercase">{{item.title}}</a>
+                  </li>
+              </ul>
+          </div>
           </li>
         </ul>
       </div>
+      <div *ngIf="menu['monthly-cover']">
+        <a href="menu['monthly-cover'].media.url.conver_url">
+                <img src="{{menu['monthly-cover'].media}}"
+                     width="119" height="157" alt="img1"> 
+        </a>
+    </div>
     </nav>
   </div>
 </div>

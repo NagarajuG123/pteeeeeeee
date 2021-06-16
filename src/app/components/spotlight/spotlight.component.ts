@@ -53,14 +53,9 @@ export class SpotlightComponent implements OnInit {
   }
 
   getColumnSpotlight() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/columns`).subscribe((response ) =>{
+    this.apiService.getColumnSpotlight().subscribe((response) => {
       this.columnsData = response;
       console.log(this.columnsData);
     });
-    // this.apiService.getColumnSpotlight().subscribe((response) => {
-    //   this.columnsData = response;
-    //   console.log(this.columnsData);
-    // });
   }
 }
