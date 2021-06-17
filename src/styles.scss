@@ -5,6 +5,11 @@ $color-black: #000;
 $color-red: #ec0044;
 $dark-blue: #243444; /*Color Declare End*/
 /*header section start */
+
+
+.bg-dark-color{
+  background-color: $dark-blue;
+}
 .navbar-fixed-bottom, .navbar-fixed-top {
     position: fixed;
     right: 0;
@@ -48,6 +53,22 @@ a{
   background-color: $dark-blue;
   padding-top: 50px;
   margin-bottom: 50px;
+  .slick-slider{
+    .slick-prev{
+      &:before{
+        float: left;
+      }
+    }
+    .slick-next{
+      &:before{
+        float: right;
+      }
+    }
+    .slick-slide{
+      margin: 0 10px;
+      padding: 0px 5px;
+    }
+  }
   .fran-top-block {
     border-bottom: 2px solid #bbbcbf;
     padding: 0 0 10px;
@@ -205,6 +226,14 @@ footer {
   color: $dark-blue;
 
   .footer-menu-block {
+    .footer-logo-l{
+      float: left;
+      width: 30%;
+    }
+    .footer-logo-r{
+      float: right;
+      width: 70%;
+    }
     h2 {
       color: $color-red;
       font-size: 25px;
@@ -386,7 +415,22 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
       }
     }
   }
+  .fran-two-block{
+    .fran-two-l{
+      padding-left: 15px;
+    }
+    .fran-two-r{
+      background-color: $dark-blue;
+      color: $color-white;
+      height: 350px;
+      h2{
 
+      }
+      p{
+
+      }
+    }
+  }
   .fran-content-block {
     ul {
       padding: 0;
@@ -408,4 +452,64 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
       }
     }
   }
+}
+
+
+
+.five-col-art-block{
+  h4{
+    color:$color-white;
+  }
+  .read-more-btn{
+    color:$color-white!important;
+  }
+  .fran-top-block{
+    border-bottom: 2px solid #ec0044;
+  }
+}
+
+
+
+.fran-slider-block{
+  .items {
+      width: 100%;
+      margin: 0px auto;
+      margin-top: 20px
+  }
+  .slick-slide{
+    background-color: $color-white;
+    margin: 10px;
+    .read-more-btn{
+      width: 100%;
+      background: #b00034;
+      display: inline-block;
+      text-align: right;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 5px 15px;
+    }
+    img{
+      width: 100%;
+      border: 0px solid #fff
+    }
+  }
+}
+
+.add-banner-block{
+  padding-bottom: 30px;
+  .title-r{
+    float: right;
+  }
+  .add-banner-border{
+    border-top: 1px solid #d0d1d3;
+    border-bottom: 1px solid #d0d1d3;
+    padding: 34px 10px;
+    text-align: center;
+  }
+}
+
+.more-franchise-block{
+  background-color:#f1f1f2;
+  padding: 102px 80px 62px;
 }
