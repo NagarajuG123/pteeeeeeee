@@ -21,7 +21,6 @@ export class SidebarComponent implements OnInit {
   getSidebar() {
     this.apiService.getSidebar().subscribe((response) => {
       this.sidebarData = response;
-      console.log(this.sidebarData);
     });
   }
 
@@ -29,7 +28,6 @@ export class SidebarComponent implements OnInit {
   getPublication() {
     this.apiService.getPublication().subscribe((response: any) => {
       this.publication = response;
-      console.log(this.publication);
     });
   }
 

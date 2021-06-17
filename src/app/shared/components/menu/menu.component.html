@@ -4,7 +4,7 @@
       <button class="btn btn-grey" id="sidebarToggle"><i class="fas fa-bars"></i></button>
     </div>
     <div class="logo">
-      <a href=""><img src="../assets/img/logo.png" alt="Logo" /></a>
+      <a href="#"><img src="{{ menu.logo.url }}" alt="Logo" /></a>
     </div>
     <nav class="navbar navbar-expand-lg ">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
       </div>
       <div *ngIf="menu['monthly-cover']">
         <a href="menu['monthly-cover'].media.url.conver_url">
-                <img src="{{menu['monthly-cover'].media}}"
+                <img src="{{menu['monthly-cover'].media.url.image_url}}"
                      width="119" height="157" alt="img1"> 
         </a>
     </div>
