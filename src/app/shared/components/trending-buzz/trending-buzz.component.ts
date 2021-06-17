@@ -19,7 +19,6 @@ export class TrendingBuzzComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/trending-buzz`).subscribe((response ) =>{
       this.trending = response;
-      console.log(this.trending);
     });
   }
 

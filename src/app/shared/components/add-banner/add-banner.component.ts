@@ -18,7 +18,6 @@ export class AddBannerComponent implements OnInit {
   getAds() {
     this.apiService.getAds().subscribe((response: any) => {
       this.adsData = response;
-      console.log(this.adsData);
     });
   }
 }

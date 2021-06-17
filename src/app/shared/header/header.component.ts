@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   getHeader() {
     this.apiService.getHeader().subscribe((response) => {
       this.headerData = response;
-      console.log(this.headerData);
     });
   }
 
