@@ -22,11 +22,11 @@
               <div class="fran-content-block">
                 <ul>
                   <li *ngFor="let news of newsData.data">
-                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
+                    <img src="{{ news.media.url }} " alt="" class="img-fluid"/>
                     <p>
                      {{ news.title }}
                       </p>
-                      <span> {{ news.posted_on }}</span>
+                      <!-- <span> {{ news.posted_on }}</span> -->
                     </li>
                   </ul>
                 </div>

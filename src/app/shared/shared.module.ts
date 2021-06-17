@@ -57,6 +57,8 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     ScrollBannerComponent,
     AddBannerComponent,
     FiveColumnArticleComponent,
+    FranchiseComponent,
+    TrendingBuzzComponent
   ],
 })
 export class SharedModule {}
