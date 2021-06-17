@@ -19,7 +19,6 @@ export class FranchiseComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/news`).subscribe((response ) =>{
       this.newsData = response;
-      console.log(this.newsData);
     });
   }
 

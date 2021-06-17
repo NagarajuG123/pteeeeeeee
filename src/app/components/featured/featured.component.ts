@@ -19,7 +19,6 @@ export class FeaturedComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/featured-articles`).subscribe((response ) =>{
       this.featuredData = response;
-      console.log(this.featuredData);
     });
   }
 }
