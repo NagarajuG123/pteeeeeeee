@@ -27,6 +27,7 @@ export class FooterComponent implements OnInit {
   getPublication() {
     this.apiService.getPublication().subscribe((response) => {
       this.publication = response;
+      console.log(this.publication);
     });
   }
 }
