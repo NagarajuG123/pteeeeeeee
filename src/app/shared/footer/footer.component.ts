@@ -14,6 +14,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
      this.getFooter();
+     this.getPublication();
   }
 
  // Footer API 

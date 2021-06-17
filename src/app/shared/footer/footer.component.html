@@ -1,15 +1,37 @@
 <footer>
+  <div class="more-franchise-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h4>{{ footerData.about.title }}</h4>
+                <p>
+                  {{footerData.about.description}}
+                  </p>
+              </div>
+              <div class="col-md-3">
+                <div class="learnmore">
+                  <a class="learn-more-btn" href="about">
+                    LEARN MORE
+                    <span></span>
+                  </a>
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+
+
     <div class="container">
         <div class="footer-menu-block">
             <div class="row">
                 <div class="col-md-3">
                 <div class="footer-logo-l">
-                      <a href=""><img src="../assets/img/logo.png" alt="Logo" /></a>
+                      <a href=""><img src="{{ footerData.logo.url }}" alt="Logo" /></a>
                   </div>
                 <div class="footer-logo-r">
-                  <h4>1851 FRANCHISE</h4>
+                  <h4>{{ publication.title.toUpperCase() }}</h4>
                   <p>
-                    Your Number One Source For <span> {{ publication.newsType }} </span>
+                    Your Number One Source For {{ publication.newsType }}
                     </p>
                   </div>
 
