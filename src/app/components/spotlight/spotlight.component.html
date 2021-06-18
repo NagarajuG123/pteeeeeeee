@@ -37,7 +37,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <img src="{{peopleData.data[0].media.placeholder}}" class="img-fluid" />
+                    <img appyoutubeimage
+                    sizes="(max-width: 576px) 600px,
+                    (max-width: 768px) 800px,
+                    (max-width: 992px) 600px,
+                    (max-width: 1200px) 700px,
+                    1300px"
+                    src="{{ peopleData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
                     <p> {{ peopleData.data[0].title }} </p>
                     <p> {{ peopleData.data[0].short_description}} </p>
                     </div>
@@ -47,7 +53,13 @@
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="{{item.media.url}}"class="img-fluid"  />
+                                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                                   </div>
                                   <div class="col-md-6">
                                     <p>{{ item.title }}</p>
@@ -75,7 +87,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4">
-                    <img src="{{franchiseeData.data[0].media.url}}" class="img-fluid" />
+                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ franchiseeData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
                     <p> {{ franchiseeData.data[0].title }} </p>
                     <p> {{ franchiseeData.data[0].short_description}}</p>
                     </div>
@@ -85,7 +103,13 @@
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="{{ item.media.placeholder}}"class="img-fluid"  />
+                                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                                   </div>
                                   <div class="col-md-6">
                                     <p> {{ item.title }}</p>
@@ -113,7 +137,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4">
-                    <img src="{{franchisorData.data[0].media.url}}" class="img-fluid" />
+                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ franchisorData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
                     <p> {{ franchisorData.data[0].title }} </p>
                     <p> {{ franchisorData.data[0].short_description}} </p>
                     </div>
@@ -123,7 +153,13 @@
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="{{item.media.url}}"class="img-fluid"  />
+                                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                                   </div>
                                   <div class="col-md-6">
                                     <p>{{item.title}}</p>
@@ -151,7 +187,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4">
-                    <img src="{{industryData.data[0].media.url}}" class="img-fluid" />
+                    <img appyoutubeimage
+                    sizes="(max-width: 576px) 600px,
+                    (max-width: 768px) 800px,
+                    (max-width: 992px) 600px,
+                    (max-width: 1200px) 700px,
+                    1300px"
+                    src="{{ industryData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
                     <p> {{ industryData.data[0].title }} </p>
                     <p>  {{ industryData.data[0].short_description}} </p>
                     </div>
@@ -161,7 +203,13 @@
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="{{item.media.url}}"class="img-fluid"  />
+                                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                                   </div>
                                   <div class="col-md-6">
                                     <p>{{item.title}}</p>
@@ -189,7 +237,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4">
-                    <img src="{{columnsData.data[0].media.url}}" class="img-fluid" />
+                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{columnsData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
                     <p>{{ columnsData.data[0].title }} </p>
                     <p> {{ columnsData.data[0].short_description}}</p>
                     </div>
@@ -199,7 +253,13 @@
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="{{item.media.placeholder}}"class="img-fluid"  />
+                                    <img appyoutubeimage
+                                    sizes="(max-width: 576px) 600px,
+                                    (max-width: 768px) 800px,
+                                    (max-width: 992px) 600px,
+                                    (max-width: 1200px) 700px,
+                                    1300px"
+                                    src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                                   </div>
                                   <div class="col-md-6">
                                     <p>{{item.title}}</p>

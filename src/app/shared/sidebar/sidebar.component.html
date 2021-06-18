@@ -13,7 +13,9 @@
       </div>
     <div class="s-menu-list-block">
           <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
-          <img src="{{sidebarData['monthly-cover'].media.url}}" alt="" width="100" />
+          <img appYoutubeImage
+          src="{{sidebarData['monthly-cover'].media | defaultImage:97:127}}"
+          width="100" alt="img27">
       </div>
     <div class="s-menu-list-block">
       <h4><i class="fa fa-server"></i>Topics</h4>

@@ -1,13 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Media } from '../models/media';
 
 @Pipe({
   name: 'defaultImage'
 })
 export class DefaultImagePipe implements PipeTransform {
 
-  transform(value: Media, width?: any, height?: any): string  {
+  transform(value: any, width?: any, height?: any): string  {
     let image = '';
     const emptyImage = `https://placeimg.com/${width}/${height}/any`;
     image = emptyImage;

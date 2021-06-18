@@ -22,7 +22,10 @@
               <div class="fran-content-block">
                 <ul>
                   <li *ngFor="let trending of trending.data">
-                    <img src="{{ trending.media.url }}" alt="" class="img-fluid"/>
+                    <img appYoutubeImage srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w" sizes="{{'(max-width: 576px) 545px,
+                    (max-width: 768px) 355px,
+                    (max-width: 992px) 300px,
+                    210px'}}" src="{{trending.media | defaultImage:210:118}}" alt="" class="img-fluid"/>
                     <p>
                      {{ trending.title }}
                       </p>
