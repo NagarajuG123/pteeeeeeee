@@ -13,9 +13,9 @@
           src="{{featuredData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
           <div style="height:202px">
             <div class="how-to-succeed">
-              <h2>{{ featuredData.data[0].title }}</h2>
+              <h2>{{ featuredData?.data[0]?.title }}</h2>
               <p>
-                {{ featuredData.data[0].short_description }}
+                {{ featuredData?.data[0]?.short_description }}
               </p>
             </div>
             <div class="readmore-block">
