@@ -1,32 +1,35 @@
 <div class="featured-block">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 p-0">
         <div class="featured-left">
-          <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" />
+          <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" style="height:713px" />
           <!-- <img appyoutubeimage
           sizes="(max-width: 576px) 600px,
           (max-width: 768px) 800px,
           (max-width: 992px) 600px,
           (max-width: 1200px) 700px,
-          1300px"  
+          1300px"
           src="{{featuredData.data[0].media | defaultImage:1300:730}}"> -->
-          <div class="how-to-succeed">
-            <h2>{{ featuredData.data[0].title }}</h2>
-            <p>
-              {{ featuredData.data[0].short_description }}
-            </p>
-          </div>
-          <div class="readmore-block">
-              <a class="">READ MORE</a>
+          <div style="height:202px">
+            <div class="how-to-succeed">
+              <h2>{{ featuredData.data[0].title }}</h2>
+              <p>
+                {{ featuredData.data[0].short_description }}
+              </p>
             </div>
+            <div class="readmore-block">
+                <a class="">READ MORE</a>
+              </div>
+            </div>
+
         </div>
 
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 p-0">
         <div class="featured-right">
           <div class="feature-block">
-            <div class="row" *ngFor="let item of featuredData.data.slice(1)" >
+            <div class="row mb-3" *ngFor="let item of featuredData.data.slice(1)" >
               <div class="col-md-6">
                 <img  src="{{ item.media.url }}" class="img-fluid"/>
               </div>
@@ -43,4 +46,3 @@
   </div>
 
 </div>
-
