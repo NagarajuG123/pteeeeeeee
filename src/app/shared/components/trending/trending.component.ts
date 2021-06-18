@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-trending',
@@ -19,7 +19,6 @@ export class TrendingComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/trending`).subscribe((response ) =>{
       this.trendingData = response;
-      console.log(this.trendingData);
     });
   }
 

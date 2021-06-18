@@ -1,4 +1,4 @@
-<div class="trending-block">
+<div class="trending-block" *ngIf="trendingData.data?.length">
   <div class="container">
       <div class="row">
           <div class="col-md-12">
@@ -16,17 +16,29 @@
                       </div>
                 </div>
               </div>
-              <!-- <img src="{{trendingData.data[0].media.url}}" class="img-fluid">
-              <p style="color: white;">{{trendingData.data[0].title}}</p> -->
             </div>
         </div>
         <div class="trending-block-slider">
           <div class="row items" >
-              <div class="col-md-4" *ngFor="let item of trendingData.data.slice(0,3); let i = index">
+              <div class="col-md-4" *ngFor="let item of trendingData?.data?.slice(0,3); let i = index">
                 <div class="trending-thumb" >
-                  <img src="{{ item.media.placeholder }}" alt="" class="img-fluid" />
+                  <img
+                          appYoutubeImage
+                          src="{{item.media | defaultImage:415:232}}"                                        
+                          alt="img9"
+                          srcset=""
+                          class="img-fluid"
+                      />
+                      <figure *ngIf="!item.media">
+                        <img
+                            src="assets/images/video-img2.jpg"
+                            width="415"
+                            height="232"
+                            alt="img9"
+                            srcset=""
+                        >
+                    </figure>
                   <div class="how-to-succeed">
-                    <!-- <h2>{{ item.title }}</h2> -->
                     <p>
                       {{ item.title }}
                     </p>

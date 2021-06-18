@@ -6,17 +6,40 @@
                 <img class="logo-img" src="{{sidebarData.logo}}" width="{{publication.id === 'EE' ? 200: 53}}" height="53" alt="logo">
             </figure>
         </a>
-        <p style="color: white;"> Search input form control with search fa icon</p>
-        <a class="list-group-item list-group-item-action p-3 fa fa-database" href="#!">MONTHLY COVERS</a>
-        <!-- <p>{{sidebarData['monthly-cover'].media.url}}</p> -->
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-server" href="#!">Topics</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-trophy" href="#!">AWARDS</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-star" href="#!">POWER RANKING</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-question-circle" href="#!">ABOUT {{publication.id}}</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-usd" href="#!">SPONSORED CONTENT </a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-rss" href="#!">ADVERTISE ON {{publication.id}}</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-envelope-open" href="#!">CONTACT {{publication.id}} EDITORIAL</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-list" href="#!">TERMS OF USE</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3 fa fa-home" href="#!">LOGIN</a>
+
     </div>
+    <div class="s-menu-search">
+      <input  class="form-control"  type="text" placeholder="Search 1851franchise.com">
+      </div>
+    <div class="s-menu-list-block">
+          <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
+          <img appYoutubeImage
+          src="{{sidebarData['monthly-cover'].media | defaultImage:97:127}}"
+          width="100" alt="img27">
+      </div>
+    <div class="s-menu-list-block">
+      <h4><i class="fa fa-server"></i>Topics</h4>
+      <ul>
+        <li><a href="">People Spotlight</a></li>
+        <li><a href="">Franchisee Spotlight</a></li>
+        <li><a href="">Franchisor Spotlight</a></li>
+        <li><a href="">Industry Spotlight</a></li>
+        </ul>
+      </div>
+      <div class="s-menu-list-block">
+        <h4><i class="fa fa-trophy"></i>AWARDS</h4>
+        <ul>
+          <li><a href="">How to Succeed as a Multi-Unit Franchisee</a></li>
+          <li><a href="">Website Awards</a></li>
+          </ul>
+          <div class="s-menu-list-s p-0"><a href=""><i class="fa fa-star"></i>POWER RANKINGS</a></div>
+        </div>
+      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-question-circle"></i>ABOUT {{publication.id}}</a></div>
+      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-rss"></i>SPONSORED CONTENT</a></div>
+      <div class="s-menu-list-s"><a href="#!"><i class="fa fa fa-rss"></i>ADVERTISE ON {{publication.id}}</a></div>
+      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-envelope-open"></i>CONTACT {{publication.id}} EDITORIAL</a></div>
+      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-list"></i>TERMS OF USE</a></div>
+
+      <div class="s-menu-list-s"><a href=""><i class="fa fa-home"></i>LOGIN</a></div>
+
 </div>

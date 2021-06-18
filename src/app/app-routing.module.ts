@@ -6,11 +6,6 @@ import { ErrorComponent } from './shared/components/error/error.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
-    pathMatch: 'full',
-  },
-  {
-    path: '',
     component: LayoutComponent,
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
@@ -21,7 +16,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

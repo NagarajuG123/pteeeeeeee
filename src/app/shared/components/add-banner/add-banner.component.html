@@ -9,7 +9,15 @@
 
               </div>
             <div class="add-banner-border">
-                <img src="{{adsData.data[0].media.url}}" class="img-fluid" style="height:100px;width: 100%;" />
+                <img
+                appYoutubeImage
+                src="{{adsData.data[0].media | defaultImage:970:89}}"
+                width="970"
+                height="89"
+                style="width: 100%"
+                alt="img12"
+                class="img-fluid"
+            >
               </div>
 
           </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotlightService } from 'src/app/services/spotlight.service';
+import { ApiService } from 'src/app/_core/services/api.service';
+
 
 @Component({
   selector: 'app-spotlight',
@@ -14,7 +15,7 @@ export class SpotlightComponent implements OnInit {
   columnsData: any = [];
   slug = '1851';
 
-  constructor(private apiService: SpotlightService ) { }
+  constructor(private apiService: ApiService ) { }
 
   ngOnInit(): void {
     this.getPeopleSpotlight();
@@ -24,38 +25,34 @@ export class SpotlightComponent implements OnInit {
     this.getIndustrySpotlight();
   }
 
+
   getPeopleSpotlight() {
-    this.apiService.getPeopleSpotlight().subscribe((response) => {
+    this.apiService.getAPI(`${this.slug}/spotlight/people?limit=10&offset=0`).subscribe((response ) =>{
       this.peopleData = response;
-      console.log(this.peopleData);
     });
   }
 
   getFranchiseeSpotlight() {
-    this.apiService.getFranchiseeSpotlight().subscribe((response) => {
+    this.apiService.getAPI(`${this.slug}/spotlight/franchisee?limit=10&offset=0`).subscribe((response ) =>{
       this.franchiseeData = response;
-      console.log(this.franchiseeData);
     });
   }
 
   getFranchisorSpotlight() {
-    this.apiService.getFranchisorSpotlight().subscribe((response) => {
+    this.apiService.getAPI(`${this.slug}/spotlight/franchisor?limit=10&offset=0`).subscribe((response ) =>{
       this.franchisorData = response;
-      console.log(this.franchisorData);
     });
   }
 
   getIndustrySpotlight() {
-    this.apiService.getIndustrySpotlight().subscribe((response) => {
+    this.apiService.getAPI(`${this.slug}/spotlight/industry?limit=10&offset=0`).subscribe((response ) =>{
       this.industryData = response;
-      console.log(this.industryData);
     });
   }
 
   getColumnSpotlight() {
-    this.apiService.getColumnSpotlight().subscribe((response) => {
+    this.apiService.getAPI(`${this.slug}/spotlight/columns?limit=10&offset=0`).subscribe((response ) =>{
       this.columnsData = response;
-      console.log(this.columnsData);
     });
   }
 }

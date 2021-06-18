@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,7 @@ import { AddBannerComponent } from './components/add-banner/add-banner.component
 import { FiveColumnArticleComponent } from './components/five-column-article/five-column-article.component';
 import { FranchiseComponent } from './components/franchise/franchise.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
+
 
 // Modals Components
 
@@ -36,6 +38,7 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     FiveColumnArticleComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
+    DefaultImagePipe
   ],
   imports: [
     CommonModule,
@@ -58,7 +61,8 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     AddBannerComponent,
     FiveColumnArticleComponent,
     FranchiseComponent,
-    TrendingBuzzComponent
+    TrendingBuzzComponent,
+    DefaultImagePipe
   ],
 })
 export class SharedModule {}
