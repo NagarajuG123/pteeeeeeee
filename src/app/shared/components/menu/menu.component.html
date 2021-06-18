@@ -28,7 +28,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ul>
-                  <li *ngFor="let item of menu['Franchise Brands'].dropdown" >
+                  <li *ngFor="let item of menu['Franchise Brands']?.dropdown" >
                       <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''" class="text-uppercase">{{item.title}}</a>
                   </li>
               </ul>
@@ -36,11 +36,11 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ menu.Learn.title.toUpperCase() }}
+              {{ menu?.Learn?.title.toUpperCase() }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ul>
-                  <li *ngFor="let item of menu.Learn.dropdown" >
+                  <li *ngFor="let item of menu?.Learn?.dropdown" >
                       <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''" class="text-uppercase">{{item.title}}</a>
                   </li>
               </ul>
