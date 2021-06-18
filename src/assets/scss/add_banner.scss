@@ -1,0 +1,14 @@
+@import "mixins";
+
+.add-banner-block{
+  padding-bottom: 30px;
+  .title-r{
+    float: right;
+  }
+  .add-banner-border{
+    border-top: 1px solid #d0d1d3;
+    border-bottom: 1px solid #d0d1d3;
+    padding: 34px 10px;
+    text-align: center;
+  }
+}

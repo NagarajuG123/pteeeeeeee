@@ -1,0 +1,41 @@
+@import "mixins";
+
+.five-col-art-block{
+  h4{
+    color:$color-white;
+  }
+  .read-more-btn{
+    color:$color-white!important;
+  }
+  .fran-top-block{
+    border-bottom: 2px solid #ec0044;
+  }
+}
+
+
+
+.fran-slider-block{
+  .items {
+      width: 100%;
+      margin: 0px auto;
+      margin-top: 20px
+  }
+  .slick-slide{
+    background-color: $color-white;
+    margin: 10px;
+    .read-more-btn{
+      width: 100%;
+      background: #b00034;
+      display: inline-block;
+      text-align: right;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 5px 15px;
+    }
+    img{
+      width: 100%;
+      border: 0px solid #fff
+    }
+  }
+}
