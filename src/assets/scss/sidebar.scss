@@ -43,6 +43,34 @@
     }
   }
 }
+#sidebarToggle{
+  i{
+    color:#d0d1d3;
+    font-size: 30px;
+    font-weight: 500;
+
+  }
+  .show{
+    display: inline-block;
+  }
+  .hide{
+    display: none;
+  }
+}
+.sb-sidenav-toggled{
+  .navbar-fixed-top{
+
+    left: 250px;
+  }
+  #sidebarToggle{
+    .show{
+      display: none;
+    }
+    .hide{
+      display: inline-block;
+    }
+  }
+}
 
 #sidebar-wrapper {
   min-height: 100vh;

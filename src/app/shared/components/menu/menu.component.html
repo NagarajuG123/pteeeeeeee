@@ -1,7 +1,10 @@
 <div class="header-block navbar-fixed-top">
   <div class="container">
     <div class="menu-block">
-      <button class="btn btn-grey" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+      <button class="btn btn-grey" id="sidebarToggle">
+        <i class="fas fa-bars show"></i>
+        <i class="fas fa-times hide"></i>
+      </button>
     </div>
     <div class="logo">
       <a href="#"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
@@ -9,7 +12,7 @@
     <div *ngIf="menu['monthly-cover']" class="header-media-img">
       <a href="menu['monthly-cover'].media.url.conver_url">
         <img appYoutubeImage src="{{menu['monthly-cover'].media | defaultImage:119:157}}"
-        width="119" height="157" alt="img1"> 
+        width="119" height="157" alt="img1">
       </a>
   </div>
   <div class="search-btn">
