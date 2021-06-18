@@ -1,0 +1,56 @@
+@import "mixins";
+
+.featured-block {
+  padding-top: 80px;
+  .featured-left,.featured-right{
+    height: 915px;
+    overflow: hidden;
+  }
+  .featured-left {
+
+
+    .how-to-succeed {
+      background-color: $color-red;
+      padding: 25px 0 15px 40px;
+
+      h2 {
+        font-size: 31px;
+        color: $color-white;
+      }
+
+      p {
+        color: $color-white;
+        font-size: 18px;
+      }
+    }
+    .readmore-block{
+      background: #b00034;
+      padding: 12px 19px 11px;
+      a{
+        text-align: right;
+        color:$color-white;
+        font-size: 12px;
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+
+  .featured-right {
+    background-color: $dark-blue;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .feature-block {
+      margin-top: 50px;
+      img {
+        padding: 0 10px 0 25px;
+      }
+
+      p {
+        color: $color-white;
+        padding-right: 20px;
+      }
+    }
+  }
+}

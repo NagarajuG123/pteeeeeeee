@@ -1,0 +1,19 @@
+@import "mixins";
+
+a{
+  cursor: pointer;
+}
+
+.bg-dark-color{
+  background-color: $dark-blue;
+}
+
+body.sb-sidenav-toggled {
+    overflow: hidden;
+}
+body.sb-sidenav-toggled .sidebar-block{
+  position: fixed;
+}
+ body.sb-sidenav-toggled #page-content-wrapper {
+    margin-left: 250px;
+}
