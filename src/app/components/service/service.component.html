@@ -20,7 +20,17 @@
               <div class="row">
                   <div class="col-md-6">
                     <div class="fran-two-l">
-                        <img src="{{highlightItem.media.placeholder}}" alt="" class="img-fluid"/>
+                        <img
+                        appYoutubeImage
+                        sizes="{{'(max-width: 576px) 550px,
+                        (max-width: 768px) 740px,
+                        (max-width: 992px) 960px,
+                        (max-width: 1200px) 530px,
+                        623px'}}"
+                        src="{{highlightItem.media | defaultImage:623:350}}"
+                        alt=""
+                        class="img-fluid"
+                        >
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -37,7 +47,10 @@
             <div class="fran-content-block">
               <ul>
                 <li *ngFor= "let data of franchiseData.data.stories.slice(1,6);">
-                  <img src="{{data.media.placeholder}}" alt="" class="img-fluid"/>
+                  <img appYoutubeImage srcset="{{data.media | defaultImage:545:305}} 545w, {{data.media | defaultImage:355:199}} 355w, {{data.media | defaultImage:300:168}} 300w, {{data.media | defaultImage:210:118}} 210w" sizes="{{'(max-width: 576px) 545px,
+                  (max-width: 768px) 355px,
+                  (max-width: 992px) 300px,
+                  210px'}}" src="{{data.media | defaultImage:416:258}}" alt="" class="img-fluid"/>
                   <p>
                     {{data.title}}
                     </p>
