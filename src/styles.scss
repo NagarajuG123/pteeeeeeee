@@ -10,6 +10,9 @@ $dark-blue: #243444; /*Color Declare End*/
 .bg-dark-color{
   background-color: $dark-blue;
 }
+body.sb-sidenav-toggled {
+    overflow: hidden;
+}
 .navbar-fixed-bottom, .navbar-fixed-top {
     position: fixed;
     right: 0;
@@ -23,13 +26,37 @@ a{
   background-color: $dark-blue;
   color: $color-white;
 }
+.header-media-img{
+  float: right;
+    a{
+      height: 75px;
+      overflow: hidden;
+      display: block;
+    }
+}
 
 .header-block {
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   background-color: $color-white;
 
   .logo {
     float: left;
+  }
+  .search-btn{
+    margin: 10px 15px;
+    float: right;
+    background: #d0d1d3;
+    padding: 8px;
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    a{
+      i{
+        color:$color-white;
+        font-size: 20px;
+        padding: 3px  ;
+      }
+    }
   }
 
   .nav-block {
@@ -156,8 +183,13 @@ a{
 }
 /*nav section start */
 .featured-block {
+  padding-top: 80px;
+  .featured-left,.featured-right{
+    height: 915px;
+    overflow: hidden;
+  }
   .featured-left {
-    height: 850px;
+
 
     .how-to-succeed {
       background-color: $color-red;
@@ -188,15 +220,18 @@ a{
 
   .featured-right {
     background-color: $dark-blue;
-    height: 850px;
     overflow-y: scroll;
     overflow-x: hidden;
 
     .feature-block {
-      img {}
+      margin-top: 50px;
+      img {
+        padding: 0 10px 0 25px;
+      }
 
       p {
         color: $color-white;
+        padding-right: 20px;
       }
     }
   }
@@ -261,8 +296,46 @@ footer {
 }
 
 .sidebar-block {
-  background: #243444;
+  background: #2b2b2b;
   z-index: 9999;
+  .s-menu-list-block{
+    padding: 10px 15px;
+    h4{
+      color: #fff;
+      font-size: 16px;
+      i{
+        color:#ec0044;
+        padding-right: 10px;
+      }
+    }
+    ul{
+      padding: 0;
+      margin: 0;
+      li{
+        list-style: none;
+        line-height: 10px;
+        a{
+          font-size: 12px;
+          line-height: 14px;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .s-menu-list-s{
+    padding: 0px 15px;
+    a{
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      i{
+        color:#ec0044;
+        padding-right: 10px;
+      }
+    }
+  }
 }
 
 #sidebar-wrapper {

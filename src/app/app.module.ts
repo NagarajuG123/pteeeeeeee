@@ -11,7 +11,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { DefaultImagePipe } from './_core/pipes/default-image.pipe';
 @NgModule({
   declarations: [AppComponent, LayoutComponent, DefaultImagePipe],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HomeModule, HttpClientModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, SharedModule, HomeModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

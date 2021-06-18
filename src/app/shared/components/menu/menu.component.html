@@ -4,7 +4,16 @@
       <button class="btn btn-grey" id="sidebarToggle"><i class="fas fa-bars"></i></button>
     </div>
     <div class="logo">
-      <a href="#"><img src="{{ menu.logo.url }}" alt="Logo" /></a>
+      <a href="#"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
+    </div>
+    <div *ngIf="menu['monthly-cover']" class="header-media-img">
+      <a href="menu['monthly-cover'].media.url.conver_url">
+              <img src="{{menu['monthly-cover'].media.url.image_url}}"
+                   width="119" height="157" alt="img1">
+      </a>
+  </div>
+  <div class="search-btn">
+      <a href=""><i aria-hidden="true" class="fa fa-search"></i></a>
     </div>
     <nav class="navbar navbar-expand-lg ">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +24,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             {{ menu["Franchise Brands"].title.toUpperCase() }}
+             {{ menu["Franchise Brands"]?.title?.toUpperCase() }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ul>
@@ -39,12 +48,8 @@
           </li>
         </ul>
       </div>
-      <div *ngIf="menu['monthly-cover']">
-        <a href="menu['monthly-cover'].media.url.conver_url">
-                <img src="{{menu['monthly-cover'].media.url.image_url}}"
-                     width="119" height="157" alt="img1"> 
-        </a>
-    </div>
+
     </nav>
+
   </div>
 </div>
