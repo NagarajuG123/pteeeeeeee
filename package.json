@@ -12,7 +12,8 @@
     "dev:ssr": "ng run 1851:serve-ssr",
     "serve:ssr": "node dist/1851/server/main.js",
     "build:ssr": "ng build && ng run 1851:server",
-    "prerender": "ng run 1851:prerender"
+    "prerender": "ng run 1851:prerender",
+    "start-ssr": "npm run build:ssr && npm run serve:ssr"
   },
   "private": true,
   "dependencies": {
