@@ -37,84 +37,24 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <img src="{{peopleData.data[0].media.url}}" class="img-fluid" />
+                    <img src="{{peopleData.data[0].media.placeholder}}" class="img-fluid" />
                     <p> {{ peopleData.data[0].title }} </p>
                     <p> {{ peopleData.data[0].short_description}} </p>
                     </div>
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-6">
+                        <div class="row" >
+                            <div class="col-md-6" *ngFor="let item of peopleData.data.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                                    <img src="{{item.media.url}}"class="img-fluid"  />
                                   </div>
                                   <div class="col-md-6">
-                                    <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                                    <p>{{ item.title }}</p>
                                   </div>
                                 </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
-                                <div class="feature-block">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="feature-block">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="feature-block">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                        </div>
-                                        <div class="col-md-6">
-                                          <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="feature-block">
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                          </div>
-                                          <div class="col-md-6">
-                                            <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="feature-block">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                            </div>
-                                            <div class="col-md-6">
-                                              <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </div>
                           </div>
                       </div>
                   </div>
@@ -141,78 +81,18 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" *ngFor="let item of franchiseeData.data.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                                    <img src="{{ item.media.placeholder}}"class="img-fluid"  />
                                   </div>
                                   <div class="col-md-6">
-                                    <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                                    <p> {{ item.title }}</p>
                                   </div>
                                 </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
-                                <div class="feature-block">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="feature-block">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="feature-block">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                        </div>
-                                        <div class="col-md-6">
-                                          <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="feature-block">
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                          </div>
-                                          <div class="col-md-6">
-                                            <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="feature-block">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                            </div>
-                                            <div class="col-md-6">
-                                              <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </div>
                           </div>
                       </div>
                   </div>
@@ -239,78 +119,18 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" *ngFor="let item of franchisorData.data.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                                    <img src="{{item.media.url}}"class="img-fluid"  />
                                   </div>
                                   <div class="col-md-6">
-                                    <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                                    <p>{{item.title}}</p>
                                   </div>
                                 </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
-                                <div class="feature-block">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="feature-block">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="feature-block">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                        </div>
-                                        <div class="col-md-6">
-                                          <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="feature-block">
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                          </div>
-                                          <div class="col-md-6">
-                                            <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="feature-block">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                            </div>
-                                            <div class="col-md-6">
-                                              <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </div>
                           </div>
                       </div>
                   </div>
@@ -337,78 +157,18 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6"  *ngFor="let item of franchisorData.data.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                                    <img src="{{item.media.url}}"class="img-fluid"  />
                                   </div>
                                   <div class="col-md-6">
-                                    <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                                    <p>{{item.title}}</p>
                                   </div>
                                 </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
-                                <div class="feature-block">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="feature-block">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="feature-block">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                        </div>
-                                        <div class="col-md-6">
-                                          <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="feature-block">
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                          </div>
-                                          <div class="col-md-6">
-                                            <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="feature-block">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                            </div>
-                                            <div class="col-md-6">
-                                              <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </div>
                           </div>
                       </div>
                   </div>
@@ -435,78 +195,18 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6"  *ngFor="let item of columnsData.data.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
+                                    <img src="{{item.media.placeholder}}"class="img-fluid"  />
                                   </div>
                                   <div class="col-md-6">
-                                    <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
+                                    <p>{{item.title}}</p>
                                   </div>
                                 </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
-                                <div class="feature-block">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="feature-block">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="feature-block">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                        </div>
-                                        <div class="col-md-6">
-                                          <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="feature-block">
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                          </div>
-                                          <div class="col-md-6">
-                                            <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="feature-block">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <img src="../assets/img/feature-1.jpg"class="img-fluid"  />
-                                            </div>
-                                            <div class="col-md-6">
-                                              <p>More Americans Are Quitting Their Jobs. That Could Be Big News For Franchising.</p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </div>
                           </div>
                       </div>
                   </div>
