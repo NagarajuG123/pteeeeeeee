@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  port: 4200,
   apiUrl: 'https://api.1851franchise.com/v1',
   imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
 };
