@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
-  selector: 'app-five-column-article',
-  templateUrl: './five-column-article.component.html',
-  styleUrls: ['./five-column-article.component.scss']
+  selector: 'app-columns',
+  templateUrl: './columns.component.html',
+  styleUrls: ['./columns.component.scss']
 })
-export class FiveColumnArticleComponent implements OnInit {
+export class ColumnsComponent implements OnInit {
   columnData: any =[];
   videoData: any = [];
 

@@ -16,8 +16,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
-import { AddBannerComponent } from './components/add-banner/add-banner.component';
-import { FiveColumnArticleComponent } from './components/five-column-article/five-column-article.component';
+import { AdvertisementComponent } from './components/advertisement/advertisement.component';
+import { ColumnsComponent } from './components/columns/columns.component';
 import { FranchiseComponent } from './components/franchise/franchise.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 
@@ -35,8 +35,8 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     MenuComponent,
     TrendingComponent,
     ScrollBannerComponent,
-    AddBannerComponent,
-    FiveColumnArticleComponent,
+    AdvertisementComponent,
+    ColumnsComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
     DefaultImagePipe
@@ -60,8 +60,8 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     MenuComponent,
     TrendingComponent,
     ScrollBannerComponent,
-    AddBannerComponent,
-    FiveColumnArticleComponent,
+    AdvertisementComponent,
+    ColumnsComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
