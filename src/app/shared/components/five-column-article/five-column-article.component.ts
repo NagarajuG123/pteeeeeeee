@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class FiveColumnArticleComponent implements OnInit {
   columnData: any =[];
   videoData: any = [];
+  slug: string = '1851';
 
   constructor(private apiService:ApiService) { }
 
@@ -18,15 +19,13 @@ export class FiveColumnArticleComponent implements OnInit {
   }
 
   getColumns() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/columns`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/columns?limit=10&offset=0`).subscribe((response ) =>{
       this.columnData = response;
     });
   }
 
   getVideos() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/videos`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/videos?limit=10&offset=0`).subscribe((response ) =>{
       this.videoData = response;
     });
   }

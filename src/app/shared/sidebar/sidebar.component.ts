@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class SidebarComponent implements OnInit {
   sidebarData: any =[];
   publication: any=[];
+  slug: string = '1851';
 
   constructor( private apiService: ApiService ) { }
 
@@ -17,17 +18,17 @@ export class SidebarComponent implements OnInit {
      this.getPublication();
   }
  
-  //Sidebar API
-  getSidebar() {
-    this.apiService.getSidebar().subscribe((response) => {
-      this.sidebarData = response;
+  //Publication Instance
+  getPublication() {
+    this.apiService.getAPI(`${this.slug}/publication-instance`).subscribe((response ) =>{
+      this.publication = response;
     });
   }
 
-  //Publication Instance
-  getPublication() {
-    this.apiService.getPublication().subscribe((response: any) => {
-      this.publication = response;
+  //Sidebar API
+  getSidebar() {
+    this.apiService.getAPI(`${this.slug}/sidebar`).subscribe((response ) =>{
+      this.sidebarData = response;
     });
   }
 

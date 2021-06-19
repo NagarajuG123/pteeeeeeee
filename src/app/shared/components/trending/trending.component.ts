@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class TrendingComponent implements OnInit {
   trendingData: any =[];
+  slug: string = '1851';
 
   constructor( private apiService: ApiService) { }
 
@@ -16,8 +17,7 @@ export class TrendingComponent implements OnInit {
   }
 
   getTrending() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/trending`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/trending`).subscribe((response ) =>{
       this.trendingData = response;
     });
   }

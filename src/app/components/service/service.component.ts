@@ -21,8 +21,7 @@ export class ServiceComponent implements OnInit {
   }
 
   getFranchise() {
-    let slug='1851';
-    this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
+    this.apiService.getAPI(`home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
       this.franchiseData = response;
       if(response.data){
         response.data.stories.forEach((item: any,index: number) => {

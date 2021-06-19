@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class FranchiseComponent implements OnInit {
   newsData: any = [];
+  slug: string = '1851';
 
   constructor(private apiService: ApiService) { }
 
@@ -16,8 +17,7 @@ export class FranchiseComponent implements OnInit {
   }
 
   getNews() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/news`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/news`).subscribe((response ) =>{
       this.newsData = response;
     });
   }

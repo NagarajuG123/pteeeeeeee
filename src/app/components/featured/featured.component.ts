@@ -10,6 +10,7 @@ export class FeaturedComponent implements OnInit {
   featuredData: any = [];
   openVideoPlayer = false;
   highlight: any =[];
+  slug: string = '1851';
 
   constructor( private apiService: ApiService) { }
 
@@ -18,8 +19,7 @@ export class FeaturedComponent implements OnInit {
   }
 
   getFeatured() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/featured-articles`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/featured-articles?limit=10&offset=0`).subscribe((response ) =>{
       this.featuredData = response;
       if(response.data){
         this.highlight = response.data[0];

@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 
 export class MenuComponent implements OnInit {
   menu: any =[];
+
   constructor(private apiService:ApiService) {}
 
   ngOnInit(): void {
@@ -16,8 +17,10 @@ export class MenuComponent implements OnInit {
   }
 
   getHeader(){
-    this.apiService.getHeader().subscribe((response) => {
+    let slug = '1851';
+    this.apiService.getAPI(`${slug}/header`).subscribe((response ) =>{
       this.menu = response;
+      console.log(this.menu);
     });
   }
 }

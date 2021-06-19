@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class AddBannerComponent implements OnInit {
   adsData: any = [];
   ads: any =[];
+  slug: string = '1851';
 
   constructor( private apiService: ApiService ) { }
 
@@ -17,12 +18,11 @@ export class AddBannerComponent implements OnInit {
   }
 
   getAds() {
-    this.apiService.getAds().subscribe((response: any) => {
+    this.apiService.getAPI(`${this.slug}/ads?limit=10&offset=0`).subscribe((response ) =>{
       this.adsData = response;
-      if(response['data']){
-        this.adsData['first'] = response['data'][0];
+      if(response.data){
+        this.ads = response.data[0];
       }
-      this.ads = this.adsData['first'];
     });
   }
 }
