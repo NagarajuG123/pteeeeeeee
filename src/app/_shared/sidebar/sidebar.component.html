@@ -22,19 +22,19 @@
   </div>
   <div class="s-menu-list-block">
     <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
-    <a href="{{ sidebarData['monthly-cover'].url }}">
+    <a href="{{ sidebarData['monthly-cover']?.url }}">
       <img
         appYoutubeImage
-        src="{{ sidebarData['monthly-cover'].media | defaultImage: 97:127 }}"
+        src="{{ sidebarData['monthly-cover']?.media | defaultImage: 97:127 }}"
         width="100"
         alt="img27"
       />
     </a>
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-server"></i>{{ sidebarData.category.label }}</h4>
+    <h4><i class="fa fa-server"></i>{{ sidebarData?.category?.label }}</h4>
     <ul>
-      <li *ngFor="let item of sidebarData.category.items">
+      <li *ngFor="let item of sidebarData?.category?.items">
         <a href="{{ item.url }}">{{ item.title }}</a>
       </li>
     </ul>
@@ -54,9 +54,9 @@
     </div>
   </div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData['about-1851'].url }}"
+    <a href="{{ sidebarData['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
-      <span>{{ publication.title.toUpperCase() }}</span></a
+      <span>{{ publication?.title?.toUpperCase() }}</span></a
     >
   </div>
   <div class="s-menu-list-s">
@@ -67,23 +67,23 @@
   <div class="s-menu-list-s">
     <a href="about#tellus"
       ><i class="fa fa fa-rss"></i>ADVERTISE ON
-      <span>{{ publication.title.toUpperCase() }}</span></a
+      <span>{{ publication?.title?.toUpperCase() }}</span></a
     >
   </div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData['contact-editorial'].url }}"
+    <a href="{{ sidebarData['contact-editorial']?.url }}"
       ><i class="fa fa-envelope-open"></i>CONTACT
-      <span>{{ publication.title.toUpperCase() }}</span
+      <span>{{ publication?.title?.toUpperCase() }}</span
       >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
     >
   </div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData['terms-of-use'].url }}"
+    <a href="{{ sidebarData['terms-of-use']?.url }}"
       ><i class="fa fa-list"></i>TERMS OF USE</a
     >
   </div>
 
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData.login.url }}"><i class="fa fa-home"></i>LOGIN</a>
+    <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
   </div>
 </div>

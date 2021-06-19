@@ -1,70 +1,77 @@
 <footer>
   <div class="more-franchise-block">
     <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <h4>{{ footerData.about.title }}</h4>
-                <p>
-                  {{footerData.about.description}}
-                  </p>
-              </div>
-              <div class="col-md-3">
-                <div class="learnmore">
-                  <a class="learn-more-btn" href="about">
-                    LEARN MORE
-                    <span></span>
-                  </a>
-                  </div>
-                </div>
+      <div class="row">
+        <div class="col-md-9">
+          <h4>{{ footerData?.about?.title }}</h4>
+          <p>
+            {{ footerData?.about?.description }}
+          </p>
+        </div>
+        <div class="col-md-3">
+          <div class="learnmore">
+            <a class="learn-more-btn" href="about">
+              LEARN MORE
+              <span></span>
+            </a>
           </div>
+        </div>
       </div>
     </div>
+  </div>
 
-
-    <div class="container">
-        <div class="footer-menu-block">
-            <div class="row">
-                <div class="col-md-3">
-                <div class="footer-logo-l">
-                      <a href=""><img src="{{ footerData.logo.url }}" alt="Logo" /></a>
-                  </div>
-                <div class="footer-logo-r">
-                  <h4>{{ publication.title.toUpperCase() }}</h4>
-                  <p>
-                    Your Number One Source For {{ publication.newsType }}
-                    </p>
-                  </div>
-
-                </div>
-                <div class="col-md-6">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <h6>SPOTLIGHT</h6>
-                          <ul>
-                            <li *ngFor= "let spotlight of footerData.spotlight">
-                              <a href="{{spotlight.url}}">{{ spotlight.title }}</a>
-                            </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul  *ngIf="footerData['about-us']">
-                                <li *ngIf="footerData['about-us']"><a href="{footerData['about-us']['url']}}">ABOUT US</a></li>
-                                <li *ngIf="footerData['contact-editorial']"><a href="{{footerData['contact-editorial']['url']}}">CONTACT</a></li>
-                                <li *ngIf="footerData['site-map']"><a href="{{footerData['site-map']['url']}}">SITE MAP</a></li>
-                                <li><a href="{{footerData['terms-of-use']['url']}}">TERMS OF USE</a></li>
-                              </ul>
-                          </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                <h4>WANT TO LEARN MORE?</h4>
-                <div class="lets-talk-b">
-                    <a href="about#tellus">LET’S TALK</a>
-                  </div>
-                  <span>312.526.3996</span>
-                </div>
-
-            </div>
+  <div class="container">
+    <div class="footer-menu-block">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="footer-logo-l">
+            <a href=""><img src="{{ footerData?.logo?.url }}" alt="Logo" /></a>
+          </div>
+          <div class="footer-logo-r">
+            <h4>{{ publication?.title?.toUpperCase() }}</h4>
+            <p>Your Number One Source For {{ publication.newsType }}</p>
+          </div>
         </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <h6>SPOTLIGHT</h6>
+              <ul>
+                <li *ngFor="let spotlight of footerData.spotlight">
+                  <a href="{{ spotlight.url }}">{{ spotlight.title }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul *ngIf="footerData['about-us']">
+                <li *ngIf="footerData['about-us']">
+                  <a href="{footerData['about-us']['url']}}">ABOUT US</a>
+                </li>
+                <li *ngIf="footerData['contact-editorial']">
+                  <a href="{{ footerData['contact-editorial']['url'] }}"
+                    >CONTACT</a
+                  >
+                </li>
+                <li *ngIf="footerData['site-map']">
+                  <a href="{{ footerData['site-map']['url'] }}">SITE MAP</a>
+                </li>
+                <li>
+                  <a href="{{ footerData['terms-of-use']['url'] }}"
+                    >TERMS OF USE</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h4>WANT TO LEARN MORE?</h4>
+          <div class="lets-talk-b">
+            <a href="about#tellus">LET’S TALK</a>
+          </div>
+          <span>312.526.3996</span>
+        </div>
+      </div>
     </div>
+  </div>
 </footer>
