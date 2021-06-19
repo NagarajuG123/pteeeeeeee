@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class AddBannerComponent implements OnInit {
   adsData: any = [];
+  ads: any =[];
 
   constructor( private apiService: ApiService ) { }
 
@@ -18,6 +19,10 @@ export class AddBannerComponent implements OnInit {
   getAds() {
     this.apiService.getAds().subscribe((response: any) => {
       this.adsData = response;
+      if(response['data']){
+        this.adsData['first'] = response['data'][0];
+      }
+      this.ads = this.adsData['first'];
     });
   }
 }

@@ -7,7 +7,7 @@
                 <div class="col-md-9">
                   <ul>
                     <li>
-                      <h4>{{ franchiseData.data.title }} </h4>
+                      <h4>{{ franchiseData?.data?.title }} </h4>
                       </li>
                     </ul>
                   </div>
@@ -46,7 +46,7 @@
               </div>
             <div class="fran-content-block">
               <ul>
-                <li *ngFor= "let data of franchiseData.data.stories.slice(1,6);">
+                <li *ngFor= "let data of franchiseData?.data?.stories?.slice(1,6);">
                   <img appYoutubeImage srcset="{{data.media | defaultImage:545:305}} 545w, {{data.media | defaultImage:355:199}} 355w, {{data.media | defaultImage:300:168}} 300w, {{data.media | defaultImage:210:118}} 210w" sizes="{{'(max-width: 576px) 545px,
                   (max-width: 768px) 355px,
                   (max-width: 992px) 300px,
