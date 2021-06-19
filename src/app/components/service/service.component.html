@@ -7,7 +7,7 @@
                 <div class="col-md-9">
                   <ul>
                     <li>
-                      <h4>HOW TO SUCCEED AS A MULTI-UNIT FRANCHISEE</h4>
+                      <h4>{{ franchiseData.data.title }} </h4>
                       </li>
                     </ul>
                   </div>
@@ -20,14 +20,24 @@
               <div class="row">
                   <div class="col-md-6">
                     <div class="fran-two-l">
-                        <img src="../assets/img/max-350.jpg" alt="" class="img-fluid"/>
+                        <img
+                        appYoutubeImage
+                        sizes="{{'(max-width: 576px) 550px,
+                        (max-width: 768px) 740px,
+                        (max-width: 992px) 960px,
+                        (max-width: 1200px) 530px,
+                        623px'}}"
+                        src="{{highlightItem.media | defaultImage:623:350}}"
+                        alt=""
+                        class="img-fluid"
+                        >
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="fran-two-r">
-                          <h2>How To Succeed as A Multi-Unit Franchisee: Letha Tran, Togo’s</h2>
+                          <h2>{{highlightItem.title}}</h2>
                           <p>
-                            Tran shares how she went from being a longtime Togo’s customer to a successful owner of four Togo’s franchises.
+                            {{highlightItem.short_description}}
                             </p>
                             <a class="">READ MORE</a>
                         </div>
@@ -36,37 +46,15 @@
               </div>
             <div class="fran-content-block">
               <ul>
-                <li>
-                  <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
+                <li *ngFor= "let data of franchiseData.data.stories.slice(1,6);">
+                  <img appYoutubeImage srcset="{{data.media | defaultImage:545:305}} 545w, {{data.media | defaultImage:355:199}} 355w, {{data.media | defaultImage:300:168}} 300w, {{data.media | defaultImage:210:118}} 210w" sizes="{{'(max-width: 576px) 545px,
+                  (max-width: 768px) 355px,
+                  (max-width: 992px) 300px,
+                  210px'}}" src="{{data.media | defaultImage:416:258}}" alt="" class="img-fluid"/>
                   <p>
-                    How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
+                    {{data.title}}
                     </p>
                   </li>
-                  <li>
-                    <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid" />
-                    <p>
-                      How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                      </p>
-                    </li>
-                    <li>
-                      <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
-                      <p>
-                        How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                        </p>
-                      </li>
-                      <li>
-                        <img src="../assets/img/fran-1.jpg" alt="" class="img-fluid"/>
-                        <p>
-                          How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                          </p>
-                        </li>
-                        <li>
-                          <img src="../assets/img/fran-1.jpg" alt=""class="img-fluid" />
-                          <p>
-                            How to Scale Your Investment Portfolio With a Big Blue Swim School Franchise
-                            </p>
-                          </li>
-
                 </ul>
               </div>
           </div>

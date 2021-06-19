@@ -1,0 +1,42 @@
+@import "mixins";
+
+
+.more-franchise-block{
+  background-color:#f1f1f2;
+  padding: 102px 80px 62px;
+}
+
+/*footer section start */
+footer {
+  background-color: $color-white;
+  color: $dark-blue;
+
+  .footer-menu-block {
+    .footer-logo-l{
+      float: left;
+      width: 30%;
+    }
+    .footer-logo-r{
+      float: right;
+      width: 70%;
+    }
+    h2 {
+      color: $color-red;
+      font-size: 25px;
+    }
+
+    ul {
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+}
+/*footer section end */

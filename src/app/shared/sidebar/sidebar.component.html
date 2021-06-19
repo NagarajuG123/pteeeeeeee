@@ -13,31 +13,32 @@
       </div>
     <div class="s-menu-list-block">
           <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
-          <img src="{{sidebarData['monthly-cover'].media.url}}" alt="" width="100" />
+          <a href="{{sidebarData['monthly-cover'].url}}" >
+          <img appYoutubeImage
+          src="{{sidebarData['monthly-cover'].media | defaultImage:97:127}}"
+          width="100" alt="img27">
+        </a>
       </div>
     <div class="s-menu-list-block">
-      <h4><i class="fa fa-server"></i>Topics</h4>
+      <h4><i class="fa fa-server"></i>{{sidebarData.category.label}}</h4>
       <ul>
-        <li><a href="">People Spotlight</a></li>
-        <li><a href="">Franchisee Spotlight</a></li>
-        <li><a href="">Franchisor Spotlight</a></li>
-        <li><a href="">Industry Spotlight</a></li>
+        <li *ngFor="let item of sidebarData.category.items"><a href="{{item.url}}">{{item.title}}</a></li>
         </ul>
       </div>
       <div class="s-menu-list-block">
-        <h4><i class="fa fa-trophy"></i>AWARDS</h4>
+        <h4 *ngIf="sidebarData['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
         <ul>
-          <li><a href="">How to Succeed as a Multi-Unit Franchisee</a></li>
+          <li *ngFor="let item of sidebarData['awards']"><a href="{{item.url}}">{{item.title}}</a></li>
           <li><a href="">Website Awards</a></li>
           </ul>
-          <div class="s-menu-list-s p-0"><a href=""><i class="fa fa-star"></i>POWER RANKINGS</a></div>
+          <div class="s-menu-list-s p-0" *ngIf="sidebarData['power-rankings']"><a href="{{sidebarData['power-rankings'].url}}"><i class="fa fa-star"></i>POWER RANKINGS</a></div>
         </div>
-      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-question-circle"></i>ABOUT {{publication.id}}</a></div>
-      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-rss"></i>SPONSORED CONTENT</a></div>
-      <div class="s-menu-list-s"><a href="#!"><i class="fa fa fa-rss"></i>ADVERTISE ON {{publication.id}}</a></div>
-      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-envelope-open"></i>CONTACT {{publication.id}} EDITORIAL</a></div>
-      <div class="s-menu-list-s"><a href="#!"><i class="fa fa-list"></i>TERMS OF USE</a></div>
+      <div class="s-menu-list-s"><a href="{{sidebarData['about-1851'].url}}"><i class="fa fa-question-circle"></i>ABOUT <span>{{publication.title.toUpperCase()}}</span></a></div>
+      <div class="s-menu-list-s"><a href="home/termsofuse#sponsored"><i class="fa fa-rss"></i>SPONSORED CONTENT</a></div>
+      <div class="s-menu-list-s"><a href="about#tellus"><i class="fa fa fa-rss"></i>ADVERTISE ON <span>{{publication.title.toUpperCase()}}</span></a></div>
+      <div class="s-menu-list-s"><a href="{{sidebarData['contact-editorial'].url}}"><i class="fa fa-envelope-open"></i>CONTACT <span>{{publication.title.toUpperCase()}}</span>&nbsp;<span *ngIf="publication.id != 'EE'" >EDITORIAL</span></a></div>
+      <div class="s-menu-list-s"><a href="{{sidebarData['terms-of-use'].url}}"><i class="fa fa-list"></i>TERMS OF USE</a></div>
 
-      <div class="s-menu-list-s"><a href=""><i class="fa fa-home"></i>LOGIN</a></div>
+      <div class="s-menu-list-s" ><a href="{{sidebarData.login.url}}"><i class="fa fa-home"></i>LOGIN</a></div>
 
 </div>

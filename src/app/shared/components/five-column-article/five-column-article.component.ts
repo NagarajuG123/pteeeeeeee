@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-five-column-article',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./five-column-article.component.scss']
 })
 export class FiveColumnArticleComponent implements OnInit {
+  columnData: any =[];
+  videoData: any = [];
 
-  constructor() { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.getColumns();
+    this.getVideos();
   }
 
+  getColumns() {
+    let slug='1851';
+    this.apiService.getAPI(`${slug}/columns`).subscribe((response ) =>{
+      this.columnData = response;
+    });
+  }
+
+  getVideos() {
+    let slug='1851';
+    this.apiService.getAPI(`${slug}/videos`).subscribe((response ) =>{
+      this.videoData = response;
+    });
+  }
 }

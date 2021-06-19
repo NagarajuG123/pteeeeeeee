@@ -1,0 +1,90 @@
+@import "mixins";
+
+.fran-block {
+  padding: 50px 0;
+  .fran-top-block {
+    border-bottom: 2px solid #bbbcbf;
+    padding: 0 0 10px;
+    margin: 0 15px 15px 15px;
+    a{
+      text-align: right;
+      color:$color-black;
+      font-size: 12px;
+      width: 100%;
+      display: inline-block;
+      text-decoration: none;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        float: left;
+        padding: 0 31px 0 0;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 7px;
+          right: 16px;
+          background: #a6a8aa;
+          width: 2px;
+          height: 15px;
+        }
+
+        &:last-child {
+          content: none;
+
+          &:after {
+            content: none;
+          }
+        }
+
+        &.frannews-subtitle {
+          font-size: 15px;
+          line-height: 24px;
+          color: #a6a8aa;
+        }
+      }
+    }
+  }
+  .fran-two-block{
+    .fran-two-l{
+      padding-left: 15px;
+    }
+    .fran-two-r{
+      background-color: $dark-blue;
+      color: $color-white;
+      height: 350px;
+      h2{
+
+      }
+      p{
+
+      }
+    }
+  }
+  .fran-content-block {
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        width: 20%;
+        float: left;
+        padding: 0 15px 40px 15px;
+
+        img {}
+
+        p {
+          font-size: 15px;
+          line-height: 18px;
+          color: #272525;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

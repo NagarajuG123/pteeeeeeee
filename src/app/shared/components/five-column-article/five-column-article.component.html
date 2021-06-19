@@ -1,7 +1,7 @@
 <!-- -->
-<div class="five-col-art-block">
-  <div class="fran-block bg-dark-color">
-    <div class="container">
+<div class="five-col-art-block" >
+  <div class="fran-block bg-dark-color" *ngIf="columnData.data?.length">
+    <div class="container" >
       <div class="row">
           <div class="col-md-12">
             <div class="fran-top-block">
@@ -18,57 +18,40 @@
                       </div>
                 </div>
               </div>
-
-
             </div>
-            <div class="fran-slider-block">
-              <div class="items">
-                  <div>
-                    <img src="../assets/img/col-1.jpg" />
-                    <h5>Recruiting Strategies: How To Find Better Talent</h5>
+            <div class="fran-slider-block" >
+              <div class="row items" >
+                  <div class="col-md-4" *ngFor="let item of columnData.data.slice(0,3); let i = index;">
+                    <img
+                        appYoutubeImage                                      
+                        alt=""
+                        srcset=""
+                        src="{{item.media | defaultImage:415:232}}"
+                        class="img-fluid" 
+                    />      
+                    <figure *ngIf="!item.media">
+                          <img
+                              src="assets/images/video-img2.jpg"
+                              width="415"
+                              height="232"
+                              alt=""
+                              srcset=""
+                              class="img-fluid" 
+                          >
+                    </figure>
+                    <h5>{{ item.title }}</h5>
                     <p>
-                      The best employees for your organization are out there. You just have to know where to look.
+                      {{ item.short_description }}
                       </p>
                       <a href="" class="read-more-btn">READ MORE</a>
                   </div>
-                  <div>
-                    <img src="../assets/img/col-2.jpg" />
-                    <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                    <p>
-                      The best employees for your organization are out there. You just have to know where to look.
-                      </p>
-                      <a href="" class="read-more-btn">READ MORE</a>
-                  </div>
-                  <div>
-                    <img src="../assets/img/col-3.jpg" />
-                    <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                    <p>
-                      The best employees for your organization are out there. You just have to know where to look.
-                      </p>
-                      <a href="" class="read-more-btn">READ MORE</a>
-                  </div>
-                  <div>
-                    <img src="../assets/img/col-4.jpg" />
-                    <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                    <p>
-                      The best employees for your organization are out there. You just have to know where to look.
-                      </p>
-                      <a href="" class="read-more-btn">READ MORE</a>
-                  </div>
-                  <div>
-                    <img src="../assets/img/col-5.jpg" />
-                    <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                    <p>
-                      The best employees for your organization are out there. You just have to know where to look.
-                      </p>
-                      <a href="" class="read-more-btn">READ MORE</a>
-                  </div>
-
               </div>
               </div>
         </div>
       </div>
+    </div>
 
+    <div class="fran-block bg-dark-color" *ngIf="videoData.data?.length">
       <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
@@ -84,52 +67,35 @@
 
                   </div>
                 </div>
-
-
               </div>
               <div class="fran-slider-block">
-                <div class="items">
-                    <div>
-                      <img src="../assets/img/col-1.jpg" />
-                      <h5>Recruiting Strategies: How To Find Better Talent</h5>
+                <div class="row items">
+                    <div class="col-md-4" *ngFor= "let item of videoData.data.slice(0,3);">
+                      <figure >
+                        <img
+                            appYoutubeImage                                      
+                            alt=""
+                            srcset=""
+                            src="{{item.media | defaultImage:415:232}}"
+                            class="img-fluid" 
+                        />
+                    </figure>
+                    <figure *ngIf="!item.media">
+                        <img
+                            src="assets/images/video-img2.jpg"
+                            width="415"
+                            height="232"
+                            alt="img9"
+                            srcset=""
+                            class="img-fluid" 
+                        >
+                    </figure>
+                      <h5>{{ item.title }}</h5>
                       <p>
-                        The best employees for your organization are out there. You just have to know where to look.
+                        {{ item.short_description }}
                         </p>
                         <a href="" class="read-more-btn">READ MORE</a>
                     </div>
-                    <div>
-                      <img src="../assets/img/col-2.jpg" />
-                      <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                      <p>
-                        The best employees for your organization are out there. You just have to know where to look.
-                        </p>
-                        <a href="" class="read-more-btn">READ MORE</a>
-                    </div>
-                    <div>
-                      <img src="../assets/img/col-3.jpg" />
-                      <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                      <p>
-                        The best employees for your organization are out there. You just have to know where to look.
-                        </p>
-                        <a href="" class="read-more-btn">READ MORE</a>
-                    </div>
-                    <div>
-                      <img src="../assets/img/col-4.jpg" />
-                      <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                      <p>
-                        The best employees for your organization are out there. You just have to know where to look.
-                        </p>
-                        <a href="" class="read-more-btn">READ MORE</a>
-                    </div>
-                    <div>
-                      <img src="../assets/img/col-5.jpg" />
-                      <h5>Recruiting Strategies: How To Find Better Talent</h5>
-                      <p>
-                        The best employees for your organization are out there. You just have to know where to look.
-                        </p>
-                        <a href="" class="read-more-btn">READ MORE</a>
-                    </div>
-
                 </div>
                 </div>
           </div>
