@@ -10,11 +10,23 @@
   .fran-top-block{
     border-bottom: 2px solid #ec0044;
   }
+  
 }
 
 
-
 .fran-slider-block{
+  .video-btn {
+    cursor: pointer;
+    position: relative;
+    .video-maker {
+        position: absolute;
+        left: calc(50% - 45px);
+        top: calc(50% - 45px);
+        z-index: 1000;
+        height: 90px;
+        width: 90px;
+    }
+  }
   .items {
       width: 100%;
       margin: 0px auto;
