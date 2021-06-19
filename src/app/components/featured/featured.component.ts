@@ -21,10 +21,9 @@ export class FeaturedComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/featured-articles`).subscribe((response ) =>{
       this.featuredData = response;
-      if(response['data']){
-        this.featuredData['highlight'] = response['data'][0];
+      if(response.data){
+        this.highlight = response.data[0];
       }
-      this.highlight = this.featuredData['highlight'];
     });
   }
   isVideo(item: { media: { type: string; } | null; } | null) {
