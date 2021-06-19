@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class FeaturedComponent implements OnInit {
   featuredData: any = [];
+  openVideoPlayer = false;
+  highlight: any =[];
 
   constructor( private apiService: ApiService) { }
 
@@ -19,6 +21,21 @@ export class FeaturedComponent implements OnInit {
     let slug='1851';
     this.apiService.getAPI(`${slug}/featured-articles`).subscribe((response ) =>{
       this.featuredData = response;
+      if(response['data']){
+        this.featuredData['highlight'] = response['data'][0];
+      }
+      this.highlight = this.featuredData['highlight'];
     });
   }
+  isVideo(item: { media: { type: string; } | null; } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
 }

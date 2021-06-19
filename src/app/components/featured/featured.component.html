@@ -4,18 +4,46 @@
       <div class="col-md-8 p-0">
         <div class="featured-left">
           <!-- <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" style="height:713px" /> -->
+          <a *ngIf="!isVideo(highlight)" >
           <img appyoutubeimage
           sizes="(max-width: 576px) 600px,
           (max-width: 768px) 800px,
           (max-width: 992px) 600px,
           (max-width: 1200px) 700px,
           1300px"
-          src="{{featuredData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
+          src="{{highlight.media | defaultImage:1300:730}}" class="img-fluid">
+        </a>
+          <a
+            *ngIf="isVideo(highlight)"
+            class="d-block video-btn"
+            data-toggle="modal"
+            data-target="#featured_articles_video_modal"
+            (click) = "openVideoPlayer = true"
+        >
+            <figure>
+                <img
+                    appYoutubeImage
+                    srcset="{{highlight.media | defaultImage:600:337}} 600w, {{highlight.media | defaultImage:700:393}} 700w, {{highlight.media | defaultImage:800:449}} 800w, {{highlight.media | defaultImage:1300:730}} 1300w"
+                    sizes="{{'(max-width: 576px) 600px,
+                        (max-width: 768px) 800px,
+                        (max-width: 992px) 600px,
+                        (max-width: 1200px) 700px,
+                        1300px'}}"
+                    src="{{highlight.media | defaultImage:1300:730}}"
+                    />
+            </figure>
+            <img 
+                class="video-maker" 
+                src="assets/img/youtube.svg"
+                data-toggle="modal"
+                data-target="#featured_articles_video_modal">
+        </a>
+
           <div style="height:202px">
             <div class="how-to-succeed">
-              <h2>{{ featuredData?.data[0]?.title }}</h2>
+              <h2>{{ highlight.title }}</h2>
               <p>
-                {{ featuredData?.data[0]?.short_description }}
+                {{ highlight.short_description }}
               </p>
             </div>
             <div class="readmore-block">
