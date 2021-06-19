@@ -71,7 +71,6 @@
               <div class="fran-slider-block">
                 <div class="row items">
                     <div class="col-md-4" *ngFor= "let item of videoData.data.slice(0,3);">
-                      <div class="video-btn" data-target="#slide_videos_video_modal" data-toggle="modal" attr.data-src="{{item.media.url}}"  style="cursor: pointer;">
                       <figure >
                         <img
                             appYoutubeImage                                      
@@ -80,11 +79,10 @@
                             src="{{item.media | defaultImage:415:232}}"
                             class="img-fluid" 
                         />
-                        <img class="video-maker" src="assets/img/youtube.svg">
                     </figure>
                     <figure *ngIf="!item.media">
                         <img
-                            src="assets/img/video-img2.jpg"
+                            src="assets/images/video-img2.jpg"
                             width="415"
                             height="232"
                             alt="img9"
@@ -92,7 +90,6 @@
                             class="img-fluid" 
                         >
                     </figure>
-                  </div>
                       <h5>{{ item.title }}</h5>
                       <p>
                         {{ item.short_description }}

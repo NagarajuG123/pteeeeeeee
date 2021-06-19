@@ -3,9 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <h4>{{ footerData?.about?.title }}</h4>
+                <h4>{{ footerData.about.title }}</h4>
                 <p>
-                  {{footerData?.about?.description}}
+                  {{footerData.about.description}}
                   </p>
               </div>
               <div class="col-md-3">
@@ -26,10 +26,10 @@
             <div class="row">
                 <div class="col-md-3">
                 <div class="footer-logo-l">
-                      <a href=""><img src="{{ footerData?.logo?.url }}" alt="Logo" /></a>
+                      <a href=""><img src="{{ footerData.logo.url }}" alt="Logo" /></a>
                   </div>
                 <div class="footer-logo-r">
-                  <h4>{{ publication?.title?.toUpperCase() }}</h4>
+                  <h4>{{ publication.title.toUpperCase() }}</h4>
                   <p>
                     Your Number One Source For {{ publication.newsType }}
                     </p>

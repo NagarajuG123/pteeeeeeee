@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -46,6 +47,7 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    SlickCarouselModule
   ],
   exports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     FiveColumnArticleComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    SlickCarouselModule
   ],
 })
 export class SharedModule {}

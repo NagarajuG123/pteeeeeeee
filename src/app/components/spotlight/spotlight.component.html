@@ -33,7 +33,7 @@
                 </a>
               </h5>
             </div>
-            <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+            <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B" >
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -43,13 +43,13 @@
                     (max-width: 992px) 600px,
                     (max-width: 1200px) 700px,
                     1300px"
-                    src="{{ peopleData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
-                    <p> {{ peopleData.data[0].title }} </p>
-                    <p> {{ peopleData.data[0].short_description}} </p>
+                    src="{{ highlightPeople.media | defaultImage:1300:730}}" class="img-fluid">
+                    <p> {{ highlightPeople.title }} </p>
+                    <p> {{ highlightPeople.short_description}} </p>
                     </div>
                     <div class="col-md-6">
                         <div class="row" >
-                            <div class="col-md-6" *ngFor="let item of peopleData.data.slice(1);let i = index;">
+                            <div class="col-md-6" *ngFor="let item of peopleData?.data?.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
@@ -93,13 +93,13 @@
                                     (max-width: 992px) 600px,
                                     (max-width: 1200px) 700px,
                                     1300px"
-                                    src="{{ franchiseeData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
-                    <p> {{ franchiseeData.data[0].title }} </p>
-                    <p> {{ franchiseeData.data[0].short_description}}</p>
+                                    src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
+                    <p> {{ highlightFranchise.title }} </p>
+                    <p> {{ highlightFranchise.short_description}}</p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6" *ngFor="let item of franchiseeData.data.slice(1);let i = index;">
+                            <div class="col-md-6" *ngFor="let item of franchiseeData?.data?.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
@@ -143,13 +143,13 @@
                                     (max-width: 992px) 600px,
                                     (max-width: 1200px) 700px,
                                     1300px"
-                                    src="{{ franchisorData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
-                    <p> {{ franchisorData.data[0].title }} </p>
-                    <p> {{ franchisorData.data[0].short_description}} </p>
+                                    src="{{ hightlightFranchisor.media | defaultImage:1300:730}}" class="img-fluid">
+                    <p> {{ hightlightFranchisor.title }} </p>
+                    <p> {{ hightlightFranchisor.short_description}} </p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6" *ngFor="let item of franchisorData.data.slice(1);let i = index;">
+                            <div class="col-md-6" *ngFor="let item of franchisorData?.data?.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
@@ -193,13 +193,13 @@
                     (max-width: 992px) 600px,
                     (max-width: 1200px) 700px,
                     1300px"
-                    src="{{ industryData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
-                    <p> {{ industryData.data[0].title }} </p>
-                    <p>  {{ industryData.data[0].short_description}} </p>
+                    src="{{ highlightIndustry.media | defaultImage:1300:730}}" class="img-fluid">
+                    <p> {{ highlightIndustry.title }} </p>
+                    <p>  {{ highlightIndustry.short_description}} </p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6"  *ngFor="let item of franchisorData.data.slice(1);let i = index;">
+                            <div class="col-md-6"  *ngFor="let item of franchisorData?.data?.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
@@ -243,13 +243,13 @@
                                     (max-width: 992px) 600px,
                                     (max-width: 1200px) 700px,
                                     1300px"
-                                    src="{{columnsData.data[0].media | defaultImage:1300:730}}" class="img-fluid">
-                    <p>{{ columnsData.data[0].title }} </p>
-                    <p> {{ columnsData.data[0].short_description}}</p>
+                                    src="{{hightlightColumn.media | defaultImage:1300:730}}" class="img-fluid">
+                    <p>{{ hightlightColumn.title }} </p>
+                    <p> {{ hightlightColumn.short_description}}</p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6"  *ngFor="let item of columnsData.data.slice(1);let i = index;">
+                            <div class="col-md-6"  *ngFor="let item of columnsData?.data?.slice(1);let i = index;">
                               <div class="feature-block">
                                 <div class="row">
                                   <div class="col-md-6">
