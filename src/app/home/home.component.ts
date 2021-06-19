@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { MetaService } from 'src/app/_core/services/meta.service';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +8,19 @@ import { Title, Meta } from '@angular/platform-browser';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   constructor(
-    private titleService: Title,
-    private metaService: Meta
+    private metaService: MetaService,
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
-    this.setSeo();
-    
+    this.getMeta();
   }
-  setSeo() {
-    this.titleService.setTitle('sd');
-    this.metaService.addTags([
-      {name: 'keywords', content: 'Angular, Universal, Example'},
-      {name: 'description', content: 'Angular Universal Example'},
-      {name: 'robots', content: 'index, follow'}
-    ]);
+
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
   }
 }

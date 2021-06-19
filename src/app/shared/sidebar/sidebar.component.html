@@ -36,7 +36,7 @@
       <div class="s-menu-list-s"><a href="{{sidebarData['about-1851'].url}}"><i class="fa fa-question-circle"></i>ABOUT <span>{{publication.title.toUpperCase()}}</span></a></div>
       <div class="s-menu-list-s"><a href="home/termsofuse#sponsored"><i class="fa fa-rss"></i>SPONSORED CONTENT</a></div>
       <div class="s-menu-list-s"><a href="about#tellus"><i class="fa fa fa-rss"></i>ADVERTISE ON <span>{{publication.title.toUpperCase()}}</span></a></div>
-      <div class="s-menu-list-s"><a href="{{sidebarData['contact-editorial'].url}}"><i class="fa fa-envelope-open"></i>CONTACT <span>{{publication.title.toUpperCase()}}</span>&nbsp;<span *ngIf="publication.id != 'EE'" >EDITORIAL</span></a></div>
+      <div class="s-menu-list-s"><a href="{{sidebarData['contact-editorial'].url}}"><i class="fa fa-envelope-open"></i>CONTACT <span>{{publication.title.toUpperCase()}}</span>&nbsp;<span *ngIf="publication.id !== 'EE'" >EDITORIAL</span></a></div>
       <div class="s-menu-list-s"><a href="{{sidebarData['terms-of-use'].url}}"><i class="fa fa-list"></i>TERMS OF USE</a></div>
 
       <div class="s-menu-list-s" ><a href="{{sidebarData.login.url}}"><i class="fa fa-home"></i>LOGIN</a></div>
