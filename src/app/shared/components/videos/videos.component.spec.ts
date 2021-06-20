@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FiveColumnArticleComponent } from './five-column-article.component';
+import { VideosComponent } from './videos.component';
 
-describe('FiveColumnArticleComponent', () => {
-  let component: FiveColumnArticleComponent;
-  let fixture: ComponentFixture<FiveColumnArticleComponent>;
+describe('VideosComponent', () => {
+  let component: VideosComponent;
+  let fixture: ComponentFixture<VideosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FiveColumnArticleComponent ]
+      declarations: [ VideosComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FiveColumnArticleComponent);
+    fixture = TestBed.createComponent(VideosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
