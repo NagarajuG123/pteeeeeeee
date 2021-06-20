@@ -16,11 +16,9 @@ export class MenuComponent implements OnInit {
     this.getHeader();
   }
 
-  getHeader(){
-    let slug = '1851';
-    this.apiService.getAPI(`${slug}/header`).subscribe((response ) =>{
+  getHeader() {
+    this.apiService.getHeader().subscribe((response) => {
       this.menu = response;
-      console.log(this.menu);
     });
   }
 }

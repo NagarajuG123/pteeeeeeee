@@ -19,11 +19,10 @@ export class FooterComponent implements OnInit {
 
  // Footer API 
   getFooter() {
-    let slug = '1851';
-    this.apiService.getAPI(`${slug}/footer`).subscribe((response ) =>{
-      this.publication = response;
-    });
-  } 
+  this.apiService.getFooter().subscribe((response) => {
+    this.footerData = response;
+  });
+  }
 
   //Publication Instance
   getPublication() {
