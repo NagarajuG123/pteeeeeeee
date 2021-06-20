@@ -10,10 +10,12 @@
     </div>
     <div class="s-menu-search">
       <input  class="form-control"  type="text" placeholder="Search 1851franchise.com">
+      <i class="fa fa-search"></i>
       </div>
+      <div class="clearfix"></div>
     <div class="s-menu-list-block">
           <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
-          <a href="{{sidebarData['monthly-cover']?.url}}" >
+          <a href="{{sidebarData['monthly-cover']?.url}}" class="sidebar-img-s">
           <img appYoutubeImage
           src="{{sidebarData['monthly-cover']?.media | defaultImage:97:127}}"
           width="100" alt="img27">

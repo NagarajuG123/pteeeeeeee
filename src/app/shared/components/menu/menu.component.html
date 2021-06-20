@@ -8,6 +8,16 @@
     </div>
     <div class="logo">
       <a href="#"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
+      <div class="logo-sub">
+        <div class="logo-sub-s">
+          <a href="" >Subscribe</a>
+          </div>
+        <div class="logo-sub-f">
+          <a href="" >FRANCHISE NEWS POWERED BY</a>  
+          </div>
+
+
+        </div>
     </div>
     <div *ngIf="menu['monthly-cover']" class="header-media-img">
       <a href="menu['monthly-cover'].media.url.conver_url">
@@ -27,7 +37,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             {{ menu["Franchise Brands"]?.title?.toUpperCase() }}
+             {{ menu["Franchise Brands"]?.title?.toUpperCase() }} <i aria-hidden="true" class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ul>
@@ -39,7 +49,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ menu?.Learn?.title.toUpperCase() }}
+              {{ menu?.Learn?.title.toUpperCase() }}<i aria-hidden="true" class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ul>
