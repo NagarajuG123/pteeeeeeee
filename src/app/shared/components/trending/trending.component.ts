@@ -17,7 +17,7 @@ export class TrendingComponent implements OnInit {
   }
 
   getTrending() {
-    this.apiService.getAPI(`${this.slug}/trending`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/trending?limit=10&offset=0`).subscribe((response ) =>{
       this.trendingData = response;
     });
   }
