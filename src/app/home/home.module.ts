@@ -8,7 +8,7 @@ import { HomeComponent } from './home.component';
 import { FeaturedComponent } from '../components/featured/featured.component';
 import { SpotlightComponent } from '../components/spotlight/spotlight.component';
 import { AwardsComponent } from '../components/awards/awards.component';
-import { ServiceComponent } from '../components/service/service.component';
+import { HomeFeatureComponent } from '../components/home-feature/home-feature.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { ServiceComponent } from '../components/service/service.component';
     FeaturedComponent,
     SpotlightComponent,
     AwardsComponent,
-    ServiceComponent,
+    HomeFeatureComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
 })

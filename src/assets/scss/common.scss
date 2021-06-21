@@ -1,5 +1,14 @@
 @import "mixins";
 
+@font-face {
+    font-family: 'proxima_novaregular';
+    src: url('proxima_nova_font-webfont.woff2') format('woff2'),
+         url('proxima_nova_font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 a{
   cursor: pointer;
 }
@@ -7,13 +16,17 @@ a{
 .bg-dark-color{
   background-color: $dark-blue;
 }
-
+body{
+  font-family: 'proxima_novaregular';
+}
 body.sb-sidenav-toggled {
     overflow: hidden;
 }
 body.sb-sidenav-toggled .sidebar-block{
   position: fixed;
+  height: 100%;
+  overflow: auto;
 }
  body.sb-sidenav-toggled #page-content-wrapper {
-    margin-left: 250px;
+    margin-left: 300px;
 }

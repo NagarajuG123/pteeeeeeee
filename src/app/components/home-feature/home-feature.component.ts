@@ -1,13 +1,12 @@
-import { InvokeMethodExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss']
+  selector: 'app-home-feature',
+  templateUrl: './home-feature.component.html',
+  styleUrls: ['./home-feature.component.scss']
 })
-export class ServiceComponent implements OnInit {
+export class HomeFeatureComponent implements OnInit {
   franchiseData: any = [];
   highlightItem: any = [];
   items: any =[];
@@ -21,11 +20,10 @@ export class ServiceComponent implements OnInit {
   }
 
   getFranchise() {
-    let slug='1851';
-    this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
+    this.apiService.getAPI(`home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
       this.franchiseData = response;
-      if( response['data']){
-        response['data']['stories'].forEach((item: any,index: number) => {
+      if(response.data){
+        response.data.stories.forEach((item: any,index: number) => {
           if(index < 6){
                 if(index == 0)
                 {

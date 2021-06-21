@@ -28,12 +28,41 @@
 .header-block {
   padding: 10px 0 0 0;
   background-color: $color-white;
+  .logo-sub{
+    float: left;
+    .logo-sub-s{
+      a{
+        color: #263645;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding-left: 20px;
+        font-weight: bold;
+      }
 
+    }
+    .logo-sub-f{
+      a{
+        text-transform: uppercase;
+        font-size: 10px;
+        line-height: 18px;
+        color: #a6a8aa;
+        text-decoration: none;
+        padding-left: 20px;
+        background: url("../img/logo3.png") right top no-repeat;
+      }
+
+    }
+  }
   .logo {
     float: left;
+    a{
+      float: left;
+
+    }
   }
   .search-btn{
-    margin: 10px 15px;
+    margin: 10px 45px 10px 15px;
     float: right;
     background: #d0d1d3;
     padding: 8px;
@@ -69,7 +98,45 @@
   float: left;
 }
 #navbarSupportedContent{
+  .dropdown{
+    .dropdown-toggle{
+      i{
+        font-size: 17px;
+        line-height: 15px;
+        color: #ec0044;
+        padding: 0 5px;
+      }
+      &:after{
+
+        display: none;
+
+
+      }
+    }
+    &:hover{
+      background-color: #263645;
+      a{
+        color:$color-white;
+      }
+    }
+  }
+  .dropdown-menu{
+    padding: 0;
+    border: none;
+    ul{
+      background-color: #6c6d6f;
+      list-style: none;
+      padding: 15px 10px;
+      margin-top: 10px;
+      li{
+        a{
+          text-decoration: none;
+        }
+      }
+    }
+  }
   ul {
+
     li {
       a {
         color: $color-black;
@@ -81,4 +148,8 @@
 .navbar{
   float: right;
 }
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 /*header section end */

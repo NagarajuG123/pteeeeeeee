@@ -16,7 +16,8 @@ export class AdvertisementComponent implements OnInit {
   }
 
   getAds() {
-    this.apiService.getAds().subscribe((response: any) => {
+    let slug = '1851';
+    this.apiService.getAPI(`${slug}/columns`).subscribe((response ) =>{
       this.adsData = response.data[0];
     });
   }

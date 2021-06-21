@@ -17,9 +17,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
-import { ColumnsComponent } from './components/columns/columns.component';
 import { FranchiseComponent } from './components/franchise/franchise.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
+import { VideosComponent } from './components/videos/videos.component';
+import { ColumnsComponent } from './components/columns/columns.component';
 
 
 // Modals Components
@@ -35,11 +36,13 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     MenuComponent,
     TrendingComponent,
     ScrollBannerComponent,
-    AdvertisementComponent,
     ColumnsComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    VideosComponent,
+    ColumnsComponent,
+    AdvertisementComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +68,9 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     FranchiseComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
-    SlickCarouselModule
+    SlickCarouselModule,
+    VideosComponent,
+    ColumnsComponent
   ],
 })
 export class SharedModule {}

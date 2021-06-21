@@ -8,13 +8,11 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class ColumnsComponent implements OnInit {
   columnData: any =[];
-  videoData: any = [];
 
-  constructor(private apiService:ApiService) { }
+  constructor( private apiService:ApiService) { }
 
   ngOnInit(): void {
     this.getColumns();
-    this.getVideos();
   }
 
   getColumns() {
@@ -24,10 +22,4 @@ export class ColumnsComponent implements OnInit {
     });
   }
 
-  getVideos() {
-    let slug='1851';
-    this.apiService.getAPI(`${slug}/videos`).subscribe((response ) =>{
-      this.videoData = response;
-    });
-  }
 }

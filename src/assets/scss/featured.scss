@@ -7,11 +7,16 @@
     overflow: hidden;
   }
   .featured-left {
+    img{
+      width: 100%;
+    }
 
 
     .how-to-succeed {
       background-color: $color-red;
       padding: 25px 0 15px 40px;
+      height: 155px;
+      overflow: hidden;
 
       h2 {
         font-size: 31px;
@@ -44,7 +49,7 @@
     .feature-block {
       margin-top: 50px;
       img {
-        padding: 0 10px 0 25px;
+        padding: 0 10px 0 15px;
       }
 
       p {

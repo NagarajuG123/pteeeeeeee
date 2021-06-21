@@ -33,50 +33,45 @@ export class SpotlightComponent implements OnInit {
   getPeopleSpotlight() {
     this.apiService.getAPI(`${this.slug}/spotlight/people?limit=10&offset=0`).subscribe((response ) =>{
       this.peopleData = response;
-      if(response['data']){
-        this.peopleData['highlight'] = response['data'][0];
+      if(response.data){
+        this.highlightPeople = response.data[0];
       }
-      this.highlightPeople = this.peopleData['highlight'];
     });
   }
 
   getFranchiseeSpotlight() {
     this.apiService.getAPI(`${this.slug}/spotlight/franchisee?limit=10&offset=0`).subscribe((response ) =>{
       this.franchiseeData = response;
-      if(response['data']){
-        this.franchiseeData['highlight'] = response['data'][0];
+      if(response.data){
+        this.highlightFranchise = response.data[0];
       }
-      this.highlightFranchise = this.franchiseeData['highlight'];
     });
   }
 
   getFranchisorSpotlight() {
     this.apiService.getAPI(`${this.slug}/spotlight/franchisor?limit=10&offset=0`).subscribe((response ) =>{
       this.franchisorData = response;
-      if(response['data']){
-        this.franchisorData['highlight'] = response['data'][0];
+      if(response.data){
+        this.hightlightFranchisor = response.data[0];
       }
-      this.hightlightFranchisor = this.franchisorData['highlight'];
     });
   }
 
   getIndustrySpotlight() {
     this.apiService.getAPI(`${this.slug}/spotlight/industry?limit=10&offset=0`).subscribe((response ) =>{
       this.industryData = response;
-      if(response['data']){
-        this.industryData['highlight'] = response['data'][0];
+      if(response.data){
+        this.highlightIndustry = response.data[0];
       }
-      this.highlightIndustry = this.industryData['highlight'];
     });
   }
 
   getColumnSpotlight() {
     this.apiService.getAPI(`${this.slug}/spotlight/columns?limit=10&offset=0`).subscribe((response ) =>{
       this.columnsData = response;
-      if(response['data']){
-        this.columnsData['highlight'] = response['data'][0];
+      if(response.data){
+        this.hightlightColumn = response.data[0];
       }
-      this.hightlightColumn = this.columnsData['highlight'];
     });
   }
 }

@@ -35,61 +35,17 @@ export class ApiService {
       );
   };
 
-  //Sidebar API
-  getSidebar() {
-    return this.http
-    .get<any>(`${environment.apiUrl}/1851/sidebar`)
-    .pipe(
-      map((result:any) => {
-        return result.data;
-      })
-    );
-  };
-
   //Footer API
-  getFooter() {
+   getFooter() {
     return this.http
-    .get<any>(`${environment.apiUrl}/1851/footer`)
-    .pipe(
-      map((result:any) => {
-        return result.data;
-      })
-    );
-  };
-
-  //Publication API
-  getPublication() {
-    return this.http
-      .get<any>(`${environment.apiUrl}/1851/publication-instance`)
+      .get<any>(`${environment.apiUrl}/1851/footer`)
       .pipe(
         map((result: any) => {
-          return result;
+          return result.data;
         })
       );
   };
-
-  //Advertisement  API
-  getAds() {
-    return this.http
-      .get<any>(`${environment.apiUrl}/1851/ads`)
-      .pipe(
-        map((result: any) => {
-          return result;
-        })
-      );
-  };
-
-  //Trending API
-  getTrending(){
-    return this.http
-    .get<any>(`${environment.apiUrl}/1851/trending`)
-    .pipe(
-      map((result: any) => {
-        return result;
-      })
-    );
-  };
-
+  
   getAPI(endpoint: string): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${endpoint}`, this.httpOptions)
     .pipe(
