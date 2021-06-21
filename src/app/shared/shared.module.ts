@@ -16,9 +16,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
 import { AddBannerComponent } from './components/add-banner/add-banner.component';
-import { FiveColumnArticleComponent } from './components/five-column-article/five-column-article.component';
 import { FranchiseComponent } from './components/franchise/franchise.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
+import { VideosComponent } from './components/videos/videos.component';
+import { ColumnsComponent } from './components/columns/columns.component';
 
 
 // Modals Components
@@ -35,10 +36,11 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     TrendingComponent,
     ScrollBannerComponent,
     AddBannerComponent,
-    FiveColumnArticleComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    VideosComponent,
+    ColumnsComponent
   ],
   imports: [
     CommonModule,
@@ -59,10 +61,11 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
     TrendingComponent,
     ScrollBannerComponent,
     AddBannerComponent,
-    FiveColumnArticleComponent,
     FranchiseComponent,
     TrendingBuzzComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    VideosComponent,
+    ColumnsComponent
   ],
 })
 export class SharedModule {}

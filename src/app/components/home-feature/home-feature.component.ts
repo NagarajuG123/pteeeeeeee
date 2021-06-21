@@ -1,13 +1,12 @@
-import { InvokeMethodExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss']
+  selector: 'app-home-feature',
+  templateUrl: './home-feature.component.html',
+  styleUrls: ['./home-feature.component.scss']
 })
-export class ServiceComponent implements OnInit {
+export class HomeFeatureComponent implements OnInit {
   franchiseData: any = [];
   highlightItem: any = [];
   items: any =[];
