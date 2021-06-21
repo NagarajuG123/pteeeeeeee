@@ -10,6 +10,20 @@
 footer {
   background-color: $color-white;
   color: $dark-blue;
+  .lets-talk-b{
+  background: url("../img/bg-lets.png") right top no-repeat;
+  width: 108px;
+  height: 49px;
+  text-align: right;
+      a{
+        color: #263645;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 21px;
+        padding: 6px 5px;
+        display: inline-block;
+      }
+    }
 
   .footer-menu-block {
     .footer-logo-l{
