@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'monthlycovers',
-    component: MonthlyCoversComponent,
+    component: LayoutComponent,
     loadChildren: () => import('./pages/monthly-covers/monthly-covers.module').then((m) => m.MonthlyCoversModule),
   },
   {
