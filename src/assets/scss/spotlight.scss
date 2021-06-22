@@ -4,6 +4,12 @@
   .spotlight-top{
     background-color: $color-red;
     padding: 60px 100px 0px 100px;
+    h3{
+      color: #fff;
+      font-size: 14px;
+      padding: 5px 25px 0 25px;
+      line-height: 28px;
+    }
   }
   .spotlight-content{
     background-color: $dark-blue;
@@ -51,6 +57,7 @@
           text-decoration: none;
           padding: 10px 30px 10px 30px;
           border: none;
+          font-size: 14px;
           &.active{
             background-color: $dark-blue;
             color: $color-white;

@@ -10,7 +10,7 @@
   .fran-top-block{
     border-bottom: 2px solid #ec0044;
   }
-  
+
 }
 
 
@@ -30,7 +30,37 @@
   .items {
       width: 100%;
       margin: 0px auto;
-      margin-top: 20px
+      margin-top: 20px;
+      .items-block{
+        img{
+          height: 230px;
+        }
+        h5{
+          background-color: #fff;
+          padding: 10px 15px;
+          margin: 0;
+          height: 40px;
+          overflow: hidden;
+          font-size: 16px;
+        }
+        p{
+          background-color: #fff;
+          padding: 10px 15px;
+          margin: 0;
+          height: 100px;
+          overflow: hidden;
+          font-size: 14px;
+        }
+        .read-more-btn{
+          background-color: #ec0044;
+          text-align: right;
+          text-decoration: none;
+          width: 100%;
+          display: inline-block;
+          padding: 5px 10px;
+          font-size: 12px;
+        }
+      }
   }
   .slick-slide{
     background-color: $color-white;
