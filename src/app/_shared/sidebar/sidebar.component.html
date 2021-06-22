@@ -5,7 +5,7 @@
       <figure>
         <img
           class="logo-img"
-          src="{{ sidebarData.logo }}"
+          src="{{ sidebarData?.data?.logo }}"
           width="{{ publication.id === 'EE' ? 200 : 53 }}"
           height="53"
           alt="logo"
@@ -32,23 +32,22 @@
     </a>
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-server"></i>{{ sidebarData?.category?.label }}</h4>
+    <h4><i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}</h4>
     <ul>
-      <li *ngFor="let item of sidebarData?.category?.items">
+      <li *ngFor="let item of sidebarData?.data?.category?.items">
         <a href="{{ item.url }}">{{ item.title }}</a>
       </li>
     </ul>
   </div>
   <div class="s-menu-list-block">
-    <h4 *ngIf="sidebarData['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
+    <h4 *ngIf="sidebarData?.data['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
     <ul>
-      <li *ngFor="let item of sidebarData['awards']">
+      <li *ngFor="let item of sidebarData?.data['awards']">
         <a href="{{ item.url }}">{{ item.title }}</a>
       </li>
-      <li><a href="">Website Awards</a></li>
     </ul>
-    <div class="s-menu-list-s p-0" *ngIf="sidebarData['power-rankings']">
-      <a href="{{ sidebarData['power-rankings'].url }}"
+    <div class="s-menu-list-s p-0" *ngIf="sidebarData?.data['power-rankings']">
+      <a href="{{ sidebarData['power-rankings']?.url }}"
         ><i class="fa fa-star"></i>POWER RANKINGS</a
       >
     </div>
