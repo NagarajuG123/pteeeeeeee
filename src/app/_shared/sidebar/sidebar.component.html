@@ -21,7 +21,10 @@
     />
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
+    <h4>
+      <i class="fa fa-database"></i
+      ><a routerLink="/monthlycovers"> MONTHLY COVERS </a>
+    </h4>
     <a href="{{ sidebarData['monthly-cover']?.url }}">
       <img
         appYoutubeImage
@@ -32,7 +35,9 @@
     </a>
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}</h4>
+    <h4>
+      <i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}
+    </h4>
     <ul>
       <li *ngFor="let item of sidebarData?.data?.category?.items">
         <a href="{{ item.url }}">{{ item.title }}</a>
@@ -40,7 +45,9 @@
     </ul>
   </div>
   <div class="s-menu-list-block">
-    <h4 *ngIf="sidebarData?.data['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
+    <h4 *ngIf="sidebarData?.data['awards']">
+      <i class="fa fa-trophy"></i>AWARDS
+    </h4>
     <ul>
       <li *ngFor="let item of sidebarData?.data['awards']">
         <a href="{{ item.url }}">{{ item.title }}</a>
