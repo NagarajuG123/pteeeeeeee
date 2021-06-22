@@ -1,3 +1,4 @@
+@import "src/assets/scss/fonts";
 @import "src/assets/scss/mixins";
 @import "src/assets/scss/header";
 @import "src/assets/scss/sidebar";
@@ -12,4 +13,12 @@
 @import "src/assets/scss/covers";
 
 
+
 /* You can add global styles to this file, and also import other style files */
+
+
+@media screen and (max-width: 1420px) {
+  .container {
+      max-width: 100%!important;
+  }
+}

@@ -33,6 +33,6 @@ export class MonthlyCoversComponent implements OnInit {
   }
   getMoreData() {}
   closeMenu() {
-    $('body').toggleClass('sb-sidenav-toggled');
+    // $('body').toggleClass('sb-sidenav-toggled');
   }
 }

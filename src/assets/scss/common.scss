@@ -8,7 +8,9 @@
     font-style: normal;
 
 }
-
+.btn{
+  box-shadow: none!important;
+}
 a{
   cursor: pointer;
 }
@@ -17,7 +19,7 @@ a{
   background-color: $dark-blue;
 }
 body{
-  font-family: 'proxima_novaregular';
+  font-family: 'ProximaNova-Regular';
 }
 body.sb-sidenav-toggled {
     overflow: hidden;
