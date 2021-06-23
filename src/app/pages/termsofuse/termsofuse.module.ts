@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TermsofuseComponent } from './termsofuse.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 
@@ -10,6 +11,7 @@ import { TermsofuseComponent } from './termsofuse.component';
   ],
   imports: [
     CommonModule,
+    SharedModule
   ]
 })
 export class TermsofuseModule { }

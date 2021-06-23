@@ -1,9 +1,10 @@
+<app-header></app-header>
 <div class="empty"></div>
 <div *ngIf="termsData?.data" >
 <div class="banner d-flex termsofuse-banner">
     <figure>
         <img
-            src="{{termsData?.data?.media.url}}"
+            src="{{termsData?.data?.media | defaultImage:1440:493}}"
             width="1440"
             height="493"
             alt="termsofuse-banner"
@@ -34,3 +35,4 @@
     </div>
 </div>
 </div>
+<app-footer></app-footer>
