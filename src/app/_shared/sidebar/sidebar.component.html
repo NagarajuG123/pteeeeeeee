@@ -21,11 +21,16 @@
     />
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-database"></i>MONTHLY COVERS</h4>
+    <h4>
+      <i class="fa fa-database"></i
+      ><a routerLink="/monthlycovers">MONTHLY COVERS</a>
+    </h4>
     <a href="{{ sidebarData.data['monthly-cover']?.url }}">
       <img
         appYoutubeImage
-        src="{{ sidebarData.data['monthly-cover']?.media | defaultImage: 97:127 }}"
+        src="{{
+          sidebarData.data['monthly-cover']?.media | defaultImage: 97:127
+        }}"
         width="100"
         alt="img27"
       />
@@ -41,7 +46,7 @@
       </li>
     </ul>
   </div>
-  <div class="line-divider-menu">  </div>
+  <div class="line-divider-menu"></div>
   <div class="s-menu-list-block">
     <h4 *ngIf="sidebarData?.data['awards']">
       <i class="fa fa-trophy"></i>AWARDS
@@ -57,7 +62,7 @@
       >
     </div>
   </div>
-  <div class="line-divider-menu">  </div>
+  <div class="line-divider-menu"></div>
   <div class="s-menu-list-s">
     <a href="{{ sidebarData.data['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
@@ -89,7 +94,7 @@
     >
   </div>
 
-    <div class="line-divider-menu">  </div>
+  <div class="line-divider-menu"></div>
 
   <div class="s-menu-list-s">
     <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
