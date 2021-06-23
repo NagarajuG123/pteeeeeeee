@@ -1,23 +1,18 @@
 @import "mixins";
 
-@font-face {
-    font-family: 'proxima_novaregular';
-    src: url('proxima_nova_font-webfont.woff2') format('woff2'),
-         url('proxima_nova_font-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+.btn{
+  box-shadow: none!important;
 }
-
 a{
   cursor: pointer;
+  text-decoration: none;
 }
 
 .bg-dark-color{
   background-color: $dark-blue;
 }
 body{
-  font-family: 'proxima_novaregular';
+  font-family: 'ProximaNova-Regular';
 }
 body.sb-sidenav-toggled {
     overflow: hidden;
@@ -29,4 +24,13 @@ body.sb-sidenav-toggled .sidebar-block{
 }
  body.sb-sidenav-toggled #page-content-wrapper {
     margin-left: 300px;
+}
+.mt-15{
+  margin-left: 15px;
+}
+.mt-20{
+  margin-left: 20px;
+}
+.mt-25{
+  margin-left: 25px;
 }

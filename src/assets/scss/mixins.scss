@@ -3,4 +3,37 @@ $color-white: #fff;
 $color-black: #000;
 $color-red: #ec0044;
 $dark-blue: #243444;
+$color1: #ffffff;
+$color22: #b0b2b3;
+$color8: #ec0044;
+$font_family_2: "ProximaNova-Medium";
+
 /*Color Declare End*/
+
+@mixin desk-lg-below1 {
+  @media (max-width: 1274px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape1 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin desk-lg-below {
+  @media (max-width: 1420px) {
+    @content;
+  }
+}
+@mixin mobile-landscape1 {
+  @media (max-width: 575px) {
+    @content;
+  }
+}

@@ -1,5 +1,5 @@
 <!-- Sidebar-->
-<div class="border-end" id="sidebar-wrapper">
+<div class="border-end" id="sidebar-wrapper" style="margin-left:0;">
   <div class="list-group list-group-flush">
     <a href="/">
       <figure>
@@ -32,15 +32,20 @@
     </a>
   </div>
   <div class="s-menu-list-block">
-    <h4><i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}</h4>
+    <h4>
+      <i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}
+    </h4>
     <ul>
       <li *ngFor="let item of sidebarData?.data?.category?.items">
         <a href="{{ item.url }}">{{ item.title }}</a>
       </li>
     </ul>
   </div>
+  <div class="line-divider-menu">  </div>
   <div class="s-menu-list-block">
-    <h4 *ngIf="sidebarData?.data['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
+    <h4 *ngIf="sidebarData?.data['awards']">
+      <i class="fa fa-trophy"></i>AWARDS
+    </h4>
     <ul>
       <li *ngFor="let item of sidebarData?.data['awards']">
         <a href="{{ item.url }}">{{ item.title }}</a>
@@ -52,6 +57,7 @@
       >
     </div>
   </div>
+  <div class="line-divider-menu">  </div>
   <div class="s-menu-list-s">
     <a href="{{ sidebarData.data['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
@@ -76,11 +82,14 @@
       >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
     >
   </div>
+
   <div class="s-menu-list-s">
     <a href="{{ sidebarData.data['terms-of-use']?.url }}"
       ><i class="fa fa-list"></i>TERMS OF USE</a
     >
   </div>
+
+    <div class="line-divider-menu">  </div>
 
   <div class="s-menu-list-s">
     <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
