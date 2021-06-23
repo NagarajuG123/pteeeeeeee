@@ -1,0 +1,70 @@
+.tab-content{
+background: #263645;
+padding: 4em 0 4em 0;
+}
+
+.spotlight-links a {
+    display: inline-block;
+    padding: 14px 21px 13px;
+    margin: 0 8px 0 0;
+    font-size: 20px;
+    line-height: 22px;
+    color: #fff;
+    font-weight: 400;
+    font-family: ProximaNova-Medium;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 0;
+    text-transform: uppercase;
+}
+
+.bg-red{
+    background: #ec0044;
+}
+.bg-red-condensed{
+background: #b00034;
+}
+
+.spotlight-card h3{
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.readmore-text{
+    font-size: 12px;
+}
+
+.text-box{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 6; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   font-size: 15px;
+   line-height: 18px;
+   letter-spacing: -.3px;
+}
+
+.scroll-container{
+    height: 80vh;
+    overflow: auto;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #263645; /* Matches the background color of content-wrapper */
+  }
+  
+  .scroll-container:hover::-webkit-scrollbar-thumb {
+    background-color: #4f6477;
+  }
+
+
+.scroll-container::-webkit-scrollbar {
+    width: .2em;
+  }
+
+  .nav-tabs {
+    border-bottom: none;
+}
+   
+  
