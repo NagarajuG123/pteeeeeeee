@@ -60,6 +60,7 @@
   .featured-right {
     background-color: $dark-blue;
     overflow: auto;
+    overflow-x: hidden;
 
     .feature-block {
       margin-top: 50px;
