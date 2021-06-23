@@ -57,12 +57,12 @@
                   >
                 </li>
                 <li *ngIf="footerData['site-map']">
-                  <a href="{{ footerData['site-map']['url'] }}">SITE MAP</a>
+                  <!-- <a href="{{ footerData['site-map']['url'] }}">SITE MAP</a> -->
+                  <a routerLink="/sitemap">SITE MAP</a>
                 </li>
                 <li>
-                  <a href="{{ footerData['terms-of-use']['url'] }}"
-                    >TERMS OF USE</a
-                  >
+                  <!-- <a href="{{ footerData['terms-of-use']['url'] }}">TERMS OF USE</a > -->
+                    <a routerLink="/termsofuse">TERMS OF USE</a>
                 </li>
               </ul>
             </div>

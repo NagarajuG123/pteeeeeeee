@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { SitemapComponent } from './pages/sitemap/sitemap.component';
+import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
+import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
 import { ErrorComponent } from './_shared/components/error/error.component';
 
 const routes: Routes = [
@@ -10,8 +13,18 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'sitemap',
+    component: SitemapComponent,
+    loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
+  },
+  {
+    path: 'termsofuse',
+    component: TermsofuseComponent,
+    loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
+  },
+  {
     path: 'monthlycovers',
-    component: LayoutComponent,
+    component: MonthlyCoversComponent,
     loadChildren: () => import('./pages/monthly-covers/monthly-covers.module').then((m) => m.MonthlyCoversModule),
   },
   {

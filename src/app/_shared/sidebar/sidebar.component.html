@@ -81,7 +81,7 @@
     >
   </div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData.data['contact-editorial']?.url }}"
+    <a href="{{ sidebarData?.data['contact-editorial']?.url }}"
       ><i class="fa fa-envelope-open"></i>CONTACT
       <span>{{ publication?.title?.toUpperCase() }}</span
       >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
@@ -89,7 +89,7 @@
   </div>
 
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData.data['terms-of-use']?.url }}"
+    <a href="{{ sidebarData?.data['terms-of-use']?.url }}"
       ><i class="fa fa-list"></i>TERMS OF USE</a
     >
   </div>

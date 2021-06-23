@@ -1,0 +1,41 @@
+.container {
+    width: 970px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.bws-sitemap {
+    padding: 40px 0!important;
+}
+
+.bws-sitemap-title {
+    margin-bottom: 40px;
+}
+
+.bws-sitemap-subtitle {
+    margin-bottom: 20px;
+
+}
+
+.bws-sitemap-col {
+    margin-bottom: 40px;
+}
+
+.bws-sitemap ul {
+    list-style: none;
+    li {
+        line-height: 1.5;
+    }
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+a {
+    color: #2bb3c7;
+    font-size: 17px;
+    font-weight: 400;
+}
