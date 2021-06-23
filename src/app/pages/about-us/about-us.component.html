@@ -1,0 +1,14 @@
+<div class="empty"></div>
+<div *ngIf="data">
+  <app-banner [data]="data" (imageLoad)="bannerImageLoad()"> </app-banner>
+  <div class="main-content">
+    <!-- <app-publicatio-main
+      [contents]="info['contents']"
+      (imageLoaded)="mainImageLoad()"
+    >
+    </app-publicatio-main>
+    <div #tellus id="tellus">
+      <app-partner-main [demo]="info['demo']"></app-partner-main>
+    </div> -->
+  </div>
+</div>
