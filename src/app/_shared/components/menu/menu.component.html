@@ -7,7 +7,14 @@
       </button>
     </div>
     <div class="logo">
-      <a href="#"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
+      <a href="/">
+        <img
+          [src]="menu?.logo?.url"
+          [width]="menu?.logo?.width"
+          [height]="menu?.logo?.height"
+          alt="Logo"
+        />
+      </a>
       <div class="logo-sub">
         <div class="logo-sub-s">
           <a href="">Subscribe</a>
