@@ -56,35 +56,47 @@
               </div>
             </ng-template>
           </li>
+
           <li class="spotlight-links" [ngbNavItem]="2">
             <a ngbNavLink> franchisee </a>
             <ng-template ngbNavContent>
               <div class="container">
                 <div class="row">
-                  <div class="col-md-4">
-                    <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}"
-                      class="img-fluid">
-                    <p> {{ highlightFranchise.title }} </p>
-                    <p> {{ highlightFranchise.short_description}}</p>
+                  <div class="col-md-4 p-0 ps-4">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                  (max-width: 768px) 800px,
+                  (max-width: 992px) 600px,
+                  (max-width: 1200px) 700px,
+                  1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> {{ highlightFranchise.title }} </h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ highlightFranchise.short_description}} </p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8 ps-4 scroll-container">
                     <div class="row">
                       <div class="col-md-6" *ngFor="let item of franchiseeData?.data?.slice(1);let i = index;">
                         <div class="feature-block">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7">
                               <img appyoutubeimage sizes="(max-width: 576px) 600px,
                                   (max-width: 768px) 800px,
                                   (max-width: 992px) 600px,
                                   (max-width: 1200px) 700px,
                                   1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                             </div>
-                            <div class="col-md-6">
-                              <p> {{ item.title }}</p>
+                            <div class="col-md-5">
+                              <p class="text-white text-box">{{ item.title }}</p>
                             </div>
                           </div>
                         </div>
@@ -95,35 +107,47 @@
               </div>
             </ng-template>
           </li>
+
           <li class="spotlight-links" [ngbNavItem]="3">
             <a ngbNavLink> franchisor </a>
             <ng-template ngbNavContent>
               <div class="container">
                 <div class="row">
-                  <div class="col-md-4">
-                    <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ hightlightFranchisor.media | defaultImage:1300:730}}"
-                      class="img-fluid">
-                    <p> {{ hightlightFranchisor.title }} </p>
-                    <p> {{ hightlightFranchisor.short_description}} </p>
+                  <div class="col-md-4 p-0 ps-4">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                  (max-width: 768px) 800px,
+                  (max-width: 992px) 600px,
+                  (max-width: 1200px) 700px,
+                  1300px" src="{{ hightlightFranchisor.media | defaultImage:1300:730}}" class="img-fluid">
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> {{ hightlightFranchisor.title }} </h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ hightlightFranchisor.short_description}} </p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8 ps-4 scroll-container">
                     <div class="row">
                       <div class="col-md-6" *ngFor="let item of franchisorData?.data?.slice(1);let i = index;">
                         <div class="feature-block">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7">
                               <img appyoutubeimage sizes="(max-width: 576px) 600px,
                                   (max-width: 768px) 800px,
                                   (max-width: 992px) 600px,
                                   (max-width: 1200px) 700px,
                                   1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                             </div>
-                            <div class="col-md-6">
-                              <p>{{item.title}}</p>
+                            <div class="col-md-5">
+                              <p class="text-white text-box">{{ item.title }}</p>
                             </div>
                           </div>
                         </div>
@@ -134,34 +158,48 @@
               </div>
             </ng-template>
           </li>
+
+
           <li class="spotlight-links" [ngbNavItem]="4">
             <a ngbNavLink> industry </a>
             <ng-template ngbNavContent>
               <div class="container">
                 <div class="row">
-                  <div class="col-md-4">
-                    <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                  <div class="col-md-4 p-0 ps-4">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
                   (max-width: 768px) 800px,
                   (max-width: 992px) 600px,
                   (max-width: 1200px) 700px,
                   1300px" src="{{ highlightIndustry.media | defaultImage:1300:730}}" class="img-fluid">
-                    <p> {{ highlightIndustry.title }} </p>
-                    <p> {{ highlightIndustry.short_description}} </p>
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> {{ highlightIndustry.title }} </h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ highlightIndustry.short_description}} </p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8 ps-4 scroll-container">
                     <div class="row">
-                      <div class="col-md-6" *ngFor="let item of franchisorData?.data?.slice(1);let i = index;">
+                      <div class="col-md-6" *ngFor="let item of industryData?.data?.slice(1);let i = index;">
                         <div class="feature-block">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7">
                               <img appyoutubeimage sizes="(max-width: 576px) 600px,
                                   (max-width: 768px) 800px,
                                   (max-width: 992px) 600px,
                                   (max-width: 1200px) 700px,
                                   1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                             </div>
-                            <div class="col-md-6">
-                              <p>{{item.title}}</p>
+                            <div class="col-md-5">
+                              <p class="text-white text-box">{{ item.title }}</p>
                             </div>
                           </div>
                         </div>
@@ -172,34 +210,47 @@
               </div>
             </ng-template>
           </li>
+
           <li class="spotlight-links" [ngbNavItem]="5">
             <a ngbNavLink> columns </a>
-            <ng-template ngbNavContent class="my-3">
+            <ng-template ngbNavContent>
               <div class="container">
                 <div class="row">
-                  <div class="col-md-4">
-                    <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{hightlightColumn.media | defaultImage:1300:730}}" class="img-fluid">
-                    <p>{{ hightlightColumn.title }} </p>
-                    <p> {{ hightlightColumn.short_description}}</p>
+                  <div class="col-md-4 p-0 ps-4">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                  (max-width: 768px) 800px,
+                  (max-width: 992px) 600px,
+                  (max-width: 1200px) 700px,
+                  1300px" src="{{ hightlightColumn.media | defaultImage:1300:730}}" class="img-fluid">
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> {{ hightlightColumn.title }} </h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ hightlightColumn.short_description}} </p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8 ps-4 scroll-container">
                     <div class="row">
                       <div class="col-md-6" *ngFor="let item of columnsData?.data?.slice(1);let i = index;">
                         <div class="feature-block">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7">
                               <img appyoutubeimage sizes="(max-width: 576px) 600px,
                                   (max-width: 768px) 800px,
                                   (max-width: 992px) 600px,
                                   (max-width: 1200px) 700px,
                                   1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
                             </div>
-                            <div class="col-md-6">
-                              <p>{{item.title}}</p>
+                            <div class="col-md-5">
+                              <p class="text-white text-box">{{ item.title }}</p>
                             </div>
                           </div>
                         </div>
@@ -210,6 +261,7 @@
               </div>
             </ng-template>
           </li>
+          
         </ul>
       </div>
     </div>
