@@ -47,7 +47,9 @@
             <div class="col-md-6">
               <ul *ngIf="footerData['about-us']">
                 <li *ngIf="footerData['about-us']">
-                  <a href="{footerData['about-us']['url']}}">ABOUT US</a>
+                  <a routerLink="{{ footerData['about-us']['url'] }}"
+                    >ABOUT US</a
+                  >
                 </li>
                 <li *ngIf="footerData['contact-editorial']">
                   <a href="{{ footerData['contact-editorial']['url'] }}"

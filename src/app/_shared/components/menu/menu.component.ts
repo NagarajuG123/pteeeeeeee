@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-// import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-menu',
@@ -23,6 +23,6 @@ export class MenuComponent implements OnInit {
     });
   }
    openMenu() {
-    // $('body').toggleClass('sb-sidenav-toggled');
+    $('body').toggleClass('sb-sidenav-toggled');
   }
 }

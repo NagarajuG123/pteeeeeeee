@@ -28,6 +28,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/monthly-covers/monthly-covers.module').then((m) => m.MonthlyCoversModule),
   },
   {
+    path: 'about',
+    component: LayoutComponent,
+    loadChildren: () => import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
+  },
+  {
+    path: 'brand',
+    component: LayoutComponent,
+    loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
+  {
     path: '**', // Navigate to Home Page if not found any page
     component: ErrorComponent,
   },

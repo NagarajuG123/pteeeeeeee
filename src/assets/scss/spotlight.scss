@@ -3,7 +3,6 @@
 .spotlight-block {
   .spotlight-top{
     background-color: $color-red;
-    padding: 60px 100px 0px 100px;
     h3{
       color: #fff;
       font-size: 14px;
@@ -20,33 +19,9 @@
       background-color: transparent;
     }
   }
-  .nav-tabs {
-    display: none;
-    border: none;
-  }
-  @media(min-width:768px) {
-    .nav-tabs {
-      display: flex;
-    }
-
-    .card {
-      border: none;
-    }
-
-    .card .card-header {
-      display: none;
-    }
-
-    .card .collapse {
-      display: block;
-    }
-  }
-  @media(max-width:767px) {
-    .tab-pane {
-      display: block !important;
-      opacity: 1;
-    }
-  }
+  
+  
+  
 
   .spotlight-tabs {
     ul {
@@ -55,7 +30,6 @@
         a {
           color: $color-white;
           text-decoration: none;
-          padding: 10px 30px 10px 30px;
           border: none;
           font-size: 14px;
           &.active{
@@ -63,7 +37,6 @@
             color: $color-white;
             border: none;
             border-radius: 0;
-            padding: 10px 30px 10px 30px;
           }
         }
       }

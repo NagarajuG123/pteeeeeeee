@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-monthly-covers',
@@ -33,6 +34,6 @@ export class MonthlyCoversComponent implements OnInit {
   }
   getMoreData() {}
   closeMenu() {
-    // $('body').toggleClass('sb-sidenav-toggled');
+    $('body').toggleClass('sb-sidenav-toggled');
   }
 }
