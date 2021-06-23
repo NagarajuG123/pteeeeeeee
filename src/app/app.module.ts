@@ -8,10 +8,18 @@ import { SharedModule } from './_shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
+import { MonthlyCoversModule } from './pages/monthly-covers/monthly-covers.module';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, SharedModule, HomeModule, HttpClientModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
+    SharedModule,
+    HomeModule,
+    HttpClientModule,
+    MonthlyCoversModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

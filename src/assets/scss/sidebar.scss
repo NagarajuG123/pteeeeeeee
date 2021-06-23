@@ -10,6 +10,12 @@
 
   .s-menu-list-block{
     padding: 10px 15px;
+    a{
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
     h4{
       color: #fff;
       font-size: 13px;
@@ -31,6 +37,9 @@
           color: #fff;
           text-decoration: none;
           padding-left: 25px;
+          font-family: 'ProximaNova-Medium';
+          letter-spacing: .3px;
+          font-weight: 400;
         }
       }
     }
@@ -42,7 +51,9 @@
       font-size: 13px;
       font-weight: 500;
       text-decoration: none;
-      font-weight: bold;
+      font-family: 'ProximaNova-Medium';
+      letter-spacing: .3px;
+      font-weight: 400;
       i{
         color:#ec0044;
         padding-right: 10px;
@@ -80,13 +91,21 @@
 }
 
 #sidebar-wrapper {
+   font-family: 'ProximaNova-Medium';
+   min-height: 100vh;
+   margin-left: -15rem;
+   transition: margin 0.25s ease-out;
+  .line-divider-menu{
+    height: 1px;
+    background:#741f34;
+    margin: 10px 15px;
+  }
+
   figure {
       margin: 30px auto 30px auto;
       text-align: center;
   }
-  min-height: 100vh;
-  margin-left: -15rem;
-  transition: margin 0.25s ease-out;
+
   .s-menu-search{
     margin: 0px 15px;
     position: relative;
@@ -130,6 +149,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   #sidebar-wrapper {
     margin-left: -300px;
     width: 300px;
+    border: none!important;
   }
 
   #page-content-wrapper {
