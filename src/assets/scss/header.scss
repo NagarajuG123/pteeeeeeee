@@ -97,6 +97,7 @@
 }
 .menu-block {
   float: left;
+  padding: 0 10px;
 }
 #navbarSupportedContent{
   .dropdown{
@@ -124,6 +125,9 @@
   .dropdown-menu{
     padding: 0;
     border: none;
+    width: 288px;
+    padding: 0;
+    background-color: transparent;
     ul{
       background-color: #6c6d6f;
       list-style: none;
@@ -132,6 +136,7 @@
       li{
         a{
           text-decoration: none;
+          padding: 0;
         }
       }
     }

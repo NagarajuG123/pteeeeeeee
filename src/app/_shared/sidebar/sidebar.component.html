@@ -1,5 +1,5 @@
 <!-- Sidebar-->
-<div class="border-end" id="sidebar-wrapper">
+<div class="border-end" id="sidebar-wrapper" style="margin-left:0;">
   <div class="list-group list-group-flush">
     <a href="/">
       <figure>
@@ -22,14 +22,14 @@
   </div>
   <div class="s-menu-list-block">
     <h4>
-      <i class="fa fa-database"></i
-      ><a routerLink="/monthlycovers"> MONTHLY COVERS </a>
+      <i class="fa fa-database"></i><a routerLink="/monthlycovers"> MONTHLY COVERS </a>
     </h4>
     <a href="{{ sidebarData['monthly-cover']?.url }}">
+
       <img
         appYoutubeImage
         src="{{ sidebarData['monthly-cover']?.media | defaultImage: 97:127 }}"
-        width="100"
+        class="mt-25" width="100"
         alt="img27"
       />
     </a>
@@ -44,6 +44,7 @@
       </li>
     </ul>
   </div>
+  <div class="line-divider-menu">  </div>
   <div class="s-menu-list-block">
     <h4 *ngIf="sidebarData?.data['awards']">
       <i class="fa fa-trophy"></i>AWARDS
@@ -59,6 +60,7 @@
       >
     </div>
   </div>
+  <div class="line-divider-menu">  </div>
   <div class="s-menu-list-s">
     <a href="{{ sidebarData['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
@@ -83,11 +85,14 @@
       >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
     >
   </div>
+
   <div class="s-menu-list-s">
     <a href="{{ sidebarData['terms-of-use']?.url }}"
       ><i class="fa fa-list"></i>TERMS OF USE</a
     >
   </div>
+
+    <div class="line-divider-menu">  </div>
 
   <div class="s-menu-list-s">
     <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
