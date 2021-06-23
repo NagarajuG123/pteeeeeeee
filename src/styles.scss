@@ -11,3 +11,44 @@
 @import "src/assets/scss/common";
 
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "ProximaNova-Regular";
+    src: url(./assets/fonts/ProximaNova-Regular.woff) format('woff');
+}
+
+@font-face {
+    font-family: "ProximaNova-Medium";
+    src: url(./assets/fonts/ProximaNova-Medium.woff) format('woff');
+}
+
+@font-face {
+    font-family: "ProximaNova-Semibold";
+    src: url(./assets/fonts/ProximaNova-Semibold.woff) format('woff');
+}
+
+@font-face {
+    font-family: "ProximaNova-Bold";
+    src: url(./assets/fonts/ProximaNova-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: "ProximaNova-Light";
+    src: url(./assets/fonts/ProximaNova-Light.woff) format('woff');
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 26px;
+    color: #fff;
+    font-weight: 400;
+    font-family: ProximaNova-Medium;
+    letter-spacing: .3px;
+}
+
+h1 h2 h3 h4 h5 {
+    font-family: ProximaNova-Medium;
+}
+
+a{
+    text-decoration: none!important;
+}

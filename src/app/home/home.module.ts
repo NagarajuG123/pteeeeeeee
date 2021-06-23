@@ -9,6 +9,7 @@ import { FeaturedComponent } from '../components/featured/featured.component';
 import { SpotlightComponent } from '../components/spotlight/spotlight.component';
 import { AwardsComponent } from '../components/awards/awards.component';
 import { HomeFeatureComponent } from '../components/home-feature/home-feature.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,6 @@ import { HomeFeatureComponent } from '../components/home-feature/home-feature.co
     AwardsComponent,
     HomeFeatureComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, SharedModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, NgbModule],
 })
 export class HomeModule {}
