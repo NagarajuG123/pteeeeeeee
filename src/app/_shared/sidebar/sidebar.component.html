@@ -25,11 +25,11 @@
       <i class="fa fa-database"></i
       ><a routerLink="/monthlycovers">MONTHLY COVERS</a>
     </h4>
-    <a href="{{ sidebarData.data['monthly-cover']?.url }}">
+    <a routerLink="{{ sidebarData?.data['monthly-cover']?.url }}">
       <img
         appYoutubeImage
         src="{{
-          sidebarData.data['monthly-cover']?.media | defaultImage: 97:127
+          sidebarData?.data['monthly-cover']?.media | defaultImage: 97:127
         }}"
         width="100"
         alt="img27"
@@ -57,14 +57,14 @@
       </li>
     </ul>
     <div class="s-menu-list-s p-0" *ngIf="sidebarData?.data['power-rankings']">
-      <a href="{{ sidebarData.data['power-rankings']?.url }}"
+      <a href="{{ sidebarData?.data['power-rankings']?.url }}"
         ><i class="fa fa-star"></i>POWER RANKINGS</a
       >
     </div>
   </div>
   <div class="line-divider-menu"></div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData.data['about-1851']?.url }}"
+    <a href="{{ sidebarData?.data['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
       <span>{{ publication?.title?.toUpperCase() }}</span></a
     >

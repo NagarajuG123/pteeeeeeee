@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class ColumnsComponent implements OnInit {
   columnData: any =[];
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
   constructor( private apiService:ApiService) { }
 

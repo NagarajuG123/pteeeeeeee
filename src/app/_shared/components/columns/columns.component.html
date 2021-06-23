@@ -20,33 +20,39 @@
         </div>
         <div class="fran-slider-block">
           <div class="row items">
-            <div
-              class="col-md-4 items-block"
-              *ngFor="let item of columnData.data.slice(0, 3); let i = index"
+            <ngx-slick-carousel
+              class="carousel"
+              #slickModal="slick-carousel"
+              [config]="slideConfig"
             >
-              <img
-                appYoutubeImage
-                alt=""
-                srcset=""
-                src="{{ item.media | defaultImage: 415:232 }}"
-                class="img-fluid"
-              />
-              <figure *ngIf="!item.media">
+              <div
+                class="col-md-4 items-block"
+                *ngFor="let item of columnData.data.slice(0, 3); let i = index"
+              >
                 <img
-                  src="assets/images/video-img2.jpg"
-                  width="415"
-                  height="232"
+                  appYoutubeImage
                   alt=""
                   srcset=""
+                  src="{{ item.media | defaultImage: 415:232 }}"
                   class="img-fluid"
                 />
-              </figure>
-              <h5>{{ item.title }}</h5>
-              <p>
-                {{ item.short_description }}
-              </p>
-              <a href="" class="read-more-btn">READ MORE</a>
-            </div>
+                <figure *ngIf="!item.media">
+                  <img
+                    src="assets/images/video-img2.jpg"
+                    width="415"
+                    height="232"
+                    alt=""
+                    srcset=""
+                    class="img-fluid"
+                  />
+                </figure>
+                <h5>{{ item.title }}</h5>
+                <p>
+                  {{ item.short_description }}
+                </p>
+                <a href="" class="read-more-btn">READ MORE</a>
+              </div>
+            </ngx-slick-carousel>
           </div>
         </div>
       </div>
