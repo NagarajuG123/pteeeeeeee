@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SitemapComponent } from './sitemap.component';
+import { SitemapComponent } from 'src/app/pages/sitemap/sitemap.component';
 
 
 
