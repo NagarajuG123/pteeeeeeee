@@ -1,3 +1,4 @@
+@import "src/assets/scss/fonts";
 @import "src/assets/scss/mixins";
 @import "src/assets/scss/header";
 @import "src/assets/scss/sidebar";
@@ -9,46 +10,75 @@
 @import "src/assets/scss/add_banner";
 @import "src/assets/scss/footer";
 @import "src/assets/scss/common";
-
+@import "src/assets/scss/covers";
+@import "src/assets/scss/termsofuse";
+@import "src/assets/scss/awards";
+@import "src/assets/scss/base";
 /* You can add global styles to this file, and also import other style files */
+
+@media screen and (max-width: 1420px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
 @font-face {
-    font-family: "ProximaNova-Regular";
-    src: url(./assets/fonts/ProximaNova-Regular.woff) format('woff');
+  font-family: "ProximaNova-Regular";
+  src: url(./assets/fonts/ProximaNova-Regular.woff) format("woff");
 }
 
 @font-face {
-    font-family: "ProximaNova-Medium";
-    src: url(./assets/fonts/ProximaNova-Medium.woff) format('woff');
+  font-family: "ProximaNova-Medium";
+  src: url(./assets/fonts/ProximaNova-Medium.woff) format("woff");
 }
 
 @font-face {
-    font-family: "ProximaNova-Semibold";
-    src: url(./assets/fonts/ProximaNova-Semibold.woff) format('woff');
+  font-family: "ProximaNova-Semibold";
+  src: url(./assets/fonts/ProximaNova-Semibold.woff) format("woff");
 }
 
 @font-face {
-    font-family: "ProximaNova-Bold";
-    src: url(./assets/fonts/ProximaNova-Bold.woff) format('woff');
+  font-family: "ProximaNova-Bold";
+  src: url(./assets/fonts/ProximaNova-Bold.woff) format("woff");
 }
 
 @font-face {
-    font-family: "ProximaNova-Light";
-    src: url(./assets/fonts/ProximaNova-Light.woff) format('woff');
+  font-family: "ProximaNova-Light";
+  src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
 }
-
+ul li,
+p {
+  font-family: "ProximaNova-Regular" !important;
+}
 h3 {
-    font-size: 24px;
-    line-height: 26px;
-    color: #fff;
-    font-weight: 400;
-    font-family: ProximaNova-Medium;
-    letter-spacing: .3px;
+  font-size: 24px;
+  line-height: 26px;
+  color: #fff;
+  font-weight: 400;
+  font-family: ProximaNova-Medium;
+  letter-spacing: 0.3px;
 }
 
-h1 h2 h3 h4 h5 {
-    font-family: ProximaNova-Medium;
+h1 h2 h3 h5 {
+  font-family: ProximaNova-Medium;
 }
 
-a{
-    text-decoration: none!important;
+a {
+  text-decoration: none !important;
+  display: inline-block;
+  vertical-align: top;
+  background-color: transparent;
+}
+h5 {
+  padding: 0;
+  margin: 0;
+}
+h4 {
+  font-family: "ProximaNova-SemiBold";
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.float-right {
+  float: right !important;
 }

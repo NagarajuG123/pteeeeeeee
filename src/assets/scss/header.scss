@@ -49,6 +49,7 @@
         color: #a6a8aa;
         text-decoration: none;
         padding-left: 20px;
+        padding-right: 20px;
         background: url("../img/logo3.png") right top no-repeat;
       }
 
@@ -96,6 +97,7 @@
 }
 .menu-block {
   float: left;
+  padding: 0 10px;
 }
 #navbarSupportedContent{
   .dropdown{
@@ -123,6 +125,9 @@
   .dropdown-menu{
     padding: 0;
     border: none;
+    width: 288px;
+    padding: 0;
+    background-color: transparent;
     ul{
       background-color: #6c6d6f;
       list-style: none;
@@ -131,6 +136,7 @@
       li{
         a{
           text-decoration: none;
+          padding: 0;
         }
       }
     }
@@ -139,8 +145,13 @@
 
     li {
       a {
-        color: $color-black;
-        font-size: 11px;
+        font-size: 13px;
+        line-height: 16px;
+        color: #263645;
+        font-weight: 400;
+        font-family: ProximaNova-Medium;
+        padding: 11px 16px;
+        letter-spacing: .3px;
       }
     }
   }

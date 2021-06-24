@@ -1,40 +1,48 @@
 <div class="fran-block" *ngIf="trending.data?.length">
-    <div class="container">
-      <div class="row">
-          <div class="col-md-12">
-            <div class="fran-top-block">
-              <div class="row">
-                  <div class="col-md-9">
-                    <ul>
-                      <li>
-                        <h4>TRENDING BRAND BUZZ</h4>
-                        </li>
-                        <li class="frannews-subtitle">
-                          <span>SPONSORED</span>
-                          </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <a class="read-more-btn">READ MORE</a>
-                      </div>
-                </div>
-              </div>
-              <div class="fran-content-block">
-                <ul>
-                  <li *ngFor="let trending of trending.data">
-                    <img appYoutubeImage srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w" sizes="{{'(max-width: 576px) 545px,
+  <div class="container">
+    <div class="trendingbuzz-details col-xl-11 row">
+      <div class="col-md-12">
+        <div class="fran-top-block">
+          <div class="row">
+            <div class="col-md-9">
+              <ul>
+                <li>
+                  <h4>TRENDING BRAND BUZZ</h4>
+                </li>
+                <li class="frannews-subtitle">
+                  <span>SPONSORED</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <a class="read-more-btn">READ MORE</a>
+            </div>
+          </div>
+        </div>
+        <div class="fran-content-block">
+          <ul>
+            <li *ngFor="let trending of trending.data">
+              <img
+                appYoutubeImage
+                srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w"
+                sizes="{{
+                  '(max-width: 576px) 545px,
                     (max-width: 768px) 355px,
                     (max-width: 992px) 300px,
-                    210px'}}" src="{{trending.media | defaultImage:210:118}}" alt="" class="img-fluid"/>
-                    <p>
-                     {{ trending.title }}
-                      </p>
-                      <!-- <span> {{ trending.posted_on }}</span> -->
-                    </li>
-                  </ul>
-                </div>
-            </div>
+                    210px'
+                }}"
+                src="{{ trending.media | defaultImage: 210:118 }}"
+                alt=""
+                class="img-fluid"
+              />
+              <p>
+                {{ trending.title }}
+              </p>
+              <!-- <span> {{ trending.posted_on }}</span> -->
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  
+  </div>
+</div>

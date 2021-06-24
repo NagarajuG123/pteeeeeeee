@@ -1,0 +1,93 @@
+<div class="empty"></div>
+<div class="main-content" *ngIf="mainCover">
+  <div class="monthly-coverpage">
+    <div class="monthly-coverpage-details">
+      <div class="monthly-coverpage-in">
+        <ul *ngFor="let item of list">
+          <li>
+            <div class="d-flex">
+              <a
+                class="monthly-coverpage-left col-md-4 p-0"
+                href="{{ openDetails(mainCover.date) }}"
+              >
+                <div class="monthly-covers-left-content">
+                  <figure>
+                    <img
+                      appYoutubeImage
+                      src="{{ mainCover.media | defaultImage: 576:757 }}"
+                      width="576"
+                      height="757"
+                      alt="monthly-covers-img1"
+                      class="img-fluid"
+                    />
+                  </figure>
+                  <div class="current-issue">
+                    <h4 class="d-inline-block text-uppercase">
+                      {{ mainCover.date }}
+                    </h4>
+                  </div>
+                </div>
+              </a>
+              <div class="monthly-coverpage-right col-md-8 p-0">
+                <div class="d-flex">
+                  <a
+                    class="monthly-covers1 col-md-4 col-sm-6 p-0"
+                    *ngFor="let cover of firstBlock"
+                    href="{{ openDetails(cover.date) }}"
+                  >
+                    <figure>
+                      <img
+                        appYoutubeImage
+                        src="{{ cover.media | defaultImage: 288:379 }}"
+                        width="288"
+                        height="379"
+                        alt="monthly-covers-img2"
+                      />
+                    </figure>
+                    <div class="current-issue">
+                      <h4 class="d-inline-block text-uppercase">
+                        {{ cover.date }}
+                      </h4>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="monthly-covers-bottom">
+              <a
+                class="monthly-covers1"
+                *ngFor="let cover of secondBlock"
+                href="{{ openDetails(cover.date) }}"
+              >
+                <figure>
+                  <img
+                    appYoutubeImage
+                    src="{{ cover.media | defaultImage: 288:379 }}"
+                    width="288"
+                    height="379"
+                    alt="monthly-covers-img8"
+                  />
+                </figure>
+                <div class="current-issue">
+                  <h4 class="d-inline-block text-uppercase">
+                    {{ cover.date }}
+                  </h4>
+                </div>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+          </li>
+        </ul>
+      </div>
+      <a
+        *ngIf="has_more"
+        href="javascript:void(0)"
+        (click)="getMoreData()"
+        id="loadMore"
+        class="text-center loadmore-btn d-block"
+      >
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>

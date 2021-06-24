@@ -13,14 +13,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { TrendingComponent } from './components/trending/trending.component';
-import { ScrollBannerComponent } from './components/scroll-banner/scroll-banner.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
-import { FranchiseComponent } from './components/franchise/franchise.component';
+import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { ColumnsComponent } from './components/columns/columns.component';
+import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 
 
 // Modals Components
@@ -33,16 +32,15 @@ import { ColumnsComponent } from './components/columns/columns.component';
     FooterComponent,
     SidebarComponent,
     ErrorComponent,
-    MenuComponent,
     TrendingComponent,
-    ScrollBannerComponent,
     ColumnsComponent,
-    FranchiseComponent,
+    NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
     VideosComponent,
     ColumnsComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    FooterTopComponent,
   ],
   imports: [
     CommonModule,
@@ -59,18 +57,17 @@ import { ColumnsComponent } from './components/columns/columns.component';
     NgbModule,
     HeaderComponent,
     FooterComponent,
+    FooterTopComponent,
     SidebarComponent,
-    MenuComponent,
     TrendingComponent,
-    ScrollBannerComponent,
     AdvertisementComponent,
     ColumnsComponent,
-    FranchiseComponent,
+    NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
     SlickCarouselModule,
     VideosComponent,
-    ColumnsComponent
+    ColumnsComponent,
   ],
 })
 export class SharedModule {}
