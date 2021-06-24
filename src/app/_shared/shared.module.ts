@@ -5,6 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -17,9 +22,8 @@ import { TrendingComponent } from './components/trending/trending.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { VideosComponent } from './components/videos/videos.component';
 import { ColumnsComponent } from './components/columns/columns.component';
-
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 // Modals Components
 
@@ -36,9 +40,9 @@ import { ColumnsComponent } from './components/columns/columns.component';
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
-    VideosComponent,
     ColumnsComponent,
     AdvertisementComponent,
+    VideoPlayerComponent,
   ],
   imports: [
     CommonModule,
@@ -46,12 +50,18 @@ import { ColumnsComponent } from './components/columns/columns.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxYoutubePlayerModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    VgCoreModule,
     NgbModule,
     HeaderComponent,
     FooterComponent,
@@ -63,8 +73,9 @@ import { ColumnsComponent } from './components/columns/columns.component';
     TrendingBuzzComponent,
     DefaultImagePipe,
     SlickCarouselModule,
-    VideosComponent,
+NgxYoutubePlayerModule,
     ColumnsComponent,
+    VideoPlayerComponent
   ],
 })
 export class SharedModule {}

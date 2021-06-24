@@ -173,3 +173,19 @@ img {
     }
   }
 }
+.video-btn .video-maker {
+  position: absolute;
+  left: calc(50% - 45px);
+  top: calc(50% - 45px);
+  z-index: 1000;
+  height: 90px;
+  width: 90px;
+}
+.main-videos {
+  .buffalowings-wrap {
+    background: #1b2935;
+  }
+  .buffalowings-bottom {
+    background: #ec0044;
+  }
+}

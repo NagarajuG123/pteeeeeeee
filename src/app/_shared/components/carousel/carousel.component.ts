@@ -1,7 +1,6 @@
 import { Component, OnInit,Input,PLATFORM_ID,Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-carousel',
@@ -19,10 +18,9 @@ export class CarouselComponent implements OnInit {
   url:string = '';
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 1};
 
-
   constructor(private apiService: ApiService,
   @Inject(PLATFORM_ID) platformId: Object,) {
-        this.isBrowser = isPlatformBrowser(platformId);
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
@@ -47,7 +45,6 @@ export class CarouselComponent implements OnInit {
     }
     this.apiService.getAPI(apiUrl).subscribe((response ) =>{
       this.list = response.data;
-      console.log(this.list)
     });
   }
 
