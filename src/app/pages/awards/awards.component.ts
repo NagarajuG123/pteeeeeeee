@@ -8,18 +8,19 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class AwardsComponent implements OnInit {
   awardsData: any = [];
-  slug = '1851';
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
+    console.log('Awards');
     this.getAwards();
   }
 
   getAwards(){
-    this.apiService.getAPI(`${this.slug}/home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
+    this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
       this.awardsData = response;
       console.log(this.awardsData);
     });
   }
+
 }
