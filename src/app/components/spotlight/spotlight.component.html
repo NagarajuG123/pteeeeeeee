@@ -1,6 +1,147 @@
 <div class="spotlight-block">
-
-  <div class="spotlight-tabs">
+  <div class="bg-grey py-4 d-block d-sm-none">
+    <div class="container">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button bg-red text-white" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              people
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body bg-grey p-0">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4 p-0 mb-2">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                (max-width: 768px) 800px,
+                (max-width: 992px) 600px,
+                (max-width: 1200px) 700px,
+                1300px" src="{{ highlightPeople.media | defaultImage:1300:730}}" class="img-fluid">
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> people spotlight</h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ highlightPeople.title}} </p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-12 p-0 scroll-container">
+                    <div class="row">
+                      <div class="col-md-6" *ngFor="let item of peopleData?.data?.slice(1);let i = index;">
+                        <div class="feature-block">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7 mb-2">
+                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                                (max-width: 768px) 800px,
+                                (max-width: 992px) 600px,
+                                (max-width: 1200px) 700px,
+                                1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
+                            </div>
+                            <div class="col-md-5 ">
+                              <p class="text-white text-box">{{ item.title }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              franchisee
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body p-0">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4 p-0 mb-2">
+                    <div class="bg-red">
+                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                (max-width: 768px) 800px,
+                (max-width: 992px) 600px,
+                (max-width: 1200px) 700px,
+                1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
+                      <a href="" class="position-relative m-0">
+                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
+                          <h5 class="text-uppercase"> franchisee spotlight</h5>
+                        </div>
+                        <div class="px-3 pt-3 pb-2 text-white">
+                          <p class="fs-6"> {{ highlightFranchise.title }}</p>
+                        </div>
+                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
+                          <a href="" class="text-uppercase readmore-text text-white">Read More <i
+                              class="fa fa-angle-right text-white"></i></a>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-12 p-0 scroll-container">
+                    <div class="row">
+                      <div class="col-md-6" *ngFor="let item of franchiseeData?.data?.slice(1);let i = index;">
+                        <div class="feature-block">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-7 mb-2">
+                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                                (max-width: 768px) 800px,
+                                (max-width: 992px) 600px,
+                                (max-width: 1200px) 700px,
+                                1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
+                            </div>
+                            <div class="col-md-5 ">
+                              <p class="text-white text-box">{{ item.title }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              franchisor
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance,
+              as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spotlight-tabs d-none d-sm-block">
 
     <div class="spotlight-top col-12 d-flex">
       <div class="container mt-5">
@@ -20,10 +161,10 @@
                   1300px" src="{{ highlightPeople.media | defaultImage:1300:730}}" class="img-fluid">
                       <a href="" class="position-relative m-0">
                         <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> {{ highlightPeople.title }} </h5>
+                          <h5 class="text-uppercase"> people spotlight </h5>
                         </div>
                         <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightPeople.short_description}} </p>
+                          <p class="fs-6"> {{ highlightPeople.title }} </p>
                         </div>
                         <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
                           <a href="" class="text-uppercase readmore-text text-white">Read More <i
@@ -71,10 +212,10 @@
                   1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
                       <a href="" class="position-relative m-0">
                         <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> {{ highlightFranchise.title }} </h5>
+                          <h5 class="text-uppercase"> franchisee spotlight</h5>
                         </div>
                         <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightFranchise.short_description}} </p>
+                          <p class="fs-6"> {{ highlightFranchise.title }} </p>
                         </div>
                         <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
                           <a href="" class="text-uppercase readmore-text text-white">Read More <i
@@ -122,10 +263,10 @@
                   1300px" src="{{ hightlightFranchisor.media | defaultImage:1300:730}}" class="img-fluid">
                       <a href="" class="position-relative m-0">
                         <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> {{ hightlightFranchisor.title }} </h5>
+                          <h5 class="text-uppercase"> franchisor spotlight</h5>
                         </div>
                         <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ hightlightFranchisor.short_description}} </p>
+                          <p class="fs-6"> {{ hightlightFranchisor.title }} </p>
                         </div>
                         <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
                           <a href="" class="text-uppercase readmore-text text-white">Read More <i
@@ -174,10 +315,10 @@
                   1300px" src="{{ highlightIndustry.media | defaultImage:1300:730}}" class="img-fluid">
                       <a href="" class="position-relative m-0">
                         <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> {{ highlightIndustry.title }} </h5>
+                          <h5 class="text-uppercase"> industry spotlight</h5>
                         </div>
                         <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightIndustry.short_description}} </p>
+                          <p class="fs-6"> {{ highlightIndustry.title }} </p>
                         </div>
                         <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
                           <a href="" class="text-uppercase readmore-text text-white">Read More <i
@@ -225,10 +366,10 @@
                   1300px" src="{{ hightlightColumn.media | defaultImage:1300:730}}" class="img-fluid">
                       <a href="" class="position-relative m-0">
                         <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> {{ hightlightColumn.title }} </h5>
+                          <h5 class="text-uppercase"> columns spotlight</h5>
                         </div>
                         <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ hightlightColumn.short_description}} </p>
+                          <p class="fs-6"> {{ hightlightColumn.title }} </p>
                         </div>
                         <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
                           <a href="" class="text-uppercase readmore-text text-white">Read More <i
@@ -265,8 +406,9 @@
         </ul>
       </div>
     </div>
+    <div [ngbNavOutlet]="nav"></div>
   </div>
-  <div [ngbNavOutlet]="nav"></div>
+
 
 
 
