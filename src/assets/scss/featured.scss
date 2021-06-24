@@ -61,7 +61,7 @@
     background-color: $dark-blue;
     overflow: auto;
     overflow-x: hidden;
-
+    padding-left: 30px;
     .feature-block {
       margin-top: 50px;
       img {
@@ -72,6 +72,12 @@
         color: $color-white;
         padding-right: 20px;
       }
+      .adweek-left {
+        padding: 0 4px 0 0;
+     }
+    .adweek-right {
+      padding:0 31px 0 10px;;
+     }
     }
   }
 }
