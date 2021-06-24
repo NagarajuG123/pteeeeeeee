@@ -24,6 +24,8 @@ import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { ColumnsComponent } from './components/columns/columns.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { FooterTopComponent } from './footer/footer-top/footer-top.component';
+
 
 // Modals Components
 
@@ -43,6 +45,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     ColumnsComponent,
     AdvertisementComponent,
     VideoPlayerComponent,
+    FooterTopComponent,
   ],
   imports: [
     CommonModule,
@@ -65,6 +68,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     NgbModule,
     HeaderComponent,
     FooterComponent,
+    FooterTopComponent,
     SidebarComponent,
     TrendingComponent,
     AdvertisementComponent,

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AwardsComponent } from './awards.component';
+import { FeaturedComponent } from './featured.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    AwardsComponent
+    FeaturedComponent
   ],
   imports: [
     CommonModule,
     SharedModule
   ]
 })
-export class AwardsModule { }
+export class FeaturedModule { }
