@@ -4,7 +4,7 @@ import { SitemapComponent } from './pages/sitemap/sitemap.component';
 import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
 import { ErrorComponent } from './_shared/components/error/error.component';
-import { AwardsComponent } from './pages/awards/awards.component';
+import { FeaturedComponent } from './pages/featured/featured.component';
 
 const routes: Routes = [
   {
@@ -23,8 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'frandevplayers2021',
-    component: AwardsComponent,
-    loadChildren:() => import ('./pages/awards/awards.module').then((m) => m.AwardsModule),
+    component: FeaturedComponent,
+    loadChildren:() => import ('./pages/featured/featured.module').then((m) => m.FeaturedModule),
   },
   {
     path: 'monthlycovers',
