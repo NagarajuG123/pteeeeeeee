@@ -1,14 +1,5 @@
-<div class="d-flex" id="wrapper">
-    <app-sidebar class="sidebar-block"></app-sidebar>
-    <!-- Page content wrapper-->
-    <div id="page-content-wrapper">
-      <!-- Top navigation-->
-      <app-header></app-header>
-      <!-- Page content-->
-      <div class="container-fluid p-0">
-        <router-outlet></router-outlet>
-        <app-footer></app-footer>
-      </div>
-    </div>
-  </div>
-  
+<div class="wrapper col-12 p-0">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

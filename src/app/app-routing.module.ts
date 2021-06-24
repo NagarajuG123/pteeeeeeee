@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
 import { SitemapComponent } from './pages/sitemap/sitemap.component';
 import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
@@ -10,8 +9,7 @@ import { AwardsComponent } from './pages/awards/awards.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'sitemap',
@@ -35,12 +33,10 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: LayoutComponent,
     loadChildren: () => import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
     path: 'brand',
-    component: LayoutComponent,
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
   {
