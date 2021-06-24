@@ -45,7 +45,10 @@
   font-family: "ProximaNova-Light";
   src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
 }
-
+ul li,
+p {
+  font-family: "ProximaNova-Regular" !important;
+}
 h3 {
   font-size: 24px;
   line-height: 26px;
@@ -65,7 +68,10 @@ a {
   vertical-align: top;
   background-color: transparent;
 }
-
+h5 {
+  padding: 0;
+  margin: 0;
+}
 h4 {
   font-family: "ProximaNova-SemiBold";
   font-size: 20px;

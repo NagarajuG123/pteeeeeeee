@@ -101,6 +101,19 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  h5 {
+    margin-bottom: 10px;
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 36px;
+    line-height: 18px;
+    letter-spacing: -0.1px;
+    color: #272525;
+    font-weight: 400;
+    font-family: ProximaNova-Medium;
+  }
 }
 .buffalowings-wrap-left {
   padding: 0;
@@ -142,4 +155,21 @@ img {
   max-width: 100%;
   height: auto;
   border: 0;
+}
+.columns {
+  .buffalowings-wrap {
+    padding: 20px 15px;
+    background: #f1f1f2;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      height: 54px;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: -0.1px;
+      margin-bottom: 21px;
+      color: #272525;
+    }
+  }
 }
