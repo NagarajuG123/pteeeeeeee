@@ -5,6 +5,7 @@ import { SitemapComponent } from './pages/sitemap/sitemap.component';
 import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
 import { ErrorComponent } from './_shared/components/error/error.component';
+import { AwardsComponent } from './pages/awards/awards.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: 'termsofuse',
     component: TermsofuseComponent,
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
+  },
+  {
+    path: 'frandevplayers2021',
+    component: AwardsComponent,
+    loadChildren:() => import ('./pages/awards/awards.module').then((m) => m.AwardsModule),
   },
   {
     path: 'monthlycovers',

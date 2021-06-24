@@ -53,7 +53,7 @@
     </h4>
     <ul>
       <li *ngFor="let item of sidebarData?.data['awards']">
-        <a href="{{ item.url }}">{{ item.title }}</a>
+        <a routerLink="/frandevplayers2021">{{ item.title }}</a>
       </li>
     </ul>
     <div class="s-menu-list-s p-0" *ngIf="sidebarData?.data['power-rankings']">
