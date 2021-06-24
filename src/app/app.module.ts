@@ -7,13 +7,12 @@ import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './_shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
 import { MonthlyCoversModule } from './pages/monthly-covers/monthly-covers.module';
 import { AboutUsModule } from './pages/about-us/about-us.module';
 import { BrandModule } from './pages/brand/brand.module';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
