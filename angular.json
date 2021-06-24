@@ -41,6 +41,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "./node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "./node_modules/slick-carousel/slick/slick.scss",
               "./node_modules/slick-carousel/slick/slick-theme.scss",
               "./node_modules/bootstrap/scss/bootstrap.scss"

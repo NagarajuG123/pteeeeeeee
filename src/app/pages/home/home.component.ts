@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
+  publication: any = [];
   constructor(
     private metaService: MetaService,
     private apiService: ApiService
@@ -16,8 +16,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMeta();
+    this.getPublication();
   }
-
+//Publication Instance
+  getPublication() {
+    this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
+      this.publication = response;
+    });
+  }
   getMeta() {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);

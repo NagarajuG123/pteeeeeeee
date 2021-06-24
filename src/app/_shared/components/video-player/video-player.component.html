@@ -1,0 +1,18 @@
+<div *ngIf="isBrowser" class="w-100 h-100">
+  <vg-player
+    *ngIf="videoType != 'vimeo' && videoType != 'youtube'"
+    (onPlayerReady)="videoPlayerInit($event)"
+  >
+    <video #media [id]="src" preload="auto" controls>
+      <source src="{{ src }}" type="video/mp4" />
+    </video>
+  </vg-player>
+  <youtube-player
+    *ngIf="videoType == 'youtube'"
+    [videoId]="id"
+    (ready)="savePlayer($event)"
+    (change)="onStateChange($event)"
+  >
+  </youtube-player>
+  <div *ngIf="videoType == 'vimeo'" id="vimeo_player"></div>
+</div>
