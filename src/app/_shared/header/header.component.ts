@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     let slug = '1851';
     this.apiService.getAPI(`${slug}/header`).subscribe((response ) =>{
       this.headerData = response;
-      console.log(this.headerData);
     });
   }
 

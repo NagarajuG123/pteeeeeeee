@@ -30,7 +30,6 @@ export class MonthlyCoversComponent implements OnInit {
     });
   }
   openDetails(date:any) {
-    console.log(date)
   }
   getMoreData() {}
   closeMenu() {

@@ -42,7 +42,7 @@ import { ColumnsComponent } from './components/columns/columns.component';
     DefaultImagePipe,
     VideosComponent,
     ColumnsComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
   ],
   imports: [
     CommonModule,
@@ -70,7 +70,7 @@ import { ColumnsComponent } from './components/columns/columns.component';
     DefaultImagePipe,
     SlickCarouselModule,
     VideosComponent,
-    ColumnsComponent
+    ColumnsComponent,
   ],
 })
 export class SharedModule {}
