@@ -6,9 +6,8 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { FeaturedComponent } from '../../_shared/components/featured/featured.component';
-import { SpotlightComponent } from '../../components/spotlight/spotlight.component';
-import { AwardsComponent } from '../../components/awards/awards.component';
-import { HomeFeatureComponent } from '../../components/home-feature/home-feature.component';
+import { SpotlightComponent } from './spotlight/spotlight.component';
+import { HomeFeatureComponent } from './home-feature/home-feature.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from '../../_shared/components/carousel/carousel.component';
 
@@ -17,7 +16,6 @@ import { CarouselComponent } from '../../_shared/components/carousel/carousel.co
     HomeComponent,
     FeaturedComponent,
     SpotlightComponent,
-    AwardsComponent,
     HomeFeatureComponent,
     CarouselComponent
   ],
