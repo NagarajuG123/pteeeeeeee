@@ -64,3 +64,63 @@
 .monthly-covers1 {
     position: relative;
 }
+.brandbuzz-frannews {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+}
+.category-frannews {
+    box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
+    -webkit-box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
+    -ms-box-shadow: 0 13px 21px rgba(0,0,0,.178);
+    -o-box-shadow: 0 13px 21px rgba(0,0,0,.178);
+    -moz-box-shadow: 0 13px 21px rgba(0,0,0,.178);
+    position: relative;
+}
+
+.frannews {
+    background: #fff;
+}
+.container {
+    max-width: 1380px;
+    margin: 0 auto;
+    display: block;
+}
+.brandbuzz-frannews .legalplayers-frannews {
+    padding: 79px 41px 2px 40px;
+}
+.frannews-bottom {
+    padding: 35px 0 0;
+}
+.category-frannews .category-list {
+    display: inline-block;
+    float: left;
+    width: 20%;
+    padding: 0 15px;
+}
+.brandbuzz-frannews-bottom .frannews-bottom-details {
+    position: relative;
+}
+.socialmedia {
+    padding: 21px 0 10px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.brandbuzz-frannews-bottom .sponsored {
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+.brandbuzz-frannews-bottom .sponsored span {
+    background: #ec0044;
+    font-size: 17px;
+    line-height: 19px;
+    color: #fff;
+    font-weight: 400;
+    font-family: ProximaNova-Bold;
+    vertical-align: top;
+    padding: 7px 5px 9px;
+    width: 35px;
+}
