@@ -7,7 +7,8 @@ import * as $ from 'jquery';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  menu: any =[];
+  header: any =[];
+  isBrand: Boolean = false;
 
   constructor(private apiService:ApiService) {}
 
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
   getHeader() {
     this.apiService.getHeader().subscribe((response) => {
-      this.menu = response;
+      this.header = response;
     });
   }
    openMenu() {

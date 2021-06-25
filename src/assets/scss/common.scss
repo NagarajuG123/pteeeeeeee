@@ -1,36 +1,54 @@
 @import "mixins";
 
-.btn{
-  box-shadow: none!important;
+//common styles
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  text-align: left;
+  background-color: #fff;
 }
-a{
-  cursor: pointer;
-  text-decoration: none;
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  display: block;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
+}
+a {
+  text-decoration: none !important;
+  display: inline-block;
+  vertical-align: top;
+  color: #007bff;
+  background-color: transparent;
+}
+.text-center {
+  text-align: center !important;
+}
+.ml-1,
+.mx-1 {
+  margin-left: 0.25rem !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+ol,
+ul {
+  list-style: none;
+  margin: 0;
 }
 
-.bg-dark-color{
-  background-color: $dark-blue;
-}
-body{
-  font-family: 'ProximaNova-Regular';
-}
-body.sb-sidenav-toggled {
-    overflow: hidden;
-}
-body.sb-sidenav-toggled .sidebar-block{
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
- body.sb-sidenav-toggled #page-content-wrapper {
-    margin-left: 300px;
-}
-.mt-15{
-  margin-left: 15px;
-}
-.mt-20{
-  margin-left: 20px;
-}
-.mt-25{
-  margin-left: 25px;
+//Media queries
+@media screen and (max-width: 1420px) {
+  .container {
+    max-width: 100% !important;
+  }
 }

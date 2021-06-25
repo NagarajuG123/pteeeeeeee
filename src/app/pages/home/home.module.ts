@@ -11,6 +11,7 @@ import { AwardsComponent } from '../../components/awards/awards.component';
 import { HomeFeatureComponent } from '../../components/home-feature/home-feature.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from '../../_shared/components/carousel/carousel.component';
+import { FooterTopComponent } from './footer-top/footer-top.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CarouselComponent } from '../../_shared/components/carousel/carousel.co
     SpotlightComponent,
     AwardsComponent,
     HomeFeatureComponent,
-    CarouselComponent
+    CarouselComponent,
+    FooterTopComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, NgbModule],
 })

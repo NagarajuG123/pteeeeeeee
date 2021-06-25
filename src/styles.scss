@@ -16,11 +16,6 @@
 @import "src/assets/scss/base";
 /* You can add global styles to this file, and also import other style files */
 
-@media screen and (max-width: 1420px) {
-  .container {
-    max-width: 100% !important;
-  }
-}
 @font-face {
   font-family: "ProximaNova-Regular";
   src: url(./assets/fonts/ProximaNova-Regular.woff) format("woff");
@@ -45,10 +40,19 @@
   font-family: "ProximaNova-Light";
   src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
 }
+
+h6 {
+  font-size: 15px;
+  line-height: 17px;
+  color: #263645;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+}
 ul li,
 p {
   font-family: "ProximaNova-Regular" !important;
 }
+
 h3 {
   font-size: 24px;
   line-height: 26px;
@@ -58,8 +62,9 @@ h3 {
   letter-spacing: 0.3px;
 }
 
-h1 h2 h3 h5 {
+h1 h2 h3 h4 h5 h6 {
   font-family: ProximaNova-Medium;
+  margin: 0;
 }
 
 a {
