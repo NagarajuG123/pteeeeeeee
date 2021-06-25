@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class FeaturedComponent implements OnInit {
   awardsData: any = [];
+  stories: any = [];
 
   constructor( private apiService: ApiService ) { }
 
@@ -18,6 +19,7 @@ export class FeaturedComponent implements OnInit {
   getAwards(){
     this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
       this.awardsData = response;
+      this.stories = response.data.stories;
     });
   }
 

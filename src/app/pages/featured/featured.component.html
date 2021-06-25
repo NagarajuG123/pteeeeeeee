@@ -49,12 +49,10 @@
             <div class="frannews-details col-xl-11 legalplayers-frannews">
                 <div class="frannews-bottom brandbuzz-frannews-bottom">
                     <ul class="p-0">
-                         <li class="d-block"
-                        >
+                        <li class="d-block">
                             <div
                             class="category-list"
-                            *ngFor="let item of awardsData.data.stories"
-                           >
+                            *ngFor="let item of stories.slice(0,10);let i = index">
                             <a href="#" class="frannews-bottom-details">
                                 <figure>
                                     <img
@@ -69,30 +67,35 @@
                                     <p style="-webkit-box-orient: vertical">{{item.title}}</p>
                                 </div>
                                 <div class="sponsored text-center">
-                                    <span class="d-inline-block"> 1 </span>
+                                    <span class="d-inline-block"> {{ i + 1 }} </span>
                                 </div>
                             </a>
                         </div>
                         <div class="clearfix"></div>
-                        </li>
+                        </li>  
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="brand-advertisement category-advertisement">
         <div class="container">
             <div class="advertisement col-xl-9">
-                <h6 class="float-right text-uppercase"></h6>
+                <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
                 <div class="clearfix"></div>
                 <div class="advertisement-details">
-                    <a class="d-block">
+                    <a
+                        href="#"
+                        class="d-block"
+                    >
                         <figure>
                             <img
-                            src=""
-                            alt=""
-                            height="90"
-                            width="970"/>
+                                src="assets/img/category-img2.jpg"
+                                width="970"
+                                height="90"
+                                alt="img12"
+                            >
                         </figure>
                     </a>
                 </div>
@@ -105,33 +108,30 @@
             <div class="frannews-details col-xl-11 legalplayers-frannews1">
                 <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
                     <ul class="p-0">
-                        <li
-                        class="d-block"
-                        *ngFor="let row1 of awardsData.slice(6,10); let n = index" 
-                       >
-                        <div
+                        <li class="d-block">
+                            <div
                             class="category-list"
-                           
-                        >
+                            *ngFor="let item of stories; let i = index;">
                             <a href="#" class="frannews-bottom-details">
                                 <figure>
                                     <img
                                         appYoutubeImage
-                                        src="{{row1.media  | defaultImage:259:145}}"
+                                        src="{{item.media  | defaultImage:259:145}}"
                                         width="259"
                                         height="145"
                                         alt="img5"
                                     >
                                 </figure>
                                 <div class="socialmedia">
-                                    <p style="-webkit-box-orient: vertical">{{row1.title}}</p>
+                                    <p style="-webkit-box-orient: vertical">{{item.title}}</p>
                                 </div>
                                 <div class="sponsored text-center">
-                                    <span class="d-inline-block">2</span>
+                                    <span class="d-inline-block"> {{ i+11 }} </span>
                                 </div>
                             </a>
                         </div>
-                        <div class="clearfix"></div></li>
+                        <div class="clearfix"></div>
+                        </li>  
                     </ul>
                     <a class="text-center loadmore-btn d-block" href="javascript:void(0)" id="loadMore">
                         <i aria-hidden="true" class="fa fa-angle-down"></i>

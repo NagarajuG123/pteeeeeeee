@@ -39,3 +39,9 @@ a {
     font-size: 17px;
     font-weight: 400;
 }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}

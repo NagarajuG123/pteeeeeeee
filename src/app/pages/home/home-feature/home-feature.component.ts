@@ -12,6 +12,7 @@ export class HomeFeatureComponent implements OnInit {
   items: any =[];
   item : any = [];
   index:number = 0;
+  readMoreUrl: string | undefined;
 
   constructor( private apiService:ApiService) { }
 
@@ -22,6 +23,7 @@ export class HomeFeatureComponent implements OnInit {
   getFranchise() {
     this.apiService.getAPI(`home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
       this.franchiseData = response;
+      this.readMoreUrl = response.data.url;
       if(response.data){
         response.data.stories.forEach((item: any,index: number) => {
           if(index < 6){
@@ -38,5 +40,9 @@ export class HomeFeatureComponent implements OnInit {
         }); 
       }
     });
+  }
+
+  goLegalPlayers(url: any) {
+    return url;
   }
 }
