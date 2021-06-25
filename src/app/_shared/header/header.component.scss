@@ -14,20 +14,7 @@ header {
 .header-left {
   padding: 3px 0 18px;
 }
-.menu {
-  padding: 7px 0 0;
-  .hide {
-    display: none;
-  }
-  a small {
-    font-size: 11px;
-    line-height: 13px;
-    color: #263645;
-    font-weight: 400;
-    font-family: ProximaNova-Light;
-    padding: 6px 0 0;
-  }
-}
+
 .logo {
   padding: 0 5px 0 22px;
 }
@@ -141,4 +128,9 @@ nav {
 }
 .profile {
   padding: 0 0 0 5px;
+  figure {
+    height: 75px;
+    overflow: hidden;
+  }
 }
+//sidebar

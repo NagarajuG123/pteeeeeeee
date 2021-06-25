@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     });
   }
    openMenu() {
-    $('body').toggleClass('sb-sidenav-toggled');
+    $('body').toggleClass('menu-open');
   }
 
 }

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  sidebarData: any =[];
+  sidebar: any =[];
   publication: any=[];
   slug: string = '1851';
 
@@ -28,11 +28,11 @@ export class SidebarComponent implements OnInit {
   //Sidebar API
   getSidebar() {
     this.apiService.getAPI(`${this.slug}/sidebar`).subscribe((response ) =>{
-      this.sidebarData = response;
+      this.sidebar = response.data;
     });
   }
 
   closeMenu() {
-   
+    $('body').toggleClass('menu-open');
   }
 }

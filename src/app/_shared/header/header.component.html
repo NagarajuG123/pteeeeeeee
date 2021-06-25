@@ -4,20 +4,22 @@
       <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
         <div class="menu col-xl-1 col-2">
           <a href="javascript:void(0)" (click)="openMenu()">
-            <img
-              src="assets/img/menu.png"
-              width="35"
-              height="24"
-              alt="menu"
-              class="show"
-            />
-            <img
-              src="assets/img/close.png"
-              width="35"
-              height="24"
-              alt="menu"
-              class="hide"
-            />
+            <figure>
+              <img
+                src="assets/img/menu.png"
+                width="35"
+                height="24"
+                alt="menu"
+                class="show"
+              />
+              <img
+                src="assets/img/close.png"
+                width="35"
+                height="24"
+                alt="menu"
+                class="hide"
+              />
+            </figure>
             <small class="text-center d-block">MENU</small>
           </a>
         </div>
@@ -117,15 +119,17 @@
                 header['monthly-cover']?.media?.url?.conver_url
               }}"
             >
-              <img
-                appYoutubeImage
-                src="{{
-                  header['monthly-cover']?.media | defaultImage: 119:157
-                }}"
-                width="119"
-                height="157"
-                alt="img1"
-              />
+              <figure>
+                <img
+                  appYoutubeImage
+                  src="{{
+                    header['monthly-cover']?.media | defaultImage: 119:157
+                  }}"
+                  width="119"
+                  height="157"
+                  alt="img1"
+                />
+              </figure>
             </a>
           </div>
         </div>

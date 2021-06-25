@@ -1,6 +1,5 @@
 @import "src/assets/scss/fonts";
 @import "src/assets/scss/mixins";
-@import "src/assets/scss/header";
 @import "src/assets/scss/sidebar";
 @import "src/assets/scss/trending";
 @import "src/assets/scss/featured";
@@ -48,6 +47,10 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.7px;
 }
+ol,
+ul {
+  padding-left: 2rem;
+}
 ul li,
 p {
   font-family: "ProximaNova-Regular" !important;
@@ -86,4 +89,58 @@ h4 {
 }
 .float-right {
   float: right !important;
+}
+.menu-open {
+  .menu-details {
+    left: 0;
+  }
+  .hide {
+    display: block;
+    padding: 0 0 0 6px;
+  }
+  .show {
+    display: none;
+  }
+}
+.fa {
+  color: #ec0044;
+}
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.menu-details {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  overflow: auto;
+  background: #2b2b2b;
+  z-index: 9;
+  padding: 29px 18px;
+  -webkit-transition: 0.3s ease-in-out;
+  a {
+    color: #fff;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+.menu .hide {
+  display: none;
+}
+.menu {
+  padding: 7px 0 0;
+  a small {
+    font-size: 11px;
+    line-height: 13px;
+    color: #263645;
+    font-weight: 400;
+    font-family: ProximaNova-Light;
+    padding: 6px 0 0;
+  }
 }
