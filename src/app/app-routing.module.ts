@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren:() => import ('./pages/featured/featured.module').then((m) => m.FeaturedModule),
   },
   {
-    path: 'contact',
+    path: 'contact-editorial',
     component: ContacteditorialComponent,
     loadChildren:() => import ('./pages/contacteditorial/contacteditorial.module').then((m) => m.ContacteditorialModule),
   },
