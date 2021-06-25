@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import * as $ from 'jquery';
 
@@ -15,7 +15,9 @@ export class MonthlyCoversComponent implements OnInit {
   list: Array<any> = [''];
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private cdr: ChangeDetectorRef,
+
   ) { }
 
   ngOnInit(): void {
@@ -31,8 +33,18 @@ export class MonthlyCoversComponent implements OnInit {
   }
   openDetails(date:any) {
   }
-  getMoreData() {}
+  getMoreData() {
+    const offset = this.secondBlock.length + 7;
+    this.apiService.getAPI(`1851/journal/monthly-covers?limit=5&offset=${offset}`).subscribe((response ) =>{
+      this.has_more = response.has_more;
+      response.data.forEach((item: any) => {
+        this.secondBlock.push(item);
+      });
+    });
+    this.cdr.detectChanges();
+  }
   closeMenu() {
-    $('body').toggleClass('sb-sidenav-toggled');
+    $('.menu-details').hide();
+    $('body').toggleClass('menu-open');
   }
 }
