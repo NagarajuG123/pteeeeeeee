@@ -10,6 +10,7 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -41,6 +42,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
+    SplitArrayPipe,
     ColumnsComponent,
     AdvertisementComponent,
     VideoPlayerComponent,
@@ -73,6 +75,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
+    SplitArrayPipe,
     SlickCarouselModule,
 NgxYoutubePlayerModule,
     ColumnsComponent,
