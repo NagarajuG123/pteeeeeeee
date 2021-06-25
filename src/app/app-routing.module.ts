@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
   },
   {
-    path: 'frandevplayers2021',
+    path: 'multiunitfranchisees',
     component: FeaturedComponent,
     loadChildren:() => import ('./pages/featured/featured.module').then((m) => m.FeaturedModule),
   },
