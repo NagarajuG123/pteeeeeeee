@@ -1,13 +1,15 @@
 <div class="menu-details">
   <div class="menu-logo text-center">
     <a href="/">
-      <img
-        class="logo-img"
-        src="{{ sidebar.logo }}"
-        width="{{ publication.id === 'EE' ? 200 : 53 }}"
-        height="53"
-        alt="logo1"
-      />
+      <figure>
+        <img
+          class="logo-img"
+          src="{{ sidebar?.logo }}"
+          width="{{ publication.id === 'EE' ? 200 : 53 }}"
+          height="53"
+          alt="logo1"
+        />
+      </figure>
     </a>
   </div>
   <div class="menu-search">
@@ -35,7 +37,7 @@
             </figure>
             <strong>MONTHLY COVERS</strong>
           </a>
-          <div class="monthly-covers-details monthly-covers-details1">
+          <div class="monthly-covers-img">
             <a routerLink="{{ sidebar['monthly-cover']?.url }}">
               <figure>
                 <img

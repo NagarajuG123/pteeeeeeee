@@ -1,6 +1,5 @@
 @import "src/assets/scss/fonts";
 @import "src/assets/scss/mixins";
-@import "src/assets/scss/header";
 @import "src/assets/scss/sidebar";
 @import "src/assets/scss/trending";
 @import "src/assets/scss/featured";
@@ -47,6 +46,10 @@ h6 {
   color: #263645;
   font-weight: 400;
   letter-spacing: 0.7px;
+}
+ol,
+ul {
+  padding-left: 2rem;
 }
 ul li,
 p {
@@ -98,6 +101,15 @@ h4 {
   .show {
     display: none;
   }
+}
+.fa {
+  color: #ec0044;
+}
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 .menu-details {
   position: fixed;
