@@ -117,15 +117,17 @@
                 header['monthly-cover']?.media?.url?.conver_url
               }}"
             >
-              <img
-                appYoutubeImage
-                src="{{
-                  header['monthly-cover']?.media | defaultImage: 119:157
-                }}"
-                width="119"
-                height="157"
-                alt="img1"
-              />
+              <figure>
+                <img
+                  appYoutubeImage
+                  src="{{
+                    header['monthly-cover']?.media | defaultImage: 119:157
+                  }}"
+                  width="119"
+                  height="157"
+                  alt="img1"
+                />
+              </figure>
             </a>
           </div>
         </div>
