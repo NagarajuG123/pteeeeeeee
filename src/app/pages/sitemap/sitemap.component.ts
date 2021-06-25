@@ -9,6 +9,7 @@ export class SitemapComponent implements OnInit {
   sitemap: any =[];
   year: any=[];
   month: any=[];
+  data: any=[];
 
   constructor( private apiService: ApiService) { }
 
@@ -20,13 +21,20 @@ export class SitemapComponent implements OnInit {
     this.apiService.getAPI(`sitemap-page`).subscribe((response ) =>{
       this.sitemap = response;
       console.log(this.sitemap);
-      // Object.keys(this.sitemap['data']).forEach(this.year => {
-      //   const monthData=[];
-      //   Object.keys(this.sitemap['data'][this.year]).forEach(this.month => {
-          
-      //   });
-        
-      // });
+      Object.keys(this.sitemap).forEach((year: any) => {
+        const monthData: { month: string; number: any; url: any; }[] = [];
+        Object.keys(this.sitemap[year]).forEach(month => {
+          monthData.push({
+            month: month,
+            number: this.sitemap[year][month]['number'] ? this.sitemap[year][month]['number'] : 0,
+            url: this.sitemap[year][month]['url'] ? this.sitemap[year][month]['url'] : ''
+          });
+        });
+        this.data.push({
+          year: year,
+          data: monthData
+      });
     });
+  });
   }
 }

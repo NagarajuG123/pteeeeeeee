@@ -5,6 +5,7 @@ import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
+import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'frandevplayers2021',
     component: FeaturedComponent,
     loadChildren:() => import ('./pages/featured/featured.module').then((m) => m.FeaturedModule),
+  },
+  {
+    path: 'contact',
+    component: ContacteditorialComponent,
+    loadChildren:() => import ('./pages/contacteditorial/contacteditorial.module').then((m) => m.ContacteditorialModule),
   },
   {
     path: 'monthlycovers',
