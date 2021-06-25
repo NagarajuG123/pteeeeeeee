@@ -46,6 +46,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
   {
+    path: '404',
+    component: ErrorComponent,
+  },
+  {
     path: '**', // Navigate to Home Page if not found any page
     component: ErrorComponent,
   },

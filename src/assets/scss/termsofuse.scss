@@ -1,77 +1,73 @@
 .d-flex {
-    flex-wrap: wrap;
-    display: -webkit-flex;
-    -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
 }
 .termsofuse-banner-main {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    right: 0;
-    margin: 0 auto;
-    background: #263645;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  right: 0;
+  margin: 0 auto;
+  background: #263645;
 }
 .text-center {
-    text-align: center!important;
+  text-align: center !important;
 }
-.container {
-    max-width: 1380px;
-    margin: 0 auto;
-    display: block;
-}
+
 .termsofuse-banner-content {
-    padding: 43px 5px 33px;
+  padding: 43px 5px 33px;
 }
-.termsofuse-banner-main h1, .termsofuse-banner-main h2 {
-    font-size: 28.92px;
-    line-height: 31px;
-    color: #fff;
-    font-family: ProximaNova-Medium;
+.termsofuse-banner-main h1,
+.termsofuse-banner-main h2 {
+  font-size: 28.92px;
+  line-height: 31px;
+  color: #fff;
+  font-family: ProximaNova-Medium;
 }
 .main-content {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 .the-publication {
-    background: #fff;
-    border-bottom: 1px solid #adaeb0;
+  background: #fff;
+  border-bottom: 1px solid #adaeb0;
 }
 .the-publication-details {
-    margin: 0 auto;
-    padding: 97px 37px 222px 45px;
+  margin: 0 auto;
+  padding: 97px 37px 222px 45px;
 }
 // .termsofuse-banner figure img {
 //     display: block;
 //     width: 100%;
 // }
 img {
-    vertical-align: middle;
-    max-width: 100%;
-    height: auto;
-    display: inline-block;
-    border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
 }
 .the-publication-details h3 {
-    color: #263645;
-    border-bottom: 1px solid #929496;
-    padding: 0 0 22px;
-    letter-spacing: .1px;
-    margin: 0 0 16px;
+  color: #263645;
+  border-bottom: 1px solid #929496;
+  padding: 0 0 22px;
+  letter-spacing: 0.1px;
+  margin: 0 0 16px;
 }
 .the-publication-details ul li:first-child {
-    padding: 0 0 73px;
+  padding: 0 0 73px;
 }
 .the-publication-details ul li {
-    padding: 0 0 54px;
-    list-style: none;
+  padding: 0 0 54px;
+  list-style: none;
 }
 .termsofuse-content {
-    font-size: 20px;
-    line-height: 28px;
-    color: #272525;
-    padding: 5px 5px 6px 0;
-    letter-spacing: -.3px;
+  font-size: 20px;
+  line-height: 28px;
+  color: #272525;
+  padding: 5px 5px 6px 0;
+  letter-spacing: -0.3px;
 }
-

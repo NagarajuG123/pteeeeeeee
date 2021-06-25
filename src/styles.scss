@@ -9,7 +9,6 @@
 @import "src/assets/scss/add_banner";
 @import "src/assets/scss/footer";
 @import "src/assets/scss/common";
-@import "src/assets/scss/covers";
 @import "src/assets/scss/termsofuse";
 @import "src/assets/scss/awards";
 @import "src/assets/scss/base";
@@ -47,10 +46,7 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.7px;
 }
-ol,
-ul {
-  padding-left: 2rem;
-}
+
 ul li,
 p {
   font-family: "ProximaNova-Regular" !important;
@@ -142,5 +138,15 @@ figure {
     font-weight: 400;
     font-family: ProximaNova-Light;
     padding: 6px 0 0;
+  }
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  display: block;
+  @media (max-width: 1420px) {
+    max-width: 100% !important;
   }
 }
