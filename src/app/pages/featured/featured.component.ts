@@ -9,18 +9,28 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class FeaturedComponent implements OnInit {
   awardsData: any = [];
   stories: any = [];
+  dynamicStories : any = [];
+  dynamicData: any = [];
+  url: string | undefined;
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
-    this.getAwards();
+    this.getHomeFeatured();
   }
 
-  getAwards(){
+  getHomeFeatured(){
     this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
       this.awardsData = response;
+      this.url = response.data.url;
       this.stories = response.data.stories;
+      this.apiService.getAPI(`page/${this.url}`).subscribe((response ) =>{
+        console.log(this.url);
+        this.dynamicData = response;
+        this.dynamicStories = response.data.stories;
+      });
     });
   }
+
 
 }
