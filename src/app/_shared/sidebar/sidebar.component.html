@@ -24,21 +24,17 @@
       <i class="fa fa-database"></i
       ><a routerLink="/monthlycovers">MONTHLY COVERS</a>
     </h4>
-    <a routerLink="{{ sidebarData?.data['monthly-cover']?.url }}">
+    <a routerLink="{{ sidebar?.data['monthly-cover']?.url }}">
       <img
         appYoutubeImage
-        src="{{
-          sidebarData?.data['monthly-cover']?.media | defaultImage: 97:127
-        }}"
+        src="{{ sidebar?.data['monthly-cover']?.media | defaultImage: 97:127 }}"
         width="100"
         alt="img27"
       />
     </a>
   </div>
   <div class="s-menu-list-block">
-    <h4>
-      <i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}
-    </h4>
+    <h4><i class="fa fa-server"></i>{{ sidebar?.data?.category?.label }}</h4>
     <ul>
       <li class="d-block">
         <div class="monthly-covers-main">
@@ -168,23 +164,21 @@
   </div>
   <div class="line-divider-menu"></div>
   <div class="s-menu-list-block">
-    <h4 *ngIf="sidebarData?.data['awards']">
-      <i class="fa fa-trophy"></i>AWARDS
-    </h4>
+    <h4 *ngIf="sidebar?.data['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
     <ul>
-      <li *ngFor="let item of sidebarData?.data['awards']">
+      <li *ngFor="let item of sidebar?.data['awards']">
         <a routerLink="/frandevplayers2021">{{ item.title }}</a>
       </li>
     </ul>
-    <div class="s-menu-list-s p-0" *ngIf="sidebarData?.data['power-rankings']">
-      <a href="{{ sidebarData?.data['power-rankings']?.url }}"
+    <div class="s-menu-list-s p-0" *ngIf="sidebar?.data['power-rankings']">
+      <a href="{{ sidebar?.data['power-rankings']?.url }}"
         ><i class="fa fa-star"></i>POWER RANKINGS</a
       >
     </div>
   </div>
   <div class="line-divider-menu"></div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData?.data['about-1851']?.url }}"
+    <a href="{{ sidebar?.data['about-1851']?.url }}"
       ><i class="fa fa-question-circle"></i>ABOUT
       <span>{{ publication?.title?.toUpperCase() }}</span></a
     >
@@ -201,7 +195,7 @@
     >
   </div>
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData?.data['contact-editorial']?.url }}"
+    <a href="{{ sidebar?.data['contact-editorial']?.url }}"
       ><i class="fa fa-envelope-open"></i>CONTACT
       <span>{{ publication?.title?.toUpperCase() }}</span
       >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
@@ -209,7 +203,7 @@
   </div>
 
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData?.data['terms-of-use']?.url }}"
+    <a href="{{ sidebar?.data['terms-of-use']?.url }}"
       ><i class="fa fa-list"></i>TERMS OF USE</a
     >
   </div>
@@ -217,6 +211,6 @@
   <div class="line-divider-menu"></div>
 
   <div class="s-menu-list-s">
-    <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
+    <a href="{{ sidebar?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
   </div>
 </div>

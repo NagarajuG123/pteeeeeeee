@@ -47,6 +47,7 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
     ColumnsComponent,
     AdvertisementComponent,
     FooterTopComponent,
+    VideoPlayerComponent
   ],
   imports: [
     RouterModule,
@@ -78,10 +79,11 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
     DefaultImagePipe,
     SplitArrayPipe,
     SlickCarouselModule,
-NgxYoutubePlayerModule,
+    NgxYoutubePlayerModule,
     ColumnsComponent,
     VideoPlayerComponent,
     ColumnsComponent,
+    VideoPlayerComponent
   ],
 })
 export class SharedModule {}
