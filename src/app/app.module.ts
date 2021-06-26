@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { MonthlyCoversModule } from './pages/monthly-covers/monthly-covers.module';
 import { AboutUsModule } from './pages/about-us/about-us.module';
 import { BrandModule } from './pages/brand/brand.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { BrandModule } from './pages/brand/brand.module';
     HttpClientModule,
     MonthlyCoversModule,
     AboutUsModule,
-    BrandModule
+    BrandModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
