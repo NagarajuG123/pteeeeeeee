@@ -1,136 +1,38 @@
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  display: block;
-  background: #fff;
-}
-.header-details {
-  margin: 0;
-  padding: 19px 0 0;
+.menu-block a small {
+  font-size: 11px;
+  line-height: 13px;
+  color: #263645;
+  font-weight: 400;
+  font-family: ProximaNova-Light;
+  padding: 6px 0 0;
+  text-transform: uppercase;
 }
 
-.header-left {
-  padding: 3px 0 18px;
+.logo-sub h6 {
+  font-size: 18px;
+  line-height: 15px;
+  letter-spacing: 0.3px;
+  padding: 0 0 2px;
 }
 
-.logo {
-  padding: 0 5px 0 22px;
-}
-.subscribe {
-  padding: 5px 10px 0 17px;
-  h6 {
-    font-size: 18px;
-    line-height: 15px;
-    letter-spacing: 0.3px;
-    padding: 0 0 2px;
-    a {
-      color: #263645;
-    }
-  }
-}
-.sponsored_logo {
-  font-size: 10px;
-  line-height: 18px;
-  color: #a6a8aa;
+#navbarSupportedContent ul li a {
+  font-size: 13px;
+  line-height: 16px;
+  color: #263645;
+  font-weight: 400;
   font-family: ProximaNova-Medium;
-  background: url("/assets/img/logo3.png") right top no-repeat;
-  letter-spacing: 0.2px;
-  padding: 0 18px 0 0;
+  padding: 11px 11px;
+  letter-spacing: 0.3px;
+  color: #000;
 }
-.header-right {
-  padding: 0;
+
+#navbarSupportedContent ul li a:hover {
+  color: #fff;
 }
-.header-nav {
-  display: flex !important;
-  justify-content: flex-end;
+
+#navbarSupportedContent .dropdown:hover a {
+  color: #fff !important;
 }
-nav {
-  padding: 12px 0 !important;
-  ul {
-    li {
-      display: inline-block;
-      float: left;
-      position: relative;
-      a {
-        font-size: 13px;
-        line-height: 16px;
-        color: #263645;
-        font-weight: 400;
-        font-family: ProximaNova-Medium;
-        padding: 11px 16px;
-        letter-spacing: 0.3px;
-        span {
-          display: inline-block;
-          vertical-align: top;
-          padding: 0 0 0 1px;
-          .fa {
-            font-size: 19px;
-            line-height: 15px;
-            color: #ec0044;
-          }
-        }
-      }
-      @media (min-width: 768px) {
-        &:hover {
-          .megamenu {
-            display: block;
-          }
-          > a {
-            background: #233746;
-            color: #ffffff;
-          }
-        }
-      }
-    }
-  }
-}
-.megamenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
+#navbarSupportedContent .dropdown-menu ul {
   width: 288px;
-  background: #6c6d6f;
-  display: none;
-  padding: 20px 15px 2px 19px;
-  z-index: 5;
-  ul {
-    li {
-      display: block;
-      padding: 0 0 18px;
-      a {
-        display: block;
-        font-size: 13px;
-        line-height: 15px;
-        color: #fff;
-        font-weight: 400;
-        font-family: ProximaNova-Medium;
-        letter-spacing: 0.3px;
-      }
-    }
-  }
 }
-.search {
-  padding: 8px 10px 0 13px;
-  a {
-    width: 43px;
-    height: 43px;
-    background: #d0d1d3;
-    border-radius: 100%;
-    .fa {
-      display: block;
-      font-size: 24px;
-      line-height: 43px;
-      color: #fff;
-    }
-  }
-}
-.profile {
-  padding: 0 0 0 5px;
-  figure {
-    height: 75px;
-    overflow: hidden;
-  }
-}
-//sidebar

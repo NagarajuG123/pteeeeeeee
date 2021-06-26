@@ -10,7 +10,6 @@ import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeFeatureComponent } from './home-feature/home-feature.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from '../../_shared/components/carousel/carousel.component';
-import { FooterTopComponent } from './footer-top/footer-top.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { FooterTopComponent } from './footer-top/footer-top.component';
     SpotlightComponent,
     HomeFeatureComponent,
     CarouselComponent,
-    FooterTopComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, NgbModule],
 })
