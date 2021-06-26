@@ -11,6 +11,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
+import { BrowserModule } from '@angular/platform-browser';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -49,7 +50,7 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
     FooterTopComponent,
     VideoPlayerComponent
   ],
-  imports: [
+  imports: [CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
