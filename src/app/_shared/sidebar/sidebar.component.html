@@ -12,22 +12,33 @@
       </figure>
     </a>
   </div>
-  <div class="menu-search">
-    <form>
-      <div class="form-group">
-        <input
-          type="text"
-          formControlName="search_input"
-          class="form-control"
-          [placeholder]="sidebar?.search?.placeholder"
-        />
-        <button type="button">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </div>
-    </form>
+  <div class="s-menu-search">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Search 1851franchise.com"
+    />
   </div>
-  <div class="monthly-covers">
+  <div class="s-menu-list-block">
+    <h4>
+      <i class="fa fa-database"></i
+      ><a routerLink="/monthlycovers">MONTHLY COVERS</a>
+    </h4>
+    <a routerLink="{{ sidebarData?.data['monthly-cover']?.url }}">
+      <img
+        appYoutubeImage
+        src="{{
+          sidebarData?.data['monthly-cover']?.media | defaultImage: 97:127
+        }}"
+        width="100"
+        alt="img27"
+      />
+    </a>
+  </div>
+  <div class="s-menu-list-block">
+    <h4>
+      <i class="fa fa-server"></i>{{ sidebarData?.data?.category?.label }}
+    </h4>
     <ul>
       <li class="d-block">
         <div class="monthly-covers-main">
@@ -155,57 +166,57 @@
       </li>
     </ul>
   </div>
-  <!-- <nav class="d-sm-block d-md-none">
+  <div class="line-divider-menu"></div>
+  <div class="s-menu-list-block">
+    <h4 *ngIf="sidebarData?.data['awards']">
+      <i class="fa fa-trophy"></i>AWARDS
+    </h4>
     <ul>
-      <li
-        *ngFor="let item of header | keyvalue: unsorted"
-        class="has_dd d-block float-none"
-      >
-        <a
-          *ngIf="
-            item.value['type'] != 'logo' &&
-            item.value['type'] != 'monthly-cover' &&
-            !item.value['dropdown'] &&
-            item.value['position'] == 'right'
-          "
-          [href]="item.value['url']"
-          class="text-uppercase"
-        >
-          {{ item.value["title"] }}
-        </a>
-        <a
-          *ngIf="
-            item.value['type'] != 'logo' &&
-            item.value['type'] != 'monthly-cover' &&
-            item.value['dropdown']
-          "
-          href="javascript:void(0);"
-          class="text-uppercase"
-        >
-          {{ item.value["title"] }}
-          <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-        </a>
-        <div
-          *ngIf="
-            item.value['type'] != 'logo' &&
-            item.value['type'] != 'monthly-cover' &&
-            item.value['dropdown']
-          "
-          class="megamenu"
-        >
-          <ul *ngIf="isHeader">
-            <li *ngFor="let brand of item.value['dropdown']">
-              <a
-                href="{{ brand.url }}"
-                [target]="brand['isExternalLink'] ? '_blank' : ''"
-                class="text-uppercase"
-                >{{ brand.title }}</a
-              >
-            </li>
-          </ul>
-        </div>
+      <li *ngFor="let item of sidebarData?.data['awards']">
+        <a routerLink="/frandevplayers2021">{{ item.title }}</a>
       </li>
     </ul>
-    <div class="clearfix"></div>
-  </nav> -->
+    <div class="s-menu-list-s p-0" *ngIf="sidebarData?.data['power-rankings']">
+      <a href="{{ sidebarData?.data['power-rankings']?.url }}"
+        ><i class="fa fa-star"></i>POWER RANKINGS</a
+      >
+    </div>
+  </div>
+  <div class="line-divider-menu"></div>
+  <div class="s-menu-list-s">
+    <a href="{{ sidebarData?.data['about-1851']?.url }}"
+      ><i class="fa fa-question-circle"></i>ABOUT
+      <span>{{ publication?.title?.toUpperCase() }}</span></a
+    >
+  </div>
+  <div class="s-menu-list-s">
+    <a href="home/termsofuse#sponsored"
+      ><i class="fa fa-rss"></i>SPONSORED CONTENT</a
+    >
+  </div>
+  <div class="s-menu-list-s">
+    <a href="about#tellus"
+      ><i class="fa fa fa-rss"></i>ADVERTISE ON
+      <span>{{ publication?.title?.toUpperCase() }}</span></a
+    >
+  </div>
+  <div class="s-menu-list-s">
+    <a href="{{ sidebarData?.data['contact-editorial']?.url }}"
+      ><i class="fa fa-envelope-open"></i>CONTACT
+      <span>{{ publication?.title?.toUpperCase() }}</span
+      >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
+    >
+  </div>
+
+  <div class="s-menu-list-s">
+    <a href="{{ sidebarData?.data['terms-of-use']?.url }}"
+      ><i class="fa fa-list"></i>TERMS OF USE</a
+    >
+  </div>
+
+  <div class="line-divider-menu"></div>
+
+  <div class="s-menu-list-s">
+    <a href="{{ sidebarData?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
+  </div>
 </div>

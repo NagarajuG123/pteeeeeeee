@@ -4,13 +4,12 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  header: any =[];
-  isBrand: Boolean = false;
+  menu: any = [];
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getHeader();
@@ -18,11 +17,8 @@ export class HeaderComponent implements OnInit {
 
   getHeader() {
     this.apiService.getHeader().subscribe((response) => {
-      this.header = response;
+      this.menu = response;
     });
   }
-   openMenu() {
-    $('body').toggleClass('menu-open');
-  }
-
+  openMenu() {}
 }
