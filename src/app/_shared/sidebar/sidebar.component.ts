@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
 
   //Sidebar API
   getSidebar() {
-    this.apiService.getAPI(`${this.slug}/sidebar`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/sidebar`).subscribe((response) => {
       this.sidebar = response.data;
     });
   }
