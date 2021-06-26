@@ -1,0 +1,77 @@
+<div class="header-block navbar-fixed-top col-12 p-0">
+  <div class="container-fluid p-3">
+    <div class="menu-block ">
+      <a class="btn btn-grey d-grid" id="sidebarToggle">
+        <i class="fa fa-bars show"></i>
+        <i class="fa fa-times hide"></i>
+        <small> Menu</small>
+      </a>
+
+    </div>
+    <div class="logo px-4 py-1">
+      <a href="#"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
+      <div class="logo-sub">
+        <div class="logo-sub-s ms-1">
+          <h6>
+            <a href="">Subscribe</a>
+          </h6>
+        </div>
+        <div class="logo-sub-f">
+          <a href="">FRANCHISE NEWS POWERED BY</a>
+        </div>
+
+
+      </div>
+    </div>
+    <div *ngIf="menu['monthly-cover']" class="header-media-img px-5 d-none d-md-block">
+      <a href="menu['monthly-cover'].media.url.conver_url">
+        <img appYoutubeImage src="{{menu['monthly-cover'].media | defaultImage:119:157}}" width="119" height="157"
+          alt="img1">
+      </a>
+    </div>
+    <div class="search-btn d-none d-md-block">
+      <a href=""><i aria-hidden="true" class="fa fa-search"></i></a>
+    </div>
+    <nav class="navbar navbar-expand-lg ps-5 d-none d-md-block">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{ menu["Franchise Brands"]?.title?.toUpperCase() }} <i aria-hidden="true" class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul>
+                <li *ngFor="let item of menu['Franchise Brands']?.dropdown" class="pb-3">
+                  <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''"
+                    class="text-uppercase p-0">{{item.title}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{ menu?.Learn?.title.toUpperCase() }}<i aria-hidden="true" class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul>
+                <li *ngFor="let item of menu?.Learn?.dropdown">
+                  <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''"
+                    class="text-uppercase">{{item.title}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+  </div>
+</div>

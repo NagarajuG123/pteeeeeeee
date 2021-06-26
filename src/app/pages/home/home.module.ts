@@ -19,7 +19,7 @@ import { FooterTopComponent } from './footer-top/footer-top.component';
     SpotlightComponent,
     HomeFeatureComponent,
     CarouselComponent,
-    FooterTopComponent
+    FooterTopComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, NgbModule],
 })

@@ -1,0 +1,104 @@
+@import "mixins";
+
+/* monthlycoverspage style starts here */
+.monthly-coverpage{
+    background: $color1;
+    border-bottom: 1px solid $color22;
+}
+.monthly-coverpage-details{
+    padding: 0 0 90px 0;
+    @include desk-lg-below1{
+        padding: 0 0 30px 0;   
+    }
+    figure{
+        img{
+            display: block;
+            width: 100%;
+        }
+    }
+    ul{
+        box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+    -webkit-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+    -ms-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+    -o-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+    -moz-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+    position: relative;
+        li{
+            // display: none;
+        }
+    }
+}
+.monthly-coverpage-in{
+    padding: 0 0 88px 0;
+    @include desk-lg-below1{
+            padding: 0 0 35px 0;   
+        }
+        @include tablet-landscape1{
+            padding: 0 0 20px 0;   
+        }
+}
+.monthly-coverpage-left{
+    max-width:40.03%;
+    flex: 0 0 40.03%;
+    -webkit-flex:0 0 40.03%;
+    @include tablet-landscape{
+        max-width:100%;
+        flex: 0 0 100%;
+        -webkit-flex:0 0 100%;
+    }
+}
+.monthly-covers-left-content{
+    position: relative;
+    h4{
+        padding: 15px 48px 12px 48px;
+        @include desk-lg-below{
+            padding: 12px 25px;   
+        }
+    }
+}
+.current-issue{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    h4{
+        background: $color8;
+        color: $color1;
+        padding: 15px 29px 12px 23px;
+        font-family: $font_family_2;
+        @include desk-lg-below{
+            padding: 12px 20px 12px 20px;   
+        }
+    }
+}
+.monthly-coverpage-right{
+    max-width:59.97%;
+    flex: 0 0 59.97%;
+    -webkit-flex:0 0 59.97%;
+    @include tablet-landscape{
+        max-width:100%;
+        flex: 0 0 100%;
+        -webkit-flex:0 0 100%;
+    }
+}
+.monthly-covers1{
+    position: relative;
+}
+.monthly-covers-bottom{
+    .monthly-covers1{
+        float: left;
+        display: inline-block;
+        width: 20%;
+        @include tablet-landscape{
+            width: 33.3%;   
+        }
+        @include tablet-landscape1{
+           width: 50%; 
+        }
+        @include mobile-landscape1 {
+            width: 100%;
+            float: none;
+            display: block;
+        }
+    }
+}
+/* monthlycoverspage style ends here */

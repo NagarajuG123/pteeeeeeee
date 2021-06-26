@@ -2,7 +2,7 @@
   <div class="container">
     <div class="footer-menu-block">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4 col-sm-3 col-12 pb-md-none pb-3">
           <div class="footer-logo-l">
             <a href=""><img src="{{ footerData?.logo?.url }}" alt="Logo" /></a>
           </div>
@@ -11,17 +11,17 @@
             <p>Your Number One Source For {{ publication.newsType }}</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5 footer-middle p-3 col-12">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
               <h6>SPOTLIGHT</h6>
-              <ul>
+              <ul class="left-section">
                 <li *ngFor="let spotlight of footerData.spotlight">
-                  <a href="{{ spotlight.url }}">{{ spotlight.title }}</a>
+                  <a href="{{ spotlight.url }}" class="text-capitalize">{{ spotlight.title }}</a>
                 </li>
               </ul>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
               <ul *ngIf="footerData['about-us']">
                 <li *ngIf="footerData['about-us']">
                   <a routerLink="{{ footerData['about-us']['url'] }}"
@@ -29,28 +29,43 @@
                   >
                 </li>
                 <li *ngIf="footerData['contact-editorial']">
-                  <a href="{{ footerData['contact-editorial']['url'] }}"
-                    >CONTACT</a
-                  >
+                  <a href="{{ footerData['contact-editorial']['url'] }}">CONTACT</a>
                 </li>
                 <li *ngIf="footerData['site-map']">
                   <!-- <a href="{{ footerData['site-map']['url'] }}">SITE MAP</a> -->
                   <a routerLink="/sitemap">SITE MAP</a>
                 </li>
                 <li>
+
                   <!-- <a href="{{ footerData['terms-of-use']['url'] }}">TERMS OF USE</a > -->
                     <a routerLink="/termsofuse">TERMS OF USE</a>
+
+                  <a href="{{ footerData['terms-of-use']['url'] }}">TERMS OF USE</a>
+
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <h4>WANT TO LEARN MORE?</h4>
-          <div class="lets-talk-b">
-            <a href="about#tellus">LET’S TALK</a>
+        <div class="col-md-3 col-12 footer-right mt-4">
+          <h5>WANT TO LEARN MORE?</h5>
+          <a href="about#tellus"><span class="d-block text-uppercase text-center">LET’S TALK</span></a>
+          <div class="clearfix"></div>
+          <a href="tel:3125263996">312.526.3996</a>
+          <div class="clearfix"></div>
+          <div class="social-blogs mt-4">
+            <ul class="float-md-end float-start">
+              <li><a class="d-block text-center" target="blank" href="https://www.facebook.com/1851magazine"><i
+                    class="fa fa-facebook"></i></a></li>
+              <li><a class="d-block text-center" target="blank" href="https://www.instagram.com/1851franchise/"><i
+                    class="fa fa-instagram"></i></a></li>
+              <li><a class="d-block text-center" target="blank" href="https://twitter.com/1851Franchise"><i
+                    class="fa fa-twitter"></i></a></li>
+              <li><a class="d-block text-center" target="blank" href="https://www.linkedin.com/company/1851-project"><i
+                    class="fa fa-linkedin"></i></a></li>
+            </ul>
+
           </div>
-          <span>312.526.3996</span>
         </div>
       </div>
     </div>

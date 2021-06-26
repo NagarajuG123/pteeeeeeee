@@ -1,0 +1,17 @@
+.featured-right::-webkit-scrollbar-thumb {
+    background-color: #263645;
+    /* Matches the background color of content-wrapper */
+  }
+  
+  .featured-right:hover::-webkit-scrollbar-thumb {
+    background-color: #4f6477;
+  }
+  
+  .featured-right::-webkit-scrollbar {
+    width: 0.2em;
+  }
+
+  .featured-block .featured-left .readmore-block {
+    background: #b00034;
+    padding: 15px 19px 15px!important;
+}
