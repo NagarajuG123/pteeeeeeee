@@ -1,8 +1,54 @@
-.video-btn .video-maker {
-    position: absolute;
-    left: calc(35% - 45px);
-    top: calc(85% - 45px);
+
+@media only screen and (min-width:768px) and (max-width:1024px) {
+    .featured-right{
+    height: 56.9vh;
+    }
+    .video-maker {
+        position: absolute;
+    left: calc(50% - 35px);
+    top: 18%;
     z-index: 1000;
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
+    }
 }
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+    .featured-right{
+    height: 57.6vh;
+    }
+    .video-maker {
+        position: absolute;
+    left: calc(50% - 35px);
+    top: 14%;
+    z-index: 1000;
+    height: 50px;
+    width: 50px;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    .featured-block .featured-left figure img {
+        width: 100%;
+        height: calc(100vh - 237px);
+        object-fit: cover;
+      }
+
+      .video-maker {
+        position: absolute;
+        left: calc(50% - 35px);
+        top: calc(50% - 165px);
+        z-index: 1000;
+        height: 90px;
+        width: 90px;
+    }
+    
+      .featured-right{
+        height: calc(100vh - 35px);
+      }
+    
+      .featured-block .featured-left{
+        height: 100vh;
+      }
+}
+

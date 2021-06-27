@@ -3,21 +3,15 @@
 .featured-block {
   padding-top: 80px;
   .featured-left,.featured-right{
-    height: 915px;
+   
     overflow: hidden;
   }
   .featured-left {
-    img{
-      width: 100%;
-      height: 713px;
-      object-fit: cover;
-    }
+    
 
 
     .how-to-succeed {
       background-color: $color-red;
-      padding: 25px 0 15px 40px;
-      height: 155px;
       overflow: hidden;
 
       h2 {
@@ -61,9 +55,7 @@
     background-color: $dark-blue;
     overflow: auto;
     overflow-x: hidden;
-    padding-left: 30px;
     .feature-block {
-      margin-top: 50px;
       img {
         padding: 0 10px 0 15px;
       }
