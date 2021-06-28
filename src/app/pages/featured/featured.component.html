@@ -1,64 +1,142 @@
-<div class="featured-block">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8 p-0">
-        <div class="featured-left">
-          <!-- <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" style="height:713px" /> -->
-          <a *ngIf="!isVideo(highlight)">
-            <img appyoutubeimage sizes="(max-width: 576px) 600px,
-          (max-width: 768px) 800px,
-          (max-width: 992px) 600px,
-          (max-width: 1200px) 700px,
-          1300px" src="{{ highlight.media | defaultImage: 1300:730 }}" class="img-fluid" />
-          </a>
-          <a *ngIf="isVideo(highlight)" class="d-block video-btn" data-toggle="modal"
-            data-target="#featured_articles_video_modal" (click)="openVideoPlayer = true">
-            <figure class="m-0">
-              <img appYoutubeImage
-                srcset="{{highlight.media | defaultImage:600:337}} 600w, {{highlight.media | defaultImage:700:393}} 700w, {{highlight.media | defaultImage:800:449}} 800w, {{highlight.media | defaultImage:1300:730}} 1300w"
-                sizes="{{
-                  '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        1300px'
-                }}" src="{{ highlight.media | defaultImage: 1300:730 }}" />
+<div class="empty"></div>
+<div class="banner d-flex trendingbrandbuzz-banner flex-row-reverse monthlydetails-banner" >
+    <div class="banner-right col-md-8 p-0">
+        <a 
+            class="d-block">
+            <figure>
+                <img
+                    appYoutubeImage                
+                    src="{{dynamicData?.data?.media | defaultImage:1023:576}}"
+                    width="1023"
+                    height="576"
+                    alt="monthly-details-banner"
+                >
             </figure>
-            <img class="video-maker" src="assets/img/youtube.svg" data-toggle="modal"
-              data-target="#featured_articles_video_modal" />
-          </a>
-
-          <div>
-            <div class="how-to-succeed">
-              <h2>{{ highlight.title }}</h2>
-              <p>
-                {{ highlight.short_description }}
-              </p>
-            </div>
-            <div class="readmore-block">
-              <a class="">READ MORE <i class="fa fa-chevron-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 p-0">
-        <div class="featured-right">
-          <div class="feature-block">
-            <div class="row mb-3" *ngFor="let item of featuredData?.data?.slice(1)">
-              <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
-                <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                (max-width: 768px) 800px,
-                (max-width: 992px) 600px,
-                (max-width: 1200px) 700px,
-                1300px" src="{{ item.media | defaultImage: 1300:730 }}" class="img-fluid" />
-              </div>
-              <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
-                <p>{{ item.title }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </a>
     </div>
-  </div>
+    <a class="banner-left col-md-4 p-0" href="#">
+        <div class="trendingbrandbuzz-content">
+            <h4 class="text-uppercase text-center d-inline-block" >INDUSTRY INFLUENCERS</h4>
+            <h1>
+                {{dynamicData?.data?.title}}
+            </h1>
+            <p>
+                {{dynamicData?.data?.description}}
+            </p>
+        </div>
+        <a 
+            class="buffalowings-bottom"
+            href="#">
+            <a
+                class="float-right text-uppercase"
+                href="#"
+            >
+                READ MORE
+                <i
+                    class="fa fa-angle-right"
+                    aria-hidden="true"
+                ></i>
+            </a>
+            <div class="clearfix"></div>
+        </a>
+    </a>
+</div>
+
+<div class="main-content">
+    <div class="frannews category-frannews brandbuzz-frannews">
+        <div class="container">
+            <div class="frannews-details col-xl-11 legalplayers-frannews">
+                <div class="frannews-bottom brandbuzz-frannews-bottom">
+                    <ul class="p-0">
+                        <li class="d-block">
+                            <div
+                            class="category-list"
+                            *ngFor="let item of dynamicStories.slice(0,10);let i = index">
+                            <a href="#" class="frannews-bottom-details">
+                                <figure>
+                                    <img
+                                        appYoutubeImage
+                                        src="{{item.media  | defaultImage:259:145}}"
+                                        width="259"
+                                        height="145"
+                                        alt="img5"
+                                    >
+                                </figure>
+                                <div class="socialmedia">
+                                    <p style="-webkit-box-orient: vertical">{{item.title}}</p>
+                                </div>
+                                <div class="sponsored text-center">
+                                    <span class="d-inline-block"> {{ i + 1 }} </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="brand-advertisement category-advertisement">
+        <div class="container">
+            <div class="advertisement col-xl-9">
+                <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+                <div class="clearfix"></div>
+                <div class="advertisement-details">
+                    <a
+                        href="#"
+                        class="d-block"
+                    >
+                        <figure>
+                            <img
+                                src="assets/img/category-img2.jpg"
+                                width="970"
+                                height="90"
+                                alt="img12"
+                            >
+                        </figure>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="frannews category-frannews">
+        <div class="container">
+            <div class="frannews-details col-xl-11 legalplayers-frannews1">
+                <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
+                    <ul class="p-0">
+                        <li class="d-block">
+                            <div
+                            class="category-list"
+                            *ngFor="let item of dynamicStories.slice(10,20); let i = index;">
+                            <a href="#" class="frannews-bottom-details">
+                                <figure>
+                                    <img
+                                        appYoutubeImage
+                                        src="{{item.media  | defaultImage:259:145}}"
+                                        width="259"
+                                        height="145"
+                                        alt="img5"
+                                    >
+                                </figure>
+                                <div class="socialmedia">
+                                    <p style="-webkit-box-orient: vertical">{{item.title}}</p>
+                                </div>
+                                <div class="sponsored text-center">
+                                    <span class="d-inline-block"> {{ i+11 }} </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        </li>  
+                    </ul>
+                    <a class="text-center loadmore-btn d-block" href="javascript:void(0)" id="loadMore">
+                        <i aria-hidden="true" class="fa fa-angle-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
