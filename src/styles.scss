@@ -74,12 +74,23 @@ h5 {
   margin: 0;
 }
 h4 {
-  font-family: "ProximaNova-SemiBold";
-  font-size: 20px;
-  line-height: 22px;
-  font-weight: 400;
-  letter-spacing: 1px;
+  font-size: 20px!important;
+  line-height: 22px!important;
+  color: #263645;
+  font-weight: 400!important;
+  font-family: ProximaNova-SemiBold!important;
+  letter-spacing: 1px!important;
 }
+
+h5 {
+  font-size: 18px!important;
+  line-height: 20px!important;
+  color: #263645!important;
+  font-weight: 400!important;
+  font-family: ProximaNova-Medium!important;
+  letter-spacing: .8px!important;
+}
+
 .float-right {
   float: right !important;
 }
@@ -146,4 +157,17 @@ figure {
   @media (max-width: 1420px) {
     max-width: 100% !important;
   }
+}
+
+
+.text-capitalize-capital{
+ 
+  text-transform: lowercase !important;
+}
+.text-capitalize-capital:first-letter {
+  text-transform: capitalize !important;
+}
+
+.content-padding{  
+    padding: 70px 62px;
 }
