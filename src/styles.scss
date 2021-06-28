@@ -169,5 +169,30 @@ figure {
 }
 
 .content-padding{  
-    padding: 70px 62px;
+  padding: 66px 41px 0 40px;
 }
+
+.owl-prev {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  font-size: 3em !important;
+  top: 29%;
+  margin-left: -49px !important;
+  display: block !important;
+  border: 0px solid black;
+  background: none !important;
+}
+
+.owl-next {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  font-size: 3em !important;
+  top: 29%;
+  right: -40px !important;
+  display: block !important;
+  border: 0px solid black;
+  background: none !important;
+}
+.owl-prev i, .owl-next i { color: #fff;}
