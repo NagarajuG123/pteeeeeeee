@@ -33,6 +33,6 @@ export class SidebarComponent implements OnInit {
   }
 
   closeMenu() {
-    $('body').toggleClass('menu-open');
+    // $('body').toggleClass('menu-open');
   }
 }
