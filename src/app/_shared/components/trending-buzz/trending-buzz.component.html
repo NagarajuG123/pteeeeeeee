@@ -19,28 +19,22 @@
             </div>
           </div>
         </div>
-        <div class="fran-content-block">
-          <ul>
-            <li *ngFor="let trending of trending.data">
-              <img
-                appYoutubeImage
-                srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w"
-                sizes="{{
+        <div class="fran-content-block row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5">
+          <div class="col" *ngFor="let trending of trending.data">
+            <img appYoutubeImage
+              srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w"
+              sizes="{{
                   '(max-width: 576px) 545px,
                     (max-width: 768px) 355px,
                     (max-width: 992px) 300px,
                     210px'
-                }}"
-                src="{{ trending.media | defaultImage: 210:118 }}"
-                alt=""
-                class="img-fluid"
-              />
-              <p>
-                {{ trending.title }}
-              </p>
-              <!-- <span> {{ trending.posted_on }}</span> -->
-            </li>
-          </ul>
+                }}" src="{{ trending.media | defaultImage: 210:118 }}" alt="" class="img-fluid" />
+            <p>
+              {{ trending.title }}
+            </p>
+            <!-- <span> {{ trending.posted_on }}</span> -->
+          </div>
+
         </div>
       </div>
     </div>

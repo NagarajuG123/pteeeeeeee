@@ -11,6 +11,7 @@ import { MonthlyCoversModule } from './pages/monthly-covers/monthly-covers.modul
 import { AboutUsModule } from './pages/about-us/about-us.module';
 import { BrandModule } from './pages/brand/brand.module';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
     MonthlyCoversModule,
     AboutUsModule,
     BrandModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
