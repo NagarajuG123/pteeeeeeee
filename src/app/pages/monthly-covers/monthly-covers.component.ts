@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-monthly-covers',
@@ -44,7 +43,7 @@ export class MonthlyCoversComponent implements OnInit {
     this.cdr.detectChanges();
   }
   closeMenu() {
-    $('.menu-details').hide();
-    $('body').toggleClass('menu-open');
+    // $('.menu-details').hide();
+    // $('body').toggleClass('menu-open');
   }
 }

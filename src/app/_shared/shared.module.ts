@@ -11,7 +11,6 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
-import { BrowserModule } from '@angular/platform-browser';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -28,6 +27,7 @@ import { ColumnsComponent } from './components/columns/columns.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 // Modals Components
 
@@ -60,7 +60,8 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    CarouselModule,
   ],
   exports: [
     CommonModule,
@@ -84,7 +85,8 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
     ColumnsComponent,
     VideoPlayerComponent,
     ColumnsComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    CarouselModule,
   ],
 })
 export class SharedModule {}
