@@ -18,7 +18,7 @@ export class AboutUsComponent implements OnInit {
 
   getData() {
     this.apiService.getAPI(`1851/about-us`).subscribe((response ) =>{
-      this.data = response;
+      this.data = response.data;
     });
   }
   bannerImageLoad() {
