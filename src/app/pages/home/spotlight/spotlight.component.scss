@@ -1,6 +1,10 @@
 .tab-content {
   background: #263645;
-  padding: 4em 0 4em 0;
+  padding: 33px 96px 0 73px;
+}
+
+.spotlight-card h5{
+  color: #fff!important;
 }
 
 .bg-grey {
@@ -116,4 +120,8 @@
 .accordion-button:focus {
   border-color: none;
   box-shadow: none;
+}
+
+.spotlight-links-padding {
+  padding: 33px 96px 0 105px;
 }

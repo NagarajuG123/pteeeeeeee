@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 p-0">
-        <div class="featured-left position-relative">
+        <div class="featured-left position-relative" #getHeight>
           <img class="video-maker" src="assets/img/youtube.svg" data-toggle="modal"
             data-target="#featured_articles_video_modal" />
           <!-- <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" style="height:713px" /> -->
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="col-md-4 p-0">
-        <div class="featured-right">
+        <div class="featured-right" [style.height.px]="getHeight.offsetHeight">
           <div class="feature-block px-2 mt-4">
             <div class="row mb-3" *ngFor="let item of featuredData?.data?.slice(1)">
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">

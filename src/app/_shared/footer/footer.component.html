@@ -1,5 +1,5 @@
 <footer>
-  <div class="container">
+  <div class="container-xl content-padding">
     <div class="footer-menu-block">
       <div class="row">
         <div class="col-md-4 col-sm-3 col-12 pb-md-none pb-3">
@@ -17,16 +17,14 @@
               <h6>SPOTLIGHT</h6>
               <ul class="left-section">
                 <li *ngFor="let spotlight of footerData.spotlight">
-                  <a href="{{ spotlight.url }}" class="text-capitalize">{{ spotlight.title }}</a>
+                  <a href="{{ spotlight.url }}" class="text-capitalize-capital">{{ spotlight.title }}</a>
                 </li>
               </ul>
             </div>
             <div class="col-md-6 col-6">
               <ul *ngIf="footerData['about-us']">
                 <li *ngIf="footerData['about-us']">
-                  <a routerLink="{{ footerData['about-us']['url'] }}"
-                    >ABOUT US</a
-                  >
+                  <a routerLink="{{ footerData['about-us']['url'] }}">ABOUT US</a>
                 </li>
                 <li *ngIf="footerData['contact-editorial']">
                   <a href="{{ footerData['contact-editorial']['url'] }}">CONTACT</a>
@@ -36,12 +34,7 @@
                   <a routerLink="/sitemap">SITE MAP</a>
                 </li>
                 <li>
-
-                  <!-- <a href="{{ footerData['terms-of-use']['url'] }}">TERMS OF USE</a > -->
-                    <a routerLink="/termsofuse">TERMS OF USE</a>
-
                   <a href="{{ footerData['terms-of-use']['url'] }}">TERMS OF USE</a>
-
                 </li>
               </ul>
             </div>
@@ -69,5 +62,13 @@
         </div>
       </div>
     </div>
+    <div class="footer-bottom col-12 mx-auto">
+      <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+        <div class="form-group d-block" data-target="#footerSearchModal" data-toggle="modal"><input class="form-control"
+            type="text" placeholder="Search 1851franchise.com"><button class="d-block text-center" type="button"><i
+              aria-hidden="true" class="fa fa-search"></i></button></div>
+      </form>
+    </div>
   </div>
+
 </footer>

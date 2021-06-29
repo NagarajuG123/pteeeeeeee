@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,PLATFORM_ID,Inject } from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -6,7 +6,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
   @Input() type = '';
@@ -16,34 +16,40 @@ export class CarouselComponent implements OnInit {
   list: any = [];
   isBrowser: boolean;
   openVideoPlayer = false;
-  url:string = '';
-  slideConfig = {"slidesToShow": 3, "slidesToScroll": 1};
- customOptions: OwlOptions = {
+  url: string = '';
+  slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
+  customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
     dots: false,
+    margin: 10,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+    ],
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       400: {
-        items: 2
+        items: 2,
       },
       740: {
-        items: 3
+        items: 3,
       },
       940: {
-        items: 4
-      }
+        items: 3,
+      },
     },
-    nav: true
-  }
-  constructor(private apiService: ApiService,
-  @Inject(PLATFORM_ID) platformId: Object,) {
+    nav: true,
+  };
+  constructor(
+    private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -67,13 +73,12 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    this.apiService.getAPI(apiUrl).subscribe((response ) =>{
+    this.apiService.getAPI(apiUrl).subscribe((response) => {
       this.list = response.data;
     });
   }
 
-  
-   goReadMore(item:any) {
+  goReadMore(item: any) {
     let type_slug = '',
       brand_slug = '';
     switch (this.type) {
@@ -93,7 +98,7 @@ export class CarouselComponent implements OnInit {
       brand_slug = `${item.brand.slug}/`;
     }
     return `${brand_slug}${item.slug}`;
-   }
+  }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
     this.url = url;

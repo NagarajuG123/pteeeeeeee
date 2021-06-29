@@ -1,5 +1,6 @@
 .trending {
   background: #263645;
+    height: 444px;
 }
 .trending-details {
   padding: 42px 0 0;
@@ -189,3 +190,23 @@ img {
     background: #ec0044;
   }
 }
+.owl-prev {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  margin-left: -20px;
+  display: block !important;
+  border:0px solid black;
+}
+
+.owl-next {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  right: -25px!important;
+  display: block !important;
+  border:0px solid black;
+}
+.owl-prev i, .owl-next i {transform : scale(1,6); color: #ccc;}
