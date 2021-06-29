@@ -74,21 +74,21 @@ h5 {
   margin: 0;
 }
 h4 {
-  font-size: 20px!important;
-  line-height: 22px!important;
+  font-size: 20px !important;
+  line-height: 22px !important;
   color: #263645;
-  font-weight: 400!important;
-  font-family: ProximaNova-SemiBold!important;
-  letter-spacing: 1px!important;
+  font-weight: 400 !important;
+  font-family: ProximaNova-SemiBold !important;
+  letter-spacing: 1px !important;
 }
 
 h5 {
-  font-size: 18px!important;
-  line-height: 20px!important;
-  color: #263645!important;
-  font-weight: 400!important;
-  font-family: ProximaNova-Medium!important;
-  letter-spacing: .8px!important;
+  font-size: 18px !important;
+  line-height: 20px !important;
+  color: #263645 !important;
+  font-weight: 400 !important;
+  font-family: ProximaNova-Medium !important;
+  letter-spacing: 0.8px !important;
 }
 
 .float-right {
@@ -108,12 +108,6 @@ h5 {
 }
 .fa {
   color: #ec0044;
-}
-figure {
-  line-height: 0;
-  display: block;
-  margin: 0;
-  padding: 0;
 }
 .menu-details {
   position: fixed;
@@ -158,17 +152,21 @@ figure {
     max-width: 100% !important;
   }
 }
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
 
-
-.text-capitalize-capital{
- 
+.text-capitalize-capital {
   text-transform: lowercase !important;
 }
 .text-capitalize-capital:first-letter {
   text-transform: capitalize !important;
 }
 
-.content-padding{  
+.content-padding {
   padding: 66px 41px 0 40px;
 }
 
@@ -195,4 +193,7 @@ figure {
   border: 0px solid black;
   background: none !important;
 }
-.owl-prev i, .owl-next i { color: #fff;}
+.owl-prev i,
+.owl-next i {
+  color: #fff;
+}
