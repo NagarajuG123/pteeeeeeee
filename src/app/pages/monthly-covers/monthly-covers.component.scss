@@ -1,5 +1,8 @@
 @import "src/assets/scss/mixins.scss";
 /* monthlycoverspage style starts here */
+.top-space {
+  padding-top: 80px;
+}
 .monthly-coverpage {
   background: $color1;
   border-bottom: 1px solid $color22;
