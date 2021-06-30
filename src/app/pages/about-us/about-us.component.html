@@ -4,12 +4,9 @@
     <app-banner [data]="data" (imageLoad)="bannerImageLoad()"> </app-banner>
     <div class="main-content">
       <app-franchise [data]="data"></app-franchise>
-      <!-- <app-publicatio-main
-      [contents]="info['contents']"
-      (imageLoaded)="mainImageLoad()"
-    >
-    </app-publicatio-main>
-    <div #tellus id="tellus">
+      <app-publication [data]="data" (imageLoaded)="mainImageLoad()">
+      </app-publication>
+      <!-- <div #tellus id="tellus">
       <app-partner-main [demo]="info['demo']"></app-partner-main>
     </div> -->
     </div>
