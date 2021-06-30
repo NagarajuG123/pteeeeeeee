@@ -14,29 +14,17 @@
               </li>
             </ul>
           </div>
-          <div class="frannews-top-right col-lg-3 col-md-2"><a class="float-right" href="">READ
-              MORE <i aria-hidden="true" class="fa fa-angle-right"></i></a>
+          <div class="frannews-top-right col-lg-3 col-md-2">
+            <a class="float-right" href=""
+              >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
+            ></a>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="fran-content-block row row-cols-md-4 row-cols-md-5 row-cols-sm-3 row-cols-1">
-          <div class="col" *ngFor="let news of newsData.data">
-            <img appYoutubeImage
-              srcset="{{news.media | defaultImage:545:305}} 545w, {{news.media | defaultImage:355:199}} 355w, {{news.media | defaultImage:300:168}} 300w, {{news.media | defaultImage:210:118}} 210w"
-              sizes="{{'(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'}}" src="{{newsData.media | defaultImage:210:118}}" alt="img5" class="img-fluid" />
-
-            <div class="socialmedia">
-              <p>
-                {{ news.title }}
-              </p>
-            </div>
-
-          </div>
-
-        </div>
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="newsData.data"
+        ></app-five-column>
       </div>
     </div>
   </div>
