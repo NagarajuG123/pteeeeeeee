@@ -109,10 +109,17 @@ h6 {
     letter-spacing: .7px;
 }
 
-.footer-bottom{
-padding: 89px 0 15px;
+.footer-bottom {
+    padding: 25px 0 0;
 }
-
+.footer-details {
+    padding: 70px 62px;
+}
+@media (max-width: 1024px){
+.footer-bottom {
+    padding: 25px 0 0;
+}
+}
 .footer-bottom .form-group {
     position: relative;
     width: 328px;
