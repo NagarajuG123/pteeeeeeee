@@ -19,15 +19,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { TrendingComponent } from './components/trending/trending.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { ColumnsComponent } from './components/columns/columns.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FeaturedComponent } from './components/featured/featured.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 // Modals Components
 
@@ -35,20 +35,19 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
+    FeaturedComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     ErrorComponent,
-    TrendingComponent,
-    ColumnsComponent,
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
     SplitArrayPipe,
-    ColumnsComponent,
     AdvertisementComponent,
     FooterTopComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    CarouselComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -69,24 +68,22 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ReactiveFormsModule,
     VgCoreModule,
     NgbModule,
-    HeaderComponent,
-    FooterComponent,
-    FooterTopComponent,
-    SidebarComponent,
-    TrendingComponent,
-    AdvertisementComponent,
-    ColumnsComponent,
-    NewsComponent,
-    TrendingBuzzComponent,
+    CarouselModule,
     DefaultImagePipe,
     SplitArrayPipe,
     SlickCarouselModule,
     NgxYoutubePlayerModule,
-    ColumnsComponent,
+    HeaderComponent,
+    FooterComponent,
+    FooterTopComponent,
+    SidebarComponent,
+    AdvertisementComponent,
+    NewsComponent,
+    TrendingBuzzComponent,
     VideoPlayerComponent,
-    ColumnsComponent,
     VideoPlayerComponent,
-    CarouselModule,
+    FeaturedComponent,
+    CarouselComponent
   ],
 })
 export class SharedModule {}

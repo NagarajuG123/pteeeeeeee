@@ -42,7 +42,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
-    path: 'brand',
+    path: ':brand_slug',
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
   {
