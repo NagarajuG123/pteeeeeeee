@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class BrandComponent implements OnInit {
   brandDetails: any;
   constructor(
     private route: ActivatedRoute,
+    private router:Router,
     private apiService: ApiService
   ) { }
 
@@ -20,8 +21,10 @@ export class BrandComponent implements OnInit {
       .subscribe(params => {
         this.slug = params.get('brand_slug');
         this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe((response) => {
-          console.log(response)
           this.brandDetails = response;
+          if (response.status === 404) {
+            this.router.navigateByUrl('/404');
+          }
     });
       });
   }

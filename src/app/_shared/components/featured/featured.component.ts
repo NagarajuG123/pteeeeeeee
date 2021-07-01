@@ -16,7 +16,6 @@ export class FeaturedComponent implements OnInit {
   constructor( private apiService: ApiService) { }
 
   ngOnInit(): void {
-    console.log(this.slug)
     this.getFeatured();
   }
 
