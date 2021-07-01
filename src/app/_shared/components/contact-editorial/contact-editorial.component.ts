@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ValidationService } from 'src/app/_core/services/validation.service';
 
 @Component({
   selector: 'app-contact-editorial',
@@ -34,7 +33,6 @@ export class ContactEditorialComponent implements OnInit {
     businessExecutiveLeadership: [''],
     businessNonExecutiveLeadership: [''],
     other: [''],
-    signUpNewsletter: ['', Validators.compose([Validators.required, ValidationService.acceptValidator])],
   });}
 
   ngOnInit(): void {
@@ -47,47 +45,7 @@ export class ContactEditorialComponent implements OnInit {
     });
   }
 
-  toggleCurrent(e: { target: { checked: any; }; }) {
-    if (!e.target.checked) {
-      this.contactForm.controls['currentFranchisee'].setValue('');
-      this.contactForm.controls['currentFranchiseeOwnsUp10units'].setValue('');
-      this.contactForm.controls['currentFranchiseeOwns10Plusunits'].setValue('');
-    }
-    return;
-  }
-
-  toggleProspective(e: { target: { checked: any; }; }) {
-    if (!e.target.checked) {
-      this.contactForm.controls['prospectiveFranchisee'].setValue('');
-      this.contactForm.controls['prospectiveFranchiseeUnder6Months'].setValue('');
-      this.contactForm.controls['prospectiveFranchiseeOver6Months'].setValue('');
-    }
-    return;
-  }
-
-  toggleExecutive(e: { target: { checked: any; }; }) {
-    if (!e.target.checked) {
-      this.contactForm.controls['franchiseExecutive'].setValue('');
-      this.contactForm.controls['franchiseExecutiveLeadership'].setValue('');
-      this.contactForm.controls['franchiseNonExecutiveLeadership'].setValue('');
-    }
-    return;
-  }
-
-  toggleExecutive1(e: { target: { checked: any; }; }) {
-    if (!e.target.checked) {
-      this.contactForm.controls['businessExecutive'].setValue('');
-      this.contactForm.controls['businessExecutiveLeadership'].setValue('');
-      this.contactForm.controls['businessNonExecutiveLeadership'].setValue('');
-    }
-    return;
-  }
-  toggleOther(e: { target: { checked: any; }; }) {
-    if (!e.target.checked) {
-      this.contactForm.controls['other'].setValue('');
-    }
-    return;
-  }
+  
   onContactSubmit(contactForm: FormGroup) {
     this.submitErrMsg = '';
     this.submitSuccessMsg = '';

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { FiveColumn } from 'src/app/_core/models/FiveColumn';
 
 @Component({
   selector: 'app-termsofuse-banner',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
   styleUrls: ['./termsofuse-banner.component.scss']
 })
 export class TermsofuseBannerComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: FiveColumn[] = [];
   @Input() title: string | undefined;
 
   imgURL = 'assets/img/subscribepage-banner.jpg';

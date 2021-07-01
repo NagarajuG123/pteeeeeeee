@@ -19,11 +19,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { TrendingComponent } from './components/trending/trending.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { ColumnsComponent } from './components/columns/columns.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 
@@ -44,8 +42,6 @@ import { FeaturedComponent } from './components/featured/featured.component';
     FooterComponent,
     SidebarComponent,
     ErrorComponent,
-    TrendingComponent,
-    ColumnsComponent,
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
@@ -82,7 +78,6 @@ import { FeaturedComponent } from './components/featured/featured.component';
     FooterComponent,
     FooterTopComponent,
     SidebarComponent,
-    TrendingComponent,
     AdvertisementComponent,
     NewsComponent,
     TrendingBuzzComponent,
@@ -90,9 +85,7 @@ import { FeaturedComponent } from './components/featured/featured.component';
     SplitArrayPipe,
     SlickCarouselModule,
     NgxYoutubePlayerModule,
-    ColumnsComponent,
     VideoPlayerComponent,
-    ColumnsComponent,
     VideoPlayerComponent,
     CarouselModule,
     TermsofuseBannerComponent,
