@@ -1,7 +1,17 @@
 .trending {
   background: #263645;
-    height: 444px;
+  
 }
+
+.trending.columns{
+  padding-bottom: 10px;
+}
+
+.main-videos .trending-details{
+  padding: 49px 0 48px;
+}
+
+
 .trending-details {
   padding: 42px 0 0;
   .frannews-top {

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrendingComponent } from './trending.component';
+import { FiveColumnComponent } from './five-column.component';
 
-describe('TrendingComponent', () => {
-  let component: TrendingComponent;
-  let fixture: ComponentFixture<TrendingComponent>;
+describe('FiveColumnComponent', () => {
+  let component: FiveColumnComponent;
+  let fixture: ComponentFixture<FiveColumnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrendingComponent ]
+      declarations: [ FiveColumnComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrendingComponent);
+    fixture = TestBed.createComponent(FiveColumnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

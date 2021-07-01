@@ -11,6 +11,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -19,15 +20,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { TrendingComponent } from './components/trending/trending.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { ColumnsComponent } from './components/columns/columns.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
-
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FiveColumnComponent } from './components/five-column/five-column.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FeaturedComponent } from './components/featured/featured.component';
 
 // Modals Components
 
@@ -35,20 +35,21 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
+    FeaturedComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     ErrorComponent,
-    TrendingComponent,
-    ColumnsComponent,
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
     SplitArrayPipe,
-    ColumnsComponent,
     AdvertisementComponent,
     FooterTopComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    FiveColumnComponent,
+    CarouselComponent,
+    FeaturedComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -69,24 +70,24 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ReactiveFormsModule,
     VgCoreModule,
     NgbModule,
-    HeaderComponent,
-    FooterComponent,
-    FooterTopComponent,
-    SidebarComponent,
-    TrendingComponent,
-    AdvertisementComponent,
-    ColumnsComponent,
-    NewsComponent,
-    TrendingBuzzComponent,
+    CarouselModule,
     DefaultImagePipe,
     SplitArrayPipe,
     SlickCarouselModule,
     NgxYoutubePlayerModule,
-    ColumnsComponent,
+    HeaderComponent,
+    FooterComponent,
+    FooterTopComponent,
+    SidebarComponent,
+    AdvertisementComponent,
+    NewsComponent,
+    TrendingBuzzComponent,
     VideoPlayerComponent,
-    ColumnsComponent,
     VideoPlayerComponent,
     CarouselModule,
+    CarouselComponent,
+    FiveColumnComponent,
+    FeaturedComponent
   ],
 })
 export class SharedModule {}

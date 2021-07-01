@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -7,10 +7,11 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent implements OnInit {
+    @Input() slug = '1851';
+
   featuredData: any = [];
   openVideoPlayer = false;
   highlight: any =[];
-  slug: string = '1851';
 
   constructor( private apiService: ApiService) { }
 
