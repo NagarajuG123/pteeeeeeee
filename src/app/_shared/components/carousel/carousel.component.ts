@@ -79,25 +79,25 @@ export class CarouselComponent implements OnInit {
   }
 
   goReadMore(item: any) {
-    let type_slug = '',
-      brand_slug = '';
+    let typeSlug = '',
+      brandSlug = '';
     switch (this.type) {
       case 'trending':
-        type_slug = 'trending';
+        typeSlug = 'trending';
         break;
       case 'columns':
-        type_slug = 'columns';
+        typeSlug = 'columns';
         break;
       case 'main-videos':
-        type_slug = 'main-videos';
+        typeSlug = 'main-videos';
         break;
       default:
         break;
     }
     if (typeof item.brand !== 'undefined' && item.brand.slug !== '1851') {
-      brand_slug = `${item.brand.slug}/`;
+      brandSlug = `${item.brand.slug}/`;
     }
-    return `${brand_slug}${item.slug}`;
+    return `${brandSlug}${item.slug}`;
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
