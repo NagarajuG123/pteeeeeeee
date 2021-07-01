@@ -9,6 +9,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class HomeComponent implements OnInit {
   publication: any = [];
+  slug: string = '1851';
+
   constructor(
     private metaService: MetaService,
     private apiService: ApiService

@@ -11,6 +11,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -24,10 +25,9 @@ import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
-
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { FeaturedComponent } from './components/featured/featured.component';
+import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { FeaturedComponent } from './components/featured/featured.component';
 
 // Modals Components
 
@@ -47,7 +47,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     AdvertisementComponent,
     FooterTopComponent,
     VideoPlayerComponent,
-    CarouselComponent
+    FiveColumnComponent,
+    CarouselComponent,
+    FeaturedComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -82,8 +84,10 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     TrendingBuzzComponent,
     VideoPlayerComponent,
     VideoPlayerComponent,
-    FeaturedComponent,
-    CarouselComponent
+    CarouselModule,
+    CarouselComponent,
+    FiveColumnComponent,
+    FeaturedComponent
   ],
 })
 export class SharedModule {}
