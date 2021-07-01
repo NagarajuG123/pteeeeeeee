@@ -63,6 +63,7 @@ import { FeaturedComponent } from './components/featured/featured.component';
     CarouselModule,
   ],
   exports: [
+    RouterModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
