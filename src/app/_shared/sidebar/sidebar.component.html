@@ -1,4 +1,9 @@
-<div class="menu-details">
+<!-- Uncomment this if you want to close menu bar on click outside menu -->
+<!-- <div
+  [ngClass]="common.showmenu ? 'closeMenu' : ''"
+  (click)="common.toggle()"
+></div> -->
+<div class="menu-details" [ngClass]="common.showmenu ? 'show' : ''">
   <div class="menu-logo text-center">
     <a href="/">
       <figure>
@@ -12,205 +17,113 @@
       </figure>
     </a>
   </div>
-  <div class="s-menu-search">
+  <div class="input-group mb-3 menu-search">
     <input
-      class="form-control"
       type="text"
+      class="form-control"
       placeholder="Search 1851franchise.com"
     />
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+      <i class="fa fa-search"></i>
+    </button>
   </div>
-  <div class="s-menu-list-block">
-    <h4>
-      <i class="fa fa-database"></i
-      ><a routerLink="/monthlycovers">MONTHLY COVERS</a>
-    </h4>
-    <a routerLink="{{ sidebar['monthly-cover']?.url }}">
-      <img
-        appYoutubeImage
-        src="{{ sidebar['monthly-cover']?.media | defaultImage: 97:127 }}"
-        width="100"
-        alt="img27"
-      />
-    </a>
-  </div>
-  <div class="s-menu-list-block">
-    <h4><i class="fa fa-server"></i>{{ sidebar?.category?.label }}</h4>
-    <ul>
-      <li class="d-block">
-        <div class="monthly-covers-main">
-          <a routerLink="/monthlycovers">
-            <figure>
-              <i class="fa fa-database"></i>
-            </figure>
-            <strong>MONTHLY COVERS</strong>
+
+  <ul class="menuList">
+    <li>
+      <i class="fa fa-database"></i>
+      <strong><a routerLink="/monthlycovers">MONTHLY COVERS</a></strong>
+      <ul class="sublist">
+        <li>
+          <a routerLink="{{ sidebar['monthly-cover']?.url }}">
+            <img
+              appYoutubeImage
+              src="{{ sidebar['monthly-cover']?.media | defaultImage: 97:127 }}"
+              width="100"
+              alt="img27"
+            />
           </a>
-          <div class="monthly-covers-img">
-            <a routerLink="{{ sidebar['monthly-cover']?.url }}">
-              <figure>
-                <img
-                  appYoutubeImage
-                  src="{{
-                    sidebar['monthly-cover']?.media | defaultImage: 97:127
-                  }}"
-                  width="97"
-                  height="127"
-                  alt="img27"
-                />
-              </figure>
-            </a>
-          </div>
-        </div>
-        <div class="monthly-covers-main">
-          <a class="cursor-default" href="javascript:;">
-            <figure>
-              <i class="fa fa-server"></i>
-            </figure>
-            <strong>{{ sidebar?.category?.label }}</strong>
-          </a>
-          <div class="monthly-covers-details">
-            <p *ngFor="let item of sidebar?.category?.items">
-              <a routerLink="{{ item?.url }}">{{ item.title }}</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li *ngIf="sidebar?.awards" class="d-block">
-        <div class="monthly-covers-main">
-          <a class="cursor-default" href="javascript:;">
-            <figure>
-              <i class="fa fa-trophy"></i>
-            </figure>
-            <strong>AWARDS</strong>
-          </a>
-          <div class="monthly-covers-details">
-            <p *ngFor="let item of sidebar?.awards">
-              <a *ngIf="item" routerLink="{{ item }}">{{ item.title }}</a>
-            </p>
-          </div>
-        </div>
-        <div class="monthly-covers-main" *ngIf="sidebar['power-rankings']">
-          <a routerLink="{{ sidebar['power-rankings'].url }}">
-            <figure>
-              <i class="fa fa-star"></i>
-            </figure>
-            <strong>POWER RANKINGS</strong>
-          </a>
-        </div>
-      </li>
-      <li class="d-block">
-        <div class="monthly-covers-main">
-          <a routerLink="{{ sidebar['about-1851']?.url }}">
-            <figure>
-              <i class="fa fa-question-circle"></i>
-            </figure>
-            <strong
-              >ABOUT
-              <span>{{ publication?.title?.toUpperCase() }}</span></strong
-            >
-          </a>
-        </div>
-        <div class="monthly-covers-main">
-          <a routerLink="/termsofuse#sponsored" (click)="closeMenu()">
-            <figure>
-              <i class="fa fa-usd"></i>
-            </figure>
-            <strong>SPONSORED CONTENT</strong>
-          </a>
-        </div>
-        <div class="monthly-covers-main">
-          <a routerLink="about#tellus">
-            <figure>
-              <i class="fa fa-rss"></i>
-            </figure>
-            <strong
-              >ADVERTISE ON
-              <span>{{ publication?.title?.toUpperCase() }}</span></strong
-            >
-          </a>
-        </div>
-        <div class="monthly-covers-main">
-          <a href="{{ sidebar['contact-editorial']?.url }}">
-            <figure>
-              <i class="fa fa-envelope-open"></i>
-            </figure>
-            <strong
-              >CONTACT <span>{{ publication?.title?.toUpperCase() }}</span
-              >&nbsp;<span *ngIf="publication?.id != 'EE'"
-                >EDITORIAL</span
-              ></strong
-            >
-          </a>
-        </div>
-        <div class="monthly-covers-main">
-          <a routerLink="{{ sidebar['terms-of-use']?.url }}">
-            <figure>
-              <i class="fa fa-list"></i>
-            </figure>
-            <strong>TERMS OF USE</strong>
-          </a>
-        </div>
-      </li>
-      <li class="d-block">
-        <div class="monthly-covers-main">
-          <a href="{{ sidebar?.login?.url }}">
-            <figure>
-              <i class="fa fa-home"></i>
-            </figure>
-            <strong>LOGIN</strong>
-          </a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="line-divider-menu"></div>
-  <div class="s-menu-list-block">
-    <h4 *ngIf="sidebar['awards']"><i class="fa fa-trophy"></i>AWARDS</h4>
-    <ul>
-      <li *ngFor="let item of sidebar['awards']">
-        <a routerLink="/frandevplayers2021">{{ item.title }}</a>
-      </li>
-    </ul>
-    <div class="s-menu-list-s p-0" *ngIf="sidebar['power-rankings']">
-      <a href="{{ sidebar['power-rankings']?.url }}"
-        ><i class="fa fa-star"></i>POWER RANKINGS</a
+        </li>
+      </ul>
+    </li>
+    <li>&nbsp;</li>
+    <li>
+      <i class="fa fa-server"></i>
+      <strong>{{ sidebar?.category?.label }}</strong>
+      <ul class="sublist">
+        <li *ngFor="let item of sidebar?.category?.items">
+          <a routerLink="{{ item?.url }}">{{ item.title }}</a>
+        </li>
+      </ul>
+    </li>
+    <li><hr /></li>
+
+    <li>
+      <i class="fa fa-trophy"></i>
+      <strong>AWARDS</strong>
+      <ul class="sublist">
+        <li *ngFor="let item of sidebar?.awards">
+          <a *ngIf="item" routerLink="{{ item?.url }}">{{ item.title }}</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <i class="fa fa-star"></i>
+      <strong
+        ><a routerLink="{{ sidebar['power-rankings'].url }}"
+          >POWER RANKINGS</a
+        ></strong
       >
-    </div>
-  </div>
-  <div class="line-divider-menu"></div>
-  <div class="s-menu-list-s">
-    <a href="{{ sidebar['about-1851']?.url }}"
-      ><i class="fa fa-question-circle"></i>ABOUT
-      <span>{{ publication?.title?.toUpperCase() }}</span></a
-    >
-  </div>
-  <div class="s-menu-list-s">
-    <a href="home/termsofuse#sponsored"
-      ><i class="fa fa-rss"></i>SPONSORED CONTENT</a
-    >
-  </div>
-  <div class="s-menu-list-s">
-    <a href="about#tellus"
-      ><i class="fa fa fa-rss"></i>ADVERTISE ON
-      <span>{{ publication?.title?.toUpperCase() }}</span></a
-    >
-  </div>
-  <div class="s-menu-list-s">
-    <a href="{{ sidebar['contact-editorial']?.url }}"
-      ><i class="fa fa-envelope-open"></i>CONTACT
-      <span>{{ publication?.title?.toUpperCase() }}</span
-      >&nbsp;<span *ngIf="publication.id !== 'EE'">EDITORIAL</span></a
-    >
-  </div>
+    </li>
+    <li><hr /></li>
 
-  <div class="s-menu-list-s">
-    <a href="{{ sidebar['terms-of-use']?.url }}"
-      ><i class="fa fa-list"></i>TERMS OF USE</a
-    >
-  </div>
+    <li>
+      <i class="fa fa-question-circle"></i>
+      <strong
+        ><a routerLink="{{ sidebar['about-1851']?.url }}">
+          ABOUT
+          <span>{{ publication?.title?.toUpperCase() }}</span>
+        </a></strong
+      >
+    </li>
+    <li>
+      <i class="fa fa-usd" aria-hidden="true"></i>
+      <strong
+        ><a routerLink="/termsofuse#sponsored" (click)="closeMenu()">
+          SPONSORED CONTENT
+        </a></strong
+      >
+    </li>
+    <li>
+      <i class="fa fa-rss"></i>
+      <strong
+        ><a routerLink="about#tellus">
+          ADVERTISE ON
+          <span>{{ publication?.title?.toUpperCase() }}</span>
+        </a></strong
+      >
+    </li>
+    <li>
+      <i class="fa fa-envelope-open"></i>
+      <strong
+        ><a href="{{ sidebar['contact-editorial']?.url }}">
+          CONTACT <span>{{ publication?.title?.toUpperCase() }}</span
+          >&nbsp;<span *ngIf="publication?.id != 'EE'">EDITORIAL</span>
+        </a></strong
+      >
+    </li>
+    <li>
+      <i class="fa fa-list"></i>
+      <strong
+        ><a routerLink="{{ sidebar['terms-of-use']?.url }}">
+          TERMS OF USE
+        </a></strong
+      >
+    </li>
 
-  <div class="line-divider-menu"></div>
-
-  <div class="s-menu-list-s">
-    <a href="{{ sidebar?.login?.url }}"><i class="fa fa-home"></i>LOGIN</a>
-  </div>
+    <li><hr /></li>
+    <li>
+      <i class="fa fa-home"></i>
+      <strong><a href="{{ sidebar?.login?.url }}"> LOGIN </a></strong>
+    </li>
+  </ul>
 </div>

@@ -1,3 +1,6 @@
+.navbar.navbar-expand-lg.navbar-light {
+  transition: all 0.4s ease;
+}
 .menu-block a small {
   font-size: 11px;
   line-height: 13px;
@@ -36,7 +39,7 @@
   color: #fff;
 }
 
-.navbar-nav li:hover>a {
+.navbar-nav li:hover > a {
   background: #233746;
   color: #fff;
 }
@@ -58,8 +61,8 @@
   line-height: 18px;
   color: #a6a8aa;
   font-family: ProximaNova-Medium;
-  background: url('../../../assets/img/logo3.png') right top no-repeat;
-  letter-spacing: .2px;
+  background: url("../../../assets/img/logo3.png") right top no-repeat;
+  letter-spacing: 0.2px;
   padding: 0 18px 0 0;
 }
 

@@ -1,13 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3">
   <div class="container-fluid">
     <div class="menu-block me-1 me-lg-3">
-      <a class="btn btn-grey d-grid" id="sidebarToggle">
-        <i class="fa fa-bars show"></i>
-        <i class="fa fa-times hide"></i>
+      <a
+        class="btn btn-grey d-grid"
+        id="sidebarToggle"
+        (click)="common.toggle()"
+      >
+        <i class="fa" [ngClass]="common.showmenu ? 'fa-times' : 'fa-bars'"></i>
         <small> Menu</small>
       </a>
     </div>
-    <a href="#" class="me-2 me-lg-4"><img src="{{ menu?.logo?.url }}" alt="Logo" /></a>
+    <a href="#" class="me-2 me-lg-4"
+      ><img src="{{ menu?.logo?.url }}" alt="Logo"
+    /></a>
     <div class="logo-sub">
       <div class="logo-sub-s">
         <h6>
@@ -21,44 +26,78 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto me-4">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            {{ menu["Franchise Brands"]?.title?.toUpperCase() }} <i class="fa fa-angle-down ms-1"></i>
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ menu["Franchise Brands"]?.title?.toUpperCase() }}
+            <i class="fa fa-angle-down ms-1"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <ul class="ps-0">
-              <li *ngFor="let item of menu['Franchise Brands']?.dropdown" class="pb-3">
-                <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''"
-                  class="dropdown-item text-uppercase p-0">{{item.title}}</a>
+              <li
+                *ngFor="let item of menu['Franchise Brands']?.dropdown"
+                class="pb-3"
+              >
+                <a
+                  href="{{ item.url }}"
+                  [target]="item['isExternalLink'] ? '_blank' : ''"
+                  class="dropdown-item text-uppercase p-0"
+                  >{{ item.title }}</a
+                >
               </li>
             </ul>
           </div>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            {{ menu?.Learn?.title.toUpperCase() }}<i class="fa fa-angle-down ms-1"></i>
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ menu?.Learn?.title.toUpperCase()
+            }}<i class="fa fa-angle-down ms-1"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <ul class="ps-0">
               <li *ngFor="let item of menu?.Learn?.dropdown">
-                <a href="{{item.url}}" [target]="item['isExternalLink']? '_blank': ''"
-                  class="text-uppercase">{{item.title}}</a>
+                <a
+                  href="{{ item.url }}"
+                  [target]="item['isExternalLink'] ? '_blank' : ''"
+                  class="text-uppercase"
+                  >{{ item.title }}</a
+                >
               </li>
             </ul>
           </div>
         </li>
       </ul>
       <div class="search me-3">
-        <a data-target="#searchModal" data-toggle="modal" href="javascript:void(0)"><i
-            class="fa fa-search text-center"></i></a>
+        <a
+          data-target="#searchModal"
+          data-toggle="modal"
+          href="javascript:void(0)"
+          ><i class="fa fa-search text-center"></i
+        ></a>
       </div>
       <div *ngIf="menu['monthly-cover']" class="profile px-5 d-none d-md-block">
         <a href="menu['monthly-cover'].media.url.conver_url">
           <figure class="m-0">
-            <img appYoutubeImage src="{{menu['monthly-cover'].media | defaultImage:119:157}}" width="119" height="157"
-              alt="img1">
+            <img
+              appYoutubeImage
+              src="{{ menu['monthly-cover'].media | defaultImage: 119:157 }}"
+              width="119"
+              height="157"
+              alt="img1"
+            />
           </figure>
         </a>
       </div>

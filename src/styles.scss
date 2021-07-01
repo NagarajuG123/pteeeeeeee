@@ -36,6 +36,11 @@
   src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 h6 {
   font-size: 15px;
   line-height: 17px;
@@ -146,4 +151,11 @@ figure {
   @media (max-width: 1420px) {
     max-width: 100% !important;
   }
+}
+
+.addeLeftSpace
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top.bg-white.pb-0.pt-3 {
+  left: 300px;
+  width: 100%;
+  transition: all 0.4s ease;
 }
