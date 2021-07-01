@@ -35,7 +35,7 @@ h4 {
     color: #263645;
     font-weight: 400;
     font-family: ProximaNova-Medium;
-    padding-top: 7px;
+    padding-top: 10px;
 }
 
 .socialmedia {
@@ -56,6 +56,17 @@ h4 {
     margin-bottom: 21px;
     text-align: left;
     -webkit-box-orient: vertical
+}
+
+.frannews-trending {
+    margin-top: -40px;
+    padding-top: 40px;
+}
+
+@media screen and (min-width: 1024px){
+.frannews-details {
+    padding: 66px 41px 0 40px;
+}
 }
 
 .frannews-top-left ul li.heading-border:after {
