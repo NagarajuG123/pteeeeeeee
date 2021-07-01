@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { aboutUsData } from 'src/app/_core/models/aboutus';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -8,13 +9,13 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class AboutUsComponent implements OnInit {
   @Output() imageLoaded = new EventEmitter();
-  publication_contents: any = [];
+  publication_contents: aboutUsData[] = [];
   loadedImageNum = 0;
 
   bannerImageLoaded: Boolean = false;
   mainimageLoaded: Boolean = false;
 
-  data: any = [];
+  data: aboutUsData[] = [];
   showVideo: Boolean = false;
 
   constructor(private apiService: ApiService) { }
