@@ -54,6 +54,15 @@ export class ApiService {
       catchError(err => this.handleError(err, endpoint))
     );
   };
+
+  postAPI(endpoint: string, payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/${endpoint}`, JSON.stringify(payload), this.httpOptions).pipe(
+      timeout(defaultTimeout),
+      retry(1),
+      catchError(err => this.handleError(err, endpoint))
+    );
+  }
+
   handleError(error: { status: any; message: any; }, endpoint: string) {
     let errorMessage = '';
     if (error instanceof TimeoutError) {

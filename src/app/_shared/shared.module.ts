@@ -28,6 +28,8 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
 import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TermsofuseBannerComponent } from './components/termsofuse-banner/termsofuse-banner.component';
+import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 
 // Modals Components
 
@@ -48,7 +50,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ColumnsComponent,
     AdvertisementComponent,
     FooterTopComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    TermsofuseBannerComponent,
+    ContactEditorialComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -87,6 +91,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ColumnsComponent,
     VideoPlayerComponent,
     CarouselModule,
+    TermsofuseBannerComponent,
+    ContactEditorialComponent
   ],
 })
 export class SharedModule {}

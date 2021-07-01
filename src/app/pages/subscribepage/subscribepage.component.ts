@@ -7,8 +7,9 @@ import {ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./subscribepage.component.scss']
 })
 export class SubscribepageComponent implements OnInit {
-  subscribeData: any =[];
+  data: any =[];
   slug = '1851';
+  title:string | undefined;
 
   constructor( private apiService : ApiService) { }
 
@@ -18,7 +19,8 @@ export class SubscribepageComponent implements OnInit {
   
   getSubscribe() {
     this.apiService.getAPI(`${this.slug}/subscribe`).subscribe((response ) =>{
-      this.subscribeData = response
+      this.data = response;
+      this.title =  'SUBSCRIBE TO 1851 FRANCHISE';
     });
   }
 }
