@@ -71,6 +71,9 @@ ul{
             height: 522px;
         }
     } 
+    h1, h2 {
+        letter-spacing: .8px;
+    }
 }
 .termsofuse-banner-main {
     position: absolute;
@@ -98,11 +101,7 @@ ul{
 .termsofuse-banner-content {
     padding: 43px 5px 33px;
 }
-.contact-banner{
-    h1, h2 {
-        letter-spacing: .8px;
-    }
-} 
+
 .termsofuse-content {
     font-size: 20px;
     line-height: 28px;

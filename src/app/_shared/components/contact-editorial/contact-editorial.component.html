@@ -6,7 +6,7 @@
                 <form
                     [formGroup]="contactForm"
                     class="fill-form"
-                    (ngSubmit)="onContactSubmit(contactForm)">
+                   >
                     <ul class="d-flex">
                         <li class="col-xl-12">
                             <div class="form-group">
@@ -214,7 +214,7 @@
                     <button
                         type="button"
                         class="back d-block submit_btn"
-                        (click)="onContactSubmit(contactForm)">
+                        >
                         SUBMIT <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                     </button>
                     <span *ngIf="isSubmitted" class="errS">{{submitErrMsg}}</span>
@@ -224,7 +224,7 @@
             <div *ngIf="isSubmitted && isSuccess" class="sucess-message col-xl-10 text-center">
                 <div class="sucess-message-details">
                     <figure>
-                        <img src="assets/images/contacteditorial-img2.png" width="339" height="388" alt="contacteditorial-img2">
+                        <img src="assets/img/contacteditorial-img2.png" width="339" height="388" alt="contacteditorial-img2">
                     </figure>
                     <em>1</em>
                     <h3>WELCOME TO <strong class="d-block">{{ publicationTitle }}</strong></h3>

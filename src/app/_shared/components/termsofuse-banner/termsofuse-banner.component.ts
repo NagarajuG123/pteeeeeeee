@@ -8,7 +8,7 @@ import { FiveColumn } from 'src/app/_core/models/FiveColumn';
 })
 export class TermsofuseBannerComponent implements OnInit {
   @Input() data: FiveColumn[] = [];
-  @Input() title: string | undefined;
+  @Input() title?: string ;
 
   imgURL = 'assets/img/subscribepage-banner.jpg';
   isShow = false;
