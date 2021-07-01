@@ -1,12 +1,11 @@
 @import "mixins";
 
-
-.more-franchise-block{
-  background-color:#f1f1f2;
+.more-franchise-block {
+  background-color: #f1f1f2;
   padding: 102px 80px 62px;
-  .learnmore{
+  .learnmore {
     position: relative;
-    a{
+    a {
       width: 100%;
       height: 50px;
       line-height: 46px;
@@ -16,20 +15,20 @@
       font-size: 16px;
       padding: 0 54px 0 24px;
       border: 2px solid #263645;
-      letter-spacing: .7px;
+      letter-spacing: 0.7px;
       text-decoration: none;
-      span{
+      span {
         width: 50px;
         height: 50px;
         background: #263645;
         position: absolute;
         top: 0;
         right: 0;
-        .fa{
+        .fa {
           font-size: 33px;
           line-height: 50px;
           color: #fff;
-            font-weight: 300;
+          font-weight: 300;
         }
       }
     }
@@ -40,27 +39,27 @@
 footer {
   background-color: $color-white;
   color: $dark-blue;
-  .lets-talk-b{
-  background: url("../img/bg-lets.png") right top no-repeat;
-  width: 108px;
-  height: 49px;
-  text-align: right;
-      a{
-        color: #263645;
-        text-decoration: none;
-        font-size: 14px;
-        line-height: 21px;
-        padding: 6px 5px;
-        display: inline-block;
-      }
+  .lets-talk-b {
+    background: url("../img/bg-lets.png") right top no-repeat;
+    width: 108px;
+    height: 49px;
+    text-align: right;
+    a {
+      color: #263645;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 21px;
+      padding: 6px 5px;
+      display: inline-block;
     }
+  }
 
   .footer-menu-block {
-    .footer-logo-l{
+    .footer-logo-l {
       float: left;
       width: 30%;
     }
-    .footer-logo-r{
+    .footer-logo-r {
       float: right;
       width: 70%;
     }

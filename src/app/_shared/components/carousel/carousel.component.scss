@@ -1,16 +1,14 @@
 .trending {
   background: #263645;
-  
 }
 
-.trending.columns{
+.trending.columns {
   padding-bottom: 10px;
 }
 
-.main-videos .trending-details{
+.main-videos .trending-details {
   padding: 49px 0 48px;
 }
-
 
 .trending-details {
   padding: 42px 0 0;
@@ -187,7 +185,7 @@ img {
 .video-btn .video-maker {
   position: absolute;
   left: calc(50% - 45px);
-  top: calc(50% - 45px);
+  top: calc(50% - 110px);
   z-index: 1000;
   height: 90px;
   width: 90px;
@@ -207,7 +205,7 @@ img {
   top: 40%;
   margin-left: -20px;
   display: block !important;
-  border:0px solid black;
+  border: 0px solid black;
 }
 
 .owl-next {
@@ -215,8 +213,12 @@ img {
   height: 100px;
   position: absolute;
   top: 40%;
-  right: -25px!important;
+  right: -25px !important;
   display: block !important;
-  border:0px solid black;
+  border: 0px solid black;
 }
-.owl-prev i, .owl-next i {transform : scale(1,6); color: #ccc;}
+.owl-prev i,
+.owl-next i {
+  transform: scale(1, 6);
+  color: #ccc;
+}

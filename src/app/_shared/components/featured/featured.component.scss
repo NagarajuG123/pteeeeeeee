@@ -1,82 +1,80 @@
-
-@media only screen and (min-width:768px) and (max-width:1024px) {
-    .featured-right{
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .featured-right {
     height: 56.9vh;
-    }
-    .video-maker {
-        position: absolute;
+  }
+  .video-maker {
+    position: absolute;
     left: calc(50% - 35px);
     top: 18%;
     z-index: 1000;
     height: 70px;
     width: 70px;
-    }
+  }
 }
 .buffalowings {
-    background: #ec0044;
-    width: 100%;
+  background: #ec0044;
+  width: 100%;
 }
 .buffalowings-wrap {
-    padding: 32px 56px 61px;
+  padding: 32px 56px 61px;
 }
 
-.buffalowings-bottom a, .buffalowings-bottom span {
-    font-size: 9.1px;
-    line-height: 32px;
-    color: #fff;
-    font-weight: 400;
-    font-family: ProximaNova-Regular;
+.buffalowings-bottom a,
+.buffalowings-bottom span {
+  font-size: 9.1px;
+  line-height: 32px;
+  color: #fff;
+  font-weight: 400;
+  font-family: ProximaNova-Regular;
 }
 
-@media (max-width: 1420px){
-.buffalowings-bottom {
+@media (max-width: 1420px) {
+  .buffalowings-bottom {
     padding: 0 15px;
     background: #b00034;
-}
+  }
 }
 
-@media only screen and (min-width:320px) and (max-width:767px) {
-    .featured-right{
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .featured-right {
     height: 57.6vh;
-    }
-    .video-maker {
-        position: absolute;
+  }
+  .video-maker {
+    position: absolute;
     left: calc(50% - 35px);
     top: 14%;
     z-index: 1000;
     height: 50px;
     width: 50px;
-    }
+  }
 }
-.feature-block{
-    margin: 40px 12px 0 37px;
+.feature-block {
+  margin: 40px 12px 0 37px;
+  box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
 }
-@media only screen and (min-width:1024px) {
-    .featured-block .featured-left figure img {
-        width: 100%;
-        object-fit: cover;
-      }
-      .adweek-right p {
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        overflow: hidden;
-        height: 100px;
-        text-align: left;
-    }
+@media only screen and (min-width: 1024px) {
+  .featured-block .featured-left figure img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .adweek-right p {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    height: 100px;
+    text-align: left;
+  }
 
-      .video-maker {
-        position: absolute;
-        left: calc(50% - 35px);
-        top: calc(50% - 165px);
-        z-index: 1000;
-        height: 90px;
-        width: 90px;
-    }
-    
-      .featured-right{
-        height: calc(100vh - 35px);
-      }
-    
-      
-}
+  .video-maker {
+    position: absolute;
+    left: calc(50% - 35px);
+    top: calc(50% - 165px);
+    z-index: 1000;
+    height: 90px;
+    width: 90px;
+  }
 
+  .featured-right {
+    height: calc(100vh - 35px);
+  }
+}

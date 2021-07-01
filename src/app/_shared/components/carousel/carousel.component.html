@@ -1,7 +1,11 @@
-<div *ngIf="list.length" class="trending" [ngClass]="{
+<div
+  *ngIf="list.length"
+  class="trending"
+  [ngClass]="{
     columns: type == 'columns',
     'main-videos': type == 'main-videos'
-  }">
+  }"
+>
   <div class="container">
     <div class="trending-details">
       <div class="frannews-top d-flex mx-5">
@@ -13,11 +17,14 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
-          <a href="{{
+          <a
+            href="{{
               list[0].brand && list[0].brand.slug != '1851'
                 ? list[0].brand.slug + '/'
                 : ''
-            }}{{ list[0].slug }}#{{ type }}" class="float-right">
+            }}{{ list[0].slug }}#{{ type }}"
+            class="float-right"
+          >
             READ MORE
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
@@ -29,18 +36,39 @@
           <ng-container *ngFor="let item of list; let i = index">
             <ng-template carouselSlide [id]="item.id">
               <!-- <li *ngFor="let item of list; let i = index" class="col-md-4"> -->
-              <a href="{{ goReadMore(item) }}#{{ type }}" style="text-decoration: none">
-                <div class="trending-bottom-details" *ngIf="type !== 'main-videos'">
+              <a
+                href="{{ goReadMore(item) }}#{{ type }}"
+                style="text-decoration: none"
+              >
+                <div
+                  class="trending-bottom-details"
+                  *ngIf="type !== 'main-videos'"
+                >
                   <figure *ngIf="item.media">
-                    <img appYoutubeImage *ngIf="type === 'trending' || type === 'columns'"
-                      src="{{ item.media | defaultImage: 415:232 }}" alt="img9" srcset="" />
+                    <img
+                      appYoutubeImage
+                      *ngIf="type === 'trending' || type === 'columns'"
+                      src="{{ item.media | defaultImage: 415:232 }}"
+                      alt="img9"
+                      srcset=""
+                    />
                   </figure>
                   <figure *ngIf="!item.media">
-                    <img src="assets/img/video-img2.jpg" width="415" height="232" alt="img9" srcset="" />
+                    <img
+                      src="assets/img/video-img2.jpg"
+                      width="415"
+                      height="232"
+                      alt="img9"
+                      srcset=""
+                    />
                   </figure>
                   <div class="w-100 buffalowings" *ngIf="type === 'trending'">
                     <div class="buffalowings-wrap d-flex">
-                      <div class="buffalowings-wrap-left" [class.col-2]="i < 9" [class.col-3]="i >= 9">
+                      <div
+                        class="buffalowings-wrap-left"
+                        [class.col-2]="i < 9"
+                        [class.col-3]="i >= 9"
+                      >
                         <span class="d-block">{{ i + 1 }}</span>
                       </div>
                       <div class="buffalowings-wrap-right col-9">
@@ -51,7 +79,10 @@
                     </div>
                     <div class="buffalowings-bottom">
                       <span class="float-right text-uppercase">
-                        <a style="color: white" href="{{ goReadMore(item) }}#{{ type }}">
+                        <a
+                          style="color: white"
+                          href="{{ goReadMore(item) }}#{{ type }}"
+                        >
                           READ MORE
                           <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
@@ -69,24 +100,49 @@
                       </p>
                     </div>
                     <div class="buffalowings-bottom">
-                      <span class="float-right text-uppercase"><a style="color: white"
-                          href="{{ goReadMore(item) }}#{{ type }}">READ MORE
-                          <i class="fa fa-angle-right text-white" aria-hidden="true"></i></a></span>
+                      <span class="float-right text-uppercase"
+                        ><a
+                          style="color: white"
+                          href="{{ goReadMore(item) }}#{{ type }}"
+                          >READ MORE
+                          <i
+                            class="fa fa-angle-right text-white"
+                            aria-hidden="true"
+                          ></i></a
+                      ></span>
                       <div class="clearfix"></div>
                     </div>
                   </div>
                 </div>
               </a>
-              <div class="trending-bottom-details" *ngIf="type === 'main-videos'">
-                <div class="d-block video-btn" data-toggle="modal" attr.data-src="{{ item.media.url }}"
-                  data-target="#slide_videos_video_modal" (click)="updateVideoUrl(item.media.url)"
-                  style="cursor: pointer">
+              <div
+                class="trending-bottom-details"
+                *ngIf="type === 'main-videos'"
+              >
+                <div
+                  class="d-block video-btn"
+                  data-toggle="modal"
+                  attr.data-src="{{ item.media.url }}"
+                  data-target="#slide_videos_video_modal"
+                  (click)="updateVideoUrl(item.media.url)"
+                  style="cursor: pointer"
+                >
                   <figure *ngIf="item.media">
-                    <img appYoutubeImage src="{{ item.media | defaultImage: 415:232 }}" alt="video-img5" srcset="" />
-                    <img class="video-maker" src="assets/images/youtube.svg" />
+                    <img
+                      appYoutubeImage
+                      src="{{ item.media | defaultImage: 415:232 }}"
+                      alt="video-img5"
+                      srcset=""
+                    />
+                    <img class="video-maker" src="assets/img/youtube.svg" />
                   </figure>
                   <figure *ngIf="!item.media">
-                    <img src="assets/images/video-img2.jpg" width="415" height="232" alt="video-img5" />
+                    <img
+                      src="assets/img/video-img2.jpg"
+                      width="415"
+                      height="232"
+                      alt="video-img5"
+                    />
                   </figure>
                 </div>
                 <div class="buffalowings w-100">
@@ -94,9 +150,16 @@
                     <p>{{ item.title }}</p>
                   </div>
                   <div class="buffalowings-bottom">
-                    <a href="{{ item.media.url }}" target="blank" class="float-right text-white text-uppercase">
+                    <a
+                      href="{{ item.media.url }}"
+                      target="blank"
+                      class="float-right text-white text-uppercase"
+                    >
                       WATCH ON YOUTUBE
-                      <i class="fa fa-angle-right text-white" aria-hidden="true"></i>
+                      <i
+                        class="fa fa-angle-right text-white"
+                        aria-hidden="true"
+                      ></i>
                     </a>
                     <div class="clearfix"></div>
                   </div>
@@ -118,17 +181,33 @@
 
           <!-- </li> -->
         </owl-carousel-o>
-        <div *ngIf="type === 'main-videos'" class="modal fade" id="slide_videos_video_modal" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div
+          *ngIf="type === 'main-videos'"
+          class="modal fade"
+          id="slide_videos_video_modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                  (click)="openVideoPlayer = false">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="openVideoPlayer = false"
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="embed-responsive embed-responsive-16by9">
-                  <app-video-player *ngIf="openVideoPlayer" class="embed-responsive-item" [srcUrl]="url">
+                  <app-video-player
+                    *ngIf="openVideoPlayer"
+                    class="embed-responsive-item"
+                    [srcUrl]="url"
+                  >
                   </app-video-player>
                 </div>
               </div>

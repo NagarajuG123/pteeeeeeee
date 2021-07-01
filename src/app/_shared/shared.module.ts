@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
@@ -56,7 +55,6 @@ import { FeaturedComponent } from './components/featured/featured.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    SlickCarouselModule,
     NgxYoutubePlayerModule,
     VgCoreModule,
     VgControlsModule,
@@ -73,7 +71,6 @@ import { FeaturedComponent } from './components/featured/featured.component';
     CarouselModule,
     DefaultImagePipe,
     SplitArrayPipe,
-    SlickCarouselModule,
     NgxYoutubePlayerModule,
     HeaderComponent,
     FooterComponent,
