@@ -21,7 +21,6 @@ export class ContactEditorialComponent implements OnInit {
   isSuccess: boolean | undefined;
 
   constructor( fb: FormBuilder, private apiService: ApiService) { this.contactForm = fb.group({
-    // email: ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
     currentFranchisee: [''],
     currentFranchiseeOwnsUp10units: [''],
     currentFranchiseeOwns10Plusunits: [''],
