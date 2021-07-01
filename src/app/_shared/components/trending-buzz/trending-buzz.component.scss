@@ -25,7 +25,7 @@ h4 {
   line-height: 24px;
   color: #a6a8aa;
   font-family: ProximaNova-Light;
-  letter-spacing: .1px;
+  letter-spacing: 0.1px;
   font-weight: 400;
 }
 
@@ -38,39 +38,19 @@ h4 {
   padding-top: 10px;
 }
 
-.socialmedia {
-  padding: 21px 0 10px;
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-
-.socialmedia p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  height: 54px;
-  font-size: 15px;
-  line-height: 18px;
-  color: #272525;
-  letter-spacing: -.1px;
-  margin-bottom: 21px;
-  text-align: left;
-  -webkit-box-orient: vertical
-}
-
 .frannews-trending {
   margin-top: -40px;
   padding-top: 40px;
 }
 
-@media screen and (min-width: 1024px){
-.frannews-details {
-  padding: 66px 41px 0 40px;
-}
+@media screen and (min-width: 1024px) {
+  .frannews-details {
+    padding: 66px 41px 0 40px;
+  }
 }
 
 .frannews-top-left ul li.heading-border:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   right: 16px;
@@ -78,9 +58,9 @@ h4 {
   width: 2px;
   height: 15px;
 }
-ul{
-list-style: none;
-margin: 0;
+ul {
+  list-style: none;
+  margin: 0;
 }
 
 .content-padding {
