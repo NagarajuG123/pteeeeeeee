@@ -25,7 +25,6 @@ export class AboutUsComponent implements OnInit {
       if (this.data?.contents?.length > 0) {
         for (let i = 1; i < this.data.contents.length; i++) {
           this.publication_contents.push(this.data.contents[i]);
-          console.log(this.publication_contents)
         }
       }
     }); 
