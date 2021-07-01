@@ -1,53 +1,29 @@
-<div class="clearfix"></div>
-<div class="fran-block">
-  <div class="container">
+<div class="fran-block frannews-trending">
+  <div class=" container-xl frannews-details">
     <div class="row">
       <div class="col-md-12">
-        <div class="fran-top-block">
-          <div class="row">
-            <div class="col-lg-9 col-md-10 p-0">
-              <ul>
-                <li>
-                  <h4> {{ newsData.title }}</h4>
-                </li>
-                <li class="frannews-subtitle">
-                  <span>{{ newsData.subtitle }}</span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-2">
-              <a class="read-more-btn">READ MORE</a>
-            </div>
+        <div class="frannews-top d-flex">
+          <div class="frannews-top-left col-lg-9 col-md-10 p-0">
+            <ul class="p-0 m-0">
+              <li class="heading-border">
+                <h4>{{ newsData.title }}</h4>
+              </li>
+              <li class="frannews-subtitle">
+                <span>{{ newsData.subtitle }}</span>
+              </li>
+            </ul>
+          </div>
+          <div class="frannews-top-right col-lg-3 col-md-2">
+            <a class="float-right" href=""
+              >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
+            ></a>
+            <div class="clearfix"></div>
           </div>
         </div>
-        <div class="fran-content-block row">
-
-          <div class="col d-none d-sm-none d-md-block" *ngFor="let news of newsData.data">
-            <img appYoutubeImage
-              srcset="{{news.media | defaultImage:545:305}} 545w, {{news.media | defaultImage:355:199}} 355w, {{news.media | defaultImage:300:168}} 300w, {{news.media | defaultImage:210:118}} 210w"
-              sizes="{{'(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'}}" src="{{newsData.media | defaultImage:210:118}}" alt="img5" class="img-fluid" />
-            <p>
-              {{ news.title }}
-            </p>
-            <!-- <span> {{ news.posted_on }}</span> -->
-          </div>
-          <div class="col-12 d-block d-sm-none" *ngFor="let news of newsData.data">
-            <img appYoutubeImage
-              srcset="{{news.media | defaultImage:545:305}} 545w, {{news.media | defaultImage:355:199}} 355w, {{news.media | defaultImage:300:168}} 300w, {{news.media | defaultImage:210:118}} 210w"
-              sizes="{{'(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'}}" src="{{newsData.media | defaultImage:210:118}}" alt="img5" class="img-fluid" />
-            <p>
-              {{ news.title }}
-            </p>
-            <!-- <span> {{ news.posted_on }}</span> -->
-          </div>
-
-        </div>
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="newsData.data"
+        ></app-five-column>
       </div>
     </div>
   </div>

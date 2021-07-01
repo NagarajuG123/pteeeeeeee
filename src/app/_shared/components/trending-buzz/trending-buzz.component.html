@@ -1,41 +1,29 @@
-<div class="fran-block" *ngIf="trending.data?.length">
-  <div class="container">
-    <div class="trendingbuzz-details col-xl-11 row">
+<div class="fran-block frannews-trending bg-white">
+  <div class="container-xl frannews-details">
+    <div class="row">
       <div class="col-md-12">
-        <div class="fran-top-block">
-          <div class="row">
-            <div class="col-md-9">
-              <ul>
-                <li>
-                  <h4>TRENDING BRAND BUZZ</h4>
-                </li>
-                <li class="frannews-subtitle">
-                  <span>SPONSORED</span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <a class="read-more-btn">READ MORE</a>
-            </div>
+        <div class="frannews-top d-flex">
+          <div class="frannews-top-left col-lg-9 col-md-10 p-0">
+            <ul class="p-0 m-0">
+              <li class="heading-border">
+                <h4>TRENDING BRAND BUZZ</h4>
+              </li>
+              <li class="frannews-subtitle">
+                <span>SPONSORED</span>
+              </li>
+            </ul>
+          </div>
+          <div class="frannews-top-right col-lg-3 col-md-2">
+            <a class="float-right" href=""
+              >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
+            ></a>
+            <div class="clearfix"></div>
           </div>
         </div>
-        <div class="fran-content-block row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5">
-          <div class="col" *ngFor="let trending of trending.data">
-            <img appYoutubeImage
-              srcset="{{trending.media | defaultImage:545:305}} 545w, {{trending.media | defaultImage:355:199}} 355w, {{trending.media | defaultImage:300:168}} 300w, {{trending.media | defaultImage:210:118}} 210w"
-              sizes="{{
-                  '(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'
-                }}" src="{{ trending.media | defaultImage: 210:118 }}" alt="" class="img-fluid" />
-            <p>
-              {{ trending.title }}
-            </p>
-            <!-- <span> {{ trending.posted_on }}</span> -->
-          </div>
-
-        </div>
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="trending.data"
+        ></app-five-column>
       </div>
     </div>
   </div>

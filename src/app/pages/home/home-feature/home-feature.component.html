@@ -1,20 +1,24 @@
 <div class="fran-block">
   <div class="container">
-    <div class="row">
+    <div class="row franchise-details">
       <div class="col-md-12">
         <div class="fran-top-block">
           <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-6">
               <ul>
                 <li>
-                  <h4>{{ franchiseData?.data?.title }} </h4>
+                  <h4 class="text-uppercase">
+                    {{ franchiseData?.data?.title }}
+                  </h4>
                 </li>
               </ul>
             </div>
-            <div class="col-md-3">
-
-              <a routerLink="{{goLegalPlayers(this.readMoreUrl)}}" class="read-more-btn">READ MORE <i
-                  class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <div class="col-md-6">
+              <a
+                routerLink="{{ goLegalPlayers(this.readMoreUrl) }}"
+                class="read-more-btn"
+                >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
+              ></a>
             </div>
           </div>
         </div>
@@ -22,39 +26,38 @@
           <div class="row">
             <div class="col-md-6 p-0">
               <div class="fran-two-l">
-                <img appYoutubeImage sizes="{{'(max-width: 576px) 550px,
+                <img
+                  appYoutubeImage
+                  sizes="{{
+                    '(max-width: 576px) 550px,
                         (max-width: 768px) 740px,
                         (max-width: 992px) 960px,
                         (max-width: 1200px) 530px,
-                        623px'}}" src="{{highlightItem.media | defaultImage:623:350}}" alt="" class="img-fluid">
+                        623px'
+                  }}"
+                  src="{{ highlightItem.media | defaultImage: 623:350 }}"
+                  alt=""
+                  class="img-fluid h-100"
+                />
               </div>
             </div>
-            <div class="col-md-6 p-0">
-              <div class="fran-two-r">
-                <h2>{{highlightItem.title}}</h2>
-                <p>
-                  {{highlightItem.short_description}}
+            <div class="col-md-6 p-0 legalplayers-right">
+              <div class="legalplayers-right-main">
+                <h2 class="text-white">{{ highlightItem.title }}</h2>
+                <p class="text-white">
+                  {{ highlightItem.short_description }}
                 </p>
-                <a class="">READ MORE</a>
+                <a class="text-white"
+                  >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
+                ></a>
               </div>
             </div>
           </div>
         </div>
-        <div class="fran-content-block">
-          <ul>
-            <li *ngFor="let data of franchiseData?.data?.stories?.slice(1,6);">
-              <img appYoutubeImage
-                srcset="{{data.media | defaultImage:545:305}} 545w, {{data.media | defaultImage:355:199}} 355w, {{data.media | defaultImage:300:168}} 300w, {{data.media | defaultImage:210:118}} 210w"
-                sizes="{{'(max-width: 576px) 545px,
-                  (max-width: 768px) 355px,
-                  (max-width: 992px) 300px,
-                  210px'}}" src="{{data.media | defaultImage:416:258}}" alt="" class="img-fluid" />
-              <p>
-                {{data.title}}
-              </p>
-            </li>
-          </ul>
-        </div>
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="franchiseData?.data?.stories?.slice(1, 6)"
+        ></app-five-column>
       </div>
     </div>
   </div>

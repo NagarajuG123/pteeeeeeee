@@ -1,5 +1,11 @@
 @import "src/assets/scss/mixins.scss";
 /* monthlycoverspage style starts here */
+.top-space {
+  padding-top: 80px;
+}
+.d-flex {
+  -webkit-flex-wrap: wrap;
+}
 .monthly-coverpage {
   background: $color1;
   border-bottom: 1px solid $color22;
@@ -16,10 +22,12 @@
     }
   }
   ul {
+    box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+    -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
     position: relative;
-    li {
-      // display: none;
-    }
+    list-style: none;
+    margin: 0;
+    padding-left: 0rem !important;
   }
 }
 .monthly-coverpage-in {
@@ -33,7 +41,6 @@
 }
 .monthly-coverpage-left {
   max-width: 40.03%;
-  flex: 0 0 40.03%;
   -webkit-flex: 0 0 40.03%;
   @include tablet-landscape {
     max-width: 100%;
@@ -50,6 +57,12 @@
     }
   }
 }
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
 .current-issue {
   position: absolute;
   bottom: 0;
@@ -59,6 +72,7 @@
     color: $color1;
     padding: 15px 29px 12px 23px;
     font-family: $font_family_2;
+    margin: 0px;
     @include desk-lg-below {
       padding: 12px 20px 12px 20px;
     }
@@ -66,7 +80,6 @@
 }
 .monthly-coverpage-right {
   max-width: 59.97%;
-  flex: 0 0 59.97%;
   -webkit-flex: 0 0 59.97%;
   @include tablet-landscape {
     max-width: 100%;
@@ -76,6 +89,11 @@
 }
 .monthly-covers1 {
   position: relative;
+}
+.loadmore-btn .fa {
+  font-size: 50px;
+  line-height: 50px;
+  color: #ec0044;
 }
 .monthly-covers-bottom {
   .monthly-covers1 {
@@ -95,4 +113,15 @@
     }
   }
 }
+.d-inline-block {
+  display: inline-block !important;
+}
 /* monthlycoverspage style ends here */
+@media only screen and (max-width: 1420px) {
+  .current-issue h4 {
+    padding: 12px 20px;
+  }
+  .current-issue h4 {
+    padding: 12px 20px;
+  }
+}

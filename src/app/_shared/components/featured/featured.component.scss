@@ -12,6 +12,28 @@
     width: 70px;
     }
 }
+.buffalowings {
+    background: #ec0044;
+    width: 100%;
+}
+.buffalowings-wrap {
+    padding: 32px 56px 61px;
+}
+
+.buffalowings-bottom a, .buffalowings-bottom span {
+    font-size: 9.1px;
+    line-height: 32px;
+    color: #fff;
+    font-weight: 400;
+    font-family: ProximaNova-Regular;
+}
+
+@media (max-width: 1420px){
+.buffalowings-bottom {
+    padding: 0 15px;
+    background: #b00034;
+}
+}
 
 @media only screen and (min-width:320px) and (max-width:767px) {
     .featured-right{
@@ -26,13 +48,21 @@
     width: 50px;
     }
 }
-
+.feature-block{
+    margin: 40px 12px 0 37px;
+}
 @media only screen and (min-width:1024px) {
     .featured-block .featured-left figure img {
         width: 100%;
-        height: calc(100vh - 237px);
         object-fit: cover;
       }
+      .adweek-right p {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+        height: 100px;
+        text-align: left;
+    }
 
       .video-maker {
         position: absolute;
@@ -47,8 +77,6 @@
         height: calc(100vh - 35px);
       }
     
-      .featured-block .featured-left{
-        height: 100vh;
-      }
+      
 }
 

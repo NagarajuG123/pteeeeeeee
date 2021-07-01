@@ -1,11 +1,9 @@
 @import "mixins";
 
 .fran-block {
-  padding: 50px 0;
   .fran-top-block {
     border-bottom: 2px solid #bbbcbf;
     padding: 0 0 10px;
-    margin: 0 15px 15px 15px;
     a{
       text-align: right;
       color:$color-black;
@@ -25,9 +23,9 @@
         position: relative;
 
         &:after {
-          content: '';
+          content: "";
           position: absolute;
-          top: 7px;
+          top: 3px;
           right: 16px;
           background: #a6a8aa;
           width: 2px;

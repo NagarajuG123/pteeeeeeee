@@ -1,14 +1,137 @@
-<div class="empty"></div>
-<div *ngIf="data">
-  <app-banner [data]="data" (imageLoad)="bannerImageLoad()"> </app-banner>
-  <div class="main-content">
-    <!-- <app-publicatio-main
-      [contents]="info['contents']"
-      (imageLoaded)="mainImageLoad()"
-    >
-    </app-publicatio-main>
-    <div #tellus id="tellus">
-      <app-partner-main [demo]="info['demo']"></app-partner-main>
+<div class="top-space">
+  <div class="empty"></div>
+  <div *ngIf="data">
+
+    <div *ngIf="data" class="banner d-flex flex-row-reverse">
+      <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
+        <a
+          href="javascript:void(0)"
+          class="d-block video-btn"
+          data-toggle="modal"
+          *ngIf="data?.media"
+          attr.data-src="{{ data.media.url }}"
+          data-target="#banner_video_modal"
+          (click)="showVideo = true"
+        >
+          <figure>
+            <img
+              appYoutubeImage
+              src="{{ data?.media | defaultImage: 1300:730 }}"
+              width="1023"
+              height="575"
+              alt="img2"
+              (imageLoad)="bannerImageLoad()"
+            />
+          </figure>
+        </a>
+        <div
+          class="modal fade"
+          id="banner_video_modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          (click)="onModalHide()"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="showVideo = false"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <!-- <app-video-player
+                    *ngIf="showVideo"
+                    class="embed-responsive-item"
+                    [srcUrl]="info['media']['url']"
+                  >
+                  </app-video-player> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="banner-right-info banner-right_about col-sm-3 col-12 p-0"
+      >
+        <div class="buffalo_wings">
+          <div class="info_btn text-center">
+            <a href="JavaScript:Void(0);" class="text-center"> ABOUT 1851 </a>
+            <h1 class="text-left">{{ data.title }}</h1>
+            <em class="text-left d-block">{{ data.description }}</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="main-content">
+      
+      <div *ngIf="data.contents" class="franchise_main text-center">
+        <div class="container">
+          <div class="franchise_data">
+            <h1>{{ data.contents[0].title }}</h1>
+            <p [innerHtml]="data.contents[0].short_description"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="publication_main">
+        <div
+          *ngFor="let content of publication_contents; let i = index"
+          class="publication_content d-flex flex-wrap"
+          [class.flex-row-reverse]="i % 2 === 0"
+        >
+          <div class="publication_left col-lg-6 col-md-12">
+            <figure>
+              <img
+                *ngIf="i === 0"
+                [src]="content['media']['url']"
+                width="720"
+                height="485"
+                alt="about_img2"
+                (imageLoaded)="mainImageLoad()"
+              />
+              <img
+                *ngIf="i === 1"
+                [src]="content['media']['url']"
+                width="720"
+                height="485"
+                alt="about_img2"
+                (imageLoaded)="mainImageLoad()"
+              />
+            </figure>
+          </div>
+          <div
+            class="
+              publication_right
+              d-flex
+              justify-content-center
+              align-items-center
+              col-lg-6 col-md-12
+            "
+          >
+            <div class="publication_right_data col-lg-5 col-md-12">
+              <h3>{{ content.title }}</h3>
+              <p
+                style="color: black !important"
+                [innerHtml]="content.short_description"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- <div #tellus id="tellus">
+
     </div> -->
+    </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 import { InfoTopComponent } from './info-top/info-top.component';
 import { InfoBottomComponent } from './info-bottom/info-bottom.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { InfoBottomComponent } from './info-bottom/info-bottom.component';
   ],
   imports: [
     CommonModule,
-    BrandRoutingModule
+    BrandRoutingModule,
+    SharedModule
   ]
 })
 export class BrandModule { }
