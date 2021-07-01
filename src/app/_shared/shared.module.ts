@@ -30,6 +30,9 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TermsofuseBannerComponent } from './components/termsofuse-banner/termsofuse-banner.component';
 import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
+import { FiveColumnComponent } from './components/five-column/five-column.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FeaturedComponent } from './components/featured/featured.component';
 
 // Modals Components
 
@@ -47,12 +50,14 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
     TrendingBuzzComponent,
     DefaultImagePipe,
     SplitArrayPipe,
-    ColumnsComponent,
     AdvertisementComponent,
     FooterTopComponent,
     VideoPlayerComponent,
     TermsofuseBannerComponent,
-    ContactEditorialComponent
+    ContactEditorialComponent,
+    FiveColumnComponent,
+    CarouselComponent,
+    FeaturedComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -79,7 +84,6 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
     SidebarComponent,
     TrendingComponent,
     AdvertisementComponent,
-    ColumnsComponent,
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
@@ -92,7 +96,10 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
     VideoPlayerComponent,
     CarouselModule,
     TermsofuseBannerComponent,
-    ContactEditorialComponent
+    ContactEditorialComponent,
+    CarouselComponent,
+    FiveColumnComponent,
+    FeaturedComponent
   ],
 })
 export class SharedModule {}

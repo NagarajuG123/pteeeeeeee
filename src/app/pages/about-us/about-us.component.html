@@ -1,9 +1,10 @@
 <div class="top-space">
-<div class="empty"></div>
-<div *ngIf="data">
-  <app-banner [data]="data" (imageLoad)="bannerImageLoad()"> </app-banner>
-  <div class="main-content">
-    <!-- <app-publicatio-main
+  <div class="empty"></div>
+  <div *ngIf="data">
+    <app-banner [data]="data" (imageLoad)="bannerImageLoad()"> </app-banner>
+    <div class="main-content">
+      <app-franchise [data]="data"></app-franchise>
+      <!-- <app-publicatio-main
       [contents]="info['contents']"
       (imageLoaded)="mainImageLoad()"
     >
@@ -11,6 +12,6 @@
     <div #tellus id="tellus">
       <app-partner-main [demo]="info['demo']"></app-partner-main>
     </div> -->
+    </div>
   </div>
-</div>
 </div>
