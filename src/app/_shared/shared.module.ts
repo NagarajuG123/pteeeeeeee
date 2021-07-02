@@ -11,7 +11,6 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { TimeagoModule } from 'ngx-timeago';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -28,6 +27,8 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeaturedComponent } from './components/featured/featured.component';
+import { TopBannerComponent } from './components/top-banner/top-banner.component';
+import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 
 // Modals Components
 
@@ -49,7 +50,9 @@ import { FeaturedComponent } from './components/featured/featured.component';
     VideoPlayerComponent,
     FiveColumnComponent,
     CarouselComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    ContactEditorialComponent,
+    TopBannerComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -62,10 +65,8 @@ import { FeaturedComponent } from './components/featured/featured.component';
     VgOverlayPlayModule,
     VgBufferingModule,
     CarouselModule,
-    TimeagoModule.forRoot(),
   ],
   exports: [
-    TimeagoModule,
     RouterModule,
     CommonModule,
     FormsModule,
@@ -88,7 +89,9 @@ import { FeaturedComponent } from './components/featured/featured.component';
     CarouselModule,
     CarouselComponent,
     FiveColumnComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    ContactEditorialComponent,
+    TopBannerComponent
   ],
 })
 export class SharedModule {}

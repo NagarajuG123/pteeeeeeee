@@ -6,6 +6,7 @@ import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.co
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
+import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'contact-editorial',
     component: ContacteditorialComponent,
     loadChildren:() => import ('./pages/contacteditorial/contacteditorial.module').then((m) => m.ContacteditorialModule),
+  },
+  {
+    path: 'subscribe',
+    component: SubscribepageComponent,
+    loadChildren: () => import('./pages/subscribepage/subscribepage.module').then((m) => m.SubscribepageModule),
   },
   {
     path: 'monthlycovers',

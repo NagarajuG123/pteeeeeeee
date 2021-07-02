@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/FiveColumn';
+import { FiveColumn } from 'src/app/_core/models/fiveColumn';
 
 @Component({
   selector: 'app-five-column',
