@@ -3,7 +3,22 @@
 }
 .bws-sitemap {
     padding: 40px 0!important;
+    ul{
+        list-style: none;
+        li{
+            line-height: 1.5;
+        }
+    }   
 }
+ol, ul {
+    list-style: none;
+    margin: 0;
+}
+ul{
+    li, p {
+        font-family: 'ProximaNova-Regular'!important;
+    }
+} 
 .container {
     width: 970px;
     margin-right: auto;
@@ -20,4 +35,16 @@
     flex: 0 0 100%;
     max-width: 100%;
 }
+}
+.bws-sitemap-title {
+    margin-bottom: 40px;
+}
+.h1,.h2, .h3, .h4, .h5, .h6{
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    a {
+        color: #2bb3c7;
+    }
 }
