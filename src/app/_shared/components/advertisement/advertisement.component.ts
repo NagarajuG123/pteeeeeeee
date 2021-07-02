@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class AdvertisementComponent implements OnInit {
   adsData: any = [];
+  @Input() slug = '1851';
+  @Input() type = '';
 
   constructor( private apiService: ApiService ) { }
 
@@ -16,9 +18,9 @@ export class AdvertisementComponent implements OnInit {
   }
 
   getAds() {
-    let slug = '1851';
-    this.apiService.getAPI(`${slug}/columns`).subscribe((response ) =>{
-      this.adsData = response.data[0];
+    this.apiService.getAPI(`${this.slug}/ads`).subscribe((response) => {
+      console.log(response)
+      // this.adsData = response.data[0];
     });
   }
 }

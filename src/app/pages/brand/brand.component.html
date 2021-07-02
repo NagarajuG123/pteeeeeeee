@@ -6,7 +6,10 @@
   [title]="'TRENDING'"
 ></app-carousel>
 
-<div *ngIf="latestStories?.data?.length" class="frannews latest-story">
+<div
+  *ngIf="latestStories?.data?.length"
+  class="frannews brand-frannews brand-frannews1"
+>
   <div class="container">
     <div class="frannews-details col-xl-11">
       <div class="frannews-top d-flex">
@@ -67,3 +70,5 @@
     </div>
   </div>
 </div>
+
+<app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
