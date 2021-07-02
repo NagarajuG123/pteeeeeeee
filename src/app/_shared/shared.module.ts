@@ -11,6 +11,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
+import { FiveColumn } from '../_core/models/fiveColumn';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -53,7 +54,8 @@ import { FeaturedComponent } from './components/featured/featured.component';
     ContactEditorialComponent,
     FiveColumnComponent,
     CarouselComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    FiveColumn
   ],
   imports: [CommonModule,
     RouterModule,
@@ -92,7 +94,8 @@ import { FeaturedComponent } from './components/featured/featured.component';
     ContactEditorialComponent,
     CarouselComponent,
     FiveColumnComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    FiveColumn
   ],
 })
 export class SharedModule {}

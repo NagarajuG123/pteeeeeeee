@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/FiveColumn';
+import { FiveColumn } from 'src/app/_core/models/fiveColumn';
 import {ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {ApiService } from 'src/app/_core/services/api.service';
 export class SubscribepageComponent implements OnInit {
   data: FiveColumn[] =[];
   slug = '1851';
-  title:string | undefined;
+  title!:string ;
 
   constructor( private apiService : ApiService) { }
 
