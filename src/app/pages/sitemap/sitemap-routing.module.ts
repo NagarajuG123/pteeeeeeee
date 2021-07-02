@@ -5,10 +5,6 @@ import { SitemapDetailComponent } from './sitemap-detail/sitemap-detail.componen
 
 const routes: Routes = [
   {
-    path: 'sitemap',
-    component: SitemapComponent,
-  },
-  {
     path: '',
     component: SitemapDetailComponent,
   },

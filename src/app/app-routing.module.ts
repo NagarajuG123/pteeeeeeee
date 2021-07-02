@@ -14,7 +14,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: ':year:month',
+    path: 'sitemap',
+    component:SitemapComponent,
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
