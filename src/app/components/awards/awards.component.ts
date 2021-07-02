@@ -19,7 +19,6 @@ export class AwardsComponent implements OnInit {
   getAwards(){
     this.apiService.getAPI(`${this.slug}/home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
       this.awardsData = response;
-      console.log(this.awardsData);
     });
   }
 }

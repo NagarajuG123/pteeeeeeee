@@ -31,7 +31,7 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      <div *ngIf="isBrowser" class="trending-bottom mx-5">
+      <div class="trending-bottom mx-5">
         <owl-carousel-o [options]="customOptions">
           <ng-container *ngFor="let item of list; let i = index">
             <ng-template carouselSlide [id]="item.id">
