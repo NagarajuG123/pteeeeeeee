@@ -1,0 +1,49 @@
+<div
+  class="
+    banner
+    d-flex
+    trendingbrandbuzz-banner
+    flex-row-reverse
+    monthlydetails-banner
+  "
+  *ngIf="banner"
+>
+  <div class="banner-right col-md-8 p-0">
+    <a class="d-block">
+      <figure>
+        <img
+          appYoutubeImage
+          src="{{ banner.media | defaultImage: 1023:576 }}"
+          width="1023"
+          height="576"
+          alt="monthly-details-banner"
+        />
+      </figure>
+    </a>
+  </div>
+  <a class="banner-left col-md-4 p-0" href="">
+    <div class="trendingbrandbuzz-content">
+      <h1>
+        {{ banner.title }}
+      </h1>
+      <p>
+        {{ banner.short_description }}
+      </p>
+    </div>
+    <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="">
+      <a
+        *ngIf="
+          type == 'monthlydetailspage' ||
+          type == 'trendingbrandbuzz' ||
+          type == 'powerranking'
+        "
+        class="float-right text-uppercase"
+        href=""
+      >
+        READ MORE
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </a>
+      <div class="clearfix"></div>
+    </a>
+  </a>
+</div>

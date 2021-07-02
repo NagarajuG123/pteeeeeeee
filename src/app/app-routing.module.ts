@@ -7,11 +7,17 @@ import { ErrorComponent } from './_shared/components/error/error.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
+import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'powerrankings',
+    component: PowerRankingComponent,
+    loadChildren: () => import('./pages/power-ranking/power-ranking.module').then((m) => m.PowerRankingModule),
   },
   {
     path: 'sitemap',
