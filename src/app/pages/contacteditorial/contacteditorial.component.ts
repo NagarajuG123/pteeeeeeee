@@ -6,9 +6,9 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./contacteditorial.component.scss']
 })
 export class ContacteditorialComponent implements OnInit {
-  contactData: any = [];
+  data: any = [];
   slug = '1851';
-
+  title!: string;
   constructor( private apiService:ApiService) { }
 
   ngOnInit(): void {
@@ -17,7 +17,8 @@ export class ContacteditorialComponent implements OnInit {
 
   getContactEditorial() {
     this.apiService.getAPI(`${this.slug}/contact-editorial`).subscribe((response ) =>{
-      this.contactData = response
+       this.data = response;
+       this.title = response.data.title;
     });
   }
 }

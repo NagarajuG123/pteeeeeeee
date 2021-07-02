@@ -1,24 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SubscribepageComponent } from './subscribepage.component';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeModule } from '../home/home.module';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
-const routes: Routes = [
-  {
-    path: '**',
-    component: SubscribepageComponent,
-  }
-];
 
 @NgModule({
   declarations: [
-    RouterModule,
-    HomeModule,
     SubscribepageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class SubscribepageModule { }
