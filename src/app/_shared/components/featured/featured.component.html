@@ -3,20 +3,28 @@
     <div class="row">
       <div class="col-md-8 p-0">
         <div class="featured-left position-relative" #getHeight>
-          <img class="video-maker" src="assets/img/youtube.svg" data-toggle="modal"
-            data-target="#featured_articles_video_modal" />
-          <!-- <img src="../assets/img/maxresdefault.jpg" alt="" class="img-fluid" style="height:713px" /> -->
           <a *ngIf="!isVideo(highlight)">
-            <img appyoutubeimage sizes="(max-width: 576px) 600px,
+            <img
+              appyoutubeimage
+              sizes="(max-width: 576px) 600px,
           (max-width: 768px) 800px,
           (max-width: 992px) 600px,
           (max-width: 1200px) 700px,
-          1300px" src="{{ highlight.media | defaultImage: 1300:730 }}" class="img-fluid" />
+          1300px"
+              src="{{ highlight.media | defaultImage: 1300:730 }}"
+              class="img-fluid"
+            />
           </a>
-          <a *ngIf="isVideo(highlight)" class="d-block video-btn" data-toggle="modal"
-            data-target="#featured_articles_video_modal" (click)="openVideoPlayer = true">
+          <a
+            *ngIf="isVideo(highlight)"
+            class="d-block video-btn"
+            data-toggle="modal"
+            data-target="#featured_articles_video_modal"
+            (click)="openVideoPlayer = true"
+          >
             <figure class="m-0">
-              <img appYoutubeImage
+              <img
+                appYoutubeImage
                 srcset="{{highlight.media | defaultImage:600:337}} 600w, {{highlight.media | defaultImage:700:393}} 700w, {{highlight.media | defaultImage:800:449}} 800w, {{highlight.media | defaultImage:1300:730}} 1300w"
                 sizes="{{
                   '(max-width: 576px) 600px,
@@ -24,9 +32,16 @@
                         (max-width: 992px) 600px,
                         (max-width: 1200px) 700px,
                         1300px'
-                }}" src="{{ highlight.media | defaultImage: 1300:730 }}" />
+                }}"
+                src="{{ highlight.media | defaultImage: 1300:730 }}"
+              />
             </figure>
-
+            <img
+              class="video-maker"
+              src="assets/img/youtube.svg"
+              data-toggle="modal"
+              data-target="#featured_articles_video_modal"
+            />
           </a>
 
           <div class="buffalowings">
@@ -37,7 +52,9 @@
               </p>
             </div>
             <div class="buffalowings-bottom text-end">
-              <a class="">READ MORE <i class="fa fa-chevron-right text-white"></i></a>
+              <a class=""
+                >READ MORE <i class="fa fa-chevron-right text-white"></i
+              ></a>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -46,13 +63,21 @@
       <div class="col-md-4 p-0">
         <div class="featured-right" [style.height.px]="getHeight.offsetHeight">
           <div class="feature-block">
-            <div class="row mb-3" *ngFor="let item of featuredData?.data?.slice(1)">
+            <div
+              class="row mb-3"
+              *ngFor="let item of featuredData?.data?.slice(1)"
+            >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
-                <img appyoutubeimage sizes="(max-width: 576px) 600px,
+                <img
+                  appyoutubeimage
+                  sizes="(max-width: 576px) 600px,
                 (max-width: 768px) 800px,
                 (max-width: 992px) 600px,
                 (max-width: 1200px) 700px,
-                1300px" src="{{ item.media | defaultImage: 1300:730 }}" class="img-fluid" />
+                1300px"
+                  src="{{ item.media | defaultImage: 1300:730 }}"
+                  class="img-fluid"
+                />
               </div>
               <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
                 <p>{{ item.title }}</p>

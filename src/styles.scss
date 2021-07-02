@@ -1,7 +1,5 @@
-@import "src/assets/scss/fonts";
 @import "src/assets/scss/mixins";
 @import "src/assets/scss/sidebar";
-@import "src/assets/scss/trending";
 @import "src/assets/scss/featured";
 @import "src/assets/scss/spotlight";
 @import "src/assets/scss/franchise";
@@ -34,6 +32,11 @@
 @font-face {
   font-family: "ProximaNova-Light";
   src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 h6 {
@@ -151,6 +154,13 @@ h5 {
   @media (max-width: 1420px) {
     max-width: 100% !important;
   }
+}
+
+.addeLeftSpace
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top.bg-white.pb-0.pt-3 {
+  left: 300px;
+  width: 100%;
+  transition: all 0.4s ease;
 }
 img {
   vertical-align: middle;

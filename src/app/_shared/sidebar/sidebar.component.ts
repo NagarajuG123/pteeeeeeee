@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-
+import { CommonService } from '../../_core/services/common.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  sidebar: any =[];
-  publication: any=[];
+  sidebar: any = [];
+  publication: any = [];
   slug: string = '1851';
 
-  constructor( private apiService: ApiService ) { }
+  constructor(private apiService: ApiService, public common: CommonService) {}
 
   ngOnInit(): void {
-     this.getSidebar();
-     this.getPublication();
+    this.getSidebar();
+    this.getPublication();
   }
- 
+
   //Publication Instance
   getPublication() {
-    this.apiService.getAPI(`${this.slug}/publication-instance`).subscribe((response ) =>{
-      this.publication = response;
-    });
+    this.apiService
+      .getAPI(`${this.slug}/publication-instance`)
+      .subscribe((response) => {
+        this.publication = response;
+      });
   }
 
   //Sidebar API

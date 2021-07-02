@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class ContacteditorialComponent implements OnInit {
   data: any = [];
   slug = '1851';
-  title: string | undefined;
+  title!: string;
   constructor( private apiService:ApiService) { }
 
   ngOnInit(): void {
