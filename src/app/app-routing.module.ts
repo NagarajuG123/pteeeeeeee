@@ -6,6 +6,7 @@ import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.co
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
+import { SitemapDetailComponent } from './pages/sitemap/sitemap-detail/sitemap-detail.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'sitemap',
-    component: SitemapComponent,
+    path: ':year:month',
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {

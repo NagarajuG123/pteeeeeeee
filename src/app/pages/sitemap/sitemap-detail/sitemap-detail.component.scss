@@ -1,0 +1,23 @@
+.top-space {
+    padding-top: 80px;
+}
+.bws-sitemap {
+    padding: 40px 0!important;
+}
+.container {
+    width: 970px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+@media screen and (min-width: 576px){
+.col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+}
