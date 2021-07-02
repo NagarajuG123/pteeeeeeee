@@ -19,7 +19,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
   imports: [
     CommonModule,
     BrandRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class BrandModule { }

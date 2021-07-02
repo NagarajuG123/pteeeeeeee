@@ -1,7 +1,69 @@
 <app-featured [slug]="slug"></app-featured>
 <app-news [slug]="slug"></app-news>
 <app-carousel
-  [slug]="'1851'"
+  [slug]="slug"
   [type]="'trending'"
   [title]="'TRENDING'"
 ></app-carousel>
+
+<div *ngIf="latestStories?.data?.length" class="frannews latest-story">
+  <div class="container">
+    <div class="frannews-details col-xl-11">
+      <div class="frannews-top d-flex">
+        <div class="frannews-top-left col-md-9 p-0">
+          <ul>
+            <li>
+              <h4 class="text-uppercase">{{ company }}</h4>
+            </li>
+            <li>
+              <h4 class="text-uppercase">
+                <span>LATEST STORIES</span>
+              </h4>
+            </li>
+          </ul>
+        </div>
+        <div class="frannews-top-right col-md-3">
+          <a href="" class="float-right">
+            READ MORE
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="frannews-bottom">
+        <ul class="d-flex">
+          <li class="col-md-4 col-lg-3" *ngFor="let item of latestStories.data">
+            <a href="" class="frannews-bottom-details">
+              <figure>
+                <img
+                  appYoutubeImage
+                  class="last-stories-franews-image"
+                  src="{{ item?.media | defaultImage: 259:145 }}"
+                  width="259"
+                  height="145"
+                  alt="Latest stories"
+                />
+              </figure>
+              <div class="socialmedia">
+                <p
+                  title="{{ item.title }}"
+                  style="-webkit-box-orient: vertical"
+                >
+                  {{ item.title }}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <a
+          href="javascript:void(0)"
+          (click)="getMoreItem()"
+          class="text-center loadmore-btn d-block"
+        >
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </a>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

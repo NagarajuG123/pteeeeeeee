@@ -11,6 +11,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TimeagoModule } from 'ngx-timeago';
 
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -61,8 +62,10 @@ import { FeaturedComponent } from './components/featured/featured.component';
     VgOverlayPlayModule,
     VgBufferingModule,
     CarouselModule,
+    TimeagoModule.forRoot(),
   ],
   exports: [
+    TimeagoModule,
     RouterModule,
     CommonModule,
     FormsModule,

@@ -20,7 +20,6 @@ export class MonthlyCoversComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.closeMenu();
     this.getCoverData();
   }
   getCoverData() {
@@ -42,8 +41,5 @@ export class MonthlyCoversComponent implements OnInit {
     });
     this.cdr.detectChanges();
   }
-  closeMenu() {
-    // $('.menu-details').hide();
-    // $('body').toggleClass('menu-open');
-  }
+  
 }
