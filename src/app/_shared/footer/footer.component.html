@@ -60,7 +60,10 @@
           <a href="tel:3125263996">312.526.3996</a>
           <div class="clearfix"></div>
           <div class="social-blogs mt-4">
-            <ul class="float-md-end float-start">
+            <ul
+              class="float-md-end float-start"
+              *ngIf="footerData['learn-more']"
+            >
               <li>
                 <a
                   class="d-block text-center"
@@ -116,7 +119,7 @@
           <input
             class="form-control"
             type="text"
-            placeholder="footerData['search']['placeholder']"
+            placeholder="{{ footerData?.search?.placeholder }}"
           /><button class="d-block text-center" type="button">
             <i aria-hidden="true" class="fa fa-search"></i>
           </button>

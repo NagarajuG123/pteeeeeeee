@@ -1,5 +1,5 @@
 <div class="fran-block frannews-trending">
-  <div class=" container-xl frannews-details">
+  <div class="container-xl frannews-details">
     <div class="row">
       <div class="col-md-12">
         <div class="frannews-top d-flex">
@@ -9,7 +9,8 @@
                 <h4>{{ newsData.title }}</h4>
               </li>
               <li class="frannews-subtitle">
-                <span>{{ newsData.subtitle }}</span>
+                <h1 *ngIf="slug != '1851'">{{ newsData.subtitle }}</h1>
+                <span *ngIf="slug == '1851'">{{ newsData.subtitle }}</span>
               </li>
             </ul>
           </div>
