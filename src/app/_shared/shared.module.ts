@@ -27,7 +27,7 @@ import { FooterTopComponent } from './footer/footer-top/footer-top.component';
 import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeaturedComponent } from './components/featured/featured.component';
-import { TermsofuseBannerComponent } from './components/termsofuse-banner/termsofuse-banner.component';
+import { TopBannerComponent } from './components/top-banner/top-banner.component';
 import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 
 // Modals Components
@@ -52,7 +52,7 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
     CarouselComponent,
     FeaturedComponent,
     ContactEditorialComponent,
-    TermsofuseBannerComponent
+    TopBannerComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -91,7 +91,7 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
     FiveColumnComponent,
     FeaturedComponent,
     ContactEditorialComponent,
-    TermsofuseBannerComponent
+    TopBannerComponent
   ],
 })
 export class SharedModule {}

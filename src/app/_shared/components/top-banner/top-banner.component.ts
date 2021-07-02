@@ -2,11 +2,11 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 import { FiveColumn } from 'src/app/_core/models/fiveColumn';
 
 @Component({
-  selector: 'app-termsofuse-banner',
-  templateUrl: './termsofuse-banner.component.html',
-  styleUrls: ['./termsofuse-banner.component.scss']
+  selector: 'app-top-banner',
+  templateUrl: './top-banner.component.html',
+  styleUrls: ['./top-banner.component.scss']
 })
-export class TermsofuseBannerComponent implements OnInit {
+export class TopBannerComponent implements OnInit {
   @Input() data: FiveColumn[] = [];
   @Input() title!: string  ;
 

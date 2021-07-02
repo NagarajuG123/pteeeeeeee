@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TermsofuseBannerComponent } from './termsofuse-banner.component';
+import { TopBannerComponent } from './top-banner.component';
 
 describe('TermsofuseBannerComponent', () => {
-  let component: TermsofuseBannerComponent;
-  let fixture: ComponentFixture<TermsofuseBannerComponent>;
+  let component: TopBannerComponent;
+  let fixture: ComponentFixture<TopBannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TermsofuseBannerComponent ]
+      declarations: [ TopBannerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TermsofuseBannerComponent);
+    fixture = TestBed.createComponent(TopBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
