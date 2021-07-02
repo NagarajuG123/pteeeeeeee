@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class NewsComponent implements OnInit {
   newsData: any = [];
-  slug: string = '1851';
+  @Input() slug = '1851';
 
   constructor(private apiService: ApiService) { }
 
