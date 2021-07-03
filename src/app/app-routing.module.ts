@@ -15,7 +15,6 @@ const routes: Routes = [
   },
   {
     path: 'sitemap',
-    // component:SitemapComponent,
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
