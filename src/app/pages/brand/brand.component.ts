@@ -21,7 +21,7 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
       .subscribe(params => {
-        this.slug = params.get('brand_slug');
+        this.slug = params.get('brandSlug');
         this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe((response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');

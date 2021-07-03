@@ -1,0 +1,47 @@
+<div class="banner author-banner">
+  <div class="container">
+    <div class="author-banner-content d-flex col-xl-8">
+      <div class="author-banner-left col-md-5 col-sm-6">
+        <figure>
+          <img
+            appYoutubeImage
+            src="{{ author?.data?.media | defaultImage: 298:297 }}"
+            width="298"
+            height="297"
+            alt="authorpage-img1"
+          />
+        </figure>
+      </div>
+      <div class="author-banner-right col-md-7 col-sm-6 p-0">
+        <ul>
+          <li class="d-block">
+            <div class="author-name text-center">
+              <h2 class="text-uppercase">
+                {{ author?.data?.first_name }} {{ author?.data?.last_name }}
+              </h2>
+            </div>
+          </li>
+          <li class="d-block">
+            <div class="author-name designation text-center">
+              <span class="d-block">{{ author?.data?.designation }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</div>
+
+<div class="main-content">
+  <div class="about-author">
+    <div class="container">
+      <div class="about-details col-xl-7">
+        <h2 class="text-uppercase">
+          ABOUT {{ author?.data?.first_name }} {{ author?.data?.last_name }}
+        </h2>
+        <div [innerHTML]="author?.data?.about"></div>
+      </div>
+    </div>
+  </div>
+</div>
