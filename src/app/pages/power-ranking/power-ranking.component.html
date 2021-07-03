@@ -1,7 +1,181 @@
 <div class="top-space"></div>
 
+<!-- Top section Start-->
 <app-two-side-banner
-  [banner]="banner"
+  [banner]="contents"
   [type]="'powerranking'"
 ></app-two-side-banner>
+<!-- Top section End-->
+
+<!-- powerranking Start-->
+
+<div class="ranking_september">
+  <div class="ranking_scroll_main">
+    <div class="ranking_sub_scroll">
+      <div class="ranking_september_main">
+        <div class="container" *ngIf="contents.rank_start_from">
+          <h2 class="text-center">
+            RANKINGS:
+            <span
+              >{{ contents.rank_start_from | date: "	MMMM dd" }} -
+              {{ contents.rank_start_to | date: "	MMMM dd" }}</span
+            >
+          </h2>
+
+          <ul
+            class="
+              ranking_data_main
+              d-flex
+              flex-wrap
+              justify-content-center
+              clearfix
+            "
+          >
+            <li class="rank_data col-2 text-center">
+              <span>RANK</span>
+            </li>
+            <li class="brand_data col-4 text-center">
+              <span>BRAND PAGE</span>
+            </li>
+            <li class="trending_data col-2 text-center">
+              <span>TRENDING</span>
+            </li>
+            <li class="latest_data col-4 text-center">
+              <span>LATEST STORY</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ranking_september_data">
+        <div
+          class="container"
+          *ngFor="let item of contents.brands; let i = index"
+        >
+          <ul
+            *ngIf="i < 10"
+            class="
+              ranking_data_main
+              d-flex
+              flex-wrap
+              justify-content-center
+              align-items-center
+            "
+            [class.hide-bottom]="i == 9"
+          >
+            <li class="rank_data col-md-2 col-sm-1 text-center">
+              <em>{{ item.rank }}</em>
+            </li>
+            <li
+              class="
+                brand_data
+                col-md-4 col-sm-5
+                d-flex
+                flex-wrap
+                justify-content-center
+                align-items-center
+              "
+            >
+              <a routerLink="{{ item.slug }}" class="col-6 p-0">
+                <img
+                  src="{{ item.logo }}"
+                  width="155"
+                  height="70"
+                  alt="powerranking"
+                />
+              </a>
+              <a routerLink="{{ item.slug }}" class="col-6">
+                {{ item.name }}
+              </a>
+            </li>
+            <li class="trending_data col-md-2 text-center">
+              <small>Last Week</small>
+              <div class="dropdown">
+                <button type="button" class="btn btn-primary">
+                  {{ item.last_week_rank }}
+                </button>
+              </div>
+            </li>
+            <li class="latest_data col-md-4">
+              <a href="" target="_blank">
+                <b> {{ item.latest_story_title }} </b>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-advertisement
+    [slug]="'1851'"
+    [type]="'Main Site Ad'"
+  ></app-advertisement>
+
+  <div class="ranking_scroll_main">
+    <div class="ranking_sub_scroll">
+      <div class="ranking_september_data">
+        <div class="container">
+          <div
+            class="container"
+            *ngFor="let item of contents.brands; let i = index"
+          >
+            <ul
+              *ngIf="i >= 10"
+              class="
+                ranking_data_main
+                d-flex
+                flex-wrap
+                justify-content-center
+                align-items-center
+              "
+            >
+              <li class="rank_data col-md-2 col-sm-1 text-center">
+                <em>{{ item.rank }}</em>
+              </li>
+              <li
+                class="
+                  brand_data
+                  col-md-4 col-sm-5
+                  d-flex
+                  flex-wrap
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <a routerLink="{{ item.slug }}" class="col-6 p-0">
+                  <img
+                    src="{{ item.logo }}"
+                    width="155"
+                    height="70"
+                    alt="powerranking"
+                  />
+                </a>
+                <a routerLink="{{ item.slug }}/info" class="col-6">
+                  {{ item.name }}
+                </a>
+              </li>
+              <li class="trending_data col-md-2 text-center">
+                <small>Last Week</small>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary">
+                    {{ item.last_week_rank }}
+                  </button>
+                </div>
+              </li>
+              <li class="latest_data col-md-4">
+                <a href="" target="_blank">
+                  <b> {{ item.latest_story_title }} </b>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- powerranking End-->
+
+<!-- Footer top -->
 <app-footer-top></app-footer-top>

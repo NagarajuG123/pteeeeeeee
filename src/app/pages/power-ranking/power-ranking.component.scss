@@ -1,3 +1,131 @@
 .top-space {
   padding-top: 80px;
 }
+.ranking_september {
+  padding: 0 0 41px;
+  border-bottom: 1px solid #adafb1;
+  position: relative;
+  h2 {
+    font-size: 24px;
+    line-height: 25px;
+    color: #263645;
+    padding: 0 0 70px;
+    span {
+      display: inline-block;
+      font-family: ProximaNova-Light;
+    }
+  }
+}
+.ranking_september_main {
+  background: #ececed;
+  padding: 64px 0 0;
+}
+.justify-content-center {
+  justify-content: center !important;
+}
+.ranking_data_main {
+  li {
+    span {
+      display: block;
+      font-size: 17px;
+      line-height: 30px;
+      color: grey;
+      font-family: ProximaNova-Medium;
+      font-weight: 400;
+      border-bottom: 1px solid #b00034;
+      padding: 0 0 4px;
+    }
+    .rank_data {
+      max-width: 14%;
+      -webkit-flex: 0 0 14%;
+      padding: 0 24px 0 0;
+    }
+    .brand_data {
+      max-width: 44%;
+      -webkit-flex: 0 0 44%;
+      padding: 0 43px;
+    }
+    .trending_data {
+      max-width: 12%;
+      -webkit-flex: 0 0 12%;
+      padding: 0 25px 0 13px;
+    }
+    .latest_data {
+      max-width: 30%;
+      -webkit-flex: 0 0 30%;
+      padding: 0 2px 0 31px;
+    }
+  }
+}
+.align-items-center {
+  align-items: center !important;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
+}
+.ranking_september_data {
+  background: #fff;
+  padding: 26px 0;
+  ul {
+    border-bottom: 1px solid #d0d1d2;
+    padding: 30px 0;
+    li {
+      b {
+        font-size: 16px;
+        line-height: 18px;
+        color: #272525;
+        font-weight: 400;
+        font-family: ProximaNova-Medium;
+        display: block;
+        text-decoration: underline;
+        letter-spacing: 0.6px;
+      }
+      a {
+        font-size: 20px;
+        line-height: 22px;
+        color: #272525;
+        font-family: ProximaNova-Medium;
+        font-weight: 400;
+        display: block;
+      }
+      em {
+        font-size: 90px;
+        line-height: 92px;
+        color: #ec0044;
+        font-family: ProximaNova-Bold;
+        font-weight: 400;
+        display: block;
+        font-style: normal;
+      }
+      small {
+        display: block;
+        font-size: 14px;
+        line-height: 16px;
+        color: #8e9092;
+        font-family: ProximaNova-Medium;
+        font-weight: 400;
+      }
+    }
+  }
+}
+.dropdown {
+  position: relative;
+  .btn-primary {
+    border: 0;
+    background: 0 0;
+    color: #272525;
+    font-family: ProximaNova-Light;
+    font-weight: 400;
+    outline: 0;
+    font-size: 40px;
+    line-height: 42px;
+    padding: 0;
+  }
+}
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
