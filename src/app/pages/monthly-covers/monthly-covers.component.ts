@@ -29,7 +29,9 @@ export class MonthlyCoversComponent implements OnInit {
       this.has_more = response.has_more;
     });
   }
-  openDetails(date:any) {
+  openDetails(date: any) {
+    const params = date.split('-');
+    return `/monthlydetails/${params[1]}/${params[0]}/${params[2]}/3`;
   }
   getMoreData() {
     const offset = this.secondBlock.length + 7;
