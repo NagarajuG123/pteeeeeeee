@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SitemapComponent } from './pages/sitemap/sitemap.component';
 import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
 import { ErrorComponent } from './_shared/components/error/error.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
   },
   {
     path: 'sitemap',
-    component: SitemapComponent,
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
