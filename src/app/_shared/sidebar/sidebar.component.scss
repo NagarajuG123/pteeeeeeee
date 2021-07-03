@@ -54,7 +54,6 @@
   }
   > li {
     position: relative;
-    margin-bottom: 13px;
     > strong {
       font-size: 13px;
     }
@@ -70,6 +69,9 @@
     > .sublist {
       padding: 0;
       font-size: 12px;
+    > li{
+      padding-left: 5px;
+    }
     }
   }
 }
