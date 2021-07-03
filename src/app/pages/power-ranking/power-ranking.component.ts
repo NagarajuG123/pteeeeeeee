@@ -16,13 +16,6 @@ export class PowerRankingComponent implements OnInit {
     this.getData();
   }
 
-  goBrandPage(slug: string) {
-    return slug;
-  }
-
-  goBrandInfoPage(slug: string) {
-    return `${slug}/info`;
-  }
   getData() {
     this.apiService.getAPI(`1851/power-ranking`)
       .subscribe(result => {
