@@ -75,7 +75,11 @@
                 align-items-center
               "
             >
-              <a routerLink="{{ item.slug }}" class="col-6 p-0">
+              <a
+                href="{{ goBrandPage(item.slug) }}"
+                targe="_blank"
+                class="col-6 p-0"
+              >
                 <img
                   src="{{ item.logo }}"
                   width="155"
@@ -83,7 +87,11 @@
                   alt="powerranking"
                 />
               </a>
-              <a routerLink="{{ item.slug }}" class="col-6">
+              <a
+                href="{{ goBrandInfoPage(item.slug) }}"
+                targe="_blank"
+                class="col-6"
+              >
                 {{ item.name }}
               </a>
             </li>
@@ -142,7 +150,11 @@
                   align-items-center
                 "
               >
-                <a routerLink="{{ item.slug }}" class="col-6 p-0">
+                <a
+                  href="{{ goBrandPage(item.slug) }}"
+                  targe="_blank"
+                  class="col-6 p-0"
+                >
                   <img
                     src="{{ item.logo }}"
                     width="155"
@@ -150,7 +162,11 @@
                     alt="powerranking"
                   />
                 </a>
-                <a routerLink="{{ item.slug }}/info" class="col-6">
+                <a
+                  href="{{ goBrandInfoPage(item.slug) }}"
+                  targe="_blank"
+                  class="col-6"
+                >
                   {{ item.name }}
                 </a>
               </li>

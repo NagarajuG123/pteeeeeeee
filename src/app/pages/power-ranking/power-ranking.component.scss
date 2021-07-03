@@ -23,7 +23,31 @@
 .justify-content-center {
   justify-content: center !important;
 }
+ul {
+  margin-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
 .ranking_data_main {
+  li.rank_data {
+    max-width: 14%;
+    -webkit-flex: 0 0 14%;
+    padding: 0 24px 0 0;
+  }
+  li.brand_data {
+    max-width: 44%;
+    -webkit-flex: 0 0 44%;
+    padding: 0 43px;
+  }
+  li.trending_data {
+    max-width: 12%;
+    -webkit-flex: 0 0 12%;
+    padding: 0 25px 0 13px;
+  }
+  li.latest_data {
+    max-width: 30%;
+    -webkit-flex: 0 0 30%;
+    padding: 0 2px 0 31px;
+  }
   li {
     span {
       display: block;
@@ -34,26 +58,6 @@
       font-weight: 400;
       border-bottom: 1px solid #b00034;
       padding: 0 0 4px;
-    }
-    .rank_data {
-      max-width: 14%;
-      -webkit-flex: 0 0 14%;
-      padding: 0 24px 0 0;
-    }
-    .brand_data {
-      max-width: 44%;
-      -webkit-flex: 0 0 44%;
-      padding: 0 43px;
-    }
-    .trending_data {
-      max-width: 12%;
-      -webkit-flex: 0 0 12%;
-      padding: 0 25px 0 13px;
-    }
-    .latest_data {
-      max-width: 30%;
-      -webkit-flex: 0 0 30%;
-      padding: 0 2px 0 31px;
     }
   }
 }
