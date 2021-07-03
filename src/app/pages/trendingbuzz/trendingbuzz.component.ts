@@ -18,9 +18,8 @@ export class TrendingbuzzComponent implements OnInit {
   }
 
   getTrending(){
-    this.apiService.getAPI(`${this.slug}/trending-buzz?limit=20&offset=0`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/trending-buzz?limit=30&offset=0`).subscribe((response ) =>{
       this.trendingData = response.data;
-      // this.dynamicStories = response.data.stories;
     });
   }
 }

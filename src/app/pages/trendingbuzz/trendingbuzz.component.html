@@ -7,7 +7,7 @@
 
     <app-five-column
     [slug]="'1851'"
-    [contents]="trendingData"
+    [contents]="trendingData.slice(0,10)"
     [type]="'trendingbrandbuzz'"
     ></app-five-column>
 
@@ -15,7 +15,7 @@
 
     <app-five-column
     [slug]="'1851'"
-    [contents]="trendingData"
+    [contents]="trendingData.slice(10,30)"
     ></app-five-column>
 
 </div>
