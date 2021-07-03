@@ -1,0 +1,52 @@
+<div class="ranking_september_data">
+  <div class="container" *ngFor="let item of items; let i = index">
+    <ul
+      class="
+        ranking_data_main
+        d-flex
+        flex-wrap
+        justify-content-center
+        align-items-center
+      "
+    >
+      <li class="rank_data col-md-2 col-sm-1 text-center">
+        <em>{{ item.rank }}</em>
+      </li>
+      <li
+        class="
+          brand_data
+          col-md-4 col-sm-5
+          d-flex
+          flex-wrap
+          justify-content-center
+          align-items-center
+        "
+      >
+        <a href="{{ goBrandPage(item.slug) }}" targe="_blank" class="col-6 p-0">
+          <img
+            src="{{ item.logo }}"
+            width="155"
+            height="70"
+            alt="powerranking"
+          />
+        </a>
+        <a href="{{ goBrandInfoPage(item.slug) }}" targe="_blank" class="col-6">
+          {{ item.name }}
+        </a>
+      </li>
+      <li class="trending_data col-md-2 text-center">
+        <small>Last Week</small>
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary">
+            {{ item.last_week_rank }}
+          </button>
+        </div>
+      </li>
+      <li class="latest_data col-md-4">
+        <a href="" target="_blank">
+          <b> {{ item.latest_story_title }} </b>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
