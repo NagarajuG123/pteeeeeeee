@@ -33,140 +33,138 @@
       </div>
       <div *ngIf="isBrowser" class="trending-bottom mx-5">
         <owl-carousel-o [options]="customOptions">
-          <ng-container *ngFor="let item of list; let i = index">
-            <ng-template carouselSlide [id]="item.id">
-              <!-- <li *ngFor="let item of list; let i = index" class="col-md-4"> -->
-              <a
-                href="{{ goReadMore(item) }}#{{ type }}"
-                style="text-decoration: none"
-              >
-                <div
-                  class="trending-bottom-details"
-                  *ngIf="type !== 'main-videos'"
-                >
-                  <figure *ngIf="item.media">
-                    <img
-                      appYoutubeImage
-                      *ngIf="type === 'trending' || type === 'columns'"
-                      src="{{ item.media | defaultImage: 415:232 }}"
-                      alt="img9"
-                      srcset=""
-                    />
-                  </figure>
-                  <figure *ngIf="!item.media">
-                    <img
-                      src="assets/img/video-img2.jpg"
-                      width="415"
-                      height="232"
-                      alt="img9"
-                      srcset=""
-                    />
-                  </figure>
-                  <div class="w-100 buffalowings" *ngIf="type === 'trending'">
-                    <div class="buffalowings-wrap d-flex">
-                      <div
-                        class="buffalowings-wrap-left"
-                        [class.col-2]="i < 9"
-                        [class.col-3]="i >= 9"
-                      >
-                        <span class="d-block">{{ i + 1 }}</span>
-                      </div>
-                      <div class="buffalowings-wrap-right col-9">
-                        <p style="-webkit-box-orient: vertical">
-                          {{ item.title }}
-                        </p>
-                      </div>
-                    </div>
-                    <div class="buffalowings-bottom">
-                      <span class="float-right text-uppercase">
-                        <a
-                          style="color: white"
-                          href="{{ goReadMore(item) }}#{{ type }}"
-                        >
-                          READ MORE
-                          <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
-                      </span>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="w-100" *ngIf="type === 'columns'">
-                    <div class="buffalowings-wrap">
-                      <h5 style="-webkit-box-orient: vertical">
-                        {{ item.title }}
-                      </h5>
-                      <p style="-webkit-box-orient: vertical">
-                        {{ item.short_description }}
-                      </p>
-                    </div>
-                    <div class="buffalowings-bottom">
-                      <span class="float-right text-uppercase"
-                        ><a
-                          style="color: white"
-                          href="{{ goReadMore(item) }}#{{ type }}"
-                          >READ MORE
-                          <i
-                            class="fa fa-angle-right text-white"
-                            aria-hidden="true"
-                          ></i></a
-                      ></span>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </a>
+          <!-- <ng-container *ngFor="let item of list; let i = index"> -->
+          <!-- [id]="item.id"  -->
+          <ng-template carouselSlide *ngFor="let item of list; let i = index">
+            <!-- <li *ngFor="let item of list; let i = index" class="col-md-4"> -->
+            <a
+              href="{{ goReadMore(item) }}#{{ type }}"
+              style="text-decoration: none"
+            >
               <div
                 class="trending-bottom-details"
-                *ngIf="type === 'main-videos'"
+                *ngIf="type !== 'main-videos'"
               >
-                <div
-                  class="d-block video-btn"
-                  data-toggle="modal"
-                  attr.data-src="{{ item.media.url }}"
-                  data-target="#slide_videos_video_modal"
-                  (click)="updateVideoUrl(item.media.url)"
-                  style="cursor: pointer"
-                >
-                  <figure *ngIf="item.media">
-                    <img
-                      appYoutubeImage
-                      src="{{ item.media | defaultImage: 415:232 }}"
-                      alt="video-img5"
-                      srcset=""
-                    />
-                    <img class="video-maker" src="assets/img/youtube.svg" />
-                  </figure>
-                  <figure *ngIf="!item.media">
-                    <img
-                      src="assets/img/video-img2.jpg"
-                      width="415"
-                      height="232"
-                      alt="video-img5"
-                    />
-                  </figure>
-                </div>
-                <div class="buffalowings w-100">
-                  <div class="buffalowings-wrap">
-                    <p>{{ item.title }}</p>
+                <figure *ngIf="item.media">
+                  <img
+                    appYoutubeImage
+                    *ngIf="type === 'trending' || type === 'columns'"
+                    src="{{ item.media | defaultImage: 415:232 }}"
+                    alt="img9"
+                    srcset=""
+                  />
+                </figure>
+                <figure *ngIf="!item.media">
+                  <img
+                    src="assets/img/video-img2.jpg"
+                    width="415"
+                    height="232"
+                    alt="img9"
+                    srcset=""
+                  />
+                </figure>
+                <div class="w-100 buffalowings" *ngIf="type === 'trending'">
+                  <div class="buffalowings-wrap d-flex">
+                    <div
+                      class="buffalowings-wrap-left"
+                      [class.col-2]="i < 9"
+                      [class.col-3]="i >= 9"
+                    >
+                      <span class="d-block">{{ i + 1 }}</span>
+                    </div>
+                    <div class="buffalowings-wrap-right col-9">
+                      <p style="-webkit-box-orient: vertical">
+                        {{ item.title }}
+                      </p>
+                    </div>
                   </div>
                   <div class="buffalowings-bottom">
-                    <a
-                      href="{{ item.media.url }}"
-                      target="blank"
-                      class="float-right text-white text-uppercase"
-                    >
-                      WATCH ON YOUTUBE
-                      <i
-                        class="fa fa-angle-right text-white"
-                        aria-hidden="true"
-                      ></i>
-                    </a>
+                    <span class="float-right text-uppercase">
+                      <a
+                        style="color: white"
+                        href="{{ goReadMore(item) }}#{{ type }}"
+                      >
+                        READ MORE
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="w-100" *ngIf="type === 'columns'">
+                  <div class="buffalowings-wrap">
+                    <h5 style="-webkit-box-orient: vertical">
+                      {{ item.title }}
+                    </h5>
+                    <p style="-webkit-box-orient: vertical">
+                      {{ item.short_description }}
+                    </p>
+                  </div>
+                  <div class="buffalowings-bottom">
+                    <span class="float-right text-uppercase"
+                      ><a
+                        style="color: white"
+                        href="{{ goReadMore(item) }}#{{ type }}"
+                        >READ MORE
+                        <i
+                          class="fa fa-angle-right text-white"
+                          aria-hidden="true"
+                        ></i></a
+                    ></span>
                     <div class="clearfix"></div>
                   </div>
                 </div>
               </div>
-            </ng-template>
-          </ng-container>
+            </a>
+            <div class="trending-bottom-details" *ngIf="type === 'main-videos'">
+              <div
+                class="d-block video-btn"
+                data-toggle="modal"
+                attr.data-src="{{ item.media.url }}"
+                data-target="#slide_videos_video_modal"
+                (click)="updateVideoUrl(item.media.url)"
+                style="cursor: pointer"
+              >
+                <figure *ngIf="item.media">
+                  <img
+                    appYoutubeImage
+                    src="{{ item.media | defaultImage: 415:232 }}"
+                    alt="video-img5"
+                    srcset=""
+                  />
+                  <img class="video-maker" src="assets/img/youtube.svg" />
+                </figure>
+                <figure *ngIf="!item.media">
+                  <img
+                    src="assets/img/video-img2.jpg"
+                    width="415"
+                    height="232"
+                    alt="video-img5"
+                  />
+                </figure>
+              </div>
+              <div class="buffalowings w-100">
+                <div class="buffalowings-wrap">
+                  <p>{{ item.title }}</p>
+                </div>
+                <div class="buffalowings-bottom">
+                  <a
+                    href="{{ item.media.url }}"
+                    target="blank"
+                    class="float-right text-white text-uppercase"
+                  >
+                    WATCH ON YOUTUBE
+                    <i
+                      class="fa fa-angle-right text-white"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <!-- </ng-container> -->
           <div class="owl-controls">
             <div class="owl-nav">
               <div class="owl-prev">prev</div>
@@ -181,6 +179,7 @@
 
           <!-- </li> -->
         </owl-carousel-o>
+
         <div
           *ngIf="type === 'main-videos'"
           class="modal fade"
