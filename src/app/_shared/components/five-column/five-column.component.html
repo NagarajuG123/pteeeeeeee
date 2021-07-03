@@ -1,4 +1,4 @@
-<h6 class="text-uppercase sponsored"  *ngIf="type == 'trendingbrandbuzz'">SPONSORED</h6>
+<h6 class="text-uppercase sponsored"  *ngIf="type === 'trendingbrandbuzz'">SPONSORED</h6>
 <div
   class="
     fran-content-block
@@ -24,7 +24,7 @@
         {{ trending.title }}
       </p>
     </div>
-    <div class="sponsored-number text-center" *ngIf="type == 'trendingbrandbuzz'">
+    <div class="sponsored-number text-center" *ngIf="type === 'trendingbrandbuzz'">
       <span class="d-inline-block"> {{ i + 1 }} </span>
   </div>
   </div>
