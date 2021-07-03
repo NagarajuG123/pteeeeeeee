@@ -38,16 +38,15 @@ export class BrandComponent implements OnInit {
       if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
-            this.latestStories = response;
+            this.latestStories = response.data;
           }
     });
 
   }
    getMoreItem() {
-    this.apiService.getAPI(`${this.slug}/brand-latest-stories?limit=8&offset=${this.latestStories.data.length}`)
+    this.apiService.getAPI(`${this.slug}/brand-latest-stories?limit=8&offset=${this.latestStories.length}`)
     .subscribe(result => {
-      this.latestStories = this.latestStories.data.concat(result['data']);
-      console.log(this.latestStories)
+      this.latestStories = this.latestStories.concat(result['data']);
       this.scrollOffset += 8;
     });
   }

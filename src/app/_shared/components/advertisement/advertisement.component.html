@@ -1,18 +1,58 @@
-<div class="container">
-  <div class="advertisement col-xl-10">
-    <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
-    <div class="clearfix"></div>
-    <div class="advertisement-details">
-      <div class="col-md-12">
-        <div class="advertisement-border">
-          <img
-            appYoutubeImage
-            src="{{ adsData?.media | defaultImage: 970:89 }}"
-            width="970"
-            height="89"
-            style="width: 100%"
-            alt="img12"
-          />
+<!-- Main site  - Home page -->
+<div *ngIf="pageType == 'home-page' && adsData.length">
+  <div class="container">
+    <div class="advertisement col-xl-10">
+      <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+      <div class="clearfix"></div>
+      <div class="advertisement-details home-ads">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let item of adsData">
+            <ng-template carouselSlide [id]="item.id">
+              <a href="{{ item.url }}" target="blank" class="d-block">
+                <figure>
+                  <img
+                    appYoutubeImage
+                    src="{{ item.media | defaultImage: 970:89 }}"
+                    width="970"
+                    height="89"
+                    style="width: 100%"
+                    alt="Advertisement"
+                  />
+                </figure>
+              </a>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Other Page -->
+<div *ngIf="pageType != 'home-page' && adsData.length">
+  <div class="brand-advertisement category-advertisement">
+    <div class="container">
+      <div class="advertisement col-xl-9">
+        <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+        <div class="clearfix"></div>
+        <div class="advertisement-details">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let item of adsData">
+              <ng-template carouselSlide [id]="item.id">
+                <a href="{{ item.url }}" target="blank" class="d-block">
+                  <figure>
+                    <img
+                      appYoutubeImage
+                      src="{{ item.media | defaultImage: 970:89 }}"
+                      width="970"
+                      height="89"
+                      style="width: 100%"
+                      alt="Advertisement"
+                    />
+                  </figure>
+                </a>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
         </div>
       </div>
     </div>

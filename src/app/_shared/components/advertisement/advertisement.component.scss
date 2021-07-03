@@ -9,9 +9,20 @@
   }
   margin: 0 auto;
 }
-.advertisement-details {
+.home-ads {
   border-top: 1px solid #d0d1d3;
   border-bottom: 1px solid #d0d1d3;
+}
+.brand-advertisement {
+  background: #f1f1f2;
+  .advertisement-details {
+    padding: 6px 14px;
+  }
+}
+.category-advertisement {
+  .advertisement {
+    padding: 67px 11px 71px;
+  }
 }
 //media query
 @media only screen and (min-width: 1024px) {
@@ -25,5 +36,8 @@
   }
   .advertisement-details {
     padding: 16px 0;
+  }
+  .category-advertisement .advertisement-details {
+    padding: 6px 0;
   }
 }
