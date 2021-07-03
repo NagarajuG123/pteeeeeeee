@@ -1,3 +1,22 @@
 .top-space {
   padding-top: 80px;
 }
+.monthly-details-trending {
+  border: 0;
+  .trending-articles-details {
+    padding: 120px 41px 92px 39px;
+  }
+  h4 {
+    padding: 0 0 13px;
+    strong {
+      font-family: ProximaNova-Bold;
+    }
+  }
+}
+.trending-articles {
+  background: #fff;
+  h4 {
+    color: #263645;
+    border-bottom: 2px solid #a6a8aa;
+  }
+}

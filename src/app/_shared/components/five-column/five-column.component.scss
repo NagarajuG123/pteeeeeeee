@@ -17,7 +17,7 @@
   text-align: left;
   -webkit-box-orient: vertical;
 }
-.sponsored{
+.sponsored {
   font-size: 13px;
   line-height: 15px;
   color: #bbbcbf;
@@ -25,20 +25,23 @@
   text-decoration: underline;
   padding: 0 0 45px;
 }
-.sponsored-number{
-    position: absolute;
-    span{
+.sponsored-number {
+  position: absolute;
+  span {
     background: #ec0044;
     font-size: 17px;
     line-height: 19px;
     color: #fff;
     font-weight: 400;
-    font-family:' ProximaNova-Bold';
+    font-family: " ProximaNova-Bold";
     vertical-align: top;
     padding: 7px 5px 9px;
     width: 35px;
-   }
+  }
 }
-.text-center{
-  text-align: center!important;
+.text-center {
+  text-align: center !important;
+}
+.story-block {
+  padding: 49px 0 0;
 }

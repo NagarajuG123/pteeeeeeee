@@ -113,7 +113,14 @@ img {
     color: #fff;
   }
 }
-
+.video-btn .video-maker {
+  position: absolute;
+  right: calc(50% - 240px);
+  top: calc(50% - 45px);
+  z-index: 1000;
+  height: 90px;
+  width: 90px;
+}
 //media
 @media only screen and(max-width: 1420px) {
   .monthlydetails-banner h1,

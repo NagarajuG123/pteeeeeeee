@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FiveColumn } from 'src/app/_core/models/FiveColumn';
 
 @Component({
@@ -10,9 +10,14 @@ export class FiveColumnComponent implements OnInit {
   @Input() contents: FiveColumn[] = [];
   @Input() slug: string = '';
   @Input() type = '';
+  @Input() hasMore = false;
+  @Output() more = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  getMoreData() {
+    this.more.emit('');
+  }
 }

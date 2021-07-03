@@ -8,4 +8,22 @@
 ></app-two-side-banner>
 <!-- Top section End-->
 
-<!-- <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'"></app-advertisement> -->
+<div class="trending-articles monthly-details-trending">
+  <div class="container">
+    <div class="trending-articles-details col-xl-11">
+      <h4 class="text-uppercase">
+        <strong>{{ banner["date"] | date }}</strong>
+        ISSUE
+      </h4>
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="details"
+        type="monthlydetails"
+        [hasMore]="hasMore"
+        (more)="getMoreData()"
+      ></app-five-column>
+    </div>
+  </div>
+</div>
+
+<app-advertisement [slug]="'1851'" [type]="'Main Site Ad'"></app-advertisement>
