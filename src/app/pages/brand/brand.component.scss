@@ -34,14 +34,14 @@ h4 {
     }
   }
 }
-.brand-frannews1 .frannews-top-left ul li:after {
+.brand-frannews1 .frannews-top-left ul li.header-title:after {
   right: 8px;
   width: 2px;
 }
 .brand-frannews1 h4 span {
   color: #ec0044;
 }
-.frannews-top-left ul li:after {
+.frannews-top-left ul li.header-title:after {
   content: "";
   position: absolute;
   top: 2px;
