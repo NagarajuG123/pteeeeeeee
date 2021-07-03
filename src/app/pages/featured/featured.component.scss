@@ -7,23 +7,22 @@
   z-index: 5;
 }
 .flex-row-reverse {
-  flex-direction: row-reverse!important;
+  flex-direction: row-reverse !important;
 }
 
 .brandbuzz-frannews {
   .legalplayers-frannews {
-      padding: 79px 41px 2px 40px;
-      .brandbuzz-frannews-bottom ul li {
-          padding: 0 0 41px!important;
-      }
+    padding: 79px 41px 2px 40px;
+    .brandbuzz-frannews-bottom ul li {
+      padding: 0 0 41px !important;
+    }
   }
   .frannews-details {
-      padding: 53px 41px 6px 40px;
+    padding: 53px 41px 6px 40px;
   }
   .frannews-bottom {
-      padding: 35px 0 0;
+    padding: 35px 0 0;
   }
-  
 }
 .category-frannews {
   position: relative;
@@ -34,28 +33,19 @@
     padding: 0 15px;
   }
   .frannews-details {
-      padding: 96px 41px 85px 40px;
+    padding: 96px 41px 85px 40px;
   }
   .legalplayers-frannews1 {
-      padding: 86px 41px 2px 40px;
+    padding: 86px 41px 2px 40px;
   }
   .frannews-bottom {
-      padding: 49px 0 0;
-      ul {
-          padding: 0 0 30px;
-          li {
-              padding: 0 0 41px!important;
-          }
+    padding: 49px 0 0;
+    ul {
+      padding: 0 0 30px;
+      li {
+        padding: 0 0 41px !important;
       }
-      .loadmore-btn {
-          margin-top: -30px;
-          margin-bottom: 50px;
-          .fa {
-              font-size: 50px;
-              line-height: 50px;
-              color: #ec0044;
-          }
-      }
+    }
   }
 }
 
@@ -91,7 +81,7 @@
       padding: 7px 5px 9px;
       width: 35px;
     }
- }
+  }
 }
 
 figure {
@@ -113,7 +103,7 @@ figure {
     font-size: 15px;
     line-height: 18px;
     color: #272525;
-    letter-spacing: -.1px;
+    letter-spacing: -0.1px;
     margin-bottom: 21px;
     text-align: left;
   }
@@ -122,13 +112,13 @@ figure {
 .buffalowings-bottom {
   background: #b00034;
   padding: 12px 19px 11px;
-  a{
+  a {
     font-size: 9.1px;
     line-height: 11px;
     color: #fff;
     font-weight: 400;
     font-family: ProximaNova-Regular;
-    .fa{
+    .fa {
       font-size: 25px;
       line-height: 11px;
       color: #fff;
@@ -136,13 +126,13 @@ figure {
       vertical-align: top;
     }
   }
-  span{
+  span {
     font-size: 9.1px;
     line-height: 11px;
     color: #fff;
     font-weight: 400;
     font-family: ProximaNova-Regular;
-    .fa{
+    .fa {
       font-size: 25px;
       line-height: 11px;
       color: #fff;
