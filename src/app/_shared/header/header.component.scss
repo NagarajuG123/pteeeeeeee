@@ -1,5 +1,6 @@
 .navbar.navbar-expand-lg.navbar-light {
   transition: all 0.4s ease;
+  box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
 }
 .menu-block a small {
   font-size: 11px;
@@ -17,15 +18,15 @@ h6 {
   color: #263645;
   font-weight: 400;
   font-family: ProximaNova-Medium;
-  letter-spacing: .7px;
+  letter-spacing: 0.7px;
 }
 
-.header{
+.header {
   box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
-    -webkit-box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
-    -ms-box-shadow: 0 13px 21px rgba(0,0,0,.178);
-    -o-box-shadow: 0 13px 21px rgba(0,0,0,.178);
-    -moz-box-shadow: 0 13px 21px rgba(0,0,0,.178);
+  -webkit-box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
+  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
 }
 
 .subscribe {
@@ -37,19 +38,19 @@ h6 {
   margin: 0 -15px;
 }
 
-.header-left{
+.header-left {
   padding: 3px 0 0px 15px;
   align-items: start;
 }
 
-nav>ul>li>a {
+nav > ul > li > a {
   font-size: 13px;
   line-height: 16px;
   color: #263645;
   font-weight: 400;
   font-family: ProximaNova-Medium;
   padding: 11px 16px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 
 .search a {
