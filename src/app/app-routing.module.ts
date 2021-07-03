@@ -8,6 +8,7 @@ import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
+import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'powerrankings',
     component: PowerRankingComponent,
     loadChildren: () => import('./pages/power-ranking/power-ranking.module').then((m) => m.PowerRankingModule),
+  },
+  {
+    path: 'trendingbrandbuzz',
+    component: TrendingbuzzComponent,
+    loadChildren: () => import('./pages/trendingbuzz/trendingbuzz.module').then((m) => m.TrendingbuzzModule),
   },
   {
     path: 'sitemap',

@@ -9,6 +9,7 @@ import { FiveColumn } from 'src/app/_core/models/fiveColumn';
 export class FiveColumnComponent implements OnInit {
   @Input() contents: FiveColumn[] = [];
   @Input() slug: string = '';
+  @Input() type = '';
   constructor() { }
 
   ngOnInit(): void {
