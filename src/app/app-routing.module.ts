@@ -8,6 +8,7 @@ import { ContacteditorialComponent } from './pages/contacteditorial/contactedito
 import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
+import { MonthlyDetailsComponent } from './pages/monthly-details/monthly-details.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
     path: 'subscribe',
     component: SubscribepageComponent,
     loadChildren: () => import('./pages/subscribepage/subscribepage.module').then((m) => m.SubscribepageModule),
+  },
+   {
+    path: 'monthlydetails/:month/:year/:date/:id',
+    component: MonthlyDetailsComponent,
+    loadChildren:() => import ('./pages/monthly-details/monthly-details.module').then((m) => m.MonthlyDetailsModule),
   },
   {
     path: 'monthlycovers',

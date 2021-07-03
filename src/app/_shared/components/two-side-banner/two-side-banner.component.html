@@ -9,7 +9,7 @@
   *ngIf="banner"
 >
   <div class="banner-right col-md-8 p-0">
-    <a class="d-block">
+    <a *ngIf="!isVideo(banner)" class="d-block">
       <figure>
         <img
           appYoutubeImage
@@ -20,10 +20,45 @@
         />
       </figure>
     </a>
+    <a
+      *ngIf="isVideo(banner)"
+      class="d-block video-btn"
+      data-toggle="modal"
+      data-target="#power_rankins_video_modal"
+      (click)="openVideoPlayer = true"
+    >
+      <figure>
+        <img
+          appYoutubeImage
+          src="{{ banner.media | defaultImage: 1023:576 }}"
+          width="1023"
+          height="576"
+          alt="monthly-details-banner"
+        />
+      </figure>
+      <img
+        class="video-maker"
+        src="assets/img/youtube.svg"
+        data-toggle="modal"
+        data-target="#power_rankins_video_modal"
+      />
+    </a>
   </div>
   <a class="banner-left col-md-4 p-0" href="">
     <div class="trendingbrandbuzz-content">
-      <h4 class="text-uppercase text-center d-inline-block" *ngIf="type === 'trendingbrandbuzz'" >TRENDING BRAND BUZZ</h4>
+      <h4
+        class="text-uppercase text-center d-inline-block"
+        *ngIf="type == 'monthlydetails'"
+      >
+        {{ date | date }}
+      </h4>
+      <h4
+        class="text-uppercase text-center d-inline-block"
+        *ngIf="type == 'trendingbrandbuzz'"
+      >
+        TRENDING BRAND BUZZ
+      </h4>
+
       <h1>
         {{ banner.title }}
       </h1>
@@ -33,11 +68,7 @@
     </div>
     <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="">
       <a
-        *ngIf="
-          type === 'monthlydetailspage' ||
-          type === 'trendingbrandbuzz' ||
-          type === 'powerranking'
-        "
+        *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
         class="float-right text-uppercase"
         href=""
       >

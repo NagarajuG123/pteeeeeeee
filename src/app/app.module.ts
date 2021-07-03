@@ -12,6 +12,7 @@ import { AboutUsModule } from './pages/about-us/about-us.module';
 import { BrandModule } from './pages/brand/brand.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutUsModule,
     BrandModule,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MonthlyDetailsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

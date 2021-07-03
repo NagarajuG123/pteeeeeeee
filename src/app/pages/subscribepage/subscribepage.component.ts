@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/fiveColumn';
+import { FiveColumn } from 'src/app/_core/models/FiveColumn';
 import {ApiService } from 'src/app/_core/services/api.service';
 
 @Component({

@@ -26,7 +26,7 @@ p {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 29%;
+    width: 100%;
     background: #ec0044;
     a,
     span {
@@ -119,5 +119,8 @@ img {
   .monthlydetails-banner h1,
   .monthlydetails-banner h2 {
     padding: 18px 0 7px;
+  }
+  .buffalowings-bottom {
+    padding: 10px 15px;
   }
 }
