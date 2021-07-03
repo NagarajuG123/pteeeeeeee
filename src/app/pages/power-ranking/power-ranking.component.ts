@@ -7,8 +7,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./power-ranking.component.scss']
 })
 export class PowerRankingComponent implements OnInit {
+  data: any = [];
   contents: any = [];
-  banner: any = [];
   constructor(    private apiService: ApiService,
 ) { }
 
@@ -19,8 +19,8 @@ export class PowerRankingComponent implements OnInit {
   getData() {
     this.apiService.getAPI(`1851/power-ranking`)
       .subscribe(result => {
-        this.contents = result;
-        this.banner = result.data;
+        this.data = result;
+        this.contents = result.data;
       });
   }
 }
