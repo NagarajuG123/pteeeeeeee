@@ -1,12 +1,12 @@
 <div
-  *ngIf="list.length"
+  *ngIf="showCarousel"
   class="trending"
   [ngClass]="{
     columns: type == 'columns',
     'main-videos': type == 'main-videos'
   }"
 >
-  <div class="container">
+  <div class="container-fluid">
     <div class="trending-details">
       <div class="frannews-top d-flex mx-5">
         <div class="frannews-top-left col-md-6 p-0">

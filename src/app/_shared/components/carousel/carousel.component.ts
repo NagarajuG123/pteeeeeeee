@@ -11,15 +11,13 @@ export class CarouselComponent implements OnInit {
   @Input() type = '';
   @Input() title = '';
   @Input() slug = '1851';
+  showCarousel: boolean = true;
   readMoreLink = '';
   list: any = [];
   openVideoPlayer = false;
   url: string = '';
   customOptions: OwlOptions = {};
-  constructor(
-    private apiService: ApiService,
-  ) {
-  }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.customOptions = {
@@ -73,6 +71,7 @@ export class CarouselComponent implements OnInit {
     }
     this.apiService.getAPI(apiUrl).subscribe((response) => {
       this.list = response.data;
+      this.showCarousel = response.data.length > 0 ? true : false;
     });
   }
 

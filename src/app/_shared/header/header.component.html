@@ -6,7 +6,15 @@
         id="sidebarToggle"
         (click)="common.toggle()"
       >
-        <i class="fa" [ngClass]="common.showmenu ? 'fa-times' : 'fa-bars'"></i>
+        <!-- <i class="fa" [ngClass]="common.showmenu ? 'fa-times' : 'fa-bars'"></i> -->
+        <img
+          [src]="
+            common.showmenu
+              ? '../../../assets/img/close.png'
+              : '../../../assets/img/menu.png'
+          "
+          alt="baricon"
+        />
         <small> Menu</small>
       </a>
     </div>

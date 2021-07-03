@@ -10,6 +10,7 @@ export class CommonService {
 
   toggle() {
     this.showmenu = !this.showmenu;
+    window.scrollTo(0, 0);
     // if (this.isMenuOpen) {
     //   this.isMenuOpen = !this.isMenuOpen;
     // }
