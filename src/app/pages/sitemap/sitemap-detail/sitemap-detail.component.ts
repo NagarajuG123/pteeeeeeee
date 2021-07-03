@@ -24,10 +24,8 @@ export class SitemapDetailComponent implements OnInit {
     .subscribe(params => {
        this.year = params.get('year');
        this.month = params.get('month');
-      console.log(this.year);
       this.apiService.getAPI(`sitemap-page/${this.year}/${this.month}`).subscribe((response) => {
         this.sitemap = response;
-        console.log(this.sitemap);
         if (response.status === 404) {
           this.router.navigateByUrl('/404');
         }
