@@ -31,7 +31,6 @@ const routes: Routes = [
   },
   {
     path: 'terms-of-use',
-    component: TermsofuseComponent,
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
   },
   {
