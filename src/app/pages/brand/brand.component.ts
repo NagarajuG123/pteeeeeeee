@@ -9,9 +9,11 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class BrandComponent implements OnInit {
   slug: any;
+  type: string = '';
   latestStories: any = [];
   company: string = '';
   scrollOffset: number = 0;
+  apiUrl: string = '';
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -26,8 +28,13 @@ export class BrandComponent implements OnInit {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
-            this.company = response.name;
-            this.getLatestStory();
+            this.type = response.type;
+            if (this.type === 'category_page') {
+              this.apiUrl = ``
+            } else if (this.type === 'brand_page') {
+              this.company = response.name;
+              this.getLatestStory();
+            }
           }
         });
     });

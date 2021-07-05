@@ -17,14 +17,7 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
-          <a
-            href="{{
-              list[0].brand && list[0].brand.slug != '1851'
-                ? list[0].brand.slug + '/'
-                : ''
-            }}{{ list[0].slug }}#{{ type }}"
-            class="float-right"
-          >
+          <a href="" class="float-right">
             READ MORE
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
@@ -77,10 +70,7 @@
                   </div>
                   <div class="buffalowings-bottom">
                     <span class="float-right text-uppercase">
-                      <a
-                        style="color: white"
-                        href="{{ goReadMore(item) }}#{{ type }}"
-                      >
+                      <a style="color: white" href="">
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>

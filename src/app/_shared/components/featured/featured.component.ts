@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent implements OnInit {
-    @Input() slug = '1851';
+  @Input() slug = '1851';
 
   featuredData: any = [];
   openVideoPlayer = false;
