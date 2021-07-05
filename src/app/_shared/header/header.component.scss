@@ -2,14 +2,19 @@
   transition: all 0.4s ease;
   box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
 }
-.menu-block a small {
-  font-size: 11px;
-  line-height: 13px;
-  color: #263645;
-  font-weight: 400;
-  font-family: ProximaNova-Light;
-  padding: 6px 0 0;
-  text-transform: uppercase;
+.menu-block {
+  a {
+    padding: 0.375rem 1.02rem 0.375rem 2px;
+    small {
+      font-size: 11px;
+      line-height: 13px;
+      color: #263645;
+      font-weight: 400;
+      font-family: ProximaNova-Light;
+      padding: 6px 0 0;
+      text-transform: uppercase;
+    }
+  }
 }
 
 h6 {
@@ -65,8 +70,16 @@ nav > ul > li > a {
   overflow: hidden;
 }
 
-.dropdown-toggle::after {
-  content: none;
+.dropdown-toggle {
+  i {
+    font-size: 20px;
+    line-height: 0;
+    top: 3px;
+    position: relative;
+  }
+  &::after {
+    content: none;
+  }
 }
 
 .dropdown:hover .dropdown-menu {

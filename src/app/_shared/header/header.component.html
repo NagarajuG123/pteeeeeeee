@@ -15,15 +15,15 @@
           "
           alt="baricon"
         />
-        <small> Menu</small>
+        <small [ngClass]="common.showmenu ? 'invisible' : ''">Menu</small>
       </a>
     </div>
-    <a href="/" class="me-2 me-lg-4"
+    <a href="/" class="me-2 me-lg-3 pe-1"
       ><img src="{{ menu?.logo?.url }}" alt="Logo"
     /></a>
     <div class="logo-sub">
       <div class="logo-sub-s">
-        <h6>
+        <h6 class="m-0">
           <a routerLink="{{ menu?.subscribe?.url }}" class="text-uppercase"
             >Subscribe</a
           >
@@ -35,9 +35,9 @@
         >
       </div>
     </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto me-4">
-        <li class="nav-item dropdown">
+    <div class="collapse navbar-collapse me-lg-4" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item dropdown me-lg-2">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -92,7 +92,7 @@
           </div>
         </li>
       </ul>
-      <div class="search me-3">
+      <div class="search me-4 pe-lg-2">
         <a
           data-target="#searchModal"
           data-toggle="modal"
