@@ -30,7 +30,7 @@ const routes: Routes = [
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
-    path: 'home',
+    path: 'terms-of-use',
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
   },
   {

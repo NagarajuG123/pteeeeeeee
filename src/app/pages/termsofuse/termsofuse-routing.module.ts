@@ -4,7 +4,7 @@ import { TermsofuseComponent } from './termsofuse.component';
 
 const routes: Routes = [
   {
-    path: 'terms-of-use',
+    path: '',
     component: TermsofuseComponent,
   },
 ];
