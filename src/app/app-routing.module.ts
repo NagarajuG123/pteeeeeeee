@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
-import { MonthlyCoversComponent } from './pages/monthly-covers/monthly-covers.component';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
-import { MonthlyDetailsComponent } from './pages/monthly-details/monthly-details.component';
 import { AuthorComponent } from './pages/author/author.component';
+import { StoryComponent } from './pages/story/story.component';
+
+export function isArticlePage(url: UrlSegment[]) {
+  if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
+    return { consumed: url, posParams: { brandSlug: new UrlSegment('1851', {}), storySlug: new UrlSegment(url[0].path, {}) } };
+  }
+  if (url.length === 2 && url[0].path.match(/^[a-z0-9-]+$/) && url[1].path.match(/-[0-9-]+$/)) {
+    return { consumed: url, posParams: { brandSlug: new UrlSegment(url[0].path, {}), storySlug: new UrlSegment(url[1].path, {}) } };
+  }
+  return null;
+}
 
 const routes: Routes = [
   {
@@ -56,12 +64,10 @@ const routes: Routes = [
   },
    {
     path: 'monthlydetails/:month/:year/:date/:id',
-    component: MonthlyDetailsComponent,
     loadChildren:() => import ('./pages/monthly-details/monthly-details.module').then((m) => m.MonthlyDetailsModule),
   },
   {
     path: 'monthlycovers',
-    component: MonthlyCoversComponent,
     loadChildren: () => import('./pages/monthly-covers/monthly-covers.module').then((m) => m.MonthlyCoversModule),
   },
   {
@@ -71,6 +77,11 @@ const routes: Routes = [
   {
     path: '404',
     component: ErrorComponent,
+  },
+  {
+    matcher: isArticlePage,
+    component: StoryComponent,
+    loadChildren: () => import('./pages/story/story.module').then((m) => m.StoryModule),
   },
   {
     path: ':brandSlug',

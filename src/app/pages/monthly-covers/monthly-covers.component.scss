@@ -68,10 +68,10 @@ figure {
   bottom: 0;
   left: 0;
   h4 {
-    background: $color8;
+    background: $color-red;
     color: $color1;
     padding: 15px 29px 12px 23px;
-    font-family: $font_family_2;
+    font-family: $font_family_medium;
     margin: 0px;
     @include desk-lg-below {
       padding: 12px 20px 12px 20px;

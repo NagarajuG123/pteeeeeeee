@@ -1,0 +1,150 @@
+<div class="sponsered_content">
+  <div class="sponsered_content_main row">
+    <div class="sponsered_content-left col-sm-1 col-md-1 col-12 text-sm-right">
+      <div id="{{ 'inline-buttons-' }}" class="social-links"></div>
+    </div>
+    <div
+      *ngIf="details"
+      class="sponsered_content_middle col-md-11 col-sm-11 col-12"
+    >
+      <div
+        *ngIf="
+          details?.sponsorship?.is_sponsored &&
+          details?.sponsorship?.position === 'story_title_section'
+        "
+        class="sponsered_content_middle_title"
+      >
+        <a
+          href="javascript:void(0)"
+          data-toggle="modal"
+          data-target="#sponsoredModal"
+        >
+          SPONSORED
+        </a>
+      </div>
+      <a href="javascript:void(0)" class="d-block video-btn">
+        <figure>
+          <img
+            appYoutubeImage
+            src="{{ details?.media | defaultImage: 802:451 }}"
+            width="802"
+            height="451"
+            style="width: 802px !important; cursor: pointer"
+            alt="sponsored_img"
+            data-toggle="modal"
+            attr.data-target="#sponsered_content_video_modal"
+          />
+        </figure>
+        <img
+          *ngIf="details.media && details.media.type == 'video'"
+          class="video-maker"
+          src="assets/img/youtube.svg"
+          data-toggle="modal"
+          attr.data-target="#sponsered_content_video_modal"
+        />
+      </a>
+      <h1 class="m-0" [innerHTML]="details?.title"></h1>
+      <h2 [innerHTML]="details?.short_description"></h2>
+      <div class="brian_jaeger d-flex flex-wrap align-items-center">
+        <div
+          class="
+            brian_jaeger_main
+            d-flex
+            flex-wrap
+            align-items-center
+            col-xl-6 col-md-6 col-sm-6 col-12
+          "
+        >
+          <a href="">
+            <img
+              src="{{ details?.author?.media | defaultImage: 81:81 }}"
+              width="81"
+              height="81"
+              class="author-img"
+              [alt]="details?.author?.name + ' Headshot'"
+              (error)="author_img.src = 'assets/img/placeholder.svg'"
+              #author_img
+            />
+          </a>
+          <div class="brian_content">
+            <h5>
+              <a href="">{{ details?.author?.name }}</a>
+            </h5>
+            <small [innerHTML]="details?.author?.designation"></small>
+          </div>
+        </div>
+        <div
+          class="
+            brian_jaeger_data
+            col-xl-6 col-md-6 col-sm-6 col-12
+            desktop-only
+          "
+        >
+          <em>
+            <span
+              *ngIf="
+                details?.sponsorship?.is_sponsored &&
+                details?.sponsorship?.position === 'author_title_section'
+              "
+              class="sponsered_content_middle_title"
+            >
+              <a
+                href="javascript:void(0)"
+                data-toggle="modal"
+                data-target="#sponsoredModal"
+              >
+                SPONSORED
+              </a>
+            </span>
+            <div>
+              <span
+                >{{ publishDate | date: "h:mm a" }} •
+                {{ publishDate | date: "MM/dd/yy" }}</span
+              >
+              <a [href]="details?.category?.slug">
+                <small>&nbsp; &nbsp;{{ details?.category?.name }}</small>
+              </a>
+            </div>
+          </em>
+        </div>
+      </div>
+      <div
+        id="{{ details.id }}"
+        class="brian_jaeger_content"
+        [innerHTML]="details.content"
+      ></div>
+      <div *ngIf="sponsorContent" class="brand-partner">
+        <p>
+          *This brand is a paid partner of {{ publication?.title }}. For more
+          information on paid partnerships please
+          <span class="tooltiptext-link">click here.</span>
+        </p>
+      </div>
+      <div class="comment-div">
+        <img
+          src="assets/img/comment.png"
+          width="27"
+          height="26"
+          alt="comment"
+          class="comment-img"
+        />
+        <a href="javascript:void(0)" class="comment_section"> VIEW COMMENTS </a>
+      </div>
+
+      <div class="scroll_data">
+        <a href="javascript:void(0)" class="text-center">
+          <span>
+            SCROLL FOR NEXT STORY
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </a>
+      </div>
+      <div class="loading-screen">
+        <img
+          class="loading-image"
+          src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
+        />
+      </div>
+    </div>
+  </div>
+</div>

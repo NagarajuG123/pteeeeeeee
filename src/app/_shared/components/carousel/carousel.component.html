@@ -33,10 +33,7 @@
       </div>
       <div class="trending-bottom mx-5">
         <owl-carousel-o [options]="customOptions">
-          <!-- <ng-container *ngFor="let item of list; let i = index"> -->
-          <!-- [id]="item.id"  -->
           <ng-template carouselSlide *ngFor="let item of list; let i = index">
-            <!-- <li *ngFor="let item of list; let i = index" class="col-md-4"> -->
             <a
               href="{{ goReadMore(item) }}#{{ type }}"
               style="text-decoration: none"
@@ -164,7 +161,6 @@
               </div>
             </div>
           </ng-template>
-          <!-- </ng-container> -->
           <div class="owl-controls">
             <div class="owl-nav">
               <div class="owl-prev">prev</div>
@@ -176,8 +172,6 @@
               <div class="owl-dot"><span></span></div>
             </div>
           </div>
-
-          <!-- </li> -->
         </owl-carousel-o>
 
         <div

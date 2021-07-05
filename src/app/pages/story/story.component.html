@@ -1,0 +1,83 @@
+<div class="top-space">
+  <div class="main-content details-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <!-- Left side -->
+          <app-item
+            [details]="storyData"
+            [publication]="publication"
+          ></app-item>
+        </div>
+        <!-- Right side -->
+        <div *ngIf="storyData" class="col-lg-4 col-md-4 col-sm-12">
+          <div class="sponsered_content_right desktop-rails">
+            <div class="facebook-plugin"></div>
+            <div *ngIf="adsData.length" class="advertisement_data text-center">
+              <h6>ADVERTISEMENT</h6>
+              <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide *ngFor="let item of adsData">
+                  <a href="{{ item.url }}" target="blank" class="d-block">
+                    <figure>
+                      <img
+                        appYoutubeImage
+                        src="{{ item.media | defaultImage: 353:264 }}"
+                        width="353"
+                        height="264"
+                        style="width: 100%"
+                        alt="Advertisement"
+                      />
+                    </figure>
+                  </a>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+            <!-- News Section -->
+            <div id="banner_brandNews">
+              <div class="banner-right" *ngIf="newsData">
+                <h4 *ngIf="slug != 1851">
+                  {{ newsData?.title }}
+                </h4>
+                <h4 *ngIf="slug != 1851">LATEST BRAND NEWS</h4>
+                <div class="banner-right-details">
+                  <div
+                    class="
+                      banner-right-details
+                      vertical_scroll_featured_articles
+                    "
+                  >
+                    <ul>
+                      <li
+                        *ngFor="let article of newsData"
+                        style="cursor: pointer"
+                      >
+                        <a href="" class="adweek d-flex">
+                          <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">
+                            <figure>
+                              <img
+                                appYoutubeImage
+                                src="{{
+                                  article?.media | defaultImage: 205:115
+                                }}"
+                                width="205"
+                                height="115"
+                                alt="img3"
+                              />
+                            </figure>
+                          </div>
+                          <div class="adweek-right col-xl-5 col-lg-12 col-sm-6">
+                            <p>{{ article?.title }}</p>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

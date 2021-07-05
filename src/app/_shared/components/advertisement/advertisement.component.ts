@@ -12,8 +12,13 @@ export class AdvertisementComponent implements OnInit {
   @Input() slug = '1851';
   @Input() type = '';
   @Input() pageType = '';
+  customOptions: OwlOptions = {};
+  
+  constructor( private apiService: ApiService ) { }
 
-  customOptions: OwlOptions = {
+  ngOnInit(): void {
+    this.getAds();
+    this.customOptions = {
     loop: false,
     mouseDrag: false,
     touchDrag: false,
@@ -40,11 +45,6 @@ export class AdvertisementComponent implements OnInit {
     },
     nav: true,
   };
-
-  constructor( private apiService: ApiService ) { }
-
-  ngOnInit(): void {
-    this.getAds();
   }
 
   getAds() {

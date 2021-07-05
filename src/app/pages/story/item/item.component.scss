@@ -1,0 +1,250 @@
+@import "src/assets/scss/mixins.scss";
+
+.sponsered_content {
+  padding: 0;
+  background: $color-light-white;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sponsered_content-left {
+  padding: 90px 0 0;
+  background: $color-white;
+}
+.social-links {
+  display: flex;
+  flex-direction: column;
+}
+figure {
+  display: block;
+  padding: 0;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
+}
+.sponsered_content_middle {
+  background: $color-white;
+  padding: 45px 61px 0 0;
+  max-width: 91.66%;
+  -webkit-flex: 0 0 100%;
+  box-shadow: 5px 4px 10px rgb(0 0 0 / 15%);
+  -webkit-box-shadow: 5px 4px 10px rgb(0 0 0 / 15%);
+  .brian_jaeger {
+    padding: 28px 0 54px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 38px;
+    color: $color-light-black;
+    font-family: ProximaNova-Bold;
+    font-weight: 400;
+  }
+  h2,
+  h3 {
+    color: $color-light-black;
+    font-family: ProximaNova-Light;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.7px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    padding: 0 0 15px;
+  }
+  figure {
+    margin: 0 0 30px;
+    line-height: 1.5;
+    img {
+      display: block;
+    }
+  }
+  div {
+    font-family: ProximaNova-Light;
+  }
+  .brian_jaeger_data {
+    em {
+      display: block;
+      font-size: 14px;
+      line-height: 20px;
+      color: #929496;
+      font-family: ProximaNova-Light;
+      font-weight: 400;
+      font-style: normal;
+      border-bottom: 1px solid #c8c9ca;
+      padding: 0 0 13px;
+      small {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 20px;
+        color: #ec0044;
+        font-family: ProximaNova-Light;
+        font-weight: 400;
+        font-style: normal;
+        padding: 0 11px 0 2px;
+      }
+    }
+  }
+  .brian_jaeger_main {
+    padding: 0 20px 0 0;
+    .brian_content {
+      padding: 0 0 0 10px;
+      h5 {
+        color: $color-red;
+        font-size: 18px;
+        line-height: 20px;
+        a {
+          color: $color-red;
+        }
+      }
+      small {
+        display: block;
+        font-size: 12px;
+        line-height: 16px;
+        color: #a6a8aa;
+        font-family: ProximaNova-Light;
+        font-weight: 400;
+      }
+      .brian_jaeger_data {
+        padding: 29px 16px 18px 0;
+      }
+      .brian_jaeger_content {
+        line-height: 22px;
+        overflow: auto;
+        a {
+          display: contents;
+          text-decoration: underline !important;
+          color: #007bff !important;
+        }
+      }
+    }
+  }
+
+  ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    li {
+      list-style-type: initial;
+    }
+  }
+  li {
+    font-weight: 400;
+    font-size: 16px;
+    display: list-item;
+    margin-left: 25px;
+    list-style-position: outside;
+  }
+  p {
+    color: #272525;
+    font-weight: 400;
+    padding: 0 0 20px;
+    line-height: 22px;
+  }
+  .brand-partner p {
+    color: #a6a8aa;
+    font-size: 13px;
+    font-style: italic;
+    span {
+      color: #4594eb;
+      cursor: pointer;
+    }
+  }
+  .comment_section {
+    font-size: 14px;
+    line-height: 16px;
+    color: #263645;
+    font-family: ProximaNova-Medium;
+    font-weight: 400;
+    display: inline-block;
+    margin: 18px 0 26px 1px;
+    letter-spacing: 0.4px;
+    position: relative;
+  }
+  .comment_section:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background: #263645;
+  }
+  .scroll_data a {
+    display: block;
+    position: relative;
+    margin: 0 0 20px;
+    span {
+      font-size: 16px;
+      line-height: 20px;
+      color: #263645;
+      font-family: ProximaNova-Light;
+      font-weight: 400;
+      display: inline-block;
+      padding: 0 25px;
+      background: #fff;
+      position: relative;
+      letter-spacing: 0;
+      .fa {
+        font-size: 35px;
+        line-height: 37px;
+        color: #ec0044;
+        vertical-align: middle;
+        padding: 0 16px 0 5px;
+      }
+    }
+  }
+  .scroll_data a:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    width: 100%;
+    height: 2px;
+    background: #929496;
+  }
+}
+.desktop-only {
+  display: block !important;
+}
+.author-img {
+  border-radius: 50%;
+  width: 81px !important;
+  height: 81px !important;
+  img {
+    display: block;
+  }
+}
+.align-items-center {
+  align-items: center;
+}
+.video-btn {
+  cursor: pointer;
+  position: relative;
+}
+.m-0 {
+  margin: 0 !important;
+}
+.comment-div {
+  display: flex;
+  align-items: center;
+}
+.comment-img {
+  width: 27px !important;
+  height: 26px !important;
+  margin-right: 15px;
+}
+//media
+@media only screen and(max-width: 1420px) {
+  .sponsered_content_main {
+    margin: 0;
+  }
+}
