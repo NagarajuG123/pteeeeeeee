@@ -2,14 +2,11 @@
 
 .featured-block {
   padding-top: 97px;
-  .featured-left,.featured-right{
-   
+  .featured-left,
+  .featured-right {
     overflow: hidden;
   }
   .featured-left {
-    
-
-
     .how-to-succeed {
       background-color: $color-red;
       overflow: hidden;
@@ -24,12 +21,12 @@
         font-size: 18px;
       }
     }
-    .readmore-block{
+    .readmore-block {
       background: #b00034;
       padding: 12px 19px 11px;
-      a{
+      a {
         text-align: right;
-        color:$color-white;
+        color: $color-white;
         font-size: 12px;
         width: 100%;
         display: inline-block;
@@ -37,18 +34,16 @@
     }
   }
 
-
-.featured-right::-webkit-scrollbar-thumb {
+  .featured-right::-webkit-scrollbar-thumb {
     background-color: #263645; /* Matches the background color of content-wrapper */
   }
-  
+
   .featured-right:hover::-webkit-scrollbar-thumb {
     background-color: #4f6477;
   }
 
-
-.featured-right::-webkit-scrollbar {
-    width: .2em;
+  .featured-right::-webkit-scrollbar {
+    width: 0.2em;
   }
 
   .featured-right {
@@ -65,10 +60,10 @@
       }
       .adweek-left {
         padding: 0 4px 0 0;
-     }
-    .adweek-right {
-      padding:0 31px 0 10px;;
-     }
+      }
+      .adweek-right {
+        padding: 0 31px 0 10px;
+      }
     }
   }
 }

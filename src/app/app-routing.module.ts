@@ -9,11 +9,17 @@ import { SubscribepageComponent } from './pages/subscribepage/subscribepage.comp
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
 import { MonthlyDetailsComponent } from './pages/monthly-details/monthly-details.component';
+import { AuthorComponent } from './pages/author/author.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'author/:authorSlug',
+    component: AuthorComponent,
+    loadChildren: () => import('./pages/author/author.module').then((m) => m.AuthorModule),
   },
   {
     path: 'powerrankings',
@@ -67,7 +73,7 @@ const routes: Routes = [
     component: ErrorComponent,
   },
   {
-    path: ':brand_slug',
+    path: ':brandSlug',
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
   {

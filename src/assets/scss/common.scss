@@ -1,24 +1,23 @@
 @import "mixins";
 
-.btn{
-  box-shadow: none!important;
+.btn {
+  box-shadow: none !important;
 }
-a{
-  cursor: pointer;
-  text-decoration: none;
-}
+
 a {
   text-decoration: none !important;
   display: inline-block;
   vertical-align: top;
   color: #007bff;
   background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
 }
 .text-center {
   text-align: center !important;
 }
-body{
-  font-family: 'ProximaNova-Regular';
+body {
+  font-family: "ProximaNova-Regular";
 }
 .text-uppercase {
   text-transform: uppercase !important;
@@ -31,12 +30,18 @@ ul {
 .cursor-default {
   cursor: default !important;
 }
-.mt-15{
+.mt-15 {
   margin-left: 15px;
 }
-.mt-20{
+.mt-20 {
   margin-left: 20px;
 }
-.mt-25{
+.mt-25 {
   margin-left: 25px;
+}
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
