@@ -1,4 +1,8 @@
+.top-space {
+  padding-top: 90px;
+}
 .author-banner {
+  height: 470px;
   position: relative;
   background: url("/assets/img/author-banner.jpg") left top/cover no-repeat;
 }
@@ -11,7 +15,7 @@
 }
 .author-banner-content {
   margin: 0 auto;
-  padding: 150px 29px 98px 0;
+  padding: 97px 29px 98px 0;
   position: relative;
   z-index: 1;
 }
@@ -72,6 +76,7 @@ img {
 .about-author {
   background: #fff;
 }
+
 .about-details {
   padding: 110px 9px 105px;
   margin: 0 auto;
@@ -81,11 +86,45 @@ img {
     color: #263645;
     font-family: ProximaNova-Light;
   }
-  p {
+  .content {
     font-size: 20px;
     line-height: 28px;
     color: #263645;
     letter-spacing: 0.1px;
+  }
+}
+.editorial-stories {
+  background: #263645;
+}
+.editorial-stories-details {
+  padding: 51px 39px 56px;
+  margin: 0 auto;
+  .frannews-bottom {
+    padding: 35px 0 87px;
+  }
+}
+.readmore {
+  width: 177px;
+  height: 36px;
+  background: #ec0044;
+  position: relative;
+  margin: 72px auto 0;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: #fff;
+  padding: 0 40px 0 30px;
+  span {
+    width: 36px;
+    height: 36px;
+    background: #b00034;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .fa {
+      font-size: 33px;
+      line-height: 36px;
+      color: #fff;
+    }
   }
 }
 //media
@@ -95,5 +134,11 @@ img {
   }
   .about-details h2 {
     padding: 0 0 10px;
+  }
+  .editorial-stories-details h3 {
+    padding: 0 0 20px;
+  }
+  .readmore {
+    margin: 20px auto 0;
   }
 }

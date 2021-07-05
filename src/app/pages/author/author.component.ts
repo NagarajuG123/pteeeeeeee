@@ -10,6 +10,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class AuthorComponent implements OnInit {
   author: any = [];
   authorSlug: any = '';
+  editorials: any = [];
+  brandedContents: any = [];
   constructor(private route: ActivatedRoute,
     private router:Router,
     private apiService: ApiService) { }
@@ -23,8 +25,20 @@ export class AuthorComponent implements OnInit {
             this.router.navigateByUrl('/404');
           } else {
             this.author = response;
+            this.getBranded();
+            this.getEditorials();
           }
       });
+    });
+  }
+  getBranded() {
+    this.apiService.getAPI(`author/${this.authorSlug}/branded-contents?limit=10&offset=0`).subscribe((response) => {
+      this.brandedContents = response.data;
+    });
+  }
+  getEditorials() {
+    this.apiService.getAPI(`author/${this.authorSlug}/editorials?limit=10&offset=0`).subscribe((response) => {
+      this.editorials = response.data;
     });
   }
 }
