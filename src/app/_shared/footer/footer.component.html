@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-5 footer-middle p-3 col-12">
           <div class="row">
-            <div class="footer-middle-left col-md-6 col-6">
+            <div class="col-md-6 col-6">
               <h6>SPOTLIGHT</h6>
               <ul class="left-section">
                 <li *ngFor="let spotlight of footerData.spotlight">
@@ -25,7 +25,7 @@
                 </li>
               </ul>
             </div>
-            <div class="footer-middle-right col-md-6 col-6">
+            <div class="col-md-6 col-6">
               <ul *ngIf="footerData['about-us']">
                 <li *ngIf="footerData['about-us']">
                   <a routerLink="{{ footerData['about-us']['url'] }}"
