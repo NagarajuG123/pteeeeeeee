@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/FiveColumn';
+import { FiveColumn } from 'src/app/_core/models/five';
 
 @Component({
   selector: 'app-top-banner',
