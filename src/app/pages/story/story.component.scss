@@ -1,6 +1,17 @@
 .top-space {
   padding-top: 80px;
 }
+.scroll-container {
+  height: 80vh;
+
+  overflow: hidden;
+}
+.scroll-section{
+  width: 80vh;
+  height: 80vh;
+  overflow: auto;
+  padding-right: 15px;
+}
 .details-page {
   background-color: #f1f1f2;
 }
