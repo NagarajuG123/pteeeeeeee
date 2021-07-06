@@ -9,24 +9,29 @@
   [ngClass]="type === 'monthlydetails' ? 'story-block' : ''"
 >
   <div class="col" *ngFor="let item of contents; let i = index">
-    <img
-      appYoutubeImage
-      srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
-      sizes="{{
-        '(max-width: 576px) 545px,
+    <a href="{{ readMore(item) }}">
+      <img
+        appYoutubeImage
+        srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
+        sizes="{{
+          '(max-width: 576px) 545px,
                     (max-width: 768px) 355px,
                     (max-width: 992px) 300px,
                     210px'
-      }}"
-      src="{{ item.media | defaultImage: 210:118 }}"
-      alt=""
-      class="img-fluid"
-    />
-    <div class="socialmedia" [ngClass]="type === 'authorpage' ? 'author' : ''">
-      <p>
-        {{ item.title }}
-      </p>
-    </div>
+        }}"
+        src="{{ item.media | defaultImage: 210:118 }}"
+        alt=""
+        class="img-fluid"
+      />
+      <div
+        class="socialmedia"
+        [ngClass]="type === 'authorpage' ? 'author' : ''"
+      >
+        <p>
+          {{ item.title }}
+        </p>
+      </div>
+    </a>
     <div
       class="sponsored-number text-center"
       *ngIf="type === 'trendingbrandbuzz'"
