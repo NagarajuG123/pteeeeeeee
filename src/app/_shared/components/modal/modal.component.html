@@ -1,0 +1,31 @@
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="openVideoPlayer = false"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="embed-responsive embed-responsive-16by9">
+          <app-video-player
+            *ngIf="openVideoPlayer"
+            class="embed-responsive-item"
+            [srcUrl]="url"
+          >
+          </app-video-player>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
