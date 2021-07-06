@@ -24,15 +24,16 @@ export class BrandComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.slug = params.get('brandSlug');
-        this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe((response) => {
+        this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe(async (response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
             this.type = response.type;
             if (this.type === 'category_page') {
-              this.apiUrl = ``
+              this.apiUrl = `1851/${this.slug}/featured`;
             } else if (this.type === 'brand_page') {
               this.company = response.name;
+              this.apiUrl = `${this.slug}/featured-articles`;
               this.getLatestStory();
             }
           }
