@@ -5,13 +5,14 @@
         <!-- style="
             background-image: url('https://dze0oudb6zz9z.cloudfront.net/insecure/fill/953/535/sm/0/plain/https://img.youtube.com/vi/7k-8fcJYGwQ/maxresdefault.jpg');
           " -->
-        <img
+           <img
+           appYoutubeImage
           class="right"
           alt="brand-img6"
           height="535"
           width="953"
-          src="https://dze0oudb6zz9z.cloudfront.net/insecure/fill/953/535/sm/0/plain/https://img.youtube.com/vi/7k-8fcJYGwQ/maxresdefault.jpg"
-        />
+          src="{{data.media | defaultImage: 953:535 }}"
+        /> 
       </a>
     </div>
     <div class="col-12 col-md-4 col-lg-3 pt-2 pt-md-4 flex-row align-self-end">
@@ -19,15 +20,14 @@
         <a class="d-block text-center text-white py-2 py-md-3 fs-6 mb-2 mb-md-3"
           >FRANCHISE NEWS & INFO</a
         >
-        <h2 class="text-white text-center">MOOYAH BURGERS, FRIES & SHAKES</h2>
+        <h2 class="text-white text-center">{{ data.name.toUpperCase() }}</h2>
       </div>
       <ul
         class="list-group list-group-flush align-self-stretch sliderList py-md-3"
       >
-        <li *ngFor="let item of Sliderlist" class="p-2 py-2 p-md-4 py-md-2">
+        <li *ngFor="let item of data.articles" class="p-2 py-2 p-md-4 py-md-2">
           <p class="text-white mb-1">
-            {{ item.title.slice(0, 65) }}
-            {{ item.title.length > 65 ? "..." : "" }}
+            {{ item.title }}
           </p>
           <small
             ><a href="{{ item.link }}"
