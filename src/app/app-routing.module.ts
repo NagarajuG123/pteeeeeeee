@@ -83,6 +83,10 @@ const routes: Routes = [
     path: ':brandSlug',
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
+   {
+    path: ':brandSlug/:categorySlug',
+    loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
   {
     path: '404',
     component: ErrorComponent,

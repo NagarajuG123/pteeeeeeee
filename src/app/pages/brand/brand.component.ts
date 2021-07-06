@@ -17,6 +17,8 @@ export class BrandComponent implements OnInit {
   scrollOffset: number = 0;
   apiUrl: string = '';
   hasMore: boolean = false;
+  categorySlug: any = '';
+  mostRecentUrl: any;
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -29,16 +31,24 @@ export class BrandComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.slug = params.get('brandSlug');
+        if (params.get('categorySlug')) {
+          this.categorySlug = params.get('categorySlug');
+        } 
         this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe(async (response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
             this.type = response.type;
             this.company = response.name;
-            if (this.type === 'category_page') {
+            if (this.type === 'category_page' || (this.type === 'brand_page' && this.categorySlug != '')) {
               this.apiUrl = `1851/${this.slug}/featured`;
+              this.mostRecentUrl = `1851/${this.slug}/most-recent`;
+              if (this.categorySlug != '') {
+                this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
+                this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
+              }
               this.getMostRecent();
-            } else if (this.type === 'brand_page') {
+            } else if (this.type === 'brand_page' && !this.categorySlug) {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.getLatestStory();
             }
@@ -54,7 +64,7 @@ export class BrandComponent implements OnInit {
 
   }
   getMostRecent() {
-    this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
+    this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
       this.mostRecent = response.data;
       this.hasMore = response.has_more;
     });
@@ -70,7 +80,7 @@ export class BrandComponent implements OnInit {
     return this.commonService.readMore(item);
   }
   getMoreData() {
-    this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=10&offset=${this.mostRecent.length + 1}`)
+    this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.mostRecent.length + 1}`)
     .subscribe(result => {
       this.hasMore = result.has_more;
       result.data.forEach((element: any) => {
