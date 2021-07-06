@@ -20,5 +20,4 @@ export class HeaderComponent implements OnInit {
       this.menu = response;
     });
   }
-  openMenu() {}
 }
