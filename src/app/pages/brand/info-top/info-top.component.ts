@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InfoTopComponent implements OnInit {
   @Input('data') data: any = [];
-  @Input('brand_slug') brand_slug = '1851';
+  @Input('brandSlug') brandSlug = '1851';
   @Input('type') type = '';
   
   constructor() {}
