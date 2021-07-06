@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -7,8 +7,9 @@ import { CommonService } from 'src/app/_core/services/common.service';
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.scss']
 })
-export class FeaturedComponent implements OnInit {
-    @Input() slug = '1851';
+export class FeaturedComponent implements OnInit, OnChanges {
+  @Input() slug = '1851';
+  @Input() apiUrl!: any;
 
   featuredData: any = [];
   openVideoPlayer = false;
@@ -17,12 +18,14 @@ export class FeaturedComponent implements OnInit {
   constructor(private apiService: ApiService,
   private commonService: CommonService) { }
 
-  ngOnInit(): void {
-    this.getFeatured();
-  }
+  ngOnInit(): void {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.apiUrl = changes.apiUrl.currentValue;
+    this.getFeatured();
+    }
   getFeatured() {
-    this.apiService.getAPI(`${this.slug}/featured-articles?limit=10&offset=0`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.apiUrl}?limit=10&offset=0`).subscribe((response ) =>{
       this.featuredData = response;
       if(response.data){
         this.highlight = response.data[0];
