@@ -38,4 +38,7 @@ export class FeaturedComponent implements OnInit, OnChanges {
   isVideo(item: any) {
     return this.commonService.isVideo(item);
   }
+  setOpenVideoPlayer() {
+    this.openVideoPlayer = false;
+  }
 }

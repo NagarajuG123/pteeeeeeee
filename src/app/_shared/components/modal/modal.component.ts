@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -8,10 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ModalComponent implements OnInit {
   @Input() openVideoPlayer: boolean = false;
   @Input() url: string = '';
-
+  @Output() videoOutput = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.url)
   }
 
 }

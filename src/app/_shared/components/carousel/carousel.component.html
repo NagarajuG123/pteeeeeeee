@@ -106,9 +106,9 @@
             <div class="trending-bottom-details" *ngIf="type === 'main-videos'">
               <div
                 class="d-block video-btn"
-                data-toggle="modal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
                 attr.data-src="{{ item.media.url }}"
-                data-target="#slide_videos_video_modal"
                 (click)="updateVideoUrl(item.media.url)"
                 style="cursor: pointer"
               >
@@ -121,6 +121,7 @@
                   />
                   <img class="video-maker" src="assets/img/youtube.svg" />
                 </figure>
+                <app-modal [url]="item?.media?.url"></app-modal>
                 <figure *ngIf="!item.media">
                   <img
                     src="assets/img/video-img2.jpg"

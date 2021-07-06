@@ -41,6 +41,7 @@
               *ngIf="isVideo(highlight)"
               [openVideoPlayer]="openVideoPlayer"
               [url]="highlight?.media?.url"
+              (videoOutput)="setOpenVideoPlayer()"
             ></app-modal>
           </a>
 
