@@ -6,7 +6,9 @@
     fran-content-block
     row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5
   "
-  [ngClass]="type === 'monthlydetails' ? 'story-block' : ''"
+  [ngClass]="
+    type === 'monthlydetails' || type === 'categoryPage' ? 'story-block' : ''
+  "
 >
   <div class="col" *ngFor="let item of contents; let i = index">
     <a href="{{ readMore(item) }}">
@@ -41,7 +43,7 @@
   </div>
 </div>
 <a
-  *ngIf="hasMore && type === 'monthlydetails'"
+  *ngIf="hasMore && (type === 'monthlydetails' || type === 'categoryPage')"
   href="javascript:void(0)"
   id="loadMore"
   class="text-center loadmore-btn d-block"
