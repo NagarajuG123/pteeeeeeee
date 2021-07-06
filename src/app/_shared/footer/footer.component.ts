@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,26 +10,27 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class FooterComponent implements OnInit {
    footerData: any =[];
    publication: any =[];
+   brandSlug = '1851';
 
-  constructor( private apiService: ApiService ) { }
+  constructor( private apiService: ApiService,private router:Router ) { }
 
   ngOnInit(): void {
-     this.getFooter();
-     this.getPublication();
-  }
-
- // Footer API 
-  getFooter() {
-  this.apiService.getFooter().subscribe((response) => {
-    this.footerData = response;
-  });
-  }
-
-  //Publication Instance
-  getPublication() {
-    let slug = '1851';
-    this.apiService.getAPI(`${slug}/publication-instance`).subscribe((response ) =>{
-      this.publication = response;
-    });
+    this.router.events
+    .subscribe(events => {
+      if (events instanceof NavigationEnd) {
+        this.brandSlug = events.url.split('/')[1];
+        if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+          this.brandSlug = '1851';
+        } else {
+          this.brandSlug = this.brandSlug.replace(/\+/g, '');
+        }
+        this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
+          this.footerData = response.data;
+        });
+        this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
+          this.publication = response;
+        });
+      }
+    }); 
   }
 }
