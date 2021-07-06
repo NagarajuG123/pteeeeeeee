@@ -72,6 +72,7 @@
               *ngFor="let item of featuredData?.data?.slice(1)"
             >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
+                <a href="{{ readMore(item) }}">
                 <img
                   appyoutubeimage
                   sizes="(max-width: 576px) 600px,
@@ -82,9 +83,12 @@
                   src="{{ item.media | defaultImage: 1300:730 }}"
                   class="img-fluid"
                 />
+                </a>
               </div>
               <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
+                <a href="{{ readMore(item) }}">
                 <p>{{ item.title }}</p>
+              </a>
               </div>
             </div>
           </div>
