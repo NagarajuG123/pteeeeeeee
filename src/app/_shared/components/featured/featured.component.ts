@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-featured',
@@ -13,7 +14,8 @@ export class FeaturedComponent implements OnInit {
   openVideoPlayer = false;
   highlight: any =[];
 
-  constructor( private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+  private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.getFeatured();
@@ -26,6 +28,9 @@ export class FeaturedComponent implements OnInit {
         this.highlight = response.data[0];
       }
     });
+  }
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
   isVideo(item: { media: { type: string; } | null; } | null) {
     if (typeof item !== 'undefined' && item !== null) {

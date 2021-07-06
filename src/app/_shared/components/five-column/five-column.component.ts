@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FiveColumn } from 'src/app/_core/models/five';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-five-column',
@@ -13,11 +14,15 @@ export class FiveColumnComponent implements OnInit {
   @Input() hasMore = false;
   @Output() more = new EventEmitter();
 
-  constructor() { }
+  constructor(    private commonService: CommonService,
+) { }
 
   ngOnInit(): void {
   }
   getMoreData() {
     this.more.emit('');
+  }
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
 }

@@ -27,6 +27,15 @@ img {
   display: inline-block;
   border: 0;
 }
+.video-btn .video-maker {
+  position: absolute;
+  left: calc(50% - 45px);
+  top: calc(50% - 45px);
+  z-index: 1000;
+  height: 90px;
+  width: 90px;
+}
+
 .sponsered_content_middle {
   background: $color-white;
   padding: 45px 61px 0 0;
@@ -37,6 +46,7 @@ img {
   .brian_jaeger {
     padding: 28px 0 54px;
   }
+
   h1 {
     font-size: 32px;
     line-height: 38px;
@@ -65,11 +75,13 @@ img {
     line-height: 1.5;
     img {
       display: block;
+      width: 100%;
     }
   }
   div {
     font-family: ProximaNova-Light;
   }
+
   .brian_jaeger_data {
     em {
       display: block;
@@ -128,20 +140,6 @@ img {
     }
   }
 
-  ul {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    li {
-      list-style-type: initial;
-    }
-  }
-  li {
-    font-weight: 400;
-    font-size: 16px;
-    display: list-item;
-    margin-left: 25px;
-    list-style-position: outside;
-  }
   p {
     color: #272525;
     font-weight: 400;
@@ -212,6 +210,7 @@ img {
     background: #929496;
   }
 }
+
 .desktop-only {
   display: block !important;
 }
@@ -242,6 +241,7 @@ img {
   height: 26px !important;
   margin-right: 15px;
 }
+
 //media
 @media only screen and(max-width: 1420px) {
   .sponsered_content_main {

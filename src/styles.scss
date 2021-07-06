@@ -165,7 +165,14 @@ img {
   height: auto;
   border: 0;
 }
-
+.sponsered_content_middle .brian_jaeger_content .image-style-align-right {
+  float: right;
+  width: 50%;
+  margin-left: 20px;
+}
+.sponsered_content_middle ul li {
+  list-style-type: initial;
+}
 .text-capitalize-capital {
   text-transform: lowercase !important;
 }
