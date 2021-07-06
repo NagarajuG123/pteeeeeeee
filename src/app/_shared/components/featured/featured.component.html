@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8 p-0">
         <div class="featured-left position-relative" #getHeight>
-          <a *ngIf="!isVideo(highlight)">
+          <a *ngIf="!isVideo(highlight)" href="{{ readMore(highlight) }}">
             <img
               appyoutubeimage
               sizes="(max-width: 576px) 600px,
@@ -46,13 +46,17 @@
 
           <div class="buffalowings">
             <div class="buffalowings-wrap text-white">
-              <h2>{{ highlight.title }}</h2>
-              <p>
-                {{ highlight.short_description }}
-              </p>
+              <a href="{{ readMore(highlight) }}"
+                ><h2>{{ highlight.title }}</h2></a
+              >
+              <a href="{{ readMore(highlight) }}">
+                <p>
+                  {{ highlight.short_description }}
+                </p></a
+              >
             </div>
             <div class="buffalowings-bottom text-end">
-              <a class=""
+              <a href="{{ readMore(highlight) }}"
                 >READ MORE <i class="fa fa-chevron-right text-white"></i
               ></a>
               <div class="clearfix"></div>
