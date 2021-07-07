@@ -11,7 +11,7 @@
             <p>Your Number One Source For {{ publication.newsType }}</p>
           </div>
         </div>
-        <div class="col-md-5 footer-middle p-3 col-12" [class.hide-right-border]="brandSlug!=='1851'">
+        <div class="col-md-5 footer-middle p-3 col-12" [ngClass]="brandSlug !=='1851' ? 'hide-right-border' : ''">
           <div class="row">
             <div class="col-md-6 col-6">
               <h6>SPOTLIGHT</h6>

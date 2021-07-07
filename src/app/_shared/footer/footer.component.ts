@@ -15,6 +15,7 @@ export class FooterComponent implements OnInit {
   constructor( private apiService: ApiService,private router:Router ) { }
 
   ngOnInit(): void {
+    this.getPublication();
     this.router.events
     .subscribe(events => {
       if (events instanceof NavigationEnd) {
@@ -27,10 +28,13 @@ export class FooterComponent implements OnInit {
         this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
           this.footerData = response.data;
         });
-        this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
-          this.publication = response;
-        });
       }
     }); 
+  }
+
+  getPublication(){
+    this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
+      this.publication = response;
+    });
   }
 }
