@@ -1,4 +1,7 @@
-<nav *ngIf="brandSlug === '1851'" class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3">
+<nav
+  *ngIf="brandSlug === '1851'"
+  class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
+>
   <div class="container-fluid">
     <div class="menu-block me-1 me-lg-3">
       <a
@@ -6,7 +9,6 @@
         id="sidebarToggle"
         (click)="common.toggle()"
       >
-        <!-- <i class="fa" [ngClass]="common.showmenu ? 'fa-times' : 'fa-bars'"></i> -->
         <img
           [src]="
             common.showmenu
@@ -117,72 +119,61 @@
   </div>
 </nav>
 
-<div *ngIf="brandSlug !== '1851'" class="container">
-  <div class="header-details d-flex brand-header">
-    <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
-      <div class="menu col-xl-1 col-md-2 col-2">
-        <a href="javascript:void(0)">
-          <figure>
-            <img [src]="common.showmenu
-            ? '../../../assets/img/close.png'
-            : '../../../assets/img/menu.png'">
-          </figure>
-          <small class="text-center d-block">MENU</small>
-        </a>
-      </div>
-      <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px;">
-        <a href="apex" style="width: 100px; display: flex; align-items: center; margin: auto;">
-        <img style="max-height: 70px;" src="{{ menu.logo }}">
+<nav
+  *ngIf="brandSlug !== '1851'"
+  class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
+>
+  <div class="container-fluid">
+    <div class="menu-block me-1 me-lg-3">
+      <a
+        class="btn btn-grey d-grid"
+        id="sidebarToggle"
+        (click)="common.toggle()"
+      >
+        <img
+          [src]="
+            common.showmenu
+              ? '../../../assets/img/close.png'
+              : '../../../assets/img/menu.png'
+          "
+          alt="baricon"
+        />
+        <small> Menu</small>
       </a>
-      </div>
-      <div class="logo-sub">
-        <div class="logo-sub-s">
-          <h6>
-            <a routerLink="" class="text-uppercase"
-              >{{ brandTitle }}</a
-            >
-          </h6>
-        </div>
-        <div class="logo-sub-f">
-          <a routerLink="{{ menu?.subscribe?.url }}" class="sponsored_logo"
-            >FRANCHISE NEWS POWERED BY</a
-          >
-        </div>
-      </div>
-
     </div>
-
-    <div class="collapse navbar-collapse col-xl-7 col-md-7 col-sm-8" id="navbarSupportedContent">
+    <a routerLink="/{{ brandSlug }}" class="me-2 me-lg-4"
+      ><img src="{{ menu?.logo }}" alt="Logo"
+    /></a>
+    <div class="logo-sub">
+      <div class="logo-sub-s">
+        <h6>
+          <a href="#" class="text-uppercase">{{ brandTitle }}</a>
+        </h6>
+      </div>
+      <div class="logo-sub-f">
+        <a href="#" class="sponsored_logo">FRANCHISE NEWS POWERED BY</a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto me-4">
-        <li class="nav-item dropdown">
+        <li
+          *ngIf="inquireForm && inquireForm?.menu_title"
+          class="has_dd d-block float-none"
+        >
           <a
-            class="nav-link dropdown-toggle"
-            href="{{brandSlug}}/info"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+            href="#"
+            class="text-uppercase"
+            data-toggle="modal"
+            data-target="#inquireModal"
           >
-           BRAND INFORMATION
-            <i class="fa fa-angle-down ms-1"></i>
+            {{ inquireForm.menu_title }}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="ps-0">
-              <li
-                *ngFor="let item of menu['Learn?']?.dropdown"
-                class="pb-3"
-              >
-                <a
-                  href="{{ item.url }}"
-                  [target]="item['isExternalLink'] ? '_blank' : ''"
-                  class="dropdown-item text-uppercase p-0"
-                  >{{ item.title }}</a
-                >
-              </li>
-            </ul>
-          </div>
         </li>
-
+        <li>
+          <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
+            >BRAND INFORMATION</a
+          >
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -192,8 +183,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Learn
-            <i class="fa fa-angle-down ms-1"></i>
+            LEARN<i class="fa fa-angle-down ms-1"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <ul class="ps-0">
@@ -217,5 +207,6 @@
           ><i class="fa fa-search text-center"></i
         ></a>
       </div>
+    </div>
   </div>
-</div>
+</nav>

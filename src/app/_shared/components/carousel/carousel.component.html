@@ -19,10 +19,10 @@
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
           <a
             href="{{
-              list[0].brand && list[0].brand.slug != '1851'
-                ? list[0].brand.slug + '/'
+              list[0]?.brand && list[0]?.brand.slug != '1851'
+                ? list[0]?.brand.slug + '/'
                 : ''
-            }}{{ list[0].slug }}#{{ type }}"
+            }}{{ list[0]?.slug }}#{{ type }}"
             class="float-right"
           >
             READ MORE
