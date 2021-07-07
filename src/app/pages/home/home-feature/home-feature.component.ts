@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-home-feature',
@@ -14,7 +15,7 @@ export class HomeFeatureComponent implements OnInit {
   index:number = 0;
   readMoreUrl: string | undefined;
 
-  constructor( private apiService:ApiService) { }
+  constructor( private apiService:ApiService, private commonService:CommonService) { }
 
   ngOnInit(): void {
     this.getFranchise();
@@ -44,5 +45,9 @@ export class HomeFeatureComponent implements OnInit {
 
   goLegalPlayers(url: any) {
     return url;
+  }
+
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
 }

@@ -46,5 +46,4 @@ export class MonthlyDetailsComponent implements OnInit {
       });
     });
   }
-
 }

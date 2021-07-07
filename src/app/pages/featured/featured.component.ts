@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-featured',
@@ -13,7 +14,7 @@ export class FeaturedComponent implements OnInit {
   url: string | undefined;
   pgurl!: string;
 
-  constructor( private apiService: ApiService) { }
+  constructor( private apiService: ApiService, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.getHomeFeatured();
@@ -28,5 +29,9 @@ export class FeaturedComponent implements OnInit {
         this.dynamicStories = response.data.stories;
       });
     });
+  }
+
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
 }

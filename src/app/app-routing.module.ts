@@ -75,10 +75,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
-    path: '404',
-    component: ErrorComponent,
-  },
-  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () => import('./pages/story/story.module').then((m) => m.StoryModule),
@@ -86,6 +82,14 @@ const routes: Routes = [
   {
     path: ':brandSlug',
     loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
+   {
+    path: ':brandSlug/:categorySlug',
+    loadChildren: () => import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
+  {
+    path: '404',
+    component: ErrorComponent,
   },
   {
     path: '**', // Navigate to Home Page if not found any page

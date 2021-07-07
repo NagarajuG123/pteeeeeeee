@@ -3,7 +3,7 @@
   [ngClass]="common.showmenu ? 'closeMenu' : ''"
   (click)="common.toggle()"
 ></div> -->
-<div class="menu-details" [ngClass]="common.showmenu ? 'show' : ''">
+<div *ngIf="brandSlug === '1851'" class="menu-details" [ngClass]="common.showmenu ? 'show' : ''">
   <div class="menu-logo text-center">
     <a href="/">
       <figure>
@@ -126,4 +126,99 @@
       <strong><a href="{{ sidebar?.login?.url }}"> LOGIN </a></strong>
     </li>
   </ul>
+</div>
+
+
+
+<div *ngIf="brandSlug !== '1851'"  class="menu-details brand-menu-details" [ngClass]="common.showmenu ? 'show' : ''">
+  <div class="menu-logo text-center">
+    <a href="/">
+      <figure>
+        <img
+          class="logo-img"
+          src="{{ sidebar?.logo }}"
+          width="{{ publication.id === 'EE' ? 200 : 53 }}"
+          height="53"
+          alt="logo1"
+        />
+      </figure>
+    </a>
+  </div>
+
+  <div class="sponsored">
+  <div class="text-center">
+    <h6>SPONSORED CONTENT</h6>
+  </div>
+  <div class="input-group mb-3 menu-search">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search 1851franchise.com"
+    />
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+
+  <ul class="menuList">
+    <li>
+      <i class="fa fa-database"></i>
+      <strong><a routerLink="/">RETURN TO MAIN SITE</a></strong>
+     </li>
+
+     <li>
+      <i class="fa fa-server"></i>
+      <strong><a href="{{brandSlug}}">{{brandTitle}}</a></strong>
+        <ul class="sublist">
+          <li> <a routerLink="">Download PDF</a> </li>
+          <li><a routerLink="">Visit Website</a></li>
+        </ul>
+    </li>
+    <li><hr /></li>
+
+    <li>
+      <i class="fa fa-trophy"></i>
+      <strong><a routerLink="">SOCIAL MEDIA</a></strong>
+        <ul class="sublist">
+          <li *ngFor="let item of sidebar?.social_media"> <a href="{{item.url}}">{{item.title}}</a> </li>
+        </ul>
+    </li>
+
+    <li>
+      <i class="fa fa-star"></i>
+      <strong><a routerLink="{{brandSlug}}/info">{{brandTitle}} MOST READ STORIES</a></strong>
+        <ul class="sublist">
+          <li *ngFor="let story of sidebar['most-read-stories']"> <a routerLink="{{readMore(story)}}">{{story.title}}</a> </li>
+        </ul>
+    </li>
+    <li><hr /></li>
+
+    <li>
+      <i class="fa fa-home"></i>
+      <strong><a routerLink="{{ sidebar?.login?.url }}"> LOGIN </a></strong>
+    </li>
+  <li><hr /></li>
+
+  <li>
+    <i class="fa fa-envelope-open"></i>
+    <strong
+      ><a routerLink="{{brandSlug}}/info">
+        ABOUT
+        <span>{{ brandTitle }}</span>
+      </a></strong
+    >
+  </li>
+
+  <li>
+    <i class="fa fa-usd"></i>
+    <strong
+      ><a routerLink="/">
+        CONTACT
+        <span>{{ brandTitle }}</span>
+      </a></strong
+    >
+  </li>
+
+  </ul>
+</div>
 </div>
