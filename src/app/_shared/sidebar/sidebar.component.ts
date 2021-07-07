@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from '../../_core/services/common.service';
+import { Router, NavigationEnd } from '@angular/router';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -9,32 +11,41 @@ import { CommonService } from '../../_core/services/common.service';
 export class SidebarComponent implements OnInit {
   sidebar: any = [];
   publication: any = [];
-  slug: string = '1851';
+  brandSlug = '1851'
+  brandTitle!: string;
 
-  constructor(private apiService: ApiService, public common: CommonService) {}
+  constructor(private apiService: ApiService, public common: CommonService,private router:Router) {}
 
   ngOnInit(): void {
-    this.getSidebar();
-    this.getPublication();
-  }
-
-  //Publication Instance
-  getPublication() {
-    this.apiService
-      .getAPI(`${this.slug}/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
-  }
-
-  //Sidebar API
-  getSidebar() {
-    this.apiService.getAPI(`${this.slug}/sidebar`).subscribe((response) => {
-      this.sidebar = response.data;
+    this.router.events
+    .subscribe(events => {
+      if (events instanceof NavigationEnd) {
+        this.brandSlug = events.url.split('/')[1];
+        if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+          this.brandSlug = '1851';
+        } else {
+          this.brandSlug = this.brandSlug.replace(/\+/g, '');
+        }
+        this.apiService.getAPI(`${this.brandSlug}/sidebar`).subscribe((response) => {
+          this.sidebar = response.data;
+          console.log(this.sidebar);
+        });
+        this.apiService.getAPI(`1851/publication-instance`).subscribe((response) => {
+          this.publication = response;
+        });
+        this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
+          this.brandTitle = response.name;
+        });
+      }
     });
+  }
+
+  readMore(item: any) {
+    return this.common.readMore(item);
   }
 
   closeMenu() {
     // $('body').toggleClass('menu-open');
   }
 }
+
