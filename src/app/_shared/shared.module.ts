@@ -11,7 +11,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -46,6 +46,7 @@ import { ModalComponent } from './components/modal/modal.component';
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
+    SafeUrlPipe,
     SplitArrayPipe,
     AdvertisementComponent,
     FooterTopComponent,
@@ -79,6 +80,7 @@ import { ModalComponent } from './components/modal/modal.component';
     NgbModule,
     CarouselModule,
     DefaultImagePipe,
+    SafeUrlPipe,
     SplitArrayPipe,
     NgxYoutubePlayerModule,
     HeaderComponent,

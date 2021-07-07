@@ -1,4 +1,10 @@
 <div class="top-space">
-  <app-info-top [brandSlug]="brandSlug" [data]="brandInfo" ></app-info-top>
-  <app-info-bottom></app-info-bottom>
+  <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
+  <div class="main-content">
+    <app-info-bottom
+      [brandSlug]="brandSlug"
+      [brandInfo]="brandInfo"
+      [items]="contents?.data"
+    ></app-info-bottom>
+  </div>
 </div>

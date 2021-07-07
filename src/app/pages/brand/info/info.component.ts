@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
-  brandInfo:any = [];
+  brandInfo: any = [];
+  contents: any;
   brandSlug: any;
 
   constructor(private apiService: ApiService,private route: ActivatedRoute,private router:Router,) { }
@@ -24,8 +25,18 @@ export class InfoComponent implements OnInit {
             this.apiService.getAPI(`${this.brandSlug}/brand-view`).subscribe((response) => {
               this.brandInfo = response.data;
             });
+            this.getContents(params.get('item'));
           }
         });
+    });
+  }
+  getContents(item: string | null) {
+    let path;
+    if (item === 'info') {
+      path = 'brand-info';
+    }
+    this.apiService.getAPI(`${this.brandSlug}/${path}`).subscribe((response) => {
+      this.contents = response;
     });
   }
 
