@@ -22,4 +22,14 @@ export class CommonService {
     }
     return `${slug}${story?.slug}`;
   }
+  isVideo(item: { media: { type: string; } | null; } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }

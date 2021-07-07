@@ -11,21 +11,21 @@
           (max-width: 992px) 600px,
           (max-width: 1200px) 700px,
           1300px"
-              src="{{ highlight.media | defaultImage: 1300:730 }}"
+              src="{{ highlight?.media | defaultImage: 1300:730 }}"
               class="img-fluid"
             />
           </a>
           <a
             *ngIf="isVideo(highlight)"
             class="d-block video-btn"
-            data-toggle="modal"
-            data-target="#featured_articles_video_modal"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
             (click)="openVideoPlayer = true"
           >
             <figure class="m-0">
               <img
                 appYoutubeImage
-                srcset="{{highlight.media | defaultImage:600:337}} 600w, {{highlight.media | defaultImage:700:393}} 700w, {{highlight.media | defaultImage:800:449}} 800w, {{highlight.media | defaultImage:1300:730}} 1300w"
+                srcset="{{highlight?.media | defaultImage:600:337}} 600w, {{highlight?.media | defaultImage:700:393}} 700w, {{highlight?.media | defaultImage:800:449}} 800w, {{highlight?.media | defaultImage:1300:730}} 1300w"
                 sizes="{{
                   '(max-width: 576px) 600px,
                         (max-width: 768px) 800px,
@@ -33,15 +33,16 @@
                         (max-width: 1200px) 700px,
                         1300px'
                 }}"
-                src="{{ highlight.media | defaultImage: 1300:730 }}"
+                src="{{ highlight?.media | defaultImage: 1300:730 }}"
               />
             </figure>
-            <img
-              class="video-maker"
-              src="assets/img/youtube.svg"
-              data-toggle="modal"
-              data-target="#featured_articles_video_modal"
-            />
+            <img class="video-maker" src="assets/img/youtube.svg" />
+            <app-modal
+              *ngIf="isVideo(highlight)"
+              [openVideoPlayer]="openVideoPlayer"
+              [url]="highlight?.media?.url"
+              (videoOutput)="setOpenVideoPlayer()"
+            ></app-modal>
           </a>
 
           <div class="buffalowings">
@@ -73,22 +74,22 @@
             >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
                 <a href="{{ readMore(item) }}">
-                <img
-                  appyoutubeimage
-                  sizes="(max-width: 576px) 600px,
+                  <img
+                    appyoutubeimage
+                    sizes="(max-width: 576px) 600px,
                 (max-width: 768px) 800px,
                 (max-width: 992px) 600px,
                 (max-width: 1200px) 700px,
                 1300px"
-                  src="{{ item.media | defaultImage: 1300:730 }}"
-                  class="img-fluid"
-                />
+                    src="{{ item.media | defaultImage: 1300:730 }}"
+                    class="img-fluid"
+                  />
                 </a>
               </div>
               <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
                 <a href="{{ readMore(item) }}">
-                <p>{{ item.title }}</p>
-              </a>
+                  <p>{{ item.title }}</p>
+                </a>
               </div>
             </div>
           </div>

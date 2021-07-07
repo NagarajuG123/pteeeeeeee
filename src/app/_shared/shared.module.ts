@@ -30,6 +30,7 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { TopBannerComponent } from './components/top-banner/top-banner.component';
 import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 // Modals Components
 
@@ -54,7 +55,8 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
     FeaturedComponent,
     ContactEditorialComponent,
     TopBannerComponent,
-    TwoSideBannerComponent
+    TwoSideBannerComponent,
+    ModalComponent
   ],
   imports: [CommonModule,
     RouterModule,

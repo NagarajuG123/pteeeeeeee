@@ -35,15 +35,10 @@ export class FeaturedComponent implements OnInit, OnChanges {
   readMore(item: any) {
     return this.commonService.readMore(item);
   }
-  isVideo(item: { media: { type: string; } | null; } | null) {
-    if (typeof item !== 'undefined' && item !== null) {
-      if (typeof item.media !== 'undefined' && item.media !== null) {
-        if (item.media.type === 'video') {
-          return true;
-        }
-      }
-    }
-    return false;
+  isVideo(item: any) {
+    return this.commonService.isVideo(item);
   }
-
+  setOpenVideoPlayer() {
+    this.openVideoPlayer = false;
+  }
 }
