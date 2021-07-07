@@ -11,7 +11,6 @@ import { CommonService } from 'src/app/_core/services/common.service';
 export class BrandComponent implements OnInit {
   slug: any;
   type: string = '';
-  latestStories: any = [];
   mostRecent: any = [];
   company: string = '';
   scrollOffset: number = 0;
@@ -50,32 +49,19 @@ export class BrandComponent implements OnInit {
               this.getMostRecent();
             } else if (this.type === 'brand_page' && !this.categorySlug) {
               this.apiUrl = `${this.slug}/featured-articles`;
-              this.getLatestStory();
             }
           }
         });
     });
   }
 
-  getLatestStory() {
-    this.apiService.getAPI(`${this.slug}/brand-latest-stories?limit=8&offset=${this.scrollOffset}`).subscribe((response) => {
-      this.latestStories = response.data;
-    });
-
-  }
   getMostRecent() {
     this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
       this.mostRecent = response.data;
       this.hasMore = response.has_more;
     });
   }
-   getMoreItem() {
-    this.apiService.getAPI(`${this.slug}/brand-latest-stories?limit=8&offset=${this.latestStories.length}`)
-    .subscribe(result => {
-      this.latestStories = this.latestStories.concat(result['data']);
-      this.scrollOffset += 8;
-    });
-   }
+ 
   readMore(item: any) {
     return this.commonService.readMore(item);
   }

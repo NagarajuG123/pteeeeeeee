@@ -32,6 +32,7 @@ import { TopBannerComponent } from './components/top-banner/top-banner.component
 import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 
 // Modals Components
 
@@ -58,7 +59,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ContactEditorialComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
-    ModalComponent
+    ModalComponent,
+    LatestStoryComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -99,7 +101,8 @@ import { ModalComponent } from './components/modal/modal.component';
     FeaturedComponent,
     ContactEditorialComponent,
     TopBannerComponent,
-    TwoSideBannerComponent
+    TwoSideBannerComponent,
+    LatestStoryComponent
   ],
 })
 export class SharedModule {}
