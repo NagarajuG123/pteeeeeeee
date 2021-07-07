@@ -35,7 +35,7 @@
         >
       </h2>
       <div
-        id="brandInfoTab{{ i }}"
+        id="infoTab{{ i }}"
         class="multi_conference tab-pane"
         [ngClass]="selectedIndex === i ? 'in active' : ''"
       >
@@ -44,7 +44,7 @@
             <div class="multi_conference-left col-lg-8">
               <div>
                 <h2 class="wings-title text-uppercase">
-                  {{ brandInfo.name }} INFO
+                  {{ info?.name }} INFO
                 </h2>
                 <div class="wings" *ngFor="let item of items; let i = index">
                   <h3 class="wings-sub-title">{{ item?.title }}</h3>
@@ -88,7 +88,7 @@
               <!-- <div [hidden]="!isStory">
                   <app-latest-stories
                     [title]="'Latest stories'"
-                    [type]="'brandInfo'"
+                    [type]="'info'"
                     [brand_slug]="brandslug"
                   ></app-latest-stories>
                 </div> -->
@@ -224,56 +224,42 @@
                 </ul>
                 <div class="clearfix"></div>
               </div>
-              <!-- <div *ngIf="brandInfo" class="more_brand">
-                  <h5 class="text-uppercase">MORE BRAND INFO</h5> -->
-              <!-- <ul>
-                    <li *ngIf="brandInfo?.name">
-                      <strong>NAME</strong>
-                      <p>{{ brandInfo?.name }}</p>
-                    </li>
-                    <li *ngIf="brandInfo?.units">
-                      <strong>NO. OF UNITS CURRENTLY OPEN:</strong>
-                      <p>{{ brandInfo?.units }}</p>
-                    </li>
-                    <li *ngIf="brandInfo?.startup_costs">
-                      <strong>start-up costs</strong>
-                      <p>{{ brandInfo?.startup_costs }}</p>
-                    </li>
-                    <li *ngIf="brandInfo?.franchise_fee">
-                      <strong>FRANCHISE FEE:</strong>
-                      <p>{{ brandInfo?.franchise_fee }}</p>
-                    </li>
-                    <li *ngIf="brandInfo?.royalty">
-                      <strong>ROYALTY:</strong>
-                      <p>{{ brandInfo?.royalty }}</p>
-                    </li>
-                    <li *ngFor="let info of brandInfo?.optional_info">
-                      <strong>{{ info.title }}:</strong>
-                      <p>{{ info.value }}</p>
-                    </li>
-                    <li *ngIf="brandInfo?.more_info !== ''">
-                      <strong>More info:</strong>
-                      <p>{{ brandInfo?.more_info }}</p>
-                    </li>
-                  </ul> -->
-              <!-- <h5 *ngIf="isInquireForm" class="text-uppercase">
-                    INQUIRE ABOUT SERVICES
-                  </h5> -->
-              <!-- <json-schema-form
-                    *ngIf="isInquireForm"
-                    class="contact-form"
-                    loadExternalAssets="true"
-                    framework="no-framework"
-                    [options]="inquireFormOption"
-                    [schema]="inquireFormSchema"
-                    [form]="inquireFormLayout"
-                    [(data)]="inquireFormObject"
-                    (onSubmit)="onInquireSubmit($event)"
-                    (isValid)="inquireIsValidFn($event)"
-                    (validationErrors)="inquireValidationErrorsFn($event)"
-                  >
-                  </json-schema-form> -->
-              <!-- </div> -->
+              <div *ngIf="info" class="more_brand">
+                <h5 class="text-uppercase">MORE BRAND INFO</h5>
+                <ul>
+                  <li *ngIf="info?.name">
+                    <strong>NAME</strong>
+                    <p>{{ info?.name }}</p>
+                  </li>
+                  <li *ngIf="info?.units">
+                    <strong>NO. OF UNITS CURRENTLY OPEN:</strong>
+                    <p>{{ info?.units }}</p>
+                  </li>
+                  <li *ngIf="info?.startup_costs">
+                    <strong>start-up costs</strong>
+                    <p>{{ info?.startup_costs }}</p>
+                  </li>
+                  <li *ngIf="info?.franchise_fee">
+                    <strong>FRANCHISE FEE:</strong>
+                    <p>{{ info?.franchise_fee }}</p>
+                  </li>
+                  <li *ngIf="info?.royalty">
+                    <strong>ROYALTY:</strong>
+                    <p>{{ info?.royalty }}</p>
+                  </li>
+                  <li *ngFor="let info of info?.optional_info">
+                    <strong>{{ info.title }}:</strong>
+                    <p>{{ info.value }}</p>
+                  </li>
+                  <li *ngIf="info?.more_info !== ''">
+                    <strong>More info:</strong>
+                    <p>{{ info?.more_info }}</p>
+                  </li>
+                </ul>
+                <h5 *ngIf="inquireForm !== null" class="text-uppercase">
+                  INQUIRE ABOUT SERVICES
+                </h5>
+              </div>
             </div>
           </div>
         </div>

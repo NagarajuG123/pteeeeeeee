@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'trendingbrandbuzz',
+    component: TrendingbuzzComponent,
+    loadChildren: () => import('./pages/trendingbuzz/trendingbuzz.module').then((m) => m.TrendingbuzzModule),
+  },
+  {
     path: 'author/:authorSlug',
     component: AuthorComponent,
     loadChildren: () => import('./pages/author/author.module').then((m) => m.AuthorModule),
@@ -34,11 +39,7 @@ const routes: Routes = [
     component: PowerRankingComponent,
     loadChildren: () => import('./pages/power-ranking/power-ranking.module').then((m) => m.PowerRankingModule),
   },
-  {
-    path: 'trendingbrandbuzz',
-    component: TrendingbuzzComponent,
-    loadChildren: () => import('./pages/trendingbuzz/trendingbuzz.module').then((m) => m.TrendingbuzzModule),
-  },
+  
   {
     path: 'sitemap',
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),

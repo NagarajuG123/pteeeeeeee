@@ -129,12 +129,12 @@ h2.resp-accordion {
   padding: 23px 25px 19px 39px;
   background: #263645;
   h5 {
-    font-size: 18px;
-    line-height: 20px;
-    color: #fff;
-    font-family: ProximaNova-Light;
-    font-weight: 400;
-    letter-spacing: 0.4px;
+    font-size: 18px !important;
+    line-height: 20px !important;
+    color: #fff !important;
+    font-family: ProximaNova-Light !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.4px !important;
   }
   ul {
     padding: 0 0 0 6px;
@@ -167,6 +167,41 @@ h2.resp-accordion {
 .more_brand {
   background: #f1f1f2;
   padding: 34px 25px 42px 24px;
+  h5 {
+    font-size: 18px;
+    line-height: 20px;
+    color: #263645;
+    font-family: ProximaNova-Light;
+    font-weight: 400;
+    border-bottom: 2px solid #ec0044;
+    padding: 0 0 6px;
+    letter-spacing: 0.4px;
+    margin: 0 0 10px;
+  }
+  ul {
+    display: block;
+    padding: 0 0 40px;
+    li {
+      display: block;
+      strong {
+        display: block;
+        font-size: 12px;
+        line-height: 14px;
+        color: #a6a8aa;
+        font-family: ProximaNova-Light;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+      p {
+        line-height: 20px;
+        color: #272525;
+        font-weight: 400;
+        display: block;
+        letter-spacing: 0.4px;
+      }
+    }
+  }
 }
 //media
 @media only screen and(max-width: 1420px) {

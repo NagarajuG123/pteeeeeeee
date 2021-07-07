@@ -28,7 +28,7 @@ export class InfoComponent implements OnInit {
             this.getContents(params.get('item'));
           }
         });
-    });
+      });
   }
   getContents(item: string | null) {
     let path;
