@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
    footerData: any =[];
    publication: any =[];
    brandSlug = '1851';
-
+  brandContact: any;
   constructor( private apiService: ApiService,private router:Router ) { }
 
   ngOnInit(): void {
@@ -24,6 +24,7 @@ export class FooterComponent implements OnInit {
           this.brandSlug = '1851';
         } else {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
+          this.getContact();
         }
         this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
           this.footerData = response.data;
@@ -35,6 +36,11 @@ export class FooterComponent implements OnInit {
   getPublication(){
     this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
       this.publication = response;
+    });
+  }
+  getContact() {
+    this.apiService.getAPI(`${this.brandSlug}/brand/contact`).subscribe((response ) =>{
+      this.brandContact = response.schema;
     });
   }
 }
