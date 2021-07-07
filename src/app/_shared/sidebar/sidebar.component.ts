@@ -28,7 +28,6 @@ export class SidebarComponent implements OnInit {
         }
         this.apiService.getAPI(`${this.brandSlug}/sidebar`).subscribe((response) => {
           this.sidebar = response.data;
-          console.log(this.sidebar);
         });
         this.apiService.getAPI(`1851/publication-instance`).subscribe((response) => {
           this.publication = response;
