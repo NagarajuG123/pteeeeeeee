@@ -147,11 +147,21 @@
     <div class="logo-sub">
       <div class="logo-sub-s">
         <h6>
-          <a href="#" class="text-uppercase">{{ brandTitle }}</a>
+          <a
+            data-bs-toggle="modal"
+            data-bs-target="#sponsoredModal"
+            class="text-uppercase"
+            >{{ brandTitle }}</a
+          >
         </h6>
       </div>
       <div class="logo-sub-f">
-        <a href="#" class="sponsored_logo">FRANCHISE NEWS POWERED BY</a>
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#sponsoredModal"
+          class="sponsored_logo"
+          >FRANCHISE NEWS POWERED BY</a
+        >
       </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -210,3 +220,26 @@
     </div>
   </div>
 </nav>
+<!-- Modal -->
+<div class="search_pop_up modal modal fade" id="sponsoredModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="sponsored-modal-content">
+        <button type="button" class="close text-right" data-bs-dismiss="modal">
+          &times;
+        </button>
+        <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
+        <p>
+          This brand page has been paid for by
+          <span class="text-uppercase">{{ brandTitle }}</span
+          >. Content within this page that is paid will showcase a Sponsored
+          icon. This means the brand has engaged
+          <span class="text-uppercase">{{ publication.title }}</span> to write
+          the content. Content without the Sponsored Icon is aggregated media
+          placements the brand earned. Questions can be sent to
+          <span>{{ editorialEmail }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
