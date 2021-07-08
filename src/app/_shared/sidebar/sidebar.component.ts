@@ -26,17 +26,20 @@ export class SidebarComponent implements OnInit {
         } else {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
         }
-        this.apiService.getAPI(`${this.brandSlug}/sidebar`).subscribe((response) => {
-          this.sidebar = response.data;
-        });
-        this.apiService.getAPI(`1851/publication-instance`).subscribe((response) => {
-          this.publication = response;
-        });
         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          this.brandTitle = response.name;
+          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+            this.brandTitle = response.name;
+            this.brandSlug = response.slug;
+          }
+          else{
+            this.brandSlug = '1851';
+          }
+        this.apiService.getAPI(`${this.brandSlug}/sidebar`).subscribe((response) => {
+        this.sidebar = response.data;
         });
-      }
-    });
+      });
+    }
+   }); 
   }
 
   readMore(item: any) {
