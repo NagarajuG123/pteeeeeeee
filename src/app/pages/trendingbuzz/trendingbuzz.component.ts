@@ -8,9 +8,10 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./trendingbuzz.component.scss']
 })
 export class TrendingbuzzComponent implements OnInit {
-  trendingData: Trending[] =[];
+  firstBlock: Trending[] = [];
+  secondBlock: Trending[] =[];
   slug: string ='1851';
-
+  hasMore: boolean = false;
   constructor( private apiService : ApiService) { }
 
   ngOnInit(): void {
@@ -19,7 +20,18 @@ export class TrendingbuzzComponent implements OnInit {
 
   getTrending(){
     this.apiService.getAPI(`${this.slug}/trending-buzz?limit=30&offset=0`).subscribe((response ) =>{
-      this.trendingData = response.data;
+      this.firstBlock = response.data.slice(0, 10);
+      this.secondBlock = response.data.slice(10, 30);
+      this.hasMore = response.has_more;
+    });
+  }
+   getMoreData() {
+    this.apiService.getAPI(`${this.slug}/trending-buzz?limit=10&offset=${this.secondBlock.length + 1}`)
+    .subscribe(result => {
+      this.hasMore = result.has_more;
+      result.data.forEach((element: any) => {
+        this.secondBlock.push(element);
+      });
     });
   }
 }

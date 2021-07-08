@@ -1,3 +1,26 @@
 .top-space {
-    padding-top: 80px;
+  padding-top: 80px;
+}
+.frannews {
+  background: #fff;
+}
+.frannews-details {
+  margin: 0 auto;
+}
+.category-frannews {
+  position: relative;
+}
+.brandbuzz-frannews {
+  -webkit-box-shadow: none;
+  .frannews-details {
+    padding: 53px 41px 6px 40px;
   }
+}
+.brandbuzz-frannews-bottom h6 {
+  font-size: 13px;
+  line-height: 15px;
+  color: #bbbcbf;
+  font-family: ProximaNova-Medium;
+  text-decoration: underline;
+  padding: 0 0 45px;
+}

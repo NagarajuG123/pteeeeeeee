@@ -1,6 +1,3 @@
-<h6 class="text-uppercase sponsored" *ngIf="type === 'trendingbrandbuzz'">
-  SPONSORED
-</h6>
 <div
   class="
     fran-content-block
@@ -11,6 +8,14 @@
   "
 >
   <div class="col" *ngFor="let item of contents; let i = index">
+    <div
+      class="sponsored text-center"
+      *ngIf="
+        type === 'trendingbrandbuzz' || type === 'trendingbrandbuzz-bottom'
+      "
+    >
+      <span class="d-inline-block"> {{ i + 1 }} </span>
+    </div>
     <a href="{{ readMore(item) }}">
       <img
         appYoutubeImage
@@ -34,16 +39,15 @@
         </p>
       </div>
     </a>
-    <div
-      class="sponsored-number text-center"
-      *ngIf="type === 'trendingbrandbuzz'"
-    >
-      <span class="d-inline-block"> {{ i + 1 }} </span>
-    </div>
   </div>
 </div>
 <a
-  *ngIf="hasMore && (type === 'monthlydetails' || type === 'categoryPage')"
+  *ngIf="
+    hasMore &&
+    (type === 'monthlydetails' ||
+      type === 'categoryPage' ||
+      type === 'trendingbrandbuzz-bottom')
+  "
   href="javascript:void(0)"
   id="loadMore"
   class="text-center loadmore-btn d-block"
