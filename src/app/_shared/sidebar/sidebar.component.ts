@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
         }
         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+          if (response.type === 'brand_page' && response.type !== 'dynamic_page') {
             this.brandTitle = response.name;
             this.brandSlug = response.slug;
           }
