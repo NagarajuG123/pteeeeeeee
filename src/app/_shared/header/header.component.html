@@ -1,5 +1,5 @@
 <nav
-  *ngIf="brandSlug === '1851'"
+  *ngIf="!isBrand"
   class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
 >
   <div class="container-fluid">
@@ -120,7 +120,7 @@
 </nav>
 
 <nav
-  *ngIf="brandSlug !== '1851'"
+  *ngIf="isBrand"
   class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
 >
   <div class="container-fluid">
