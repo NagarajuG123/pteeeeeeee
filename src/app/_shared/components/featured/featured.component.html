@@ -37,7 +37,6 @@
             </figure>
             <img class="video-maker" src="assets/img/youtube.svg" />
             <app-modal
-              *ngIf="isVideo(highlight)"
               [videoUrl]="highlight?.media?.url"
               [modalId]="'featuredModal'"
             ></app-modal>

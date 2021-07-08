@@ -1,17 +1,13 @@
 <div class="top-space">
   <div class="empty"></div>
   <div *ngIf="data">
-
     <div *ngIf="data" class="banner d-flex flex-row-reverse">
       <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
         <a
-          href="javascript:void(0)"
           class="d-block video-btn"
-          data-toggle="modal"
           *ngIf="data?.media"
-          attr.data-src="{{ data.media.url }}"
-          data-target="#banner_video_modal"
-          (click)="showVideo = true"
+          data-bs-target="#aboutModal"
+          data-bs-toggle="modal"
         >
           <figure>
             <img
@@ -19,48 +15,17 @@
               src="{{ data?.media | defaultImage: 1300:730 }}"
               width="1023"
               height="575"
-              alt="img2"
+              alt="about"
               (imageLoad)="bannerImageLoad()"
             />
           </figure>
+          <app-modal
+            [videoUrl]="data?.media?.url"
+            [modalId]="'aboutModal'"
+          ></app-modal>
         </a>
-        <div
-          class="modal fade"
-          id="banner_video_modal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-          (click)="onModalHide()"
-        >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  (click)="showVideo = false"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="embed-responsive embed-responsive-16by9">
-                  <!-- <app-video-player
-                    *ngIf="showVideo"
-                    class="embed-responsive-item"
-                    [srcUrl]="info['media']['url']"
-                  >
-                  </app-video-player> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-      <div
-        class="banner-right-info banner-right_about col-sm-3 col-12 p-0"
-      >
+      <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
         <div class="buffalo_wings">
           <div class="info_btn text-center">
             <a href="JavaScript:Void(0);" class="text-center"> ABOUT 1851 </a>
@@ -71,9 +36,7 @@
       </div>
     </div>
 
-    
     <div class="main-content">
-      
       <div *ngIf="data.contents" class="franchise_main text-center">
         <div class="container">
           <div class="franchise_data">
@@ -127,10 +90,10 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
       <div #tellus id="tellus">
-        <app-partner-main ></app-partner-main>
-    </div>
+        <app-partner-main></app-partner-main>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-item',
@@ -13,6 +14,7 @@ export class ItemComponent implements OnInit {
   sponsorContent: boolean = false;
   constructor(
     private apiService: ApiService,
+    private commonService: CommonService
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +37,8 @@ export class ItemComponent implements OnInit {
           });
         }
     });
+  }
+   isVideo(item: any) {
+    return this.commonService.isVideo(item);
   }
 }
