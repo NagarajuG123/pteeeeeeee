@@ -1,21 +1,43 @@
 <div class="top-space">
-
-    <app-two-side-banner
+  <app-two-side-banner
     [banner]="trendingData[0]"
     [type]="'trendingbrandbuzz'"
-    ></app-two-side-banner>
+  ></app-two-side-banner>
+  <div class="main-content">
+    <div class="frannews category-frannews brandbuzz-frannews">
+      <div class="container">
+        <div class="frannews-details col-xl-11">
+          <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
+            <h6 class="text-uppercase">SPONSORED</h6>
+            <app-five-column
+              [slug]="'1851'"
+              [contents]="trendingData.slice(0, 10)"
+              [type]="'trendingbrandbuzz'"
+            ></app-five-column>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <app-five-column
-    [slug]="'1851'"
-    [contents]="trendingData.slice(0,10)"
-    [type]="'trendingbrandbuzz'"
-    ></app-five-column>
+    <app-advertisement
+      [slug]="'1851'"
+      [type]="'Main Site Ad'"
+    ></app-advertisement>
 
-    <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'"></app-advertisement>
-
-    <app-five-column
-    [slug]="'1851'"
-    [contents]="trendingData.slice(10,30)"
-    ></app-five-column>
-
+    <div class="frannews category-frannews brandbuzz-frannews">
+      <div class="container">
+        <div class="frannews-details col-xl-11">
+          <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
+            <app-five-column
+              [slug]="'1851'"
+              [contents]="trendingData.slice(10, 30)"
+              [type]="'trendingbrandbuzz-bottom'"
+              [hasMore]="hasMore"
+              (more)="getMoreData()"
+            ></app-five-column>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
