@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   inquireForm: any;
   isBrand:boolean = false;
   publication: any;
+  type: any;
   editorialEmail = `${environment.editorialEmail}`
   constructor(private apiService: ApiService, public common: CommonService,private router:Router) {}
 
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
         }
          this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+          if (response.type === 'brand_page' && response.type !== 'dynamic_page' ) {
             this.brandTitle = response.name;
             this.isBrand = true;
             this.brandSlug = response.slug;

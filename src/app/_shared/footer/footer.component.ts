@@ -27,7 +27,7 @@ export class FooterComponent implements OnInit {
           this.getContact();
         }
         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+          if (response.type === 'brand_page' && response.type !== 'dynamic_page') {
             this.brandSlug = response.slug;
           }
           else{
