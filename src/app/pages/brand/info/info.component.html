@@ -111,7 +111,7 @@
                         <ul>
                           <li class="header-title">
                             <h2 class="text-uppercase">
-                              {{ items?.data?.name }}
+                              {{ items?.name }}
                             </h2>
                           </li>
                           <li>
@@ -122,90 +122,96 @@
                         </ul>
                       </div>
                       <p
-                        *ngIf="items?.data?.content"
-                        [innerHTML]="items?.data?.content"
+                        *ngIf="items?.content"
+                        [innerHTML]="items?.content"
                       ></p>
                     </div>
                   </div>
-                  <!-- <div *ngIf="isExecutive">
-                  <div class="wings">
-                    <div class="frannews-top-left d-flex executive-qa">
-                      <ul>
-                        <li>
-                          <h2 class="text-uppercase">{{ items["name"] }}</h2>
-                        </li>
-                        <li>
-                          <h2 class="text-uppercase">
-                            <span>EXECUTIVE Q&A</span>
-                          </h2>
-                        </li>
-                      </ul>
+                  <div *ngIf="isExecutive">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex executive-qa">
+                        <ul>
+                          <li class="header-title">
+                            <h2 class="text-uppercase">
+                              {{ items?.name }}
+                            </h2>
+                          </li>
+                          <li>
+                            <h2 class="text-uppercase">
+                              <span>EXECUTIVE Q&A</span>
+                            </h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <p
+                        class="executive-qa-content"
+                        *ngIf="items?.content"
+                        [innerHTML]="items?.content"
+                      ></p>
                     </div>
-                    <p
-                      class="executive-qa-content"
-                      *ngIf="items['content']"
-                      [innerHTML]="items['content']"
-                    ></p>
                   </div>
-                </div> -->
-                  <!-- <div *ngIf="isMarket">
-                  <div class="wings">
-                    <div class="frannews-top-left d-flex">
-                      <ul>
-                        <li>
-                          <h2 class="text-uppercase">Available Markets</h2>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <div class="mapcontainer">
+                  <div *ngIf="isMarket">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex">
+                        <ul>
+                          <li>
+                            <h2 class="text-uppercase">Available Markets</h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="mapcontainer">
+                          <div
+                            class="lg-map-wrapper"
+                            style="width: 100%; height: auto"
+                          >
+                            <svg id="map" width="800" height="500"></svg>
+                          </div>
+                        </div>
                         <div
-                          class="lg-map-wrapper"
-                          style="width: 100%; height: auto"
+                          *ngIf="items['available-markets'].length"
+                          class="map-legend"
                         >
-                          <svg id="map" width="800" height="500"></svg>
-                        </div>
-                      </div>
-                      <div *ngIf="isValid(market)" class="map-legend">
-                        MAP LEGEND:
-                        <div class="row">
-                          <div
-                            *ngFor="let market of market['available-markets']"
-                            class="col-sm-5 map-legend-item"
-                          >
-                            <div class="row market-names">
-                              <div class="col-xs-1">
-                                <div
-                                  class="market-status-color"
-                                  [style.backgroundColor]="market.color"
-                                ></div>
-                              </div>
-                              <div class="col-xs-10">
-                                <span class="text-uppercase market-name">{{
-                                  market.name
-                                }}</span>
+                          MAP LEGEND:
+                          <div class="row">
+                            <div
+                              *ngFor="let market of items['available-markets']"
+                              class="col-sm-5 map-legend-item"
+                            >
+                              <div class="row market-names">
+                                <div class="col-xs-1">
+                                  <div
+                                    class="market-status-color"
+                                    [style.backgroundColor]="market.color"
+                                  ></div>
+                                </div>
+                                <div class="col-xs-10">
+                                  <span class="text-uppercase market-name">{{
+                                    market.name
+                                  }}</span>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div
-                        *ngIf="market['international-markets'].length"
-                        class="map-legend"
-                      >
-                        <h3>INTERNATIONAL MARKETS:</h3>
-                        <div class="row">
-                          <div
-                            *ngFor="
-                              let market of market['international-markets']
-                            "
-                            class="col-sm-3 map-legend-item"
-                          >
-                            <div class="row market-names">
-                              <div class="col-xs-10">
-                                <span class="text-uppercase market-name">{{
-                                  market.name
-                                }}</span>
+                        <div
+                          *ngIf="items['international-markets'].length"
+                          class="map-legend"
+                        >
+                          <h3>INTERNATIONAL MARKETS:</h3>
+                          <div class="row">
+                            <div
+                              *ngFor="
+                                let market of items['international-markets']
+                              "
+                              class="col-sm-3 map-legend-item"
+                            >
+                              <div class="row market-names">
+                                <div class="col-xs-10">
+                                  <span class="text-uppercase market-name">{{
+                                    market.name
+                                  }}</span>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -213,7 +219,6 @@
                       </div>
                     </div>
                   </div>
-                </div> -->
                 </div>
                 <div class="multi_conference-right col-lg-4">
                   <div class="make_it d-flex">
