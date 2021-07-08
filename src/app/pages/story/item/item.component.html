@@ -14,17 +14,12 @@
         "
         class="sponsered_content_middle_title"
       >
-        <a
-          href="javascript:void(0)"
-          data-toggle="modal"
-          data-target="#sponsoredModal"
-        >
+        <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
           SPONSORED
         </a>
       </div>
       <a
         class="d-block video-btn"
-        *ngIf="isVideo(details)"
         data-bs-toggle="modal"
         data-bs-target="#storyModal"
       >
@@ -35,11 +30,16 @@
             width="802"
             height="451"
             style="width: 802px !important; cursor: pointer"
-            alt="sponsored_img"
+            alt="sponsored"
           />
         </figure>
-        <img class="video-maker" src="assets/img/youtube.svg" />
+        <img
+          *ngIf="isVideo(details)"
+          class="video-maker"
+          src="assets/img/youtube.svg"
+        />
         <app-modal
+          *ngIf="isVideo(details)"
           [videoUrl]="details.media.url"
           [modalId]="'storyModal'"
         ></app-modal>
@@ -89,11 +89,7 @@
               "
               class="sponsered_content_middle_title"
             >
-              <a
-                href="javascript:void(0)"
-                data-toggle="modal"
-                data-target="#sponsoredModal"
-              >
+              <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
                 SPONSORED
               </a>
             </span>

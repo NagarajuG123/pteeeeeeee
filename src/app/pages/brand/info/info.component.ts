@@ -27,7 +27,7 @@ export class InfoComponent implements OnInit {
   company!: string;
   geoJson: any;
   constructor(private apiService: ApiService,
-    private commonService: CommonService,private route: ActivatedRoute, private router: Router,  private httpClient: HttpClient,
+    private commonService: CommonService,private route: ActivatedRoute, private router: Router,
 ) { }
 
   ngOnInit(): void {
