@@ -14,7 +14,9 @@ export class InfoComponent implements OnInit {
   items: any;
   brandSlug: any;
   categories: any = [];
+  validData: Array<any> = [];
   staticContent: any;
+  pdf: any;
   selectedIndex: number = 0;
   inquireForm: any;
   isStory: boolean = false;
@@ -53,6 +55,12 @@ export class InfoComponent implements OnInit {
       {name: 'AVAILABLE MARKETS', value: 'available-markets'},
     ];
     this.staticContent = ['why-i-bought', 'executive', 'available-markets'];
+    this.apiService.getAPI(`${this.brandSlug}/brand-pdf`).subscribe((response) => {
+      this.pdf = response.data;
+    });
+  }
+  changeDownPDFUrl(url: any) {
+    return url.replace('api.', '');
   }
   isVideo(item: any) {
     return this.commonService.isVideo(item);
@@ -62,6 +70,7 @@ export class InfoComponent implements OnInit {
       this.inquireForm = response.schema;
     });
   }
+ 
   getContents(item: string | null) {
     let path;
     if (item === 'info') {

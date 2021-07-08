@@ -263,9 +263,11 @@ h2.resp-accordion {
     }
   }
 }
-[hidden] {
+[hidden],
+.hide {
   display: none !important;
 }
+
 //media
 @media only screen and(max-width: 1420px) {
   .multi_conference .row {

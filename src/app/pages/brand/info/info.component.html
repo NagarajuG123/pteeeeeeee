@@ -18,8 +18,17 @@
           [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
         >
           <a
+            *ngIf="category['value'] !== 'brand_pdf'"
             href="{{ brandSlug }}/{{ category['value'] }}"
             class="text-uppercase"
+          >
+            {{ category["name"] }}
+          </a>
+          <a
+            *ngIf="category['value'] === 'brand_pdf' && !pdf.email_popup"
+            href="{{ changeDownPDFUrl(pdf.media.url) }}"
+            class="text-uppercase"
+            target="blank"
           >
             {{ category["name"] }}
           </a>
