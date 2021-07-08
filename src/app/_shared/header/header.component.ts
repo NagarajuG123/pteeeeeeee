@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   brandSlug = '1851';
   brandTitle!: string;
   inquireForm: any;
+  isBrand:boolean = false;
   constructor(private apiService: ApiService, public common: CommonService,private router:Router) {}
 
   ngOnInit(): void {
@@ -23,24 +24,22 @@ export class HeaderComponent implements OnInit {
           this.brandSlug = '1851';
         } else {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
-          this.getBrand();
-          this.getInquiry();
         }
+         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
+          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+            this.brandTitle = response.name;
+            this.isBrand = true;
+            this.brandSlug = response.slug;
+          }
+          else{
+            this.isBrand = false;
+            this.brandSlug = '1851';
+          }
         this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
-          this.menu = response.data;
+        this.menu = response.data;
         });
-        
-      }
-    });
-  }
-  getBrand() {
-    this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-      this.brandTitle = response.name;
-    });
-  }
-  getInquiry() {
-    this.apiService.getAPI(`${this.brandSlug}/brand/inquire`).subscribe((response) => {
-      this.inquireForm = response.schema;
-    });
+      });
+    }
+  }); 
   }
 }
