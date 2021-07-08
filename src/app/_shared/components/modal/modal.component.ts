@@ -6,13 +6,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Input() openVideoPlayer: boolean = false;
-  @Input() url: string = '';
-  @Output() videoOutput = new EventEmitter();
+  @Input() modalId: string = '';
+  @Input() videoUrl: string = '';
+  openVideoPlayer: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.url)
   }
 
 }

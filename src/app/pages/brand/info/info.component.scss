@@ -1,6 +1,20 @@
 .top-space {
   padding-top: 80px;
 }
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
+}
+h2 {
+  font-size: 28px;
+  line-height: 30px;
+  color: #272525;
+  font-family: ProximaNova-Bold;
+  font-weight: 400;
+}
 .d-flex {
   -webkit-flex-wrap: wrap;
 }
@@ -71,6 +85,12 @@ h2.resp-accordion {
     margin: 0 0 24px;
     letter-spacing: -0.5px;
   }
+  p {
+    color: #272525;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin-bottom: 18px;
+  }
 }
 .wings {
   .wings-sub-title {
@@ -78,6 +98,9 @@ h2.resp-accordion {
   }
   .wings-video iframe {
     width: 100%;
+  }
+  .frannews-top-left {
+    margin-bottom: 67px;
   }
 }
 .video-btn {
@@ -166,6 +189,21 @@ h2.resp-accordion {
   display: block;
   clear: both;
   content: "";
+}
+.frannews-top-left ul li.header-title {
+  display: inline-block;
+  float: left;
+  padding: 0 31px 0 0;
+  position: relative;
+}
+.frannews-top-left ul li:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 16px;
+  background: #a6a8aa;
+  width: 2px;
+  height: 15px;
 }
 .more_brand {
   background: #f1f1f2;

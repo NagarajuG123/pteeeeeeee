@@ -102,7 +102,8 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
     ContactEditorialComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
-    LatestStoryComponent
+    LatestStoryComponent,
+    ModalComponent
   ],
 })
 export class SharedModule {}

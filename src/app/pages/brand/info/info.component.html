@@ -57,7 +57,7 @@
                     </h2>
                     <div
                       class="wings"
-                      *ngFor="let item of items.data; let i = index"
+                      *ngFor="let item of items?.data; let i = index"
                     >
                       <h3 class="wings-sub-title">{{ item?.title }}</h3>
                       <a
@@ -105,26 +105,28 @@
                       [company]="company"
                     ></app-latest-story>
                   </div>
-                  <!-- <div *ngIf="isBought">
-                  <div class="wings">
-                    <div class="frannews-top-left d-flex">
-                      <ul>
-                        <li>
-                          <h2 class="text-uppercase">{{ items["name"] }}</h2>
-                        </li>
-                        <li>
-                          <h2 class="text-uppercase">
-                            <span>WHY I BOUGHT</span>
-                          </h2>
-                        </li>
-                      </ul>
+                  <div *ngIf="isBought">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex">
+                        <ul>
+                          <li class="header-title">
+                            <h2 class="text-uppercase">
+                              {{ items?.data?.name }}
+                            </h2>
+                          </li>
+                          <li>
+                            <h2 class="text-uppercase">
+                              <span>WHY I BOUGHT</span>
+                            </h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <p
+                        *ngIf="items?.data?.content"
+                        [innerHTML]="items?.data?.content"
+                      ></p>
                     </div>
-                    <p
-                      *ngIf="items['content']"
-                      [innerHTML]="items['content']"
-                    ></p>
                   </div>
-                </div> -->
                   <!-- <div *ngIf="isExecutive">
                   <div class="wings">
                     <div class="frannews-top-left d-flex executive-qa">

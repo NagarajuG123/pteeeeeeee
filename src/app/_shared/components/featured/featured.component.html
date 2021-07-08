@@ -19,8 +19,7 @@
             *ngIf="isVideo(highlight)"
             class="d-block video-btn"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            (click)="openVideoPlayer = true"
+            data-bs-target="#featuredModal"
           >
             <figure class="m-0">
               <img
@@ -39,9 +38,8 @@
             <img class="video-maker" src="assets/img/youtube.svg" />
             <app-modal
               *ngIf="isVideo(highlight)"
-              [openVideoPlayer]="openVideoPlayer"
-              [url]="highlight?.media?.url"
-              (videoOutput)="setOpenVideoPlayer()"
+              [videoUrl]="highlight?.media?.url"
+              [modalId]="'featuredModal'"
             ></app-modal>
           </a>
 

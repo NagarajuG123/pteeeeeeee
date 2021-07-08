@@ -17,6 +17,7 @@ export class InfoComponent implements OnInit {
   inquireForm: any;
   isStory: boolean = false;
   isInfo: boolean = false;
+  isBought: boolean = false;
   company!: string;
   constructor(private apiService: ApiService,
     private commonService: CommonService,private route: ActivatedRoute, private router: Router,) { }
@@ -64,6 +65,11 @@ export class InfoComponent implements OnInit {
       path = 'brand-latest-stories';
       this.isStory = true;
       this.selectedIndex = 2;
+    }
+    else if (item === 'why-i-bought') {
+      path = 'brand-why-i-bought';
+      this.isBought = true;
+      this.selectedIndex = 3;
     }
     this.apiService.getAPI(`${this.brandSlug}/${path}`).subscribe((response) => {
       this.items = response;

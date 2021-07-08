@@ -1,18 +1,33 @@
 <div class="d-block top-slider position-relative">
   <div class="row g-0 flex-sm-row-reverse align-items-stretch">
     <div class="col-12 col-md-8 col-lg-9">
-      <a class="d-block sliderImg position-relative">
-        <!-- style="
-            background-image: url('https://dze0oudb6zz9z.cloudfront.net/insecure/fill/953/535/sm/0/plain/https://img.youtube.com/vi/7k-8fcJYGwQ/maxresdefault.jpg');
-          " -->
+      <a
+        class="d-block sliderImg position-relative video-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#brandInfoModal"
+      >
         <img
           appYoutubeImage
           class="right"
-          alt="brand-img6"
+          alt="brand"
           height="535"
           width="953"
-          src="{{ data.media | defaultImage: 953:535 }}"
+          src="{{ data?.media | defaultImage: 953:535 }}"
         />
+        <img
+          appYoutubeImage
+          *ngIf="isVideo(data)"
+          class="video-maker"
+          src="assets/img/youtube.svg"
+          data-bs-toggle="modal"
+          data-bs-target="#brandInfoModal"
+        />
+        <div *ngIf="isVideo(data)">
+          <app-modal
+            [modalId]="'brandInfoModal'"
+            [videoUrl]="data.media.url"
+          ></app-modal>
+        </div>
       </a>
     </div>
     <div class="col-12 col-md-4 col-lg-3 pt-2 pt-md-4 flex-row align-self-end">

@@ -1,9 +1,10 @@
 <div
   class="modal fade"
-  id="exampleModal"
+  id="{{ modalId }}"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
+  (click)="openVideoPlayer = true"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -21,7 +22,7 @@
           <app-video-player
             *ngIf="openVideoPlayer"
             class="embed-responsive-item"
-            [srcUrl]="url"
+            [srcUrl]="videoUrl"
           >
           </app-video-player>
         </div>
@@ -29,3 +30,36 @@
     </div>
   </div>
 </div>
+<!-- 
+<div
+  *ngIf="isVideo(data)"
+  class="modal fade"
+  id="brandInfoModal"
+  tabindex="-1"
+  aria-labelledby="brandInfoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="openVideoPlayer = true"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="embed-responsive embed-responsive-16by9">
+          <app-video-player
+            *ngIf="openVideoPlayer"
+            class="embed-responsive-item"
+            [srcUrl]="data?.media?.url"
+          >
+          </app-video-player>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

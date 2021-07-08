@@ -12,7 +12,6 @@ export class FeaturedComponent implements OnInit, OnChanges {
   @Input() apiUrl!: any;
 
   featuredData: any = [];
-  openVideoPlayer = false;
   highlight: any =[];
 
   constructor(private apiService: ApiService,
@@ -38,7 +37,5 @@ export class FeaturedComponent implements OnInit, OnChanges {
   isVideo(item: any) {
     return this.commonService.isVideo(item);
   }
-  setOpenVideoPlayer() {
-    this.openVideoPlayer = false;
-  }
+  
 }
