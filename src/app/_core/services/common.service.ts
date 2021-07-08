@@ -15,4 +15,22 @@ export class CommonService {
     //   this.isMenuOpen = !this.isMenuOpen;
     // }
   }
+  readMore(story: any) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}`;
+  }
+  isVideo(item: { media: { type: string; } | null; } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
+ 

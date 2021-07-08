@@ -1,4 +1,291 @@
 <div class="top-space">
-  <app-info-top></app-info-top>
-  <app-info-bottom></app-info-bottom>
+  <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
+  <div class="main-content">
+    <div class="main_content_tab">
+      <ul
+        class="
+          resp-tabs-list
+          tab-identifier2
+          d-flex
+          justify-content-center
+          align-items-center
+          clearfix
+          nav nav-pills
+        "
+      >
+        <li
+          *ngFor="let category of categories; let i = index"
+          [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+        >
+          <a
+            href="{{ brandSlug }}/{{ category['value'] }}"
+            class="text-uppercase"
+          >
+            {{ category["name"] }}
+          </a>
+        </li>
+      </ul>
+      <div class="resp-tabs-container">
+        <div
+          *ngFor="let category of categories; let i = index"
+          class="tab-content"
+        >
+          <h2
+            class="resp-accordion tab-identifier2"
+            [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+            role="tab"
+            style="background: none; border-color: rgb(193, 193, 193)"
+          >
+            <span class="resp-arrow"></span
+            ><a
+              class="text-uppercase"
+              href="{{ brandSlug }}/{{ category['value'] }}"
+              >{{ category["name"] }}</a
+            >
+          </h2>
+          <div
+            id="infoTab{{ i }}"
+            class="multi_conference tab-pane"
+            [ngClass]="selectedIndex === i ? 'in active' : ''"
+          >
+            <div class="container">
+              <div class="row">
+                <div class="multi_conference-left col-lg-8">
+                  <div *ngIf="isInfo">
+                    <h2 class="wings-title text-uppercase">
+                      {{ brandInfo?.name }} INFO
+                    </h2>
+                    <div
+                      class="wings"
+                      *ngFor="let item of items?.data; let i = index"
+                    >
+                      <h3 class="wings-sub-title">{{ item?.title }}</h3>
+                      <a
+                        *ngIf="item?.media && !isVideo(item)"
+                        href="#"
+                        class="d-block video-btn"
+                      >
+                        <figure>
+                          <img
+                            appYoutubeImage
+                            src="{{ item?.media | defaultImage: 796:0 }}"
+                            width="796"
+                            height="796"
+                            alt="video"
+                          />
+                        </figure>
+                      </a>
+                      <div
+                        *ngIf="item?.media && isVideo(item)"
+                        class="d-block video-btn wings-video"
+                      >
+                        <iframe
+                          [src]="item?.media?.url | safeUrl"
+                          style="max-width: 100%; height: 400"
+                          height="400"
+                          width="55%"
+                          scrolling="no"
+                          frameborder="0"
+                          webkitallowfullscreen
+                          mozallowfullscreen
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                      <p
+                        *ngIf="item?.short_description"
+                        [innerHTML]="item?.short_description"
+                      ></p>
+                    </div>
+                  </div>
+                  <div [hidden]="!isStory">
+                    <app-latest-story
+                      [title]="'Latest stories'"
+                      [type]="'brandInfo'"
+                      [slug]="brandSlug"
+                      [company]="company"
+                    ></app-latest-story>
+                  </div>
+                  <div *ngIf="isBought">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex">
+                        <ul>
+                          <li class="header-title">
+                            <h2 class="text-uppercase">
+                              {{ items?.name }}
+                            </h2>
+                          </li>
+                          <li>
+                            <h2 class="text-uppercase">
+                              <span>WHY I BOUGHT</span>
+                            </h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <p
+                        *ngIf="items?.content"
+                        [innerHTML]="items?.content"
+                      ></p>
+                    </div>
+                  </div>
+                  <div *ngIf="isExecutive">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex executive-qa">
+                        <ul>
+                          <li class="header-title">
+                            <h2 class="text-uppercase">
+                              {{ items?.name }}
+                            </h2>
+                          </li>
+                          <li>
+                            <h2 class="text-uppercase">
+                              <span>EXECUTIVE Q&A</span>
+                            </h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <p
+                        class="executive-qa-content"
+                        *ngIf="items?.content"
+                        [innerHTML]="items?.content"
+                      ></p>
+                    </div>
+                  </div>
+                  <div *ngIf="isMarket">
+                    <div class="wings">
+                      <div class="frannews-top-left d-flex">
+                        <ul>
+                          <li>
+                            <h2 class="text-uppercase">Available Markets</h2>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="mapcontainer">
+                          <div
+                            class="lg-map-wrapper"
+                            style="width: 100%; height: auto"
+                          >
+                            <svg id="map" width="800" height="500"></svg>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="items['available-markets'].length"
+                          class="map-legend"
+                        >
+                          MAP LEGEND:
+                          <div class="row">
+                            <div
+                              *ngFor="let market of items['available-markets']"
+                              class="col-sm-5 map-legend-item"
+                            >
+                              <div class="row market-names">
+                                <div class="col-xs-1">
+                                  <div
+                                    class="market-status-color"
+                                    [style.backgroundColor]="market.color"
+                                  ></div>
+                                </div>
+                                <div class="col-xs-10">
+                                  <span class="text-uppercase market-name">{{
+                                    market.name
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="items['international-markets'].length"
+                          class="map-legend"
+                        >
+                          <h3>INTERNATIONAL MARKETS:</h3>
+                          <div class="row">
+                            <div
+                              *ngFor="
+                                let market of items['international-markets']
+                              "
+                              class="col-sm-3 map-legend-item"
+                            >
+                              <div class="row market-names">
+                                <div class="col-xs-10">
+                                  <span class="text-uppercase market-name">{{
+                                    market.name
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="multi_conference-right col-lg-4">
+                  <div class="make_it d-flex">
+                    <h5 class="mr-xl-0 mr-lg-0 mr-auto text-uppercase">
+                      MAKE IT TREND
+                    </h5>
+                    <ul class="clearfix">
+                      <li>
+                        <a shareButton="facebook"
+                          ><i class="fa fa-facebook" aria-hidden="true"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a shareButton="twitter"
+                          ><i class="fa fa-twitter" aria-hidden="true"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a shareButton="linkedin"
+                          ><i class="fa fa-linkedin" aria-hidden="true"></i
+                        ></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div *ngIf="brandInfo" class="more_brand">
+                    <h5 class="text-uppercase">MORE BRAND INFO</h5>
+                    <ul>
+                      <li *ngIf="brandInfo?.name">
+                        <strong>NAME</strong>
+                        <p>{{ brandInfo?.name }}</p>
+                      </li>
+                      <li *ngIf="brandInfo?.units">
+                        <strong>NO. OF UNITS CURRENTLY OPEN:</strong>
+                        <p>{{ brandInfo?.units }}</p>
+                      </li>
+                      <li *ngIf="brandInfo?.startup_costs">
+                        <strong>start-up costs</strong>
+                        <p>{{ brandInfo?.startup_costs }}</p>
+                      </li>
+                      <li *ngIf="brandInfo?.franchise_fee">
+                        <strong>FRANCHISE FEE:</strong>
+                        <p>{{ brandInfo?.franchise_fee }}</p>
+                      </li>
+                      <li *ngIf="brandInfo?.royalty">
+                        <strong>ROYALTY:</strong>
+                        <p>{{ brandInfo?.royalty }}</p>
+                      </li>
+                      <li *ngFor="let info of brandInfo?.optional_info">
+                        <strong>{{ info.title }}:</strong>
+                        <p>{{ info.value }}</p>
+                      </li>
+                      <li *ngIf="brandInfo?.more_info !== ''">
+                        <strong>More info:</strong>
+                        <p>{{ brandInfo?.more_info }}</p>
+                      </li>
+                    </ul>
+                    <h5 *ngIf="inquireForm !== null" class="text-uppercase">
+                      INQUIRE ABOUT SERVICES
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

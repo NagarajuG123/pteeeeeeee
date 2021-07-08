@@ -1,8 +1,5 @@
 import {
-  Component, OnInit, Inject, PLATFORM_ID, Input,
-OnDestroy, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Subject } from 'rxjs';
+  Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
 
 declare var Vimeo: any;
 
@@ -14,27 +11,18 @@ declare var Vimeo: any;
 export class VideoPlayerComponent implements OnInit, OnChanges {
   private player!: YT.Player;
 
-  @Input()
-  srcUrl!: string;
+  @Input() srcUrl!: string;
   
-
   id = '';
   src = '';
   videoType = '';
   preload = 'auto';
-  isBrowser = false;
   data:any;
-  private onDestroySubject = new Subject();
-  onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.isBrowser = true;
-    }
   }
   ngOnChanges(changes: SimpleChanges) {
     const srcUrl: SimpleChange = changes.srcUrl;

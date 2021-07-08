@@ -77,10 +77,7 @@
                   </div>
                   <div class="buffalowings-bottom">
                     <span class="float-right text-uppercase">
-                      <a
-                        style="color: white"
-                        href="{{ goReadMore(item) }}#{{ type }}"
-                      >
+                      <a style="color: white" href="">
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
@@ -116,9 +113,9 @@
             <div class="trending-bottom-details" *ngIf="type === 'main-videos'">
               <div
                 class="d-block video-btn"
-                data-toggle="modal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
                 attr.data-src="{{ item.media.url }}"
-                data-target="#slide_videos_video_modal"
                 (click)="updateVideoUrl(item.media.url)"
                 style="cursor: pointer"
               >
@@ -131,6 +128,10 @@
                   />
                   <img class="video-maker" src="assets/img/youtube.svg" />
                 </figure>
+                <app-modal
+                  [videoUrl]="item?.media?.url"
+                  [modalId]="'exampleModal'"
+                ></app-modal>
                 <figure *ngIf="!item.media">
                   <img
                     src="assets/img/video-img2.jpg"
@@ -173,40 +174,6 @@
             </div>
           </div>
         </owl-carousel-o>
-
-        <div
-          *ngIf="type === 'main-videos'"
-          class="modal fade"
-          id="slide_videos_video_modal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  (click)="openVideoPlayer = false"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="embed-responsive embed-responsive-16by9">
-                  <app-video-player
-                    *ngIf="openVideoPlayer"
-                    class="embed-responsive-item"
-                    [srcUrl]="url"
-                  >
-                  </app-video-player>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

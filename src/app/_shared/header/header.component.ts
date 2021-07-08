@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
+import {environment} from 'src/environments/environment'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,9 +14,12 @@ export class HeaderComponent implements OnInit {
   brandTitle!: string;
   inquireForm: any;
   isBrand:boolean = false;
+  publication: any;
+  editorialEmail = `${environment.editorialEmail}`
   constructor(private apiService: ApiService, public common: CommonService,private router:Router) {}
 
   ngOnInit(): void {
+    this.getPublication();
     this.router.events
     .subscribe(events => {
       if (events instanceof NavigationEnd) {
@@ -41,5 +45,10 @@ export class HeaderComponent implements OnInit {
       });
     }
   }); 
+  }
+  getPublication() {
+    this.apiService.getAPI(`1851/publication-instance`).subscribe((response) => {
+      this.publication = response;
+    });
   }
 }

@@ -71,7 +71,7 @@ export class CarouselComponent implements OnInit {
     }
     this.apiService.getAPI(apiUrl).subscribe((response) => {
       this.list = response.data;
-      this.showCarousel = response.data.length > 0 ? true : false;
+      this.showCarousel = this.list.length > 0 ? true : false;
     });
   }
 

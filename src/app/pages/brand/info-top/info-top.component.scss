@@ -62,3 +62,15 @@
     }
   }
 }
+.video-maker {
+  position: absolute;
+  left: calc(50% - 105px);
+  top: calc(50% - 325px);
+  z-index: 1000;
+  height: 90px;
+  width: 90px !important;
+}
+.video-btn {
+  cursor: pointer;
+  position: relative;
+}

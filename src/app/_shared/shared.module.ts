@@ -12,6 +12,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
+import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -30,6 +31,8 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { TopBannerComponent } from './components/top-banner/top-banner.component';
 import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 
 // Modals Components
 
@@ -45,6 +48,7 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
     NewsComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
+    SafeUrlPipe,
     SplitArrayPipe,
     AdvertisementComponent,
     FooterTopComponent,
@@ -54,7 +58,9 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
     FeaturedComponent,
     ContactEditorialComponent,
     TopBannerComponent,
-    TwoSideBannerComponent
+    TwoSideBannerComponent,
+    ModalComponent,
+    LatestStoryComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -77,6 +83,7 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
     NgbModule,
     CarouselModule,
     DefaultImagePipe,
+    SafeUrlPipe,
     SplitArrayPipe,
     NgxYoutubePlayerModule,
     HeaderComponent,
@@ -94,7 +101,9 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
     FeaturedComponent,
     ContactEditorialComponent,
     TopBannerComponent,
-    TwoSideBannerComponent
+    TwoSideBannerComponent,
+    LatestStoryComponent,
+    ModalComponent
   ],
 })
 export class SharedModule {}

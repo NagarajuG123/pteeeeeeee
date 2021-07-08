@@ -9,13 +9,13 @@
                 <h4>{{ newsData.title }}</h4>
               </li>
               <li class="frannews-subtitle">
-                <h1 *ngIf="slug != '1851'">{{ newsData.subtitle }}</h1>
-                <span *ngIf="slug == '1851'">{{ newsData.subtitle }}</span>
+                <h1 *ngIf="slug != '1851'">{{ newsData?.subtitle }}</h1>
+                <span *ngIf="slug == '1851'">{{ newsData?.subtitle }}</span>
               </li>
             </ul>
           </div>
           <div class="frannews-top-right col-lg-3 col-md-2">
-            <a class="float-right" href=""
+            <a class="float-right" href="{{ readMore(newsData?.data[0]) }}"
               >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
             ></a>
             <div class="clearfix"></div>

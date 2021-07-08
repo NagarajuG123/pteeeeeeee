@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-two-side-banner',
@@ -11,7 +12,7 @@ export class TwoSideBannerComponent implements OnInit {
   @Input() date:any;
   openVideoPlayer = false;
 
-  constructor() { }
+  constructor(private commonService : CommonService) { }
 
   ngOnInit(): void {
     console.log(this.date)
@@ -21,5 +22,9 @@ export class TwoSideBannerComponent implements OnInit {
           return true;
     }
     return false;
+  }
+
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
 }

@@ -5,7 +5,6 @@ import { BrandRoutingModule } from './brand-routing.module';
 import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 import { InfoTopComponent } from './info-top/info-top.component';
-import { InfoBottomComponent } from './info-bottom/info-bottom.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 
 
@@ -14,7 +13,6 @@ import { SharedModule } from 'src/app/_shared/shared.module';
     BrandComponent,
     InfoComponent,
     InfoTopComponent,
-    InfoBottomComponent
   ],
   imports: [
     CommonModule,

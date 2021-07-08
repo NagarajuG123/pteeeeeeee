@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-info-top',
@@ -6,24 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-top.component.scss'],
 })
 export class InfoTopComponent implements OnInit {
-  Sliderlist: any = [
-    {
-      link: '/#',
-      title:
-        'MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion',
-    },
-    {
-      link: '/#',
-      title:
-        'MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion',
-    },
-    {
-      link: '/#',
-      title:
-        'MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion MOOYAH Burgers, Fries & Shakes Eyes Columbus, Ohio For Expansion',
-    },
-  ];
-  constructor() {}
+  @Input('data') data: any = [];
+  @Input('brandSlug') brandSlug = '1851';
+  @Input('type') type = '';
+  constructor(private commonService: CommonService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+   isVideo(item: any) {
+    return this.commonService.isVideo(item);
+ }
 }

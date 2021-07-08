@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-spotlight',
@@ -19,7 +20,7 @@ export class SpotlightComponent implements OnInit {
   hightlightFranchisor: any = [];
   highlightIndustry: any = [];
   hightlightColumn: any = [];
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private commonService:CommonService) {}
 
   ngOnInit(): void {
     this.getPeopleSpotlight();
@@ -82,5 +83,9 @@ export class SpotlightComponent implements OnInit {
           this.hightlightColumn = response.data[0];
         }
       });
+  }
+
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
 }

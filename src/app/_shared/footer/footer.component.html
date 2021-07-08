@@ -11,7 +11,10 @@
             <p>Your Number One Source For {{ publication.newsType }}</p>
           </div>
         </div>
-        <div class="col-md-5 footer-middle p-3 col-12">
+        <div
+          class="col-md-5 footer-middle p-3 col-12"
+          [ngClass]="brandSlug !== '1851' ? 'hide-right-border' : ''"
+        >
           <div class="row">
             <div class="col-md-6 col-6">
               <h6>SPOTLIGHT</h6>
@@ -32,10 +35,17 @@
                     >ABOUT US</a
                   >
                 </li>
-                <li *ngIf="footerData['contact-editorial']">
+                <li
+                  *ngIf="
+                    footerData['contact-editorial'] && brandSlug === '1851'
+                  "
+                >
                   <a routerLink="{{ footerData['contact-editorial']['url'] }}"
                     >CONTACT</a
                   >
+                </li>
+                <li *ngIf="brandContact && brandSlug !== '1851'">
+                  <a href="">CONTACT</a>
                 </li>
                 <li *ngIf="footerData['site-map']">
                   <a routerLink="/sitemap">SITE MAP</a>
@@ -49,7 +59,10 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-12 footer-right mt-4">
+        <div
+          class="col-md-3 col-12 footer-right mt-4"
+          *ngIf="brandSlug === '1851'"
+        >
           <h5>WANT TO LEARN MORE?</h5>
           <a routerLink="about#tellus"
             ><span class="d-block text-uppercase text-center"

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-news',
@@ -10,7 +11,7 @@ export class NewsComponent implements OnInit {
   newsData: any = [];
   @Input() slug = '1851';
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.getNews();
@@ -22,4 +23,7 @@ export class NewsComponent implements OnInit {
     });
   }
 
+  readMore(item: any) {
+    return this.commonService.readMore(item);
+  }
 }

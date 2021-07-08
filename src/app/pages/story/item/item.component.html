@@ -22,7 +22,12 @@
           SPONSORED
         </a>
       </div>
-      <a href="javascript:void(0)" class="d-block video-btn">
+      <a
+        class="d-block video-btn"
+        *ngIf="isVideo(details)"
+        data-bs-toggle="modal"
+        data-bs-target="#storyModal"
+      >
         <figure>
           <img
             appYoutubeImage
@@ -31,17 +36,13 @@
             height="451"
             style="width: 802px !important; cursor: pointer"
             alt="sponsored_img"
-            data-toggle="modal"
-            attr.data-target="#sponsered_content_video_modal"
           />
         </figure>
-        <img
-          *ngIf="details.media && details.media.type == 'video'"
-          class="video-maker"
-          src="assets/img/youtube.svg"
-          data-toggle="modal"
-          attr.data-target="#sponsered_content_video_modal"
-        />
+        <img class="video-maker" src="assets/img/youtube.svg" />
+        <app-modal
+          [videoUrl]="details.media.url"
+          [modalId]="'storyModal'"
+        ></app-modal>
       </a>
       <h1 class="m-0" [innerHTML]="details?.title"></h1>
       <h2 [innerHTML]="details?.short_description"></h2>
