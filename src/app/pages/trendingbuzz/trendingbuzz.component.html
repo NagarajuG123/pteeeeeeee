@@ -1,6 +1,6 @@
 <div class="top-space">
   <app-two-side-banner
-    [banner]="trendingData[0]"
+    [banner]="firstBlock[0]"
     [type]="'trendingbrandbuzz'"
   ></app-two-side-banner>
   <div class="main-content">
@@ -11,7 +11,7 @@
             <h6 class="text-uppercase">SPONSORED</h6>
             <app-five-column
               [slug]="'1851'"
-              [contents]="trendingData.slice(0, 10)"
+              [contents]="firstBlock"
               [type]="'trendingbrandbuzz'"
             ></app-five-column>
           </div>
@@ -30,7 +30,7 @@
           <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
             <app-five-column
               [slug]="'1851'"
-              [contents]="trendingData.slice(10, 30)"
+              [contents]="secondBlock"
               [type]="'trendingbrandbuzz-bottom'"
               [hasMore]="hasMore"
               (more)="getMoreData()"
