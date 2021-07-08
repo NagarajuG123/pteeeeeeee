@@ -1,57 +1,79 @@
-<footer>
-  <div class="container-xl content-padding footer-details">
-    <div class="footer-menu-block">
-      <div class="row">
-        <div class="col-md-4 col-sm-3 col-12 pb-md-none pb-3">
-          <div class="footer-logo-l">
-            <a href="/"><img src="{{ footerData?.logo?.url }}" alt="Logo" /></a>
-          </div>
-          <div class="footer-logo-r">
-            <h4>{{ publication?.title?.toUpperCase() }}</h4>
-            <p>Your Number One Source For {{ publication.newsType }}</p>
+<div *ngIf="isFooter" id="footer">
+  <footer>
+    <div class="container">
+      <div class="footer-details d-flex">
+        <div class="footer-left col-md-3 p-0">
+          <div class="footer-left-in d-flex">
+            <div class="footer-logo col-md-4 col-sm-3 col-3">
+              <a href="#">
+                <figure>
+                  <img
+                    [src]="footer?.logo?.url"
+                    width="86"
+                    height="87"
+                    alt="footer"
+                  />
+                </figure>
+              </a>
+            </div>
+            <div class="franchise-news col-md-8 col-sm-9 col-9">
+              <h4>{{ publication?.title?.toUpperCase() }}</h4>
+              <p>
+                Your Number One Source For
+                <span>{{ publication?.newsType }}</span>
+              </p>
+            </div>
           </div>
         </div>
-        <div
-          class="col-md-5 footer-middle p-3 col-12"
-          [ngClass]="brandSlug !== '1851' ? 'hide-right-border' : ''"
-        >
-          <div class="row">
-            <div class="col-md-6 col-6">
+        <div class="footer-middle col-md-6 p-0">
+          <div
+            class="footer-middle-in d-flex"
+            [class.hide-right-border]="isBrandFooter"
+          >
+            <div class="footer-middle-left col-sm-6 col-6">
               <h6>SPOTLIGHT</h6>
-              <ul class="left-section">
-                <li *ngFor="let spotlight of footerData.spotlight">
+              <ul>
+                <li *ngFor="let spotlight of footer?.spotlight">
                   <a
-                    routerLink="{{ spotlight.url }}"
+                    routerLink="{{ spotlight?.url }}"
                     class="text-capitalize-capital"
-                    >{{ spotlight.title }}</a
+                    >{{ spotlight?.title }}</a
                   >
                 </li>
               </ul>
             </div>
-            <div class="col-md-6 col-6">
-              <ul *ngIf="footerData['about-us']">
-                <li *ngIf="footerData['about-us']">
-                  <a routerLink="{{ footerData['about-us']['url'] }}"
+            <div class="footer-middle-right col-sm-6 col-6">
+              <ul>
+                <li *ngIf="footer['about-us']">
+                  <a
+                    href="{{ footer['about-us']['url'] }}"
+                    class="text-uppercase"
                     >ABOUT US</a
                   >
                 </li>
-                <li
-                  *ngIf="
-                    footerData['contact-editorial'] && brandSlug === '1851'
-                  "
-                >
-                  <a routerLink="{{ footerData['contact-editorial']['url'] }}"
+                <li *ngIf="footer['contact-editorial'] && !isBrandFooter">
+                  <a
+                    href="{{ footer['contact-editorial']['url'] }}"
+                    class="text-uppercase"
                     >CONTACT</a
                   >
                 </li>
-                <li *ngIf="brandContact && brandSlug !== '1851'">
-                  <a href="">CONTACT</a>
+                <li *ngIf="isBrandFooter && brandContact">
+                  <a
+                    href="javascript:void(0)"
+                    data-toggle="modal"
+                    data-target="#contactModal"
+                    class="text-uppercase"
+                    >CONTACT
+                  </a>
                 </li>
-                <li *ngIf="footerData['site-map']">
-                  <a routerLink="/sitemap">SITE MAP</a>
+                <li *ngIf="footer['site-map']">
+                  <a routerLink="/sitemap" class="text-uppercase">SITE MAP</a>
                 </li>
                 <li>
-                  <a routerLink="{{ footerData['terms-of-use']['url'] }}"
+                  <a
+                    routerLink="{{ footer['terms-of-use']?.url }}"
+                    class="text-uppercase"
                     >TERMS OF USE</a
                   >
                 </li>
@@ -59,85 +81,82 @@
             </div>
           </div>
         </div>
-        <div
-          class="col-md-3 col-12 footer-right mt-4"
-          *ngIf="brandSlug === '1851'"
-        >
-          <h5>WANT TO LEARN MORE?</h5>
-          <a routerLink="about#tellus"
-            ><span class="d-block text-uppercase text-center"
+        <div *ngIf="!isBrandFooter" class="footer-right text-right col-md-3">
+          <h5 class="text-uppercase">WANT TO LEARN MORE?</h5>
+          <a href="about#tellus"
+            ><span class="d-block text-uppercase float-right text-center"
               >LET’S TALK</span
             ></a
           >
           <div class="clearfix"></div>
           <a href="tel:3125263996">312.526.3996</a>
-          <div class="clearfix"></div>
-          <div class="social-blogs mt-4">
-            <ul
-              class="float-md-end float-start"
-              *ngIf="footerData['learn-more']"
-            >
+          <div class="social-blogs">
+            <ul class="float-right">
               <li>
                 <a
-                  class="d-block text-center"
+                  href="{{ [footer['learn-more']['social-media']['fb-url']] }}"
                   target="blank"
-                  href="{{
-                    [footerData['learn-more']['social-media']['fb-url']]
-                  }}"
-                  ><i class="fa fa-facebook"></i
-                ></a>
+                  class="d-block text-center"
+                >
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
                 <a
-                  class="d-block text-center"
-                  target="blank"
                   href="{{
-                    [footerData['learn-more']['social-media']['instagram-url']]
+                    [footer['learn-more']['social-media']['instagram-url']]
                   }}"
-                  ><i class="fa fa-instagram"></i
-                ></a>
+                  target="blank"
+                  class="d-block text-center"
+                >
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
                 <a
-                  class="d-block text-center"
-                  target="blank"
                   href="{{
-                    [footerData['learn-more']['social-media']['twitter-url']]
+                    [footer['learn-more']['social-media']['twitter-url']]
                   }}"
-                  ><i class="fa fa-twitter"></i
-                ></a>
+                  target="blank"
+                  class="d-block text-center"
+                >
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
                 <a
-                  class="d-block text-center"
-                  target="blank"
                   href="{{
-                    [footerData['learn-more']['social-media']['linkedin-url']]
+                    [footer['learn-more']['social-media']['linkedin-url']]
                   }}"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
+                  target="blank"
+                  class="d-block text-center"
+                >
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
+            <div class="clearfix"></div>
           </div>
+        </div>
+        <div class="footer-bottom col-12">
+          <form>
+            <div
+              class="form-group d-block"
+              data-toggle="modal"
+              data-target="#footerSearchModal"
+            >
+              <input
+                type="text"
+                class="form-control"
+                [placeholder]="footer?.search?.placeholder"
+              />
+              <button type="button" class="d-block text-center">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="footer-bottom col-12 mx-auto">
-      <form novalidate="" class="ng-untouched ng-pristine ng-valid">
-        <div
-          class="form-group d-block"
-          data-target="#footerSearchModal"
-          data-toggle="modal"
-        >
-          <input
-            class="form-control"
-            type="text"
-            placeholder="{{ footerData?.search?.placeholder }}"
-          /><button class="d-block text-center" type="button">
-            <i aria-hidden="true" class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</footer>
+  </footer>
+</div>

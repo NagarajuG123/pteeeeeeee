@@ -1,166 +1,181 @@
-.footer-middle ul.left-section li a {
-  font-size: 15px;
-  line-height: 17px;
-  color: #929496;
-  letter-spacing: 0.8px;
-}
-.footer-middle ul.left-section li {
-  padding: 0;
-}
+@import "src/assets/scss/mixins.scss";
 
-.footer-middle ul li a {
-  font-size: 15px;
-  line-height: 17px;
-  color: #263645;
-  font-family: ProximaNova-Medium;
-  letter-spacing: 0.7px;
-}
-
-.footer-middle ul li {
-  padding: 0 0 19px;
-}
-
-.footer-right a {
-  font-size: 14px;
-  line-height: 16px;
-  color: #ec0044;
-  font-family: ProximaNova-Medium;
-  letter-spacing: 0.6px;
-}
-
-.footer-right span {
-  width: 108px;
-  height: 49px;
-  font-size: 13.68px;
-  line-height: 16px;
-  color: #263645;
-  font-weight: 400;
-  font-family: ProximaNova-Medium;
-  letter-spacing: 0.7px;
-  padding: 8px 0 2px;
-  margin: 0 0 8px;
-  background: url("../../../assets/img/bg-lets.png") left top/cover no-repeat;
-}
-
-.footer-right a {
-  font-size: 14px;
-  line-height: 16px;
-  color: #ec0044;
-  font-family: ProximaNova-Medium;
-  letter-spacing: 0.6px;
-}
-
-.social-blogs ul li a {
-  width: 31px;
-  height: 31px;
-  border-radius: 100%;
-  background: #263645;
-}
-
-.social-blogs ul li {
-  display: inline-block;
-  padding-left: 1em;
-}
-
-.social-blogs ul li a .fa {
-  font-size: 17px;
-  line-height: 31px;
-  color: #fff;
-}
-
-@media only screen and (max-width: 767px) {
-  .footer-middle {
-    border-left: 0;
-    border-right: 0;
-    border-top: 1px solid #ec0b43;
-    border-bottom: 1px solid #ec0b43;
-    padding: 15px 0;
-  }
-  .footer-right {
-    text-align: left;
-  }
-  .footer-right span {
-    float: left;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .footer-middle {
-    border-left: 1px solid #ec0b43 !important;
-    border-right: 1px solid #ec0b43 !important;
-  }
-
-  .footer-right {
-    text-align: right;
-  }
-  .footer-right span {
-    float: right;
-  }
-}
-
-h6 {
-  font-size: 15px;
-  line-height: 17px;
-  color: #263645;
-  font-weight: 400;
-  font-family: ProximaNova-Medium;
-  letter-spacing: 0.7px;
-}
-
-.footer-bottom {
-  padding: 25px 0 0;
+.d-flex {
+  -webkit-flex-wrap: wrap;
 }
 .footer-details {
   padding: 70px 62px;
 }
-@media (max-width: 1024px) {
+.footer-left {
+  max-width: 30.8%;
+  -webkit-flex: 0 0 30.8%;
+}
+.franchise-news p {
+  font-size: 14px;
+  line-height: 19px;
+  color: #263645;
+  padding: 3px 0 0;
+  letter-spacing: 0.7px;
+}
+.footer-middle {
+  max-width: 42.2%;
+  -webkit-flex: 0 0 42.2%;
+}
+.footer-middle-in {
+  border-left: 1px solid #ec0b43;
+  border-right: 1px solid #ec0b43;
+}
+.hide-right-border {
+  border-right: 0 !important;
+}
+h6 {
+  font-size: 15px !important;
+  line-height: 17px !important;
+  color: #263645;
+  font-weight: 400;
+  font-family: ProximaNova-Medium;
+  letter-spacing: 0.7px;
+  margin-bottom: 0rem;
+}
+.footer-middle-left ul {
+  padding: 3px 0 0;
+  li {
+    height: 17px;
+  }
+  li a {
+    font-size: 15px;
+    line-height: 17px;
+    color: #929496;
+    letter-spacing: 0.8px;
+  }
+}
+.footer-middle-right ul li {
+  padding: 0 0 19px;
+  a {
+    font-size: 15px;
+    line-height: 17px;
+    color: #263645;
+    font-family: ProximaNova-Medium;
+    letter-spacing: 0.7px;
+  }
+}
+.footer-right {
+  max-width: 27%;
+  -webkit-flex: 0 0 27%;
+  padding: 16px 18px 0 0;
+  h5 {
+    padding: 0 0 16px;
+  }
+  a {
+    font-size: 14px;
+    line-height: 16px;
+    color: #ec0044;
+    font-family: ProximaNova-Medium;
+    letter-spacing: 0.6px;
+  }
+  span {
+    width: 108px;
+    height: 49px;
+    font-size: 13.68px;
+    line-height: 16px;
+    color: #263645;
+    font-weight: 400;
+    font-family: ProximaNova-Medium;
+    letter-spacing: 0.7px;
+    padding: 8px 0 2px;
+    margin: 0 0 8px;
+    background: url("../../../assets/img/bg-lets.png") left top/cover no-repeat;
+  }
+}
+.social-blogs ul li {
+  float: left;
+  padding: 0 0 0 18px;
+  a {
+    width: 31px;
+    height: 31px;
+    border-radius: 100%;
+    background: #263645;
+    .fa {
+      font-size: 17px;
+      line-height: 31px;
+      color: #fff;
+    }
+  }
+}
+
+.footer-bottom {
+  .form-group {
+    position: relative;
+    width: 328px;
+    margin: 0 auto;
+  }
+  .form-control {
+    width: 100%;
+    height: 33px;
+    line-height: 33px;
+    font-size: 12px;
+    color: #a6a8aa;
+    font-weight: 400;
+    font-family: ProximaNova-Light;
+    border: 1px solid #d0d1d3;
+    border-radius: 20px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline: 0;
+    background: #fff;
+    padding: 0 15px 0 43px;
+    letter-spacing: 0.3px;
+  }
+  button {
+    width: 32px;
+    height: 33px;
+    border-radius: 100%;
+    background: #d0d1d3;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .fa {
+      font-size: 16px;
+      line-height: 33px;
+      color: #fff;
+    }
+  }
+}
+.text-right {
+  text-align: right !important;
+}
+@media only screen and (max-width: 1420px) {
+  .footer-left-in {
+    padding: 15px 15px 0 0;
+  }
+  .footer-logo {
+    padding: 0 15px 0 0;
+  }
+  .franchise-news {
+    padding: 0 10px 0 14px;
+  }
+  .footer-middle-in {
+    padding: 15px;
+  }
+  .footer-middle-left {
+    padding: 0 10px 0 0;
+  }
+  .footer-middle-right {
+    padding: 0 0 0 10px;
+  }
+  .footer-right {
+    padding: 15px 0 0;
+  }
+  .social-blogs {
+    padding: 20px 0 0;
+    ul {
+      margin: 0;
+    }
+  }
   .footer-bottom {
     padding: 25px 0 0;
   }
-}
-.footer-bottom .form-group {
-  position: relative;
-  width: 328px;
-  margin: 0 auto;
-}
-
-.footer-bottom .form-control {
-  width: 100%;
-  height: 33px;
-  line-height: 33px;
-  font-size: 12px;
-  color: #a6a8aa;
-  font-weight: 400;
-  font-family: ProximaNova-Light;
-  border: 1px solid #d0d1d3;
-  border-radius: 20px;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  outline: 0;
-  background: #fff;
-  padding: 0 15px 0 43px;
-  letter-spacing: 0.3px;
-}
-
-.footer-bottom button {
-  width: 32px;
-  height: 33px;
-  border-radius: 100%;
-  background: #d0d1d3;
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.footer-bottom button .fa {
-  font-size: 16px;
-  line-height: 33px;
-  color: #fff;
-}
-
-.hide-right-border {
-  border-right: 0!important;
 }

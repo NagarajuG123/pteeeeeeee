@@ -8,9 +8,11 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-   footerData: any =[];
+   footer: any =[];
    publication: any =[];
-   brandSlug = '1851';
+  brandSlug = '1851';
+  isFooter: boolean = true;
+  isBrandFooter: boolean = false;
   brandContact: any;
   constructor( private apiService: ApiService,private router:Router ) { }
 
@@ -23,20 +25,22 @@ export class FooterComponent implements OnInit {
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
         } else {
-          this.brandSlug = this.brandSlug.replace(/\+/g, '');
-          this.getContact();
+          if (this.brandSlug === 'robots.txt') {
+            this.isFooter = false;
+          } else {
+            this.brandSlug = this.brandSlug.replace(/\+/g, '');
+            this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
+              if (response.type === 'brand_page') {
+                this.brandSlug = response.slug;
+                this.isBrandFooter = true;
+              }
+            });
+            this.getContact();
+          }
         }
-        this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if (response.type === 'brand_page' && response.type !== 'dynamic_page') {
-            this.brandSlug = response.slug;
-          }
-          else{
-            this.brandSlug = '1851';
-          }
         this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
-          this.footerData = response.data;
+          this.footer = response.data;
         });
-      });
       }
     }); 
   }

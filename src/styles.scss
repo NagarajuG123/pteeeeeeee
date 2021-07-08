@@ -3,7 +3,6 @@
 @import "src/assets/scss/featured";
 @import "src/assets/scss/spotlight";
 @import "src/assets/scss/franchise";
-@import "src/assets/scss/footer";
 @import "src/assets/scss/common";
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
@@ -233,5 +232,5 @@ h6 {
   border: 0;
 }
 .modal-backdrop.show {
-  opacity: 0 !important;
+  opacity: 0.5 !important;
 }
