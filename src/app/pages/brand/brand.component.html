@@ -65,3 +65,49 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="type === 'dynamic_page'">
+  <div class="top-space">
+    <app-two-side-banner
+      [banner]="topBlock"
+      [type]="'dynamicPage'"
+    ></app-two-side-banner>
+    <div class="main-content">
+      <div class="frannews category-frannews brandbuzz-frannews">
+        <div class="container">
+          <div class="frannews-details col-xl-11">
+            <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
+              <!-- <h6 class="text-uppercase">SPONSORED</h6> -->
+              <app-five-column
+                [slug]="'1851'"
+                [contents]="dynamicFirst"
+                [type]="'dynamicPage'"
+              ></app-five-column>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-advertisement
+        [slug]="'1851'"
+        [type]="'Main Site Ad'"
+      ></app-advertisement>
+
+      <div class="frannews category-frannews brandbuzz-frannews">
+        <div class="container">
+          <div class="frannews-details col-xl-11">
+            <div class="frannews-bottom brandbuzz-frannews-bottom p-0">
+              <app-five-column
+                [slug]="'1851'"
+                [contents]="dynamicSecond"
+                [type]="'trendingbrandbuzz-bottom'"
+                [hasMore]="hasMore"
+                (more)="getMoreData()"
+              ></app-five-column>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
