@@ -25,9 +25,17 @@ export class FooterComponent implements OnInit {
         } else {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
         }
+        this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
+          if ((typeof response.id !== 'undefined' || response.id === null) && response.type !== 'dynamic_page') {
+            this.brandSlug = response.slug;
+          }
+          else{
+            this.brandSlug = '1851';
+          }
         this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
           this.footerData = response.data;
         });
+      });
       }
     }); 
   }
