@@ -113,7 +113,7 @@
           </a>
         </div>
         <div class="monthly-covers-main">
-          <a routerLink="termsofuse#sponsored">
+          <a href="termsofuse#sponsored">
             <figure>
               <i class="fa fa-usd"></i>
             </figure>
@@ -155,7 +155,7 @@
       </li>
       <li class="d-block">
         <div class="monthly-covers-main">
-          <a routerLink="{{ sidebar['login']?.url }}">
+          <a href="{{ sidebar['login']?.url }}">
             <figure>
               <i class="fa fa-home"></i>
             </figure>
@@ -177,9 +177,13 @@
   <div class="menu-logo text-center">
     <a routerLink="{{ brandSlug }}">
       <figure>
-        <img class="logo-img" src="{{ sidebar?.logo }}" alt="logo" 
-        width="53"
-        height="53"/>
+        <img
+          class="logo-img"
+          src="{{ sidebar?.logo }}"
+          alt="logo"
+          width="53"
+          height="53"
+        />
       </figure>
     </a>
   </div>
