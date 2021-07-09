@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-brand',
@@ -26,7 +27,8 @@ export class BrandComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private apiService: ApiService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private metaService: MetaService
 
   ) { }
 
@@ -70,6 +72,7 @@ export class BrandComponent implements OnInit {
       this.dynamicFirst = response.data.stories.slice(0, 10);
       this.dynamicSecond = response.data.stories.slice(10, 30);
       this.hasMore = response.has_more;
+      this.metaService.setSeo(response.data.stories.meta);
     });
   }
 
