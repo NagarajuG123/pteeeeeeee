@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-monthly-covers',
@@ -16,11 +17,12 @@ export class MonthlyCoversComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private cdr: ChangeDetectorRef,
-
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getCoverData();
+    this.getMeta();
   }
   getCoverData() {
     this.apiService.getAPI(`1851/journal/monthly-covers?limit=7&offset=0`).subscribe((response ) =>{
@@ -42,6 +44,12 @@ export class MonthlyCoversComponent implements OnInit {
       });
     });
     this.cdr.detectChanges();
+  }
+
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
   }
   
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-sitemap-detail',
@@ -16,7 +17,8 @@ export class SitemapDetailComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private metaService:MetaService
     ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class SitemapDetailComponent implements OnInit {
         }
       });
     });
+    this.getMeta();
   }
 
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
+  }
 }

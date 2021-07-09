@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 @Component({
   selector: 'app-sitemap',
   templateUrl: './sitemap.component.html',
@@ -11,10 +12,11 @@ export class SitemapComponent implements OnInit {
   month: any=[];
   data: any=[];
 
-  constructor( private apiService: ApiService) { }
+  constructor( private apiService: ApiService,private metaService:MetaService) { }
 
   ngOnInit(): void {
     this.getSitemap();
+    this.getMeta();
   }
 
   getSitemap(){
@@ -35,5 +37,11 @@ export class SitemapComponent implements OnInit {
       });
     });
   });
+  }
+
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
   }
 }

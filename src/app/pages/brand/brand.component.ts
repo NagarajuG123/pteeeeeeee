@@ -61,6 +61,7 @@ export class BrandComponent implements OnInit {
               this.getDynamic();
               this.getMoreDynamic();
             }
+            this.getMeta();
           }
         });
     });
@@ -90,6 +91,7 @@ export class BrandComponent implements OnInit {
     this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
       this.mostRecent = response.data;
       this.hasMore = response.has_more;
+      this.metaService.setSeo(response.data.meta);
     });
   }
  
@@ -103,6 +105,11 @@ export class BrandComponent implements OnInit {
       result.data.forEach((element: any) => {
         this.mostRecent.push(element);
       });
+    });
+  }
+  getMeta() {
+    this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
     });
   }
 }
