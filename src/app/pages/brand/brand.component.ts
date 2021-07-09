@@ -57,6 +57,7 @@ export class BrandComponent implements OnInit {
             else if(this.type === 'dynamic_page' && !this.categorySlug){
               this.dynamicUrl = `page/${this.slug}`;
               this.getDynamic();
+              this.getMoreDynamic();
             }
           }
         });
@@ -71,6 +72,17 @@ export class BrandComponent implements OnInit {
       this.hasMore = response.has_more;
     });
   }
+
+  getMoreDynamic() {
+    this.apiService.getAPI(`${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`)
+    .subscribe(result => {
+      this.hasMore = result.has_more;
+      result.data.stories.forEach((element: any) => {
+        this.dynamicSecond.push(element);
+      });
+    });
+  }
+
   getMostRecent() {
     this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
       this.mostRecent = response.data;
