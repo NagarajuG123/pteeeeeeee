@@ -231,6 +231,6 @@ h6 {
   height: 100%;
   border: 0;
 }
-.modal-backdrop.show {
-  opacity: 0.5 !important;
+.modal-backdrop {
+  display: none;
 }

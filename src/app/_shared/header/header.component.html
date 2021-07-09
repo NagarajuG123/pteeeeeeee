@@ -1,15 +1,17 @@
 <header *ngIf="isShow" class="col-12 p-0">
-  <div *ngIf="!isBrandPage" class="container">
+  <div *ngIf="isMain" class="container">
     <div class="header-details d-flex">
       <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
         <div class="menu col-xl-1 col-2">
           <a href="javascript:void(0)" (click)="common.toggle()">
             <figure>
               <img
-                src="common.showmenu
-              ? '../../../assets/img/close.png'
-              : '../../../assets/img/menu.png'"
-                alt="logo"
+                [src]="
+                  common.showmenu
+                    ? '../../../assets/img/close.png'
+                    : '../../../assets/img/menu.png'
+                "
+                alt="menu"
               />
             </figure>
             <small
@@ -20,7 +22,7 @@
           </a>
         </div>
 
-        <div *ngIf="isHeader" class="logo col-xl-11 col-10 d-flex">
+        <div class="logo col-xl-11 col-10 d-flex">
           <a href="/" [class]="header?.logo?.padding">
             <figure>
               <img
@@ -52,51 +54,46 @@
         <div class="d-flex">
           <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
             <ul class="d-flex">
-              <li
-                *ngFor="let item of header | keyvalue: unsorted"
-                class="has_dd"
-              >
-                <a
-                  *ngIf="
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    !item.value['dropdown'] &&
-                    item.value['position'] != 'left'
-                  "
-                  [href]="item.value['url']"
-                  class="text-uppercase"
-                >
-                  {{ item.value["title"] }}
-                </a>
-                <a
-                  *ngIf="
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    item.value['dropdown']
-                  "
-                  href="javascript:void(0);"
-                  class="text-uppercase"
-                >
-                  {{ item.value["title"] }}
+              <li *ngIf="header['Franchise Brands']" class="has_dd">
+                <a class="text-uppercase">
+                  {{ header["Franchise Brands"]?.title }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div
-                  *ngIf="
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    item.value['dropdown']
-                  "
-                  class="megamenu"
-                >
-                  <ul *ngIf="isHeader">
-                    <li *ngFor="let brand of item.value['dropdown']">
+                <div class="megamenu">
+                  <ul>
+                    <li
+                      *ngFor="
+                        let subItem of header['Franchise Brands']?.dropdown
+                      "
+                    >
                       <a
-                        href="{{ brand.url }}"
-                        [target]="brand['isExternalLink'] ? '_blank' : ''"
+                        href="{{ subItem.url }}"
+                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
                         class="text-uppercase"
-                        >{{ brand.title }}</a
+                        >{{ subItem.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Learn -->
+              <li *ngIf="header['Learn']" class="has_dd">
+                <a class="text-uppercase">
+                  {{ header["Learn"]?.title }}
+                  <span
+                    ><i class="fa fa-angle-down" aria-hidden="true"></i
+                  ></span>
+                </a>
+                <div class="megamenu">
+                  <ul>
+                    <li *ngFor="let subItem of header['Learn']?.dropdown">
+                      <a
+                        href="{{ subItem.url }}"
+                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        class="text-uppercase"
+                        >{{ subItem.title }}</a
                       >
                     </li>
                   </ul>
@@ -117,20 +114,19 @@
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>
           </div>
-          <div
-            *ngIf="isHeader"
-            class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
-          >
-            <a href="{{ getMonthlyCoversURL() }}">
+          <div class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block">
+            <a
+              routerLink="{{ header['monthly-cover']?.media?.url?.cover_url }}"
+            >
               <figure>
                 <img
                   appYoutubeImage
                   src="{{
-                    header['monthly-cover'].media | defaultImage: 119:157
+                    header['monthly-cover']?.media | defaultImage: 119:157
                   }}"
                   width="119"
                   height="157"
-                  alt="img1"
+                  alt="Monthly cover"
                 />
               </figure>
             </a>
@@ -139,41 +135,28 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isBrandPage" class="container">
+  <div *ngIf="!isMain" class="container">
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
         <div class="menu col-xl-1 col-md-2 col-2">
-          <a href="javascript:void(0)" (click)="openMenu()">
+          <a href="javascript:void(0)" (click)="common.toggle()">
             <figure>
               <img
-                src="assets/images/menu.png"
-                width="35"
-                height="24"
+                [src]="
+                  common.showmenu
+                    ? '../../../assets/img/close.png'
+                    : '../../../assets/img/menu.png'
+                "
                 alt="menu"
-                class="show"
-              />
-              <img
-                src="assets/images/close.png"
-                width="35"
-                height="24"
-                alt="menu"
-                class="hide"
               />
             </figure>
             <small class="text-center d-block">MENU</small>
           </a>
         </div>
 
-        <div
-          *ngIf="isHeader"
-          class="logo col-xl-3 col-md-4 col-4"
-          style="height: 50px"
-        >
+        <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px">
           <a
-            *ngIf="
-              !isEEPublication || !header['logo'].includes(defaultBrandLogo)
-            "
-            href="{{ brandSlug }}"
+            routerLink="{{ brandSlug }}"
             style="
               width: 100px;
               display: flex;
@@ -181,32 +164,23 @@
               margin: auto;
             "
           >
-            <img [src]="header['logo']" style="max-height: 70px" />
+            <img [src]="header?.logo" style="max-height: 70px" />
           </a>
-          <a
+          <!-- <a
             *ngIf="isEEPublication && header['logo'].includes(defaultBrandLogo)"
             href="{{ brandSlug }}"
           >
             <img style="max-height: 40px" [src]="header['logo']" />
-          </a>
+          </a> -->
         </div>
-        <div *ngIf="isHeader" class="subscribe col-xl-8 col-md-6 col-6">
+        <div class="subscribe col-xl-8 col-md-6 col-6">
           <h6>
-            <a
-              href="javascript:void(0)"
-              data-toggle="modal"
-              data-target="#sponsoredModal"
-            >
+            <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
               {{ brandTitle }} </a
             ><br />
           </h6>
-          <a
-            [class]="publicationHeaderLogoClass"
-            href="javascript:void(0)"
-            data-toggle="modal"
-            data-target="#sponsoredModal"
-          >
-            {{ publicationHeaderSubHeading.toUpperCase() }} NEWS POWERED BY
+          <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
+            {{ publication?.sponsorHeading }} NEWS POWERED BY
           </a>
         </div>
       </div>
@@ -214,19 +188,17 @@
         <div class="d-flex">
           <nav class="col-md-10 d-none d-md-block">
             <ul class="float-right">
-              <li *ngIf="isInquireForm" class="has_dd">
+              <li *ngIf="inquireForm !== ''" class="has_dd">
                 <a
-                  (click)="formartForm()"
-                  href="javascript:void(0)"
                   class="text-uppercase"
-                  data-toggle="modal"
-                  data-target="#inquireModal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#inquireModal"
                 >
-                  {{ ellipsisText(inquireFormSchema["menu_title"], 20) }}
+                  {{ inquireForm?.menu_title }}
                 </a>
               </li>
               <li>
-                <a href="{{ brandSlug }}/info" class="text-uppercase"
+                <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
                   >BRAND INFORMATION</a
                 >
               </li>
@@ -236,7 +208,7 @@
                     ><i class="fa fa-angle-down" aria-hidden="true"></i></span
                 ></a>
                 <div class="megamenu megamenu1">
-                  <ul *ngIf="isHeader">
+                  <ul>
                     <li *ngFor="let item of header['learn']">
                       <a
                         href="{{ item.url }}"
@@ -266,11 +238,17 @@
     </div>
   </div>
 
-  <div class="search_pop_up modal" id="sponsoredModal">
-    <div class="modal-dialog">
+  <!-- Modal -->
+
+  <div class="search_pop_up modal fade" id="sponsoredModal">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="sponsored-modal-content">
-          <button type="button" class="close text-right" data-dismiss="modal">
+          <button
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
             &times;
           </button>
           <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
@@ -279,10 +257,10 @@
             <span class="text-uppercase">{{ brandTitle }}</span
             >. Content within this page that is paid will showcase a Sponsored
             icon. This means the brand has engaged
-            <span class="text-uppercase">{{ publication?.title }}</span>
-            to write the content. Content without the Sponsored Icon is
-            aggregated media placements the brand earned. Questions can be sent
-            to <span>{{ editorialEmail }}</span>
+            <span class="text-uppercase">{{ publication?.title }}</span> to
+            write the content. Content without the Sponsored Icon is aggregated
+            media placements the brand earned. Questions can be sent to
+            <span>{{ editorialEmail }}</span>
           </p>
         </div>
       </div>
