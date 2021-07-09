@@ -9,11 +9,12 @@ import {environment} from 'src/environments/environment'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menu: any = [];
+  header: any = [];
   brandSlug = '1851';
   brandTitle!: string;
   inquireForm: any;
-  isBrand:boolean = false;
+  isBrandPage: boolean = false;
+  isShow: boolean = true;
   publication: any;
   type: any;
   editorialEmail = `${environment.editorialEmail}`
@@ -29,21 +30,17 @@ export class HeaderComponent implements OnInit {
           this.brandSlug = '1851';
         } else {
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
+          this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
+            if (response.type === 'brand_page') {
+              this.brandTitle = response.name;
+              this.isBrandPage = true;
+              this.brandSlug = response.slug;
+            }
+          });
         }
-         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if (response.type === 'brand_page' && response.type !== 'dynamic_page' ) {
-            this.brandTitle = response.name;
-            this.isBrand = true;
-            this.brandSlug = response.slug;
-          }
-          else{
-            this.isBrand = false;
-            this.brandSlug = '1851';
-          }
-        this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
-        this.menu = response.data;
+         this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
+        this.header = response.data;
         });
-      });
     }
   }); 
   }

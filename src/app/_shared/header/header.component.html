@@ -1,245 +1,291 @@
-<nav
-  *ngIf="!isBrand"
-  class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
->
-  <div class="container-fluid">
-    <div class="menu-block me-1 me-lg-3">
-      <a
-        class="btn btn-grey d-grid"
-        id="sidebarToggle"
-        (click)="common.toggle()"
-      >
-        <img
-          [src]="
-            common.showmenu
+<header *ngIf="isShow" class="col-12 p-0">
+  <div *ngIf="!isBrandPage" class="container">
+    <div class="header-details d-flex">
+      <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
+        <div class="menu col-xl-1 col-2">
+          <a href="javascript:void(0)" (click)="common.toggle()">
+            <figure>
+              <img
+                src="common.showmenu
               ? '../../../assets/img/close.png'
-              : '../../../assets/img/menu.png'
-          "
-          alt="baricon"
-        />
-        <small [ngClass]="common.showmenu ? 'invisible' : ''">Menu</small>
-      </a>
-    </div>
-    <a href="/" class="me-2 me-lg-3 pe-1"
-      ><img src="{{ menu?.logo?.url }}" alt="Logo"
-    /></a>
-    <div class="logo-sub">
-      <div class="logo-sub-s">
-        <h6 class="m-0">
-          <a routerLink="{{ menu?.subscribe?.url }}" class="text-uppercase"
-            >Subscribe</a
-          >
-        </h6>
-      </div>
-      <div class="logo-sub-f">
-        <a routerLink="{{ menu?.subscribe?.url }}" class="sponsored_logo"
-          >FRANCHISE NEWS POWERED BY</a
-        >
-      </div>
-    </div>
-    <div class="collapse navbar-collapse me-lg-4" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto me-3">
-        <li class="nav-item dropdown me-lg-2">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ menu["Franchise Brands"]?.title?.toUpperCase() }}
-            <i class="fa fa-angle-down ms-1"></i>
+              : '../../../assets/img/menu.png'"
+                alt="logo"
+              />
+            </figure>
+            <small
+              class="text-center d-block"
+              [ngClass]="common.showmenu ? 'invisible' : ''"
+              >MENU</small
+            >
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="ps-0">
+        </div>
+
+        <div *ngIf="isHeader" class="logo col-xl-11 col-10 d-flex">
+          <a href="/" [class]="header?.logo?.padding">
+            <figure>
+              <img
+                [src]="header?.logo?.url"
+                [width]="header?.logo?.width"
+                [height]="header?.logo?.height"
+                alt="logo"
+              />
+            </figure>
+          </a>
+          <div *ngIf="header?.subscribe" class="subscribe ml-1">
+            <h6>
+              <a
+                routerLink="{{ header?.subscribe?.url }}"
+                class="text-uppercase"
+                >{{ header?.subscribe?.title }}</a
+              >
+            </h6>
+
+            <a
+              class="sponsored_logo text-uppercase"
+              routerLink="{{ header?.subscribe?.url }}"
+              >{{ header?.subscribe?.subtitle }}</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="header-right col-lg-7 col-md-8 col-4 d-none d-sm-block">
+        <div class="d-flex">
+          <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
+            <ul class="d-flex">
               <li
-                *ngFor="let item of menu['Franchise Brands']?.dropdown"
-                class="pb-3"
+                *ngFor="let item of header | keyvalue: unsorted"
+                class="has_dd"
               >
                 <a
-                  href="{{ item.url }}"
-                  [target]="item['isExternalLink'] ? '_blank' : ''"
-                  class="dropdown-item text-uppercase p-0"
-                  >{{ item.title }}</a
-                >
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ menu?.Learn?.title.toUpperCase()
-            }}<i class="fa fa-angle-down ms-1"></i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="ps-0">
-              <li *ngFor="let item of menu?.Learn?.dropdown">
-                <a
-                  href="{{ item.url }}"
-                  [target]="item['isExternalLink'] ? '_blank' : ''"
+                  *ngIf="
+                    item.value['type'] != 'logo' &&
+                    item.value['type'] != 'monthly-cover' &&
+                    !item.value['dropdown'] &&
+                    item.value['position'] != 'left'
+                  "
+                  [href]="item.value['url']"
                   class="text-uppercase"
-                  >{{ item.title }}</a
                 >
+                  {{ item.value["title"] }}
+                </a>
+                <a
+                  *ngIf="
+                    item.value['type'] != 'logo' &&
+                    item.value['type'] != 'monthly-cover' &&
+                    item.value['dropdown']
+                  "
+                  href="javascript:void(0);"
+                  class="text-uppercase"
+                >
+                  {{ item.value["title"] }}
+                  <span
+                    ><i class="fa fa-angle-down" aria-hidden="true"></i
+                  ></span>
+                </a>
+                <div
+                  *ngIf="
+                    item.value['type'] != 'logo' &&
+                    item.value['type'] != 'monthly-cover' &&
+                    item.value['dropdown']
+                  "
+                  class="megamenu"
+                >
+                  <ul *ngIf="isHeader">
+                    <li *ngFor="let brand of item.value['dropdown']">
+                      <a
+                        href="{{ brand.url }}"
+                        [target]="brand['isExternalLink'] ? '_blank' : ''"
+                        class="text-uppercase"
+                        >{{ brand.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
+            <div class="clearfix"></div>
+          </nav>
+          <div
+            class="search text-center col-xl-2 col-md-1 col-3 d-none d-sm-block"
+          >
+            <a
+              href="javascript:void(0)"
+              class="d-block"
+              data-toggle="modal"
+              data-target="#searchModal"
+            >
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
           </div>
-        </li>
-      </ul>
-      <div class="search me-4 pe-lg-2">
-        <a
-          data-target="#searchModal"
-          data-toggle="modal"
-          href="javascript:void(0)"
-          ><i class="fa fa-search text-center"></i
-        ></a>
-      </div>
-      <div *ngIf="menu['monthly-cover']" class="profile px-5 d-none d-md-block">
-        <a routerLink="{{ menu['monthly-cover'].media.url.cover_url }}">
-          <figure class="m-0">
-            <img
-              appYoutubeImage
-              src="{{ menu['monthly-cover']?.media | defaultImage: 119:157 }}"
-              width="119"
-              height="157"
-              alt="img1"
-            />
-          </figure>
-        </a>
+          <div
+            *ngIf="isHeader"
+            class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
+          >
+            <a href="{{ getMonthlyCoversURL() }}">
+              <figure>
+                <img
+                  appYoutubeImage
+                  src="{{
+                    header['monthly-cover'].media | defaultImage: 119:157
+                  }}"
+                  width="119"
+                  height="157"
+                  alt="img1"
+                />
+              </figure>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</nav>
+  <div *ngIf="isBrandPage" class="container">
+    <div class="header-details d-flex brand-header">
+      <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
+        <div class="menu col-xl-1 col-md-2 col-2">
+          <a href="javascript:void(0)" (click)="openMenu()">
+            <figure>
+              <img
+                src="assets/images/menu.png"
+                width="35"
+                height="24"
+                alt="menu"
+                class="show"
+              />
+              <img
+                src="assets/images/close.png"
+                width="35"
+                height="24"
+                alt="menu"
+                class="hide"
+              />
+            </figure>
+            <small class="text-center d-block">MENU</small>
+          </a>
+        </div>
 
-<nav
-  *ngIf="isBrand"
-  class="navbar navbar-expand-lg navbar-light fixed-top bg-white pb-0 pt-3"
->
-  <div class="container-fluid">
-    <div class="menu-block me-1 me-lg-3">
-      <a
-        class="btn btn-grey d-grid"
-        id="sidebarToggle"
-        (click)="common.toggle()"
-      >
-        <img
-          [src]="
-            common.showmenu
-              ? '../../../assets/img/close.png'
-              : '../../../assets/img/menu.png'
-          "
-          alt="baricon"
-        />
-        <small> Menu</small>
-      </a>
-    </div>
-    <a routerLink="/{{ brandSlug }}" class="me-2 me-lg-4"
-      ><img src="{{ menu?.logo }}" alt="Logo"
-    /></a>
-    <div class="logo-sub">
-      <div class="logo-sub-s">
-        <h6>
+        <div
+          *ngIf="isHeader"
+          class="logo col-xl-3 col-md-4 col-4"
+          style="height: 50px"
+        >
           <a
-            data-bs-toggle="modal"
-            data-bs-target="#sponsoredModal"
-            class="text-uppercase"
-            >{{ brandTitle }}</a
+            *ngIf="
+              !isEEPublication || !header['logo'].includes(defaultBrandLogo)
+            "
+            href="{{ brandSlug }}"
+            style="
+              width: 100px;
+              display: flex;
+              align-items: center;
+              margin: auto;
+            "
           >
-        </h6>
-      </div>
-      <div class="logo-sub-f">
-        <a
-          data-bs-toggle="modal"
-          data-bs-target="#sponsoredModal"
-          class="sponsored_logo"
-          >FRANCHISE NEWS POWERED BY</a
-        >
-      </div>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto me-4">
-        <li
-          *ngIf="inquireForm && inquireForm?.menu_title"
-          class="has_dd d-block float-none"
-        >
+            <img [src]="header['logo']" style="max-height: 70px" />
+          </a>
           <a
-            href="#"
-            class="text-uppercase"
+            *ngIf="isEEPublication && header['logo'].includes(defaultBrandLogo)"
+            href="{{ brandSlug }}"
+          >
+            <img style="max-height: 40px" [src]="header['logo']" />
+          </a>
+        </div>
+        <div *ngIf="isHeader" class="subscribe col-xl-8 col-md-6 col-6">
+          <h6>
+            <a
+              href="javascript:void(0)"
+              data-toggle="modal"
+              data-target="#sponsoredModal"
+            >
+              {{ brandTitle }} </a
+            ><br />
+          </h6>
+          <a
+            [class]="publicationHeaderLogoClass"
+            href="javascript:void(0)"
             data-toggle="modal"
-            data-target="#inquireModal"
+            data-target="#sponsoredModal"
           >
-            {{ inquireForm.menu_title }}
+            {{ publicationHeaderSubHeading.toUpperCase() }} NEWS POWERED BY
           </a>
-        </li>
-        <li>
-          <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
-            >BRAND INFORMATION</a
-          >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            LEARN<i class="fa fa-angle-down ms-1"></i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="ps-0">
-              <li *ngFor="let item of menu?.learn">
+        </div>
+      </div>
+      <div class="header-right col-xl-7 col-md-7 col-sm-8 d-none d-sm-block">
+        <div class="d-flex">
+          <nav class="col-md-10 d-none d-md-block">
+            <ul class="float-right">
+              <li *ngIf="isInquireForm" class="has_dd">
                 <a
-                  href="{{ item.url }}"
-                  [target]="item['isExternalLink'] ? '_blank' : ''"
+                  (click)="formartForm()"
+                  href="javascript:void(0)"
                   class="text-uppercase"
-                  >{{ item.title }}</a
+                  data-toggle="modal"
+                  data-target="#inquireModal"
+                >
+                  {{ ellipsisText(inquireFormSchema["menu_title"], 20) }}
+                </a>
+              </li>
+              <li>
+                <a href="{{ brandSlug }}/info" class="text-uppercase"
+                  >BRAND INFORMATION</a
                 >
               </li>
+              <li class="has_dd">
+                <a href="javascript:void(0)" class="text-uppercase"
+                  >LEARN<span
+                    ><i class="fa fa-angle-down" aria-hidden="true"></i></span
+                ></a>
+                <div class="megamenu megamenu1">
+                  <ul *ngIf="isHeader">
+                    <li *ngFor="let item of header['learn']">
+                      <a
+                        href="{{ item.url }}"
+                        target="blank"
+                        class="text-uppercase"
+                        >{{ item.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
+            <div class="clearfix"></div>
+          </nav>
+          <div class="search text-center col-md-2">
+            <a
+              href="javascript:void(0)"
+              class="d-block"
+              data-toggle="modal"
+              data-target="#searchModal"
+            >
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
           </div>
-        </li>
-      </ul>
-      <div class="search me-3">
-        <a
-          data-target="#searchModal"
-          data-toggle="modal"
-          href="javascript:void(0)"
-          ><i class="fa fa-search text-center"></i
-        ></a>
+        </div>
       </div>
     </div>
   </div>
-</nav>
-<!-- Modal -->
-<div class="search_pop_up modal modal fade" id="sponsoredModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="sponsored-modal-content">
-        <button type="button" class="close text-right" data-bs-dismiss="modal">
-          &times;
-        </button>
-        <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
-        <p>
-          This brand page has been paid for by
-          <span class="text-uppercase">{{ brandTitle }}</span
-          >. Content within this page that is paid will showcase a Sponsored
-          icon. This means the brand has engaged
-          <span class="text-uppercase">{{ publication?.title }}</span> to write
-          the content. Content without the Sponsored Icon is aggregated media
-          placements the brand earned. Questions can be sent to
-          <span>{{ editorialEmail }}</span>
-        </p>
+
+  <div class="search_pop_up modal" id="sponsoredModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="sponsored-modal-content">
+          <button type="button" class="close text-right" data-dismiss="modal">
+            &times;
+          </button>
+          <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
+          <p>
+            This brand page has been paid for by
+            <span class="text-uppercase">{{ brandTitle }}</span
+            >. Content within this page that is paid will showcase a Sponsored
+            icon. This means the brand has engaged
+            <span class="text-uppercase">{{ publication?.title }}</span>
+            to write the content. Content without the Sponsored Icon is
+            aggregated media placements the brand earned. Questions can be sent
+            to <span>{{ editorialEmail }}</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</header>
