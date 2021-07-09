@@ -56,12 +56,21 @@
       >
         TRENDING BRAND BUZZ
       </h4>
+      <h4
+      class="text-uppercase text-center d-inline-block"
+      *ngIf="type == 'dynamicPage'"
+    >
+      INDUSTRY INFLUENCERS
+    </h4>
 
       <h1>
         {{ banner.title }}
       </h1>
       <p>
         {{ banner.short_description }}
+      </p>
+      <p  *ngIf="type == 'dynamicPage'">
+        {{ banner.description }}
       </p>
     </div>
     <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="">
