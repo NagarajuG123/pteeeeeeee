@@ -9,11 +9,12 @@ import {environment} from 'src/environments/environment'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menu: any = [];
+  header: any = [];
   brandSlug = '1851';
   brandTitle!: string;
   inquireForm: any;
-  isBrand:boolean = false;
+  isMain: boolean = true;
+  isShow: boolean = true;
   publication: any;
   type: any;
   editorialEmail = `${environment.editorialEmail}`
@@ -28,28 +29,30 @@ export class HeaderComponent implements OnInit {
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
         } else {
-          this.brandSlug = this.brandSlug.replace(/\+/g, '');
-        }
-         this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-          if (response.type === 'brand_page' && response.type !== 'dynamic_page' ) {
-            this.brandTitle = response.name;
-            this.isBrand = true;
-            this.brandSlug = response.slug;
-          }
-          else{
-            this.isBrand = false;
-            this.brandSlug = '1851';
-          }
-        this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
-        this.menu = response.data;
-        });
-      });
-    }
-  }); 
+          this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`).subscribe((response) => {
+            if (response.status != 404 && response.type === 'brand_page') {
+              this.brandTitle = response.name;
+              this.isMain = false;
+              this.brandSlug = response.slug;
+            } else {
+              this.brandSlug = '1851';
+            }
+            this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
+              this.header = response.data;
+            });
+          });
+        } 
+      }
+    });
   }
   getPublication() {
     this.apiService.getAPI(`1851/publication-instance`).subscribe((response) => {
       this.publication = response;
+    });
+  }
+  getInquire() {
+    this.apiService.getAPI(`${this.brandSlug}/brand-inquire`).subscribe((response) => {
+      this.inquireForm = response.schema;
     });
   }
 }

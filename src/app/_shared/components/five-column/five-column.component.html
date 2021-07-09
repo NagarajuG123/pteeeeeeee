@@ -11,10 +11,11 @@
     <div
       class="sponsored text-center"
       *ngIf="
-        type === 'trendingbrandbuzz' || type === 'trendingbrandbuzz-bottom'
+        type === 'trendingbrandbuzz' || type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage' || type === 'dynamicPage-bottom'
       "
     >
-      <span class="d-inline-block"> {{ i + 1 }} </span>
+      <span class="d-inline-block"  *ngIf=" type === 'trendingbrandbuzz' || type === 'dynamicPage'"> {{ i + 1 }} </span>
+      <span class="d-inline-block"  *ngIf=" type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage-bottom'"> {{ i + 11 }} </span>
     </div>
     <a href="{{ readMore(item) }}">
       <img
@@ -46,7 +47,8 @@
     hasMore &&
     (type === 'monthlydetails' ||
       type === 'categoryPage' ||
-      type === 'trendingbrandbuzz-bottom')
+      type === 'trendingbrandbuzz-bottom' ||
+      type === 'dynamicPage-bottom')
   "
   href="javascript:void(0)"
   id="loadMore"

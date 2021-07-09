@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
-import { FeaturedComponent } from './pages/featured/featured.component';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
@@ -47,11 +46,6 @@ const routes: Routes = [
   {
     path: 'terms-of-use',
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
-  },
-  {
-    path: 'multiunitfranchisees',
-    component: FeaturedComponent,
-    loadChildren:() => import ('./pages/featured/featured.module').then((m) => m.FeaturedModule),
   },
   {
     path: 'contact-editorial',

@@ -18,6 +18,10 @@ export class BrandComponent implements OnInit {
   hasMore: boolean = false;
   categorySlug: any = '';
   mostRecentUrl: any;
+  dynamicUrl: any;
+  dynamicFirst: any =[];
+  dynamicSecond: any = [];
+  topBlock:any = [];
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -50,8 +54,32 @@ export class BrandComponent implements OnInit {
             } else if (this.type === 'brand_page' && !this.categorySlug) {
               this.apiUrl = `${this.slug}/featured-articles`;
             }
+            else if(this.type === 'dynamic_page' && !this.categorySlug){
+              this.dynamicUrl = `page/${this.slug}`;
+              this.getDynamic();
+              this.getMoreDynamic();
+            }
           }
         });
+    });
+  }
+
+  getDynamic(){
+    this.apiService.getAPI(`${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`).subscribe((response) => {
+      this.topBlock = response.data;
+      this.dynamicFirst = response.data.stories.slice(0, 10);
+      this.dynamicSecond = response.data.stories.slice(10, 30);
+      this.hasMore = response.has_more;
+    });
+  }
+
+  getMoreDynamic() {
+    this.apiService.getAPI(`${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`)
+    .subscribe(result => {
+      this.hasMore = result.has_more;
+      result.data.stories.forEach((element: any) => {
+        this.dynamicSecond.push(element);
+      });
     });
   }
 

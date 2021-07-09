@@ -33,14 +33,17 @@ export class FooterComponent implements OnInit {
               if (response.type === 'brand_page') {
                 this.brandSlug = response.slug;
                 this.isBrandFooter = true;
+                this.getContact();
+              } else {
+                this.brandSlug = '1851';
               }
+              this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
+                this.footer = response.data;
+              });
             });
-            this.getContact();
           }
         }
-        this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
-          this.footer = response.data;
-        });
+        
       }
     }); 
   }
