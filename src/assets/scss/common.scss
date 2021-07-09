@@ -12,6 +12,7 @@ ol,
 ul {
   list-style: none;
   margin: 0;
+  padding-left: 0rem !important;
 }
 a {
   display: inline-block;
@@ -146,11 +147,11 @@ h3 {
   }
 }
 h4 {
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 20px !important;
+  line-height: 22px !important;
   color: $color3;
-  font-weight: normal;
-  font-family: $font_family_2;
+  font-weight: 400;
+  font-family: $font_family_6;
   letter-spacing: 1px;
   @include mobile-landscape1 {
     font-size: 17px;

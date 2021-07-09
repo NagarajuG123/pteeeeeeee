@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit {
   setHeader() {
     this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
       this.header = response.data;
-      console.log(this.header)
     });
   }
   getPublication() {

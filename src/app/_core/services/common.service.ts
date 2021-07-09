@@ -15,7 +15,7 @@ export class CommonService {
     //   this.isMenuOpen = !this.isMenuOpen;
     // }
   }
-  readMore(story: any, type:string) {
+  readMore(story: any, type: string) {
     let slug = '';
     if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
       slug = `${story?.brand?.slug}/`;

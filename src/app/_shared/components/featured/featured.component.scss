@@ -238,6 +238,7 @@
     -webkit-flex: 0 0 100%;
   }
   ul {
+    padding-left: 2rem !important;
     li {
       padding: 0 0 29px 0;
       @include tablet-portrait {

@@ -1,4 +1,39 @@
-<div
+<div class="frannews-bottom">
+  <ul>
+    <li *ngFor="let n of contents">
+      <a href="{{ readMore(n) }}" class="frannews-bottom-details">
+        <figure>
+          <img
+            appYoutubeImage
+            srcset="{{n.media | defaultImage:545:305}} 545w, {{n.media | defaultImage:355:199}} 355w, {{n.media | defaultImage:300:168}} 300w, {{n.media | defaultImage:210:118}} 210w"
+            sizes="{{
+              '(max-width: 576px) 545px,
+               (max-width: 768px) 355px,
+               (max-width: 992px) 300px,
+               210px'
+            }}"
+            src="{{ n.media | defaultImage: 210:118 }}"
+            alt="img5"
+          />
+        </figure>
+        <div class="socialmedia">
+          <p title="{{ n.title }}" style="-webkit-box-orient: vertical">
+            {{ n.title }}
+          </p>
+          <!-- <span *ngIf="n.posted_on" class="d-block">{{
+            n.posted_on | timeago
+          }}</span>
+          <span *ngIf="n.post_on" class="d-block">{{
+            n.post_on | timeago
+          }}</span> -->
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+
+<!-- <div
   class="
     fran-content-block
     row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5
@@ -56,4 +91,4 @@
   (click)="getMoreData()"
 >
   <i class="fa fa-angle-down" aria-hidden="true"></i>
-</a>
+</a> -->

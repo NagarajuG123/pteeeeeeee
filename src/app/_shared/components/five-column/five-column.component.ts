@@ -12,6 +12,7 @@ export class FiveColumnComponent implements OnInit {
   @Input() slug: string = '';
   @Input() type = '';
   @Input() hasMore = false;
+  @Input() typeSlug!: string;
   @Output() more = new EventEmitter();
 
   constructor(    private commonService: CommonService,
@@ -23,6 +24,6 @@ export class FiveColumnComponent implements OnInit {
     this.more.emit('');
   }
   readMore(item: any) {
-    return this.commonService.readMore(item, '');
+    return this.commonService.readMore(item, this.typeSlug);
   }
 }
