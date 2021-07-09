@@ -97,10 +97,10 @@ h6 {
   margin: 0;
 }
 h1 {
-  font-size: 32px;
+  font-size: 32px !important;
   line-height: 34px;
   color: $color1;
-  font-weight: normal;
+  font-weight: 400 !important;
   font-family: $font_family_6;
   @include desk-lg-below2 {
     font-size: 30px;

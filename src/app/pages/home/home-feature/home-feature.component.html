@@ -1,63 +1,63 @@
-<div class="fran-block">
-  <div class="container franchise-details">
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        <div class="fran-top-block">
-          <div class="row">
-            <div class="col-md-6">
-              <ul>
-                <li>
-                  <h4 class="text-uppercase">
-                    {{ franchiseData?.data?.title }}
-                  </h4>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <a
-                routerLink="{{ goLegalPlayers(readMoreUrl) }}"
-                class="read-more-btn"
-                >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
-              ></a>
-            </div>
-          </div>
+<div *ngIf="highlightItem" class="franchise">
+  <div class="container">
+    <div class="franchise-details">
+      <div class="frannews-top d-flex">
+        <div class="frannews-top-left col-md-6 p-0">
+          <ul>
+            <li>
+              <h4 class="text-uppercase">{{ item?.data?.title }}</h4>
+            </li>
+          </ul>
         </div>
-        <div class="fran-two-block">
-          <div class="row gx-0">
-            <div class="col-md-6">
-              <div class="">
-                <!-- fran-two-l-->
-                <img
-                  appYoutubeImage
-                  sizes="{{
-                    '(max-width: 576px) 550px,
-                        (max-width: 768px) 740px,
-                        (max-width: 992px) 960px,
-                        (max-width: 1200px) 530px,
-                        623px'
-                  }}"
-                  src="{{ highlightItem.media | defaultImage: 623:350 }}"
-                  alt=""
-                  class="img-fluid h-100"
-                />
-              </div>
-            </div>
-            <div class="col-md-6 p-0 legalplayers-right">
-              <div class="legalplayers-right-main">
-                <h2 class="text-white">{{ highlightItem.title }}</h2>
-                <p class="text-white">
-                  {{ highlightItem.short_description }}
-                </p>
-                <a class="text-white" href="{{ readMore(highlightItem) }}"
-                  >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
-                ></a>
-              </div>
+        <div class="frannews-top-right col-md-6">
+          <a routerLink="{{ item?.data?.url }}" class="float-right"
+            >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
+          ></a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div id="carousel-custom1">
+        <div class="legalplayers d-flex">
+          <div class="legalplayers-left p-0 col-lg-6 col-12">
+            <figure>
+              <img
+                appYoutubeImage
+                srcset="{{highlightItem.media | defaultImage:550:309}} 550w, {{highlightItem.media | defaultImage:740:416}} 740w, {{highlightItem.media | defaultImage:960:539}} 960w, {{highlightItem.media | defaultImage:530:298}} 530w, {{highlightItem.media | defaultImage:623:350}} 623w"
+                sizes="{{
+                  '(max-width: 576px) 550px,
+                                                (max-width: 768px) 740px,
+                                                (max-width: 992px) 960px,
+                                                (max-width: 1200px) 530px,
+                                                623px'
+                }}"
+                src="{{ highlightItem.media | defaultImage: 623:350 }}"
+                alt="img19"
+              />
+            </figure>
+          </div>
+          <div class="legalplayers-right p-0 col-lg-6 col-md-12">
+            <div class="legalplayers-right-main">
+              <h1 style="-webkit-box-orient: vertical">
+                {{ highlightItem?.title }}
+              </h1>
+              <p style="-webkit-box-orient: vertical">
+                {{ highlightItem?.short_description }}
+              </p>
+              <span
+                class="float-left text-uppercase"
+                style="color: white !important"
+                ><a href="{{ readMore(highlightItem) }}"
+                  >READ MORE
+                  <i class="fa fa-angle-right" aria-hidden="true"></i></a
+              ></span>
             </div>
           </div>
         </div>
         <app-five-column
           [slug]="'1851'"
-          [contents]="franchiseData?.data?.stories?.slice(1, 6)"
+          [contents]="franchiseData"
+          [typeSlug]="'dynamicPage'"
         ></app-five-column>
       </div>
     </div>

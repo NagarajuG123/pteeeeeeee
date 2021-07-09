@@ -10,11 +10,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 export class HomeFeatureComponent implements OnInit {
   franchiseData: any = [];
   highlightItem: any = [];
-  items: any =[];
-  item : any = [];
-  index:number = 0;
-  readMoreUrl: string | undefined;
-
+  item: any;
   constructor( private apiService:ApiService, private commonService:CommonService) { }
 
   ngOnInit(): void {
@@ -22,32 +18,16 @@ export class HomeFeatureComponent implements OnInit {
   }
 
   getFranchise() {
-    this.apiService.getAPI(`home-page-featured-content?limit=10&offset=0`).subscribe((response ) =>{
-      this.franchiseData = response;
-      this.readMoreUrl = response.data.url;
-      if(response.data){
-        response.data.stories.forEach((item: any,index: number) => {
-          if(index < 6){
-                if(index == 0)
-                {
-                  this.franchiseData['highlight'] = item;  
-                }
-                else if(index != 0){
-                  this.franchiseData['items'] = item;
-                }
-              } 
-              this.highlightItem = this.franchiseData['highlight'];
-              this.items = this.franchiseData['items'];
-        }); 
+    this.apiService.getAPI(`home-page-featured-content`).subscribe((response ) =>{
+      this.item = response;
+      if (response.data.stories.length > 0) {
+        this.highlightItem = response.data.stories[0];
+        this.franchiseData = response.data.stories.slice(1, 6);
       }
     });
   }
 
-  goLegalPlayers(url: any) {
-    return url;
-  }
-
   readMore(item: any) {
-    return this.commonService.readMore(item, '');
+    return this.commonService.readMore(item, 'dynamicPage');
   }
 }
