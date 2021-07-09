@@ -24,6 +24,6 @@ export class NewsComponent implements OnInit {
   }
 
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore(item, 'frannews');
   }
 }

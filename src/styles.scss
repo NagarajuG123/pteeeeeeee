@@ -1,5 +1,4 @@
 @import "src/assets/scss/mixins";
-@import "src/assets/scss/featured";
 @import "src/assets/scss/spotlight";
 @import "src/assets/scss/franchise";
 @import "src/assets/scss/common";
@@ -110,8 +109,8 @@ h5 {
 }
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
   margin: 0 auto;
   display: block;
   @media (max-width: 1420px) {

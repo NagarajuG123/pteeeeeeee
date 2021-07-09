@@ -23,6 +23,6 @@ export class FiveColumnComponent implements OnInit {
     this.more.emit('');
   }
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore(item, '');
   }
 }
