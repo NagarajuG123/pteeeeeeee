@@ -24,6 +24,7 @@ export class FooterComponent implements OnInit {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
+          this.setFooter();
         } else {
           if (this.brandSlug === 'robots.txt') {
             this.isFooter = false;
@@ -37,9 +38,7 @@ export class FooterComponent implements OnInit {
               } else {
                 this.brandSlug = '1851';
               }
-              this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
-                this.footer = response.data;
-              });
+              this.setFooter();
             });
           }
         }
@@ -47,7 +46,11 @@ export class FooterComponent implements OnInit {
       }
     }); 
   }
-
+  setFooter() {
+  this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
+    this.footer = response.data;
+  });
+}
   getPublication(){
     this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
       this.publication = response;

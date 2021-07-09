@@ -4,241 +4,309 @@
   (click)="common.toggle()"
 ></div> -->
 <div
-  *ngIf="brandSlug === '1851'"
+  *ngIf="isMain"
   class="menu-details"
   [ngClass]="common.showmenu ? 'show' : ''"
 >
   <div class="menu-logo text-center">
-    <a href="/">
+    <a routerLink="/">
       <figure>
         <img
           class="logo-img"
-          src="{{ sidebar?.logo }}"
+          src="{{ sidebar.logo }}"
           width="{{ publication.id === 'EE' ? 200 : 53 }}"
           height="53"
-          alt="logo1"
+          alt="logo"
         />
       </figure>
     </a>
   </div>
-  <div class="input-group mb-4 menu-search">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search 1851franchise.com"
-    />
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-      <i class="fa fa-search"></i>
-    </button>
+  <div class="menu-search">
+    <form>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          [placeholder]="sidebar?.search?.placeholder"
+        />
+        <button type="button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
   </div>
-
-  <ul class="menuList pt-1">
-    <li>
-      <i class="fa fa-database"></i>
-      <strong class="mb-2"
-        ><a routerLink="/monthlycovers">MONTHLY COVERS</a></strong
-      >
-      <ul class="sublist">
-        <li>
-          <a routerLink="{{ sidebar['monthly-cover']?.url }}">
-            <img
-              appYoutubeImage
-              src="{{ sidebar['monthly-cover']?.media | defaultImage: 97:127 }}"
-              width="100"
-              alt="img27"
-            />
+  <div class="monthly-covers">
+    <ul>
+      <li class="d-block">
+        <div class="monthly-covers-main">
+          <a routerLink="/monthlycovers">
+            <figure>
+              <i class="fa fa-database"></i>
+            </figure>
+            <strong>MONTHLY COVERS</strong>
           </a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <i class="fa fa-server"></i>
-      <strong>{{ sidebar?.category?.label }}</strong>
-      <ul class="sublist">
-        <li *ngFor="let item of sidebar?.category?.items">
-          <a routerLink="{{ item?.url }}">{{ item.title }}</a>
-        </li>
-      </ul>
-    </li>
-    <li class="my-4"><hr /></li>
-
-    <li>
-      <i class="fa fa-trophy"></i>
-      <strong>AWARDS</strong>
-      <ul class="sublist">
-        <li *ngFor="let item of sidebar?.awards">
-          <a *ngIf="item" routerLink="{{ item?.url }}">{{ item.title }}</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <i class="fa fa-star"></i>
-      <strong
-        ><a routerLink="{{ sidebar['power-rankings']?.url }}"
-          >POWER RANKINGS</a
-        ></strong
-      >
-    </li>
-    <li class="my-4"><hr /></li>
-
-    <li>
-      <i class="fa fa-question-circle"></i>
-      <strong
-        ><a routerLink="{{ sidebar['about-1851']?.url }}">
-          ABOUT
-          <span>{{ publication?.title?.toUpperCase() }}</span>
-        </a></strong
-      >
-    </li>
-    <li>
-      <i class="fa fa-usd" aria-hidden="true"></i>
-      <strong
-        ><a href="/terms-of-use#sponsored" (click)="closeMenu()">
-          SPONSORED CONTENT
-        </a></strong
-      >
-    </li>
-    <li>
-      <i class="fa fa-rss"></i>
-      <strong
-        ><a href="about#tellus">
-          ADVERTISE ON
-          <span>{{ publication?.title?.toUpperCase() }}</span>
-        </a></strong
-      >
-    </li>
-    <li>
-      <i class="fa fa-envelope-open"></i>
-      <strong
-        ><a href="{{ sidebar['contact-editorial']?.url }}">
-          CONTACT <span>{{ publication?.title?.toUpperCase() }}</span
-          >&nbsp;<span *ngIf="publication?.id != 'EE'">EDITORIAL</span>
-        </a></strong
-      >
-    </li>
-    <li>
-      <i class="fa fa-list"></i>
-      <strong
-        ><a routerLink="{{ sidebar['terms-of-use']?.url }}">
-          TERMS OF USE
-        </a></strong
-      >
-    </li>
-
-    <li class="my-4"><hr /></li>
-    <li>
-      <i class="fa fa-home"></i>
-      <strong><a href="{{ sidebar?.login?.url }}"> LOGIN </a></strong>
-    </li>
-  </ul>
+          <div class="monthly-covers-details monthly-covers-details1">
+            <a href="{{ sidebar['monthly-cover']?.url }}">
+              <figure>
+                <img
+                  appYoutubeImage
+                  src="{{
+                    sidebar['monthly-cover']?.media | defaultImage: 97:127
+                  }}"
+                  width="97"
+                  height="127"
+                  alt="monthly cover"
+                />
+              </figure>
+            </a>
+          </div>
+        </div>
+        <div class="monthly-covers-main">
+          <a class="cursor-default" href="javascript:;">
+            <figure>
+              <i class="fa fa-server"></i>
+            </figure>
+            <strong>{{ sidebar?.category?.label }}</strong>
+          </a>
+          <div class="monthly-covers-details">
+            <p *ngFor="let item of sidebar?.category?.items">
+              <a routerLink="{{ item.url.replace('+', '-') }}">{{
+                item.title
+              }}</a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li *ngIf="sidebar['awards']" class="d-block">
+        <div class="monthly-covers-main">
+          <a class="cursor-default" href="javascript:;">
+            <figure>
+              <i class="fa fa-trophy"></i>
+            </figure>
+            <strong>AWARDS</strong>
+          </a>
+          <div class="monthly-covers-details">
+            <p *ngFor="let item of sidebar['awards']">
+              <a href="{{ item?.url }}">{{ item?.title }}</a>
+            </p>
+          </div>
+        </div>
+        <div class="monthly-covers-main" *ngIf="sidebar['power-rankings']">
+          <a href="{{ sidebar['power-rankings']?.url }}">
+            <figure>
+              <i class="fa fa-star"></i>
+            </figure>
+            <strong>POWER RANKINGS</strong>
+          </a>
+        </div>
+      </li>
+      <li class="d-block">
+        <div class="monthly-covers-main">
+          <a href="{{ sidebar['about-1851']?.url }}">
+            <figure>
+              <i class="fa fa-question-circle"></i>
+            </figure>
+            <strong
+              >ABOUT
+              <span>{{ publication?.title?.toUpperCase() }}</span></strong
+            >
+          </a>
+        </div>
+        <div class="monthly-covers-main">
+          <a routerLink="termsofuse#sponsored">
+            <figure>
+              <i class="fa fa-usd"></i>
+            </figure>
+            <strong>SPONSORED CONTENT</strong>
+          </a>
+        </div>
+        <div class="monthly-covers-main">
+          <a href="about#tellus">
+            <figure>
+              <i class="fa fa-rss"></i>
+            </figure>
+            <strong
+              >ADVERTISE ON
+              <span>{{ publication?.title?.toUpperCase() }}</span></strong
+            >
+          </a>
+        </div>
+        <div class="monthly-covers-main">
+          <a href="{{ sidebar['contact-editorial']?.url }}">
+            <figure>
+              <i class="fa fa-envelope-open"></i>
+            </figure>
+            <strong
+              >CONTACT <span>{{ publication?.title?.toUpperCase() }}</span
+              >&nbsp;<span *ngIf="publication.id != 'EE'"
+                >EDITORIAL</span
+              ></strong
+            >
+          </a>
+        </div>
+        <div class="monthly-covers-main">
+          <a routerLink="{{ sidebar['terms-of-use']?.url }}">
+            <figure>
+              <i class="fa fa-list"></i>
+            </figure>
+            <strong>TERMS OF USE</strong>
+          </a>
+        </div>
+      </li>
+      <li class="d-block">
+        <div class="monthly-covers-main">
+          <a routerLink="{{ sidebar['login']?.url }}">
+            <figure>
+              <i class="fa fa-home"></i>
+            </figure>
+            <strong>LOGIN</strong>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
+<!-- Brand -->
+
 <div
-  *ngIf="brandSlug !== '1851'"
+  *ngIf="!isMain"
   class="menu-details brand-menu-details"
   [ngClass]="common.showmenu ? 'show' : ''"
 >
   <div class="menu-logo text-center">
-    <a href="/">
+    <a routerLink="{{ brandSlug }}">
       <figure>
-        <img
-          class="logo-img"
-          src="{{ sidebar?.logo }}"
-          width="{{ publication.id === 'EE' ? 200 : 53 }}"
-          height="53"
-          alt="logo1"
-        />
+        <img class="logo-img" src="{{ sidebar?.logo }}" alt="logo" />
       </figure>
     </a>
   </div>
-
   <div class="sponsored">
-    <div class="text-center">
-      <h6>SPONSORED CONTENT</h6>
+    <h6 class="d-block text-uppercase text-center">
+      <small class="d-inline-block"></small>
+      SPONSORED CONTENT
+    </h6>
+    <div class="menu-search">
+      <form>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            [placeholder]="sidebar?.search?.placeholder"
+          />
+          <button type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="input-group mb-3 menu-search">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search 1851franchise.com"
-      />
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        id="button-addon2"
-      >
-        <i class="fa fa-search"></i>
-      </button>
+    <div class="monthly-covers">
+      <ul>
+        <li class="d-block">
+          <div class="monthly-covers-main">
+            <a href="#">
+              <figure>
+                <i class="fa fa-database"></i>
+              </figure>
+              <strong>RETURN TO MAIN SITE</strong>
+            </a>
+          </div>
+          <div class="monthly-covers-main">
+            <a routerLink="{{ brandSlug }}">
+              <figure>
+                <i class="fa fa-server"></i>
+              </figure>
+              <strong>{{ brandTitle }}</strong>
+            </a>
+            <div *ngIf="downloadPdf" class="monthly-covers-details">
+              <p>
+                <a
+                  *ngIf="downloadPdf.email_popup"
+                  data-bs-toggle="modal"
+                  data-bs-target="#pdfModal1"
+                  class="text-uppercase"
+                >
+                  Download PDF
+                </a>
+                <a
+                  *ngIf="!downloadPdf.email_popup"
+                  href="{{ downloadPdf.url }}"
+                  target="blank"
+                >
+                  Download PDF
+                </a>
+              </p>
+            </div>
+            <div class="monthly-covers-details">
+              <p>
+                <a href="{{ visitSite.url }}" target="blank">Visit Website</a>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="d-block">
+          <div class="monthly-covers-main">
+            <a href="#">
+              <figure>
+                <i class="fa fa-trophy"></i>
+              </figure>
+              <strong>SOCIAL MEDIA</strong>
+            </a>
+            <div
+              *ngFor="let item of sidebar['social_media']"
+              class="monthly-covers-details"
+            >
+              <p>
+                <a href="{{ item.url }}" target="blank">{{ item.title }}</a>
+              </p>
+            </div>
+          </div>
+          <div class="monthly-covers-main">
+            <a routerLink="{{ brandSlug }}">
+              <figure>
+                <i class="fa fa-star"></i>
+              </figure>
+              <strong>{{ brandTitle }} MOST READ STORIES</strong>
+            </a>
+            <div
+              *ngFor="let story of sidebar['most-read-stories']"
+              class="monthly-covers-details"
+            >
+              <p>
+                <a href="{{ readMore(story) }}">{{ story?.title }}</a>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="d-block">
+          <div class="monthly-covers-main">
+            <a href="https://brand.1851franchise.com">
+              <figure>
+                <i class="fa fa-home"></i>
+              </figure>
+              <strong>LOGIN</strong>
+            </a>
+          </div>
+        </li>
+        <li class="d-block">
+          <div class="monthly-covers-main">
+            <a href="{{ sidebar['about']?.url }}">
+              <figure>
+                <i class="fa fa-envelope-open"></i>
+              </figure>
+              <strong>ABOUT {{ brandTitle }}</strong>
+            </a>
+          </div>
+          <div *ngIf="contactForm" class="monthly-covers-main">
+            <a data-bs-toggle="modal" data-bs-target="#contactModal">
+              <figure>
+                <i class="fa fa-usd"></i>
+              </figure>
+              <strong>CONTACT {{ brandTitle }}</strong>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
-
-    <ul class="menuList">
-      <li>
-        <i class="fa fa-database"></i>
-        <strong><a routerLink="/">RETURN TO MAIN SITE</a></strong>
-      </li>
-
-      <li>
-        <i class="fa fa-server"></i>
-        <strong
-          ><a href="{{ brandSlug }}">{{ brandTitle }}</a></strong
-        >
-        <ul class="sublist">
-          <li><a routerLink="">Download PDF</a></li>
-          <li><a routerLink="">Visit Website</a></li>
-        </ul>
-      </li>
-      <li><hr /></li>
-
-      <li>
-        <i class="fa fa-trophy"></i>
-        <strong><a routerLink="">SOCIAL MEDIA</a></strong>
-        <ul class="sublist">
-          <li *ngFor="let item of sidebar?.social_media">
-            <a href="{{ item.url }}">{{ item.title }}</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <i class="fa fa-star"></i>
-        <strong
-          ><a routerLink="{{ brandSlug }}/info"
-            >{{ brandTitle }} MOST READ STORIES</a
-          ></strong
-        >
-        <ul class="sublist">
-          <li *ngFor="let story of sidebar['most-read-stories']">
-            <a routerLink="{{ readMore(story) }}">{{ story.title }}</a>
-          </li>
-        </ul>
-      </li>
-      <li><hr /></li>
-
-      <li>
-        <i class="fa fa-home"></i>
-        <strong><a routerLink="{{ sidebar?.login?.url }}"> LOGIN </a></strong>
-      </li>
-      <li><hr /></li>
-
-      <li>
-        <i class="fa fa-envelope-open"></i>
-        <strong
-          ><a routerLink="{{ brandSlug }}/info">
-            ABOUT
-            <span>{{ brandTitle }}</span>
-          </a></strong
-        >
-      </li>
-
-      <li>
-        <i class="fa fa-usd"></i>
-        <strong
-          ><a routerLink="/">
-            CONTACT
-            <span>{{ brandTitle }}</span>
-          </a></strong
-        >
-      </li>
-    </ul>
   </div>
 </div>

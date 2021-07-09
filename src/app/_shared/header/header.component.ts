@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
+          this.setHeader();
         } else {
           this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`).subscribe((response) => {
             if (response.status != 404 && response.type === 'brand_page') {
@@ -37,12 +38,16 @@ export class HeaderComponent implements OnInit {
             } else {
               this.brandSlug = '1851';
             }
-            this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
-              this.header = response.data;
-            });
+            this.setHeader();
           });
         } 
       }
+    });
+  }
+  setHeader() {
+    this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
+      this.header = response.data;
+      console.log(this.header)
     });
   }
   getPublication() {
