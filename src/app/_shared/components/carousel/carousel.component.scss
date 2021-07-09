@@ -12,6 +12,7 @@
   background: $color3;
   margin-top: -80px;
 }
+
 .trending-details {
   padding: 42px 0 0 0;
   @include desk-lg-below1 {
@@ -203,6 +204,41 @@
       color: $color8;
       padding: 0 0 0 5px;
       vertical-align: top;
+    }
+  }
+}
+
+// columns
+.columns {
+  margin-top: -50px;
+
+  .buffalowings-wrap {
+    background: $color14;
+    padding: 18px 37px 21px 37px;
+    @include desk-lg-below {
+      padding: 20px 15px;
+    }
+    h5 {
+      margin-bottom: 10px;
+      font-size: 17px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      height: 36px;
+      line-height: 18px;
+      letter-spacing: -0.1px;
+      color: $color13;
+    }
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      height: 54px;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: -0.1px;
+      margin-bottom: 21px;
+      color: $color13;
     }
   }
 }
