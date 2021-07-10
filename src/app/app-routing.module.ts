@@ -7,6 +7,7 @@ import { PowerRankingComponent } from './pages/power-ranking/power-ranking.compo
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
 import { AuthorComponent } from './pages/author/author.component';
 import { StoryComponent } from './pages/story/story.component';
+import { BrandSearchComponent } from './pages/brand-search/brand-search.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
@@ -51,6 +52,10 @@ const routes: Routes = [
     path: 'contact-editorial',
     component: ContacteditorialComponent,
     loadChildren:() => import ('./pages/contacteditorial/contacteditorial.module').then((m) => m.ContacteditorialModule),
+  },
+  {
+    path: 'brandsearch',
+    loadChildren:() => import ('./pages/brand-search/brand-search.module').then((m) => m.BrandSearchModule),
   },
   {
     path: 'subscribe',
