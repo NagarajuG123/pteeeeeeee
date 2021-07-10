@@ -15,12 +15,12 @@ export class CommonService {
     //   this.isMenuOpen = !this.isMenuOpen;
     // }
   }
-  readMore(story: any) {
+  readMore(story: any, type: string) {
     let slug = '';
     if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
       slug = `${story?.brand?.slug}/`;
     }
-    return `${slug}${story?.slug}`;
+    return `${slug}${story?.slug}/#${type}`;
   }
   isVideo(item: { media: { type: string; } | null; } | null) {
     if (typeof item !== 'undefined' && item !== null) {

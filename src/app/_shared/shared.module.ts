@@ -11,6 +11,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 // Header and Footer Components
@@ -73,6 +74,7 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
     VgOverlayPlayModule,
     VgBufferingModule,
     CarouselModule,
+    MalihuScrollbarModule.forRoot(),
   ],
   exports: [
     RouterModule,
@@ -103,7 +105,8 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
     TopBannerComponent,
     TwoSideBannerComponent,
     LatestStoryComponent,
-    ModalComponent
+    ModalComponent,
+    MalihuScrollbarModule
   ],
 })
 export class SharedModule {}

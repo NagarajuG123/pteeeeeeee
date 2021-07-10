@@ -1,34 +1,36 @@
-<app-featured [apiUrl]="'1851/featured-articles'"></app-featured>
+<div class="top-space">
+  <app-featured [apiUrl]="'1851/featured-articles'"></app-featured>
 
-<app-news [slug]="'1851'"> </app-news>
+  <app-news [slug]="'1851'"> </app-news>
 
-<app-carousel
-  [slug]="'1851'"
-  [type]="'trending'"
-  [title]="'TRENDING'"
-></app-carousel>
+  <app-carousel
+    [slug]="'1851'"
+    [type]="'trending'"
+    [title]="'TRENDING'"
+  ></app-carousel>
 
-<app-trending-buzz></app-trending-buzz>
+  <app-trending-buzz></app-trending-buzz>
 
-<app-advertisement
-  [slug]="'1851'"
-  [type]="'Main Site Ad'"
-  [pageType]="'home-page'"
-></app-advertisement>
+  <app-advertisement
+    [slug]="'1851'"
+    [type]="'Main Site Ad'"
+    [pageType]="'home-page'"
+  ></app-advertisement>
 
-<app-spotlight></app-spotlight>
+  <app-spotlight></app-spotlight>
 
-<app-home-feature></app-home-feature>
+  <app-home-feature></app-home-feature>
 
-<app-carousel
-  [slug]="'1851'"
-  [type]="'columns'"
-  [title]="'COLUMNS'"
-></app-carousel>
+  <app-carousel
+    [slug]="'1851'"
+    [type]="'columns'"
+    [title]="'COLUMNS'"
+  ></app-carousel>
 
-<app-carousel
-  [slug]="'1851'"
-  [type]="'main-videos'"
-  [title]="publication.videoTitle"
-></app-carousel>
-<app-footer-top></app-footer-top>
+  <app-carousel
+    [slug]="'1851'"
+    [type]="'main-videos'"
+    [title]="publication.videoTitle"
+  ></app-carousel>
+  <app-footer-top></app-footer-top>
+</div>

@@ -6,9 +6,9 @@
     'main-videos': type == 'main-videos'
   }"
 >
-  <div class="container-fluid">
+  <div class="container">
     <div class="trending-details">
-      <div class="frannews-top d-flex mx-5">
+      <div class="frannews-top d-flex">
         <div class="frannews-top-left col-md-6 p-0">
           <ul class="m-0 p-0">
             <li>
@@ -17,27 +17,17 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
-          <a
-            href="{{
-              list[0]?.brand && list[0]?.brand.slug != '1851'
-                ? list[0]?.brand.slug + '/'
-                : ''
-            }}{{ list[0]?.slug }}#{{ type }}"
-            class="float-right"
-          >
+          <a href="{{ goReadMore(list[0]) }}" class="float-right">
             READ MORE
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
           <div class="clearfix"></div>
         </div>
       </div>
-      <div class="trending-bottom mx-5">
+      <div class="trending-bottom">
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let item of list; let i = index">
-            <a
-              href="{{ goReadMore(item) }}#{{ type }}"
-              style="text-decoration: none"
-            >
+            <a href="{{ goReadMore(item) }}" style="text-decoration: none">
               <div
                 class="trending-bottom-details"
                 *ngIf="type !== 'main-videos'"
@@ -77,7 +67,7 @@
                   </div>
                   <div class="buffalowings-bottom">
                     <span class="float-right text-uppercase">
-                      <a style="color: white" href="">
+                      <a style="color: white" href="{{ goReadMore(item) }}">
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
@@ -96,9 +86,7 @@
                   </div>
                   <div class="buffalowings-bottom">
                     <span class="float-right text-uppercase"
-                      ><a
-                        style="color: white"
-                        href="{{ goReadMore(item) }}#{{ type }}"
+                      ><a style="color: white" href="{{ goReadMore(item) }}"
                         >READ MORE
                         <i
                           class="fa fa-angle-right text-white"

@@ -30,7 +30,7 @@ export class LatestStoryComponent implements OnInit {
     });
    }
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore(item, 'latest-story');
   }
   getLatestStory() {
     this.apiService.getAPI(`${this.slug}/brand-latest-stories?limit=8&offset=${this.scrollOffset}`).subscribe((response) => {

@@ -1,30 +1,32 @@
-<div class="fran-block frannews-trending bg-white">
-  <div class="container frannews-details">
-    <div class="row justify-content-center">
-      <div class="col-md-11 py-lg-4">
-        <div class="frannews-top d-flex">
-          <div class="frannews-top-left col-lg-9 col-md-10 p-0">
-            <ul class="p-0 m-0">
-              <li class="heading-border">
-                <h4>TRENDING BRAND BUZZ</h4>
-              </li>
-              <li class="frannews-subtitle">
-                <span>SPONSORED</span>
-              </li>
-            </ul>
-          </div>
-          <div class="frannews-top-right col-lg-3 col-md-2">
-            <a class="float-right" routerLink="/trendingbrandbuzz"
-              >READ MORE <i aria-hidden="true" class="fa fa-angle-right"></i
-            ></a>
-            <div class="clearfix"></div>
-          </div>
+<div *ngIf="trending?.data?.length" class="frannews frannews-trending">
+  <div class="container">
+    <div class="frannews-details col-xl-11">
+      <div class="frannews-top d-flex">
+        <div class="frannews-top-left col-lg-9 col-md-10 p-0">
+          <ul>
+            <li>
+              <h4>TRENDING BRAND BUZZ</h4>
+            </li>
+            <li class="frannews-subtitle">
+              <span>SPONSORED</span>
+            </li>
+          </ul>
         </div>
-        <app-five-column
-          [slug]="'1851'"
-          [contents]="trending.data"
-        ></app-five-column>
+        <div
+          *ngIf="trending?.has_more"
+          class="frannews-top-right col-lg-3 col-md-2"
+        >
+          <a class="float-right" routerLink="/trendingbrandbuzz"
+            >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
+          ></a>
+          <div class="clearfix"></div>
+        </div>
       </div>
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="trending?.data"
+        [typeSlug]="'trendingbuzz'"
+      ></app-five-column>
     </div>
   </div>
 </div>

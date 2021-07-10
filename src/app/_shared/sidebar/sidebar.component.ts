@@ -55,7 +55,7 @@ export class SidebarComponent implements OnInit {
   });
 }
   readMore(item: any) {
-    return this.common.readMore(item);
+    return this.common.readMore(item, '');
   }
   getContactForm() {
   this.apiService.getAPI(`${this.brandSlug}/brand/contact`).subscribe((response) => {

@@ -100,7 +100,7 @@ export class BrandComponent implements OnInit {
   }
  
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore(item, '');
   }
   getMoreData() {
     this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.mostRecent.length + 1}`)
