@@ -1,443 +1,180 @@
-<div class="spotlight-block">
-  <div class="bg-grey py-4 d-block d-sm-none">
-    <div class="container">
-      <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button bg-red text-white" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              people
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body bg-grey p-0">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 mb-2">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                (max-width: 768px) 800px,
-                (max-width: 992px) 600px,
-                (max-width: 1200px) 700px,
-                1300px" src="{{ highlightPeople.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{ readMore(highlightPeople)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> people spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightPeople.title}} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{ readMore(highlightPeople)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-12 p-0 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of peopleData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7 mb-2">
-                              <a href="{{readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                (max-width: 768px) 800px,
-                                (max-width: 992px) 600px,
-                                (max-width: 1200px) 700px,
-                                1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                              </a>
-                            </div>
-                            <div class="col-md-5 ">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              franchisee
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body p-0">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 mb-2">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                (max-width: 768px) 800px,
-                (max-width: 992px) 600px,
-                (max-width: 1200px) 700px,
-                1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{ readMore(highlightFranchise)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> franchisee spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightFranchise.title }}</p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{ readMore(highlightFranchise)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-12 p-0 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of franchiseeData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7 mb-2">
-                              <a href="{{ readMore(item) }}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                (max-width: 768px) 800px,
-                                (max-width: 992px) 600px,
-                                (max-width: 1200px) 700px,
-                                1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                              </a>
-                            </div>
-                            <div class="col-md-5 ">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              franchisor
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-              plugin
-              adds the appropriate classes that we use to style each element. These classes control the overall
-              appearance,
-              as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just about any HTML can go within the
-              <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="spotlight-tabs d-none d-sm-block">
-
-    <div class="spotlight-top col-12 d-flex">
-      <div class="container spotlight-links-padding">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-          <li class="spotlight-links"><a href="javascript:void(0)">Spotlight/</a></li>
-          <li class="spotlight-links" [ngbNavItem]="1">
-            <a ngbNavLink> people </a>
-            <ng-template ngbNavContent>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                  (max-width: 768px) 800px,
-                  (max-width: 992px) 600px,
-                  (max-width: 1200px) 700px,
-                  1300px" src="{{ highlightPeople.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{ readMore(highlightPeople)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> people spotlight </h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightPeople.title }} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{ readMore(highlightPeople)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-8 ps-4 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of peopleData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7">
-                              <a href="{{ readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                                </a>   
-                            </div>
-                            <div class="col-md-5">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
+<div class="spotlight">
+  <div class="tab2">
+    <div class="spotlight-profile col-12 p-0">
+      <div class="spotlight-links col-12 d-flex">
+        <a href="#" class="text-uppercase"> SPOTLIGHT / </a>
+        <ul class="resp-tabs-list nav nav-pills">
+          <li
+            *ngFor="let tab of tabs; let i = index"
+            [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+          >
+            <a
+              data-toggle="pill"
+              href="#sporttab{{ i }}"
+              (click)="selectTab(tab, i)"
+              class="text-uppercase"
+            >
+              {{ sanitizeTab(tab) }}
+            </a>
           </li>
-
-          <li class="spotlight-links" [ngbNavItem]="2">
-            <a ngbNavLink> franchisee </a>
-            <ng-template ngbNavContent>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 ps-4">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                  (max-width: 768px) 800px,
-                  (max-width: 992px) 600px,
-                  (max-width: 1200px) 700px,
-                  1300px" src="{{ highlightFranchise.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{ readMore(highlightFranchise)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> franchisee spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightFranchise.title }} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{ readMore(highlightFranchise)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-8 ps-4 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of franchiseeData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7">
-                              <a href="{{ readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-5">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </li>
-
-          <li class="spotlight-links" [ngbNavItem]="3">
-            <a ngbNavLink> franchisor </a>
-            <ng-template ngbNavContent>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 ps-4">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                  (max-width: 768px) 800px,
-                  (max-width: 992px) 600px,
-                  (max-width: 1200px) 700px,
-                  1300px" src="{{ hightlightFranchisor.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{ readMore(hightlightFranchisor) }}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> franchisor spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ hightlightFranchisor.title }} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{ readMore(hightlightFranchisor)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-8 ps-4 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of franchisorData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7">
-                              <a href="{{ readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-5">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </li>
-
-
-          <li class="spotlight-links" [ngbNavItem]="4">
-            <a ngbNavLink> industry </a>
-            <ng-template ngbNavContent>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 ps-4">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                  (max-width: 768px) 800px,
-                  (max-width: 992px) 600px,
-                  (max-width: 1200px) 700px,
-                  1300px" src="{{ highlightIndustry.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{readMore(highlightIndustry)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> industry spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ highlightIndustry.title }} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{readMore(highlightIndustry)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-8 ps-4 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of industryData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7">
-                              <a href="{{ readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-5">
-                              <a href="{{ readMore(item)}}">
-                                <p class="text-white text-box">{{ item.title }}</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </li>
-
-          <li class="spotlight-links" [ngbNavItem]="5">
-            <a ngbNavLink> columns </a>
-            <ng-template ngbNavContent>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 p-0 ps-4">
-                    <div class="bg-red">
-                      <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                  (max-width: 768px) 800px,
-                  (max-width: 992px) 600px,
-                  (max-width: 1200px) 700px,
-                  1300px" src="{{ hightlightColumn.media | defaultImage:1300:730}}" class="img-fluid">
-                      <a href="{{readMore(hightlightColumn)}}" class="position-relative m-0 w-100">
-                        <div class="px-3 pt-3 pb-2 bg-red-condensed spotlight-card text-white">
-                          <h5 class="text-uppercase"> columns spotlight</h5>
-                        </div>
-                        <div class="px-3 pt-3 pb-2 text-white">
-                          <p class="fs-6"> {{ hightlightColumn.title }} </p>
-                        </div>
-                        <div class="px-3 pt-1 pb-1 bg-red-condensed spotlight-card text-white text-end">
-                          <a href="{{readMore(hightlightColumn)}}" class="text-uppercase readmore-text text-white">Read More <i
-                              class="fa fa-angle-right text-white"></i></a>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-8 ps-4 scroll-container">
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let item of columnsData?.data?.slice(1);let i = index;">
-                        <div class="feature-block">
-                          <div class="row d-flex mb-3">
-                            <div class="col-md-7">
-                              <a href="{{ readMore(item)}}">
-                              <img appyoutubeimage sizes="(max-width: 576px) 600px,
-                                  (max-width: 768px) 800px,
-                                  (max-width: 992px) 600px,
-                                  (max-width: 1200px) 700px,
-                                  1300px" src="{{ item.media | defaultImage:1300:730}}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-5">
-                              <a href="{{ readMore(item)}}">
-                              <p class="text-white text-box">{{ item.title }}</p>
-                            </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </li>
-
         </ul>
+        <div class="clearfix"></div>
       </div>
     </div>
-    <div [ngbNavOutlet]="nav"></div>
+    <div class="resp-tabs-container">
+      <div class="spotlighttab-main resp-tabs-container">
+        <div *ngFor="let tab of tabs; let i = index" class="tab-content">
+          <h2
+            class="resp-accordion tab-identifier2"
+            [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+            role="tab"
+            style="background: none; border-color: rgb(193, 193, 193)"
+            (click)="selectTabMobile(tab, i)"
+          >
+            <span class="resp-arrow"></span
+            ><a class="text-uppercase">{{ tab }}</a>
+          </h2>
+          <div
+            id="sporttab{{ i }}"
+            class="spotlighttab-cnt tab-pane"
+            [ngClass]="selectedIndex === i ? 'in active' : ''"
+          >
+            <div *ngIf="highlightItem" class="d-flex">
+              <div
+                class="spotlighttab-cnt-left col-lg-4 col-md-5 p-0 float-left"
+              >
+                <a
+                  href="{{ readMore(highlightItem) }}"
+                  class="spotlighttab-cnt-left-main"
+                >
+                  <figure>
+                    <img
+                      appYoutubeImage
+                      srcset="{{highlightItem.media | defaultImage:550:309}} 550w, {{highlightItem.media | defaultImage:740:416}} 740w, {{highlightItem.media | defaultImage:380:214}} 380w, {{highlightItem.media | defaultImage:365:205}} 365w, {{highlightItem.media | defaultImage:516:290}} 516w,"
+                      sizes="{{
+                        '(max-width: 576px) 550px,
+                                                    (max-width: 768px) 740px,
+                                                    (max-width: 992px) 380px,
+                                                    (max-width: 1200px) 365px,
+                                                    516px'
+                      }}"
+                      src="{{ highlightItem.media | defaultImage: 516:290 }}"
+                      alt="img2"
+                    />
+                  </figure>
+                  <a class="buffalowings">
+                    <div class="buffalowings-wrap-head">
+                      <h3 class="text-uppercase">{{ tab }} SPOTLIGHT</h3>
+                    </div>
+                    <div class="buffalowings-wrap">
+                      <p>
+                        {{ highlightItem.title }}
+                      </p>
+                    </div>
+                    <div class="buffalowings-bottom">
+                      <a
+                        [href]="selectedTab + '-spotlight'"
+                        class="float-right text-uppercase"
+                      >
+                        READ MORE
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </a>
+                      <div class="clearfix"></div>
+                    </div>
+                  </a>
+                </a>
+              </div>
+              <div
+                class="spotlighttab-cnt-right col-lg-8 col-md-7 p-0 float-right"
+              >
+                <div
+                  *ngIf="isBrowser"
+                  malihu-scrollbar
+                  [scrollbarOptions]="scrollbarOptions"
+                  class="
+                    banner-right-details
+                    vertical_scroll vertical_scroll_spotlight
+                  "
+                >
+                  <div class="d-flex">
+                    <div class="people-spotlight-left col-lg-6 col-12">
+                      <ul>
+                        <li *ngFor="let item of items; let i = index">
+                          <a
+                            *ngIf="i % 2 == 0"
+                            (click)="highlightItem = item"
+                            href="{{ readMore(item) }}"
+                            class="adweek d-flex"
+                          >
+                            <div class="adweek-left col-sm-7">
+                              <figure>
+                                <img
+                                  appYoutubeImage
+                                  srcset="{{item.media | defaultImage:550:308}} 550w, {{item.media | defaultImage:430:241}} 430w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:205:115}} 205w"
+                                  sizes="{{
+                                    '(max-width: 576px) 550px,
+                                                                            (max-width: 768px) 430px,
+                                                                            (max-width: 992px) 300px,
+                                                                            (max-width: 1200px) 205px,
+                                                                            300px'
+                                  }}"
+                                  src="{{ item.media | defaultImage: 300:168 }}"
+                                  alt="img{{ i }}"
+                                />
+                              </figure>
+                            </div>
+                            <div class="adweek-right col-sm-5">
+                              <p style="-webkit-box-orient: vertical">
+                                {{ item.title }}
+                              </p>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="people-spotlight-right col-lg-6 col-12">
+                      <ul>
+                        <li *ngFor="let item of items; let i = index">
+                          <a
+                            *ngIf="i % 2 != 0"
+                            (click)="highlightItem = item"
+                            href="{{ readMore(item) }}"
+                            class="adweek d-flex"
+                          >
+                            <div class="adweek-left col-sm-7">
+                              <figure>
+                                <img
+                                  appYoutubeImage
+                                  srcset="{{item.media | defaultImage:550:308}} 550w, {{item.media | defaultImage:430:241}} 430w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:205:115}} 205w"
+                                  sizes="{{
+                                    '(max-width: 576px) 550px,
+                                                                            (max-width: 768px) 430px,
+                                                                            (max-width: 992px) 300px,
+                                                                            (max-width: 1200px) 205px,
+                                                                            300px'
+                                  }}"
+                                  src="{{ item.media | defaultImage: 300:168 }}"
+                                  alt="img{{ i }}"
+                                />
+                              </figure>
+                            </div>
+                            <div class="adweek-right col-sm-5">
+                              <p style="-webkit-box-orient: vertical">
+                                {{ item.title }}
+                              </p>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-
-
-
 </div>
