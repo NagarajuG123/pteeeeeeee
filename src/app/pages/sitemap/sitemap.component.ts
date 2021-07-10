@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-sitemap',
   templateUrl: './sitemap.component.html',
@@ -42,6 +43,9 @@ export class SitemapComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+        this.metaService.setTitle(`Sitemap for | ${result.title} | ${result.newsType}`);
+        });
     });
   }
 }

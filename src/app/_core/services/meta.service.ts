@@ -47,4 +47,8 @@ export class MetaService {
       this.meta.updateTag({property: 'fb:app_id', content: data['fb-app-id']}, `property='fb:app_id'`);
     }
   }
+
+  setTitle(data: any){
+    this.title.setTitle(data);
+  }
 }

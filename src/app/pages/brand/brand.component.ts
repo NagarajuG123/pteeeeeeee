@@ -61,7 +61,7 @@ export class BrandComponent implements OnInit {
               this.apiUrl = `${this.slug}/featured-articles`;
             }
             else if(this.type === 'dynamic_page' && !this.categorySlug){
-              this.dynamicUrl = `page/${this.slug}`;
+              this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
               this.getMoreDynamic();
             }
@@ -72,12 +72,15 @@ export class BrandComponent implements OnInit {
   }
 
   getDynamic(){
-    this.apiService.getAPI(`${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`).subscribe((response) => {
+    this.apiService.getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`).subscribe((response) => {
       this.topBlock = response.data;
       this.dynamicFirst = response.data.stories.slice(0, 10);
       this.dynamicSecond = response.data.stories.slice(10, 30);
       this.hasMore = response.has_more;
       this.metaService.setSeo(response.data.stories.meta);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+        this.metaService.setTitle(`${this.dynamicUrl}| ${result.title}`);
+        });
     });
   }
 

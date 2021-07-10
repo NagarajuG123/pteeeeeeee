@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trending } from 'src/app/_core/models/trending';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-trendingbuzz',
@@ -12,7 +13,7 @@ export class TrendingbuzzComponent implements OnInit {
   secondBlock: Trending[] =[];
   slug: string ='1851';
   hasMore: boolean = false;
-  constructor( private apiService : ApiService) { }
+  constructor( private apiService : ApiService,private metaService: MetaService) { }
 
   ngOnInit(): void {
     this.getTrending();
@@ -23,6 +24,10 @@ export class TrendingbuzzComponent implements OnInit {
       this.firstBlock = response.data.slice(0, 10);
       this.secondBlock = response.data.slice(10, 30);
       this.hasMore = response.has_more;
+      this.metaService.setSeo(response.data.meta);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+        this.metaService.setTitle(`Trending Brand Buzz | ${result.title}`);
+      });
     });
   }
    getMoreData() {
