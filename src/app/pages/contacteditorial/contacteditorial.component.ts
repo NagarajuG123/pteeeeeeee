@@ -27,6 +27,9 @@ export class ContacteditorialComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+        this.metaService.setTitle(`Contact Editorial | ${result.title}`);
+      });
     });
   }
 }

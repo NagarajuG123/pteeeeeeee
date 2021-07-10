@@ -36,7 +36,12 @@ export class MonthlyDetailsComponent implements OnInit {
         this.banner['date'] = moment(coverDate).format('MMMM YYYY');
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
-          this.metaService.setSeo(response.data.meta);
+            this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+              this.metaService.setSeo(response.data);
+              this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+              this.metaService.setTitle(`${this.banner['date']} issues | ${result.title}`);
+                });
+            });
       });
     });
   }
@@ -49,4 +54,5 @@ export class MonthlyDetailsComponent implements OnInit {
       });
     });
   }
+ 
 }

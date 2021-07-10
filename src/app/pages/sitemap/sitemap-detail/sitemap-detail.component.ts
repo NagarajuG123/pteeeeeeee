@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sitemap-detail',
@@ -39,6 +40,9 @@ export class SitemapDetailComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+        this.metaService.setTitle(`Subscribe to | ${result.title} | ${result.newsType}`);
+        });
     });
   }
 }

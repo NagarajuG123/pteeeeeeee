@@ -24,6 +24,9 @@ export class PowerRankingComponent implements OnInit {
         this.data = result;
         this.contents = result.data;
         this.metaService.setSeo(result.meta);
+        this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+          this.metaService.setTitle(`Power Rankings | Franchise Brands | ${result.title}`);
+          });
       });
   }
 }
