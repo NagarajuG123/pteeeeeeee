@@ -52,6 +52,10 @@ const routes: Routes = [
     component: ContacteditorialComponent,
     loadChildren:() => import ('./pages/contacteditorial/contacteditorial.module').then((m) => m.ContacteditorialModule),
   },
+   {
+    path: 'searchpopup',
+    loadChildren: './pages/search-page/search-page.module#SearchPageModule'
+  },
   {
     path: 'subscribe',
     component: SubscribepageComponent,
