@@ -34,6 +34,7 @@ import { ContactEditorialComponent } from './components/contact-editorial/contac
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
+import { BannerSearchComponent } from './components/banner-search/banner-search.component';
 
 // Modals Components
 
@@ -61,7 +62,8 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
     TopBannerComponent,
     TwoSideBannerComponent,
     ModalComponent,
-    LatestStoryComponent
+    LatestStoryComponent,
+    BannerSearchComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -106,7 +108,8 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
     TwoSideBannerComponent,
     LatestStoryComponent,
     ModalComponent,
-    MalihuScrollbarModule
+    MalihuScrollbarModule,
+    BannerSearchComponent
   ],
 })
 export class SharedModule {}
