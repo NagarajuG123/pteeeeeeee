@@ -23,6 +23,13 @@ $font_family_medium: "ProximaNova-Medium";
   -ms-transition: all 0.3s ease-in-out;
 }
 
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  -ms-border-radius: $radius;
+}
 //For Responsive meadia queries
 @mixin desk-xlg {
   @media (max-width: 1800px) {

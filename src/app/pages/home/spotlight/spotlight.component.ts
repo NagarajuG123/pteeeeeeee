@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-spotlight',
@@ -8,84 +9,100 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./spotlight.component.scss'],
 })
 export class SpotlightComponent implements OnInit {
-  active = 1;
-  peopleData: any = [];
-  franchiseeData: any = [];
-  franchisorData: any = [];
-  industryData: any = [];
-  columnsData: any = [];
-  slug = '1851';
-  highlightPeople: any = [];
-  highlightFranchise: any = [];
-  hightlightFranchisor: any = [];
-  highlightIndustry: any = [];
-  hightlightColumn: any = [];
-  constructor(private apiService: ApiService, private commonService:CommonService) {}
+  isBrowser!: boolean;
+  items: any = [];
+  highlightItem: any;
+  selectedTab: any;
+  scrollbarOptions: any;
+  selectedIndex: number = 0;
+  tabs:any;
+
+  
+  constructor(
+    private apiService: ApiService, private commonService: CommonService,
+    @Inject(PLATFORM_ID) platformId: Object,
+    ) {this.isBrowser = isPlatformBrowser(platformId); }
 
   ngOnInit(): void {
-    this.getPeopleSpotlight();
-    this.getFranchiseeSpotlight();
-    this.getFranchisorSpotlight();
-    this.getColumnSpotlight();
-    this.getIndustrySpotlight();
+    this.getCategories();
+    this.setScrollOption();
+     
+    this.apiService.getAPI(`1851/publication-instance`).subscribe(async (response) => {
+      if ( response.id === 'EE' ) {
+        this.selectedTab = 'celebrities';
+      } else {
+        this.selectedTab = 'people';
+      }
+      this.getInitialData();
+    });
   }
 
-  getPeopleSpotlight() {
+  getInitialData() {
+     this.apiService.getAPI(`1851/spotlight/${this.selectedTab}?limit=11&offset=0`)
+       .subscribe(result => {
+         if (result.data.length > 0) {
+           this.highlightItem = result.data[0];
+           this.items = result.data.slice(1,11);
+        }
+    });
+  }
+  setScrollOption() {
+    this.scrollbarOptions = {
+        axis: 'y',
+        theme: 'minimal-dark',
+        callbacks: {
+          onTotalScroll: () => {
+            this.getMoreItem();
+          }
+        }
+     };
+  }
+  getCategories() {
     this.apiService
-      .getAPI(`${this.slug}/spotlight/people?limit=10&offset=0`)
+      .getAPI(`1851/spotlights/categories`)
       .subscribe((response) => {
-        this.peopleData = response;
-        if (response.data) {
-          this.highlightPeople = response.data[0];
+        this.tabs = response.categories.map((category: string) => category.toLowerCase().replace(/ /g, '-'));
+      });
+  }
+ 
+  selectTab(tab: any, index: number) {
+    this.selectedTab = tab;
+    this.selectedIndex = index;
+    this.getData(this.selectedTab, 10, 0);
+  }
+  selectTabMobile(tab: any, index: number) {
+    if (this.selectedIndex === index) {
+      this.selectedIndex = -1;
+    } else {
+      this.selectTab(tab, index);
+    }
+  }
+  sanitizeTab( tab: string ) {
+    return tab.replace(/-/g, ' ');
+  }
+  getMoreItem() {
+    this.getData(this.selectedTab, 10, this.items.length, false);
+  }
+   getData(tab: any, limit: number, offset: number, firstLoad: boolean = true) {
+    if (firstLoad) {
+      this.items = [];
+    }
+    this.apiService.getAPI(`1851/spotlight/${tab}?limit=${limit}&offset=${offset}`)
+      .subscribe(result => {
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+          if (index === 0) {
+            if (firstLoad) {
+              this.highlightItem = item;
+            }
+          } else {
+            this.items.push(item);
+          }
+        });
         }
       });
   }
-
-  getFranchiseeSpotlight() {
-    this.apiService
-      .getAPI(`${this.slug}/spotlight/franchisee?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.franchiseeData = response;
-        if (response.data) {
-          this.highlightFranchise = response.data[0];
-        }
-      });
-  }
-
-  getFranchisorSpotlight() {
-    this.apiService
-      .getAPI(`${this.slug}/spotlight/franchisor?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.franchisorData = response;
-        if (response.data) {
-          this.hightlightFranchisor = response.data[0];
-        }
-      });
-  }
-
-  getIndustrySpotlight() {
-    this.apiService
-      .getAPI(`${this.slug}/spotlight/industry?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.industryData = response;
-        if (response.data) {
-          this.highlightIndustry = response.data[0];
-        }
-      });
-  }
-
-  getColumnSpotlight() {
-    this.apiService
-      .getAPI(`${this.slug}/spotlight/columns?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.columnsData = response;
-        if (response.data) {
-          this.hightlightColumn = response.data[0];
-        }
-      });
-  }
-
   readMore(item: any) {
-    return this.commonService.readMore(item, '');
+    return this.commonService.readMore(item, this.selectedTab );
   }
 }

@@ -62,6 +62,7 @@ $color36_1: #223644;
 $color37_1: #59595b;
 $color38_1: #6eae52;
 $color39_1: #bcbcbf;
+$white: #fff !default;
 
 $grade_bg1: rgba(129, 129, 132, 0.8);
 $grade_bg2: rgba(26, 26, 26, 0.7);
@@ -74,3 +75,11 @@ $grade_bg4_1: rgba(0, 0, 0, 0.27);
 $bg_color1: #f7dad6;
 $bg_color2: #f6f3f3;
 $bg_color3: #f9bcc6;
+
+$border-radius: 0.25rem !default;
+$component-active-color: $white !default;
+$component-active-bg: theme-color("primary") !default;
+
+$nav-pills-border-radius: $border-radius !default;
+$nav-pills-link-active-color: $component-active-color !default;
+$nav-pills-link-active-bg: $component-active-bg !default;

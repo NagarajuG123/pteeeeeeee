@@ -38,7 +38,6 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
       theme: 'minimal-dark',
       callbacks: {
         onTotalScroll: () => {
-          console.log(this.isCall)
           if (!this.isCall) {
             this.getMoreItem();
           }
