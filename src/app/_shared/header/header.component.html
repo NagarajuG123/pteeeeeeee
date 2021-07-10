@@ -3,11 +3,11 @@
     <div class="header-details d-flex">
       <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
         <div class="menu col-xl-1 col-2">
-          <a href="javascript:void(0)" (click)="common.toggle()">
+          <a href="javascript:void(0)" (click)="commonService.toggle()">
             <figure>
               <img
                 [src]="
-                  common.showmenu
+                  commonService.showmenu
                     ? '../../../assets/img/close.png'
                     : '../../../assets/img/menu.png'
                 "
@@ -16,7 +16,7 @@
             </figure>
             <small
               class="text-center d-block"
-              [ngClass]="common.showmenu ? 'invisible' : ''"
+              [ngClass]="commonService.showmenu ? 'invisible' : ''"
               >MENU</small
             >
           </a>
@@ -108,8 +108,8 @@
             <a
               href="javascript:void(0)"
               class="d-block"
-              data-toggle="modal"
-              data-target="#searchModal"
+              data-bs-toggle="modal"
+              data-bs-target="#searchModal"
             >
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>
@@ -139,11 +139,11 @@
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
         <div class="menu col-xl-1 col-md-2 col-2">
-          <a href="javascript:void(0)" (click)="common.toggle()">
+          <a href="javascript:void(0)" (click)="commonService.toggle()">
             <figure>
               <img
                 [src]="
-                  common.showmenu
+                  commonService.showmenu
                     ? '../../../assets/img/close.png'
                     : '../../../assets/img/menu.png'
                 "
@@ -227,8 +227,8 @@
             <a
               href="javascript:void(0)"
               class="d-block"
-              data-toggle="modal"
-              data-target="#searchModal"
+              data-bs-toggle="modal"
+              data-bs-target="#searchModal"
             >
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>
@@ -238,7 +238,72 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Search Modal -->
+
+  <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close text-right" data-bs-dismiss="modal">
+          &times;
+        </button>
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
+          <div class="form-group d-block">
+            <input
+              type="text"
+              class="form-control"
+              [placeholder]="header?.searchPlaceholder"
+              (keyup)="onKeyUp()"
+              [formControl]="searchForm.controls['search_input']"
+            />
+            <button
+              type="button"
+              class="d-block text-center"
+              (click)="onSearchSubmit(searchForm)"
+              data-bs-dismiss="modal"
+            >
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+        <h5>MOST RECENT MATCHES</h5>
+        <div class="frannews-bottom">
+          <h6 *ngIf="news == null">No articles found</h6>
+          <ul
+            malihu-scrollbar
+            [scrollbarOptions]="scrollbarOptions"
+            class="vertical_scroll clearfix d-flex"
+          >
+            <li
+              *ngFor="let story of news; let i = index"
+              class="col-xl-3 col-lg-4 col-sm-6 col-12"
+            >
+              <a class="frannews-bottom-details" href="{{ readMore(story) }}">
+                <figure>
+                  <img
+                    appYoutubeImage
+                    src="{{ story['media'] | defaultImage: 248:139 }}"
+                    width="248"
+                    height="139"
+                    alt="frannews"
+                  />
+                </figure>
+                <div class="socialmedia">
+                  <p
+                    title="{{ story['title'] }}"
+                    style="-webkit-box-orient: vertical"
+                  >
+                    {{ story.title }}
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sponsor Modal -->
 
   <div class="search_pop_up modal fade" id="sponsoredModal">
     <div class="modal-dialog modal-lg">
