@@ -30,19 +30,19 @@
                                     <div class="ranking_trending_left col-lg-3 col-md-12">
                                         <div class="filter_industry text-center">
                                             <ul>
-                                                <li >
+                                                <!-- <li *ngFor="let invest of invest_keys; let i = index">
                                                     <label>
                                                         <input
                                                             type="checkbox"
                                                             class="ckbCheckAll"
-                                                         
-                                                            
+                                                            [checked]="invest.isChecked"
+                                                            (change)="onChangeInvestFilter(i)"
                                                         >
                                                         <span>
-                                                           invest.mir
+                                                            ${{invest.min | number}} - ${{invest.max | number}}
                                                         </span>
                                                     </label>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -62,16 +62,16 @@
                                     <div class="ranking_trending_left col-lg-3 col-md-12">
                                         <div class="filter_industry text-center">
                                             <ul>
-                                                <li >
+                                                <!-- <li *ngFor="let industry of industry_keys; let i = index">
                                                     <label>
                                                         <input
                                                             type="checkbox"
                                                             class="ckbCheckAll"
-                                                            
+                                                            [checked]="industry.isChecked"
                                                         >
-                                                        <span>industry</span>
+                                                        <span>{{industry.name}}</span>
                                                     </label>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -116,17 +116,16 @@
                             <span class="clear-check">Clear All</span>
                         </label>
                         <ul>
-                            <li >
+                            <!-- <li *ngFor="let industry of industry_keys; let i = index">
                                 <label>
                                     <input
                                         type="checkbox"
                                         class="ckbCheckAll"
-                                      
-                                       
+                                        [checked]="industry.isChecked"
                                     >
-                                    <span> industry name</span>
+                                    <span>{{industry.name}}</span>
                                 </label>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="filter_industry text-center">
@@ -148,19 +147,19 @@
                             <span>Clear All</span>
                         </label>
                         <ul>
-                            <li >
+                            <!-- <li *ngFor="let invest of invest_keys; let i = index">
                                 <label>
                                     <input
                                         type="checkbox"
                                         class="ckbCheckAll"
-                                        
-                                    
+                                        [checked]="invest.isChecked"
+                    
                                     >
                                     <span>
-                                        Invest
+                                        ${{invest.min | number}} - ${{invest.max | number}}
                                     </span>
                                 </label>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -198,18 +197,19 @@
                                                             <div class="ranking_trending_left col-lg-3 col-md-12">
                                                                 <div class="filter_industry text-center">
                                                                     <ul>
-                                                                        <li >
+                                                                        <!-- <li *ngFor="let invest of invest_keys; let i = index">
                                                                             <label>
                                                                                 <input
                                                                                     type="checkbox"
                                                                                     class="ckbCheckAll"
-                                                                                   
+                                                                                    [checked]="invest.isChecked"
+                                                                                    (change)="onChangeInvestFilter(i)"
                                                                                 >
                                                                                 <span>
-                                                                                    $invest.min | number - $invest.max | number
+                                                                                    ${{invest.min | number}} - ${{invest.max | number}}
                                                                                 </span>
                                                                             </label>
-                                                                        </li>
+                                                                        </li> -->
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -229,16 +229,16 @@
                                                             <div class="ranking_trending_left col-lg-3 col-md-12">
                                                                 <div class="filter_industry text-center">
                                                                     <ul>
-                                                                        <li >
+                                                                        <!-- <li *ngFor="let industry of industry_keys; let i = index">
                                                                             <label>
                                                                                 <input
                                                                                     type="checkbox"
                                                                                     class="ckbCheckAll"
-                                                                                   
+                                                                                    [checked]="industry.isChecked"
                                                                                 >
-                                                                                <span>industry.name</span>
+                                                                                <span>{{industry.name}}</span>
                                                                             </label>
-                                                                        </li>
+                                                                        </li> -->
                                                                     </ul>
                                                                 </div>
                                                             </div>

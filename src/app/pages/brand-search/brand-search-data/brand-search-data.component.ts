@@ -66,7 +66,6 @@ export class BrandSearchDataComponent implements OnInit {
         isChecked: false,
       }
     ];
-
     this.invest_keys = [
       {
         min: 0,
