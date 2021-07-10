@@ -79,7 +79,7 @@ export class BrandComponent implements OnInit {
       this.hasMore = response.has_more;
       this.metaService.setSeo(response.data.stories.meta);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-        this.metaService.setTitle(`${this.dynamicUrl}| ${result.title}`);
+        this.metaService.setTitle(`${this.dynamicUrl.charAt(0).toUpperCase()} | ${result.title}`);
         });
     });
   }
