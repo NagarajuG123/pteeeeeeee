@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren:() => import ('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
-    path: 'terms-of-use',
+    path: 'termsofuse',
     loadChildren:() => import ('./pages/termsofuse/termsofuse.module').then((m) => m.TermsofuseModule),
   },
   {
