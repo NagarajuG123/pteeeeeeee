@@ -312,7 +312,7 @@ ul{
   > li {
       padding: 28px 0;
       border-bottom: 0;
-      display: none;
+      // display: none;
       @include desk-lg-below2{
           padding: 25px 0;
       }
@@ -449,7 +449,7 @@ ul{
    color: $color33_1;
 }
 .dropdown-toggle::after{
-  background: url('assets/images/brand_search_down_arrow.png') no-repeat;
+//   background: url('assets/img/brand_search_down_arrow.png') no-repeat;
    width: 12px;
    height: 10px;
    margin: 0 0 -6px 1px;
@@ -458,7 +458,7 @@ ul{
 }
 .dropup-toggle::after{
   content: "";
-  background: url('assets/images/brand_search_down_arrow.png') no-repeat;
+//   background: url('assets/img/brand_search_down_arrow.png') no-repeat;
    width: 12px;
    height: 10px;
    margin: 0 0 -6px 1px;
@@ -575,7 +575,7 @@ ul{
                line-height: 18px;
                font-family: $font_family_1;
                font-weight: normal;
-               background: url(assets/images/checkbox_brand_search.png) no-repeat 0 0px;
+            //    background: url(assets/img/checkbox_brand_search.png) no-repeat 0 0px;
                cursor: pointer;
                line-height: 18px;
            }
@@ -584,7 +584,7 @@ ul{
            }
        }
        label input:checked + span{
-           background-image: url(assets/images/checkbox-checked_brand_search.png);
+        //    background-image: url(assets/img/checkbox-checked_brand_search.png);
            color: $color37_1;
        }
    }
