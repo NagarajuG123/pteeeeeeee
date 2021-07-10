@@ -39,7 +39,7 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService.getAPI(`1851/meta`).subscribe((response) => {
               this.metaService.setSeo(response.data);
               this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-              this.metaService.setTitle(`${this.banner['date']} issues | ${result.title} | ${result.newsType}`);
+              this.metaService.setTitle(`${this.banner['date']} issues | ${result.title}`);
                 });
             });
       });
