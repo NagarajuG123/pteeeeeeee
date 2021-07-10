@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-carousel',
@@ -11,13 +12,17 @@ export class CarouselComponent implements OnInit {
   @Input() type = '';
   @Input() title = '';
   @Input() slug = '1851';
+  isBrowser: boolean = false;
   showCarousel: boolean = true;
   readMoreLink = '';
   list: any = [];
-  openVideoPlayer = false;
+  openVideoPlayer = true;
   url: string = '';
   customOptions: OwlOptions = {};
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object,) {
+        this.isBrowser = isPlatformBrowser(platformId);
+    }
 
   ngOnInit(): void {
     this.customOptions = {

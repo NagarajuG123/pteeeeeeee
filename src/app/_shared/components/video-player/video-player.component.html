@@ -8,11 +8,11 @@
     </video>
   </vg-player> -->
   <youtube-player
-    *ngIf="videoType == 'youtube'"
+    *ngIf="videoType === 'youtube'"
     [videoId]="id"
     (ready)="savePlayer($event)"
     (change)="onStateChange($event)"
   >
   </youtube-player>
-  <div *ngIf="videoType == 'vimeo'" id="vimeo_player"></div>
+  <!-- <div *ngIf="videoType == 'vimeo'" id="vimeo_player"></div> -->
 </div>
