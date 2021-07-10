@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-power-ranking',
@@ -10,6 +11,7 @@ export class PowerRankingComponent implements OnInit {
   data: any = [];
   contents: any = [];
   constructor(    private apiService: ApiService,
+    private metaService: MetaService
 ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class PowerRankingComponent implements OnInit {
       .subscribe(result => {
         this.data = result;
         this.contents = result.data;
+        this.metaService.setSeo(result.meta);
       });
   }
 }

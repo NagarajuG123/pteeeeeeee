@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { response } from 'express';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-story',
@@ -21,7 +21,8 @@ export class StoryComponent implements OnInit {
 
   constructor(private apiService: ApiService,
     private router:Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private metaService:MetaService) { }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -70,6 +71,7 @@ export class StoryComponent implements OnInit {
         this.router.navigateByUrl('/404');
       } else {
         this.storyData = response.data;
+        this.metaService.setSeo(response.meta);
       }
     });
   }

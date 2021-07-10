@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-brand',
@@ -22,11 +23,13 @@ export class BrandComponent implements OnInit {
   dynamicFirst: any =[];
   dynamicSecond: any = [];
   topBlock:any = [];
+  metaUrl: any = [];
   constructor(
     private route: ActivatedRoute,
     private router:Router,
     private apiService: ApiService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private metaService: MetaService
 
   ) { }
 
@@ -46,11 +49,14 @@ export class BrandComponent implements OnInit {
             if (this.type === 'category_page' || (this.type === 'brand_page' && this.categorySlug != '')) {
               this.apiUrl = `1851/${this.slug}/featured`;
               this.mostRecentUrl = `1851/${this.slug}/most-recent`;
+              this.metaUrl = `1851/${this.slug}/meta`;
               if (this.categorySlug != '') {
                 this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
                 this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
+                this.metaUrl = `${this.slug}/${this.categorySlug}/meta`;
               }
               this.getMostRecent();
+              this.getCategoryMeta();
             } else if (this.type === 'brand_page' && !this.categorySlug) {
               this.apiUrl = `${this.slug}/featured-articles`;
             }
@@ -59,6 +65,7 @@ export class BrandComponent implements OnInit {
               this.getDynamic();
               this.getMoreDynamic();
             }
+            this.getMeta();
           }
         });
     });
@@ -70,6 +77,7 @@ export class BrandComponent implements OnInit {
       this.dynamicFirst = response.data.stories.slice(0, 10);
       this.dynamicSecond = response.data.stories.slice(10, 30);
       this.hasMore = response.has_more;
+      this.metaService.setSeo(response.data.stories.meta);
     });
   }
 
@@ -87,6 +95,7 @@ export class BrandComponent implements OnInit {
     this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
       this.mostRecent = response.data;
       this.hasMore = response.has_more;
+      this.metaService.setSeo(response.data.meta);
     });
   }
  
@@ -100,6 +109,16 @@ export class BrandComponent implements OnInit {
       result.data.forEach((element: any) => {
         this.mostRecent.push(element);
       });
+    });
+  }
+  getMeta() {
+    this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
+  }
+  getCategoryMeta(){
+    this.apiService.getAPI(`${this.metaUrl}`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
     });
   }
 }

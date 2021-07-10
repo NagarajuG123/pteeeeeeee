@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +18,8 @@ export class MonthlyDetailsComponent implements OnInit {
   id!: any;
   hasMore: boolean = false;
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private metaService: MetaService) { }
 
   ngOnInit(): void {
       this.route.paramMap
@@ -34,6 +36,7 @@ export class MonthlyDetailsComponent implements OnInit {
         this.banner['date'] = moment(coverDate).format('MMMM YYYY');
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
+          this.metaService.setSeo(response.data.meta);
       });
     });
   }

@@ -3,6 +3,7 @@ import { ApiService  } from 'src/app/_core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { HttpClient } from '@angular/common/http';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-info',
@@ -27,7 +28,7 @@ export class InfoComponent implements OnInit {
   company!: string;
   geoJson: any;
   constructor(private apiService: ApiService,
-    private commonService: CommonService,private route: ActivatedRoute, private router: Router,
+    private commonService: CommonService,private route: ActivatedRoute, private router: Router,private metaService: MetaService
 ) { }
 
   ngOnInit(): void {
@@ -86,6 +87,7 @@ export class InfoComponent implements OnInit {
     }
     this.apiService.getAPI(`${this.brandSlug}/${path}`).subscribe((response) => {
       this.items = response
+      this.metaService.setSeo(response.meta);
       if (item === 'why-i-bought' && this.items.data.find((o: any) => o.slug === 'why-i-bought')) {
         this.items = this.items.data.find((o: any) => o.slug === 'why-i-bought');
         this.isBought = true;

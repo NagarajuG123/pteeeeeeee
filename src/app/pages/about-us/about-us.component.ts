@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-about-us',
@@ -17,7 +18,7 @@ export class AboutUsComponent implements OnInit {
   data: any = [];
   showVideo: Boolean = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,private metaService: MetaService) { }
 
   ngOnInit(): void {
     this.apiService.getAPI(`1851/about-us`).subscribe((response ) =>{
@@ -28,6 +29,7 @@ export class AboutUsComponent implements OnInit {
         }
       }
     }); 
+    this.getMeta();
   }
 
   onModalHide() {
@@ -39,5 +41,11 @@ export class AboutUsComponent implements OnInit {
   }
    mainImageLoad() {
     this.mainimageLoaded = true;
+  }
+
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
   }
 }

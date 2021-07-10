@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-termsofuse',
@@ -10,10 +11,11 @@ export class TermsofuseComponent implements OnInit {
   termsData: any=[];
   slug= '1851';
 
-  constructor( private apiService: ApiService) { }
+  constructor( private apiService: ApiService,private metaService:MetaService) { }
 
   ngOnInit(): void {
     this.getTermsofUse();
+    this.getMeta();
   }
 
   getTermsofUse() {
@@ -22,4 +24,9 @@ export class TermsofuseComponent implements OnInit {
     });
   }
 
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
+  }
 }
