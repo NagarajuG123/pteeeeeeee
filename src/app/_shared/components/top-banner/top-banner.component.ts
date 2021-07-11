@@ -1,33 +1,33 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  SimpleChange,
+} from '@angular/core';
 import { FiveColumn } from 'src/app/_core/models/five';
 
 @Component({
   selector: 'app-top-banner',
   templateUrl: './top-banner.component.html',
-  styleUrls: ['./top-banner.component.scss']
+  styleUrls: ['./top-banner.component.scss'],
 })
 export class TopBannerComponent implements OnInit {
-  @Input() data: FiveColumn[] = [];
-  @Input() title!: string  ;
+  @Input() data: any = [];
+  @Input() title: any;
+  constructor() {}
 
-  imgURL = 'assets/img/subscribepage-banner.jpg';
-  isShow = false;
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   const data: SimpleChange = changes.data;
 
-  ngOnChanges(changes: SimpleChanges) {
-    const data: SimpleChange = changes.data;
-
-    if (typeof data.currentValue !== 'undefined' && typeof data.currentValue.media !== 'undefined') {
-      this.imgURL = data.currentValue.media.url;
-    }
-    if (typeof data.currentValue !== 'undefined' &&  typeof data.currentValue.title !== 'undefined') {
-      this.title = data.currentValue.title;
-    }
-    if (data.currentValue !== data.previousValue) {
-      this.isShow = true;
-    }
-  }
+  //   if (
+  //     typeof data.currentValue !== 'undefined' &&
+  //     typeof data.currentValue.media !== 'undefined'
+  //   ) {
+  //     this.data = data.currentValue;
+  //   }
+  // }
 }

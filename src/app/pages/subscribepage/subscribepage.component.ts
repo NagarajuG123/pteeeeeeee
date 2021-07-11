@@ -27,7 +27,7 @@ export class SubscribepageComponent implements OnInit {
 
   getSubscribe() {
     this.apiService.getAPI(`${this.slug}/subscribe`).subscribe((response) => {
-      this.data = response;
+      this.data = response.data;
       this.title = 'SUBSCRIBE TO 1851 FRANCHISE';
     });
   }
