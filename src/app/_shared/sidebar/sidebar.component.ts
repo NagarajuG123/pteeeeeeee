@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from '../../_core/services/common.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,11 +19,18 @@ export class SidebarComponent implements OnInit {
   downloadPdf: any;
   visitSite: any;
   isMain: boolean = true;
+  searchForm: FormGroup;
+
   constructor(
     private apiService: ApiService,
     public common: CommonService,
-    private router: Router
-  ) {}
+    private router: Router,
+    fb: FormBuilder
+  ) {
+    this.searchForm = new FormGroup({
+      searchInput: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
     this.getPublication();
@@ -77,5 +85,18 @@ export class SidebarComponent implements OnInit {
       .subscribe((response) => {
         this.contactForm = response.schema;
       });
+  }
+  onSearchSubmit(searchForm: FormGroup) {
+    let instance = ['1851', 'ee', '1903'];
+    if (instance.includes(this.publication.id.toLowerCase())) {
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
+    } else {
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
+    }
+    this.searchForm.controls['searchInput'].setValue('');
   }
 }

@@ -22,14 +22,15 @@
     </a>
   </div>
   <div class="menu-search">
-    <form>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
       <div class="form-group">
         <input
           type="text"
           class="form-control"
           [placeholder]="sidebar?.search?.placeholder"
+          FormControlName="searchInput"
         />
-        <button type="button">
+        <button type="button" (click)="onSearchSubmit(searchForm)">
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
