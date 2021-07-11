@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser, Location } from '@angular/common';
 import { CommonService } from 'src/app/_core/services/common.service';
 import * as moment from 'moment';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,11 +12,11 @@ import * as moment from 'moment';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  searchInput!: string;
+  searchInput!: any;
   specificSearchForm!: FormGroup;
-  showSearchKey: String = 'SEARCH KEYWORD HERE';
+  showSearchKey: any = 'SEARCH KEYWORD HERE';
   params!: string;
-  publishedValue = -1;
+  publishedValue: any = -1;
   byAuthor: boolean = false;
   byTitle: boolean = false;
   byDesc: boolean = false;
@@ -26,7 +27,7 @@ export class SearchComponent implements OnInit {
   brandId: string = '';
   limit = 8;
   offset = 0;
-  sortBy = 0;
+  sortBy: any = 0;
   mainSearch: any;
   brandSearch: any;
   dateSelected: any;
@@ -57,7 +58,8 @@ export class SearchComponent implements OnInit {
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object,
     private location: Location,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private route: ActivatedRoute
   ) {
     this.specificSearchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -65,15 +67,87 @@ export class SearchComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setInitialData();
+  }
 
+  setInitialData() {
+    this.route.queryParams.subscribe((parameter) => {
+      if (
+        typeof parameter.search_input !== 'undefined' &&
+        parameter.search_input !== ''
+      ) {
+        this.searchInput = parameter.search_input;
+        this.showSearchKey = parameter.search_input;
+      }
+      if (
+        typeof parameter.sort_by !== 'undefined' &&
+        parameter.sort_by !== ''
+      ) {
+        this.sortBy = parameter.sort_by;
+        this.publishedValue = -1;
+        this.isSpecificDate = false;
+      }
+      if (
+        typeof parameter.by_author !== 'undefined' &&
+        parameter.by_author !== ''
+      ) {
+        this.byAuthor = parameter.by_author === 'true' ? true : false;
+      }
+      if (
+        typeof parameter.by_title !== 'undefined' &&
+        parameter.by_title !== ''
+      ) {
+        this.byTitle = parameter.by_title === 'true' ? true : false;
+      }
+      if (
+        typeof parameter.by_desc !== 'undefined' &&
+        parameter.by_desc !== ''
+      ) {
+        this.byDesc = parameter.by_desc === 'true' ? true : false;
+      }
+      if (
+        typeof parameter.by_keywords !== 'undefined' &&
+        parameter.by_keywords !== ''
+      ) {
+        this.byKeywords = parameter.by_keywords === 'true' ? true : false;
+      }
+      if (
+        typeof parameter.published_duration !== 'undefined' &&
+        parameter.published_duration !== ''
+      ) {
+        this.publishedValue = parameter.published_duration;
+        this.sortBy = -1;
+        this.isSpecificDate = false;
+      }
+      if (
+        typeof parameter.published_from_date !== 'undefined' &&
+        typeof parameter.published_to_date !== 'undefined' &&
+        parameter.published_from_date !== '' &&
+        parameter.published_to_date !== ''
+      ) {
+        this.isSpecificDate = true;
+        this.sortBy = -1;
+        this.publishedValue = -1;
+      }
+      if (
+        typeof parameter.brand_id !== 'undefined' &&
+        parameter.brand_id !== ''
+      ) {
+        this.brandId = parameter.brand_id;
+      } else {
+        this.brandId = '1851';
+      }
+      this.getDataByParams(false);
+    });
+  }
   updateSearchInput(input: string) {
     this.searchInput = input;
     this.showSearchKey = input;
-    this.getDataByParams();
+    this.getDataByParams(true);
   }
 
-  getDataByParams() {
+  getDataByParams(isUrlUpdate) {
     this.params = `?q=${this.searchInput}`;
     this.params =
       this.publishedValue !== -1
@@ -99,16 +173,9 @@ export class SearchComponent implements OnInit {
     this.params = `${this.params}&offset=0`;
     this.params = `${this.params}&brand_id=${this.brandId}`;
 
-    let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
-    brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
-    brandParams = brandParams.replace(
-      /offset=[0-9]*/g,
-      `offset=${this.brandSearch.length}`
-    );
+    this.setData();
 
-    this.setData(brandParams);
-
-    // this.updateUrlState();
+    if (isUrlUpdate) this.updateUrlState();
   }
 
   onSearchSubmit(searchForm: FormGroup) {
@@ -141,14 +208,7 @@ export class SearchComponent implements OnInit {
       this.params = `${this.params}&published_from_date=${start}&published_to_date=${end}`;
       this.params = `${this.params}&brand_id=${this.brandId}`;
 
-      let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
-      brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
-      brandParams = brandParams.replace(
-        /offset=[0-9]*/g,
-        `offset=${this.brandSearch.length}`
-      );
-
-      this.setData(brandParams);
+      this.setData();
 
       this.updateUrlState(start, end);
     }
@@ -162,8 +222,7 @@ export class SearchComponent implements OnInit {
     url = this.isSpecificDate
       ? `${url}&published_from_date=${startDate}&published_to_date=${endDate}`
       : `${url}&published_from_date=&published_to_date=`;
-    console.log(url);
-    // this.location.replaceState(url);
+    this.location.replaceState(url);
   }
   hideSearchBar(status: string) {
     if (status === 'hidden') {
@@ -180,7 +239,7 @@ export class SearchComponent implements OnInit {
     } else {
       this.publishedValue = key;
     }
-    this.getDataByParams();
+    this.getDataByParams(true);
   }
   setRange() {
     this.isSpecificDate = true;
@@ -202,7 +261,7 @@ export class SearchComponent implements OnInit {
       default:
         break;
     }
-    this.getDataByParams();
+    this.getDataByParams(true);
   }
   readMore(item: any) {
     return this.commonService.readMore(item, 'most-recent');
@@ -216,29 +275,30 @@ export class SearchComponent implements OnInit {
       : this.params;
     this.params = `${this.params}&offset=${this.mainSearch.length}`;
 
-    let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
-    brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
-    brandParams = brandParams.replace(
-      /offset=[0-9]*/g,
-      `offset=${this.brandSearch.length}`
-    );
-    this.setData(brandParams);
+    this.setData();
   }
-  setData(brandParams: any) {
+
+  setData() {
     this.apiService.getAPI(`search${this.params}`).subscribe((result) => {
       if (result.data !== null) {
         this.offset += result['data'].length;
-        result['data'].forEach((article: any) => {
-          this.mainSearch.push(article);
-        });
-        this.mainSearch = JSON.parse(JSON.stringify(this.mainSearch));
+        this.mainSearch = result['data'];
+      } else {
+        this.mainSearch = [];
       }
+      let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
+      brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
+      brandParams = brandParams.replace(
+        /offset=[0-9]*/g,
+        `offset=${this.brandSearch.length}`
+      );
       this.apiService.getAPI(`search${brandParams}`).subscribe((response) => {
         if (response.data !== null) {
           response['data'].forEach((article: any) => {
             this.brandSearch.push(article);
           });
-          this.brandSearch = JSON.parse(JSON.stringify(this.brandSearch));
+        } else {
+          this.brandSearch = [];
         }
         this.hasMore = result.has_more || response.has_more;
       });

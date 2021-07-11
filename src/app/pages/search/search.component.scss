@@ -1,0 +1,399 @@
+@import "src/assets/scss/mixins.scss";
+@import "src/assets/scss/variables.scss";
+.top-space {
+  min-height: 94px;
+}
+
+.search-page {
+  .search_keyword {
+    .category-container {
+      max-width: 1380px;
+      margin: 0 67px;
+      width: 100%;
+      .container {
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .search_keyword_main {
+          h5 {
+            display: flex;
+            justify-content: center;
+            .loadmore-btn {
+              margin: unset;
+              .fa {
+                font-size: 19px;
+                line-height: 19px;
+              }
+            }
+          }
+        }
+        .frannews-details {
+          padding: 50px 0px 0px 0px;
+          @include desk-lg-below1 {
+            padding: 30px 0;
+          }
+          .frannews-bottom {
+            padding: 0px;
+
+            ul {
+              li {
+                padding: 0px;
+                .category-list {
+                  width: 25%;
+                  @include mobile-landscape1 {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .search-page-right-rail {
+        h5 {
+          padding: 0 0 30px 0;
+          border-bottom: 1px solid #c8c9ca;
+        }
+        .search-page-brand-list {
+          margin-top: 45px;
+          overflow: hidden;
+          max-width: 280px;
+          padding: 0 20px;
+          margin-left: 17px;
+          .search-page-brand {
+            .search-page-brand-title {
+              color: #a6a8aa;
+            }
+            .frannews-bottom-details {
+              .socialmedia {
+                margin-bottom: 25px;
+              }
+            }
+          }
+        }
+      }
+      .loadmore-btn {
+        margin-bottom: 85px;
+      }
+    }
+  }
+}
+.search_keyword {
+  background: $color1;
+  padding: 60px 0 0px 0;
+  box-shadow: 0 13px 15px $grade_bg3_1;
+  position: relative;
+  @include desk-lg-below1 {
+    padding: 30px 0;
+  }
+  .search-no-result {
+    padding: 20px;
+    text-align: center;
+    p {
+      font-size: 17px;
+      line-height: 17px;
+      color: #a6a8aa;
+      font-family: "ProximaNova-Regular";
+      display: block;
+      letter-spacing: 0.7px;
+    }
+  }
+}
+
+.search_keyword_main {
+  margin: 0 67px 0 67px;
+  border-bottom: 1px solid #c8c9ca;
+  @include desk-lg-below1 {
+    margin: 0;
+  }
+  h5 {
+    font-size: 17px;
+    line-height: 20px;
+    color: $color11;
+    font-family: $font_family_5;
+    font-weight: normal;
+    padding: 0 0 30px 0;
+    @include desk-lg-below1 {
+      padding: 0 0 15px 0;
+    }
+    span {
+      display: inline-block;
+      color: $color4;
+      padding: 0 0 0 5px;
+      @include mobile-portrait {
+        padding: 10px 0;
+      }
+    }
+  }
+  .frannews-bottom {
+    padding: 99px 30px 0 30px;
+    border-top: 1px solid $color24_1;
+    @include desk-lg-below1 {
+      padding: 25px 0 0 0;
+    }
+    .socialmedia {
+      p {
+        padding: 0 0 18px 0;
+      }
+    }
+    ul {
+      padding: 0 0 17px 0;
+      @include desk-lg-below1 {
+        padding: 0;
+      }
+      li {
+        padding: 0 0 53px 0;
+        cursor: pointer;
+        float: none;
+        width: 100%;
+        @include desk-lg-below1 {
+          padding: 0 0 30px 0;
+        }
+        @include tablet-landscape {
+          padding: 0 0 25px 0;
+        }
+        @include mobile-landscape1 {
+          padding: 0;
+        }
+      }
+    }
+    .scroll_down_data {
+      a {
+        .fa {
+          color: $color4;
+          font-size: 50px;
+          line-height: 52px;
+        }
+      }
+    }
+  }
+}
+
+.frannews {
+  background: $color1;
+}
+.frannews-details {
+  padding: 66px 41px 69px 40px;
+  margin: 0 auto;
+  @include desk-lg-below1 {
+    padding: 40px 0 40px 0;
+  }
+  @include tablet-portrait {
+    padding: 30px 0 15px 0;
+  }
+}
+
+.frannews-bottom-details {
+  text-decoration: none;
+  width: 100%;
+  figure {
+    img {
+      @include mobile-landscape {
+        height: auto;
+      }
+      width: 100%;
+      height: 117px;
+    }
+    .last-stories-franews-image {
+      height: 100%;
+    }
+  }
+}
+// .frannews-bottom {
+//   padding: 35px 0 0 0;
+//   @include desk-lg-below1 {
+//     padding: 25px 0 0 0;
+//   }
+//   ul {
+//     margin: 0 -15px;
+//     @include desk-lg-below1 {
+//       font-size: 0;
+//       text-align: center;
+//     }
+//     @include mobile-landscape1 {
+//       margin: 0;
+//     }
+//     li {
+//       display: inline-block;
+//       // float: left;
+//       width: 20%;
+//       padding: 0 15px;
+//       @include desk-lg-below1 {
+//         float: none;
+//         vertical-align: top;
+//       }
+//       @include tablet-landscape {
+//         width: 25%;
+//         padding: 0 15px 25px 15px;
+//       }
+//       @include tablet-portrait {
+//         width: 33.3%;
+//       }
+//       @include tablet-landscape1 {
+//         width: 50%;
+//       }
+//       @include mobile-landscape1 {
+//         width: 100%;
+//         padding: 0 0 25px 0;
+//         display: block;
+//       }
+//     }
+//   }
+// }
+.sort_main {
+  padding: 47px 0 5px 20px;
+  margin: 0 auto;
+  justify-content: center;
+  @include desk-lg-below {
+    max-width: 76%;
+    flex: 0 0 76%;
+    -webkit-flex: 0 0 76%;
+  }
+  @include desk-lg-below1 {
+    padding: 25px 0 0 0;
+    max-width: 788px;
+    flex: 0 0 788px;
+    -webkit-flex: 0 0 788px;
+  }
+  @include tablet-portrait {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+  h6 {
+    font-size: 17px;
+    line-height: 19px;
+    color: $color4;
+    font-family: $font_family_5;
+    letter-spacing: 0.9px;
+    @include tablet-portrait {
+      font-size: 16px;
+    }
+    @include tablet-landscape1 {
+      padding: 0 0 8px 0;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  ul {
+    padding: 0 0 0 11px;
+    cursor: pointer;
+    @include tablet-landscape1 {
+      display: block !important;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+      padding: 0 18px;
+      position: relative;
+      @include tablet-portrait {
+        padding: 0 10px;
+      }
+      @include tablet-landscape1 {
+        padding: 0 10px 10px 10px;
+      }
+      a {
+        display: block;
+      }
+      span {
+        font-size: 17px;
+        line-height: 17px;
+        color: $color11;
+        font-family: $font_family_5;
+        display: block;
+        letter-spacing: 0.7px;
+        @include tablet-portrait {
+          font-size: 16px;
+        }
+      }
+      strong {
+        font-size: 17px;
+        line-height: 17px;
+        color: $color11;
+        font-family: $font_family_3;
+        display: block;
+        letter-spacing: 0.7px;
+        @include tablet-portrait {
+          font-size: 16px;
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 13px;
+        background: $color4;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.check_boxes_data {
+  padding: 49px 10px 36px 55px;
+  @include desk-lg-below {
+    max-width: 82%;
+    flex: 0 0 82%;
+    -webkit-flex: 0 0 82%;
+  }
+  @include desk-lg-below1 {
+    max-width: 827px;
+    flex: 0 0 827px;
+    -webkit-flex: 0 0 827px;
+    padding: 25px 0;
+  }
+  @include tablet-portrait {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+  ul {
+    padding: 0;
+    li {
+      border: 0;
+      padding: 0 25px;
+      @include tablet-portrait {
+        padding: 0 10px;
+      }
+      @include tablet-landscape1 {
+        padding: 0 10px 10px 10px;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+  .checkboxes {
+    label {
+      margin: 0;
+      display: inline-block;
+      span {
+        padding: 0 0 0 25px;
+        display: inline-block;
+        background: url("../../../assets/img/checkbox.png") no-repeat 0 0px;
+        cursor: pointer;
+        line-height: 18px;
+        @include tablet-landscape1 {
+          padding: 0 0 0 25px;
+        }
+      }
+      input {
+        display: none;
+      }
+      input:checked + span {
+        background-image: url("../../../assets/img/checked-checkbox.png");
+      }
+    }
+  }
+}
