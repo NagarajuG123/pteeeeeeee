@@ -36,6 +36,7 @@
     "express": "^4.15.2",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+    "ngx-daterangepicker-material": "^5.0.0",
     "ngx-malihu-scrollbar": "^9.0.0",
     "ngx-owl-carousel-o": "^6.0.0",
     "ngx-timeago": "^2.0.0",

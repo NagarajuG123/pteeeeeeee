@@ -1,1 +1,245 @@
-<p>search works!</p>
+<div class="empty"></div>
+<app-banner-search
+  [searchInput]="searchInput"
+  (onSearch)="updateSearchInput($event)"
+></app-banner-search>
+<div class="main-content search-page">
+  <div class="search_keyword category-frannews d-flex justify-content-center">
+    <div class="category-container row">
+      <div class="container col-sm-12 col-md-9 col-lg-9 col-xl-9">
+        <div class="search_keyword_main">
+          <h5 class="text-center">
+            VIEW SEARCH FILTERS
+            <a
+              *ngIf="!hiddenSearchBar"
+              href="javascript:void(0)"
+              id="loadMore"
+              class="text-center loadmore-btn d-block"
+              (click)="hideSearchBar('hidden')"
+            >
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </a>
+            <a
+              *ngIf="hiddenSearchBar"
+              href="javascript:void(0)"
+              id="loadMore"
+              class="text-center loadmore-btn d-block"
+              (click)="hideSearchBar('show')"
+            >
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </a>
+          </h5>
+          <div *ngIf="hiddenSearchBar" class="sort_main d-flex">
+            <h6>SORT BY:</h6>
+            <ul class="d-flex text-center justify-content-center">
+              <li *ngFor="let duration of publishedDuration; let i = index">
+                <a (click)="setDuration(i)">
+                  <span
+                    [style.font-weight]="
+                      publishedValue === i ? 'bold' : 'normal'
+                    "
+                    >{{ duration["title"] }}</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a (click)="setRange()">
+                  <span
+                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
+                    >{{ publishedRange }}</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            *ngIf="hiddenSearchBar"
+            class="sort_main check_boxes_data d-flex"
+          >
+            <h6>FILTER BY:</h6>
+            <ul class="d-flex checkboxes text-center justify-content-center">
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="byAuthor"
+                    (change)="onChangeFilter('author')"
+                  />
+                  <span>BY AUTHOR</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="byTitle"
+                    (change)="onChangeFilter('title')"
+                  />
+                  <span>BY TITLE</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="byDesc"
+                    (change)="onChangeFilter('desc')"
+                  />
+                  <span>BY DESCRIPTION</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="byKeywords"
+                    (change)="onChangeFilter('keyword')"
+                  />
+                  <span>BY KEYWORDS</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="search-no-result" *ngIf="!mainSearch.length">
+          <p>No articles found for selected search criteria</p>
+        </div>
+        <div *ngIf="mainSearch.length">
+          <div class="frannews">
+            <div class="container">
+              <div class="frannews-details col-xl-11">
+                <div class="frannews-bottom">
+                  <div *ngIf="isBrowser">
+                    <ul>
+                      <li *ngFor="let row of mainSearch | splitArray: 4">
+                        <div class="category-list" *ngFor="let item of row">
+                          <a
+                            href="{{ readMore(item) }}"
+                            class="frannews-bottom-details"
+                            style="text-decoration: none"
+                            *ngIf="item"
+                          >
+                            <figure>
+                              <img
+                                appYoutubeImage
+                                class="height-auto"
+                                srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
+                                sizes="{{
+                                  '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 210px'
+                                }}"
+                                src="{{ item.media | defaultImage: 210:118 }}"
+                                alt="img5"
+                              />
+                            </figure>
+                            <div class="socialmedia">
+                              <p
+                                title="{{ item.title }}"
+                                style="-webkit-box-orient: vertical"
+                              >
+                                {{ item.title }}
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="clearfix"></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail">
+        <h5 class="text-center">BRAND STORIES</h5>
+        <div *ngIf="brandSearch.length" class="search-page-brand-list row">
+          <div
+            class="search-page-brand col-12"
+            *ngFor="let item of brandSearch"
+          >
+            <p class="search-page-brand-title" *ngIf="brandId == '1851'">
+              {{ brandId }}
+            </p>
+            <p class="search-page-brand-title" *ngIf="brandId != '1851'">
+              {{ brandId == "ee" ? "Estatenvy" : "Room1903" }}
+            </p>
+            <a
+              href="{{ readMoreBrand(item) }}"
+              class="frannews-bottom-details"
+              style="text-decoration: none"
+              *ngIf="item"
+            >
+              <figure>
+                <img
+                  appYoutubeImage
+                  class="height-auto"
+                  srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
+                  sizes="{{
+                    '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 210px'
+                  }}"
+                  src="{{ item.media | defaultImage: 210:118 }}"
+                  alt="img5"
+                />
+              </figure>
+              <div class="socialmedia">
+                <p
+                  title="{{ item.title }}"
+                  style="-webkit-box-orient: vertical"
+                >
+                  {{ item.title }}
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <a
+          *ngIf="hasMore"
+          href="javascript:void(0)"
+          id="loadMore"
+          class="text-center loadmore-btn d-block"
+        >
+          <i
+            class="fa fa-angle-down"
+            (click)="getMoreItems()"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!isSpecificDate" class="banner specific_search">
+    <div class="search_form col-lg-6">
+      <form
+        [formGroup]="specificSearchForm"
+        (ngSubmit)="onSearchSubmit(specificSearchForm)"
+      >
+        <div class="form-group d-block">
+          <input
+            type="text"
+            ngxDaterangepickerMd
+            class="form-control"
+            [(ngModel)]="dateSelected"
+            [showCustomRangeLabel]="true"
+            [alwaysShowCalendars]="true"
+            [ranges]="ranges"
+            [linkedCalendars]="true"
+            [showClearButton]="true"
+            [formControl]="specificSearchForm.controls['searchInput']"
+            placeholder="Select please.../"
+            readonly
+          />
+          <button
+            type="button"
+            class="d-block text-center button"
+            (click)="onSearchSubmit(specificSearchForm)"
+          >
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
