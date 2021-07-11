@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
+  brandId: string = '1851';
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -69,8 +70,10 @@ export class HeaderComponent implements OnInit {
                 this.brandTitle = response.name;
                 this.isMain = false;
                 this.brandSlug = response.slug;
+                this.brandId = response.id;
               } else {
                 this.brandSlug = '1851';
+                this.brandId = '1851';
               }
               this.setHeader();
             });
@@ -114,9 +117,7 @@ export class HeaderComponent implements OnInit {
         searchForm.controls['searchInput'].value
       }&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${
-        searchForm.controls['searchInput'].value
-      }&brand_id=${this.publication.id.toLowerCase()}`;
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }

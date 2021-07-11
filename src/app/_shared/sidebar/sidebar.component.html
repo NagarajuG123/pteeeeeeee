@@ -179,11 +179,9 @@
     <a routerLink="{{ brandSlug }}">
       <figure>
         <img
-          class="logo-img"
+          class="logo-img sidebar-brand-images"
           src="{{ sidebar?.logo }}"
           alt="logo"
-          width="53"
-          height="53"
         />
       </figure>
     </a>
@@ -194,14 +192,15 @@
       SPONSORED CONTENT
     </h6>
     <div class="menu-search">
-      <form>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
         <div class="form-group">
           <input
+            formControlName="searchInput"
             type="text"
             class="form-control"
             [placeholder]="sidebar?.search?.placeholder"
           />
-          <button type="button">
+          <button type="button" (click)="onSearchSubmit(searchForm)">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </div>

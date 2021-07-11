@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   visitSite: any;
   isMain: boolean = true;
   searchForm: FormGroup;
-
+  brandId: string = '1851';
   constructor(
     private apiService: ApiService,
     public common: CommonService,
@@ -48,9 +48,11 @@ export class SidebarComponent implements OnInit {
                 this.brandTitle = response.name;
                 this.brandSlug = response.slug;
                 this.isMain = false;
+                this.brandId = response.id;
                 this.getContactForm();
               } else {
                 this.brandSlug = '1851';
+                this.brandId = '1851';
               }
               this.setSidebar();
             });
@@ -87,15 +89,12 @@ export class SidebarComponent implements OnInit {
       });
   }
   onSearchSubmit(searchForm: FormGroup) {
-    let instance = ['1851', 'ee', '1903'];
-    if (instance.includes(this.publication.id.toLowerCase())) {
+    if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
         searchForm.controls['searchInput'].value
       }&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${
-        searchForm.controls['searchInput'].value
-      }&brand_id=${this.publication.id.toLowerCase()}`;
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
