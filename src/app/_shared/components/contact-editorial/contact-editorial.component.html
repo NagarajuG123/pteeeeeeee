@@ -1,237 +1,357 @@
 <div class="contact-editorial subscribepage-wrap">
-    <div class="container">
-        <div class="contact-editorial-details col-xl-5 col-lg-8">
-            <div *ngIf="!isSuccess" class="editors">
-                <h5>Please provide us with the following information:</h5>
-                <form
-                    [formGroup]="contactForm"
-                    class="fill-form"
-                   >
-                    <ul class="d-flex">
-                        <li class="col-xl-12">
-                            <div class="form-group">
-                                <input
-                                    type="email"
-                                    class="form-control feild1"
-                                    placeholder="EMAIL ADDRESS*"
-                                   >
-                            </div>
-                        </li>
-                    </ul>
-                    <div *ngIf="isCheckBoxVisible"  class="contact-editorial-main">
-                        <h6>Click all of which apply to you:</h6>
-                        <ul>
-                            <li>
-                                <div class="form-group">
-                                <label for="current" class="radio_btns1">
-                                    <input
-                                        type="checkbox"
-                                        class="text-field"
-                                        id="current"
-                                       
-                                        >
-                                    <span>Current Franchisee</span>
-                                </label>
-                                <div class="editors-details">
-                                    <strong class="d-block">Number of Units</strong>
-                                    <ul>
-                                    <li class="d-inline-block">
-                                        <label for="units" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="units"
-                                            name="unit"
-                                            class="unit"
-                                            value="1-10"
-                                         >
-                                        <span>1-10</span>
-                                        </label>
-                                    </li>
-                                    <li class="d-inline-block">
-                                        <label for="units1" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="units1"
-                                            name="unit"
-                                            class="unit"
-                                            value="10+"
-                                            >
-                                        <span>10+</span>
-                                        </label>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                <label for="prospective" class="radio_btns1">
-                                    <input
-                                        type="checkbox"
-                                        class="text-field"
-                                        id="prospective"
-                                       
-                                        >
-                                    <span>Prospective Franchisee</span>
-                                </label>
-                                <div class="editors-details">
-                                    <strong class="d-block">How soon do you want to become a franchisee?</strong>
-                                    <ul>
-                                    <li class="d-inline-block">
-                                        <label for="months" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="months"
-                                            name="unit1"
-                                            class="unit"
-                                            value="Under 6 months"
-                                           >
-                                        <span>Under 6 months</span>
-                                        </label>
-                                    </li>
-                                    <li class="d-inline-block">
-                                        <label for="months1" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="months1"
-                                            name="unit1"
-                                            class="unit"
-                                            value="Over 6 months"
-                                           >
-                                        <span>Over 6 months</span>
-                                        </label>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                <label for="executive" class="radio_btns1">
-                                    <input
-                                        type="checkbox"
-                                        class="text-field"
-                                        id="executive"
-                                       
-                                        >
-                                    <span>Franchise Executive</span>
-                                </label>
-                                <div class="editors-details">
-                                    <ul>
-                                    <li class="d-inline-block">
-                                        <label for="leadership" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="leadership"
-                                            name="unit2"
-                                            class="unit"
-                                            value="Executive leadership"
-                                           >
-                                        <span>Executive leadership</span>
-                                        </label>
-                                    </li>
-                                    <li class="d-inline-block">
-                                        <label for="leadership1" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="leadership1"
-                                            name="unit2"
-                                            class="unit"
-                                            value="Non-executive leadership"
-                                          >
-                                        <span>Non-executive leadership</span>
-                                        </label>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                <label for="executive1" class="radio_btns1">
-                                    <input
-                                        type="checkbox"
-                                        class="text-field"
-                                        id="executive1"
-                                       
-                                        >
-                                    <span>Business Executive</span>
-                                </label>
-                                <div class="editors-details">
-                                    <ul>
-                                    <li class="d-inline-block">
-                                        <label for="leadership2" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="leadership2"
-                                            name="unit3"
-                                            class="unit"
-                                            value="Executive leadership"
-                                         >
-                                        <span>Executive leadership</span>
-                                        </label>
-                                    </li>
-                                    <li class="d-inline-block">
-                                        <label for="leadership3" class="radio_btns">
-                                        <input
-                                            type="radio"
-                                            id="leadership3"
-                                            name="unit3"
-                                            class="unit"
-                                            value="Non-executive leadership"
-                                          >
-                                        <span>Non-executive leadership</span>
-                                        </label>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                <label for="other" class="radio_btns1">
-                                    <input
-                                        type="checkbox"
-                                        class="text-field"
-                                        id="other"
-                                        >
-                                    <span>Other</span>
-                                </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div *ngIf="isCheckBoxVisible" class="signmeup text-center col-sm-8 col-12">
-                        <label for="news" class="checks">
-                        <input
-                            type="checkbox"
-                            class="text-field"
-                            id="news"
-                            >
-                        <span>Sign me up for the 1851 newsletter</span>
+  <div class="container">
+    <div class="contact-editorial-details col-xl-5 col-lg-8">
+      <div *ngIf="!isSuccess" class="editors">
+        <h5>Please provide us with the following information:</h5>
+        <form
+          [formGroup]="contactForm"
+          class="fill-form"
+          (ngSubmit)="onContactSubmit(contactForm)"
+        >
+          <ul class="d-flex">
+            <li class="col-xl-12">
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control feild1"
+                  placeholder="EMAIL ADDRESS*"
+                  [formControl]="contactForm.controls['email']"
+                />
+                <app-error-message
+                  *ngIf="isSubmitted"
+                  class="full-width"
+                  [control]="contactForm.controls['email']"
+                ></app-error-message>
+              </div>
+            </li>
+          </ul>
+          <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
+            <h6>Click all of which apply to you:</h6>
+            <ul>
+              <li>
+                <div class="form-group">
+                  <label for="current" class="radio_btns1">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="current"
+                      [formControl]="contactForm.controls['currentFranchisee']"
+                      (change)="toggleCurrent($event)"
+                    />
+                    <span>Current Franchisee</span>
+                  </label>
+                  <div class="editors-details">
+                    <strong class="d-block">Number of Units</strong>
+                    <ul>
+                      <li class="d-inline-block">
+                        <label for="units" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="units"
+                            name="unit"
+                            class="unit"
+                            value="1-10"
+                            [formControl]="
+                              contactForm.controls[
+                                'currentFranchiseeOwnsUp10units'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'currentFranchiseeOwns10Plusunits'
+                              ].setValue('')
+                            "
+                          />
+                          <span>1-10</span>
                         </label>
-                    </div>
-                    <button
-                        type="button"
-                        class="back d-block submit_btn"
-                        >
-                        SUBMIT <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                    </button>
-                    <span *ngIf="isSubmitted" class="errS">{{submitErrMsg}}</span>
-                  
-                </form>
-            </div>
-            <div *ngIf="isSubmitted && isSuccess" class="sucess-message col-xl-10 text-center">
-                <div class="sucess-message-details">
-                    <figure>
-                        <img src="assets/img/contacteditorialmsg.png" width="339" height="388" alt="contacteditorialmsg">
-                    </figure>
-                    <em>1</em>
-                    <h3>WELCOME TO <strong class="d-block">{{ publicationTitle }}</strong></h3>
+                      </li>
+                      <li class="d-inline-block">
+                        <label for="units1" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="units1"
+                            name="unit"
+                            class="unit"
+                            value="10+"
+                            [formControl]="
+                              contactForm.controls[
+                                'currentFranchiseeOwns10Plusunits'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'currentFranchiseeOwnsUp10units'
+                              ].setValue('')
+                            "
+                          />
+                          <span>10+</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <h2 class="text-uppercase">THANK YOU</h2>
-                <a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i>BACK TO HOMEPAGE</a>
-            </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <label for="prospective" class="radio_btns1">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="prospective"
+                      [formControl]="
+                        contactForm.controls['prospectiveFranchisee']
+                      "
+                      (change)="toggleProspective($event)"
+                    />
+                    <span>Prospective Franchisee</span>
+                  </label>
+                  <div class="editors-details">
+                    <strong class="d-block"
+                      >How soon do you want to become a franchisee?</strong
+                    >
+                    <ul>
+                      <li class="d-inline-block">
+                        <label for="months" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="months"
+                            name="unit1"
+                            class="unit"
+                            value="Under 6 months"
+                            [formControl]="
+                              contactForm.controls[
+                                'prospectiveFranchiseeUnder6Months'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'prospectiveFranchiseeOver6Months'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Under 6 months</span>
+                        </label>
+                      </li>
+                      <li class="d-inline-block">
+                        <label for="months1" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="months1"
+                            name="unit1"
+                            class="unit"
+                            value="Over 6 months"
+                            [formControl]="
+                              contactForm.controls[
+                                'prospectiveFranchiseeOver6Months'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'prospectiveFranchiseeUnder6Months'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Over 6 months</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <label for="executive" class="radio_btns1">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="executive"
+                      [formControl]="contactForm.controls['franchiseExecutive']"
+                      (change)="toggleExecutive($event)"
+                    />
+                    <span>Franchise Executive</span>
+                  </label>
+                  <div class="editors-details">
+                    <ul>
+                      <li class="d-inline-block">
+                        <label for="leadership" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="leadership"
+                            name="unit2"
+                            class="unit"
+                            value="Executive leadership"
+                            [formControl]="
+                              contactForm.controls[
+                                'franchiseExecutiveLeadership'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'franchiseNonExecutiveLeadership'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Executive leadership</span>
+                        </label>
+                      </li>
+                      <li class="d-inline-block">
+                        <label for="leadership1" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="leadership1"
+                            name="unit2"
+                            class="unit"
+                            value="Non-executive leadership"
+                            [formControl]="
+                              contactForm.controls[
+                                'franchiseNonExecutiveLeadership'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'franchiseExecutiveLeadership'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Non-executive leadership</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <label for="executive1" class="radio_btns1">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="executive1"
+                      [formControl]="contactForm.controls['businessExecutive']"
+                      (change)="toggleExecutive1($event)"
+                    />
+                    <span>Business Executive</span>
+                  </label>
+                  <div class="editors-details">
+                    <ul>
+                      <li class="d-inline-block">
+                        <label for="leadership2" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="leadership2"
+                            name="unit3"
+                            class="unit"
+                            value="Executive leadership"
+                            [formControl]="
+                              contactForm.controls[
+                                'businessExecutiveLeadership'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'businessNonExecutiveLeadership'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Executive leadership</span>
+                        </label>
+                      </li>
+                      <li class="d-inline-block">
+                        <label for="leadership3" class="radio_btns">
+                          <input
+                            type="radio"
+                            id="leadership3"
+                            name="unit3"
+                            class="unit"
+                            value="Non-executive leadership"
+                            [formControl]="
+                              contactForm.controls[
+                                'businessNonExecutiveLeadership'
+                              ]
+                            "
+                            (click)="
+                              contactForm.controls[
+                                'businessExecutiveLeadership'
+                              ].setValue('')
+                            "
+                          />
+                          <span>Non-executive leadership</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <label for="other" class="radio_btns1">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="other"
+                      [formControl]="contactForm.controls['other']"
+                      (change)="toggleOther($event)"
+                    />
+                    <span>Other</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            *ngIf="isCheckBoxVisible"
+            class="signmeup text-center col-sm-8 col-12"
+          >
+            <label for="news" class="checks">
+              <input
+                type="checkbox"
+                class="text-field"
+                id="news"
+                [formControl]="contactForm.controls['signUpNewsletter']"
+              />
+              <span>Sign me up for the 1851 newsletter</span>
+            </label>
+            <app-error-message
+              *ngIf="isSubmitted"
+              class="full-width"
+              [control]="contactForm.controls['newsletter_signup']"
+            ></app-error-message>
+          </div>
+          <button
+            type="button"
+            class="back d-block submit_btn"
+            (click)="onContactSubmit(contactForm)"
+          >
+            SUBMIT
+            <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+          </button>
+          <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
+        </form>
+      </div>
+      <div
+        *ngIf="isSubmitted && isSuccess"
+        class="sucess-message col-xl-10 text-center"
+      >
+        <div class="sucess-message-details">
+          <figure>
+            <img
+              src="assets/images/contacteditorial-img2.png"
+              width="339"
+              height="388"
+              alt="contacteditorial-img2"
+            />
+          </figure>
+          <em>1</em>
+          <h3>
+            WELCOME TO <strong class="d-block">{{ publicationTitle }}</strong>
+          </h3>
         </div>
+        <h2 class="text-uppercase">THANK YOU</h2>
+        <a href="#"
+          ><i class="fa fa-angle-left" aria-hidden="true"></i>BACK TO
+          HOMEPAGE</a
+        >
+      </div>
     </div>
+  </div>
 </div>

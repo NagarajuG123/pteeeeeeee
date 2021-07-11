@@ -18,4 +18,11 @@ export class ValidationService {
       }
     }
   }
+  static acceptValidator(control) {
+    if (control.value) {
+      return null;
+    } else {
+      return { invalidAccept: true };
+    }
+  }
 }

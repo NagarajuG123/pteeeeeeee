@@ -3,15 +3,14 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  styleUrls: ['./items.component.scss'],
 })
 export class ItemsComponent implements OnInit {
-  @Input() items:any;
+  @Input() items: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   goBrandPage(slug: string) {
     return slug;
   }
@@ -19,5 +18,7 @@ export class ItemsComponent implements OnInit {
   goBrandInfoPage(slug: string) {
     return `${slug}/info`;
   }
-
+  goDetailPage(brandSlug: string, storySlug) {
+    return `${brandSlug}/${storySlug}#brand-latest-stories`;
+  }
 }

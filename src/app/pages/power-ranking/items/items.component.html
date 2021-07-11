@@ -43,7 +43,10 @@
         </div>
       </li>
       <li class="latest_data col-md-4">
-        <a href="" target="_blank">
+        <a
+          href="{{ goDetailPage(item.slug, item.latest_story.slug) }}"
+          target="_blank"
+        >
           <b> {{ item.latest_story_title }} </b>
         </a>
       </li>
