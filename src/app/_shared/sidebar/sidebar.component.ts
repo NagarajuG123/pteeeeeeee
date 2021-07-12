@@ -1,8 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from '../../_core/services/common.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ValidationService } from 'src/app/_core/services/validation.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,24 +23,44 @@ export class SidebarComponent implements OnInit {
   brandSlug = '1851';
   brandTitle!: string;
   contactForm: any;
-  downloadPdf: any;
+  downloadPdfUrl: any;
+  isPdfEmail: any = false;
   visitSite: any;
   isMain: boolean = true;
   searchForm: FormGroup;
-
+  brandId: string = '1851';
+  isBrowser: boolean = false;
+  pdfForm: any;
+  isEmailSubmit: boolean = false;
+  emailSubMessage: string;
+  emailSubValid: boolean = false;
   constructor(
     private apiService: ApiService,
     public common: CommonService,
     private router: Router,
-    fb: FormBuilder
+    fb: FormBuilder,
+    @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
     });
+    this.pdfForm = fb.group({
+      emailInput: [
+        '',
+        Validators.compose([
+          Validators.required,
+          ValidationService.emailValidator,
+        ]),
+      ],
+    });
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
     this.getPublication();
+    this.setInit();
+  }
+  setInit() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
@@ -48,9 +75,11 @@ export class SidebarComponent implements OnInit {
                 this.brandTitle = response.name;
                 this.brandSlug = response.slug;
                 this.isMain = false;
+                this.brandId = response.id;
                 this.getContactForm();
               } else {
                 this.brandSlug = '1851';
+                this.brandId = '1851';
               }
               this.setSidebar();
             });
@@ -71,8 +100,15 @@ export class SidebarComponent implements OnInit {
       .subscribe((response) => {
         this.sidebar = response.data;
         if (this.brandSlug != '1851') {
-          this.downloadPdf = `${this.sidebar[this.brandSlug]['download-pdf']}`;
-          this.visitSite = `${this.sidebar[this.brandSlug]['visit-website']}`;
+          this.downloadPdfUrl = `${
+            this.sidebar[this.brandSlug]['download-pdf']['url']
+          }`;
+          this.isPdfEmail = `${
+            this.sidebar[this.brandSlug]['download-pdf']['email_popup']
+          }`;
+          this.visitSite = `${
+            this.sidebar[this.brandSlug]['visit-website']['url']
+          }`;
         }
       });
   }
@@ -87,16 +123,35 @@ export class SidebarComponent implements OnInit {
       });
   }
   onSearchSubmit(searchForm: FormGroup) {
-    let instance = ['1851', 'ee', '1903'];
-    if (instance.includes(this.publication.id.toLowerCase())) {
+    if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
         searchForm.controls['searchInput'].value
       }&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${
-        searchForm.controls['searchInput'].value
-      }&brand_id=${this.publication.id.toLowerCase()}`;
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
+  }
+
+  emailSubscribe(pdfform: FormGroup) {
+    this.isEmailSubmit = true;
+    this.emailSubMessage = '';
+    if (!pdfform.valid) {
+      return;
+    }
+    const payload = {
+      email: pdfform.controls['emailInput'].value,
+    };
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand-pdf`, payload)
+      .subscribe((res) => {
+        $('#pdfModal1').hide();
+        if (res.success) {
+          window.open(this.downloadPdfUrl, '_blank');
+        } else {
+          this.emailSubValid = true;
+          this.emailSubMessage = res.message;
+        }
+      });
   }
 }

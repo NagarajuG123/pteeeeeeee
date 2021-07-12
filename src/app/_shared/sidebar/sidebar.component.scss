@@ -256,3 +256,267 @@
   display: block;
   margin: 0 auto;
 }
+
+// PDF
+.search_pop_up {
+  .modal-dialog {
+    @media only screen and (min-device-width: 768px) {
+      max-width: 800px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (max-device-width: 1024px) {
+      max-width: 800px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (orientation: landscape) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (min-device-width: 768px) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 117px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (max-device-width: 1024px) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 38px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (orientation: portrait) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 172px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-content {
+    padding: 0 71px 0 91px;
+    @include desk-lg-below2 {
+      padding: 0 15px;
+    }
+    .modal-header {
+      h1 {
+        color: $color23;
+      }
+    }
+  }
+  .sponsored-modal-content {
+    padding: 70px 50px;
+    h2 {
+      color: #ec0044;
+      margin-bottom: 30px;
+    }
+    p {
+      color: #272525;
+    }
+    .email-content {
+      display: flex;
+      flex-direction: column;
+      input {
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 32px;
+        color: #000000;
+        font-family: "ProximaNova-Light";
+        font-weight: normal;
+        width: 350px;
+        background: #ffffff;
+        margin: 0 0 5px 0;
+        height: 32px;
+        padding: 0 12px 0 12px;
+        outline: 0;
+        letter-spacing: 0.3px;
+        @include mobile-landscape1 {
+          width: 250px;
+        }
+      }
+      .invalid {
+        color: #ff0000;
+      }
+      button {
+        position: relative;
+        background: #333;
+        color: #fff;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        margin-top: 40px;
+        width: 200px;
+        cursor: pointer;
+        border: unset;
+        border-radius: 0;
+      }
+    }
+  }
+  &.modal {
+    padding-right: 0 !important;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 !important;
+  }
+
+  button.close {
+    position: absolute;
+    right: 35px;
+    top: 22px;
+    color: $color4;
+    font-size: 39px;
+    outline: 0;
+    opacity: 1;
+    @include desk-lg-below1 {
+      top: 10px;
+      right: 15px;
+    }
+  }
+  form {
+    padding: 0 17px 0px 0;
+    width: 69%;
+    margin: 82px auto 0;
+    @include desk-lg-below1 {
+      margin: 45px auto 0;
+      padding: 0 0 20px 0;
+    }
+    @include tablet-portrait {
+    }
+    @include mobile-portrait {
+      width: 100%;
+    }
+    input,
+    textarea,
+    .drop,
+    .submit_btn {
+      font-size: 14px;
+      line-height: 50px;
+      color: $color23_1;
+      font-family: $font_family_1;
+      font-weight: normal;
+      display: block;
+      position: relative;
+      background: $color1;
+      // border:1px solid $color4;
+      border-radius: 0;
+      width: 100%;
+      height: 50px;
+      letter-spacing: 0.7px;
+      padding: 4px 83px 0 26px;
+      @include mobile-portrait {
+        height: 40px;
+        padding: 4px 52px 0 15px;
+      }
+    }
+    button {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: $color4;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 0;
+      border: 1px solid $color4;
+      cursor: pointer;
+      outline: 0;
+      @include mobile-portrait {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+      }
+      .fa {
+        font-size: 30px;
+        line-height: 50px;
+        color: $color1;
+        @include mobile-portrait {
+          font-size: 20px;
+          line-height: 40px;
+        }
+      }
+    }
+    .form-group {
+      position: relative;
+      margin: 0;
+    }
+  }
+
+  h5 {
+    margin-top: 30px;
+    font-size: 17px;
+    line-height: 20px;
+    color: $color11;
+    font-family: $font_family_5;
+    text-align: center;
+  }
+}
+.close:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
