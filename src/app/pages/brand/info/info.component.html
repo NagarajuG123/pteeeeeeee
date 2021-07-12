@@ -3,15 +3,7 @@
   <div class="main-content">
     <div class="main_content_tab">
       <ul
-        class="
-          resp-tabs-list
-          tab-identifier2
-          d-flex
-          justify-content-center
-          align-items-center
-          clearfix
-          nav nav-pills
-        "
+        class="resp-tabs-list tab-identifier2 d-flex justify-content-center align-items-center clearfix nav nav-pills"
       >
         <li
           *ngFor="let category of categories; let i = index"
@@ -197,13 +189,13 @@
                               class="col-sm-5 map-legend-item"
                             >
                               <div class="row market-names">
-                                <div class="col-xs-1">
+                                <div class="col-1">
                                   <div
                                     class="market-status-color"
                                     [style.backgroundColor]="market.color"
                                   ></div>
                                 </div>
-                                <div class="col-xs-10">
+                                <div class="col-10 align-self-center lh-base">
                                   <span class="text-uppercase market-name">{{
                                     market.name
                                   }}</span>
