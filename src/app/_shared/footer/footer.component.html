@@ -139,7 +139,7 @@
           </div>
         </div>
         <div class="footer-bottom col-12">
-          <form>
+          <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
             <div
               class="form-group d-block"
               data-toggle="modal"
@@ -150,7 +150,7 @@
                 class="form-control"
                 [placeholder]="footer?.search?.placeholder"
               />
-              <button type="button" class="d-block text-center">
+              <button type="button" class="d-block text-center" (click)="onSearchSubmit(searchForm)">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </div>

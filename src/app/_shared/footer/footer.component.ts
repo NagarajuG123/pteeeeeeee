@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -14,7 +15,12 @@ export class FooterComponent implements OnInit {
   isFooter: boolean = true;
   isBrandFooter: boolean = false;
   brandContact: any;
-  constructor( private apiService: ApiService,private router:Router ) { }
+  searchForm: FormGroup;
+  constructor( private apiService: ApiService,private router:Router,fb: FormBuilder ) { 
+    this.searchForm = new FormGroup({
+      searchInput: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
     this.getPublication();
@@ -46,6 +52,21 @@ export class FooterComponent implements OnInit {
       }
     }); 
   }
+  
+  onSearchSubmit(searchForm: FormGroup) {
+    let instance = ['1851', 'ee', '1903'];
+    if (instance.includes(this.publication.id.toLowerCase())) {
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
+    } else {
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
+    }
+    this.searchForm.controls['searchInput'].setValue('');
+  }
+
   setFooter() {
   this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
     this.footer = response.data;
