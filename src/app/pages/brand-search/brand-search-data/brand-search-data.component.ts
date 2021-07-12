@@ -10,6 +10,8 @@ export class BrandSearchDataComponent implements OnInit {
   brand_keys: Array<object> = [];
   invest_keys: Array<object> = [];
   industry_keys: Array<object> = [];
+  params: any = [];
+  search_input: any = [];
 
   constructor() { }
 
@@ -159,6 +161,12 @@ export class BrandSearchDataComponent implements OnInit {
         isChecked: false,
       },
     ];
+    this.getSearch();
   }
 
+  getSearch(){
+    this.params = `?q=${this.search_input}&sort=brand&limit=10&offset=0`;
+  }
 }
+
+
