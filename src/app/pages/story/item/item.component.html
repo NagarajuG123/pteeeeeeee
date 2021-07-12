@@ -69,7 +69,9 @@
           </a>
           <div class="brian_content">
             <h5>
-              <a href="">{{ details?.author?.name }}</a>
+              <a href="author/{{ details?.author?.slug }}">{{
+                details?.author?.name
+              }}</a>
             </h5>
             <small [innerHTML]="details?.author?.designation"></small>
           </div>

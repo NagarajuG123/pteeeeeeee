@@ -16,16 +16,13 @@
             alt="img5"
           />
         </figure>
-        <div class="socialmedia">
+        <div
+          class="socialmedia"
+          [ngClass]="type === 'authorpage' ? 'author' : ''"
+        >
           <p title="{{ n.title }}" style="-webkit-box-orient: vertical">
             {{ n.title }}
           </p>
-          <!-- <span *ngIf="n.posted_on" class="d-block">{{
-            n.posted_on | timeago
-          }}</span>
-          <span *ngIf="n.post_on" class="d-block">{{
-            n.post_on | timeago
-          }}</span> -->
         </div>
       </a>
     </li>

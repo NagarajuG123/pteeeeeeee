@@ -56,8 +56,12 @@
           <app-five-column
             [contents]="editorials"
             [type]="'authorpage'"
+            [typeSlug]="'editorials'"
           ></app-five-column>
-          <a href="" class="readmore d-block text-uppercase">
+          <a
+            href="{{ goReadMore(editorials[0]) }}"
+            class="readmore d-block text-uppercase"
+          >
             READ MORE
             <span class="d-block text-center">
               <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -72,8 +76,12 @@
           <app-five-column
             [contents]="brandedContents"
             [type]="'authorpage'"
+            [typeSlug]="'brand-latest-stories'"
           ></app-five-column>
-          <a href="" class="readmore d-block text-uppercase">
+          <a
+            href="{{ readMore(brandedContents[0]) }}"
+            class="readmore d-block text-uppercase"
+          >
             READ MORE
             <span class="d-block text-center">
               <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -84,3 +92,4 @@
     </div>
   </div>
 </div>
+<ngx-json-ld [json]="schema"></ngx-json-ld>
