@@ -6,18 +6,8 @@ import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 import { InfoTopComponent } from './info-top/info-top.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
-
-
 @NgModule({
-  declarations: [
-    BrandComponent,
-    InfoComponent,
-    InfoTopComponent,
-  ],
-  imports: [
-    CommonModule,
-    BrandRoutingModule,
-    SharedModule,
-  ]
+  declarations: [BrandComponent, InfoComponent, InfoTopComponent],
+  imports: [CommonModule, BrandRoutingModule, SharedModule],
 })
-export class BrandModule { }
+export class BrandModule {}

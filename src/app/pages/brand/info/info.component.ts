@@ -237,7 +237,9 @@ export class InfoComponent implements OnInit {
         }
       });
   }
-
+  shareUrl() {
+    return window.location.href;
+  }
   marketingColor(state, items) {
     if (items['available-markets'] === null) {
       return '#bcb29a';
