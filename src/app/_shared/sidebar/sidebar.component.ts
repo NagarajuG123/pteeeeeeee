@@ -147,7 +147,7 @@ export class SidebarComponent implements OnInit {
       .subscribe((res) => {
         $('#pdfModal1').hide();
         if (res.success) {
-          window.open(this.downloadPdfUrl, '_blank');
+          window.open(this.downloadPdfUrl.replace('api.', ''), '_blank');
         } else {
           this.emailSubValid = true;
           this.emailSubMessage = res.message;

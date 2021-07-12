@@ -16,6 +16,7 @@
         <li
           *ngFor="let category of categories; let i = index"
           [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+          [class.hide]="!validData[i]"
         >
           <a
             *ngIf="category['value'] !== 'brand_pdf'"
@@ -25,18 +26,18 @@
             {{ category["name"] }}
           </a>
           <a
-            *ngIf="category['value'] === 'brand_pdf' && !pdf.email_popup"
-            href="{{ changeDownPDFUrl(pdf.media.url) }}"
+            *ngIf="category['value'] === 'brand_pdf' && !pdf?.email_popup"
+            href="{{ changeDownPDFUrl(pdf?.media?.url) }}"
             class="text-uppercase"
             target="blank"
           >
             {{ category["name"] }}
           </a>
           <a
-            *ngIf="category['value'] === 'brand_pdf' && pdf.email_popup"
-            href="{{ changeDownPDFUrl(pdf.media.url) }}"
+            *ngIf="category['value'] === 'brand_pdf' && pdf?.email_popup"
             class="text-uppercase"
-            target="blank"
+            data-bs-toggle="modal"
+            data-bs-target="#pdfModal"
           >
             {{ category["name"] }}
           </a>
@@ -300,6 +301,41 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="sponsored-modal-content">
+          <button type="button" class="close text-right" data-dismiss="modal">
+            &times;
+          </button>
+          <h2 class="text-uppercase">Download PDF</h2>
+          <div class="email-content">
+            <form [formGroup]="pdfForm" (ngSubmit)="emailSubscribe(pdfForm)">
+              <div class="form-group">
+                <label>Enter Email:</label>
+                <input
+                  type="text"
+                  [formControl]="pdfForm.controls['emailInput']"
+                  class="form-control"
+                />
+                <app-error-message
+                  *ngIf="isEmailSubmit"
+                  class="full-width"
+                  [control]="pdfForm.controls['emailInput']"
+                ></app-error-message>
+                <p *ngIf="emailSubValid" class="invalid">
+                  {{ emailSubMessage }}
+                </p>
+                <button type="button" (click)="emailSubscribe(pdfForm)">
+                  Download
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

@@ -12,8 +12,15 @@ export class InfoTopComponent implements OnInit {
   @Input('type') type = '';
   constructor(private commonService: CommonService) {}
 
-  ngOnInit(): void { }
-   isVideo(item: any) {
+  ngOnInit(): void {}
+  isVideo(item: any) {
     return this.commonService.isVideo(item);
- }
+  }
+  goReadMore(article) {
+    if (typeof article.slug !== 'undefined' && this.brandSlug !== '1851') {
+      return `${this.brandSlug}/${article.slug}#brand-latest-stories`;
+    } else {
+      return `${article.slug}#latest-stories`;
+    }
+  }
 }
