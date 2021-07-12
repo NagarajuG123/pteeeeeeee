@@ -19,10 +19,12 @@ export class CarouselComponent implements OnInit {
   openVideoPlayer = true;
   url: string = '';
   customOptions: OwlOptions = {};
-  constructor(private apiService: ApiService,
-    @Inject(PLATFORM_ID) platformId: Object,) {
-        this.isBrowser = isPlatformBrowser(platformId);
-    }
+  constructor(
+    private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
     this.customOptions = {
@@ -96,10 +98,10 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    if (typeof item.brand !== 'undefined' && item.brand.slug !== '1851') {
-      brandSlug = `${item.brand.slug}/`;
+    if (typeof item !== 'undefined') {
+      brandSlug = `${item?.brand?.slug}/`;
     }
-    return `${brandSlug}${item.slug}/#${typeSlug}`;
+    return `${brandSlug}${item?.slug}/#${typeSlug}`;
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;

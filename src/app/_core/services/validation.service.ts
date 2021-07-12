@@ -25,4 +25,13 @@ export class ValidationService {
       return { invalidAccept: true };
     }
   }
+  static getValidatorErrorMessage(validatorName: string) {
+    const config = {
+      required: 'This field is required',
+      invalidEmailAddress: 'Please check the email address',
+      invalidPhoneNumber: 'Please check the phone number, (xxx) xxx-xxxx.',
+      invalidAccept: 'Please check again.',
+    };
+    return config[validatorName];
+  }
 }

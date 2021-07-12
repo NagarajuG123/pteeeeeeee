@@ -35,6 +35,7 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { BannerSearchComponent } from './components/banner-search/banner-search.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 // Modals Components
 
@@ -63,7 +64,8 @@ import { BannerSearchComponent } from './components/banner-search/banner-search.
     TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
-    BannerSearchComponent
+    BannerSearchComponent,
+    ErrorMessageComponent
   ],
   imports: [CommonModule,
     RouterModule,
