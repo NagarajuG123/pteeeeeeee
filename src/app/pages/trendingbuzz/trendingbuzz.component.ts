@@ -21,10 +21,10 @@ export class TrendingbuzzComponent implements OnInit {
 
   getTrending(){
     this.apiService.getAPI(`${this.slug}/trending-buzz?limit=30&offset=0`).subscribe((response ) =>{
+      this.metaService.setSeo(response.data[0].meta);
       this.firstBlock = response.data.slice(0, 10);
       this.secondBlock = response.data.slice(10, 30);
       this.hasMore = response.has_more;
-      this.metaService.setSeo(response.data.meta);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
         this.metaService.setTitle(`Trending Brand Buzz | ${result.title}`);
       });
