@@ -3,7 +3,71 @@
 .top-space {
   min-height: 94px;
 }
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+}
 
+.socialmedia {
+  padding: 21px 0 10px;
+  overflow: hidden;
+  margin-bottom: 50px;
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 54px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #272525;
+    letter-spacing: -.1px;
+    margin-bottom: 21px;
+    text-align: left;
+  }
+  span{
+    span {
+      font-size: 12px;
+      line-height: 14px;
+      color: #a6a8aa;
+      font-weight: 400;
+      font-family: ProximaNova-Regular;
+      text-align: left;
+      margin: 10px 0;
+      .d-block {
+        display: none!important;
+      }
+   }
+  }
+}
+
+.category-frannews{
+  .category-list {
+    display: inline-block;
+    float: left;
+    padding: 0 15px;
+  }
+  .frannews-bottom {
+    ul {
+    padding: 0 0 30px;
+      li {
+        width: 100%;
+        padding: 0 0 41px;
+        float: none;
+      }
+    }
+  }
+} 
+.frannews-bottom{
+  ul {
+    margin: 0 -15px;
+    li {
+      display: inline-block;
+      width: 20%;
+      padding: 0 15px;
+     }
+  }
+} 
 .search-page {
   .search_keyword {
     .category-container {
