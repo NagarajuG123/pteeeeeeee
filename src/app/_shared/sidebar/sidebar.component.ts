@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   brandTitle!: string;
   contactForm: any;
   downloadPdfUrl: any;
-  isPdfEmail: any;
+  isPdfEmail: any = false;
   visitSite: any;
   isMain: boolean = true;
   searchForm: FormGroup;

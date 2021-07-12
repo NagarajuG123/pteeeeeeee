@@ -227,7 +227,7 @@
             <div *ngIf="downloadPdfUrl" class="monthly-covers-details">
               <p>
                 <a
-                  *ngIf="isPdfEmail"
+                  *ngIf="isPdfEmail == 'true'"
                   data-bs-toggle="modal"
                   data-bs-target="#pdfModal1"
                   class="text-uppercase"
@@ -236,7 +236,7 @@
                   Download PDF
                 </a>
                 <a
-                  *ngIf="!isPdfEmail"
+                  *ngIf="isPdfEmail == 'false'"
                   href="{{ downloadPdfUrl }}"
                   target="blank"
                 >
