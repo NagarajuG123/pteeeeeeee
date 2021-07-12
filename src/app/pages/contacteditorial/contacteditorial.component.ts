@@ -64,7 +64,27 @@ export class ContacteditorialComponent implements OnInit, AfterViewInit {
     this.getMeta();
     this.getPublication();
   }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function () {
+        $('.text-field').click(function (e) {
+          console.log('ddf');
+          $(this).closest('ul>li').find('.editors-details').slideToggle();
+          $(this).closest('ul> li').find('.form-group').addClass('active');
+          $(this)
+            .closest('ul> li')
+            .siblings()
+            .find('.form-group')
+            .removeClass('active');
+        });
 
+        $('.sucess-message a').click(function (e) {
+          $('.editors').show();
+          $('.sucess-message').hide();
+        });
+      });
+    }
+  }
   getContactEditorial() {
     this.apiService
       .getAPI(`${this.slug}/contact-editorial`)
@@ -89,14 +109,7 @@ export class ContacteditorialComponent implements OnInit, AfterViewInit {
         });
     });
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $('.sucess-message a').click(function (e) {
-        $('.editors').show();
-        $('.sucess-message').hide();
-      });
-    }
-  }
+
   toggleCurrent(e) {
     if (!e.target.checked) {
       this.contactForm.controls['currentFranchisee'].setValue('');

@@ -1,12 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/_core/services/validation.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-contact-editorial',
@@ -18,14 +14,20 @@ export class ContactEditorialComponent implements OnInit {
   isCheckBoxVisible!: boolean;
   @Input()
   publicationTitle!: string;
-
+  isBrowser: boolean = false;
   contactForm: FormGroup;
   isSubmitted: boolean = false;
   submitErrMsg: string | undefined;
   submitSuccessMsg: string | undefined;
   isSuccess: boolean = false;
 
-  constructor(fb: FormBuilder, private apiService: ApiService) {
+  constructor(
+    fb: FormBuilder,
+    private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+
     this.contactForm = fb.group({
       email: [
         '',
@@ -62,7 +64,26 @@ export class ContactEditorialComponent implements OnInit {
       signUpNewsletter: true,
     });
   }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function () {
+        $('.text-field').click(function (e) {
+          $(this).closest('ul>li').find('.editors-details').slideToggle();
+          $(this).closest('ul> li').find('.form-group').addClass('active');
+          $(this)
+            .closest('ul> li')
+            .siblings()
+            .find('.form-group')
+            .removeClass('active');
+        });
 
+        $('.sucess-message a').click(function (e) {
+          $('.editors').show();
+          $('.sucess-message').hide();
+        });
+      });
+    }
+  }
   toggleCurrent(e) {
     if (!e.target.checked) {
       this.contactForm.controls['currentFranchisee'].setValue('');
