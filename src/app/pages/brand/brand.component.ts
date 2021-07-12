@@ -77,7 +77,7 @@ export class BrandComponent implements OnInit {
       this.dynamicFirst = response.data.stories.slice(0, 10);
       this.dynamicSecond = response.data.stories.slice(10, 30);
       this.hasMore = response.has_more;
-      this.metaService.setSeo(response.data.stories.meta);
+      this.metaService.setSeo(this.dynamicFirst[0].meta);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
         this.metaService.setTitle(`${this.dynamicUrl.charAt(0).toUpperCase()} | ${result.title}`);
         });
