@@ -79,7 +79,8 @@ export class BrandComponent implements OnInit {
       this.hasMore = response.has_more;
       this.metaService.setSeo(this.dynamicFirst[0].meta);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-        this.metaService.setTitle(`${this.dynamicUrl.charAt(0).toUpperCase()} | ${result.title}`);
+        const Title = this.dynamicUrl.charAt(0).toUpperCase() + this.dynamicUrl.slice(1);
+        this.metaService.setTitle(`${Title} | ${result.title}`);
         });
     });
   }
@@ -117,11 +118,15 @@ export class BrandComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
+      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+      this.metaService.setTitle(`${response.data.seo.title} | ${result.title}`);
+      });
     });
   }
   getCategoryMeta(){
     this.apiService.getAPI(`${this.metaUrl}`).subscribe((response) => {
       this.metaService.setSeo(response.data);
+      
     });
   }
 }
