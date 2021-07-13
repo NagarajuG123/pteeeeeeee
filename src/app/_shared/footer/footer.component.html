@@ -68,7 +68,7 @@
                   </a>
                 </li>
                 <li *ngIf="footer['site-map']">
-                  <a routerLink="/sitemap" class="text-uppercase">SITE MAP</a>
+                  <a routerLink="{{ footer['site-map']?.url }}" class="text-uppercase">SITE MAP</a>
                 </li>
                 <li>
                   <a

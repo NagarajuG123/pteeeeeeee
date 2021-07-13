@@ -40,9 +40,11 @@ export class SitemapComponent implements OnInit {
         this.apiUrl = `${this.brandSlug}/sitemap-page`;
         this.getSitemap();
       }
+      else{
+        this.apiUrl = `sitemap-page`;
+        this.getSitemap();
+      }
     });
-    this.apiUrl = `sitemap-page`;
-    this.getSitemap();
   }
 
   getSitemap(){

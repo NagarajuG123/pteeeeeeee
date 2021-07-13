@@ -22,7 +22,8 @@ export class SitemapDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private metaService:MetaService
-    ) {  this.router.events
+    ) {
+      this.router.events
       .subscribe(events => {
         if (events instanceof NavigationEnd) {
           this.brandSlug = events.url.split('/')[1];
@@ -32,9 +33,11 @@ export class SitemapDetailComponent implements OnInit {
             this.brandSlug = this.brandSlug.replace(/\+/g, '');
           }
         }
-      });}
+      });
+    }
 
   ngOnInit(): void {
+    console.log(this.brandSlug);
     this.route.paramMap
     .subscribe(params => {
        this.year = params.get('year');
@@ -44,9 +47,11 @@ export class SitemapDetailComponent implements OnInit {
           this.brandSlug = response.slug;
           this.apiUrl = `${this.brandSlug}/sitemap-page/${this.year}/${this.month}`;
         }
+        else{
+          this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
+          this.getSitemapDetail();
+        }
       });
-      this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
-      this.getSitemapDetail();
     });
     this.getMeta();
   }
