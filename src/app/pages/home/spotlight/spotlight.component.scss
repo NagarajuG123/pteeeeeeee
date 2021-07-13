@@ -221,6 +221,9 @@ spotlighttab-cnt-left {
   }
   .adweek-right {
     padding: 0;
+    p {
+      color: $color1;
+    }
     @include tablet-landscape1 {
       padding: 0 12px 0 15px;
     }

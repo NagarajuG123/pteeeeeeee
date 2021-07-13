@@ -13,6 +13,7 @@ import { BrandModule } from './pages/brand/brand.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.module';
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,9 +28,9 @@ import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.mo
     BrandModule,
     CommonModule,
     BrowserAnimationsModule,
-    MonthlyDetailsModule
+    MonthlyDetailsModule,
   ],
-  providers: [],
+  providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

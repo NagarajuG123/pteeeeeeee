@@ -7,8 +7,6 @@ import { PowerRankingComponent } from './pages/power-ranking/power-ranking.compo
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
 import { AuthorComponent } from './pages/author/author.component';
 import { StoryComponent } from './pages/story/story.component';
-import { BrandSearchComponent } from './pages/brand-search/brand-search.component';
-import { SearchComponent } from './pages/search/search.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {

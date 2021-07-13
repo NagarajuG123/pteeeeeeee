@@ -1,148 +1,358 @@
 <div class="sponsered_content">
-  <div class="sponsered_content_main row">
-    <div class="sponsered_content-left col-sm-1 col-md-1 col-12 text-sm-right">
-      <div id="{{ 'inline-buttons-' }}" class="social-links"></div>
-    </div>
-    <div
-      *ngIf="details"
-      class="sponsered_content_middle col-md-11 col-sm-11 col-12"
-    >
+  <div class="week-videos-details">
+    <div class="sponsered_content_main row">
       <div
-        *ngIf="
-          details?.sponsorship?.is_sponsored &&
-          details?.sponsorship?.position === 'story_title_section'
-        "
-        class="sponsered_content_middle_title"
+        class="sponsered_content-left col-sm-1 col-md-1 col-12 text-sm-right"
       >
-        <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
-          SPONSORED
-        </a>
+        <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
       </div>
-      <a
-        class="d-block video-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#storyModal"
+      <div
+        *ngIf="details"
+        class="sponsered_content_middle col-md-11 col-sm-11 col-12"
       >
-        <figure>
-          <img
-            appYoutubeImage
-            src="{{ details?.media | defaultImage: 802:451 }}"
-            width="802"
-            height="451"
-            style="width: 802px !important; cursor: pointer"
-            alt="sponsored"
-          />
-        </figure>
-        <img
-          *ngIf="isVideo(details)"
-          class="video-maker"
-          src="assets/img/youtube.svg"
-        />
-        <app-modal
-          *ngIf="isVideo(details)"
-          [videoUrl]="details.media.url"
-          [modalId]="'storyModal'"
-        ></app-modal>
-      </a>
-      <h1 class="m-0" [innerHTML]="details?.title"></h1>
-      <h2 [innerHTML]="details?.short_description"></h2>
-      <div class="brian_jaeger d-flex flex-wrap align-items-center">
         <div
-          class="
-            brian_jaeger_main
-            d-flex
-            flex-wrap
-            align-items-center
-            col-xl-6 col-md-6 col-sm-6 col-12
-          "
+          *ngIf="sponsorship && sponsorship_position === 'story_title_section'"
+          class="sponsered_content_middle_title"
         >
-          <a href="">
-            <img
-              src="{{ details?.author?.media | defaultImage: 81:81 }}"
-              width="81"
-              height="81"
-              class="author-img"
-              [alt]="details?.author?.name + ' Headshot'"
-              (error)="author_img.src = 'assets/img/placeholder.svg'"
-              #author_img
-            />
+          <a
+            href="javascript:void(0)"
+            data-bs-toggle="modal"
+            data-bs-target="#sponsoredModal"
+          >
+            SPONSORED
           </a>
-          <div class="brian_content">
-            <h5>
-              <a href="author/{{ details?.author?.slug }}">{{
-                details?.author?.name
-              }}</a>
-            </h5>
-            <small [innerHTML]="details?.author?.designation"></small>
+        </div>
+        <a
+          href="javascript:void(0)"
+          class="d-block video-btn"
+          (click)="openVideoPlayer = true"
+        >
+          <figure>
+            <img
+              appYoutubeImage
+              *ngIf="isMaxresultImg"
+              src="{{ media | defaultImage: 802:451 }}"
+              width="802"
+              height="451"
+              style="width: 802px !important; cursor: pointer"
+              alt="sponsored"
+              data-bs-toggle="modal"
+              data-bs-target="#storyModal{{ index }}"
+            />
+            <img
+              appYoutubeImage
+              *ngIf="!isMaxresultImg"
+              src="{{ media | defaultImage: 802:451 }}"
+              width="802"
+              height="451"
+              style="width: 802px !important; cursor: pointer"
+              alt="sponsored"
+              data-bs-toggle="modal"
+              data-bs-target="#storyModal{{ index }}"
+            />
+          </figure>
+          <img
+            *ngIf="media && media.type == 'video'"
+            class="video-maker"
+            src="assets/img/youtube.svg"
+          />
+        </a>
+        <h1 class="m-0" [innerHTML]="title"></h1>
+        <h2 [innerHTML]="short_description"></h2>
+        <div class="brian_jaeger d-flex flex-wrap align-items-center">
+          <div
+            class="
+              brian_jaeger_main
+              d-flex
+              flex-wrap
+              align-items-center
+              col-xl-6 col-md-6 col-sm-6 col-12
+            "
+          >
+            <a href="{{ goAuthorPage() }}">
+              <img
+                src="{{ author_media | defaultImage: 81:81 }}"
+                width="81"
+                height="81"
+                class="author-img"
+                [alt]="details?.author?.name + ' Headshot'"
+                (error)="author_img.src = 'assets/images/placeholder.svg'"
+                #author_img
+              />
+            </a>
+            <div class="brian_content">
+              <h5>
+                <a href="{{ goAuthorPage() }}">{{ author_name }}</a>
+              </h5>
+              <small [innerHTML]="designation"></small>
+              <div
+                class="
+                  brian_jaeger_data
+                  col-xl-6 col-md-6 col-sm-6 col-12
+                  mobile-only
+                "
+              >
+                <em>
+                  <div
+                    *ngIf="
+                      sponsorship &&
+                      sponsorship_position === 'author_title_section'
+                    "
+                    class="sponsered_content_middle_title"
+                  >
+                    <a
+                      href="javascript:void(0)"
+                      data-toggle="modal"
+                      data-target="#sponsoredModal"
+                    >
+                      SPONSORED
+                    </a>
+                  </div>
+
+                  <span *ngIf="isDate()"
+                    >{{ date_time | date: "h:mm a" }} •
+                    {{ date_time | date: "MM/dd/yy" }}</span
+                  >
+                  <a [href]="category.slug.replace('-', '+')">
+                    <small>&nbsp; &nbsp;{{ category.name }}</small>
+                  </a>
+                </em>
+              </div>
+            </div>
+          </div>
+          <div
+            class="
+              brian_jaeger_data
+              col-xl-6 col-md-6 col-sm-6 col-12
+              desktop-only
+            "
+          >
+            <em>
+              <span
+                *ngIf="
+                  sponsorship && sponsorship_position === 'author_title_section'
+                "
+                class="sponsered_content_middle_title"
+              >
+                <a
+                  href="javascript:void(0)"
+                  data-toggle="modal"
+                  data-target="#sponsoredModal"
+                >
+                  SPONSORED
+                </a>
+              </span>
+              <div>
+                <span *ngIf="isDate()"
+                  >{{ last_modified | date: "h:mm a" }} •
+                  {{ last_modified | date: "MM/dd/yy" }}</span
+                >
+              </div>
+              <div>
+                <a [href]="category.slug.replace('-', '+')">
+                  <small>&nbsp; &nbsp;{{ category.name }}</small>
+                </a>
+              </div>
+            </em>
           </div>
         </div>
         <div
-          class="
-            brian_jaeger_data
-            col-xl-6 col-md-6 col-sm-6 col-12
-            desktop-only
-          "
+          id="{{ id }}"
+          class="brian_jaeger_content"
+          [innerHTML]="content"
+        ></div>
+        <div *ngIf="sponsorContent" class="brand-partner">
+          <p>
+            *This brand is a paid partner of {{ publication.title }}. For more
+            information on paid partnerships please
+            <span class="tooltiptext-link">click here.</span>
+          </p>
+        </div>
+        <div class="comment-div">
+          <img
+            src="assets/img/comment_img.png"
+            width="27"
+            height="26"
+            alt="comment_img"
+            class="comment-img"
+          />
+          <a
+            href="javascript:void(0)"
+            class="comment_section"
+            (click)="openFbComment()"
+          >
+            VIEW COMMENTS
+          </a>
+        </div>
+        <div
+          *ngIf="isBrowser && full_url"
+          [hidden]="!isViewComment"
+          class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop"
+          attr.data-href="{{ full_url }}"
+          data-numposts="5"
+          data-order-by="time"
+          data-width="100%"
+          fb-xfbml-state="rendered"
+          fb-iframe-plugin-query="app_id=346418588772225&container_width=760&height=100&href=https://www.1851franchise.com&locale=en_US&numposts=5&order_by=time&sdk=joey&version=v2.0"
+          style="width: 100%"
         >
-          <em>
-            <span
-              *ngIf="
-                details?.sponsorship?.is_sponsored &&
-                details?.sponsorship?.position === 'author_title_section'
-              "
-              class="sponsered_content_middle_title"
-            >
-              <a data-bs-toggle="modal" data-bs-target="#sponsoredModal">
-                SPONSORED
-              </a>
+          <div
+            class="fb-comments"
+            data-href="http://www.facebook.com/plugins/comments.php?href=https://www.1851franchise.com"
+            data-width=""
+            data-numposts="5"
+          ></div>
+        </div>
+        <div class="scroll_data">
+          <a href="javascript:void(0)" class="text-center">
+            <span>
+              SCROLL FOR NEXT STORY
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
             </span>
-            <div>
-              <span
-                >{{ publishDate | date: "h:mm a" }} •
-                {{ publishDate | date: "MM/dd/yy" }}</span
+          </a>
+        </div>
+        <div *ngIf="isLoading" class="loading-screen">
+          <img
+            class="loading-image"
+            src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
+          />
+        </div>
+      </div>
+      <div *ngIf="details" class="sponsered_content_right col-12 mobile-rails">
+        <div class="facebook-plugin" *ngIf="isBrowser">
+          <iframe
+            *ngIf="isDefault_fb"
+            [src]="default_fb_url | safeUrl"
+            width="340"
+            height="500"
+            style="border: none; overflow: hidden"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+          <div
+            *ngIf="!isDefault_fb"
+            id="{{ 'mobile_fb_plugin' + id }}"
+            class="fb-page"
+            [attr.data-href]="fb_url"
+            data-tabs="timeline"
+            data-width=""
+            data-height=""
+            data-small-header="true"
+            data-adapt-container-width="true"
+            data-hide-cover="false"
+            data-show-facepile="true"
+          >
+            <blockquote [attr.cite]="fb_url" class="fb-xfbml-parse-ignore">
+              <a
+                id="{{ 'mobile_block_fb_link' + id }}"
+                href="https://www.facebook.com/facebook"
+                >Facebook</a
               >
-              <a [href]="details?.category?.slug">
-                <small>&nbsp; &nbsp;{{ details?.category?.name }}</small>
-              </a>
+            </blockquote>
+          </div>
+        </div>
+        <div *ngIf="adsImages.length" class="advertisement_data text-center">
+          <h6>ADVERTISEMENT</h6>
+          <ngx-slick *ngIf="isBrowser" class="carousel" [config]="slideConfig">
+            <a
+              ngxSlickItem
+              *ngFor="let ad of adsImages; let i = index"
+              href="{{ ad.url }}"
+              target="blank"
+              class="d-block"
+            >
+              <img
+                appYoutubeImage
+                src="{{ ad.media.url }}"
+                width="353"
+                height="264"
+                style="width: 100%"
+                alt="story_add"
+              />
+            </a>
+          </ngx-slick>
+        </div>
+        <div class="banner-right col-12" *ngIf="brandNews.length">
+          <h4 *ngIf="!isBrand">
+            {{ newsTitle }}
+          </h4>
+          <h4 *ngIf="isBrand">LATEST BRAND NEWS</h4>
+          <div class="banner-right-details" *ngIf="isBrowser">
+            <div
+              malihu-scrollbar
+              [scrollbarOptions]="scrollbarOptions"
+              class="banner-right-details vertical_scroll_featured_articles"
+              [className]="
+                isSmallWindow ? 'vertical_scroll_small' : 'vertical_scroll'
+              "
+              #virtualScroll
+            >
+              <ul>
+                <li *ngFor="let article of brandNews" style="cursor: pointer">
+                  <a
+                    href="{{
+                      article.brand && article.brand.slug != '1851'
+                        ? article.brand.slug + '/'
+                        : ''
+                    }}{{ article.slug }}#franbuzz"
+                    class="adweek d-flex"
+                  >
+                    <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">
+                      <figure>
+                        <img
+                          appYoutubeImage
+                          src="{{ article.media | defaultImage: 205:115 }}"
+                          width="205"
+                          height="115"
+                          alt="img3"
+                        />
+                      </figure>
+                    </div>
+                    <div class="adweek-right col-xl-5 col-lg-12 col-sm-6">
+                      <p>{{ article.title }}</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
-          </em>
+          </div>
         </div>
       </div>
       <div
-        id="{{ details.id }}"
-        class="brian_jaeger_content"
-        [innerHTML]="details.content"
-      ></div>
-      <div *ngIf="sponsorContent" class="brand-partner">
-        <p>
-          *This brand is a paid partner of {{ publication?.title }}. For more
-          information on paid partnerships please
-          <span class="tooltiptext-link">click here.</span>
-        </p>
-      </div>
-      <div class="comment-div">
-        <img
-          src="assets/img/comment.png"
-          width="27"
-          height="26"
-          alt="comment"
-          class="comment-img"
-        />
-        <a href="javascript:void(0)" class="comment_section"> VIEW COMMENTS </a>
-      </div>
-
-      <div class="scroll_data">
-        <a href="javascript:void(0)" class="text-center">
-          <span>
-            SCROLL FOR NEXT STORY
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </div>
-      <div class="loading-screen">
-        <img
-          class="loading-image"
-          src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
-        />
+        *ngIf="isVideo(media)"
+        class="modal fade"
+        id="sponsered_content_video_modal{{ index }}"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true" (click)="openVideoPlayer = false">
+                  &times;
+                </span>
+              </button>
+              <div class="embed-responsive embed-responsive-16by9">
+                <app-video-player
+                  *ngIf="openVideoPlayer"
+                  class="embed-responsive-item"
+                  [srcUrl]="url"
+                >
+                </app-video-player>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

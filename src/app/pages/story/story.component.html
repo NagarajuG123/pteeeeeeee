@@ -1,173 +1,61 @@
-<div class="top-space">
-  <div *ngIf="isBrowser" class="main-content details-page">
-    <div
-      class="search-results"
-      infinite-scroll
-      [infiniteScrollDistance]="scrollDistance"
-      [infiniteScrollUpDistance]="scrollUpDistance"
-      [infiniteScrollThrottle]="throttle"
-      (scrolled)="onScrollDown()"
-    >
-      <div class="container">
-        <div class="row">
-          <div *ngIf="storyData.length" class="col-lg-8 col-md-8 col-sm-12">
-            <app-item
-              *ngFor="let details of storyData; let i = index"
-              class="element"
-              [details]="details"
-              attr.data-title="{{ details['slug'] }}"
-              attr.data-id="{{ details['id'] }}"
-              [news]="newsData"
-              [brand_slug]="brand_slug"
-              [brand_name]="brand_name"
-              [index]="i"
-              [type]="type"
-              [isLoading]="isLoading"
-              [social_image]="social_image"
-              [isSmallWindow]="isSmallWindow"
-              [publication]="publication"
-              [newsTitle]="newsTitle"
-            ></app-item>
-          </div>
-          <div *ngIf="detailsData.length" class="col-lg-4 col-md-4 col-sm-12">
-            <div class="sponsered_content_right desktop-rails">
-              <div class="facebook-plugin" *ngIf="isBrowser">
-                <div
-                  *ngIf="isDefault_fb"
-                  id="fb_plugin"
-                  class="fb-page"
-                  [attr.data-href]="fb_url"
-                  data-tabs="timeline"
-                  data-width=""
-                  data-height=""
-                  data-small-header="true"
-                  data-adapt-container-width="true"
-                  data-hide-cover="false"
-                  data-show-facepile="false"
-                >
-                  <blockquote
-                    [attr.cite]="fb_url"
-                    class="fb-xfbml-parse-ignore"
-                  >
-                    <a
-                      id="block_fb_link"
-                      href="https://www.facebook.com/facebook"
-                    ></a>
-                  </blockquote>
-                </div>
-              </div>
-              <div
-                *ngIf="adsImages.length"
-                class="advertisement_data text-center"
-              >
-                <h6>ADVERTISEMENT</h6>
-                <ngx-slick
-                  *ngIf="isBrowser"
-                  class="carousel"
-                  [config]="slideConfig"
-                >
-                  <a
-                    ngxSlickItem
-                    *ngFor="let ad of adsImages; let i = index"
-                    href="{{ ad.url }}"
-                    target="blank"
-                    class="d-block"
-                  >
-                    <img
-                      appYoutubeImage
-                      src="{{ ad.media | defaultImage: 353:264 }}"
-                      width="353"
-                      height="264"
-                      style="width: 100%"
-                      alt="story_add"
-                    />
-                  </a>
-                </ngx-slick>
-              </div>
-              <div id="banner_brandNews" *ngIf="newsData.length">
-                <div class="banner-right">
-                  <h4 *ngIf="!isBrand">
-                    {{ newsTitle }}
-                  </h4>
-                  <h4 *ngIf="isBrand">LATEST BRAND NEWS</h4>
-                  <div class="banner-right-details" *ngIf="isBrowser">
-                    <div
-                      malihu-scrollbar
-                      [scrollbarOptions]="scrollbarOptions"
-                      class="
-                        banner-right-details
-                        vertical_scroll_featured_articles
-                      "
-                      [className]="
-                        isSmallWindow
-                          ? 'vertical_scroll_small'
-                          : 'vertical_scroll'
-                      "
-                      #virtualScroll
-                    >
-                      <ul>
-                        <li
-                          *ngFor="let article of newsData"
-                          style="cursor: pointer"
-                        >
-                          <a
-                            href="{{
-                              article.brand && article.brand.slug != '1851'
-                                ? article.brand.slug + '/'
-                                : ''
-                            }}{{ article.slug }}#franbuzz"
-                            class="adweek d-flex"
-                          >
-                            <div
-                              class="adweek-left col-xl-7 col-lg-12 col-sm-6"
-                            >
-                              <figure>
-                                <img
-                                  appYoutubeImage
-                                  src="{{
-                                    article.media | defaultImage: 205:115
-                                  }}"
-                                  width="205"
-                                  height="115"
-                                  alt="img3"
-                                />
-                              </figure>
-                            </div>
-                            <div
-                              class="adweek-right col-xl-5 col-lg-12 col-sm-6"
-                            >
-                              <p>{{ article.title }}</p>
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <ngx-json-ld [json]="schema"></ngx-json-ld>
+<div class="top-space"></div>
 
-  <!-- <div class="main-content details-page">
+<div *ngIf="isBrowser" class="main-content details-page">
+  <div
+    class="search-results"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollUpDistance]="scrollUpDistance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()"
+  >
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-12">
+        <div *ngIf="detailsData.length" class="col-lg-8 col-md-8 col-sm-12">
           <app-item
-            [details]="storyData"
+            *ngFor="let details of detailsData; let i = index"
+            class="element"
+            [details]="details"
+            attr.data-title="{{ details['slug'] }}"
+            attr.data-id="{{ details['id'] }}"
+            [news]="newsData"
+            [brandSlug]="brandSlug"
+            [index]="i"
+            [type]="type"
+            [isLoading]="isLoading"
+            [socialImage]="social_image"
+            [isSmallWindow]="isSmallWindow"
             [publication]="publication"
+            [newsTitle]="newsTitle"
           ></app-item>
         </div>
-        <div *ngIf="storyData" class="col-lg-4 col-md-4 col-sm-12">
+        <div *ngIf="detailsData.length" class="col-lg-4 col-md-4 col-sm-12">
           <div class="sponsered_content_right desktop-rails">
-            <div class="facebook-plugin"></div>
+            <div class="facebook-plugin" *ngIf="isBrowser">
+              <div
+                *ngIf="isDefaultFb"
+                id="fb_plugin"
+                class="fb-page"
+                [attr.data-href]="fbUrl"
+                data-tabs="timeline"
+                data-width=""
+                data-height=""
+                data-small-header="true"
+                data-adapt-container-width="true"
+                data-hide-cover="false"
+                data-show-facepile="false"
+              >
+                <blockquote [attr.cite]="fbUrl" class="fb-xfbml-parse-ignore">
+                  <a
+                    id="block_fb_link"
+                    href="https://www.facebook.com/facebook"
+                  ></a>
+                </blockquote>
+              </div>
+            </div>
             <div *ngIf="adsData.length" class="advertisement_data text-center">
               <h6>ADVERTISEMENT</h6>
-              <owl-carousel-o [options]="customOptions">
+              <owl-carousel-o *ngIf="isBrowser" [options]="customOptions">
                 <ng-template carouselSlide *ngFor="let item of adsData">
                   <a href="{{ item.url }}" target="blank" class="d-block">
                     <figure>
@@ -184,31 +72,46 @@
                 </ng-template>
               </owl-carousel-o>
             </div>
-            <div id="banner_brandNews">
-              <div class="banner-right" *ngIf="newsData">
-                <h4 *ngIf="slug != 1851">
-                  {{ newsData?.title }}
+            <div id="banner_brandNews" *ngIf="newsData.length">
+              <div class="banner-right">
+                <h4 *ngIf="!isBrand">
+                  {{ newsTitle }}
                 </h4>
-                <h4 *ngIf="slug != 1851">LATEST BRAND NEWS</h4>
-                <div class="banner-right-details scroll-container">
+                <h4 *ngIf="isBrand">LATEST BRAND NEWS</h4>
+                <div class="banner-right-details" *ngIf="isBrowser">
                   <div
-                    class="scroll-section
+                    malihu-scrollbar
+                    [scrollbarOptions]="scrollbarOptions"
+                    class="
                       banner-right-details
                       vertical_scroll_featured_articles
                     "
+                    [className]="
+                      isSmallWindow
+                        ? 'vertical_scroll_small'
+                        : 'vertical_scroll'
+                    "
+                    #virtualScroll
                   >
                     <ul>
                       <li
                         *ngFor="let article of newsData"
                         style="cursor: pointer"
                       >
-                        <a href="" class="adweek d-flex">
+                        <a
+                          href="{{
+                            article.brand && article.brand.slug != '1851'
+                              ? article.brand.slug + '/'
+                              : ''
+                          }}{{ article.slug }}#franbuzz"
+                          class="adweek d-flex"
+                        >
                           <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">
                             <figure>
                               <img
                                 appYoutubeImage
                                 src="{{
-                                  article?.media | defaultImage: 205:115
+                                  article.media | defaultImage: 205:115
                                 }}"
                                 width="205"
                                 height="115"
@@ -217,7 +120,7 @@
                             </figure>
                           </div>
                           <div class="adweek-right col-xl-5 col-lg-12 col-sm-6">
-                            <p>{{ article?.title }}</p>
+                            <p>{{ article.title }}</p>
                           </div>
                         </a>
                       </li>
@@ -230,5 +133,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </div>
+
+<ngx-json-ld [json]="schema"></ngx-json-ld>
