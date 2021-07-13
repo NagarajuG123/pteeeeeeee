@@ -9,7 +9,7 @@ const routes: Routes = [
     component: SitemapDetailComponent,
   },
   {
-    path: '',
+    path: '**',
     component: SitemapComponent,
   },
 ];
