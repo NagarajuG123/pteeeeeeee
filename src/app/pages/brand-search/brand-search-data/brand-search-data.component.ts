@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -7,12 +7,13 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./brand-search-data.component.scss']
 })
 export class BrandSearchDataComponent implements OnInit {
+  @Input() search_input: string;
+  
   story_keys: Array<object> = [];
   brand_keys: Array<object> = [];
   invest_keys: Array<object> = [];
   industry_keys: Array<object> = [];
   params: any = [];
-  search_input: any = [];
   has_more: any = [];
   invest_values: any;
   story_values: any = '';
@@ -173,6 +174,7 @@ export class BrandSearchDataComponent implements OnInit {
         isChecked: false,
       },
     ];
+    this.params = `?q=${this.search_input}&sort=brand&limit=10&offset=0`;
     this.getSearchData();
   }
 
