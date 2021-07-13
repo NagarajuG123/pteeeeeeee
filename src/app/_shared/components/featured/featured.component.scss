@@ -333,6 +333,9 @@
 }
 .adweek-right {
   padding: 0 31px 0 10px;
+  p {
+    color: $color1;
+  }
   @include desk-lg-below {
     padding: 0 25px 0 10px;
   }
