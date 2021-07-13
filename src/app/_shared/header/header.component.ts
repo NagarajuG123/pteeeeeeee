@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   type: any;
   isBrowser!: boolean;
   news: any;
+  resultData: any;
   editorialEmail = `${environment.editorialEmail}`;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
@@ -48,7 +49,7 @@ export class HeaderComponent implements OnInit {
         .getAPI(
           `search?q=${
             this.searchForm.controls['searchInput'].value
-          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.publication.id.toLowerCase()}`
+          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
         )
         .subscribe((res) => {
           this.news = res.data;
