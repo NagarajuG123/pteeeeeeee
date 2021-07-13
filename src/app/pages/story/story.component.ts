@@ -271,7 +271,7 @@ export class StoryComponent implements OnInit {
                       });
                     break;
 
-                  case 'home':
+                  case 'featured':
                     this.apiUrl = `1851/featured-articles`;
                     break;
 
@@ -333,9 +333,6 @@ export class StoryComponent implements OnInit {
       });
   }
   initLoad() {
-    let franchisee;
-    let subdomain;
-    // TODO: 1. added api to get publication-instance.
     forkJoin([
       this.apiService.getAPI(`${this.storyApiUrl}`),
       this.apiService.getAPI(`${this.brandSlug}/header`),
@@ -767,7 +764,7 @@ export class StoryComponent implements OnInit {
   onScrollDown() {
     if (!this.dataLoading) {
       this.dataLoading = true;
-      // this.scrollEvent.next(true);
+      this.scrollEvent.next(true);
     }
   }
   getFooter() {
