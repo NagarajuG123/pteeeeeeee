@@ -111,8 +111,7 @@ export class HeaderComponent implements OnInit {
     return this.commonService.readMore(item, 'franbuzz');
   }
   onSearchSubmit(searchForm: FormGroup) {
-    let instance = ['1851', 'ee', '1903'];
-    if (instance.includes(this.publication.id.toLowerCase())) {
+    if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
         searchForm.controls['searchInput'].value
       }&brand_id=${this.publication.id.toLowerCase()}`;
