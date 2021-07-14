@@ -148,7 +148,7 @@
                 type="text"
                 class="form-control"
                 [placeholder]="footer?.search?.placeholder"
-                
+                FormControlName="searchInput"
               />
               <button type="button" class="d-block text-center" (click)="onSearchSubmit(searchForm)">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -170,7 +170,7 @@
                           class="form-control"
                           [placeholder]="footer['search']['placeholder']"
                           (keyup)="onKeyUp()"
-                          [formControl]="searchForm.controls['search_input']">
+                          [formControl]="searchForm.controls['searchInput']">
                       <button
                           type="button" class="d-block text-center"
                           (click)="onSearchSubmit(searchForm)"
