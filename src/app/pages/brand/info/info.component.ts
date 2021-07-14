@@ -119,6 +119,10 @@ export class InfoComponent implements OnInit {
     this.apiService
       .getAPI(`${this.brandSlug}/brand-info`)
       .subscribe(async (response) => {
+        this.metaService.setSeo(response.meta);
+        this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+          this.metaService.setTitle(`${response.meta.seo.title} | ${result.title}`);
+        });
         let info = response.data.length > 0 ? true : false;
         this.validData.push(info);
         let pdf = this.pdf != '' ? true : false;
@@ -126,6 +130,10 @@ export class InfoComponent implements OnInit {
         this.apiService
           .getAPI(`${this.brandSlug}/brand-latest-stories`)
           .subscribe(async (response) => {
+            this.metaService.setSeo(response.meta);
+            this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+              this.metaService.setTitle(`${response.meta.seo.title} | ${result.title}`);
+            });
             let latest = response.data.length > 0 ? true : false;
             this.validData.push(latest);
             this.apiService
