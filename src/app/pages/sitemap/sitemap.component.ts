@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { environment } from 'src/environments/environment';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 @Component({
   selector: 'app-sitemap',
   templateUrl: './sitemap.component.html',
@@ -12,16 +13,42 @@ export class SitemapComponent implements OnInit {
   year: any=[];
   month: any=[];
   data: any=[];
+  brandSlug: any = [];
+  apiUrl: any;
 
-  constructor( private apiService: ApiService,private metaService:MetaService) { }
+  constructor( private apiService: ApiService,private metaService:MetaService,private route: ActivatedRoute,
+    private router:Router) { 
+      this.router.events
+      .subscribe(events => {
+        if (events instanceof NavigationEnd) {
+          this.brandSlug = events.url.split('/')[1];
+          if (this.brandSlug === 'sitemap' || this.brandSlug === '' || this.brandSlug.includes('#')) {
+            this.brandSlug = '1851';
+          } else {
+            this.brandSlug = this.brandSlug.replace(/\+/g, '');
+          }
+        }
+      });
+    }
 
   ngOnInit(): void {
-    this.getSitemap();
-    this.getMeta();
+    this.apiService
+    .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+    .subscribe((response) => {
+      if (response.status != 404 && response.type === 'brand_page') {
+        this.brandSlug = response.slug;
+        this.apiUrl = `${this.brandSlug}/sitemap-page`;
+        this.getSitemap();
+      }
+      else{
+        this.apiUrl = `sitemap-page`;
+        this.getSitemap();
+      }
+    });
   }
 
   getSitemap(){
-    this.apiService.getAPI(`sitemap-page`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.apiUrl}`).subscribe((response ) =>{
       this.sitemap = response;
       Object.keys(this.sitemap).forEach((year: any) => {
         const monthData: { month: string; number: any; url: any; }[] = [];
@@ -44,8 +71,13 @@ export class SitemapComponent implements OnInit {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-        this.metaService.setTitle(`Sitemap for | ${result.title} | ${result.newsType}`);
-        });
+        if(this.brandSlug === '1851'){
+          this.metaService.setTitle(`Sitemap for | ${result.title} | ${result.newsType}`);
+        }
+        else{
+          this.metaService.setTitle(`Sitemap for | ${this.brandSlug}  ${result.title}  | ${result.newsType}`);
+        }  
+     });
     });
   }
 }
