@@ -7,14 +7,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeFeatureComponent } from './home-feature/home-feature.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    SpotlightComponent,
-    HomeFeatureComponent,
-  ],
-  imports: [CommonModule, HomeRoutingModule, SharedModule, NgbModule],
+  declarations: [HomeComponent, SpotlightComponent, HomeFeatureComponent],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}

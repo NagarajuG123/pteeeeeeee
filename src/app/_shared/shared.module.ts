@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
@@ -65,13 +64,13 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ModalComponent,
     LatestStoryComponent,
     BannerSearchComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
   ],
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
     NgxYoutubePlayerModule,
     VgCoreModule,
     VgControlsModule,
@@ -86,7 +85,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     FormsModule,
     ReactiveFormsModule,
     VgCoreModule,
-    NgbModule,
     CarouselModule,
     DefaultImagePipe,
     SafeUrlPipe,
@@ -111,7 +109,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     LatestStoryComponent,
     ModalComponent,
     MalihuScrollbarModule,
-    BannerSearchComponent
+    BannerSearchComponent,
   ],
 })
 export class SharedModule {}

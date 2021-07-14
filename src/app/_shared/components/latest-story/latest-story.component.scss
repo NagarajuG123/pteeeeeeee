@@ -1,132 +1,132 @@
-.d-flex {
-  -webkit-flex-wrap: wrap;
-}
-.frannews {
-  background: #fff;
-  h2 {
-    letter-spacing: 0.6px !important;
-    font-size: 28px;
-    line-height: 30px;
-    color: #272525;
-    font-family: ProximaNova-Bold;
-    font-weight: 400;
-    padding: 0 0 50px;
-  }
-}
-.frannews-details {
-  margin: 0 auto;
-  padding: 67px 0 120px !important;
-}
-.frannews-top-left ul li {
-  display: inline-block;
-  float: left;
-  padding: 0 31px 0 0;
-  position: relative;
-}
+// .d-flex {
+//   -webkit-flex-wrap: wrap;
+// }
+// .frannews {
+//   background: #fff;
+//   h2 {
+//     letter-spacing: 0.6px !important;
+//     font-size: 28px;
+//     line-height: 30px;
+//     color: #272525;
+//     font-family: ProximaNova-Bold;
+//     font-weight: 400;
+//     padding: 0 0 50px;
+//   }
+// }
+// .frannews-details {
+//   margin: 0 auto;
+//   padding: 67px 0 120px !important;
+// }
+// .frannews-top-left ul li {
+//   display: inline-block;
+//   float: left;
+//   padding: 0 31px 0 0;
+//   position: relative;
+// }
 
-.brand-frannews1 {
-  position: relative;
-  padding: 10px 0 0;
-  margin: -42px 0 0;
-  h2 {
-    margin-top: 40px;
-  }
+// .brand-frannews1 {
+//   position: relative;
+//   padding: 10px 0 0;
+//   margin: -42px 0 0;
+//   h2 {
+//     margin-top: 40px;
+//   }
 
-  .frannews-top-left {
-    ul {
-      li {
-        padding: 0 19px 0 0;
-      }
-    }
-  }
-}
-.frannews-top-left ul li.header-title:after {
-  right: 8px;
-  width: 2px;
-}
-.brand-frannews1 h4 span {
-  color: #ec0044;
-}
-ul li.header-title:after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  background: #a6a8aa;
-  height: 15px;
-}
-.frannews-top {
-  border-bottom: 2px solid #bbbcbf;
-}
-.frannews-top-right {
-  padding: 7px 0 0;
-  a {
-    font-size: 11.67px;
-    line-height: 13px;
-    color: #263645;
-    font-weight: 400;
-    font-family: ProximaNova-Medium;
-    .fa {
-      font-size: 14px;
-      line-height: 10px;
-      color: #ec0044;
-      padding: 0 0 0 5px;
-      vertical-align: top;
-    }
-  }
-}
-.frannews-bottom {
-  ul {
-    margin: 0 -15px;
-    li {
-      display: inline-block;
-      padding: 0 15px;
-    }
-  }
-}
+//   .frannews-top-left {
+//     ul {
+//       li {
+//         padding: 0 19px 0 0;
+//       }
+//     }
+//   }
+// }
+// .frannews-top-left ul li.header-title:after {
+//   right: 8px;
+//   width: 2px;
+// }
+// .brand-frannews1 h4 span {
+//   color: #ec0044;
+// }
+// ul li.header-title:after {
+//   content: "";
+//   position: absolute;
+//   top: 2px;
+//   background: #a6a8aa;
+//   height: 15px;
+// }
+// .frannews-top {
+//   border-bottom: 2px solid #bbbcbf;
+// }
+// .frannews-top-right {
+//   padding: 7px 0 0;
+//   a {
+//     font-size: 11.67px;
+//     line-height: 13px;
+//     color: #263645;
+//     font-weight: 400;
+//     font-family: ProximaNova-Medium;
+//     .fa {
+//       font-size: 14px;
+//       line-height: 10px;
+//       color: #ec0044;
+//       padding: 0 0 0 5px;
+//       vertical-align: top;
+//     }
+//   }
+// }
+// .frannews-bottom {
+//   ul {
+//     margin: 0 -15px;
+//     li {
+//       display: inline-block;
+//       padding: 0 15px;
+//     }
+//   }
+// }
 
-.frannews-bottom-details {
-  width: 100%;
-  figure {
-    line-height: 0;
-    display: block;
-    margin: 0;
-    padding: 0;
-    .last-stories-franews-image {
-      height: 100%;
-      width: 100%;
-    }
-  }
-}
-img {
-  vertical-align: middle;
-  max-width: 100%;
-  display: inline-block;
-  border: 0;
-}
+// .frannews-bottom-details {
+//   width: 100%;
+//   figure {
+//     line-height: 0;
+//     display: block;
+//     margin: 0;
+//     padding: 0;
+//     .last-stories-franews-image {
+//       height: 100%;
+//       width: 100%;
+//     }
+//   }
+// }
+// img {
+//   vertical-align: middle;
+//   max-width: 100%;
+//   display: inline-block;
+//   border: 0;
+// }
 
-.socialmedia {
-  padding: 21px 0 10px;
-  overflow: hidden;
-  margin-bottom: 50px;
-  p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    height: 54px;
-    font-size: 15px;
-    line-height: 18px;
-    color: #272525;
-    letter-spacing: -0.1px;
-    margin-bottom: 21px;
-    text-align: left;
-  }
-}
+// .socialmedia {
+//   padding: 21px 0 10px;
+//   overflow: hidden;
+//   margin-bottom: 50px;
+//   p {
+//     display: -webkit-box;
+//     -webkit-line-clamp: 3;
+//     overflow: hidden;
+//     height: 54px;
+//     font-size: 15px;
+//     line-height: 18px;
+//     color: #272525;
+//     letter-spacing: -0.1px;
+//     margin-bottom: 21px;
+//     text-align: left;
+//   }
+// }
 
-@media only screen and(max-width: 1420px) {
-  .frannews-top {
-    padding: 0 0 10px;
-  }
-  .brand-frannews1 .frannews-bottom {
-    padding: 25px 0 0;
-  }
-}
+// @media only screen and(max-width: 1420px) {
+//   .frannews-top {
+//     padding: 0 0 10px;
+//   }
+//   .brand-frannews1 .frannews-bottom {
+//     padding: 25px 0 0;
+//   }
+// }

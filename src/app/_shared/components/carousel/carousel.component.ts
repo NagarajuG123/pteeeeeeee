@@ -18,7 +18,7 @@ export class CarouselComponent implements OnInit {
   list: any = [];
   openVideoPlayer = true;
   url: string = '';
-  customOptions: OwlOptions = {};
+  slideConfig: any;
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object
@@ -27,34 +27,23 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customOptions = {
-      loop: true,
-      mouseDrag: false,
-      touchDrag: false,
-      pullDrag: false,
-      dots: false,
-      margin: 10,
-      navSpeed: 700,
-      responsiveRefreshRate: 500,
-      navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+    this.slideConfig = {
+      slidesToShow: this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 620,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: this.list.length > 1 ? 2 : 1,
+          },
+        },
       ],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        400: {
-          items: 2,
-        },
-        740: {
-          items: 3,
-        },
-        940: {
-          items: 3,
-        },
-      },
-      nav: true,
     };
 
     let apiUrl = '';
@@ -78,7 +67,6 @@ export class CarouselComponent implements OnInit {
     }
     this.apiService.getAPI(apiUrl).subscribe((response) => {
       this.list = response.data;
-      this.showCarousel = this.list.length > 0 ? true : false;
     });
   }
 
