@@ -1,10 +1,18 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser, Location } from '@angular/common';
 import { CommonService } from 'src/app/_core/services/common.service';
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { forkJoin, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -12,27 +20,48 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  searchInput!: any;
-  specificSearchForm!: FormGroup;
-  showSearchKey: any = 'SEARCH KEYWORD HERE';
-  params!: string;
-  publishedValue: any = -1;
-  byAuthor: boolean = false;
-  byTitle: boolean = false;
-  byDesc: boolean = false;
-  byKeywords: boolean = false;
-  hasMore: boolean = false;
-  isSpecificDate: boolean = false;
-  isBrowser!: boolean;
-  brandId: string = '';
+  specificSearchForm: FormGroup;
+  isBrowser: boolean;
+  paramsSubscription: any;
+  recentPeoples: Array<any> = [];
+  brandPeoples: Array<any> = [];
+  rows: Array<string> = ['', '', '', '', '', ''];
+  search_input: String = '';
+  sort_by = 0;
+  published_value = -1;
+  by_author: Boolean = false;
+  by_title: Boolean = false;
+  by_desc: Boolean = false;
+  by_keywords: Boolean = false;
+  brand_id: String = '';
+  sort_keys: Array<object> = [
+    {
+      title: 'NEWEST',
+      value: 'newest',
+    },
+    {
+      title: 'OLDEST',
+      value: 'oldest',
+    },
+  ];
+  published_duration: Array<object> = [
+    {
+      title: 'PAST 24 HOURS',
+      value: 'past_24_hours',
+    },
+    {
+      title: 'PAST 7 DAYS',
+      value: 'past_7_days',
+    },
+  ];
+
+  published_range = 'SPECIFIC DATES';
   limit = 8;
   offset = 0;
-  sortBy: any = 0;
-  mainSearch: any;
-  brandSearch: any;
+  params = '';
+  isSpecificDate: boolean = false;
   dateSelected: any;
-  hiddenSearchBar: Boolean = false;
-  publishedRange = 'SPECIFIC DATES';
+  alwaysShowCalendars: boolean;
   ranges: any = {
     Today: [moment(), moment()],
     Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -44,138 +73,307 @@ export class SearchComponent implements OnInit {
       moment().subtract(1, 'month').endOf('month'),
     ],
   };
-  publishedDuration: Array<any> = [
-    {
-      title: 'PAST 24 HOURS',
-      value: 'past_24_hours',
-    },
-    {
-      title: 'PAST 7 DAYS',
-      value: 'past_7_days',
-    },
-  ];
+  showSearchKey: String = 'SEARCH KEYWORD HERE';
+  has_more: Boolean = true;
+  hiddenSearchBar: Boolean = false;
+
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
   constructor(
+    private route: ActivatedRoute,
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object,
-    private location: Location,
-    private commonService: CommonService,
-    private route: ActivatedRoute
+    private cdref: ChangeDetectorRef,
+    private location: Location
   ) {
-    this.specificSearchForm = new FormGroup({
-      searchInput: new FormControl(''),
-    });
     this.isBrowser = isPlatformBrowser(platformId);
+    this.specificSearchForm = new FormGroup({
+      search_input: new FormControl(''),
+    });
   }
 
-  ngOnInit(): void {
-    this.setInitialData();
-  }
-
-  setInitialData() {
-    this.route.queryParams.subscribe((parameter) => {
+  ngOnInit() {
+    this.paramsSubscription = this.route.queryParams.subscribe((params) => {
       if (
-        typeof parameter.search_input !== 'undefined' &&
-        parameter.search_input !== ''
+        typeof params.search_input !== 'undefined' &&
+        params.search_input !== ''
       ) {
-        this.searchInput = parameter.search_input;
-        this.showSearchKey = parameter.search_input;
+        this.search_input = params.search_input;
+        this.showSearchKey = params.search_input;
       }
-      if (
-        typeof parameter.sort_by !== 'undefined' &&
-        parameter.sort_by !== ''
-      ) {
-        this.sortBy = parameter.sort_by;
-        this.publishedValue = -1;
+      if (typeof params.sort_by !== 'undefined' && params.sort_by !== '') {
+        this.sort_by = parseInt(params.sort_by, 10);
+        this.published_value = -1;
         this.isSpecificDate = false;
       }
-      if (
-        typeof parameter.by_author !== 'undefined' &&
-        parameter.by_author !== ''
-      ) {
-        this.byAuthor = parameter.by_author === 'true' ? true : false;
+      if (typeof params.by_author !== 'undefined' && params.by_author !== '') {
+        this.by_author = params.by_author === 'true' ? true : false;
+      }
+      if (typeof params.by_title !== 'undefined' && params.by_title !== '') {
+        this.by_title = params.by_title === 'true' ? true : false;
+      }
+      if (typeof params.by_desc !== 'undefined' && params.by_desc !== '') {
+        this.by_desc = params.by_desc === 'true' ? true : false;
       }
       if (
-        typeof parameter.by_title !== 'undefined' &&
-        parameter.by_title !== ''
+        typeof params.by_keywords !== 'undefined' &&
+        params.by_keywords !== ''
       ) {
-        this.byTitle = parameter.by_title === 'true' ? true : false;
+        this.by_keywords = params.by_keywords === 'true' ? true : false;
       }
       if (
-        typeof parameter.by_desc !== 'undefined' &&
-        parameter.by_desc !== ''
+        typeof params.published_duration !== 'undefined' &&
+        params.published_duration !== ''
       ) {
-        this.byDesc = parameter.by_desc === 'true' ? true : false;
-      }
-      if (
-        typeof parameter.by_keywords !== 'undefined' &&
-        parameter.by_keywords !== ''
-      ) {
-        this.byKeywords = parameter.by_keywords === 'true' ? true : false;
-      }
-      if (
-        typeof parameter.published_duration !== 'undefined' &&
-        parameter.published_duration !== ''
-      ) {
-        this.publishedValue = parameter.published_duration;
-        this.sortBy = -1;
+        this.published_value = parseInt(params.published_duration, 10);
+        this.sort_by = -1;
         this.isSpecificDate = false;
       }
+      // tslint:disable-next-line:max-line-length
       if (
-        typeof parameter.published_from_date !== 'undefined' &&
-        typeof parameter.published_to_date !== 'undefined' &&
-        parameter.published_from_date !== '' &&
-        parameter.published_to_date !== ''
+        typeof params.published_from_date !== 'undefined' &&
+        typeof params.published_to_date !== 'undefined' &&
+        params.published_from_date !== '' &&
+        params.published_to_date !== ''
       ) {
         this.isSpecificDate = true;
-        this.sortBy = -1;
-        this.publishedValue = -1;
+        this.sort_by = -1;
+        this.published_value = -1;
       }
-      if (
-        typeof parameter.brand_id !== 'undefined' &&
-        parameter.brand_id !== ''
-      ) {
-        this.brandId = parameter.brand_id;
+      if (typeof params.brand_id !== 'undefined' && params.brand_id !== '') {
+        this.brand_id = params.brand_id;
       } else {
-        this.brandId = '1851';
+        this.brand_id = '1851';
       }
-      this.getDataByParams(false);
+
+      const searchPopData = {};
+      let apiParams = '';
+      let brandParams = '';
+      apiParams = `?q=${this.search_input}`;
+      // tslint:disable-next-line:max-line-length
+      apiParams =
+        this.published_value !== -1
+          ? `${apiParams}&published_duration=${
+              this.published_duration[this.published_value]['value']
+            }`
+          : apiParams;
+      apiParams = this.by_author
+        ? `${apiParams}&filter_by[]=author`
+        : apiParams;
+      apiParams = this.by_title ? `${apiParams}&filter_by[]=title` : apiParams;
+      apiParams = this.by_desc
+        ? `${apiParams}&filter_by[]=description`
+        : apiParams;
+      apiParams = this.by_keywords
+        ? `${apiParams}&filter_by[]=keywords`
+        : apiParams;
+      apiParams = this.limit ? `${apiParams}&limit=${this.limit}` : apiParams;
+      apiParams = this.offset
+        ? `${apiParams}&offset=${this.offset}`
+        : apiParams;
+      // tslint:disable-next-line:max-line-length
+      apiParams = this.isSpecificDate
+        ? `${apiParams}&published_from_date=${params.published_from_date}&published_to_date=${params.published_to_date}`
+        : apiParams;
+      apiParams = `${apiParams}&brand_id=${this.brand_id}`;
+      searchPopData['params'] = apiParams;
+      brandParams = apiParams.replace(/brand_id/g, 'exclude_brand_id');
+      brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
+      brandParams = brandParams.replace(
+        /offset=[0-9]*/g,
+        `offset=${this.brandPeoples.length}`
+      );
+
+      const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
+      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+
+      forkJoin(main_searchAPI, brand_searchAPI)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          if (results[0]['data'] === null) {
+            searchPopData['recentPeoples'] = [];
+          } else {
+            searchPopData['recentPeoples'] = results[0]['data'];
+          }
+          if (results[1]['data'] === null) {
+            searchPopData['brandPeoples'] = [];
+          } else {
+            searchPopData['brandPeoples'] = results[1]['data'];
+          }
+          searchPopData['has_more'] =
+            results[0].has_more || results[1].has_more;
+        });
     });
   }
-  updateSearchInput(input: string) {
-    this.searchInput = input;
-    this.showSearchKey = input;
-    this.getDataByParams(true);
+
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function (e) {
+        setTimeout(() => {
+          const size_li = 4;
+          let x = 4;
+          $('#myList li:lt(' + x + ')').show();
+          $('#loadMore').click(function () {
+            x = x + 1 <= size_li ? x + 1 : size_li;
+            $('#myList li:lt(' + x + ')').show();
+          });
+        }, 2000);
+      });
+    }
   }
 
-  getDataByParams(isUrlUpdate) {
-    this.params = `?q=${this.searchInput}`;
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
+  }
+
+  sort_search(key) {
+    this.isSpecificDate = false;
+    this.published_value = -1;
+    if (key === this.sort_by) {
+      return;
+    } else {
+      this.sort_by = key;
+    }
+    this.getDataByParams();
+  }
+
+  set_duration(key) {
+    this.isSpecificDate = false;
+    this.sort_by = -1;
+    if (this.published_value === key) {
+      this.published_value = -1;
+    } else {
+      this.published_value = key;
+    }
+    this.getDataByParams();
+  }
+
+  set_range() {
+    this.isSpecificDate = true;
+  }
+
+  onChangeFilter(by_filter) {
+    switch (by_filter) {
+      case 'author':
+        this.by_author = !this.by_author;
+        break;
+      case 'title':
+        this.by_title = !this.by_title;
+        break;
+      case 'desc':
+        this.by_desc = !this.by_desc;
+        break;
+      case 'keyword':
+        this.by_keywords = !this.by_keywords;
+        break;
+      default:
+        break;
+    }
+    this.getDataByParams();
+  }
+
+  updateSearchInput(input) {
+    this.search_input = input;
+    this.showSearchKey = input;
+    this.getDataByParams();
+  }
+
+  getDataByParams() {
+    this.params = `?q=${this.search_input}`;
+    // tslint:disable-next-line:max-line-length
     this.params =
-      this.publishedValue !== -1
+      this.published_value !== -1
         ? `${this.params}&published_duration=${
-            this.publishedDuration[this.publishedValue]['value']
+            this.published_duration[this.published_value]['value']
           }`
         : this.params;
-    this.params = this.byAuthor
+    this.params = this.by_author
       ? `${this.params}&filter_by[]=author`
       : this.params;
-    this.params = this.byTitle
+    this.params = this.by_title
       ? `${this.params}&filter_by[]=title`
       : this.params;
-    this.params = this.byDesc
+    this.params = this.by_desc
       ? `${this.params}&filter_by[]=description`
       : this.params;
-    this.params = this.byKeywords
+    this.params = this.by_keywords
       ? `${this.params}&filter_by[]=keywords`
       : this.params;
     this.params = this.limit
       ? `${this.params}&limit=${this.limit}`
       : this.params;
     this.params = `${this.params}&offset=0`;
-    this.params = `${this.params}&brand_id=${this.brandId}`;
+    this.params = `${this.params}&brand_id=${this.brand_id}`;
 
-    this.setData();
+    let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
+    brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
+    brandParams = brandParams.replace(
+      /offset=[0-9]*/g,
+      `offset=${this.brandPeoples.length}`
+    );
+    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
 
-    if (isUrlUpdate) this.updateUrlState();
+    forkJoin(main_searchAPI, brand_searchAPI)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        if (results[0].data !== null) {
+          this.offset = results[0]['data'].length;
+          this.recentPeoples = results[0]['data'];
+        } else {
+          this.offset = 0;
+          this.recentPeoples = [];
+        }
+        if (results[1].data === null) {
+          this.brandPeoples = [];
+        } else {
+          this.brandPeoples = results[1]['data'];
+        }
+        this.has_more = results[0].has_more || results[1].has_more;
+      });
+    this.updateUrlState();
+  }
+
+  getMoreItems() {
+    this.params = this.limit
+      ? `${this.params}&limit=${this.limit}`
+      : this.params;
+    this.params = `${this.params}&offset=${this.recentPeoples.length}`;
+
+    let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
+    brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
+    brandParams = brandParams.replace(
+      /offset=[0-9]*/g,
+      `offset=${this.brandPeoples.length}`
+    );
+
+    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+
+    forkJoin(main_searchAPI, brand_searchAPI)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        if (results[0].data !== null) {
+          this.offset += results[0]['data'].length;
+          results[0]['data'].forEach((article) => {
+            this.recentPeoples.push(article);
+          });
+          this.recentPeoples = JSON.parse(JSON.stringify(this.recentPeoples));
+        } else {
+          this.offset = 0;
+          this.recentPeoples = [];
+        }
+        if (results[1].data === null) {
+          this.brandPeoples = [];
+        } else {
+          results[1]['data'].forEach((article) => {
+            this.brandPeoples.push(article);
+          });
+          this.brandPeoples = JSON.parse(JSON.stringify(this.brandPeoples));
+        }
+        this.has_more = results[0].has_more || results[1].has_more;
+      });
   }
 
   onSearchSubmit(searchForm: FormGroup) {
@@ -186,19 +384,19 @@ export class SearchComponent implements OnInit {
     } else {
       const start = moment(this.dateSelected.startDate).format('YYYY-MM-DD');
       const end = moment(this.dateSelected.endDate).format('YYYY-MM-DD');
-      this.publishedValue = -1;
+      this.published_value = -1;
 
-      this.params = `?q=${this.searchInput}`;
-      this.params = this.byAuthor
+      this.params = `?q=${this.search_input}`;
+      this.params = this.by_author
         ? `${this.params}&filter_by[]=author`
         : this.params;
-      this.params = this.byTitle
+      this.params = this.by_title
         ? `${this.params}&filter_by[]=title`
         : this.params;
-      this.params = this.byDesc
+      this.params = this.by_desc
         ? `${this.params}&filter_by[]=description`
         : this.params;
-      this.params = this.byKeywords
+      this.params = this.by_keywords
         ? `${this.params}&filter_by[]=keywords`
         : this.params;
       this.params = this.limit
@@ -206,102 +404,86 @@ export class SearchComponent implements OnInit {
         : this.params;
       this.params = `${this.params}&offset=0`;
       this.params = `${this.params}&published_from_date=${start}&published_to_date=${end}`;
-      this.params = `${this.params}&brand_id=${this.brandId}`;
+      this.params = `${this.params}&brand_id=${this.brand_id}`;
 
-      this.setData();
+      let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
+      brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
+      brandParams = brandParams.replace(
+        /offset=[0-9]*/g,
+        `offset=${this.brandPeoples.length}`
+      );
+      const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
+      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
 
+      forkJoin(main_searchAPI, brand_searchAPI)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          if (results[0].data !== null) {
+            this.offset = results[0]['data'].length;
+            this.recentPeoples = results[0]['data'];
+          } else {
+            this.offset = 0;
+            this.recentPeoples = [];
+          }
+          if (results[1].data === null) {
+            this.brandPeoples = [];
+          } else {
+            this.brandPeoples = results[1]['data'];
+          }
+          this.has_more = results[0].has_more || results[1].has_more;
+        });
       this.updateUrlState(start, end);
     }
   }
+
   updateUrlState(startDate = '', endDate = '') {
-    let url = `searchpopup?search_input=${this.searchInput}&brand_id=${this.brandId}&by_author=${this.byAuthor}&by_title=${this.byTitle}&by_desc=${this.byDesc}&by_keywords=${this.byKeywords}`;
+    // tslint:disable-next-line:max-line-length
+    let url = `searchpopup?search_input=${this.search_input}&brand_id=${this.brand_id}&by_author=${this.by_author}&by_title=${this.by_title}&by_desc=${this.by_desc}&by_keywords=${this.by_keywords}`;
+    // tslint:disable-next-line:max-line-length
     url =
-      this.publishedValue !== -1
-        ? `${url}&published_duration=${this.publishedValue}`
+      this.published_value !== -1
+        ? `${url}&published_duration=${this.published_value}`
         : `${url}&published_duration=`;
+    // tslint:disable-next-line:max-line-length
     url = this.isSpecificDate
       ? `${url}&published_from_date=${startDate}&published_to_date=${endDate}`
       : `${url}&published_from_date=&published_to_date=`;
     this.location.replaceState(url);
   }
-  hideSearchBar(status: string) {
+
+  hideSearchBar(status) {
     if (status === 'hidden') {
       this.hiddenSearchBar = true;
     } else {
       this.hiddenSearchBar = false;
     }
   }
-  setDuration(key: number) {
-    this.isSpecificDate = false;
-    this.sortBy = -1;
-    if (this.publishedValue === key) {
-      this.publishedValue = -1;
-    } else {
-      this.publishedValue = key;
-    }
-    this.getDataByParams(true);
-  }
-  setRange() {
-    this.isSpecificDate = true;
-  }
-  onChangeFilter(byFilter: any) {
-    switch (byFilter) {
-      case 'author':
-        this.byAuthor = !this.byAuthor;
-        break;
-      case 'title':
-        this.byTitle = !this.byTitle;
-        break;
-      case 'desc':
-        this.byDesc = !this.byDesc;
-        break;
-      case 'keyword':
-        this.byKeywords = !this.byKeywords;
-        break;
-      default:
-        break;
-    }
-    this.getDataByParams(true);
-  }
-  readMore(item: any) {
-    return this.commonService.readMore(item, 'most-recent');
-  }
-  readMoreBrand(item: any) {
-    return this.commonService.readMore(item, 'brand-latest-stories');
-  }
-  getMoreItems() {
-    this.params = this.limit
-      ? `${this.params}&limit=${this.limit}`
-      : this.params;
-    this.params = `${this.params}&offset=${this.mainSearch.length}`;
 
-    this.setData();
-  }
-
-  setData() {
-    this.apiService.getAPI(`search${this.params}`).subscribe((result) => {
-      if (result.data !== null) {
-        this.offset += result['data'].length;
-        this.mainSearch = result['data'];
-      } else {
-        this.mainSearch = [];
+  goReadMore(item) {
+    if (typeof item !== 'undefined') {
+      if (item.brand) {
+        return `${item.brand.slug !== '1851' ? item.brand.slug + '/' : ''}${
+          item.slug
+        }#most-recent`;
       }
-      let brandParams = this.params.replace(/brand_id/g, 'exclude_brand_id');
-      brandParams = brandParams.replace(/limit=[0-9]*/g, 'limit=2');
-      brandParams = brandParams.replace(
-        /offset=[0-9]*/g,
-        `offset=${this.brandSearch.length}`
-      );
-      this.apiService.getAPI(`search${brandParams}`).subscribe((response) => {
-        if (response.data !== null) {
-          response['data'].forEach((article: any) => {
-            this.brandSearch.push(article);
-          });
-        } else {
-          this.brandSearch = [];
-        }
-        this.hasMore = result.has_more || response.has_more;
-      });
-    });
+      return `${item.slug}#most-recent`;
+    }
+  }
+
+  goReadMoreBrand(item) {
+    if (typeof item !== 'undefined') {
+      if (item.brand) {
+        return `${item.brand.slug !== '1851' ? item.brand.slug + '/' : ''}${
+          item.slug
+        }#brand-latest-stories`;
+      }
+      return `${item.slug}#brand-latest-stories`;
+    }
+  }
+
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+    this.onDestroySubject.next(true);
+    this.onDestroySubject.complete();
   }
 }

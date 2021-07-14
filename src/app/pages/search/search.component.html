@@ -1,6 +1,6 @@
 <div class="top-space"></div>
 <app-banner-search
-  [searchInput]="searchInput"
+  [searchInput]="search_input"
   (onSearch)="updateSearchInput($event)"
 ></app-banner-search>
 <div class="main-content search-page">
@@ -32,21 +32,21 @@
           <div *ngIf="hiddenSearchBar" class="sort_main d-flex">
             <h6>SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
-              <li *ngFor="let duration of publishedDuration; let i = index">
-                <a (click)="setDuration(i)">
+              <li *ngFor="let duration of published_duration; let i = index">
+                <a (click)="set_duration(i)">
                   <span
                     [style.font-weight]="
-                      publishedValue === i ? 'bold' : 'normal'
+                      published_value === i ? 'bold' : 'normal'
                     "
                     >{{ duration["title"] }}</span
                   >
                 </a>
               </li>
               <li>
-                <a (click)="setRange()">
+                <a (click)="set_range()">
                   <span
                     [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
-                    >{{ publishedRange }}</span
+                    >{{ published_range }}</span
                   >
                 </a>
               </li>
@@ -62,7 +62,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    [checked]="byAuthor"
+                    [checked]="by_author"
                     (change)="onChangeFilter('author')"
                   />
                   <span>BY AUTHOR</span>
@@ -72,7 +72,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    [checked]="byTitle"
+                    [checked]="by_title"
                     (change)="onChangeFilter('title')"
                   />
                   <span>BY TITLE</span>
@@ -82,7 +82,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    [checked]="byDesc"
+                    [checked]="by_desc"
                     (change)="onChangeFilter('desc')"
                   />
                   <span>BY DESCRIPTION</span>
@@ -92,7 +92,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    [checked]="byKeywords"
+                    [checked]="by_keywords"
                     (change)="onChangeFilter('keyword')"
                   />
                   <span>BY KEYWORDS</span>
@@ -101,20 +101,20 @@
             </ul>
           </div>
         </div>
-        <div class="search-no-result" *ngIf="!mainSearch.length">
+        <div class="search-no-result" *ngIf="!recentPeoples.length">
           <p>No articles found for selected search criteria</p>
         </div>
-        <div *ngIf="mainSearch.length">
+        <div *ngIf="recentPeoples.length">
           <div class="frannews">
             <div class="container">
               <div class="frannews-details col-xl-11">
                 <div class="frannews-bottom">
-                  <div *ngIf="isBrowser">
+                  <div *ngIf="isBrowser" class="">
                     <ul>
-                      <li *ngFor="let row of mainSearch | splitArray: 4">
+                      <li *ngFor="let row of recentPeoples | splitArray: 4">
                         <div class="category-list" *ngFor="let item of row">
                           <a
-                            href="{{ readMore(item) }}"
+                            href="{{ goReadMore(item) }}"
                             class="frannews-bottom-details"
                             style="text-decoration: none"
                             *ngIf="item"
@@ -138,6 +138,12 @@
                               >
                                 {{ item.title }}
                               </p>
+                              <span *ngIf="item.posted_on" class="d-block">{{
+                                item.posted_on | timeago
+                              }}</span>
+                              <span *ngIf="item.post_on" class="d-block">{{
+                                item.post_on | timeago
+                              }}</span>
                             </div>
                           </a>
                         </div>
@@ -151,21 +157,21 @@
           </div>
         </div>
       </div>
-       <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail">
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail">
         <h5 class="text-center">BRAND STORIES</h5>
-        <div *ngIf="mainSearch.length" class="search-page-brand-list row">
+        <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
           <div
             class="search-page-brand col-12"
-            *ngFor="let item of mainSearch"
+            *ngFor="let item of brandPeoples"
           >
-            <p class="search-page-brand-title" *ngIf="brandId == '1851'">
-              {{ brandId }}
+            <p class="search-page-brand-title" *ngIf="brand_id == '1851'">
+              {{ brand_id }}
             </p>
-            <p class="search-page-brand-title" *ngIf="brandId != '1851'">
-              {{ brandId == "ee" ? "Estatenvy" : "Room1903" }}
+            <p class="search-page-brand-title" *ngIf="brand_id != '1851'">
+              {{ brand_id == "ee" ? "Estatenvy" : "Room1903" }}
             </p>
             <a
-              href="{{ readMoreBrand(item) }}"
+              href="{{ goReadMoreBrand(item) }}"
               class="frannews-bottom-details"
               style="text-decoration: none"
               *ngIf="item"
@@ -189,14 +195,20 @@
                 >
                   {{ item.title }}
                 </p>
+                <span *ngIf="item.posted_on" class="d-block">{{
+                  item.posted_on | timeago
+                }}</span>
+                <span *ngIf="item.post_on" class="d-block">{{
+                  item.post_on | timeago
+                }}</span>
               </div>
             </a>
           </div>
         </div>
-      </div> 
+      </div>
       <div class="col-sm-12">
         <a
-          
+          *ngIf="has_more"
           href="javascript:void(0)"
           id="loadMore"
           class="text-center loadmore-btn d-block"
@@ -210,7 +222,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isSpecificDate" class="banner specific_search">
+  <div [hidden]="!isSpecificDate" class="banner specific_search">
     <div class="search_form col-lg-6">
       <form
         [formGroup]="specificSearchForm"
@@ -227,7 +239,7 @@
             [ranges]="ranges"
             [linkedCalendars]="true"
             [showClearButton]="true"
-            [formControl]="specificSearchForm.controls['searchInput']"
+            [formControl]="specificSearchForm.controls['search_input']"
             placeholder="Select please.../"
             readonly
           />

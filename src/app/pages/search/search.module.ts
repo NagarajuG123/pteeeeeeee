@@ -10,7 +10,7 @@ import { SearchRoutingModule } from './search-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    NgxDaterangepickerMd,
+    NgxDaterangepickerMd.forRoot(),
     SearchRoutingModule,
   ],
 })
