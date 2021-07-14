@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-brand-search-data',
@@ -6,12 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-search-data.component.scss']
 })
 export class BrandSearchDataComponent implements OnInit {
+  @Input() search_input: string;
+  
   story_keys: Array<object> = [];
   brand_keys: Array<object> = [];
   invest_keys: Array<object> = [];
   industry_keys: Array<object> = [];
+  params: any = [];
+  has_more: any = [];
+  invest_values: any;
+  story_values: any = '';
+  brand_values: any = '';
+  industry_values: any = '';
+  items: Array<object> = [];
+  sortBrand_value = 'asc';
+  sortInvest_value = 'asc';
+  sortIndustry_value = 'asc';
+  sortStory_value = 'asc';
+  search_key: any;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.industry_keys = [
@@ -159,6 +174,154 @@ export class BrandSearchDataComponent implements OnInit {
         isChecked: false,
       },
     ];
+    this.params = `?q=${this.search_input}&sort=brand&limit=10&offset=0`;
+    this.getSearchData();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    const search_input: SimpleChange = changes.search_input;
+
+    if (search_input.currentValue !== search_input.previousValue && this.search_key !== search_input.currentValue) {
+      this.search_key = search_input.currentValue;
+      this.getSearchData();
+    }
+  }
+  
+  selectAllIndustry() {
+    this.industry_values = '';
+    this.industry_keys.forEach((key, i) => {
+      key['isChecked'] = true;
+      this.industry_values += `&industries[]=${key['value']}`;
+    });
+    this.getSearchData();
+  }
+
+  selectAllInvest() {
+    this.invest_values = '';
+    this.invest_keys.forEach((key, i) => {
+      key['isChecked'] = true;
+      this.invest_values += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
+    });
+    this.getSearchData();
+  }
+
+  clearAllIndustry() {
+    this.industry_values = '';
+    this.industry_keys.forEach((key, i) => {
+      key['isChecked'] = false;
+    });
+    this.getSearchData();
+  }
+
+  clearAllInvest() {
+    this.invest_values = '';
+    this.invest_keys.forEach((key, i) => {
+      key['isChecked'] = false;
+    });
+    this.getSearchData();
+  }
+  onChangeInvestFilter(index) {
+    this.invest_keys[index]['isChecked'] = !this.invest_keys[index]['isChecked'];
+    this.invest_values = '';
+    this.invest_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.invest_values += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeIndustryFilter(index) {
+    this.industry_keys[index]['isChecked'] = !this.industry_keys[index]['isChecked'];
+    this.industry_values = '';
+    this.industry_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.industry_values += `&industries[]=${key['value']}`;
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeBrandFilter(index) {
+    this.brand_keys[index]['isChecked'] = !this.brand_keys[index]['isChecked'];
+    this.brand_values = [];
+    this.brand_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.brand_values.push(key['value']);
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeStoryFilter(index) {
+    this.story_keys[index]['isChecked'] = !this.story_keys[index]['isChecked'];
+    this.story_values = [];
+    this.story_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.story_values.push(key['value']);
+      }
+    });
+    this.getSearchData();
+  }
+  getIndustry(industry) {
+    let list = '';
+    for (let i = 0; i < industry.length; i++) {
+      if (i !== 0) {
+        list += `, ${industry[i].name}`;
+      } else {
+        list += industry[0].name;
+      }
+    }
+    return list;
+  }
+
+  sortBrand() {
+    if (this.sortBrand_value === 'asc') {
+      this.sortBrand_value = 'desc';
+    } else {
+      this.sortBrand_value = 'asc';
+    }
+    this.getSearchData();
+  }
+
+  sortInvest() {
+    if (this.sortInvest_value === 'asc') {
+      this.sortInvest_value = 'desc';
+    } else {
+      this.sortInvest_value = 'asc';
+    }
+    this.getSearchData();
+  }
+
+  sortIndustry() {
+    if (this.sortIndustry_value === 'asc') {
+      this.sortIndustry_value = 'desc';
+    } else {
+      this.sortIndustry_value = 'asc';
+    }
+    this.getSearchData();
+  }
+
+  sortStory() {
+    if (this.sortStory_value === 'asc') {
+      this.sortStory_value = 'desc';
+    } else {
+      this.sortStory_value = 'asc';
+    }
+    this.getSearchData();
+  }
+
+
+  getSearchData() {
+    const sortValue = `&sort=${this.sortBrand_value === 'asc' ? 'brand' : '-brand'}`;
+     this.params = `?q=${this.search_input}${this.invest_values}${this.industry_keys}${sortValue}&limit=10&offset=0`;
+      this.apiService.getAPI(`brand-search${this.params}`).subscribe((result) => {
+      this.industry_keys = result.data.industry;
+      this.invest_keys = result.data.investment;
+      this.items = result.data;
+      this.has_more = result.has_more;
+    });
+  }
 }
+
+
