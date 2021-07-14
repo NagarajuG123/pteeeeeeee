@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/_core/services/meta.service';
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -19,7 +20,8 @@ export class AuthorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private apiService: ApiService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private metaService: MetaService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class AuthorComponent implements OnInit {
             this.router.navigateByUrl('/404');
           } else {
             this.author = response;
+            this.metaService.setSeo(response.meta);
+            this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+              this.metaService.setTitle(`${response.data.first_name} ${response.data.last_name} | ${result.title}`);
+            });
             this.getBranded();
             this.getEditorials();
           }
