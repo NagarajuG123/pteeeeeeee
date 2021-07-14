@@ -10,6 +10,7 @@ export const environment = {
   editorialEmail: 'editorial@1851franchise.com',
   reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
   appUrl: 'https://1851franchise.com',
+  fbUrl: 'https://www.facebook.com/1851magazine/',
 };
 
 /*

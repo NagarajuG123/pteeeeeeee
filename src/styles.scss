@@ -137,13 +137,50 @@ h6 {
 .modal-backdrop {
   display: none;
 }
-.multi_conference-left {
-  p {
-    color: #272525;
-    line-height: 21px;
-    letter-spacing: 0;
-    margin-bottom: 18px;
+
+.desktop-only {
+  display: none !important;
+  @media only screen and (min-width: 600px) {
+    display: block !important;
   }
 }
 
+.mobile-only {
+  display: none !important;
+  @media only screen and (max-width: 599px) {
+    display: block !important;
+  }
+}
+.sponsered_content_middle figure {
+  margin: 0 0 30px !important;
+}
 
+.sponsered_content_middle p {
+  font-weight: 400;
+  padding: 0 0 20px !important;
+  line-height: 22px;
+}
+.social-links {
+  display: flex !important;
+  flex-direction: column;
+  .st-btn {
+    display: inline !important;
+    background-color: transparent !important;
+    margin: unset !important;
+    svg {
+      fill: #929496 !important;
+      width: 45px !important;
+      height: 45px !important;
+    }
+    img {
+      filter: invert(55%) sepia(36%) saturate(45%) hue-rotate(27deg)
+        brightness(20%) contrast(0%);
+      height: 45px !important;
+      width: 45px !important;
+    }
+  }
+  @include mobile-landscape1 {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

@@ -39,6 +39,7 @@
     "moment": "^2.29.1",
     "ngx-captcha": "^9.0.1",
     "ngx-daterangepicker-material": "^5.0.0",
+    "ngx-infinite-scroll": "^10.0.1",
     "ngx-json-ld": "^0.3.1",
     "ngx-malihu-scrollbar": "^9.0.0",
     "ngx-owl-carousel-o": "^6.0.0",
