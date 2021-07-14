@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   type: any;
   isBrowser!: boolean;
   news: any;
+  resultData: any;
   editorialEmail = `${environment.editorialEmail}`;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
@@ -48,7 +49,7 @@ export class HeaderComponent implements OnInit {
         .getAPI(
           `search?q=${
             this.searchForm.controls['searchInput'].value
-          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.publication.id.toLowerCase()}`
+          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
         )
         .subscribe((res) => {
           this.news = res.data;
@@ -111,8 +112,7 @@ export class HeaderComponent implements OnInit {
     return this.commonService.readMore(item, 'franbuzz');
   }
   onSearchSubmit(searchForm: FormGroup) {
-    let instance = ['1851', 'ee', '1903'];
-    if (instance.includes(this.publication.id.toLowerCase())) {
+    if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
         searchForm.controls['searchInput'].value
       }&brand_id=${this.publication.id.toLowerCase()}`;

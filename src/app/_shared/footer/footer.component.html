@@ -139,18 +139,18 @@
           </div>
         </div>
         <div class="footer-bottom col-12">
-          <form>
+          <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
             <div
               class="form-group d-block"
-              data-toggle="modal"
-              data-target="#footerSearchModal"
+              data-toggle="modal" data-target="#footerSearchModal"
             >
               <input
                 type="text"
                 class="form-control"
                 [placeholder]="footer?.search?.placeholder"
+                FormControlName="searchInput"
               />
-              <button type="button" class="d-block text-center">
+              <button type="button" class="d-block text-center" (click)="onSearchSubmit(searchForm)">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </div>
@@ -158,5 +158,58 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="isBrowser" class="search_pop_up modal" id="footerSearchModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
+              <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
+                  <div class="form-group d-block">
+                      <input
+                          type="text"
+                          class="form-control"
+                          [placeholder]="footer['search']['placeholder']"
+                          (keyup)="onKeyUp()"
+                          [formControl]="searchForm.controls['searchInput']">
+                      <button
+                          type="button" class="d-block text-center"
+                          (click)="onSearchSubmit(searchForm)"
+                          data-dismiss="modal">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                      </button>
+                  </div>
+              </form>
+              <h5>MOST RECENT MATCHES</h5>
+              <div class="frannews-bottom">
+                  <ul malihu-scrollbar [scrollbarOptions]="scrollbarOptions" class="vertical_scroll clearfix d-flex">
+                      <li
+                          *ngFor="let story of recentStories; let i = index;"
+                          class="col-xl-3 col-lg-4  col-sm-6 col-12">
+                          <a
+                              href="{{story['brand'] &&  story['brand']['slug'] !='1851'?story['brand']['slug'] + '/': ''}}{{story['slug']}}#franbuzz"
+                              class="frannews-bottom-details">
+                              <figure>
+                                  <img
+                                      appYoutubeImage
+                                      src="{{story['media'] | defaultImage:248:139}}"
+                                      width="248"
+                                      height="139"
+                                      alt="frannews"
+                                  >
+                              </figure>
+                              <div class="socialmedia">
+                                  <p title="{{story['title']}}" style="-webkit-box-orient: vertical">{{story['title']}}</p>
+                                  <span *ngIf="story['posted_on']" class="d-block">{{story['posted_on'] | timeago}}</span>
+                                  <span *ngIf="story['post_on']" class="d-block">{{story['post_on'] | timeago}}</span>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+
   </footer>
 </div>

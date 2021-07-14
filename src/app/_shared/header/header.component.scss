@@ -688,8 +688,8 @@ button.close {
       li {
         float: none;
         vertical-align: top;
-        padding: 0 15px 21px 15px;
-        width: auto;
+        padding: 0 15px 21px;
+        // width: auto;
         cursor: pointer;
         @include mobile-landscape1 {
           padding: 0 0 20px 0;

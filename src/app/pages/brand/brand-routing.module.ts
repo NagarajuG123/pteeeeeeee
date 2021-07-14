@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SitemapComponent } from '../sitemap/sitemap.component';
+import { SearchComponent } from '../search/search.component';
 import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 
@@ -10,13 +11,17 @@ const routes: Routes = [
     component: SitemapComponent,
   },
   {
+    path: 'searchpopup',
+    component: SearchComponent,
+  },
+  {
     path: '',
     component: BrandComponent,
   },
   {
     path: ':item',
     component: InfoComponent,
-  },
+  }
 ];
 
 @NgModule({

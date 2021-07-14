@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
@@ -14,7 +16,15 @@ export class FooterComponent implements OnInit {
   isFooter: boolean = true;
   isBrandFooter: boolean = false;
   brandContact: any;
-  constructor( private apiService: ApiService,private router:Router ) { }
+  searchForm: FormGroup;
+  brandId: string = '1851';
+  isBrowser: boolean;
+  constructor( private apiService: ApiService,private router:Router, @Inject(PLATFORM_ID) platformId: Object,fb: FormBuilder ) { 
+    this.searchForm = new FormGroup({
+      searchInput: new FormControl(''),
+    });
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
     this.getPublication();
@@ -34,9 +44,11 @@ export class FooterComponent implements OnInit {
               if (response.type === 'brand_page') {
                 this.brandSlug = response.slug;
                 this.isBrandFooter = true;
+                this.brandId = response.id;
                 this.getContact();
               } else {
                 this.brandSlug = '1851';
+                this.brandId ='1851';
               }
               this.setFooter();
             });
@@ -46,6 +58,7 @@ export class FooterComponent implements OnInit {
       }
     }); 
   }
+
   setFooter() {
   this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
     this.footer = response.data;
@@ -55,6 +68,14 @@ export class FooterComponent implements OnInit {
     this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
       this.publication = response;
     });
+  }
+  onSearchSubmit(searchForm: FormGroup) {
+    if (this.brandId === '1851') {
+      window.location.href = `/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.publication.id.toLowerCase()}`;
+    } else {
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
+    }
+    this.searchForm.controls['searchInput'].setValue('');
   }
   getContact() {
     this.apiService.getAPI(`${this.brandSlug}/brand/contact`).subscribe((response ) =>{
