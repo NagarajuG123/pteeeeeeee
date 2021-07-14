@@ -1,5 +1,5 @@
 <div
-  *ngIf="showCarousel"
+  *ngIf="list.length"
   class="trending"
   [ngClass]="{
     columns: type == 'columns',
@@ -25,8 +25,16 @@
         </div>
       </div>
       <div *ngIf="isBrowser" class="trending-bottom">
-        <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide *ngFor="let item of list; let i = index">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+        >
+          <li
+            ngxSlickItem
+            *ngFor="let item of list; let i = index"
+            class="col-md-4"
+          >
             <a href="{{ goReadMore(item) }}" style="text-decoration: none">
               <div
                 class="trending-bottom-details"
@@ -43,7 +51,7 @@
                 </figure>
                 <figure *ngIf="!item.media">
                   <img
-                    src="assets/img/video-img2.jpg"
+                    src="assets/images/video-img2.jpg"
                     width="415"
                     height="232"
                     alt="img9"
@@ -88,10 +96,7 @@
                     <span class="float-right text-uppercase"
                       ><a style="color: white" href="{{ goReadMore(item) }}"
                         >READ MORE
-                        <i
-                          class="fa fa-angle-right text-white"
-                          aria-hidden="true"
-                        ></i></a
+                        <i class="fa fa-angle-right" aria-hidden="true"></i></a
                     ></span>
                     <div class="clearfix"></div>
                   </div>
@@ -101,32 +106,27 @@
             <div class="trending-bottom-details" *ngIf="type === 'main-videos'">
               <div
                 class="d-block video-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#videoModal"
-                style="cursor: pointer"
+                data-toggle="modal"
                 attr.data-src="{{ item.media.url }}"
+                data-target="#slide_videos_video_modal"
                 (click)="updateVideoUrl(item.media.url)"
+                style="cursor: pointer"
               >
                 <figure *ngIf="item.media">
                   <img
                     appYoutubeImage
                     src="{{ item.media | defaultImage: 415:232 }}"
-                    alt="video"
+                    alt="video-img5"
                     srcset=""
                   />
                   <img class="video-maker" src="assets/img/youtube.svg" />
                 </figure>
-
-                <!-- <app-modal
-                  [videoUrl]="item?.media?.url"
-                  [modalId]="'exampleModal'"
-                ></app-modal> -->
                 <figure *ngIf="!item.media">
                   <img
                     src="assets/img/video-img2.jpg"
                     width="415"
                     height="232"
-                    alt="video"
+                    alt="video-img5"
                   />
                 </figure>
               </div>
@@ -138,33 +138,51 @@
                   <a
                     href="{{ item.media.url }}"
                     target="blank"
-                    class="float-right text-white text-uppercase"
+                    class="float-right text-uppercase"
                   >
                     WATCH ON YOUTUBE
-                    <i
-                      class="fa fa-angle-right text-white"
-                      aria-hidden="true"
-                    ></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
                   </a>
                   <div class="clearfix"></div>
                 </div>
               </div>
             </div>
-          </ng-template>
-          <div class="owl-controls">
-            <div class="owl-nav">
-              <div class="owl-prev">prev</div>
-              <div class="owl-next">next</div>
-            </div>
-            <div class="owl-dots">
-              <div class="owl-dot active"><span></span></div>
-              <div class="owl-dot"><span></span></div>
-              <div class="owl-dot"><span></span></div>
+          </li>
+        </ngx-slick-carousel>
+        <div
+          *ngIf="type === 'main-videos'"
+          class="modal fade"
+          id="slide_videos_video_modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="openVideoPlayer = false"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <app-video-player
+                    *ngIf="openVideoPlayer"
+                    class="embed-responsive-item"
+                    [srcUrl]="url"
+                  >
+                  </app-video-player>
+                </div>
+              </div>
             </div>
           </div>
-        </owl-carousel-o>
+        </div>
       </div>
-      <app-modal [videoUrl]="url" [modalId]="'videoModal'"></app-modal>
     </div>
   </div>
 </div>

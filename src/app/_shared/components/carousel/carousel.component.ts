@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -27,24 +26,7 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slideConfig = {
-      slidesToShow: this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 620,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: this.list.length > 1 ? 2 : 1,
-          },
-        },
-      ],
-    };
+    this.slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
 
     let apiUrl = '';
     switch (this.type) {

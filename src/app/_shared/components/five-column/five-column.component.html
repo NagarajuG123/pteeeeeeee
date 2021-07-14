@@ -29,6 +29,21 @@
   </ul>
   <div class="clearfix"></div>
 </div>
+<a
+  *ngIf="
+    hasMore &&
+    (type === 'monthlydetails' ||
+      type === 'categoryPage' ||
+      type === 'trendingbrandbuzz-bottom' ||
+      type === 'dynamicPage-bottom')
+  "
+  href="javascript:void(0)"
+  id="loadMore"
+  class="text-center loadmore-btn d-block"
+  (click)="getMoreData()"
+>
+  <i class="fa fa-angle-down" aria-hidden="true"></i>
+</a>
 
 <!-- <div
   class="

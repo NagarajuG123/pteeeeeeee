@@ -11,6 +11,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 // Header and Footer Components
@@ -78,6 +79,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     VgBufferingModule,
     CarouselModule,
     MalihuScrollbarModule.forRoot(),
+    SlickCarouselModule,
   ],
   exports: [
     RouterModule,
@@ -110,6 +112,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ModalComponent,
     MalihuScrollbarModule,
     BannerSearchComponent,
+    SlickCarouselModule,
   ],
 })
 export class SharedModule {}

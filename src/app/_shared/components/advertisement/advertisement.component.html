@@ -5,22 +5,30 @@
       <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
       <div class="clearfix"></div>
       <div class="advertisement-details home-ads">
-        <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide *ngFor="let item of adsData">
-            <a href="{{ item.url }}" target="blank" class="d-block">
-              <figure>
-                <img
-                  appYoutubeImage
-                  src="{{ item.media | defaultImage: 970:89 }}"
-                  width="970"
-                  height="89"
-                  style="width: 100%"
-                  alt="Advertisement"
-                />
-              </figure>
-            </a>
-          </ng-template>
-        </owl-carousel-o>
+        <ngx-slick-carousel
+          *ngIf="isBrowser"
+          class="carousel"
+          [config]="slideConfig"
+        >
+          <a
+            ngxSlickItem
+            *ngFor="let ad of adsData; let i = index"
+            href="{{ ad.url }}"
+            target="blank"
+            class="d-block"
+          >
+            <figure>
+              <img
+                appYoutubeImage
+                src="{{ ad.media | defaultImage: 970:89 }}"
+                width="970"
+                height="89"
+                style="width: 100%"
+                alt="img12"
+              />
+            </figure>
+          </a>
+        </ngx-slick-carousel>
       </div>
     </div>
   </div>
@@ -33,24 +41,30 @@
         <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
         <div class="clearfix"></div>
         <div class="advertisement-details">
-          <owl-carousel-o [options]="customOptions">
-            <ng-container *ngFor="let item of adsData">
-              <ng-template carouselSlide [id]="item.id">
-                <a href="{{ item.url }}" target="blank" class="d-block">
-                  <figure>
-                    <img
-                      appYoutubeImage
-                      src="{{ item.media | defaultImage: 970:89 }}"
-                      width="970"
-                      height="89"
-                      style="width: 100%"
-                      alt="Advertisement"
-                    />
-                  </figure>
-                </a>
-              </ng-template>
-            </ng-container>
-          </owl-carousel-o>
+          <ngx-slick-carousel
+            *ngIf="isBrowser"
+            class="carousel"
+            [config]="slideConfig"
+          >
+            <a
+              ngxSlickItem
+              *ngFor="let ad of adsData; let i = index"
+              href="{{ ad.url }}"
+              target="blank"
+              class="d-block"
+            >
+              <figure>
+                <img
+                  appYoutubeImage
+                  src="{{ ad.media | defaultImage: 970:89 }}"
+                  width="970"
+                  height="89"
+                  style="width: 100%"
+                  alt="img12"
+                />
+              </figure>
+            </a>
+          </ngx-slick-carousel>
         </div>
       </div>
     </div>

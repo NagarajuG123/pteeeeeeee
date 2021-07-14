@@ -44,6 +44,11 @@
 ul {
   padding-left: 0rem !important;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  content: "" !important;
+}
 // @import "src/assets/scss/mixins";
 // @import "src/assets/scss/common";
 // @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
