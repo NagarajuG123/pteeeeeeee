@@ -254,9 +254,6 @@ export class InfoComponent implements OnInit {
         }
       });
   }
-  close(){
-    $('#pdfModal').hide();
-  }
   shareUrl() {
     return window.location.href;
   }
