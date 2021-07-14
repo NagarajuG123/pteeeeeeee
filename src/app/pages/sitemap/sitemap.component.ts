@@ -50,7 +50,6 @@ export class SitemapComponent implements OnInit {
   getSitemap(){
     this.apiService.getAPI(`${this.apiUrl}`).subscribe((response ) =>{
       this.sitemap = response;
-      console.log(this.sitemap);
       Object.keys(this.sitemap).forEach((year: any) => {
         const monthData: { month: string; number: any; url: any; }[] = [];
         Object.keys(this.sitemap[year]).forEach(month => {

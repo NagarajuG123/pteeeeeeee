@@ -37,7 +37,6 @@ export class SitemapDetailComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log(this.brandSlug);
     this.route.paramMap
     .subscribe(params => {
        this.year = params.get('year');
