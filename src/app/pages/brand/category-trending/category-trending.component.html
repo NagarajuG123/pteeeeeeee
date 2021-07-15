@@ -1,0 +1,88 @@
+<div *ngIf="data.length > 0" class="trending category-trending">
+  <div class="container">
+    <div class="trending-details">
+      <div class="frannews-top d-flex">
+        <div class="frannews-top-left col-md-6 p-0">
+          <ul>
+            <li>
+              <h4>
+                <strong>TRENDING</strong>
+              </h4>
+            </li>
+            <li>
+              <h4 class="text-uppercase">{{ subTitle.replace("-", " ") }}</h4>
+            </li>
+          </ul>
+        </div>
+        <div class="frannews-top-right col-md-6">
+          <a href="{{ readMore(data[0]) }}" class="float-right">
+            READ MORE
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="trending-bottom">
+        <ngx-slick-carousel
+          *ngIf="isBrowser"
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+        >
+          <li
+            ngxSlickItem
+            class="col-md-4"
+            *ngFor="let item of data; let i = index"
+          >
+            <a href="{{ readMore(item) }}" class="trending-bottom-details">
+              <figure>
+                <img
+                  appYoutubeImage
+                  srcset="{{item.media | defaultImage:415:232}} 415w, {{item.media | defaultImage:360:201}} 360w"
+                  sizes="{{
+                    '(max-width: 992px) 415px,
+                                            (max-width: 1200px) 360px,
+                                            415px'
+                  }}"
+                  src="{{ item.media | defaultImage: 415:232 }}"
+                  alt="img9"
+                />
+              </figure>
+              <a
+                href="{{
+                  item.brand.slug != '1851' ? item.brand.slug + '/' : ''
+                }}{{ item.slug }}#{{ subTitle }}"
+                class="buffalowings"
+              >
+                <div class="buffalowings-wrap d-flex">
+                  <div
+                    class="buffalowings-wrap-left"
+                    [class.col-2]="i < 9"
+                    [class.col-3]="i >= 9"
+                  >
+                    <span class="d-block">{{ i + 1 }}</span>
+                  </div>
+                  <div class="buffalowings-wrap-right col-9">
+                    <p>
+                      {{ item.title }}
+                    </p>
+                  </div>
+                </div>
+                <div class="buffalowings-bottom">
+                  <a
+                    class="float-right text-uppercase"
+                    href="{{ readMore(item) }}"
+                  >
+                    READ MORE
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </a>
+          </li>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+</div>
