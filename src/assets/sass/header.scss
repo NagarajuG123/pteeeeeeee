@@ -285,7 +285,11 @@ nav {
   a {
     color: $color1;
   }
+  &.show {
+    left: 0;
+  }
 }
+
 .menu-logo {
   padding: 0 0 28px 0;
   a {
@@ -423,7 +427,11 @@ nav {
     }
   }
 }
-
+.sidebar-brand-images {
+  height: 70px;
+  max-height: 70px;
+  max-width: 150px;
+}
 /* brand-header */
 .brand-header {
   .header-left {
@@ -518,7 +526,7 @@ nav {
     padding: 3px 5px 2px 22px;
   }
 }
-.sponcered {
+.sponsored {
   padding: 25px 18px 25px 18px;
   @include desk-lg-below1 {
     padding: 20px 15px;

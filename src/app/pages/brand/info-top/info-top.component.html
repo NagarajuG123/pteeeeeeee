@@ -1,4 +1,93 @@
-<div class="d-block top-slider position-relative">
+<div *ngIf="data" class="banner d-flex flex-row-reverse">
+  <div class="banner-left-info col-sm-9 col-12 p-0">
+    <div *ngIf="checkMediaValid(data)">
+      <a
+        href="javascript:void(0)"
+        class="d-block video-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#brandInfoModal"
+      >
+        <figure>
+          <img
+            appYoutubeImage
+            src="{{ data['media'] | defaultImage: 953:535 }}"
+            width="953"
+            height="535"
+            alt="brand-img6"
+          />
+        </figure>
+        <img
+          appYoutubeImage
+          *ngIf="data['media']['type'] === 'video'"
+          class="video-maker"
+          src="assets/img/youtube.svg"
+          data-bs-toggle="modal"
+          data-bs-target="#brandInfoModal"
+        />
+      </a>
+      <app-modal
+        *ngIf="data['media']['type'] === 'video'"
+        [modalId]="'brandInfoModal'"
+        [videoUrl]="data.media.url"
+      ></app-modal>
+      <!-- <div
+        *ngIf="data['media']['type'] === 'video'"
+        class="modal fade"
+        id="brandinfo_videomodal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        (click)="openVideoPlayer = true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="openVideoPlayer = false"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="embed-responsive embed-responsive-16by9">
+                <app-video-player
+                  *ngIf="openVideoPlayer"
+                  class="embed-responsive-item"
+                  [srcUrl]="data['media']['url']"
+                >
+                </app-video-player>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="banner-right-info col-sm-3 col-12 p-0">
+    <div class="buffalo_wings">
+      <div class="info_btn text-center">
+        <a class="text-center">FRANCHISE NEWS & INFO</a>
+        <h1>{{ data.name | uppercase }}</h1>
+      </div>
+      <div class="buffalo_rings">
+        <a
+          *ngFor="let article of data['articles']; let i = index"
+          href="{{ goReadMore(article) }}"
+        >
+          <p>{{ article.title }}</p>
+          <a class="text-uppercase"
+            >Read More <i class="fa fa-angle-right" aria-hidden="true"></i
+          ></a>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="d-block top-slider position-relative">
   <div class="row g-0 flex-sm-row-reverse align-items-stretch">
     <div class="col-12 col-md-8 col-lg-9">
       <a
@@ -57,4 +146,4 @@
       </ul>
     </div>
   </div>
-</div>
+</div> -->
