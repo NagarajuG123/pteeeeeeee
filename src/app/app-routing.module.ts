@@ -139,12 +139,6 @@ const routes: Routes = [
       import('./pages/brand/brand.module').then((m) => m.BrandModule),
   },
   {
-    path: ':brandSlug/:categorySlug',
-    loadChildren: () =>
-      import('./pages/brand/brand.module').then((m) => m.BrandModule),
-  },
-
-  {
     path: '**', // Navigate to Home Page if not found any page
     component: ErrorComponent,
   },

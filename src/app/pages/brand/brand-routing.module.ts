@@ -15,8 +15,12 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: '',
+    path: ':categorySlug',
     component: BrandComponent,
+  },
+  {
+    path: ':item',
+    component: InfoComponent,
   },
   {
     path: ':item',
