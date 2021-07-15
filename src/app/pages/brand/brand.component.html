@@ -1,4 +1,4 @@
-<div *ngIf="type === 'brand_page' && !isCategory" class="top-space">
+<div *ngIf="type === 'brand_page'" class="top-space">
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
   <app-news [slug]="slug"></app-news>
   <app-carousel
@@ -13,10 +13,7 @@
   ></app-latest-story>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
-<div
-  class="top-space"
-  *ngIf="type === 'category_page' || (type === 'brand_page' && isCategory)"
->
+<div class="top-space" *ngIf="type === 'category_page'">
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
 
   <app-category-trending [data]="categoryTrending" [subTitle]="categoryParam">

@@ -81,6 +81,14 @@ export class InfoComponent implements OnInit {
                 this.brandInfo = response.data;
               });
             this.setTab();
+            //check cat slug
+            // if (this.isCategory) {
+            //   this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
+            //   this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
+            //   this.metaUrl = `${this.slug}/${this.categorySlug}/meta`;
+            //   this.trendingUrl = `${this.slug}/${this.categorySlug}/trending?limit=10&offset=0`;
+            //   this.setParam(this.categorySlug);
+            // }
             this.getContents(params.get('item'));
           }
         });
@@ -121,9 +129,13 @@ export class InfoComponent implements OnInit {
       .getAPI(`${this.brandSlug}/brand-info`)
       .subscribe(async (response) => {
         this.metaService.setSeo(response.meta);
-        this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-          this.metaService.setTitle(`${response.meta.seo.title} | ${result.title}`);
-        });
+        this.apiService
+          .getAPI(`1851/publication-instance`)
+          .subscribe((result) => {
+            this.metaService.setTitle(
+              `${response.meta.seo.title} | ${result.title}`
+            );
+          });
         let info = response.data.length > 0 ? true : false;
         this.validData.push(info);
         let pdf = this.pdf != '' ? true : false;
@@ -132,9 +144,13 @@ export class InfoComponent implements OnInit {
           .getAPI(`${this.brandSlug}/brand-latest-stories`)
           .subscribe(async (response) => {
             this.metaService.setSeo(response.meta);
-            this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-              this.metaService.setTitle(`${response.meta.seo.title} | ${result.title}`);
-            });
+            this.apiService
+              .getAPI(`1851/publication-instance`)
+              .subscribe((result) => {
+                this.metaService.setTitle(
+                  `${response.meta.seo.title} | ${result.title}`
+                );
+              });
             let latest = response.data.length > 0 ? true : false;
             this.validData.push(latest);
             this.apiService
@@ -162,10 +178,15 @@ export class InfoComponent implements OnInit {
       });
   }
   getContents(item: string | null) {
-    if(item.includes('info') || item.includes('latest_stories') || item.includes('why-i-bought') || item.includes('executive') || item.includes('available-markets')){
+    if (
+      item.includes('info') ||
+      item.includes('latest_stories') ||
+      item.includes('why-i-bought') ||
+      item.includes('executive') ||
+      item.includes('available-markets')
+    ) {
       this.isCategorySlug = false;
-    }
-    else{
+    } else {
       this.isCategorySlug = true;
     }
     let path;
@@ -193,9 +214,13 @@ export class InfoComponent implements OnInit {
             (o: any) => o.slug === 'why-i-bought'
           );
           this.metaService.setSeo(this.items.meta);
-          this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-            this.metaService.setTitle(`${this.items.meta.seo.title} | ${result.title}`);
-          });
+          this.apiService
+            .getAPI(`1851/publication-instance`)
+            .subscribe((result) => {
+              this.metaService.setTitle(
+                `${this.items.meta.seo.title} | ${result.title}`
+              );
+            });
           this.isBought = true;
           this.selectedIndex = 3;
         } else if (
@@ -204,9 +229,13 @@ export class InfoComponent implements OnInit {
         ) {
           this.items = this.items.data.find((o: any) => o.slug === 'executive');
           this.metaService.setSeo(this.items.meta);
-          this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-            this.metaService.setTitle(`${this.items.meta.seo.title} | ${result.title}`);
-          });
+          this.apiService
+            .getAPI(`1851/publication-instance`)
+            .subscribe((result) => {
+              this.metaService.setTitle(
+                `${this.items.meta.seo.title} | ${result.title}`
+              );
+            });
           this.isExecutive = true;
           this.selectedIndex = 4;
         } else if (
@@ -217,9 +246,13 @@ export class InfoComponent implements OnInit {
             (o: any) => o.slug === 'available-markets'
           );
           this.metaService.setSeo(this.items.meta);
-          this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-            this.metaService.setTitle(`${this.items.meta.seo.title} | ${result.title}`);
-          });
+          this.apiService
+            .getAPI(`1851/publication-instance`)
+            .subscribe((result) => {
+              this.metaService.setTitle(
+                `${this.items.meta.seo.title} | ${result.title}`
+              );
+            });
           this.isMarket = true;
           this.selectedIndex = 5;
 

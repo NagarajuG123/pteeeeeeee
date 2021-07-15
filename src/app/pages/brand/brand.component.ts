@@ -26,7 +26,6 @@ export class BrandComponent implements OnInit {
   dynamicSecond: any = [];
   topBlock: any = [];
   metaUrl: any = [];
-  isCategory: boolean = false;
   trendingUrl: string;
   constructor(
     private route: ActivatedRoute,
@@ -38,11 +37,7 @@ export class BrandComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.slug = params.get('brandSlug');
-      if (params.get('categorySlug')) {
-        this.categorySlug = params.get('categorySlug');
-        this.isCategory = true;
-      }
+      this.slug = params.get('slug');
       this.apiService
         .getAPI(`get-brand-by-slug/${this.slug}`)
         .subscribe(async (response) => {
@@ -51,29 +46,19 @@ export class BrandComponent implements OnInit {
           } else {
             this.type = response.type;
             this.company = response.name;
-            if (
-              this.type === 'category_page' ||
-              (this.type === 'brand_page' && this.isCategory)
-            ) {
+            if (this.type === 'category_page') {
               this.apiUrl = `1851/${this.slug}/featured`;
               this.mostRecentUrl = `1851/${this.slug}/most-recent`;
               this.metaUrl = `1851/${this.slug}/meta`;
               this.trendingUrl = `1851/${this.slug}/trending?limit=10&offset=0`;
               this.setParam(this.slug);
-              if (this.isCategory) {
-                this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
-                this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
-                this.metaUrl = `${this.slug}/${this.categorySlug}/meta`;
-                this.trendingUrl = `${this.slug}/${this.categorySlug}/trending?limit=10&offset=0`;
-                this.setParam(this.categorySlug);
-              }
               this.getTrending();
               this.getMostRecent();
               this.getCategoryMeta();
-            } else if (this.type === 'brand_page' && !this.isCategory) {
+            } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.getMeta();
-            } else if (this.type === 'dynamic_page' && !this.isCategory) {
+            } else if (this.type === 'dynamic_page') {
               this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
               this.getMoreDynamic();

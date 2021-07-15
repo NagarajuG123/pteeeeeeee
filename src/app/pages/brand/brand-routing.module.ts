@@ -15,13 +15,13 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
+    path: ':item',
+    component: InfoComponent,
+  },
+  {
     path: '',
     component: BrandComponent,
   },
-  {
-    path: ':item',
-    component: InfoComponent,
-  }
 ];
 
 @NgModule({
