@@ -9,7 +9,11 @@
     #brandLeft
     style="cursor: pointer"
   >
-    <a *ngIf="!isVideo(highlight)" class="d-block">
+    <a
+      *ngIf="!isVideo(highlight)"
+      class="d-block"
+      href="{{ readMore(highlight) }}"
+    >
       <figure>
         <img
           appYoutubeImage

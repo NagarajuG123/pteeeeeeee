@@ -1,5 +1,6 @@
 import {
   Component,
+  HostListener,
   Inject,
   OnInit,
   PLATFORM_ID,
@@ -8,18 +9,23 @@ import {
 } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {
+  DOCUMENT,
+  isPlatformBrowser,
+  isPlatformServer,
+  Location,
+} from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Subject, forkJoin } from 'rxjs';
 import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { BrandNews } from 'src/app/_core/models/brandNews';
 import { DetailsData } from 'src/app/_core/models/detailsData';
 declare var FB: any;
+declare var ga: Function;
 
 @Component({
   selector: 'app-story',
@@ -34,7 +40,6 @@ export class StoryComponent implements OnInit {
   storySlug: any = '';
   storyId: any;
   brandId = '1851';
-  customOptions: OwlOptions = {};
   isBrowser: boolean = false;
   scrollbarOptions: any;
   throttle = 1000;
@@ -46,6 +51,7 @@ export class StoryComponent implements OnInit {
   header: any = [];
   defaultArticleSection = 'aggregated articles';
   scrollEvent = new BehaviorSubject<boolean>(false);
+  subject: Subject<any> = new Subject();
   storyIndex: boolean;
   pageType = 'details';
   isLoading: boolean = false;
@@ -55,6 +61,8 @@ export class StoryComponent implements OnInit {
   brandList: any = [];
   type = '';
   brandSlug = '1851';
+  originalUrl = '';
+  gaVisitedUrls: Array<any> = [];
   storyApiUrl = '';
   isAuthorPage: boolean = false;
   defaultFbUrl: string;
@@ -77,7 +85,8 @@ export class StoryComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private googleAnalyticsService: GoogleAnalyticsService,
     private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private dom
+    @Inject(DOCUMENT) private dom,
+    private location: Location
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.isServer = isPlatformServer(platformId);
@@ -585,6 +594,40 @@ export class StoryComponent implements OnInit {
       }
     });
   }
+
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      this.subject
+        .pipe(debounceTime(500), takeUntil(this.onDestroy$))
+        .subscribe(() => {
+          const distance = this.adsData.length ? 800 : 500;
+          $(window).scroll(function () {
+            if (
+              $(document).height() -
+                $(window).scrollTop() -
+                $('#footer').outerHeight() >
+              $('#banner_brandNews').outerHeight()
+            ) {
+              if ($(window).scrollTop() > distance) {
+                $('#banner_brandNews').addClass('sticky_branner_header');
+                $('#banner_brandNews').removeClass('sticky_branner_bottom');
+              } else {
+                $('#banner_brandNews').removeClass('sticky_branner_header');
+                $('#banner_brandNews').removeClass('sticky_branner_bottom');
+              }
+            } else {
+              if ($(window).scrollTop() > distance) {
+                $('#banner_brandNews').addClass('sticky_branner_bottom');
+                $('#banner_brandNews').removeClass('sticky_branner_header');
+              } else {
+                $('#banner_brandNews').removeClass('sticky_branner_bottom');
+                $('#banner_brandNews').removeClass('sticky_branner_header');
+              }
+            }
+          });
+        });
+    }
+  }
   addItems(limit, offset) {
     if (this.pageType === 'details' && !this.isLoading) {
       this.isLoading = true;
@@ -701,30 +744,6 @@ export class StoryComponent implements OnInit {
       callbacks: {
         onTotalScroll: () => {},
       },
-    };
-    this.customOptions = {
-      loop: false,
-      mouseDrag: false,
-      touchDrag: false,
-      pullDrag: false,
-      dots: false,
-      autoplay: true,
-      navText: ['', ''],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        400: {
-          items: 1,
-        },
-        740: {
-          items: 1,
-        },
-        940: {
-          items: 1,
-        },
-      },
-      nav: true,
     };
   }
 
@@ -864,6 +883,51 @@ export class StoryComponent implements OnInit {
     } else {
       this.fbUrl = environment.fbUrl;
     }
+  }
+
+  isScrolledIntoView(elem) {
+    const docViewTop = $(window).scrollTop();
+    const docViewBottom = docViewTop + $(window).height();
+
+    const elemTop = $(elem).offset().top;
+    const elemBottom = elemTop + $(elem).height();
+
+    return elemBottom <= docViewBottom && elemTop >= docViewTop;
+  }
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event) {
+    $('.element').each((index, element) => {
+      if (this.pageType === 'details') {
+        if (this.isScrolledIntoView(element)) {
+          if (typeof $(element).data('id') !== 'undefined') {
+            let newUrl =
+              this.brandSlug !== '1851' && this.brandSlug
+                ? `/${this.brandSlug}/${$(element).data('title')}`
+                : `/${$(element).data('title')}`;
+            newUrl =
+              this.type && this.type !== 'featured-articles'
+                ? `${newUrl}#${this.type}`
+                : newUrl;
+            if (this.originalUrl !== newUrl) {
+              this.originalUrl = newUrl;
+              if (this.isBrowser) {
+                for (let i = 0; i < this.gaVisitedUrls.length; i++) {
+                  if (this.gaVisitedUrls[i] === newUrl) {
+                    return;
+                  }
+                }
+                ga('set', 'page', newUrl);
+                ga('send', 'pageview');
+                ga(`${this.brandSlug}.set`, 'page', newUrl);
+                ga(`${this.brandSlug}.send`, 'pageview');
+                this.gaVisitedUrls.push(newUrl);
+              }
+            }
+            this.location.replaceState(newUrl);
+          }
+        }
+      }
+    });
   }
   ngOnDestroy() {
     this.onDestroySubject.next(true);

@@ -57,6 +57,11 @@
             src="assets/img/youtube.svg"
           />
         </a>
+        <app-modal
+          *ngIf="media && media.type == 'video'"
+          [videoUrl]="media?.url"
+          [modalId]="'storyModal'"
+        ></app-modal>
         <h1 class="m-0" [innerHTML]="title"></h1>
         <h2 [innerHTML]="short_description"></h2>
         <div class="brian_jaeger d-flex flex-wrap align-items-center">
@@ -102,8 +107,8 @@
                   >
                     <a
                       href="javascript:void(0)"
-                      data-toggle="modal"
-                      data-target="#sponsoredModal"
+                      data-bs-toggle="modal"
+                      data-bs-target="#sponsoredModal"
                     >
                       SPONSORED
                     </a>
@@ -136,8 +141,8 @@
               >
                 <a
                   href="javascript:void(0)"
-                  data-toggle="modal"
-                  data-target="#sponsoredModal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sponsoredModal"
                 >
                   SPONSORED
                 </a>
@@ -253,7 +258,11 @@
         </div>
         <div *ngIf="adsImages.length" class="advertisement_data text-center">
           <h6>ADVERTISEMENT</h6>
-          <ngx-slick *ngIf="isBrowser" class="carousel" [config]="slideConfig">
+          <ngx-slick-carousel
+            *ngIf="isBrowser"
+            class="carousel"
+            [config]="slideConfig"
+          >
             <a
               ngxSlickItem
               *ngFor="let ad of adsImages; let i = index"
@@ -263,14 +272,14 @@
             >
               <img
                 appYoutubeImage
-                src="{{ ad.media.url }}"
+                src="{{ ad.media | defaultImage: 353:264 }}"
                 width="353"
                 height="264"
                 style="width: 100%"
                 alt="story_add"
               />
             </a>
-          </ngx-slick>
+          </ngx-slick-carousel>
         </div>
         <div class="banner-right col-12" *ngIf="brandNews.length">
           <h4 *ngIf="!isBrand">
