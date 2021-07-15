@@ -1,9 +1,34 @@
 <div
   class="frannews-bottom"
   [ngClass]="type === 'authorpage' ? 'author-frannews' : ''"
+  [ngClass]="type === 'trendingbrandbuzz' ? 'trendingbrandbuzz-frannews' : ''"
 >
   <ul>
-    <li *ngFor="let n of contents">
+    <li *ngFor="let n of contents; let i = index">
+      <div
+        class="sponsored text-center"
+        *ngIf="
+          type === 'trendingbrandbuzz' ||
+          type === 'trendingbrandbuzz-bottom' ||
+          type === 'dynamicPage' ||
+          type === 'dynamicPage-bottom'
+        "
+      >
+        <span
+          class="d-inline-block"
+          *ngIf="type === 'trendingbrandbuzz' || type === 'dynamicPage'"
+        >
+          {{ i + 1 }}
+        </span>
+        <span
+          class="d-inline-block"
+          *ngIf="
+            type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage-bottom'
+          "
+        >
+          {{ i + 11 }}
+        </span>
+      </div>
       <a href="{{ readMore(n) }}" class="frannews-bottom-details">
         <figure>
           <img

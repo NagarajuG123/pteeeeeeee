@@ -11,7 +11,7 @@
                     [src]="footer?.logo?.url"
                     width="86"
                     height="87"
-                    alt="footer"
+                    alt=""
                   />
                 </figure>
               </a>
@@ -172,7 +172,11 @@
     <div *ngIf="isBrowser" class="search_pop_up modal" id="footerSearchModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <button type="button" class="close text-right" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
             &times;
           </button>
           <form
