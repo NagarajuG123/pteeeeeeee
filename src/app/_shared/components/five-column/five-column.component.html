@@ -1,4 +1,7 @@
-<div class="frannews-bottom">
+<div
+  class="frannews-bottom"
+  [ngClass]="type === 'authorpage' ? 'author-frannews' : ''"
+>
   <ul>
     <li *ngFor="let n of contents">
       <a href="{{ readMore(n) }}" class="frannews-bottom-details">
