@@ -1,34 +1,84 @@
-import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
-
+import { MetaService } from 'src/app/_core/services/meta.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-brand-search-data',
   templateUrl: './brand-search-data.component.html',
-  styleUrls: ['./brand-search-data.component.scss']
+  styleUrls: ['./brand-search-data.component.scss'],
 })
 export class BrandSearchDataComponent implements OnInit {
   @Input() search_input: string;
-  
-  story_keys: Array<object> = [];
-  brand_keys: Array<object> = [];
-  invest_keys: Array<object> = [];
+
+  search_key = '';
   industry_keys: Array<object> = [];
-  params: any = [];
-  has_more: any = [];
-  invest_values: any;
-  story_values: any = '';
-  brand_values: any = '';
   industry_values: any = '';
+  invest_keys: Array<object> = [];
+  invest_values: any = '';
+  brand_keys: Array<object> = [];
+  brand_values: any = [];
+  story_keys: Array<object> = [];
+  story_values: any = [];
   items: Array<object> = [];
   sortBrand_value = 'asc';
   sortInvest_value = 'asc';
   sortIndustry_value = 'asc';
   sortStory_value = 'asc';
-  search_key: any;
+  has_more: boolean;
+  publication: any;
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private metaService: MetaService
+  ) {}
 
   ngOnInit(): void {
+    this.setInit();
+    const params = `?q=${this.search_input}&sort=brand&limit=10&offset=0`;
+    const brandSearchData = {};
+    const brandSearch_api = this.apiService.getAPI(`brand-search${params}`);
+    const brandFilter_api = this.apiService.getAPI(`brand-filters`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([brandFilter_api, brandSearch_api, publication])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.publication = results[2];
+        brandSearchData['industry_keys'] = [];
+        brandSearchData['invest_keys'] = [];
+        results[0].data.industries.forEach((industry) => {
+          brandSearchData['industry_keys'].push({
+            name: industry.name,
+            value: industry.id,
+            isChecked: false,
+          });
+        });
+        results[0].data['invesment-ranges'].forEach((investment) => {
+          brandSearchData['invest_keys'].push({
+            min: investment.range_from,
+            max: investment.range_to,
+            isChecked: false,
+          });
+        });
+        brandSearchData['items'] = results[1].data;
+        brandSearchData['has_more'] = results[1].has_more;
+      });
+    const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
+
+    this.metaService.setTitle(defaultTitle);
+    this.getSearchData();
+  }
+
+  setInit() {
     this.industry_keys = [
       {
         name: 'Beauty',
@@ -79,8 +129,9 @@ export class BrandSearchDataComponent implements OnInit {
         name: 'Healthcare',
         value: 'health',
         isChecked: false,
-      }
+      },
     ];
+
     this.invest_keys = [
       {
         min: 0,
@@ -106,7 +157,7 @@ export class BrandSearchDataComponent implements OnInit {
         min: 10000000,
         max: 99999999,
         isChecked: false,
-      }
+      },
     ];
 
     this.brand_keys = [
@@ -174,19 +225,79 @@ export class BrandSearchDataComponent implements OnInit {
         isChecked: false,
       },
     ];
-    this.params = `?q=${this.search_input}&sort=brand&limit=10&offset=0`;
-    this.getSearchData();
   }
-
   ngOnChanges(changes: SimpleChanges) {
     const search_input: SimpleChange = changes.search_input;
 
-    if (search_input.currentValue !== search_input.previousValue && this.search_key !== search_input.currentValue) {
+    if (
+      search_input.currentValue !== search_input.previousValue &&
+      this.search_key !== search_input.currentValue
+    ) {
       this.search_key = search_input.currentValue;
       this.getSearchData();
     }
   }
-  
+
+  onChangeInvestFilter(index) {
+    this.invest_keys[index]['isChecked'] =
+      !this.invest_keys[index]['isChecked'];
+    this.invest_values = '';
+    this.invest_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.invest_values += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeIndustryFilter(index) {
+    this.industry_keys[index]['isChecked'] =
+      !this.industry_keys[index]['isChecked'];
+    this.industry_values = '';
+    this.industry_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.industry_values += `&industries[]=${key['value']}`;
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeBrandFilter(index) {
+    this.brand_keys[index]['isChecked'] = !this.brand_keys[index]['isChecked'];
+    this.brand_values = [];
+    this.brand_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.brand_values.push(key['value']);
+      }
+    });
+    this.getSearchData();
+  }
+
+  onChangeStoryFilter(index) {
+    this.story_keys[index]['isChecked'] = !this.story_keys[index]['isChecked'];
+    this.story_values = [];
+    this.story_keys.forEach((key, i) => {
+      if (key['isChecked']) {
+        this.story_values.push(key['value']);
+      }
+    });
+    this.getSearchData();
+  }
+
+  getSearchData() {
+    const sortValue = `&sort=${
+      this.sortBrand_value === 'asc' ? 'brand' : '-brand'
+    }`;
+    const params = `?q=${this.search_input}${this.invest_values}${this.industry_values}${sortValue}&limit=10&offset=0`;
+    this.apiService
+      .getAPI(`brand-search${params}`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((res) => {
+        this.items = res['data'];
+        this.has_more = res['has_more'];
+      });
+  }
+
   selectAllIndustry() {
     this.industry_values = '';
     this.industry_keys.forEach((key, i) => {
@@ -220,49 +331,24 @@ export class BrandSearchDataComponent implements OnInit {
     });
     this.getSearchData();
   }
-  onChangeInvestFilter(index) {
-    this.invest_keys[index]['isChecked'] = !this.invest_keys[index]['isChecked'];
-    this.invest_values = '';
-    this.invest_keys.forEach((key, i) => {
-      if (key['isChecked']) {
-        this.invest_values += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
-      }
-    });
-    this.getSearchData();
+
+  getMoreData() {
+    const sortValue = `&sort=${
+      this.sortBrand_value === 'asc' ? 'brand' : '-brand'
+    }`;
+    // tslint:disable-next-line:max-line-length
+    const params = `?q=${this.search_input}${this.invest_values}${this.industry_values}${sortValue}&limit=10&offset=${this.items.length}`;
+    this.apiService
+      .getAPI(`brand-search${params}`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((res) => {
+        res['data'].forEach((brand, index) => {
+          this.items.push(brand);
+        });
+        this.has_more = res['has_more'];
+      });
   }
 
-  onChangeIndustryFilter(index) {
-    this.industry_keys[index]['isChecked'] = !this.industry_keys[index]['isChecked'];
-    this.industry_values = '';
-    this.industry_keys.forEach((key, i) => {
-      if (key['isChecked']) {
-        this.industry_values += `&industries[]=${key['value']}`;
-      }
-    });
-    this.getSearchData();
-  }
-
-  onChangeBrandFilter(index) {
-    this.brand_keys[index]['isChecked'] = !this.brand_keys[index]['isChecked'];
-    this.brand_values = [];
-    this.brand_keys.forEach((key, i) => {
-      if (key['isChecked']) {
-        this.brand_values.push(key['value']);
-      }
-    });
-    this.getSearchData();
-  }
-
-  onChangeStoryFilter(index) {
-    this.story_keys[index]['isChecked'] = !this.story_keys[index]['isChecked'];
-    this.story_values = [];
-    this.story_keys.forEach((key, i) => {
-      if (key['isChecked']) {
-        this.story_values.push(key['value']);
-      }
-    });
-    this.getSearchData();
-  }
   getIndustry(industry) {
     let list = '';
     for (let i = 0; i < industry.length; i++) {
@@ -311,17 +397,8 @@ export class BrandSearchDataComponent implements OnInit {
     this.getSearchData();
   }
 
-
-  getSearchData() {
-    const sortValue = `&sort=${this.sortBrand_value === 'asc' ? 'brand' : '-brand'}`;
-     this.params = `?q=${this.search_input}${this.invest_values}${this.industry_keys}${sortValue}&limit=10&offset=0`;
-      this.apiService.getAPI(`brand-search${this.params}`).subscribe((result) => {
-      this.industry_keys = result.data.industry;
-      this.invest_keys = result.data.investment;
-      this.items = result.data;
-      this.has_more = result.has_more;
-    });
+  ngOnDestroy() {
+    this.onDestroySubject.next(true);
+    this.onDestroySubject.complete();
   }
 }
-
-

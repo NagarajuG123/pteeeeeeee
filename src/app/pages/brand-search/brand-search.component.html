@@ -1,6 +1,9 @@
-<div class="empty top-space"></div>
-<app-banner-search  (onSearch)="updateSearchInput($event)"></app-banner-search>
+<div class="top-space"></div>
+<app-banner-search (onSearch)="updateSearchInput($event)"></app-banner-search>
 <div class="main-content">
-    <app-brand-search-data [search_input]="search_input"></app-brand-search-data>
-    <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'"></app-advertisement>
+  <app-brand-search-data [search_input]="search_input"></app-brand-search-data>
+  <app-advertisement
+    [slug]="'1851'"
+    [type]="'Main Site Ad'"
+  ></app-advertisement>
 </div>

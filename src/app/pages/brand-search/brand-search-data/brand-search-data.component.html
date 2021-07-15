@@ -1,335 +1,416 @@
 <div class="ranking_september brand_search_data">
-    <div class="ranking_trending_data d-lg-block d-none">
-        <div class="container">
-            <div class="brand_search_main row">
-                <div class="ranking_trending_left col-lg-3 col-md-12"></div>
-                <div class="ranking_trending_right ranking_trending_right1 col-lg-9 col-md-12">
-                    <ul class="ranking_data_main p-0 d-flex flex-wrap justify-content-center clearfix">
-                        <li class="brand_data_search col-2 text-center">
-                            <div class="dropdown dropdown_search">
-                                <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                    [ngClass]="{'dropup-toggle' : sortBrand_value === 'desc', 'dropdown-toggle' : sortBrand_value === 'asc'}"
-                                    (click)="sortBrand()"
-                                >
-                                    BRAND PAGE
-                                </button>
-                            </div>
+  <div class="ranking_trending_data d-lg-block d-none">
+    <div class="container">
+      <div class="brand_search_main row">
+        <div class="ranking_trending_left col-lg-3 col-md-12"></div>
+        <div
+          class="
+            ranking_trending_right ranking_trending_right1
+            col-lg-9 col-md-12
+          "
+        >
+          <ul
+            class="
+              ranking_data_main
+              p-0
+              d-flex
+              flex-wrap
+              justify-content-center
+              clearfix
+            "
+          >
+            <li class="brand_data_search col-2 text-center">
+              <div class="dropdown dropdown_search">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  [ngClass]="{
+                    'dropup-toggle': sortBrand_value === 'desc',
+                    'dropdown-toggle': sortBrand_value === 'asc'
+                  }"
+                  (click)="sortBrand()"
+                >
+                  BRAND PAGE
+                </button>
+              </div>
+            </li>
+            <li class="rank_data_search col-4 text-center">
+              <div class="dropdown dropdown_search">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  INVESTMENT
+                </button>
+                <div class="dropdown-menu">
+                  <div class="ranking_trending_left col-lg-3 col-md-12">
+                    <div class="filter_industry text-center">
+                      <ul>
+                        <li *ngFor="let invest of invest_keys; let i = index">
+                          <label>
+                            <input
+                              type="checkbox"
+                              class="ckbCheckAll"
+                              [checked]="invest.isChecked"
+                              (change)="onChangeInvestFilter(i)"
+                            />
+                            <span>
+                              ${{ invest.min | number }} - ${{
+                                invest.max | number
+                              }}
+                            </span>
+                          </label>
                         </li>
-                        <li class="rank_data_search col-4  text-center">
-                            <div class="dropdown dropdown_search">
-                                <button
-                                    type="button"
-                                    class="btn btn-primary dropdown-toggle"
-                                    data-toggle="dropdown"
-                                >
-                                    INVESTMENT
-                                </button>
-                                <div class="dropdown-menu">
-                                    <div class="ranking_trending_left col-lg-3 col-md-12">
-                                        <div class="filter_industry text-center">
-                                            <ul>
-                                                <li *ngFor="let invest of invest_keys; let i = index">
-                                                    <label>
-                                                        <input
-                                                            type="checkbox"
-                                                            class="ckbCheckAll"
-                                                            [checked]="invest.isChecked"
-                                                            (change)="onChangeInvestFilter(i)"
-                                                        >
-                                                        <span>
-                                                            ${{invest.min | number}} - ${{invest.max | number}}
-                                                        </span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="trending_data_search col-2 text-center">
+              <div class="dropdown dropdown_search">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  INDUSTRY
+                </button>
+                <div class="dropdown-menu">
+                  <div class="ranking_trending_left col-lg-3 col-md-12">
+                    <div class="filter_industry text-center">
+                      <ul>
+                        <li
+                          *ngFor="let industry of industry_keys; let i = index"
+                        >
+                          <label>
+                            <input
+                              type="checkbox"
+                              class="ckbCheckAll"
+                              [checked]="industry.isChecked"
+                              (change)="onChangeIndustryFilter(i)"
+                            />
+                            <span>{{ industry.name }}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="latest_data_search col-4 text-center">
+              <div class="dropdown dropdown_search">
+                <button type="button" class="btn btn-primary">
+                  LATEST STORY
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ranking_september_data">
+    <div class="container">
+      <div class="brand_search_main row">
+        <div class="ranking_trending_left col-lg-3 col-md-12">
+          <div class="filter_industry text-center">
+            <h1>FILTER BY INDUSTRY</h1>
+            <label>
+              <input
+                type="checkbox"
+                class="ckbCheckAll"
+                (click)="selectAllIndustry()"
+              />
+              <span>Select All</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                class="ckbCheckAll"
+                (click)="clearAllIndustry()"
+              />
+              <span class="clear-check">Clear All</span>
+            </label>
+            <ul>
+              <li *ngFor="let industry of industry_keys; let i = index">
+                <label>
+                  <input
+                    type="checkbox"
+                    class="ckbCheckAll"
+                    [checked]="industry.isChecked"
+                    (change)="onChangeIndustryFilter(i)"
+                  />
+                  <span>{{ industry.name }}</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="filter_industry text-center">
+            <h6>FILTER BY INVESTMENT</h6>
+            <label>
+              <input
+                type="checkbox"
+                class="ckbCheckAll"
+                (click)="selectAllInvest()"
+              />
+              <span>Select All</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                class="ckbCheckAll"
+                (click)="clearAllInvest()"
+              />
+              <span>Clear All</span>
+            </label>
+            <ul>
+              <li *ngFor="let invest of invest_keys; let i = index">
+                <label>
+                  <input
+                    type="checkbox"
+                    class="ckbCheckAll"
+                    [checked]="invest.isChecked"
+                    (change)="onChangeInvestFilter(i)"
+                  />
+                  <span>
+                    ${{ invest.min | number }} - ${{ invest.max | number }}
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="brand_search_scroll col-lg-9 col-md-12 pl-0 pt-0 pr-0 pb-4">
+          <div class="brand_search_inner_scroll">
+            <div class="ranking_trending_right">
+              <div class="ranking_trending_data d-lg-none d-block col-12">
+                <div class="container">
+                  <div class="brand_search_main row">
+                    <div class="ranking_trending_right col-lg-9 col-md-12">
+                      <ul
+                        class="
+                          ranking_data_main
+                          p-0
+                          d-flex
+                          flex-wrap
+                          justify-content-center
+                          clearfix
+                        "
+                      >
+                        <li class="brand_data_search col-2 text-center">
+                          <div class="dropdown dropdown_search">
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              [ngClass]="{
+                                'dropup-toggle': sortBrand_value === 'desc',
+                                'dropdown-toggle': sortBrand_value === 'asc'
+                              }"
+                              (click)="sortBrand()"
+                            >
+                              BRAND PAGE
+                            </button>
+                          </div>
+                        </li>
+                        <li class="rank_data_search col-4 text-center">
+                          <div class="dropdown dropdown_search">
+                            <button
+                              type="button"
+                              class="btn btn-primary dropdown-toggle"
+                              data-toggle="dropdown"
+                            >
+                              INVESTMENT
+                            </button>
+                            <div class="dropdown-menu">
+                              <div
+                                class="ranking_trending_left col-lg-3 col-md-12"
+                              >
+                                <div class="filter_industry text-center">
+                                  <ul>
+                                    <li
+                                      *ngFor="
+                                        let invest of invest_keys;
+                                        let i = index
+                                      "
+                                    >
+                                      <label>
+                                        <input
+                                          type="checkbox"
+                                          class="ckbCheckAll"
+                                          [checked]="invest.isChecked"
+                                          (change)="onChangeInvestFilter(i)"
+                                        />
+                                        <span>
+                                          ${{ invest.min | number }} - ${{
+                                            invest.max | number
+                                          }}
+                                        </span>
+                                      </label>
+                                    </li>
+                                  </ul>
                                 </div>
+                              </div>
                             </div>
+                          </div>
                         </li>
                         <li class="trending_data_search col-2 text-center">
-                            <div class="dropdown dropdown_search">
-                                <button
-                                    type="button"
-                                    class="btn btn-primary dropdown-toggle"
-                                    data-toggle="dropdown"
-                                >
-                                    INDUSTRY
-                                </button>
-                                <div class="dropdown-menu">
-                                    <div class="ranking_trending_left col-lg-3 col-md-12">
-                                        <div class="filter_industry text-center">
-                                            <ul>
-                                                <li *ngFor="let industry of industry_keys; let i = index">
-                                                    <label>
-                                                        <input
-                                                            type="checkbox"
-                                                            class="ckbCheckAll"
-                                                            [checked]="industry.isChecked"
-                                                            (change)="onChangeIndustryFilter(i)"
-                                                        >
-                                                        <span>{{industry.name}}</span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="latest_data_search col-4  text-center">
-                            <div class="dropdown dropdown_search">
-                                <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                >
-                                    LATEST STORY
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ranking_september_data">
-        <div class="container">
-            <div class="brand_search_main row">
-                <div class="ranking_trending_left col-lg-3 col-md-12">
-                    <div class="filter_industry text-center">
-                        <h6>FILTER BY INDUSTRY</h6>
-                        <label>
-                            <input
-                                type="checkbox"
-                                class="ckbCheckAll"
-                                (click)="selectAllIndustry()"
+                          <div class="dropdown dropdown_search">
+                            <button
+                              type="button"
+                              class="btn btn-primary dropdown-toggle"
+                              data-toggle="dropdown"
                             >
-                            <span>Select All</span>
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                class="ckbCheckAll"
-                                (click)="clearAllIndustry()"
-                            >
-                            <span class="clear-check">Clear All</span>
-                        </label>
-                        <ul>
-                            <li *ngFor="let industry of industry_keys; let i = index">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        class="ckbCheckAll"
-                                        [checked]="industry.isChecked"
-                                        (change)="onChangeIndustryFilter(i)"
+                              INDUSTRY
+                            </button>
+                            <div class="dropdown-menu">
+                              <div
+                                class="ranking_trending_left col-lg-3 col-md-12"
+                              >
+                                <div class="filter_industry text-center">
+                                  <ul>
+                                    <li
+                                      *ngFor="
+                                        let industry of industry_keys;
+                                        let i = index
+                                      "
                                     >
-                                    <span>{{industry.name}}</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="filter_industry text-center">
-                        <h6>FILTER BY INVESTMENT</h6>
-                        <label>
-                            <input
-                                type="checkbox"
-                                class="ckbCheckAll"
-                                (click)="selectAllInvest()"
-                            >
-                            <span>Select All</span>
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                class="ckbCheckAll"
-                                (click)="clearAllInvest()"
-                            >
-                            <span>Clear All</span>
-                        </label>
-                        <ul>
-                            <li *ngFor="let invest of invest_keys; let i = index">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        class="ckbCheckAll"
-                                        [checked]="invest.isChecked"
-                                        (change)="onChangeInvestFilter(i)"
-                                    >
-                                    <span>
-                                        ${{invest.min | number}} - ${{invest.max | number}}
-                                    </span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="brand_search_scroll col-lg-9 col-md-12 pl-0 pt-0 pr-0 pb-4">
-                    <div class="brand_search_inner_scroll">
-                        <div class="ranking_trending_right">
-                            <div class="ranking_trending_data d-lg-none d-block col-12">
-                                <div class="container">
-                                    <div class="brand_search_main row">
-                                        <!-- <div class="ranking_trending_left col-lg-3 col-md-12"></div> -->
-                                        <div class="ranking_trending_right col-lg-9 col-md-12">
-                                            <ul class="ranking_data_main p-0 d-flex flex-wrap justify-content-center clearfix">
-                                                <li class="brand_data_search col-2 text-center">
-                                                    <div class="dropdown dropdown_search">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary"
-                                                            [ngClass]="{'dropup-toggle' : sortBrand_value === 'desc', 'dropdown-toggle' : sortBrand_value === 'asc'}"
-                                                            (click)="sortBrand()"
-                                                        >
-                                                            BRAND PAGE
-                                                        </button>
-                                                    </div>
-                                                </li>
-                                                <li class="rank_data_search col-4  text-center">
-                                                    <div class="dropdown dropdown_search">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary dropdown-toggle"
-                                                            data-toggle="dropdown"
-                                                        >
-                                                            INVESTMENT
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <div class="ranking_trending_left col-lg-3 col-md-12">
-                                                                <div class="filter_industry text-center">
-                                                                    <ul>
-                                                                        <li *ngFor="let invest of invest_keys; let i = index">
-                                                                            <label>
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    class="ckbCheckAll"
-                                                                                    [checked]="invest.isChecked"
-                                                                                    (change)="onChangeInvestFilter(i)"
-                                                                                >
-                                                                                <span>
-                                                                                    ${{invest.min | number}} - ${{invest.max | number}}
-                                                                                </span>
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="trending_data_search col-2 text-center">
-                                                    <div class="dropdown dropdown_search">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary dropdown-toggle"
-                                                            data-toggle="dropdown"
-                                                        >
-                                                            INDUSTRY
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <div class="ranking_trending_left col-lg-3 col-md-12">
-                                                                <div class="filter_industry text-center">
-                                                                    <ul>
-                                                                        <li *ngFor="let industry of industry_keys; let i = index">
-                                                                            <label>
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    class="ckbCheckAll"
-                                                                                    [checked]="industry.isChecked"
-                                                                                    (change)="onChangeIndustryFilter(i)"
-                                                                                >
-                                                                                <span>{{industry.name}}</span>
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="latest_data_search col-4  text-center">
-                                                    <div class="dropdown dropdown_search">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary"
-                                                        >
-                                                            LATEST STORY
-                                                        </button>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                      <label>
+                                        <input
+                                          type="checkbox"
+                                          class="ckbCheckAll"
+                                          [checked]="industry.isChecked"
+                                          (change)="onChangeIndustryFilter(i)"
+                                        />
+                                        <span>{{ industry.name }}</span>
+                                      </label>
+                                    </li>
+                                  </ul>
                                 </div>
+                              </div>
                             </div>
-                            <ul id="myList">
-                                <li
-                                    *ngFor="let item of items; let i = index;"
-                                    style="display: list-item;"
-                                >
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="brand_search-links brand_data_search col-md-3 col-sm-5 justify-content-center align-items-center text-left">
-                                            <a href="{{item.brand && item.brand.slug !='1851'?item.brand.slug + '/': ''}}{{item.slug}}/info">
-                                                <img
-                                                    src="{{item.logo}}"
-                                                    width="155"
-                                                    height="70"
-                                                    alt="power_rank_logo1"
-                                                >
-                                            </a>
-                                        </div>
-                                        <div class="brand_search-links rank_data_search col-md-3 col-sm-1 text-center">
-                                            <a
-                                                href="{{item.brand && item.brand.slug !='1851'?item.brand.slug + '/': ''}}{{item.slug}}"
-                                                class="brand_price"
-                                            >
-                                                {{item.investment}}
-                                            </a>
-                                        </div>
-                                        <div class="brand_search-links trending_data_search col-md-3 text-left">
-                                            <a href="{{item.brand && item.brand.slug !='1851'?item.brand.slug + '/': ''}}{{item.slug}}">{{getIndustry(item.industry)}}</a>
-                                        </div>
-                                        <div class="brand_search-links latest_data_search col-md-3">
-                                            <a href="{{item.brand && item.brand.slug !='1851'?item.brand.slug + '/': ''}}{{item.slug}}/{{item.latest_story.slug}}">
-                                                <span>{{item.latest_story.title}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a
-                                *ngIf="has_more"
-                                href="javascript:void(0)"
-                                id="loadMore"
-                                class="text-center loadmore-btn d-block"
-                                (click)="getMoreData()"
-                            >
-                                <i
-                                    class="fa fa-angle-down"
-                                    aria-hidden="true"
-                                ></i>
-                            </a>
-                        </div>
+                          </div>
+                        </li>
+                        <li class="latest_data_search col-4 text-center">
+                          <div class="dropdown dropdown_search">
+                            <button type="button" class="btn btn-primary">
+                              LATEST STORY
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
+                  </div>
                 </div>
-                <div class="advertisement-details d-lg-none d-block">
-                    <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
-                    <a
-                        href="#"
-                        class="d-block"
+              </div>
+              <ul id="myList">
+                <li
+                  *ngFor="let item of items; let i = index"
+                  style="display: list-item"
+                >
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div
+                      class="
+                        brand_search-links brand_data_search
+                        col-md-3 col-sm-5
+                        justify-content-center
+                        align-items-center
+                        text-left
+                      "
                     >
-                        <figure>
-                            <img
-                                src="assets/img/power_rank_add_banner.jpg"
-                                width="970"
-                                height="90"
-                                alt="img12"
-                            >
-                        </figure>
-                    </a>
-                </div>
+                      <a
+                        href="{{
+                          item.brand && item.brand.slug != '1851'
+                            ? item.brand.slug + '/'
+                            : ''
+                        }}{{ item.slug }}/info"
+                      >
+                        <img
+                          src="{{ item.logo }}"
+                          width="155"
+                          height="70"
+                          alt="power_rank_logo1"
+                        />
+                      </a>
+                    </div>
+                    <div
+                      class="
+                        brand_search-links
+                        rank_data_search
+                        col-md-3 col-sm-1
+                        text-center
+                      "
+                    >
+                      <a
+                        href="{{
+                          item.brand && item.brand.slug != '1851'
+                            ? item.brand.slug + '/'
+                            : ''
+                        }}{{ item.slug }}"
+                        class="brand_price"
+                      >
+                        {{ item.investment }}
+                      </a>
+                    </div>
+                    <div
+                      class="
+                        brand_search-links
+                        trending_data_search
+                        col-md-3
+                        text-left
+                      "
+                    >
+                      <a
+                        href="{{
+                          item.brand && item.brand.slug != '1851'
+                            ? item.brand.slug + '/'
+                            : ''
+                        }}{{ item.slug }}"
+                        >{{ getIndustry(item.industry) }}</a
+                      >
+                    </div>
+                    <div class="brand_search-links latest_data_search col-md-3">
+                      <a
+                        href="{{
+                          item.brand && item.brand.slug != '1851'
+                            ? item.brand.slug + '/'
+                            : ''
+                        }}{{ item.slug }}/{{ item.latest_story.slug }}"
+                      >
+                        <span>{{ item.latest_story.title }}</span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <a
+                *ngIf="has_more"
+                href="javascript:void(0)"
+                id="loadMore"
+                class="text-center loadmore-btn d-block"
+                (click)="getMoreData()"
+              >
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </a>
             </div>
+          </div>
         </div>
+        <div class="advertisement-details d-lg-none d-block">
+          <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+          <a href="#" class="d-block">
+            <figure>
+              <img
+                src="assets/img/power_rank_add_banner.jpg"
+                width="970"
+                height="90"
+                alt="img12"
+              />
+            </figure>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
