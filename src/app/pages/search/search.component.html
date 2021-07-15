@@ -138,12 +138,6 @@
                               >
                                 {{ item.title }}
                               </p>
-                              <span *ngIf="item.posted_on" class="d-block">{{
-                                item.posted_on | timeago
-                              }}</span>
-                              <span *ngIf="item.post_on" class="d-block">{{
-                                item.post_on | timeago
-                              }}</span>
                             </div>
                           </a>
                         </div>
@@ -157,7 +151,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail" *ngIf="brand_id === '1851'">
+      <div
+        class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail"
+        *ngIf="brand_id === '1851'"
+      >
         <h5 class="text-center">BRAND STORIES</h5>
         <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
           <div
@@ -195,12 +192,6 @@
                 >
                   {{ item.title }}
                 </p>
-                <span *ngIf="item.posted_on" class="d-block">{{
-                  item.posted_on | timeago
-                }}</span>
-                <span *ngIf="item.post_on" class="d-block">{{
-                  item.post_on | timeago
-                }}</span>
               </div>
             </a>
           </div>
