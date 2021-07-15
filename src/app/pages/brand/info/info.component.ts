@@ -38,6 +38,7 @@ export class InfoComponent implements OnInit {
   emailSubValid: boolean = false;
   pdfForm: any;
   isBrowser: boolean = false;
+  isCategorySlug: boolean = false;
   constructor(
     private apiService: ApiService,
     private commonService: CommonService,
@@ -161,6 +162,12 @@ export class InfoComponent implements OnInit {
       });
   }
   getContents(item: string | null) {
+    if(item.includes('info') || item.includes('latest_stories') || item.includes('why-i-bought') || item.includes('executive') || item.includes('available-markets')){
+      this.isCategorySlug = false;
+    }
+    else{
+      this.isCategorySlug = true;
+    }
     let path;
     if (item === 'info') {
       path = 'brand-info';

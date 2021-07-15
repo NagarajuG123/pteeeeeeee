@@ -1,5 +1,7 @@
-<div class="top-space">
+<div *ngIf="isCategorySlug"><app-brand></app-brand></div>
+<div class="top-space" *ngIf="!isCategorySlug">
   <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
+
   <div class="main-content">
     <div class="main_content_tab">
       <ul
