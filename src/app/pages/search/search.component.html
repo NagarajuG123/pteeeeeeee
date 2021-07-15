@@ -157,7 +157,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail">
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail" *ngIf="brand_id === '1851'">
         <h5 class="text-center">BRAND STORIES</h5>
         <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
           <div
@@ -222,7 +222,7 @@
       </div>
     </div>
   </div>
-  <div [hidden]="!isSpecificDate" class="banner specific_search">
+  <div *ngIf="isSpecificDate" class="banner specific_search">
     <div class="search_form col-lg-6">
       <form
         [formGroup]="specificSearchForm"

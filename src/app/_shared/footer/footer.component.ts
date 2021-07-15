@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -19,6 +20,8 @@ export class FooterComponent implements OnInit {
   searchForm: FormGroup;
   brandId: string = '1851';
   isBrowser: boolean;
+  subject: Subject<any> = new Subject();
+  news: any;
   constructor( private apiService: ApiService,private router:Router, @Inject(PLATFORM_ID) platformId: Object,fb: FormBuilder ) { 
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -57,13 +60,30 @@ export class FooterComponent implements OnInit {
         
       }
     }); 
+    this.subject.subscribe(() => {
+      this.apiService
+        .getAPI(
+          `search?q=${
+            this.searchForm.controls['searchInput'].value
+          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
+        )
+        .subscribe((res) => {
+          this.news = res.data;
+        });
+    });
   }
 
   setFooter() {
   this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
     this.footer = response.data;
+    this.getNews();
   });
-}
+ }
+  getNews() {
+    this.apiService.getAPI(`${this.brandSlug}/news`).subscribe((response) => {
+      this.news = response.data;
+    });
+  }
   getPublication(){
     this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
       this.publication = response;
@@ -81,5 +101,8 @@ export class FooterComponent implements OnInit {
     this.apiService.getAPI(`${this.brandSlug}/brand/contact`).subscribe((response ) =>{
       this.brandContact = response.schema;
     });
+  }
+  onKeyUp(): void {
+    this.subject.next();
   }
 }
