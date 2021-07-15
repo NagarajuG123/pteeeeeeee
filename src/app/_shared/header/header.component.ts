@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
   brandId: string = '1851';
+  isInquireForm: boolean = false;
+  isSubmitted: boolean = false;
+  isSubmitFailed: boolean = false;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -98,6 +101,7 @@ export class HeaderComponent implements OnInit {
                 this.isMain = false;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
+                this.getInquire();
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -129,9 +133,12 @@ export class HeaderComponent implements OnInit {
   }
   getInquire() {
     this.apiService
-      .getAPI(`${this.brandSlug}/brand-inquire`)
+      .getAPI(`${this.brandSlug}/brand/inquire`)
       .subscribe((response) => {
-        this.inquireForm = response.schema;
+        if (response.schema != '') {
+          this.inquireForm = response.schema;
+          this.isInquireForm = true;
+        }
       });
   }
   readMore(item: any) {

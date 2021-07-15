@@ -190,6 +190,7 @@
             <ul class="float-right">
               <li *ngIf="inquireForm !== ''" class="has_dd">
                 <a
+                  href=""
                   class="text-uppercase"
                   data-bs-toggle="modal"
                   data-bs-target="#inquireModal"
@@ -238,6 +239,59 @@
     </div>
   </div>
 
+  <!-- Inquire Modal -->
+
+  <div
+    *ngIf="isBrowser && isInquireForm"
+    class="search_pop_up modal"
+    id="inquireModal"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          id="inquireModalClose"
+          type="button"
+          class="close text-right"
+          data-bs-dismiss="modal"
+        >
+          &times;
+        </button>
+        <div class="modal-header">
+          <h1>{{ inquireForm["title"] }}</h1>
+        </div>
+        <!-- <json-schema-form
+          class="contact-form"
+          framework="no-framework"
+          [options]="inquireFormOption"
+          [schema]="inquireFormSchema"
+          [form]="inquireFormLayout"
+          (onSubmit)="onInquireSubmit($event)"
+          (isValid)="inquireIsValidFn($event)"
+          (validationErrors)="inquireValidationErrorsFn($event)"
+        >
+        </json-schema-form> -->
+        <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+          submitErrMsg
+        }}</span>
+        <span *ngIf="isSubmitted && !isSubmitFailed" class="f_success">{{
+          submitSuccessMsg
+        }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="close text-right"
+          (click)="closeModal('thanksModal')"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+  </div>
   <!-- Search Modal -->
 
   <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
