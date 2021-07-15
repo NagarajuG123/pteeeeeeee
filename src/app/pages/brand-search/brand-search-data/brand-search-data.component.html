@@ -39,7 +39,7 @@
                 <button
                   type="button"
                   class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
+                  data-bs-toggle="dropdown"
                 >
                   INVESTMENT
                 </button>
@@ -73,7 +73,7 @@
                 <button
                   type="button"
                   class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
+                  data-bs-toggle="dropdown"
                 >
                   INDUSTRY
                 </button>
@@ -220,7 +220,7 @@
                             <button
                               type="button"
                               class="btn btn-primary dropdown-toggle"
-                              data-toggle="dropdown"
+                              data-bs-toggle="dropdown"
                             >
                               INVESTMENT
                             </button>
@@ -261,11 +261,16 @@
                             <button
                               type="button"
                               class="btn btn-primary dropdown-toggle"
-                              data-toggle="dropdown"
+                              data-bs-toggle="dropdown"
+                              id="dropdownIndustry"
+                              aria-expanded="false"
                             >
                               INDUSTRY
                             </button>
-                            <div class="dropdown-menu">
+                            <div
+                              class="dropdown-menu"
+                              aria-labelledby="dropdownIndustry"
+                            >
                               <div
                                 class="ranking_trending_left col-lg-3 col-md-12"
                               >

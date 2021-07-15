@@ -71,10 +71,12 @@ export class BrandSearchDataComponent implements OnInit {
         });
         brandSearchData['items'] = results[1].data;
         brandSearchData['has_more'] = results[1].has_more;
-      });
-    const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
 
-    this.metaService.setTitle(defaultTitle);
+        const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
+
+        this.metaService.setTitle(defaultTitle);
+      });
+
     this.getSearchData();
   }
 
