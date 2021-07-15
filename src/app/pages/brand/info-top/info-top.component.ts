@@ -23,4 +23,12 @@ export class InfoTopComponent implements OnInit {
       return `${article.slug}#latest-stories`;
     }
   }
+  checkMediaValid(data) {
+    if (typeof data.media === 'undefined') {
+      return false;
+    } else if (data.media === null) {
+      return false;
+    }
+    return true;
+  }
 }
