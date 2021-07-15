@@ -13,7 +13,6 @@
         <form
           [formGroup]="contactForm"
           class="fill-form"
-          name="contact_form"
           (ngSubmit)="onContactSubmit(contactForm)"
         >
           <ul class="d-flex">
@@ -100,7 +99,7 @@
                     />
                     <span>Current Franchisee</span>
                   </label>
-                  <div class="editors-details">
+                  <div class="editors-details current-details">
                     <strong class="d-block">Number of Units</strong>
                     <ul>
                       <li class="d-inline-block">
@@ -165,7 +164,7 @@
                     />
                     <span>Prospective Franchisee</span>
                   </label>
-                  <div class="editors-details">
+                  <div class="editors-details prospective-details">
                     <strong class="d-block"
                       >How soon do you want to become a franchisee?</strong
                     >
@@ -223,14 +222,14 @@
                   <label for="executive" class="radio_btns1">
                     <input
                       type="checkbox"
-                      class="text-field"
+                      class="text-field checkboxbtn"
                       id="executive"
                       [formControl]="contactForm.controls['franchiseExecutive']"
                       (change)="toggleExecutive($event)"
                     />
                     <span>Franchise Executive</span>
                   </label>
-                  <div class="editors-details">
+                  <div class="editors-details executive-details">
                     <ul>
                       <li class="d-inline-block">
                         <label for="leadership" class="radio_btns">
@@ -285,14 +284,14 @@
                   <label for="executive1" class="radio_btns1">
                     <input
                       type="checkbox"
-                      class="text-field"
+                      class="text-field checkboxbtn"
                       id="executive1"
                       [formControl]="contactForm.controls['businessExecutive']"
                       (change)="toggleExecutive1($event)"
                     />
                     <span>Business Executive</span>
                   </label>
-                  <div class="editors-details">
+                  <div class="editors-details executive1-details">
                     <ul>
                       <li class="d-inline-block">
                         <label for="leadership2" class="radio_btns">
@@ -347,7 +346,7 @@
                   <label for="other" class="radio_btns1">
                     <input
                       type="checkbox"
-                      class="text-field"
+                      class="text-field checkboxbtn"
                       id="other"
                       [formControl]="contactForm.controls['other']"
                       (change)="toggleOther($event)"

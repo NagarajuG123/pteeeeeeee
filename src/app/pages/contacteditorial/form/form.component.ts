@@ -1,7 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 
@@ -55,14 +54,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.getPublication();
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $('.sucess-message a').click(function (e) {
-        $('.editors').show();
-        $('.sucess-message').hide();
-      });
-    }
-  }
+
   getPublication() {
     this.apiService
       .getAPI(`1851/publication-instance`)
@@ -72,6 +64,7 @@ export class FormComponent implements OnInit {
   }
 
   toggleCurrent(e) {
+    $('.current-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['currentFranchisee'].setValue('');
       this.contactForm.controls['currentFranchiseeOwnsUp10units'].setValue('');
@@ -81,8 +74,8 @@ export class FormComponent implements OnInit {
     }
     return;
   }
-
   toggleProspective(e) {
+    $('.prospective-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['prospectiveFranchisee'].setValue('');
       this.contactForm.controls['prospectiveFranchiseeUnder6Months'].setValue(
@@ -96,6 +89,7 @@ export class FormComponent implements OnInit {
   }
 
   toggleExecutive(e) {
+    $('.executive-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['franchiseExecutive'].setValue('');
       this.contactForm.controls['franchiseExecutiveLeadership'].setValue('');
@@ -105,6 +99,7 @@ export class FormComponent implements OnInit {
   }
 
   toggleExecutive1(e) {
+    $('.executive1-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['businessExecutive'].setValue('');
       this.contactForm.controls['businessExecutiveLeadership'].setValue('');

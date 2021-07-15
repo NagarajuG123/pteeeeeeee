@@ -64,27 +64,9 @@ export class ContactEditorialComponent implements OnInit {
       signUpNewsletter: true,
     });
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $(document).ready(function () {
-        $('.text-field').click(function (e) {
-          $(this).closest('ul>li').find('.editors-details').slideToggle();
-          $(this).closest('ul> li').find('.form-group').addClass('active');
-          $(this)
-            .closest('ul> li')
-            .siblings()
-            .find('.form-group')
-            .removeClass('active');
-        });
 
-        $('.sucess-message a').click(function (e) {
-          $('.editors').show();
-          $('.sucess-message').hide();
-        });
-      });
-    }
-  }
   toggleCurrent(e) {
+    $('.current-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['currentFranchisee'].setValue('');
       this.contactForm.controls['currentFranchiseeOwnsUp10units'].setValue('');
@@ -95,6 +77,7 @@ export class ContactEditorialComponent implements OnInit {
     return;
   }
   toggleProspective(e) {
+    $('.prospective-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['prospectiveFranchisee'].setValue('');
       this.contactForm.controls['prospectiveFranchiseeUnder6Months'].setValue(
@@ -108,6 +91,7 @@ export class ContactEditorialComponent implements OnInit {
   }
 
   toggleExecutive(e) {
+    $('.executive-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['franchiseExecutive'].setValue('');
       this.contactForm.controls['franchiseExecutiveLeadership'].setValue('');
@@ -117,6 +101,7 @@ export class ContactEditorialComponent implements OnInit {
   }
 
   toggleExecutive1(e) {
+    $('.executive1-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['businessExecutive'].setValue('');
       this.contactForm.controls['businessExecutiveLeadership'].setValue('');
