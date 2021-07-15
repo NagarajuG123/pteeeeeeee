@@ -203,6 +203,10 @@ export class SearchComponent implements OnInit {
           }
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
+            this.recentPeoples = searchPopData['recentPeoples'];
+            this.brandPeoples = searchPopData['brandPeoples'];
+            this.params = searchPopData['params'];
+            this.has_more = searchPopData['has_more'];
         });
     });
   }

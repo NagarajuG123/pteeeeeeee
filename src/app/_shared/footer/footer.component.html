@@ -59,8 +59,8 @@
                 <li *ngIf="isBrandFooter && brandContact">
                   <a
                     href="javascript:void(0)"
-                    data-toggle="modal"
-                    data-target="#contactModal"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactModal"
                     class="text-uppercase"
                     >CONTACT
                   </a>
@@ -147,8 +147,8 @@
           >
             <div
               class="form-group d-block"
-              data-toggle="modal"
-              data-target="#footerSearchModal"
+              data-bs-toggle="modal"
+              data-bs-target="#footerSearchModal"
             >
               <input
                 type="text"
@@ -172,7 +172,7 @@
     <div *ngIf="isBrowser" class="search_pop_up modal" id="footerSearchModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <button type="button" class="close text-right" data-dismiss="modal">
+          <button type="button" class="close text-right" data-bs-dismiss="modal">
             &times;
           </button>
           <form
@@ -191,7 +191,7 @@
                 type="button"
                 class="d-block text-center"
                 (click)="onSearchSubmit(searchForm)"
-                data-dismiss="modal"
+                data-bs-dismiss="modal"
               >
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
@@ -199,13 +199,14 @@
           </form>
           <h5>MOST RECENT MATCHES</h5>
           <div class="frannews-bottom">
+            <h6 *ngIf="news == null">No articles found</h6>
             <ul
               malihu-scrollbar
               [scrollbarOptions]="scrollbarOptions"
               class="vertical_scroll clearfix d-flex"
             >
               <li
-                *ngFor="let story of recentStories; let i = index"
+                *ngFor="let story of news; let i = index"
                 class="col-xl-3 col-lg-4 col-sm-6 col-12"
               >
                 <a
