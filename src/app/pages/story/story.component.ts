@@ -280,10 +280,6 @@ export class StoryComponent implements OnInit {
                       });
                     break;
 
-                  case 'featured':
-                    this.apiUrl = `1851/featured-articles`;
-                    break;
-
                   case 'brand':
                     this.apiUrl = `${this.brandId}/brand-view`;
                     break;
@@ -294,6 +290,10 @@ export class StoryComponent implements OnInit {
 
                   case 'featured':
                     this.apiUrl = `${this.brandId}/featured-articles`;
+                    break;
+
+                  case 'frannews':
+                    this.apiUrl = `${this.brandId}/news`;
                     break;
 
                   case 'trendingbrandbuzz':
