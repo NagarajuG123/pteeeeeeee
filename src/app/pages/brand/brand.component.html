@@ -1,4 +1,4 @@
-<div *ngIf="type === 'brand_page' && categorySlug == ''" class="top-space">
+<div *ngIf="type === 'brand_page' && !isCategory" class="top-space">
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
   <app-news [slug]="slug"></app-news>
   <app-carousel
@@ -13,22 +13,21 @@
   ></app-latest-story>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
-<div class="top-space"
-  *ngIf="
-    type === 'category_page' || (type === 'brand_page' && categorySlug != '')
-  "
+<div
+  class="top-space"
+  *ngIf="type === 'category_page' || (type === 'brand_page' && isCategory)"
 >
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
-  <app-carousel
-    [slug]="'1851'"
-    [type]="'trending'"
-    [title]="'TRENDING'"
-  ></app-carousel>
+
+  <app-category-trending [data]="categoryTrending" [subTitle]="categoryParam">
+  </app-category-trending>
+
   <app-advertisement
     [slug]="'1851'"
     [type]="'Main Site Ad'"
   ></app-advertisement>
-  <div *ngIf="mostRecent" class="frannews category-frannews">
+
+  <div *ngIf="mostRecent" class="frannews">
     <div class="container">
       <div class="frannews-details col-xl-11">
         <div class="frannews-top d-flex">
@@ -59,6 +58,7 @@
           [contents]="mostRecent"
           [type]="'categoryPage'"
           [hasMore]="hasMore"
+          [typeSlug]="'moset-recent'"
           (more)="getMoreData()"
         ></app-five-column>
       </div>

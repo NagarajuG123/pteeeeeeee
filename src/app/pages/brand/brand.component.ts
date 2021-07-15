@@ -7,12 +7,14 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
-  styleUrls: ['./brand.component.scss']
+  styleUrls: ['./brand.component.scss'],
 })
 export class BrandComponent implements OnInit {
   slug: any;
   type: string = '';
   mostRecent: any = [];
+  categoryTrending: any = [];
+  categoryParam = '';
   company: string = '';
   scrollOffset: number = 0;
   apiUrl: string = '';
@@ -20,113 +22,172 @@ export class BrandComponent implements OnInit {
   categorySlug: any = '';
   mostRecentUrl: any;
   dynamicUrl: any;
-  dynamicFirst: any =[];
+  dynamicFirst: any = [];
   dynamicSecond: any = [];
-  topBlock:any = [];
+  topBlock: any = [];
   metaUrl: any = [];
+  isCategory: boolean = false;
+  trendingUrl: string;
   constructor(
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private apiService: ApiService,
     private commonService: CommonService,
     private metaService: MetaService
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap
-      .subscribe(params => {
-        this.slug = params.get('brandSlug');
-        if (params.get('categorySlug')) {
-          this.categorySlug = params.get('categorySlug');
-        } 
-        this.apiService.getAPI(`get-brand-by-slug/${this.slug}`).subscribe(async (response) => {
+    this.route.paramMap.subscribe((params) => {
+      this.slug = params.get('brandSlug');
+      if (params.get('categorySlug')) {
+        this.categorySlug = params.get('categorySlug');
+        this.isCategory = true;
+      }
+      this.apiService
+        .getAPI(`get-brand-by-slug/${this.slug}`)
+        .subscribe(async (response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
             this.type = response.type;
             this.company = response.name;
-            if (this.type === 'category_page' || (this.type === 'brand_page' && this.categorySlug != '')) {
+            if (
+              this.type === 'category_page' ||
+              (this.type === 'brand_page' && this.isCategory)
+            ) {
               this.apiUrl = `1851/${this.slug}/featured`;
               this.mostRecentUrl = `1851/${this.slug}/most-recent`;
               this.metaUrl = `1851/${this.slug}/meta`;
-              if (this.categorySlug != '') {
+              this.trendingUrl = `1851/${this.slug}/trending?limit=10&offset=0`;
+              this.setParam(this.slug);
+              if (this.isCategory) {
                 this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
                 this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
                 this.metaUrl = `${this.slug}/${this.categorySlug}/meta`;
+                this.trendingUrl = `${this.slug}/${this.categorySlug}/trending?limit=10&offset=0`;
+                this.setParam(this.categorySlug);
               }
+              this.getTrending();
               this.getMostRecent();
               this.getCategoryMeta();
-            } else if (this.type === 'brand_page' && !this.categorySlug) {
+            } else if (this.type === 'brand_page' && !this.isCategory) {
               this.apiUrl = `${this.slug}/featured-articles`;
-            }
-            else if(this.type === 'dynamic_page' && !this.categorySlug){
+              this.getMeta();
+            } else if (this.type === 'dynamic_page' && !this.isCategory) {
               this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
               this.getMoreDynamic();
             }
-            this.getMeta();
           }
         });
     });
   }
 
-  getDynamic(){
-    this.apiService.getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`).subscribe((response) => {
-      this.topBlock = response.data;
-      this.dynamicFirst = response.data.stories.slice(0, 10);
-      this.dynamicSecond = response.data.stories.slice(10, 30);
-      this.hasMore = response.has_more;
-      this.metaService.setSeo(this.dynamicFirst[0].meta);
-      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-        const Title = this.dynamicUrl.charAt(0).toUpperCase() + this.dynamicUrl.slice(1);
-        this.metaService.setTitle(`${Title} | ${result.title}`);
-        });
+  setParam(slug) {
+    if (slug.includes('people')) {
+      this.categoryParam = 'people';
+    } else if (slug.includes('industry')) {
+      this.categoryParam = 'industry';
+    } else if (slug.includes('franchisee')) {
+      this.categoryParam = 'franchisee';
+    } else if (slug.includes('franchisor')) {
+      this.categoryParam = 'franchisor';
+    } else if (slug.includes('destinations')) {
+      this.categoryParam = 'destinations';
+    } else if (slug.includes('products')) {
+      this.categoryParam = 'products';
+    } else if (slug.includes('celebrities')) {
+      this.categoryParam = 'celebrities';
+    } else if (slug.includes('homes-to-own')) {
+      this.categoryParam = 'homes-to-own';
+    } else if (slug.includes('home-envy')) {
+      this.categoryParam = 'home-envy';
+    } else if (slug.includes('home-buzz')) {
+      this.categoryParam = 'home-buzz';
+    } else {
+      this.categoryParam = 'columns';
+    }
+  }
+  getTrending() {
+    this.apiService.getAPI(`${this.trendingUrl}`).subscribe((response) => {
+      this.categoryTrending = response.data;
     });
+  }
+  getDynamic() {
+    this.apiService
+      .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
+      .subscribe((response) => {
+        this.topBlock = response.data;
+        this.dynamicFirst = response.data.stories.slice(0, 10);
+        this.dynamicSecond = response.data.stories.slice(10, 30);
+        this.hasMore = response.has_more;
+        this.metaService.setSeo(this.dynamicFirst[0].meta);
+        this.apiService
+          .getAPI(`1851/publication-instance`)
+          .subscribe((result) => {
+            const Title =
+              this.dynamicUrl.charAt(0).toUpperCase() +
+              this.dynamicUrl.slice(1);
+            this.metaService.setTitle(`${Title} | ${result.title}`);
+          });
+      });
   }
 
   getMoreDynamic() {
-    this.apiService.getAPI(`${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`)
-    .subscribe(result => {
-      this.hasMore = result.has_more;
-      result.data.stories.forEach((element: any) => {
-        this.dynamicSecond.push(element);
+    this.apiService
+      .getAPI(
+        `${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`
+      )
+      .subscribe((result) => {
+        this.hasMore = result.has_more;
+        result.data.stories.forEach((element: any) => {
+          this.dynamicSecond.push(element);
+        });
       });
-    });
   }
 
   getMostRecent() {
-    this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`).subscribe((response) => {
-      this.mostRecent = response.data;
-      this.hasMore = response.has_more;
-      this.metaService.setSeo(response.data.meta);
-    });
+    this.apiService
+      .getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`)
+      .subscribe((response) => {
+        if (response.data != null) {
+          this.mostRecent = response.data;
+          this.hasMore = response.has_more;
+          this.metaService.setSeo(response.data.meta);
+        }
+      });
   }
- 
+
   readMore(item: any) {
-    return this.commonService.readMore(item, '');
+    return this.commonService.readMore(item, 'most-recent');
   }
   getMoreData() {
-    this.apiService.getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.mostRecent.length + 1}`)
-    .subscribe(result => {
-      this.hasMore = result.has_more;
-      result.data.forEach((element: any) => {
-        this.mostRecent.push(element);
+    this.apiService
+      .getAPI(
+        `${this.mostRecentUrl}?limit=10&offset=${this.mostRecent.length + 1}`
+      )
+      .subscribe((result) => {
+        this.hasMore = result.has_more;
+        result.data.forEach((element: any) => {
+          this.mostRecent.push(element);
+        });
       });
-    });
   }
   getMeta() {
     this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-      this.metaService.setTitle(`${response.data.seo.title} | ${result.title}`);
-      });
+      this.apiService
+        .getAPI(`1851/publication-instance`)
+        .subscribe((result) => {
+          this.metaService.setTitle(
+            `${response.data.seo.title} | ${result.title}`
+          );
+        });
     });
   }
-  getCategoryMeta(){
+  getCategoryMeta() {
     this.apiService.getAPI(`${this.metaUrl}`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      
     });
   }
 }
