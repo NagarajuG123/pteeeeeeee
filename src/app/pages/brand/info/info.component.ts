@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -38,7 +40,13 @@ export class InfoComponent implements OnInit {
   emailSubValid: boolean = false;
   pdfForm: any;
   isBrowser: boolean = false;
-  isCategorySlug: boolean = false;
+  isCategory: boolean = false;
+  categoryParam = '';
+  brandTrending: any;
+  brandMostRecent: any;
+  brandFeaturedUrl: any;
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
     private apiService: ApiService,
     private commonService: CommonService,
@@ -66,8 +74,11 @@ export class InfoComponent implements OnInit {
     this.setInit();
   }
   setInit() {
+    this.route.parent.params.subscribe((param) => {
+      this.brandSlug = param.slug;
+    });
+
     this.route.paramMap.subscribe((params) => {
-      this.brandSlug = params.get('brandSlug');
       this.apiService
         .getAPI(`get-brand-by-slug/${this.brandSlug}`)
         .subscribe((response) => {
@@ -81,15 +92,37 @@ export class InfoComponent implements OnInit {
                 this.brandInfo = response.data;
               });
             this.setTab();
-            //check cat slug
-            // if (this.isCategory) {
-            //   this.apiUrl = `${this.slug}/${this.categorySlug}/featured`;
-            //   this.mostRecentUrl = `${this.slug}/${this.categorySlug}/most-recent`;
-            //   this.metaUrl = `${this.slug}/${this.categorySlug}/meta`;
-            //   this.trendingUrl = `${this.slug}/${this.categorySlug}/trending?limit=10&offset=0`;
-            //   this.setParam(this.categorySlug);
-            // }
-            this.getContents(params.get('item'));
+            let brandItems = [
+              'info',
+              'brand_pdf',
+              'latest_stories',
+              'why-i-bought',
+              'executive',
+              'available-markets',
+            ];
+            if (brandItems.includes(params.get('item'))) {
+              this.isCategory = false;
+              this.getContents(params.get('item'));
+            } else {
+              const categorySlug = params.get('item');
+              this.isCategory = true;
+              this.brandFeaturedUrl = `${this.brandSlug}/${categorySlug}/featured`;
+              const mostRecent = this.apiService.getAPI(
+                `${this.brandSlug}/${categorySlug}/most-recent`
+              );
+              const trending = this.apiService.getAPI(
+                `${this.brandSlug}/${categorySlug}/trending?limit=10&offset=0`
+              );
+              this.setParam(categorySlug);
+              forkJoin([mostRecent, trending])
+                .pipe(takeUntil(this.onDestroy$))
+                .subscribe((results) => {
+                  console.log(results);
+                  this.brandMostRecent = results[0];
+                  this.brandTrending = results[1];
+                  console.log(results);
+                });
+            }
           }
         });
     });
@@ -123,7 +156,34 @@ export class InfoComponent implements OnInit {
         this.inquireForm = response.schema;
       });
   }
-
+  readMore(item: any) {
+    return this.commonService.readMore(item, 'most-recent');
+  }
+  setParam(slug) {
+    if (slug.includes('people')) {
+      this.categoryParam = 'people';
+    } else if (slug.includes('industry')) {
+      this.categoryParam = 'industry';
+    } else if (slug.includes('franchisee')) {
+      this.categoryParam = 'franchisee';
+    } else if (slug.includes('franchisor')) {
+      this.categoryParam = 'franchisor';
+    } else if (slug.includes('destinations')) {
+      this.categoryParam = 'destinations';
+    } else if (slug.includes('products')) {
+      this.categoryParam = 'products';
+    } else if (slug.includes('celebrities')) {
+      this.categoryParam = 'celebrities';
+    } else if (slug.includes('homes-to-own')) {
+      this.categoryParam = 'homes-to-own';
+    } else if (slug.includes('home-envy')) {
+      this.categoryParam = 'home-envy';
+    } else if (slug.includes('home-buzz')) {
+      this.categoryParam = 'home-buzz';
+    } else {
+      this.categoryParam = 'columns';
+    }
+  }
   setTab() {
     this.apiService
       .getAPI(`${this.brandSlug}/brand-info`)
@@ -178,17 +238,6 @@ export class InfoComponent implements OnInit {
       });
   }
   getContents(item: string | null) {
-    if (
-      item.includes('info') ||
-      item.includes('latest_stories') ||
-      item.includes('why-i-bought') ||
-      item.includes('executive') ||
-      item.includes('available-markets')
-    ) {
-      this.isCategorySlug = false;
-    } else {
-      this.isCategorySlug = true;
-    }
     let path;
     if (item === 'info') {
       path = 'brand-info';

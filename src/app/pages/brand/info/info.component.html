@@ -1,11 +1,69 @@
-<div *ngIf="isCategorySlug"><app-brand></app-brand></div>
-<div class="top-space" *ngIf="!isCategorySlug">
+<!-- Brand Category -->
+<div *ngIf="isCategory">
+  <app-featured [slug]="brandSlug" [apiUrl]="brandFeaturedUrl"></app-featured>
+  <app-category-trending
+    [data]="brandTrending?.data"
+    [subTitle]="categoryParam"
+  >
+  </app-category-trending>
+  <div *ngIf="brandMostRecent" class="frannews">
+    <div class="container">
+      <div class="frannews-details col-xl-11">
+        <div class="frannews-top d-flex">
+          <div class="frannews-top-left col-md-6 p-0">
+            <ul class="desktop-only">
+              <li class="header-title">
+                <h4 class="text-uppercase">
+                  <strong>MOST RECENT</strong>
+                </h4>
+              </li>
+              <li>
+                <h4 class="text-uppercase">
+                  <span>{{ company }}</span>
+                </h4>
+              </li>
+            </ul>
+          </div>
+          <div class="frannews-top-right col-md-6">
+            <a
+              href="{{ readMore(brandMostRecent.data[0]) }}"
+              class="float-right"
+            >
+              READ MORE
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="brandMostRecent.data"
+          [type]="'categoryPage'"
+          [hasMore]="hasMore"
+          [typeSlug]="'moset-recent'"
+          (more)="getMoreData()"
+        ></app-five-column>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Brand Info -->
+<div class="top-space" *ngIf="!isCategory">
   <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
 
   <div class="main-content">
     <div class="main_content_tab">
       <ul
-        class="resp-tabs-list tab-identifier2 d-flex justify-content-center align-items-center clearfix nav nav-pills"
+        class="
+          resp-tabs-list
+          tab-identifier2
+          d-flex
+          justify-content-center
+          align-items-center
+          clearfix
+          nav nav-pills
+        "
       >
         <li
           *ngFor="let category of categories; let i = index"
@@ -288,9 +346,86 @@
                         <p>{{ brandInfo?.more_info }}</p>
                       </li>
                     </ul>
-                    <h5 *ngIf="inquireForm !== null" class="text-uppercase">
+                    <h5 *ngIf="inquireForm" class="text-uppercase">
                       INQUIRE ABOUT SERVICES
                     </h5>
+                    <form
+                      *ngIf="inquireForm"
+                      [formGroup]="inquireForm"
+                      (ngSubmit)="submitInquireForm()"
+                    >
+                      <div
+                        *ngFor="let fields of inquireFields"
+                        class="form-row mb-3"
+                      >
+                        <!-- <div class="form-group"> -->
+                        <label class="form-label"
+                          >{{ fields.title }}
+                          <sup *ngIf="fields.required" class="text-danger"
+                            >*</sup
+                          >
+                        </label>
+                        <input
+                          *ngIf="fields.type === 'text'"
+                          [formControlName]="fields.key"
+                          [id]="fields.key"
+                          [type]="fields.type"
+                          [placeholder]="fields.title"
+                          class="form-control border-0 rounded-0"
+                          [pattern]="fields.pattern"
+                          [maxLength]="fields.maxLength || 1000"
+                          [ngClass]="{
+                            'is-invalid':
+                              (formControlsValues[fields.key].touched ||
+                                submittedInquireForm) &&
+                              formControlsValues[fields.key].errors?.required
+                          }"
+                        />
+                        <textarea
+                          *ngIf="fields.type === 'textarea'"
+                          [formControlName]="fields.key"
+                          [id]="fields.key"
+                          [type]="fields.type"
+                          [placeholder]="fields.title"
+                          class="form-control border-0 rounded-0"
+                          [pattern]="fields.pattern"
+                          rows="3"
+                          [ngClass]="{
+                            'is-invalid':
+                              (formControlsValues[fields.key].touched ||
+                                submittedInquireForm) &&
+                              formControlsValues[fields.key].errors?.required
+                          }"
+                        ></textarea>
+                        <div
+                          class="invalid-feedback d-block"
+                          *ngIf="
+                            (formControlsValues[fields.key].touched ||
+                              submittedInquireForm) &&
+                            (formControlsValues[fields.key].errors?.required ||
+                              formControlsValues[fields.key].errors?.email ||
+                              formControlsValues[fields.key].errors?.pattern)
+                          "
+                        >
+                          {{ fields.errorMsg }}
+                        </div>
+                      </div>
+                      <!-- [disabled]="!inquireForm.valid" -->
+                      <div class="d-grid">
+                        <button
+                          type="submit"
+                          class="
+                            btn btn-danger
+                            text-end
+                            rounded-0
+                            btn-sm
+                            nextBtn
+                          "
+                        >
+                          Next
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -304,7 +439,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="sponsored-modal-content">
-          <button type="button" class="close text-right" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
             &times;
           </button>
           <h2 class="text-uppercase">Download PDF</h2>

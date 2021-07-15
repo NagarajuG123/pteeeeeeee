@@ -259,17 +259,7 @@
         <div class="modal-header">
           <h1>{{ inquireForm["title"] }}</h1>
         </div>
-        <!-- <json-schema-form
-          class="contact-form"
-          framework="no-framework"
-          [options]="inquireFormOption"
-          [schema]="inquireFormSchema"
-          [form]="inquireFormLayout"
-          (onSubmit)="onInquireSubmit($event)"
-          (isValid)="inquireIsValidFn($event)"
-          (validationErrors)="inquireValidationErrorsFn($event)"
-        >
-        </json-schema-form> -->
+
         <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
           submitErrMsg
         }}</span>
