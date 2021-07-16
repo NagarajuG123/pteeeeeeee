@@ -167,7 +167,6 @@ export class HeaderComponent implements OnInit {
       .postAPI(`${this.brandSlug}/brand-inquire`, values)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        console.log(result);
         if (typeof result.data !== 'undefined') {
           $('#inquireModalClose').click();
           $('#thanksModal').show();
@@ -229,6 +228,7 @@ export class HeaderComponent implements OnInit {
             }
             group[item.key] = [item.value || '', [...validation]];
           });
+          console.log(this.inquireFields);
           this.inquireForm = this.fb.group(group);
         }
       });

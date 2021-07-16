@@ -304,8 +304,8 @@
               <strong>ABOUT {{ brandTitle }}</strong>
             </a>
           </div>
-          <div *ngIf="contactForm" class="monthly-covers-main">
-            <a data-bs-toggle="modal" data-bs-target="#contactModal">
+          <div *ngIf="isContact" class="monthly-covers-main">
+            <a href="" data-bs-toggle="modal" data-bs-target="#contactModal">
               <figure>
                 <i class="fa fa-usd"></i>
               </figure>
@@ -317,6 +317,105 @@
     </div>
   </div>
 </div>
+
+<!-- Contact Modal -->
+<div
+  *ngIf="isBrowser && isContact"
+  class="search_pop_up modal"
+  id="contactModal"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button
+        id="contactModalClose"
+        type="button"
+        class="close text-right"
+        data-bs-dismiss="modal"
+      >
+        &times;
+      </button>
+      <div class="modal-header">
+        <h1>{{ contactTitle }}</h1>
+      </div>
+      <form
+        *ngIf="contactForm"
+        [formGroup]="contactForm"
+        (ngSubmit)="submitContactForm()"
+      >
+        <div *ngFor="let fields of contactFields" class="form-row mb-3">
+          <!-- <div class="form-group"> -->
+          <label class="form-label"
+            >{{ fields.title }}
+            <sup *ngIf="fields.required" class="text-danger">*</sup>
+          </label>
+          <input
+            *ngIf="fields.type === 'text'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            [type]="fields.type"
+            class="form-control rounded-0"
+            [pattern]="fields.pattern"
+            [maxLength]="fields.maxLength || 1000"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched || submitContactForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          />
+          <textarea
+            *ngIf="fields.type === 'textarea'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            [type]="fields.type"
+            class="form-control rounded-0"
+            [pattern]="fields.pattern"
+            rows="3"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched || submitContactForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          ></textarea>
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="
+              (formControlsValues[fields.key].touched || submitContactForm) &&
+              (formControlsValues[fields.key].errors?.required ||
+                formControlsValues[fields.key].errors?.email ||
+                formControlsValues[fields.key].errors?.pattern)
+            "
+          >
+            {{ fields.errorMsg }}
+          </div>
+        </div>
+        <!-- [disabled]="!inquireForm.valid" -->
+        <div class="d-grid contactSubmit">
+          <button
+            type="submit"
+            class="btn btn-danger text-end rounded-0 btn-sm nextBtn"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Thanks -->
+<div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button
+        type="button"
+        class="close text-right"
+        (click)="closeModal('thanksModal')"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+</div>
+<!-- PDF Modal -->
 <div
   *ngIf="isBrowser && downloadPdfUrl"
   class="search_pop_up modal"
