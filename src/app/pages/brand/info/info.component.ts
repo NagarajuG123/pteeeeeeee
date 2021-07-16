@@ -45,8 +45,11 @@ export class InfoComponent implements OnInit {
   brandTrending: any;
   brandMostRecent: any;
   brandFeaturedUrl: any;
+  mostRecent: any;
+  mostRecentData: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
+  hasMore: boolean= false;
   constructor(
     private apiService: ApiService,
     private commonService: CommonService,
@@ -110,6 +113,7 @@ export class InfoComponent implements OnInit {
               const mostRecent = this.apiService.getAPI(
                 `${this.brandSlug}/${categorySlug}/most-recent`
               );
+              this.mostRecent = `${this.brandSlug}/${categorySlug}/most-recent`;
               const trending = this.apiService.getAPI(
                 `${this.brandSlug}/${categorySlug}/trending?limit=10&offset=0`
               );
@@ -120,6 +124,7 @@ export class InfoComponent implements OnInit {
                   console.log(results);
                   this.brandMostRecent = results[0];
                   this.brandTrending = results[1];
+                  this.hasMore = results[0]['has_more'];
                   console.log(results);
                 });
             }
@@ -158,6 +163,18 @@ export class InfoComponent implements OnInit {
   }
   readMore(item: any) {
     return this.commonService.readMore(item, 'most-recent');
+  }
+  getMoreData() {
+    this.apiService
+      .getAPI(`${this.mostRecent}?limit=10&offset=${this.mostRecentData.length + 1}`)
+      .subscribe((response) => {
+        if (response.data != null) {
+          this.hasMore = response.has_more;
+          response.data.forEach((element: any) => {
+            this.mostRecentData.push(element);
+          });
+        } 
+      });
   }
   setParam(slug) {
     if (slug.includes('people')) {
