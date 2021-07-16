@@ -168,15 +168,11 @@ export class InfoComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
         if (typeof result.data !== 'undefined') {
-          // this.resetInquireForm();
-          // this.toastr.success(result.data.message, 'Thanks!');
-          // this.submitSuccessMsg = result.data.message;
+          //show success message.
         } else {
-          // this.toastr.error(result.error.message, 'Error!');
-          // this.submitErrMsg = result.error.message;
+          //show error
         }
         this.submittedInquireForm = false;
-        // this.cd.detectChanges();
       });
     // console.log('inquire form', values, this.inquireForm.value);
   }
