@@ -4,8 +4,14 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
 import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,7 +21,6 @@ export class HeaderComponent implements OnInit {
   header: any = [];
   brandSlug = '1851';
   brandTitle!: string;
-  inquireForm: any;
   isMain: boolean = true;
   isShow: boolean = true;
   publication: any;
@@ -28,15 +33,22 @@ export class HeaderComponent implements OnInit {
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
   brandId: string = '1851';
-  isInquireForm: boolean = false;
   isSubmitted: boolean = false;
   isSubmitFailed: boolean = false;
+  submittedInquireForm: boolean = false;
+  inquireForm!: FormGroup;
+  inquireFields: any = [];
+  isInquire: boolean = false;
+  inquireTitle = '';
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
     private router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
-    fb: FormBuilder
+    private fb: FormBuilder
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -101,7 +113,7 @@ export class HeaderComponent implements OnInit {
                 this.isMain = false;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
-                this.getInquire();
+                this.getInquiry();
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -131,16 +143,7 @@ export class HeaderComponent implements OnInit {
       this.news = response.data;
     });
   }
-  getInquire() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand/inquire`)
-      .subscribe((response) => {
-        if (response.schema != '') {
-          this.inquireForm = response.schema;
-          this.isInquireForm = true;
-        }
-      });
-  }
+
   readMore(item: any) {
     return this.commonService.readMore(item, 'franbuzz');
   }
@@ -157,5 +160,77 @@ export class HeaderComponent implements OnInit {
 
   onKeyUp(): void {
     this.subject.next();
+  }
+  submitInquireForm(values: any) {
+    this.submittedInquireForm = true;
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand-inquire`, values)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (typeof result.data !== 'undefined') {
+          $('#inquireModalClose').click();
+          $('#thanksModal').show();
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
+        } else {
+          //show error
+        }
+        this.submittedInquireForm = false;
+      });
+  }
+  get formControlsValues() {
+    return this.inquireForm.controls;
+  }
+  getInquiry() {
+    this.apiService
+      .getAPI(`${this.brandSlug}/brand/inquire`)
+      .subscribe((response) => {
+        if (response.schema) {
+          this.isInquire = true;
+          this.inquireTitle = response.schema.menu_title;
+          const group: any = {};
+          let objectKey = Object.keys(response.schema.properties);
+          this.inquireFields = objectKey.map((item, index) => {
+            let value: any = {
+              value: '',
+              key: item,
+              title: response.schema.properties[item].title,
+              required: response.schema.required.find((v) => v === item)
+                ? true
+                : false,
+              type: item === 'cust_field' ? 'textarea' : 'text',
+              pattern: response.schema.properties[item].pattern || '',
+              errorMsg:
+                response.schema.properties[item].validationMessage ||
+                (
+                  response.schema.properties[item].title + ' field required.'
+                ).toLocaleLowerCase(),
+            };
+            if (response.schema.properties[item].maxLength) {
+              value.maxLength = response.schema.properties[item].maxLength;
+            }
+            return value;
+          });
+          this.inquireFields.forEach((item, index) => {
+            let validation = [];
+            if (item.required) {
+              validation.push(Validators.required);
+            }
+            if (item.maxLength) {
+              validation.push(Validators.maxLength(item.maxLength));
+            }
+            if (item.key === 'email') {
+              validation.push(Validators.email);
+            }
+            if (item.pattern) {
+              validation.push(Validators.pattern(item.pattern));
+            }
+            group[item.key] = [item.value || '', [...validation]];
+          });
+          console.log(this.inquireFields);
+          this.inquireForm = this.fb.group(group);
+        }
+      });
   }
 }

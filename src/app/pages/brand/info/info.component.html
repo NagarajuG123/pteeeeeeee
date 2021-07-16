@@ -371,7 +371,6 @@
                           [formControlName]="fields.key"
                           [id]="fields.key"
                           [type]="fields.type"
-                          [placeholder]="fields.title"
                           class="form-control border-0 rounded-0"
                           [pattern]="fields.pattern"
                           [maxLength]="fields.maxLength || 1000"
@@ -387,7 +386,6 @@
                           [formControlName]="fields.key"
                           [id]="fields.key"
                           [type]="fields.type"
-                          [placeholder]="fields.title"
                           class="form-control border-0 rounded-0"
                           [pattern]="fields.pattern"
                           rows="3"
@@ -412,7 +410,7 @@
                         </div>
                       </div>
                       <!-- [disabled]="!inquireForm.valid" -->
-                      <div class="d-grid">
+                      <div class="d-grid inquireSubmit">
                         <button
                           type="submit"
                           class="

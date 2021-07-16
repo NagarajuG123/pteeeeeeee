@@ -4,12 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { HttpClient } from '@angular/common/http';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { group } from '@angular/animations';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -24,7 +30,8 @@ export class InfoComponent implements OnInit {
   staticContent: any;
   pdf: any;
   selectedIndex: number = 0;
-  inquireForm: any;
+  inquireForm!: FormGroup;
+  inquireFields: any = [];
   isStory: boolean = false;
   isInfo: boolean = false;
   isBought: boolean = false;
@@ -47,6 +54,8 @@ export class InfoComponent implements OnInit {
   brandFeaturedUrl: any;
   mostRecent: any;
   mostRecentData: any;
+  submittedInquireForm: boolean = false;
+  payLoad: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean= false;
@@ -56,7 +65,7 @@ export class InfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private metaService: MetaService,
-    fb: FormBuilder,
+    private fb: FormBuilder,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient
   ) {
@@ -88,13 +97,6 @@ export class InfoComponent implements OnInit {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
-            this.company = response.name;
-            this.apiService
-              .getAPI(`${this.brandSlug}/brand-view`)
-              .subscribe((response) => {
-                this.brandInfo = response.data;
-              });
-            this.setTab();
             let brandItems = [
               'info',
               'brand_pdf',
@@ -104,8 +106,16 @@ export class InfoComponent implements OnInit {
               'available-markets',
             ];
             if (brandItems.includes(params.get('item'))) {
+              this.company = response.name;
+              this.apiService
+                .getAPI(`${this.brandSlug}/brand-view`)
+                .subscribe((response) => {
+                  this.brandInfo = response.data;
+                });
+              this.setTab();
               this.isCategory = false;
               this.getContents(params.get('item'));
+              this.getInquiry();
             } else {
               const categorySlug = params.get('item');
               this.isCategory = true;
@@ -154,11 +164,72 @@ export class InfoComponent implements OnInit {
   isVideo(item: any) {
     return this.commonService.isVideo(item);
   }
+  submitInquireForm(values: any) {
+    console.log('this.inquireForm', this.inquireForm);
+    this.submittedInquireForm = true;
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand-inquire`, values)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        console.log(result);
+        if (typeof result.data !== 'undefined') {
+          //show success message.
+        } else {
+          //show error
+        }
+        this.submittedInquireForm = false;
+      });
+    // console.log('inquire form', values, this.inquireForm.value);
+  }
+  get formControlsValues() {
+    return this.inquireForm.controls;
+  }
   getInquiry() {
     this.apiService
       .getAPI(`${this.brandSlug}/brand/inquire`)
       .subscribe((response) => {
-        this.inquireForm = response.schema;
+        if (response.schema) {
+          const group: any = {};
+          let objectKey = Object.keys(response.schema.properties);
+          this.inquireFields = objectKey.map((item, index) => {
+            let value: any = {
+              value: '',
+              key: item,
+              title: response.schema.properties[item].title,
+              required: response.schema.required.find((v) => v === item)
+                ? true
+                : false,
+              type: item === 'cust_field' ? 'textarea' : 'text',
+              pattern: response.schema.properties[item].pattern || '',
+              errorMsg:
+                response.schema.properties[item].validationMessage ||
+                (
+                  response.schema.properties[item].title + ' field required.'
+                ).toLocaleLowerCase(),
+            };
+            if (response.schema.properties[item].maxLength) {
+              value.maxLength = response.schema.properties[item].maxLength;
+            }
+            return value;
+          });
+          this.inquireFields.forEach((item, index) => {
+            let validation = [];
+            if (item.required) {
+              validation.push(Validators.required);
+            }
+            if (item.maxLength) {
+              validation.push(Validators.maxLength(item.maxLength));
+            }
+            if (item.key === 'email') {
+              validation.push(Validators.email);
+            }
+            if (item.pattern) {
+              validation.push(Validators.pattern(item.pattern));
+            }
+            group[item.key] = [item.value || '', [...validation]];
+          });
+          this.inquireForm = this.fb.group(group);
+        }
       });
   }
   readMore(item: any) {

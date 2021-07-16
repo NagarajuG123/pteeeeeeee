@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +24,6 @@ export class SidebarComponent implements OnInit {
   publication: any = [];
   brandSlug = '1851';
   brandTitle!: string;
-  contactForm: any;
   downloadPdfUrl: any;
   isPdfEmail: any = false;
   visitSite: any;
@@ -34,11 +35,20 @@ export class SidebarComponent implements OnInit {
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
   emailSubValid: boolean = false;
+  isContact: boolean = false;
+  contactTitle = '';
+  contactFields: any;
+  contactForm!: FormGroup;
+  submittedContactForm: boolean = false;
+
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
   constructor(
     private apiService: ApiService,
     public common: CommonService,
     private router: Router,
-    fb: FormBuilder,
+    private fb: FormBuilder,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.searchForm = new FormGroup({
@@ -76,7 +86,7 @@ export class SidebarComponent implements OnInit {
                 this.brandSlug = response.slug;
                 this.isMain = false;
                 this.brandId = response.id;
-                this.getContactForm();
+                this.getContact();
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -115,13 +125,7 @@ export class SidebarComponent implements OnInit {
   readMore(item: any) {
     return this.common.readMore(item, '');
   }
-  getContactForm() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand/contact`)
-      .subscribe((response) => {
-        this.contactForm = response.schema;
-      });
-  }
+
   onSearchSubmit(searchForm: FormGroup) {
     if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
@@ -151,6 +155,79 @@ export class SidebarComponent implements OnInit {
         } else {
           this.emailSubValid = true;
           this.emailSubMessage = res.message;
+        }
+      });
+  }
+  submitContactForm(values: any) {
+    this.submittedContactForm = true;
+    console.log(values);
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand/contact`, values)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (typeof result.data !== 'undefined') {
+          $('#contactModalClose').click();
+          $('#thanksModal').show();
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
+        } else {
+          //show error
+        }
+        this.submittedContactForm = false;
+      });
+  }
+  get formControlsValues() {
+    return this.contactForm.controls;
+  }
+  getContact() {
+    this.apiService
+      .getAPI(`${this.brandSlug}/brand/contact`)
+      .subscribe((response) => {
+        if (response.schema != null) {
+          this.isContact = true;
+          this.contactTitle = response.schema.title;
+          const group: any = {};
+          let objectKey = Object.keys(response.schema.properties);
+          this.contactFields = objectKey.map((item, index) => {
+            let value: any = {
+              value: '',
+              key: item,
+              title: response.schema.properties[item].title,
+              required: response.schema.required.find((v) => v === item)
+                ? true
+                : false,
+              type: item === 'cust_field' ? 'textarea' : 'text',
+              pattern: response.schema.properties[item].pattern || '',
+              errorMsg:
+                response.schema.properties[item].validationMessage ||
+                (
+                  response.schema.properties[item].title + ' field required.'
+                ).toLocaleLowerCase(),
+            };
+            if (response.schema.properties[item].maxLength) {
+              value.maxLength = response.schema.properties[item].maxLength;
+            }
+            return value;
+          });
+          this.contactFields.forEach((item, index) => {
+            let validation = [];
+            if (item.required) {
+              validation.push(Validators.required);
+            }
+            if (item.maxLength) {
+              validation.push(Validators.maxLength(item.maxLength));
+            }
+            if (item.key === 'email') {
+              validation.push(Validators.email);
+            }
+            if (item.pattern) {
+              validation.push(Validators.pattern(item.pattern));
+            }
+            group[item.key] = [item.value || '', [...validation]];
+          });
+          console.log(this.contactFields);
+          this.contactForm = this.fb.group(group);
         }
       });
   }

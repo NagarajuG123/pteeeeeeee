@@ -35,42 +35,43 @@ export class AuthorComponent implements OnInit {
           } else {
             this.author = response;
             this.metaService.setSeo(response.meta);
-            this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-              this.metaService.setTitle(`${response.data.first_name} ${response.data.last_name} | ${result.title}`);
-            });
+            this.apiService
+              .getAPI(`1851/publication-instance`)
+              .subscribe((result) => {
+                this.metaService.setTitle(
+                  `${response.data.first_name} ${response.data.last_name} | ${result.title}`
+                );
+              });
             this.getBranded();
             this.getEditorials();
+            this.apiService.getAPI('1851/footer').subscribe((response) => {
+              this.footer = response.data;
+              this.schema = {
+                '@context': 'https://schema.org/',
+                '@type': 'Person',
+                name: `${this.author.data.first_name} ${this.author.data.last_name}`,
+                url: `${environment.appUrl}${this.router.url}`,
+                image: {
+                  '@type': 'ImageObject',
+                  url: this.getUserAvater(this.author.data.media),
+                  width: 279,
+                  height: 279,
+                },
+                mainEntityOfPage: {
+                  '@type': 'WebPage',
+                  '@id': `${environment.appUrl}`,
+                },
+                sameAs: [
+                  this.footer['learn-more']['social-media']['fb-url'],
+                  this.footer['learn-more']['social-media']['twitter-url'],
+                  this.footer['learn-more']['social-media']['instagram-url'],
+                  this.footer['learn-more']['social-media']['linkedin-url'],
+                ],
+              };
+            });
           }
         });
     });
-    this.setSchema();
-  }
-  setSchema() {
-    this.apiService.getAPI(`1851/footer`).subscribe((response) => {
-      this.footer = response.data;
-    });
-    this.schema = {
-      '@context': 'https://schema.org/',
-      '@type': 'Person',
-      name: `${this.author.data.first_name} ${this.author.data.last_name}`,
-      url: `${environment.appUrl}${this.router.url}`,
-      image: {
-        '@type': 'ImageObject',
-        url: this.getUserAvater(this.author.data.media),
-        width: 279,
-        height: 279,
-      },
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': `${environment.appUrl}`,
-      },
-      sameAs: [
-        this.footer.data['learn-more']['social-media']['fb-url'],
-        this.footer.data['learn-more']['social-media']['twitter-url'],
-        this.footer.data['learn-more']['social-media']['instagram-url'],
-        this.footer.data['learn-more']['social-media']['linkedin-url'],
-      ],
-    };
   }
   getUserAvater(media: any) {
     if (typeof media === 'undefined' || media === null) {
