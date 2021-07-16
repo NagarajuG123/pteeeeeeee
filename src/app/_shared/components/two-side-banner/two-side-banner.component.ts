@@ -15,7 +15,6 @@ export class TwoSideBannerComponent implements OnInit {
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
-    console.log(this.date);
   }
   isVideo(item: any) {
     if (

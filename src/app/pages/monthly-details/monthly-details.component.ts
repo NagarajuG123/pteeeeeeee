@@ -39,7 +39,6 @@ export class MonthlyDetailsComponent implements OnInit {
         .subscribe((response) => {
           this.banner['data'] = response.data[0];
           this.banner['date'] = moment(coverDate).format('MMMM DD, YYYY');
-          console.log(this.banner['date']);
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {

@@ -163,6 +163,9 @@ export class HeaderComponent implements OnInit {
   }
   submitInquireForm(values: any) {
     this.submittedInquireForm = true;
+    if (this.inquireForm.invalid) {
+      return;
+    }
     this.apiService
       .postAPI(`${this.brandSlug}/brand-inquire`, values)
       .pipe(takeUntil(this.onDestroy$))
@@ -228,7 +231,6 @@ export class HeaderComponent implements OnInit {
             }
             group[item.key] = [item.value || '', [...validation]];
           });
-          console.log(this.inquireFields);
           this.inquireForm = this.fb.group(group);
         }
       });

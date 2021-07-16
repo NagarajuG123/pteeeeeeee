@@ -133,11 +133,9 @@ export class InfoComponent implements OnInit {
               forkJoin([mostRecent, trending])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
-                  console.log(results);
                   this.brandMostRecent = results[0];
                   this.brandTrending = results[1];
                   this.hasMore = results[0]['has_more'];
-                  console.log(results);
                 });
             }
           }
@@ -167,7 +165,6 @@ export class InfoComponent implements OnInit {
     return this.commonService.isVideo(item);
   }
   submitInquireForm(values: any) {
-    // console.log('this.inquireForm', this.inquireForm, values);
     this.submittedInquireForm = true;
     if (this.inquireForm.invalid) {
       return;
@@ -176,9 +173,7 @@ export class InfoComponent implements OnInit {
       .postAPI(`${this.brandSlug}/brand-inquire`, values)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        // console.log(result, typeof result.data !== 'undefined');
         if (typeof result.data !== 'undefined') {
-          //show success message.
           this.showToast = true;
           this.responseMessage = { status: true, message: result.data.message };
           this.submittedInquireForm = false;
@@ -187,7 +182,6 @@ export class InfoComponent implements OnInit {
             this.showToast = false;
           }, 4000);
         } else {
-          //show error
           this.responseMessage = {
             status: false,
             message: result.data.message || 'Getting error',
