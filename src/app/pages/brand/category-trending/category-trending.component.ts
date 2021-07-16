@@ -20,7 +20,7 @@ export class CategoryTrendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slideConfig = { slidesToShow: this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1, slidesToScroll: 1 };
+    this.slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
   }
   readMore(item: any) {
     return this.commonService.readMore(item, this.subTitle);
