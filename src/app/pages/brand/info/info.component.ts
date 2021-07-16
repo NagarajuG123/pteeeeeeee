@@ -162,7 +162,23 @@ export class InfoComponent implements OnInit {
   submitInquireForm(values: any) {
     console.log('this.inquireForm', this.inquireForm);
     this.submittedInquireForm = true;
-    console.log('inquire form', values, this.inquireForm.value);
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand-inquire`, values)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        console.log(result);
+        if (typeof result.data !== 'undefined') {
+          // this.resetInquireForm();
+          // this.toastr.success(result.data.message, 'Thanks!');
+          // this.submitSuccessMsg = result.data.message;
+        } else {
+          // this.toastr.error(result.error.message, 'Error!');
+          // this.submitErrMsg = result.error.message;
+        }
+        this.submittedInquireForm = false;
+        // this.cd.detectChanges();
+      });
+    // console.log('inquire form', values, this.inquireForm.value);
   }
   get formControlsValues() {
     return this.inquireForm.controls;
