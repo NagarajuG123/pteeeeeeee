@@ -160,7 +160,6 @@ export class SidebarComponent implements OnInit {
   }
   submitContactForm(values: any) {
     this.submittedContactForm = true;
-    console.log(values);
     this.apiService
       .postAPI(`${this.brandSlug}/brand/contact`, values)
       .pipe(takeUntil(this.onDestroy$))
@@ -226,7 +225,6 @@ export class SidebarComponent implements OnInit {
             }
             group[item.key] = [item.value || '', [...validation]];
           });
-          console.log(this.contactFields);
           this.contactForm = this.fb.group(group);
         }
       });

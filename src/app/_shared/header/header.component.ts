@@ -228,7 +228,6 @@ export class HeaderComponent implements OnInit {
             }
             group[item.key] = [item.value || '', [...validation]];
           });
-          console.log(this.inquireFields);
           this.inquireForm = this.fb.group(group);
         }
       });

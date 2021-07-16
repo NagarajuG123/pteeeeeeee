@@ -30,40 +30,6 @@
         [modalId]="'brandInfoModal'"
         [videoUrl]="data.media.url"
       ></app-modal>
-      <!-- <div
-        *ngIf="data['media']['type'] === 'video'"
-        class="modal fade"
-        id="brandinfo_videomodal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        (click)="openVideoPlayer = true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                (click)="openVideoPlayer = false"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <div class="embed-responsive embed-responsive-16by9">
-                <app-video-player
-                  *ngIf="openVideoPlayer"
-                  class="embed-responsive-item"
-                  [srcUrl]="data['media']['url']"
-                >
-                </app-video-player>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
   <div class="banner-right-info col-sm-3 col-12 p-0">

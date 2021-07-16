@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
+import { VimeoPipe } from '../_core/pipes/vimeo.pipe';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
@@ -53,6 +54,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     DefaultImagePipe,
     SafeUrlPipe,
     SplitArrayPipe,
+    VimeoPipe,
     AdvertisementComponent,
     FooterTopComponent,
     VideoPlayerComponent,
