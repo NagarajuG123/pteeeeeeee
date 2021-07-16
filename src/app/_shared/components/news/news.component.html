@@ -1,4 +1,8 @@
-<div *ngIf="newsData?.data?.length" class="frannews frannews-trending">
+<div
+  *ngIf="newsData?.data?.length"
+  class="frannews frannews-trending"
+  [ngClass]="type == 'homepage' ? 'homenews' : ''"
+>
   <div class="container">
     <div class="frannews-details col-xl-11">
       <div class="frannews-top d-flex">

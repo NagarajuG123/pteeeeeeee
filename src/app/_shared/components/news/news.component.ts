@@ -5,20 +5,24 @@ import { CommonService } from 'src/app/_core/services/common.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
   newsData: any = [];
   @Input() slug = '1851';
+  @Input() type = '';
 
-  constructor(private apiService: ApiService,private commonService: CommonService) { }
+  constructor(
+    private apiService: ApiService,
+    private commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.getNews();
   }
 
   getNews() {
-    this.apiService.getAPI(`${this.slug}/news`).subscribe((response ) =>{
+    this.apiService.getAPI(`${this.slug}/news`).subscribe((response) => {
       this.newsData = response;
     });
   }
