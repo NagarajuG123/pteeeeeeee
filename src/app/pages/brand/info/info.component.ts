@@ -32,6 +32,8 @@ export class InfoComponent implements OnInit {
   selectedIndex: number = 0;
   inquireForm!: FormGroup;
   inquireFields: any = [];
+  showToast: boolean = false;
+  responseMessage: any;
   isStory: boolean = false;
   isInfo: boolean = false;
   isBought: boolean = false;
@@ -58,7 +60,7 @@ export class InfoComponent implements OnInit {
   payLoad: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  hasMore: boolean= false;
+  hasMore: boolean = false;
   constructor(
     private apiService: ApiService,
     private commonService: CommonService,
@@ -131,11 +133,9 @@ export class InfoComponent implements OnInit {
               forkJoin([mostRecent, trending])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
-                  console.log(results);
                   this.brandMostRecent = results[0];
                   this.brandTrending = results[1];
                   this.hasMore = results[0]['has_more'];
-                  console.log(results);
                 });
             }
           }
@@ -165,21 +165,30 @@ export class InfoComponent implements OnInit {
     return this.commonService.isVideo(item);
   }
   submitInquireForm(values: any) {
-    console.log('this.inquireForm', this.inquireForm);
     this.submittedInquireForm = true;
+    if (this.inquireForm.invalid) {
+      return;
+    }
     this.apiService
       .postAPI(`${this.brandSlug}/brand-inquire`, values)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        console.log(result);
         if (typeof result.data !== 'undefined') {
-          //show success message.
+          this.showToast = true;
+          this.responseMessage = { status: true, message: result.data.message };
+          this.submittedInquireForm = false;
+          this.inquireForm.reset();
+          setTimeout(() => {
+            this.showToast = false;
+          }, 4000);
         } else {
-          //show error
+          this.responseMessage = {
+            status: false,
+            message: result.data.message || 'Getting error',
+          };
         }
         this.submittedInquireForm = false;
       });
-    // console.log('inquire form', values, this.inquireForm.value);
   }
   get formControlsValues() {
     return this.inquireForm.controls;
@@ -237,14 +246,16 @@ export class InfoComponent implements OnInit {
   }
   getMoreData() {
     this.apiService
-      .getAPI(`${this.mostRecent}?limit=10&offset=${this.mostRecentData.length + 1}`)
+      .getAPI(
+        `${this.mostRecent}?limit=10&offset=${this.mostRecentData.length + 1}`
+      )
       .subscribe((response) => {
         if (response.data != null) {
           this.hasMore = response.has_more;
           response.data.forEach((element: any) => {
             this.mostRecentData.push(element);
           });
-        } 
+        }
       });
   }
   setParam(slug) {

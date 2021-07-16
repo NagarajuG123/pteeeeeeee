@@ -792,7 +792,6 @@ export class StoryComponent implements OnInit {
     });
   }
   getHeader() {
-    console.log(this.brandSlug);
     this.apiService
       .getAPI(`${this.brandSlug}/header`)
       .subscribe(async (response) => {
