@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-sitemap-detail',
   templateUrl: './sitemap-detail.component.html',
-  styleUrls: ['./sitemap-detail.component.scss']
+  styleUrls: ['./sitemap-detail.component.scss'],
 })
 export class SitemapDetailComponent implements OnInit {
   sitemap: Sitemap[] = [];
@@ -20,43 +20,45 @@ export class SitemapDetailComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router:Router,
-    private metaService:MetaService
-    ) {
-      this.router.events
-      .subscribe(events => {
-        if (events instanceof NavigationEnd) {
-          this.brandSlug = events.url.split('/')[1];
-          if (this.brandSlug === 'sitemap' || this.brandSlug === '' || this.brandSlug.includes('#')) {
-            this.brandSlug = '1851';
-          } else {
-            this.brandSlug = this.brandSlug.replace(/\+/g, '');
-          }
+    private router: Router,
+    private metaService: MetaService
+  ) {
+    this.router.events.subscribe((events) => {
+      if (events instanceof NavigationEnd) {
+        this.brandSlug = events.url.split('/')[1];
+        if (
+          this.brandSlug === 'sitemap' ||
+          this.brandSlug === '' ||
+          this.brandSlug.includes('#')
+        ) {
+          this.brandSlug = '1851';
+        } else {
+          this.brandSlug = this.brandSlug.replace(/\+/g, '');
         }
-      });
-    }
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.route.paramMap
-    .subscribe(params => {
-       this.year = params.get('year');
-       this.month = params.get('month');
-       this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`).subscribe((response) => {
-        if (response.status != 404 && response.type === 'brand_page') {
-          this.brandSlug = response.slug;
-          this.apiUrl = `${this.brandSlug}/sitemap-page/${this.year}/${this.month}`;
-        }
-        else{
-          this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
-          this.getSitemapDetail();
-        }
-      });
+    this.route.paramMap.subscribe((params) => {
+      this.year = params.get('year');
+      this.month = params.get('month');
+      this.apiService
+        .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+        .subscribe((response) => {
+          if (response.status != 404 && response.type === 'brand_page') {
+            this.brandSlug = response.slug;
+            this.apiUrl = `${this.brandSlug}/sitemap-page/${this.year}/${this.month}`;
+          } else {
+            this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
+            this.getSitemapDetail();
+          }
+        });
     });
     this.getMeta();
   }
 
-  getSitemapDetail()
-  {
+  getSitemapDetail() {
     this.apiService.getAPI(`${this.apiUrl}`).subscribe((response) => {
       this.sitemap = response;
       if (response.status === 404) {
@@ -67,14 +69,36 @@ export class SitemapDetailComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-        if(this.brandSlug === '1851'){
-          this.metaService.setTitle(`Subscribe to | ${result.title} | ${result.newsType}`);
-        }
-        else{
-          this.metaService.setTitle(`Subscribe to | ${this.brandSlug}  ${result.title}  | ${result.newsType}`);
-        }  
+      this.apiService
+        .getAPI(`1851/publication-instance`)
+        .subscribe((result) => {
+          if (this.brandSlug === '1851') {
+            this.metaService.setTitle(
+              `Subscribe to | ${result.title} | ${result.newsType}`
+            );
+          } else {
+            this.metaService.setTitle(
+              `Subscribe to | ${this.brandSlug}  ${result.title}  | ${result.newsType}`
+            );
+          }
         });
     });
+  }
+  getMonth(month) {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    return months[month - 1];
   }
 }

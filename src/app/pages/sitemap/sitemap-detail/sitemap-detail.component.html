@@ -5,7 +5,8 @@
         <a href="/sitemap">Sitemap</a>
       </h1>
       <h2 class="bws-sitemap-subtitle">
-        <a href="/sitemap">Sitemap</a> &gt; {{ year }} &gt; {{ month }}
+        <a href="/sitemap">Sitemap</a> &gt; {{ year }} &gt;
+        {{ getMonth(month) }}
       </h2>
       <ul class="nobullet col3">
         <li *ngFor="let item of sitemap">
