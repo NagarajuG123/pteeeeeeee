@@ -11,7 +11,8 @@
         <app-five-column
         [slug]="'1851'"
         [contents]="firstBlock"
-        [type]="'trendingbrandbuzz'">
+        [type]="'trendingbrandbuzz'"
+        [typeSlug]="'trendingbrandbuzz'">
         </app-five-column>
       </div>
     </div>
@@ -29,7 +30,8 @@
           [contents]="secondBlock"
           [type]="'trendingbrandbuzz-bottom'"
           [hasMore]="hasMore"
-          (more)="getMoreData()">
+          (more)="getMoreData()"
+          [typeSlug]="'trendingbrandbuzz'">
         </app-five-column>
       </div>
     </div>
