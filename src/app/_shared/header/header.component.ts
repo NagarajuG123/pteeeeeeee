@@ -10,7 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
   inquireFields: any = [];
   isInquire: boolean = false;
   inquireTitle = '';
+  inquireData: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -57,7 +58,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPublication();
     this.setSlug();
     this.subject.subscribe(() => {
       this.apiService
@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
-          this.setHeader();
+          this.setInit();
         } else {
           this.apiService
             .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
@@ -91,29 +91,25 @@ export class HeaderComponent implements OnInit {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
               }
-              this.setHeader();
+              this.setInit();
             });
         }
       }
     });
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
-  setHeader() {
-    this.apiService.getAPI(`${this.brandSlug}/header`).subscribe((response) => {
-      this.header = response.data;
-      this.getNews();
-    });
-  }
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
-  }
-  getNews() {
-    this.apiService.getAPI(`${this.brandSlug}/news`).subscribe((response) => {
-      this.news = response.data;
+  setInit(){
+    const header = this.apiService.getAPI(`${this.brandSlug}/header`);
+    const news = this.apiService.getAPI(`${this.brandSlug}/news`);
+    const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    
+    forkJoin([header,news,inquire,publication]).subscribe(results =>{
+      this.header =  results[0].data;
+      this.news = results[1].data;
+      this.inquireData = results[2].schema;
+      this.publication = results[3];
+      this.getInquiry();
     });
   }
 
@@ -159,32 +155,29 @@ export class HeaderComponent implements OnInit {
     return this.inquireForm.controls;
   }
   getInquiry() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand/inquire`)
-      .subscribe((response) => {
-        if (response.schema) {
+        if (this.inquireData) {
           this.isInquire = true;
-          this.inquireTitle = response.schema.menu_title;
+          this.inquireTitle = this.inquireData.menu_title;
           const group: any = {};
-          let objectKey = Object.keys(response.schema.properties);
+          let objectKey = Object.keys(this.inquireData.properties);
           this.inquireFields = objectKey.map((item, index) => {
             let value: any = {
               value: '',
               key: item,
-              title: response.schema.properties[item].title,
-              required: response.schema.required.find((v) => v === item)
+              title: this.inquireData.properties[item].title,
+              required: this.inquireData.required.find((v) => v === item)
                 ? true
                 : false,
               type: item === 'cust_field' ? 'textarea' : 'text',
-              pattern: response.schema.properties[item].pattern || '',
+              pattern: this.inquireData.properties[item].pattern || '',
               errorMsg:
-                response.schema.properties[item].validationMessage ||
+              this.inquireData.properties[item].validationMessage ||
                 (
-                  response.schema.properties[item].title + ' field required.'
+                  this.inquireData.properties[item].title + ' field required.'
                 ).toLocaleLowerCase(),
             };
-            if (response.schema.properties[item].maxLength) {
-              value.maxLength = response.schema.properties[item].maxLength;
+            if (this.inquireData.properties[item].maxLength) {
+              value.maxLength = this.inquireData.properties[item].maxLength;
             }
             return value;
           });
@@ -206,6 +199,5 @@ export class HeaderComponent implements OnInit {
           });
           this.inquireForm = this.fb.group(group);
         }
-      });
   }
 }
