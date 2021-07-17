@@ -71,35 +71,34 @@
   >
   </app-two-side-banner>
 
-    <div class="frannews">
-      <div class="container">
-        <div class="frannews-details col-xl-11">
-          <app-five-column
-            [slug]="'1851'"
-            [contents]="dynamicFirst"
-            [type]="'dynamicPage'"
-            [typeSlug]="'youngones'"
-          >
-          </app-five-column>
-        </div>
-      </div>
-    </div>
-
-    <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
-    </app-advertisement>
-
+  <div class="frannews">
     <div class="container">
       <div class="frannews-details col-xl-11">
         <app-five-column
           [slug]="'1851'"
-          [contents]="dynamicSecond"
-          [type]="'dynamicPage-bottom'"
-          [hasMore]="hasMore"
-          (more)="getMoreDynamic()"
+          [contents]="dynamicFirst"
+          [type]="'dynamicPage'"
           [typeSlug]="'youngones'"
         >
         </app-five-column>
       </div>
+    </div>
+  </div>
+
+  <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
+  </app-advertisement>
+
+  <div class="container">
+    <div class="frannews-details col-xl-11">
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="dynamicSecond"
+        [type]="'dynamicPage-bottom'"
+        [hasMore]="hasMore"
+        (more)="getMoreDynamic()"
+        [typeSlug]="'youngones'"
+      >
+      </app-five-column>
     </div>
   </div>
 </div>

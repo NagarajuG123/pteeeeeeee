@@ -186,10 +186,6 @@ export class StoryComponent implements OnInit {
                     this.apiUrl = `${this.brandId}/columns`;
                     break;
 
-                  case 'main-videos':
-                    this.apiUrl = `${this.brandId}/videos?site=1851`;
-                    break;
-
                   case 'franbuzz':
                     this.apiUrl = `${this.brandId}/news?lean=true`;
                     break;
@@ -238,8 +234,8 @@ export class StoryComponent implements OnInit {
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
                     break;
 
-                  case 'youngones':
-                    this.apiUrl = `page/youngonestowatch`;
+                  case 'dynamicpage':
+                    this.apiUrl = `home-page-featured-content`;
                     break;
 
                   case 'brand-latest-stories':
@@ -300,20 +296,8 @@ export class StoryComponent implements OnInit {
                     this.apiUrl = `${this.brandId}/trending-buzz`;
                     break;
 
-                  case 'powerranking':
-                    this.apiUrl = `${this.brandId}/power-ranking`;
-                    break;
-
-                  case 'stories':
-                    this.apiUrl = `${this.brandId}/featured-articles`;
-                    break;
-
                   case 'category-trending':
                     this.apiUrl = `${this.brandId}/people/trending`;
-                    break;
-
-                  case 'newswidget':
-                    this.apiUrl = `${this.brandId}/newswidget`;
                     break;
 
                   default:
@@ -631,6 +615,7 @@ export class StoryComponent implements OnInit {
   addItems(limit, offset) {
     if (this.pageType === 'details' && !this.isLoading) {
       this.isLoading = true;
+
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
         .subscribe((result) => {
@@ -642,44 +627,10 @@ export class StoryComponent implements OnInit {
               (this.type === 'brand-latest-stories' && this.brandId === '1851')
             ) {
               response = result.data.stories;
-              // result.data.stories.forEach((item) => {
-              //   if (parseInt(this.storyId, 10) !== item.id) {
-              //     this.detailsData.push(this.htmlBinding(item));
-              //   } else {
-              //     if (limit === 1) {
-              //       this.addItems(limit, offset + 1);
-              //       this.storyIndex = true;
-              //       return;
-              //     }
-              //   }
-              // });
             } else if (this.type === 'brand') {
               response = result.data.articles;
-              // result.data.articles.forEach((item) => {
-              //   if (parseInt(this.storyId, 10) !== item.id) {
-              //     this.detailsData.push(this.htmlBinding(item));
-              //   } else {
-              //     if (limit === 1) {
-              //       this.addItems(limit, offset + 1);
-              //       this.storyIndex = true;
-              //       return;
-              //     }
-              //   }
-              // });
             } else {
               response = result.data;
-
-              // result.data.forEach((item) => {
-              //   if (parseInt(this.storyId, 10) !== item.id) {
-              //     this.detailsData.push(this.htmlBinding(item));
-              //   } else {
-              //     if (limit === 1) {
-              //       this.addItems(limit, offset + 1);
-              //       this.storyIndex = true;
-              //       return;
-              //     }
-              //   }
-              // });
             }
           }
           response.forEach((item) => {
