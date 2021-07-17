@@ -683,6 +683,11 @@
     @include desk-lg-below {
       left: 0;
     }
+    &:hover,
+    &:focus {
+      background: url("/assets/img/left-arrow.png") no-repeat left top;
+      opacity: 0.6;
+    }
   }
   .slick-next {
     position: absolute;
@@ -703,6 +708,11 @@
     z-index: 1;
     @include desk-lg-below {
       right: 0;
+    }
+    &:hover,
+    &:focus {
+      background: url("/assets/img/right-arrow.png") no-repeat left top;
+      opacity: 0.6;
     }
   }
   .buffalowings-wrap {
