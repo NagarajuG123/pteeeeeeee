@@ -1,5 +1,6 @@
 import {
   Component,
+  OnChanges,
   Input,
   OnInit,
   SimpleChange,
@@ -9,13 +10,13 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-brand-search-data',
   templateUrl: './brand-search-data.component.html',
   styleUrls: ['./brand-search-data.component.scss'],
 })
-export class BrandSearchDataComponent implements OnInit {
+export class BrandSearchDataComponent implements OnInit,OnChanges {
   @Input() search_input: string;
 
   search_key = '';
@@ -41,6 +42,15 @@ export class BrandSearchDataComponent implements OnInit {
     private apiService: ApiService,
     private metaService: MetaService
   ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    const search_input: SimpleChange = changes.search_input;
+
+    if (search_input.currentValue !== search_input.previousValue && this.search_key !== search_input.currentValue) {
+      this.search_key = search_input.currentValue;
+      this.getSearchData();
+    }
+  }
 
   ngOnInit(): void {
     this.setInit();
@@ -72,12 +82,15 @@ export class BrandSearchDataComponent implements OnInit {
         brandSearchData['items'] = results[1].data;
         brandSearchData['has_more'] = results[1].has_more;
 
+        this.industry_keys =  brandSearchData['industry_keys'];
+        this.invest_keys = brandSearchData['invest_keys'];
+        this.items = brandSearchData['items'];
+        this.has_more = brandSearchData['has_more'];
+
         const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
 
         this.metaService.setTitle(defaultTitle);
       });
-
-    this.getSearchData();
   }
 
   setInit() {
@@ -228,21 +241,9 @@ export class BrandSearchDataComponent implements OnInit {
       },
     ];
   }
-  ngOnChanges(changes: SimpleChanges) {
-    const search_input: SimpleChange = changes.search_input;
-
-    if (
-      search_input.currentValue !== search_input.previousValue &&
-      this.search_key !== search_input.currentValue
-    ) {
-      this.search_key = search_input.currentValue;
-      this.getSearchData();
-    }
-  }
 
   onChangeInvestFilter(index) {
-    this.invest_keys[index]['isChecked'] =
-      !this.invest_keys[index]['isChecked'];
+    this.invest_keys[index]['isChecked'] = !this.invest_keys[index]['isChecked'];
     this.invest_values = '';
     this.invest_keys.forEach((key, i) => {
       if (key['isChecked']) {
@@ -253,8 +254,7 @@ export class BrandSearchDataComponent implements OnInit {
   }
 
   onChangeIndustryFilter(index) {
-    this.industry_keys[index]['isChecked'] =
-      !this.industry_keys[index]['isChecked'];
+    this.industry_keys[index]['isChecked'] = !this.industry_keys[index]['isChecked'];
     this.industry_values = '';
     this.industry_keys.forEach((key, i) => {
       if (key['isChecked']) {
@@ -287,13 +287,9 @@ export class BrandSearchDataComponent implements OnInit {
   }
 
   getSearchData() {
-    const sortValue = `&sort=${
-      this.sortBrand_value === 'asc' ? 'brand' : '-brand'
-    }`;
+    const sortValue = `&sort=${this.sortBrand_value === 'asc' ? 'brand' : '-brand'}`;
     const params = `?q=${this.search_input}${this.invest_values}${this.industry_values}${sortValue}&limit=10&offset=0`;
-    this.apiService
-      .getAPI(`brand-search${params}`)
-      .pipe(takeUntil(this.onDestroy$))
+    this.apiService.getAPI(`brand-search${params}`)
       .subscribe((res) => {
         this.items = res['data'];
         this.has_more = res['has_more'];
@@ -335,14 +331,9 @@ export class BrandSearchDataComponent implements OnInit {
   }
 
   getMoreData() {
-    const sortValue = `&sort=${
-      this.sortBrand_value === 'asc' ? 'brand' : '-brand'
-    }`;
-    // tslint:disable-next-line:max-line-length
+    const sortValue = `&sort=${this.sortBrand_value === 'asc' ? 'brand' : '-brand'}`;
     const params = `?q=${this.search_input}${this.invest_values}${this.industry_values}${sortValue}&limit=10&offset=${this.items.length}`;
-    this.apiService
-      .getAPI(`brand-search${params}`)
-      .pipe(takeUntil(this.onDestroy$))
+    this.apiService.getAPI(`brand-search${params}`)
       .subscribe((res) => {
         res['data'].forEach((brand, index) => {
           this.items.push(brand);
