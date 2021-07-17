@@ -2237,9 +2237,19 @@ spotlighttab-cnt-left {
   }
   .slick-prev {
     background: url("/assets/img/category-left-arrow.png") no-repeat left top;
+    &:hover,
+    &:focus {
+      background: url("/assets/img/category-left-arrow.png") no-repeat left top;
+      opacity: 0.6;
+    }
   }
   .slick-next {
     background: url("/assets/img/category-right-arrow.png") no-repeat left top;
+    &:hover,
+    &:focus {
+      background: url("/assets/img/category-right-arrow.png") no-repeat left top;
+      opacity: 0.6;
+    }
   }
   .frannews-top-left {
     ul {
