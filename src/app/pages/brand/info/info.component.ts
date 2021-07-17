@@ -55,7 +55,6 @@ export class InfoComponent implements OnInit {
   brandMostRecent: any;
   brandFeaturedUrl: any;
   mostRecent: any;
-  mostRecentData: any;
   submittedInquireForm: boolean = false;
   payLoad: any;
   private onDestroySubject = new Subject();
@@ -247,13 +246,13 @@ export class InfoComponent implements OnInit {
   getMoreData() {
     this.apiService
       .getAPI(
-        `${this.mostRecent}?limit=10&offset=${this.mostRecentData.length + 1}`
+        `${this.mostRecent}?limit=10&offset=${this.brandMostRecent.length + 1}`
       )
       .subscribe((response) => {
         if (response.data != null) {
           this.hasMore = response.has_more;
           response.data.forEach((element: any) => {
-            this.mostRecentData.push(element);
+            this.brandMostRecent.push(element);
           });
         }
       });
