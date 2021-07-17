@@ -30,7 +30,7 @@
           </div>
           <div class="frannews-top-right col-md-6">
             <a
-              href="{{ readMore(brandMostRecent.data[0]) }}"
+              href="{{ readMore(brandMostRecent[0]) }}"
               class="float-right"
             >
               READ MORE
@@ -41,10 +41,10 @@
         </div>
         <app-five-column
           [slug]="'1851'"
-          [contents]="brandMostRecent.data"
+          [contents]="brandMostRecent"
           [type]="'categoryPage'"
           [hasMore]="hasMore"
-          [typeSlug]="'moset-recent'"
+          [typeSlug]="'most-recent'"
           (more)="getMoreData()"
         ></app-five-column>
       </div>

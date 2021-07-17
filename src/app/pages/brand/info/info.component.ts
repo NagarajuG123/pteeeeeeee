@@ -132,7 +132,7 @@ export class InfoComponent implements OnInit {
               forkJoin([mostRecent, trending])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
-                  this.brandMostRecent = results[0];
+                  this.brandMostRecent = results[0].data;
                   this.brandTrending = results[1];
                   this.hasMore = results[0]['has_more'];
                 });
@@ -246,11 +246,11 @@ export class InfoComponent implements OnInit {
   getMoreData() {
     this.apiService
       .getAPI(
-        `${this.mostRecent}?limit=10&offset=${this.brandMostRecent.length + 1}`
+        `${this.mostRecent}?limit=10&offset=${this.brandMostRecent.length}`
       )
       .subscribe((response) => {
         if (response.data != null) {
-          this.hasMore = response.has_more;
+          this.hasMore = response.has_more; 
           response.data.forEach((element: any) => {
             this.brandMostRecent.push(element);
           });
