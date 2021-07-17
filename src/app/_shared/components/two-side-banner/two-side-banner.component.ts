@@ -32,7 +32,7 @@ export class TwoSideBannerComponent implements OnInit {
     if (this.type == 'monthlydetails') {
       tag = 'people';
     } else if (this.type === 'dynamicPage') {
-      tag = 'dynamicPage';
+      tag = 'youngones';
     } else if (this.type === 'trendingbrandbuzz') {
       tag = 'trendingbrandbuzz';
     }
