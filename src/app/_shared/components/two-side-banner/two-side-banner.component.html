@@ -57,11 +57,11 @@
         TRENDING BRAND BUZZ
       </h4>
       <h4
-      class="text-uppercase text-center d-inline-block"
-      *ngIf="type == 'dynamicPage'"
-    >
-      INDUSTRY INFLUENCERS
-    </h4>
+        class="text-uppercase text-center d-inline-block"
+        *ngIf="type == 'dynamicPage'"
+      >
+        INDUSTRY INFLUENCERS
+      </h4>
 
       <h1>
         {{ banner.title }}
@@ -69,7 +69,7 @@
       <p>
         {{ banner.short_description }}
       </p>
-      <p  *ngIf="type == 'dynamicPage'">
+      <p *ngIf="type == 'dynamicPage'">
         {{ banner.description }}
       </p>
     </div>
@@ -78,6 +78,15 @@
         *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz' || type === 'dynamicPage'"
         class="float-right text-uppercase"
         href="{{ readMore(banner) }}"
+      >
+        READ MORE
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </a>
+      <!-- Dynamic Page -->
+      <a
+        *ngIf="type === 'dynamicPage'"
+        class="float-right text-uppercase"
+        href="{{ readMore(data) }}"
       >
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>

@@ -69,34 +69,7 @@ export class HeaderComponent implements OnInit {
         });
     });
   }
-  ngAfterViewInit() {
-    // For sticky header
-    if (this.isBrowser && this.isShow) {
-      const distance = $('header').offset().top,
-        $window = $(window);
-      $(window).scroll(function () {
-        if ($window.scrollTop() > distance) {
-          $('body').addClass('sticky');
-          const ht = $('header').innerHeight();
-          $('.empty').css({ 'min-height': ht });
-        } else {
-          $('body').removeClass('sticky');
-        }
-      });
-      // For navigation
-      setTimeout(() => {
-        $('nav ul li').has('ul').addClass('has_dd');
-        $('nav > ul > li > a').click(function () {
-          if ($(window).width() < 768) {
-            $(this).parent().find('.megamenu').slideToggle();
-            $(this).parent().siblings().find('.megamenu').slideUp();
-          }
-          $(this).parent().addClass('active');
-          $(this).parent().siblings().removeClass('active');
-        });
-      }, 500);
-    }
-  }
+
   setSlug() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {

@@ -10,12 +10,13 @@ export class TwoSideBannerComponent implements OnInit {
   @Input() type = '';
   @Input() banner: any;
   @Input() date: any;
+  @Input() data: any;
+
   openVideoPlayer = false;
 
   constructor(private commonService: CommonService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   isVideo(item: any) {
     if (
       typeof item !== 'undefined' &&
