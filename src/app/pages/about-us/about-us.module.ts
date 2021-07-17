@@ -5,10 +5,15 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
 import { PartnerMainComponent } from './partner-main/partner-main.component';
-import { NgxCaptchaModule } from 'ngx-captcha';
-
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 @NgModule({
   declarations: [AboutUsComponent, PartnerMainComponent],
-  imports: [CommonModule, AboutUsRoutingModule, SharedModule, NgxCaptchaModule],
+  imports: [
+    CommonModule,
+    AboutUsRoutingModule,
+    SharedModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+  ],
 })
 export class AboutUsModule {}
