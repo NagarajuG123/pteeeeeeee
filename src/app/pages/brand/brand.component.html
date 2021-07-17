@@ -64,10 +64,14 @@
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
-  <app-two-side-banner [banner]="topBlock" [type]="'dynamicPage'">
+  <app-two-side-banner
+    [banner]="topBlock"
+    [type]="'dynamicPage'"
+    [data]="dynamicFirst[0]"
+  >
   </app-two-side-banner>
 
-  <div class="frannews">
+  <div class="frannews dynamic-story">
     <div class="container">
       <div class="frannews-details col-xl-11">
         <app-five-column
@@ -78,21 +82,21 @@
         </app-five-column>
       </div>
     </div>
-  </div>
 
-  <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
-  </app-advertisement>
+    <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
+    </app-advertisement>
 
-  <div class="container">
-    <div class="frannews-details col-xl-11">
-      <app-five-column
-        [slug]="'1851'"
-        [contents]="dynamicSecond"
-        [type]="'dynamicPage-bottom'"
-        [hasMore]="hasMore"
-        (more)="getMoreDynamic()"
-      >
-      </app-five-column>
+    <div class="container">
+      <div class="frannews-details col-xl-11">
+        <app-five-column
+          [slug]="'1851'"
+          [contents]="dynamicSecond"
+          [type]="'dynamicPage-bottom'"
+          [hasMore]="hasMore"
+          (more)="getMoreDynamic()"
+        >
+        </app-five-column>
+      </div>
     </div>
   </div>
 </div>
