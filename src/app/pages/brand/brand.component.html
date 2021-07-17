@@ -24,7 +24,7 @@
     [type]="'Main Site Ad'"
   ></app-advertisement>
 
-  <div *ngIf="mostRecent" class="frannews">
+  <div *ngIf="mostRecent" class="frannews most-recent">
     <div class="container">
       <div class="frannews-details col-xl-11">
         <div class="frannews-top d-flex">
@@ -65,39 +65,36 @@
 
 <div *ngIf="type === 'dynamic_page'">
   <div class="top-space">
-    <app-two-side-banner
-      [banner]="topBlock"
-      [type]="'dynamicPage'">
+    <app-two-side-banner [banner]="topBlock" [type]="'dynamicPage'">
     </app-two-side-banner>
 
     <div class="frannews">
       <div class="container">
         <div class="frannews-details col-xl-11">
           <app-five-column
-          [slug]="'1851'"
-          [contents]="dynamicFirst"
-          [type]="'dynamicPage'">
+            [slug]="'1851'"
+            [contents]="dynamicFirst"
+            [type]="'dynamicPage'"
+          >
           </app-five-column>
         </div>
       </div>
     </div>
-  
-    <app-advertisement
-    [slug]="'1851'"
-    [type]="'Main Site Ad'">
+
+    <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
     </app-advertisement>
-  
+
     <div class="container">
-      <div class="frannews-details col-xl-11"> 
-          <app-five-column
+      <div class="frannews-details col-xl-11">
+        <app-five-column
           [slug]="'1851'"
           [contents]="dynamicSecond"
           [type]="'dynamicPage-bottom'"
           [hasMore]="hasMore"
-          (more)="getMoreDynamic()">
-          </app-five-column>
-        </div>
+          (more)="getMoreDynamic()"
+        >
+        </app-five-column>
+      </div>
     </div>
-
   </div>
 </div>
