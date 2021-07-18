@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -30,14 +30,13 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPublication();
     this.router.events
     .subscribe(events => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
-          this.setFooter();
+          this.setInit();
         } else {
           if (this.brandSlug === 'robots.txt') {
             this.isFooter = false;
@@ -48,16 +47,15 @@ export class FooterComponent implements OnInit {
                 this.brandSlug = response.slug;
                 this.isBrandFooter = true;
                 this.brandId = response.id;
-                this.getContact();
               } else {
                 this.brandSlug = '1851';
                 this.brandId ='1851';
               }
-              this.setFooter();
+              this.setInit();
             });
           }
         }
-        
+     
       }
     }); 
     this.subject.subscribe(() => {
@@ -73,20 +71,17 @@ export class FooterComponent implements OnInit {
     });
   }
 
-  setFooter() {
-  this.apiService.getAPI(`${this.brandSlug}/footer`).subscribe((response) => {
-    this.footer = response.data;
-    this.getNews();
-  });
- }
-  getNews() {
-    this.apiService.getAPI(`${this.brandSlug}/news`).subscribe((response) => {
-      this.news = response.data;
-    });
-  }
-  getPublication(){
-    this.apiService.getAPI(`1851/publication-instance`).subscribe((response ) =>{
-      this.publication = response;
+  setInit(){
+    const footer = this.apiService.getAPI(`${this.brandSlug}/footer`);
+    const news = this.apiService.getAPI(`${this.brandSlug}/news`);
+    const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/contact`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    
+    forkJoin([footer,news,inquire,publication]).subscribe(results =>{
+      this.footer =  results[0].data;
+      this.news = results[1].data;
+      this.brandContact = results[2].schema;
+      this.publication = results[3];
     });
   }
   onSearchSubmit(searchForm: FormGroup) {
@@ -96,11 +91,6 @@ export class FooterComponent implements OnInit {
       window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
-  }
-  getContact() {
-    this.apiService.getAPI(`${this.brandSlug}/brand/contact`).subscribe((response ) =>{
-      this.brandContact = response.schema;
-    });
   }
   onKeyUp(): void {
     this.subject.next();
