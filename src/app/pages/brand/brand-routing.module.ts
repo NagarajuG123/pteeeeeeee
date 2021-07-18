@@ -4,6 +4,7 @@ import { SitemapComponent } from '../sitemap/sitemap.component';
 import { SearchComponent } from '../search/search.component';
 import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
+import { TermsofuseComponent } from '../termsofuse/termsofuse.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'searchpopup',
     component: SearchComponent,
+  },
+  {
+    path: 'termsofuse',
+    component: TermsofuseComponent,
   },
   {
     path: ':item',
