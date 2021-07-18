@@ -135,6 +135,7 @@
       </div>
     </div>
   </div>
+  <!-- brand sidebar -->
   <div *ngIf="!isMain" class="container">
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
@@ -150,7 +151,11 @@
                 alt="menu"
               />
             </figure>
-            <small class="text-center d-block">MENU</small>
+            <small
+              class="text-center d-block"
+              [ngClass]="commonService.showmenu ? 'invisible' : ''"
+              >MENU</small
+            >
           </a>
         </div>
 
