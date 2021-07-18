@@ -45,6 +45,7 @@ export class SitemapComponent implements OnInit {
         this.getSitemap();
       }
     });
+    this.getMeta();
   }
 
   getSitemap(){
@@ -72,10 +73,10 @@ export class SitemapComponent implements OnInit {
       this.metaService.setSeo(response.data);
       this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
         if(this.brandSlug === '1851'){
-          this.metaService.setTitle(`Sitemap for | ${result.title} | ${result.newsType}`);
+          this.metaService.setTitle(`Sitemap for ${result.title} | ${result.newsType}`);
         }
         else{
-          this.metaService.setTitle(`Sitemap for | ${this.brandSlug}  ${result.title}  | ${result.newsType}`);
+          this.metaService.setTitle(`Sitemap for ${this.brandSlug}  ${result.title}  | ${result.newsType}`);
         }  
      });
     });

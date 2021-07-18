@@ -47,7 +47,7 @@ export class MonthlyDetailsComponent implements OnInit {
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
                 this.metaService.setTitle(
-                  `${this.banner['date']} issues | ${result.title}`
+                  `${this.banner['date']} Issues | ${result.title}`
                 );
               });
           });
