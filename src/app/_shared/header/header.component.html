@@ -296,19 +296,7 @@
                   formControlsValues[fields.key].errors?.required
               }"
             />
-            <textarea
-              *ngIf="fields.type === 'textarea'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              rows="3"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            ></textarea>
+
             <div
               class="invalid-feedback d-block"
               *ngIf="

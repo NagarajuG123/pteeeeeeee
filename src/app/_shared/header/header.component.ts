@@ -168,7 +168,7 @@ export class HeaderComponent implements OnInit {
           required: this.inquireData.required.find((v) => v === item)
             ? true
             : false,
-          type: item === 'cust_field' ? 'textarea' : 'text',
+          type: 'text',
           pattern: this.inquireData.properties[item].pattern || '',
           errorMsg:
             this.inquireData.properties[item].validationMessage ||
