@@ -23,16 +23,13 @@
               </li>
               <li>
                 <h4 class="text-uppercase">
-                  <span>{{ company }}</span>
+                  <span>{{ categoryParam }}</span>
                 </h4>
               </li>
             </ul>
           </div>
           <div class="frannews-top-right col-md-6">
-            <a
-              href="{{ readMore(brandMostRecent[0]) }}"
-              class="float-right"
-            >
+            <a href="{{ readMore(brandMostRecent[0]) }}" class="float-right">
               READ MORE
               <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
@@ -59,7 +56,15 @@
   <div class="main-content">
     <div class="main_content_tab">
       <ul
-        class="resp-tabs-list tab-identifier2 d-flex justify-content-center align-items-center clearfix nav nav-pills"
+        class="
+          resp-tabs-list
+          tab-identifier2
+          d-flex
+          justify-content-center
+          align-items-center
+          clearfix
+          nav nav-pills
+        "
       >
         <li
           *ngFor="let category of categories; let i = index"
@@ -406,7 +411,13 @@
                       <div class="d-grid inquireSubmit">
                         <button
                           type="submit"
-                          class="btn btn-danger text-end rounded-0 btn-sm nextBtn"
+                          class="
+                            btn btn-danger
+                            text-end
+                            rounded-0
+                            btn-sm
+                            nextBtn
+                          "
                         >
                           Next
                         </button>
