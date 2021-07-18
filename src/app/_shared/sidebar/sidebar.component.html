@@ -358,7 +358,8 @@
             [maxLength]="fields.maxLength || 1000"
             [ngClass]="{
               'is-invalid':
-                (formControlsValues[fields.key].touched || submitContactForm) &&
+                (formControlsValues[fields.key].touched ||
+                  submittedContactForm) &&
                 formControlsValues[fields.key].errors?.required
             }"
           />
@@ -366,20 +367,20 @@
             *ngIf="fields.type === 'textarea'"
             [formControlName]="fields.key"
             [id]="fields.key"
-            [type]="fields.type"
             class="form-control rounded-0"
-            [pattern]="fields.pattern"
             rows="3"
             [ngClass]="{
               'is-invalid':
-                (formControlsValues[fields.key].touched || submitContactForm) &&
+                (formControlsValues[fields.key].touched ||
+                  submittedContactForm) &&
                 formControlsValues[fields.key].errors?.required
             }"
           ></textarea>
           <div
             class="invalid-feedback d-block"
             *ngIf="
-              (formControlsValues[fields.key].touched || submitContactForm) &&
+              (formControlsValues[fields.key].touched ||
+                submittedContactForm) &&
               (formControlsValues[fields.key].errors?.required ||
                 formControlsValues[fields.key].errors?.email ||
                 formControlsValues[fields.key].errors?.pattern)
@@ -388,7 +389,6 @@
             {{ fields.errorMsg }}
           </div>
         </div>
-        <!-- [disabled]="!inquireForm.valid" -->
         <div class="d-grid contactSubmit">
           <button
             type="submit"
