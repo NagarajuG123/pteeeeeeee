@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -27,50 +28,47 @@ export class AuthorComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.authorSlug = params.get('authorSlug');
-      this.apiService
-        .getAPI(`author/${this.authorSlug}`)
-        .subscribe((response) => {
-          if (response.data === '') {
-            this.router.navigateByUrl('/404');
-          } else {
-            this.author = response;
-            this.metaService.setSeo(response.meta);
-            this.apiService
-              .getAPI(`1851/publication-instance`)
-              .subscribe((result) => {
-                this.metaService.setTitle(
-                  `${response.data.first_name} ${response.data.last_name} | ${result.title}`
-                );
-              });
-            this.getBranded();
-            this.getEditorials();
-            this.apiService.getAPI('1851/footer').subscribe((response) => {
-              this.footer = response.data;
-              this.schema = {
-                '@context': 'https://schema.org/',
-                '@type': 'Person',
-                name: `${this.author.data.first_name} ${this.author.data.last_name}`,
-                url: `${environment.appUrl}${this.router.url}`,
-                image: {
-                  '@type': 'ImageObject',
-                  url: this.getUserAvater(this.author.data.media),
-                  width: 279,
-                  height: 279,
-                },
-                mainEntityOfPage: {
-                  '@type': 'WebPage',
-                  '@id': `${environment.appUrl}`,
-                },
-                sameAs: [
-                  this.footer['learn-more']['social-media']['fb-url'],
-                  this.footer['learn-more']['social-media']['twitter-url'],
-                  this.footer['learn-more']['social-media']['instagram-url'],
-                  this.footer['learn-more']['social-media']['linkedin-url'],
-                ],
-              };
-            });
-          }
-        });
+      const author =  this.apiService.getAPI(`author/${this.authorSlug}`);
+      const publication =  this.apiService.getAPI(`1851/publication-instance`);
+      const brand =  this.apiService.getAPI(`author/${this.authorSlug}/branded-contents?limit=10&offset=0`);
+      const editorial =  this.apiService.getAPI(`author/${this.authorSlug}/editorials?limit=10&offset=0`);
+      const footer = this.apiService.getAPI('1851/footer');
+
+      forkJoin([author,publication,brand,editorial,footer]).subscribe(results=>{
+        if (results[0].data  === '') {
+          this.router.navigateByUrl('/404');
+        } 
+        else{
+          this.author = results[0];
+          this.metaService.setSeo(results[0].meta);
+          this.metaService.setTitle(`${results[1].first_name} ${results[1].last_name} | ${results[0].title}`);
+          this.brandedContents = results[2].data;
+          this.editorials =  results[3].data;
+          this.footer = results[4].data;
+          this.schema = {
+            '@context': 'https://schema.org/',
+            '@type': 'Person',
+            name: `${this.author.data.first_name} ${this.author.data.last_name}`,
+            url: `${environment.appUrl}${this.router.url}`,
+            image: {
+              '@type': 'ImageObject',
+              url: this.getUserAvater(this.author.data.media),
+              width: 279,
+              height: 279,
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `${environment.appUrl}`,
+            },
+            sameAs: [
+              this.footer['learn-more']['social-media']['fb-url'],
+              this.footer['learn-more']['social-media']['twitter-url'],
+              this.footer['learn-more']['social-media']['instagram-url'],
+              this.footer['learn-more']['social-media']['linkedin-url'],
+            ],
+          };
+        }
+      });
     });
   }
   getUserAvater(media: any) {
@@ -81,20 +79,6 @@ export class AuthorComponent implements OnInit {
         ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.url}`
         : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.placeholder}`;
     }
-  }
-  getBranded() {
-    this.apiService
-      .getAPI(`author/${this.authorSlug}/branded-contents?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.brandedContents = response.data;
-      });
-  }
-  getEditorials() {
-    this.apiService
-      .getAPI(`author/${this.authorSlug}/editorials?limit=10&offset=0`)
-      .subscribe((response) => {
-        this.editorials = response.data;
-      });
   }
   goReadMore(item: any) {
     return this.commonService.readMore(item, 'editorials');
