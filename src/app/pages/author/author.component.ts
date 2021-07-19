@@ -41,7 +41,7 @@ export class AuthorComponent implements OnInit {
         else{
           this.author = results[0];
           this.metaService.setSeo(results[0].meta);
-          this.metaService.setTitle(`${results[1].first_name} ${results[1].last_name} | ${results[0].title}`);
+          this.metaService.setTitle(`${results[0].data.first_name} ${results[1].data.last_name} | ${results[1].title}`);
           this.brandedContents = results[2].data;
           this.editorials =  results[3].data;
           this.footer = results[4].data;
