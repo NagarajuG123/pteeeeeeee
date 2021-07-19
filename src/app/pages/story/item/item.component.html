@@ -26,6 +26,8 @@
           href="javascript:void(0)"
           class="d-block video-btn"
           (click)="openVideoPlayer = true"
+          data-bs-toggle="modal"
+          attr.data-bs-target="#storyModal{{ index }}"
         >
           <figure>
             <img
@@ -37,7 +39,7 @@
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
               data-bs-toggle="modal"
-              data-bs-target="#storyModal{{ index }}"
+              attr.data-bs-target="#storyModal{{ index }}"
             />
             <img
               appYoutubeImage
@@ -48,20 +50,18 @@
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
               data-bs-toggle="modal"
-              data-bs-target="#storyModal{{ index }}"
+              attr.data-bs-target="#storyModal{{ index }}"
             />
           </figure>
           <img
             *ngIf="media && media.type == 'video'"
             class="video-maker"
             src="assets/img/youtube.svg"
+            data-bs-toggle="modal"
+            attr.data-bs-target="#storyModal{{ index }}"
           />
         </a>
-        <app-modal
-          *ngIf="media && media.type == 'video'"
-          [videoUrl]="media?.url"
-          [modalId]="'storyModal'"
-        ></app-modal>
+
         <h1 class="m-0" [innerHTML]="title"></h1>
         <h2 [innerHTML]="short_description"></h2>
         <div class="brian_jaeger d-flex flex-wrap align-items-center">
@@ -328,9 +328,8 @@
         </div>
       </div>
       <div
-        *ngIf="isVideo(media)"
         class="modal fade"
-        id="sponsered_content_video_modal{{ index }}"
+        id="storyModal{{ index }}"
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
@@ -342,7 +341,7 @@
               <button
                 type="button"
                 class="close"
-                data-dismiss="modal"
+                data-bs-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true" (click)="openVideoPlayer = false">
