@@ -38,7 +38,11 @@
   </div>
   <div class="monthly-covers">
     <ul>
-      <li class="d-block" (click)="commonService.toggle()">
+      <li
+        class="d-block"
+        [ngClass]="common.showmenu ? 'closeMenu' : ''"
+        (click)="common.toggle()"
+      >
         <div class="monthly-covers-main">
           <a routerLink="/monthlycovers">
             <figure>
@@ -47,7 +51,7 @@
             <strong>MONTHLY COVERS</strong>
           </a>
           <div class="monthly-covers-details monthly-covers-details1">
-            <a href="{{ sidebar['monthly-cover']?.url }}">
+            <a routerLink="{{ sidebar['monthly-cover']?.url }}">
               <figure>
                 <img
                   appYoutubeImage
@@ -93,7 +97,11 @@
           </div>
         </div>
         <div class="monthly-covers-main" *ngIf="sidebar['power-rankings']">
-          <a href="{{ sidebar['power-rankings']?.url }}">
+          <a
+            routerLink="{{ sidebar['power-rankings']?.url }}"
+            [ngClass]="common.showmenu ? 'closeMenu' : ''"
+            (click)="common.toggle()"
+          >
             <figure>
               <i class="fa fa-star"></i>
             </figure>
@@ -101,9 +109,13 @@
           </a>
         </div>
       </li>
-      <li class="d-block">
+      <li
+        class="d-block"
+        [ngClass]="common.showmenu ? 'closeMenu' : ''"
+        (click)="common.toggle()"
+      >
         <div class="monthly-covers-main">
-          <a href="{{ sidebar['about-1851']?.url }}">
+          <a routerLink="{{ sidebar['about-1851']?.url }}">
             <figure>
               <i class="fa fa-question-circle"></i>
             </figure>
@@ -133,7 +145,7 @@
           </a>
         </div>
         <div class="monthly-covers-main">
-          <a href="{{ sidebar['contact-editorial']?.url }}">
+          <a routerLink="{{ sidebar['contact-editorial']?.url }}">
             <figure>
               <i class="fa fa-envelope-open"></i>
             </figure>

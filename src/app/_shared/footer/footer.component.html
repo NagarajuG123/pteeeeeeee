@@ -44,14 +44,14 @@
               <ul>
                 <li *ngIf="footer['about-us']">
                   <a
-                    href="{{ footer['about-us']['url'] }}"
+                    routerLink="{{ footer['about-us']['url'] }}"
                     class="text-uppercase"
                     >ABOUT US</a
                   >
                 </li>
                 <li *ngIf="footer['contact-editorial'] && !isBrandFooter">
                   <a
-                    href="{{ footer['contact-editorial']['url'] }}"
+                    routerLink="{{ footer['contact-editorial']['url'] }}"
                     class="text-uppercase"
                     >CONTACT</a
                   >

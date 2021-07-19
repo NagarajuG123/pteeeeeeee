@@ -12,6 +12,9 @@
                     : '../../../assets/img/menu.png'
                 "
                 alt=""
+                width="35"
+                height="24"
+                [ngClass]="commonService.showmenu ? 'close-menu' : ''"
               />
             </figure>
             <small
@@ -135,6 +138,7 @@
       </div>
     </div>
   </div>
+  <!-- brand sidebar -->
   <div *ngIf="!isMain" class="container">
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
@@ -148,9 +152,16 @@
                     : '../../../assets/img/menu.png'
                 "
                 alt="menu"
+                width="35"
+                height="24"
+                [ngClass]="commonService.showmenu ? 'close-menu' : ''"
               />
             </figure>
-            <small class="text-center d-block">MENU</small>
+            <small
+              class="text-center d-block"
+              [ngClass]="commonService.showmenu ? 'invisible' : ''"
+              >MENU</small
+            >
           </a>
         </div>
 
@@ -195,7 +206,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#inquireModal"
                 >
-                  {{ inquireTitle }}
+                  {{ inquireData.menu_title }}
                 </a>
               </li>
               <li>
@@ -285,19 +296,7 @@
                   formControlsValues[fields.key].errors?.required
               }"
             />
-            <textarea
-              *ngIf="fields.type === 'textarea'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              rows="3"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            ></textarea>
+
             <div
               class="invalid-feedback d-block"
               *ngIf="
@@ -320,6 +319,7 @@
               Next
             </button>
           </div>
+          <br />
         </form>
       </div>
     </div>

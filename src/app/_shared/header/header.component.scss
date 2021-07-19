@@ -2,8 +2,15 @@
   position: relative;
   width: 100%;
   text-align: right;
-  height: 35px;
+  height: 50px;
 }
 header {
   position: fixed;
+}
+
+.close-menu {
+  padding: 0 0 0 6px;
+}
+.search_pop_up form {
+  margin: 30px auto 0;
 }
