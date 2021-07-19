@@ -6,3 +6,11 @@ h6 {
   text-decoration: underline;
   padding: 0 0 45px;
 }
+.buzz-news {
+  box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
+  -webkit-box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
+  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  position: relative;
+}
