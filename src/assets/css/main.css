@@ -2094,8 +2094,6 @@ select.form-control-lg:not([size]):not([multiple]) {
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
 }
 .form-row > .col,
 .form-row > [class*="col-"] {
@@ -13259,7 +13257,7 @@ spotlighttab-cnt-left figure img {
   letter-spacing: 0.4px;
 }
 .make_it ul {
-  padding: 0 0 0 6px;
+  padding: 0 0 0 6px !important;
   display: block;
 }
 .make_it ul li {
