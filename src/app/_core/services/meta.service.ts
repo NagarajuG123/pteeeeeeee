@@ -9,9 +9,9 @@ export class MetaService {
   constructor(private title: Title, private meta: Meta) {}
 
   setSeo(data: any) {
-    this.title.setTitle(data.seo.title);
+    if (typeof data.seo != 'undefined') {
+      this.title.setTitle(data.seo.title);
 
-    if (data.seo) {
       const seoKeys = Object.keys(data.seo);
       for (const key of seoKeys) {
         if (data.seo[key] !== null) {

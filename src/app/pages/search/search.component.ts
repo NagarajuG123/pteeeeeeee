@@ -8,9 +8,8 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser, Location } from '@angular/common';
-import { CommonService } from 'src/app/_core/services/common.service';
 import * as moment from 'moment';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 
@@ -203,10 +202,10 @@ export class SearchComponent implements OnInit {
           }
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
-            this.recentPeoples = searchPopData['recentPeoples'];
-            this.brandPeoples = searchPopData['brandPeoples'];
-            this.params = searchPopData['params'];
-            this.has_more = searchPopData['has_more'];
+          this.recentPeoples = searchPopData['recentPeoples'];
+          this.brandPeoples = searchPopData['brandPeoples'];
+          this.params = searchPopData['params'];
+          this.has_more = searchPopData['has_more'];
         });
     });
   }

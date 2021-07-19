@@ -45,6 +45,3 @@ export class AdvertisementComponent implements OnInit {
     });
   }
 }
-function platformId(platformId: any): boolean {
-  throw new Error('Function not implemented.');
-}
