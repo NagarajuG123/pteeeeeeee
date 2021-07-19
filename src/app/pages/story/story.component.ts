@@ -584,14 +584,9 @@ export class StoryComponent implements OnInit {
       this.subject
         .pipe(debounceTime(500), takeUntil(this.onDestroy$))
         .subscribe(() => {
-          const distance = this.adsData.length ? 800 : 500;
+          const distance = this.adsData.length ? 1000 : 500;
           $(window).scroll(function () {
-            if (
-              $(document).height() -
-                $(window).scrollTop() -
-                $('#footer').outerHeight() >
-              $('#banner_brandNews').outerHeight()
-            ) {
+            if (($(document).height() - $(window).scrollTop() -  $('#footer').outerHeight()) > $('#banner_brandNews').outerHeight()) {
               if ($(window).scrollTop() > distance) {
                 $('#banner_brandNews').addClass('sticky_branner_header');
                 $('#banner_brandNews').removeClass('sticky_branner_bottom');
