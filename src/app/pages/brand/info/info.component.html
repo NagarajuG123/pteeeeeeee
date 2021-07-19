@@ -56,6 +56,7 @@
   <div class="main-content">
     <div class="main_content_tab">
       <ul
+      *ngIf="isBrowser"
         class="
           resp-tabs-list
           tab-identifier2
@@ -250,13 +251,13 @@
                               class="col-sm-5 map-legend-item"
                             >
                               <div class="row market-names">
-                                <div class="col-1">
+                                <div class="col-xs-1">
                                   <div
                                     class="market-status-color"
                                     [style.backgroundColor]="market.color"
                                   ></div>
                                 </div>
-                                <div class="col-10 align-self-center lh-base">
+                                <div class="col-xs-10 align-self-center lh-base">
                                   <span class="text-uppercase market-name">{{
                                     market.name
                                   }}</span>
@@ -483,4 +484,5 @@
   >
     <div class="toast-body">{{ responseMessage.message || "" }}</div>
   </div>
+  <app-advertisement [slug]="brandSlug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
