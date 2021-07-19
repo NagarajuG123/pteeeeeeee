@@ -705,6 +705,7 @@ export class StoryComponent implements OnInit {
           this.adsData.push(ads);
         }
       });
+      this.subject.next();
     });
   }
   getNews() {
