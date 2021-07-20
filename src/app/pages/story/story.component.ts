@@ -178,6 +178,9 @@ export class StoryComponent implements OnInit {
                   this.brandId = '1851';
                 }
                 switch (this.type) {
+                  case 'stories':
+                    this.apiUrl = `${this.brandId}/featured-articles`;
+                    break;
                   case 'trending':
                     this.apiUrl = `${this.brandId}/trending`;
                     break;
@@ -481,7 +484,7 @@ export class StoryComponent implements OnInit {
           this.addItems(1, 0);
         }
         let url = '';
-        if (this.brandId === '1851' && this.isServer) {
+        if (this.brandId === '1851' && this.isBrowser) {
           if (this.brandSlug !== result['story'].data.brand.slug) {
             this.isRedirect = true;
           } else {
@@ -494,7 +497,7 @@ export class StoryComponent implements OnInit {
               ? ''
               : `/${result['story'].data.brand.slug}`
           }${this.router.url}`;
-        } else if (this.brandId !== '1851' && this.isServer) {
+        } else if (this.brandId !== '1851' && this.isBrowser) {
           // tslint:disable-next-line:max-line-length
           url = `${environment.appUrl}${
             result['story'].data.brand.slug === '1851' ||
@@ -516,7 +519,7 @@ export class StoryComponent implements OnInit {
         } else {
           this.isRedirect = false;
         }
-
+        this.redirectUrl = url;
         this.createCanonicalURL(url);
       });
   }
@@ -586,7 +589,12 @@ export class StoryComponent implements OnInit {
         .subscribe(() => {
           const distance = this.adsData.length ? 900 : 500;
           $(window).scroll(function () {
-            if (($(document).height() - $(window).scrollTop() -  $('#footer').outerHeight()) > $('#banner_brandNews').outerHeight()) {
+            if (
+              $(document).height() -
+                $(window).scrollTop() -
+                $('#footer').outerHeight() >
+              $('#banner_brandNews').outerHeight()
+            ) {
               if ($(window).scrollTop() > distance) {
                 $('#banner_brandNews').addClass('sticky_branner_header');
                 $('#banner_brandNews').removeClass('sticky_branner_bottom');
