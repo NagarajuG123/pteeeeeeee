@@ -22,7 +22,7 @@ export class EmbedService {
 
   embedVimeo(content) {
     const oembed_vimeo =
-      /url="https?:\/\/(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)(.)"><\/oembed>/g;
+      /url="https?:\/\/(vimeo\.com\/)((channels\/[A-Za-z]+\/)|(groups\/[A-Za-z]+\/videos\/))?([0-9]+)(.)"><\/oembed>/g;
     const array = content.split('<figure class="media"><oembed ');
     let temp = '';
     if (array.length < 2) {

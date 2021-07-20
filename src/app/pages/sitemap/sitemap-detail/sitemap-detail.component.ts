@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sitemap-detail',

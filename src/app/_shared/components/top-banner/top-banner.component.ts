@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  SimpleChange,
-} from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/five';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-banner',
@@ -19,15 +11,4 @@ export class TopBannerComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   const data: SimpleChange = changes.data;
-
-  //   if (
-  //     typeof data.currentValue !== 'undefined' &&
-  //     typeof data.currentValue.media !== 'undefined'
-  //   ) {
-  //     this.data = data.currentValue;
-  //   }
-  // }
 }

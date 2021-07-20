@@ -4,18 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { HttpClient } from '@angular/common/http';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { group } from '@angular/animations';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -183,7 +177,7 @@ export class InfoComponent implements OnInit {
         } else {
           this.responseMessage = {
             status: false,
-            message: result.data.message || 'Getting error',
+            message: 'Getting error',
           };
         }
         this.submittedInquireForm = false;
@@ -250,7 +244,7 @@ export class InfoComponent implements OnInit {
       )
       .subscribe((response) => {
         if (response.data != null) {
-          this.hasMore = response.has_more; 
+          this.hasMore = response.has_more;
           response.data.forEach((element: any) => {
             this.brandMostRecent.push(element);
           });
