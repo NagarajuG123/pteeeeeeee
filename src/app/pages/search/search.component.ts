@@ -12,6 +12,7 @@ import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-search',
@@ -84,7 +85,8 @@ export class SearchComponent implements OnInit {
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object,
     private cdref: ChangeDetectorRef,
-    private location: Location
+    private location: Location,
+    private metaService: MetaService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.specificSearchForm = new FormGroup({
@@ -186,8 +188,9 @@ export class SearchComponent implements OnInit {
 
       const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
       const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+      const publication = this.apiService.getAPI(`1851/publication-instance`);
 
-      forkJoin(main_searchAPI, brand_searchAPI)
+      forkJoin([main_searchAPI, brand_searchAPI,publication])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0]['data'] === null) {
@@ -200,12 +203,16 @@ export class SearchComponent implements OnInit {
           } else {
             searchPopData['brandPeoples'] = results[1]['data'];
           }
+          let title = results[2].title;
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
+            
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
           this.params = searchPopData['params'];
           this.has_more = searchPopData['has_more'];
+          this.metaService.setSeo(this.recentPeoples[0].meta);
+          this.metaService.setTitle(title);
         });
     });
   }

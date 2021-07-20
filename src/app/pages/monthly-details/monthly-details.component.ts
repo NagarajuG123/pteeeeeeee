@@ -29,8 +29,8 @@ export class MonthlyDetailsComponent implements OnInit {
       this.month = params.get('month');
       this.date = params.get('date');
       this.id = params.get('id');
-
-      const coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
+      const  date_number = Number(this.date);
+      const coverDate = new Date(`${this.year}-${this.month}-${date_number + 1}`);
 
       this.apiService
         .getAPI(
@@ -46,8 +46,9 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
+                let title = moment(coverDate).format('MMMM YYYY');
                 this.metaService.setTitle(
-                  `${this.banner['date']} Issues | ${result.title}`
+                  `${title} Issues | ${result.title}`
                 );
               });
           });
