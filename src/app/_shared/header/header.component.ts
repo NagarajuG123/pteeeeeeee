@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   isInquire: boolean = false;
   inquireTitle = '';
   inquireData: any;
+  submitErrMsg: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -132,6 +133,7 @@ export class HeaderComponent implements OnInit {
   }
   submitInquireForm(values: any) {
     this.submittedInquireForm = true;
+    this.isSubmitted = true;
     if (this.inquireForm.invalid) {
       return;
     }
@@ -146,7 +148,8 @@ export class HeaderComponent implements OnInit {
             $('#thanksModal').hide();
           }, 10000);
         } else {
-          //show error
+          this.submitErrMsg = result.error.message;
+          this.isSubmitFailed = true;
         }
         this.submittedInquireForm = false;
       });

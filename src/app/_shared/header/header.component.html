@@ -273,7 +273,7 @@
         <form
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
-          (ngSubmit)="submitInquireForm()"
+          (ngSubmit)="submitInquireForm(inquireForm.value)"
         >
           <div *ngFor="let fields of inquireFields" class="form-row mb-3">
             <!-- <div class="form-group"> -->
@@ -335,6 +335,9 @@
             </button>
           </div>
           <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
         </form>
       </div>
     </div>

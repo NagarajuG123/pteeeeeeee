@@ -355,7 +355,7 @@
                     <form
                       *ngIf="inquireForm"
                       [formGroup]="inquireForm"
-                      (ngSubmit)="submitInquireForm()"
+                      (ngSubmit)="submitInquireForm(inquireForm.value)"
                     >
                       <div
                         *ngFor="let fields of inquireFields"
