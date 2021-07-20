@@ -157,6 +157,7 @@ export class HeaderComponent implements OnInit {
   get formControlsValues() {
     return this.inquireForm.controls;
   }
+
   getInquiry() {
     if (typeof this.inquireData != 'undefined') {
       this.isInquire = true;
