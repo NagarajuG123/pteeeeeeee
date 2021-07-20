@@ -10,6 +10,8 @@ import { isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -26,8 +28,7 @@ export class InfoComponent implements OnInit {
   selectedIndex: number = 0;
   inquireForm!: FormGroup;
   inquireFields: any = [];
-  showToast: boolean = false;
-  responseMessage: any;
+
   isStory: boolean = false;
   isInfo: boolean = false;
   isBought: boolean = false;
@@ -61,6 +62,7 @@ export class InfoComponent implements OnInit {
     private router: Router,
     private metaService: MetaService,
     private fb: FormBuilder,
+    private toastr: ToastrService,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient
   ) {
@@ -167,18 +169,11 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.showToast = true;
-          this.responseMessage = { status: true, message: result.data.message };
+          this.toastr.success(result.data.message, 'Thanks!');
           this.submittedInquireForm = false;
           this.inquireForm.reset();
-          setTimeout(() => {
-            this.showToast = false;
-          }, 4000);
         } else {
-          this.responseMessage = {
-            status: false,
-            message: 'Getting error',
-          };
+          this.toastr.error(result.error.message, 'Error!');
         }
         this.submittedInquireForm = false;
       });

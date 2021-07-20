@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { ToastrModule } from 'ngx-toastr';
 
 import { BrandRoutingModule } from './brand-routing.module';
 import { BrandComponent } from './brand.component';
@@ -20,6 +21,7 @@ import { CategoryTrendingComponent } from './category-trending/category-trending
     BrandRoutingModule,
     SharedModule,
     NgxPageScrollCoreModule,
+    ToastrModule.forRoot(),
   ],
 })
 export class BrandModule {}

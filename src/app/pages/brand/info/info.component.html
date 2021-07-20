@@ -56,7 +56,7 @@
   <div class="main-content">
     <div class="main_content_tab">
       <ul
-      *ngIf="isBrowser"
+        *ngIf="isBrowser"
         class="
           resp-tabs-list
           tab-identifier2
@@ -257,7 +257,9 @@
                                     [style.backgroundColor]="market.color"
                                   ></div>
                                 </div>
-                                <div class="col-xs-10 align-self-center lh-base">
+                                <div
+                                  class="col-xs-10 align-self-center lh-base"
+                                >
                                   <span class="text-uppercase market-name">{{
                                     market.name
                                   }}</span>
@@ -473,16 +475,8 @@
     </div>
   </div>
 
-  <!-- toster -->
-  <div
-    *ngIf="showToast"
-    class="toast text-white"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    [ngClass]="responseMessage.status ? 'bg-success' : 'bg-danger'"
-  >
-    <div class="toast-body">{{ responseMessage.message || "" }}</div>
-  </div>
-  <app-advertisement [slug]="brandSlug" [type]="'Main Site Ad'"></app-advertisement>
+  <app-advertisement
+    [slug]="brandSlug"
+    [type]="'Main Site Ad'"
+  ></app-advertisement>
 </div>
