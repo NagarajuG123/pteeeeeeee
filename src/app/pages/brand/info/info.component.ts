@@ -196,8 +196,9 @@ export class InfoComponent implements OnInit {
               required: response.schema.required.find((v) => v === item)
                 ? true
                 : false,
-              type: item === 'cust_field' ? 'textarea' : 'text',
+              type: this.getFormType(item),
               pattern: response.schema.properties[item].pattern || '',
+              enum: response.schema.properties[item].enum || '',
               errorMsg:
                 response.schema.properties[item].validationMessage ||
                 (
@@ -228,6 +229,15 @@ export class InfoComponent implements OnInit {
           this.inquireForm = this.fb.group(group);
         }
       });
+  }
+  getFormType(item) {
+    let type = 'text';
+    if (item === 'cust_field') {
+      type = 'textarea';
+    } else if (item === 'net_worth' || item === 'liquidity') {
+      type = 'dropdown';
+    }
+    return type;
   }
   readMore(item: any) {
     return this.commonService.readMore(item, 'most-recent');

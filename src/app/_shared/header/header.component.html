@@ -296,7 +296,22 @@
                   formControlsValues[fields.key].errors?.required
               }"
             />
-
+            <select
+              *ngIf="fields.type === 'dropdown'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsValues[fields.key].errors?.required
+              }"
+            >
+              <option *ngFor="let value of fields.enum" value="{{ value }}">
+                <span>{{ value }}</span>
+              </option>
+            </select>
             <div
               class="invalid-feedback d-block"
               *ngIf="

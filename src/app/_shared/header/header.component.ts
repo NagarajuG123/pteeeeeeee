@@ -155,7 +155,7 @@ export class HeaderComponent implements OnInit {
     return this.inquireForm.controls;
   }
   getInquiry() {
-    if (this.inquireData) {
+    if (typeof this.inquireData != 'undefined') {
       this.isInquire = true;
       this.inquireTitle = this.inquireData.title;
       const group: any = {};
@@ -168,8 +168,10 @@ export class HeaderComponent implements OnInit {
           required: this.inquireData.required.find((v) => v === item)
             ? true
             : false,
-          type: 'text',
+          type: this.getFormType(item),
           pattern: this.inquireData.properties[item].pattern || '',
+          enum: this.inquireData.properties[item].enum || '',
+
           errorMsg:
             this.inquireData.properties[item].validationMessage ||
             (
@@ -199,5 +201,15 @@ export class HeaderComponent implements OnInit {
       });
       this.inquireForm = this.fb.group(group);
     }
+  }
+  closeModal(id) {
+    $(`#${id}`).hide();
+  }
+  getFormType(item) {
+    let type = 'text';
+    if (item === 'net_worth' || item === 'liquidity') {
+      type = 'dropdown';
+    }
+    return type;
   }
 }
