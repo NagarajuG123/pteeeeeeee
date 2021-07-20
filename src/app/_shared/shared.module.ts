@@ -15,6 +15,7 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
+import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -54,6 +55,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     DefaultImagePipe,
     SafeUrlPipe,
     SplitArrayPipe,
+    ImagePreloadDirective,
     VimeoPipe,
     AdvertisementComponent,
     FooterTopComponent,
@@ -91,6 +93,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     VgCoreModule,
     CarouselModule,
     DefaultImagePipe,
+    ImagePreloadDirective,
     SafeUrlPipe,
     SplitArrayPipe,
     NgxYoutubePlayerModule,
