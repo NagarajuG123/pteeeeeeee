@@ -1,7 +1,10 @@
 <div
   class="frannews-bottom"
-  [ngClass]="type === 'authorpage' ? 'author-frannews' : ''"
-  [ngClass]="type === 'trendingbrandbuzz' ? 'trendingbrandbuzz-frannews' : ''"
+  [ngClass]="
+    type === 'authorpage' || type === 'trendingbrandbuzz'
+      ? 'author-frannews'
+      : ''
+  "
 >
   <ul>
     <li *ngFor="let n of contents; let i = index">
@@ -72,63 +75,3 @@
 >
   <i class="fa fa-angle-down" aria-hidden="true"></i>
 </a>
-
-<!-- <div
-  class="
-    fran-content-block
-    row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5
-  "
-  [ngClass]="
-    type === 'monthlydetails' || type === 'categoryPage' ? 'story-block' : ''
-  "
->
-  <div class="col" *ngFor="let item of contents; let i = index">
-    <div
-      class="sponsored text-center"
-      *ngIf="
-        type === 'trendingbrandbuzz' || type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage' || type === 'dynamicPage-bottom'
-      "
-    >
-      <span class="d-inline-block"  *ngIf=" type === 'trendingbrandbuzz' || type === 'dynamicPage'"> {{ i + 1 }} </span>
-      <span class="d-inline-block"  *ngIf=" type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage-bottom'"> {{ i + 11 }} </span>
-    </div>
-    <a href="{{ readMore(item) }}">
-      <img
-        appYoutubeImage
-        srcset="{{item?.media | defaultImage:545:305}} 545w, {{item?.media | defaultImage:355:199}} 355w, {{item?.media | defaultImage:300:168}} 300w, {{item?.media | defaultImage:210:118}} 210w"
-        sizes="{{
-          '(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'
-        }}"
-        src="{{ item?.media | defaultImage: 210:118 }}"
-        alt=""
-        class="img-fluid"
-      />
-      <div
-        class="socialmedia"
-        [ngClass]="type === 'authorpage' ? 'author' : ''"
-      >
-        <p>
-          {{ item?.title }}
-        </p>
-      </div>
-    </a>
-  </div>
-</div>
-<a
-  *ngIf="
-    hasMore &&
-    (type === 'monthlydetails' ||
-      type === 'categoryPage' ||
-      type === 'trendingbrandbuzz-bottom' ||
-      type === 'dynamicPage-bottom')
-  "
-  href="javascript:void(0)"
-  id="loadMore"
-  class="text-center loadmore-btn d-block"
-  (click)="getMoreData()"
->
-  <i class="fa fa-angle-down" aria-hidden="true"></i>
-</a> -->
