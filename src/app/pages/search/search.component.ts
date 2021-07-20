@@ -386,8 +386,8 @@ export class SearchComponent implements OnInit {
     } else if (this.dateSelected.startDate === null) {
       return;
     } else {
-      const start = moment(this.dateSelected.startDate).format('YYYY-MM-DD');
-      const end = moment(this.dateSelected.endDate).format('YYYY-MM-DD');
+      const start = moment(new Date(this.dateSelected.startDate)).format('YYYY-MM-DD');
+      const end = moment(new Date(this.dateSelected.endDate)).format('YYYY-MM-DD');
       this.published_value = -1;
 
       this.params = `?q=${this.search_input}`;
