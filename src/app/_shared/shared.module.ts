@@ -13,6 +13,7 @@ import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ShareButtonModule } from 'ngx-sharebuttons/button';
 
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
@@ -84,6 +85,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     CarouselModule,
     MalihuScrollbarModule.forRoot(),
     SlickCarouselModule,
+    ShareButtonModule
   ],
   exports: [
     RouterModule,
@@ -118,6 +120,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     MalihuScrollbarModule,
     BannerSearchComponent,
     SlickCarouselModule,
+    ShareButtonModule
   ],
 })
 export class SharedModule {}
