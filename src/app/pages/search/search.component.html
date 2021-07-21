@@ -8,7 +8,8 @@
     <div class="category-container row">
       <div class="container col-sm-12 col-md-9 col-lg-9 col-xl-9">
         <div class="search_keyword_main">
-          <h5 class="text-center">
+          <h5 class="text-center" *ngIf="brand_id !== '1851'">SHOWING SEARCH RESULTS FOR: <span>{{showSearchKey}}</span></h5>
+          <h5 class="text-center" *ngIf="brand_id === '1851'">
             VIEW SEARCH FILTERS
             <a
               *ngIf="!hiddenSearchBar"
@@ -29,7 +30,75 @@
               <i class="fa fa-angle-up" aria-hidden="true"></i>
             </a>
           </h5>
-          <div *ngIf="hiddenSearchBar" class="sort_main d-flex">
+
+          <div *ngIf="brand_id !== '1851'"> 
+            <div class="sort_main d-flex col-xl-8">
+            <h6>SORT BY:</h6>
+            <ul class="d-flex text-center justify-content-center">
+              <li *ngFor="let duration of published_duration; let i = index">
+                <a (click)="set_duration(i)">
+                  <span
+                    [style.font-weight]="
+                      published_value === i ? 'bold' : 'normal'
+                    "
+                    >{{ duration["title"] }}</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a (click)="set_range()">
+                  <span
+                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
+                    >{{ published_range }}</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+                <div class="sort_main check_boxes_data d-flex">
+                    <h6>FILTER BY:</h6>
+                    <ul class="d-flex checkboxes text-center justify-content-center">
+                        <li>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    [checked]="by_author"
+                                    (change)="onChangeFilter('author')"/>
+                                <span>BY AUTHOR</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    [checked]="by_title"
+                                    (change)="onChangeFilter('title')"/>
+                                <span>BY TITLE</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    [checked]="by_desc"
+                                    (change)="onChangeFilter('desc')"/>
+                                <span>BY DESCRIPTION</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    [checked]="by_keywords"
+                                    (change)="onChangeFilter('keyword')"/>
+                                <span>BY KEYWORDS</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
+          <div *ngIf="hiddenSearchBar && brand_id === '1851'" class="sort_main d-flex">
             <h6>SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
               <li *ngFor="let duration of published_duration; let i = index">
