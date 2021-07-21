@@ -273,7 +273,7 @@
         <form
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
-          (ngSubmit)="submitInquireForm()"
+          (ngSubmit)="submitInquireForm(inquireForm.value)"
         >
           <div *ngFor="let fields of inquireFields" class="form-row mb-3">
             <!-- <div class="form-group"> -->
@@ -296,7 +296,22 @@
                   formControlsValues[fields.key].errors?.required
               }"
             />
-
+            <select
+              *ngIf="fields.type === 'dropdown'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsValues[fields.key].errors?.required
+              }"
+            >
+              <option *ngFor="let value of fields.enum" value="{{ value }}">
+                <span>{{ value }}</span>
+              </option>
+            </select>
             <div
               class="invalid-feedback d-block"
               *ngIf="
@@ -320,6 +335,9 @@
             </button>
           </div>
           <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
         </form>
       </div>
     </div>

@@ -68,7 +68,8 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    if (typeof item !== 'undefined') {
+
+    if (typeof item !== 'undefined' && item?.brand?.slug !== '1851') {
       brandSlug = `${item?.brand?.slug}/`;
     }
     return `${brandSlug}${item?.slug}/#${typeSlug}`;

@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   isInquire: boolean = false;
   inquireTitle = '';
   inquireData: any;
+  submitErrMsg: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -132,6 +133,7 @@ export class HeaderComponent implements OnInit {
   }
   submitInquireForm(values: any) {
     this.submittedInquireForm = true;
+    this.isSubmitted = true;
     if (this.inquireForm.invalid) {
       return;
     }
@@ -146,7 +148,8 @@ export class HeaderComponent implements OnInit {
             $('#thanksModal').hide();
           }, 10000);
         } else {
-          //show error
+          this.submitErrMsg = result.error.message;
+          this.isSubmitFailed = true;
         }
         this.submittedInquireForm = false;
       });
@@ -154,8 +157,9 @@ export class HeaderComponent implements OnInit {
   get formControlsValues() {
     return this.inquireForm.controls;
   }
+
   getInquiry() {
-    if (this.inquireData) {
+    if (typeof this.inquireData != 'undefined') {
       this.isInquire = true;
       this.inquireTitle = this.inquireData.title;
       const group: any = {};
@@ -168,8 +172,10 @@ export class HeaderComponent implements OnInit {
           required: this.inquireData.required.find((v) => v === item)
             ? true
             : false,
-          type: 'text',
+          type: this.getFormType(item),
           pattern: this.inquireData.properties[item].pattern || '',
+          enum: this.inquireData.properties[item].enum || '',
+
           errorMsg:
             this.inquireData.properties[item].validationMessage ||
             (
@@ -199,5 +205,15 @@ export class HeaderComponent implements OnInit {
       });
       this.inquireForm = this.fb.group(group);
     }
+  }
+  closeModal(id) {
+    $(`#${id}`).hide();
+  }
+  getFormType(item) {
+    let type = 'text';
+    if (item === 'net_worth' || item === 'liquidity') {
+      type = 'dropdown';
+    }
+    return type;
   }
 }

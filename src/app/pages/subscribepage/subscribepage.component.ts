@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { FiveColumn } from 'src/app/_core/models/five';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -20,29 +21,30 @@ export class SubscribepageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getSubscribe();
-    this.getMeta();
-    this.getPublication();
+    this.setInit();
   }
 
-  getSubscribe() {
-    this.apiService.getAPI(`${this.slug}/subscribe`).subscribe((response) => {
-      this.data = response.data;
-      this.title = 'SUBSCRIBE TO 1851 FRANCHISE';
-    });
+  setInit() {
+    const subscribe = this.apiService.getAPI(`${this.slug}/subscribe`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const meta = this.apiService.getAPI(`1851/meta`);
+    forkJoin([subscribe, publication, meta, publication]).subscribe(
+      (results) => {
+        this.data = results[0].data;
+        this.title = 'SUBSCRIBE TO 1851 FRANCHISE';
+        this.publication = results[1];
+        this.metaService.setSeo(results[2].data);
+        let defaultTitle = '';
+        if (this.publication.id === '1851') {
+          defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
+        }
+        if (defaultTitle) {
+          this.metaService.setTitle(defaultTitle);
+        }
+      }
+    );
   }
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
-  }
-  getMeta() {
-    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
-      this.metaService.setSeo(response.data);
-    });
-  }
+
   setCheckBoxVisibility() {
     if (this.publication.id === '1851') {
       return;

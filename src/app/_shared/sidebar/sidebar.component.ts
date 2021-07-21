@@ -40,7 +40,9 @@ export class SidebarComponent implements OnInit {
   contactFields: any;
   contactForm!: FormGroup;
   submittedContactForm: boolean = false;
-
+  isSubmitted: boolean = false;
+  submitErrMsg: string = '';
+  isSubmitFailed: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -160,6 +162,11 @@ export class SidebarComponent implements OnInit {
   }
   submitContactForm(values: any) {
     this.submittedContactForm = true;
+    this.isSubmitted = true;
+
+    if (this.contactForm.invalid) {
+      return;
+    }
     this.apiService
       .postAPI(`${this.brandSlug}/brand/contact`, values)
       .pipe(takeUntil(this.onDestroy$))
@@ -171,13 +178,17 @@ export class SidebarComponent implements OnInit {
             $('#thanksModal').hide();
           }, 10000);
         } else {
-          //show error
+          this.submitErrMsg = result.error.message;
+          this.isSubmitFailed = true;
         }
         this.submittedContactForm = false;
       });
   }
   get formControlsValues() {
     return this.contactForm.controls;
+  }
+  closeModal(id) {
+    $(`#${id}`).hide();
   }
   getContact() {
     this.apiService

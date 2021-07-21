@@ -43,7 +43,8 @@
               "src/styles.scss",
               "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
               "node_modules/slick-carousel/slick/slick.scss",
-            "node_modules/slick-carousel/slick/slick-theme.scss"
+            "node_modules/slick-carousel/slick/slick-theme.scss",
+            "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",

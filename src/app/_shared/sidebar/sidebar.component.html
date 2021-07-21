@@ -352,7 +352,7 @@
       <form
         *ngIf="contactForm"
         [formGroup]="contactForm"
-        (ngSubmit)="submitContactForm()"
+        (ngSubmit)="submitContactForm(contactForm.value)"
       >
         <div *ngFor="let fields of contactFields" class="form-row mb-3">
           <!-- <div class="form-group"> -->
@@ -409,6 +409,10 @@
             Next
           </button>
         </div>
+        <br />
+        <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+          submitErrMsg
+        }}</span>
       </form>
     </div>
   </div>

@@ -23,7 +23,7 @@
           </a>
         </div>
         <a
-          href="javascript:void(0)"
+          *ngIf="media && media.type == 'video'"
           class="d-block video-btn"
           (click)="openVideoPlayer = true"
           data-bs-toggle="modal"
@@ -38,8 +38,6 @@
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
-              data-bs-toggle="modal"
-              attr.data-bs-target="#storyModal{{ index }}"
             />
             <img
               appYoutubeImage
@@ -49,19 +47,32 @@
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
-              data-bs-toggle="modal"
-              attr.data-bs-target="#storyModal{{ index }}"
             />
           </figure>
-          <img
-            *ngIf="media && media.type == 'video'"
-            class="video-maker"
-            src="assets/img/youtube.svg"
-            data-bs-toggle="modal"
-            attr.data-bs-target="#storyModal{{ index }}"
-          />
+          <img class="video-maker" src="assets/img/youtube.svg" />
         </a>
-
+        <a *ngIf="media && media.type != 'video'" class="d-block video-btn">
+          <figure>
+            <img
+              appYoutubeImage
+              *ngIf="isMaxresultImg"
+              src="{{ media | defaultImage: 802:451 }}"
+              width="802"
+              height="451"
+              style="width: 802px !important; cursor: pointer"
+              alt="sponsored"
+            />
+            <img
+              appYoutubeImage
+              *ngIf="!isMaxresultImg"
+              src="{{ media | defaultImage: 802:451 }}"
+              width="802"
+              height="451"
+              style="width: 802px !important; cursor: pointer"
+              alt="sponsored"
+            />
+          </figure>
+        </a>
         <h1 class="m-0" [innerHTML]="title"></h1>
         <h2 [innerHTML]="short_description"></h2>
         <div class="brian_jaeger d-flex flex-wrap align-items-center">
