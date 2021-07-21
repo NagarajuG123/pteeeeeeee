@@ -20,7 +20,24 @@ export class CategoryTrendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
+    this.slideConfig = {
+      slidesToShow: this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 620,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: this.data.length > 1 ? 2 : 1,
+          },
+        },
+      ],
+    };
   }
   readMore(item: any) {
     return this.commonService.readMore(item, this.subTitle);
