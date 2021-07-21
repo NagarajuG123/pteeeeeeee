@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  PLATFORM_ID,
+  Inject,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -11,11 +19,13 @@ export class CarouselComponent implements OnInit {
   @Input() type = '';
   @Input() title = '';
   @Input() slug = '1851';
+  @Output() noData = new EventEmitter();
+
   isBrowser: boolean = false;
   showCarousel: boolean = true;
   readMoreLink = '';
   list: any = [];
-  openVideoPlayer = true;
+  openVideoPlayer = false;
   url: string = '';
   slideConfig: any;
   constructor(
@@ -49,6 +59,10 @@ export class CarouselComponent implements OnInit {
     }
     this.apiService.getAPI(apiUrl).subscribe((response) => {
       this.list = response.data;
+      if (!this.list.length) {
+        this.slideConfig = {};
+        this.noData.emit();
+      }
     });
   }
 

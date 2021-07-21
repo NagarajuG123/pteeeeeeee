@@ -87,7 +87,6 @@ export class HeaderComponent implements OnInit {
                 this.isMain = false;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
-                this.getInquiry();
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -110,7 +109,9 @@ export class HeaderComponent implements OnInit {
       this.news = results[1].data;
       this.inquireData = results[2].schema;
       this.publication = results[3];
-      this.getInquiry();
+      if (this.brandSlug != '1851') {
+        this.getInquiry();
+      }
     });
   }
 
