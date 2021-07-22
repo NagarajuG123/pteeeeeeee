@@ -138,7 +138,6 @@ export class BrandComponent implements OnInit {
         if (response.data != null) {
           this.mostRecent = response.data;
           this.hasMore = response.has_more;
-          this.metaService.setSeo(response.data.meta);
         }
       });
   }
