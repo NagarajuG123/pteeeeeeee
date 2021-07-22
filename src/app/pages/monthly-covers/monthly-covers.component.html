@@ -82,7 +82,8 @@
       </div>
       <a
         *ngIf="has_more"
-        href="javascript:void(0)"
+        href="#"
+        onclick="return false;"
         (click)="getMoreData()"
         id="loadMore"
         class="text-center loadmore-btn d-block"

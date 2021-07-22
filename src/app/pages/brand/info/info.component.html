@@ -134,7 +134,8 @@
                       <h3 class="wings-sub-title">{{ item?.title }}</h3>
                       <a
                         *ngIf="item?.media && !isVideo(item)"
-                        href="javascript:void(0)"
+                        href="#"
+                        onclick="return false;"
                         class="d-block video-btn"
                       >
                         <figure>
