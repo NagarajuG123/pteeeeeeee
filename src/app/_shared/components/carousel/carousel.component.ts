@@ -36,8 +36,6 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
-
     let apiUrl = '';
     switch (this.type) {
       case 'trending':
@@ -62,6 +60,25 @@ export class CarouselComponent implements OnInit {
       if (!this.list.length) {
         this.slideConfig = {};
         this.noData.emit();
+      } else {
+        this.slideConfig = {
+          slidesToShow: this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 620,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: this.list.length > 1 ? 2 : 1,
+              },
+            },
+          ],
+        };
       }
     });
   }
