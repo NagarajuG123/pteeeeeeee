@@ -171,6 +171,7 @@ export class SidebarComponent implements OnInit {
       .postAPI(`${this.brandSlug}/brand/contact`, values)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
+        console.log(result);
         if (typeof result.data !== 'undefined') {
           $('#contactModalClose').click();
           $('#thanksModal').show();

@@ -143,7 +143,7 @@
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
         <div class="menu col-xl-1 col-md-2 col-2">
-          <a routerLink=""(click)="commonService.toggle()">
+          <a routerLink="" (click)="commonService.toggle()">
             <figure>
               <img
                 [src]="
@@ -201,12 +201,13 @@
             <ul class="float-right">
               <li *ngIf="isInquire" class="has_dd">
                 <a
-                  href=""
+                  href="#"
+                  onclick="return false;"
                   class="text-uppercase"
                   data-bs-toggle="modal"
                   data-bs-target="#inquireModal"
                 >
-                  {{ inquireData.menu_title }}
+                  {{ inquireData?.menu_title }}
                 </a>
               </li>
               <li>

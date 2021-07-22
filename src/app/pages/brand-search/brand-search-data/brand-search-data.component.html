@@ -392,7 +392,8 @@
               </ul>
               <a
                 *ngIf="has_more"
-                href="javascript:void(0)"
+                href="#"
+                onclick="return false;"
                 id="loadMore"
                 class="text-center loadmore-btn d-block"
                 (click)="getMoreData()"
