@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="monthly-covers-main">
-          <a class="cursor-default" href="javascript:;">
+          <a class="cursor-default" href="#" onclick="return false;">
             <figure>
               <i class="fa fa-server"></i>
             </figure>
@@ -84,7 +84,7 @@
       </li>
       <li *ngIf="sidebar['awards']" class="d-block">
         <div class="monthly-covers-main">
-          <a class="cursor-default" href="javascript:;">
+          <a class="cursor-default" href="#" onclick="return false;">
             <figure>
               <i class="fa fa-trophy"></i>
             </figure>
@@ -126,7 +126,7 @@
           </a>
         </div>
         <div class="monthly-covers-main">
-          <a href="termsofuse#sponsored">
+          <a routerLink="/termsofuse" fragment="sponsored">
             <figure>
               <i class="fa fa-usd"></i>
             </figure>
@@ -134,7 +134,7 @@
           </a>
         </div>
         <div class="monthly-covers-main">
-          <a href="about#tellus">
+          <a routerLink="/about" fragment="tellus">
             <figure>
               <i class="fa fa-rss"></i>
             </figure>
@@ -243,7 +243,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#pdfModal1"
                   class="text-uppercase"
-                  href=""
+                  href="#"
                 >
                   Download PDF
                 </a>
@@ -290,9 +290,15 @@
             <div
               *ngFor="let story of sidebar['most-read-stories']"
               class="monthly-covers-details"
+              [ngClass]="common.showmenu ? 'closeMenu' : ''"
+              (click)="common.toggle()"
             >
               <p>
-                <a href="{{ readMore(story) }}">{{ story?.title }}</a>
+                <a
+                  routerLink="/{{ story.brand.slug }}/{{ story.slug }}"
+                  fragment="stories"
+                  >{{ story?.title }}</a
+                >
               </p>
             </div>
           </div>
@@ -308,8 +314,12 @@
           </div>
         </li>
         <li class="d-block">
-          <div class="monthly-covers-main">
-            <a href="{{ sidebar['about']?.url }}">
+          <div
+            class="monthly-covers-main"
+            [ngClass]="common.showmenu ? 'closeMenu' : ''"
+            (click)="common.toggle()"
+          >
+            <a routerLink="{{ sidebar['about']?.url }}">
               <figure>
                 <i class="fa fa-envelope-open"></i>
               </figure>
@@ -317,7 +327,7 @@
             </a>
           </div>
           <div *ngIf="isContact" class="monthly-covers-main">
-            <a href="" data-bs-toggle="modal" data-bs-target="#contactModal">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
               <figure>
                 <i class="fa fa-usd"></i>
               </figure>

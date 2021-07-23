@@ -44,7 +44,8 @@
       </li>
       <li class="latest_data col-md-4">
         <a
-          href="{{ goDetailPage(item.slug, item.latest_story.slug) }}"
+          routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
+          fragment="brand-latest-stories"
           target="_blank"
         >
           <b> {{ item.latest_story_title }} </b>
