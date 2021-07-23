@@ -104,7 +104,7 @@ export class BrandComponent implements OnInit {
       .subscribe((response) => {
         this.topBlock = response.data;
         this.dynamicFirst = response.data.stories.slice(0, 10);
-        this.dynamicSecond = response.data.stories.slice(10, 30);
+        this.dynamicSecond = response.data.stories.slice(10, 20);
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
         this.apiService

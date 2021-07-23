@@ -11,8 +11,10 @@ export class TwoSideBannerComponent implements OnInit {
   @Input() banner: any;
   @Input() date: any;
   @Input() data: any;
+  @Input() item: any;
 
   openVideoPlayer = false;
+  typeSlug: string;
 
   constructor(private commonService: CommonService) {}
 
@@ -29,14 +31,13 @@ export class TwoSideBannerComponent implements OnInit {
   }
 
   readMore(item: any) {
-    let tag;
     if (this.type == 'monthlydetails') {
-      tag = 'people';
+      this.typeSlug = 'people';
     } else if (this.type === 'dynamicPage') {
-      tag = 'dynamicpage';
+      this.typeSlug = 'dynamicpage';
     } else if (this.type === 'trendingbrandbuzz') {
-      tag = 'trendingbrandbuzz';
+      this.typeSlug = 'trendingbrandbuzz';
     }
-    return this.commonService.readMore1(item, tag);
+    return this.commonService.readMore(item);
   }
 }
