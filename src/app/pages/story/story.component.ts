@@ -483,6 +483,24 @@ export class StoryComponent implements OnInit {
         if (this.pageType === 'details') {
           this.addItems(1, 0);
         }
+        let url = '';
+        if (this.brandId === '1851' && this.isServer) {
+          url = `${environment.appUrl}${
+            result['story'].data.brand.slug === '1851' ||
+            result['story'].data.brand.slug === ''
+              ? ''
+              : `/${result['story'].data.brand.slug}`
+          }${this.router.url}`;
+        } else if (this.brandId !== '1851' && this.isServer) {
+          url = `${environment.appUrl}${
+            result['story'].data.brand.slug === '1851' ||
+            result['story'].data.brand.slug === ''
+              ? `/${this.storySlug}`
+              : this.router.url
+          }`;
+        }
+
+        this.createCanonicalURL(url);
       });
   }
   checkFacebookPagePlugin(delay) {
@@ -604,6 +622,21 @@ export class StoryComponent implements OnInit {
             }
           }
         });
+    }
+  }
+  createCanonicalURL(url) {
+    if (this.isServer) {
+      const renderer = this.rendererFactory.createRenderer(this.dom, {
+        id: '-1',
+        encapsulation: ViewEncapsulation.None,
+        styles: [],
+        data: {},
+      });
+      const link = renderer.createElement('link');
+      const head = this.dom.head;
+      renderer.setAttribute(link, 'rel', 'canonical');
+      renderer.setAttribute(link, 'href', url);
+      renderer.appendChild(head, link);
     }
   }
   //Add tooltip and embed video
