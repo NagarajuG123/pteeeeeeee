@@ -171,6 +171,7 @@ export class SidebarComponent implements OnInit {
       .postAPI(`${this.brandSlug}/brand/contact`, values)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
+        console.log(result);
         if (typeof result.data !== 'undefined') {
           $('#contactModalClose').click();
           $('#thanksModal').show();
@@ -207,8 +208,10 @@ export class SidebarComponent implements OnInit {
               required: response.schema.required.find((v) => v === item)
                 ? true
                 : false,
-              type: item === 'cust_field' ? 'textarea' : 'text',
+              type: this.getFormType(item),
               pattern: response.schema.properties[item].pattern || '',
+              enum: response.schema.properties[item].enum || '',
+
               errorMsg:
                 response.schema.properties[item].validationMessage ||
                 (
@@ -239,5 +242,12 @@ export class SidebarComponent implements OnInit {
           this.contactForm = this.fb.group(group);
         }
       });
+  }
+  getFormType(item) {
+    let type = 'text';
+    if (item === 'net_worth' || item === 'liquidity') {
+      type = 'dropdown';
+    }
+    return type;
   }
 }

@@ -22,7 +22,7 @@
           align-items-center
         "
       >
-        <a href="{{ goBrandPage(item.slug) }}" targe="_blank" class="col-6 p-0">
+        <a routerLink="/{{ item.slug }}" targe="_blank" class="col-6 p-0">
           <img
             src="{{ item.logo }}"
             width="155"
@@ -30,7 +30,7 @@
             alt="powerranking"
           />
         </a>
-        <a href="{{ goBrandInfoPage(item.slug) }}" targe="_blank" class="col-6">
+        <a routerLink="/{{ item.slug }}/info" targe="_blank" class="col-6">
           {{ item.name }}
         </a>
       </li>
@@ -44,7 +44,8 @@
       </li>
       <li class="latest_data col-md-4">
         <a
-          href="{{ goDetailPage(item.slug, item.latest_story.slug) }}"
+          routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
+          fragment="brand-latest-stories"
           target="_blank"
         >
           <b> {{ item.latest_story_title }} </b>

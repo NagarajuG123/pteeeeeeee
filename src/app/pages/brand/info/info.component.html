@@ -1,5 +1,6 @@
 <!-- Brand Category -->
 <div *ngIf="isCategory">
+  <div class="top-space"></div>
   <app-featured [slug]="brandSlug" [apiUrl]="brandFeaturedUrl"></app-featured>
   <app-category-trending
     [data]="brandTrending?.data"
