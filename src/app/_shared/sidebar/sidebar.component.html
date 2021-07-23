@@ -92,7 +92,7 @@
           </a>
           <div class="monthly-covers-details">
             <p *ngFor="let item of sidebar['awards']">
-              <a href="{{ item?.url }}">{{ item?.title }}</a>
+              <a routerLink="/{{ item?.url }}">{{ item?.title }}</a>
             </p>
           </div>
         </div>
@@ -265,7 +265,7 @@
         </li>
         <li class="d-block">
           <div class="monthly-covers-main">
-            <a href="#">
+            <a routerLink="#">
               <figure>
                 <i class="fa fa-trophy"></i>
               </figure>

@@ -116,7 +116,7 @@ export class HeaderComponent implements OnInit {
   }
 
   readMore(item: any) {
-    return this.commonService.readMore1(item, 'franbuzz');
+    return this.commonService.readMore(item);
   }
   onSearchSubmit(searchForm: FormGroup) {
     if (this.brandId === '1851') {
