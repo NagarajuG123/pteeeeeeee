@@ -22,7 +22,7 @@
           align-items-center
         "
       >
-        <a href="{{ goBrandPage(item.slug) }}" targe="_blank" class="col-6 p-0">
+        <a routerLink="/{{ item.slug }}" targe="_blank" class="col-6 p-0">
           <img
             src="{{ item.logo }}"
             width="155"
@@ -30,7 +30,7 @@
             alt="powerranking"
           />
         </a>
-        <a href="{{ goBrandInfoPage(item.slug) }}" targe="_blank" class="col-6">
+        <a routerLink="/{{ item.slug }}/info" targe="_blank" class="col-6">
           {{ item.name }}
         </a>
       </li>
