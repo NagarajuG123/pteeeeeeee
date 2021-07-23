@@ -3,11 +3,9 @@
 @import "assets/scss/mixins";
 @import "assets/scss/utilities";
 @import "assets/scss/alert";
-// @import "assets/scss/badge";
-// @import "assets/scss/breadcrumb";
+
 @import "assets/scss/button-group";
 @import "assets/scss/buttons";
-// @import "assets/scss/card";
 @import "assets/scss/carousel";
 @import "assets/scss/close";
 @import "assets/scss/code";
@@ -17,16 +15,12 @@
 @import "assets/scss/grid";
 @import "assets/scss/images";
 @import "assets/scss/input-group";
-// @import "assets/scss/jumbotron";
 @import "assets/scss/list-group";
 @import "assets/scss/media";
 @import "assets/scss/modal";
 @import "assets/scss/nav";
 @import "assets/scss/navbar";
-// @import "assets/scss/pagination";
 @import "assets/scss/popover";
-// @import "assets/scss/print";
-// @import "assets/scss/progress";
 @import "assets/scss/reboot";
 @import "assets/scss/root";
 @import "assets/scss/tooltip";
@@ -39,6 +33,13 @@
 @import "assets/sass/base.scss";
 @import "assets/sass/slick.scss";
 
+// @import "assets/scss/jumbotron";
+// @import "assets/scss/print";
+// @import "assets/scss/progress";
+// @import "assets/scss/pagination";
+// @import "assets/scss/card";
+// @import "assets/scss/badge";
+// @import "assets/scss/breadcrumb";
 ul {
   padding-left: 0rem !important;
 }
