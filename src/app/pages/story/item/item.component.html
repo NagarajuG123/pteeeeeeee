@@ -86,7 +86,7 @@
               col-xl-6 col-md-6 col-sm-6 col-12
             "
           >
-            <a href="{{ goAuthorPage() }}">
+            <a routerLink="/{{ goAuthorPage() }}">
               <img
                 src="{{ author_media | defaultImage: 81:81 }}"
                 width="81"
@@ -99,7 +99,7 @@
             </a>
             <div class="brian_content">
               <h5>
-                <a href="{{ goAuthorPage() }}">{{ author_name }}</a>
+                <a routerLink="/{{ goAuthorPage() }}">{{ author_name }}</a>
               </h5>
               <small [innerHTML]="designation"></small>
               <div
@@ -131,7 +131,7 @@
                     >{{ date_time | date: "h:mm a" }} •
                     {{ date_time | date: "MM/dd/yy" }}</span
                   >
-                  <a [href]="category.slug">
+                  <a [routerLink]="category.slug">
                     <small>&nbsp; &nbsp;{{ category.name }}</small>
                   </a>
                 </em>
@@ -166,7 +166,7 @@
                   >{{ last_modified | date: "h:mm a" }} •
                   {{ last_modified | date: "MM/dd/yy" }}</span
                 >
-                <a [href]="category.slug">
+                <a [routerLink]="category.slug">
                   <small>&nbsp; &nbsp;{{ category.name }}</small>
                 </a>
               </div>
@@ -314,7 +314,7 @@
               <ul>
                 <li *ngFor="let article of brandNews" style="cursor: pointer">
                   <a
-                    href="{{
+                    routerLink="/{{
                       article.brand && article.brand.slug != '1851'
                         ? article.brand.slug + '/'
                         : ''

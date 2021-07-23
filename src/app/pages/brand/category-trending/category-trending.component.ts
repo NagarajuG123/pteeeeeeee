@@ -57,6 +57,6 @@ export class CategoryTrendingComponent implements OnInit {
   }
   ngOnInit(): void {}
   readMore(item: any) {
-    return this.commonService.readMore1(item, this.subTitle);
+    return this.commonService.readMore(item);
   }
 }

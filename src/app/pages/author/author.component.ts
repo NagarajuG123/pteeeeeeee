@@ -87,10 +87,7 @@ export class AuthorComponent implements OnInit {
         : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.placeholder}`;
     }
   }
-  goReadMore(item: any) {
-    return this.commonService.readMore1(item, 'editorials');
-  }
   readMore(item: any) {
-    return this.commonService.readMore1(item, 'brand-latest-stories');
+    return this.commonService.readMore(item);
   }
 }

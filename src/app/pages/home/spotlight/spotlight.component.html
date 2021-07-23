@@ -43,7 +43,8 @@
                 class="spotlighttab-cnt-left col-lg-4 col-md-5 p-0 float-left"
               >
                 <a
-                  href="{{ readMore(highlightItem) }}"
+                  routerLink="/{{ readMore(highlightItem) }}"
+                  fragment="{{selectedTab}}"
                   class="spotlighttab-cnt-left-main"
                 >
                   <figure>
@@ -72,7 +73,7 @@
                     </div>
                     <div class="buffalowings-bottom">
                       <a
-                        [href]="selectedTab + '-spotlight'"
+                        [routerLink]="selectedTab + '-spotlight'"
                         class="float-right text-uppercase"
                       >
                         READ MORE
@@ -102,7 +103,8 @@
                           <a
                             *ngIf="i % 2 == 0"
                             (click)="highlightItem = item"
-                            href="{{ readMore(item) }}"
+                            routerLink="/{{ readMore(item) }}"
+                            fragment="{{ selectedTab }}"
                             class="adweek d-flex"
                           >
                             <div class="adweek-left col-sm-7">
@@ -137,7 +139,8 @@
                           <a
                             *ngIf="i % 2 != 0"
                             (click)="highlightItem = item"
-                            href="{{ readMore(item) }}"
+                            routerLink="/{{ readMore(item) }}"
+                            fragment="{{ selectedTab }}"
                             class="adweek d-flex"
                           >
                             <div class="adweek-left col-sm-7">

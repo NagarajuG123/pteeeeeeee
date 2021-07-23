@@ -33,6 +33,6 @@ export class HomeFeatureComponent implements OnInit {
   }
 
   readMore(item: any) {
-    return this.commonService.readMore1(item, 'dynamicpage');
+    return this.commonService.readMore(item);
   }
 }
