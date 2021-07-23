@@ -441,20 +441,20 @@ export class StoryComponent implements OnInit {
         if (this.isBrowser) {
           this.isDefaultFb = true;
           this.checkFacebookPagePlugin(3000);
-          if (
-            window.location.pathname !==
-            `${
-              result['story'].data.brand.slug === '1851'
-                ? ''
-                : `/${result['story'].data.brand.slug}`
-            }/${result['story'].data.slug}`
-          ) {
-            window.location.href = `${window.location.origin}${
-              result['story'].data.brand.slug === '1851'
-                ? ''
-                : `/${result['story'].data.brand.slug}`
-            }/${result['story'].data.slug}${window.location.hash}`;
-          }
+          // if (
+          //   window.location.pathname !==
+          //   `${
+          //     result['story'].data.brand.slug === '1851'
+          //       ? ''
+          //       : `/${result['story'].data.brand.slug}`
+          //   }/${result['story'].data.slug}`
+          // ) {
+          //   window.location.href = `${window.location.origin}${
+          //     result['story'].data.brand.slug === '1851'
+          //       ? ''
+          //       : `/${result['story'].data.brand.slug}`
+          //   }/${result['story'].data.slug}${window.location.hash}`;
+          // }
         }
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
@@ -493,7 +493,7 @@ export class StoryComponent implements OnInit {
       }
     }, delay);
   }
- 
+
   //brand list for check terms in main site story
   getBrandList() {
     this.apiService.getAPI(`terms`).subscribe((result) => {
