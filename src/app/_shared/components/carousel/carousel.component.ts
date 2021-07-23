@@ -28,6 +28,7 @@ export class CarouselComponent implements OnInit {
   openVideoPlayer = false;
   url: string = '';
   slideConfig: any;
+  typeSlug: string = '';
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object
@@ -84,17 +85,16 @@ export class CarouselComponent implements OnInit {
   }
 
   goReadMore(item: any) {
-    let typeSlug = '',
-      brandSlug = '';
+    let brandSlug = '';
     switch (this.type) {
       case 'trending':
-        typeSlug = 'trending';
+        this.typeSlug = 'trending';
         break;
       case 'columns':
-        typeSlug = 'columns';
+        this.typeSlug = 'columns';
         break;
       case 'main-videos':
-        typeSlug = 'main-videos';
+        this.typeSlug = 'main-videos';
         break;
       default:
         break;
@@ -103,7 +103,7 @@ export class CarouselComponent implements OnInit {
     if (typeof item !== 'undefined' && item?.brand?.slug !== '1851') {
       brandSlug = `${item?.brand?.slug}/`;
     }
-    return `${brandSlug}${item?.slug}/#${typeSlug}`;
+    return `${brandSlug}${item?.slug}`;
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;

@@ -37,6 +37,6 @@ export class TwoSideBannerComponent implements OnInit {
     } else if (this.type === 'trendingbrandbuzz') {
       tag = 'trendingbrandbuzz';
     }
-    return this.commonService.readMore(item, tag);
+    return this.commonService.readMore1(item, tag);
   }
 }

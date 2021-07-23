@@ -12,7 +12,8 @@
     <a
       *ngIf="!isVideo(highlight)"
       class="d-block"
-      href="{{ readMore(highlight) }}"
+      routerLink="{{ readMore(highlight) }}"
+      fragment="featured"
     >
       <figure>
         <img
@@ -63,19 +64,23 @@
     </a>
     <div class="buffalowings">
       <div class="buffalowings-wrap">
-        <a href="{{ readMore(highlight) }}">
+        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
           <h2>
             {{ highlight?.title }}
           </h2> </a
         ><br />
-        <a href="{{ readMore(highlight) }}">
+        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
           <p>
             {{ highlight?.short_description }}
           </p>
         </a>
       </div>
       <div class="buffalowings-bottom">
-        <a href="{{ readMore(highlight) }}" class="float-right text-uppercase">
+        <a
+          routerLink="/{{ readMore(highlight) }}"
+          fragment="featured"
+          class="float-right text-uppercase"
+        >
           READ MORE
           <i class="fa fa-angle-right" aria-hidden="true"></i>
         </a>
@@ -97,7 +102,11 @@
       >
         <ul>
           <li *ngFor="let article of featuredData" style="cursor: pointer">
-            <a href="{{ readMore(article) }}" class="adweek d-flex">
+            <a
+              routerLink="/{{ readMore(article) }}"
+              fragment="featured"
+              class="adweek d-flex"
+            >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
                 <figure>
                   <img
@@ -125,102 +134,3 @@
   </div>
   <div class="clearfix"></div>
 </div>
-
-<!-- 
-<div class="featured-block">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8 p-0">
-        <div class="featured-left position-relative" #getHeight>
-          <a *ngIf="!isVideo(highlight)" href="{{ readMore(highlight) }}">
-            <img
-              appyoutubeimage
-              sizes="(max-width: 576px) 600px,
-          (max-width: 768px) 800px,
-          (max-width: 992px) 600px,
-          (max-width: 1200px) 700px,
-          1300px"
-              src="{{ highlight?.media | defaultImage: 1300:730 }}"
-              class="img-fluid"
-            />
-          </a>
-          <a
-            *ngIf="isVideo(highlight)"
-            class="d-block video-btn"
-            data-bs-toggle="modal"
-            data-bs-target="#featuredModal"
-          >
-            <figure class="m-0">
-              <img
-                appYoutubeImage
-                srcset="{{highlight?.media | defaultImage:600:337}} 600w, {{highlight?.media | defaultImage:700:393}} 700w, {{highlight?.media | defaultImage:800:449}} 800w, {{highlight?.media | defaultImage:1300:730}} 1300w"
-                sizes="{{
-                  '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        1300px'
-                }}"
-                src="{{ highlight?.media | defaultImage: 1300:730 }}"
-              />
-            </figure>
-            <img class="video-maker" src="assets/img/youtube.svg" />
-            <app-modal
-              [videoUrl]="highlight?.media?.url"
-              [modalId]="'featuredModal'"
-            ></app-modal>
-          </a>
-
-          <div class="buffalowings">
-            <div class="buffalowings-wrap text-white">
-              <a href="{{ readMore(highlight) }}"
-                ><h2>{{ highlight.title }}</h2></a
-              >
-              <a href="{{ readMore(highlight) }}">
-                <p>
-                  {{ highlight.short_description }}
-                </p></a
-              >
-            </div>
-            <div class="buffalowings-bottom text-end">
-              <a href="{{ readMore(highlight) }}"
-                >READ MORE <i class="fa fa-chevron-right text-white"></i
-              ></a>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 p-0">
-        <div class="featured-right" [style.height.px]="getHeight.offsetHeight">
-          <div class="feature-block">
-            <div
-              class="row mb-3"
-              *ngFor="let item of featuredData?.data?.slice(1)"
-            >
-              <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
-                <a href="{{ readMore(item) }}">
-                  <img
-                    appyoutubeimage
-                    sizes="(max-width: 576px) 600px,
-                (max-width: 768px) 800px,
-                (max-width: 992px) 600px,
-                (max-width: 1200px) 700px,
-                1300px"
-                    src="{{ item.media | defaultImage: 1300:730 }}"
-                    class="img-fluid"
-                  />
-                </a>
-              </div>
-              <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
-                <a href="{{ readMore(item) }}">
-                  <p>{{ item.title }}</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->

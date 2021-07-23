@@ -125,7 +125,7 @@ export class SidebarComponent implements OnInit {
       });
   }
   readMore(item: any) {
-    return this.common.readMore(item, '');
+    return this.common.readMore1(item, '');
   }
 
   onSearchSubmit(searchForm: FormGroup) {

@@ -79,7 +79,7 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
       });
   }
   readMore(item: any) {
-    return this.commonService.readMore(item, 'featured');
+    return this.commonService.readMore(item);
   }
   isVideo(item: any) {
     return this.commonService.isVideo(item);

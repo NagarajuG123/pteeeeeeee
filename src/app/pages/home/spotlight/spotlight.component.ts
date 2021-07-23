@@ -103,6 +103,6 @@ export class SpotlightComponent implements OnInit {
       });
   }
   readMore(item: any) {
-    return this.commonService.readMore(item, this.selectedTab );
+    return this.commonService.readMore1(item, this.selectedTab );
   }
 }

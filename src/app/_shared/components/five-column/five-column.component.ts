@@ -5,7 +5,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 @Component({
   selector: 'app-five-column',
   templateUrl: './five-column.component.html',
-  styleUrls: ['./five-column.component.scss']
+  styleUrls: ['./five-column.component.scss'],
 })
 export class FiveColumnComponent implements OnInit {
   @Input() contents: FiveColumn[] = [];
@@ -15,15 +15,13 @@ export class FiveColumnComponent implements OnInit {
   @Input() typeSlug!: string;
   @Output() more = new EventEmitter();
 
-  constructor(    private commonService: CommonService,
-) { }
+  constructor(private commonService: CommonService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   getMoreData() {
     this.more.emit('');
   }
   readMore(item: any) {
-    return this.commonService.readMore(item, this.typeSlug);
+    return this.commonService.readMore1(item, this.typeSlug);
   }
 }

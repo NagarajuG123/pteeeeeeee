@@ -15,14 +15,21 @@ export class CommonService {
     //   this.isMenuOpen = !this.isMenuOpen;
     // }
   }
-  readMore(story: any, type: string) {
+  readMore1(story: any, type: string) {
     let slug = '';
     if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
       slug = `${story?.brand?.slug}/`;
     }
-    return `${slug}${story?.slug}/#${type}`;
+    return `${slug}${story?.slug}#${type}`;
   }
-  isVideo(item: { media: { type: string; } | null; } | null) {
+  readMore(story: any) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}`;
+  }
+  isVideo(item: { media: { type: string } | null } | null) {
     if (typeof item !== 'undefined' && item !== null) {
       if (typeof item.media !== 'undefined' && item.media !== null) {
         if (item.media.type === 'video') {
@@ -33,4 +40,3 @@ export class CommonService {
     return false;
   }
 }
- 

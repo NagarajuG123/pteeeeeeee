@@ -88,9 +88,9 @@ export class AuthorComponent implements OnInit {
     }
   }
   goReadMore(item: any) {
-    return this.commonService.readMore(item, 'editorials');
+    return this.commonService.readMore1(item, 'editorials');
   }
   readMore(item: any) {
-    return this.commonService.readMore(item, 'brand-latest-stories');
+    return this.commonService.readMore1(item, 'brand-latest-stories');
   }
 }
