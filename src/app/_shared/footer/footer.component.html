@@ -215,12 +215,7 @@
                 class="col-xl-3 col-lg-4 col-sm-6 col-12"
               >
                 <a
-                  routerLink="/{{
-                    story['brand'] && story['brand']['slug'] != '1851'
-                      ? story['brand']['slug'] + '/'
-                      : ''
-                  }}{{ story['slug'] }}"
-                  fragment="franbuzz"
+                  href="/{{ readMore(story) }}#franbuzz"
                   class="frannews-bottom-details"
                 >
                   <figure>

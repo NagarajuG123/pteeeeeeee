@@ -4,15 +4,16 @@ import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import { forkJoin, Subject } from 'rxjs';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-   footer: any =[];
-   publication: any =[];
+  footer: any = [];
+  publication: any = [];
   brandSlug = '1851';
   isFooter: boolean = true;
   isBrandFooter: boolean = false;
@@ -22,7 +23,13 @@ export class FooterComponent implements OnInit {
   isBrowser: boolean;
   subject: Subject<any> = new Subject();
   news: any;
-  constructor( private apiService: ApiService,private router:Router, @Inject(PLATFORM_ID) platformId: Object,fb: FormBuilder ) { 
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    @Inject(PLATFORM_ID) platformId: Object,
+    fb: FormBuilder,
+    private commonService: CommonService
+  ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
     });
@@ -30,8 +37,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events
-    .subscribe(events => {
+    this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === '' || this.brandSlug.includes('#')) {
@@ -42,43 +48,44 @@ export class FooterComponent implements OnInit {
             this.isFooter = false;
           } else {
             this.brandSlug = this.brandSlug.replace(/\+/g, '');
-            this.apiService.getAPI(`get-brand-by-slug/${this.brandSlug}`).subscribe((response) => {
-              if (response.type === 'brand_page') {
-                this.brandSlug = response.slug;
-                this.isBrandFooter = true;
-                this.brandId = response.id;
-              } else {
-                this.brandSlug = '1851';
-                this.brandId ='1851';
-              }
-              this.setInit();
-            });
+            this.apiService
+              .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+              .subscribe((response) => {
+                if (response.type === 'brand_page') {
+                  this.brandSlug = response.slug;
+                  this.isBrandFooter = true;
+                  this.brandId = response.id;
+                } else {
+                  this.brandSlug = '1851';
+                  this.brandId = '1851';
+                }
+                this.setInit();
+              });
           }
         }
-     
       }
-    }); 
+    });
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
-          `search?q=${
-            this.searchForm.controls['searchInput'].value
-          }&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
+          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
         )
         .subscribe((res) => {
           this.news = res.data;
         });
     });
   }
-
-  setInit(){
+  readMore(item: any) {
+    return this.commonService.readMore(item);
+  }
+  setInit() {
     const footer = this.apiService.getAPI(`${this.brandSlug}/footer`);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/contact`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    
-    forkJoin([footer,news,inquire,publication]).subscribe(results =>{
-      this.footer =  results[0].data;
+
+    forkJoin([footer, news, inquire, publication]).subscribe((results) => {
+      this.footer = results[0].data;
       this.news = results[1].data;
       this.brandContact = results[2].schema;
       this.publication = results[3];
@@ -86,7 +93,9 @@ export class FooterComponent implements OnInit {
   }
   onSearchSubmit(searchForm: FormGroup) {
     if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.publication.id.toLowerCase()}`;
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
       window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }

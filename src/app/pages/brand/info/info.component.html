@@ -30,7 +30,11 @@
             </ul>
           </div>
           <div class="frannews-top-right col-md-6">
-            <a routerLink="/{{ readMore(brandMostRecent[0]) }}" class="float-right">
+            <a
+              routerLink="/{{ readMore(brandMostRecent[0]) }}"
+              fragment="most-recent"
+              class="float-right"
+            >
               READ MORE
               <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>

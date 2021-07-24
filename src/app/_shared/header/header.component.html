@@ -240,7 +240,7 @@
           <div class="search text-center col-md-2">
             <a
               href="#"
-              onclick="return false;" 
+              onclick="return false;"
               class="d-block"
               data-bs-toggle="modal"
               data-bs-target="#searchModal"
@@ -397,7 +397,10 @@
               *ngFor="let story of news; let i = index"
               class="col-xl-3 col-lg-4 col-sm-6 col-12"
             >
-              <a class="frannews-bottom-details" routerLink="/{{ readMore(story) }}" fragment="franbuzz">
+              <a
+                class="frannews-bottom-details"
+                href="/{{ readMore(story) }}#franbuzz"
+              >
                 <figure>
                   <img
                     appYoutubeImage

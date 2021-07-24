@@ -15,7 +15,11 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-6">
-          <a routerLink="/{{ readMore(data[0]) }}" fragment="{{ subTitle }}" class="float-right">
+          <a
+            routerLink="/{{ readMore(data[0]) }}"
+            fragment="{{ subTitle }}"
+            class="float-right"
+          >
             READ MORE
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
@@ -34,7 +38,11 @@
             class="col-md-4"
             *ngFor="let item of data; let i = index"
           >
-            <a routerLink="/{{ readMore(item) }}" fragment="{{ subTitle }}" class="trending-bottom-details">
+            <a
+              routerLink="/{{ readMore(item) }}"
+              fragment="{{ subTitle }}"
+              class="trending-bottom-details"
+            >
               <figure>
                 <img
                   appYoutubeImage
@@ -50,8 +58,7 @@
               </figure>
               <a
                 routerLink="/{{
-                  item.brand.slug != '1851' ? item.brand.slug + '/' : ''
-                }}{{ item.slug }}"
+                 readMore(item)"
                 fragment="{{ subTitle }}"
                 class="buffalowings"
               >

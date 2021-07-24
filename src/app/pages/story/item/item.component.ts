@@ -139,7 +139,9 @@ export class ItemComponent implements OnInit {
       this.fb_url = environment.fbUrl;
     }
   }
-
+  readMore(item: any) {
+    return this.commonService.readMore(item);
+  }
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
     const news: SimpleChange = changes.news;

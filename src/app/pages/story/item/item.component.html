@@ -314,11 +314,7 @@
               <ul>
                 <li *ngFor="let article of brandNews" style="cursor: pointer">
                   <a
-                    routerLink="/{{
-                      article.brand && article.brand.slug != '1851'
-                        ? article.brand.slug + '/'
-                        : ''
-                    }}{{ article.slug }}#franbuzz"
+                    href="/{{ readMore(article) }}#franbuzz"
                     class="adweek d-flex"
                   >
                     <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">

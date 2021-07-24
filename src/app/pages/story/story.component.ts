@@ -24,6 +24,7 @@ import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { BrandNews } from 'src/app/_core/models/brandNews';
 import { DetailsData } from 'src/app/_core/models/detailsData';
+import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
 
@@ -86,6 +87,7 @@ export class StoryComponent implements OnInit {
     private googleAnalyticsService: GoogleAnalyticsService,
     private rendererFactory: RendererFactory2,
     @Inject(DOCUMENT) private dom,
+    private commonService: CommonService,
     private location: Location
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -638,6 +640,9 @@ export class StoryComponent implements OnInit {
       renderer.setAttribute(link, 'href', url);
       renderer.appendChild(head, link);
     }
+  }
+  readMore(item: any) {
+    return this.commonService.readMore(item);
   }
   //Add tooltip and embed video
   htmlBinding(data) {
