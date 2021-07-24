@@ -303,7 +303,7 @@
         <li class="d-block">
           <div class="monthly-covers-main">
             <a
-              routerLink="/"
+              href="/"
               [ngClass]="common.showmenu ? 'closeMenu' : ''"
               (click)="common.toggle()"
             >
@@ -384,13 +384,9 @@
               class="monthly-covers-details"
             >
               <p>
-                <a
-                  [ngClass]="common.showmenu ? 'closeMenu' : ''"
-                  (click)="common.toggle()"
-                  routerLink="/{{ story.brand.slug }}/{{ story.slug }}"
-                  fragment="stories"
-                  >{{ story?.title }}</a
-                >
+                <a href="{{ story.brand.slug }}/{{ story.slug }}#stories">{{
+                  story?.title
+                }}</a>
               </p>
             </div>
           </div>

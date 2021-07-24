@@ -18,7 +18,7 @@
         </div>
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
           <a
-            routerLink="{{ goReadMore(list[0]) }}"
+            routerLink="/{{ goReadMore(list[0]) }}"
             fragment="{{ typeSlug }}"
             class="float-right"
           >
@@ -85,7 +85,7 @@
                     <span class="float-right text-uppercase">
                       <a
                         style="color: white"
-                        routerLink="{{ goReadMore(item) }}"
+                        routerLink="/{{ goReadMore(item) }}"
                         fragment="{{ typeSlug }}"
                       >
                         READ MORE
