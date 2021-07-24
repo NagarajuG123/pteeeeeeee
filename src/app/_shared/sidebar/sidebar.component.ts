@@ -11,7 +11,7 @@ import {
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -45,7 +45,7 @@ export class SidebarComponent implements OnInit {
   isSubmitFailed: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-
+  header: any;
   constructor(
     private apiService: ApiService,
     public common: CommonService,
@@ -69,7 +69,6 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPublication();
     this.setInit();
   }
   setInit() {
@@ -99,33 +98,27 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
-  }
+
   setSidebar() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/sidebar`)
-      .subscribe((response) => {
-        this.sidebar = response.data;
-        if (this.brandSlug != '1851') {
-          this.downloadPdfUrl = `${
-            this.sidebar[this.brandSlug]['download-pdf']['url']
-          }`;
-          this.isPdfEmail = `${
-            this.sidebar[this.brandSlug]['download-pdf']['email_popup']
-          }`;
-          this.visitSite = `${
-            this.sidebar[this.brandSlug]['visit-website']['url']
-          }`;
-        }
-      });
-  }
-  readMore(item: any) {
-    return this.common.readMore1(item, '');
+    const header = this.apiService.getAPI(`${this.brandSlug}/header`);
+    const sidebar = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([header, sidebar, publication]).subscribe((results) => {
+      this.sidebar = results[1].data;
+      if (this.brandSlug != '1851') {
+        this.downloadPdfUrl = `${
+          this.sidebar[this.brandSlug]['download-pdf']['url']
+        }`;
+        this.isPdfEmail = `${
+          this.sidebar[this.brandSlug]['download-pdf']['email_popup']
+        }`;
+        this.visitSite = `${
+          this.sidebar[this.brandSlug]['visit-website']['url']
+        }`;
+      }
+      this.publication = results[2];
+      this.header = results[0].data;
+    });
   }
 
   onSearchSubmit(searchForm: FormGroup) {
@@ -249,5 +242,22 @@ export class SidebarComponent implements OnInit {
       type = 'dropdown';
     }
     return type;
+  }
+  ngAfterViewInit() {
+    // For sticky header
+    if (this.isBrowser) {
+      // For navigation
+      setTimeout(() => {
+        $('nav ul li').has('ul').addClass('has_dd');
+        $('nav > ul > li > a').click(function () {
+          if ($(window).width() < 768) {
+            $(this).parent().find('.megamenu').slideToggle();
+            $(this).parent().siblings().find('.megamenu').slideUp();
+          }
+          $(this).parent().addClass('active');
+          $(this).parent().siblings().removeClass('active');
+        });
+      }, 500);
+    }
   }
 }
