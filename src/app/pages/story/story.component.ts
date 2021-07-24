@@ -441,20 +441,20 @@ export class StoryComponent implements OnInit {
         if (this.isBrowser) {
           this.isDefaultFb = true;
           this.checkFacebookPagePlugin(3000);
-          if (
-            window.location.pathname !==
-            `${
-              result['story'].data.brand.slug === '1851'
-                ? ''
-                : `/${result['story'].data.brand.slug}`
-            }/${result['story'].data.slug}`
-          ) {
-            window.location.href = `${window.location.origin}${
-              result['story'].data.brand.slug === '1851'
-                ? ''
-                : `/${result['story'].data.brand.slug}`
-            }/${result['story'].data.slug}${window.location.hash}`;
-          }
+          // if (
+          //   window.location.pathname !==
+          //   `${
+          //     result['story'].data.brand.slug === '1851'
+          //       ? ''
+          //       : `/${result['story'].data.brand.slug}`
+          //   }/${result['story'].data.slug}`
+          // ) {
+          //   window.location.href = `${window.location.origin}${
+          //     result['story'].data.brand.slug === '1851'
+          //       ? ''
+          //       : `/${result['story'].data.brand.slug}`
+          //   }/${result['story'].data.slug}${window.location.hash}`;
+          // }
         }
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
@@ -484,21 +484,14 @@ export class StoryComponent implements OnInit {
           this.addItems(1, 0);
         }
         let url = '';
-        if (this.brandId === '1851' && this.isBrowser) {
-          if (this.brandSlug !== result['story'].data.brand.slug) {
-            this.isRedirect = true;
-          } else {
-            this.isRedirect = false;
-          }
-          // tslint:disable-next-line:max-line-length
+        if (this.brandId === '1851' && this.isServer) {
           url = `${environment.appUrl}${
             result['story'].data.brand.slug === '1851' ||
             result['story'].data.brand.slug === ''
               ? ''
               : `/${result['story'].data.brand.slug}`
           }${this.router.url}`;
-        } else if (this.brandId !== '1851' && this.isBrowser) {
-          // tslint:disable-next-line:max-line-length
+        } else if (this.brandId !== '1851' && this.isServer) {
           url = `${environment.appUrl}${
             result['story'].data.brand.slug === '1851' ||
             result['story'].data.brand.slug === ''
@@ -506,20 +499,7 @@ export class StoryComponent implements OnInit {
               : this.router.url
           }`;
         }
-        if (
-          this.brandSlug === '1851' &&
-          result['story'].data.brand.slug === ''
-        ) {
-          this.isRedirect = false;
-        } else if (
-          this.brandSlug === '1851' &&
-          this.brandSlug !== result['story'].data.brand.slug
-        ) {
-          this.isRedirect = true;
-        } else {
-          this.isRedirect = false;
-        }
-        this.redirectUrl = url;
+
         this.createCanonicalURL(url);
       });
   }
@@ -531,24 +511,7 @@ export class StoryComponent implements OnInit {
       }
     }, delay);
   }
-  createCanonicalURL(url) {
-    if (this.isRedirect && this.pageType === 'details') {
-      window.location.href = this.redirectUrl;
-    }
-    if (this.isServer) {
-      const renderer = this.rendererFactory.createRenderer(this.dom, {
-        id: '-1',
-        encapsulation: ViewEncapsulation.None,
-        styles: [],
-        data: {},
-      });
-      const link = renderer.createElement('link');
-      const head = this.dom.head;
-      renderer.setAttribute(link, 'rel', 'canonical');
-      renderer.setAttribute(link, 'href', url);
-      renderer.appendChild(head, link);
-    }
-  }
+
   //brand list for check terms in main site story
   getBrandList() {
     this.apiService.getAPI(`terms`).subscribe((result) => {
@@ -659,6 +622,21 @@ export class StoryComponent implements OnInit {
             }
           }
         });
+    }
+  }
+  createCanonicalURL(url) {
+    if (this.isServer) {
+      const renderer = this.rendererFactory.createRenderer(this.dom, {
+        id: '-1',
+        encapsulation: ViewEncapsulation.None,
+        styles: [],
+        data: {},
+      });
+      const link = renderer.createElement('link');
+      const head = this.dom.head;
+      renderer.setAttribute(link, 'rel', 'canonical');
+      renderer.setAttribute(link, 'href', url);
+      renderer.appendChild(head, link);
     }
   }
   //Add tooltip and embed video

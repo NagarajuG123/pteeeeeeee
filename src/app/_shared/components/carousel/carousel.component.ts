@@ -57,29 +57,33 @@ export class CarouselComponent implements OnInit {
         break;
     }
     this.apiService.getAPI(apiUrl).subscribe((response) => {
-      this.list = response.data;
-      if (!this.list.length) {
-        this.slideConfig = {};
-        this.noData.emit();
-      } else {
-        this.slideConfig = {
-          slidesToShow: this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 620,
-              settings: {
-                slidesToShow: 1,
+      if (response && response.data) {
+        this.list = response.data;
+
+        if (!this.list.length) {
+          this.slideConfig = {};
+          this.noData.emit();
+        } else {
+          this.slideConfig = {
+            slidesToShow:
+              this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
+            slidesToScroll: 1,
+            responsive: [
+              {
+                breakpoint: 620,
+                settings: {
+                  slidesToShow: 1,
+                },
               },
-            },
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: this.list.length > 1 ? 2 : 1,
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: this.list.length > 1 ? 2 : 1,
+                },
               },
-            },
-          ],
-        };
+            ],
+          };
+        }
       }
     });
   }

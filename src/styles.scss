@@ -3,11 +3,9 @@
 @import "assets/scss/mixins";
 @import "assets/scss/utilities";
 @import "assets/scss/alert";
-@import "assets/scss/badge";
-@import "assets/scss/breadcrumb";
+
 @import "assets/scss/button-group";
 @import "assets/scss/buttons";
-@import "assets/scss/card";
 @import "assets/scss/carousel";
 @import "assets/scss/close";
 @import "assets/scss/code";
@@ -17,19 +15,14 @@
 @import "assets/scss/grid";
 @import "assets/scss/images";
 @import "assets/scss/input-group";
-@import "assets/scss/jumbotron";
 @import "assets/scss/list-group";
 @import "assets/scss/media";
 @import "assets/scss/modal";
 @import "assets/scss/nav";
 @import "assets/scss/navbar";
-@import "assets/scss/pagination";
 @import "assets/scss/popover";
-@import "assets/scss/print";
-@import "assets/scss/progress";
 @import "assets/scss/reboot";
 @import "assets/scss/root";
-@import "assets/scss/tables";
 @import "assets/scss/tooltip";
 @import "assets/scss/transitions";
 @import "assets/scss/type";
@@ -38,207 +31,22 @@
 @import "assets/scss/bootstrap";
 @import "assets/sass/main.scss";
 @import "assets/sass/base.scss";
-@import "assets/sass/customize.scss";
-@import "assets/sass/ee.scss";
-@import "assets/scss/slick.scss";
+@import "assets/sass/slick.scss";
 
+// @import "assets/scss/jumbotron";
+// @import "assets/scss/print";
+// @import "assets/scss/progress";
+// @import "assets/scss/pagination";
+// @import "assets/scss/card";
+// @import "assets/scss/badge";
+// @import "assets/scss/breadcrumb";
 ul {
   padding-left: 0rem !important;
 }
 
-.slick-prev:before,
-.slick-next:before {
-  content: "" !important;
-}
 .top-space {
   padding-top: 94px;
 }
-// .slick-track {
-//   width: 1274px !important;
-// }
-// @import "src/assets/scss/mixins";
-// @import "src/assets/scss/common";
-// @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
-// @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
-// // @import "~@ngx-sharebuttons/themes/default/default-theme";
-// // @import "~@ngx-sharebuttons/themes/material/material-dark-theme";
-// // @import "~@ngx-sharebuttons/themes/modern/modern-light-theme";
-// // @import "~@ngx-sharebuttons/themes/circles/circles-dark-theme";
-// /* You can add global styles to this file, and also import other style files */
-
-// @font-face {
-//   font-family: "ProximaNova-Regular";
-//   src: url(./assets/fonts/ProximaNova-Regular.woff) format("woff");
-// }
-
-// @font-face {
-//   font-family: "ProximaNova-Medium";
-//   src: url(./assets/fonts/ProximaNova-Medium.woff) format("woff");
-// }
-
-// @font-face {
-//   font-family: "ProximaNova-Semibold";
-//   src: url(./assets/fonts/ProximaNova-Semibold.woff) format("woff");
-// }
-
-// @font-face {
-//   font-family: "ProximaNova-Bold";
-//   src: url(./assets/fonts/ProximaNova-Bold.woff) format("woff");
-// }
-
-// @font-face {
-//   font-family: "ProximaNova-Light";
-//   src: url(./assets/fonts/ProximaNova-Light.woff) format("woff");
-// }
-
-// .float-right {
-//   float: right !important;
-// }
-// .fa {
-//   color: #ec0044;
-// }
-
-// .loadmore-btn {
-//   width: 50px;
-//   margin: 0 auto;
-//   .fa {
-//     font-size: 50px;
-//     line-height: 50px;
-//     color: #ec0044;
-//   }
-// }
-// .container {
-//   width: 100%;
-//   padding-right: 15px !important;
-//   padding-left: 15px !important;
-//   margin: 0 auto;
-//   display: block;
-//   @media (max-width: 1420px) {
-//     max-width: 100% !important;
-//   }
-// }
-
-// .addeLeftSpace
-//   nav.navbar.navbar-expand-lg.navbar-light.fixed-top.bg-white.pb-0.pt-3 {
-//   left: 300px;
-//   width: 100%;
-//   transition: all 0.4s ease;
-// }
-
-// .sponsered_content_middle .brian_jaeger_content .image-style-align-right {
-//   float: right;
-//   width: 50%;
-//   margin-left: 20px;
-// }
-// .sponsered_content_middle ul li {
-//   list-style-type: initial;
-// }
-// .text-capitalize-capital {
-//   text-transform: lowercase !important;
-// }
-// .text-capitalize-capital:first-letter {
-//   text-transform: capitalize !important;
-// }
-
-// .content-padding {
-//   padding: 66px 41px 0 40px;
-// }
-
-// .owl-prev {
-//   width: 15px;
-//   height: 100px;
-//   position: absolute;
-//   font-size: 3em !important;
-//   top: 29%;
-//   margin-left: -49px !important;
-//   display: block !important;
-//   border: 0px solid black;
-//   background: none !important;
-// }
-
-// .owl-next {
-//   width: 15px;
-//   height: 100px;
-//   position: absolute;
-//   font-size: 3em !important;
-//   top: 29%;
-//   right: -40px !important;
-//   display: block !important;
-//   border: 0px solid black;
-//   background: none !important;
-// }
-// .owl-prev i,
-// .owl-next i {
-//   color: #fff;
-// }
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   margin-bottom: 0rem;
-// }
-// .embed-responsive .embed-responsive-item,
-// .embed-responsive embed,
-// .embed-responsive iframe,
-// .embed-responsive object,
-// .embed-responsive video {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   border: 0;
-// }
-// .modal-backdrop {
-//   display: none;
-// }
-
-// .desktop-only {
-//   display: none !important;
-//   @media only screen and (min-width: 600px) {
-//     display: block !important;
-//   }
-// }
-
-// .mobile-only {
-//   display: none !important;
-//   @media only screen and (max-width: 599px) {
-//     display: block !important;
-//   }
-// }
-// .sponsered_content_middle figure {
-//   margin: 0 0 30px !important;
-// }
-
-// .sponsered_content_middle p {
-//   font-weight: 400;
-//   padding: 0 0 20px !important;
-//   line-height: 22px;
-// }
-// .social-links {
-//   display: flex !important;
-//   flex-direction: column;
-//   .st-btn {
-//     display: inline !important;
-//     background-color: transparent !important;
-//     margin: unset !important;
-//     svg {
-//       fill: #929496 !important;
-//       width: 45px !important;
-//       height: 45px !important;
-//     }
-//     img {
-//       filter: invert(55%) sepia(36%) saturate(45%) hue-rotate(27deg)
-//         brightness(20%) contrast(0%);
-//       height: 45px !important;
-//       width: 45px !important;
-//     }
-//   }
-//   @include mobile-landscape1 {
-//     flex-direction: row;
-//     justify-content: center;
-//   }
-// }
+.modal-open {
+  overflow: auto !important;
+}

@@ -410,7 +410,7 @@ export class InfoComponent implements OnInit {
           });
           const vm = this;
           this.httpClient
-            .get('../../../assets/js/us-states.json')
+            .get('../../../assets/us-states.json')
             .subscribe((json: any) => {
               this.geoJson = json;
               vm.drawMap(this.items);

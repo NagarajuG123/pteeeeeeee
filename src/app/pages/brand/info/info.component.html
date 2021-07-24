@@ -301,7 +301,7 @@
                     <h5 class="mr-xl-0 mr-lg-0 mr-auto text-uppercase">
                       MAKE IT TREND
                     </h5>
-                    <ul class="clearfix">
+                    <ul class="clearfix" *ngIf="isBrowser">
                       <li>
                         <a shareButton="facebook" [url]="shareUrl()"
                           ><i class="fa fa-facebook" aria-hidden="true"></i
