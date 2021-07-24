@@ -6,6 +6,8 @@ import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
 import { PartnerMainComponent } from './partner-main/partner-main.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [AboutUsComponent, PartnerMainComponent],
   imports: [
@@ -14,6 +16,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     SharedModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    ToastrModule,
   ],
 })
 export class AboutUsModule {}

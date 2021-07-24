@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-partner-main',
@@ -25,7 +26,8 @@ export class PartnerMainComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
     fb: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private toastr: ToastrService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = fb.group({
@@ -59,11 +61,11 @@ export class PartnerMainComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.submitSuccessMsg = result.data.message;
+          this.toastr.success(result.data.message, 'Thanks!');
           this.isSubmitted = false;
           this.resetForm();
         } else {
-          this.submitErrMsg = result.error.message;
+          this.toastr.error(result.error.message, 'Error!');
         }
       });
   }
