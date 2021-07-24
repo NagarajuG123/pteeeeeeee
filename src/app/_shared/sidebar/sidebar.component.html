@@ -103,7 +103,12 @@
           </a>
           <div class="monthly-covers-details">
             <p *ngFor="let item of sidebar['awards']">
-              <a routerLink="/{{ item?.url }}">{{ item?.title }}</a>
+              <a
+                routerLink="/{{ item?.url }}"
+                [ngClass]="common.showmenu ? 'closeMenu' : ''"
+                (click)="common.toggle()"
+                >{{ item?.title }}</a
+              >
             </p>
           </div>
         </div>
