@@ -35,7 +35,11 @@
             </a>
           </h5>
 
-          <div *ngIf="brand_id !== '1851'">
+          <div
+            *ngIf="
+              (hiddenSearchBar && brand_id === '1851') || brand_id !== '1851'
+            "
+          >
             <div class="sort_main d-flex col-xl-8">
               <h6>SORT BY:</h6>
               <ul class="d-flex text-center justify-content-center">
@@ -59,7 +63,7 @@
                 </li>
               </ul>
             </div>
-            <div class="sort_main check_boxes_data d-flex">
+            <div class="sort_main check_boxes_data d-flex col-xl-9">
               <h6>FILTER BY:</h6>
               <ul class="d-flex checkboxes text-center justify-content-center">
                 <li>
@@ -104,85 +108,87 @@
                 </li>
               </ul>
             </div>
-          </div>
-
-          <div
-            *ngIf="hiddenSearchBar && brand_id === '1851'"
-            class="sort_main d-flex"
-          >
-            <h6>SORT BY:</h6>
-            <ul class="d-flex text-center justify-content-center">
-              <li *ngFor="let duration of published_duration; let i = index">
-                <a (click)="set_duration(i)">
-                  <span
-                    [style.font-weight]="
-                      published_value === i ? 'bold' : 'normal'
-                    "
-                    >{{ duration["title"] }}</span
-                  >
-                </a>
-              </li>
-              <li>
-                <a (click)="set_range()">
-                  <span
-                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
-                    >{{ published_range }}</span
-                  >
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div
-            *ngIf="hiddenSearchBar"
-            class="sort_main check_boxes_data d-flex"
-          >
-            <h6>FILTER BY:</h6>
-            <ul class="d-flex checkboxes text-center justify-content-center">
-              <li>
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_author"
-                    (change)="onChangeFilter('author')"
-                  />
-                  <span>BY AUTHOR</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_title"
-                    (change)="onChangeFilter('title')"
-                  />
-                  <span>BY TITLE</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_desc"
-                    (change)="onChangeFilter('desc')"
-                  />
-                  <span>BY DESCRIPTION</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_keywords"
-                    (change)="onChangeFilter('keyword')"
-                  />
-                  <span>BY KEYWORDS</span>
-                </label>
-              </li>
-            </ul>
+            <!-- <div class="sort_main check_boxes_data d-flex">
+              <h6>FILTER BY:</h6>
+              <ul class="d-flex checkboxes text-center justify-content-center">
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      [checked]="by_author"
+                      (change)="onChangeFilter('author')"
+                    />
+                    <span>BY AUTHOR</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      [checked]="by_title"
+                      (change)="onChangeFilter('title')"
+                    />
+                    <span>BY TITLE</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      [checked]="by_desc"
+                      (change)="onChangeFilter('desc')"
+                    />
+                    <span>BY DESCRIPTION</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      [checked]="by_keywords"
+                      (change)="onChangeFilter('keyword')"
+                    />
+                    <span>BY KEYWORDS</span>
+                  </label>
+                </li>
+              </ul>
+            </div> -->
           </div>
         </div>
         <div class="search-no-result" *ngIf="!recentPeoples.length">
           <p>No articles found for selected search criteria</p>
+        </div>
+        <div *ngIf="isSpecificDate" class="banner specific_search">
+          <div class="search_form col-lg-6">
+            <form
+              [formGroup]="specificSearchForm"
+              (ngSubmit)="onSearchSubmit(specificSearchForm)"
+            >
+              <div class="form-group d-block">
+                <input
+                  type="text"
+                  ngxDaterangepickerMd
+                  class="form-control"
+                  [(ngModel)]="dateSelected"
+                  [showCustomRangeLabel]="true"
+                  [alwaysShowCalendars]="true"
+                  [ranges]="ranges"
+                  [linkedCalendars]="true"
+                  [showClearButton]="true"
+                  [formControl]="specificSearchForm.controls['search_input']"
+                  placeholder="Select please.../"
+                  readonly
+                />
+                <button
+                  type="button"
+                  class="d-block text-center button"
+                  (click)="onSearchSubmit(specificSearchForm)"
+                >
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
         <div *ngIf="recentPeoples.length">
           <div class="frannews">
@@ -292,38 +298,6 @@
           ></i>
         </a>
       </div>
-    </div>
-  </div>
-  <div *ngIf="isSpecificDate" class="banner specific_search">
-    <div class="search_form col-lg-6">
-      <form
-        [formGroup]="specificSearchForm"
-        (ngSubmit)="onSearchSubmit(specificSearchForm)"
-      >
-        <div class="form-group d-block">
-          <input
-            type="text"
-            ngxDaterangepickerMd
-            class="form-control"
-            [(ngModel)]="dateSelected"
-            [showCustomRangeLabel]="true"
-            [alwaysShowCalendars]="true"
-            [ranges]="ranges"
-            [linkedCalendars]="true"
-            [showClearButton]="true"
-            [formControl]="specificSearchForm.controls['search_input']"
-            placeholder="Select please.../"
-            readonly
-          />
-          <button
-            type="button"
-            class="d-block text-center button"
-            (click)="onSearchSubmit(specificSearchForm)"
-          >
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 </div>

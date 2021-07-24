@@ -214,7 +214,10 @@
   </div>
   <nav class="d-sm-block d-md-none">
     <ul>
-      <li *ngIf="header['Franchise Brands']" class="has_dd d-block float-none">
+      <li
+        *ngIf="header && header['Franchise Brands']"
+        class="has_dd d-block float-none"
+      >
         <a class="text-uppercase">
           {{ header["Franchise Brands"]?.title }}
           <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
@@ -233,7 +236,7 @@
         </div>
       </li>
       <!-- Learn -->
-      <li *ngIf="header['Learn']" class="has_dd d-block float-none">
+      <li *ngIf="header && header['Learn']" class="has_dd d-block float-none">
         <a class="text-uppercase">
           {{ header["Learn"]?.title }}
           <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>

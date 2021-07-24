@@ -33,7 +33,9 @@ export class SearchComponent implements OnInit {
   by_title: Boolean = false;
   by_desc: Boolean = false;
   by_keywords: Boolean = false;
-  brand_id: String = '';
+  brand_id: string = '';
+  brandSlug: string = '1851';
+
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
@@ -95,6 +97,11 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((slugParams) => {
+      if (slugParams.get('slug') != null) {
+        this.brandSlug = slugParams.get('slug');
+      }
+    });
     this.paramsSubscription = this.route.queryParams.subscribe((params) => {
       if (
         typeof params.search_input !== 'undefined' &&
@@ -190,7 +197,7 @@ export class SearchComponent implements OnInit {
       const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
       const publication = this.apiService.getAPI(`1851/publication-instance`);
 
-      forkJoin([main_searchAPI, brand_searchAPI,publication])
+      forkJoin([main_searchAPI, brand_searchAPI, publication])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0]['data'] === null) {
@@ -206,12 +213,14 @@ export class SearchComponent implements OnInit {
           let title = results[2].title;
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
-            
+
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
           this.params = searchPopData['params'];
           this.has_more = searchPopData['has_more'];
-          this.metaService.setSeo(this.recentPeoples[0].meta);
+          if (typeof this.recentPeoples[0] != 'undefined') {
+            this.metaService.setSeo(this.recentPeoples[0].meta);
+          }
           this.metaService.setTitle(title);
         });
     });
@@ -392,8 +401,12 @@ export class SearchComponent implements OnInit {
     } else if (this.dateSelected.startDate === null) {
       return;
     } else {
-      const start = moment(new Date(this.dateSelected.startDate)).format('YYYY-MM-DD');
-      const end = moment(new Date(this.dateSelected.endDate)).format('YYYY-MM-DD');
+      const start = moment(new Date(this.dateSelected.startDate)).format(
+        'YYYY-MM-DD'
+      );
+      const end = moment(new Date(this.dateSelected.endDate)).format(
+        'YYYY-MM-DD'
+      );
       this.published_value = -1;
 
       this.params = `?q=${this.search_input}`;
@@ -447,14 +460,14 @@ export class SearchComponent implements OnInit {
   }
 
   updateUrlState(startDate = '', endDate = '') {
-    // tslint:disable-next-line:max-line-length
     let url = `searchpopup?search_input=${this.search_input}&brand_id=${this.brand_id}&by_author=${this.by_author}&by_title=${this.by_title}&by_desc=${this.by_desc}&by_keywords=${this.by_keywords}`;
-    // tslint:disable-next-line:max-line-length
+    if (this.brandSlug !== '1851') {
+      url = `${this.brandSlug}/searchpopup?search_input=${this.search_input}&brand_id=${this.brand_id}&by_author=${this.by_author}&by_title=${this.by_title}&by_desc=${this.by_desc}&by_keywords=${this.by_keywords}`;
+    }
     url =
       this.published_value !== -1
         ? `${url}&published_duration=${this.published_value}`
         : `${url}&published_duration=`;
-    // tslint:disable-next-line:max-line-length
     url = this.isSpecificDate
       ? `${url}&published_from_date=${startDate}&published_to_date=${endDate}`
       : `${url}&published_from_date=&published_to_date=`;
