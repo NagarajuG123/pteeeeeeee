@@ -1,4 +1,10 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -12,6 +18,8 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
+  @ViewChild('searchCloseBtn') searchCloseBtn;
+
   footer: any = [];
   publication: any = [];
   brandSlug = '1851';
@@ -92,12 +100,22 @@ export class FooterComponent implements OnInit {
     });
   }
   onSearchSubmit(searchForm: FormGroup) {
+    this.searchCloseBtn.nativeElement.click();
+
     if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${
-        searchForm.controls['searchInput'].value
-      }&brand_id=${this.publication.id.toLowerCase()}`;
+      this.router.navigate(['/searchpopup'], {
+        queryParams: {
+          search_input: searchForm.controls['searchInput'].value,
+          brand_id: this.publication.id.toLowerCase(),
+        },
+      });
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
+      this.router.navigate([`/${this.brandSlug}/searchpopup`], {
+        queryParams: {
+          search_input: searchForm.controls['searchInput'].value,
+          brand_id: this.brandId,
+        },
+      });
     }
     this.searchForm.controls['searchInput'].setValue('');
   }

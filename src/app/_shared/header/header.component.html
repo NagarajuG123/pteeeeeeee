@@ -363,7 +363,12 @@
   <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <button type="button" class="close text-right" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="close text-right"
+          #searchCloseBtn
+          data-bs-dismiss="modal"
+        >
           &times;
         </button>
         <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
