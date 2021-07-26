@@ -5,11 +5,16 @@ import { SearchComponent } from '../search/search.component';
 import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 import { TermsofuseComponent } from '../termsofuse/termsofuse.component';
+import { SitemapDetailComponent } from '../sitemap/sitemap-detail/sitemap-detail.component';
 
 const routes: Routes = [
   {
     path: 'sitemap',
     component: SitemapComponent,
+  },
+  {
+    path: 'sitemap/:year/:month',
+    component: SitemapDetailComponent,
   },
   {
     path: 'searchpopup',
