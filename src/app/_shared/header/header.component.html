@@ -118,7 +118,10 @@
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>
           </div>
-          <div class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block">
+          <div
+            *ngIf="header['monthly-cover']"
+            class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
+          >
             <a
               routerLink="{{ header['monthly-cover']?.media?.url?.cover_url }}"
             >
@@ -212,7 +215,7 @@
                 </a>
               </li>
               <li>
-                <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
+                <a href="{{ brandSlug }}/info" class="text-uppercase"
                   >BRAND INFORMATION</a
                 >
               </li>
