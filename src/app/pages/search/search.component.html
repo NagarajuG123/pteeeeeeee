@@ -40,7 +40,7 @@
               (hiddenSearchBar && brand_id === '1851') || brand_id !== '1851'
             "
           >
-            <div class="sort_main d-flex col-xl-8">
+            <div class="sort_main d-flex">
               <h6>SORT BY:</h6>
               <ul class="d-flex text-center justify-content-center">
                 <li *ngFor="let duration of published_duration; let i = index">
@@ -63,7 +63,7 @@
                 </li>
               </ul>
             </div>
-            <div class="sort_main check_boxes_data d-flex col-xl-9">
+            <div class="sort_main check_boxes_data d-flex">
               <h6>FILTER BY:</h6>
               <ul class="d-flex checkboxes text-center justify-content-center">
                 <li>
@@ -201,6 +201,7 @@
                         <div class="category-list" *ngFor="let item of row">
                           <a
                             routerLink="/{{ goReadMore(item) }}"
+                            fragment="most-recent"
                             class="frannews-bottom-details"
                             style="text-decoration: none"
                             *ngIf="item"
@@ -255,6 +256,7 @@
             </p>
             <a
               routerLink="/{{ goReadMoreBrand(item) }}"
+              fragment="brand-latest-stories"
               class="frannews-bottom-details"
               style="text-decoration: none"
               *ngIf="item"
