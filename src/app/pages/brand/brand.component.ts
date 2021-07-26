@@ -61,7 +61,6 @@ export class BrandComponent implements OnInit {
             } else if (this.type === 'dynamic_page') {
               this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
-              this.getMoreDynamic();
             }
           }
         });
@@ -104,7 +103,7 @@ export class BrandComponent implements OnInit {
       .subscribe((response) => {
         this.topBlock = response.data;
         this.dynamicFirst = response.data.stories.slice(0, 10);
-        this.dynamicSecond = response.data.stories.slice(10, 20);
+        this.dynamicSecond = response.data.stories.slice(10,20);
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
         this.apiService
@@ -121,7 +120,7 @@ export class BrandComponent implements OnInit {
   getMoreDynamic() {
     this.apiService
       .getAPI(
-        `${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`
+        `page/${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
