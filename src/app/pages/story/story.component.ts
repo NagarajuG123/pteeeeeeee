@@ -311,21 +311,21 @@ export class StoryComponent implements OnInit {
                 if (!isAuthorPage) {
                   this.initLoad();
                 }
-                if (this.brandId === '1851') {
-                  this.apiService
-                    .getAPI(`1851/news?lean=true&limit=10&offset=0`)
-                    .pipe(takeUntil(this.onDestroy$))
-                    .subscribe((n_result) => {
-                      this.newsData = n_result.data;
-                    });
-                } else {
-                  this.apiService
-                    .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
-                    .pipe(takeUntil(this.onDestroy$))
-                    .subscribe((n_result) => {
-                      this.newsData = n_result.data;
-                    });
-                }
+                // if (this.brandId === '1851') {
+                //   this.apiService
+                //     .getAPI(`1851/news?lean=true&limit=10&offset=0`)
+                //     .pipe(takeUntil(this.onDestroy$))
+                //     .subscribe((n_result) => {
+                //       this.newsData = n_result.data;
+                //     });
+                // } else {
+                this.apiService
+                  .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
+                  .pipe(takeUntil(this.onDestroy$))
+                  .subscribe((n_result) => {
+                    this.newsData = n_result.data;
+                  });
+                // }
               });
           });
       });
@@ -581,9 +581,8 @@ export class StoryComponent implements OnInit {
     }
   }
   addItems(limit, offset) {
-    if (this.pageType === 'details' && !this.isLoading) {
+    if (this.pageType === 'details') {
       this.isLoading = true;
-
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
         .subscribe((result) => {
