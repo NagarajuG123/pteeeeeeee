@@ -155,7 +155,7 @@
             </div> -->
           </div>
         </div>
-        <div class="search-no-result" *ngIf="!recentPeoples.length">
+        <div class="search-no-result" *ngIf="!recentPeoples.length && (brand_id != '1851' || brand_id == '1851')">
           <p>No articles found for selected search criteria</p>
         </div>
         <div *ngIf="isSpecificDate" class="banner specific_search">
