@@ -45,6 +45,7 @@ export class InfoComponent implements OnInit {
   pdfForm: any;
   isBrowser: boolean = false;
   isCategory: boolean = false;
+  isInfoPage: boolean = false;
   categoryParam = '';
   brandTrending: any;
   brandMostRecent: any;
@@ -110,7 +111,7 @@ export class InfoComponent implements OnInit {
                   this.brandInfo = response.data;
                 });
               this.setTab();
-              this.isCategory = false;
+              this.isInfoPage = true;
               this.getContents(params.get('item'));
               this.getInquiry();
             } else {
