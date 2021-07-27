@@ -1,6 +1,5 @@
 <div *ngIf="type === 'brand_page'">
-  <div class="top-space"></div>
-
+  <div class="empty"></div>
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
   <app-news [slug]="slug"></app-news>
   <app-carousel
@@ -16,7 +15,7 @@
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
 <div *ngIf="type === 'category_page'">
-  <div class="top-space-cat"></div>
+  <div class="empty"></div>
 
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
 
@@ -47,7 +46,11 @@
             </ul>
           </div>
           <div class="frannews-top-right col-md-6">
-            <a routerLink="/{{ readMore(mostRecent[0]) }}" fragment="most-recent" class="float-right">
+            <a
+              routerLink="/{{ readMore(mostRecent[0]) }}"
+              fragment="most-recent"
+              class="float-right"
+            >
               READ MORE
               <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>

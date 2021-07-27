@@ -1,4 +1,4 @@
-<div class="top-space"></div>
+<div class="empty"></div>
 <app-banner-search
   [searchInput]="search_input"
   (onSearch)="updateSearchInput($event)"
@@ -155,7 +155,12 @@
             </div> -->
           </div>
         </div>
-        <div class="search-no-result" *ngIf="!recentPeoples.length && (brand_id != '1851' || brand_id == '1851')">
+        <div
+          class="search-no-result"
+          *ngIf="
+            !recentPeoples.length && (brand_id != '1851' || brand_id == '1851')
+          "
+        >
           <p>No articles found for selected search criteria</p>
         </div>
         <div *ngIf="isSpecificDate" class="banner specific_search">

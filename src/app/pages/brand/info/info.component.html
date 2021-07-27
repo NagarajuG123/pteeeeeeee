@@ -1,6 +1,6 @@
 <!-- Brand Category -->
 <div *ngIf="isCategory">
-  <div class="top-space"></div>
+  <div class="empty"></div>
   <app-featured [slug]="brandSlug" [apiUrl]="brandFeaturedUrl"></app-featured>
   <app-category-trending
     [data]="brandTrending?.data"
@@ -55,7 +55,8 @@
 </div>
 
 <!-- Brand Info -->
-<div class="top-space" *ngIf="isInfoPage">
+<div class="empty"></div>
+<div *ngIf="isInfoPage">
   <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
 
   <div class="main-content">

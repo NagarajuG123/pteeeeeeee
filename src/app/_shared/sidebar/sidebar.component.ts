@@ -12,6 +12,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 import { isPlatformBrowser } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
+import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -46,12 +47,15 @@ export class SidebarComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   header: any;
+  ga: any;
+
   constructor(
     private apiService: ApiService,
     public common: CommonService,
     private router: Router,
     private fb: FormBuilder,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: Object,
+    private _googleAnalyticsService: GoogleAnalyticsService
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -98,14 +102,29 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
-
+  visitBrandPage() {
+    const action = this.visitSite
+      .replace(/^https?:\/\//, '')
+      .replace(/^http?:\/\//, '')
+      .match(/^([^\/]+)/gm)[0];
+    this._googleAnalyticsService.appendGaEventOutboundLink(
+      this.ga['1851_franchise'],
+      this.brandId,
+      action,
+      'Visit Website',
+      this.brandTitle
+    );
+  }
   setSidebar() {
     const header = this.apiService.getAPI(`${this.brandSlug}/header`);
     const sidebar = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     forkJoin([header, sidebar, publication]).subscribe((results) => {
       this.sidebar = results[1].data;
-      if (this.brandSlug != '1851') {
+      this.publication = results[2];
+      this.header = results[0].data;
+
+      if (this.brandSlug !== '1851' && this.sidebar[this.brandSlug]) {
         this.downloadPdfUrl = `${
           this.sidebar[this.brandSlug]['download-pdf']['url']
         }`;
@@ -116,8 +135,6 @@ export class SidebarComponent implements OnInit {
           this.sidebar[this.brandSlug]['visit-website']['url']
         }`;
       }
-      this.publication = results[2];
-      this.header = results[0].data;
     });
   }
 
