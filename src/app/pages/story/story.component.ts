@@ -505,6 +505,15 @@ export class StoryComponent implements OnInit {
         this.createCanonicalURL(url);
       });
   }
+  changeMaxResultImg(media) {
+    if (media.includes('maxresdefault')) {
+      media =  media.replace('maxresdefault', 'hqdefault');
+    } else if (media.includes('sddefault')) {
+      media = media.replace('sddefault', 'hqdefault');
+    }
+    return media;
+  }
+  
   checkFacebookPagePlugin(delay) {
     setTimeout(() => {
       if ($('#block_fb_link').length === 1) {
