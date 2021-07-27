@@ -377,6 +377,15 @@ export class ItemComponent implements OnInit {
     return false;
   }
 
+  isUpdate(){
+    let postDate = this.date_time.toDateString();
+    let lastDate = this.last_modified.toDateString();
+    if(postDate === lastDate){
+      return false;
+    }
+      return true;
+  }
+  
   openFbComment() {
     this.isViewComment = !this.isViewComment;
     window['FB'].init({

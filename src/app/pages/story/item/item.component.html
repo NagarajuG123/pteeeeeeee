@@ -127,10 +127,17 @@
                     </a>
                   </div>
 
-                  <span *ngIf="isDate()"
-                    >{{ date_time | date: "h:mm a" }} •
-                    {{ date_time | date: "MM/dd/yy" }}</span
-                  >
+                  <span *ngIf="isDate()">
+                    <span *ngIf="isUpdate()"
+                      >Updated {{ last_modified | date: "h:mm a" }} •
+                      {{ last_modified | date: "MM/dd/yy" }}
+                    </span>
+                    <span *ngIf="!isUpdate()"
+                      >{{ date_time | date: "h:mm a" }} •
+                      {{ date_time | date: "MM/dd/yy" }}</span
+                    >
+                  </span>
+
                   <a [routerLink]="category.slug">
                     <small>&nbsp; &nbsp;{{ category.name }}</small>
                   </a>
@@ -162,10 +169,16 @@
                 </a>
               </span>
               <div>
-                <span *ngIf="isDate()"
-                  >{{ last_modified | date: "h:mm a" }} •
-                  {{ last_modified | date: "MM/dd/yy" }}</span
-                >
+                <span *ngIf="isDate()">
+                  <span *ngIf="isUpdate()"
+                    >Updated {{ last_modified | date: "h:mm a" }} •
+                    {{ last_modified | date: "MM/dd/yy" }}
+                  </span>
+                  <span *ngIf="!isUpdate()"
+                    >{{ date_time | date: "h:mm a" }} •
+                    {{ date_time | date: "MM/dd/yy" }}</span
+                  >
+                </span>
                 <a [routerLink]="category.slug">
                   <small>&nbsp; &nbsp;{{ category.name }}</small>
                 </a>
