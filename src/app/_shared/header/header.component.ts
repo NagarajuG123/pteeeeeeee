@@ -240,10 +240,10 @@ export class HeaderComponent implements OnInit {
   ngAfterViewInit() {
     // For sticky header
     if (this.isBrowser && this.isShow) {
-      const distance = $('header').offset().top - $(window).scrollTop();
-      // const window = $(window);
+      const distance = $('header').offset().top,
+        $window = $(window);
       $(window).scroll(function () {
-        if ($(window).scrollTop() > distance) {
+        if ($window.scrollTop() > distance) {
           $('body').addClass('sticky');
           const ht = $('header').innerHeight();
           $('.empty').css({ 'min-height': ht });
