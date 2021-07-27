@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.module';
 import { GoogleAnalyticsService } from './google-analytics.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +31,12 @@ import { GoogleAnalyticsService } from './google-analytics.service';
     CommonModule,
     BrowserAnimationsModule,
     MonthlyDetailsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent],
