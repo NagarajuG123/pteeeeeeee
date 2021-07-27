@@ -243,7 +243,7 @@ export class HeaderComponent implements OnInit {
       const distance = $('header').offset().top,
         $window = $(window);
       $(window).scroll(function () {
-        if ($window.scrollTop() > distance) {
+        if ($(this).scrollTop() > 5) {
           $('body').addClass('sticky');
           const ht = $('header').innerHeight();
           $('.empty').css({ 'min-height': ht });
