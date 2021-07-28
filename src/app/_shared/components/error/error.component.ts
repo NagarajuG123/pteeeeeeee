@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MetaService } from 'src/app/_core/services/meta.service';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-error',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private metaService: MetaService,private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+    });
   }
 
 }
