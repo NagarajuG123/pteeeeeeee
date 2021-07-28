@@ -83,7 +83,9 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
-        if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+        if (this.brandSlug === 'robots.txt') {
+          this.isShow = false;
+        } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
         } else {
@@ -234,5 +236,33 @@ export class HeaderComponent implements OnInit {
       type = 'dropdown';
     }
     return type;
+  }
+  ngAfterViewInit() {
+    // For sticky header
+    if (this.isBrowser && this.isShow) {
+      const distance = $('header').offset().top,
+        $window = $(window);
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 5) {
+          $('body').addClass('sticky');
+          const ht = $('header').innerHeight();
+          $('.empty').css({ 'min-height': ht });
+        } else {
+          $('body').removeClass('sticky');
+        }
+      });
+      // For navigation
+      setTimeout(() => {
+        $('nav ul li').has('ul').addClass('has_dd');
+        $('nav > ul > li > a').click(function () {
+          if ($(window).width() < 768) {
+            $(this).parent().find('.megamenu').slideToggle();
+            $(this).parent().siblings().find('.megamenu').slideUp();
+          }
+          $(this).parent().addClass('active');
+          $(this).parent().siblings().removeClass('active');
+        });
+      }, 500);
+    }
   }
 }

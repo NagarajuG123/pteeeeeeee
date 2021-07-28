@@ -44,17 +44,6 @@ ul {
   padding-left: 0rem !important;
 }
 
-.top-space {
-  padding-top: 94px;
-
-  @include tablet-landscape {
-    padding-top: 84px;
-  }
-  @include mobile-landscape1 {
-    padding-top: 84px;
-  }
-}
-
 .modal-open {
   overflow: auto !important;
 }

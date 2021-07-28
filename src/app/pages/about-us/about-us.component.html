@@ -1,101 +1,99 @@
-<div class="top-space">
-  <div class="empty"></div>
-  <div *ngIf="data">
-    <div *ngIf="data" class="banner d-flex flex-row-reverse">
-      <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
-        <a
-          class="d-block video-btn"
-          *ngIf="data?.media"
-          data-bs-target="#aboutModal"
-          data-bs-toggle="modal"
-        >
-          <figure>
-            <img
-              appYoutubeImage
-              src="{{ data?.media | defaultImage: 1300:730 }}"
-              width="1023"
-              height="575"
-              alt="about"
-              (imageLoad)="bannerImageLoad()"
-            />
-          </figure>
-          <app-modal
-            [videoUrl]="data?.media?.url"
-            [modalId]="'aboutModal'"
-          ></app-modal>
-        </a>
+<div class="empty"></div>
+<div *ngIf="data">
+  <div *ngIf="data" class="banner d-flex flex-row-reverse">
+    <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
+      <a
+        class="d-block video-btn"
+        *ngIf="data?.media"
+        data-bs-target="#aboutModal"
+        data-bs-toggle="modal"
+      >
+        <figure>
+          <img
+            appYoutubeImage
+            src="{{ data?.media | defaultImage: 1300:730 }}"
+            width="1023"
+            height="575"
+            alt="about"
+            (imageLoad)="bannerImageLoad()"
+          />
+        </figure>
+        <app-modal
+          [videoUrl]="data?.media?.url"
+          [modalId]="'aboutModal'"
+        ></app-modal>
+      </a>
+    </div>
+    <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
+      <div class="buffalo_wings">
+        <div class="info_btn text-center">
+          <a href="#" onclick="return false;" class="text-center">
+            ABOUT 1851
+          </a>
+          <h1 class="text-left">{{ data.title }}</h1>
+          <em class="text-left d-block">{{ data.description }}</em>
+        </div>
       </div>
-      <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
-        <div class="buffalo_wings">
-          <div class="info_btn text-center">
-            <a href="#" onclick="return false;" class="text-center">
-              ABOUT 1851
-            </a>
-            <h1 class="text-left">{{ data.title }}</h1>
-            <em class="text-left d-block">{{ data.description }}</em>
-          </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div *ngIf="data.contents" class="franchise_main text-center">
+      <div class="container">
+        <div class="franchise_data">
+          <h1>{{ data.contents[0].title }}</h1>
+          <p [innerHtml]="data.contents[0].short_description"></p>
         </div>
       </div>
     </div>
 
-    <div class="main-content">
-      <div *ngIf="data.contents" class="franchise_main text-center">
-        <div class="container">
-          <div class="franchise_data">
-            <h1>{{ data.contents[0].title }}</h1>
-            <p [innerHtml]="data.contents[0].short_description"></p>
-          </div>
+    <div class="publication_main">
+      <div
+        *ngFor="let content of publication_contents; let i = index"
+        class="publication_content d-flex flex-wrap"
+        [class.flex-row-reverse]="i % 2 === 0"
+      >
+        <div class="publication_left col-lg-6 col-md-12">
+          <figure>
+            <img
+              *ngIf="i === 0"
+              [src]="content['media']['url']"
+              width="720"
+              height="485"
+              alt="about_img2"
+              (imageLoaded)="mainImageLoad()"
+            />
+            <img
+              *ngIf="i === 1"
+              [src]="content['media']['url']"
+              width="720"
+              height="485"
+              alt="about_img2"
+              (imageLoaded)="mainImageLoad()"
+            />
+          </figure>
         </div>
-      </div>
-
-      <div class="publication_main">
         <div
-          *ngFor="let content of publication_contents; let i = index"
-          class="publication_content d-flex flex-wrap"
-          [class.flex-row-reverse]="i % 2 === 0"
+          class="
+            publication_right
+            d-flex
+            justify-content-center
+            align-items-center
+            col-lg-6 col-md-12
+          "
         >
-          <div class="publication_left col-lg-6 col-md-12">
-            <figure>
-              <img
-                *ngIf="i === 0"
-                [src]="content['media']['url']"
-                width="720"
-                height="485"
-                alt="about_img2"
-                (imageLoaded)="mainImageLoad()"
-              />
-              <img
-                *ngIf="i === 1"
-                [src]="content['media']['url']"
-                width="720"
-                height="485"
-                alt="about_img2"
-                (imageLoaded)="mainImageLoad()"
-              />
-            </figure>
-          </div>
-          <div
-            class="
-              publication_right
-              d-flex
-              justify-content-center
-              align-items-center
-              col-lg-6 col-md-12
-            "
-          >
-            <div class="publication_right_data col-lg-5 col-md-12">
-              <h3>{{ content.title }}</h3>
-              <p
-                style="color: black !important"
-                [innerHtml]="content.short_description"
-              ></p>
-            </div>
+          <div class="publication_right_data col-lg-5 col-md-12">
+            <h3>{{ content.title }}</h3>
+            <p
+              style="color: black !important"
+              [innerHtml]="content.short_description"
+            ></p>
           </div>
         </div>
       </div>
-      <div #tellus id="tellus">
-        <app-partner-main></app-partner-main>
-      </div>
+    </div>
+    <div #tellus id="tellus">
+      <app-partner-main></app-partner-main>
     </div>
   </div>
 </div>
