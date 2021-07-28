@@ -627,6 +627,22 @@ export class StoryComponent implements OnInit {
             for (let i = 0; i < this.detailsData.length; i++) {
               if (typeof this.detailsData[i]['meta'] !== 'undefined') {
                 this.metaService.setSeo(this.detailsData[i]['meta']);
+                if(this.detailsData[i]['meta']['og']){
+                  let meta = this.detailsData[i]['meta'];
+                  const ogKeys = Object.keys(meta.og);
+                  for(const key of ogKeys){
+                    if (key === 'media' && meta.og[key] !== null) {
+                      const image_url = `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${encodeURIComponent(this.changeMaxResultImg(meta.og['media']['url']))}`;
+                      this.metaService.updateTag({property: `og:image`, content: image_url}, `property='og:image'`);
+                      this.metaService.updateTag({property: `og:image:secure_url`, content: image_url}, `property='og:image:secure_url'`);
+                    } else if (meta.og[key] !== null) {
+                      this.metaService.updateTag({property: `og:${key}`, content: meta.og[key]}, `property='og:${key}'`);
+                    }
+                  }
+                  this.metaService.updateTag({property: `og:type`, content: `article`}, `property='og:type'`);
+                  this.metaService.updateTag({property: `og:image:width`, content: `500`}, `property='og:image:width'`);
+                  this.metaService.updateTag({property: `og:image:height`, content: `261`}, `property='og:image:height'`);
+                }
                 break;
               }
             }
