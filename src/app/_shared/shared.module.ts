@@ -20,7 +20,6 @@ import { ImagePreloadDirective } from '../_core/directives/image-preload.directi
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
@@ -49,7 +48,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     FeaturedComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent,
     ErrorComponent,
     NewsComponent,
     TrendingBuzzComponent,
@@ -85,7 +83,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     CarouselModule,
     MalihuScrollbarModule.forRoot(),
     SlickCarouselModule,
-    ShareButtonModule
+    ShareButtonModule,
   ],
   exports: [
     RouterModule,
@@ -102,7 +100,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     HeaderComponent,
     FooterComponent,
     FooterTopComponent,
-    SidebarComponent,
     AdvertisementComponent,
     NewsComponent,
     TrendingBuzzComponent,
@@ -120,7 +117,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     MalihuScrollbarModule,
     BannerSearchComponent,
     SlickCarouselModule,
-    ShareButtonModule
+    ShareButtonModule,
   ],
 })
 export class SharedModule {}
