@@ -244,7 +244,7 @@ export class HeaderComponent implements OnInit {
     return this.contactForm.controls;
   }
   getInquiry() {
-    if (typeof this.inquireData != 'undefined') {
+    if (this.inquireData != null) {
       this.isInquire = true;
       this.inquireTitle = this.inquireData.title;
       const group: any = {};
