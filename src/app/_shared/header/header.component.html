@@ -25,6 +25,284 @@
           </a>
         </div>
 
+        <div
+          *ngIf="isSide"
+          class="menu-details"
+          [ngClass]="commonService.showmenu ? 'show' : ''"
+        >
+          <div class="menu-logo text-center">
+            <a routerLink="/">
+              <figure>
+                <img
+                  class="logo-img"
+                  src="{{ sidenav?.logo }}"
+                  width="{{ publication?.id === 'EE' ? 200 : 53 }}"
+                  height="53"
+                  alt="logo"
+                />
+              </figure>
+            </a>
+          </div>
+          <div class="menu-search">
+            <form
+              [formGroup]="searchForm"
+              (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+            >
+              <div class="form-group">
+                <input
+                  type="text"
+                  formControlName="searchInput"
+                  class="form-control"
+                  [placeholder]="sidenav?.search?.placeholder"
+                />
+                <button
+                  type="button"
+                  (click)="onSearchSubmit(searchForm, 'sidebar')"
+                >
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="monthly-covers">
+            <ul>
+              <li class="d-block">
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="/monthlycovers"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-database"></i>
+                    </figure>
+                    <strong>MONTHLY COVERS</strong>
+                  </a>
+                  <div class="monthly-covers-details monthly-covers-details1">
+                    <a
+                      routerLink="{{ sidenav['monthly-cover']?.url }}"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <img
+                          appYoutubeImage
+                          src="{{
+                            sidenav['monthly-cover']?.media
+                              | defaultImage: 97:127
+                          }}"
+                          width="97"
+                          height="127"
+                          alt="monthly cover"
+                        />
+                      </figure>
+                    </a>
+                  </div>
+                </div>
+                <div class="monthly-covers-main">
+                  <a class="cursor-default" href="#" onclick="return false;">
+                    <figure>
+                      <i class="fa fa-server"></i>
+                    </figure>
+                    <strong>{{ sidenav?.category?.label }}</strong>
+                  </a>
+                  <div class="monthly-covers-details">
+                    <p *ngFor="let item of sidenav?.category?.items">
+                      <a
+                        routerLink="{{ item.url.replace('+', '-') }}"
+                        [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                        (click)="commonService.toggle()"
+                        >{{ item.title }}</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li *ngIf="sidenav['awards']" class="d-block">
+                <div class="monthly-covers-main">
+                  <a class="cursor-default" href="#" onclick="return false;">
+                    <figure>
+                      <i class="fa fa-trophy"></i>
+                    </figure>
+                    <strong>AWARDS</strong>
+                  </a>
+                  <div class="monthly-covers-details">
+                    <p *ngFor="let item of sidenav['awards']">
+                      <a
+                        routerLink="/{{ item?.url }}"
+                        [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                        (click)="commonService.toggle()"
+                        >{{ item?.title }}</a
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="monthly-covers-main"
+                  *ngIf="sidenav['power-rankings']"
+                >
+                  <a
+                    routerLink="{{ sidenav['power-rankings']?.url }}"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-star"></i>
+                    </figure>
+                    <strong>POWER RANKINGS</strong>
+                  </a>
+                </div>
+              </li>
+              <li class="d-block">
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="{{ sidenav['about-1851']?.url }}"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-question-circle"></i>
+                    </figure>
+                    <strong
+                      >ABOUT
+                      <span>{{
+                        publication?.shortTitle?.toUpperCase()
+                      }}</span></strong
+                    >
+                  </a>
+                </div>
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="/termsofuse"
+                    fragment="sponsored"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-usd"></i>
+                    </figure>
+                    <strong>SPONSORED CONTENT</strong>
+                  </a>
+                </div>
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="/about"
+                    fragment="tellus"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-rss"></i>
+                    </figure>
+                    <strong
+                      >ADVERTISE ON
+                      <span>{{
+                        publication?.shortTitle?.toUpperCase()
+                      }}</span></strong
+                    >
+                  </a>
+                </div>
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="{{ sidenav['contact-editorial']?.url }}"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-envelope-open"></i>
+                    </figure>
+                    <strong
+                      >CONTACT
+                      <span>{{ publication?.shortTitle?.toUpperCase() }}</span
+                      >&nbsp;<span *ngIf="publication.id != 'EE'"
+                        >EDITORIAL</span
+                      ></strong
+                    >
+                  </a>
+                </div>
+                <div class="monthly-covers-main">
+                  <a
+                    routerLink="{{ sidenav['terms-of-use']?.url }}"
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >
+                    <figure>
+                      <i class="fa fa-list"></i>
+                    </figure>
+                    <strong>TERMS OF USE</strong>
+                  </a>
+                </div>
+              </li>
+              <li class="d-block">
+                <div class="monthly-covers-main">
+                  <a href="{{ sidenav['login']?.url }}">
+                    <figure>
+                      <i class="fa fa-home"></i>
+                    </figure>
+                    <strong>LOGIN</strong>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <nav class="d-sm-block d-md-none">
+            <ul>
+              <li
+                *ngIf="header && header['Franchise Brands']"
+                class="has_dd d-block float-none"
+              >
+                <a class="text-uppercase">
+                  {{ header["Franchise Brands"]?.title }}
+                  <span
+                    ><i class="fa fa-angle-down" aria-hidden="true"></i
+                  ></span>
+                </a>
+                <div class="megamenu">
+                  <ul>
+                    <li
+                      *ngFor="
+                        let subItem of header['Franchise Brands']?.dropdown
+                      "
+                    >
+                      <a
+                        href="{{ subItem.url }}"
+                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        class="text-uppercase"
+                        >{{ subItem.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Learn -->
+              <li
+                *ngIf="header && header['Learn']"
+                class="has_dd d-block float-none"
+              >
+                <a class="text-uppercase">
+                  {{ header["Learn"]?.title }}
+                  <span
+                    ><i class="fa fa-angle-down" aria-hidden="true"></i
+                  ></span>
+                </a>
+                <div class="megamenu">
+                  <ul>
+                    <li *ngFor="let subItem of header['Learn']?.dropdown">
+                      <a
+                        href="{{ subItem.url }}"
+                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        class="text-uppercase"
+                        >{{ subItem.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </nav>
+        </div>
+
         <div class="logo col-xl-11 col-10 d-flex">
           <a routerLink="/" [class]="header?.logo?.padding">
             <figure>
@@ -142,7 +420,7 @@
       </div>
     </div>
   </div>
-  <!-- brand sidebar -->
+  <!-- brand header -->
   <div *ngIf="!isMain" class="container">
     <div class="header-details d-flex brand-header">
       <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
@@ -169,6 +447,195 @@
           </a>
         </div>
 
+        <div
+          *ngIf="isSide"
+          class="menu-details brand-menu-details"
+          [ngClass]="commonService.showmenu ? 'show' : ''"
+        >
+          <div class="menu-logo text-center">
+            <a
+              routerLink="{{ brandSlug }}"
+              [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+              (click)="commonService.toggle()"
+            >
+              <figure>
+                <img
+                  class="logo-img sidebar-brand-images"
+                  src="{{ sidenav?.logo }}"
+                  alt="logo"
+                />
+              </figure>
+            </a>
+          </div>
+          <div class="sponsored">
+            <h6 class="d-block text-uppercase text-center">
+              <small class="d-inline-block"></small>
+              SPONSORED CONTENT
+            </h6>
+            <div class="menu-search">
+              <form
+                [formGroup]="searchForm"
+                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+              >
+                <div class="form-group">
+                  <input
+                    formControlName="searchInput"
+                    type="text"
+                    class="form-control"
+                    [placeholder]="sidenav?.search?.placeholder"
+                  />
+                  <button
+                    type="button"
+                    (click)="onSearchSubmit(searchForm, 'sidebar')"
+                  >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="monthly-covers">
+              <ul>
+                <li class="d-block">
+                  <div class="monthly-covers-main">
+                    <a
+                      href="/"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <i class="fa fa-database"></i>
+                      </figure>
+                      <strong>RETURN TO MAIN SITE</strong>
+                    </a>
+                  </div>
+                  <div class="monthly-covers-main">
+                    <a
+                      routerLink="{{ brandSlug }}"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <i class="fa fa-server"></i>
+                      </figure>
+                      <strong>{{ brandTitle }}</strong>
+                    </a>
+                    <div *ngIf="downloadPdfUrl" class="monthly-covers-details">
+                      <p>
+                        <a
+                          *ngIf="isPdfEmail == 'true'"
+                          data-bs-toggle="modal"
+                          data-bs-target="#pdfModal1"
+                          class="text-uppercase"
+                          href="#"
+                        >
+                          Download PDF
+                        </a>
+                        <a
+                          *ngIf="isPdfEmail == 'false'"
+                          href="{{ downloadPdfUrl }}"
+                          target="blank"
+                        >
+                          Download PDF
+                        </a>
+                      </p>
+                    </div>
+                    <div class="monthly-covers-details">
+                      <p>
+                        <a
+                          href="{{ visitSite }}"
+                          target="blank"
+                          (click)="visitBrandPage()"
+                          >Visit Website</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li class="d-block">
+                  <div class="monthly-covers-main">
+                    <a href="#" onclick="return false;">
+                      <figure>
+                        <i class="fa fa-trophy"></i>
+                      </figure>
+                      <strong>SOCIAL MEDIA</strong>
+                    </a>
+                    <div
+                      *ngFor="let item of sidenav['social_media']"
+                      class="monthly-covers-details"
+                    >
+                      <p>
+                        <a href="{{ item.url }}" target="blank">{{
+                          item.title
+                        }}</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="monthly-covers-main">
+                    <a
+                      routerLink="{{ brandSlug }}"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <i class="fa fa-star"></i>
+                      </figure>
+                      <strong>{{ brandTitle }} MOST READ STORIES</strong>
+                    </a>
+                    <div
+                      *ngFor="let story of sidenav['most-read-stories']"
+                      class="monthly-covers-details"
+                    >
+                      <p>
+                        <a
+                          href="{{ story.brand.slug }}/{{ story.slug }}#stories"
+                          >{{ story?.title }}</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li class="d-block">
+                  <div class="monthly-covers-main">
+                    <a href="https://brand.1851franchise.com">
+                      <figure>
+                        <i class="fa fa-home"></i>
+                      </figure>
+                      <strong>LOGIN</strong>
+                    </a>
+                  </div>
+                </li>
+                <li class="d-block">
+                  <div class="monthly-covers-main">
+                    <a
+                      routerLink="{{ sidenav['about']?.url }}"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <i class="fa fa-envelope-open"></i>
+                      </figure>
+                      <strong>ABOUT {{ brandTitle }}</strong>
+                    </a>
+                  </div>
+                  <div *ngIf="isContact" class="monthly-covers-main">
+                    <a
+                      href="#"
+                      data-bs-toggle="modal"
+                      data-bs-target="#contactModal"
+                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                      (click)="commonService.toggle()"
+                    >
+                      <figure>
+                        <i class="fa fa-usd"></i>
+                      </figure>
+                      <strong>CONTACT {{ brandTitle }}</strong>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px">
           <a
             routerLink="{{ brandSlug }}"
@@ -374,7 +841,10 @@
         >
           &times;
         </button>
-        <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)">
+        <form
+          [formGroup]="searchForm"
+          (ngSubmit)="onSearchSubmit(searchForm, 'header')"
+        >
           <div class="form-group d-block">
             <input
               type="text"
@@ -386,7 +856,7 @@
             <button
               type="button"
               class="d-block text-center"
-              (click)="onSearchSubmit(searchForm)"
+              (click)="onSearchSubmit(searchForm, 'header')"
               data-bs-dismiss="modal"
             >
               <i class="fa fa-search" aria-hidden="true"></i>
@@ -458,6 +928,168 @@
             media placements the brand earned. Questions can be sent to
             <span>{{ editorialEmail }}</span>
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div
+    *ngIf="isBrowser && isContact"
+    class="search_pop_up modal"
+    id="contactModal"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          id="contactModalClose"
+          type="button"
+          class="close text-right"
+          data-bs-dismiss="modal"
+        >
+          &times;
+        </button>
+        <div class="modal-header">
+          <h1>{{ contactTitle }}</h1>
+        </div>
+        <form
+          *ngIf="contactForm"
+          [formGroup]="contactForm"
+          (ngSubmit)="submitContactForm(contactForm.value)"
+        >
+          <div *ngFor="let fields of contactFields" class="form-row mb-3">
+            <!-- <div class="form-group"> -->
+            <label class="form-label"
+              >{{ fields.title }}
+              <sup *ngIf="fields.required" class="text-danger">*</sup>
+            </label>
+            <input
+              *ngIf="fields.type === 'text'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              [type]="fields.type"
+              class="form-control rounded-0"
+              [pattern]="fields.pattern"
+              [maxLength]="fields.maxLength || 1000"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedContactForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            />
+            <textarea
+              *ngIf="fields.type === 'textarea'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control rounded-0"
+              rows="3"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedContactForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            ></textarea>
+            <select
+              *ngIf="fields.type === 'dropdown'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control rounded-0"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            >
+              <option *ngFor="let value of fields.enum" value="{{ value }}">
+                <span>{{ value }}</span>
+              </option>
+            </select>
+            <div
+              class="invalid-feedback d-block"
+              *ngIf="
+                (formControlsContactValues[fields.key].touched ||
+                  submittedContactForm) &&
+                (formControlsContactValues[fields.key].errors?.required ||
+                  formControlsContactValues[fields.key].errors?.email ||
+                  formControlsContactValues[fields.key].errors?.pattern)
+              "
+            >
+              {{ fields.errorMsg }}
+            </div>
+          </div>
+          <div class="d-grid contactSubmit">
+            <button
+              type="submit"
+              class="btn btn-danger text-end rounded-0 btn-sm nextBtn"
+            >
+              Next
+            </button>
+          </div>
+          <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Thanks -->
+  <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="close text-right"
+          (click)="closeModal('thanksModal')"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- PDF Modal -->
+  <div
+    *ngIf="isBrowser && downloadPdfUrl"
+    class="search_pop_up modal"
+    id="pdfModal1"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="sponsored-modal-content">
+          <button
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <h2 class="text-uppercase">Download PDF</h2>
+          <div class="email-content">
+            <form [formGroup]="pdfForm" (ngSubmit)="emailSubscribe(pdfForm)">
+              <div class="form-group">
+                <label>Enter Email:</label>
+                <input
+                  type="text"
+                  [formControl]="pdfForm.controls['emailInput']"
+                  class="form-control"
+                />
+                <app-error-message
+                  *ngIf="isEmailSubmit"
+                  class="full-width"
+                  [control]="pdfForm.controls['emailInput']"
+                ></app-error-message>
+                <p *ngIf="emailSubValid" class="invalid">
+                  {{ emailSubMessage }}
+                </p>
+                <button type="button" (click)="emailSubscribe(pdfForm)">
+                  Download
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

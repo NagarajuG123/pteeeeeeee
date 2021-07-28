@@ -18,6 +18,8 @@ import {
 } from '@angular/forms';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ValidationService } from 'src/app/_core/services/validation.service';
+import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -50,18 +52,43 @@ export class HeaderComponent implements OnInit {
   inquireTitle = '';
   inquireData: any;
   submitErrMsg: string = '';
+  isSide: boolean = false;
+  sidenav: any;
+  ga: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
+  pdfForm: any;
+  isEmailSubmit: boolean = false;
+  emailSubMessage: string;
+  emailSubValid: boolean = false;
+  isContact: boolean = false;
+  contactTitle = '';
+  contactFields: any;
+  contactForm!: FormGroup;
+  submittedContactForm: boolean = false;
+  downloadPdfUrl: any;
+  isPdfEmail: any = false;
+  visitSite: any;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
     private router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _googleAnalyticsService: GoogleAnalyticsService
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
+    });
+    this.pdfForm = fb.group({
+      emailInput: [
+        '',
+        Validators.compose([
+          Validators.required,
+          ValidationService.emailValidator,
+        ]),
+      ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -97,6 +124,7 @@ export class HeaderComponent implements OnInit {
                 this.isMain = false;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
+                this.ga = response.ga;
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -109,26 +137,60 @@ export class HeaderComponent implements OnInit {
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
+    this.isSide = true;
+
     const header = this.apiService.getAPI(`${this.brandSlug}/header`);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const sidenav = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
 
-    forkJoin([header, news, inquire, publication]).subscribe((results) => {
-      this.header = results[0].data;
-      this.news = results[1].data;
-      this.inquireData = results[2].schema;
-      this.publication = results[3];
-      if (this.brandSlug != '1851') {
-        this.getInquiry();
+    forkJoin([header, news, inquire, publication, sidenav]).subscribe(
+      (results) => {
+        this.header = results[0].data;
+        this.news = results[1].data;
+        this.inquireData = results[2].schema;
+        this.publication = results[3];
+        this.sidenav = results[4].data;
+        if (this.brandSlug != '1851') {
+          this.getInquiry();
+          this.getContact();
+          if (this.sidenav[this.brandSlug]) {
+            this.downloadPdfUrl = `${
+              this.sidenav[this.brandSlug]['download-pdf']['url']
+            }`;
+            this.isPdfEmail = `${
+              this.sidenav[this.brandSlug]['download-pdf']['email_popup']
+            }`;
+            this.visitSite = `${
+              this.sidenav[this.brandSlug]['visit-website']['url']
+            }`;
+          }
+        }
       }
-    });
+    );
   }
-
+  visitBrandPage() {
+    const action = this.visitSite
+      .replace(/^https?:\/\//, '')
+      .replace(/^http?:\/\//, '')
+      .match(/^([^\/]+)/gm)[0];
+    this._googleAnalyticsService.appendGaEventOutboundLink(
+      this.ga['1851_franchise'],
+      this.brandId,
+      action,
+      'Visit Website',
+      this.brandTitle
+    );
+  }
   readMore(item: any) {
     return this.commonService.readMore(item);
   }
-  onSearchSubmit(searchForm: FormGroup) {
+  onSearchSubmit(searchForm: FormGroup, type) {
+    if (type === 'sidebar') {
+      this.commonService.toggle();
+    }
+
     this.searchCloseBtn.nativeElement.click();
 
     if (this.brandId === '1851') {
@@ -178,7 +240,9 @@ export class HeaderComponent implements OnInit {
   get formControlsValues() {
     return this.inquireForm.controls;
   }
-
+  get formControlsContactValues() {
+    return this.contactForm.controls;
+  }
   getInquiry() {
     if (typeof this.inquireData != 'undefined') {
       this.isInquire = true;
@@ -236,6 +300,105 @@ export class HeaderComponent implements OnInit {
       type = 'dropdown';
     }
     return type;
+  }
+  getContact() {
+    this.apiService
+      .getAPI(`${this.brandSlug}/brand/contact`)
+      .subscribe((response) => {
+        if (response.schema != null) {
+          this.isContact = true;
+          this.contactTitle = response.schema.title;
+          const group: any = {};
+          let objectKey = Object.keys(response.schema.properties);
+          this.contactFields = objectKey.map((item, index) => {
+            let value: any = {
+              value: '',
+              key: item,
+              title: response.schema.properties[item].title,
+              required: response.schema.required.find((v) => v === item)
+                ? true
+                : false,
+              type: this.getFormType(item),
+              pattern: response.schema.properties[item].pattern || '',
+              enum: response.schema.properties[item].enum || '',
+
+              errorMsg:
+                response.schema.properties[item].validationMessage ||
+                (
+                  response.schema.properties[item].title + ' field required.'
+                ).toLocaleLowerCase(),
+            };
+            if (response.schema.properties[item].maxLength) {
+              value.maxLength = response.schema.properties[item].maxLength;
+            }
+            return value;
+          });
+          this.contactFields.forEach((item, index) => {
+            let validation = [];
+            if (item.required) {
+              validation.push(Validators.required);
+            }
+            if (item.maxLength) {
+              validation.push(Validators.maxLength(item.maxLength));
+            }
+            if (item.key === 'email') {
+              validation.push(Validators.email);
+            }
+            if (item.pattern) {
+              validation.push(Validators.pattern(item.pattern));
+            }
+            group[item.key] = [item.value || '', [...validation]];
+          });
+          this.contactForm = this.fb.group(group);
+        }
+      });
+  }
+  submitContactForm(values: any) {
+    this.submittedContactForm = true;
+    this.isSubmitted = true;
+
+    if (this.contactForm.invalid) {
+      return;
+    }
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand/contact`, values)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        console.log(result);
+        if (typeof result.data !== 'undefined') {
+          $('#contactModalClose').click();
+          $('#thanksModal').show();
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
+        } else {
+          this.submitErrMsg = result.error.message;
+          this.isSubmitFailed = true;
+        }
+        this.submittedContactForm = false;
+      });
+  }
+
+  emailSubscribe(pdfform: FormGroup) {
+    this.isEmailSubmit = true;
+    this.emailSubMessage = '';
+    if (!pdfform.valid) {
+      return;
+    }
+    const payload = {
+      email: pdfform.controls['emailInput'].value,
+    };
+    this.apiService
+      .postAPI(`${this.brandSlug}/brand-pdf`, payload)
+      .subscribe((res) => {
+        $('#pdfModal1').hide();
+        if (res.success) {
+          window.open(this.downloadPdfUrl.replace('api.', ''), '_blank');
+        } else {
+          this.emailSubValid = true;
+          this.emailSubMessage = res.message;
+        }
+      });
   }
   ngAfterViewInit() {
     // For sticky header

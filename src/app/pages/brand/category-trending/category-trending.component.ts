@@ -32,7 +32,7 @@ export class CategoryTrendingComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     const trending: SimpleChange = changes.data;
 
-    if (trending.currentValue.length !== 0) {
+    if (trending.currentValue && trending.currentValue.length !== 0) {
       this.isSlider = true;
       this.data = trending.currentValue;
       this.slideConfig = {
