@@ -26,7 +26,7 @@
         </div>
 
         <div
-          *ngIf="isSide"
+          *ngIf="isSide && sidenav"
           class="menu-details"
           [ngClass]="commonService.showmenu ? 'show' : ''"
         >
@@ -78,7 +78,10 @@
                     </figure>
                     <strong>MONTHLY COVERS</strong>
                   </a>
-                  <div class="monthly-covers-details monthly-covers-details1">
+                  <div
+                    *ngIf="sidenav['monthly-cover']"
+                    class="monthly-covers-details monthly-covers-details1"
+                  >
                     <a
                       routerLink="{{ sidenav['monthly-cover']?.url }}"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
@@ -154,7 +157,7 @@
                 </div>
               </li>
               <li class="d-block">
-                <div class="monthly-covers-main">
+                <div class="monthly-covers-main" *ngIf="sidenav['about-1851']">
                   <a
                     routerLink="{{ sidenav['about-1851']?.url }}"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
@@ -397,7 +400,7 @@
             </a>
           </div>
           <div
-            *ngIf="header['monthly-cover']"
+            *ngIf="header && header['monthly-cover']"
             class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
           >
             <a

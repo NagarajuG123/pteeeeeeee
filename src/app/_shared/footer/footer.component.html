@@ -96,7 +96,14 @@
           >
           <div class="clearfix"></div>
           <a href="tel:3125263996">312.526.3996</a>
-          <div class="social-blogs" *ngIf="footer['learn-more']">
+          <div
+            class="social-blogs"
+            *ngIf="
+              footer &&
+              footer['learn-more'] &&
+              footer['learn-more']['social-media']
+            "
+          >
             <ul class="float-right">
               <li>
                 <a

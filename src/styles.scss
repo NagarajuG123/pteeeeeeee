@@ -47,3 +47,18 @@ ul {
 .modal-open {
   overflow: auto !important;
 }
+
+b,
+strong {
+  font-family: "ProximaNova-Medium";
+}
+ul li,
+p {
+  font-family: "ProximaNova-Regular" !important;
+}
+h4 {
+  font-family: "ProximaNova-SemiBold";
+}
+.socialmedia span.d-block {
+  display: none !important;
+}

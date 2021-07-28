@@ -137,8 +137,6 @@ export class HeaderComponent implements OnInit {
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
-    this.isSide = true;
-
     const header = this.apiService.getAPI(`${this.brandSlug}/header`);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
@@ -152,6 +150,8 @@ export class HeaderComponent implements OnInit {
         this.inquireData = results[2].schema;
         this.publication = results[3];
         this.sidenav = results[4].data;
+        this.isSide = true;
+
         if (this.brandSlug != '1851') {
           this.getInquiry();
           this.getContact();
