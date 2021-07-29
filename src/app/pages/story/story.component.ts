@@ -511,7 +511,7 @@ export class StoryComponent implements OnInit {
     } else if (media.includes('sddefault')) {
       media = media.replace('sddefault', 'hqdefault');
     }
-    return media;
+    return encodeURIComponent(media);
   }
 
   checkFacebookPagePlugin(delay) {
@@ -634,8 +634,8 @@ export class StoryComponent implements OnInit {
                     if (key === 'media' && meta.og[key] !== null) {
                       const image_url = `${
                         environment.imageResizeUrl
-                      }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-                        this.changeMaxResultImg(meta.og['media']['url'])
+                      }/insecure/fill/500/261/no/0/plain/${this.changeMaxResultImg(
+                        meta.og['media']['url']
                       )}`;
                       this.metaService.updateTag(
                         { property: `og:image`, content: image_url },
@@ -676,8 +676,8 @@ export class StoryComponent implements OnInit {
                       // tslint:disable-next-line:max-line-length
                       const twitter_url = `${
                         environment.imageResizeUrl
-                      }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-                        this.changeMaxResultImg(meta.twitter['media']['url'])
+                      }/insecure/fill/500/261/no/0/plain/${this.changeMaxResultImg(
+                        meta.twitter['media']['url']
                       )}`;
                       this.metaService.updateTag(
                         { name: `twitter:image`, content: twitter_url },
