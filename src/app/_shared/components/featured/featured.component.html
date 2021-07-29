@@ -29,7 +29,8 @@
                         (max-width: 1200px) 700px,
                         1300px'
           }}"
-          src="{{ highlight.media | defaultImage: 1300:730 }}"
+          data-src="{{ highlight.media | defaultImage: 1300:730 }}"
+          class="lazyload"
           (click)="readMore(highlight)"
           (load)="highlightImageload = true"
         />
@@ -52,7 +53,8 @@
                         (max-width: 1200px) 700px,
                         1300px'
           }}"
-          src="{{ highlight.media | defaultImage: 1300:730 }}"
+          data-src="{{ highlight.media | defaultImage: 1300:730 }}"
+          class="lazyload"
           (load)="highlightImageload = true"
         />
       </figure>
@@ -118,7 +120,8 @@
                                                 (max-width: 1200px) 238px,
                                                 300px'
                     }}"
-                    src="{{ article.media | defaultImage: 1300:730 }}"
+                    data-src="{{ article.media | defaultImage: 1300:730 }}"
+                    class="lazyload"
                     alt="img3"
                   />
                 </figure>

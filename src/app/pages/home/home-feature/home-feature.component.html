@@ -31,8 +31,9 @@
                                                 (max-width: 1200px) 530px,
                                                 623px'
                 }}"
-                src="{{ highlightItem.media | defaultImage: 623:350 }}"
-                alt="img19"
+                data-src="{{ highlightItem.media | defaultImage: 623:350 }}"
+                alt="dynamicpage"
+                class="lazyload"
               />
             </figure>
           </div>
@@ -47,7 +48,9 @@
               <span
                 class="float-left text-uppercase"
                 style="color: white !important"
-                ><a routerLink="/{{ readMore(highlightItem) }}" fragment="dynamicpage"
+                ><a
+                  routerLink="/{{ readMore(highlightItem) }}"
+                  fragment="dynamicpage"
                   >READ MORE
                   <i class="fa fa-angle-right" aria-hidden="true"></i></a
               ></span>

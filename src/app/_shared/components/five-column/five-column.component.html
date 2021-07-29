@@ -32,7 +32,11 @@
           {{ i + 11 }}
         </span>
       </div>
-      <a routerLink="/{{ readMore(n) }}" fragment="{{ typeSlug }}" class="frannews-bottom-details">
+      <a
+        routerLink="/{{ readMore(n) }}"
+        fragment="{{ typeSlug }}"
+        class="frannews-bottom-details"
+      >
         <figure>
           <img
             appYoutubeImage
@@ -43,7 +47,8 @@
                (max-width: 992px) 300px,
                210px'
             }}"
-            src="{{ n.media | defaultImage: 210:118 }}"
+            data-src="{{ n.media | defaultImage: 210:118 }}"
+            class="lazyload"
             alt="img5"
           />
         </figure>

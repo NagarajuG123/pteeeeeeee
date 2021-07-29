@@ -52,9 +52,9 @@
                   <img
                     appYoutubeImage
                     *ngIf="type === 'trending' || type === 'columns'"
-                    src="{{ item.media | defaultImage: 415:232 }}"
+                    data-src="{{ item.media | defaultImage: 415:232 }}"
                     alt="img9"
-                    srcset=""
+                    class="lazyload"
                   />
                 </figure>
                 <figure *ngIf="!item.media">
@@ -62,8 +62,7 @@
                     src="assets/img/video-img2.jpg"
                     width="415"
                     height="232"
-                    alt="img9"
-                    srcset=""
+                    alt="trending"
                   />
                 </figure>
                 <div class="w-100 buffalowings" *ngIf="type === 'trending'">
@@ -130,9 +129,9 @@
                 <figure *ngIf="item.media">
                   <img
                     appYoutubeImage
-                    src="{{ item.media | defaultImage: 415:232 }}"
+                    data-src="{{ item.media | defaultImage: 415:232 }}"
                     alt="video-img5"
-                    srcset=""
+                    class="lazyload"
                   />
                   <img class="video-maker" src="assets/img/youtube.svg" />
                 </figure>
@@ -141,7 +140,7 @@
                     src="assets/img/video-img2.jpg"
                     width="415"
                     height="232"
-                    alt="video-img5"
+                    alt="video"
                   />
                 </figure>
               </div>

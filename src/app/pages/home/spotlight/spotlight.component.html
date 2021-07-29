@@ -60,8 +60,11 @@
                                                     (max-width: 1200px) 365px,
                                                     516px'
                       }}"
-                      src="{{ highlightItem.media | defaultImage: 516:290 }}"
-                      alt="img2"
+                      data-src="{{
+                        highlightItem.media | defaultImage: 516:290
+                      }}"
+                      alt="spotlight"
+                      class="lazyload"
                     />
                   </figure>
                   <a class="buffalowings">
