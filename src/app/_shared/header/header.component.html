@@ -270,6 +270,7 @@
                       <a
                         href="{{ subItem.url }}"
                         [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        rel="subItem['isExternalLink'] ? 'noreferrer' : ''"
                         class="text-uppercase"
                         >{{ subItem.title }}</a
                       >
@@ -294,6 +295,7 @@
                       <a
                         href="{{ subItem.url }}"
                         [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        rel="subItem['isExternalLink'] ? 'noreferrer' : ''"
                         class="text-uppercase"
                         >{{ subItem.title }}</a
                       >
