@@ -19,7 +19,7 @@ import {
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Subject, forkJoin } from 'rxjs';
 import { EmbedService } from 'src/app/_core/services/embed.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { BrandNews } from 'src/app/_core/models/brandNews';
@@ -76,6 +76,7 @@ export class StoryComponent implements OnInit {
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
+  metaData: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -88,7 +89,8 @@ export class StoryComponent implements OnInit {
     private rendererFactory: RendererFactory2,
     @Inject(DOCUMENT) private dom,
     private commonService: CommonService,
-    private location: Location
+    private location: Location,
+    private meta: Meta
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.isServer = isPlatformServer(platformId);
@@ -460,25 +462,26 @@ export class StoryComponent implements OnInit {
         }
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
+          this.metaData = result['story'].meta;
 
           if (
             this.router.url.includes('story/details') ||
             this.router.url.includes('storypage/preview')
           ) {
-            this.metaService.updateTag(
+            this.meta.updateTag(
               { name: 'robots', content: 'noindex' },
               `name='robots'`
             );
-            this.metaService.updateTag(
+            this.meta.updateTag(
               { name: 'googlebot', content: 'noindex' },
               `name='googlebot'`
             );
           } else {
             if (
-              typeof result['story'].meta !== 'undefined' &&
-              result['story'].meta !== null
+              typeof this.metaData !== 'undefined' &&
+              this.metaData !== null
             ) {
-              this.metaService.setSeo(result['story'].meta);
+              this.setMeta(this.metaData);
             }
           }
         }
@@ -504,6 +507,102 @@ export class StoryComponent implements OnInit {
 
         this.createCanonicalURL(url);
       });
+  }
+
+  setMeta(metas) {
+    if (typeof metas === 'undefined' || metas === null) {
+      return;
+    }
+    if (metas.seo) {
+      const seoKeys = Object.keys(metas.seo);
+      for (const key of seoKeys) {
+        if (key === 'robots') {
+          continue;
+        } else if (key === 'indexable') {
+          if (metas.seo.indexable) {
+            this.meta.updateTag({ name: 'robots', content: 'index, follow' });
+          } else {
+            this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+          }
+        } else if (key === 'title') {
+          this.metaService.setTitle(metas.seo.title);
+        } else if (metas.seo[key] !== null) {
+          this.meta.updateTag(
+            { name: key, content: metas.seo[key] },
+            `name='${key}'`
+          );
+        }
+      }
+    }
+    if (metas.og) {
+      const ogKeys = Object.keys(metas.og);
+      for (const key of ogKeys) {
+        if (key === 'media' && metas.og[key] !== null) {
+          // tslint:disable-next-line:max-line-length
+          const image_url = `${
+            environment.imageResizeUrl
+          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
+            this.changeMaxResultImg(metas.og['media']['url'])
+          )}`;
+          this.meta.updateTag(
+            { property: `og:image`, content: image_url },
+            `property='og:image'`
+          );
+          this.meta.updateTag(
+            { property: `og:image:secure_url`, content: image_url },
+            `property='og:image:secure_url'`
+          );
+          // this.meta.updateTag({property: `og:image`, content: `${metas.og['media']['url']}`}, `property='og:image'`);
+          // tslint:disable-next-line:max-line-length
+          // this.meta.updateTag({property: `og:image:secure_url`, content: `${metas.og['media']['url']}`}, `property='og:image:secure_url'`);
+        } else if (metas.og[key] !== null) {
+          this.meta.updateTag(
+            { property: `og:${key}`, content: metas.og[key] },
+            `property='og:${key}'`
+          );
+        }
+      }
+      this.meta.updateTag(
+        { property: `og:type`, content: `article` },
+        `property='og:type'`
+      );
+      this.meta.updateTag(
+        { property: `og:image:width`, content: `500` },
+        `property='og:image:width'`
+      );
+      this.meta.updateTag(
+        { property: `og:image:height`, content: `261` },
+        `property='og:image:height'`
+      );
+    }
+    if (metas.twitter) {
+      const twitterKeys = Object.keys(metas.twitter);
+      for (const key of twitterKeys) {
+        if (key === 'media' && metas.twitter[key] !== null) {
+          // tslint:disable-next-line:max-line-length
+          const twitter_url = `${
+            environment.imageResizeUrl
+          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
+            this.changeMaxResultImg(metas.twitter['media']['url'])
+          )}`;
+          this.meta.updateTag(
+            { name: `twitter:image`, content: twitter_url },
+            `name='twitter:image'`
+          );
+        } else if (metas.twitter[key] !== null) {
+          this.meta.updateTag(
+            { name: `twitter:${key}`, content: metas.twitter[key] },
+            `name='twitter:${key}'`
+          );
+        }
+      }
+    }
+    if (metas['fb-app-id']) {
+      this.meta.updateTag(
+        { property: 'fb:app_id', content: metas['fb-app-id'] },
+        `property='fb:app_id'`
+      );
+    }
   }
   changeMaxResultImg(media) {
     if (media.includes('maxresdefault')) {
@@ -626,75 +725,15 @@ export class StoryComponent implements OnInit {
             this.isFirstSEO = true;
             for (let i = 0; i < this.detailsData.length; i++) {
               if (typeof this.detailsData[i]['meta'] !== 'undefined') {
-                this.metaService.setSeo(this.detailsData[i]['meta']);
-                if (this.detailsData[i]['meta']['og']) {
-                  let meta = this.detailsData[i]['meta'];
-                  const ogKeys = Object.keys(meta.og);
-                  for (const key of ogKeys) {
-                    if (key === 'media' && meta.og[key] !== null) {
-                      const image_url = `${
-                        environment.imageResizeUrl
-                      }/insecure/fill/500/261/no/0/plain/${this.changeMaxResultImg(
-                        meta.og['media']['url']
-                      )}`;
-                      this.metaService.updateTag(
-                        { property: `og:image`, content: image_url },
-                        `property='og:image'`
-                      );
-                      this.metaService.updateTag(
-                        { property: `og:image:secure_url`, content: image_url },
-                        `property='og:image:secure_url'`
-                      );
-                    } else if (meta.og[key] !== null) {
-                      this.metaService.updateTag(
-                        { property: `og:${key}`, content: meta.og[key] },
-                        `property='og:${key}'`
-                      );
-                    }
-                  }
-                  this.metaService.updateTag(
-                    { property: `og:type`, content: `article` },
-                    `property='og:type'`
-                  );
-                  this.metaService.updateTag(
-                    { property: `og:image:width`, content: `500` },
-                    `property='og:image:width'`
-                  );
-                  this.metaService.updateTag(
-                    { property: `og:image:height`, content: `261` },
-                    `property='og:image:height'`
-                  );
-                }
-                if (this.detailsData[i]['meta']['twitter']) {
-                  const twitterKeys = Object.keys(
-                    this.detailsData[i]['meta']['twitter']
-                  );
-                  for (const key of twitterKeys) {
-                    let meta = this.detailsData[i]['meta'];
+                this.metaData = this.detailsData[i]['meta'];
 
-                    if (key === 'media' && meta.twitter[key] !== null) {
-                      // tslint:disable-next-line:max-line-length
-                      const twitter_url = `${
-                        environment.imageResizeUrl
-                      }/insecure/fill/500/261/no/0/plain/${this.changeMaxResultImg(
-                        meta.twitter['media']['url']
-                      )}`;
-                      this.metaService.updateTag(
-                        { name: `twitter:image`, content: twitter_url },
-                        `name='twitter:image'`
-                      );
-                    } else if (meta.twitter[key] !== null) {
-                      this.metaService.updateTag(
-                        {
-                          name: `twitter:${key}`,
-                          content: meta.twitter[key],
-                        },
-                        `name='twitter:${key}'`
-                      );
-                    }
-                  }
-                }
                 break;
+              }
+              if (
+                typeof this.metaData !== 'undefined' &&
+                this.metaData !== null
+              ) {
+                this.setMeta(this.metaData);
               }
             }
           }
