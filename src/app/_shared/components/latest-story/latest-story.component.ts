@@ -35,7 +35,7 @@ export class LatestStoryComponent implements OnInit {
       });
   }
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore1(item,'brand-latest-stories');
   }
   getLatestStory() {
     this.apiService
