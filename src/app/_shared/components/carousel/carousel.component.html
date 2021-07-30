@@ -53,7 +53,7 @@
                     appYoutubeImage
                     *ngIf="type === 'trending' || type === 'columns'"
                     data-src="{{ item.media | defaultImage: 415:232 }}"
-                    alt="img9"
+                    alt="carousel"
                     class="lazyload"
                   />
                 </figure>
@@ -130,10 +130,14 @@
                   <img
                     appYoutubeImage
                     data-src="{{ item.media | defaultImage: 415:232 }}"
-                    alt="video-img5"
+                    alt="video"
                     class="lazyload"
                   />
-                  <img class="video-maker" src="assets/img/youtube.svg" />
+                  <img
+                    class="video-maker"
+                    src="assets/img/youtube.svg"
+                    alt="videoicon"
+                  />
                 </figure>
                 <figure *ngIf="!item.media">
                   <img

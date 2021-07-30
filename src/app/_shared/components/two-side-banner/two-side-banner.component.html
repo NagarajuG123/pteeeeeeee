@@ -9,7 +9,7 @@
   *ngIf="banner"
 >
   <div class="banner-right col-md-8 p-0">
-    <a *ngIf="!isVideo(banner)" class="d-block">
+    <a *ngIf="!isVideo(banner)" class="d-block" href="">
       <figure>
         <img
           appYoutubeImage
@@ -25,6 +25,7 @@
       class="d-block video-btn"
       data-bs-toggle="modal"
       data-bs-target="#bannerModal"
+      href=""
     >
       <figure>
         <img
@@ -35,14 +36,19 @@
           alt="banner"
         />
       </figure>
-      <img class="video-maker" src="assets/img/youtube.svg" />
+      <img class="video-maker" src="assets/img/youtube.svg" alt="video-btn" />
       <app-modal
         [videoUrl]="banner?.media?.url"
         [modalId]="'bannerModal'"
       ></app-modal>
     </a>
   </div>
-  <a class="banner-left col-md-4 p-0" routerLink="/{{ readMore(banner) }}" fragment="{{ typeSlug }}" *ngIf="type != 'dynamicPage'">
+  <a
+    class="banner-left col-md-4 p-0"
+    routerLink="/{{ readMore(banner) }}"
+    fragment="{{ typeSlug }}"
+    *ngIf="type != 'dynamicPage'"
+  >
     <div class="trendingbrandbuzz-content">
       <h4
         class="text-uppercase text-center d-inline-block"
@@ -74,11 +80,16 @@
         <i class="fa fa-angle-right" aria-hidden="true"></i>
       </a>
       <!-- Dynamic Page -->
-     
+
       <div class="clearfix"></div>
     </a>
   </a>
-  <a class="banner-left col-md-4 p-0" routerLink="/{{ readMore(item) }}" fragment="{{ typeSlug }}" *ngIf="type == 'dynamicPage'">
+  <a
+    class="banner-left col-md-4 p-0"
+    routerLink="/{{ readMore(item) }}"
+    fragment="{{ typeSlug }}"
+    *ngIf="type == 'dynamicPage'"
+  >
     <div class="trendingbrandbuzz-content">
       <h4 class="text-uppercase text-center d-inline-block">
         INDUSTRY INFLUENCERS
@@ -93,15 +104,14 @@
     </div>
     <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="">
       <a
-      class="float-right text-uppercase"
-      routerLink="/{{ readMore(item) }}"
-      fragment="{{ typeSlug }}"
-    >
-      READ MORE
-      <i class="fa fa-angle-right" aria-hidden="true"></i>
-    </a>
-    <div class="clearfix"></div>
+        class="float-right text-uppercase"
+        routerLink="/{{ readMore(item) }}"
+        fragment="{{ typeSlug }}"
+      >
+        READ MORE
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
       </a>
+      <div class="clearfix"></div>
+    </a>
   </a>
-
 </div>

@@ -50,7 +50,7 @@
               alt="sponsored"
             />
           </figure>
-          <img class="video-maker" src="assets/img/youtube.svg" />
+          <img class="video-maker" src="assets/img/youtube.svg" alt="video" />
         </a>
         <a *ngIf="media && media.type != 'video'" class="d-block video-btn">
           <figure>
@@ -244,6 +244,7 @@
         </div>
         <div *ngIf="isLoading" class="loading-screen">
           <img
+            alt=""
             class="loading-image"
             src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
           />

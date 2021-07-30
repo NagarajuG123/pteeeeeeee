@@ -33,6 +33,7 @@
           class="lazyload"
           (click)="readMore(highlight)"
           (load)="highlightImageload = true"
+          alt="featured"
         />
       </figure>
     </a>
@@ -41,6 +42,7 @@
       class="d-block video-btn"
       data-bs-toggle="modal"
       data-bs-target="#featuredModal"
+      href=""
     >
       <figure>
         <img
@@ -56,9 +58,10 @@
           data-src="{{ highlight.media | defaultImage: 1300:730 }}"
           class="lazyload"
           (load)="highlightImageload = true"
+          alt="featured"
         />
       </figure>
-      <img class="video-maker" src="assets/img/youtube.svg" />
+      <img class="video-maker" src="assets/img/youtube.svg" alt="video" />
       <app-modal
         [videoUrl]="highlight?.media?.url"
         [modalId]="'featuredModal'"
@@ -122,7 +125,7 @@
                     }}"
                     data-src="{{ article.media | defaultImage: 1300:730 }}"
                     class="lazyload"
-                    alt="img3"
+                    alt="featured"
                   />
                 </figure>
               </div>

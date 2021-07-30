@@ -14,7 +14,7 @@ export class ImagePreloadDirective {
   @Input() srcset = '';
 
   updateUrl() {
-    if (typeof this.src !== 'undefined') {
+    if (this.src != null && typeof this.src !== 'undefined') {
       if (this.src.includes('maxresdefault')) {
         this.src = this.src.replace(/maxresdefault/g, 'hqdefault');
       } else if (this.src.includes('sddefault')) {
