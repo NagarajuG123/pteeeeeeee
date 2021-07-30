@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -25,8 +26,6 @@ export class BrandComponent implements OnInit {
   dynamicFirst: any = [];
   dynamicSecond: any = [];
   topBlock: any = [];
-  metaUrl: any = [];
-  trendingUrl: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -48,13 +47,16 @@ export class BrandComponent implements OnInit {
             this.company = response.name;
             if (this.type === 'category_page') {
               this.apiUrl = `1851/${this.slug}/featured`;
-              this.mostRecentUrl = `1851/${this.slug}/most-recent`;
-              this.metaUrl = `1851/${this.slug}/meta`;
-              this.trendingUrl = `1851/${this.slug}/trending?limit=10&offset=0`;
+              const mostRecentUrl = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
+              const metaUrl = this.apiService.getAPI(`1851/${this.slug}/meta`);
+              const trendingUrl = this.apiService.getAPI(`1851/${this.slug}/trending?limit=10&offset=0`);
               this.setParam(this.slug);
-              this.getTrending();
-              this.getMostRecent();
-              this.getCategoryMeta();
+              forkJoin([mostRecentUrl,metaUrl,trendingUrl]).subscribe((results) => {
+                this.mostRecent = results[0].data;
+                this.hasMore = results[0].has_more;
+                this.metaService.setSeo(results[1].data);
+                this.categoryTrending = results[2].data;
+              }); 
             } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.getMeta();
@@ -92,11 +94,7 @@ export class BrandComponent implements OnInit {
       this.categoryParam = 'columns';
     }
   }
-  getTrending() {
-    this.apiService.getAPI(`${this.trendingUrl}`).subscribe((response) => {
-      this.categoryTrending = response.data;
-    });
-  }
+
   getDynamic() {
     this.apiService
       .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
@@ -130,24 +128,13 @@ export class BrandComponent implements OnInit {
       });
   }
 
-  getMostRecent() {
-    this.apiService
-      .getAPI(`${this.mostRecentUrl}?limit=10&offset=${this.scrollOffset}`)
-      .subscribe((response) => {
-        if (response.data != null) {
-          this.mostRecent = response.data;
-          this.hasMore = response.has_more;
-        }
-      });
-  }
-
   readMore(item: any) {
     return this.commonService.readMore(item);
   }
   getMoreData() {
     this.apiService
       .getAPI(
-        `${this.mostRecentUrl}?limit=10&offset=${this.mostRecent.length + 1}`
+        `1851/${this.slug}/most-recent?limit=10&offset=${this.mostRecent.length + 1}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
@@ -166,11 +153,6 @@ export class BrandComponent implements OnInit {
             `${response.data.seo.title} | ${result.title}`
           );
         });
-    });
-  }
-  getCategoryMeta() {
-    this.apiService.getAPI(`${this.metaUrl}`).subscribe((response) => {
-      this.metaService.setSeo(response.data);
     });
   }
 }
