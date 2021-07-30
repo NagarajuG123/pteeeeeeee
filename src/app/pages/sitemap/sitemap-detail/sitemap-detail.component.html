@@ -3,15 +3,15 @@
   <div class="row">
     <div class="col l12 m12 s12 col-sm-12 col-xs-12">
       <h1 class="section-head bws-sitemap-title">
-        <a routerLink="/sitemap">Sitemap</a>
+        <a href="/sitemap">Sitemap</a>
       </h1>
       <h2 class="bws-sitemap-subtitle">
-        <a routerLink="/sitemap">Sitemap</a> &gt; {{ year }} &gt;
+        <a href="/sitemap">Sitemap</a> &gt; {{ year }} &gt;
         {{ getMonth(month) }}
       </h2>
       <ul class="nobullet col3">
         <li *ngFor="let item of sitemap">
-          <a [routerLink]="item['url']">{{ item["title"] }}</a>
+          <a [href]="item['url']">{{ item["title"] }}</a>
         </li>
       </ul>
     </div>

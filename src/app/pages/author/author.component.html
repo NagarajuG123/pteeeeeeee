@@ -59,7 +59,7 @@
             [typeSlug]="'editorials'"
           ></app-five-column>
           <a
-            routerLink="/{{ readMore(editorials[0]) }}" fragment="editorials"
+            href="/{{ goReadMore(editorials[0])}}"
             class="readmore d-block text-uppercase"
           >
             READ MORE
@@ -79,8 +79,7 @@
             [typeSlug]="'brand-latest-stories'"
           ></app-five-column>
           <a
-            routerLink="/{{ readMore(brandedContents[0]) }}"
-            fragment="brand-latest-stories"
+            href="/{{ readMore(brandedContents[0]) }}"
             class="readmore d-block text-uppercase"
           >
             READ MORE

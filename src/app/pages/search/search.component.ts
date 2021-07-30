@@ -487,9 +487,9 @@ export class SearchComponent implements OnInit {
       if (item.brand) {
         return `${item.brand.slug !== '1851' ? item.brand.slug + '/' : ''}${
           item.slug
-        }`;
+        }#most-recent`;
       }
-      return `${item.slug}`;
+      return `${item.slug}#most-recent`;
     }
   }
 
@@ -498,9 +498,9 @@ export class SearchComponent implements OnInit {
       if (item.brand) {
         return `${item.brand.slug !== '1851' ? item.brand.slug + '/' : ''}${
           item.slug
-        }`;
+        }#brand-latest-stories`;
       }
-      return `${item.slug}`;
+      return `${item.slug}#brand-latest-stories`;
     }
   }
 
