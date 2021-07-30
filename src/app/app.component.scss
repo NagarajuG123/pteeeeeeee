@@ -6,7 +6,6 @@
   &.addeLeftSpace {
     position: relative;
     left: 300px;
-    overflow: hidden;
     transition: all 0.4s ease;
     max-height: 100vh;
     @include mobile-landscape1 {
