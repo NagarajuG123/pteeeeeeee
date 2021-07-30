@@ -293,9 +293,16 @@
                   <ul>
                     <li *ngFor="let subItem of header['Learn']?.dropdown">
                       <a
+                        *ngIf="subItem['isExternalLink']"
                         href="{{ subItem.url }}"
-                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
-                        rel="subItem['isExternalLink'] ? 'noreferrer' : ''"
+                        [target]="'_blank'"
+                        rel="'noreferrer'"
+                        class="text-uppercase"
+                        >{{ subItem.title }}</a
+                      >
+                      <a
+                        *ngIf="!subItem['isExternalLink']"
+                        href="{{ subItem.url }}"
                         class="text-uppercase"
                         >{{ subItem.title }}</a
                       >
@@ -651,7 +658,7 @@
               margin: auto;
             "
           >
-            <img [src]="header?.logo" style="max-height: 70px" />
+            <img [src]="header?.logo" style="max-height: 70px" alt="" />
           </a>
           <!-- <a
             *ngIf="isEEPublication && header['logo'].includes(defaultBrandLogo)"
