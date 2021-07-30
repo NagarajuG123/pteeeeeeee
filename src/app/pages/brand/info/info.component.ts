@@ -241,7 +241,7 @@ export class InfoComponent implements OnInit {
     return type;
   }
   readMore(item: any) {
-    return this.commonService.readMore(item);
+    return this.commonService.readMore1(item,'most-recent');
   }
   getMoreData() {
     this.apiService

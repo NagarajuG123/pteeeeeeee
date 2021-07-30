@@ -18,8 +18,7 @@
         </div>
         <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
           <a
-            routerLink="/{{ goReadMore(list[0]) }}"
-            fragment="{{ typeSlug }}"
+            href="/{{ goReadMore(list[0]) }}"
             class="float-right"
           >
             READ MORE
@@ -40,8 +39,7 @@
             class="col-md-4"
           >
             <a
-              routerLink="/{{ goReadMore(item) }}"
-              fragment="{{ typeSlug }}"
+              href="/{{ goReadMore(item) }}"
               style="text-decoration: none"
             >
               <div
@@ -84,8 +82,7 @@
                     <span class="float-right text-uppercase">
                       <a
                         style="color: white"
-                        routerLink="/{{ goReadMore(item) }}"
-                        fragment="{{ typeSlug }}"
+                        href="/{{ goReadMore(item) }}"
                       >
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -107,8 +104,7 @@
                     <span class="float-right text-uppercase"
                       ><a
                         style="color: white"
-                        routerLink="/{{ goReadMore(item) }}"
-                        fragment="{{ typeSlug }}"
+                        href="/{{ goReadMore(item) }}"
                         >READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i></a
                     ></span>

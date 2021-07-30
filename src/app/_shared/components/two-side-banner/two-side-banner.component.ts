@@ -38,6 +38,6 @@ export class TwoSideBannerComponent implements OnInit {
     } else if (this.type === 'trendingbrandbuzz') {
       this.typeSlug = 'trendingbrandbuzz';
     }
-    return this.commonService.readMore(item);
+    return this.commonService.readMore1(item,this.typeSlug);
   }
 }

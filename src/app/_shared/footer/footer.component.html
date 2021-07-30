@@ -37,7 +37,7 @@
               <h6>SPOTLIGHT</h6>
               <ul>
                 <li *ngFor="let spotlight of footer?.spotlight">
-                  <a routerLink="{{ spotlight?.url.replace('+', '-') }}">{{
+                  <a href="{{ spotlight?.url.replace('+', '-') }}">{{
                     spotlight?.title | titlecase
                   }}</a>
                 </li>
@@ -47,14 +47,14 @@
               <ul>
                 <li *ngIf="footer['about-us']">
                   <a
-                    routerLink="{{ footer['about-us']['url'] }}"
+                    href="{{ footer['about-us']['url'] }}"
                     class="text-uppercase"
                     >ABOUT US</a
                   >
                 </li>
                 <li *ngIf="footer['contact-editorial'] && !isBrandFooter">
                   <a
-                    routerLink="{{ footer['contact-editorial']['url'] }}"
+                    href="{{ footer['contact-editorial']['url'] }}"
                     class="text-uppercase"
                     >CONTACT</a
                   >
@@ -71,14 +71,14 @@
                 </li>
                 <li *ngIf="footer['site-map']">
                   <a
-                    routerLink="{{ footer['site-map']?.url }}"
+                    href="{{ footer['site-map']?.url }}"
                     class="text-uppercase"
                     >SITE MAP</a
                   >
                 </li>
                 <li>
                   <a
-                    routerLink="{{ footer['terms-of-use']?.url }}"
+                    href="{{ footer['terms-of-use']?.url }}"
                     class="text-uppercase"
                     >TERMS OF USE</a
                   >
@@ -89,7 +89,7 @@
         </div>
         <div *ngIf="!isBrandFooter" class="footer-right text-right col-md-3">
           <h5 class="text-uppercase">WANT TO LEARN MORE?</h5>
-          <a routerLink="about" fragment="tellus"
+          <a href="about#tellus"
             ><span class="d-block text-uppercase float-right text-center"
               >LET’S TALK</span
             ></a

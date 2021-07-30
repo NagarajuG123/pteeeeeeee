@@ -12,8 +12,7 @@
     <a
       *ngIf="!isVideo(highlight)"
       class="d-block"
-      routerLink="/{{ readMore(highlight) }}"
-      fragment="featured"
+      href="/{{ readMore(highlight) }}"
     >
       <figure>
         <img
@@ -69,12 +68,12 @@
     </a>
     <div class="buffalowings">
       <div class="buffalowings-wrap">
-        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
+        <a href="/{{ readMore(highlight) }}">
           <h2>
             {{ highlight?.title }}
           </h2> </a
         ><br />
-        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
+        <a href="/{{ readMore(highlight) }}">
           <p>
             {{ highlight?.short_description }}
           </p>
@@ -82,8 +81,7 @@
       </div>
       <div class="buffalowings-bottom">
         <a
-          routerLink="/{{ readMore(highlight) }}"
-          fragment="featured"
+          href="/{{ readMore(highlight) }}"
           class="float-right text-uppercase"
         >
           READ MORE
@@ -108,8 +106,7 @@
         <ul>
           <li *ngFor="let article of featuredData" style="cursor: pointer">
             <a
-              routerLink="/{{ readMore(article) }}"
-              fragment="featured"
+              href="/{{ readMore(article) }}"
               class="adweek d-flex"
             >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
