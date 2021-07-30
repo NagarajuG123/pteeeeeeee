@@ -37,7 +37,7 @@
   <div class="banner-right-info col-sm-3 col-12 p-0">
     <div class="buffalo_wings">
       <div class="info_btn text-center">
-        <a class="text-center">FRANCHISE NEWS & INFO</a>
+        <a class="text-center" href="#">FRANCHISE NEWS & INFO</a>
         <h1>{{ data.name | uppercase }}</h1>
       </div>
       <div class="buffalo_rings">
@@ -46,7 +46,7 @@
           href="{{ goReadMore(article) }}"
         >
           <p>{{ article.title }}</p>
-          <a class="text-uppercase"
+          <a class="text-uppercase" href="{{ goReadMore(article) }}"
             >Read More <i class="fa fa-angle-right" aria-hidden="true"></i
           ></a>
         </a>
