@@ -125,13 +125,16 @@ export class InfoComponent implements OnInit {
               const trending = this.apiService.getAPI(
                 `${this.brandSlug}/${categorySlug}/trending?limit=10&offset=0`
               );
+              const meta = this.apiService.getAPI(`1851/${categorySlug}/meta`);
+
               this.setParam(categorySlug);
-              forkJoin([mostRecent, trending])
+              forkJoin([mostRecent, trending, meta])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
                   this.brandMostRecent = results[0].data;
                   this.brandTrending = results[1];
                   this.hasMore = results[0]['has_more'];
+                  this.metaService.setSeo(results[2].data);
                 });
             }
           }
@@ -241,7 +244,7 @@ export class InfoComponent implements OnInit {
     return type;
   }
   readMore(item: any) {
-    return this.commonService.readMore1(item,'most-recent');
+    return this.commonService.readMore1(item, 'most-recent');
   }
   getMoreData() {
     this.apiService
