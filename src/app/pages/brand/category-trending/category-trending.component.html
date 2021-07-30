@@ -16,8 +16,7 @@
         </div>
         <div class="frannews-top-right col-md-6">
           <a
-            routerLink="/{{ readMore(data[0]) }}"
-            fragment="{{ subTitle }}"
+            href="/{{ readMore(data[0]) }}"
             class="float-right"
           >
             READ MORE
@@ -39,8 +38,7 @@
             *ngFor="let item of data; let i = index"
           >
             <a
-              routerLink="/{{ readMore(item) }}"
-              fragment="{{ subTitle }}"
+              href="/{{ readMore(item) }}"
               class="trending-bottom-details"
             >
               <figure>
@@ -57,9 +55,7 @@
                 />
               </figure>
               <a
-                routerLink="/{{
-                 readMore(item)"
-                fragment="{{ subTitle }}"
+                href="/{{ readMore(item) }}"
                 class="buffalowings"
               >
                 <div class="buffalowings-wrap d-flex">
@@ -79,8 +75,7 @@
                 <div class="buffalowings-bottom">
                   <a
                     class="float-right text-uppercase"
-                    routerLink="/{{ readMore(item) }}"
-                    fragment="{{ subTitle }}"
+                    href="/{{ readMore(item) }}"
                   >
                     READ MORE
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
