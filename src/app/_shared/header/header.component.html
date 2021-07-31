@@ -35,10 +35,11 @@
               <figure>
                 <img
                   class="logo-img"
-                  src="{{ sidenav?.logo }}"
+                  data-src="{{ sidenav?.logo }}"
                   width="{{ publication?.id === 'EE' ? 200 : 53 }}"
                   height="53"
                   alt="logo"
+                  class="lazyload"
                 />
               </figure>
             </a>
@@ -90,13 +91,14 @@
                       <figure>
                         <img
                           appYoutubeImage
-                          src="{{
+                          data-src="{{
                             sidenav['monthly-cover']?.media
                               | defaultImage: 97:127
                           }}"
                           width="97"
                           height="127"
                           alt="monthly cover"
+                          class="lazyload"
                         />
                       </figure>
                     </a>
@@ -412,12 +414,13 @@
               <figure>
                 <img
                   appYoutubeImage
-                  src="{{
+                  data-src="{{
                     header['monthly-cover']?.media | defaultImage: 119:157
                   }}"
                   width="119"
                   height="157"
                   alt="Monthly cover"
+                  class="lazyload"
                 />
               </figure>
             </a>
@@ -467,8 +470,9 @@
               <figure>
                 <img
                   class="logo-img sidebar-brand-images"
-                  src="{{ sidenav?.logo }}"
+                  data-src="{{ sidenav?.logo }}"
                   alt="logo"
+                  class="lazyload"
                 />
               </figure>
             </a>
@@ -888,10 +892,11 @@
                 <figure>
                   <img
                     appYoutubeImage
-                    src="{{ story['media'] | defaultImage: 248:139 }}"
+                    data-src="{{ story['media'] | defaultImage: 248:139 }}"
                     width="248"
                     height="139"
                     alt="frannews"
+                    class="lazyload"
                   />
                 </figure>
                 <div class="socialmedia">
