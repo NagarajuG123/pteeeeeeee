@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -31,7 +32,8 @@ export class BrandComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private commonService: CommonService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private googleAnalyticsService: GoogleAnalyticsService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,14 @@ export class BrandComponent implements OnInit {
             } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.getMeta();
+              if(this.slug !== '1851' && response['ga']){
+                this.googleAnalyticsService.appendGaTrackingCode(
+                  response['ga']['1851_franchise'],
+                  response['ga']['tracking_code'],
+                  response['ga']['gtm_code'],
+                  response.slug
+                );
+              }
             } else if (this.type === 'dynamic_page') {
               this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
