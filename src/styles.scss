@@ -2,29 +2,18 @@
 @import "assets/scss/variables";
 @import "assets/scss/mixins";
 @import "assets/scss/utilities";
-@import "assets/scss/alert";
-
-@import "assets/scss/button-group";
 @import "assets/scss/buttons";
 @import "assets/scss/carousel";
 @import "assets/scss/close";
 @import "assets/scss/code";
-// @import "assets/scss/custom-forms";
 @import "assets/scss/dropdown";
 @import "assets/scss/forms";
 @import "assets/scss/grid";
-@import "assets/scss/images";
-@import "assets/scss/input-group";
-// @import "assets/scss/list-group";
-@import "assets/scss/media";
 @import "assets/scss/modal";
 @import "assets/scss/nav";
-@import "assets/scss/navbar";
 @import "assets/scss/popover";
 @import "assets/scss/reboot";
 @import "assets/scss/root";
-@import "assets/scss/tooltip";
-@import "assets/scss/transitions";
 @import "assets/scss/type";
 @import "assets/scss/bootstrap-grid";
 @import "assets/scss/bootstrap-reboot";
@@ -32,7 +21,10 @@
 @import "assets/sass/main.scss";
 @import "assets/sass/base.scss";
 @import "assets/sass/slick.scss";
+// @import "assets/scss/images";
+// @import "assets/scss/navbar";
 
+// @import "assets/scss/alert";
 // @import "assets/scss/jumbotron";
 // @import "assets/scss/print";
 // @import "assets/scss/progress";
@@ -40,6 +32,14 @@
 // @import "assets/scss/card";
 // @import "assets/scss/badge";
 // @import "assets/scss/breadcrumb";
+// @import "assets/scss/input-group";
+// @import "assets/scss/transitions";
+// @import "assets/scss/list-group";
+// @import "assets/scss/media";
+// @import "assets/scss/custom-forms";
+// @import "assets/scss/button-group";
+// @import "assets/scss/tooltip";
+
 ul {
   padding-left: 0rem !important;
 }
