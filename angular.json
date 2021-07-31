@@ -58,6 +58,23 @@
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
+               "1851PROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1851.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "commonChunk": true,
+              "buildOptimizer": true
+            },
             "production": {
               "budgets": [
                 {
@@ -104,6 +121,9 @@
             },
             "development": {
               "browserTarget": "1851:build:development"
+            },
+            "1851PROD": {
+              "browserTarget": "1851:build:1851PROD"
             }
           },
           "defaultConfiguration": "development"
@@ -159,8 +179,21 @@
               "optimization": false,
               "sourceMap": true,
               "extractLicenses": false
+            },
+            "1851PROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1851.prod.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
             }
           },
+            
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
@@ -173,6 +206,10 @@
             "production": {
               "browserTarget": "1851:build:production",
               "serverTarget": "1851:server:production"
+            },
+             "1851PROD": {
+              "browserTarget": "1851:build:1851PROD",
+              "serverTarget": "1851:server:1851PROD"
             }
           },
           "defaultConfiguration": "development"
@@ -192,6 +229,10 @@
             "development": {
               "browserTarget": "1851:build:development",
               "serverTarget": "1851:server:development"
+            },
+            "1851PROD": {
+              "browserTarget": "1851:build:1851PROD",
+              "serverTarget": "1851:server:1851PROD"
             }
           },
           "defaultConfiguration": "production"

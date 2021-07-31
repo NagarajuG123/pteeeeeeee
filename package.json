@@ -14,7 +14,8 @@
     "build:ssr": "ng build && ng run 1851:server",
     "prerender": "ng run 1851:prerender",
     "start-ssr": "npm run build:ssr && npm run serve:ssr",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:1851:prod": "ng build --configuration=1851PROD && ng run 1851:server --configuration=1851PROD"
   },
   "private": true,
   "dependencies": {
