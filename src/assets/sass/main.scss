@@ -8358,26 +8358,6 @@ select-widget select {
   list-style-position: outside;
 }
 
-.menu-search {
-  //  display: none;
-}
-
-#contactModal
-  > div
-  > div
-  > json-schema-form
-  > form
-  > root-widget
-  > div:nth-child(1)
-  > div
-  > select-framework-widget
-  > no-framework
-  > select-widget-widget
-  > section-widget
-  > div
-  > label {
-  display: none;
-}
 
 input-widget [required]:after {
   color: red;
