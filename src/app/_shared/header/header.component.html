@@ -252,13 +252,13 @@
                 *ngIf="header && header['Franchise Brands']"
                 class="has_dd d-block float-none"
               >
-                <a class="text-uppercase" href="#" onclick="return false;">
+                <a class="text-uppercase" href="#" (click)="toggleFranchise()">
                   {{ header["Franchise Brands"]?.title }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu">
+                <div class="megamenu franchise-menu">
                   <ul>
                     <li
                       *ngFor="
@@ -281,13 +281,13 @@
                 *ngIf="header && header['Learn']"
                 class="has_dd d-block float-none"
               >
-                <a class="text-uppercase" href="#" onclick="return false;">
+                <a class="text-uppercase" href="#" (click)="toggleLearn()">
                   {{ header["Learn"]?.title }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu">
+                <div class="megamenu learn-menu">
                   <ul>
                     <li *ngFor="let subItem of header['Learn']?.dropdown">
                       <a
@@ -326,11 +326,9 @@
           </a>
           <div *ngIf="header?.subscribe" class="subscribe ml-1">
             <h6>
-              <a
-                href="{{ header?.subscribe?.url }}"
-                class="text-uppercase"
-                >{{ header?.subscribe?.title }}</a
-              >
+              <a href="{{ header?.subscribe?.url }}" class="text-uppercase">{{
+                header?.subscribe?.title
+              }}</a>
             </h6>
 
             <a
@@ -410,9 +408,7 @@
             *ngIf="header && header['monthly-cover']"
             class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
           >
-            <a
-              href="{{ header['monthly-cover']?.media?.url?.cover_url }}"
-            >
+            <a href="{{ header['monthly-cover']?.media?.url?.cover_url }}">
               <figure>
                 <img
                   appYoutubeImage

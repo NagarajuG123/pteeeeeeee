@@ -379,6 +379,12 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  toggleFranchise() {
+    $('.franchise-menu').slideToggle();
+  }
+  toggleLearn() {
+    $('.learn-menu').slideToggle();
+  }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
     this.emailSubMessage = '';
@@ -414,18 +420,6 @@ export class HeaderComponent implements OnInit {
           $('body').removeClass('sticky');
         }
       });
-      // For navigation
-      setTimeout(() => {
-        $('nav ul li').has('ul').addClass('has_dd');
-        $('nav > ul > li > a').click(function () {
-          if ($(window).width() < 768) {
-            $(this).parent().find('.megamenu').slideToggle();
-            $(this).parent().siblings().find('.megamenu').slideUp();
-          }
-          $(this).parent().addClass('active');
-          $(this).parent().siblings().removeClass('active');
-        });
-      }, 500);
     }
   }
 }
