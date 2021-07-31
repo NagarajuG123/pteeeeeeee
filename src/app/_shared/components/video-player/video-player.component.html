@@ -14,7 +14,7 @@
     (change)="onStateChange($event)"
   >
   </youtube-player>
-  <div *ngIf="videoType == 'vimeo'">
+  <div *ngIf="videoType === 'vimeo'">
     <iframe
       [src]="srcUrl | vimeo"
       width="256"

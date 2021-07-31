@@ -24,7 +24,7 @@
           </a>
         </div>
         <a
-          *ngIf="media && media.type == 'video'"
+          *ngIf="media && media.type === 'video'"
           class="d-block video-btn"
           (click)="openVideoPlayer = true"
           data-bs-toggle="modal"
@@ -54,7 +54,7 @@
           <img class="video-maker" src="assets/img/youtube.svg" alt="video" />
         </a>
         <a
-          *ngIf="media && media.type != 'video'"
+          *ngIf="media && media.type !== 'video'"
           class="d-block video-btn"
           href="#"
         >

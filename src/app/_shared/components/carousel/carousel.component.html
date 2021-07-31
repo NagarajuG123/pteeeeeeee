@@ -2,8 +2,8 @@
   *ngIf="list.length"
   class="trending"
   [ngClass]="{
-    columns: type == 'columns',
-    'main-videos': type == 'main-videos'
+    columns: type === 'columns',
+    'main-videos': type === 'main-videos'
   }"
 >
   <div class="container">
@@ -16,7 +16,7 @@
             </li>
           </ul>
         </div>
-        <div class="frannews-top-right col-md-6" *ngIf="type != 'main-videos'">
+        <div class="frannews-top-right col-md-6" *ngIf="type !== 'main-videos'">
           <a
             href="/{{ goReadMore(list[0]) }}"
             class="float-right"

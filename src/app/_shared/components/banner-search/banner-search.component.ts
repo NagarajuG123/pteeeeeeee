@@ -16,7 +16,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./banner-search.component.scss'],
 })
 export class BannerSearchComponent implements OnInit {
-  @Input('searchInput') searchInput!: string;
+  @Input() searchInput!: string;
   @Output() onSearch = new EventEmitter<boolean>();
 
   searchForm!: FormGroup;

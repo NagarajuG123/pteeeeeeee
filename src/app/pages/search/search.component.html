@@ -256,7 +256,7 @@
               {{ brand_id }}
             </p>
             <p class="search-page-brand-title" *ngIf="brand_id != '1851'">
-              {{ brand_id == "ee" ? "Estatenvy" : "Room1903" }}
+              {{ brand_id === "ee" ? "Estatenvy" : "Room1903" }}
             </p>
             <a
               href="/{{ goReadMoreBrand(item) }}"

@@ -4,13 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 import { VimeoPipe } from '../_core/pipes/vimeo.pipe';
-import { VgCoreModule } from '@videogular/ngx-videogular/core';
-import { VgControlsModule } from '@videogular/ngx-videogular/controls';
-import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
-import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
@@ -76,11 +71,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     FormsModule,
     ReactiveFormsModule,
     NgxYoutubePlayerModule,
-    VgCoreModule,
-    VgControlsModule,
-    VgOverlayPlayModule,
-    VgBufferingModule,
-    CarouselModule,
+
     MalihuScrollbarModule.forRoot(),
     SlickCarouselModule,
     ShareButtonModule,
@@ -90,8 +81,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    VgCoreModule,
-    CarouselModule,
     DefaultImagePipe,
     ImagePreloadDirective,
     SafeUrlPipe,
@@ -105,7 +94,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     TrendingBuzzComponent,
     VideoPlayerComponent,
     VideoPlayerComponent,
-    CarouselModule,
     CarouselComponent,
     FiveColumnComponent,
     FeaturedComponent,

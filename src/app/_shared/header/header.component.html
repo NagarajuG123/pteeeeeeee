@@ -215,7 +215,7 @@
                     <strong
                       >CONTACT
                       <span>{{ publication?.shortTitle?.toUpperCase() }}</span
-                      >&nbsp;<span *ngIf="publication.id != 'EE'"
+                      >&nbsp;<span *ngIf="publication.id !== 'EE'"
                         >EDITORIAL</span
                       ></strong
                     >
@@ -528,7 +528,7 @@
                     <div *ngIf="downloadPdfUrl" class="monthly-covers-details">
                       <p>
                         <a
-                          *ngIf="isPdfEmail == 'true'"
+                          *ngIf="isPdfEmail === 'true'"
                           data-bs-toggle="modal"
                           data-bs-target="#pdfModal1"
                           class="text-uppercase"
@@ -537,7 +537,7 @@
                           Download PDF
                         </a>
                         <a
-                          *ngIf="isPdfEmail == 'false'"
+                          *ngIf="isPdfEmail === 'false'"
                           href="{{ downloadPdfUrl }}"
                           target="blank"
                         >

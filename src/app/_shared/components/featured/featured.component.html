@@ -1,7 +1,7 @@
 <div
   *ngIf="isBrowser && highlight"
   class="banner featured-banner"
-  [class.brand-banner]="type == 'brand'"
+  [class.brand-banner]="type === 'brand'"
 >
   <div
     (window:resize)="onResize($event)"

@@ -51,18 +51,18 @@
   <a
     class="banner-left col-md-4 p-0"
     href="/{{ readMore(banner) }}"
-    *ngIf="type != 'dynamicPage'"
+    *ngIf="type !== 'dynamicPage'"
   >
     <div class="trendingbrandbuzz-content">
       <h4
         class="text-uppercase text-center d-inline-block"
-        *ngIf="type == 'monthlydetails'"
+        *ngIf="type === 'monthlydetails'"
       >
         {{ date | date }}
       </h4>
       <h4
         class="text-uppercase text-center d-inline-block"
-        *ngIf="type == 'trendingbrandbuzz'"
+        *ngIf="type === 'trendingbrandbuzz'"
       >
         TRENDING BRAND BUZZ
       </h4>
@@ -73,7 +73,7 @@
         {{ banner.short_description }}
       </p>
     </div>
-    <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="">
+    <a class="buffalowings-bottom" *ngIf="type !== 'powerranking'" href="">
       <a
         *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
         class="float-right text-uppercase"
@@ -90,7 +90,7 @@
   <a
     class="banner-left col-md-4 p-0"
     href="/{{ readMore(item) }}"
-    *ngIf="type == 'dynamicPage'"
+    *ngIf="type === 'dynamicPage'"
   >
     <div class="trendingbrandbuzz-content">
       <h4 class="text-uppercase text-center d-inline-block">
@@ -104,7 +104,7 @@
         {{ banner.description }}
       </p>
     </div>
-    <a class="buffalowings-bottom" *ngIf="type != 'powerranking'" href="#">
+    <a class="buffalowings-bottom" *ngIf="type !== 'powerranking'" href="#">
       <a class="float-right text-uppercase" href="/{{ readMore(item) }}">
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>
