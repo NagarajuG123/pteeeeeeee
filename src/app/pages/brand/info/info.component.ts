@@ -11,6 +11,7 @@ import * as d3 from 'd3';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 
 @Component({
   selector: 'app-info',
@@ -64,6 +65,7 @@ export class InfoComponent implements OnInit {
     private metaService: MetaService,
     private fb: FormBuilder,
     private toastr: ToastrService,
+    private googleAnalyticsService: GoogleAnalyticsService,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient
   ) {
@@ -95,6 +97,14 @@ export class InfoComponent implements OnInit {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
+            if(this.brandSlug !== '1851' && this.isBrowser && response['ga']){
+              this.googleAnalyticsService.appendGaTrackingCode(
+                response['ga']['1851_franchise'],
+                response['ga']['tracking_code'],
+                response['ga']['gtm_code'],
+                response.slug
+              );
+            }
             let brandItems = [
               'info',
               'brand_pdf',
