@@ -4,6 +4,7 @@ import { SearchComponent } from './search.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { SearchRoutingModule } from './search-routing.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -13,5 +14,6 @@ import { SearchRoutingModule } from './search-routing.module';
     NgxDaterangepickerMd.forRoot(),
     SearchRoutingModule,
   ],
+  providers: [DatePipe],
 })
 export class SearchModule {}

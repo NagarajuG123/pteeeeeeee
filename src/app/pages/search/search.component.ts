@@ -8,11 +8,11 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser, Location } from '@angular/common';
-import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -64,16 +64,37 @@ export class SearchComponent implements OnInit {
   isSpecificDate: boolean = false;
   dateSelected: any;
   alwaysShowCalendars: boolean;
+  today = new Date();
+  yesterday = new Date(new Date().setDate(this.today.getDate() - 1));
+  last7days = new Date(new Date().setDate(this.today.getDate() - 6));
+  last30days = new Date(new Date().setDate(this.today.getDate() - 29));
+  currentMonthfirstDay = new Date(
+    this.today.getFullYear(),
+    this.today.getMonth(),
+    1
+  );
+  currentMonthLastDay = new Date(
+    this.today.getFullYear(),
+    this.today.getMonth() + 1,
+    0
+  );
+  lastMonthfirstDay = new Date(
+    this.today.getFullYear(),
+    this.today.getMonth() - 1,
+    1
+  );
+  lastMonthLastDay = new Date(
+    this.today.getFullYear(),
+    this.today.getMonth(),
+    0
+  );
   ranges: any = {
-    Today: [moment(), moment()],
-    Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-    'This Month': [moment().startOf('month'), moment().endOf('month')],
-    'Last Month': [
-      moment().subtract(1, 'month').startOf('month'),
-      moment().subtract(1, 'month').endOf('month'),
-    ],
+    Today: [this.today, this.today],
+    Yesterday: [this.yesterday, this.yesterday],
+    'Last 7 Days': [this.last7days, this.today],
+    'Last 30 Days': [this.last30days, this.today],
+    'This Month': [this.currentMonthfirstDay, this.currentMonthLastDay],
+    'Last Month': [this.lastMonthfirstDay, this.lastMonthLastDay],
   };
   showSearchKey: String = 'SEARCH KEYWORD HERE';
   has_more: Boolean = true;
@@ -88,7 +109,8 @@ export class SearchComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object,
     private cdref: ChangeDetectorRef,
     private location: Location,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private datePipe: DatePipe
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.specificSearchForm = new FormGroup({
@@ -401,11 +423,13 @@ export class SearchComponent implements OnInit {
     } else if (this.dateSelected.startDate === null) {
       return;
     } else {
-      const start = moment(new Date(this.dateSelected.startDate)).format(
-        'YYYY-MM-DD'
+      const start = this.datePipe.transform(
+        new Date(this.dateSelected.startDate),
+        'YYYY-MM-dd'
       );
-      const end = moment(new Date(this.dateSelected.endDate)).format(
-        'YYYY-MM-DD'
+      const end = this.datePipe.transform(
+        new Date(this.dateSelected.endDate),
+        'YYYY-MM-dd'
       );
       this.published_value = -1;
 

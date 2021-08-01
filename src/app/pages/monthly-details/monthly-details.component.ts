@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import * as moment from 'moment';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-monthly-details',
@@ -20,7 +20,8 @@ export class MonthlyDetailsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -29,8 +30,10 @@ export class MonthlyDetailsComponent implements OnInit {
       this.month = params.get('month');
       this.date = params.get('date');
       this.id = params.get('id');
-      const  date_number = Number(this.date);
-      const coverDate = new Date(`${this.year}-${this.month}-${date_number + 1}`);
+      const date_number = Number(this.date);
+      const coverDate = new Date(
+        `${this.year}-${this.month}-${date_number + 1}`
+      );
 
       this.apiService
         .getAPI(
@@ -38,7 +41,10 @@ export class MonthlyDetailsComponent implements OnInit {
         )
         .subscribe((response) => {
           this.banner['data'] = response.data[0];
-          this.banner['date'] = moment(coverDate).format('MMMM DD, YYYY');
+          this.banner['date'] = this.datePipe.transform(
+            coverDate,
+            'MMMM DD, YYYY'
+          );
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
@@ -46,10 +52,8 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
-                let title = moment(coverDate).format('MMMM YYYY');
-                this.metaService.setTitle(
-                  `${title} Issues | ${result.title}`
-                );
+                let title = this.datePipe.transform(coverDate, 'MMMM YYYY');
+                this.metaService.setTitle(`${title} Issues | ${result.title}`);
               });
           });
         });
