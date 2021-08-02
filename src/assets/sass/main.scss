@@ -844,7 +844,7 @@
           }
         }
         .frannews-details {
-          padding: 65px 0px 0px 0px;
+          padding: 50px 0px 0px 0px;
           @include desk-lg-below1 {
             padding: 30px 0;
           }
@@ -7527,7 +7527,7 @@ spotlighttab-cnt-left {
     -ms-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     right: 0;
-    margin: 0px auto 0;
+    margin: 0 auto;
     // margin-top: 25px;
     form {
       padding: 0 16px 0 7px;
