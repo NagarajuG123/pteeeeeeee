@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
@@ -13,24 +14,12 @@ export class FooterTopComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.getFooter();
-    this.getPublication();
-  }
+    const footer = this.apiService.getAPI(`1851/footer`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
 
-  // Footer API
-  getFooter() {
-    this.apiService.getAPI(`1851/footer`).subscribe((response) => {
-      this.footerData = response;
+    forkJoin([footer, publication]).subscribe((results) => {
+      this.footerData = results[0].data;
+      this.publication = results[1];
     });
-  }
-
-  //Publication Instance
-  getPublication() {
-    let slug = '1851';
-    this.apiService
-      .getAPI(`${slug}/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
   }
 }

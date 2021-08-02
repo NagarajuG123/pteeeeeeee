@@ -1,4 +1,4 @@
-<div *ngIf="isFooter" id="footer">
+<div *ngIf="isFooter && footer != null" id="footer">
   <footer>
     <div class="container">
       <div class="footer-details d-flex">
@@ -70,9 +70,7 @@
                   </a>
                 </li>
                 <li *ngIf="footer['site-map']">
-                  <a
-                    href="{{ footer['site-map']?.url }}"
-                    class="text-uppercase"
+                  <a href="{{ footer['site-map']?.url }}" class="text-uppercase"
                     >SITE MAP</a
                   >
                 </li>
