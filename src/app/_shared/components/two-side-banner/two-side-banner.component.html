@@ -8,7 +8,7 @@
   "
   *ngIf="banner"
 >
-  <div class="banner-right col-md-8 p-0">
+  <div class="banner-right col-md-8 p-0" *ngIf="banner.media">
     <a *ngIf="!isVideo(banner)" class="d-block" href="" onclick="return false;">
       <figure>
         <img
