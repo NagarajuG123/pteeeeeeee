@@ -9,12 +9,7 @@
   *ngIf="banner"
 >
   <div class="banner-right col-md-8 p-0">
-    <a
-      *ngIf="!isVideo(banner)"
-      class="d-block"
-      href="#"
-      onclick="return false;"
-    >
+    <a *ngIf="!isVideo(banner)" class="d-block" href="" onclick="return false;">
       <figure>
         <img
           appYoutubeImage
@@ -51,7 +46,7 @@
   <a
     class="banner-left col-md-4 p-0"
     href="/{{ readMore(banner) }}"
-    *ngIf="type !== 'dynamicPage'"
+    *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
   >
     <div class="trendingbrandbuzz-content">
       <h4
@@ -73,7 +68,10 @@
         {{ banner.short_description }}
       </p>
     </div>
-    <a class="buffalowings-bottom" *ngIf="type !== 'powerranking'" href="">
+    <a
+      class="buffalowings-bottom float-right text-uppercase"
+      href="/{{ readMore(banner) }}"
+    >
       <a
         *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
         class="float-right text-uppercase"
@@ -82,8 +80,6 @@
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>
       </a>
-      <!-- Dynamic Page -->
-
       <div class="clearfix"></div>
     </a>
   </a>
@@ -104,12 +100,28 @@
         {{ banner.description }}
       </p>
     </div>
-    <a class="buffalowings-bottom" *ngIf="type !== 'powerranking'" href="#">
+    <a class="buffalowings-bottom" href="/{{ readMore(item) }}">
       <a class="float-right text-uppercase" href="/{{ readMore(item) }}">
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>
       </a>
       <div class="clearfix"></div>
     </a>
+  </a>
+  <!-- Power ranking -->
+  <a
+    class="banner-left col-md-4 p-0"
+    href=""
+    onclick="return false"
+    *ngIf="type === 'powerranking'"
+  >
+    <div class="trendingbrandbuzz-content">
+      <h1>
+        {{ banner.title }}
+      </h1>
+      <p>
+        {{ banner.short_description }}
+      </p>
+    </div>
   </a>
 </div>

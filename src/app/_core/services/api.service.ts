@@ -21,24 +21,6 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  //Header API
-  getHeader() {
-    return this.http.get<any>(`${environment.apiUrl}/1851/header`).pipe(
-      map((result: any) => {
-        return result.data;
-      })
-    );
-  }
-
-  //Footer API
-  getFooter() {
-    return this.http.get<any>(`${environment.apiUrl}/1851/footer`).pipe(
-      map((result: any) => {
-        return result.data;
-      })
-    );
-  }
-
   getAPI(endpoint: string): Observable<any> {
     return this.http
       .get(`${environment.apiUrl}/${endpoint}`, this.httpOptions)

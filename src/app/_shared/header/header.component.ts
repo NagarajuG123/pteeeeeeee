@@ -385,6 +385,9 @@ export class HeaderComponent implements OnInit {
   toggleLearn() {
     $('.learn-menu').slideToggle();
   }
+  toggleBrandLearn() {
+    $('.brand-learn').slideToggle();
+  }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
     this.emailSubMessage = '';

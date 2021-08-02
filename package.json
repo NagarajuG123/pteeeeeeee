@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:stats": "ng build --stats-json",
-    "analyze": "webpack-bundle-analyzer dist/1851/stats.json",
+    "analyze": "webpack-bundle-analyzer dist/1851/browser/stats.json",
     "dev:ssr": "ng run 1851:serve-ssr",
     "serve:ssr": "node dist/1851/server/main.js",
     "build:ssr": "ng build && ng run 1851:server",

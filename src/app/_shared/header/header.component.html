@@ -34,8 +34,8 @@
             <a href="/">
               <figure>
                 <img
-                  class="logo-img"
-                  src="{{ sidenav?.logo }}"
+                  class="logo-img lazyload"
+                  data-src="{{ sidenav?.logo }}"
                   width="{{ publication?.id === 'EE' ? 200 : 53 }}"
                   height="53"
                   alt="logo"
@@ -90,13 +90,14 @@
                       <figure>
                         <img
                           appYoutubeImage
-                          src="{{
+                          data-src="{{
                             sidenav['monthly-cover']?.media
                               | defaultImage: 97:127
                           }}"
                           width="97"
                           height="127"
                           alt="monthly cover"
+                          class="lazyload"
                         />
                       </figure>
                     </a>
@@ -412,12 +413,13 @@
               <figure>
                 <img
                   appYoutubeImage
-                  src="{{
+                  data-src="{{
                     header['monthly-cover']?.media | defaultImage: 119:157
                   }}"
                   width="119"
                   height="157"
                   alt="Monthly cover"
+                  class="lazyload"
                 />
               </figure>
             </a>
@@ -466,8 +468,8 @@
             >
               <figure>
                 <img
-                  class="logo-img sidebar-brand-images"
-                  src="{{ sidenav?.logo }}"
+                  class="logo-img sidebar-brand-images lazyload"
+                  data-src="{{ sidenav?.logo }}"
                   alt="logo"
                 />
               </figure>
@@ -640,6 +642,56 @@
                 </li>
               </ul>
             </div>
+            <nav class="d-sm-block d-md-none">
+              <ul>
+                <li
+                  *ngIf="isInquire && inquireData.menu_title"
+                  class="has_dd d-block float-none"
+                >
+                  <a
+                    href="#"
+                    onclick="return false;"
+                    class="text-uppercase"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inquireModal"
+                  >
+                    {{ inquireData?.menu_title }}
+                  </a>
+                </li>
+                <li class="has_dd d-block float-none">
+                  <a href="{{ brandSlug }}/info" class="text-uppercase"
+                    >BRAND INFORMATION</a
+                  >
+                </li>
+                <li></li>
+
+                <li class="has_dd d-block float-none">
+                  <a
+                    href="javascript:void(0)"
+                    class="text-uppercase"
+                    (click)="toggleBrandLearn()"
+                    >LEARN<span
+                      >&nbsp;<i
+                        class="fa fa-angle-down"
+                        aria-hidden="true"
+                      ></i></span
+                  ></a>
+                  <div class="megamenu brand-learn">
+                    <ul>
+                      <li *ngFor="let item of header['learn']">
+                        <a
+                          href="{{ item.url }}"
+                          target="_blank"
+                          class="text-uppercase"
+                          >{{ item.title }}</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </nav>
           </div>
         </div>
         <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px">
@@ -888,10 +940,11 @@
                 <figure>
                   <img
                     appYoutubeImage
-                    src="{{ story['media'] | defaultImage: 248:139 }}"
+                    data-src="{{ story['media'] | defaultImage: 248:139 }}"
                     width="248"
                     height="139"
                     alt="frannews"
+                    class="lazyload"
                   />
                 </figure>
                 <div class="socialmedia">

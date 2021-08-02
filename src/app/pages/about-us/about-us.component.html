@@ -12,11 +12,12 @@
         <figure>
           <img
             appYoutubeImage
-            src="{{ data?.media | defaultImage: 1300:730 }}"
+            data-src="{{ data?.media | defaultImage: 1300:730 }}"
             width="1023"
             height="575"
             alt="about"
             (imageLoad)="bannerImageLoad()"
+            class="lazyload"
           />
         </figure>
         <app-modal
