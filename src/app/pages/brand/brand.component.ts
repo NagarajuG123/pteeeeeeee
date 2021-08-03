@@ -128,7 +128,7 @@ export class BrandComponent implements OnInit {
   getMoreDynamic() {
     this.apiService
       .getAPI(
-        `page/${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 1}`
+        `page/${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 10 }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;

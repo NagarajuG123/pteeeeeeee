@@ -31,7 +31,7 @@ export class TrendingbuzzComponent implements OnInit {
     });
   }
    getMoreData() {
-    this.apiService.getAPI(`${this.slug}/trending-buzz?limit=10&offset=${this.secondBlock.length + 1}`)
+    this.apiService.getAPI(`${this.slug}/trending-buzz?limit=10&offset=${this.secondBlock.length + 10}`)
     .subscribe(result => {
       this.hasMore = result.has_more;
       result.data.forEach((element: any) => {
