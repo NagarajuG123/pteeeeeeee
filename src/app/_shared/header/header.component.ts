@@ -165,6 +165,7 @@ export class HeaderComponent implements OnInit {
             this.visitSite = `${
               this.sidenav[this.brandSlug]['visit-website']['url']
             }`;
+            
           }
         }
       }
