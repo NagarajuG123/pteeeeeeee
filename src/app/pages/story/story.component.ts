@@ -489,14 +489,14 @@ export class StoryComponent implements OnInit {
           this.addItems(1, 0);
         }
         let url = '';
-        if (this.brandId === '1851' && this.isServer) {
+        if (this.brandId === '1851') {
           url = `${environment.appUrl}${
             result['story'].data.brand.slug === '1851' ||
             result['story'].data.brand.slug === ''
               ? ''
               : `/${result['story'].data.brand.slug}`
           }${this.router.url}`;
-        } else if (this.brandId !== '1851' && this.isServer) {
+        } else if (this.brandId !== '1851') {
           url = `${environment.appUrl}${
             result['story'].data.brand.slug === '1851' ||
             result['story'].data.brand.slug === ''
@@ -504,7 +504,6 @@ export class StoryComponent implements OnInit {
               : this.router.url
           }`;
         }
-
         this.createCanonicalURL(url);
       });
   }
@@ -741,19 +740,17 @@ export class StoryComponent implements OnInit {
     }
   }
   createCanonicalURL(url) {
-    if (this.isServer) {
-      const renderer = this.rendererFactory.createRenderer(this.dom, {
-        id: '-1',
-        encapsulation: ViewEncapsulation.None,
-        styles: [],
-        data: {},
-      });
-      const link = renderer.createElement('link');
-      const head = this.dom.head;
-      renderer.setAttribute(link, 'rel', 'canonical');
-      renderer.setAttribute(link, 'href', url);
-      renderer.appendChild(head, link);
-    }
+    const renderer = this.rendererFactory.createRenderer(this.dom, {
+      id: '-1',
+      encapsulation: ViewEncapsulation.None,
+      styles: [],
+      data: {},
+    });
+    const link = renderer.createElement('link');
+    const head = this.dom.head;
+    renderer.setAttribute(link, 'rel', 'canonical');
+    renderer.setAttribute(link, 'href', url);
+    renderer.appendChild(head, link);
   }
   readMore(item: any) {
     return this.commonService.readMore(item);
