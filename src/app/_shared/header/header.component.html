@@ -24,7 +24,6 @@
             >
           </a>
         </div>
-
         <div
           *ngIf="isSide && sidenav"
           class="menu-details"
@@ -994,7 +993,7 @@
 
   <!-- Contact Modal -->
   <div
-    *ngIf="isBrowser && isContact"
+    *ngIf="isBrowser && isContact && contactFields"
     class="search_pop_up modal"
     id="contactModal"
   >
