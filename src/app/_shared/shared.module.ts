@@ -71,7 +71,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     FormsModule,
     ReactiveFormsModule,
     NgxYoutubePlayerModule,
-
     MalihuScrollbarModule.forRoot(),
     SlickCarouselModule,
     ShareButtonModule,
