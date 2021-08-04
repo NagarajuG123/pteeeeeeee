@@ -7,7 +7,6 @@ export const environment = {
   port: 4200,
   apiUrl: 'https://api.1851franchise.com/v1',
   imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
-  editorialEmail: 'editorial@1851franchise.com',
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
