@@ -8,7 +8,6 @@ import {
 import { ApiService } from '../../_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
-import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import {
   FormBuilder,
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
   isBrowser!: boolean;
   news: any;
   resultData: any;
-  editorialEmail = `${environment.editorialEmail}`;
+  editorialEmail: string;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
@@ -165,11 +164,20 @@ export class HeaderComponent implements OnInit {
             this.visitSite = `${
               this.sidenav[this.brandSlug]['visit-website']['url']
             }`;
-            
           }
+          this.setEditorialEmail();
         }
       }
     );
+  }
+  setEditorialEmail() {
+    if (this.publication.id === '1851') {
+      this.editorialEmail = 'editorial@1851franchise.com';
+    } else if (this.publication.id.toLowerCase() === 'ee') {
+      this.editorialEmail = 'editorial@estatenvy.com';
+    } else {
+      this.editorialEmail = 'editorial@room1903.com';
+    }
   }
   visitBrandPage() {
     const action = this.visitSite
