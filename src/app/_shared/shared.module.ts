@@ -9,7 +9,6 @@ import { SplitArrayPipe } from '../_core/pipes/split-array.pipe';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
-
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
 // Header and Footer Components
