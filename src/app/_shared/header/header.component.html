@@ -1,4 +1,4 @@
-<header *ngIf="isShow" class="col-12 p-0">
+<header *ngIf="header && isShow" class="col-12 p-0">
   <div *ngIf="isMain" class="container">
     <div class="header-details d-flex">
       <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
@@ -456,7 +456,7 @@
         </div>
 
         <div
-          *ngIf="isSide"
+          *ngIf="isSide && sidenav"
           class="menu-details brand-menu-details"
           [ngClass]="commonService.showmenu ? 'show' : ''"
         >
