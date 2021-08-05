@@ -55,6 +55,9 @@ export class HeaderComponent implements OnInit {
   isSide: boolean = false;
   sidenav: any;
   ga: any;
+  isFranchiseMenu: boolean = false;
+  isLearnMenu: boolean = false;
+  isBrandLearnMenu: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -165,7 +168,6 @@ export class HeaderComponent implements OnInit {
             this.visitSite = `${
               this.sidenav[this.brandSlug]['visit-website']['url']
             }`;
-            
           }
         }
       }
@@ -381,13 +383,13 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleFranchise() {
-    $('.franchise-menu').slideToggle();
+    this.isFranchiseMenu = !this.isFranchiseMenu;
   }
   toggleLearn() {
-    $('.learn-menu').slideToggle();
+    this.isLearnMenu = !this.isLearnMenu;
   }
   toggleBrandLearn() {
-    $('.brand-learn').slideToggle();
+    this.isBrandLearnMenu = !this.isLearnMenu;
   }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;

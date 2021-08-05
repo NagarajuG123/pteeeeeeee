@@ -14,3 +14,8 @@
 .search_pop_up form {
   margin: 30px auto 0;
 }
+.megamenu {
+  &.show {
+    display: block;
+  }
+}

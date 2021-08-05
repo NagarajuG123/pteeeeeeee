@@ -258,7 +258,7 @@
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu franchise-menu">
+                <div [ngClass]="isFranchiseMenu ? 'show' : ''" class="megamenu">
                   <ul>
                     <li
                       *ngFor="
@@ -287,7 +287,7 @@
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu learn-menu">
+                <div [ngClass]="isLearnMenu ? 'show' : ''" class="megamenu">
                   <ul>
                     <li *ngFor="let subItem of header['Learn']?.dropdown">
                       <a
@@ -675,7 +675,10 @@
                         aria-hidden="true"
                       ></i></span
                   ></a>
-                  <div class="megamenu brand-learn">
+                  <div
+                    [ngClass]="isBrandLearnMenu ? 'show' : ''"
+                    class="megamenu"
+                  >
                     <ul>
                       <li *ngFor="let item of header['learn']">
                         <a
@@ -872,19 +875,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <button
-          type="button"
-          class="close text-right"
-          (click)="closeModal('thanksModal')"
-        >
-          &times;
-        </button>
-      </div>
-    </div>
-  </div>
+
   <!-- Search Modal -->
 
   <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
