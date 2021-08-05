@@ -267,7 +267,7 @@ nav{
       overflow: hidden;
   }
 }
-.menu-detials{
+.menu-details{
   position: fixed;
   top: 0;
   left:-300px;
@@ -401,7 +401,7 @@ nav{
   padding: 7px 5px 5px 22px;
 }
 .menu-open{
-  .menu-detials{
+  .menu-details{
       left: 0;
   }
   .wrapper{
@@ -507,7 +507,7 @@ nav{
       padding: 3px 5px 2px 22px;
   }
 }
-.sponcered{
+.sponsored{
   padding: 25px 18px 25px 18px;
   @include desk-lg-below1{
       padding: 20px 15px;   

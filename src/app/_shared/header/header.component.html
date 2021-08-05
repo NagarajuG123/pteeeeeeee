@@ -11,7 +11,7 @@
                     ? '../../../assets/img/close.png'
                     : '../../../assets/img/menu.png'
                 "
-                alt="menu"
+                alt=""
                 width="35"
                 height="24"
                 [ngClass]="commonService.showmenu ? 'close-menu' : ''"
@@ -324,7 +324,8 @@
               />
             </figure>
           </a>
-          <div *ngIf="header?.subscribe" class="subscribe ml-1">
+          <div *ngFor="let item of header | keyvalue: unsorted">
+          <div *ngIf="!item.value['dropdown'] && item.value['position'] == 'left'"  class="subscribe ml-1">
             <h6>
               <a href="{{ header?.subscribe?.url }}" class="text-uppercase">{{
                 header?.subscribe?.title
@@ -337,6 +338,7 @@
               >{{ header?.subscribe?.subtitle }}</a
             >
           </div>
+        </div>
         </div>
       </div>
       <div class="header-right col-lg-7 col-md-8 col-4 d-none d-sm-block">
@@ -714,19 +716,11 @@
         </div>
         <div class="subscribe col-xl-8 col-md-6 col-6">
           <h6>
-            <a
-              data-bs-toggle="modal"
-              data-bs-target="#sponsoredModal"
-              href="javascript:void(0)"
-            >
+            <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
               {{ brandTitle }} </a
             ><br />
           </h6>
-          <a
-            data-bs-toggle="modal"
-            data-bs-target="#sponsoredModal"
-            href="javascript:void(0)"
-          >
+          <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
             {{ publication?.sponsorHeading }} NEWS POWERED BY
           </a>
         </div>
