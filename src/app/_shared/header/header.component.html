@@ -11,7 +11,7 @@
                     ? '../../../assets/img/close.png'
                     : '../../../assets/img/menu.png'
                 "
-                alt=""
+                alt="menu"
                 width="35"
                 height="24"
                 [ngClass]="commonService.showmenu ? 'close-menu' : ''"
@@ -714,11 +714,19 @@
         </div>
         <div class="subscribe col-xl-8 col-md-6 col-6">
           <h6>
-            <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
+            <a
+              data-bs-toggle="modal"
+              data-bs-target="#sponsoredModal"
+              href="javascript:void(0)"
+            >
               {{ brandTitle }} </a
             ><br />
           </h6>
-          <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
+          <a
+            data-bs-toggle="modal"
+            data-bs-target="#sponsoredModal"
+            href="javascript:void(0)"
+          >
             {{ publication?.sponsorHeading }} NEWS POWERED BY
           </a>
         </div>
