@@ -8,7 +8,6 @@ import {
 import { ApiService } from '../../_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
-import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import {
   FormBuilder,
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
   isBrowser!: boolean;
   news: any;
   resultData: any;
-  editorialEmail = `${environment.editorialEmail}`;
+  editorialEmail: string;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
@@ -169,9 +168,19 @@ export class HeaderComponent implements OnInit {
               this.sidenav[this.brandSlug]['visit-website']['url']
             }`;
           }
+          this.setEditorialEmail();
         }
       }
     );
+  }
+  setEditorialEmail() {
+    if (this.publication.id === '1851') {
+      this.editorialEmail = 'editorial@1851franchise.com';
+    } else if (this.publication.id.toLowerCase() === 'ee') {
+      this.editorialEmail = 'editorial@estatenvy.com';
+    } else {
+      this.editorialEmail = 'editorial@room1903.com';
+    }
   }
   visitBrandPage() {
     const action = this.visitSite
@@ -197,19 +206,9 @@ export class HeaderComponent implements OnInit {
     this.searchCloseBtn.nativeElement.click();
 
     if (this.brandId === '1851') {
-      this.router.navigate(['/searchpopup'], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.publication.id.toLowerCase(),
-        },
-      });
+      window.location.href = `/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
-      this.router.navigate([`/${this.brandSlug}/searchpopup`], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.brandId,
-        },
-      });
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }

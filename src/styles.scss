@@ -48,6 +48,9 @@ ul {
   overflow: auto !important;
   padding-right: 0px !important;
 }
+body.modal-open {
+  overflow-y: hidden !important;
+}
 
 b,
 strong {
