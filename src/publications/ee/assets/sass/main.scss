@@ -1565,7 +1565,7 @@ spotlighttab-cnt-left{
         }
     }
     .glyphicon-chevron-left{
-        background: url("assets/img/left-arrow.png") no-repeat left top;
+        background: url("/assets/img/left-arrow.png") no-repeat left top;
         width: 15px;
         height: 28px;
         position: absolute;
@@ -1593,7 +1593,7 @@ spotlighttab-cnt-left{
         }
     }
     .glyphicon-chevron-right{
-        background: url("assets/img/right-arrow.png") no-repeat left top;
+        background: url("/assets/img/right-arrow.png") no-repeat left top;
         width: 15px;
         height: 28px;
         position: absolute;
@@ -1629,7 +1629,7 @@ spotlighttab-cnt-left{
         -moz-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         font-size: 0;
-        background: url("assets/img/left-arrow.png") no-repeat left top;
+        background: url("/assets/img/left-arrow.png") no-repeat left top;
         width: 15px;
         height: 28px;
         border: 0 none;
@@ -1647,7 +1647,7 @@ spotlighttab-cnt-left{
         -moz-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         font-size: 0;
-        background: url("assets/img/right-arrow.png") no-repeat left top;
+        background: url("/assets/img/right-arrow.png") no-repeat left top;
         width: 15px;
         height: 28px;
         border: 0 none;
@@ -1833,7 +1833,7 @@ spotlighttab-cnt-left{
 /* author-banner */
 .author-banner{
     position: relative;
-    background: url("assets/img/author-banner.jpg") no-repeat left top;
+    background: url("/assets/img/author-banner.jpg") no-repeat left top;
     background-size: cover;
 }
 .overlay{
@@ -2201,7 +2201,7 @@ spotlighttab-cnt-left{
         }
     }
     .slick-prev{
-        background: url("assets/img/category-left-arrow.png") no-repeat left top;
+        background: url("/assets/img/category-left-arrow.png") no-repeat left top;
         &:hover,
         &:focus {
           background: url("/assets/img/category-left-arrow.png") no-repeat left top;
@@ -2209,7 +2209,7 @@ spotlighttab-cnt-left{
         }
     }
     .slick-next{
-        background: url("assets/img/category-right-arrow.png") no-repeat left top;
+        background: url("/assets/img/category-right-arrow.png") no-repeat left top;
         &:hover,
         &:focus {
           background: url("/assets/img/category-right-arrow.png") no-repeat left top;
@@ -2926,16 +2926,16 @@ spotlighttab-cnt-left{
         line-height: 19px;
         font-weight: normal;
         font-family: $font_family_2;
-        background: url("assets/img/unchecked.png") no-repeat left 1px;
+        background: url("/assets/img/unchecked.png") no-repeat left 1px;
         padding: 0 0 0 25px;
         letter-spacing: 0.4px;
     }
     .editors-details input:checked + span{
-        background: url("assets/img/checked1.png") no-repeat left 1px;
+        background: url("/assets/img/checked1.png") no-repeat left 1px;
     }
 }
 .contact-editorial-main input:checked + span{
-    background: url("assets/img/checked.png") no-repeat left 1px;
+    background: url("/assets/img/checked.png") no-repeat left 1px;
 }
 .editors-details{
     padding: 8px 20px 0 46px;
@@ -2961,7 +2961,7 @@ spotlighttab-cnt-left{
         color: $color27;
     }
     span{
-        background: url("assets/img/unchecked1.png") no-repeat left 1px;
+        background: url("/assets/img/unchecked1.png") no-repeat left 1px;
         padding: 0 0 0 17px;
         font-size: 11px;
         line-height: 17px;
@@ -3000,7 +3000,7 @@ spotlighttab-cnt-left{
         position: absolute;
         top: 15px;
         right:3.4%;
-        background: url("assets/img/contacteditorial-img3.png") no-repeat left top;
+        background: url("/assets/img/contacteditorial-img3.png") no-repeat left top;
         width: 111px;
         height: 111px;
         @include mobile-portrait {
@@ -3521,7 +3521,7 @@ spotlighttab-cnt-left{
         display: none;
     }
     span{
-        background: url("assets/img/unchecked2.png") no-repeat left 2px;
+        background: url("/assets/img/unchecked2.png") no-repeat left 2px;
         padding: 0 0 0 17px;
         font-size: 12px;
         line-height:21px;
@@ -3531,7 +3531,7 @@ spotlighttab-cnt-left{
     }
 }
 .signmeup input:checked + span{
-    background: url("assets/img/checked2.png") no-repeat left 2px;
+    background: url("/assets/img/checked2.png") no-repeat left 2px;
 }
 /* subscribepage style starts here */
 
@@ -7224,7 +7224,7 @@ and (orientation : portrait)
          color: $color33_1;
      }
      .dropdown-toggle::after{
-        background: url('assets/img/brand_search_down_arrow.png') no-repeat;
+        background: url("/assets/img/brand_search_down_arrow.png") no-repeat;
          width: 12px;
          height: 10px;
          margin: 0 0 -6px 1px;
@@ -7233,7 +7233,7 @@ and (orientation : portrait)
      }
      .dropup-toggle::after{
         content: "";
-        background: url('assets/img/brand_search_down_arrow.png') no-repeat;
+        background: url("/assets/img/brand_search_down_arrow.png") no-repeat;
          width: 12px;
          height: 10px;
          margin: 0 0 -6px 1px;
@@ -7356,7 +7356,7 @@ and (orientation : portrait)
                     line-height: 18px;
                     font-family: $font_family_1;
                     font-weight: normal;
-                    background: url("assets/img/checkbox_brand_search.png") no-repeat 0 0px;
+                    background: url("/assets/img/checkbox_brand_search.png") no-repeat 0 0px;
                     cursor: pointer;
                     line-height: 18px;
                 }
@@ -7365,7 +7365,7 @@ and (orientation : portrait)
                 }
             }
             label input:checked + span{
-                background-image: url("assets/img/checkbox-checked_brand_search.png");
+                background-image: url("/assets/img/checkbox-checked_brand_search.png");
                 color: $color37_1;
             }
         }
@@ -8156,7 +8156,7 @@ and (orientation : portrait)
         span{
             padding: 0 0 0 25px;
             display: inline-block;
-            background: url('assets/img/checkbox.png') no-repeat 0 0px;
+            background: url("/assets/img/checkbox.png") no-repeat 0 0px;
             cursor: pointer;
             line-height: 18px;
              @include tablet-landscape1{
@@ -8166,7 +8166,7 @@ and (orientation : portrait)
         input{
             display: none;
         }
-        input:checked + span{background-image: url('assets/img/checked-checkbox.png');}
+        input:checked + span{background-image: url("/assets/img/checked-checkbox.png");}
         }
     }
 }       
@@ -8460,7 +8460,7 @@ figcaption {
     background: rgba(0,0,0,.5);
     padding: 0!important;
     .modal-content {
-        background: url("assets/img/thanks.png") no-repeat 0 0;
+        background: url("/assets/img/thanks.png") no-repeat 0 0;
         height: 234px;
         width: 480px;
         border: unset;
