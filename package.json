@@ -15,7 +15,11 @@
     "prerender": "ng run 1851:prerender",
     "start-ssr": "npm run build:ssr && npm run serve:ssr",
     "lint": "ng lint",
-    "build:1851:prod": "ng build --configuration=1851PROD && ng run 1851:server --configuration=1851PROD"
+    "build:1851:prod": "ng build --configuration=1851PROD && ng run 1851:server --configuration=1851PROD",
+    "build:1851:qa": "ng build --configuration=1851QA && ng run 1851:server --configuration=1851QA",
+    "build:ee:prod": "ng build --configuration=EEPROD && ng run 1851:server --configuration=EEPROD",
+    "build:ee:qa": "ng build --configuration=EEQA && ng run 1851:server --configuration=EEQA"
+
   },
   "private": true,
   "dependencies": {
