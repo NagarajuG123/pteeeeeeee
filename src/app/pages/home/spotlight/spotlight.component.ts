@@ -16,6 +16,7 @@ export class SpotlightComponent implements OnInit {
   scrollbarOptions: any;
   selectedIndex: number = 0;
   tabs:any;
+  publication: any = [];
 
   
   constructor(
@@ -33,6 +34,7 @@ export class SpotlightComponent implements OnInit {
       } else {
         this.selectedTab = 'people';
       }
+      this.publication = response;
       this.getInitialData();
     });
   }
