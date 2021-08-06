@@ -154,7 +154,7 @@ h2 {
     }
 }
 
-.menu-detials {
+.menu-details {
     background-color: #E6E6E7;
 }
 
@@ -685,4 +685,7 @@ h2 {
     .author-banner-left {
         padding: 0px;
     }
+}
+.menu-open .menu-details {
+    left: 0;
 }

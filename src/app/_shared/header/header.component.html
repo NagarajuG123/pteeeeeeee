@@ -345,14 +345,29 @@
         <div class="d-flex">
           <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
             <ul class="d-flex">
-              <li *ngIf="header['Franchise Brands']" class="has_dd">
-                <a class="text-uppercase" href="#" onclick="return false;">
-                  {{ header["Franchise Brands"]?.title }}
+              <li *ngFor="let item of header | keyvalue: unsorted" class="has_dd">
+                <a 
+                *ngIf="(item.value['type'] != 'logo' &&
+                    item.value['type'] != 'monthly-cover') && 
+                    !item.value['dropdown'] &&
+                    item.value['position'] != 'left'" 
+                  [href]="item.value['url']" 
+                  class="text-uppercase"
+                >
+                {{ item.value['title'] }}
+                </a> 
+
+                <a *ngIf="(item.value['type'] != 'logo' &&
+                item.value['type'] != 'monthly-cover' ) &&
+                item.value['dropdown']" class="text-uppercase" href="#" onclick="return false;">
+                  {{ item.value?.title }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu">
+                <div *ngIf="(item.value['type'] != 'logo' &&
+                item.value['type'] != 'monthly-cover' ) && 
+                item.value['dropdown']" class="megamenu">
                   <ul>
                     <li
                       *ngFor="
