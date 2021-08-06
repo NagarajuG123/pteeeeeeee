@@ -15,6 +15,7 @@ export class AboutUsComponent implements OnInit {
 
   bannerImageLoaded: Boolean = false;
   mainimageLoaded: Boolean = false;
+  publication: any = [];
 
   data: any = [];
   showVideo: Boolean = false;
@@ -27,8 +28,10 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     const aboutus = this.apiService.getAPI(`1851/about-us`);
     const meta = this.apiService.getAPI(`1851/meta`);
-    forkJoin([aboutus,meta]).subscribe(results => {
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([aboutus,meta,publication]).subscribe(results => {
       this.data =  results[0].data;
+      this.publication = results[2];
       if (this.data?.contents?.length > 0) {
         for (let i = 1; i < this.data.contents.length; i++) {
           this.publication_contents.push(this.data.contents[i]);

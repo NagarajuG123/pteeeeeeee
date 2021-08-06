@@ -37,7 +37,7 @@
               <h6>SPOTLIGHT</h6>
               <ul>
                 <li *ngFor="let spotlight of footer?.spotlight">
-                  <a href="{{ spotlight?.url.replace('+', '-') }}">{{
+                    <a href="{{ spotlight?.url.split('+').join('-') }}">{{
                     spotlight?.title | titlecase
                   }}</a>
                 </li>
