@@ -31,9 +31,13 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
+              {
+                "glob": "**favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
               {
                 "glob": "robots.txt",
                 "input": "src",
@@ -203,9 +207,13 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              {
+                "glob": "**favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",

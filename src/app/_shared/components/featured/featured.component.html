@@ -10,7 +10,7 @@
     style="cursor: pointer"
   >
     <a
-      *ngIf="!isVideo(highlight) && highlight.media.url"
+      *ngIf="!isVideo(highlight) && highlight?.media?.url"
       class="d-block"
       href="/{{ readMore(highlight) }}"
     >
@@ -37,7 +37,7 @@
       </figure>
     </a>
     <a
-      *ngIf="isVideo(highlight) && highlight.media.url"
+      *ngIf="isVideo(highlight) && highlight?.media?.url"
       class="d-block video-btn"
       data-bs-toggle="modal"
       data-bs-target="#featuredModal"
