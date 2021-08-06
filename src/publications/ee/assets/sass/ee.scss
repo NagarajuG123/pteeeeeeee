@@ -156,6 +156,10 @@ h2 {
 
 .menu-details {
     background-color: #E6E6E7;
+    &.show{
+        left: 0;
+        display: block;
+    }
 }
 
 .menu-search {
@@ -689,3 +693,4 @@ h2 {
 .menu-open .menu-details {
     left: 0;
 }
+

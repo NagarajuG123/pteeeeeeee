@@ -112,7 +112,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav?.category?.items">
                       <a
-                        href="{{ item.url.replace('+', '-') }}"
+                        href="{{ item.url.split('+').join('-') }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item.title }}</a
