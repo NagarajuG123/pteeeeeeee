@@ -37,7 +37,7 @@
               <h6>SPOTLIGHT</h6>
               <ul>
                 <li *ngFor="let spotlight of footer?.spotlight">
-                  <a href="{{ spotlight?.url.replace('+', '-') }}">{{
+                  <a routerLink="/{{ spotlight?.url.replace('+', '-') }}">{{
                     spotlight?.title | titlecase
                   }}</a>
                 </li>
@@ -47,14 +47,14 @@
               <ul>
                 <li *ngIf="footer['about-us']">
                   <a
-                    href="{{ footer['about-us']['url'] }}"
+                    routerLink="/{{ footer['about-us']['url'] }}"
                     class="text-uppercase"
                     >ABOUT US</a
                   >
                 </li>
                 <li *ngIf="footer['contact-editorial'] && !isBrandFooter">
                   <a
-                    href="{{ footer['contact-editorial']['url'] }}"
+                    routerLink="/{{ footer['contact-editorial']['url'] }}"
                     class="text-uppercase"
                     >CONTACT</a
                   >
@@ -70,13 +70,13 @@
                   </a>
                 </li>
                 <li *ngIf="footer['site-map']">
-                  <a href="{{ footer['site-map']?.url }}" class="text-uppercase"
+                  <a routerLink="/{{ footer['site-map']?.url }}" class="text-uppercase"
                     >SITE MAP</a
                   >
                 </li>
                 <li>
                   <a
-                    href="{{ footer['terms-of-use']?.url }}"
+                    routerLink="/{{ footer['terms-of-use']?.url }}"
                     class="text-uppercase"
                     >TERMS OF USE</a
                   >
@@ -87,7 +87,8 @@
         </div>
         <div *ngIf="!isBrandFooter" class="footer-right text-right col-md-3">
           <h5 class="text-uppercase">WANT TO LEARN MORE?</h5>
-          <a href="about#tellus"
+          <a routerLink="about"
+          fragment="tellus"
             ><span class="d-block text-uppercase float-right text-center"
               >LET’S TALK</span
             ></a
