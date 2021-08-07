@@ -5,5 +5,5 @@ export const environment = {
   reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
   appUrl: 'https://estatenvy.com',
   fbUrl: 'https://www.facebook.com/estatenvy/',
-  port: 4300,
+  port: 4400,
 };
