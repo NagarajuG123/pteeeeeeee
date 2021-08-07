@@ -11,7 +11,7 @@
                     ? '../../../assets/img/close.png'
                     : '../../../assets/img/menu.png'
                 "
-                alt="menu"
+                alt=""
                 width="35"
                 height="24"
                 [ngClass]="commonService.showmenu ? 'close-menu' : ''"
@@ -112,7 +112,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav?.category?.items">
                       <a
-                        href="{{ item.url.replace('+', '-') }}"
+                        href="{{ item.url.split('+').join('-') }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item.title }}</a
@@ -324,7 +324,8 @@
               />
             </figure>
           </a>
-          <div *ngIf="header?.subscribe" class="subscribe ml-1">
+          <div *ngFor="let item of header | keyvalue: unsorted">
+          <div *ngIf="!item.value['dropdown'] && item.value['position'] == 'left'"  class="subscribe ml-1">
             <h6>
               <a href="{{ header?.subscribe?.url }}" class="text-uppercase">{{
                 header?.subscribe?.title
@@ -338,46 +339,41 @@
             >
           </div>
         </div>
+        </div>
       </div>
       <div class="header-right col-lg-7 col-md-8 col-4 d-none d-sm-block">
         <div class="d-flex">
           <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
             <ul class="d-flex">
-              <li *ngIf="header['Franchise Brands']" class="has_dd">
-                <a class="text-uppercase" href="#" onclick="return false;">
-                  {{ header["Franchise Brands"]?.title }}
+              <li *ngFor="let item of header | keyvalue: unsorted" class="has_dd">
+                <a 
+                *ngIf="(item.value['type'] != 'logo' &&
+                    item.value['type'] != 'monthly-cover') && 
+                    !item.value['dropdown'] &&
+                    item.value['position'] != 'left'" 
+                  [href]="item.value['url']" 
+                  class="text-uppercase"
+                >
+                {{ item.value['title'] }}
+                </a> 
+
+                <a *ngIf="(item.value['type'] != 'logo' &&
+                item.value['type'] != 'monthly-cover' ) &&
+                item.value['dropdown']" class="text-uppercase" href="#" onclick="return false;">
+                  {{ item.value?.title }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
-                <div class="megamenu">
+                <div *ngIf="(item.value['type'] != 'logo' &&
+                item.value['type'] != 'monthly-cover' ) && 
+                item.value['dropdown']" class="megamenu">
                   <ul>
                     <li
                       *ngFor="
-                        let subItem of header['Franchise Brands']?.dropdown
+                        let subItem of item.value['dropdown']
                       "
                     >
-                      <a
-                        href="{{ subItem.url }}"
-                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
-                        class="text-uppercase"
-                        >{{ subItem.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Learn -->
-              <li *ngIf="header['Learn']" class="has_dd">
-                <a class="text-uppercase" href="#" onclick="return false;">
-                  {{ header["Learn"]?.title }}
-                  <span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i
-                  ></span>
-                </a>
-                <div class="megamenu">
-                  <ul>
-                    <li *ngFor="let subItem of header['Learn']?.dropdown">
                       <a
                         href="{{ subItem.url }}"
                         [target]="subItem['isExternalLink'] ? '_blank' : ''"
@@ -717,19 +713,11 @@
         </div>
         <div class="subscribe col-xl-8 col-md-6 col-6">
           <h6>
-            <a
-              data-bs-toggle="modal"
-              data-bs-target="#sponsoredModal"
-              href="javascript:void(0)"
-            >
+            <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
               {{ brandTitle }} </a
             ><br />
           </h6>
-          <a
-            data-bs-toggle="modal"
-            data-bs-target="#sponsoredModal"
-            href="javascript:void(0)"
-          >
+          <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
             {{ publication?.sponsorHeading }} NEWS POWERED BY
           </a>
         </div>

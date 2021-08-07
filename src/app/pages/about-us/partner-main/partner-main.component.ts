@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-partner-main',
@@ -14,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./partner-main.component.scss'],
 })
 export class PartnerMainComponent implements OnInit {
+  @Input() demo: Object = null;
   contactForm: FormGroup;
   isSubmitted: boolean;
   siteKey: string;
@@ -22,6 +24,8 @@ export class PartnerMainComponent implements OnInit {
   isBrowser: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
+  imageUrl: string;
+  demoDescription: string;
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -43,10 +47,14 @@ export class PartnerMainComponent implements OnInit {
       message: ['', Validators.compose([Validators.required])],
       reCaptchaCode: ['', Validators.compose([Validators.required])],
     });
+    this.imageUrl = '';
+    this.demoDescription = '';
   }
 
   ngOnInit(): void {
     this.siteKey = environment.reCaptchaKey;
+    this.imageUrl = _.get(this.demo, 'media.url', '')
+    this.demoDescription = _.get(this.demo, 'description', '');
   }
 
   onContactSubmit(contactForm: FormGroup) {

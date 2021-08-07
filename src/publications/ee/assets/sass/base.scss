@@ -1,0 +1,288 @@
+.w-100 {
+  width: 100% !important;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: top;
+  @include transition1;
+  &:hover {
+    text-decoration: none;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0 none;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+header,
+nav,
+section,
+article,
+aside,
+footer,
+hgroup,
+figure,
+main {
+  display: block;
+}
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.clear {
+  clear: both;
+  display: block;
+}
+body {
+  font-weight: normal;
+  font-family: $font_family_5;
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: normal;
+  color: $color3;
+  overflow-x: hidden;
+}
+.wrapper {
+  @include transition1;
+}
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+  @include desk-lg-below {
+    max-width: 100%;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  font-size: 32px;
+  line-height: 34px;
+  color: $color1;
+  font-weight: normal;
+  font-family: $font_family_6;
+  @include desk-lg-below2 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  @include tablet-portrait {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  @include tablet-landscape1 {
+    font-size: 26px;
+    line-height: 29px;
+  }
+  @include mobile-landscape1 {
+    font-size: 24px;
+    line-height: 27px;
+  }
+}
+h2 {
+  font-size: 28px;
+  line-height: 30px;
+  color: $color13;
+  font-family: $font_family_3;
+  font-weight: normal;
+}
+h3 {
+  font-size: 24px;
+  line-height: 26px;
+  color: $color1;
+  font-weight: normal;
+  font-family: $font_family_2;
+  letter-spacing: 0.3px;
+  @include tablet-landscape {
+    font-size: 23px;
+    line-height: 25px;
+  }
+  @include tablet-landscape1 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  @include mobile-landscape1 {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+h4 {
+  font-size: 20px;
+  line-height: 22px;
+  color: $color3;
+  font-weight: normal;
+  font-family: $font_family_2;
+  letter-spacing: 1px;
+  @include mobile-landscape1 {
+    font-size: 17px;
+    line-height: 19px;
+    letter-spacing: 0.3px;
+  }
+}
+h5 {
+  font-size: 18px;
+  line-height: 20px;
+  color: $color3;
+  font-weight: normal;
+  font-family: $font_family_2;
+  letter-spacing: 0.8px;
+  @include mobile-landscape1 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+h6 {
+  font-size: 15px;
+  line-height: 17px;
+  color: $color3;
+  font-weight: normal;
+  font-family: $font_family_2;
+  letter-spacing: 0.7px;
+}
+p {
+  font-size: 16px;
+  line-height: 24px;
+  color: $color1;
+  font-weight: normal;
+  font-family: $font_family_5;
+  margin: 0;
+}
+.more {
+  width: 355px;
+  margin: 0 auto;
+  border: 1px solid $color1;
+  padding: 13px 5px 9px 5px;
+  font-size: 19px;
+  line-height: 21px;
+  color: $color1;
+  font-weight: normal;
+  font-family: $font_family_5;
+  letter-spacing: -0.4px;
+  @include transition1;
+  &:hover {
+    background: $color1;
+    color: $color9;
+  }
+  @include mobile-landscape1 {
+    width: 100%;
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+button:focus {
+  outline: 0 none;
+  border: 0 none;
+  text-shadow: none;
+}
+.readmore {
+  width: 177px;
+  height: 36px;
+  background: $color4;
+  position: relative;
+  margin: 72px auto 0 auto;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $color1;
+  padding: 0 40px 0 30px;
+  @include desk-lg-below {
+    margin: 20px auto 0 auto;
+  }
+  span {
+    width: 36px;
+    height: 36px;
+    background: $color9;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .fa {
+      font-size: 33px;
+      line-height: 36px;
+      color: $color1;
+    }
+  }
+  &:hover {
+    color: $color1;
+  }
+}
+.loadmore-btn {
+  width: 50px;
+  margin: 0 auto;
+  .fa {
+    font-size: 50px;
+    line-height: 50px;
+    color: $color8;
+  }
+}
+.back {
+  width: 250px;
+  height: 36px;
+  background: $color4;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $color1;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 15px 0 67px;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: $color9;
+    .fa {
+      font-size: 25px;
+      line-height: 36px;
+      color: $color1;
+    }
+  }
+  &:hover {
+    color: $color1;
+  }
+}
+.d-flex {
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+}
+.height-auto {
+  height: auto !important;
+}

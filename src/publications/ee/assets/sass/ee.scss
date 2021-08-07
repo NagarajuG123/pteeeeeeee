@@ -1,0 +1,696 @@
+.ee-bg-color1 {
+    background-color: #EB7838;
+}
+
+.ee-bg-color2 {
+    background-color: #E6E6E7;
+}
+
+.ee-bg-color3 {
+    background-color: #CC6730;
+}
+
+.ee-font-color1 {
+    color: #EB7838;
+}
+
+.ee-font-color2 {
+    color: #272525;
+}
+
+.ee-border-bottom1 {
+    border-bottom-color: #EB7838;
+}
+
+.ee-facebook {
+    background: #4d67a3;
+}
+.ee-instagram {
+    background: #517ea5;
+}
+.ee-twitter {
+    background: #2ba6de;
+}
+.ee-linkedin {
+    background: #0078b3;
+}
+.ee-pinterest {
+    background: #cc2129;
+}
+
+.buffalowings {
+    background: #EB7838;
+}
+
+.buffalowings-bottom {
+    background: #CC6730;
+}
+
+.spotlight-profile {
+    background: #EB7838;
+}
+
+.buffalowings-wrap-head {
+    background: #CC6730;
+}
+
+nav{
+    >ul{
+        >li{
+            >a{
+                color: #A7A9AC;
+                span{
+                    .fa{
+                        color: #EB7838;
+                    }
+                }
+            } 
+        }
+    }
+}
+
+h2 {
+    &.resp-tab-active {
+        span {
+            &.resp-arrow {
+                border-bottom: 12px solid #EB7838;
+            }
+        }
+    }
+}
+
+.logo {
+    padding: 5px 5px 0 22px;
+}
+
+.frannews-top-right {
+    a {
+        .fa {
+            color: #EB7838;
+        }
+    }
+}
+
+.trending {
+    background: #E6E6E7;
+}
+
+.spotlighttab-main {
+    background: #E6E6E7;
+    h2 {
+        &.resp-accordion {
+            background: #EB7838 !important;
+            &.resp-tab-active {
+                a {
+                    color: #EB7838;
+                }
+                
+            }
+        }
+    }
+}
+
+.spotlight-links {
+    ul {
+        li.resp-tab-active {
+            a {
+                background: #E6E6E7;
+                color: #272525;
+            }
+        }
+    }
+}
+
+.spotlighttab-cnt-right {
+    .adweek-right {
+        p {
+            color: #272525;
+        }
+    }
+}
+
+.trending-details {
+    .frannews-top {
+        border-bottom-color: #EB7838;
+        a, h4 {
+            color: #272525;
+        }
+    }
+}
+
+.banner-right {
+    background: #E6E6E7;
+}
+
+.adweek-right {
+    p {
+        color: #272525;
+    }
+}
+
+.footer-bottom {
+    button {
+        background: #EB7838;
+    }
+}
+
+.menu-details {
+    background-color: #E6E6E7;
+    &.show{
+        left: 0;
+        display: block;
+    }
+}
+
+.menu-search {
+    button {
+        .fa{
+            color: #EB7838;
+        }
+    }
+}
+
+.monthly-covers {
+    ul {
+        li {
+            border-bottom: 1px solid #EB7838;
+        }
+    }
+}
+
+.monthly-covers-main {
+    a {
+        color: #6d6e70;
+        .fa {
+            color: #EB7838;
+        }
+        figure {
+            width: auto;
+        }
+    }
+}
+
+.trending-bottom {
+    ul {
+        li {
+            a {
+                width: 100%;
+            }
+        }
+    }
+    .slick-prev {
+        background: url('/assets/img/left-arrow_ee.png') no-repeat left top;
+    }
+    .slick-next {
+        background: url('/assets/img/right-arrow_ee.png') no-repeat left top;
+    }
+}
+
+.trending-bottom-details {
+    figure{
+        img{
+            width: 100%;
+        }
+    }
+}
+
+.footer-middle-in {
+    border-left: 1px solid #EB7838;
+    border-right: 1px solid #EB7838;
+}
+
+.footer-right {
+    span {
+        background: url('/assets/img/bg-img1_ee.png') no-repeat left top;
+    }
+    a {
+        color: #EB7838;
+    }
+}
+
+.franchise-news {
+    padding: 0px 31px 0px 14px;
+}
+
+.loadmore-btn {
+    .fa {
+        color: #EB7838;
+    }
+}
+
+.search_pop_up {
+    form {
+        button {
+            background: #EB7838;
+            border: 1px solid #EB7838;
+        }
+    }
+    button.close {
+        color: #EB7838;
+    }
+    .sponsored-modal-content {
+        h2 {
+            color: #EB7838;
+        }
+    }
+    .contact-form {
+        input[type='submit'] {
+            background: #EB7838;
+            border: 1px solid #EB7838;
+        }
+    }
+}
+
+.back {
+    background: #EB7838;
+    span {
+        background: #CC6730;
+    }
+}
+
+.error-banner-details {
+    h2 {
+        color: #EB7838;
+    }
+}
+
+.brand-frannews1 {
+    h4 {
+        span {
+            color: #EB7838;
+        }
+    }
+}
+
+.info_btn {
+    a {
+        background: #EB7838;
+    }
+}
+
+.buffalo_rings {
+    a {
+        color: #EB7838;
+    }
+}
+
+.main_content_tab {
+    ul {
+        &.resp-tabs-list {
+            background: #EB7838;
+            li {
+                &.resp-tab-active {
+                    background: #CC6730 !important;
+                }
+                a {
+                    &:hover {
+                        background: #CC6730;
+                    }
+                }
+            }
+        }
+    }
+    h2 {
+        &.resp-accordion {
+            background: #EB7838 !important;
+            span {
+                &.resp-arrow {
+                    border-bottom: unset;
+                }
+            }
+        }
+    }
+}
+
+.more_brand {
+    h5 {
+        border-bottom: 2px solid #EB7838;
+    }
+    form {
+        .submit_btn, input[type=submit] {
+            background: #EB7838;
+            border: 1px solid #EB7838;
+        }
+    }
+}
+
+.ranking_data_main {
+    li {
+        span {
+            border-bottom: 1px solid #EB7838;
+        }
+    }
+}
+
+.ranking_september_data {
+    ul {
+        li {
+            em {
+                color: #EB7838;
+            }
+        }
+    }
+}
+
+.current-issue {
+    h4 {
+        background: #EB7838;
+    }
+}
+
+.partner_right_data {
+    h4 {
+        background: #EB7838;
+    }
+    form {
+        .submit_btn {
+            background: #EB7838;
+            .fa {
+                background: #CC6730;
+            }
+        }
+    }
+}
+
+.contact-editorial-main {
+    span {
+        background: url("/assets/img/unchecked_ee.png") no-repeat left 1px;
+    }
+    input:checked + span {
+        background: url("/assets/img/checked_ee.png") no-repeat left 1px;
+    }
+    .editors-details {
+        span {
+            background: url("/assets/img/unchecked1_ee.png") no-repeat left 1px;
+        }
+        input:checked + span {
+            background: url("/assets/img/checked1_ee.png") no-repeat left 1px;
+        }
+    }
+}
+
+.signmeup {
+    input:checked + span {
+        background: url("/assets/img/checked2_ee.png") no-repeat left 2px;
+    }
+    span {
+        background: url("/assets/img/unchecked2_ee.png") no-repeat left 2px;
+    }
+}
+
+.editorial-calender-deails {
+    h2 {
+        border-bottom: 1px solid #EB7838;
+    }
+}
+
+.banner_search {
+    .search_form {
+        form {
+            button {
+                background: #EB7838;
+                border: 1px solid #EB7838;
+            }
+        }
+    }
+    figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.sponsered_content_middle {
+    .brian_jaeger_main {
+        .brian_content {
+            h5 {
+                a {
+                    color: #EB7838;
+                }
+            }
+        }
+    }
+    .brian_jaeger_data {
+        em {
+            small {
+                color: #EB7838 !important;
+            }
+        }
+    }
+    .scroll_data {
+        a {
+            span {
+                .fa {
+                    color: #EB7838;
+                }
+            }
+        }
+    }
+}
+
+.readmore {
+    background: #EB7838;
+    span {
+        background: #CC6730;
+    }
+}
+
+.cassidy {
+    background: #EB7838;
+}
+
+.cassidy1 {
+    background: rgba(129, 129, 132, 0.8);
+}
+
+.trendingbrandbuzz-content {
+    h4 {
+        background: #EB7838;
+    }
+}
+
+.brandbuzz-frannews-bottom {
+    .sponsored {
+        span {
+            background: #EB7838;    
+        }
+    }
+}
+
+.trendingbrandbuzz-banner {
+    .buffalowings-bottom {
+        background: #EB7838;
+    }
+}
+
+.subscribepage-wrap {
+    .form-control {
+        border-color: #EB7838;
+    }
+}
+
+.ranking_trending_right {
+    .dropdown.dropdown_search {
+        .btn-primary {
+            border-bottom: 1px solid #EB7838;
+        }
+    }
+}
+
+.ranking_trending_left {
+    .filter_industry {
+        h6 {
+            border-bottom: 2px solid #EB7838;
+        }
+        h1 {
+            border-bottom: 2px solid #EB7838;
+        }
+        & > label {
+            span {
+                color: #EB7838;
+            }
+        }
+        ul {
+            li {
+                label {
+                    input:checked + span {
+                        background-image: url('/assets/img/checked-checkbox_ee.png');
+                    }
+                }
+            }
+        }
+    }
+}
+
+.monthly-coverpage-right {
+    div {
+        height: 100%;
+        figure {
+            height: 100%;
+            img {
+                height: 100%;
+            }
+        }
+    }
+}
+
+.view-editorial {
+    ul {
+        li {
+            border-bottom: 1px solid #EB7838;
+        }
+    }
+    &.active {
+        ul {
+            li:nth-child(3) {
+                border-bottom: 1px solid #EB7838;
+            }
+        }
+    }
+}
+
+.viewall {
+    a {
+        em {
+            .fa {
+                color: #EB7838;
+            }
+        }
+    }
+    &:after {
+        background: #EB7838;
+    }
+}
+
+.sucess-message {
+    a {
+        background: #EB7838;
+    }
+    em {
+        font-style: normal;
+        font-size:70px;
+        line-height:111px;
+        color: $color1;
+        position: absolute;
+        top: 15px;
+        right:3.4%;
+        background: url(/assets/img/contacteditorial-img3_ee.png) no-repeat left top;
+        width: 111px;
+        height: 111px;
+        @include mobile-portrait {
+            width: 75px;
+            height: 75px;
+            background-size: 75px;
+            right: 3.4%;
+            line-height: 75px;
+            font-size: 46px;
+            top: 9px;
+        }
+    }
+}
+
+.more-videos {
+    background: #EB7838;
+}
+
+.week-videos-head {
+    background: #EB7838;
+}
+
+.more {
+    &:hover {
+        color: #EB7838;
+    }
+}
+
+// .brand-header {
+//     .logo {
+//         height: 50px;
+//         a {
+//             width: 100px;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             margin: auto;
+//             img {
+//                 max-height: 40px;
+//             }
+//         }
+//     }
+//     .subscribe {
+//         padding: 0;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//     }
+// }
+
+.menu-logo {
+    a {
+        figure {
+            img {
+                height: 40px;
+                max-height: 40px;
+                max-width: 150px;
+            }
+        }
+    }
+}
+
+.search_keyword_main {
+    h5 {
+        span {
+            color: #EB7838;
+        }
+    }
+}
+
+.sort_main {
+    h6 {
+        color: #EB7838;
+    }
+    ul {
+        li {
+            &::after {
+                background: #EB7838;
+            }
+        }
+    }
+}
+
+.required-label {
+    &::after {
+        color: #EB7838;
+    }
+}
+
+.check_boxes_data {
+    .checkboxes {
+        label {
+            input:checked + span {
+                background-image: url('/assets/img/checked-checkbox_ee.png');
+            }
+        }
+    }
+}
+
+// Mobile Design
+@media (max-width: 767px) {
+    .footer-middle-in {
+        border-left: 0;
+        border-right: 0;
+        border-top: 1px solid #EB7838;
+        border-bottom: 1px solid #EB7838;
+    }
+
+    .author-banner-left {
+        padding: 0px;
+    }
+}
+.menu-open .menu-details {
+    left: 0;
+}
+

@@ -76,12 +76,19 @@
                       </p>
                     </div>
                     <div class="buffalowings-bottom">
-                      <a
+                      <a *ngIf = "publication.id !='EE'"
                         [href]="
                           selectedTab === 'columns'
                             ? selectedTab
                             : selectedTab + '-spotlight'
                         "
+                        class="float-right text-uppercase"
+                      >
+                        READ MORE
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </a>
+                      <a *ngIf = "publication.id =='EE'"
+                        [href]="selectedTab"
                         class="float-right text-uppercase"
                       >
                         READ MORE
