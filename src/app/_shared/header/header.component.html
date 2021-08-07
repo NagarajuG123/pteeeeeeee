@@ -68,7 +68,7 @@
               <li class="d-block">
                 <div class="monthly-covers-main">
                   <a
-                    href="/monthlycovers"
+                    routerLink="/monthlycovers"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -82,7 +82,7 @@
                     class="monthly-covers-details monthly-covers-details1"
                   >
                     <a
-                      href="{{ sidenav['monthly-cover']?.url }}"
+                      routerLink="/{{ sidenav['monthly-cover']?.url }}"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                       (click)="commonService.toggle()"
                     >
@@ -112,7 +112,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav?.category?.items">
                       <a
-                        href="{{ item.url.replace('+', '-') }}"
+                        routerLink="/{{ item.url.replace('+', '-') }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item.title }}</a
@@ -132,7 +132,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav['awards']">
                       <a
-                        href="{{ item?.url }}"
+                        routerLink="/{{ item?.url }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item?.title }}</a
@@ -145,7 +145,7 @@
                   *ngIf="sidenav['power-rankings']"
                 >
                   <a
-                    href="{{ sidenav['power-rankings']?.url }}"
+                    routerLink="/{{ sidenav['power-rankings']?.url }}"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -176,7 +176,8 @@
                 </div>
                 <div class="monthly-covers-main">
                   <a
-                    href="/termsofuse#sponsored"
+                    routerLink="/termsofuse"
+                    fragment="sponsored"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -188,7 +189,8 @@
                 </div>
                 <div class="monthly-covers-main">
                   <a
-                    href="/about#tellus"
+                    routerLink="/about"
+                    fragment="tellus"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -223,7 +225,7 @@
                 </div>
                 <div class="monthly-covers-main">
                   <a
-                    href="{{ sidenav['terms-of-use']?.url }}"
+                    routerLink="/{{ sidenav['terms-of-use']?.url }}"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
