@@ -314,7 +314,7 @@
         </div>
 
         <div class="logo col-xl-11 col-10 d-flex">
-          <a href="/" [class]="header?.logo?.padding">
+          <a routerLink="/" [class]="header?.logo?.padding">
             <figure>
               <img
                 [src]="header?.logo?.url"
@@ -326,14 +326,14 @@
           </a>
           <div *ngIf="header?.subscribe" class="subscribe ml-1">
             <h6>
-              <a href="{{ header?.subscribe?.url }}" class="text-uppercase">{{
+              <a routerLink="/{{ header?.subscribe?.url }}" class="text-uppercase">{{
                 header?.subscribe?.title
               }}</a>
             </h6>
 
             <a
               class="sponsored_logo text-uppercase"
-              href="{{ header?.subscribe?.url }}"
+              routerLink="/{{ header?.subscribe?.url }}"
               >{{ header?.subscribe?.subtitle }}</a
             >
           </div>
@@ -408,7 +408,7 @@
             *ngIf="header && header['monthly-cover']"
             class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
           >
-            <a href="{{ header['monthly-cover']?.media?.url?.cover_url }}">
+            <a routerLink="/{{ header['monthly-cover']?.media?.url?.cover_url }}">
               <figure>
                 <img
                   appYoutubeImage
