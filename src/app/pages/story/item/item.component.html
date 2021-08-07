@@ -29,7 +29,8 @@
           (click)="openVideoPlayer = true"
           data-bs-toggle="modal"
           attr.data-bs-target="#storyModal{{ index }}"
-          href=""
+          href="#"
+          onclick="return false;"
         >
           <figure>
             <img
@@ -55,8 +56,8 @@
         </a>
         <a
           *ngIf="media && media.type !== 'video'"
-          class="d-block video-btn"
-          href="#"
+          class="d-block"
+          href="javascript:void(0)"
         >
           <figure>
             <img
