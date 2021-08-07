@@ -371,30 +371,9 @@
                   <ul>
                     <li
                       *ngFor="
-                        let subItem of header['Franchise Brands']?.dropdown
+                        let subItem of item.value['dropdown']
                       "
                     >
-                      <a
-                        href="{{ subItem.url }}"
-                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
-                        class="text-uppercase"
-                        >{{ subItem.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Learn -->
-              <li *ngIf="header['Learn']" class="has_dd">
-                <a class="text-uppercase" href="#" onclick="return false;">
-                  {{ header["Learn"]?.title }}
-                  <span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i
-                  ></span>
-                </a>
-                <div class="megamenu">
-                  <ul>
-                    <li *ngFor="let subItem of header['Learn']?.dropdown">
                       <a
                         href="{{ subItem.url }}"
                         [target]="subItem['isExternalLink'] ? '_blank' : ''"
