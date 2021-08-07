@@ -132,7 +132,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav['awards']">
                       <a
-                        routerLink="/{{ item?.url }}"
+                        href="{{ item?.url }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item?.title }}</a
@@ -159,7 +159,7 @@
               <li class="d-block">
                 <div class="monthly-covers-main" *ngIf="sidenav['about-1851']">
                   <a
-                    href="{{ sidenav['about-1851']?.url }}"
+                    routerLink="/{{ sidenav['about-1851']?.url }}"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -207,7 +207,7 @@
                 </div>
                 <div class="monthly-covers-main">
                   <a
-                    href="{{ sidenav['contact-editorial']?.url }}"
+                    routerLink="/{{ sidenav['contact-editorial']?.url }}"
                     [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                     (click)="commonService.toggle()"
                   >
@@ -463,7 +463,7 @@
         >
           <div class="menu-logo text-center">
             <a
-              href="{{ brandSlug }}"
+              routerLink="/{{ brandSlug }}"
               [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
               (click)="commonService.toggle()"
             >
@@ -519,7 +519,7 @@
                   </div>
                   <div class="monthly-covers-main">
                     <a
-                      href="{{ brandSlug }}"
+                      routerLink="/{{ brandSlug }}"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                       (click)="commonService.toggle()"
                     >
@@ -581,7 +581,7 @@
                   </div>
                   <div class="monthly-covers-main">
                     <a
-                      href="{{ brandSlug }}"
+                      routerLink="/{{ brandSlug }}"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                       (click)="commonService.toggle()"
                     >
@@ -596,7 +596,10 @@
                     >
                       <p>
                         <a
-                          href="{{ story.brand.slug }}/{{ story.slug }}#stories"
+                          routerLink="/{{ story.brand.slug }}/{{ story.slug }}"
+                          fragment="stories"
+                          [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                          (click)="commonService.toggle()"
                           >{{ story?.title }}</a
                         >
                       </p>
@@ -616,7 +619,7 @@
                 <li class="d-block">
                   <div class="monthly-covers-main">
                     <a
-                      href="{{ sidenav['about']?.url }}"
+                      routerLink="/{{ sidenav['about']?.url }}"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                       (click)="commonService.toggle()"
                     >
@@ -700,7 +703,7 @@
         </div>
         <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px">
           <a
-            href="{{ brandSlug }}"
+            routerLink="/{{ brandSlug }}"
             style="
               width: 100px;
               display: flex;
