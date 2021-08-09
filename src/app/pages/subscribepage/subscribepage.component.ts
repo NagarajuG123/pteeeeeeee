@@ -41,6 +41,7 @@ export class SubscribepageComponent implements OnInit {
         if (defaultTitle) {
           this.metaService.setTitle(defaultTitle);
         }
+        this.setCheckBoxVisibility();
       }
     );
   }
