@@ -31,7 +31,6 @@ export class SubscribepageComponent implements OnInit {
     forkJoin([subscribe, publication, meta, publication]).subscribe(
       (results) => {
         this.data = results[0].data;
-        this.title = 'SUBSCRIBE TO 1851 FRANCHISE';
         this.publication = results[1];
         this.metaService.setSeo(results[2].data);
         let defaultTitle = '';
@@ -41,6 +40,7 @@ export class SubscribepageComponent implements OnInit {
         if (defaultTitle) {
           this.metaService.setTitle(defaultTitle);
         }
+        this.title = `SUBSCRIBE TO ${this.publication.title.toUpperCase()}`;
         this.setCheckBoxVisibility();
       }
     );
