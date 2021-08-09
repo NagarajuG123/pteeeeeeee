@@ -467,6 +467,8 @@
                 <img
                   class="logo-img sidebar-brand-images lazyload"
                   data-src="{{ sidenav?.logo }}"
+                  [class.default-sidebar-brand-image]="publication.id == 'EE' && header['logo'].includes(defaultBrandLogo)"
+                  [class.sidebar-brand-images]="publication.id != 'EE' || !header['logo'].includes(defaultBrandLogo)"
                   alt="logo"
                 />
               </figure>
