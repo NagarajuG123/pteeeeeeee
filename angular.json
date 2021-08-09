@@ -94,6 +94,23 @@
               "commonChunk": true,
               "buildOptimizer": true
             },
+            "1903PROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1903.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "commonChunk": true,
+              "buildOptimizer": true
+            },
             "1851QA": {
               "fileReplacements": [
                 {
@@ -116,6 +133,23 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.ee.qa.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "commonChunk": true,
+              "buildOptimizer": true
+            },
+            "1903QA": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1903.qa.ts"
                 }
               ],
               "optimization": true,
@@ -181,11 +215,17 @@
             "EEPROD": {
               "browserTarget": "1851:build:EEPROD"
             },
+            "1903PROD": {
+              "browserTarget": "1851:build:1903PROD"
+            },
             "1851QA": {
               "browserTarget": "1851:build:1851QA"
             },
             "EEQA": {
               "browserTarget": "1851:build:EEQA"
+            },
+            "1903QA": {
+              "browserTarget": "1851:build:1903QA"
             }
           },
           "defaultConfiguration": "development"
@@ -270,6 +310,18 @@
               "sourceMap": false,
               "extractLicenses": true
             },
+            "1903PROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1903.prod.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
             "1851QA": {
               "fileReplacements": [
                 {
@@ -287,6 +339,18 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.ee.qa.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
+            "1903QA": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.1903.qa.ts"
                 }
               ],
               "outputHashing": "media",
@@ -317,6 +381,10 @@
               "browserTarget": "1851:build:EEPROD",
               "serverTarget": "1851:server:EEPROD"
             },
+            "1903PROD": {
+              "browserTarget": "1851:build:1903PROD",
+              "serverTarget": "1851:server:1903PROD"
+            },
             "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
@@ -324,6 +392,10 @@
             "EEQA": {
               "browserTarget": "1851:build:EEQA",
               "serverTarget": "1851:server:EEQA"
+            },
+            "1903QA": {
+              "browserTarget": "1851:build:1903QA",
+              "serverTarget": "1851:server:1903QA"
             }
           },
           "defaultConfiguration": "development"
@@ -352,6 +424,10 @@
               "browserTarget": "1851:build:EEPROD",
               "serverTarget": "1851:server:EEPROD"
             },
+            "1903PROD": {
+              "browserTarget": "1851:build:1903PROD",
+              "serverTarget": "1851:server:1903PROD"
+            },
             "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
@@ -359,6 +435,10 @@
             "EEQA": {
               "browserTarget": "1851:build:EEQA",
               "serverTarget": "1851:server:EEQA"
+            },
+            "1903QA": {
+              "browserTarget": "1851:build:1903QA",
+              "serverTarget": "1851:server:1903QA"
             }
           },
           "defaultConfiguration": "production"
