@@ -72,6 +72,7 @@ export class HeaderComponent implements OnInit {
   downloadPdfUrl: any;
   isPdfEmail: any = false;
   visitSite: any;
+  defaultBrandLogo: string;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -93,6 +94,7 @@ export class HeaderComponent implements OnInit {
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
+    this.defaultBrandLogo = "EE-logo-mark-01.svg";
   }
 
   ngOnInit(): void {

@@ -19,8 +19,14 @@
     display: block;
   }
 }
+.default-sidebar-brand-image {
+  height: 40px;
+  max-height: 40px;
+  max-width: 150px;
+}
+
 .sidebar-brand-images {
-  height: 70px !important; 
-  max-height: 70px !important; 
-  max-width: 150px !important;
+height: 70px; 
+max-height: 70px; 
+max-width: 150px;
 }
