@@ -108,59 +108,9 @@
                 </li>
               </ul>
             </div>
-            <!-- <div class="sort_main check_boxes_data d-flex">
-              <h6>FILTER BY:</h6>
-              <ul class="d-flex checkboxes text-center justify-content-center">
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_author"
-                      (change)="onChangeFilter('author')"
-                    />
-                    <span>BY AUTHOR</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_title"
-                      (change)="onChangeFilter('title')"
-                    />
-                    <span>BY TITLE</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_desc"
-                      (change)="onChangeFilter('desc')"
-                    />
-                    <span>BY DESCRIPTION</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_keywords"
-                      (change)="onChangeFilter('keyword')"
-                    />
-                    <span>BY KEYWORDS</span>
-                  </label>
-                </li>
-              </ul>
-            </div> -->
           </div>
         </div>
-        <div
-          class="search-no-result"
-          *ngIf="
-            !recentPeoples.length && (brand_id != '1851' || brand_id == '1851')
-          "
-        >
+        <div class="search-no-result" *ngIf="!recentPeoples.length">
           <p>No articles found for selected search criteria</p>
         </div>
         <div *ngIf="isSpecificDate" class="banner specific_search">
@@ -244,7 +194,7 @@
       </div>
       <div
         class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail"
-        *ngIf="brand_id === '1851'"
+        *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === '1903'"
       >
         <h5 class="text-center">BRAND STORIES</h5>
         <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
