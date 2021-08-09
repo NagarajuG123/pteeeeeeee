@@ -4132,7 +4132,7 @@ and (orientation : portrait)
         letter-spacing: 0.4px;
     }
     ul{
-        padding: 0 0 0 6px;
+        padding: 0 0 0 6px !important;
         display: block;
         li{
             display: inline-block;
