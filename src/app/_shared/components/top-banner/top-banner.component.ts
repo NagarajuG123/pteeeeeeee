@@ -10,5 +10,6 @@ export class TopBannerComponent implements OnInit {
   @Input() title: any;
   constructor() {}
 
+  imgUrl = "assets/img/subscribepage-banner.jpg"
   ngOnInit(): void {}
 }

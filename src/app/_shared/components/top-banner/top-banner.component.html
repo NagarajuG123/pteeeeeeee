@@ -1,12 +1,21 @@
-<div class="banner d-flex termsofuse-banner contact-banner" *ngIf="data.media">
+<div class="banner d-flex termsofuse-banner contact-banner">
   <figure>
     <img
+      *ngIf="data.media"
       appYoutubeImage
       [src]="data?.media?.url"
       width="1440"
       height="493"
       alt="subscribepage-banner"
     />
+    <img
+    *ngIf="!data.media"
+    appYoutubeImage
+    [src]="imgUrl"
+    width="1440"
+    height="493"
+    alt="subscribepage-banner"
+  />
   </figure>
   <div class="termsofuse-banner-main text-center">
     <div class="container">
