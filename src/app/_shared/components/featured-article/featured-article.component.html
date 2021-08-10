@@ -1,0 +1,22 @@
+<div class="row">
+  <div
+    *ngFor="let item of list; index as i"
+    [ngClass]="i === 0 ? 'col-12 mb-2' : 'col-4 mb-2'"
+  >
+    <div
+      class="position-relative"
+      [ngClass]="i === 0 ? 'main-image' : 'small-image'"
+    >
+      <div class="tag position-absolute p-1 w-auto top-0 text-uppercase">
+        {{ item.label }}
+      </div>
+      <img [src]="item.image" class="img-fluid" alt="sub-artical-image" />
+      <div
+        class="over-layer position-absolute text-capitalize bottom-0 fw-bold w-100"
+        [ngClass]="i === 0 ? 'p-3 fs-2' : 'p-2'"
+      >
+        {{ item.detail }}
+      </div>
+    </div>
+  </div>
+</div>

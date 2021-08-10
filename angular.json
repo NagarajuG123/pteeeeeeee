@@ -46,6 +46,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
               "node_modules/ngx-toastr/toastr.css",
@@ -57,10 +58,9 @@
               "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
               "node_modules/slick-carousel/slick/slick.min.js"
             ]
-            
           },
           "configurations": {
-               "1851PROD": {
+            "1851PROD": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -359,7 +359,7 @@
               "extractLicenses": true
             }
           },
-            
+
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
@@ -373,7 +373,7 @@
               "browserTarget": "1851:build:production",
               "serverTarget": "1851:server:production"
             },
-             "1851PROD": {
+            "1851PROD": {
               "browserTarget": "1851:build:1851PROD",
               "serverTarget": "1851:server:1851PROD"
             },
@@ -403,9 +403,7 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {
@@ -446,10 +444,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }

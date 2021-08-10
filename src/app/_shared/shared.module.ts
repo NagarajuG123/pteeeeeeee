@@ -31,6 +31,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { BannerSearchComponent } from './components/banner-search/banner-search.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { FeaturedArticleComponent } from './components/featured-article/featured-article.component';
 
 // Modals Components
 
@@ -54,13 +55,13 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     VideoPlayerComponent,
     FiveColumnComponent,
     CarouselComponent,
-    FeaturedComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
     BannerSearchComponent,
     ErrorMessageComponent,
+    FeaturedArticleComponent,
   ],
   imports: [
     CommonModule,
@@ -101,6 +102,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     BannerSearchComponent,
     SlickCarouselModule,
     ShareButtonModule,
+    FeaturedArticleComponent,
   ],
 })
 export class SharedModule {}

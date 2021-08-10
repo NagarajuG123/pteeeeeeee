@@ -1,0 +1,21 @@
+img {
+  width: 100%;
+}
+.tag {
+  background: #eb0444;
+  font-family: "ProximaNova-Regular";
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 17px;
+  box-sizing: border-box;
+}
+.over-layer {
+  font-family: "ProximaNova-Medium";
+  background: rgba(232, 238, 242, 0.67);
+}
+.small-image {
+  .tag,
+  .over-layer {
+    font-size: 12px;
+  }
+}
