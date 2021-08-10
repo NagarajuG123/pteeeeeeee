@@ -8,10 +8,10 @@
     <div class="category-container row">
       <div class="container col-sm-12 col-md-9 col-lg-9 col-xl-9">
         <div class="search_keyword_main">
-          <h5 class="text-center" *ngIf="brand_id !== '1851'">
+          <h5 class="text-center" *ngIf="brand_id !== '1851' && brand_id !== 'ee' && brand_id !== 'room-1903'">
             SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
           </h5>
-          <h5 class="text-center" *ngIf="brand_id === '1851'">
+          <h5 class="text-center" *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'">
             VIEW SEARCH FILTERS
             <a
               *ngIf="!hiddenSearchBar"
@@ -37,7 +37,7 @@
 
           <div
             *ngIf="
-              (hiddenSearchBar && brand_id === '1851') || brand_id !== '1851'
+              (hiddenSearchBar && (brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903') ) || (brand_id !== '1851' && brand_id !== 'ee' && brand_id !== 'room-1903')
             "
           >
             <div class="sort_main d-flex">
@@ -194,7 +194,7 @@
       </div>
       <div
         class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail"
-        *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === '1903'"
+        *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'"
       >
         <h5 class="text-center">BRAND STORIES</h5>
         <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
