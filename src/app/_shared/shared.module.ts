@@ -26,7 +26,6 @@ import { FiveColumnComponent } from './components/five-column/five-column.compon
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { TopBannerComponent } from './components/top-banner/top-banner.component';
-import { ContactEditorialComponent } from './components/contact-editorial/contact-editorial.component';
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
@@ -56,7 +55,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     FiveColumnComponent,
     CarouselComponent,
     FeaturedComponent,
-    ContactEditorialComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
     ModalComponent,
@@ -95,7 +93,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     CarouselComponent,
     FiveColumnComponent,
     FeaturedComponent,
-    ContactEditorialComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
     LatestStoryComponent,
