@@ -11,14 +11,12 @@
   >
     <figure>
       <img
-        *ngIf="!imageUrl"
         data-src="assets/img/about-us.jpg"
         width="491"
         height="615"
         alt="about-us-demo"
         class="lazyload"
       />
-      <img *ngIf="imageUrl"  [src]="demo['media']['url']" width="491" height="615" alt="about_img4">
     </figure>
   </div>
   <div

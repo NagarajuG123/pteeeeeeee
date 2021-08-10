@@ -53,7 +53,7 @@ export class PartnerMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.siteKey = environment.reCaptchaKey;
-    this.imageUrl = _.get(this.demo, 'media.url', '')
+    this.imageUrl = _.get(this.demo, 'media.url', '');
     this.demoDescription = _.get(this.demo, 'description', '');
   }
 
