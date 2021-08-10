@@ -29,15 +29,15 @@ export class AboutUsComponent implements OnInit {
     const aboutus = this.apiService.getAPI(`1851/about-us`);
     const meta = this.apiService.getAPI(`1851/meta`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    forkJoin([aboutus,meta,publication]).subscribe(results => {
-      this.data =  results[0].data;
-      this.publication = results[2];
-      if (this.data?.contents?.length > 0) {
+    forkJoin([publication, aboutus, meta]).subscribe((results) => {
+      this.data = results[1].data;
+      this.publication = results[0];
+      if (this.data?.contents?.length > 1) {
         for (let i = 1; i < this.data.contents.length; i++) {
           this.publication_contents.push(this.data.contents[i]);
         }
       }
-      this.metaService.setSeo( results[1].data);
+      this.metaService.setSeo(results[2].data);
     });
   }
 

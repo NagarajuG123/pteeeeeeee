@@ -1,4 +1,5 @@
 <div class="empty"></div>
+<<<<<<< HEAD
 <div *ngIf="data">
   <div *ngIf="data && publication?.id == '1851'" class="banner d-flex flex-row-reverse">
     <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
@@ -35,6 +36,47 @@
           <h1 class="text-left">{{ data.title }}</h1>
           <em class="text-left d-block">{{ data.description }}</em>
         </div>
+=======
+<div *ngIf="data?.media" class="banner d-flex flex-row-reverse">
+  <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
+    <a
+      class="d-block video-btn"
+      *ngIf="data?.media"
+      data-bs-target="#aboutModal"
+      data-bs-toggle="modal"
+      href=""
+    >
+      <figure>
+        <img
+          appYoutubeImage
+          data-src="{{ data?.media | defaultImage: 1300:730 }}"
+          width="1023"
+          height="575"
+          alt="about"
+          (imageLoad)="bannerImageLoad()"
+          class="lazyload"
+        />
+      </figure>
+      <app-modal
+        [videoUrl]="data?.media?.url"
+        [modalId]="'aboutModal'"
+      ></app-modal>
+    </a>
+  </div>
+  <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
+    <div class="buffalo_wings">
+      <div class="info_btn text-center">
+        <a
+          *ngIf="publication?.id !== 'EE'"
+          href="#"
+          onclick="return false;"
+          class="text-center"
+        >
+          ABOUT 1851
+        </a>
+        <h1 class="text-left">{{ data.title }}</h1>
+        <em class="text-left d-block">{{ data.description }}</em>
+>>>>>>> 30497064927ce72aeb70d7cf5325c175c6097ecf
       </div>
     </div>
   </div>
