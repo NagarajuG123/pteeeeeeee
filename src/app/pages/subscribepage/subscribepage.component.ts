@@ -16,7 +16,7 @@ export class SubscribepageComponent implements OnInit {
   data: FiveColumn[] = [];
   slug = '1851';
   title!: string;
-  isCheckBoxVisible: boolean = false;
+  isCheckBoxVisible: boolean = true;
   publication: any;
   isBrowser: boolean = false;
   contactForm: FormGroup;
@@ -94,7 +94,7 @@ export class SubscribepageComponent implements OnInit {
 
   setCheckBoxVisibility() {
     if (this.publication.id === '1851') {
-      this.isCheckBoxVisible = true;
+      return;
     }
     this.isCheckBoxVisible = false;
   }
