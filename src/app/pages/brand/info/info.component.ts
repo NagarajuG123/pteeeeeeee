@@ -309,7 +309,7 @@ export class InfoComponent implements OnInit {
           });
         let info = response.data.length > 0 ? true : false;
         this.validData.push(info);
-        let pdf = this.pdf != '' ? true : false;
+        let pdf = this.pdf ? true : false;
         this.validData.push(pdf);
         this.apiService
           .getAPI(`${this.brandSlug}/brand-latest-stories`)
@@ -332,7 +332,6 @@ export class InfoComponent implements OnInit {
                 )
                   ? true
                   : false;
-
                 this.validData.push(bought);
                 let qa = response.data.find((o: any) => o.slug === 'executive')
                   ? true

@@ -75,7 +75,7 @@
         <li
           *ngFor="let category of categories; let i = index"
           [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
-          [class.hide]="!validData[i]"
+          [style.display]="!validData[i] ? 'none' : 'block'"
         >
           <a
             *ngIf="category['value'] !== 'brand_pdf'"
