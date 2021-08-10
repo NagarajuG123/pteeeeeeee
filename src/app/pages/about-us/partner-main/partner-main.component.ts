@@ -17,7 +17,7 @@ import * as _ from 'lodash';
 export class PartnerMainComponent implements OnInit {
   @Input() demo: Object = null;
   contactForm: FormGroup;
-  isSubmitted: boolean;
+  isSubmitted: boolean = false;
   siteKey: string;
   submitErrMsg: string;
   submitSuccessMsg: string;
@@ -61,9 +61,11 @@ export class PartnerMainComponent implements OnInit {
     this.submitErrMsg = '';
     this.submitSuccessMsg = '';
     this.isSubmitted = true;
-    if (!contactForm.valid) {
-      return;
-    }
+
+    // if (!contactForm.valid) {
+    //   return;
+    // }
+    console.log(contactForm);
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .pipe(takeUntil(this.onDestroy$))
@@ -73,7 +75,7 @@ export class PartnerMainComponent implements OnInit {
           this.isSubmitted = false;
           this.resetForm();
         } else {
-          this.toastr.error(result.error.message, 'Error!');
+          this.submitErrMsg = result.error.message;
         }
       });
   }
