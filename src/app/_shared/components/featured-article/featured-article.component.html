@@ -1,7 +1,7 @@
 <div class="row">
   <div
     *ngFor="let item of list; index as i"
-    [ngClass]="i === 0 ? 'col-12 mb-2' : 'col-4 mb-2'"
+    [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
   >
     <div
       class="position-relative"
@@ -13,10 +13,13 @@
       <img [src]="item.image" class="img-fluid" alt="sub-artical-image" />
       <div
         class="over-layer position-absolute text-capitalize bottom-0 fw-bold w-100"
-        [ngClass]="i === 0 ? 'p-3 fs-2' : 'p-2'"
+        [ngClass]="i === 0 ? 'p-3' : 'p-2'"
       >
         {{ item.detail }}
+        <a href="#" class="stretched-link"></a>
       </div>
     </div>
+    <!-- if you want to add link on all slider screen use folloing link -->
+    <!-- <a href="#" class="stretched-link"></a> -->
   </div>
 </div>
