@@ -4,12 +4,11 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
-import { PartnerMainComponent } from './partner-main/partner-main.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AboutUsComponent, PartnerMainComponent],
+  declarations: [AboutUsComponent],
   imports: [
     CommonModule,
     AboutUsRoutingModule,

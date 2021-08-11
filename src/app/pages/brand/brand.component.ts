@@ -49,20 +49,26 @@ export class BrandComponent implements OnInit {
             this.company = response.name;
             if (this.type === 'category_page') {
               this.apiUrl = `1851/${this.slug}/featured`;
-              const mostRecentUrl = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
+              const mostRecentUrl = this.apiService.getAPI(
+                `1851/${this.slug}/most-recent`
+              );
               const metaUrl = this.apiService.getAPI(`1851/${this.slug}/meta`);
-              const trendingUrl = this.apiService.getAPI(`1851/${this.slug}/trending?limit=10&offset=0`);
+              const trendingUrl = this.apiService.getAPI(
+                `1851/${this.slug}/trending?limit=10&offset=0`
+              );
               this.setParam(this.slug);
-              forkJoin([mostRecentUrl,metaUrl,trendingUrl]).subscribe((results) => {
-                this.mostRecent = results[0].data;
-                this.hasMore = results[0].has_more;
-                this.metaService.setSeo(results[1].data);
-                this.categoryTrending = results[2].data;
-              }); 
+              forkJoin([mostRecentUrl, metaUrl, trendingUrl]).subscribe(
+                (results) => {
+                  this.mostRecent = results[0].data;
+                  this.hasMore = results[0].has_more;
+                  this.metaService.setSeo(results[1].data);
+                  this.categoryTrending = results[2].data;
+                }
+              );
             } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.getMeta();
-              if(this.slug !== '1851' && response['ga']){
+              if (this.slug !== '1851' && response['ga']) {
                 this.googleAnalyticsService.appendGaTrackingCode(
                   response['ga']['1851_franchise'],
                   response['ga']['tracking_code'],
@@ -111,7 +117,7 @@ export class BrandComponent implements OnInit {
       .subscribe((response) => {
         this.topBlock = response.data;
         this.dynamicFirst = response.data.stories.slice(0, 10);
-        this.dynamicSecond = response.data.stories.slice(10,20);
+        this.dynamicSecond = response.data.stories.slice(10, 20);
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
         this.apiService
@@ -128,7 +134,9 @@ export class BrandComponent implements OnInit {
   getMoreDynamic() {
     this.apiService
       .getAPI(
-        `page/${this.dynamicUrl}?limit=10&offset=${this.dynamicSecond.length + 10 }`
+        `page/${this.dynamicUrl}?limit=10&offset=${
+          this.dynamicSecond.length + 10
+        }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
@@ -139,12 +147,14 @@ export class BrandComponent implements OnInit {
   }
 
   readMore(item: any) {
-    return this.commonService.readMore1(item,'most-recent');
+    return this.commonService.readMore1(item, 'most-recent');
   }
   getMoreData() {
     this.apiService
       .getAPI(
-        `1851/${this.slug}/most-recent?limit=10&offset=${this.mostRecent.length + 1}`
+        `1851/${this.slug}/most-recent?limit=10&offset=${
+          this.mostRecent.length + 1
+        }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
