@@ -65,7 +65,7 @@ export class ContacteditorialComponent implements OnInit, AfterViewInit {
       this.apiService
         .getAPI(`1851/publication-instance`)
         .subscribe((result) => {
-          this.metaService.setTitle(`Contact Editorial | ${result.title}`);
+          this.metaService.setTitle(`Contact Editorial | ${result.title.toUpperCase()}`);
         });
     });
   }
