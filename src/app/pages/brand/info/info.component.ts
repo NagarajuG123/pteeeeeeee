@@ -97,7 +97,7 @@ export class InfoComponent implements OnInit {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
           } else {
-            if(this.brandSlug !== '1851' && this.isBrowser && response['ga']){
+            if (this.brandSlug !== '1851' && this.isBrowser && response['ga']) {
               this.googleAnalyticsService.appendGaTrackingCode(
                 response['ga']['1851_franchise'],
                 response['ga']['tracking_code'],
@@ -141,10 +141,14 @@ export class InfoComponent implements OnInit {
               forkJoin([mostRecent, trending, meta])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
-                  this.brandMostRecent = results[0].data;
+                  if (results[0].data[0] != null) {
+                    this.brandMostRecent = results[0].data;
+                  }
                   this.brandTrending = results[1];
                   this.hasMore = results[0]['has_more'];
-                  this.metaService.setSeo(results[2].data);
+                  if (results[2] != null) {
+                    this.metaService.setSeo(results[2].data);
+                  }
                 });
             }
           }
@@ -291,6 +295,8 @@ export class InfoComponent implements OnInit {
       this.categoryParam = 'home-envy';
     } else if (slug.includes('home-buzz')) {
       this.categoryParam = 'home-buzz';
+    } else if (slug.includes('brand-news')) {
+      this.categoryParam = 'brand-news';
     } else {
       this.categoryParam = 'columns';
     }

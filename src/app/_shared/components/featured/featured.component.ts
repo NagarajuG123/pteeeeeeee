@@ -72,14 +72,14 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
     this.apiService
       .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset}`)
       .subscribe((response) => {
-        if (response.data) {
+        if (response.data != null) {
           this.highlight = response.data[0];
+          this.featuredData = response.data.slice(1);
         }
-        this.featuredData = response.data.slice(1);
       });
   }
   readMore(item: any) {
-    return this.commonService.readMore1(item,'featured');
+    return this.commonService.readMore1(item, 'featured');
   }
   isVideo(item: any) {
     return this.commonService.isVideo(item);
