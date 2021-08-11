@@ -622,8 +622,7 @@
                     >
                       <p>
                         <a
-                          routerLink="/{{ story.brand.slug }}/{{ story.slug }}"
-                          fragment="stories"
+                          href="/{{ story.brand.slug }}/{{ story.slug }}#stories"
                           [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                           (click)="commonService.toggle()"
                           >{{ story?.title }}</a
