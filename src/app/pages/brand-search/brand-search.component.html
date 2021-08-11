@@ -1,5 +1,40 @@
 <div class="empty"></div>
-<app-banner-search (onSearch)="updateSearchInput($event)"></app-banner-search>
+<!-- <app-banner-search (onSearch)="updateSearchInput($event)"></app-banner-search> -->
+<div class="banner banner_search">
+  <figure>
+    <img
+      *ngIf="bannerImage"
+      data-src="{{ bannerImage }}"
+      width="1440"
+      height="495"
+      alt="banner_search"
+      class="lazyload"
+    />
+  </figure>
+  <div class="search_form col-lg-6">
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearchBannerSubmit(searchForm)"
+    >
+      <div class="form-group d-block">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="FIND AN 1851 BRAND..."
+          [formControl]="searchForm.controls['searchInput']"
+        />
+        <button
+          type="button"
+          class="d-block text-center"
+          (click)="onSearchBannerSubmit(searchForm)"
+        >
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="main-content">
   <app-brand-search-data [search_input]="search_input"></app-brand-search-data>
   <app-advertisement
