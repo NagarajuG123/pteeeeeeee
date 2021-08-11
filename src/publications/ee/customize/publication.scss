@@ -377,29 +377,11 @@ h2 {
 }
 
 .contact-editorial-main {
-  span {
-    background: url("/assets/img/unchecked_ee.png") no-repeat left 1px;
-  }
-  input:checked + span {
-    background: url("/assets/img/checked_ee.png") no-repeat left 1px;
-  }
-  .editors-details {
-    span {
-      background: url("/assets/img/unchecked1_ee.png") no-repeat left 1px;
-    }
-    input:checked + span {
-      background: url("/assets/img/checked1_ee.png") no-repeat left 1px;
-    }
-  }
+  display: none;
 }
 
 .signmeup {
-  input:checked + span {
-    background: url("/assets/img/checked2_ee.png") no-repeat left 2px;
-  }
-  span {
-    background: url("/assets/img/unchecked2_ee.png") no-repeat left 2px;
-  }
+  display: none;
 }
 
 .editorial-calender-deails {
