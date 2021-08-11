@@ -8456,3 +8456,21 @@ figcaption {
         }
     }
 }
+
+.frannews-bottom {
+    .sponsored {
+      position: absolute;
+      padding: 0px;
+    }
+    .sponsored span {
+      background: #2c5a71;
+      font-size: 17px;
+      line-height: 19px;
+      color: #fff;
+      font-weight: 400;
+      font-family: ProximaNova-Bold;
+      vertical-align: top;
+      padding: 7px 5px 9px;
+      width: 35px;
+    }
+  }
