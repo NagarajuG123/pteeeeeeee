@@ -3,7 +3,7 @@
 @import "variables.scss";
 @import "../sass/typography.scss";
 @import "header.scss";
-@import "../sass/footer.scss";
+@import "footer.scss";
 @import "../sass/responsive-tabs.scss";
 
 /* home page style starts */
@@ -7458,7 +7458,6 @@ and (orientation : portrait)
         -moz-transform: translateY(-50%);
         right: 0;
         margin: 0 auto;
-        margin-top: 25px;
         form{
             padding: 0 16px 0 7px;
             .form-group{
@@ -8456,3 +8455,21 @@ figcaption {
         }
     }
 }
+
+.frannews-bottom {
+    .sponsored {
+      position: absolute;
+      padding: 0px;
+    }
+    .sponsored span {
+      background: #2c5a71;
+      font-size: 17px;
+      line-height: 19px;
+      color: #fff;
+      font-weight: 400;
+      font-family: ProximaNova-Bold;
+      vertical-align: top;
+      padding: 7px 5px 9px;
+      width: 35px;
+    }
+  }

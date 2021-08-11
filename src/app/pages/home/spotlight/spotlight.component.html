@@ -76,7 +76,7 @@
                       </p>
                     </div>
                     <div class="buffalowings-bottom">
-                      <a *ngIf = "publication.id !='EE'"
+                      <a *ngIf = "publication.id =='1851'"
                         [href]="
                           selectedTab === 'columns'
                             ? selectedTab
@@ -87,7 +87,7 @@
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
-                      <a *ngIf = "publication.id =='EE'"
+                      <a *ngIf = "publication.id !='1851'"
                         [href]="selectedTab"
                         class="float-right text-uppercase"
                       >

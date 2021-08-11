@@ -43,7 +43,7 @@ export class MonthlyDetailsComponent implements OnInit {
           this.banner['data'] = response.data[0];
           this.banner['date'] = this.datePipe.transform(
             coverDate,
-            'MMMM DD, YYYY'
+            'MMMM dd, YYYY'
           );
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;

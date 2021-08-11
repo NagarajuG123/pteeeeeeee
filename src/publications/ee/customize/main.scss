@@ -3,7 +3,7 @@
 @import "variables.scss";
 @import "../sass/typography.scss";
 @import "header.scss";
-@import "../sass/footer.scss";
+@import "footer.scss";
 @import "../sass/responsive-tabs.scss";
 
 /* home page style starts */
@@ -7473,7 +7473,6 @@ and (orientation : portrait)
         -moz-transform: translateY(-50%);
         right: 0;
         margin: 0 auto;
-        margin-top: 25px;
         form{
             padding: 0 16px 0 7px;
             .form-group{
