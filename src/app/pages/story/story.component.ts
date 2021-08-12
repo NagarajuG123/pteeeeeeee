@@ -414,13 +414,13 @@ export class StoryComponent implements OnInit {
                 width: result['header']['logo']['width'],
                 height: result['header']['logo']['height'],
               },
+              sameAs: [
+                result[3].data['learn-more']['social-media']['fb-url'],
+                result[3].data['learn-more']['social-media']['twitter-url'],
+                result[3].data['learn-more']['social-media']['instagram-url'],
+                result[3].data['learn-more']['social-media']['linkedin-url'],
+              ],
             },
-            sameAs: [
-              result[3].data['learn-more']['social-media']['fb-url'],
-              result[3].data['learn-more']['social-media']['twitter-url'],
-              result[3].data['learn-more']['social-media']['instagram-url'],
-              result[3].data['learn-more']['social-media']['linkedin-url'],
-            ],
           };
           this.schema = json;
         } else {
@@ -900,13 +900,13 @@ export class StoryComponent implements OnInit {
               width: this.header['logo']['width'],
               height: this.header['logo']['height'],
             },
+            sameAs: [
+              this.footer.data['learn-more']['social-media']['fb-url'],
+              this.footer.data['learn-more']['social-media']['twitter-url'],
+              this.footer.data['learn-more']['social-media']['instagram-url'],
+              this.footer.data['learn-more']['social-media']['linkedin-url'],
+            ],
           },
-          sameAs: [
-            this.footer.data['learn-more']['social-media']['fb-url'],
-            this.footer.data['learn-more']['social-media']['twitter-url'],
-            this.footer.data['learn-more']['social-media']['instagram-url'],
-            this.footer.data['learn-more']['social-media']['linkedin-url'],
-          ],
         };
       } else {
         this.schema = {};
