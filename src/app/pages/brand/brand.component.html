@@ -1,17 +1,20 @@
 <div *ngIf="type === 'brand_page'">
   <div class="empty"></div>
   <app-featured [slug]="slug" [apiUrl]="apiUrl"></app-featured>
-  <app-news [slug]="slug"></app-news>
+  <app-news [slug]="slug" (noData)="hideNews = true"></app-news>
   <app-carousel
     [slug]="slug"
     [type]="'trending'"
     [title]="'TRENDING'"
+    (noData)="hideTrending = true"
   ></app-carousel>
+  <div [class.hide-trending]="hideTrending && !hideNews">
   <app-latest-story
     [slug]="slug"
     [isScroll]="true"
     [company]="company"
   ></app-latest-story>
+  </div>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
 <div *ngIf="type === 'category_page'">
