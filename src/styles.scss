@@ -48,8 +48,11 @@ ul {
   overflow: auto !important;
   padding-right: 0px !important;
 }
-body.modal-open {
-  overflow-y: hidden !important;
+
+body.modal-open{
+  ::-webkit-scrollbar{
+    display: block;
+  }
 }
 
 b,
