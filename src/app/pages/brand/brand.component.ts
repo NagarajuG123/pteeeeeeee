@@ -27,6 +27,8 @@ export class BrandComponent implements OnInit {
   dynamicFirst: any = [];
   dynamicSecond: any = [];
   topBlock: any = [];
+  hideTrending: string;
+  hideNews: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
