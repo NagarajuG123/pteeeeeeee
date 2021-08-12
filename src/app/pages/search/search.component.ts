@@ -259,7 +259,7 @@ export class SearchComponent implements OnInit {
     } else if (publication.id == 'EE') {
       this.bannerImage = 'assets/img/banner_search_ee.jpg';
     } else {
-      this.bannerImage = 'assets/img/banner_search_page.jpg';
+      this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
     }
   }
   ngAfterViewInit() {
