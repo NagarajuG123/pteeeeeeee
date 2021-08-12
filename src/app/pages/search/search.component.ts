@@ -35,7 +35,8 @@ export class SearchComponent implements OnInit {
   by_keywords: Boolean = false;
   brand_id: string = '';
   brandSlug: string = '1851';
-
+  searchForm!: FormGroup;
+  bannerImage: string;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
@@ -119,6 +120,9 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      searchInput: new FormControl(''),
+    });
     this.route.paramMap.subscribe((slugParams) => {
       if (slugParams.get('slug') != null) {
         this.brandSlug = slugParams.get('slug');
@@ -129,6 +133,7 @@ export class SearchComponent implements OnInit {
         typeof params.search_input !== 'undefined' &&
         params.search_input !== ''
       ) {
+        this.searchForm.controls['searchInput'].setValue(params.search_input);
         this.search_input = params.search_input;
         this.showSearchKey = params.search_input;
       }
@@ -244,10 +249,19 @@ export class SearchComponent implements OnInit {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
           this.metaService.setTitle(title);
+          this.setBannerImage(results[2]);
         });
     });
   }
-
+  setBannerImage(publication) {
+    if (publication.id == '1851') {
+      this.bannerImage = 'assets/img/banner_search_page.jpg';
+    } else if (publication.id == 'EE') {
+      this.bannerImage = 'assets/img/banner_search_ee.jpg';
+    } else {
+      this.bannerImage = 'assets/img/banner_search_page.jpg';
+    }
+  }
   ngAfterViewInit() {
     if (this.isBrowser) {
       $(document).ready(function (e) {
@@ -313,10 +327,9 @@ export class SearchComponent implements OnInit {
     }
     this.getDataByParams();
   }
-
-  updateSearchInput(input) {
-    this.search_input = input;
-    this.showSearchKey = input;
+  onSearchBannerSubmit(searchForm: FormGroup) {
+    this.search_input = searchForm.controls['searchInput'].value;
+    this.showSearchKey = searchForm.controls['searchInput'].value;
     this.getDataByParams();
   }
 

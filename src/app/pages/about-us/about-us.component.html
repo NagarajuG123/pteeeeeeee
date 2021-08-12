@@ -112,6 +112,7 @@
       >
         <figure>
           <img
+            *ngIf="data?.demo?.media?.url"
             data-src="{{ data?.demo?.media?.url }}"
             width="491"
             height="615"

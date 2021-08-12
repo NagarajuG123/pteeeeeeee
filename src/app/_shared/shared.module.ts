@@ -29,7 +29,6 @@ import { TopBannerComponent } from './components/top-banner/top-banner.component
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
-import { BannerSearchComponent } from './components/banner-search/banner-search.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 // Modals Components
@@ -59,7 +58,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
-    BannerSearchComponent,
     ErrorMessageComponent,
   ],
   imports: [
@@ -98,7 +96,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     LatestStoryComponent,
     ModalComponent,
     MalihuScrollbarModule,
-    BannerSearchComponent,
     SlickCarouselModule,
     ShareButtonModule,
   ],

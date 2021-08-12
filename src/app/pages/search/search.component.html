@@ -1,17 +1,63 @@
 <div class="empty"></div>
-<app-banner-search
-  [searchInput]="search_input"
-  (onSearch)="updateSearchInput($event)"
-></app-banner-search>
+
+<div class="banner banner_search">
+  <figure>
+    <img
+      *ngIf="bannerImage"
+      data-src="{{ bannerImage }}"
+      width="1440"
+      height="495"
+      alt="banner_search"
+      class="lazyload"
+    />
+  </figure>
+  <div class="search_form col-lg-6">
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearchBannerSubmit(searchForm)"
+    >
+      <div class="form-group d-block">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="FIND AN 1851 BRAND..."
+          [formControl]="searchForm.controls['searchInput']"
+        />
+        <button
+          type="button"
+          class="d-block text-center"
+          (click)="onSearchBannerSubmit(searchForm)"
+        >
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="main-content search-page">
   <div class="search_keyword category-frannews d-flex justify-content-center">
     <div class="category-container row">
       <div class="container col-sm-12 col-md-9 col-lg-9 col-xl-9">
         <div class="search_keyword_main">
-          <h5 class="text-center" *ngIf="brand_id !== '1851' && brand_id !== 'ee' && brand_id !== 'room-1903'">
+          <h5
+            class="text-center"
+            *ngIf="
+              brand_id !== '1851' &&
+              brand_id !== 'ee' &&
+              brand_id !== 'room-1903'
+            "
+          >
             SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
           </h5>
-          <h5 class="text-center" *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'">
+          <h5
+            class="text-center"
+            *ngIf="
+              brand_id === '1851' ||
+              brand_id === 'ee' ||
+              brand_id === 'room-1903'
+            "
+          >
             VIEW SEARCH FILTERS
             <a
               *ngIf="!hiddenSearchBar"
@@ -37,7 +83,13 @@
 
           <div
             *ngIf="
-              (hiddenSearchBar && (brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903') ) || (brand_id !== '1851' && brand_id !== 'ee' && brand_id !== 'room-1903')
+              (hiddenSearchBar &&
+                (brand_id === '1851' ||
+                  brand_id === 'ee' ||
+                  brand_id === 'room-1903')) ||
+              (brand_id !== '1851' &&
+                brand_id !== 'ee' &&
+                brand_id !== 'room-1903')
             "
           >
             <div class="sort_main d-flex">
@@ -194,7 +246,9 @@
       </div>
       <div
         class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail"
-        *ngIf="brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'"
+        *ngIf="
+          brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
+        "
       >
         <h5 class="text-center">BRAND STORIES</h5>
         <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
