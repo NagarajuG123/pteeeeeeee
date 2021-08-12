@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -11,6 +11,7 @@ export class NewsComponent implements OnInit {
   newsData: any = [];
   @Input() slug = '1851';
   @Input() type = '';
+  @Output() noData = new EventEmitter();
 
   constructor(
     private apiService: ApiService,
@@ -24,6 +25,9 @@ export class NewsComponent implements OnInit {
   getNews() {
     this.apiService.getAPI(`${this.slug}/news`).subscribe((response) => {
       this.newsData = response;
+      if (!this.newsData.length) {
+        this.noData.emit();
+      }
     });
   }
 

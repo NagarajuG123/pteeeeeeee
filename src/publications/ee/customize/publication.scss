@@ -684,3 +684,21 @@ h2 {
 .menu-open .menu-details {
   left: 0;
 }
+.nextBtn {
+  width: 100%;
+  text-align: right;
+  background: #eb7838;
+  border: 1px solid #eb7838;
+  display: block;
+  border-radius: 0;
+  height: 35px;
+  font-size: 9px;
+  line-height: 25px;
+  font-family: ProximaNova-Regular;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
+  padding: 0 9px 0 0;
+  margin-top: 10px;
+}
