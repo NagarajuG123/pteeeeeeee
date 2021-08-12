@@ -28,7 +28,7 @@
                 </div>
               </li>
             </ul>
-            <div  *ngIf="publication?.id == '1851'" [style.display]="!isCheckBoxVisible ? 'none' : 'block'" class="contact-editorial-main">
+            <div  *ngIf="isCheckBoxVisible" class="contact-editorial-main">
               <h6>Click all of which apply to you:</h6>
               <ul class="pl-2">
                 <li>
@@ -308,8 +308,7 @@
               </ul>
             </div>
             <div
-              *ngIf="publication?.id == '1851'" 
-              [style.display]="!isCheckBoxVisible ? 'none' : 'block'"
+              *ngIf="isCheckBoxVisible" 
               class="signmeup text-center col-sm-8 col-12"
             >
               <label for="news" class="checks">
