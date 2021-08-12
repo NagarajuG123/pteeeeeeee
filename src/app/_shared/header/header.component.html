@@ -251,6 +251,15 @@
           <nav class="d-sm-block d-md-none">
             <ul>
               <li
+                *ngIf="
+                  header?.subscribe && header?.subscribe['position'] != 'left'
+                "
+              >
+                <a [href]="header.subscribe['url']" class="text-uppercase">
+                  {{ header.subscribe["title"] }}
+                </a>
+              </li>
+              <li
                 *ngIf="header && header['Franchise Brands']"
                 class="has_dd d-block float-none"
               >
@@ -355,11 +364,22 @@
           <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
             <ul class="d-flex">
               <li
+                *ngIf="
+                  header?.subscribe && header?.subscribe['position'] != 'left'
+                "
+              >
+                <a [href]="header.subscribe['url']" class="text-uppercase">
+                  {{ header.subscribe["title"] }}
+                </a>
+              </li>
+              <li
                 *ngFor="let item of header | keyvalue: unsorted"
                 class="has_dd"
               >
                 <a
                   *ngIf="
+                    item.value['title'] != 'Subscribe' &&
+                    item.value['type'] &&
                     item.value['type'] != 'logo' &&
                     item.value['type'] != 'monthly-cover' &&
                     !item.value['dropdown'] &&
@@ -370,24 +390,24 @@
                 >
                   {{ item.value["title"] }}
                 </a>
-
                 <a
                   *ngIf="
+                    item.value['type'] &&
                     item.value['type'] != 'logo' &&
                     item.value['type'] != 'monthly-cover' &&
                     item.value['dropdown']
                   "
+                  href="javascript:void(0);"
                   class="text-uppercase"
-                  href="#"
-                  onclick="return false;"
                 >
-                  {{ item.value?.title }}
+                  {{ item.value["title"] }}
                   <span
                     ><i class="fa fa-angle-down" aria-hidden="true"></i
                   ></span>
                 </a>
                 <div
                   *ngIf="
+                    item.value['type'] &&
                     item.value['type'] != 'logo' &&
                     item.value['type'] != 'monthly-cover' &&
                     item.value['dropdown']
@@ -395,12 +415,12 @@
                   class="megamenu"
                 >
                   <ul>
-                    <li *ngFor="let subItem of item.value['dropdown']">
+                    <li *ngFor="let brand of item.value['dropdown']">
                       <a
-                        href="{{ subItem.url }}"
-                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
+                        href="{{ brand.url }}"
+                        [target]="brand['isExternalLink'] ? '_blank' : ''"
                         class="text-uppercase"
-                        >{{ subItem.title }}</a
+                        >{{ brand.title }}</a
                       >
                     </li>
                   </ul>
@@ -622,7 +642,9 @@
                     >
                       <p>
                         <a
-                          href="/{{ story.brand.slug }}/{{ story.slug }}#stories"
+                          href="/{{ story.brand.slug }}/{{
+                            story.slug
+                          }}#stories"
                           [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                           (click)="commonService.toggle()"
                           >{{ story?.title }}</a
