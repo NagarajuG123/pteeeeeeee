@@ -78,8 +78,17 @@
 <div *ngIf="type === 'dynamic_page'">
   <div class="top-space"></div>
   <app-two-side-banner
+    *ngIf="dynamicSecond != ''"
     [banner]="topBlock"
     [item]="dynamicSecond[0]"
+    [type]="'dynamicPage'"
+    [data]="dynamicFirst[0]"
+  >
+</app-two-side-banner>
+  <app-two-side-banner
+    *ngIf="dynamicSecond == ''"
+    [banner]="topBlock"
+    [item]="dynamicFirst[0]"
     [type]="'dynamicPage'"
     [data]="dynamicFirst[0]"
   >
