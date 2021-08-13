@@ -30,7 +30,6 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
-import { FeaturedArticleComponent } from './components/featured-article/featured-article.component';
 
 // Modals Components
 
@@ -59,7 +58,6 @@ import { FeaturedArticleComponent } from './components/featured-article/featured
     ModalComponent,
     LatestStoryComponent,
     ErrorMessageComponent,
-    FeaturedArticleComponent,
   ],
   imports: [
     CommonModule,
@@ -99,7 +97,6 @@ import { FeaturedArticleComponent } from './components/featured-article/featured
     MalihuScrollbarModule,
     SlickCarouselModule,
     ShareButtonModule,
-    FeaturedArticleComponent,
   ],
 })
 export class SharedModule {}
