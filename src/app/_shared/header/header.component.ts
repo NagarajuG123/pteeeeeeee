@@ -8,7 +8,7 @@ import {
 import { ApiService } from '../../_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
@@ -79,7 +79,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
-    private _googleAnalyticsService: GoogleAnalyticsService
+    private _googleAnalyticsService: GoogleAnalyticsService,
+    @Inject(DOCUMENT) private _document: HTMLDocument
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -94,7 +95,7 @@ export class HeaderComponent implements OnInit {
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
-    this.defaultBrandLogo = "EE-logo-mark-01.svg";
+    this.defaultBrandLogo = 'EE-logo-mark-01.svg';
   }
 
   ngOnInit(): void {
@@ -155,6 +156,7 @@ export class HeaderComponent implements OnInit {
         this.publication = results[3];
         this.sidenav = results[4].data;
         this.isSide = true;
+        this.setFavicon();
 
         if (this.brandSlug != '1851') {
           this.getInquiry();
@@ -208,9 +210,11 @@ export class HeaderComponent implements OnInit {
     this.searchCloseBtn.nativeElement.click();
 
     if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.publication.id.toLowerCase()}`;
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.publication.id.toLowerCase()}`;
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.brandId}`;
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
@@ -411,6 +415,19 @@ export class HeaderComponent implements OnInit {
           this.emailSubMessage = res.message;
         }
       });
+  }
+  setFavicon() {
+    let favicon;
+    if (this.publication.id == 'EE') {
+      favicon = 'ee';
+    } else if (this.publication.id == '1851') {
+      favicon = '1851';
+    } else {
+      favicon = '1903';
+    }
+    this._document
+      .getElementById('appFavicon')
+      .setAttribute('href', `${favicon}-favicon.ico`);
   }
   ngAfterViewInit() {
     // For sticky header
