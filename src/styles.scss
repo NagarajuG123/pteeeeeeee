@@ -19,40 +19,9 @@
 @import "assets/customize/base.scss";
 @import "assets/sass/slick.scss";
 @import "assets/customize/publication.scss";
-// @import "assets/scss/forms";
-// @import "assets/scss/images";
-// @import "assets/scss/navbar";
-// @import "assets/scss/modal";
-// @import "assets/scss/nav";
-// @import "assets/scss/alert";
-// @import "assets/scss/jumbotron";
-// @import "assets/scss/print";
-// @import "assets/scss/progress";
-// @import "assets/scss/pagination";
-// @import "assets/scss/card";
-// @import "assets/scss/badge";
-// @import "assets/scss/breadcrumb";
-// @import "assets/scss/input-group";
-// @import "assets/scss/transitions";
-// @import "assets/scss/list-group";
-// @import "assets/scss/media";
-// @import "assets/scss/custom-forms";
-// @import "assets/scss/button-group";
-// @import "assets/scss/tooltip";
 
 ul {
   padding-left: 0rem !important;
-}
-
-.modal-open {
-  overflow: auto !important;
-  padding-right: 0px !important;
-}
-
-body.modal-open{
-  ::-webkit-scrollbar{
-    display: block;
-  }
 }
 
 b,
