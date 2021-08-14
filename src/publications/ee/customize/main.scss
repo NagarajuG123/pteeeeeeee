@@ -691,11 +691,6 @@ and (orientation : portrait)
       @include desk-lg-below {
         left: 0;
       }
-      &:hover,
-      &:focus {
-        background: url("/assets/img/left-arrow.png") no-repeat left top;
-        opacity: 0.6;
-      }
     }
     .slick-next {
       position: absolute;
@@ -716,11 +711,6 @@ and (orientation : portrait)
       z-index: 1;
       @include desk-lg-below {
         right: 0;
-      }
-      &:hover,
-      &:focus {
-        background: url("/assets/img/right-arrow.png") no-repeat left top;
-        opacity: 0.6;
       }
     }
     .buffalowings-wrap{
@@ -2202,19 +2192,9 @@ spotlighttab-cnt-left{
     }
     .slick-prev{
         background: url("/assets/img/category-left-arrow.png") no-repeat left top;
-        &:hover,
-        &:focus {
-          background: url("/assets/img/category-left-arrow.png") no-repeat left top;
-          opacity: 0.6;
-        }
     }
     .slick-next{
         background: url("/assets/img/category-right-arrow.png") no-repeat left top;
-        &:hover,
-        &:focus {
-          background: url("/assets/img/category-right-arrow.png") no-repeat left top;
-          opacity: 0.6;
-        }
     }
     .frannews-top-left{
         ul{
