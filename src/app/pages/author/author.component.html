@@ -5,6 +5,7 @@
       <div class="author-banner-left col-md-5 col-sm-6">
         <figure>
           <img
+            *ngIf="author?.data"
             appYoutubeImage
             src="{{ author?.data?.media | defaultImage: 298:297 }}"
             width="298"
