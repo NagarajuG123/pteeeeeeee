@@ -5,13 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //components
 import { FeaturedComponent } from './components/featured/featured.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 // Modals Components
 
 // Pipes
 
 @NgModule({
-  declarations: [FeaturedComponent],
+  declarations: [FeaturedComponent, HeaderComponent, FooterComponent],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [
     RouterModule,
@@ -19,6 +21,8 @@ import { FeaturedComponent } from './components/featured/featured.component';
     FormsModule,
     ReactiveFormsModule,
     FeaturedComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}

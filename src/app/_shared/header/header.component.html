@@ -1,0 +1,191 @@
+<header>
+  <!-- Top header section Start -->
+  <div class="top-head d-flex">
+    Publications in the Mainland Community:
+    <ul class="list-group list-group-horizontal ms-3">
+      <li class="me-3">
+        <a href="#" class="text-white">
+          <span
+            ><img src="../../../assets/img/room-service.png" alt="room service"
+          /></span>
+          Room 1903
+          <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="me-3">
+        <a href="#" class="text-white">
+          <span
+            ><img src="../../../assets/img/Estatenvy.png" alt="room service"
+          /></span>
+          Estatenvy
+          <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Top header section Close -->
+
+  <!-- main header section Start -->
+  <main>
+    <div class="row g-0 align-items-center">
+      <div class="col-10 col-md-auto d-flex position-relative">
+        <a
+          href="#"
+          class="menuBtn me-3"
+          onclick="return false;"
+          (click)="commonService.toggle()"
+        >
+          <img
+            [src]="
+              commonService.showmenu
+                ? '../../../assets/img/close.png'
+                : '../../../assets/img/menu.png'
+            "
+            alt=""
+            width="35"
+            height="24"
+            [ngClass]="commonService.showmenu ? 'close-menu' : ''"
+          />
+          <small class="text-center d-none d-md-block">MENU</small>
+          <!-- [ngClass]="commonService.showmenu ? 'invisible' : ''" -->
+        </a>
+
+        <!-- Header Logo Section -->
+        <div class="logo d-flex align-items-center">
+          <img src="../../../assets/img/logo.png" alt="logo" class="me-2" />
+          <div>
+            SUBSCRIBE to newsletter<br />
+            <small class="d-flex align-items-center"
+              >Franchise news powered by
+              <img src="../../../assets/img/logo.png" alt="logo"
+            /></small>
+          </div>
+        </div>
+
+        <!-- Sub menu start-->
+        <div class="subMenu" [ngClass]="commonService.showmenu ? 'open' : ''">
+          <div class="menu-search">
+            <form>
+              <div class="input-group mb-3">
+                <button class="ps-2" type="button">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <input type="text" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <ul class="submenu-list mb-0">
+            <li class="d-block">
+              <h3>MONTHLY COVERS</h3>
+              <hr />
+              <div class="monthly-covers">
+                <a href="#">
+                  <img
+                    appYoutubeImage
+                    src="../../../assets/images/user.jpg"
+                    width="97"
+                    height="101"
+                    alt="monthly cover"
+                    class="lazyload mb-3"
+                  />
+                </a>
+              </div>
+            </li>
+            <li>
+              <h3>TOPICS</h3>
+              <hr />
+              <ul class="mb-0">
+                <li>
+                  <a
+                    class="d-flex justify-content-between align-items-center"
+                    href="#"
+                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="d-flex justify-content-between align-items-center"
+                    href="#"
+                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="d-flex justify-content-between align-items-center"
+                    href="#"
+                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr />
+              <h3><a href="#">AWARD</a></h3>
+              <h3><a href="#">POWER RANKING</a></h3>
+            </li>
+            <li>
+              <hr />
+              <h3><a href="#">ABOUT 1851</a></h3>
+              <h3><a href="#">SPONSORED CONTENT</a></h3>
+              <h3><a href="#">Advertise on 1851</a></h3>
+              <h3><a href="#">Contact 1851 editorial</a></h3>
+              <h3><a href="#">Terms of use</a></h3>
+            </li>
+            <li>
+              <hr />
+              <h3 class="mb-0"><a href="#">LOGIN</a></h3>
+            </li>
+          </ul>
+        </div>
+        <!-- Sub menu close-->
+      </div>
+
+      <!-- Center menu link -->
+      <div class="col d-none d-md-block">
+        <ul class="center-menu nav justify-content-center">
+          <li class="nav-item mx-2" *ngFor="let item of menu">
+            <a [href]="item.url" class="d-flex align-items-center"
+              >{{ item.label }}
+              <img src="../../../assets/images/down-arrow.svg" class="ms-1"
+            /></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-2 col-sm-auto d-flex align-items-center">
+        <!-- Search bar -->
+        <div class="search-bar me-4 d-none d-lg-block">
+          <img src="../../../assets/images/search.svg" alt="search" />
+        </div>
+
+        <!-- Social Links -->
+        <ul class="social d-flex align-items-center mb-0">
+          <li *ngFor="let item of socialLink" class="mx-1 d-none d-lg-block">
+            <a [href]="item.url" class="d-flex align-items-center">
+              <img *ngIf="item.img" [src]="item.img" [alt]="item.name" />
+              <!-- <i *ngIf="item.icon" [class]="item.icon"></i> -->
+            </a>
+          </li>
+          <li>
+            <a href="#" class="d-flex align-items-center me-2 me-lg-0">
+              <span class="badge rounded-pill border">follow</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- User Image -->
+        <div class="userImage ms-3 d-none d-lg-block">
+          <img src="../../../assets/images/user.jpg" alt="user" />
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- main header section Close -->
+</header>
