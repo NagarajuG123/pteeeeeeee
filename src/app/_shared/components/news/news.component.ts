@@ -25,7 +25,7 @@ export class NewsComponent implements OnInit {
   getNews() {
     this.apiService.getAPI(`${this.slug}/news`).subscribe((response) => {
       this.newsData = response;
-      if (!this.newsData.length) {
+      if (!this.newsData.data.length) {
         this.noData.emit();
       }
     });
