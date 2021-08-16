@@ -1,0 +1,93 @@
+<div class="container-fluid py-3">
+  <div class="row">
+    <div class="col-12 col-lg-6 mb-3 mb-sm-0">
+      <!-- featured aarticle slider -->
+
+      <div class="row">
+        <div
+          *ngFor="let item of list; index as i"
+          [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
+        >
+          <div
+            class="position-relative"
+            [ngClass]="i === 0 ? 'main-image' : 'small-image'"
+          >
+            <div class="tag position-absolute p-1 w-auto top-0 text-uppercase">
+              {{ item.label }}
+            </div>
+            <img [src]="item.image" class="img-fluid" alt="sub-artical-image" />
+            <div
+              class="
+                over-layer
+                position-absolute
+                text-capitalize
+                bottom-0
+                fw-bold
+                w-100
+              "
+              [ngClass]="i === 0 ? 'p-3' : 'p-2'"
+            >
+              {{ item.detail }}
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div>
+          <!-- if you want to add link on all slider screen use folloing link -->
+          <!-- <a href="#" class="stretched-link"></a> -->
+        </div>
+      </div>
+    </div>
+    <div
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+      "
+    >
+      <!-- Brand news list -->
+      <span class="small-title mb-2">LATEST FRANCHISE BRAND NEWS</span>
+      <ul class="brand-list noScrollBar list-group">
+        <li
+          *ngFor="let item of brandNews; index as i"
+          class="pb-1 pb-md-2"
+          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
+        >
+          <h4>
+            <a href="#">{{ item.title }}</a>
+          </h4>
+          <span class="my-1">By {{ item.createdBy }}</span>
+          <p>{{ item.description }}</p>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+        border-start border-2
+      "
+    >
+      <!-- Industry news list -->
+      <span class="small-title mb-2">Latest Franchise Industry News</span>
+      <ul class="news-list noScrollBar list-group">
+        <li
+          *ngFor="let item of IndustryNews; index as i"
+          class="pb-2 pb-md-3"
+          [ngClass]="i === IndustryNews.length - 1 ? '' : 'mb-2 mb-md-3'"
+        >
+          <div class="newsImage me-2 me-md-3">
+            <img [src]="item.image" alt="images" />
+          </div>
+          <div>
+            <h4>
+              <a href="#">{{ item.title }}</a>
+            </h4>
+            <span>By {{ item.createdBy }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

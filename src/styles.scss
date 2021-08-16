@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/typography.scss";
+
+a {
+  text-decoration: none;
+}
+ul {
+  padding: 0;
+  > li {
+    list-style: none;
+  }
+}

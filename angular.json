@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "figma": {
+    "1851": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/figma",
+            "outputPath": "dist/1851",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -72,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "figma:build:production"
+              "browserTarget": "1851:build:production"
             },
             "development": {
-              "browserTarget": "figma:build:development"
+              "browserTarget": "1851:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "figma:build"
+            "browserTarget": "1851:build"
           }
         },
         "test": {
@@ -107,5 +108,5 @@
       }
     }
   },
-  "defaultProject": "figma"
+  "defaultProject": "1851"
 }
