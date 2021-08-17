@@ -1,4 +1,4 @@
-<div *ngIf="highlightItem?.length" class="franchise">
+<div *ngIf="highlightItem" class="franchise">
   <div class="container">
     <div class="franchise-details">
       <div class="frannews-top d-flex">
@@ -10,7 +10,7 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-6">
-          <a href="{{ item?.data?.url }}" class="float-right"
+          <a routerLink="{{ item?.data?.url }}" class="float-right"
             >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
           ></a>
           <div class="clearfix"></div>
@@ -49,7 +49,8 @@
                 class="float-left text-uppercase"
                 style="color: white !important"
                 ><a
-                  href="/{{ readMore(highlightItem) }}"
+                  routerLink="/{{ readMore(highlightItem) }}"
+                  fragment="dynamicpage"
                   >READ MORE
                   <i class="fa fa-angle-right" aria-hidden="true"></i></a
               ></span>
