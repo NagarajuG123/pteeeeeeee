@@ -31,10 +31,7 @@ export class MonthlyDetailsComponent implements OnInit {
       this.date = params.get('date');
       this.id = params.get('id');
       const date_number = Number(this.date);
-      const coverDate = new Date(
-        `${this.year}-${this.month}-${date_number + 1}`
-      );
-
+      
       this.apiService
         .getAPI(
           `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`
@@ -42,9 +39,7 @@ export class MonthlyDetailsComponent implements OnInit {
         .subscribe((response) => {
           this.banner['data'] = response.data[0];
           this.banner['date'] = this.datePipe.transform(
-            coverDate,
-            'MMMM dd, YYYY'
-          );
+            new Date(`${this.year}-${this.month}-${date_number + 1}`), 'MMMM dd, YYYY' );
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
@@ -52,7 +47,8 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
-                let title = this.datePipe.transform(coverDate, 'MMMM YYYY');
+                let title = this.datePipe.transform(
+                  new Date(`${this.year}-${this.month}-${date_number + 1}`),'MMMM YYYY');
                 this.metaService.setTitle(`${title} Issues | ${result.title}`);
               });
           });
