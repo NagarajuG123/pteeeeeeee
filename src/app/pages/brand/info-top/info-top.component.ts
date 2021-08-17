@@ -10,6 +10,7 @@ export class InfoTopComponent implements OnInit {
   @Input('data') data: any = [];
   @Input('brandSlug') brandSlug = '1851';
   @Input('type') type = '';
+  tag: string;
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {}
@@ -18,9 +19,11 @@ export class InfoTopComponent implements OnInit {
   }
   goReadMore(article) {
     if (typeof article.slug !== 'undefined' && this.brandSlug !== '1851') {
-      return `${this.brandSlug}/${article.slug}#brand-latest-stories`;
+       this.tag = 'brand-latest-stories'
+      return `${this.brandSlug}/${article.slug}`;
     } else {
-      return `${article.slug}#latest-stories`;
+       this.tag = 'latest-stories';
+      return `${article.slug}`;
     }
   }
   checkMediaValid(data) {
