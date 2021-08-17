@@ -258,7 +258,11 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
-                    this.apiUrl = `${this.brandId}/journal/cover-details/11/2018/1/3`;
+                    this.apiService.getAPI('1851/header').subscribe((result) => {
+                      let coverDate = result.data['monthly-cover'].media.url.cover_url;
+                      let data = coverDate.split("/monthlydetails/").pop();
+                      this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
+                    });
                     break;
 
                   case 'editorials':
