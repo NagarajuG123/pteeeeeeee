@@ -422,19 +422,21 @@ export class InfoComponent implements OnInit {
           this.selectedIndex = 5;
 
           const states = [];
-          this.items['available-markets'].forEach((marketData) => {
-            marketData.countries.forEach((m) => {
-              states.push(m);
+          if (this.items['available-markets']) {
+            this.items['available-markets'].forEach((marketData) => {
+              marketData.countries.forEach((m) => {
+                states.push(m);
+              });
             });
-          });
-          const vm = this;
-          this.httpClient
-            .get('../../../assets/us-states.json')
-            .subscribe((json: any) => {
-              this.geoJson = json;
-              vm.drawMap(this.items);
-              window.onresize = function () {};
-            });
+            const vm = this;
+            this.httpClient
+              .get('../../../assets/us-states.json')
+              .subscribe((json: any) => {
+                this.geoJson = json;
+                vm.drawMap(this.items);
+                window.onresize = function () {};
+              });
+          }
         }
       });
   }
