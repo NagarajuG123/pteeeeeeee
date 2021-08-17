@@ -107,7 +107,7 @@ export class CarouselComponent implements OnInit {
     if (typeof item !== 'undefined' && item?.brand?.slug !== '1851') {
       brandSlug = `${item?.brand?.slug}/`;
     }
-    return `${brandSlug}${item?.slug}#${this.typeSlug}`;
+    return `${brandSlug}${item?.slug}`;
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
