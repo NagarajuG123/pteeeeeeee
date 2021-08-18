@@ -377,7 +377,7 @@ export class StoryComponent implements OnInit {
           posted_date.setMinutes(minutesDiff);
           let modified_date = new Date(result['story'].data.last_modified);
           let hours =
-            posted_date.getHours() - modified_date.getTimezoneOffset() / 60;
+           modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
           let minutes =
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
             modified_date.setHours(hours);
