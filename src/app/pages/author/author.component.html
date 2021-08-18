@@ -60,7 +60,8 @@
             [typeSlug]="'editorials'"
           ></app-five-column>
           <a
-            href="/{{ goReadMore(editorials[0])}}"
+            routerLink="/{{ goReadMore(editorials[0])}}"
+            fragment="editorials"
             class="readmore d-block text-uppercase"
           >
             READ MORE
