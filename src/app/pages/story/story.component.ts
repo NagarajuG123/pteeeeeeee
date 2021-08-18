@@ -241,6 +241,10 @@ export class StoryComponent implements OnInit {
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
                     break;
 
+                  case 'brand-news':
+                    this.apiUrl = `${this.brandId}/brand-news/most-recent`;
+                    break;
+
                   case 'dynamicpage':
                     this.apiUrl = `home-page-featured-content`;
                     break;
