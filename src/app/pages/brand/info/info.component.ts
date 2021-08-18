@@ -258,7 +258,7 @@ export class InfoComponent implements OnInit {
     return type;
   }
   readMore(item: any) {
-    return this.commonService.readMore1(item, 'most-recent');
+    return this.commonService.readMore1(item, this.categoryParam);
   }
   getMoreData() {
     this.apiService
@@ -422,7 +422,7 @@ export class InfoComponent implements OnInit {
           this.selectedIndex = 5;
 
           const states = [];
-          if (this.items['available-markets']) {
+          if (this.items['available-markets'].length) {
             this.items['available-markets'].forEach((marketData) => {
               marketData.countries.forEach((m) => {
                 states.push(m);
