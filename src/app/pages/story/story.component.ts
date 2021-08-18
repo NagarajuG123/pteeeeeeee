@@ -375,6 +375,13 @@ export class StoryComponent implements OnInit {
             (posted_date.getHours() - posted_date.getTimezoneOffset()) % 60;
           posted_date.setHours(hoursDiff);
           posted_date.setMinutes(minutesDiff);
+          let modified_date = new Date(result['story'].data.last_modified);
+          let hours =
+            posted_date.getHours() - modified_date.getTimezoneOffset() / 60;
+          let minutes =
+            (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
+            modified_date.setHours(hours);
+            modified_date.setMinutes(minutes);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -384,7 +391,7 @@ export class StoryComponent implements OnInit {
             datePublished:
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             dateModified:
-              posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
+            modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             articleSection: result['story'].data.category.name
               ? result['story'].data.category.name
               : this.defaultArticleSection,
