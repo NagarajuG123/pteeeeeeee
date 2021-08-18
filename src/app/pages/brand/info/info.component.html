@@ -42,7 +42,7 @@
           [contents]="brandMostRecent"
           [type]="'categoryPage'"
           [hasMore]="hasMore"
-          [typeSlug]="'most-recent'"
+          [typeSlug]="categoryParam"
           (more)="getMoreData()"
         ></app-five-column>
       </div>
@@ -245,7 +245,7 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['available-markets'].length"
+                          *ngIf="items['available-markets']"
                           class="map-legend"
                         >
                           MAP LEGEND:
@@ -273,7 +273,7 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['international-markets'].length"
+                          *ngIf="items['international-markets']"
                           class="map-legend"
                         >
                           <h3>INTERNATIONAL MARKETS:</h3>
@@ -437,13 +437,7 @@
                       <div class="d-grid inquireSubmit">
                         <button
                           type="submit"
-                          class="
-                            btn 
-                            text-end
-                            rounded-0
-                            btn-sm
-                            nextBtn
-                          "
+                          class="btn text-end rounded-0 btn-sm nextBtn"
                         >
                           Next
                         </button>

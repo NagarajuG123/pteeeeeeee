@@ -241,6 +241,10 @@ export class StoryComponent implements OnInit {
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
                     break;
 
+                  case 'brand-news':
+                    this.apiUrl = `${this.brandId}/brand-news/most-recent`;
+                    break;
+
                   case 'dynamicpage':
                     this.apiUrl = `home-page-featured-content`;
                     break;
@@ -258,7 +262,11 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
-                    this.apiUrl = `${this.brandId}/journal/cover-details/11/2018/1/3`;
+                    this.apiService.getAPI('1851/header').subscribe((result) => {
+                      let coverDate = result.data['monthly-cover'].media.url.cover_url;
+                      let data = coverDate.split("/monthlydetails/").pop();
+                      this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
+                    });
                     break;
 
                   case 'editorials':
@@ -371,6 +379,13 @@ export class StoryComponent implements OnInit {
             (posted_date.getHours() - posted_date.getTimezoneOffset()) % 60;
           posted_date.setHours(hoursDiff);
           posted_date.setMinutes(minutesDiff);
+          let modified_date = new Date(result['story'].data.last_modified);
+          let hours =
+           modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
+          let minutes =
+            (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
+            modified_date.setHours(hours);
+            modified_date.setMinutes(minutes);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -380,7 +395,7 @@ export class StoryComponent implements OnInit {
             datePublished:
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             dateModified:
-              posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
+            modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             articleSection: result['story'].data.category.name
               ? result['story'].data.category.name
               : this.defaultArticleSection,

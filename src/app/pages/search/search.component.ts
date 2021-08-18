@@ -524,7 +524,7 @@ export class SearchComponent implements OnInit {
       if (item.brand) {
         return `${item.brand.slug !== '1851' ? item.brand.slug + '/' : ''}${
           item.slug
-        }#most-recent`;
+        }#featured`;
       }
       return `${item.slug}#most-recent`;
     }

@@ -32,7 +32,7 @@ export class TwoSideBannerComponent implements OnInit {
 
   readMore(item: any) {
     if (this.type == 'monthlydetails') {
-      this.typeSlug = 'people';
+      this.typeSlug = 'monthlydetailspage';
     } else if (this.type === 'dynamicPage') {
       this.typeSlug = 'dynamicpage';
     } else if (this.type === 'trendingbrandbuzz') {
