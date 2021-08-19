@@ -236,7 +236,10 @@
                         </ul>
                       </div>
                       <div>
-                        <div class="mapcontainer">
+                        <div
+                          *ngIf="items['available-markets'].length"
+                          class="mapcontainer"
+                        >
                           <div
                             class="lg-map-wrapper"
                             style="width: 100%; height: auto"
@@ -245,7 +248,7 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['available-markets']"
+                          *ngIf="items['available-markets'].length"
                           class="map-legend"
                         >
                           MAP LEGEND:
@@ -272,23 +275,25 @@
                             </div>
                           </div>
                         </div>
-                        <div
-                          *ngIf="items['international-markets']"
-                          class="map-legend"
-                        >
-                          <h3>INTERNATIONAL MARKETS:</h3>
-                          <div class="row">
-                            <div
-                              *ngFor="
-                                let market of items['international-markets']
-                              "
-                              class="col-sm-3 map-legend-item"
-                            >
-                              <div class="row market-names">
-                                <div class="col-xs-10">
-                                  <span class="text-uppercase market-name">{{
-                                    market.name
-                                  }}</span>
+                        <div style="padding-top: 0px">
+                          <div
+                            *ngIf="items['international-markets'].length"
+                            class="map-legend"
+                          >
+                            <h3>INTERNATIONAL MARKETS:</h3>
+                            <div class="row">
+                              <div
+                                *ngFor="
+                                  let market of items['international-markets']
+                                "
+                                class="col-sm-3 map-legend-item"
+                              >
+                                <div class="row market-names">
+                                  <div class="col-xs-10">
+                                    <span class="text-uppercase market-name">{{
+                                      market.name
+                                    }}</span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
