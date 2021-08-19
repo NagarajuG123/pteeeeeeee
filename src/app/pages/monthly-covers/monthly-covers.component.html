@@ -8,7 +8,7 @@
             <div class="d-flex">
               <a
                 class="monthly-coverpage-left col-md-4 p-0"
-                href="{{ openDetails(mainCover.date) }}"
+                routerLink="{{ openDetails(mainCover.date) }}"
               >
                 <div class="monthly-covers-left-content">
                   <figure>
@@ -33,7 +33,7 @@
                   <a
                     class="monthly-covers1 col-md-4 col-sm-6 p-0"
                     *ngFor="let cover of firstBlock"
-                    href="{{ openDetails(cover.date) }}"
+                    routerLink="{{ openDetails(cover.date) }}"
                   >
                     <figure>
                       <img
@@ -57,7 +57,7 @@
               <a
                 class="monthly-covers1"
                 *ngFor="let cover of secondBlock"
-                href="{{ openDetails(cover.date) }}"
+                routerLink="{{ openDetails(cover.date) }}"
               >
                 <figure>
                   <img

@@ -526,7 +526,7 @@ export class SearchComponent implements OnInit {
           item.slug
         }#featured`;
       }
-      return `${item.slug}#most-recent`;
+      return `${item.slug}#featured`;
     }
   }
 
