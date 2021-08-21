@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 })
 export class HomeFeatureComponent implements OnInit {
   franchiseData: any = [];
-  highlightItem: any = [];
+  highlightItem: any;
   item: any;
   constructor(
     private apiService: ApiService,
