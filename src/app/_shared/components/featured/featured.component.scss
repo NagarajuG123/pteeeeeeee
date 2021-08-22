@@ -39,13 +39,6 @@ img {
   }
 }
 
-.noScrollBar {
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 8px;
-    background-color: #fff; /* or add it to the track */
-  }
-}
 .small-title {
   color: $primary;
   font-family: Roboto;

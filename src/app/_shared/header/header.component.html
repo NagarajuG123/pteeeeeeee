@@ -63,7 +63,10 @@
         </div>
 
         <!-- Sub menu start-->
-        <div class="subMenu" [ngClass]="commonService.showmenu ? 'open' : ''">
+        <div
+          class="subMenu noScrollBar"
+          [ngClass]="commonService.showmenu ? 'open' : ''"
+        >
           <div class="menu-search">
             <form>
               <div class="input-group mb-3">

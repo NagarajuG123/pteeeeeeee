@@ -1,0 +1,53 @@
+@import "../../../assets/scss/theme-color.scss";
+footer {
+  background-color: $dark-gray;
+  color: $white;
+  width: 100%;
+  transition: all 0.5s ease;
+  a {
+    color: $white;
+    &:hover {
+      color: $primary;
+    }
+  }
+  h2 {
+    color: rgba(232, 238, 242, 0.18);
+  }
+  h4 {
+    font-size: 14px;
+    font-family: "Ballinger Condensed";
+    font-weight: 700;
+  }
+  p {
+    font-family: Roboto;
+    font-size: 9px;
+    line-height: 11px;
+  }
+  .image {
+    text-align: center;
+    width: 65px;
+  }
+  .social {
+    > li {
+      > a {
+        height: 33px;
+        width: 33px;
+        transition: all 0.5s ease;
+        &:hover,
+        &:focus {
+          background-color: $white;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .col-12 {
+      border-right-width: 0px !important;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .col-12 {
+      border-width: 0px !important;
+    }
+  }
+}

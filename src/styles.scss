@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/typography.scss";
+@import "./assets/scss/theme-color.scss";
 
+html,
+body {
+  min-height: 100%;
+}
 a {
   text-decoration: none;
 }
@@ -8,5 +13,19 @@ ul {
   padding: 0;
   > li {
     list-style: none;
+  }
+}
+.primary-color {
+  color: $primary;
+}
+.primary-bg {
+  background-color: $primary;
+}
+
+.noScrollBar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 8px;
+    background-color: #fff; /* or add it to the track */
   }
 }
