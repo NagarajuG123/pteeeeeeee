@@ -326,11 +326,7 @@
                       "
                     >
                       <a
-                        routerLink="/{{
-                          item.brand && item.brand.slug != '1851'
-                            ? item.brand.slug + '/'
-                            : ''
-                        }}{{ item.slug }}/info"
+                        routerLink="/{{ isBrandInfo(item) }}"
                       >
                         <img
                           src="{{ item.logo }}"
@@ -349,11 +345,7 @@
                       "
                     >
                       <a
-                        routerLink="/{{
-                          item.brand && item.brand.slug != '1851'
-                            ? item.brand.slug + '/'
-                            : ''
-                        }}{{ item.slug }}"
+                        routerLink="/{{ isBrandPage(item) }}"
                         class="brand_price"
                       >
                         {{ item.investment }}
@@ -368,21 +360,13 @@
                       "
                     >
                       <a
-                        routerLink="/{{
-                          item.brand && item.brand.slug != '1851'
-                            ? item.brand.slug + '/'
-                            : ''
-                        }}{{ item.slug }}"
+                        routerLink="/{{ isBrandPage(item) }}"
                         >{{ getIndustry(item.industry) }}</a
                       >
                     </div>
                     <div class="brand_search-links latest_data_search col-md-3">
                       <a
-                        routerLink="/{{
-                          item.brand && item.brand.slug != '1851'
-                            ? item.brand.slug + '/'
-                            : ''
-                        }}{{ item.slug }}/{{ item.latest_story.slug }}"
+                        routerLink="/{{ readMore(item) }}"
                       >
                         <span>{{ item.latest_story.title }}</span>
                       </a>

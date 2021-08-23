@@ -39,4 +39,18 @@ export class CommonService {
     }
     return false;
   }
+  isBrand(item:any){
+    let slug = '';
+    if(typeof item?.slug !== 'undefined' && item?.slug !== '1851'){
+      slug = `${item?.slug}/`;
+    }
+    return `${slug}`;
+  }
+  isBrandInfo(item:any){
+    let slug = '';
+    if(typeof item?.slug !== 'undefined' && item?.slug !== '1851'){
+      slug = `${item?.slug}/`;
+    }
+    return `${slug}/info`;
+  }
 }

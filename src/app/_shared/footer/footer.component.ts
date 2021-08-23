@@ -46,7 +46,6 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFooter = true;
-    this.isBrandFooter = false;
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
@@ -63,7 +62,6 @@ export class FooterComponent implements OnInit {
               .subscribe((response) => {
                 if (response.type === 'brand_page') {
                   this.brandSlug = response.slug;
-                  this.isBrandFooter = true;
                   this.brandId = response.id;
                 } else {
                   this.brandSlug = '1851';
@@ -99,6 +97,12 @@ export class FooterComponent implements OnInit {
       this.news = results[1].data;
       this.brandContact = results[2].schema;
       this.publication = results[3];
+      if(this.brandSlug === '1851'){
+        this.isBrandFooter = false;
+      }
+      else{
+        this.isBrandFooter = true;
+      }
     });
   }
   onSearchSubmit(searchForm: FormGroup) {

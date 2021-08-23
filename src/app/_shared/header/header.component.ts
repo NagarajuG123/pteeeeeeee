@@ -101,7 +101,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isShow = true;
     this.isSide = false;
-    this.isMain = false;
+    this.isMain = true;
     this.setSlug();
     this.subject.subscribe(() => {
       this.apiService
@@ -122,7 +122,6 @@ export class HeaderComponent implements OnInit {
           this.isShow = false;
         } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
-          this.isMain = true;
           this.setInit();
         } else {
           this.apiService
@@ -133,11 +132,9 @@ export class HeaderComponent implements OnInit {
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
                 this.ga = response.ga;
-                this.isMain = false;
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
-                this.isMain = true;
               }
               this.setInit();
             });
@@ -147,6 +144,7 @@ export class HeaderComponent implements OnInit {
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
+    console.log(this.brandSlug);
     const header = this.apiService.getAPI(`${this.brandSlug}/header`);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
@@ -161,9 +159,9 @@ export class HeaderComponent implements OnInit {
         this.publication = results[3];
         this.sidenav = results[4].data;
         this.isSide = true;
-        this.setFavicon();
-        
+    
         if (this.brandSlug != '1851') {
+          this.isMain = false;
           this.getInquiry();
           this.getContact();
           if (this.sidenav[this.brandSlug]) {
@@ -179,6 +177,7 @@ export class HeaderComponent implements OnInit {
           }
           this.setEditorialEmail();
         }
+        this.setFavicon();
       }
     );
   }
