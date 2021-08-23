@@ -10,6 +10,7 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-brand-search-data',
@@ -40,7 +41,8 @@ export class BrandSearchDataComponent implements OnInit,OnChanges {
 
   constructor(
     private apiService: ApiService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private commonService: CommonService
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {
@@ -393,5 +395,13 @@ export class BrandSearchDataComponent implements OnInit,OnChanges {
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
+  }
+  
+  readMore(item:any){
+    let slug = '';
+    if(typeof item?.slug !== 'undefined' && item?.slug !== '1851'){
+      slug = `${item?.slug}/`;
+    }
+    return `${slug}${item.latest_story.slug}`;
   }
 }

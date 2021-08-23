@@ -25,7 +25,7 @@
           </a>
         </div>
         <div
-          *ngIf="isSide && sidenav"
+          *ngIf="sidenav"
           class="menu-details"
           [ngClass]="commonService.showmenu ? 'show' : ''"
         >
@@ -133,7 +133,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav['awards']">
                       <a
-                        href="{{ item?.url }}"
+                        routerLink="{{ item?.url }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item?.title }}</a
@@ -496,7 +496,7 @@
         </div>
 
         <div
-          *ngIf="isSide && sidenav"
+          *ngIf="sidenav"
           class="menu-details brand-menu-details"
           [ngClass]="commonService.showmenu ? 'show' : ''"
         >
@@ -795,7 +795,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ brandSlug }}/info" class="text-uppercase"
+                <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
                   >BRAND INFORMATION</a
                 >
               </li>

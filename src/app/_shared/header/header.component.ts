@@ -28,10 +28,10 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn;
 
   header: any = [];
-  brandSlug = '1851';
+  brandSlug:string;
   brandTitle!: string;
-  isMain: boolean = true;
-  isShow: boolean = true;
+  isMain: boolean;
+  isShow: boolean;
   publication: any;
   type: any;
   isBrowser!: boolean;
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
   inquireTitle = '';
   inquireData: any;
   submitErrMsg: string = '';
-  isSide: boolean = false;
+  isSide: boolean;
   sidenav: any;
   ga: any;
   isFranchiseMenu: boolean = false;
@@ -99,6 +99,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isShow = true;
     this.setSlug();
     this.subject.subscribe(() => {
       this.apiService
@@ -126,7 +127,6 @@ export class HeaderComponent implements OnInit {
             .subscribe((response) => {
               if (response.status != 404 && response.type === 'brand_page') {
                 this.brandTitle = response.name;
-                this.isMain = false;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
                 this.ga = response.ga;
@@ -147,7 +147,7 @@ export class HeaderComponent implements OnInit {
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const sidenav = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
-
+    
     forkJoin([header, news, inquire, publication, sidenav]).subscribe(
       (results) => {
         this.header = results[0].data;
@@ -155,10 +155,11 @@ export class HeaderComponent implements OnInit {
         this.inquireData = results[2].schema;
         this.publication = results[3];
         this.sidenav = results[4].data;
-        this.isSide = true;
+        this.isMain = true;
+    
         this.setFavicon();
-
         if (this.brandSlug != '1851') {
+          this.isMain = false;
           this.getInquiry();
           this.getContact();
           if (this.sidenav[this.brandSlug]) {
@@ -174,6 +175,7 @@ export class HeaderComponent implements OnInit {
           }
           this.setEditorialEmail();
         }
+        
       }
     );
   }

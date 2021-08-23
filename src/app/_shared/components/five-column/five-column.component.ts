@@ -22,6 +22,6 @@ export class FiveColumnComponent implements OnInit {
     this.more.emit('');
   }
   readMore(item: any) {
-    return this.commonService.readMore1(item, this.typeSlug);
+    return this.commonService.readMore(item);
   }
 }
