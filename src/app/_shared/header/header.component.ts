@@ -100,8 +100,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isShow = true;
-    this.isSide = false;
-    this.isMain = true;
     this.setSlug();
     this.subject.subscribe(() => {
       this.apiService
@@ -157,8 +155,9 @@ export class HeaderComponent implements OnInit {
         this.inquireData = results[2].schema;
         this.publication = results[3];
         this.sidenav = results[4].data;
-        this.isSide = true;
+        this.isMain = true;
     
+        this.setFavicon();
         if (this.brandSlug != '1851') {
           this.isMain = false;
           this.getInquiry();
@@ -176,7 +175,7 @@ export class HeaderComponent implements OnInit {
           }
           this.setEditorialEmail();
         }
-        this.setFavicon();
+        
       }
     );
   }

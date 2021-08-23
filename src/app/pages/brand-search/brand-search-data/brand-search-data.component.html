@@ -326,7 +326,7 @@
                       "
                     >
                       <a
-                        routerLink="/{{ isBrandInfo(item) }}"
+                        routerLink="/{{item.slug }}/info"
                       >
                         <img
                           src="{{ item.logo }}"
@@ -345,7 +345,7 @@
                       "
                     >
                       <a
-                        routerLink="/{{ isBrandPage(item) }}"
+                        routerLink="/{{ item.slug }}"
                         class="brand_price"
                       >
                         {{ item.investment }}
@@ -360,7 +360,7 @@
                       "
                     >
                       <a
-                        routerLink="/{{ isBrandPage(item) }}"
+                        routerLink="/{{ item.slug}}"
                         >{{ getIndustry(item.industry) }}</a
                       >
                     </div>

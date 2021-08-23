@@ -97,10 +97,8 @@ export class FooterComponent implements OnInit {
       this.news = results[1].data;
       this.brandContact = results[2].schema;
       this.publication = results[3];
-      if(this.brandSlug === '1851'){
-        this.isBrandFooter = false;
-      }
-      else{
+      this.isBrandFooter = false;
+      if(this.brandSlug !== '1851'){
         this.isBrandFooter = true;
       }
     });

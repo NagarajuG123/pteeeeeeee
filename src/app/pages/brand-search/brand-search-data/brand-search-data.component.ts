@@ -396,13 +396,7 @@ export class BrandSearchDataComponent implements OnInit,OnChanges {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
-  isBrandPage(item: any) {
-    return this.commonService.isBrand(item);
-  }
-
-  isBrandInfo(item:any){
-    return this.commonService.isBrandInfo(item);
-  }
+  
   readMore(item:any){
     let slug = '';
     if(typeof item?.slug !== 'undefined' && item?.slug !== '1851'){
