@@ -133,7 +133,7 @@
                   <div class="monthly-covers-details">
                     <p *ngFor="let item of sidenav['awards']">
                       <a
-                        href="{{ item?.url }}"
+                        routerLink="{{ item?.url }}"
                         [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                         (click)="commonService.toggle()"
                         >{{ item?.title }}</a

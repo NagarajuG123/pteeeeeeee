@@ -92,7 +92,7 @@
               col-xl-6 col-md-6 col-sm-6 col-12
             "
           >
-            <a href="/{{ goAuthorPage() }}">
+            <a routerLink="/{{ goAuthorPage() }}">
               <img
                 src="{{ author_media | defaultImage: 81:81 }}"
                 width="81"
@@ -105,7 +105,7 @@
             </a>
             <div class="brian_content">
               <h5>
-                <a href="/{{ goAuthorPage() }}">{{ author_name }}</a>
+                <a routerLink="/{{ goAuthorPage() }}">{{ author_name }}</a>
               </h5>
               <small [innerHTML]="designation"></small>
               <div
@@ -144,7 +144,7 @@
                     >
                   </span>
 
-                  <a [href]="category.slug">
+                  <a routerLink="/{{category.slug}}">
                     <small>&nbsp; &nbsp;{{ category.name }}</small>
                   </a>
                 </em>
@@ -185,7 +185,7 @@
                     {{ date_time | date: "MM/dd/yy" }}</span
                   >
                 </span>
-                <a [href]="category.slug">
+                <a routerLink="/{{category.slug}}">
                   <small>&nbsp; &nbsp;{{ category.name }}</small>
                 </a>
               </div>
@@ -334,7 +334,7 @@
               <ul>
                 <li *ngFor="let article of brandNews" style="cursor: pointer">
                   <a
-                    href="/{{ readMore(article) }}#franbuzz"
+                    routerLink="/{{ readMore(article) }}#franbuzz"
                     class="adweek d-flex"
                   >
                     <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">

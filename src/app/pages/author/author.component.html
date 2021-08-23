@@ -81,7 +81,8 @@
             [typeSlug]="'brand-latest-stories'"
           ></app-five-column>
           <a
-            href="/{{ readMore(brandedContents[0]) }}"
+            routerLink="/{{ readMore(brandedContents[0]) }}"
+            fragment="brand-latest-stories"
             class="readmore d-block text-uppercase"
           >
             READ MORE

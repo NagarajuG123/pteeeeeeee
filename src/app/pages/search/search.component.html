@@ -207,7 +207,8 @@
                       <li *ngFor="let row of recentPeoples | splitArray: 4">
                         <div class="category-list" *ngFor="let item of row">
                           <a
-                            href="/{{ goReadMore(item) }}"
+                            routerLink="/{{ goReadMore(item) }}"
+                            fragment="featured"
                             class="frannews-bottom-details"
                             style="text-decoration: none"
                             *ngIf="item"
@@ -263,7 +264,7 @@
               {{ brand_id === "ee" ? "Estatenvy" : "Room1903" }}
             </p>
             <a
-              href="/{{ goReadMoreBrand(item) }}"
+              routerLink="/{{ goReadMoreBrand(item) }}"
               class="frannews-bottom-details"
               style="text-decoration: none"
               *ngIf="item"
