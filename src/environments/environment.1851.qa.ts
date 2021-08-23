@@ -6,4 +6,6 @@ export const environment = {
   reCaptchaKey: '6LforqAbAAAAALoQuNmvFAdMYbUY-IdF65DxxyeK',
   appUrl: 'https://1851-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/1851magazine/',
+  room1903Url: 'https://room1903.com/',
+  eeUrl: 'https://estatenvy.com/',
 };

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  room1903Url: string = environment.room1903Url;
+  eeUrl: string = environment.eeUrl;
   menu = [
     { label: 'HOME', url: '#' },
     { label: 'ABOUT', url: '#' },
