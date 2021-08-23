@@ -9,55 +9,6 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class HomeComponent implements OnInit {
   publication: any = [];
-  brandNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-  ];
-  IndustryNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/img/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/img/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/img/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/img/Rectangle 33.jpg',
-    },
-  ];
-  slug: string = '1851';
 
   constructor(
     private metaService: MetaService,
