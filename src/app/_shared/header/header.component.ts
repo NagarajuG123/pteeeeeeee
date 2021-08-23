@@ -144,7 +144,6 @@ export class HeaderComponent implements OnInit {
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
-    console.log(this.brandSlug);
     const header = this.apiService.getAPI(`${this.brandSlug}/header`);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
