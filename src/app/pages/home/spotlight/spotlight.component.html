@@ -46,7 +46,7 @@
               >
                 <a
                   routerLink="/{{ readMore(highlightItem) }}"
-                  fragment="{{selectedTab}}"
+                  fragment="{{ selectedTab }}"
                   class="spotlighttab-cnt-left-main"
                 >
                   <figure>
@@ -60,6 +60,8 @@
                                                     (max-width: 1200px) 365px,
                                                     516px'
                       }}"
+                      width="516"
+                      height="290"
                       data-src="{{
                         highlightItem.media | defaultImage: 516:290
                       }}"
@@ -77,7 +79,8 @@
                       </p>
                     </div>
                     <div class="buffalowings-bottom">
-                      <a *ngIf = "publication.id =='1851'"
+                      <a
+                        *ngIf="publication.id == '1851'"
                         [routerLink]="
                           selectedTab === 'columns'
                             ? selectedTab
@@ -88,7 +91,8 @@
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
-                      <a *ngIf = "publication.id !='1851'"
+                      <a
+                        *ngIf="publication.id != '1851'"
                         [routerLink]="selectedTab"
                         class="float-right text-uppercase"
                       >
@@ -120,7 +124,7 @@
                             *ngIf="i % 2 == 0"
                             (click)="highlightItem = item"
                             routerLink="/{{ readMore(item) }}"
-                            fragment="{{selectedTab}}"
+                            fragment="{{ selectedTab }}"
                             class="adweek d-flex"
                           >
                             <div class="adweek-left col-sm-7">
@@ -135,8 +139,13 @@
                                                                             (max-width: 1200px) 205px,
                                                                             300px'
                                   }}"
-                                  src="{{ item.media | defaultImage: 300:168 }}"
+                                  width="300"
+                                  height="168"
+                                  data-src="{{
+                                    item.media | defaultImage: 300:168
+                                  }}"
                                   alt="img{{ i }}"
+                                  class="lazyload"
                                 />
                               </figure>
                             </div>
@@ -156,7 +165,7 @@
                             *ngIf="i % 2 != 0"
                             (click)="highlightItem = item"
                             routerLink="/{{ readMore(item) }}"
-                            fragment="{{selectedTab}}"
+                            fragment="{{ selectedTab }}"
                             class="adweek d-flex"
                           >
                             <div class="adweek-left col-sm-7">
@@ -171,8 +180,13 @@
                                                                             (max-width: 1200px) 205px,
                                                                             300px'
                                   }}"
-                                  src="{{ item.media | defaultImage: 300:168 }}"
+                                  width="300"
+                                  height="168"
+                                  data-src="{{
+                                    item.media | defaultImage: 300:168
+                                  }}"
                                   alt="img{{ i }}"
+                                  class="lazyload"
                                 />
                               </figure>
                             </div>

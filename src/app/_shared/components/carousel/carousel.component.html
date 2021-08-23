@@ -19,7 +19,7 @@
         <div class="frannews-top-right col-md-6" *ngIf="type !== 'main-videos'">
           <a
             routerLink="/{{ goReadMore(list[0]) }}"
-            fragment="{{typeSlug}}"
+            fragment="{{ typeSlug }}"
             class="float-right"
           >
             READ MORE
@@ -41,7 +41,7 @@
           >
             <a
               routerLink="/{{ goReadMore(item) }}"
-              fragment="{{typeSlug}}"
+              fragment="{{ typeSlug }}"
               style="text-decoration: none"
             >
               <div
@@ -55,15 +55,12 @@
                     data-src="{{ item.media | defaultImage: 415:232 }}"
                     alt="carousel"
                     class="lazyload"
+                    width="415"
+                    height="232"
                   />
                 </figure>
                 <figure *ngIf="!item.media">
-                  <img
-                    src="assets/img/video-img2.jpg"
-                    width="415"
-                    height="232"
-                    alt="trending"
-                  />
+                  <img src="assets/img/video-img2.jpg" alt="trending" />
                 </figure>
                 <div class="w-100 buffalowings" *ngIf="type === 'trending'">
                   <div class="buffalowings-wrap d-flex">
@@ -85,7 +82,7 @@
                       <a
                         style="color: white"
                         routerLink="/{{ goReadMore(item) }}"
-                        fragment="{{typeSlug}}"
+                        fragment="{{ typeSlug }}"
                       >
                         READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -108,7 +105,7 @@
                       ><a
                         style="color: white"
                         routerLink="/{{ goReadMore(item) }}"
-                        fragment="{{typeSlug}}"
+                        fragment="{{ typeSlug }}"
                         >READ MORE
                         <i class="fa fa-angle-right" aria-hidden="true"></i></a
                     ></span>
@@ -132,6 +129,8 @@
                     data-src="{{ item.media | defaultImage: 415:232 }}"
                     alt="video"
                     class="lazyload"
+                    width="415"
+                    height="232"
                   />
                   <img
                     class="video-maker"
@@ -140,12 +139,7 @@
                   />
                 </figure>
                 <figure *ngIf="!item.media">
-                  <img
-                    src="assets/img/video-img2.jpg"
-                    width="415"
-                    height="232"
-                    alt="video"
-                  />
+                  <img src="assets/img/video-img2.jpg" alt="video" />
                 </figure>
               </div>
               <div class="buffalowings w-100">
@@ -155,7 +149,7 @@
                 <div class="buffalowings-bottom">
                   <a
                     routerLink="{{ item.media.url }}"
-                    fragment="{{typeSlug}}"
+                    fragment="{{ typeSlug }}"
                     target="blank"
                     class="float-right text-uppercase"
                   >

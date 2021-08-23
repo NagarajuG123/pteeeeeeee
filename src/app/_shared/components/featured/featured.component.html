@@ -29,6 +29,8 @@
                         (max-width: 1200px) 700px,
                         1300px'
           }}"
+          width="1300"
+          height="730"
           data-src="{{ highlight.media | defaultImage: 1300:730 }}"
           class="lazyload"
           (click)="readMore(highlight)"
@@ -55,6 +57,8 @@
                         (max-width: 1200px) 700px,
                         1300px'
           }}"
+          width="1300"
+          height="730"
           data-src="{{ highlight.media | defaultImage: 1300:730 }}"
           class="lazyload"
           (load)="highlightImageload = true"
@@ -81,7 +85,11 @@
         </a>
       </div>
       <div class="buffalowings-bottom">
-        <a routerLink="/{{ readMore(highlight) }}" fragment="featured" class="float-right text-uppercase">
+        <a
+          routerLink="/{{ readMore(highlight) }}"
+          fragment="featured"
+          class="float-right text-uppercase"
+        >
           READ MORE
           <i class="fa fa-angle-right" aria-hidden="true"></i>
         </a>
@@ -103,7 +111,11 @@
       >
         <ul>
           <li *ngFor="let article of featuredData" style="cursor: pointer">
-            <a routerLink="/{{ readMore(article) }}" fragment="featured" class="adweek d-flex">
+            <a
+              routerLink="/{{ readMore(article) }}"
+              fragment="featured"
+              class="adweek d-flex"
+            >
               <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
                 <figure>
                   <img
@@ -115,6 +127,8 @@
                                                 (max-width: 1200px) 238px,
                                                 300px'
                     }}"
+                    width="1300"
+                    height="730"
                     data-src="{{ article.media | defaultImage: 1300:730 }}"
                     class="lazyload"
                     alt="featured"
