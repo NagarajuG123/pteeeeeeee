@@ -11,6 +11,7 @@ export class HomeFeatureComponent implements OnInit {
   franchiseData: any = [];
   highlightItem: any = [];
   item: any;
+  data: any = [];
   constructor(
     private apiService: ApiService,
     private commonService: CommonService
@@ -26,6 +27,7 @@ export class HomeFeatureComponent implements OnInit {
       .subscribe((response) => {
         this.item = response;
         if (response.data.stories.length > 0) {
+          this.data = response.data.stories;
           this.highlightItem = response.data.stories[0];
           this.franchiseData = response.data.stories.slice(1, 6);
         }
