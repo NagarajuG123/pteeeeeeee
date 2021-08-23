@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
   scrollbarOptions: any;
-  brandId: string;
+  brandId: string = '1851';
   isSubmitted: boolean = false;
   isSubmitFailed: boolean = false;
   submittedInquireForm: boolean = false;
