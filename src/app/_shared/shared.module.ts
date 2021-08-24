@@ -8,13 +8,19 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MostPapularComponent } from './components/most-papular/most-papular.component';
 
 // Modals Components
 
 // Pipes
 
 @NgModule({
-  declarations: [FeaturedComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    FeaturedComponent,
+    HeaderComponent,
+    FooterComponent,
+    MostPapularComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -30,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     FeaturedComponent,
     HeaderComponent,
     FooterComponent,
+    MostPapularComponent,
   ],
 })
 export class SharedModule {}
