@@ -1,36 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_core/services/common.service';
-
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookF,
+  faLinkedinIn,
+  faYoutube,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  faCaretRightIcon: any = faCaretRight;
   menu = [
     { label: 'HOME', url: '#' },
     { label: 'ABOUT', url: '#' },
     { label: 'ARTICLES', url: '#' },
     { label: 'COVERS', url: '#' },
     { label: 'LOREM', url: '#' },
+    { label: 'LOREM', url: '#' },
   ];
   socialLink = [
     {
-      img: '../../../assets/images/facebook-icon-w 1.svg',
+      // img: '../../../assets/img/facebook-icon-w 1.svg',
+      icon: faFacebookF,
       url: '#',
       name: 'facebook',
     },
     {
-      img: '../../../assets/images/instagram-icon-w 1.svg',
+      // img: '../../../assets/img/instagram-icon-w 1.svg',
+      icon: faInstagram,
       url: '#',
       name: 'instagram',
     },
     {
-      img: '../../../assets/images/linkedin-icon-W 1.svg',
+      // img: '../../../assets/img/linkedin-icon-W 1.svg',
+      icon: faLinkedinIn,
       url: '#',
       name: 'linkedin',
     },
-    { img: '../../../assets/images/youtube.svg', url: '#', name: 'youtube' }, // icon: 'fa fa-youtube',
+    { url: '#', name: 'youtube', icon: faYoutube }, // icon: 'fa fa-youtube',
   ];
   // searchForm: FormGroup;
   sidenav: any;

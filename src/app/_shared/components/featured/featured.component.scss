@@ -1,5 +1,21 @@
 @import "../../../../assets/scss/theme-color.scss";
 
+.trending {
+  background-color: $border-color;
+  color: $white;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid $dark-gray;
+  span {
+    color: $primary;
+    font-family: "Ballinger Condensed Medium";
+    img {
+      width: auto;
+      margin-top: -4px;
+    }
+  }
+}
 img {
   width: 100%;
 }
@@ -39,13 +55,6 @@ img {
   }
 }
 
-.noScrollBar {
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 8px;
-    background-color: #fff; /* or add it to the track */
-  }
-}
 .small-title {
   color: $primary;
   font-family: Roboto;
