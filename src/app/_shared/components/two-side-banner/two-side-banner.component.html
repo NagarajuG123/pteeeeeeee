@@ -45,7 +45,8 @@
   </div>
   <a
     class="banner-left col-md-4 p-0"
-    href="/{{ readMore(banner) }}"
+    routerLink="/{{ readMore(banner) }}"
+    fragment="{{typeSlug}}"
     *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
   >
     <div class="trendingbrandbuzz-content">
@@ -70,12 +71,14 @@
     </div>
     <a
       class="buffalowings-bottom float-right text-uppercase"
-      href="/{{ readMore(banner) }}"
+      routerLink="/{{ readMore(banner) }}"
+      fragment="{{typeSlug}}"
     >
       <a
         *ngIf="type === 'monthlydetails' || type === 'trendingbrandbuzz'"
         class="float-right text-uppercase"
-        href="/{{ readMore(banner) }}"
+        routerLink="/{{ readMore(banner) }}"
+        fragment="{{typeSlug}}"
       >
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -85,7 +88,8 @@
   </a>
   <a
     class="banner-left col-md-4 p-0"
-    href="/{{ readMore(item) }}"
+    routerLink="/{{ readMore(item) }}"
+    fragment="{{typeSlug}}"
     *ngIf="type === 'dynamicPage'"
   >
     <div class="trendingbrandbuzz-content">
@@ -100,8 +104,8 @@
         {{ banner.description }}
       </p>
     </div>
-    <a class="buffalowings-bottom" href="/{{ readMore(item) }}" >
-      <a class="float-right text-uppercase" href="/{{ readMore(item) }}" >
+    <a class="buffalowings-bottom" routerLink="/{{ readMore(item) }}" fragment="{{typeSlug}}">
+      <a class="float-right text-uppercase" routerLink="/{{ readMore(item) }}" fragment="{{typeSlug}}" >
         READ MORE
         <i class="fa fa-angle-right" aria-hidden="true"></i>
       </a>

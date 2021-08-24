@@ -51,7 +51,6 @@ export class HeaderComponent implements OnInit {
   inquireTitle = '';
   inquireData: any;
   submitErrMsg: string = '';
-  isSide: boolean;
   sidenav: any;
   ga: any;
   isFranchiseMenu: boolean = false;
