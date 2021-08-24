@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { TransferHttpCacheModule } from '@nguniversal/common';
+// import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
@@ -20,7 +20,7 @@ import { GoogleAnalyticsService } from './google-analytics.service';
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    TransferHttpCacheModule,
+    // TransferHttpCacheModule,
     AppRoutingModule,
     SharedModule,
     HomeModule,
