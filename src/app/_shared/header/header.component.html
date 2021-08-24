@@ -24,13 +24,16 @@
             >
           </a>
         </div>
+      
         <div
           *ngIf="sidenav"
           class="menu-details"
           [ngClass]="commonService.showmenu ? 'show' : ''"
         >
           <div class="menu-logo text-center">
-            <a href="/">
+            <a routerLink="/"  
+            [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+            (click)="commonService.toggle()">
               <figure>
                 <img
                   class="logo-img lazyload"
@@ -554,7 +557,7 @@
                 <li class="d-block">
                   <div class="monthly-covers-main">
                     <a
-                      href="/"
+                      routerLink="/"
                       [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
                       (click)="commonService.toggle()"
                     >
