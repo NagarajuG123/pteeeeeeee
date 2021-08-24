@@ -262,11 +262,14 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
-                    this.apiService.getAPI('1851/header').subscribe((result) => {
-                      let coverDate = result.data['monthly-cover'].media.url.cover_url;
-                      let data = coverDate.split("/monthlydetails/").pop();
-                      this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
-                    });
+                    this.apiService
+                      .getAPI('1851/header')
+                      .subscribe((result) => {
+                        let coverDate =
+                          result.data['monthly-cover'].media.url.cover_url;
+                        let data = coverDate.split('/monthlydetails/').pop();
+                        this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
+                      });
                     break;
 
                   case 'editorials':
@@ -381,11 +384,11 @@ export class StoryComponent implements OnInit {
           posted_date.setMinutes(minutesDiff);
           let modified_date = new Date(result['story'].data.last_modified);
           let hours =
-           modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
+            modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
           let minutes =
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
-            modified_date.setHours(hours);
-            modified_date.setMinutes(minutes);
+          modified_date.setHours(hours);
+          modified_date.setMinutes(minutes);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -395,7 +398,7 @@ export class StoryComponent implements OnInit {
             datePublished:
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             dateModified:
-            modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
+              modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             articleSection: result['story'].data.category.name
               ? result['story'].data.category.name
               : this.defaultArticleSection,
@@ -775,25 +778,29 @@ export class StoryComponent implements OnInit {
     if (typeof data === 'undefined' || data.content === null) {
       return;
     }
+    let content = data.content;
+    if (content.changingThisBreaksApplicationSecurity) {
+      content = content.changingThisBreaksApplicationSecurity;
+    }
     if (!this.isBrand) {
       this.brandList.sort((a, b) => a.localeCompare(b));
       for (let i = 0; i < this.brandList.length; i++) {
         this.brandList[i] = this.brandList[i].replace(/&/g, '&amp;');
         let regex = new RegExp(this.brandList[i]);
         const tooltip = `<span style="color:#EC0044 !important;">brandlist_${i}_*</span>`;
-        data.content = data.content.replace(regex, tooltip);
+        data.content = content.replace(regex, tooltip);
       }
       for (let j = 0; j < this.brandList.length; j++) {
         const regex_tooltip = new RegExp(`brandlist_${j}_`);
         const brand_tooltip = `${this.brandList[j]}`;
-        data.content = data.content.replace(regex_tooltip, brand_tooltip);
+        data.content = content.replace(regex_tooltip, brand_tooltip);
       }
     }
 
-    data.content = data.content.replace(/href=/g, 'target="_blank" href=');
+    data.content = content.replace(/href=/g, 'target="_blank" href=');
 
-    data.content = this.embedService.embedYoutube(data.content);
-    data.content = this.embedService.embedVimeo(data.content);
+    data.content = this.embedService.embedYoutube(content);
+    data.content = this.embedService.embedVimeo(content);
     const bypassHTML = data;
     bypassHTML.content = this.sanitizer.bypassSecurityTrustHtml(
       bypassHTML.content

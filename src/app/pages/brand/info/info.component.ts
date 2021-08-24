@@ -113,6 +113,19 @@ export class InfoComponent implements OnInit {
               'executive',
               'available-markets',
             ];
+            this.categories = [
+              { name: 'BRAND INFO', value: 'info' },
+              { name: 'DOWNLOAD BRAND PDF', value: 'brand_pdf' },
+              { name: 'LATEST STORIES', value: 'latest_stories' },
+              { name: 'Why I BOUGHT', value: 'why-i-bought' },
+              { name: 'EXECUTIVE Q&A', value: 'executive' },
+              { name: 'AVAILABLE MARKETS', value: 'available-markets' },
+            ];
+            this.staticContent = [
+              'why-i-bought',
+              'executive',
+              'available-markets',
+            ];
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
               this.apiService
@@ -154,15 +167,7 @@ export class InfoComponent implements OnInit {
           }
         });
     });
-    this.categories = [
-      { name: 'BRAND INFO', value: 'info' },
-      { name: 'DOWNLOAD BRAND PDF', value: 'brand_pdf' },
-      { name: 'LATEST STORIES', value: 'latest_stories' },
-      { name: 'Why I BOUGHT', value: 'why-i-bought' },
-      { name: 'EXECUTIVE Q&A', value: 'executive' },
-      { name: 'AVAILABLE MARKETS', value: 'available-markets' },
-    ];
-    this.staticContent = ['why-i-bought', 'executive', 'available-markets'];
+
     this.apiService
       .getAPI(`${this.brandSlug}/brand-pdf`)
       .subscribe((response) => {
