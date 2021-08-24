@@ -5,7 +5,7 @@
       Publications in the Mainland Community:
       <ul class="list-group list-group-horizontal ms-3">
         <li class="me-3">
-          <a href="#" class="text-white">
+          <a href="{{ room1903Url }}" target="_blank" class="text-white">
             <span
               ><img
                 src="../../../assets/img/room-service.png"
@@ -16,7 +16,7 @@
           </a>
         </li>
         <li class="me-3">
-          <a href="#" class="text-white">
+          <a href="{{ eeUrl }}" target="_blank" class="text-white">
             <span
               ><img src="../../../assets/img/Estatenvy.png" alt="room service"
             /></span>
@@ -67,7 +67,10 @@
         </div>
 
         <!-- Sub menu start-->
-        <div class="subMenu" [ngClass]="commonService.showmenu ? 'open' : ''">
+        <div
+          class="subMenu noScrollBar"
+          [ngClass]="commonService.showmenu ? 'open' : ''"
+        >
           <div class="menu-search">
             <form>
               <div class="input-group mb-3">

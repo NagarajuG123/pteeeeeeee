@@ -7,6 +7,8 @@ import {
   faYoutube,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,6 +16,8 @@ import {
 })
 export class HeaderComponent implements OnInit {
   faCaretRightIcon: any = faCaretRight;
+  room1903Url: string = environment.room1903Url;
+  eeUrl: string = environment.eeUrl;
   menu = [
     { label: 'HOME', url: '#' },
     { label: 'ABOUT', url: '#' },
