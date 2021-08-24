@@ -68,16 +68,14 @@
 }
 @font-face {
   font-family: "Ballinger Condensed Medium";
-  src: url("/assets/fonts/Ballinger/BallingerX-Condensed-Medium.eot");
-  src: local("Ballinger X-Condensed Medium"),
-    local("BallingerX-Condensed-Medium"),
-    url("/assets/fonts/Ballinger/BallingerX-Condensed-Medium.eot?#iefix")
+  src: url("/assets/fonts/Ballinger/BallingerCondensed-Medium.eot");
+  src: local("Ballinger X-Condensed Medium"), local("BallingerCondensed-Medium"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.eot?#iefix")
       format("embedded-opentype"),
-    url("/assets/fonts/Ballinger/BallingerX-Condensed-Medium.woff2")
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.woff2")
       format("woff2"),
-    url("/assets/fonts/Ballinger/BallingerX-Condensed-Medium.woff")
-      format("woff"),
-    url("/assets/fonts/Ballinger/BallingerX-Condensed-Medium.ttf")
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.woff") format("woff"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.ttf")
       format("truetype");
   font-weight: 500;
   font-style: normal;
