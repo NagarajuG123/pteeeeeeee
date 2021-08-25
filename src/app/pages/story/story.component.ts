@@ -180,6 +180,7 @@ export class StoryComponent implements OnInit {
                   }
                 } else {
                   this.brandId = '1851';
+                  this.brandSlug = '1851';
                 }
                 switch (this.type) {
                   case 'stories':
@@ -262,11 +263,14 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
-                    this.apiService.getAPI('1851/header').subscribe((result) => {
-                      let coverDate = result.data['monthly-cover'].media.url.cover_url;
-                      let data = coverDate.split("/monthlydetails/").pop();
-                      this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
-                    });
+                    this.apiService
+                      .getAPI('1851/header')
+                      .subscribe((result) => {
+                        let coverDate =
+                          result.data['monthly-cover'].media.url.cover_url;
+                        let data = coverDate.split('/monthlydetails/').pop();
+                        this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
+                      });
                     break;
 
                   case 'editorials':
@@ -321,21 +325,13 @@ export class StoryComponent implements OnInit {
                 if (!isAuthorPage) {
                   this.initLoad();
                 }
-                // if (this.brandId === '1851') {
-                //   this.apiService
-                //     .getAPI(`1851/news?lean=true&limit=10&offset=0`)
-                //     .pipe(takeUntil(this.onDestroy$))
-                //     .subscribe((n_result) => {
-                //       this.newsData = n_result.data;
-                //     });
-                // } else {
+
                 this.apiService
                   .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((n_result) => {
                     this.newsData = n_result.data;
                   });
-                // }
               });
           });
       });
@@ -381,11 +377,11 @@ export class StoryComponent implements OnInit {
           posted_date.setMinutes(minutesDiff);
           let modified_date = new Date(result['story'].data.last_modified);
           let hours =
-           modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
+            modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
           let minutes =
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
-            modified_date.setHours(hours);
-            modified_date.setMinutes(minutes);
+          modified_date.setHours(hours);
+          modified_date.setMinutes(minutes);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -395,7 +391,7 @@ export class StoryComponent implements OnInit {
             datePublished:
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             dateModified:
-            modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
+              modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             articleSection: result['story'].data.category.name
               ? result['story'].data.category.name
               : this.defaultArticleSection,
