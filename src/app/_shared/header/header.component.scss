@@ -149,6 +149,14 @@ header {
           border-color: $white;
           border-radius: 0;
           height: 27px;
+          font-family: "Roboto";
+          font-size: 9px;
+          line-height: 141.19%;
+          &:focus,
+          &:hover {
+            outline: 0;
+            box-shadow: 0 0 0;
+          }
         }
       }
       .submenu-list {
