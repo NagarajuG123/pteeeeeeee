@@ -45,8 +45,8 @@ export class InfoComponent implements OnInit {
   emailSubValid: boolean = false;
   pdfForm: any;
   isBrowser: boolean = false;
-  isCategory: boolean = false;
-  isInfoPage: boolean = false;
+  isCategory: boolean;
+  isInfoPage: boolean;
   categoryParam = '';
   brandTrending: any;
   brandMostRecent: any;
