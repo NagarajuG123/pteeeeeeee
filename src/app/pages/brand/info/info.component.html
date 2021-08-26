@@ -72,7 +72,6 @@
         <li
           *ngFor="let category of categories; let i = index"
           [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
-          [style.display]="!validData[i] ? 'none' : 'block'"
         >
           <a
             *ngIf="category['value'] !== 'brand_pdf'"
@@ -132,7 +131,7 @@
                     </h2>
                     <div
                       class="wings"
-                      *ngFor="let item of items?.data; let i = index"
+                      *ngFor="let item of items; let i = index"
                     >
                       <h3 class="wings-sub-title">{{ item?.title }}</h3>
                       <a

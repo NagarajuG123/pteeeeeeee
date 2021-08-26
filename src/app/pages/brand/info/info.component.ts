@@ -113,19 +113,14 @@ export class InfoComponent implements OnInit {
               'executive',
               'available-markets',
             ];
-            this.categories = [
-              { name: 'BRAND INFO', value: 'info' },
-              { name: 'DOWNLOAD BRAND PDF', value: 'brand_pdf' },
-              { name: 'LATEST STORIES', value: 'latest_stories' },
-              { name: 'Why I BOUGHT', value: 'why-i-bought' },
-              { name: 'EXECUTIVE Q&A', value: 'executive' },
-              { name: 'AVAILABLE MARKETS', value: 'available-markets' },
-            ];
             this.staticContent = [
               'why-i-bought',
               'executive',
               'available-markets',
             ];
+            this.apiService.getAPI(`${this.brandSlug}/info-tab`).subscribe((result) => {
+              this.categories = result.categories;
+            });
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
               this.apiService
@@ -368,82 +363,41 @@ export class InfoComponent implements OnInit {
       path = 'brand-latest-stories';
       this.isStory = true;
       this.selectedIndex = 2;
-    } else if (this.staticContent.includes(item)) {
-      path = 'brand-static-content';
+    } else if(item === 'why-i-bought') {
+      path = 'brand-why-i-bought';
+      this.isBought = true;
+      this.selectedIndex = 3;
+    } else if(item === 'executive') {
+      path = 'brand-executive';
+      this.isExecutive = true;
+      this.selectedIndex = 4;
+    } else if(item === 'available-markets') {
+      path = 'brand-available-markets';
+      this.isMarket = true;
+      this.selectedIndex = 5;
     }
-    this.apiService
-      .getAPI(`${this.brandSlug}/${path}`)
-      .subscribe((response) => {
-        this.items = response;
 
-        if (
-          item === 'why-i-bought' &&
-          this.items.data.find((o: any) => o.slug === 'why-i-bought')
-        ) {
-          this.items = this.items.data.find(
-            (o: any) => o.slug === 'why-i-bought'
-          );
-          this.metaService.setSeo(this.items.meta);
-          this.apiService
-            .getAPI(`1851/publication-instance`)
-            .subscribe((result) => {
-              this.metaService.setTitle(
-                `${this.items.meta.seo.title} | ${result.title}`
-              );
-            });
-          this.isBought = true;
-          this.selectedIndex = 3;
-        } else if (
-          item === 'executive' &&
-          this.items.data.find((o: any) => o.slug === 'executive')
-        ) {
-          this.items = this.items.data.find((o: any) => o.slug === 'executive');
-          this.metaService.setSeo(this.items.meta);
-          this.apiService
-            .getAPI(`1851/publication-instance`)
-            .subscribe((result) => {
-              this.metaService.setTitle(
-                `${this.items.meta.seo.title} | ${result.title}`
-              );
-            });
-          this.isExecutive = true;
-          this.selectedIndex = 4;
-        } else if (
-          item === 'available-markets' &&
-          this.items.data.find((o: any) => o.slug === 'available-markets')
-        ) {
-          this.items = this.items.data.find(
-            (o: any) => o.slug === 'available-markets'
-          );
-          this.metaService.setSeo(this.items.meta);
-          this.apiService
-            .getAPI(`1851/publication-instance`)
-            .subscribe((result) => {
-              this.metaService.setTitle(
-                `${this.items.meta.seo.title} | ${result.title}`
-              );
-            });
-          this.isMarket = true;
-          this.selectedIndex = 5;
-
-          const states = [];
-          if (this.items['available-markets'].length) {
-            this.items['available-markets'].forEach((marketData) => {
-              marketData.countries.forEach((m) => {
-                states.push(m);
-              });
-            });
-            const vm = this;
-            this.httpClient
-              .get('../../../assets/us-states.json')
-              .subscribe((json: any) => {
-                this.geoJson = json;
-                vm.drawMap(this.items);
-                window.onresize = function () {};
-              });
-          }
-        }
+    this.apiService.getAPI(`${this.brandSlug}/${path}`).subscribe((response) => {
+      this.items = response.data;
+       let metaData = response.meta;
+      this.metaService.setSeo(metaData);
+      this.apiService
+      .getAPI(`1851/publication-instance`)
+      .subscribe((result) => {
+        this.metaService.setTitle(
+          `${metaData.seo.title} | ${result.title}`
+        );
       });
+
+        const vm = this;
+          this.httpClient
+            .get('../../../assets/us-states.json')
+            .subscribe((json: any) => {
+              this.geoJson = json;
+              vm.drawMap(this.items);
+              window.onresize = function () {};
+            });
+    });
   }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
