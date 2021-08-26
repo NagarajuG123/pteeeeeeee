@@ -128,7 +128,6 @@ export class InfoComponent implements OnInit {
                 .subscribe((response) => {
                   this.brandInfo = response.data;
                 });
-              this.setTab();
               this.isInfoPage = true;
               this.getContents(params.get('item'));
               this.getInquiry();
@@ -301,58 +300,7 @@ export class InfoComponent implements OnInit {
       this.categoryParam = 'columns';
     }
   }
-  setTab() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand-info`)
-      .subscribe(async (response) => {
-        this.metaService.setSeo(response.meta);
-        this.apiService
-          .getAPI(`1851/publication-instance`)
-          .subscribe((result) => {
-            this.metaService.setTitle(
-              `${response.meta.seo.title} | ${result.title}`
-            );
-          });
-        let info = response.data.length > 0 ? true : false;
-        this.validData.push(info);
-        let pdf = this.pdf ? true : false;
-        this.validData.push(pdf);
-        this.apiService
-          .getAPI(`${this.brandSlug}/brand-latest-stories`)
-          .subscribe(async (response) => {
-            this.metaService.setSeo(response.meta);
-            this.apiService
-              .getAPI(`1851/publication-instance`)
-              .subscribe((result) => {
-                this.metaService.setTitle(
-                  `${response.meta.seo.title} | ${result.title}`
-                );
-              });
-            let latest = response.data.length > 0 ? true : false;
-            this.validData.push(latest);
-            this.apiService
-              .getAPI(`${this.brandSlug}/brand-static-content`)
-              .subscribe(async (response) => {
-                let bought = response.data.find(
-                  (o: any) => o.slug === 'why-i-bought'
-                )
-                  ? true
-                  : false;
-                this.validData.push(bought);
-                let qa = response.data.find((o: any) => o.slug === 'executive')
-                  ? true
-                  : false;
-                this.validData.push(qa);
-                let market = response.data.find(
-                  (o: any) => o.slug === 'available-markets'
-                )
-                  ? true
-                  : false;
-                this.validData.push(market);
-              });
-          });
-      });
-  }
+  
   getContents(item: string | null) {
     let path;
     if (item === 'info') {
@@ -388,7 +336,7 @@ export class InfoComponent implements OnInit {
           `${metaData.seo.title} | ${result.title}`
         );
       });
-
+      if(item.includes('available-markets')){
         const vm = this;
           this.httpClient
             .get('../../../assets/us-states.json')
@@ -397,6 +345,8 @@ export class InfoComponent implements OnInit {
               vm.drawMap(this.items);
               window.onresize = function () {};
             });
+      }
+        
     });
   }
   emailSubscribe(pdfform: FormGroup) {
