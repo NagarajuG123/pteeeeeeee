@@ -129,11 +129,13 @@ export class InfoComponent implements OnInit {
                   this.brandInfo = response.data;
                 });
               this.isInfoPage = true;
+              this.isCategory = false;
               this.getContents(params.get('item'));
               this.getInquiry();
             } else {
               const categorySlug = params.get('item');
               this.isCategory = true;
+              this.isInfoPage = false;
               this.brandFeaturedUrl = `${this.brandSlug}/${categorySlug}/featured`;
               const mostRecent = this.apiService.getAPI(
                 `${this.brandSlug}/${categorySlug}/most-recent`
