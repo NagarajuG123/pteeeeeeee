@@ -21,6 +21,9 @@ ul {
 .primary-bg {
   background-color: $primary;
 }
+.primary-bg-1 {
+  background-color: $primary-1;
+}
 
 .noScrollBar {
   &::-webkit-scrollbar {
@@ -28,4 +31,8 @@ ul {
     height: 8px;
     background-color: #fff; /* or add it to the track */
   }
+}
+
+.customContainer {
+  max-width: 1210px;
 }

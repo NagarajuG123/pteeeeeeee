@@ -1,0 +1,66 @@
+@import "../../../../assets/scss/theme-color.scss";
+
+.most-papular {
+  background: linear-gradient(#243444 385px, #fff 0);
+  font-family: Roboto;
+  h2 {
+    font-family: "Ballinger Condensed";
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 40px;
+  }
+  hr {
+    border-color: $primary;
+    background-color: $primary;
+    height: 2px;
+  }
+  .slideItem {
+    font-weight: bold;
+    margin-bottom: 47px;
+    .slide-body {
+      min-height: 130px;
+      padding-top: 31px;
+      padding-bottom: 31px;
+      > span {
+        font-size: 10px;
+        width: 58px;
+        height: 19px;
+      }
+      > h3 {
+        > span {
+          font-size: 49px;
+          line-height: 100%;
+        }
+        font-size: 21px;
+      }
+    }
+    .slide-footer {
+      font-family: "Ballinger Condensed";
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+  .subSlideItem {
+    margin-bottom: 47px;
+    .slide-body {
+      > div {
+        > span {
+          font-size: 31px;
+          line-height: 100%;
+          font-weight: bold;
+        }
+        > h3 {
+          font-weight: bold;
+          font-size: 16px;
+        }
+        > small {
+          font-size: 10px;
+          line-height: 12px;
+        }
+        > p {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
