@@ -3,6 +3,7 @@ footer {
   background-color: $dark-gray;
   color: $white;
   width: 100%;
+  padding: 61px 0;
   transition: all 0.5s ease;
   a {
     color: $white;
@@ -10,8 +11,13 @@ footer {
       color: $primary;
     }
   }
-  h2 {
+  h1 {
     color: rgba(232, 238, 242, 0.18);
+    font-family: "Ballinger Condensed Medium";
+    font-weight: bold;
+    font-size: 39.434px;
+    letter-spacing: 0.065em;
+    margin-bottom: 13px;
   }
   h4 {
     font-size: 14px;
@@ -27,6 +33,10 @@ footer {
     text-align: center;
     width: 65px;
   }
+  .footer-link {
+    max-width: 687px;
+    margin: 0 auto;
+  }
   .social {
     > li {
       > a {
@@ -36,6 +46,7 @@ footer {
         &:hover,
         &:focus {
           background-color: $white;
+          color: $primary;
         }
       }
     }
@@ -48,6 +59,14 @@ footer {
   @media screen and (max-width: 576px) {
     .col-12 {
       border-width: 0px !important;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .row {
+      > .col-sm-6 {
+        max-width: 250px;
+      }
     }
   }
 }

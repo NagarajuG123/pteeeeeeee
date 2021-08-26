@@ -11,6 +11,8 @@
     "serve:ssr": "node dist/1851/server/main.js",
     "build:ssr": "ng build && ng run 1851:server",
     "prerender": "ng run 1851:prerender",
+     "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/1851/browser/stats.json",
     "build:1851:qa": "ng build --configuration=1851QA && ng run 1851:server --configuration=1851QA"
   },
   "private": true,
@@ -50,6 +52,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

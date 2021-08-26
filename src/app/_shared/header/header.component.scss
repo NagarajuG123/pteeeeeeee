@@ -125,7 +125,7 @@ header {
       background: $dark-gray;
       position: absolute;
       left: -100%;
-      padding: 20px;
+      padding: 18px;
       z-index: 6;
       top: 100%;
       width: 215px;
@@ -148,6 +148,15 @@ header {
         input {
           border-color: $white;
           border-radius: 0;
+          height: 27px;
+          font-family: "Roboto";
+          font-size: 9px;
+          line-height: 141.19%;
+          &:focus,
+          &:hover {
+            outline: 0;
+            box-shadow: 0 0 0;
+          }
         }
       }
       .submenu-list {
@@ -156,7 +165,7 @@ header {
             height: 0px;
             left: 25px;
             border: 1px solid $primary;
-            margin: 10px 0;
+            margin: 0 0 10px;
           }
           a {
             color: $white;
