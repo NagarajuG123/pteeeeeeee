@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  faCaretRightIcon: any = faCaretRight;
+  faCaretRightIcon = faCaretRight;
   room1903Url: string = environment.room1903Url;
   eeUrl: string = environment.eeUrl;
   menu = [
