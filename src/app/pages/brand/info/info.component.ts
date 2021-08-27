@@ -312,19 +312,19 @@ export class InfoComponent implements OnInit {
     } else if (item === 'latest_stories') {
       path = 'brand-latest-stories';
       this.isStory = true;
-      this.selectedIndex = 2;
+      this.selectedIndex = 1;
     } else if(item === 'why-i-bought') {
       path = 'brand-why-i-bought';
       this.isBought = true;
-      this.selectedIndex = 3;
+      this.selectedIndex = 2;
     } else if(item === 'executive') {
       path = 'brand-executive';
       this.isExecutive = true;
-      this.selectedIndex = 4;
+      this.selectedIndex = 3;
     } else if(item === 'available-markets') {
       path = 'brand-available-markets';
       this.isMarket = true;
-      this.selectedIndex = 5;
+      this.selectedIndex = 4; 
     }
 
     this.apiService.getAPI(`${this.brandSlug}/${path}`).subscribe((response) => {
@@ -338,7 +338,7 @@ export class InfoComponent implements OnInit {
           `${metaData.seo.title} | ${result.title}`
         );
       });
-      if(item.includes('available-markets')){
+      if(item === 'available-markets'){
         const vm = this;
           this.httpClient
             .get('../../../assets/us-states.json')
