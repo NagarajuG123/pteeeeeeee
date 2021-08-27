@@ -61,7 +61,7 @@
           class="pb-1 pb-md-2"
           [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
-          <h4>
+          <h4 class="m-0">
             <a href="#">{{ item.title }}</a>
           </h4>
           <span class="my-1">By {{ item.createdBy }}</span>
@@ -90,7 +90,7 @@
             <img [src]="item.image" alt="images" />
           </div>
           <div>
-            <h4>
+            <h4 class="m-0">
               <a href="#">{{ item.title }}</a>
             </h4>
             <span>By {{ item.createdBy }}</span>

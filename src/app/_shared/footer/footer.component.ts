@@ -11,10 +11,11 @@ import {
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  faFacebook = faFacebookF;
-  faInstagram = faInstagram;
-  faYoutube = faYoutube;
-  faLinkedinIn = faLinkedinIn;
+  faFacebookFIcon = faFacebookF;
+  faLinkedinInIcon = faLinkedinIn;
+  faYoutubeIcon = faYoutube;
+  faInstagramIcon = faInstagram;
+
   constructor() {}
 
   ngOnInit(): void {}
