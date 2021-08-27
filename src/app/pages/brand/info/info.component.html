@@ -30,7 +30,11 @@
             </ul>
           </div>
           <div class="frannews-top-right col-md-6">
-            <a routerLink="/{{ readMore(brandMostRecent[0]) }}" fragment="{{categoryParam}}" class="float-right">
+            <a
+              routerLink="/{{ readMore(brandMostRecent[0]) }}"
+              fragment="{{ categoryParam }}"
+              class="float-right"
+            >
               READ MORE
               <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
@@ -237,7 +241,7 @@
                       </div>
                       <div>
                         <div
-                          *ngIf="items['available-markets'].length"
+                          *ngIf="items['available-markets'] != null"
                           class="mapcontainer"
                         >
                           <div
@@ -248,7 +252,7 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['available-markets'].length"
+                          *ngIf="items['available-markets'] != null"
                           class="map-legend"
                         >
                           MAP LEGEND:
@@ -277,7 +281,10 @@
                         </div>
                         <div style="padding-top: 0px">
                           <div
-                            *ngIf="items['international-markets'].length"
+                            *ngIf="
+                              items['international-markets'] != null &&
+                              items['international-markets'].length
+                            "
                             class="map-legend"
                           >
                             <h3>INTERNATIONAL MARKETS:</h3>

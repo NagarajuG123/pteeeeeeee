@@ -427,7 +427,7 @@ export class InfoComponent implements OnInit {
           this.selectedIndex = 5;
 
           const states = [];
-          if (this.items['available-markets'].length) {
+          if (this.items['available-markets'] != null) {
             this.items['available-markets'].forEach((marketData) => {
               marketData.countries.forEach((m) => {
                 states.push(m);
