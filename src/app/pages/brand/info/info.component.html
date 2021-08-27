@@ -74,8 +74,8 @@
         "
       >
         <li
-          *ngFor="let category of categories; let i = index"
-          [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+          *ngFor="let category of categories;"
+          [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
         >
           <a
             *ngIf="category['value'] !== 'brand_pdf'"
@@ -105,12 +105,12 @@
       </ul>
       <div class="resp-tabs-container">
         <div
-          *ngFor="let category of categories; let i = index"
+          *ngFor="let category of categories;"
           class="tab-content"
         >
           <h2
             class="resp-accordion tab-identifier2"
-            [ngClass]="selectedIndex === i ? 'resp-tab-active' : ''"
+            [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
             role="tab"
             style="background: none; border-color: rgb(193, 193, 193)"
           >
@@ -124,7 +124,7 @@
           <div
             id="infoTab{{ i }}"
             class="multi_conference tab-pane"
-            [ngClass]="selectedIndex === i ? 'in active' : ''"
+            [ngClass]="selectedIndex === category['index'] ? 'in active' : ''"
           >
             <div class="container">
               <div class="row">
