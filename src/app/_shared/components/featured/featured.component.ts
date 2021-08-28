@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { Details } from 'src/app/_core/models/details.model';
 
 @Component({
   selector: 'app-featured',
@@ -7,82 +8,20 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./featured.component.scss'],
 })
 export class FeaturedComponent implements OnInit {
+  @Input() apiUrl!: string;
   constructor(private apiService: ApiService) {}
-  list: any = [
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/image 39.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 122.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 148.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 150.jpg',
-    },
-  ];
+
+  data: Details[] = [];
+  news: Details[] = []
   publication: any = [];
-  brandNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-  ];
-  IndustryNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-  ];
   slug: string = '1851';
+
   ngOnInit(): void {
     this.getPublication();
+    this.getFeatured();
+    this.getNews();
   }
+
   //Publication Instance
   getPublication() {
     this.apiService
@@ -90,5 +29,33 @@ export class FeaturedComponent implements OnInit {
       .subscribe((response) => {
         this.publication = response;
       });
+  }
+
+  getFeatured(){
+    this.apiService
+    .getAPI(`${this.apiUrl}?limit=10&offset=0`)
+    .subscribe((response) => {
+      this.data = response.data;
+    });
+  }
+
+  getNews(){
+    this.apiService
+    .getAPI(`1851/news?limit=10&offset=0`)
+    .subscribe((response) => {
+      this.news = response.data;
+    });
+    // if(this.tstate.hasKey(RESULT_KEY)){
+    //   const newsData = this.tstate.get(RESULT_KEY,{});
+    //   this.news = newsData['news'];
+    // }
+    // else{
+    //   this.apiService
+    //   .getAPI(`1851/news?limit=10&offset=0`)
+    //   .subscribe((response) => {
+    //     newsData['news'] = response.data;
+    //   });
+    //   this.tstate.set(RESULT_KEY, newsData);
+    // } 
   }
 }
