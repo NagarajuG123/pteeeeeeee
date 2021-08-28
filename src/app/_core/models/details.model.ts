@@ -12,6 +12,7 @@ export class Details {
   brand?: any;
   date_time?: string;
   last_modified?: string;
-   media?: Media;
+  shortTitle?: string;
+  media?: Media;
   slug?: string;
 }

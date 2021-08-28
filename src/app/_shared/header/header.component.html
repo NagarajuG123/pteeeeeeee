@@ -94,11 +94,11 @@
             <li class="d-block">
               <h3>MONTHLY COVERS</h3>
               <hr />
-              <div class="monthly-covers">
-                <a href="#">
+              <div *ngIf="sidebar['monthly-cover']" class="monthly-covers">
+                <a routerLink="/{{ sidebar['monthly-cover']?.url }}">
                   <img
                     appYoutubeImage
-                    src="../../../assets/images/1851 may 1.jpg"
+                    src="{{ sidebar['monthly-cover']?.media?.url }}"
                     width="68"
                     alt="monthly cover"
                     class="lazyload mb-2"
@@ -107,9 +107,9 @@
               </div>
             </li>
             <li>
-              <h3>TOPICS</h3>
+              <h3>{{ sidebar?.category?.label }}</h3>
               <hr />
-              <ul class="mb-2 ms-2">
+              <ul class="mb-2 ms-2" *ngFor="let item of sidebar?.category?.items">
                 <li class="ms-1">
                   <a
                     class="
@@ -118,32 +118,8 @@
                       align-items-center
                       my-1
                     "
-                    href="#"
-                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
-                  ></a>
-                </li>
-                <li class="ms-1">
-                  <a
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      my-1
-                    "
-                    href="#"
-                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
-                  ></a>
-                </li>
-                <li class="ms-1">
-                  <a
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      my-1
-                    "
-                    href="#"
-                    >Lorem <i class="fa fa-caret-right" aria-hidden="true"></i
+                    routerLink="/{{ item?.url.split('+').join('-') }}"
+                    >{{ item.title }} <i class="fa fa-caret-right" aria-hidden="true"></i
                   ></a>
                 </li>
               </ul>
@@ -151,14 +127,28 @@
             <li>
               <hr />
               <h3><a href="#">AWARD</a></h3>
+               <ul class="mb-2 ms-2" *ngFor="let item of sidebar?.awards">
+                <li class="ms-1">
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    routerLink="/{{ item?.url.split('+').join('-') }}"
+                    >{{ item.title }} <i class="fa fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
               <h3><a href="#">POWER RANKING</a></h3>
             </li>
             <li>
               <hr />
-              <h3><a href="#">ABOUT 1851</a></h3>
+              <h3><a href="#">ABOUT <span> {{ publication?.shortTitle }}</span></a></h3>
               <h3><a href="#">SPONSORED CONTENT</a></h3>
-              <h3><a href="#">Advertise on 1851</a></h3>
-              <h3><a href="#">Contact 1851 editorial</a></h3>
+              <h3><a href="#">Advertise on <span> {{ publication?.shortTitle }}</span> </a></h3>
+              <h3><a href="#">Contact <span> {{ publication?.shortTitle }}</span>&nbsp;<span *ngIf="publication?.id !== 'EE'">editorial</span></a></h3>
               <h3><a href="#">Terms of use</a></h3>
             </li>
             <li>

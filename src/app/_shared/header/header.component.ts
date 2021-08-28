@@ -8,6 +8,8 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/_core/services/api.service';
+import { Details } from 'src/app/_core/models/details.model';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +17,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  slug: string = '1851';
+  sidebar: any = [];
+  publication: any = [];
+
   faCaretRightIcon = faCaretRight;
   room1903Url: string = environment.room1903Url;
   eeUrl: string = environment.eeUrl;
@@ -50,9 +56,21 @@ export class HeaderComponent implements OnInit {
   // searchForm: FormGroup;
   sidenav: any;
   isSide: boolean = false;
-  constructor(public commonService: CommonService) {}
+  constructor(public commonService: CommonService, private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService
+    .getAPI(`${this.slug}/sidebar?limit=10&offset=0`)
+    .subscribe((response) => {
+      this.sidebar = response.data;
+    });
+
+    this.apiService
+      .getAPI(`1851/publication-instance`)
+      .subscribe((response) => {
+        this.publication = response;
+      });
+  }
   // onSearchSubmit(searchForm: any, type) {
   //   if (type === 'sidebar') {
   //     this.commonService.toggle();
