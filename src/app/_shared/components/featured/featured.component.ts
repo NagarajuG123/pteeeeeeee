@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+
+const RESULT_KEY = makeStateKey<any>('featureState');
 
 @Component({
   selector: 'app-featured',
@@ -9,53 +12,32 @@ import { Details } from 'src/app/_core/models/details.model';
 })
 export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,private tstate: TransferState) {}
 
   data: Details[] = [];
   news: Details[] = []
-  publication: any = [];
   slug: string = '1851';
 
   ngOnInit(): void {
-    this.getPublication();
-    this.getFeatured();
-    this.getNews();
-  }
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const featureData = this.tstate.get(RESULT_KEY, {});
+      this.data = featureData['data'];
+      this.news = featureData['news'];
+    } else {
+      const featureData:any = {}
 
-  //Publication Instance
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
+      this.apiService
+      .getAPI(`${this.apiUrl}?limit=10&offset=0`)
       .subscribe((response) => {
-        this.publication = response;
+        featureData['data'] = response.data;
       });
-  }
-
-  getFeatured(){
-    this.apiService
-    .getAPI(`${this.apiUrl}?limit=10&offset=0`)
-    .subscribe((response) => {
-      this.data = response.data;
-    });
-  }
-
-  getNews(){
-    this.apiService
-    .getAPI(`1851/news?limit=10&offset=0`)
-    .subscribe((response) => {
-      this.news = response.data;
-    });
-    // if(this.tstate.hasKey(RESULT_KEY)){
-    //   const newsData = this.tstate.get(RESULT_KEY,{});
-    //   this.news = newsData['news'];
-    // }
-    // else{
-    //   this.apiService
-    //   .getAPI(`1851/news?limit=10&offset=0`)
-    //   .subscribe((response) => {
-    //     newsData['news'] = response.data;
-    //   });
-    //   this.tstate.set(RESULT_KEY, newsData);
-    // } 
+      this.apiService
+      .getAPI(`1851/news?limit=10&offset=0`)
+      .subscribe((response) => {
+        featureData['news'] = response.data;
+      });
+      
+    this.tstate.set(RESULT_KEY, featureData);
+   }
   }
 }

@@ -15,4 +15,7 @@ export class Details {
   shortTitle?: string;
   media?: Media;
   slug?: string;
+  label?: string;
+  awards?: any;
+  items?: any;
 }
