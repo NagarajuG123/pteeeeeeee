@@ -30,8 +30,6 @@ export class InfoComponent implements OnInit {
   inquireForm!: FormGroup;
   inquireFields: any = [];
 
-  tabs: any;
-
   isStory: boolean = false;
   isInfo: boolean = false;
   isBought: boolean = false;
@@ -134,7 +132,6 @@ export class InfoComponent implements OnInit {
                 });
               this.isInfoPage = true;
               this.isCategory = false;
-              // this.getData(this.categories);
               this.getContents(params.get('item'));
               this.getInquiry();
             } else {
@@ -326,49 +323,6 @@ export class InfoComponent implements OnInit {
     });
   }
 
-  getData(tab: any){
-    console.log(tab);
-    let tabValue = tab.replace(/_/g,'-');
-    console.log(tabValue);
-    let selectedTab = 'brand-'.concat(tab);
-    if(selectedTab === 'brand-info'){
-      this.selectedIndex = 0;
-    } else if(selectedTab === 'brand-latest-stories'){
-      this.selectedIndex = 2;
-    } else if(selectedTab === 'brand-why-i-bought'){
-      this.selectedIndex = 3;
-    } else if(selectedTab === 'brand-executive'){
-      this.selectedIndex = 4;
-    } else if(selectedTab === 'brand-available-markets'){
-      this.selectedIndex = 5;
-    }
-    console.log(this.selectedIndex);
-    this.apiService.getAPI(`${this.brandSlug}/${selectedTab}`)
-    .subscribe(result => {
-      if (result.data.length > 0) {
-        this.items = result.data;
-        let metaData = result.meta;
-      this.metaService.setSeo(metaData);
-      this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.metaService.setTitle(
-          `${metaData.seo.title} | ${response.title}`
-        );
-      });
-      if(this.categories === 'available-markets'){
-        const vm = this;
-          this.httpClient
-            .get('../../../assets/us-states.json')
-            .subscribe((json: any) => {
-              this.geoJson = json;
-              vm.drawMap(this.items);
-              window.onresize = function () {};
-            });
-      }
-     }
-    });
-  }
   getContents(item: string | null) {
     let path;
     if (item === 'info') {
@@ -392,8 +346,6 @@ export class InfoComponent implements OnInit {
       this.isMarket = true;
       this.selectedIndex = 5; 
     }
-    console.log(path);
-    console.log(this.selectedIndex);
     this.apiService
       .getAPI(`${this.brandSlug}/${path}`)
       .subscribe((response) => {
@@ -439,24 +391,6 @@ export class InfoComponent implements OnInit {
           this.emailSubMessage = res.message;
         }
       });
-  }
-
-  selectTab(tab: any, index: number) {
-    this.categories = tab;
-    this.selectedIndex = index;
-    console.log(this.categories);
-    this.getData(this.categories);
-  }
-  selectTabMobile(tab: any, index: number) {
-    if (this.selectedIndex === index) {
-      this.selectedIndex = -1;
-    } else {
-      this.selectTab(tab, index);
-    }
-  }
-
-  sanitizeTab( tab: any ) {
-    return tab?.name.replace(/_/g, '-');;
   }
 
   shareUrl() {
