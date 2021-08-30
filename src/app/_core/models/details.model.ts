@@ -1,7 +1,7 @@
 import { SafeHtml } from "@angular/platform-browser";
 import { Media } from "./media.model";
 
-export class Details {
+export interface Details {
   id?: string;
   title?: string;
   short_description?: string;
@@ -12,10 +12,6 @@ export class Details {
   brand?: any;
   date_time?: string;
   last_modified?: string;
-  shortTitle?: string;
   media?: Media;
   slug?: string;
-  label?: string;
-  awards?: any;
-  items?: any;
 }

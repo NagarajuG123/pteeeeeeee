@@ -9,8 +9,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/_core/services/api.service';
-import { Details } from 'src/app/_core/models/details.model';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { Sidebar } from 'src/app/_core/models/sidebar.model';
+import { Publication } from 'src/app/_core/models/publication.model';
 
 const RESULT_KEY = makeStateKey<any>('headerState');
 @Component({
@@ -21,7 +22,7 @@ const RESULT_KEY = makeStateKey<any>('headerState');
 export class HeaderComponent implements OnInit {
   slug: string = '1851';
   sidebar: any = [];
-  publication: any = [];
+  publication: Publication = {};
 
   faCaretRightIcon = faCaretRight;
   room1903Url: string = environment.room1903Url;

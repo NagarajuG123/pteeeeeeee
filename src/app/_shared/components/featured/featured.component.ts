@@ -29,7 +29,7 @@ export class FeaturedComponent implements OnInit {
       this.apiService
       .getAPI(`${this.apiUrl}?limit=10&offset=0`)
       .subscribe((response) => {
-        featureData['data'] = response.data;
+        featureData['data'] = response.data.slice(0,4);
       });
       this.apiService
       .getAPI(`1851/news?limit=10&offset=0`)
