@@ -36,3 +36,10 @@ ul {
 .customContainer {
   max-width: 1210px;
 }
+
+// owl-carousel
+.custom-carousel {
+  .owl-stge {
+    display: flex;
+  }
+}

@@ -1,7 +1,9 @@
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "../../../../assets/scss/theme-color.scss";
 
 .most-papular {
-  background: linear-gradient(#243444 385px, #fff 0);
+  background: linear-gradient($dark-gray 385px, $white 0);
   font-family: Roboto;
   h2 {
     font-family: "Ballinger Condensed";
@@ -60,6 +62,43 @@
         > p {
           font-size: 13px;
         }
+      }
+    }
+  }
+}
+
+// carousel
+:host ::ng-deep .owl-carousel {
+  .owl-stage-outer {
+    overflow: hidden;
+    .owl-stage {
+      display: flex;
+      .slideItem {
+        padding: 0 20px;
+        box-sizing: border-box;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .owl-nav {
+    > div {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: 22px;
+      height: 43px;
+      width: 25px;
+      cursor: pointer;
+      &.owl-prev {
+        background-image: url("../../../../assets/img/left-arrow.svg");
+        left: -10px;
+      }
+      &.owl-next {
+        background-image: url("../../../../assets/img/right-arrow.svg");
+        right: -10px;
       }
     }
   }

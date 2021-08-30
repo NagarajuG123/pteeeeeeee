@@ -26,15 +26,12 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt"
-              
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/robots.txt"],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -42,7 +39,7 @@
             ]
           },
           "configurations": {
-              "1851QA": {
+            "1851QA": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -94,7 +91,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-              "1851QA": {
+            "1851QA": {
               "browserTarget": "1851:build:1851QA"
             },
             "production": {
@@ -120,13 +117,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
@@ -139,7 +131,7 @@
             "inlineStyleLanguage": "scss"
           },
           "configurations": {
-             "1851QA": {
+            "1851QA": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -171,7 +163,7 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
-              "1851QA": {
+            "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
             },
@@ -189,12 +181,10 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
-              "1851QA": {
+            "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
             },

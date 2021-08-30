@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 //components
 import { FeaturedComponent } from './components/featured/featured.component';
@@ -27,6 +28,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    CarouselModule,
   ],
   exports: [
     RouterModule,
