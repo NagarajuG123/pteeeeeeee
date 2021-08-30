@@ -128,6 +128,12 @@ const routes: Routes = [
     component: ErrorComponent,
   },
   {
+    path: 'storypage/preview/:story_id',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./pages/story/story.module').then((m) => m.StoryModule),
+  },
+  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () =>
