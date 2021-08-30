@@ -3,6 +3,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const RESULT_KEY = makeStateKey<any>('featureState');
 
@@ -18,6 +20,8 @@ export class FeaturedComponent implements OnInit {
   data: Details[] = [];
   news: Details[] = []
   slug: string = '1851';
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(private apiService: ApiService,
     private tstate: TransferState,
@@ -38,13 +42,15 @@ export class FeaturedComponent implements OnInit {
       const featureData:any = {}
 
       this.apiService
-      .getAPI(`${this.apiUrl}?limit=10&offset=0`)
+      .getAPI(`${this.apiUrl}?limit=4&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
-        featureData['data'] = response.data.slice(0,4);
+        featureData['data'] = response.data;
       });
 
       this.apiService
       .getAPI(`1851/news?limit=10&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         featureData['news'] = response.data;
       });

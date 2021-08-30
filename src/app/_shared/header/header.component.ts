@@ -12,6 +12,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { Sidebar } from 'src/app/_core/models/sidebar.model';
 import { Publication } from 'src/app/_core/models/publication.model';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const RESULT_KEY = makeStateKey<any>('headerState');
 @Component({
@@ -23,6 +25,8 @@ export class HeaderComponent implements OnInit {
   slug: string = '1851';
   sidebar: any = [];
   publication: Publication = {};
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
 
   faCaretRightIcon = faCaretRight;
   room1903Url: string = environment.room1903Url;
@@ -71,13 +75,15 @@ export class HeaderComponent implements OnInit {
       const sidebarData: any = {};
 
         this.apiService
-        .getAPI(`${this.slug}/sidebar?limit=10&offset=0`)
+        .getAPI(`${this.slug}/sidebar`)
+        .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
           sidebarData['data'] = response.data; 
         });
 
         this.apiService
         .getAPI(`1851/publication-instance`)
+        .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
           sidebarData['publication'] = response;
         });
