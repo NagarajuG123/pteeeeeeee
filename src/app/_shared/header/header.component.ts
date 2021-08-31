@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { Sidebar } from 'src/app/_core/models/sidebar.model';
 import { Publication } from 'src/app/_core/models/publication.model';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 const RESULT_KEY = makeStateKey<any>('headerState');
@@ -22,7 +22,7 @@ const RESULT_KEY = makeStateKey<any>('headerState');
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  slug: string = '1851';
+  slug: string = '';
   sidebar: any = [];
   publication: Publication = {};
   private onDestroySubject = new Subject();
@@ -67,6 +67,7 @@ export class HeaderComponent implements OnInit {
      private apiService: ApiService,private tstate: TransferState,) {}
 
   ngOnInit(): void {
+    this.slug = '1851';
     if (this.tstate.hasKey(RESULT_KEY)) {
       const sidebarData = this.tstate.get(RESULT_KEY, {});
       this.sidebar = sidebarData['data'];
@@ -74,19 +75,13 @@ export class HeaderComponent implements OnInit {
     } else {
       const sidebarData: any = {};
 
-        this.apiService
-        .getAPI(`${this.slug}/sidebar`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          sidebarData['data'] = response.data; 
-        });
+      const feature_api = this.apiService.getAPI(`${this.slug}/sidebar`);
+      const news_api = this.apiService.getAPI(`${this.slug}/publication-instance`);
 
-        this.apiService
-        .getAPI(`1851/publication-instance`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          sidebarData['publication'] = response;
-        });
+      forkJoin([feature_api,news_api]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
+        sidebarData['data'] = response[0].data;
+        sidebarData['publication'] = response[1];
+      });
 
         this.tstate.set(RESULT_KEY, sidebarData);
     } 
