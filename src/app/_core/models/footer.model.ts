@@ -1,8 +1,8 @@
 export interface Footer {
-  about?: any;
-  title?: any;
-  description?: any;
-  logo?: any;
+  about?: string;
+  title?: string;
+  description?: string;
+  logo?: string;
   search?:string;
   spotlight?: any;
 }

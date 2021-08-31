@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 const RESULT_KEY = makeStateKey<any>('featureState');
@@ -19,7 +19,7 @@ export class FeaturedComponent implements OnInit {
   isBrowser: boolean;
   data: Details[] = [];
   news: Details[] = []
-  slug: string = '1851';
+  slug: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -30,6 +30,7 @@ export class FeaturedComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.slug = '1851';
     this.getFeatured();
   }
 
@@ -41,18 +42,11 @@ export class FeaturedComponent implements OnInit {
     } else {
       const featureData:any = {}
 
-      this.apiService
-      .getAPI(`${this.apiUrl}?limit=4&offset=0`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((response) => {
-        featureData['data'] = response.data;
-      });
-
-      this.apiService
-      .getAPI(`1851/news?limit=10&offset=0`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((response) => {
-        featureData['news'] = response.data;
+      const featureApi = this.apiService.getAPI(`${this.apiUrl}?limit=4&offset=0`);
+      const newsApi = this.apiService.getAPI(`${this.slug}/news?limit=10&offset=0`);
+      forkJoin([featureApi,newsApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
+        featureData['data'] = response[0].data;
+        featureData['news'] = response[1].data;
       });
       
     this.tstate.set(RESULT_KEY, featureData);

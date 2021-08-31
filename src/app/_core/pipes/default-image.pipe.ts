@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 })
 export class DefaultImagePipe implements PipeTransform {
 
-  transform(value: any, width?: any, height?: any): string {
+  transform(value: any, width?: number, height?: number): string {
     let image = '';
 
     if (typeof value === 'undefined' || value === null) {

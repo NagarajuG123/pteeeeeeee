@@ -20,7 +20,7 @@ const RESULT_KEY = makeStateKey<any>('footerState');
 
 export class FooterComponent implements OnInit {
   footer: any = [];
-  slug: string = '1851';
+  slug: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -32,6 +32,7 @@ export class FooterComponent implements OnInit {
   constructor(private tstate: TransferState,private apiService:ApiService) {}
 
   ngOnInit(): void {
+    this.slug = '1851';
     if (this.tstate.hasKey(RESULT_KEY)) {
       const footerData = this.tstate.get(RESULT_KEY, {});
       this.footer = footerData['data'];

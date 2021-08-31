@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DefaultImagePipe } from 'src/app/_core/pipes/default-image.pipe';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DefaultImagePipe } from 'src/app/_core/pipes/default-image.pipe';
 
 //components
 import { FeaturedComponent } from './components/featured/featured.component';
@@ -23,6 +23,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     FooterComponent,
     DefaultImagePipe,
     MostPapularComponent,
+    DefaultImagePipe
   ],
   imports: [
     CommonModule,
@@ -40,8 +41,8 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     FeaturedComponent,
     HeaderComponent,
     FooterComponent,
-    DefaultImagePipe,
     MostPapularComponent,
+    DefaultImagePipe
   ],
 })
 export class SharedModule {}
