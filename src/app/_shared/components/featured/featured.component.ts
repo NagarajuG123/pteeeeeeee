@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { Details } from 'src/app/_core/models/details.model';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+const RESULT_KEY = makeStateKey<any>('featureState');
 
 @Component({
   selector: 'app-featured',
@@ -7,88 +14,42 @@ import { ApiService } from 'src/app/_core/services/api.service';
   styleUrls: ['./featured.component.scss'],
 })
 export class FeaturedComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
-  list: any = [
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/image 39.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 122.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 148.jpg',
-    },
-    {
-      label: 'Featured Article',
-      detail: 'Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed',
-      image: '../../../../assets/images/Rectangle 150.jpg',
-    },
-  ];
-  publication: any = [];
-  brandNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..',
-      createdBy: 'Paige Ivy',
-    },
-  ];
-  IndustryNews: any = [
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-    {
-      title: 'Title Lorem Ipsum: Conset Entumi Abudi',
-      createdBy: 'Paige Ivy',
-      image: '../../../assets/images/Rectangle 33.jpg',
-    },
-  ];
-  slug: string = '1851';
+  @Input() apiUrl!: string;
+
+  isBrowser: boolean;
+  data: Details[] = [];
+  news: Details[] = []
+  slug: string = '';
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
+  constructor(private apiService: ApiService,
+    private tstate: TransferState,
+    @Inject(PLATFORM_ID) private platformId: object,) {
+      this.isBrowser = isPlatformBrowser(platformId);
+    }
+
   ngOnInit(): void {
-    this.getPublication();
+    this.slug = '1851';
+    this.getFeatured();
   }
-  //Publication Instance
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
+
+  getFeatured(){
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const featureData = this.tstate.get(RESULT_KEY, {});
+      this.data = featureData['data'];
+      this.news = featureData['news'];
+    } else {
+      const featureData:any = {}
+
+      const featureApi = this.apiService.getAPI(`${this.apiUrl}?limit=4&offset=0`);
+      const newsApi = this.apiService.getAPI(`${this.slug}/news?limit=10&offset=0`);
+      forkJoin([featureApi,newsApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
+        featureData['data'] = response[0].data;
+        featureData['news'] = response[1].data;
       });
+      
+    this.tstate.set(RESULT_KEY, featureData);
+   }
   }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -20,6 +20,7 @@ import { SharedModule } from './_shared/shared.module';
     HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    BrowserTransferStateModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -14,7 +14,7 @@
 
       <div class="row">
         <div
-          *ngFor="let item of list; index as i"
+          *ngFor="let item of data; index as i"
           [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
         >
           <div
@@ -22,9 +22,22 @@
             [ngClass]="i === 0 ? 'main-image' : 'small-image'"
           >
             <div class="tag position-absolute p-1 w-auto top-0 text-uppercase">
-              {{ item.label }}
+              Feature Article
             </div>
-            <img [src]="item.image" class="img-fluid" alt="sub-artical-image" />
+            <img appYoutubeImage  
+            srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+            class="img-fluid" 
+            sizes="{{
+              '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+            }}"
+            width="216"
+            height="135"
+            data-src="{{ item.media | defaultImage: 1300:730 }}"
+            alt="featured"/>
             <div
               class="
                 over-layer
@@ -36,7 +49,7 @@
               "
               [ngClass]="i === 0 ? 'p-3' : 'p-2'"
             >
-              {{ item.detail }}
+              {{ item.title }}
               <a href="#" class="stretched-link"></a>
             </div>
           </div>
@@ -57,15 +70,15 @@
       <span class="small-title mb-2">LATEST FRANCHISE BRAND NEWS</span>
       <ul class="brand-list noScrollBar list-group">
         <li
-          *ngFor="let item of brandNews; index as i"
+          *ngFor="let item of news; index as i"
           class="pb-1 pb-md-2"
-          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
+          [ngClass]="i === news.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h4 class="m-0">
             <a href="#">{{ item.title }}</a>
           </h4>
-          <span class="my-1">By {{ item.createdBy }}</span>
-          <p>{{ item.description }}</p>
+          <span class="my-1">By {{ item.author?.name }}</span>
+          <p>{{ item.short_description }}</p>
         </li>
       </ul>
     </div>
@@ -82,18 +95,31 @@
       <span class="small-title mb-2">Latest Franchise Industry News</span>
       <ul class="news-list noScrollBar list-group">
         <li
-          *ngFor="let item of IndustryNews; index as i"
+          *ngFor="let item of news; index as i"
           class="pb-2 pb-md-3"
-          [ngClass]="i === IndustryNews.length - 1 ? '' : 'mb-2 mb-md-3'"
+          [ngClass]="i === news.length - 1 ? '' : 'mb-2 mb-md-3'"
         >
           <div class="newsImage me-2 me-md-3">
-            <img [src]="item.image" alt="images" />
+            <img appYoutubeImage  
+            srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+            class="img-fluid" 
+            sizes="{{
+              '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+            }}"
+            width="95"
+            height="100"
+            data-src="{{ item.media | defaultImage: 100:95 }}"
+            alt="industry"/>
           </div>
           <div>
             <h4 class="m-0">
               <a href="#">{{ item.title }}</a>
             </h4>
-            <span>By {{ item.createdBy }}</span>
+            <span>By {{ item.author?.name }}</span>
           </div>
         </li>
       </ul>
