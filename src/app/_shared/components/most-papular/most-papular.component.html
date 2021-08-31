@@ -5,9 +5,22 @@
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
     <div class="row d-none d-sm-flex">
-      <div class="col col-sm-4" *ngFor="let item of list; index as i">
+      <div class="col col-sm-4" *ngFor="let item of data; index as i">
         <div class="slideItem" *ngIf="i < 3; else elseBlock">
-          <img class="img-fluid" [src]="item.img" alt="img" />
+          <img appYoutubeImage  
+          srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+          {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+          class="img-fluid" 
+          sizes="{{
+            '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+          }}"
+          width="380"
+          height="155"
+          data-src="{{ item.media | defaultImage: 100:95 }}"
+          alt="most-popular"/>
           <div class="slide-body position-relative primary-bg px-3 d-block">
             <span
               class="
@@ -20,7 +33,7 @@
                 align-items-center
                 justify-content-center
               "
-              >PAPULAR</span
+              >POPULAR</span
             >
             <h3 class="position-relative ps-4 text-white">
               <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
@@ -43,9 +56,9 @@
                 <h3 class="mb-0">
                   <strong class="ms-3 d-block">{{ item.title }}</strong>
                 </h3>
-                <small class="ms-3">By {{ item.createdBy }}</small>
+                <small class="ms-3">By {{ item?.author?.name }}</small>
                 <p class="ms-3">
-                  {{ item.detail }}
+                  {{ item.short_description }}
                 </p>
               </div>
             </div>
@@ -58,9 +71,22 @@
       [options]="customOptions"
       class="d-block position-relative d-sm-none"
     >
-      <ng-template carouselSlide *ngFor="let item of list; index as i">
+      <ng-template carouselSlide *ngFor="let item of data; index as i">
         <div class="slideItem">
-          <img class="img-fluid" [src]="item.img" alt="img" />
+          <img appYoutubeImage  
+          srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+          {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+          class="img-fluid" 
+          sizes="{{
+            '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+          }}"
+          width="380"
+          height="155"
+          data-src="{{ item.media | defaultImage: 100:95 }}"
+          alt="most-popular"/>
           <div class="slide-body position-relative primary-bg px-3 d-block">
             <span
               class="
@@ -73,7 +99,7 @@
                 align-items-center
                 justify-content-center
               "
-              >PAPULAR</span
+              >POPULAR</span
             >
             <h3 class="position-relative ps-4 text-white">
               <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
