@@ -75,10 +75,10 @@ export class HeaderComponent implements OnInit {
     } else {
       const sidebarData: any = {};
 
-      const feature_api = this.apiService.getAPI(`${this.slug}/sidebar`);
-      const news_api = this.apiService.getAPI(`${this.slug}/publication-instance`);
+      const sidebarApi = this.apiService.getAPI(`${this.slug}/sidebar`);
+      const publicationApi = this.apiService.getAPI(`${this.slug}/publication-instance`);
 
-      forkJoin([feature_api,news_api]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
+      forkJoin([sidebarApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
         sidebarData['data'] = response[0].data;
         sidebarData['publication'] = response[1];
       });
