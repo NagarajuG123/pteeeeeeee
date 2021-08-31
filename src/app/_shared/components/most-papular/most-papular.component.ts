@@ -1,11 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/_core/services/api.service';
+import { Details } from 'src/app/_core/models/details.model';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+const RESULT_KEY = makeStateKey<any>('mostPopularState');
+
 @Component({
   selector: 'app-most-papular',
   templateUrl: './most-papular.component.html',
   styleUrls: ['./most-papular.component.scss'],
 })
 export class MostPapularComponent implements OnInit {
+
+  isBrowser!: boolean;
+  data: Details[] = [];
+  slug: string = '1851';
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
+  constructor(private apiService: ApiService,
+    private tstate: TransferState,
+    @Inject(PLATFORM_ID) private platformId: object) {
+      this.isBrowser = isPlatformBrowser(platformId);
+    }
+
   customOptions: OwlOptions = {
     autoplay: true,
     loop: true,
@@ -32,9 +54,29 @@ export class MostPapularComponent implements OnInit {
     nav: true,
   };
   list = dummyData;
-  constructor() {}
+  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getmostPopular();
+  }
+
+  getmostPopular(){
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const mostPupular = this.tstate.get(RESULT_KEY, {});
+      this.data = mostPupular['data'];
+    } else {
+      const mostPupular:any = {}
+
+      this.apiService
+      .getAPI(`${this.slug}/trending?limit=4&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        mostPupular['data'] = response.data;
+      });
+      
+    this.tstate.set(RESULT_KEY, mostPupular);
+   }
+  }
 }
 
 // Dummy data array
