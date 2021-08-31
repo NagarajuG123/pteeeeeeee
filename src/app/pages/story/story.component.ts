@@ -771,29 +771,33 @@ export class StoryComponent implements OnInit {
     if (typeof data === 'undefined' || data.content === null) {
       return;
     }
-    let content = data.content;
-    if (content.changingThisBreaksApplicationSecurity) {
-      content = content.changingThisBreaksApplicationSecurity;
+    if (data.content.changingThisBreaksApplicationSecurity) {
+      data.content = data.content.changingThisBreaksApplicationSecurity;
     }
     if (!this.isBrand) {
       this.brandList.sort((a, b) => a.localeCompare(b));
       for (let i = 0; i < this.brandList.length; i++) {
+        const existing_tooltip = `<span style="color:#EC0044 !important;">${this.brandList[i]}*</span>`;
+        data.content = data.content.replace(
+          existing_tooltip,
+          this.brandList[i]
+        );
         this.brandList[i] = this.brandList[i].replace(/&/g, '&amp;');
         let regex = new RegExp(this.brandList[i]);
         const tooltip = `<span style="color:#EC0044 !important;">brandlist_${i}_*</span>`;
-        data.content = content.replace(regex, tooltip);
+        data.content = data.content.replace(regex, tooltip);
       }
       for (let j = 0; j < this.brandList.length; j++) {
         const regex_tooltip = new RegExp(`brandlist_${j}_`);
         const brand_tooltip = `${this.brandList[j]}`;
-        data.content = content.replace(regex_tooltip, brand_tooltip);
+        data.content = data.content.replace(regex_tooltip, brand_tooltip);
       }
     }
 
-    data.content = content.replace(/href=/g, 'target="_blank" href=');
+    data.content = data.content.replace(/href=/g, 'target="_blank" href=');
 
-    data.content = this.embedService.embedYoutube(content);
-    data.content = this.embedService.embedVimeo(content);
+    data.content = this.embedService.embedYoutube(data.content);
+    data.content = this.embedService.embedVimeo(data.content);
     const bypassHTML = data;
     bypassHTML.content = this.sanitizer.bypassSecurityTrustHtml(
       bypassHTML.content
