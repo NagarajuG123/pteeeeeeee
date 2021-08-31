@@ -18,7 +18,7 @@ export class MostPapularComponent implements OnInit {
 
   isBrowser!: boolean;
   data: Details[] = [];
-  slug: string = '1851';
+  slug: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -57,10 +57,10 @@ export class MostPapularComponent implements OnInit {
 
   ngOnInit(): void {
     this.slug = '1851';
-    this.getmostPopular();
+    this.getMostPopular();
   }
 
-  getmostPopular(){
+  getMostPopular(){
      if(this.tstate.hasKey(RESULT_KEY)){
        const mostPopular = this.tstate.get(RESULT_KEY,{});
        this.data = mostPopular['data'];
