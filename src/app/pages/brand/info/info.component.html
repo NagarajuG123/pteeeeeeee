@@ -74,12 +74,24 @@
         "
       >
         <li
-          *ngFor="let category of categories;"
-          [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
+          *ngFor="let category of categories"
+          [ngClass]="
+            selectedIndex === category['index'] ? 'resp-tab-active' : ''
+          "
         >
           <a
-            *ngIf="category['value'] !== 'brand_pdf'"
-            href="{{ brandSlug }}/{{ category['value'] }}"
+            *ngIf="
+              category['value'] !== 'brand_pdf' &&
+              category['value'] !== 'available-markets'
+            "
+            routerLink="/{{ brandSlug }}/{{ category['value'] }}"
+            class="text-uppercase"
+          >
+            {{ category["name"] }}
+          </a>
+          <a
+            *ngIf="category['value'] == 'available-markets'"
+            href="/{{ brandSlug }}/{{ category['value'] }}"
             class="text-uppercase"
           >
             {{ category["name"] }}
@@ -104,13 +116,12 @@
         </li>
       </ul>
       <div class="resp-tabs-container">
-        <div
-          *ngFor="let category of categories;"
-          class="tab-content"
-        >
+        <div *ngFor="let category of categories" class="tab-content">
           <h2
             class="resp-accordion tab-identifier2"
-            [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
+            [ngClass]="
+              selectedIndex === category['index'] ? 'resp-tab-active' : ''
+            "
             role="tab"
             style="background: none; border-color: rgb(193, 193, 193)"
           >
