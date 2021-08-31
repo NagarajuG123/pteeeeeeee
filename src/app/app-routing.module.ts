@@ -123,15 +123,15 @@ const routes: Routes = [
       import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
+    path: 'storypage/preview/:storyId',
+    component: StoryComponent,
+    loadChildren: () =>
+      import('./pages/story/story.module').then((m) => m.StoryModule),
+  },
+  {
     path: '404',
     pathMatch: 'full',
     component: ErrorComponent,
-  },
-  {
-    path: 'storypage/preview/:story_id',
-    pathMatch: 'full',
-    loadChildren: () =>
-      import('./pages/story/story.module').then((m) => m.StoryModule),
   },
   {
     matcher: isArticlePage,
