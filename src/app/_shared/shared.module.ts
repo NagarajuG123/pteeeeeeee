@@ -4,24 +4,33 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DefaultImagePipe } from 'src/app/_core/pipes/default-image.pipe';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 //components
 import { FeaturedComponent } from './components/featured/featured.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MostPapularComponent } from './components/most-papular/most-papular.component';
 
 // Modals Components
 
 // Pipes
 
 @NgModule({
-  declarations: [FeaturedComponent, HeaderComponent, FooterComponent,DefaultImagePipe],
+  declarations: [
+    FeaturedComponent,
+    HeaderComponent,
+    FooterComponent,
+    DefaultImagePipe,
+    MostPapularComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    CarouselModule,
   ],
   exports: [
     RouterModule,
@@ -31,7 +40,8 @@ import { FooterComponent } from './footer/footer.component';
     FeaturedComponent,
     HeaderComponent,
     FooterComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    MostPapularComponent,
   ],
 })
 export class SharedModule {}
