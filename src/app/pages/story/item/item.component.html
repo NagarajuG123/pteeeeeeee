@@ -144,7 +144,7 @@
                     >
                   </span>
 
-                  <a routerLink="/{{category.slug}}">
+                  <a routerLink="/{{ category.slug }}">
                     <small>&nbsp; &nbsp;{{ category.name }}</small>
                   </a>
                 </em>
@@ -185,7 +185,7 @@
                     {{ date_time | date: "MM/dd/yy" }}</span
                   >
                 </span>
-                <a routerLink="/{{category.slug}}">
+                <a routerLink="/{{ category.slug }}">
                   <small>&nbsp; &nbsp;{{ category.name }}</small>
                 </a>
               </div>
@@ -197,7 +197,7 @@
           class="brian_jaeger_content"
           [innerHTML]="content"
         ></div>
-        <div *ngIf="sponsorContent" class="brand-partner">
+        <div *ngIf="sponsorContent" class="brand-partner" data-nosnippet>
           <p>
             *This brand is a paid partner of {{ publication.title }}. For more
             information on paid partnerships please
