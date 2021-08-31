@@ -19,7 +19,7 @@ const RESULT_KEY = makeStateKey<any>('footerState');
 })
 
 export class FooterComponent implements OnInit {
-  footer: Footer[] = [];
+  footer: any = [];
   slug: string = '1851';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
