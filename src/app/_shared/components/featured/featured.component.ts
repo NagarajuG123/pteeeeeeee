@@ -43,7 +43,7 @@ export class FeaturedComponent implements OnInit {
       const featureData:any = {}
 
       const featureApi = this.apiService.getAPI(`${this.apiUrl}?limit=4&offset=0`);
-      const newsApi = this.apiService.getAPI(`${this.slug}/news?limit=10&offset=0`);
+      const newsApi = this.apiService.getAPI(`${this.slug}/news?limit=4&offset=0`);
       forkJoin([featureApi,newsApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
         featureData['data'] = response[0].data;
         featureData['news'] = response[1].data;

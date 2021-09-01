@@ -68,9 +68,7 @@ img {
   color: $dark-gray;
   font-family: Roboto;
   font-weight: normal;
-  position: absolute;
   height: calc(100% - 27px);
-  overflow: auto;
   width: calc(100% - 30px);
   a {
     color: $dark-gray;
@@ -85,7 +83,7 @@ img {
     }
   }
   h4 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
   }
   span {
@@ -94,7 +92,7 @@ img {
   }
   p {
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 116.09%;
     color: #595959;
   }
@@ -126,7 +124,7 @@ img {
     }
     h4 {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
       color: $primary;
     }
     span {
