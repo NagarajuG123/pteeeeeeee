@@ -80,22 +80,19 @@
           "
         >
           <a
-            *ngIf="
-              category['value'] !== 'brand_pdf' &&
-              category['value'] !== 'available-markets'
-            "
+            *ngIf="category['value'] !== 'brand_pdf'"
             routerLink="/{{ brandSlug }}/{{ category['value'] }}"
             class="text-uppercase"
           >
             {{ category["name"] }}
           </a>
-          <a
+          <!-- <a
             *ngIf="category['value'] == 'available-markets'"
             href="/{{ brandSlug }}/{{ category['value'] }}"
             class="text-uppercase"
           >
             {{ category["name"] }}
-          </a>
+          </a> -->
           <a
             *ngIf="category['value'] === 'brand_pdf' && !pdf?.email_popup"
             href="{{ changeDownPDFUrl(pdf?.media?.url) }}"
@@ -251,7 +248,10 @@
                       </div>
                       <div>
                         <div
-                          *ngIf="items['available-markets'] != null"
+                          *ngIf="
+                            items['available-markets'] != null &&
+                            items['available-markets'].length
+                          "
                           class="mapcontainer"
                         >
                           <div
@@ -262,7 +262,10 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['available-markets'] != null"
+                          *ngIf="
+                            items['available-markets'] != null &&
+                            items['available-markets'].length
+                          "
                           class="map-legend"
                         >
                           MAP LEGEND:
