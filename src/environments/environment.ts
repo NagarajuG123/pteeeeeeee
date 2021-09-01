@@ -10,6 +10,7 @@ export const environment = {
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
+  enableSW: false,
 };
 
 /*
