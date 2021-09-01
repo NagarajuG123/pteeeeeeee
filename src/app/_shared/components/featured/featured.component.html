@@ -74,9 +74,9 @@
           class="pb-1 pb-md-2"
           [ngClass]="i === news.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
-          <h4 class="m-0">
+          <h3 class="m-0">
             <a href="#">{{ item.title }}</a>
-          </h4>
+          </h3>
           <span class="my-1">By {{ item.author?.name }}</span>
           <p>{{ item.short_description }}</p>
         </li>
@@ -116,9 +116,9 @@
             alt="industry"/>
           </div>
           <div>
-            <h4 class="m-0">
+            <h3 class="m-0">
               <a href="#">{{ item.title }}</a>
-            </h4>
+            </h3>
             <span>By {{ item.author?.name }}</span>
           </div>
         </li>
