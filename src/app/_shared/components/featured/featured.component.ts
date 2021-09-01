@@ -14,6 +14,9 @@ import {
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+
+const RESULT_KEY = makeStateKey<any>(`featuredState`);
 
 @Component({
   selector: 'app-featured',
@@ -40,6 +43,7 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
     private renderer: Renderer2,
     private apiService: ApiService,
     private commonService: CommonService,
+    private tstate: TransferState,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -69,14 +73,23 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
   getFeatured() {
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const featuredData = this.tstate.get(RESULT_KEY, {});
+      this.highlight = featuredData['highlight'];
+      this.featuredData = featuredData['data'];
+    }
+    else{
+      const featuredData = {};
     this.apiService
       .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset}`)
       .subscribe((response) => {
         if (response.data != null) {
-          this.highlight = response.data[0];
-          this.featuredData = response.data.slice(1);
+          featuredData['highlight'] = response.data[0];
+          featuredData['data'] = response.data.slice(1);
         }
       });
+      this.tstate.set(RESULT_KEY, featuredData);
+    } 
   }
   readMore(item: any) {
     return this.commonService.readMore(item);
