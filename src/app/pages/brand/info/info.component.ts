@@ -353,18 +353,18 @@ export class InfoComponent implements OnInit {
       let metaData = results[0].meta;
       this.metaService.setSeo(metaData);
       this.metaService.setTitle(`${metaData.seo.title} | ${results[1].title}`);
+      console.log(this.items);
+      if (item === 'available-markets') {
+        const vm = this;
+        this.httpClient
+          .get('../../../assets/us-states.json')
+          .subscribe((json: any) => {
+            this.geoJson = json;
+            vm.drawMap(this.items);
+            window.onresize = function () {};
+          });
+      }
     });
-
-    if (item === 'available-markets') {
-      const vm = this;
-      this.httpClient
-        .get('../../../assets/us-states.json')
-        .subscribe((json: any) => {
-          this.geoJson = json;
-          vm.drawMap(this.items);
-          window.onresize = function () {};
-        });
-    }
   }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
