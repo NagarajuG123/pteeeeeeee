@@ -9,6 +9,8 @@
             <span
               ><img
                 src="../../../assets/img/room-service.png"
+                height="21"
+                width="21"
                 alt="room service"
             /></span>
             Room 1903&nbsp;
@@ -18,7 +20,7 @@
         <li class="me-3">
           <a href="{{ eeUrl }}" target="_blank" class="text-white">
             <span
-              ><img src="../../../assets/img/Estatenvy.png" alt="room service"
+              ><img src="../../../assets/img/Estatenvy.png"  height="21" width="21" alt="room service"
             /></span>
             Estatenvy&nbsp;
             <fa-icon [icon]="faCaretRightIcon"></fa-icon>
@@ -56,12 +58,12 @@
 
         <!-- Header Logo Section -->
         <div class="logo d-flex align-items-center">
-          <img src="../../../assets/img/logo.png" alt="logo" class="me-2" />
+          <img src="../../../assets/img/logo.png" height="41" width="41" alt="logo" class="me-2" />
           <div>
             SUBSCRIBE TO OUR NEWSLETTER<br />
             <small class="d-flex align-items-center"
               >Franchise news powered by
-              <img src="../../../assets/img/logo.png" alt="logo"
+              <img src="../../../assets/img/logo.png" height="41" width="41" alt="logo"
             /></small>
           </div>
         </div>
@@ -80,6 +82,7 @@
                     src="../../../assets/img/search-p.svg"
                     alt="search"
                     width="11px"
+                    height="11px"
                   />
                 </button>
                 <input
@@ -100,6 +103,7 @@
                     appYoutubeImage
                     src="{{ sidebar['monthly-cover']?.media?.url }}"
                     width="68"
+                    height="89"
                     alt="monthly cover"
                     class="lazyload mb-2"
                   />
@@ -166,7 +170,7 @@
           <li class="nav-item mx-2 px-1" *ngFor="let item of menu">
             <a [href]="item.url" class="d-flex align-items-center"
               >{{ item.label }}
-              <img src="../../../assets/img/down-arrow.svg" class="ms-1"
+              <img src="../../../assets/img/down-arrow.svg" height="30" width="20" class="ms-1"
             /></a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -182,7 +186,7 @@
       <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
         <!-- Search bar -->
         <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
-          <img src="../../../assets/img/search.svg" alt="search" />
+          <img src="../../../assets/img/search.svg" height="11" width="11" alt="search" />
         </div>
 
         <!-- Social Links -->
@@ -202,7 +206,7 @@
 
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">
-          <img src="../../../assets/images/user.jpg" alt="user" />
+          <img src="../../../assets/images/user.jpg" height="30" width="20" alt="user" />
         </div>
       </div>
     </div>
