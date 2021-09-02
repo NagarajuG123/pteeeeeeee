@@ -23,6 +23,7 @@
               mx-auto
               position-relative
             "
+            [ngClass]="i + 1 === activeTab ? 'active' : ''"
             >{{ item.tabLabel }}</span
           >
         </li>
