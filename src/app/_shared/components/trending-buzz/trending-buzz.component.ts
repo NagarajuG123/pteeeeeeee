@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 
-const RESULT_KEY = makeStateKey<any>(`newsState`);
+const RESULT_KEY = makeStateKey<any>(`trendingbuzzState`);
 
 @Component({
   selector: 'app-trending-buzz',
