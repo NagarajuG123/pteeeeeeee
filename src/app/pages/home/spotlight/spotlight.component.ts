@@ -3,6 +3,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const RESULT_KEY = makeStateKey<any>('spotlightState');
 
@@ -21,6 +23,9 @@ export class SpotlightComponent implements OnInit {
   tabs:any;
   publication: any = [];
 
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
   
   constructor(
     private apiService: ApiService, private commonService: CommonService,
@@ -31,36 +36,46 @@ export class SpotlightComponent implements OnInit {
   ngOnInit(): void {
     if (this.tstate.hasKey(RESULT_KEY)) {
       const spotlightData = this.tstate.get(RESULT_KEY, {});
+          this.highlightItem = spotlightData['highlightItem'];
+          this.items = spotlightData['items'];
+          this.tabs = spotlightData['categories'];
+          this.selectedTab = spotlightData['selectedTab'];
+          this.setScrollOption();
     }
     else{
       const spotlightData = {};
 
-      this.tstate.set(RESULT_KEY, spotlightData);
+      const categoriesApi = this.apiService.getAPI(`1851/spotlights/categories`);
+      const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+
+      forkJoin([categoriesApi, publicationApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(results => {
+        if ( results[0] && results[0]['categories'] ) {
+          results[0]['categories'] = results[0]['categories'].map( (category: string) => category.toLowerCase().replace(/ /g, '-') );
+
+          if ( results[1].id === 'EE' ) {
+            this.selectedTab = 'celebrities';
+          } else {
+            this.selectedTab = 'people';
+          }
+          spotlightData['selectedTab'] = this.selectedTab;
+        }
+
+        spotlightData['categories'] = results[0]['categories'];
+        
+        this.apiService.getAPI(`1851/spotlight/${this.selectedTab}?limit=11&offset=0`)
+        .subscribe(result => {
+          if (result.data.length > 0) {
+            spotlightData['highlightItem'] = result.data[0];
+            spotlightData['items'] = result.data.slice(1,11);
+         }
+         this.tstate.set(RESULT_KEY, spotlightData);
+         });
+      });
     }
-    
-    // this.getCategories();
-    // this.setScrollOption();
-     
-    // this.apiService.getAPI(`1851/publication-instance`).subscribe(async (response) => {
-    //   if ( response.id === 'EE' ) {
-    //     this.selectedTab = 'celebrities';
-    //   } else {
-    //     this.selectedTab = 'people';
-    //   }
-    //   this.publication = response;
-    //   this.getInitialData();
-    // });
   }
 
-  getInitialData() {
-     this.apiService.getAPI(`1851/spotlight/${this.selectedTab}?limit=11&offset=0`)
-       .subscribe(result => {
-         if (result.data.length > 0) {
-           this.highlightItem = result.data[0];
-           this.items = result.data.slice(1,11);
-        }
-    });
-  }
   setScrollOption() {
     this.scrollbarOptions = {
         axis: 'y',
@@ -71,13 +86,6 @@ export class SpotlightComponent implements OnInit {
           }
         }
      };
-  }
-  getCategories() {
-    this.apiService
-      .getAPI(`1851/spotlights/categories`)
-      .subscribe((response) => {
-        this.tabs = response.categories.map((category: string) => category.toLowerCase().replace(/ /g, '-'));
-      });
   }
  
   selectTab(tab: any, index: number) {
@@ -119,5 +127,9 @@ export class SpotlightComponent implements OnInit {
   }
   readMore(item: any) {
     return this.commonService.readMore(item);
+  }
+  ngOnDestroy() {
+    this.onDestroySubject.next(true);
+    this.onDestroySubject.complete();
   }
 }
