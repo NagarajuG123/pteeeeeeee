@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
-
+const RESULT_KEY = makeStateKey<any>(`newsState`);
 
 @Component({
   selector: 'app-news',
@@ -28,20 +28,15 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('News');
     this.getNews();
   }
 
   getNews() {
-    const RESULT_KEY = makeStateKey<any>(`featuredState`);
     if (this.tstate.hasKey(RESULT_KEY)) {
-      console.log('if');
       const newsData = this.tstate.get(RESULT_KEY, {});
       this.newsData = newsData['data'];
-      console.log(this.newsData);
     }
     else{
-      console.log('else');
       const newsData = {};
       this.apiService.getAPI(`${this.slug}/news`).pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {

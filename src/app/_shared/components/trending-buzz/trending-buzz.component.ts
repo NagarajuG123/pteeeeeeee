@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 
-const RESULT_KEY = makeStateKey<any>(`featuredState`);
+const RESULT_KEY = makeStateKey<any>(`newsState`);
 
 @Component({
   selector: 'app-trending-buzz',
@@ -26,13 +26,10 @@ export class TrendingBuzzComponent implements OnInit {
 
   getTrendingBuzz() {
     if (this.tstate.hasKey(RESULT_KEY)) {
-      console.log('Tredning if');
       const trendingData = this.tstate.get(RESULT_KEY, {});
       this.trending = trendingData['data'];
-      console.log(trendingData['data']);
     }
     else{
-      console.log('else');
       const trendingData = {};
       this.apiService.getAPI(`${this.slug}/trending-buzz?limit=10&offset=0`).pipe(takeUntil(this.onDestroy$))
       .subscribe((response ) =>{
