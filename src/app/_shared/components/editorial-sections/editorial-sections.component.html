@@ -4,17 +4,32 @@
   </div>
 
   <div class="tabs">
-    <div class="container customContainer">
-      <div class="prev"><</div>
-      <ul class="row innerContent">
+    <div class="container customContainer position-relative">
+      <div
+        class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+      >
+        <img src="../../../../assets/img/left-arrow.svg" />
+      </div>
+      <ul class="row innerContent mb-0">
         <li
           *ngFor="let item of tabsName; index as i"
-          class="col col-sm-6 col-md-4 col-lg"
+          class="col col-sm-6 col-md-4 col-lg border-end text-center"
         >
-          <span>{{ item.tabLabel }}</span>
+          <span
+            class="
+              d-inline-flex
+              justify-content-around
+              align-items-center
+              mx-auto
+              position-relative
+            "
+            >{{ item.tabLabel }}</span
+          >
         </li>
       </ul>
-      <div class="next">></div>
+      <div class="next position-absolute top-50 end-0 translate-middle-y pe-3">
+        <img src="../../../../assets/img/right-arrow.svg" />
+      </div>
     </div>
   </div>
 </div>

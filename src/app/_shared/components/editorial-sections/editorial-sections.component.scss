@@ -12,9 +12,47 @@
     line-height: 40px;
   }
   .tabs {
+    height: 60px;
+    background-color: $primary;
     .customContainer {
       .innerContent {
         padding: 0 53px;
+        li {
+          background-color: $white;
+          height: 60px;
+          span {
+            min-width: 132px;
+            height: 100%;
+            color: $light-gray-1;
+            cursor: pointer;
+            font-family: "ProximaNova-Regular";
+            font-weight: bold;
+            font-size: 20px;
+            &.active,
+            &:hover {
+              color: $primary;
+              &::after {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: -16px;
+                width: 7px;
+                border-width: 16px 16px 0 16px;
+                border-style: solid;
+                border-color: $primary transparent transparent transparent;
+              }
+              &::before {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-color: $primary;
+              }
+            }
+          }
+          border-color: $light-gray-1;
+        }
       }
     }
   }
