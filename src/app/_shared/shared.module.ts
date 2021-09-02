@@ -23,7 +23,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     FooterComponent,
     DefaultImagePipe,
     MostPapularComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
   ],
   imports: [
     CommonModule,
@@ -42,7 +42,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     HeaderComponent,
     FooterComponent,
     MostPapularComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
   ],
 })
 export class SharedModule {}
