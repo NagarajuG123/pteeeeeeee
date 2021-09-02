@@ -9,6 +9,9 @@ import {
 } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
@@ -29,14 +32,20 @@ export class CarouselComponent implements OnInit {
   url: string = '';
   slideConfig: any;
   typeSlug: string = '';
+
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+  
   constructor(
     private apiService: ApiService,
+    private tstate: TransferState,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
+    const RESULT_KEY = makeStateKey<any>(`carouselState${this.type.replace('-', '')}`);
     let apiUrl = '';
     switch (this.type) {
       case 'trending':
@@ -56,36 +65,45 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    this.apiService.getAPI(apiUrl).subscribe((response) => {
-      if (response && response.data) {
-        this.list = response.data;
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const carouselData = this.tstate.get(RESULT_KEY, {});
+      this.list = carouselData['list'];
+      this.slideConfig = carouselData['slideConfig'];
 
-        if (!this.list.length) {
-          this.slideConfig = {};
-          this.noData.emit();
-        } else {
-          this.slideConfig = {
-            slidesToShow:
-              this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
-            slidesToScroll: 1,
-            responsive: [
-              {
-                breakpoint: 620,
-                settings: {
-                  slidesToShow: 1,
+    } else{
+      this.apiService.getAPI(apiUrl).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+        const carouselData = {};
+        if (response && response.data) {
+          carouselData['list'] = response.data;
+  
+          if (!carouselData['list'].length) {
+            carouselData['slideConfig'] = {};
+            this.noData.emit();
+          } else {
+            carouselData['slideConfig'] = {
+              slidesToShow:
+              carouselData['list'].length > 2 ? 3 : carouselData['list'].length > 1 ? 2 : 1,
+              slidesToScroll: 1,
+              responsive: [
+                {
+                  breakpoint: 620,
+                  settings: {
+                    slidesToShow: 1,
+                  },
                 },
-              },
-              {
-                breakpoint: 1024,
-                settings: {
-                  slidesToShow: this.list.length > 1 ? 2 : 1,
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: carouselData['list'].length > 1 ? 2 : 1,
+                  },
                 },
-              },
-            ],
-          };
+              ],
+            };
+          }
         }
-      }
-    });
+        this.tstate.set(RESULT_KEY, carouselData);
+      });
+    } 
   }
 
   goReadMore(item: any) {
@@ -112,5 +130,10 @@ export class CarouselComponent implements OnInit {
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
     this.url = url;
+  }
+
+  ngOnDestroy() {
+    this.onDestroySubject.next(true);
+    this.onDestroySubject.complete();
   }
 }
