@@ -353,7 +353,6 @@ export class InfoComponent implements OnInit {
       let metaData = results[0].meta;
       this.metaService.setSeo(metaData);
       this.metaService.setTitle(`${metaData.seo.title} | ${results[1].title}`);
-      console.log(this.items);
       if (item === 'available-markets') {
         const vm = this;
         this.httpClient
