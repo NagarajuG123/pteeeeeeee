@@ -74,16 +74,25 @@
         "
       >
         <li
-          *ngFor="let category of categories;"
-          [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
+          *ngFor="let category of categories"
+          [ngClass]="
+            selectedIndex === category['index'] ? 'resp-tab-active' : ''
+          "
         >
           <a
             *ngIf="category['value'] !== 'brand_pdf'"
-            href="{{ brandSlug }}/{{ category['value'] }}"
+            routerLink="/{{ brandSlug }}/{{ category['value'] }}"
             class="text-uppercase"
           >
             {{ category["name"] }}
           </a>
+          <!-- <a
+            *ngIf="category['value'] == 'available-markets'"
+            href="/{{ brandSlug }}/{{ category['value'] }}"
+            class="text-uppercase"
+          >
+            {{ category["name"] }}
+          </a> -->
           <a
             *ngIf="category['value'] === 'brand_pdf' && !pdf?.email_popup"
             href="{{ changeDownPDFUrl(pdf?.media?.url) }}"
@@ -104,13 +113,12 @@
         </li>
       </ul>
       <div class="resp-tabs-container">
-        <div
-          *ngFor="let category of categories;"
-          class="tab-content"
-        >
+        <div *ngFor="let category of categories" class="tab-content">
           <h2
             class="resp-accordion tab-identifier2"
-            [ngClass]="selectedIndex === category['index'] ? 'resp-tab-active' : ''"
+            [ngClass]="
+              selectedIndex === category['index'] ? 'resp-tab-active' : ''
+            "
             role="tab"
             style="background: none; border-color: rgb(193, 193, 193)"
           >
@@ -240,7 +248,10 @@
                       </div>
                       <div>
                         <div
-                          *ngIf="items['available-markets'] != null"
+                          *ngIf="
+                            items['available-markets'] != null &&
+                            items['available-markets'].length
+                          "
                           class="mapcontainer"
                         >
                           <div
@@ -251,7 +262,10 @@
                           </div>
                         </div>
                         <div
-                          *ngIf="items['available-markets'] != null"
+                          *ngIf="
+                            items['available-markets'] != null &&
+                            items['available-markets'].length
+                          "
                           class="map-legend"
                         >
                           MAP LEGEND:
