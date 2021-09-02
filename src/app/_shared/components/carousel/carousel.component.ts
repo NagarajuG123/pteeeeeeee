@@ -45,7 +45,7 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const RESULT_KEY = makeStateKey<any>(`carouselState${this.type.replace('-', '')}`);
+    const RESULT_KEY = makeStateKey<any>(`carouselState${this.type}`);
     let apiUrl = '';
     switch (this.type) {
       case 'trending':
