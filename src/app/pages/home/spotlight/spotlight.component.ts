@@ -56,7 +56,7 @@ export class SpotlightComponent implements OnInit {
           spotlightData['selectedTab'] = response.defaultTab;
           spotlightData['categories'] = response.categories.slug;
 
-          this.apiService.getAPI(`1851/spotlight/${this.selectedTab}?limit=11&offset=0`)
+          this.apiService.getAPI(`1851/spotlight/${spotlightData['categories']}?limit=11&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe(result => {
             if (result.data.length > 0) {
@@ -157,3 +157,4 @@ export class SpotlightComponent implements OnInit {
     this.onDestroySubject.complete();
   }
 }
+
