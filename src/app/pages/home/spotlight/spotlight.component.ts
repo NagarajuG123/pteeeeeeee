@@ -2,6 +2,9 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+
+const RESULT_KEY = makeStateKey<any>('spotlightState');
 
 @Component({
   selector: 'app-spotlight',
@@ -22,21 +25,31 @@ export class SpotlightComponent implements OnInit {
   constructor(
     private apiService: ApiService, private commonService: CommonService,
     @Inject(PLATFORM_ID) platformId: Object,
+    private tstate: TransferState,
     ) {this.isBrowser = isPlatformBrowser(platformId); }
 
   ngOnInit(): void {
-    this.getCategories();
-    this.setScrollOption();
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const spotlightData = this.tstate.get(RESULT_KEY, {});
+    }
+    else{
+      const spotlightData = {};
+
+      this.tstate.set(RESULT_KEY, spotlightData);
+    }
+    
+    // this.getCategories();
+    // this.setScrollOption();
      
-    this.apiService.getAPI(`1851/publication-instance`).subscribe(async (response) => {
-      if ( response.id === 'EE' ) {
-        this.selectedTab = 'celebrities';
-      } else {
-        this.selectedTab = 'people';
-      }
-      this.publication = response;
-      this.getInitialData();
-    });
+    // this.apiService.getAPI(`1851/publication-instance`).subscribe(async (response) => {
+    //   if ( response.id === 'EE' ) {
+    //     this.selectedTab = 'celebrities';
+    //   } else {
+    //     this.selectedTab = 'people';
+    //   }
+    //   this.publication = response;
+    //   this.getInitialData();
+    // });
   }
 
   getInitialData() {
