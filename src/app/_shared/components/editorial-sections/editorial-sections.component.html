@@ -1,0 +1,20 @@
+<div class="editorial-section">
+  <div class="container customContainer">
+    <h2 class="py-3 m-0 text-white text-uppercase">Editorial Sections</h2>
+  </div>
+
+  <div class="tabs">
+    <div class="container customContainer">
+      <div class="prev"><</div>
+      <ul class="row innerContent">
+        <li
+          *ngFor="let item of tabsName; index as i"
+          class="col col-sm-6 col-md-4 col-lg"
+        >
+          <span>{{ item.tabLabel }}</span>
+        </li>
+      </ul>
+      <div class="next">></div>
+    </div>
+  </div>
+</div>

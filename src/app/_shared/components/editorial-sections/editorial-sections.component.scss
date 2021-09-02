@@ -1,0 +1,21 @@
+// @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+// @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@import "../../../../assets/scss/theme-color.scss";
+
+.editorial-section {
+  background: $dark-gray;
+  font-family: Roboto;
+  h2 {
+    font-family: "Ballinger Condensed";
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 40px;
+  }
+  .tabs {
+    .customContainer {
+      .innerContent {
+        padding: 0 53px;
+      }
+    }
+  }
+}

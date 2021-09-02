@@ -11,6 +11,7 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MostPapularComponent } from './components/most-papular/most-papular.component';
+import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 
 // Modals Components
 
@@ -24,6 +25,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     DefaultImagePipe,
     MostPapularComponent,
     DefaultImagePipe,
+    EditorialSectionsComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { MostPapularComponent } from './components/most-papular/most-papular.com
     FooterComponent,
     MostPapularComponent,
     DefaultImagePipe,
+    EditorialSectionsComponent,
   ],
 })
 export class SharedModule {}
