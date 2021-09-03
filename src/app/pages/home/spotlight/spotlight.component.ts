@@ -20,8 +20,9 @@ export class SpotlightComponent implements OnInit {
   selectedTab: any;
   scrollbarOptions: any;
   selectedIndex: number = 0;
-  tabs:any;
+  tabs:any = [];
   publication: any = [];
+  tabName: any = [];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -41,6 +42,7 @@ export class SpotlightComponent implements OnInit {
           this.tabs = spotlightData['categories'];
           this.selectedTab = spotlightData['selectedTab'];
           this.publication = spotlightData['publication'];
+          this.tabName = spotlightData['name'];
           this.setScrollOption();
     }
     else{
@@ -52,7 +54,15 @@ export class SpotlightComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
         .subscribe(response => {
           spotlightData['selectedTab'] = response[0].defaultTab;
-          spotlightData['categories'] = response[0].data.categories.map( (category: string) => category.toLowerCase().replace(/ /g, '-') );;
+          spotlightData['publication'] = response[1];
+          const categories = [];
+          const name = [];
+          response[0].categories.forEach((item) => {
+            categories.push(item.slug);
+            name.push(item.shortName);
+          });
+          spotlightData['categories'] = categories;
+          spotlightData['name'] = name;
           spotlightData['publication'] = response[1];
         
           this.apiService.getAPI(`1851/spotlight/${spotlightData['selectedTab']}?limit=11&offset=0`)
@@ -81,7 +91,7 @@ export class SpotlightComponent implements OnInit {
   }
  
   selectTab(tab: any, index: number) {
-    this.selectedTab = tab;
+    this.selectedTab = tab.toLowerCase();
     this.selectedIndex = index;
     this.getData(this.selectedTab, 10, 0);
   }
