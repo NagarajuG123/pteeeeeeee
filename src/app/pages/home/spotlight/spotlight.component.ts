@@ -20,76 +20,72 @@ export class SpotlightComponent implements OnInit {
   selectedTab: any;
   scrollbarOptions: any;
   selectedIndex: number = 0;
-  tabs:any = [];
-  publication: any = [];
-  tabName: any = [];
+  tabs: any = [];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  
   constructor(
-    private apiService: ApiService, private commonService: CommonService,
+    private apiService: ApiService,
+    private commonService: CommonService,
     @Inject(PLATFORM_ID) platformId: Object,
-    private tstate: TransferState,
-    ) {this.isBrowser = isPlatformBrowser(platformId); }
+    private tstate: TransferState
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
     if (this.tstate.hasKey(RESULT_KEY)) {
       const spotlightData = this.tstate.get(RESULT_KEY, {});
-          this.highlightItem = spotlightData['highlightItem'];
-          this.items = spotlightData['items'];
-          this.tabs = spotlightData['categories'];
-          this.selectedTab = spotlightData['selectedTab'];
-          this.publication = spotlightData['publication'];
-          this.tabName = spotlightData['name'];
-          this.setScrollOption();
-    }
-    else{
+      this.highlightItem = spotlightData['highlightItem'];
+      this.items = spotlightData['items'];
+      this.tabs = spotlightData['categories'];
+      this.selectedTab = spotlightData['selectedTab'];
+      this.setScrollOption();
+    } else {
       const spotlightData = {};
-      const categoriesApi = this.apiService.getAPI(`1851/spotlights/categories`);
-      const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
-      
-      forkJoin([categoriesApi, publicationApi])
-      .pipe(takeUntil(this.onDestroy$))
-        .subscribe(response => {
+      const categoriesApi = this.apiService.getAPI(
+        `1851/spotlights/categories`
+      );
+
+      forkJoin([categoriesApi])
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((response) => {
           spotlightData['selectedTab'] = response[0].defaultTab;
-          spotlightData['publication'] = response[1];
           const categories = [];
-          const name = [];
           response[0].categories.forEach((item) => {
-            categories.push(item.slug);
-            name.push(item.shortName);
+            categories.push(item.all);
           });
           spotlightData['categories'] = categories;
-          spotlightData['name'] = name;
-          spotlightData['publication'] = response[1];
-        
-          this.apiService.getAPI(`1851/spotlight/${spotlightData['selectedTab']}?limit=11&offset=0`)
-          .pipe(takeUntil(this.onDestroy$))
-          .subscribe(result => {
-            if (result.data.length > 0) {
-              spotlightData['highlightItem'] = result.data[0];
-              spotlightData['items'] = result.data.slice(1,11);
-          }
-            this.tstate.set(RESULT_KEY, spotlightData);
-          });
+
+          this.apiService
+            .getAPI(
+              `1851/spotlight/${spotlightData['selectedTab']}?limit=11&offset=0`
+            )
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((result) => {
+              if (result.data.length > 0) {
+                spotlightData['highlightItem'] = result.data[0];
+                spotlightData['items'] = result.data.slice(1, 11);
+              }
+              this.tstate.set(RESULT_KEY, spotlightData);
+            });
         });
     }
   }
 
   setScrollOption() {
     this.scrollbarOptions = {
-        axis: 'y',
-        theme: 'minimal-dark',
-        callbacks: {
-          onTotalScroll: () => {
-            this.getMoreItem();
-          }
-        }
-     };
+      axis: 'y',
+      theme: 'minimal-dark',
+      callbacks: {
+        onTotalScroll: () => {
+          this.getMoreItem();
+        },
+      },
+    };
   }
- 
+
   selectTab(tab: any, index: number) {
     this.selectedTab = tab.toLowerCase();
     this.selectedIndex = index;
@@ -99,31 +95,30 @@ export class SpotlightComponent implements OnInit {
     if (this.selectedIndex === index) {
       this.selectedIndex = -1;
     } else {
-      this.selectTab(tab, index);
+      this.selectTab(tab.split(',')[1], index);
     }
   }
-  sanitizeTab( tab: string ) {
-    return tab.replace(/-/g, ' ');
-  }
+
   getMoreItem() {
     this.getData(this.selectedTab, 10, this.items.length, false);
   }
-   getData(tab: any, limit: number, offset: number, firstLoad: boolean = true) {
+  getData(tab: any, limit: number, offset: number, firstLoad: boolean = true) {
     if (firstLoad) {
       this.items = [];
     }
-    this.apiService.getAPI(`1851/spotlight/${tab}?limit=${limit}&offset=${offset}`)
-      .subscribe(result => {
+    this.apiService
+      .getAPI(`1851/spotlight/${tab}?limit=${limit}&offset=${offset}`)
+      .subscribe((result) => {
         if (result.data.length) {
           result['data'].forEach((item: any, index: number) => {
-          if (index === 0) {
-            if (firstLoad) {
-              this.highlightItem = item;
+            if (index === 0) {
+              if (firstLoad) {
+                this.highlightItem = item;
+              }
+            } else {
+              this.items.push(item);
             }
-          } else {
-            this.items.push(item);
-          }
-        });
+          });
         }
       });
   }
@@ -135,4 +130,3 @@ export class SpotlightComponent implements OnInit {
     this.onDestroySubject.complete();
   }
 }
-
