@@ -6,14 +6,16 @@
   background: $dark-gray;
   font-family: Roboto;
   h2 {
-    font-family: "Ballinger Condensed";
+    font-family: "Ballinger Condensed Medium";
     font-weight: bold;
     font-size: 33px;
     line-height: 40px;
   }
+  .innerContent {
+    padding: 0 53px;
+  }
   .tabs {
     height: 60px;
-    background-color: $primary;
     .prev,
     .next {
       img {
@@ -23,8 +25,6 @@
     }
     .customContainer {
       .innerContent {
-        padding: 0 53px;
-
         li {
           background-color: $white;
           height: 60px;
@@ -43,7 +43,7 @@
                 content: "";
                 height: 7px;
                 position: absolute;
-                bottom: -16px;
+                bottom: -13px;
                 width: 7px;
                 border-width: 16px 16px 0 16px;
                 border-style: solid;
@@ -63,5 +63,62 @@
         }
       }
     }
+  }
+  .tabs-container {
+    > .tabItemList {
+      .items {
+        font-family: "Ballinger Condensed";
+        font-weight: bold;
+        img {
+          width: 100%;
+          min-height: 106px;
+          background-color: $light-gray-1;
+        }
+        > .card-body {
+          padding: 8px 16px 15px;
+          > h6.card-title {
+            font-size: 11px;
+          }
+          > .card-text {
+            font-size: 12px;
+          }
+          > small {
+            font-family: "ProximaNova-Regular";
+            font-weight: 500;
+            font-size: 10px;
+          }
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .row {
+          margin: 0 -5px;
+          .col-md-4 {
+            max-width: 20%;
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .fs-30 {
+    font-size: 30px;
+  }
+
+  input {
+    font-family: "ProximaNova-Regular";
+    font-size: 13px;
+    height: 39px;
+    &::placeholder {
+      color: $dark-gray;
+    }
+  }
+  .joinBtn {
+    min-width: 196px;
+    background: $dark-gray;
+    border-color: $dark-gray;
+    font-family: "ProximaNova-Regular";
+    font-size: 25px;
+    height: 39px;
   }
 }

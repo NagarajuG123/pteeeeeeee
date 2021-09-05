@@ -1,19 +1,30 @@
-<div class="editorial-section">
+<div class="editorial-section pb-4">
   <div class="container customContainer">
-    <h2 class="py-3 m-0 text-white text-uppercase">Editorial Sections</h2>
+    <h2 class="py-3 m-0 text-white text-uppercase">
+      <strong>Editorial Sections</strong>
+    </h2>
   </div>
 
-  <div class="tabs">
+  <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+        [ngClass]="
+          tabsName.length > this.commonService.vtabsItem ? '' : 'd-none'
+        "
+        (click)="prev()"
       >
         <img src="../../../../assets/img/left-arrow.svg" />
       </div>
-      <ul class="row innerContent mb-0">
+      <ul class="row innerContent m-0">
         <li
           *ngFor="let item of tabsName; index as i"
           class="col col-sm-6 col-md-4 col-lg border-end text-center"
+          [ngClass]="
+            i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab
+              ? 'active'
+              : 'd-none'
+          "
         >
           <span
             class="
@@ -24,12 +35,124 @@
               position-relative
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
+            (click)="setActiveTab(i + 1)"
             >{{ item.tabLabel }}</span
           >
         </li>
       </ul>
-      <div class="next position-absolute top-50 end-0 translate-middle-y pe-3">
+      <div
+        class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+        [ngClass]="
+          tabsName.length > this.commonService.vtabsItem ? '' : 'd-none'
+        "
+        (click)="next()"
+      >
         <img src="../../../../assets/img/right-arrow.svg" />
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-container container customContainer">
+    <div class="tabItemList innerContent mt-4 py-3">
+      <ul class="row gx-2" [ngClass]="1 === activeTab ? 'active' : 'd-none'">
+        <li
+          *ngFor="let list of tablist; index as i"
+          class="mb-3 col-12 col-sm-6 col-md-4"
+        >
+          <div class="items card border-0 rounded-0">
+            <img src="#" class="card-img-top" alt="img" />
+            <div class="card-body">
+              <h6
+                class="
+                  card-title
+                  primary-color
+                  text-uppercase text-truncate
+                  fw-bold
+                "
+              >
+                {{ list.title }}
+              </h6>
+              <h4 class="card-text mb-1">
+                <strong>{{ list.detail }}</strong>
+              </h4>
+              <small>{{ list.by }}</small>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div
+        class="gx-2 text-white"
+        [ngClass]="2 === activeTab ? 'active' : 'd-none'"
+      >
+        Franchisees
+      </div>
+      <div
+        class="gx-2 text-white"
+        [ngClass]="3 === activeTab ? 'active' : 'd-none'"
+      >
+        Franchisors
+      </div>
+      <div
+        class="gx-2 text-white"
+        [ngClass]="4 === activeTab ? 'active' : 'd-none'"
+      >
+        Industry
+      </div>
+      <div
+        class="gx-2 text-white"
+        [ngClass]="5 === activeTab ? 'active' : 'd-none'"
+      >
+        Columns
+      </div>
+      <div
+        class="gx-2 text-white"
+        [ngClass]="6 === activeTab ? 'active' : 'd-none'"
+      >
+        Columns N
+      </div>
+    </div>
+  </div>
+
+  <!-- signUp for next webinar section-->
+  <div class="primary-bg mt-3">
+    <div class="container customContainer">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-lg-auto text-uppercase text-white">
+          <h2 class="py-3 m-0 text-white text-uppercase fs-30">
+            <strong>Sign up for next webinar</strong>
+          </h2>
+        </div>
+        <div class="col-12 col-sm">
+          <div class="row gx-2">
+            <div class="col-12 col-sm">
+              <input
+                type="text"
+                placeholder="Name"
+                class="form-control rounded-0 mb-3 mb-lg-0"
+              />
+            </div>
+            <div class="col-12 col-sm">
+              <input
+                type="email"
+                placeholder="Email"
+                class="form-control rounded-0 mb-3 mb-lg-0"
+              />
+            </div>
+            <div class="col-12 col-sm">
+              <input
+                type="tel"
+                placeholder="Phone"
+                class="form-control rounded-0 mb-3 mb-lg-0"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-auto text-uppercase text-white pb-3 pb-lg-0">
+          <button class="btn btn-dark text-uppercase fw-bold joinBtn py-0">
+            Join now
+          </button>
+        </div>
       </div>
     </div>
   </div>
