@@ -32,9 +32,11 @@ ul {
     background-color: #fff; /* or add it to the track */
   }
 }
-
+.container {
+  max-width: 1350px !important;
+}
 .customContainer {
-  max-width: 1210px;
+  max-width: 1210px !important;
 }
 
 // owl-carousel
