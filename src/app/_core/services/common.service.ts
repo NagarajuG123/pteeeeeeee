@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -6,10 +7,15 @@ import { Injectable } from '@angular/core';
 export class CommonService {
   public showmenu: boolean = false;
   public vtabsItem: number = 5;
+  isBrowser: boolean = false;
 
-  constructor() {
-    // this.resizeSidebar(window.innerWidth);
-  }
+  constructor( @Inject(PLATFORM_ID) platformId: Object) {
+      this.isBrowser = isPlatformBrowser(platformId);
+      if(this.isBrowser){
+        this.resizeSidebar(window.innerWidth);
+      }
+    }
+
   toggle() {
     this.showmenu = !this.showmenu;
     window.scrollTo(0, 0);
