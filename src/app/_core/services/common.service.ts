@@ -8,7 +8,7 @@ export class CommonService {
   public vtabsItem: number = 5;
 
   constructor() {
-    this.resizeSidebar(window.innerWidth);
+    // this.resizeSidebar(window.innerWidth);
   }
   toggle() {
     this.showmenu = !this.showmenu;
