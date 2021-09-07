@@ -10,23 +10,24 @@ import { takeUntil } from 'rxjs/operators';
 const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
 @Component({
-  selector: 'app-most-papular',
-  templateUrl: './most-papular.component.html',
-  styleUrls: ['./most-papular.component.scss'],
+  selector: 'app-most-popular',
+  templateUrl: './most-popular.component.html',
+  styleUrls: ['./most-popular.component.scss'],
 })
-export class MostPapularComponent implements OnInit {
-
+export class MostPopularComponent implements OnInit {
   isBrowser!: boolean;
   data: Details[] = [];
   slug: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  constructor(private apiService: ApiService,
+  constructor(
+    private apiService: ApiService,
     private tstate: TransferState,
-    @Inject(PLATFORM_ID) private platformId: object,) {
-      this.isBrowser = isPlatformBrowser(platformId);
-    }
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   customOptions: OwlOptions = {
     autoplay: true,
@@ -53,27 +54,25 @@ export class MostPapularComponent implements OnInit {
     },
     nav: true,
   };
-  
 
   ngOnInit(): void {
     this.slug = '1851';
     this.getMostPopular();
   }
 
-  getMostPopular(){
-     if(this.tstate.hasKey(RESULT_KEY)){
-       const mostPopular = this.tstate.get(RESULT_KEY,{});
-       this.data = mostPopular['data'];
-     }
-     else{
-       const mostPopular:any = {};
-       this.apiService
+  getMostPopular() {
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const mostPopular = this.tstate.get(RESULT_KEY, {});
+      this.data = mostPopular['data'];
+    } else {
+      const mostPopular: any = {};
+      this.apiService
         .getAPI(`${this.slug}/trending?limit=9&offset=0`)
         .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => { 
+        .subscribe((response) => {
           mostPopular['data'] = response.data;
         });
-        this.tstate.set(RESULT_KEY, mostPopular);
-     }
+      this.tstate.set(RESULT_KEY, mostPopular);
+    }
   }
 }

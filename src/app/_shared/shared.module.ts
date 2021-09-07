@@ -10,7 +10,7 @@ import { DefaultImagePipe } from 'src/app/_core/pipes/default-image.pipe';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { MostPapularComponent } from './components/most-papular/most-papular.component';
+import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 
 // Modals Components
@@ -23,7 +23,7 @@ import { EditorialSectionsComponent } from './components/editorial-sections/edit
     HeaderComponent,
     FooterComponent,
     DefaultImagePipe,
-    MostPapularComponent,
+    MostPopularComponent,
     DefaultImagePipe,
     EditorialSectionsComponent,
   ],
@@ -43,7 +43,7 @@ import { EditorialSectionsComponent } from './components/editorial-sections/edit
     FeaturedComponent,
     HeaderComponent,
     FooterComponent,
-    MostPapularComponent,
+    MostPopularComponent,
     DefaultImagePipe,
     EditorialSectionsComponent,
   ],
