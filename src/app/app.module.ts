@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
@@ -18,7 +21,7 @@ import { SharedModule } from './_shared/shared.module';
     HomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    BrowserTransferStateModule
+    BrowserTransferStateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

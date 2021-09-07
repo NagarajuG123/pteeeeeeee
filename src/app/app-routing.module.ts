@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
+import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { StoryComponent } from './pages/story/story.component';
 
 export function isArticlePage(url: UrlSegment[]) {
@@ -33,6 +34,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'powerrankings',
+    component: PowerRankingComponent,
+    loadChildren: () =>
+      import('./pages/power-ranking/power-ranking.module').then(
+        (m) => m.PowerRankingModule
+      ),
   },
   {
     matcher: isArticlePage,
