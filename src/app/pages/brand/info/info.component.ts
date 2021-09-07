@@ -24,17 +24,16 @@ export class InfoComponent implements OnInit {
   brandSlug: any;
   categories: any = [];
   validData = [];
-  staticContent: any;
   pdf: any;
   selectedIndex: number = 0;
   inquireForm!: FormGroup;
   inquireFields: any = [];
 
-  isStory: boolean = false;
-  isInfo: boolean = false;
-  isBought: boolean = false;
-  isExecutive: boolean = false;
-  isMarket: boolean = false;
+  isStory: boolean;
+  isInfo: boolean;
+  isBought: boolean;
+  isExecutive: boolean;
+  isMarket: boolean;
   company!: string;
   geoJson: any;
   infoData: any;
@@ -89,7 +88,6 @@ export class InfoComponent implements OnInit {
     this.route.parent.params.subscribe((param) => {
       this.brandSlug = param.slug;
     });
-
     this.route.paramMap.subscribe((params) => {
       this.apiService
         .getAPI(`get-brand-by-slug/${this.brandSlug}`)
@@ -113,11 +111,7 @@ export class InfoComponent implements OnInit {
               'executive',
               'available-markets',
             ];
-            this.staticContent = [
-              'why-i-bought',
-              'executive',
-              'available-markets',
-            ];
+
             this.apiService
               .getAPI(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
@@ -304,23 +298,24 @@ export class InfoComponent implements OnInit {
       this.categoryParam = 'columns';
     }
   }
-  
-  getInitialData(){
-    this.apiService.getAPI(`${this.brandSlug}/brand-info`)
-    .subscribe(result => {
-      if (result.data.length > 0) {
-        this.items = result.data;
-        let metaData = result.meta;
-      this.metaService.setSeo(metaData);
-      this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.metaService.setTitle(
-          `${metaData.seo.title} | ${response.title}`
-        );
+
+  getInitialData() {
+    this.apiService
+      .getAPI(`${this.brandSlug}/brand-info`)
+      .subscribe((result) => {
+        if (result.data.length > 0) {
+          this.items = result.data;
+          let metaData = result.meta;
+          this.metaService.setSeo(metaData);
+          this.apiService
+            .getAPI(`1851/publication-instance`)
+            .subscribe((response) => {
+              this.metaService.setTitle(
+                `${metaData.seo.title} | ${response.title}`
+              );
+            });
+        }
       });
-     }
-    });
   }
 
   getContents(item: string | null) {
@@ -328,48 +323,47 @@ export class InfoComponent implements OnInit {
     if (item === 'info') {
       path = 'brand-info';
       this.isInfo = true;
+      this.isStory = this.isBought = this.isExecutive = this.isMarket = false;
       this.selectedIndex = 0;
     } else if (item === 'latest_stories') {
       path = 'brand-latest-stories';
       this.isStory = true;
+      this.isInfo = this.isBought = this.isExecutive = this.isMarket = false;
       this.selectedIndex = 2;
-    } else if(item === 'why-i-bought') {
+    } else if (item === 'why-i-bought') {
       path = 'brand-why-i-bought';
       this.isBought = true;
+      this.isInfo = this.isStory = this.isExecutive = this.isMarket = false;
       this.selectedIndex = 3;
-    } else if(item === 'executive') {
+    } else if (item === 'executive') {
       path = 'brand-executive';
       this.isExecutive = true;
+      this.isInfo = this.isBought = this.isStory = this.isMarket = false;
       this.selectedIndex = 4;
-    } else if(item === 'available-markets') {
+    } else if (item === 'available-markets') {
       path = 'brand-available-markets';
       this.isMarket = true;
-      this.selectedIndex = 5; 
+      this.isInfo = this.isBought = this.isExecutive = this.isStory = false;
+      this.selectedIndex = 5;
     }
-    this.apiService
-      .getAPI(`${this.brandSlug}/${path}`)
-      .subscribe((response) => {
-        this.items = response.data;
-        let metaData = response.meta;
-        this.metaService.setSeo(metaData);
-        this.apiService
-          .getAPI(`1851/publication-instance`)
-          .subscribe((result) => {
-            this.metaService.setTitle(
-              `${metaData.seo.title} | ${result.title}`
-            );
+    const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
+    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([itemApi, publicationApi]).subscribe((results) => {
+      this.items = results[0].data;
+      let metaData = results[0].meta;
+      this.metaService.setSeo(metaData);
+      this.metaService.setTitle(`${metaData.seo.title} | ${results[1].title}`);
+      if (item === 'available-markets') {
+        const vm = this;
+        this.httpClient
+          .get('../../../assets/us-states.json')
+          .subscribe((json: any) => {
+            this.geoJson = json;
+            vm.drawMap(this.items);
+            window.onresize = function () {};
           });
-      });
-    if (item === 'available-markets') {
-      const vm = this;
-      this.httpClient
-        .get('../../../assets/us-states.json')
-        .subscribe((json: any) => {
-          this.geoJson = json;
-          vm.drawMap(this.items);
-          window.onresize = function () {};
-        });
-    }
+      }
+    });
   }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
