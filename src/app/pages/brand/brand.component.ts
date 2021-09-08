@@ -19,6 +19,8 @@ export class BrandComponent implements OnInit {
   faInstagramIcon = faInstagram;
   faCaretDown = faCaretDown;
 
+  tabnewsList = tabnewsList;
+
   relatedArticles = [
     {
       media: '../../../assets/dummy-images/Rectangle 221.jpg',
@@ -45,3 +47,34 @@ export class BrandComponent implements OnInit {
 
   ngOnInit(): void {}
 }
+
+const tabnewsList = [
+  {
+    media: '../../../assets/dummy-images/f1.jpg',
+    title: 'Title Lorem Ipsum',
+    detail:
+      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
+    by: 'Lorem, ipsum',
+  },
+  {
+    media: '../../../assets/dummy-images/f2.jpg',
+    title: 'Title Lorem Ipsum',
+    detail:
+      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
+    by: 'Lorem, ipsum',
+  },
+  {
+    media: '../../../assets/dummy-images/f3.jpg',
+    title: 'Title Lorem Ipsum',
+    detail:
+      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
+    by: 'Lorem, ipsum',
+  },
+  {
+    media: '../../../assets/dummy-images/f4.jpg',
+    title: 'Title Lorem Ipsum',
+    detail:
+      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
+    by: 'Lorem, ipsum',
+  },
+];

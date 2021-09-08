@@ -9,7 +9,7 @@
   <!-- main articles details -->
   <div class="container customContainer">
     <div class="row">
-      <div class="col userDetail">
+      <div class="col-12 col-md userDetail">
         <div class="userImage position-relative">
           <img
             src="../../../assets/dummy-images/nick 1.png"
@@ -98,7 +98,7 @@
           size="lg"
         ></fa-icon>
 
-        <ul class="most-like-articles noScrollBar list-group mt-4">
+        <ul class="most-like-articles list-group mt-4 mb-3">
           <li *ngFor="let item of relatedArticles; index as i" class="mb-2">
             <div class="newsImage me-2 pe-1 position-relative">
               <a href="#">
@@ -125,15 +125,69 @@
       </div>
 
       <!-- Articles detail section -->
-      <div class="col">
-        <div class="details">
-          <div class="category">CATEGORY</div>
-          <h1 class="title text-center">
-            Title Lorem Ipsum Conset Entumi Abudi?
-          </h1>
+      <div class="col-12 col-md ps-md-5">
+        <div class="details position-relative bg-white">
+          <div
+            class="
+              detailHead
+              position-absolute
+              bg-white
+              w-100
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+          >
+            <div
+              class="
+                category
+                position-absolute
+                top-0
+                start-50
+                translate-middle
+                primary-bg
+                text-white text-center
+                fw-bold
+                py-1
+              "
+            >
+              <a href="#" class="text-white">CATEGORY</a>
+            </div>
+            <h2 class="title text-center fw-bold">
+              <a href="#" class="text-black"
+                >Title Lorem Ipsum Conset Entumi<br />
+                Abudi?</a
+              >
+            </h2>
+          </div>
 
-          <div>LOREM IPSUM</div>
-          <div class="subTitle text-center text-white">
+          <div
+            class="
+              subTitle
+              text-center text-white
+              gray-bg
+              position-relative
+              pb-3
+              pt-4
+              fw-bold
+              mb-4
+            "
+          >
+            <div
+              class="
+                authorName
+                position-absolute
+                top-0
+                start-50
+                translate-middle
+                primary-bg
+                text-white text-center
+                fw-bold
+                py-1
+              "
+            >
+              <a href="#" class="text-white">LOREM IPSUM</a>
+            </div>
             Cursus euismod quis viverra nibh cras pulvinar. Mattis aliquam
             faucibus purus in massa.
           </div>
@@ -211,6 +265,113 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- next article line -->
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col d-none d-md-block userDetail"></div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="nextBtn px-5 bg-white">
+            <a class="gray-color" href="#"
+              ><img
+                src="../../../assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3"
+              />
+              Next Article
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- news blocks -->
+  <div class="ArticlesNewsSection gray-bg py-5">
+    <div class="container customContainer py-md-2">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Franchise News</h4>
+        </div>
+        <div
+          class="col-sm-6 col-md-3 mb-2"
+          *ngFor="let list of tabnewsList; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="#"
+              ><img src="{{ list.media }}" class="card-img-top" alt="img"
+            /></a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a href="#" class="text-black text-uppercase text-truncate">{{
+                  list.title
+                }}</a>
+              </h6>
+              <span class=""
+                ><a href="#">{{ list.by }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a href="#" class="text-black">{{ list.detail }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Brand News</h4>
+        </div>
+        <div
+          class="col-sm-6 col-md-3 mb-2"
+          *ngFor="let list of tabnewsList; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="#"
+              ><img src="{{ list.media }}" class="card-img-top" alt="img"
+            /></a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a href="#" class="text-black text-uppercase text-truncate">{{
+                  list.title
+                }}</a>
+              </h6>
+              <span class=""
+                ><a href="#">{{ list.by }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a href="#" class="text-black">{{ list.detail }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container customContainer adv my-4">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-8 col-sm col-lg-auto mb-3 mb-sm-0">
+      <img
+        src="../../../assets/dummy-images/1851 v3 – Figm (2).png"
+        alt="sda"
+        class="fluid-img"
+      />
+    </div>
+    <div class="col d-none d-lg-flex justify-content-center align-items-center">
+      <div class="centerGrid"></div>
+    </div>
+    <div class="col-8 col-sm">
+      <img
+        src="../../../assets/dummy-images/1851 v3 – Figm (3).png"
+        alt="sda"
+        class="fluid-img"
+      />
     </div>
   </div>
 </div>
