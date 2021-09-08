@@ -70,8 +70,8 @@ export class TermsComponent implements OnInit {
       // });
     }
   }
-  errorHandler(event: { target: { src: string; }; }) {
-    event.target.src = '/assets/img/termsofuse.png';
-  }
+  // errorHandler(event) {
+  //   event.target.src = '/assets/img/termsofuse.png';
+  // }
 
 }

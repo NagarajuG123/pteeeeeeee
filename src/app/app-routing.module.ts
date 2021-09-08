@@ -44,6 +44,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'termsofuse',
+    loadChildren: () =>
+      import('./pages/terms/terms.module').then(
+        (m) => m.TermsModule
+      ),
+  },
+  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () =>
