@@ -11,7 +11,8 @@ import { TermsComponent } from './terms.component';
   ],
   imports: [
     CommonModule,
-    TermsRoutingModule
+    TermsRoutingModule,
+    // NgxPageScrollCoreModule.forRoot({ duration: 2500 }),
   ]
 })
 export class TermsModule { }
