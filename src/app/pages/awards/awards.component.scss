@@ -1,0 +1,50 @@
+@import "../../../assets/scss/theme-color.scss";
+
+.container {
+  height: 100vh;
+  padding-right: unset !important;
+  padding-left: unset !important;
+}
+.main-award-section {
+  background-color: $dark-gray;
+}
+.award-details {
+  position: relative;
+}
+.award-details {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 5px;
+    height: 100%;
+    width: 2px;
+    background-color: $primary;
+    z-index: 10;
+  }
+}
+.main-image-area {
+  background-color: $dummy-img-color;
+  height: 100%;
+}
+.title {
+  color: $primary;
+}
+.sub-title {
+  color: $white;
+}
+.description {
+  color: $text-secondary-color;
+}
+.link {
+  cursor: pointer;
+  color: $primary;
+}
+.sub-image-area {
+  background-color: $dummy-img-color;
+  height: 60px;
+}
+.sub-image-decription {
+  font-size: 14px;
+  color: $text-secondary-color;
+}
