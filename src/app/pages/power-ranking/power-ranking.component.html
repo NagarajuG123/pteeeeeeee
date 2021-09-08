@@ -1,11 +1,11 @@
-<div class="main-container">
+<div class="container-fluid main-container">
   <div class="power-ranking-container">
     <div class="top-container">
       <img src="assets/img/room-service.png" alt="power-ranking-image" />
       <div class="text-box">
         <div style="padding: 15px 0">
-          <h1>Franchise Power Ranking</h1>
-          <p>
+          <h1 class="title">Franchise Power Ranking</h1>
+          <p class="description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore,
             esse neque. Maxime laudantium assumenda id beatae temporibus.
             Dignissimos saepe, consectetur necess
@@ -13,24 +13,236 @@
         </div>
       </div>
     </div>
+
     <div class="bottom-container">
-      <div class="first-row">
-        <span>Rank</span>
-        <span>Brand Page</span>
-        <span>Trending</span>
-        <span style="text-align: left">Latest Story</span>
+      <div class="row title-row d-flex justify-content-around text-center">
+        <span class="col-md-3 ">Rank</span>
+        <span class="col-md-3 ">Brand Page</span>
+        <span class="col-md-3 ">Trending</span>
+        <span class="col-md-3 latest-story">Latest Story</span>
       </div>
-      <div class="second-row">
-        <span style="font-weight: bolder; transform: scale(3, 3)">1</span>
-        <span style="font-weight: bolder; transform: scale(2, 2)">Brand</span>
-        <div class="trending-block">
-          <span style="font-size: 12px; color: black">Last Week</span>
-          <span style="font-weight: bolder; transform: scale(2, 2)">1</span>
+      <div class="row rank-row rank-row-odd d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">1</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">1</div>
+          </div>
         </div>
-        <span style="text-decoration: underline; text-align: left"
-          >Lorem ipsum dolor sit amet consectetur adipisicing eli</span
-        >
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-even d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">2</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand-2.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">2</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-odd d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">3</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">5</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-even d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">4</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand-2.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">3</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-odd d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">5</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">4</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-even d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">6</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">1</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-odd d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">7</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand-2.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">2</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-even d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">8</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">5</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-odd d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">9</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand-2.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">3</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+      </div>
+      <div class="row rank-row rank-row-even d-flex justify-content-between align-items-center text-center">
+        <span class="col-md-3 text-center sr">10</span>
+        <span class="col-md-3 text-center">
+          <img class="brand-image" src="../../../assets/image/brand.png" alt="brand">
+        </span>
+        <div class="col-md-3 text-center trending-block">
+          <div class="row d-flex flex-column justify-content-center align-items-center">
+            <div class="duration col-md-12">Last Week</div>
+            <div class="count col-md-12">4</div>
+          </div>
+        </div>
+        <span class="col-md-3 story-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
       </div>
     </div>
+
+    <div class="remaining-container">
+      <div class="row row-odd d-flex justify-content-center align-items-center">
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">11</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">12</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">13</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">14</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-even row-odd d-flex justify-content-center align-items-center">
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">15</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">16</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">17</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 sr">18</div>
+            <div class="col-md-8">
+              <img class="brand-image" src="../../../assets/image/brand-3.png" alt="brand">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
