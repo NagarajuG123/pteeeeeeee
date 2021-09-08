@@ -13,8 +13,6 @@ import { Subject } from 'rxjs';
 })
 export class SitemapComponent implements OnInit {
   sitemap: Sitemap [] =[];
-  year: string = '';
-  month: string = '';
   data: Sitemap [] = [];
   brandSlug: string = '';
   apiUrl: string = '';
@@ -23,37 +21,37 @@ export class SitemapComponent implements OnInit {
 
 
   constructor(private apiService: ApiService,
-        private route: ActivatedRoute,
-        private router: Router,
-        private tstate: TransferState) {
-          this.router.events.subscribe((events) => {
-            if (events instanceof NavigationEnd) {
-              this.brandSlug = events.url.split('/')[1];
-              if (
-                this.brandSlug === 'sitemap' ||
-                this.brandSlug === '' ||
-                this.brandSlug.includes('#')
-              ) {
-                this.brandSlug = '1851';
-              } else {
-                this.brandSlug = this.brandSlug.replace(/\+/g, '');
-              }
-            }
-          });
-         }
+    private route: ActivatedRoute,
+    private router: Router,
+    private tstate: TransferState) {
+      this.router.events.subscribe((events) => {
+        if (events instanceof NavigationEnd) {
+          this.brandSlug = events.url.split('/')[1];
+          if (
+            this.brandSlug === 'sitemap' ||
+            this.brandSlug === '' ||
+            this.brandSlug.includes('#')
+          ) {
+            this.brandSlug = '1851';
+          } else {
+            this.brandSlug = this.brandSlug.replace(/\+/g, '');
+          }
+        }
+      });
+    }
 
   ngOnInit(): void {
       this.apiService
-      .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+      .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+      .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         if (response.status != 404 && response.type === 'brand_page') {
           this.brandSlug = response.slug;
           this.apiUrl = `${this.brandSlug}/sitemap-page`;
-          this.getSitemap();
         } else {
           this.apiUrl = `sitemap-page`;
-          this.getSitemap();
         }
+        this.getSitemap();
       });
   }
 

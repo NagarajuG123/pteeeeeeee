@@ -13,8 +13,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class SitemapDetailsComponent implements OnInit {
   sitemap: Sitemap[] = [];
-  year: any = [];
-  month: any = [];
+  year: any;
+  month: any;
   brandSlug: string = '';
   apiUrl: string = '';
   private onDestroySubject = new Subject();
@@ -24,7 +24,7 @@ export class SitemapDetailsComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private tstate: TransferState
+    private tstate: TransferState,
   ) { 
       this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
@@ -47,7 +47,7 @@ export class SitemapDetailsComponent implements OnInit {
       this.year = params.get('year');
       this.month = params.get('month');
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
         .subscribe((response) => {
           if (response.status != 404 && response.type === 'brand_page') {
             this.brandSlug = response.slug;
@@ -76,23 +76,5 @@ export class SitemapDetailsComponent implements OnInit {
       this.tstate.set(RESULT_KEY,sitemapDetail);
     });
     }
-  }
-
-  getMonth(month: number) {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    return months[month - 1];
   }
 }
