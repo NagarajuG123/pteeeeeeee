@@ -4,13 +4,13 @@ import { TermsComponent } from './terms.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: TermsComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TermsRoutingModule { }
+export class TermsRoutingModule {}
