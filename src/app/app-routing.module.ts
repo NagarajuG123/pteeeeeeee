@@ -44,6 +44,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'sitemap',
+    loadChildren: () =>
+      import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
+  },
+  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () =>
