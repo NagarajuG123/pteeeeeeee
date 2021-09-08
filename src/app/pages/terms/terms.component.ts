@@ -6,6 +6,8 @@ import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { PageScrollService } from 'ngx-page-scroll-core';
+import { Terms } from 'src/app/_core/models/terms';
 
 const RESULT_KEY = makeStateKey<any>('termsState');
 
@@ -15,7 +17,7 @@ const RESULT_KEY = makeStateKey<any>('termsState');
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
-  termsData: any = [];
+  termsData: Terms[] = [];
   slug = '1851';
   isBrowser!: boolean;
   isSponsored: boolean = false;
@@ -28,6 +30,7 @@ export class TermsComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object,
     private route: ActivatedRoute,
     private tstate: TransferState,
+    private pageScrollService: PageScrollService,
     @Inject(DOCUMENT) private document: any,
   ) { 
     this.isBrowser = isPlatformBrowser(platformId);
@@ -55,23 +58,23 @@ export class TermsComponent implements OnInit {
   }
     ngAfterViewInit() {
     if (this.isBrowser) {
-      // this.route.fragment.subscribe((fragment: string) => {
-      //   if (fragment === 'sponsored') {
-      //     this.isSponsored = true;
-      //   }
-      // });
+      this.route.fragment.subscribe((fragment) => {
+        if (fragment === 'sponsored') {
+          this.isSponsored = true;
+        }
+      });
     }
   }
   imageLoaded() {
     if (this.isSponsored) {
-      // this.pageScrollService.scroll({
-      //   scrollTarget: '#content-sponsored',
-      //   document: this.document,
-      // });
+      this.pageScrollService.scroll({
+        scrollTarget: '#content-sponsored',
+        document: this.document,
+      });
     }
   }
-  // errorHandler(event) {
-  //   event.target.src = '/assets/img/termsofuse.png';
-  // }
+  errorHandler(event:any) {
+    event.target.src = '/assets/img/termsofuse.png';
+  }
 
 }
