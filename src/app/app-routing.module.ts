@@ -44,6 +44,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'about',
+    loadChildren: () =>
+      import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
+  },
+  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () =>
