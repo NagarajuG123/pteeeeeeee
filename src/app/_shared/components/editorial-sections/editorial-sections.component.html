@@ -10,7 +10,7 @@
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
         [ngClass]="
-          tabsName.length > this.commonService.vtabsItem ? '' : 'd-none'
+          tabName?.length > this.commonService.vtabsItem ? '' : 'd-none'
         "
         (click)="prev()"
       >
@@ -18,7 +18,7 @@
       </div>
       <ul class="row innerContent m-0">
         <li
-          *ngFor="let item of tabsName; index as i"
+          *ngFor="let item of tabName; index as i"
           class="col col-sm-6 col-md-4 col-lg border-end text-center"
           [ngClass]="
             i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab
@@ -36,14 +36,14 @@
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
             (click)="setActiveTab(i + 1)"
-            >{{ item.tabLabel }}</span
+            >{{ item?.shortName }}</span
           >
         </li>
       </ul>
       <div
         class="next position-absolute top-50 end-0 translate-middle-y pe-3"
         [ngClass]="
-          tabsName.length > this.commonService.vtabsItem ? '' : 'd-none'
+          tabName?.length > this.commonService.vtabsItem ? '' : 'd-none'
         "
         (click)="next()"
       >
@@ -56,11 +56,25 @@
     <div class="tabItemList innerContent mt-4 py-3">
       <ul class="row gx-2" [ngClass]="1 === activeTab ? 'active' : 'd-none'">
         <li
-          *ngFor="let list of tablist; index as i"
+          *ngFor="let list of items; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
           <div class="items card border-0 rounded-0">
-            <img src="#" class="card-img-top" alt="img" />
+            <img 
+            appYoutubeImage
+            srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
+            {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
+            class="card-img-top img-fluid"
+            sizes="{{
+              '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+            }}"
+            width="95"
+            height="100"
+            data-src="{{ list.media | defaultImage: 100:95 }}"
+            alt="editorial"/>
             <div class="card-body">
               <h6
                 class="
@@ -70,12 +84,12 @@
                   fw-bold
                 "
               >
-                {{ list.title }}
+                PEOPLE 
               </h6>
               <h4 class="card-text mb-1">
-                <strong>{{ list.detail }}</strong>
+                <strong>{{ list.title }}</strong>
               </h4>
-              <small>{{ list.by }}</small>
+              <small>{{ list.author?.name }}</small>
             </div>
           </div>
         </li>
