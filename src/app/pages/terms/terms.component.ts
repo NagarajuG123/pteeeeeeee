@@ -7,7 +7,8 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { PageScrollService } from 'ngx-page-scroll-core';
-import { Terms } from 'src/app/_core/models/terms';
+import { Terms } from 'src/app/_core/models/terms.model';
+import { Meta } from 'src/app/_core/models/meta.model';
 
 const RESULT_KEY = makeStateKey<any>('termsState');
 
@@ -18,6 +19,8 @@ const RESULT_KEY = makeStateKey<any>('termsState');
 })
 export class TermsComponent implements OnInit {
   termsData: Terms[] = [];
+  metaData: Meta[] = [];
+  publication!: string;
   slug = '1851';
   isBrowser!: boolean;
   isSponsored: boolean = false;
@@ -40,6 +43,10 @@ export class TermsComponent implements OnInit {
     if (this.tstate.hasKey(RESULT_KEY)) {
       const termsData = this.tstate.get(RESULT_KEY, {});
       this.termsData = termsData['data'];
+      this.metaData = termsData['meta'];
+      this.publication = termsData['publication'];
+      this.metaService.setSeo(this.metaData);
+      this.metaService.setTitle(`Terms of use | ${this.publication}`);
     } else {
       const termsData: any = {};
 
@@ -49,8 +56,10 @@ export class TermsComponent implements OnInit {
 
       forkJoin([termsApi,metaApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
         termsData['data'] = response[0];
-        this.metaService.setSeo(response[1].data);
-        this.metaService.setTitle(`Terms of use | ${response[2].title}`);
+        termsData['meta'] = response[1].data;
+        termsData['publication'] = response[2].title;
+        this.metaService.setSeo(termsData['meta']);
+        this.metaService.setTitle(`Terms of use | ${termsData['publication']}`);
       });
 
         this.tstate.set(RESULT_KEY, termsData);

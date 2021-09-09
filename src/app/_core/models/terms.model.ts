@@ -1,5 +1,4 @@
-import { SyncAsync } from '@angular/compiler/src/util';
-import { Content } from './content';
+import { Content } from './content.model';
 import { Media } from "./media.model";
 
 export interface Terms {
