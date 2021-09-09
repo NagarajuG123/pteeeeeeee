@@ -17,6 +17,7 @@ export class SitemapDetailsComponent implements OnInit {
   month: any;
   brandSlug: string = '';
   apiUrl: string = '';
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -48,14 +49,15 @@ export class SitemapDetailsComponent implements OnInit {
       this.month = params.get('month');
       this.apiService
         .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
           if (response.status != 404 && response.type === 'brand_page') {
             this.brandSlug = response.slug;
             this.apiUrl = `${this.brandSlug}/sitemap-page/${this.year}/${this.month}`;
           } else {
             this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
-            this.getSitemapDetail();
           }
+          this.getSitemapDetail();
         });
     });
   }
