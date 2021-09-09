@@ -53,9 +53,9 @@
     </div>
   </div>
 
-  <div class="publication_main" *ngIf="publication_contents">
+  <div class="publication_main" *ngIf="publicationContents">
     <div
-      *ngFor="let content of publication_contents; let i = index"
+      *ngFor="let content of publicationContents; let i = index"
       class="publication_content d-flex flex-wrap"
       [class.flex-row-reverse]="i % 2 === 0"
     >

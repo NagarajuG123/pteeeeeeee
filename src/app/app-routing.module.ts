@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { StoryComponent } from './pages/story/story.component';
+import { ErrorComponent } from './_shared/components/error/error.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
@@ -49,6 +50,11 @@ const routes: Routes = [
       import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
+    path: '404',
+    pathMatch: 'full',
+    component: ErrorComponent,
+  },
+  {
     matcher: isArticlePage,
     component: StoryComponent,
     loadChildren: () =>
@@ -58,6 +64,10 @@ const routes: Routes = [
     path: ':slug',
     loadChildren: () =>
       import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
+  {
+    path: '**', // Navigate to Home Page if not found any page
+    component: ErrorComponent,
   },
 ];
 
