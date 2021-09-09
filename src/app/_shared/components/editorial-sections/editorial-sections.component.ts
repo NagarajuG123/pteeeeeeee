@@ -21,6 +21,7 @@ export class EditorialSectionsComponent implements OnInit {
   noOfTabsShow = 5;
   activeTab = 1;
   skipTab = 0;
+  tab!: string;
   
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -64,8 +65,10 @@ export class EditorialSectionsComponent implements OnInit {
   onResize(event: any) {
     this.commonService.resizeSidebar(event.target.innerWidth);
   }
-  setActiveTab(val: any) {
+  setActiveTab(val: any,item: any) {
     this.activeTab = val;
+    this.tab = item?.shortName;
+    this.getData(this.tab);
   }
   prev() {
     if (this.skipTab > 0) {
@@ -76,5 +79,15 @@ export class EditorialSectionsComponent implements OnInit {
     if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
       this.skipTab += 1;
     }
+  }
+  getData(tab: any){
+    this.apiService.getAPI(`1851/spotlight/${tab}?limit=10&offset=0`)
+    .subscribe(result => {
+      if (result.data.length) {
+        result['data'].forEach((item: any, index: number) => {
+          this.items.push(item);
+        });
+      }
+    });
   }
 }
