@@ -18,7 +18,7 @@ const RESULT_KEY = makeStateKey<any>('termsState');
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
-  termsData: Terms[] = [];
+  termsData: any = [];
   metaData: Meta[] = [];
   publication!: string;
   slug = '1851';
