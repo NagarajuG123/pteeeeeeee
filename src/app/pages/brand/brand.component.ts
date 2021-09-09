@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
@@ -18,8 +18,10 @@ export class BrandComponent implements OnInit {
   faYoutubeIcon = faYoutube;
   faInstagramIcon = faInstagram;
   faCaretDown = faCaretDown;
-
+  enableScroll = true;
   tabnewsList = tabnewsList;
+
+  articlesList = [0];
 
   relatedArticles = [
     {
@@ -45,7 +47,46 @@ export class BrandComponent implements OnInit {
   ];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.scrollTo(0, 0);
+  }
+
+  @HostListener('window:scroll', [])
+  async onScroll() {
+    if (this.bottomReached() && this.enableScroll) {
+      this.enableScroll = false;
+      if (this.articlesList.length < 5) {
+        // this.articlesList = [...this.articlesList, this.articlesList.length];
+        await this.loadArticles('');
+        window.scrollTo(0, window.scrollY - 50);
+        setTimeout(() => {
+          this.enableScroll = true;
+        }, 1000);
+      }
+    }
+  }
+
+  bottomReached(): boolean {
+    // let footer: any = document.querySelector('footer');
+    // featureNews.offsetHeight
+    return (
+      Math.ceil(window.innerHeight + window.scrollY) >=
+      document.body.offsetHeight
+    );
+  }
+
+  async loadArticles(val: any) {
+    // In this function you can call more article api or you add article in list
+    if (this.articlesList.length < 5) {
+      this.articlesList = [...this.articlesList, this.articlesList.length];
+    }
+    if (val === 'next') {
+      let ArticlesNewsSection: any = document.querySelector(
+        '.ArticlesNewsSection'
+      );
+      window.scrollTo(0, window.scrollY + ArticlesNewsSection.offsetHeight);
+    }
+  }
 }
 
 const tabnewsList = [

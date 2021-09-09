@@ -147,6 +147,10 @@
       font-family: "ProximaNova-Regular";
       font-size: 17px;
       z-index: 1;
+      img,
+      span {
+        cursor: pointer;
+      }
     }
   }
   .ArticlesNewsSection {
