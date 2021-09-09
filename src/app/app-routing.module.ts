@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
+import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { StoryComponent } from './pages/story/story.component';
 
@@ -41,6 +42,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/power-ranking/power-ranking.module').then(
         (m) => m.PowerRankingModule
+      ),
+  },
+  {
+    path: 'contact-editorial',
+    component: ContacteditorialComponent,
+    loadChildren: () =>
+      import('./pages/contacteditorial/contacteditorial.module').then(
+        (m) => m.ContacteditorialModule
       ),
   },
   {

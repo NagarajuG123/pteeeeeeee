@@ -1,0 +1,128 @@
+.contact-editorial-main {
+  padding: 19px 0 36px;
+    > ul {
+      padding: 0 0 0 12px;
+    > li {
+      padding-left: 10px;
+      }
+    }
+    .radio_btns1 {
+      color: #263645;
+    }
+    input {
+      display: none;
+    }
+    span {
+      font-size: 15px;
+      line-height: 19px;
+      font-weight: 400;
+      font-family: 'ProximaNova-Medium';
+      background: url(/assets/img/unchecked.png) no-repeat left 1px;
+      padding: 0 0 0 25px;
+      letter-spacing: .4px;
+    }
+  }
+  .container {
+    max-width: 1380px;
+    margin: 0 auto;
+    display: block;
+}
+.contact-editorial-details {
+  margin: 0 auto;
+  padding: 71px 10px 56px;
+  h4 {
+    letter-spacing: .5px;
+ }
+ p {
+  color: #263645;
+  font-family: ProximaNova-Light;
+  letter-spacing: .4px;
+  padding: 5px 0 0;
+ }
+}
+
+.editors {
+  .form-group {
+    margin: 0;
+  }
+  form {
+  padding: 50px 20px 15px;
+  }
+  ul {
+    margin: 0 -6px;
+    li {
+      padding: 0 6px 16px;
+    }
+  }
+  .form-control {
+    height: 44px;
+    border: 1px solid #d4d5d6;
+    outline: 0;
+    font-size: 16px;
+    line-height: 44px;
+    color: #929496;
+    font-weight: 400;
+    font-family: ProximaNova-Regular;
+    padding: 0 15px 0 18px;
+    letter-spacing: .3px;
+    border-radius: 0;
+  }
+  h6 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #929496;
+    font-family: ProximaNova-Regular;
+    letter-spacing: .4px;
+    padding: 0 0 20px;
+  }
+  button {
+    border: 0;
+    outline: 0;
+    width: 159px;
+    height: 36px;
+    padding: 0 67px 0 32px;
+    cursor: pointer;
+  }
+}
+.form-control {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  background-clip: padding-box;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+h6{
+  font-weight: 400;
+}
+.editors-details {
+  padding: 8px 20px 0 46px;
+  display: none;
+  strong {
+    line-height: 13px;
+    color: #808183;
+    letter-spacing: .3px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'ProximaNova-Regular';
+ }
+ ul {
+  margin: 0;
+  padding: 6px 20px 0;
+    li {
+      vertical-align: top;
+      padding: 0 16px 0 0;
+    }
+  }
+  .radio_btns {
+    color: #808183;
+  }
+   .editors-details strong {
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'ProximaNova-Regular';
+    background: url(/assets/img/unchecked1.png) no-repeat left 1px;
+    padding: 0 0 0 17px;
+    line-height: 17px;
+    letter-spacing: .4px;
+  }
+}
