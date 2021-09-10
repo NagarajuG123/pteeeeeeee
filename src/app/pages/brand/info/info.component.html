@@ -1,7 +1,11 @@
 <!-- Brand Category -->
 <div *ngIf="isCategory">
   <div class="empty"></div>
-  <app-featured [slug]="brandSlug" [apiUrl]="brandFeaturedUrl"></app-featured>
+  <app-featured
+    [type]="'BrandCategory'"
+    [slug]="brandSlug"
+    [apiUrl]="brandFeaturedUrl"
+  ></app-featured>
   <app-category-trending
     [data]="brandTrending?.data"
     [subTitle]="categoryParam"

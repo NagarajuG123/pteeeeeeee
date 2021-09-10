@@ -1,6 +1,9 @@
 <div class="empty"></div>
 
-<app-featured [apiUrl]="'1851/featured-articles'"></app-featured>
+<app-featured
+  [type]="'Home'"
+  [apiUrl]="'1851/featured-articles'"
+></app-featured>
 <div class="main-content home-page">
   <app-news [slug]="'1851'" [type]="'homepage'"> </app-news>
 
