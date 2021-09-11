@@ -86,9 +86,9 @@ const routes: Routes = [
       import('./pages/story/story.module').then((m) => m.StoryModule),
   },
   {
-    path: ':slug',
+    path: 'franchisees',
     loadChildren: () =>
-      import('./pages/brand/brand.module').then((m) => m.BrandModule),
+      import('./pages/franchisees/franchisees.module').then((m) => m.FranchiseesModule),
   },
 ];
 
