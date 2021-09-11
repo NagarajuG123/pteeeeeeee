@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Meta } from 'src/app/_core/models/meta.model';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-sitemap-details',
@@ -13,6 +15,9 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class SitemapDetailsComponent implements OnInit {
   sitemap: Sitemap[] = [];
+  metaData: Meta[] = [];
+  publication!: string;
+  newsType!: string;
   year: any;
   month: any;
   brandSlug: string = '';
@@ -24,6 +29,7 @@ export class SitemapDetailsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private metaService: MetaService,
     private router: Router,
     private tstate: TransferState,
   ) { 
@@ -67,16 +73,35 @@ export class SitemapDetailsComponent implements OnInit {
     if(this.tstate.hasKey(RESULT_KEY)){
       const sitemapDetail = this.tstate.get(RESULT_KEY,{});
       this.sitemap = sitemapDetail['data'];
+      this.metaData = sitemapDetail['meta'];
+      this.publication = sitemapDetail['publication'];
+      this.newsType = sitemapDetail['newsType'];
+      this.metaService.setSeo(this.metaData);
+      this.metaService.setTitle(`Terms of use | ${this.publication}`);
     }
     else{
       const sitemapDetail:any = {};
-      this.apiService.getAPI(`${this.apiUrl}`).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+      const sitemapDetailApi = this.apiService.getAPI(`${this.apiUrl}`);
+      const metaApi = this.apiService.getAPI(`${this.brandSlug}/meta`);
+      const publicationApi = this.apiService.getAPI(`${this.brandSlug}/publication-instance`);
+
+      forkJoin([sitemapDetailApi,metaApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
         sitemapDetail['data'] = response;
-      if (response.status === 404) {
-        this.router.navigateByUrl('/404');
-      }
-      this.tstate.set(RESULT_KEY,sitemapDetail);
-    });
+        sitemapDetail['meta'] = response[1].data;
+        sitemapDetail['publication'] = response[2].title;
+        sitemapDetail['newsType'] = response[2].newsType;
+        this.metaService.setSeo(sitemapDetail['meta']);
+        if (this.brandSlug === '1851') {
+          this.metaService.setTitle(`Subscribe to | ${sitemapDetail['publication']} | ${sitemapDetail['newsType']}`);
+        } else {
+          this.metaService.setTitle(`Subscribe to | ${this.brandSlug} ${sitemapDetail['publication']} | ${sitemapDetail['newsType']}`);
+        }
+        if (response[0].status === 404) {
+          this.router.navigateByUrl('/404');
+        }
+        this.tstate.set(RESULT_KEY,sitemapDetail);
+      });
     }
   }
 }
+       
