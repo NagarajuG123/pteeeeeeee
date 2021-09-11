@@ -44,10 +44,41 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'sitemap',
+    loadChildren: () =>
+      import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
+  },
+  {
+    path: 'termsofuse',
+    loadChildren: () =>
+      import('./pages/terms/terms.module').then((m) => m.TermsModule),
+  },
+  {
+    path: 'monthlydetails/:month/:year/:date/:id',
+    loadChildren: () =>
+      import('./pages/monthly-details/monthly-details.module').then(
+        (m) => m.MonthlyDetailsModule
+      ),
+  },
+  {
+    path: 'monthlycovers',
+    loadChildren: () =>
+      import('./pages/monthly-covers/monthly-covers.module').then(
+        (m) => m.MonthlyCoversModule
+      ),
+  },
+  {
     path: 'about',
     loadChildren: () =>
       import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
+  {
+    path: 'storypage/preview/:storyId',
+    component: StoryComponent,
+    loadChildren: () =>
+      import('./pages/story/story.module').then((m) => m.StoryModule),
+  },
+
   {
     matcher: isArticlePage,
     component: StoryComponent,
@@ -55,9 +86,9 @@ const routes: Routes = [
       import('./pages/story/story.module').then((m) => m.StoryModule),
   },
   {
-    path: ':slug',
+    path: 'franchisees',
     loadChildren: () =>
-      import('./pages/brand/brand.module').then((m) => m.BrandModule),
+      import('./pages/franchisees/franchisees.module').then((m) => m.FranchiseesModule),
   },
 ];
 
@@ -65,6 +96,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
+      scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],
