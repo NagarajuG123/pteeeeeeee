@@ -15,8 +15,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
-
-const RESULT_KEY = makeStateKey<any>(`featuredState`);
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-featured',
@@ -48,7 +47,6 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
-
   ngOnInit(): void {
     this.scrollbarOptions = {
       axis: 'y',
@@ -73,23 +71,27 @@ export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
   getFeatured() {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const featuredData = this.tstate.get(RESULT_KEY, {});
+    const KEY = makeStateKey<any>(`featuredState${this.type}`);
+    const featuredData = this.tstate.get(KEY, {});
+    if (featuredData['highlight']) {
+      this.tstate.remove(KEY);
+      // const featuredData = this.tstate.get(this.key, {});
       this.highlight = featuredData['highlight'];
       this.featuredData = featuredData['data'];
-    }
-    else{
+    } else {
       const featuredData = {};
-    this.apiService
-      .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset}`)
-      .subscribe((response) => {
-        if (response.data != null) {
-          featuredData['highlight'] = response.data[0];
-          featuredData['data'] = response.data.slice(1);
-        }
-      });
-      this.tstate.set(RESULT_KEY, featuredData);
-    } 
+      this.apiService
+        .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset}`)
+        .subscribe((response) => {
+          if (response.data != null) {
+            featuredData['highlight'] = this.highlight = response.data[0];
+            featuredData['data'] = this.featuredData = response.data.slice(1);
+          }
+        });
+      if (!this.isBrowser) {
+        this.tstate.set(KEY, featuredData);
+      }
+    }
   }
   readMore(item: any) {
     return this.commonService.readMore(item);
