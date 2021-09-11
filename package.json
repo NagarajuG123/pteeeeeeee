@@ -38,6 +38,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "ngx-owl-carousel-o": "^6.0.0",
+    "ngx-page-scroll-core": "^7.0.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
