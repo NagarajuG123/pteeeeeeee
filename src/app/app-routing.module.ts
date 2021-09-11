@@ -48,6 +48,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
+  { 
+    path: 'termsofuse',
+    loadChildren: () =>
+      import('./pages/terms/terms.module').then(
+        (m) => m.TermsModule
+      ),
+  },
   {
     matcher: isArticlePage,
     component: StoryComponent,
@@ -65,6 +72,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
+      scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],
