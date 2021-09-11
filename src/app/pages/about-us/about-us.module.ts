@@ -5,6 +5,7 @@ import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     AboutUsRoutingModule,
     ToastrModule,
     RecaptchaModule,
