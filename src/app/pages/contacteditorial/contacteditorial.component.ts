@@ -13,6 +13,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 
 import * as $ from 'jquery';
 import { ValidationService } from 'src/app/_core/services/validation.service';
+import { Meta } from 'src/app/_core/models/meta.model';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 
@@ -31,12 +33,14 @@ export class ContacteditorialComponent implements OnInit {
   isBrowser: boolean;
   isServer: boolean;
   control!: FormControl;
+  metaData: Meta[] = [];
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   
   constructor(
     private apiService: ApiService,
     private tstate: TransferState,
+    private metaService: MetaService,
     @Inject(PLATFORM_ID) platformId: Object,
     fb: FormBuilder
   ) {
@@ -73,15 +77,22 @@ export class ContacteditorialComponent implements OnInit {
       const contactData = this.tstate.get(RESULT_KEY,{});
       this.data = contactData['data'];
       this.publication = contactData['publication'];
+      this.metaData = contactData['meta'];
+      this.metaService.setSeo(this.metaData);
+      this.metaService.setTitle(`Contact Editorial | ${this.publication.title.toUpperCase()}`);
     }
     else{
       const contactData: any = {};
       const contactApi = this.apiService.getAPI('1851/contact-editorial');
       const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+      const metaApi = this.apiService.getAPI(`1851/meta`)
       
-      forkJoin([contactApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+      forkJoin([contactApi,publicationApi,metaApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
         contactData['data'] = response[0].data;
         contactData['publication'] = response[1];
+        contactData['meta'] = response[2].data;
+        this.metaService.setSeo(contactData['meta']);
+        this.metaService.setTitle(`Contact Editorial | ${contactData['publication'].title.toUpperCase()}`);
       });
       this.tstate.set(RESULT_KEY,contactData);
     }
