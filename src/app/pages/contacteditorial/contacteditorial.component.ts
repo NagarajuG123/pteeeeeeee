@@ -85,26 +85,7 @@ export class ContacteditorialComponent implements OnInit, AfterViewInit {
       this.tstate.set(RESULT_KEY,contactData);
     }
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $(document).ready(function () {
-        $('.text-field').click(function (e) {
-          $(this).closest('ul>li').find('.editors-details').slideToggle();
-          $(this).closest('ul> li').find('.form-group').addClass('active');
-          $(this)
-            .closest('ul> li')
-            .siblings()
-            .find('.form-group')
-            .removeClass('active');
-        });
-
-        $('.sucess-message a').click(function (e) {
-          $('.editors').show();
-          $('.sucess-message').hide();
-        });
-      });
-    }
-  }
+  
   toggleCurrent(e:any) {
     $('.current-details').slideToggle();
     if (!e.target.checked) {
