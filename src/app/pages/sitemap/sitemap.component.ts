@@ -71,6 +71,11 @@ export class SitemapComponent implements OnInit {
       this.newsType = sitemapData['newsType'];
       this.metaService.setSeo(this.metaData);
       this.metaService.setTitle(`Terms of use | ${this.publication}`);
+      if (this.brandSlug === '1851') {
+        this.metaService.setTitle(`Sitemap for ${this.publication} | ${this.newsType}`);
+      } else {
+        this.metaService.setTitle(`Sitemap for ${this.brandSlug} ${this.publication} | ${this.newsType}`);
+      }
       Object.keys(sitemapData['data']).forEach((year: any) => {
         const monthData: { month: string; number: number; url: any }[] = [];
         Object.keys(this.sitemap[year]).forEach((month) => {
@@ -107,7 +112,6 @@ export class SitemapComponent implements OnInit {
         } else {
           this.metaService.setTitle(`Sitemap for ${this.brandSlug} ${sitemapData['publication']} | ${sitemapData['newsType']}`);
         }
-        this.metaService.setTitle(`Sitemap for | ${sitemapData['publication']}`);
         this.tstate.set(RESULT_KEY,sitemapData);
       });
     }

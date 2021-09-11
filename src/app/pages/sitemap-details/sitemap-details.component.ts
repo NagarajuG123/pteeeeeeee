@@ -77,7 +77,11 @@ export class SitemapDetailsComponent implements OnInit {
       this.publication = sitemapDetail['publication'];
       this.newsType = sitemapDetail['newsType'];
       this.metaService.setSeo(this.metaData);
-      this.metaService.setTitle(`Terms of use | ${this.publication}`);
+      if (this.brandSlug === '1851') {
+        this.metaService.setTitle(`Subscribe to | ${this.publication} | ${this.newsType}`);
+      } else {
+        this.metaService.setTitle(`Subscribe to | ${this.brandSlug} ${this.publication} | ${this.newsType}`);
+      }
     }
     else{
       const sitemapDetail:any = {};
