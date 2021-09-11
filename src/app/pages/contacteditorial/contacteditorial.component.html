@@ -56,11 +56,8 @@
                     name="fname"
                     [formControl]="contactForm.controls['first_name']"
                   />
-                  <!-- <app-error-message
-                    *ngIf="isSubmitted"
-                    class="full-width"
-                    [control]="contactForm.controls['first_name']"
-                  ></app-error-message> -->
+                  <div *ngIf="errorMessage && isSubmitted" 
+                  class="error-message full-width">{{ errorMessage }}</div>
                 </div>
               </li>
               <li class="col-xl-6">
@@ -73,11 +70,8 @@
                     name="lname"
                     [formControl]="contactForm.controls['last_name']"
                   />
-                  <!-- <app-error-message
-                    *ngIf="isSubmitted"
-                    class="full-width"
-                    [control]="contactForm.controls['last_name']"
-                  ></app-error-message> -->
+                  <div *ngIf="errorMessage && isSubmitted" 
+                  class="error-message full-width" >{{ errorMessage }}</div>
                 </div>
               </li>
               <li class="col-xl-12">
@@ -90,11 +84,8 @@
                     name="femail"
                     [formControl]="contactForm.controls['email']"
                   />
-                  <!-- <app-error-message
-                    *ngIf="isSubmitted"
-                    class="full-width"
-                    [control]="contactForm.controls['email']"
-                  ></app-error-message> -->
+                  <div *ngIf="errorMessage && isSubmitted" 
+                  class="error-message full-width">{{ errorMessage }}</div>
                 </div>
               </li>
               <li class="col-xl-12">
@@ -106,11 +97,9 @@
                     name="fmessage"
                     [formControl]="contactForm.controls['message']"
                   ></textarea>
-                  <!-- <app-error-message
-                    *ngIf="isSubmitted"
-                    class="full-width"
-                    [control]="contactForm.controls['message']"
-                  ></app-error-message> -->
+                  <div *ngIf="errorMessage && isSubmitted" 
+                  class="error-message full-width" 
+                  >{{ errorMessage }}</div>
                 </div>
               </li>
             </ul>

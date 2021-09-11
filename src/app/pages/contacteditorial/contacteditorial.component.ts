@@ -5,13 +5,14 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 import * as $ from 'jquery';
+import { ValidationService } from 'src/app/_core/services/validation.service';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 
@@ -29,6 +30,7 @@ export class ContacteditorialComponent implements OnInit {
   data: any = [];
   isBrowser: boolean;
   isServer: boolean;
+  control!: FormControl;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   
@@ -83,6 +85,17 @@ export class ContacteditorialComponent implements OnInit {
       });
       this.tstate.set(RESULT_KEY,contactData);
     }
+  }
+
+  get errorMessage() {
+    if (this.control && this.control.errors) {
+      for (const prop in this.control.errors) {
+        if (this.control.errors.hasOwnProperty(prop)) {
+          return ValidationService.getValidatorErrorMessage(prop);
+        }
+      }
+    }
+    return null;
   }
   
   toggleCurrent(e:any) {
