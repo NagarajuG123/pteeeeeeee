@@ -19,10 +19,38 @@
           class="lazyload"
         />
       </figure>
-      <app-modal
-        [videoUrl]="data?.media?.url"
-        [modalId]="'aboutModal'"
-      ></app-modal>
+      <div
+  class="modal fade"
+  id="'aboutModal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  (click)="openVideoPlayer = true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="openVideoPlayer = false"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="embed-responsive embed-responsive-16by9">
+          <app-video-player
+            *ngIf="openVideoPlayer"
+            class="embed-responsive-item"
+            [srcUrl]="data?.media?.url"
+          >
+          </app-video-player>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
     </a>
   </div>
   <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
@@ -149,11 +177,7 @@
                   placeholder="FIRST NAME*"
                   [formControl]="contactForm.controls['first_name']"
                 />
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['first_name']"
-                ></app-error-message>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
               </li>
               <li class="col-lg-6">
                 <input
@@ -162,11 +186,7 @@
                   placeholder="LAST NAME*"
                   [formControl]="contactForm.controls['last_name']"
                 />
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['last_name']"
-                ></app-error-message>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
               </li>
               <li class="col-12">
                 <input
@@ -175,11 +195,7 @@
                   placeholder="EMAIL ADDRESS*"
                   [formControl]="contactForm.controls['email']"
                 />
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['email']"
-                ></app-error-message>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
               </li>
               <li class="col-12">
                 <textarea
@@ -189,11 +205,7 @@
                   class="feild9 col-lg-12"
                   [formControl]="contactForm.controls['message']"
                 ></textarea>
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['message']"
-                ></app-error-message>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
               </li>
 
               <li class="col-sm-8 col-12">
@@ -203,11 +215,7 @@
                   siteKey="{{ siteKey }}"
                 >
                 </re-captcha>
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['reCaptchaCode']"
-                ></app-error-message>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
               </li>
               <li class="col-sm-4 col-12">
                 <button

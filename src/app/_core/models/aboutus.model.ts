@@ -6,4 +6,5 @@ export interface Aboutus {
   ga_code?: string
   media?: Media;
   contents?: any;
+  demo?: string;
 }

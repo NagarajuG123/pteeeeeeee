@@ -32,6 +32,6 @@ export class ValidationService {
       invalidPhoneNumber: 'Please check the phone number, (xxx) xxx-xxxx.',
       invalidAccept: 'Please check again.',
     };
-    return config[validatorName];
+    return config;
   }
 }
