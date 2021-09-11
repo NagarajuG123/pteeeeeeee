@@ -2,74 +2,112 @@
 
 .power-ranking-container {
   height: calc(100vh - 65px);
-
   .top-container {
     img {
       position: relative;
       width: 100%;
       height: 80vh;
     }
-
     .text-box {
       position: absolute;
       bottom: 15vh;
       left: 20vw;
       margin-left: -50px;
-      border-top: 3px solid black;
-      border-bottom: 3px solid black;
+      border-top: 3px solid $dark-gray;
+      border-bottom: 3px solid $dark-gray;
       text-align: center;
       width: 60%;
       margin: 0 auto;
       background-color: $white;
-
-      h1 {
+      .title {
         margin: 0;
+        color: $dark-gray;
+        font-family: "Ballinger Condensed";
+        font-weight: bold;
+        font-size: 44px;
       }
-
-      p {
+      .description {
         width: 70%;
         margin: 0 auto;
         color: $primary;
-        font-weight: 500;
+        font-family: "Ballinger Condensed";
+        font-weight: bold;
+        font-size: 20px;
         margin: 5px auto;
       }
     }
   }
 
   .bottom-container {
-    .first-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      text-align: center;
-
-      span {
-        width: 200px;
-        font-weight: 500;
-      }
+    .title-row {
+      color: $dark-gray;
+      font-family: "ProximaNova-Regular";
+      font-weight: bold;
+      font-size: 20px;
     }
-
-    .second-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      text-align: center;
-      background-color: $white;
-
-      span {
-        padding: 8px 0;
+    .rank-row {
+      height: 160px;
+      .sr {
         color: $primary;
-        width: 200px;
-        font-weight: 500;
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        font-size: 42px;
       }
-
+      .brand-image {
+        width: 145px;
+      }
       .trending-block {
-        span {
-          display: block;
-          padding: 5px;
+        .duration {
+          color: $dark-gray;
+          font-family: "Roboto";
+          font-weight: bold;
+          font-size: 12.54px;
+          line-height: 15px;
+        }
+        .count {
+          color: $primary;
+          font-family: "Roboto";
+          font-weight: bold;
+          font-size: 38px;
+          line-height: 45px;
         }
       }
+    }
+    .rank-row-odd {
+      background-color: $odd-row-color;
+    }
+    .rank-row-even {
+      background-color: $white;
+    }
+    .story-description {
+      cursor: pointer;
+      color: $primary;
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: underline;
+      text-align: left;
+    }
+  }
+
+  .remaining-container{
+    .sr{
+        color: $primary;
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+    }
+    .brand-image {
+      width: 125px;
+    }
+    .row-odd{
+      background-color: $odd-row-color;
+      height: 145px;
+    }
+    .row-even{
+      background-color: $white;
+      height: 145px;
     }
   }
 }
