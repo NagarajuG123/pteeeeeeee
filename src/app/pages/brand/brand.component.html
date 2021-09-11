@@ -1,1 +1,386 @@
-<p>brand works!</p>
+<div
+  class="articles"
+  *ngFor="let item of articlesList; index as i"
+  [id]="'articles' + (i + 1)"
+>
+  <div class="banner d-block">
+    <img
+      src="../../../assets/dummy-images/FB mockup 3.jpg"
+      alt="articles banner"
+    />
+  </div>
+
+  <!-- main articles details -->
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-12 col-md userDetail">
+        <div class="userImage position-relative">
+          <img
+            src="../../../assets/dummy-images/nick 1.png"
+            alt="user img"
+            class="position-absolute d-block"
+          />
+        </div>
+        <h1 class="fw-bold mb-0">By Nick Powills</h1>
+        <h5 class="primary-color fw-bold">1851 Founder & CEO</h5>
+        <hr />
+
+        <!-- social icons -->
+        <ul class="social d-flex p-0">
+          <li>
+            <a
+              href="#"
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                me-1
+                primary-bg
+              "
+            >
+              <fa-icon [icon]="faFacebookFIcon"></fa-icon>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                me-1
+                primary-bg
+              "
+            >
+              <fa-icon [icon]="faInstagramIcon"></fa-icon>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                me-1
+                primary-bg
+              "
+            >
+              <fa-icon [icon]="faLinkedinInIcon"></fa-icon>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                primary-bg
+              "
+            >
+              <fa-icon [icon]="faYoutubeIcon"></fa-icon>
+            </a>
+          </li>
+        </ul>
+        <!-- social icons -->
+        <hr />
+
+        <h5 class="fs-21 fw-bold mb-0">MORE LIKE THIS</h5>
+        <fa-icon
+          [icon]="faCaretDown"
+          [styles]="{ width: '14px', 'margin-top': '-6px' }"
+          class="primary-color"
+          size="lg"
+        ></fa-icon>
+
+        <ul class="most-like-articles list-group mt-4 mb-3">
+          <li *ngFor="let item of relatedArticles; index as i" class="mb-2">
+            <div class="newsImage me-2 pe-1 position-relative">
+              <a href="#">
+                <img
+                  width="139"
+                  height="84"
+                  [src]="item.media"
+                  alt="industry"
+                />
+              </a>
+            </div>
+            <div>
+              <p class="m-0">
+                <a href="#">{{ item.title }}</a>
+              </p>
+              <span class="m-0">
+                <a href="#" class="primary-color text-uppercase">{{
+                  item.by
+                }}</a>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Articles detail section -->
+      <div class="col-12 col-md ps-md-5">
+        <div class="details position-relative bg-white">
+          <div
+            class="
+              detailHead
+              position-absolute
+              bg-white
+              w-100
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+          >
+            <div
+              class="
+                category
+                position-absolute
+                top-0
+                start-50
+                translate-middle
+                primary-bg
+                text-white text-center
+                fw-bold
+                py-1
+              "
+            >
+              <a href="#" class="text-white">CATEGORY</a>
+            </div>
+            <h2 class="title text-center fw-bold">
+              <a href="#" class="text-black"
+                >Title Lorem Ipsum Conset Entumi<br />
+                Abudi?</a
+              >
+            </h2>
+          </div>
+
+          <div
+            class="
+              subTitle
+              text-center text-white
+              gray-bg
+              position-relative
+              pb-3
+              pt-4
+              fw-bold
+              mb-4
+            "
+          >
+            <div
+              class="
+                authorName
+                position-absolute
+                top-0
+                start-50
+                translate-middle
+                primary-bg
+                text-white text-center
+                fw-bold
+                py-1
+              "
+            >
+              <a href="#" class="text-white">LOREM IPSUM</a>
+            </div>
+            Cursus euismod quis viverra nibh cras pulvinar. Mattis aliquam
+            faucibus purus in massa.
+          </div>
+          <div class="description">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Est
+              ultricies integer quis auctor elit sed vulputate mi. A scelerisque
+              purus semper eget. Diam maecenas sed enim ut sem viverra aliquet
+              eget. Egestas quis ipsum suspendisse ultrices gravida dictum.
+              Volutpat diam ut venenatis tellus in metus. Massa enim nec dui
+              nunc mattis enim ut tellus. Tristique senectus et netus et
+              malesuada. Amet nulla facilisi morbi tempus iaculis urna id
+              volutpat. Dignissim diam quis enim lobortis. Non pulvinar neque
+              laoreet suspendisse interdum consectetur libero id. In metus
+              vulputate eu scelerisque felis imperdiet.
+            </p>
+
+            <p>
+              Purus in massa tempor nec feugiat nisl pretium fusce. Massa massa
+              ultricies mi quis hendrerit dolor magna eget est. Ac ut consequat
+              semper viverra. Congue mauris rhoncus aenean vel. Vulputate ut
+              pharetra sit amet aliquam id diam. Aenean pharetra magna ac
+              placerat vestibulum lectus mauris ultrices. Vulputate mi sit amet
+              mauris commodo. Facilisi cras fermentum odio eu feugiat pretium
+              nibh ipsum consequat. Diam in arcu cursus euismod. Nascetur
+              ridiculus mus mauris vitae ultricies leo integer. Tincidunt eget
+              nullam non nisi. Varius sit amet mattis vulputate enim nulla
+              aliquet porttitor lacus. Nulla pharetra diam sit amet. Non arcu
+              risus quis varius quam quisque id diam vel. Maecenas volutpat
+              blandit aliquam etiam erat. Dignissim convallis aenean et tortor
+              at risus viverra adipiscing at.
+            </p>
+
+            <p>
+              Magna sit amet purus gravida quis blandit. Amet dictum sit amet
+              justo donec enim diam vulputate ut. Mi bibendum neque egestas
+              congue quisque egestas. Neque vitae tempus quam pellentesque nec.
+              Sit amet dictum sit amet justo donec enim diam vulputate.
+              Fringilla est ullamcorper eget nulla. In nulla posuere
+              sollicitudin aliquam ultrices. Est ante in nibh mauris cursus. Et
+              malesuada fames ac turpis egestas sed tempus urna. Vitae nunc sed
+              velit dignissim sodales. Mollis aliquam ut porttitor leo a diam.
+              Justo nec ultrices dui sapien eget mi proin sed. Congue quisque
+              egestas diam in arcu cursus euismod. Cursus euismod quis viverra
+              nibh cras pulvinar. Mattis aliquam faucibus purus in massa. Diam
+              vel quam elementum pulvinar etiam non. Nec sagittis aliquam
+              malesuada bibendum arcu vitae elementum.
+            </p>
+
+            <p>
+              Amet consectetur adipiscing elit pellentesque habitant morbi
+              tristique senectus. Orci a scelerisque purus semper eget duis at
+              tellus. Habitant morbi tristique senectus et netus. Eleifend donec
+              pretium vulputate sapien nec sagittis. Et malesuada fames ac
+              turpis egestas maecenas. Urna condimentum mattis pellentesque id
+              nibh tortor id aliquet lectus. Augue lacus viverra vitae congue eu
+              consequat ac felis. Integer enim neque volutpat ac tincidunt vitae
+              semper quis lectus. In ornare quam viverra orci sagittis. Magnis
+              dis parturient montes nascetur ridiculus.
+            </p>
+
+            <p>
+              Amet dictum sit amet justo. Semper risus in hendrerit gravida
+              rutrum quisque non tellus orci. Id cursus metus aliquam eleifend
+              mi in nulla posuere. Lacus laoreet non curabitur gravida arcu.
+              Posuere lorem ipsum dolor sit amet consectetur adipiscing. Vitae
+              turpis massa sed elementum tempus egestas sed. Nisl tincidunt eget
+              nullam non nisi. Diam in arcu cursus euismod quis. Habitant morbi
+              tristique senectus et. Vel pharetra vel turpis nunc eget. Massa id
+              neque aliquam vestibulum morbi blandit. Sit amet est placerat in
+              egestas erat imperdiet. Consectetur a erat nam at lectus urna duis
+              convallis. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- next article line -->
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col d-none d-md-block userDetail"></div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="nextBtn px-5 bg-white">
+            <img
+              src="../../../assets/img/nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3"
+              (click)="this.loadArticles('next')"
+            />
+            <span class="gray-color" (click)="this.loadArticles('next')"
+              >Next Article</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- news blocks -->
+  <div class="ArticlesNewsSection gray-bg py-5">
+    <div class="container customContainer py-md-2">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Franchise News</h4>
+        </div>
+        <div
+          class="col-sm-6 col-md-3 mb-2"
+          *ngFor="let list of tabnewsList; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="#"
+              ><img src="{{ list.media }}" class="card-img-top" alt="img"
+            /></a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a href="#" class="text-black text-uppercase text-truncate">{{
+                  list.title
+                }}</a>
+              </h6>
+              <span class=""
+                ><a href="#">{{ list.by }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a href="#" class="text-black">{{ list.detail }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Brand News</h4>
+        </div>
+        <div
+          class="col-sm-6 col-md-3 mb-2"
+          *ngFor="let list of tabnewsList; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="#"
+              ><img src="{{ list.media }}" class="card-img-top" alt="img"
+            /></a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a href="#" class="text-black text-uppercase text-truncate">{{
+                  list.title
+                }}</a>
+              </h6>
+              <span class=""
+                ><a href="#">{{ list.by }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a href="#" class="text-black">{{ list.detail }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container customContainer adv my-4" *ngIf="i === 0">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-8 col-sm col-lg-auto mb-3 mb-sm-0">
+        <a
+          ><img
+            src="../../../assets/dummy-images/1851 v3 – Figm (2).png"
+            alt="sda"
+            class="fluid-img"
+        /></a>
+      </div>
+      <div
+        class="col d-none d-lg-flex justify-content-center align-items-center"
+      >
+        <div class="centerGrid"></div>
+      </div>
+      <div class="col-8 col-sm">
+        <a
+          ><img
+            src="../../../assets/dummy-images/1851 v3 – Figm (3).png"
+            alt="sda"
+            class="fluid-img"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,12 +17,24 @@ ul {
 }
 .primary-color {
   color: $primary;
+  &.link {
+    &:hover {
+      color: $primary-1;
+    }
+  }
 }
 .primary-bg {
   background-color: $primary;
 }
 .primary-bg-1 {
   background-color: $primary-1;
+}
+
+.gray-color {
+  color: $dark-gray;
+}
+.gray-bg {
+  background-color: $dark-gray;
 }
 
 .noScrollBar {

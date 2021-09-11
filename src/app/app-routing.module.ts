@@ -78,6 +78,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/story/story.module').then((m) => m.StoryModule),
   },
+
   {
     matcher: isArticlePage,
     component: StoryComponent,
@@ -95,6 +96,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
+      scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],
