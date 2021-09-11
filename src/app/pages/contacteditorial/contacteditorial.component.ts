@@ -1,6 +1,5 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   Inject,
   OnInit,
@@ -21,7 +20,7 @@ const RESULT_KEY = makeStateKey<any>('contactEditorialState');
   templateUrl: './contacteditorial.component.html',
   styleUrls: ['./contacteditorial.component.scss'],
 })
-export class ContacteditorialComponent implements OnInit, AfterViewInit {
+export class ContacteditorialComponent implements OnInit {
   publication: any;
   contactForm!: FormGroup;
   isSubmitted: boolean = false;
