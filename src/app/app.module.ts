@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './_shared/shared.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,12 @@ import { SharedModule } from './_shared/shared.module';
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.enablesw,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
