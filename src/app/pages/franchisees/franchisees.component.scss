@@ -253,7 +253,7 @@
               height: 17px;
             }
             .form-check-label {
-              color: $recent-feature-desc;
+              color: $medium-grey;
               font-weight: 500;
               margin-left: 15px;
             }
@@ -270,7 +270,7 @@
 .c-filter-action--btnGroup {
   text-align: center;
   margin-bottom: 30px;
-  @include media('<md'){
+  @include media("<md") {
     margin-bottom: 20px;
   }
   .c-filter-action--btn {
