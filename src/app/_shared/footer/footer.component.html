@@ -3,56 +3,20 @@
     <div class="row">
       <div class="col-12 col-sm-6 border-end py-3 py-sm-0">
         <ul class="p-0 d-flex flex-column justify-content-between m-0">
-          <li class="d-flex align-items-center pb-2 d-none d-md-flex">
+          <li
+            class="d-flex align-items-center pb-2 d-none d-md-flex"
+            *ngFor="let publication of footer?.publication"
+          >
             <div class="image me-3">
               <img
-                src="../../../assets/img/mainland.svg"
+                src="{{ publication?.logo }}"
                 alt="logo"
                 width="57"
                 height="83"
               />
             </div>
             <div>
-              <h4 class="m-0"></h4>
-            </div>
-          </li>
-          <li class="d-flex align-items-center pb-2">
-            <div class="image me-3">
-              <img
-                src="../../../assets/img/1851-logo-white.svg"
-                alt="logo"
-                width="43"
-                height="43"
-              />
-            </div>
-            <div>
-              <h4 class="m-0">1851 Franchise</h4>
-            </div>
-          </li>
-          <li class="d-flex align-items-center pb-2 d-none d-md-flex">
-            <div class="image me-3">
-              <img
-                src="../../../assets/img/ee-logo.svg"
-                alt="logo"
-                width="46"
-                height="54"
-              />
-            </div>
-            <div>
-              <h4 class="m-0">Estatenvy</h4>
-            </div>
-          </li>
-          <li class="d-flex align-items-center d-none d-md-flex">
-            <div class="image me-3">
-              <img
-                src="../../../assets/img/1903-logo.svg"
-                alt="logo"
-                width="57"
-                height="57"
-              />
-            </div>
-            <div>
-              <h4 class="m-0">Room 1903</h4>
+              <h4 class="m-0">{{ publication?.title }}</h4>
             </div>
           </li>
         </ul>
@@ -63,58 +27,25 @@
             For the love of franchising
           </h1>
           <div class="row justify-content-center">
-            <div class="col-6 col-md-4 col-lg-auto">
-              <h4 class="text-uppercase primary-color">Spotlight</h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">Featured Story</a>
-              </h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">Editorial Section</a>
-              </h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">1851 University</a>
-              </h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">Videos</a>
-              </h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">Awards</a>
-              </h4>
-              <h4 class="text-uppercase mb-2">
-                <a href="#">Special Features</a>
-              </h4>
-            </div>
             <div class="col-6 col-md-4 col-lg">
               <div class="row">
-                <div class="col-12 col-lg">
-                  <h4 class="text-uppercase primary-color">About Us</h4>
-                  <!-- <h4 class="text-uppercase mb-2">
-                    <a href="#">Lorem Ipsum</a>
+                <div class="col-12 col-lg" *ngFor="let menu of footer?.menus">
+                  <h4 class="text-uppercase primary-color">
+                    {{ menu?.title }}
                   </h4>
-                  <h4 class="text-uppercase mb-2">
-                    <a href="#">Lorem Ipsum</a>
+                  <h4
+                    class="text-uppercase mb-2"
+                    *ngFor="let item of menu.items"
+                  >
+                    <a routerLink="/{{ item.url }}">{{ item?.name }}</a>
                   </h4>
-                  <h4 class="text-uppercase mb-2">
-                    <a href="#">Lorem Ipsum</a>
-                  </h4>
-                  <h4 class="text-uppercase mb-2">
-                    <a href="#">Lorem Ipsum</a>
-                  </h4> -->
-                </div>
-                <div class="col-12 col-lg">
-                  <h4 class="text-uppercase primary-color">Contact</h4>
-                </div>
-                <div class="col-12 col-lg">
-                  <h4 class="text-uppercase primary-color">Site Map</h4>
-                </div>
-                <div class="col-12 col-lg">
-                  <h4 class="text-uppercase primary-color">Terms of Use</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div
         class="
           col-12 col-sm-6
@@ -125,14 +56,12 @@
           ps-md-5
         "
       >
-        <!-- justify-content-between -->
-        <!-- <h4>Want to learn More?</h4> -->
         <h4 class="mb-4">Find us on social</h4>
 
         <ul class="social d-flex p-0">
-          <li>
+          <li *ngFor="let footer of footer?.socialMedia; index as i">
             <a
-              href="{{ [footer['learn-more']['social-media']['fb-url']] }}"
+              href="{{ footer?.url }}"
               target="blank"
               class="
                 rounded-circle
@@ -143,58 +72,7 @@
                 primary-bg
               "
             >
-              <fa-icon [icon]="faFacebookFIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href="{{
-                [footer['learn-more']['social-media']['instagram-url']]
-              }}"
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                me-1
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faInstagramIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href="{{
-                [footer['learn-more']['social-media']['linkedin-url']]
-              }}"
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                me-1
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faLinkedinInIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faYoutubeIcon"></fa-icon>
+              <fa-icon [icon]="socialIcons[i]"></fa-icon>
             </a>
           </li>
         </ul>
