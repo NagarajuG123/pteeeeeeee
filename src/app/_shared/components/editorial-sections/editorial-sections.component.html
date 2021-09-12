@@ -53,9 +53,9 @@
   </div>
 
   <div class="tabs-container container customContainer">
-    <div class="tabItemList innerContent mt-4 py-3"  *ngFor="let item of tabName; index as i">
+    <div class="tabItemList innerContent mt-4 py-3">
       <ul class="row gx-2" 
-      [ngClass]="i === activeTab ? 'active' : 'd-none'" >
+      >
         <li
           *ngFor="let list of items; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"

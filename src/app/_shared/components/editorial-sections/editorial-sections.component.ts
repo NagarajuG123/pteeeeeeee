@@ -66,7 +66,6 @@ export class EditorialSectionsComponent implements OnInit {
     this.commonService.resizeSidebar(event.target.innerWidth);
   }
   setActiveTab(val: any,item: any) {
-    console.log('Set Active Tab');
     this.activeTab = val;
     this.tab = item?.shortName;
     this.getData(this.tab);
@@ -82,12 +81,10 @@ export class EditorialSectionsComponent implements OnInit {
     }
   }
   getData(tabName: any){
-    console.log('Get Data');
-    console.log(tabName);
-    this.apiService.getAPI(`1851/spotlight/${tabName}?limit=10&offset=0`)
+    const apiUrl = `1851/spotlight/${tabName.toLowerCase()}`;
+    this.apiService.getAPI(`${apiUrl}?limit=10&offset=0`)
     .pipe(takeUntil(this.onDestroy$))
     .subscribe(result => {
-      console.log('Api Url');
       const data: any[] =[];
       if (result.data.length) {
         result['data'].forEach((item: any, index: number) => {
@@ -96,6 +93,5 @@ export class EditorialSectionsComponent implements OnInit {
         this.items = data;
       }
     });
-    console.log(this.items);
     }
 }
