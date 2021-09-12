@@ -36,14 +36,6 @@ export class HeaderComponent implements OnInit {
   faCaretRightIcon = faCaretRight;
   room1903Url: string = environment.room1903Url;
   eeUrl: string = environment.eeUrl;
-  menu = [
-    { label: 'HOME', url: '#' },
-    { label: 'ABOUT', url: '#' },
-    { label: 'ARTICLES', url: '#' },
-    { label: 'COVERS', url: '#' },
-    { label: 'LOREM', url: '#' },
-    { label: 'LOREM', url: '#' },
-  ];
 
   constructor(
     public commonService: CommonService,
@@ -64,7 +56,6 @@ export class HeaderComponent implements OnInit {
           this.state.set(HEADER_KEY, response as any);
         });
     }
-    console.log(this.header);
   }
 
   // onSearchSubmit(searchForm: any, type) {

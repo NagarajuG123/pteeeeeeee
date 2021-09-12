@@ -1,21 +1,19 @@
-<div class="trending mb-1">
+<div class="trending mb-1" *ngIf="trending.length">
   <div class="container-fluid text-center py-2">
     <span class="pe-md-5">
       <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
       TRENDING
     </span>
-    Purus in massa tempor nec feugiat nisl pretium fusce.
   </div>
 </div>
-
 <div class="container py-4">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
       <!-- featured aarticle slider -->
 
-      <div class="row">
+      <div class="row" *ngIf="featured.length">
         <div
-          *ngFor="let item of data; index as i"
+          *ngFor="let item of featured; index as i"
           [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
         >
           <div
@@ -52,16 +50,12 @@
               "
               [ngClass]="i === 0 ? 'p-3' : 'p-2'"
             >
-              {{
-                item.title && item.title.length > 40
-                  ? item.title.slice(0, 50) + "..."
-                  : item.title
-              }}
-              <a href="#" class="stretched-link"></a>
+              {{ commonService.formatTitle(item.title) }}
+              <!-- <a href="#" class="stretched-link"></a> -->
             </div>
           </div>
           <!-- if you want to add link on all slider screen use folloing link -->
-          <!-- <a href="#" class="stretched-link"></a> -->
+          <a href="#" class="stretched-link"></a>
         </div>
       </div>
     </div>
