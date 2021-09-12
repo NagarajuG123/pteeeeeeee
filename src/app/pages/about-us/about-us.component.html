@@ -236,4 +236,17 @@
       </div>
     </div>
   </div>
+
+  <!-- toster -->
+  <div
+    *ngIf="showToast"
+    class="toast text-white"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    [ngClass]="responseMessage.status ? 'bg-success' : 'bg-danger'"
+  >
+    <div class="toast-body">{{ responseMessage.message || "" }}</div>
+  </div>
+  
 </div>

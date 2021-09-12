@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -37,6 +36,8 @@ export class AboutUsComponent implements OnInit {
   isBrowser!: boolean;
   data: any = [];
   showVideo: Boolean = false;
+  showToast: boolean = false;
+  responseMessage: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -48,7 +49,7 @@ export class AboutUsComponent implements OnInit {
         private metaService: MetaService,
         @Inject(PLATFORM_ID) platformId: Object,
         fb: FormBuilder,
-        private toastr: ToastrService) {
+        ) {
           this.isBrowser = isPlatformBrowser(platformId);
           this.contactForm = fb.group({
           first_name: ['', Validators.compose([Validators.required])],
@@ -120,9 +121,13 @@ export class AboutUsComponent implements OnInit {
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.toastr.success(result.data.message, 'Thanks!');
+          this.showToast = true;
+          this.responseMessage = { status: true, message: result.data.message };
           this.isSubmitted = false;
           this.resetForm();
+          setTimeout(() => {
+            this.showToast = false;
+          }, 4000);
         } else {
           this.submitErrMsg = result.error.message;
         }
