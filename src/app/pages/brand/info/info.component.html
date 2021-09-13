@@ -47,7 +47,7 @@
                     <img class="brand-img" src="../../../../assets/img/brand-info.jpg" alt="brand-img">
                 </div>
             </div>
-            <div class="question-container">
+            <div class="question-container" *ngIf="isInfo">
                 <div class="title-highlighter">
                     {{ brandInfo?.name }} INFO
                 </div>
@@ -65,6 +65,96 @@
                     </div>
                 </div>
             </div>
+
+            <div [hidden]="!isStory">
+                <div class="tabs-container container customContainer">
+                    <div class="tabItemList innerContent mt-4 py-3">
+                      <ul class="row gx-2 gy-5" 
+                      >
+                        <li
+                          *ngFor="let list of items; index as i"
+                          class="mb-3 col-12 col-sm-6 col-md-4"
+                        >
+                          <div class="items card border-0 rounded-0">
+                            <img 
+                            appYoutubeImage
+                            srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
+                            {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
+                            class="card-img-top img-fluid"
+                            sizes="{{
+                              '(max-width: 576px) 555px,
+                              (max-width: 992px) 400px,
+                              (max-width: 1200px) 238px,
+                              300px'
+                            }}"
+                            width="95"
+                            height="100"
+                            data-src="{{ list.media | defaultImage: 100:95 }}"
+                            alt="editorial"/>
+                            <div class="card-body">
+                              <h4 class="card-text mb-1">
+                                <strong>{{ list.title }}</strong>
+                              </h4>
+                              <small>{{ list.author?.name }}</small>
+                              <h4 class="card-text mb-1">
+                                <strong>{{ list.short_description }}</strong>
+                              </h4>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+
+            <div *ngIf="isBought">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex">
+                    <ul>
+                      <li class="header-title">
+                        <h2 class="text-uppercase">
+                          {{ items?.name }}
+                        </h2>
+                      </li>
+                      <li>
+                        <h2 class="text-uppercase">
+                          <span>WHY I BOUGHT</span>
+                        </h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <p
+                    *ngIf="items?.content"
+                    [innerHTML]="items?.content"
+                  ></p>
+                </div>
+            </div>
+
+            <div *ngIf="isExecutive">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex executive-qa">
+                    <ul>
+                      <li class="header-title">
+                        <h2 class="text-uppercase">
+                          {{ items?.name }}
+                        </h2>
+                      </li>
+                      <li>
+                        <h2 class="text-uppercase">
+                          <span>EXECUTIVE Q&A</span>
+                        </h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <p
+                    class="executive-qa-content"
+                    *ngIf="items?.content"
+                    [innerHTML]="items?.content"
+                  ></p>
+                </div>
+              </div>
+
+              
         </div>
 
         <div class="col-md-4">
