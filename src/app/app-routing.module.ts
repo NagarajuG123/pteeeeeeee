@@ -64,6 +64,13 @@ const routes: Routes = [
       import('./pages/terms/terms.module').then((m) => m.TermsModule),
   },
   {
+    path: 'brandsearch',
+    loadChildren: () =>
+      import('./pages/brand-search/brand-search.module').then(
+        (m) => m.BrandSearchModule
+      ),
+  },
+  {
     path: 'monthlydetails/:month/:year/:date/:id',
     loadChildren: () =>
       import('./pages/monthly-details/monthly-details.module').then(
@@ -99,11 +106,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/story/story.module').then((m) => m.StoryModule),
   },
-  {
-    path: 'franchisees',
-    loadChildren: () =>
-      import('./pages/franchisees/franchisees.module').then((m) => m.FranchiseesModule),
-  },
+
   {
     path: '**', // Navigate to Home Page if not found any page
     component: ErrorComponent,
