@@ -13,6 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
+import { ErrorComponent } from './components/error/error.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 // Modals Components
 
@@ -28,6 +31,8 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     DefaultImagePipe,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
+    ErrorComponent,
+    VideoPlayerComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +41,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     ReactiveFormsModule,
     FontAwesomeModule,
     CarouselModule,
+    NgxYoutubePlayerModule
   ],
   exports: [
     RouterModule,
@@ -49,6 +55,8 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     DefaultImagePipe,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
+    VideoPlayerComponent,
+    NgxYoutubePlayerModule,
   ],
 })
 export class SharedModule {}
