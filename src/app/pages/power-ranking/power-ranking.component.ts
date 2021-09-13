@@ -33,18 +33,14 @@ export class PowerRankingComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.tstate.hasKey(RESULT_KEY)){
-      console.log('If');
       const powerRankingData:any = this.tstate.get(RESULT_KEY,{});
       this.data = powerRankingData['data'];
       this.contents = powerRankingData['contents'];
       this.items = powerRankingData['contents'].brands;
       this.metaData = powerRankingData['meta'];
       this.publication = powerRankingData['publicationTitle'];
-      this.metaService.setSeo(this.metaData);
-      this.metaService.setTitle(`Power Rankings | Franchise Brands | ${this.publication}`);
     }
     else{
-      console.log('Else');
       const powerRankingData:any = {};
       const powerApi = this.apiService.getAPI(`1851/power-ranking`);
       const publicationApi = this.apiService.getAPI('1851/publication-instance');
