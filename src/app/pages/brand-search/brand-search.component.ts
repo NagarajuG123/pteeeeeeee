@@ -15,8 +15,8 @@ export class BrandSearchComponent implements OnInit {
   bannerImage: string = '';
   publication: Publication = {};
   industryKeys: any = [];
-  investKeys: Array<object> = [];
-  items: Object = {};
+  investKeys: any = [];
+  items: any = [];
   industryValues: any = '';
   investValues: any = '';
   sortBrandValue = 'asc';
@@ -114,6 +114,31 @@ export class BrandSearchComponent implements OnInit {
     });
     this.getSearchData();
   }
+  selectAllInvestment() {
+    this.investValues = '';
+    this.investKeys.forEach((key: any) => {
+      key['isChecked'] = true;
+      this.investValues += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
+    });
+    this.getSearchData();
+  }
+  clearAllInvestment() {
+    this.investValues = '';
+    this.investKeys.forEach((key: any) => {
+      key['isChecked'] = false;
+    });
+    this.getSearchData();
+  }
+  onChangeInvestmentFilter(index: any) {
+    this.investKeys[index]['isChecked'] = !this.investKeys[index]['isChecked'];
+    this.investValues = '';
+    this.investKeys.forEach((key: any) => {
+      if (key['isChecked']) {
+        this.investValues += `&investments[][from]=${key['min']}&investments[][to]=${key['max']}`;
+      }
+    });
+    this.getSearchData();
+  }
   getSearchData() {
     const sortValue = `&sort=${
       this.sortBrandValue === 'asc' ? 'brand' : '-brand'
@@ -122,6 +147,19 @@ export class BrandSearchComponent implements OnInit {
     this.apiService.getAPI(`brand-search${params}`).subscribe((res) => {
       this.items = res['data'];
       this.hasMore = res['has_more'];
+    });
+  }
+  getMoreData() {
+    const sortValue = `&sort=${
+      this.sortBrandValue === 'asc' ? 'brand' : '-brand'
+    }`;
+    const params = `?q=${this.investValues}${this.industryValues}${sortValue}&limit=10&offset=${this.items.length}`;
+    this.apiService.getAPI(`brand-search${params}`).subscribe((res) => {
+      res['data'].forEach((brand: any) => {
+        this.items.push(brand);
+      });
+      this.hasMore = res['has_more'];
+      console.log(this.hasMore);
     });
   }
   ngOnDestroy() {

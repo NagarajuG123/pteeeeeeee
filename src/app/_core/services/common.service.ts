@@ -33,7 +33,7 @@ export class CommonService {
   }
 
   formatTitle(title: any) {
-    if (title.length > 40) {
+    if (title && title.length > 40) {
       title = title.slice(0, 50) + '...';
     }
     return title;
