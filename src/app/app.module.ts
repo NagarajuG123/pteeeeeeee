@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    // TransferHttpCacheModule,
+    TransferHttpCacheModule,
     AppRoutingModule,
     SharedModule,
     HomeModule,
