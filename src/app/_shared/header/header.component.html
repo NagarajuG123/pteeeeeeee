@@ -8,7 +8,7 @@
           <a href="{{ room1903Url }}" target="_blank" class="text-white">
             <span
               ><img
-                src="../../../assets/img/room-service.png"
+                src="assets/img/room-service.png"
                 height="21"
                 width="21"
                 alt="room service"
@@ -24,7 +24,7 @@
           <a href="{{ eeUrl }}" target="_blank" class="text-white">
             <span
               ><img
-                src="../../../assets/img/Estatenvy.png"
+                src="assets/img/Estatenvy.png"
                 height="21"
                 width="21"
                 alt="room service"
@@ -45,17 +45,12 @@
   <main class="container">
     <div class="row g-0 align-items-center">
       <div class="col-10 col-md-auto d-flex position-relative">
-        <a
-          href="#"
-          class="menuBtn me-3"
-          onclick="return false;"
-          (click)="commonService.toggle()"
-        >
+        <a class="menuBtn me-3" (click)="commonService.toggle()">
           <img
             [src]="
               commonService.showmenu
-                ? '../../../assets/img/close.png'
-                : '../../../assets/img/menu.png'
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
             "
             alt=""
             width="35"
@@ -69,21 +64,18 @@
         <!-- Header Logo Section -->
         <div class="logo d-flex align-items-center">
           <img
-            src="../../../assets/img/logo.png"
+            routerLink="/"
+            src="{{ header?.data?.logo?.url }}"
             height="41"
             width="41"
             alt="logo"
-            class="me-2"
+            class="me-2 cursor"
           />
           <div>
-            SUBSCRIBE TO OUR NEWSLETTER<br />
+            {{ header?.data?.subscribe?.title }}<br />
             <small class="d-flex align-items-center"
-              >Franchise news powered by
-              <img
-                src="../../../assets/img/logo.png"
-                height="41"
-                width="41"
-                alt="logo"
+              >{{ header?.data?.subscribe?.subTitle }} &nbsp;
+              <img src="assets/img/logo.png" height="41" width="41" alt="logo"
             /></small>
           </div>
         </div>
@@ -99,7 +91,7 @@
                 <button class="ps-2" type="button">
                   <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
                   <img
-                    src="../../../assets/img/search-p.svg"
+                    src="assets/img/search-p.svg"
                     alt="search"
                     width="11px"
                     height="11px"
@@ -117,26 +109,47 @@
             <li class="d-block">
               <h3>MONTHLY COVERS</h3>
               <hr />
-              <div *ngIf="sidebar['monthly-cover']" class="monthly-covers">
-                <a routerLink="/{{ sidebar['monthly-cover']?.url }}">
+              <div *ngIf="header?.data?.monthlyCover" class="monthly-covers">
+                <a routerLink="{{ header?.data?.monthlyCover?.coverUrl }}">
                   <img
                     appYoutubeImage
-                    src="{{ sidebar['monthly-cover']?.media?.url }}"
+                    src="{{ header?.data?.monthlyCover?.url }}"
                     width="68"
                     height="89"
                     alt="monthly cover"
-                    class="lazyload mb-2"
+                    class="mb-2"
                   />
                 </a>
               </div>
             </li>
             <li>
-              <h3>{{ sidebar?.category?.label }}</h3>
+              <h3>Topics</h3>
               <hr />
-              <ul
-                class="mb-2 ms-2"
-                *ngFor="let item of sidebar?.category?.items"
-              >
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let item of header?.data?.sidebar?.categories"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    routerLink="{{ item?.url }}"
+                    >{{ item.name }}
+                    <i class="fas fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr />
+              <h3 *ngFor="let menu of header?.data?.sidebar?.menus.slice(0, 1)">
+                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+              </h3>
+              <!-- <ul class="mb-2 ms-2" *ngFor="let item of sidebar?.awards">
                 <li class="ms-1">
                   <a
                     class="
@@ -150,29 +163,10 @@
                     <i class="fa fa-caret-right" aria-hidden="true"></i
                   ></a>
                 </li>
-              </ul>
+              </ul> -->
+              <!-- <h3><a href="#">POWER RANKING</a></h3> -->
             </li>
-            <li>
-              <hr />
-              <h3><a href="#">AWARD</a></h3>
-              <ul class="mb-2 ms-2" *ngFor="let item of sidebar?.awards">
-                <li class="ms-1">
-                  <a
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      my-1
-                    "
-                    routerLink="/{{ item?.url.split('+').join('-') }}"
-                    >{{ item.title }}
-                    <i class="fa fa-caret-right" aria-hidden="true"></i
-                  ></a>
-                </li>
-              </ul>
-              <h3><a href="#">POWER RANKING</a></h3>
-            </li>
-            <li>
+            <!-- <li>
               <hr />
               <h3>
                 <a href="#"
@@ -194,7 +188,7 @@
                 >
               </h3>
               <h3><a href="#">Terms of use</a></h3>
-            </li>
+            </li> -->
             <li>
               <hr class="mb-2" />
               <h3 class="mb-0"><a href="#">LOGIN</a></h3>
@@ -207,21 +201,30 @@
       <!-- Center menu link -->
       <div class="col d-none d-md-block">
         <ul class="center-menu nav justify-content-center">
-          <li class="nav-item mx-2 px-1" *ngFor="let item of menu">
-            <a [href]="item.url" class="d-flex align-items-center"
-              >{{ item.label }}
+          <li
+            class="nav-item mt-1 px-1"
+            *ngFor="let menu of header?.data?.menus"
+          >
+            <a [routerLink]="menu.url" class="d-flex align-items-center"
+              >{{ menu.title }}
+            </a>
+          </li>
+          <li
+            class="nav-item mx-2 px-1"
+            *ngFor="let action of header?.data?.actions; index as i"
+          >
+            <a class="d-flex align-items-center"
+              >{{ action.title }}
               <img
-                src="../../../assets/img/down-arrow.svg"
+                src="assets/img/down-arrow.svg"
                 height="30"
                 width="20"
                 class="ms-1"
             /></a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
+              <li *ngFor="let item of action.items">
+                <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -231,7 +234,7 @@
         <!-- Search bar -->
         <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
           <img
-            src="../../../assets/img/search.svg"
+            src="assets/img/search.svg"
             height="11"
             width="11"
             alt="search"
@@ -240,22 +243,30 @@
 
         <!-- Social Links -->
         <ul class="social d-flex align-items-center mb-0">
-          <li *ngFor="let item of socialLink" class="mx-1 d-none d-lg-block">
-            <a [href]="item.url" class="d-flex align-items-center">
-              <!-- <img [src]="item.img" [alt]="item.name" /> -->
-              <fa-icon *ngIf="item.icon" [icon]="item.icon"></fa-icon>
+          <li>
+            <a href="#" class="d-flex align-items-center">
+              <span class="follow">Follow Us:</span>
             </a>
           </li>
-          <li>
-            <a href="#" class="d-flex align-items-center me-2 me-lg-0 ms-lg-2">
-              <span class="badge rounded-pill border">follow</span>
+          <li
+            *ngFor="let item of header?.data?.socialMedia; index as i"
+            class="mx-1 d-none d-lg-block"
+          >
+            <a [href]="item.url" class="d-flex align-items-center">
+              <fa-icon *ngIf="socialIcons[i]" [icon]="socialIcons[i]"></fa-icon>
             </a>
           </li>
         </ul>
 
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">
-          <!-- <img src="../../../assets/images/user.jpg" height="30" width="20" alt="user" /> -->
+          <img
+            routerLink="/{{ header.data?.monthlyCover?.coverUrl }}"
+            src="{{ header?.data?.monthlyCover?.url }}"
+            height="104"
+            width="92"
+            alt="cover"
+          />
         </div>
       </div>
     </div>
