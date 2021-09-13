@@ -45,17 +45,12 @@
   <main class="container">
     <div class="row g-0 align-items-center">
       <div class="col-10 col-md-auto d-flex position-relative">
-        <a
-          href="#"
-          class="menuBtn me-3"
-          onclick="return false;"
-          (click)="commonService.toggle()"
-        >
+        <a class="menuBtn me-3" (click)="commonService.toggle()">
           <img
             [src]="
               commonService.showmenu
-                ? '../../../assets/img/close.png'
-                : '../../../assets/img/menu.png'
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
             "
             alt=""
             width="35"
@@ -86,7 +81,120 @@
         </div>
 
         <!-- Sub menu start-->
-
+        <div
+          class="subMenu noScrollBar"
+          [ngClass]="commonService.showmenu ? 'open' : ''"
+        >
+          <div class="menu-search">
+            <form>
+              <div class="input-group mb-1">
+                <button class="ps-2" type="button">
+                  <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                  <img
+                    src="assets/img/search-p.svg"
+                    alt="search"
+                    width="11px"
+                    height="11px"
+                  />
+                </button>
+                <input
+                  type="text"
+                  class="form-control ps-0"
+                  placeholder="Search"
+                />
+              </div>
+            </form>
+          </div>
+          <ul class="submenu-list mb-0">
+            <li class="d-block">
+              <h3>MONTHLY COVERS</h3>
+              <hr />
+              <div *ngIf="header?.data?.monthlyCover" class="monthly-covers">
+                <a routerLink="{{ header?.data?.monthlyCover?.coverUrl }}">
+                  <img
+                    appYoutubeImage
+                    src="{{ header?.data?.monthlyCover?.url }}"
+                    width="68"
+                    height="89"
+                    alt="monthly cover"
+                    class="mb-2"
+                  />
+                </a>
+              </div>
+            </li>
+            <li>
+              <h3>Topics</h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let item of header?.data?.sidebar?.categories"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    routerLink="{{ item?.url }}"
+                    >{{ item.name }}
+                    <i class="fas fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr />
+              <h3 *ngFor="let menu of header?.data?.sidebar?.menus.slice(0, 1)">
+                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+              </h3>
+              <!-- <ul class="mb-2 ms-2" *ngFor="let item of sidebar?.awards">
+                <li class="ms-1">
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    routerLink="/{{ item?.url.split('+').join('-') }}"
+                    >{{ item.title }}
+                    <i class="fa fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul> -->
+              <!-- <h3><a href="#">POWER RANKING</a></h3> -->
+            </li>
+            <!-- <li>
+              <hr />
+              <h3>
+                <a href="#"
+                  >ABOUT <span> {{ publication?.shortTitle }}</span></a
+                >
+              </h3>
+              <h3><a href="#">SPONSORED CONTENT</a></h3>
+              <h3>
+                <a href="#"
+                  >Advertise on <span> {{ publication?.shortTitle }}</span>
+                </a>
+              </h3>
+              <h3>
+                <a href="#"
+                  >Contact <span> {{ publication?.shortTitle }}</span
+                  >&nbsp;<span *ngIf="publication?.id !== 'EE'"
+                    >editorial</span
+                  ></a
+                >
+              </h3>
+              <h3><a href="#">Terms of use</a></h3>
+            </li> -->
+            <li>
+              <hr class="mb-2" />
+              <h3 class="mb-0"><a href="#">LOGIN</a></h3>
+            </li>
+          </ul>
+        </div>
         <!-- Sub menu close-->
       </div>
 

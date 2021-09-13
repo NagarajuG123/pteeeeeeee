@@ -37,7 +37,6 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.slug = '1851';
     this.footer = this.state.get(FOOTER_KEY, null as any);
-    console.log(this.footer);
     if (!this.footer) {
       this.apiService
         .getAPI2(`footer`)
