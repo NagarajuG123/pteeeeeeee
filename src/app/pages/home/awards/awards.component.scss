@@ -10,32 +10,38 @@
 }
 .main-award-section {
   background-color: $dark-gray;
+  .main-image-area{
+    cursor: pointer;
+  }
   .award-details {
     position: relative;
     .title {
+      cursor: pointer;
       color: $primary;
       font-family: "ProximaNova-Bold";
       font-weight: bold;
       font-size: 30px;
     }
-    .sub-title {
-      color: $white;
-      font-family: "Ballinger Condensed";
-      font-weight: bold;
-      font-size: 39px;
-    }
-    .description {
-      color: $text-secondary-color;
-      font-family: "ProximaNova-Regular";
-      font-size: 21px;
-      line-height: 29.65px;
-    }
-    .link {
+    .view-details {
       cursor: pointer;
-      color: $primary;
-      font-family: "ProximaNova-Bold";
-      font-weight: bold;
-      font-size: 15px;
+      .sub-title {
+        color: $white;
+        font-family: "Ballinger Condensed";
+        font-weight: bold;
+        font-size: 39px;
+      }
+      .description {
+        color: $text-secondary-color;
+        font-family: "ProximaNova-Regular";
+        font-size: 21px;
+        line-height: 29.65px;
+      }
+      .link {
+        color: $primary;
+        font-family: "ProximaNova-Bold";
+        font-weight: bold;
+        font-size: 15px;
+      }
     }
     &::after {
       content: "";
@@ -48,7 +54,11 @@
       z-index: 10;
     }
   }
+  .sub-image-area {
+    cursor: pointer;
+  }
   .sub-image-decription {
+    cursor: pointer;
     color: $text-secondary-color;
     font-family: "Roboto";
     font-weight: bold;
