@@ -46,16 +46,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.slug = '1851';
 
-    this.header = this.state.get(HEADER_KEY, null as any);
-    if (!this.header) {
-      this.apiService
-        .getAPI2(`header`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          this.header = response;
-          this.state.set(HEADER_KEY, response as any);
-        });
-    }
+    this.apiService
+      .getAPI2(`header`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        this.header = response;
+      });
   }
 
   // onSearchSubmit(searchForm: any, type) {
