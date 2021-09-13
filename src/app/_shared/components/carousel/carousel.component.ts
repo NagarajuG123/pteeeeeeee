@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -38,14 +37,12 @@ export class CarouselComponent implements OnInit {
   
   constructor(
     private apiService: ApiService,
-    private tstate: TransferState,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
-    const RESULT_KEY = makeStateKey<any>(`carouselState${this.type}`);
     let apiUrl = '';
     switch (this.type) {
       case 'trending':
@@ -65,24 +62,18 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const carouselData = this.tstate.get(RESULT_KEY, {});
-      this.list = carouselData['list'];
-      this.slideConfig = carouselData['slideConfig'];
-
-    } else{
+    
       this.apiService.getAPI(apiUrl).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
-        const carouselData = {};
         if (response && response.data) {
-          carouselData['list'] = response.data;
+          this.list = response.data;
   
-          if (!carouselData['list'].length) {
-            carouselData['slideConfig'] = {};
+          if (!this.list.length) {
+            this.slideConfig = {};
             this.noData.emit();
           } else {
-            carouselData['slideConfig'] = {
+            this.slideConfig = {
               slidesToShow:
-              carouselData['list'].length > 2 ? 3 : carouselData['list'].length > 1 ? 2 : 1,
+              this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
               slidesToScroll: 1,
               responsive: [
                 {
@@ -94,16 +85,15 @@ export class CarouselComponent implements OnInit {
                 {
                   breakpoint: 1024,
                   settings: {
-                    slidesToShow: carouselData['list'].length > 1 ? 2 : 1,
+                    slidesToShow: this.list.length > 1 ? 2 : 1,
                   },
                 },
               ],
             };
           }
         }
-        this.tstate.set(RESULT_KEY, carouselData);
+        
       });
-    } 
   }
 
   goReadMore(item: any) {

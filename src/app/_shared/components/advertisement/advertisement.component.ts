@@ -1,11 +1,8 @@
 import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { isPlatformBrowser } from '@angular/common';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
-const RESULT_KEY = makeStateKey<any>(`adsState`);
 
 @Component({
   selector: 'app-advertisement',
@@ -24,7 +21,6 @@ export class AdvertisementComponent implements OnInit {
   
   constructor(
     private apiService: ApiService,
-    private tstate: TransferState,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -45,12 +41,6 @@ export class AdvertisementComponent implements OnInit {
   }
 
   getAds() {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const adsData = this.tstate.get(RESULT_KEY, {});
-      this.adsData = adsData['data'];
-    }
-    else{
-      const adsData = {};
       this.apiService.getAPI(`${this.slug}/ads`).pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         const data = [];
@@ -59,9 +49,7 @@ export class AdvertisementComponent implements OnInit {
             data.push(ads);
           }
         });
-        adsData['data'] = data;
-      this.tstate.set(RESULT_KEY, adsData);
+        this.adsData = data;
      });  
     }
-  }
 }
