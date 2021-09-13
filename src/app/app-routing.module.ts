@@ -105,6 +105,11 @@ const routes: Routes = [
       import('./pages/franchisees/franchisees.module').then((m) => m.FranchiseesModule),
   },
   {
+    path: ':slug',
+    loadChildren: () =>
+      import('./pages/brand/brand.module').then((m) => m.BrandModule),
+  },
+  {
     path: '**', // Navigate to Home Page if not found any page
     component: ErrorComponent,
   },

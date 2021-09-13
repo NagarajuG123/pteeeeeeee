@@ -199,3 +199,79 @@
     }
   }
 }
+
+//TABS CSS
+ .tabs {
+  height: 60px;
+  .prev{
+    img{
+      width: auto;
+      cursor: pointer;
+    }
+  }
+}
+.primary-bg {
+  background-color: #eb0444;
+}
+.customContainer {
+  max-width: 1210px !important;
+}
+.position-relative {
+  position: relative!important;
+}
+.innerContent {
+  padding: 0 53px;
+}
+.customContainer {
+  .innerContent {
+    li {
+      background-color: $white;
+      height: 60px;
+      span {
+        min-width: 132px;
+        height: 100%;
+        color: $light-gray-1;
+        cursor: pointer;
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        font-size: 15px;
+        &.active,
+        &:hover {
+          color: $primary;
+          &::after {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -20px;
+            width: 7px;
+            border-width: 16px 16px 0 16px;
+            border-style: solid;
+            border-color: $primary transparent transparent transparent;
+          }
+          &::before {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            background-color: $primary;
+          }
+        }
+      }
+      border-color: $light-gray-1;
+    }
+  }
+}
+.title-highlighter{
+  color: #fff;
+  background-color: #eb0444;
+  font-family: "Ballinger Condensed";
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 1px 7px;
+  width: -webkit-max-content;
+  width: max-content;
+  top: -18px;
+
+}
