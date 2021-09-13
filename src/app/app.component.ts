@@ -13,12 +13,6 @@ export class AppComponent {
   constructor(private router: Router, private swUpdate: SwUpdate) {}
 
   ngOnInit() {
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
-      }
-      window.scrollTo(0, 0);
-    });
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         // if (confirm('New version available. Load New Version?')) {
