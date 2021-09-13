@@ -1,6 +1,6 @@
 @import "../../../../assets/scss/theme-color.scss";
 
-.award-section-outer-container{
+.award-section-outer-container {
   background-color: $dark-gray;
 }
 .container {
@@ -10,7 +10,7 @@
 }
 .main-award-section {
   background-color: $dark-gray;
-  .main-image-area{
+  .main-image-area {
     cursor: pointer;
   }
   .award-details {
@@ -64,6 +64,8 @@
     font-weight: bold;
     font-size: 12px;
     line-height: 14px;
+    a {
+      color: $white;
+    }
   }
 }
-

@@ -28,11 +28,10 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     FooterComponent,
     DefaultImagePipe,
     MostPopularComponent,
-    DefaultImagePipe,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
     ErrorComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +40,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     ReactiveFormsModule,
     FontAwesomeModule,
     CarouselModule,
-    NgxYoutubePlayerModule
+    NgxYoutubePlayerModule,
   ],
   exports: [
     RouterModule,

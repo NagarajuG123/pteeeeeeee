@@ -5,48 +5,48 @@
         <div class="row p-1">
           <div class="col-md-6 p-4">
             <div class="main-image-area p-3">
-              <img src="../../../../assets/image/brand-2.png" height="277px" width="395px" alt="highlighted-award-image">
+              <img
+                appYoutubeImage
+                width="395"
+                height="277"
+                src="{{ highlightItem.media | defaultImage: 395:277 }}"
+                alt="awards"
+              />
             </div>
           </div>
           <div class="col-md-6 p-4 award-details">
             <div class="h5 text-danger title">AWARDS</div>
             <div class="view-details">
               <div class="h4 sub-title">
-                Title Lorem ipsum: dolor sit amet consectetur adipisicing elit.
+                {{ highlightItem.title }}
               </div>
               <div class="font-weight-light description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-                suscipit perferendis
+                {{ highlightItem.short_description }}
               </div>
               <br />
-              <div class="h6 mt-10 link">view details +</div>
+              <a routerLink="#"
+                ><div class="h6 mt-10 link">view details +</div></a
+              >
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="row p-2 d-flex justify-content-center align-items-center">
+        <div
+          class="row p-2 d-flex justify-content-center align-items-center"
+          *ngFor="let item of items | slice: 1:4"
+        >
           <div class="col-md-4 sub-image-area p-2">
-            <img src="../../../../assets/image/brand-2.png" height="84px" width="139px" alt="highlighted-award-sub-image1">
+            <a routerLink="{{ item.slug }}"
+              ><img
+                src="{{ item.media | defaultImage: 139:84 }}"
+                height="84px"
+                width="139px"
+                alt="awards"
+            /></a>
           </div>
           <div class="col-md-8 sub-image-decription">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
-        </div>
-        <div class="row p-2 d-flex justify-content-center align-items-center">
-          <div class="col-md-4 sub-image-area p-2">
-            <img src="../../../../assets/image/brand-2.png" height="84px" width="139px" alt="highlighted-award-sub-image2">
-          </div>
-          <div class="col-md-8 sub-image-decription">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
-        </div>
-        <div class="row p-2 d-flex justify-content-center align-items-center">
-          <div class="col-md-4 sub-image-area p-2">
-            <img src="../../../../assets/image/brand-2.png" height="84px" width="139px" alt="highlighted-award-sub-image3">
-          </div>
-          <div class="col-md-8 sub-image-decription">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            <a routerLink="{{ item.slug }}"> {{ item.title }}</a>
           </div>
         </div>
       </div>
