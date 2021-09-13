@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import { AboutUsComponent } from './about-us.component';
   ],
   imports: [
     CommonModule,
-    AboutUsRoutingModule
+    SharedModule,
+    AboutUsRoutingModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ]
 })
 export class AboutUsModule { }

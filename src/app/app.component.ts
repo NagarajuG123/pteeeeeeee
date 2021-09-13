@@ -9,6 +9,7 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent {
   title = '1851 Franchise';
+
   constructor(private router: Router, private swUpdate: SwUpdate) {}
 
   ngOnInit() {

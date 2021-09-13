@@ -80,14 +80,18 @@ export class EditorialSectionsComponent implements OnInit {
       this.skipTab += 1;
     }
   }
-  getData(tab: any){
-    this.apiService.getAPI(`1851/spotlight/${tab}?limit=10&offset=0`)
+  getData(tabName: any){
+    const apiUrl = `1851/spotlight/${tabName.toLowerCase()}`;
+    this.apiService.getAPI(`${apiUrl}?limit=10&offset=0`)
+    .pipe(takeUntil(this.onDestroy$))
     .subscribe(result => {
+      const data: any[] =[];
       if (result.data.length) {
         result['data'].forEach((item: any, index: number) => {
-          this.items.push(item);
+          data.push(item);
         });
+        this.items = data;
       }
     });
-  }
+    }
 }

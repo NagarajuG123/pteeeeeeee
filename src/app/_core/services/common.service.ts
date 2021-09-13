@@ -9,12 +9,12 @@ export class CommonService {
   public vtabsItem: number = 5;
   isBrowser: boolean = false;
 
-  constructor( @Inject(PLATFORM_ID) platformId: Object) {
-      this.isBrowser = isPlatformBrowser(platformId);
-      if(this.isBrowser){
-        this.resizeSidebar(window.innerWidth);
-      }
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+    if (this.isBrowser) {
+      this.resizeSidebar(window.innerWidth);
     }
+  }
 
   toggle() {
     this.showmenu = !this.showmenu;
@@ -30,5 +30,12 @@ export class CommonService {
     else if (val < 768 && val > 575) this.vtabsItem = 2;
     else if (val < 576) this.vtabsItem = 1;
     else this.vtabsItem = 5;
+  }
+
+  formatTitle(title: any) {
+    if (title.length > 40) {
+      title = title.slice(0, 50) + '...';
+    }
+    return title;
   }
 }

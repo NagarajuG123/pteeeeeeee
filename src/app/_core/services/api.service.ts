@@ -30,6 +30,15 @@ export class ApiService {
       );
   }
 
+  getAPI2(endpoint: string): Observable<any> {
+    return this.http
+      .get(`${environment.api2Url}/${endpoint}`, this.httpOptions)
+      .pipe(
+        timeout(defaultTimeout),
+        retry(1),
+        catchError((err) => this.handleError(err, endpoint))
+      );
+  }
   postAPI(endpoint: string, payload: any): Observable<any> {
     return this.http
       .post(

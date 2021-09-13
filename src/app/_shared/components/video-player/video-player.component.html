@@ -1,0 +1,20 @@
+<div class="w-100 h-100">
+  <youtube-player
+    *ngIf="videoType === 'youtube'"
+    [videoId]="id"
+    (ready)="savePlayer($event)"
+    (change)="onStateChange($event)"
+  >
+  </youtube-player>
+  <div *ngIf="videoType === 'vimeo'">
+    <iframe
+      [src]="srcUrl"
+      width="256"
+      height="144"
+      frameborder="0"
+      webkitallowfullscreen
+      mozallowfullscreen
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
