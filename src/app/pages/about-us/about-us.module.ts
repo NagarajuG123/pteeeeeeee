@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
-import { ToastrModule } from 'ngx-toastr';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { SharedModule } from 'src/app/_shared/shared.module';
 
@@ -16,7 +15,6 @@ import { SharedModule } from 'src/app/_shared/shared.module';
     CommonModule,
     SharedModule,
     AboutUsRoutingModule,
-    ToastrModule,
     RecaptchaModule,
     RecaptchaFormsModule
   ]
