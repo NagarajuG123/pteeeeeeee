@@ -70,7 +70,9 @@ export class MostPopularComponent implements OnInit {
         .getAPI(`${this.slug}/trending?limit=9&offset=0`)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
-          mostPopular['data'] = response.data;
+          if (response.data.length) {
+            mostPopular['data'] = response.data;
+          }
         });
       this.tstate.set(RESULT_KEY, mostPopular);
     }
