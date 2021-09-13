@@ -15,7 +15,7 @@
                   <a href="#" class="c-filter-action--btn">CLEAR ALL</a>
                 </div>
                 <ng-container
-                  *ngFor="let data of filterByIndustry; let i = index"
+                  *ngFor="let industry of industryKeys; let i = index"
                 >
                   <div class="c-filter-item--content">
                     <input
@@ -25,7 +25,7 @@
                       id="industry{{ i }}"
                     />
                     <label class="form-check-label" for="industry{{ i }}">
-                      {{ data }}
+                      {{ industry.name }}
                     </label>
                   </div>
                 </ng-container>
@@ -40,7 +40,7 @@
                   <a href="#" class="c-filter-action--btn">CLEAR ALL</a>
                 </div>
                 <ng-container
-                  *ngFor="let item of filterByInvestment; let i = index"
+                  *ngFor="let investment of investKeys; let i = index"
                 >
                   <div class="c-filter-item--content">
                     <input
@@ -50,7 +50,9 @@
                       id="investment{{ i }}"
                     />
                     <label class="form-check-label" for="investment{{ i }}">
-                      {{ item }}
+                      ${{ investment.min | number }} - ${{
+                        investment.max | number
+                      }}
                     </label>
                   </div>
                 </ng-container>
@@ -67,7 +69,7 @@
             <div class="list-data--item isLstSotryCol">Latest Story</div>
           </div>
           <div class="list-data--contentWrapper">
-            <ng-container *ngFor="let data of franchisees; let i = index">
+            <ng-container *ngFor="let data of items; let i = index">
               <div
                 class="list-data--wrapper isRow"
                 [ngClass]="
@@ -75,18 +77,33 @@
                 "
               >
                 <div class="list-data--item isBrandCol">
-                  <img class="list-data--itemImg" src="{{ data.BrandPage }}" />
+                  <a routerLink="/{{ data.slug }}/info">
+                    <img
+                      class="list-data--itemImg"
+                      src="{{ data.logo }}"
+                      alt="logo"
+                  /></a>
                 </div>
                 <div class="list-data--item isInvestmentCol">
-                  <p class="list-data--investment">{{ data.Investment }}</p>
+                  <p class="list-data--investment">
+                    <a routerLink="/{{ data.slug }}"> {{ data.investment }}</a>
+                  </p>
                 </div>
                 <div class="list-data--item isIndustryCol">
-                  <p class="list-data--industry">{{ data.Industry }}</p>
+                  <p class="list-data--industry">
+                    <a routerLink="/{{ data.slug }}">
+                      {{ getIndustry(data.industry) }}</a
+                    >
+                  </p>
                 </div>
                 <div class="list-data--item isLstSotryCol">
                   <p class="list-data--latestStory">
-                    <a href="#" class="list-data--latestStoryLink">
-                      {{ data.LatestStory }}
+                    <a
+                      routerLink="/{{ data.slug }}/{{ data.latest_story.slug }}"
+                      fragment="brand-latest-stories"
+                      class="list-data--latestStoryLink"
+                    >
+                      {{ commonService.formatTitle(data.latest_story.title) }}
                     </a>
                   </p>
                 </div>

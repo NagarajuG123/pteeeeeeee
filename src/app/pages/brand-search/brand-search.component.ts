@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Publication } from 'src/app/_core/models/publication.model';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-brand-search',
@@ -8,123 +13,79 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class BrandSearchComponent implements OnInit {
   bannerImage: string = '';
+  publication: Publication = {};
+  industryKeys: any = [];
+  investKeys: any = [];
+  items: Object = {};
+  hasMore: boolean = false;
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+  constructor(
+    private apiService: ApiService,
+    private metaService: MetaService,
+    public commonService: CommonService
+  ) {}
 
-  constructor(private apiService: ApiService) {}
-  filterByIndustry = [
-    'Automotive',
-    'Beauty',
-    'Consumer Goods',
-    'Consumer Services',
-    'Construction',
-    'Education',
-    'Facilities Services',
-    'Finance',
-    'Food & Beverage',
-    'Health Care',
-    'Health Wellness & Fitness',
-    'Home Improvement',
-    'Lawn Care',
-    'Leisure Travel & Tourism',
-    'Moving & Storage',
-    'Pest Control',
-    'Pet Care',
-    'Real Estate',
-    'Restaurant',
-    'Retail',
-    'Senior Care',
-    'Telecom & Wireless',
-    'Transportation',
-    'Consultant',
-    'Supplier',
-  ];
-  filterByInvestment = [
-    '$0-$100,000',
-    '$100,000-$250,000',
-    '$250,000-$500,000',
-    '$500,000-$1,000,000',
-    '$1,000,000-$5,000,000',
-  ];
-  franchisees = [
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_2.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_1.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_3.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_5.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_4.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_6.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_7.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_8.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_9.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-    {
-      BrandPage:
-        '../../../assets/img/franchise-opportunites/franchise_logo_10.png',
-      Investment: '$123,123  - $123,456',
-      Industry: 'Lorem ipsum morbi tristia con flubet o lemase',
-      LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
-    },
-  ];
   ngOnInit(): void {
-    this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
-      if (result.id == '1851') {
-        this.bannerImage = 'assets/img/banner_search_1851.png';
-      } else if (result.id == 'EE') {
-        this.bannerImage = 'assets/img/banner_search_ee.jpg';
-      } else {
-        this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
-      }
+    const params = `?q=&sort=brand&limit=10&offset=0`;
+    const brandSearchData: any = [];
+    const brandSearchApi = this.apiService.getAPI(`brand-search${params}`);
+    const brandFilterApi = this.apiService.getAPI(`brand-filters`);
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([brandFilterApi, brandSearchApi, publication])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.publication = results[2];
+        brandSearchData['industryKeys'] = [];
+        brandSearchData['investKeys'] = [];
+        results[0].data.industries.forEach(
+          (industry: { name: any; id: any }) => {
+            brandSearchData['industryKeys'].push({
+              name: industry.name,
+              value: industry.id,
+              isChecked: false,
+            });
+          }
+        );
+        results[0].data['invesment-ranges'].forEach(
+          (investment: { range_from: any; range_to: any }) => {
+            brandSearchData['investKeys'].push({
+              min: investment.range_from,
+              max: investment.range_to,
+              isChecked: false,
+            });
+          }
+        );
+        brandSearchData['items'] = results[1].data;
+        brandSearchData['hasMore'] = results[1].has_more;
+
+        this.industryKeys = brandSearchData['industryKeys'];
+        this.investKeys = brandSearchData['investKeys'];
+        this.items = brandSearchData['items'];
+        this.hasMore = brandSearchData['hasMore'];
+        const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
+
+        this.metaService.setTitle(defaultTitle);
+        this.setBannerImage();
+      });
+  }
+  setBannerImage() {
+    if (this.publication.id == '1851') {
+      this.bannerImage = 'assets/img/banner_search_1851.png';
+    } else if (this.publication.id == 'EE') {
+      this.bannerImage = 'assets/img/banner_search_ee.jpg';
+    } else {
+      this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
+    }
+  }
+  getIndustry(industry: any[]) {
+    var names = industry.map(function (item) {
+      return item.name;
     });
+    return names.toString();
+  }
+  ngOnDestroy() {
+    this.onDestroySubject.next(true);
+    this.onDestroySubject.complete();
   }
 }
