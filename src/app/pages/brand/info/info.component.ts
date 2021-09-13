@@ -27,8 +27,10 @@ export class InfoComponent implements OnInit {
   pdfForm: any;
   brandInfo: any = [];
   items: any;
+  tab: any;
   
   isStory!: boolean;
+  isPdf!: boolean;
   isInfo!: boolean;
   isBought!: boolean;
   isExecutive!: boolean;
@@ -140,27 +142,32 @@ export class InfoComponent implements OnInit {
     });
   }
   getContents(item: string | null) {
+    console.log(item);
     let path;
     if (item === 'info') {
       path = 'brand-info';
       this.isInfo = true;
-      this.isStory = this.isBought = this.isExecutive = this.isMarket = false;
-    } else if (item === 'latest_stories') {
+      this.isStory = this.isBought = this.isExecutive = this.isMarket = this.isPdf = false;
+    } else if (item === 'brand_pdf') {
+      path = 'brand-pdf';
+      this.isPdf = true;
+      this.isInfo = this.isBought = this.isExecutive = this.isMarket = this.isStory= false;
+    }else if (item === 'latest_stories') {
       path = 'brand-latest-stories';
       this.isStory = true;
-      this.isInfo = this.isBought = this.isExecutive = this.isMarket = false;
+      this.isInfo = this.isBought = this.isExecutive = this.isMarket = this.isPdf =false;
     } else if (item === 'why-i-bought') {
       path = 'brand-why-i-bought';
       this.isBought = true;
-      this.isInfo = this.isStory = this.isExecutive = this.isMarket = false;
+      this.isInfo = this.isStory = this.isExecutive = this.isMarket = this.isPdf = false;
     } else if (item === 'executive') {
       path = 'brand-executive';
       this.isExecutive = true;
-      this.isInfo = this.isBought = this.isStory = this.isMarket = false;
+      this.isInfo = this.isBought = this.isStory = this.isMarket = this.isPdf = false;
     } else if (item === 'available-markets') {
       path = 'brand-available-markets';
       this.isMarket = true;
-      this.isInfo = this.isBought = this.isExecutive = this.isStory = false;
+      this.isInfo = this.isBought = this.isExecutive = this.isStory = this.isPdf = false;
     }
     const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
@@ -245,8 +252,11 @@ export class InfoComponent implements OnInit {
     return type;
   }
 
-  setActiveTab(val: any) {
+  setActiveTab(val: any,item: any) {
     this.activeTab = val;
+    console.log(item);
+    this.tab = item?.value;
+    this.getContents(this.tab);
   }
   prev() {
     if (this.skipTab > 0) {
