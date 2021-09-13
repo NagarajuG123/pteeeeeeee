@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_core/services/api.service';
 
 @Component({
   selector: 'app-brand-search',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-search.component.scss'],
 })
 export class BrandSearchComponent implements OnInit {
-  constructor() {}
+  bannerImage: string = '';
+
+  constructor(private apiService: ApiService) {}
   filterByIndustry = [
     'Automotive',
     'Beauty',
@@ -113,5 +116,15 @@ export class BrandSearchComponent implements OnInit {
       LatestStory: 'Lorem ipsum morbi tristia con flubet o lemase',
     },
   ];
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getAPI(`1851/publication-instance`).subscribe((result) => {
+      if (result.id == '1851') {
+        this.bannerImage = 'assets/img/banner_search_1851.png';
+      } else if (result.id == 'EE') {
+        this.bannerImage = 'assets/img/banner_search_ee.jpg';
+      } else {
+        this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
+      }
+    });
+  }
 }
