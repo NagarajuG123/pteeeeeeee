@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { makeStateKey, Meta, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Brandsrank } from 'src/app/_core/models/brandsrank.model';
+import { Powerranking } from 'src/app/_core/models/powerranking.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 
@@ -14,10 +16,11 @@ const RESULT_KEY = makeStateKey<any>('powerRankingState');
 })
 
 export class PowerRankingComponent implements OnInit {
-  data: any;
-  contents: any = [];
+  data: Powerranking[] = [];
+  contents: Brandsrank[] = [];
   metaData: Meta[] = [];
   publication!: string;
+  items: Brandsrank[] = [];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -34,6 +37,7 @@ export class PowerRankingComponent implements OnInit {
       const powerRankingData:any = this.tstate.get(RESULT_KEY,{});
       this.data = powerRankingData['data'];
       this.contents = powerRankingData['contents'];
+      this.items = powerRankingData['contents'].brands;
       this.metaData = powerRankingData['meta'];
       this.publication = powerRankingData['publicationTitle'];
       this.metaService.setSeo(this.metaData);
