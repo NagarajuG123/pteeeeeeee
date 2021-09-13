@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ValidationService {
   constructor() {}
-  static emailValidator(control:any) {
+  static emailValidator(control: { value: string; }) {
     if (control.value) {
       if (
         control.value.match(
@@ -18,7 +18,7 @@ export class ValidationService {
       }
     }
   }
-  static acceptValidator(control:any) {
+  static acceptValidator(control: { value: any; }) {
     if (control.value) {
       return null;
     } else {

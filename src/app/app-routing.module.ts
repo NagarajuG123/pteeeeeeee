@@ -3,6 +3,7 @@ import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { StoryComponent } from './pages/story/story.component';
+import { ErrorComponent } from './_shared/components/error/error.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
@@ -87,7 +88,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/story/story.module').then((m) => m.StoryModule),
   },
-
+  {
+    path: '404',
+    pathMatch: 'full',
+    component: ErrorComponent,
+  },
   {
     matcher: isArticlePage,
     component: StoryComponent,
@@ -98,6 +103,10 @@ const routes: Routes = [
     path: 'franchisees',
     loadChildren: () =>
       import('./pages/franchisees/franchisees.module').then((m) => m.FranchiseesModule),
+  },
+  {
+    path: '**', // Navigate to Home Page if not found any page
+    component: ErrorComponent,
   },
 ];
 
