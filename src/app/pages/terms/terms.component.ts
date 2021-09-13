@@ -51,7 +51,7 @@ export class TermsComponent implements OnInit {
       const termsData: any = {};
 
       const termsApi = this.apiService.getAPI(`${this.slug}/terms-of-use`);
-      const metaApi = this.apiService.getAPI(`${this.slug}/publication-instance`);
+      const metaApi = this.apiService.getAPI(`${this.slug}/meta`);
       const publicationApi = this.apiService.getAPI(`${this.slug}/publication-instance`);
 
       forkJoin([termsApi,metaApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{

@@ -4,7 +4,9 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
+import { Meta } from 'src/app/_core/models/meta.model';
+import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
   selector: 'app-sitemap',
@@ -14,6 +16,9 @@ import { Subject } from 'rxjs';
 export class SitemapComponent implements OnInit {
   sitemap: Sitemap [] =[];
   data: Sitemap [] = [];
+  metaData: Meta[] = [];
+  publication!: string;
+  newsType!: string;
   brandSlug: string = '';
   apiUrl: string = '';
   private onDestroySubject = new Subject();
@@ -23,6 +28,7 @@ export class SitemapComponent implements OnInit {
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
+    private metaService: MetaService,
     private tstate: TransferState) {
       this.router.events.subscribe((events) => {
         if (events instanceof NavigationEnd) {
@@ -60,6 +66,16 @@ export class SitemapComponent implements OnInit {
     if(this.tstate.hasKey(RESULT_KEY)){
       const sitemapData = this.tstate.get(RESULT_KEY,{});
       this.sitemap = sitemapData['data'];
+      this.metaData = sitemapData['meta'];
+      this.publication = sitemapData['publication'];
+      this.newsType = sitemapData['newsType'];
+      this.metaService.setSeo(this.metaData);
+      this.metaService.setTitle(`Terms of use | ${this.publication}`);
+      if (this.brandSlug === '1851') {
+        this.metaService.setTitle(`Sitemap for ${this.publication} | ${this.newsType}`);
+      } else {
+        this.metaService.setTitle(`Sitemap for ${this.brandSlug} ${this.publication} | ${this.newsType}`);
+      }
       Object.keys(sitemapData['data']).forEach((year: any) => {
         const monthData: { month: string; number: number; url: any }[] = [];
         Object.keys(this.sitemap[year]).forEach((month) => {
@@ -81,8 +97,21 @@ export class SitemapComponent implements OnInit {
     }
     else{
       const sitemapData:any = {};
-      this.apiService.getAPI(`${this.apiUrl}`).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
-        sitemapData['data'] = response;
+      const sitemapApi = this.apiService.getAPI(`${this.apiUrl}`);
+      const metaApi = this.apiService.getAPI(`${this.brandSlug}/meta`);
+      const publicationApi = this.apiService.getAPI(`${this.brandSlug}/publication-instance`);
+      
+      forkJoin([sitemapApi,metaApi,publicationApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+        sitemapData['data'] = response[0];
+        sitemapData['meta'] = response[1].data;
+        sitemapData['publication'] = response[2].title;
+        sitemapData['newsType'] = response[2].newsType;
+        this.metaService.setSeo(sitemapData['meta']);
+        if (this.brandSlug === '1851') {
+          this.metaService.setTitle(`Sitemap for ${sitemapData['publication']} | ${sitemapData['newsType']}`);
+        } else {
+          this.metaService.setTitle(`Sitemap for ${this.brandSlug} ${sitemapData['publication']} | ${sitemapData['newsType']}`);
+        }
         this.tstate.set(RESULT_KEY,sitemapData);
       });
     }
