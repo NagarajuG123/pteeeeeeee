@@ -11,8 +11,4 @@ export class ItemsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  goDetailPage(brandSlug: string, storySlug) {
-    return `${brandSlug}/${storySlug}#brand-latest-stories`;
-  }
 }
