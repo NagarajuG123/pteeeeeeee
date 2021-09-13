@@ -64,14 +64,13 @@
         <!-- Header Logo Section -->
         <div class="logo d-flex align-items-center">
           <img
-            routerLink="/"
             src="{{ header?.data?.logo?.url }}"
             height="41"
             width="41"
             alt="logo"
             class="me-2 cursor"
           />
-          <div>
+          <div class="cursor">
             {{ header?.data?.subscribe?.title }}<br />
             <small class="d-flex align-items-center"
               >{{ header?.data?.subscribe?.subTitle }} &nbsp;
@@ -252,7 +251,11 @@
             *ngFor="let item of header?.data?.socialMedia; index as i"
             class="mx-1 d-none d-lg-block"
           >
-            <a [href]="item.url" class="d-flex align-items-center">
+            <a
+              [href]="item.url"
+              target="_blank"
+              class="d-flex align-items-center"
+            >
               <fa-icon *ngIf="socialIcons[i]" [icon]="socialIcons[i]"></fa-icon>
             </a>
           </li>
@@ -261,7 +264,7 @@
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">
           <img
-            routerLink="/{{ header.data?.monthlyCover?.coverUrl }}"
+            routerLink="{{ header.data?.monthlyCover?.coverUrl }}"
             src="{{ header?.data?.monthlyCover?.url }}"
             height="104"
             width="92"
