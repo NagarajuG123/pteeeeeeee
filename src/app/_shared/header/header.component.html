@@ -63,17 +63,24 @@
 
         <!-- Header Logo Section -->
         <div class="logo d-flex align-items-center">
-          <img
-            src="{{ header?.data?.logo?.url }}"
-            height="41"
-            width="41"
-            alt="logo"
-            class="me-2 cursor"
-          />
-          <div class="cursor">
-            {{ header?.data?.subscribe?.title }}<br />
+          <a routerLink="/"
+            ><img
+              src="{{ header?.data?.logo?.url }}"
+              height="41"
+              width="41"
+              alt="logo"
+              class="me-2"
+          /></a>
+          <div>
+            <a routerLink="{{ header?.data?.subscribe?.url }}">{{
+              header?.data?.subscribe?.title
+            }}</a
+            ><br />
             <small class="d-flex align-items-center"
-              >{{ header?.data?.subscribe?.subTitle }} &nbsp;
+              ><a routerLink="{{ header?.data?.subscribe?.url }}">{{
+                header?.data?.subscribe?.subTitle
+              }}</a>
+              &nbsp;
               <img src="assets/img/logo.png" height="41" width="41" alt="logo"
             /></small>
           </div>
@@ -106,7 +113,9 @@
           </div>
           <ul class="submenu-list mb-0">
             <li class="d-block">
-              <h3>MONTHLY COVERS</h3>
+              <h3>
+                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
+              </h3>
               <hr />
               <div *ngIf="header?.data?.monthlyCover" class="monthly-covers">
                 <a routerLink="{{ header?.data?.monthlyCover?.coverUrl }}">
@@ -219,8 +228,8 @@
         <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
           <img
             src="assets/img/search.svg"
-            height="11"
-            width="11"
+            height="15"
+            width="15"
             alt="search"
           />
         </div>
@@ -229,7 +238,7 @@
         <ul class="social d-flex align-items-center mb-0">
           <li>
             <a href="#" class="d-flex align-items-center">
-              <span class="follow">Follow Us:</span>
+              <span class="follow text-capitalize">Follow Us:</span>
             </a>
           </li>
           <li
