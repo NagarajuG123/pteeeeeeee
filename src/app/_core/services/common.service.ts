@@ -44,4 +44,11 @@ export class CommonService {
     }
     return description;
   }
+  readMore(story: any) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}`;
+  }
 }

@@ -14,7 +14,7 @@
         "
         (click)="prev()"
       >
-        <img src="../../../../assets/img/left-arrow.svg" />
+        <img src="assets/img/left-arrow.svg" />
       </div>
       <ul class="row innerContent m-0">
         <li
@@ -35,7 +35,7 @@
               position-relative
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
-            (click)="setActiveTab(i + 1,item)"
+            (click)="setActiveTab(i + 1, item)"
             >{{ item?.shortName }}</span
           >
         </li>
@@ -47,52 +47,55 @@
         "
         (click)="next()"
       >
-        <img src="../../../../assets/img/right-arrow.svg" />
+        <img src="assets/img/right-arrow.svg" />
       </div>
     </div>
   </div>
 
   <div class="tabs-container container customContainer">
     <div class="tabItemList innerContent mt-4 py-3">
-      <ul class="row gx-2" 
-      >
+      <ul class="row gx-2">
         <li
           *ngFor="let list of items; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
-          <div class="items card border-0 rounded-0">
-            <img 
-            appYoutubeImage
-            srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
+          <a routerLink="{{ commonService.readMore(list) }}">
+            <div class="items card border-0 rounded-0">
+              <img
+                appYoutubeImage
+                srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
             {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
-            class="card-img-top img-fluid"
-            sizes="{{
-              '(max-width: 576px) 555px,
+                class="card-img-top img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
               (max-width: 1200px) 238px,
               300px'
-            }}"
-            width="95"
-            height="100"
-            data-src="{{ list.media | defaultImage: 100:95 }}"
-            alt="editorial"/>
-            <div class="card-body">
-              <h6
-                class="
-                  card-title
-                  primary-color
-                  text-uppercase text-truncate
-                  fw-bold
-                "
-              >
-                PEOPLE 
-              </h6>
-              <h4 class="card-text mb-1">
-                <strong>{{ list.title }}</strong>
-              </h4>
-              <small>{{ list.author?.name }}</small>
+                }}"
+                width="95"
+                height="100"
+                data-src="{{ list.media | defaultImage: 95:100 }}"
+                alt="editorial"
+              />
+              <div class="card-body">
+                <h6
+                  class="
+                    card-title
+                    primary-color
+                    text-uppercase text-truncate
+                    fw-bold
+                  "
+                ></h6>
+                <h4 class="card-text mb-1">
+                  <strong>{{ commonService.formatTitle(list.title) }}</strong>
+                </h4>
+                <small>{{ list.author?.name }}</small>
+                <h4 class="card-text mb-1">
+                  {{ commonService.formatDescription(list.short_description) }}
+                </h4>
+              </div>
             </div>
-          </div>
+          </a>
         </li>
       </ul>
     </div>
@@ -120,13 +123,6 @@
               <input
                 type="email"
                 placeholder="Email"
-                class="form-control rounded-0 mb-3 mb-lg-0"
-              />
-            </div>
-            <div class="col-12 col-sm">
-              <input
-                type="tel"
-                placeholder="Phone"
                 class="form-control rounded-0 mb-3 mb-lg-0"
               />
             </div>

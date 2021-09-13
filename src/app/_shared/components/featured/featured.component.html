@@ -77,7 +77,7 @@
           [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h3 class="m-0">
-            <a routerLink="{{ item.slug }}">{{
+            <a routerLink="{{ commonService.readMore(item) }}">{{
               commonService.formatTitle(item.title)
             }}</a>
           </h3>
@@ -118,7 +118,9 @@
           </div>
           <div>
             <h3 class="m-0">
-              <a routerLink="{{ item.slug }}">{{ item.title }}</a>
+              <a routerLink="{{ commonService.readMore(item) }}">{{
+                item.title
+              }}</a>
             </h3>
             <span>By {{ item.author.name }}</span>
           </div>
