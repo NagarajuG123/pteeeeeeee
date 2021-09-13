@@ -38,4 +38,10 @@ export class CommonService {
     }
     return title;
   }
+  formatDescription(description: any) {
+    if (description && description.length > 118) {
+      description = description.slice(0, 118) + '...';
+    }
+    return description;
+  }
 }
