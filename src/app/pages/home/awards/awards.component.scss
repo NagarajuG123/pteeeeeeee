@@ -1,5 +1,8 @@
 @import "../../../../assets/scss/theme-color.scss";
 
+.award-section-outer-container{
+  background-color: $dark-gray;
+}
 .container {
   height: 100vh;
   padding-right: unset !important;
@@ -7,44 +10,50 @@
 }
 .main-award-section {
   background-color: $dark-gray;
-}
-.award-details {
-  position: relative;
-}
-.award-details {
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 5px;
-    height: 100%;
-    width: 2px;
-    background-color: $primary;
-    z-index: 10;
+  .award-details {
+    position: relative;
+    .title {
+      color: $primary;
+      font-family: "ProximaNova-Bold";
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .sub-title {
+      color: $white;
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      font-size: 39px;
+    }
+    .description {
+      color: $text-secondary-color;
+      font-family: "ProximaNova-Regular";
+      font-size: 21px;
+      line-height: 29.65px;
+    }
+    .link {
+      cursor: pointer;
+      color: $primary;
+      font-family: "ProximaNova-Bold";
+      font-weight: bold;
+      font-size: 15px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 5px;
+      height: 100%;
+      width: 2px;
+      background-color: $primary;
+      z-index: 10;
+    }
+  }
+  .sub-image-decription {
+    color: $text-secondary-color;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
   }
 }
-.main-image-area {
-  background-color: $dummy-img-color;
-  height: 100%;
-}
-.title {
-  color: $primary;
-}
-.sub-title {
-  color: $white;
-}
-.description {
-  color: $text-secondary-color;
-}
-.link {
-  cursor: pointer;
-  color: $primary;
-}
-.sub-image-area {
-  background-color: $dummy-img-color;
-  height: 60px;
-}
-.sub-image-decription {
-  font-size: 14px;
-  color: $text-secondary-color;
-}
+
