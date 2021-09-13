@@ -279,6 +279,9 @@
   @include media("<md") {
     margin-bottom: 20px;
   }
+  input {
+    display: none;
+  }
   .c-filter-action--btn {
     color: $primary;
     text-decoration: underline;

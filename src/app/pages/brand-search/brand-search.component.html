@@ -11,8 +11,20 @@
               <h2 class="c-filter-item--title">Filter by industry</h2>
               <div class="c-filter-item--contentGroup">
                 <div class="c-filter-action--btnGroup">
-                  <a href="#" class="c-filter-action--btn">select all</a>
-                  <a href="#" class="c-filter-action--btn">CLEAR ALL</a>
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="selectAllIndustry()"
+                    class="c-filter-action--btn"
+                    >SELECT ALL</a
+                  >
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="clearAllIndustry()"
+                    class="c-filter-action--btn"
+                    >CLEAR ALL</a
+                  >
                 </div>
                 <ng-container
                   *ngFor="let industry of industryKeys; let i = index"
@@ -23,6 +35,8 @@
                       type="checkbox"
                       value=""
                       id="industry{{ i }}"
+                      [checked]="industry.isChecked"
+                      (change)="onChangeIndustryFilter(i)"
                     />
                     <label class="form-check-label" for="industry{{ i }}">
                       {{ industry.name }}
@@ -36,7 +50,7 @@
               <h2 class="c-filter-item--title">Filter by investment</h2>
               <div class="c-filter-item--contentGroup">
                 <div class="c-filter-action--btnGroup">
-                  <a href="#" class="c-filter-action--btn">select all</a>
+                  <a href="#" class="c-filter-action--btn">SELECT ALL</a>
                   <a href="#" class="c-filter-action--btn">CLEAR ALL</a>
                 </div>
                 <ng-container

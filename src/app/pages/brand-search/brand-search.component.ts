@@ -15,8 +15,12 @@ export class BrandSearchComponent implements OnInit {
   bannerImage: string = '';
   publication: Publication = {};
   industryKeys: any = [];
-  investKeys: any = [];
+  investKeys: Array<object> = [];
   items: Object = {};
+  industryValues: any = '';
+  investValues: any = '';
+  sortBrandValue = 'asc';
+
   hasMore: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -83,6 +87,42 @@ export class BrandSearchComponent implements OnInit {
       return item.name;
     });
     return names.toString();
+  }
+  selectAllIndustry() {
+    this.industryValues = '';
+    this.industryKeys.forEach((key: any) => {
+      key['isChecked'] = true;
+      this.industryValues += `&industries[]=${key['value']}`;
+    });
+    this.getSearchData();
+  }
+  clearAllIndustry() {
+    this.industryValues = '';
+    this.industryKeys.forEach((key: any) => {
+      key['isChecked'] = false;
+    });
+    this.getSearchData();
+  }
+  onChangeIndustryFilter(index: any) {
+    this.industryKeys[index]['isChecked'] =
+      !this.industryKeys[index]['isChecked'];
+    this.industryValues = '';
+    this.industryKeys.forEach((key: any) => {
+      if (key['isChecked']) {
+        this.industryValues += `&industries[]=${key['value']}`;
+      }
+    });
+    this.getSearchData();
+  }
+  getSearchData() {
+    const sortValue = `&sort=${
+      this.sortBrandValue === 'asc' ? 'brand' : '-brand'
+    }`;
+    const params = `?q=${this.investValues}${this.industryValues}${sortValue}&limit=10&offset=0`;
+    this.apiService.getAPI(`brand-search${params}`).subscribe((res) => {
+      this.items = res['data'];
+      this.hasMore = res['has_more'];
+    });
   }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
