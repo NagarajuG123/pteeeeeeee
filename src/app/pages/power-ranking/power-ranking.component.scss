@@ -1,113 +1,307 @@
+// @import "../../../assets/scss/theme-color.scss";
+
+// .power-ranking-container {
+//   height: calc(100vh - 65px);
+//   .top-container {
+//     img {
+//       position: relative;
+//       width: 100%;
+//       height: 80vh;
+//     }
+//     .text-box {
+//       position: absolute;
+//       bottom: 15vh;
+//       left: 20vw;
+//       margin-left: -50px;
+//       border-top: 3px solid $dark-gray;
+//       border-bottom: 3px solid $dark-gray;
+//       text-align: center;
+//       width: 60%;
+//       margin: 0 auto;
+//       background-color: $white;
+//       .title {
+//         margin: 0;
+//         color: $dark-gray;
+//         font-family: "Ballinger Condensed";
+//         font-weight: bold;
+//         font-size: 44px;
+//       }
+//       .description {
+//         width: 70%;
+//         margin: 0 auto;
+//         color: $primary;
+//         font-family: "Ballinger Condensed";
+//         font-weight: bold;
+//         font-size: 20px;
+//         margin: 5px auto;
+//       }
+//     }
+//   }
+
+//   .bottom-container {
+//     .title-row {
+//       color: $dark-gray;
+//       font-family: "ProximaNova-Regular";
+//       font-weight: bold;
+//       font-size: 20px;
+//     }
+//     .rank-row {
+//       height: 160px;
+//       .sr {
+//         color: $primary;
+//         font-family: "ProximaNova-Regular";
+//         font-weight: bold;
+//         font-size: 42px;
+//       }
+//       .brand-image {
+//         width: 145px;
+//       }
+//       .trending-block {
+//         .duration {
+//           color: $dark-gray;
+//           font-family: "Roboto";
+//           font-weight: bold;
+//           font-size: 12.54px;
+//           line-height: 15px;
+//         }
+//         .count {
+//           color: $primary;
+//           font-family: "Roboto";
+//           font-weight: bold;
+//           font-size: 38px;
+//           line-height: 45px;
+//         }
+//       }
+//     }
+//     .rank-row-odd {
+//       background-color: $odd-row-color;
+//     }
+//     .rank-row-even {
+//       background-color: $white;
+//     }
+//     .story-description {
+//       cursor: pointer;
+//       color: $primary;
+//       font-family: "Ballinger Condensed";
+//       font-weight: bold;
+//       font-size: 20px;
+//       text-decoration: underline;
+//       text-align: left;
+//     }
+//   }
+
+//   .remaining-container{
+//     .sr{
+//         color: $primary;
+//         font-family: "ProximaNova-Regular";
+//         font-weight: bold;
+//         font-size: 30px;
+//         text-align: center;
+//     }
+//     .brand-image {
+//       width: 125px;
+//     }
+//     .row-odd{
+//       background-color: $odd-row-color;
+//       height: 145px;
+//     }
+//     .row-even{
+//       background-color: $white;
+//       height: 145px;
+//     }
+//   }
+// }
+
 @import "../../../assets/scss/theme-color.scss";
+@import "../../../assets/scss/typography.scss";
+@import "../../../assets/scss/media.scss";
 
-.power-ranking-container {
-  height: calc(100vh - 65px);
-  .top-container {
-    img {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-    }
-    .text-box {
-      position: absolute;
-      bottom: 15vh;
-      left: 20vw;
-      margin-left: -50px;
-      border-top: 3px solid $dark-gray;
-      border-bottom: 3px solid $dark-gray;
-      text-align: center;
-      width: 60%;
-      margin: 0 auto;
-      background-color: $white;
-      .title {
-        margin: 0;
-        color: $dark-gray;
-        font-family: "Ballinger Condensed";
-        font-weight: bold;
-        font-size: 44px;
-      }
-      .description {
-        width: 70%;
-        margin: 0 auto;
-        color: $primary;
-        font-family: "Ballinger Condensed";
-        font-weight: bold;
-        font-size: 20px;
-        margin: 5px auto;
-      }
-    }
+.top-container {
+  img {
+    position: relative;
+    width: 100%;
+    height: 80vh;
   }
-
-  .bottom-container {
-    .title-row {
+  .text-box {
+    position: absolute;
+    bottom: 15vh;
+    left: 20vw;
+    margin-left: -50px;
+    border-top: 3px solid $dark-gray;
+    border-bottom: 3px solid $dark-gray;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    background-color: $white;
+    .title {
+      margin: 0;
       color: $dark-gray;
-      font-family: "ProximaNova-Regular";
+      font-family: "Ballinger Condensed";
       font-weight: bold;
-      font-size: 20px;
+      font-size: 44px;
     }
-    .rank-row {
-      height: 160px;
-      .sr {
-        color: $primary;
-        font-family: "ProximaNova-Regular";
-        font-weight: bold;
-        font-size: 42px;
-      }
-      .brand-image {
-        width: 145px;
-      }
-      .trending-block {
-        .duration {
-          color: $dark-gray;
-          font-family: "Roboto";
-          font-weight: bold;
-          font-size: 12.54px;
-          line-height: 15px;
-        }
-        .count {
-          color: $primary;
-          font-family: "Roboto";
-          font-weight: bold;
-          font-size: 38px;
-          line-height: 45px;
-        }
-      }
-    }
-    .rank-row-odd {
-      background-color: $odd-row-color;
-    }
-    .rank-row-even {
-      background-color: $white;
-    }
-    .story-description {
-      cursor: pointer;
+    .description {
+      width: 70%;
+      margin: 0 auto;
       color: $primary;
       font-family: "Ballinger Condensed";
       font-weight: bold;
       font-size: 20px;
-      text-decoration: underline;
-      text-align: left;
+      margin: 5px auto;
+    }
+  }
+}
+
+.list-data--contentWrapper {
+  border-top: 1px solid $light-gray-1;
+}
+.list-data--wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  @include media("<md") {
+    flex-flow: row wrap;
+  }
+
+  @include media("<lg") {
+    padding-left: 0 !important;
+  }
+
+  &.isHead {
+    background: $border-color;
+    font-family: "ProximaNova-Bold";
+    color: $dark-gray;
+    font-size: 20px;
+    padding: 15px 15px;
+    text-align: center;
+    @include media("<md") {
+      display: none;
     }
   }
 
-  .remaining-container{
-    .sr{
-        color: $primary;
+  &.isRow {
+    padding: 40px 15px;
+    @include media("<md") {
+      padding: 20px 15px;
+    }
+  }
+
+  &.list-data-wrapper--2 {
+    background-color: $text-secondary-color;
+  }
+
+  &.list-data-wrapper--1 {
+    background-color: $white;
+  }
+
+  .list-data--item {
+    flex: 1 0 25%;
+    max-width: 25%;
+    padding: 0 15px;
+    @include media("<md") {
+      flex: 1 0 100%;
+      max-width: 100%;
+    }
+    &.isBrandCol {
+      text-align: center;
+      .list-data--itemImg {
+        max-width: 190px;
+        @include media("<xl") {
+          max-width: 160px;
+        }
+        @include media("<md") {
+          max-width: 140px;
+          margin-bottom: 15px;
+        }
+        @include media("<sm") {
+          max-width: 120px;
+        }
+      }
+    }
+    &.isInvestmentCol {
+      .list-data--investment {
         font-family: "ProximaNova-Regular";
-        font-weight: bold;
-        font-size: 30px;
+        font-weight: 500;
+        color: $dark-gray;
+        font-size: 20px;
+        margin-bottom: 0;
         text-align: center;
+        a {
+          color: $dark-gray;
+        }
+        @include media("<md") {
+          margin-bottom: 10px;
+          font-size: 18px;
+          text-align: left;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Investment";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+          }
+        }
+      }
     }
-    .brand-image {
-      width: 125px;
+    &.isIndustryCol {
+      .list-data--industry {
+        font-family: "ProximaNova-Regular";
+        color: $dark-gray;
+        font-size: 15px;
+        margin-bottom: 0;
+        a {
+          color: $dark-gray;
+        }
+        @include media("<md") {
+          margin-bottom: 10px;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Industry";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+          }
+        }
+      }
     }
-    .row-odd{
-      background-color: $odd-row-color;
-      height: 145px;
+    &.isLstSotryCol {
+      .list-data--latestStory {
+        margin-bottom: 0;
+        .list-data--latestStoryLink {
+          font-family: "Ballinger Condensed Medium";
+          color: $primary;
+          font-size: 20px;
+          font-weight: 700;
+          text-decoration: underline;
+        }
+        @include media("<md") {
+          font-size: 18px;
+          margin-bottom: 10px;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Latest Story";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none !important;
+            color: $dark-gray;
+          }
+        }
+      }
     }
-    .row-even{
-      background-color: $white;
-      height: 145px;
-    }
+  }
+}
+
+.c-filter-with-box--wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  @include media("<lg") {
+    flex-flow: row wrap;
+  }
+
+  .list-data--section {
+    flex: 1 1 100%;
   }
 }
