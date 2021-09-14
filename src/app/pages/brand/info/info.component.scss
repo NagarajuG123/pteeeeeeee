@@ -199,3 +199,196 @@
     }
   }
 }
+
+//TABS CSS
+ .tabs {
+  height: 60px;
+  .prev{
+    img{
+      width: auto;
+      cursor: pointer;
+    }
+  }
+}
+.primary-bg {
+  background-color: #eb0444;
+}
+.customContainer {
+  max-width: 1210px !important;
+}
+.position-relative {
+  position: relative!important;
+}
+.innerContent {
+  padding: 0 53px;
+}
+.customContainer {
+  .innerContent {
+    li {
+      background-color: $white;
+      height: 60px;
+      span {
+        min-width: 132px;
+        height: 100%;
+        color: $light-gray-1;
+        cursor: pointer;
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        font-size: 15px;
+        &.active,
+        &:hover {
+          color: $primary;
+          &::after {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -20px;
+            width: 7px;
+            border-width: 16px 16px 0 16px;
+            border-style: solid;
+            border-color: $primary transparent transparent transparent;
+          }
+          &::before {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            background-color: $primary;
+          }
+        }
+      }
+      border-color: $light-gray-1;
+    }
+  }
+}
+.title-highlighter{
+  color: #fff;
+  background-color: #eb0444;
+  font-family: "Ballinger Condensed";
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 1px 7px;
+  width: -webkit-max-content;
+  width: max-content;
+  top: -18px;
+
+}
+
+// Latest story
+.tabs-container
+ > .tabItemList{
+  .row {
+    margin: 0 -5px;
+    .col-md-4 {
+      max-width: 20%;
+      padding: 0 5px;
+    }
+  }
+  .items {
+    font-family: "Ballinger Condensed";
+    font-weight: bold;
+    img {
+      width: 100%;
+      min-height: 106px;
+      background-color: #c4c4c4;
+    }
+    > .card-body {
+      padding: 8px 16px 15px;
+      > h6.card-title {
+        font-size: 11px;
+    }
+    .card-text {
+      font-size: 12px;
+    }
+    small {
+      font-family: "ProximaNova-Regular";
+      font-weight: 500;
+      font-size: 10px;
+    }
+   }
+  }
+ }
+ .primary-color {
+  color: #eb0444;
+}
+
+//Why I Bought
+
+.wings {
+  .frannews-top-left {
+    margin-bottom: 67px;
+  }
+  .map-legend {
+    margin-bottom: 40px;
+    .map-legend-item {
+      margin: 20px 15px 0;
+    }
+  }
+}
+.multi_conference-left{ 
+  ul {
+  margin-bottom: 18px;
+    li {
+      display: inline-block;
+      float: left;
+      padding: 0 31px 0 0;
+      position: relative;
+    }
+  }
+  h2 {
+    letter-spacing: .6px;
+  }
+  p {
+    color: #272525;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin-bottom: 18px;
+ }
+}
+
+.frannews-top-left{
+  ul{
+    li {
+      display: inline-block;
+      float: left;
+      padding: 0 31px 0 0;
+      position: relative;
+    }
+  } 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+//Availabe market
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.market-status-color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.align-self-center {
+  align-self: center!important;
+}
+
+.download-btn{
+  padding-left: 15px;
+  padding-top: 15px;
+}
+.submit-btn{
+  background-color: #eb0444;
+  width: 300px;
+}
