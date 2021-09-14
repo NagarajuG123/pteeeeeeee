@@ -80,6 +80,29 @@
                 </div>
             </div>
 
+            <div *ngIf="isPdf">
+                <div class="container">
+                    <div class="frannews-top-left d-flex"> LEARN MORE ABOUT</div>
+                    <img
+                    srcset="{{brandInfo?.media | defaultImage:303:150}}"
+                    class="img-fluid"
+                    sizes="{{
+                    '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    300px'
+                    }}"
+                    width="300"
+                    height="150"
+                    data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+                    alt="brand_logo"
+                 />
+                 <div class="row download-btn"> 
+                    <button type="submit" class="btn text-center submit-btn text-white rounded-0 btn-sm "> Next </button>
+                </div>
+                </div>  
+            </div>
+
             <div [hidden]="!isStory">
                 <div class="tabs-container container customContainer">
                     <div class="tabItemList innerContent mt-4 py-3">
@@ -315,9 +338,10 @@
                 [formGroup]="inquireForm"
                 (ngSubmit)="submitInquireForm(inquireForm.value)">
                 <div class="row p-3"  *ngFor="let fields of inquireFields">
-                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.key" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
+                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
                        
                         <textarea *ngIf="fields.type === 'textarea'"
+                        [placeholder]="fields.title"
                         [formControlName]="fields.key"
                         [id]="fields.key"
                         class="form-control"
@@ -357,46 +381,6 @@
                     </div>
                 </div>
             </form>
-                <!-- <div class="row p-3">
-                    <div class="col-md-6">
-                        <input class="form-control" type="text" name="first-name" id="firstName" placeholder="First Name">
-                    </div>
-                    <div class="col-md-6">
-                        <input class="form-control" type="text" name="last-name" id="lastName" placeholder="Last Name">
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <input class="form-control" type="email" name="email" id="email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone">
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <textarea class="form-control" rows="5" name="information-packet" id="informationPacket" placeholder="Are you looking for an information packet?"
-                            required></textarea>
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <input class="form-control" type="text" name="schedule-call" id="scheduleCall" placeholder="Would you like to scedule a call?">
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <input class="form-control" type="text" name="become-franchisee" id="becomeFranchisee" placeholder="When do you envision becoming a franchisee?">
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-md-12">
-                        <input class="form-control" type="text" name="min-requirement" id="minRequirement" placeholder="Do you meet the $75,000 minimum requirement?">
-                    </div>
-                </div> 
-            </div> -->
             <div class="divider-recent-feature">
                 <div class="row"> 
                     <button type="submit" class="btn text-center text-white rounded-0 btn-sm "> Next </button>

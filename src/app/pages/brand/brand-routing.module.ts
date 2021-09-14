@@ -1,9 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SitemapDetailsComponent } from '../sitemap-details/sitemap-details.component';
+import { SitemapComponent } from '../sitemap/sitemap.component';
+import { TermsComponent } from '../terms/terms.component';
 import { BrandComponent } from './brand.component';
 import { InfoComponent } from './info/info.component';
 
 const routes: Routes = [
+  {
+    path: 'sitemap',
+    component: SitemapComponent,
+  },
+  {
+    path: 'sitemap/:year/:month',
+    component: SitemapDetailsComponent,
+  },
+  {
+    path: 'termsofuse',
+    component: TermsComponent,
+  },
   {
     path: ':item',
     component: InfoComponent,

@@ -8,8 +8,9 @@ import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-// import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
+import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import * as d3 from 'd3';
+import { ValidationService } from 'src/app/_core/services/validation.service';
 @Component({
 selector: 'app-info',
 templateUrl: './info.component.html',
@@ -71,6 +72,7 @@ export class InfoComponent implements OnInit {
           '',
           Validators.compose([
             Validators.required,
+            ValidationService.emailValidator,
           ]),
         ],
       });
@@ -92,7 +94,7 @@ export class InfoComponent implements OnInit {
             //   response['ga']['tracking_code'],
             //   response['ga']['gtm_code'],
               response.slug
-            // );
+            //  );
           }
           let brandItems = [
             'info',
@@ -290,6 +292,7 @@ export class InfoComponent implements OnInit {
             }
             return value;
           });
+          console.log(this.inquireFields);
           this.inquireFields.forEach((item, index) => {
             let validation = [];
             if (item.required) {
