@@ -35,29 +35,31 @@
                   i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
                 "
               >
-                <div class="list-data--item isBrandCol">
-                  <p class="list-data--investment">
+                <div class="list-data--item rankCol">
+                  <p class="list-data--rank">
                     {{ item.rank }}
                   </p>
                 </div>
-                <div class="list-data--item isInvestmentCol">
+                <div class="list-data--item brandCol">
                   <a routerLink="/{{ item.slug }}">
                     <img
                       class="list-data--itemImg"
                       src="{{ item.logo }}"
                       alt="logo"
+                      width="190px"
+                      height="68px"
                   /></a>
                 </div>
-                <div class="list-data--item isIndustryCol">
-                  <p>Last Week</p>
-                  <p class="list-data--industry">
+                <div class="list-data--item lastWeekCol">
+                  <p class="list-data--trending">Last Week</p>
+                  <p class="list-data--number">
                     {{ item.last_week_rank }}
                   </p>
                 </div>
                 <div class="list-data--item isLstSotryCol">
                   <p class="list-data--latestStory">
                     <a
-                      routerLink="/{{ item.slug }}/item.latest_story.slug"
+                      routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
                       fragment="brand-latest-stories"
                       class="list-data--latestStoryLink"
                     >
