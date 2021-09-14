@@ -302,13 +302,62 @@
                     </div>
                 </div>
             </div>
+
+          
             <div class="inquiry-form-section">
                 <div class="row d-flex justify-content-center align-items-center header">
                     <div class="col-md-12 title">
                         INQUIRE NOW
                     </div>
                 </div>
-                <div class="row p-3">
+                <form
+                *ngIf="inquireForm"
+                [formGroup]="inquireForm"
+                (ngSubmit)="submitInquireForm(inquireForm.value)">
+                <div class="row p-3"  *ngFor="let fields of inquireFields">
+                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.key" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
+                       
+                        <textarea *ngIf="fields.type === 'textarea'"
+                        [formControlName]="fields.key"
+                        [id]="fields.key"
+                        class="form-control"
+                        rows="3"
+                        [ngClass]="{
+                          'is-invalid':
+                            (formControlsValues[fields.key].touched ||
+                              submittedInquireForm) &&
+                            formControlsValues[fields.key].errors?.required
+                        }"></textarea>
+                        
+                        <select *ngIf="fields.type === 'dropdown'"
+                        [formControlName]="fields.key"
+                        [id]="fields.key"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid':
+                            (formControlsValues[fields.key].touched ||
+                              submittedInquireForm) &&
+                            formControlsValues[fields.key].errors?.required }" >
+                        <option *ngFor="let value of fields.enum"
+                          value="{{ value }}">
+                          <span>{{ value }}</span>
+                        </option>
+                      </select>
+                      <div
+                      class="invalid-feedback d-block"
+                      *ngIf="
+                        (formControlsValues[fields.key].touched ||
+                          submittedInquireForm) &&
+                        (formControlsValues[fields.key].errors?.required ||
+                          formControlsValues[fields.key].errors?.email ||
+                          formControlsValues[fields.key].errors?.pattern)
+                      "
+                    >
+                      {{ fields.errorMsg }}
+                    </div>
+                </div>
+            </form>
+                <!-- <div class="row p-3">
                     <div class="col-md-6">
                         <input class="form-control" type="text" name="first-name" id="firstName" placeholder="First Name">
                     </div>
@@ -347,11 +396,13 @@
                         <input class="form-control" type="text" name="min-requirement" id="minRequirement" placeholder="Do you meet the $75,000 minimum requirement?">
                     </div>
                 </div> 
-            </div>
+            </div> -->
             <div class="divider-recent-feature">
-                <div class="row"></div>
-            </div>
-            
+                <div class="row"> 
+                    <button type="submit" class="btn text-center text-white rounded-0 btn-sm "> Next </button>
+                </div>
+            </div> 
+
             <!-- Recent Features -->
             <!-- <div class="recent-feature-article-section">
                 <div class="row p-3">
