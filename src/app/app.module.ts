@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './_shared/shared.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -20,7 +19,6 @@ import { environment } from '../environments/environment';
     TransferHttpCacheModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
