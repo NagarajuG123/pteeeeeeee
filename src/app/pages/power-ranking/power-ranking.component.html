@@ -46,8 +46,8 @@
                       class="list-data--itemImg"
                       src="{{ item.logo }}"
                       alt="logo"
-                      width="190px"
-                      height="68px"
+                      width="149px"
+                      height="103px"
                   /></a>
                 </div>
                 <div class="list-data--item lastWeekCol">
@@ -76,9 +76,20 @@
       <div class="list-data--wrapper isRow list-data-wrapper--2">
         <div class="col-md-3" *ngFor="let item of items.slice(9, 13)">
           <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 sr">{{ item.rank }}</div>
-            <div class="col-md-8">
-              <img class="brand-image" src="{{ item.logo }}" alt="brand" />
+            <div class="col-md-4 list-data--item rankCol">
+              <p class="list-data--bottom-rank">
+                {{ item.rank }}
+              </p>
+            </div>
+            <div class="col-md-8 list-data--item brandCol">
+              <a routerLink="/{{ item.slug }}">
+                <img
+                  class="list-data--itemImg"
+                  src="{{ item.logo }}"
+                  alt="logo"
+                  width="162px"
+                  height="79px"
+              /></a>
             </div>
           </div>
         </div>
@@ -86,9 +97,20 @@
       <div class="list-data--wrapper isRow list-data-wrapper--1">
         <div class="col-md-3" *ngFor="let item of items.slice(13, 17)">
           <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 sr">{{ item.rank }}</div>
-            <div class="col-md-8">
-              <img class="brand-image" src="{{ item.logo }}" alt="brand" />
+            <div class="col-md-4 list-data--item rankCol">
+              <p class="list-data--bottom-rank">
+                {{ item.rank }}
+              </p>
+            </div>
+            <div class="col-md-8 list-data--item brandCol">
+              <a routerLink="/{{ item.slug }}">
+                <img
+                  class="list-data--itemImg"
+                  src="{{ item.logo }}"
+                  alt="logo"
+                  width="162px"
+                  height="79px"
+              /></a>
             </div>
           </div>
         </div>

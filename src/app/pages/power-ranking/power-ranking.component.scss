@@ -107,6 +107,14 @@
         margin-bottom: 0;
         text-align: center;
       }
+      .list-data--bottom-rank {
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        color: $primary;
+        font-size: 56px;
+        margin-bottom: 0;
+        text-align: center;
+      }
     }
     &.lastWeekCol {
       .list-data--trending {
