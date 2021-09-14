@@ -33,9 +33,22 @@ export class CommonService {
   }
 
   formatTitle(title: any) {
-    if (title.length > 40) {
+    if (title && title.length > 40) {
       title = title.slice(0, 50) + '...';
     }
     return title;
+  }
+  formatDescription(description: any) {
+    if (description && description.length > 118) {
+      description = description.slice(0, 118) + '...';
+    }
+    return description;
+  }
+  readMore(story: any) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}`;
   }
 }

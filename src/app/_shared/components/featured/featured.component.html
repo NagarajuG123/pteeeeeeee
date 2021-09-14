@@ -51,11 +51,11 @@
               [ngClass]="i === 0 ? 'p-3' : 'p-2'"
             >
               {{ commonService.formatTitle(item.title) }}
-              <!-- <a href="#" class="stretched-link"></a> -->
+              <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
             </div>
           </div>
           <!-- if you want to add link on all slider screen use folloing link -->
-          <a href="#" class="stretched-link"></a>
+          <!-- <a href="#" class="stretched-link"></a> -->
         </div>
       </div>
     </div>
@@ -72,20 +72,18 @@
       <span class="small-title mb-2">LATEST FRANCHISE BRAND NEWS</span>
       <ul class="brand-list noScrollBar list-group">
         <li
-          *ngFor="let item of news; index as i"
+          *ngFor="let item of brandNews; index as i"
           class="pb-1"
-          [ngClass]="i === news.length - 1 ? '' : 'mb-1 mb-md-2'"
+          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h3 class="m-0">
-            <a routerLink="{{ item.slug }}">{{ item.title }}</a>
+            <a routerLink="{{ commonService.readMore(item) }}">{{
+              commonService.formatTitle(item.title)
+            }}</a>
           </h3>
           <span class="my-1">By {{ item.author?.name }}</span>
-          <p [ngClass]="i === news.length - 1 ? 'mb-0' : 'mb-2'">
-            {{
-              item.short_description && item.short_description.length > 118
-                ? item.short_description.slice(0, 118) + "..."
-                : item.short_description
-            }}
+          <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
+            {{ commonService.formatDescription(item.short_description) }}
           </p>
         </li>
       </ul>
@@ -112,26 +110,19 @@
           <div class="newsImage me-2 me-md-3">
             <img
               appYoutubeImage
-              srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
-            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-              class="img-fluid"
-              sizes="{{
-                '(max-width: 576px) 555px,
-                (max-width: 992px) 400px,
-                (max-width: 1200px) 238px,
-                300px'
-              }}"
               width="95"
               height="100"
-              data-src="{{ item.media | defaultImage: 100:95 }}"
+              data-src="{{ item.media | defaultImage: 121:114 }}"
               alt="industry"
             />
           </div>
           <div>
             <h3 class="m-0">
-              <a href="#">{{ item.title }}</a>
+              <a routerLink="{{ commonService.readMore(item) }}">{{
+                item.title
+              }}</a>
             </h3>
-            <span>By {{ item.author?.name }}</span>
+            <span>By {{ item.author.name }}</span>
           </div>
         </li>
       </ul>

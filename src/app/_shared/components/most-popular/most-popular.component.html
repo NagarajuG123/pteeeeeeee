@@ -1,4 +1,4 @@
-<div class="most-popular">
+<div class="most-popular" *ngIf="data">
   <div class="container customContainer">
     <h2 class="py-3 m-0 text-white">MOST POPULAR</h2>
   </div>
@@ -40,11 +40,7 @@
             <h3 class="position-relative ps-4 text-white">
               <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
               <strong class="ms-3 d-block">
-                {{
-                  item.title && item.title.length > 50
-                    ? item.title.slice(0, 50) + "..."
-                    : item.title
-                }}
+                {{ commonService.formatTitle(item.title) }}
               </strong>
             </h3>
           </div>

@@ -1,0 +1,162 @@
+<div class="c-subheader--wrapper">
+  <img src="{{ bannerImage }}" alt="banner" width="1449" height="250" />
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 g-0">
+      <div class="c-filter-with-box--wrapper">
+        <div class="c-filter--wrapper">
+          <div class="c-filter-sub--wrapper">
+            <div class="c-filter-item--wrapper">
+              <h2 class="c-filter-item--title">Filter by industry</h2>
+              <div class="c-filter-item--contentGroup">
+                <div class="c-filter-action--btnGroup">
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="selectAllIndustry()"
+                    class="c-filter-action--btn"
+                    >SELECT ALL</a
+                  >
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="clearAllIndustry()"
+                    class="c-filter-action--btn"
+                    >CLEAR ALL</a
+                  >
+                </div>
+                <ng-container
+                  *ngFor="let industry of industryKeys; let i = index"
+                >
+                  <div class="c-filter-item--content">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="industry{{ i }}"
+                      [checked]="industry.isChecked"
+                      (change)="onChangeIndustryFilter(i)"
+                    />
+                    <label class="form-check-label" for="industry{{ i }}">
+                      {{ industry.name }}
+                    </label>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="c-filter-item--wrapper">
+              <h2 class="c-filter-item--title">Filter by investment</h2>
+              <div class="c-filter-item--contentGroup">
+                <div class="c-filter-action--btnGroup">
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="selectAllInvestment()"
+                    class="c-filter-action--btn"
+                    >SELECT ALL</a
+                  >
+                  <a
+                    href="#"
+                    onclick="return false"
+                    (click)="clearAllInvestment()"
+                    class="c-filter-action--btn"
+                    >CLEAR ALL</a
+                  >
+                </div>
+                <ng-container
+                  *ngFor="let investment of investKeys; let i = index"
+                >
+                  <div class="c-filter-item--content">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="investment{{ i }}"
+                      [checked]="investment.isChecked"
+                      (change)="onChangeInvestmentFilter(i)"
+                    />
+                    <label class="form-check-label" for="investment{{ i }}">
+                      ${{ investment.min | number }} - ${{
+                        investment.max | number
+                      }}
+                    </label>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-data--section">
+          <div class="list-data--wrapper isHead">
+            <div class="list-data--item isBrandCol">Brand Page</div>
+            <div class="list-data--item isInvestmentCol">Investment</div>
+            <div class="list-data--item isIndustryCol">Industry</div>
+            <div class="list-data--item isLstSotryCol">Latest Story</div>
+          </div>
+          <div class="list-data--contentWrapper">
+            <ng-container *ngFor="let data of items; let i = index">
+              <div
+                class="list-data--wrapper isRow"
+                [ngClass]="
+                  i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
+                "
+              >
+                <div class="list-data--item isBrandCol">
+                  <a routerLink="/{{ data.slug }}/info">
+                    <img
+                      class="list-data--itemImg"
+                      src="{{ data.logo }}"
+                      alt="logo"
+                  /></a>
+                </div>
+                <div class="list-data--item isInvestmentCol">
+                  <p class="list-data--investment">
+                    <a routerLink="/{{ data.slug }}"> {{ data.investment }}</a>
+                  </p>
+                </div>
+                <div class="list-data--item isIndustryCol">
+                  <p class="list-data--industry">
+                    <a routerLink="/{{ data.slug }}">
+                      {{ getIndustry(data.industry) }}</a
+                    >
+                  </p>
+                </div>
+                <div class="list-data--item isLstSotryCol">
+                  <p class="list-data--latestStory">
+                    <a
+                      routerLink="/{{ data.slug }}/{{ data.latest_story.slug }}"
+                      fragment="brand-latest-stories"
+                      class="list-data--latestStoryLink"
+                    >
+                      {{ commonService.formatTitle(data.latest_story.title) }}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-bottom" *ngIf="hasMore">
+      <a href="#" onclick="return false;" (click)="getMoreData()">
+        <svg
+          width="41"
+          height="21"
+          viewBox="0 0 41 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M40 1L21.9142 19.0858C21.1332 19.8668 19.8668 19.8668 19.0858 19.0858L1 1"
+            stroke="#EB0444"
+            stroke-width="2"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

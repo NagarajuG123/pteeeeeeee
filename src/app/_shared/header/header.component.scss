@@ -67,12 +67,16 @@ header {
           font-family: "ProximaNova-Regular";
           font-size: 8px;
           color: $light-gray-1;
+
           > img {
             height: 8px;
             width: 8px;
           }
         }
       }
+    }
+    a {
+      color: $dark-gray;
     }
     // center menu style
     .center-menu {
@@ -214,8 +218,8 @@ header {
 .follow {
   font-family: "Ballinger Condensed";
   font-style: normal;
-  font-weight: bold;
-  font-size: 10px;
+  font-weight: 700;
+  font-size: 13px;
   line-height: 128.69%;
   color: $primary;
 }

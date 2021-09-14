@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './_shared/shared.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -17,15 +16,14 @@ import { environment } from '../environments/environment';
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    // TransferHttpCacheModule,
+    TransferHttpCacheModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.enablesw,
+      enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
