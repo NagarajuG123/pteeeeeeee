@@ -168,6 +168,91 @@
                 </div>
             </div>
 
+            <div *ngIf="isMarket">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex">
+                    <ul>
+                      <li>
+                        <h2 class="text-uppercase">Available Markets</h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div
+                      *ngIf="
+                        items['available-markets'] != null &&
+                        items['available-markets'].length
+                      "
+                      class="mapcontainer"
+                    >
+                      <div
+                        class="lg-map-wrapper"
+                        style="width: 100%; height: auto"
+                      >
+                        <svg id="map" width="800" height="500"></svg>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        items['available-markets'] != null &&
+                        items['available-markets'].length
+                      "
+                      class="map-legend"
+                    >
+                      MAP LEGEND:
+                      <div class="row">
+                        <div
+                          *ngFor="let market of items['available-markets']"
+                          class="col-sm-5 map-legend-item"
+                        >
+                          <div class="row market-names">
+                            <div class="col-xs-1">
+                              <div
+                                class="market-status-color"
+                                [style.backgroundColor]="market.color"
+                              ></div>
+                            </div>
+                            <div
+                              class="col-xs-10 align-self-center lh-base"
+                            >
+                              <span class="text-uppercase market-name">{{
+                                market.name
+                              }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding-top: 0px">
+                      <div
+                        *ngIf="
+                          items['international-markets'] != null &&
+                          items['international-markets'].length
+                        "
+                        class="map-legend"
+                      >
+                        <h3>INTERNATIONAL MARKETS:</h3>
+                        <div class="row">
+                          <div
+                            *ngFor="
+                              let market of items['international-markets']
+                            "
+                            class="col-sm-3 map-legend-item"
+                          >
+                            <div class="row market-names">
+                              <div class="col-xs-10">
+                                <span class="text-uppercase market-name">{{
+                                  market.name
+                                }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               
         </div>
 
@@ -195,7 +280,7 @@
                         <p class="highlight-text min-qualification" *ngFor="let info of brandInfo?.optional_info">
                            {{info.title}} {{ info.value }} <br />
                         </p>
-                        <p class="text">
+                        <!-- <p class="text">
                             Territory: Protected territory with geographic rights to the Sylvan system in a well-defined area
                         </p>
                         <p class="text">
@@ -213,7 +298,7 @@
                         </p>
                         <p class="text">
                             Bottom 25% average gross revenue: <span class="highlight-text">$104,646</span>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>

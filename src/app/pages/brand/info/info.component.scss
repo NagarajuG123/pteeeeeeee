@@ -320,6 +320,12 @@
   .frannews-top-left {
     margin-bottom: 67px;
   }
+  .map-legend {
+    margin-bottom: 40px;
+    .map-legend-item {
+      margin: 20px 15px 0;
+    }
+  }
 }
 .multi_conference-left{ 
   ul {
@@ -357,4 +363,23 @@ img {
   max-width: 100%;
   height: auto;
   display: inline-block;
+}
+
+//Availabe market
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.market-status-color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.align-self-center {
+  align-self: center!important;
 }
