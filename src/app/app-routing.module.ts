@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, UrlSegment } from '@angular/router';
+import {
+  PreloadAllModules,
+  RouterModule,
+  Routes,
+  UrlSegment,
+} from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
-import { ContacteditorialComponent } from './pages/contacteditorial/contacteditorial.component';
-import { SubscribepageComponent } from './pages/subscribepage/subscribepage.component';
 import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
 import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
-import { AuthorComponent } from './pages/author/author.component';
 import { StoryComponent } from './pages/story/story.component';
 
 export function isArticlePage(url: UrlSegment[]) {
@@ -42,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: 'trendingbrandbuzz',
-    component: TrendingbuzzComponent,
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/trendingbuzz/trendingbuzz.module').then(
         (m) => m.TrendingbuzzModule
@@ -50,13 +52,12 @@ const routes: Routes = [
   },
   {
     path: 'author/:authorSlug',
-    component: AuthorComponent,
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/author/author.module').then((m) => m.AuthorModule),
   },
   {
     path: 'powerrankings',
-    component: PowerRankingComponent,
     loadChildren: () =>
       import('./pages/power-ranking/power-ranking.module').then(
         (m) => m.PowerRankingModule
@@ -65,11 +66,13 @@ const routes: Routes = [
 
   {
     path: 'sitemap',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
     path: 'termsofuse',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/termsofuse/termsofuse.module').then(
         (m) => m.TermsofuseModule
@@ -77,7 +80,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-editorial',
-    component: ContacteditorialComponent,
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/contacteditorial/contacteditorial.module').then(
         (m) => m.ContacteditorialModule
@@ -85,11 +88,13 @@ const routes: Routes = [
   },
   {
     path: 'searchpopup',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/search/search.module').then((m) => m.SearchModule),
   },
   {
     path: 'brandsearch',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/brand-search/brand-search.module').then(
         (m) => m.BrandSearchModule
@@ -97,14 +102,15 @@ const routes: Routes = [
   },
   {
     path: 'subscribe',
-    component: SubscribepageComponent,
+    pathMatch: 'full',
     loadChildren: () =>
-      import('./pages/subscribepage/subscribepage.module').then(
-        (m) => m.SubscribepageModule
+      import('./pages/subscribe/subscribe.module').then(
+        (m) => m.SubscribeModule
       ),
   },
   {
     path: 'monthlydetails/:month/:year/:date/:id',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/monthly-details/monthly-details.module').then(
         (m) => m.MonthlyDetailsModule
@@ -112,6 +118,7 @@ const routes: Routes = [
   },
   {
     path: 'monthlycovers',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/monthly-covers/monthly-covers.module').then(
         (m) => m.MonthlyCoversModule
@@ -119,11 +126,13 @@ const routes: Routes = [
   },
   {
     path: 'about',
+    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
     path: 'storypage/preview/:storyId',
+    pathMatch: 'full',
     component: StoryComponent,
     loadChildren: () =>
       import('./pages/story/story.module').then((m) => m.StoryModule),
@@ -153,6 +162,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
       initialNavigation: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),

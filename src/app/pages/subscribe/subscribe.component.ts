@@ -8,11 +8,11 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 
 @Component({
-  selector: 'app-subscribepage',
-  templateUrl: './subscribepage.component.html',
-  styleUrls: ['./subscribepage.component.scss'],
+  selector: 'app-subscribe',
+  templateUrl: './subscribe.component.html',
+  styleUrls: ['./subscribe.component.scss'],
 })
-export class SubscribepageComponent implements OnInit {
+export class SubscribeComponent implements OnInit {
   data: FiveColumn[] = [];
   slug = '1851';
   title!: string;
