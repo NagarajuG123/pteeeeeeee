@@ -8,7 +8,6 @@ import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 @Component({
@@ -63,7 +62,6 @@ export class InfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router, 
     private fb: FormBuilder,
-    // private googleAnalyticsService: GoogleAnalyticsService,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient) { 
       this.isBrowser = isPlatformBrowser(platformId);
@@ -89,12 +87,7 @@ export class InfoComponent implements OnInit {
           this.router.navigateByUrl('/404');
         } else {
           if (this.brandSlug !== '1851' && this.isBrowser && response['ga']) {
-            // this.googleAnalyticsService.appendGaTrackingCode(
-            //   response['ga']['1851_franchise'],
-            //   response['ga']['tracking_code'],
-            //   response['ga']['gtm_code'],
               response.slug
-            //  );
           }
           let brandItems = [
             'info',
@@ -212,7 +205,6 @@ export class InfoComponent implements OnInit {
     });
     }
     getContents(item: string | null) {
-    console.log(item);
     let path;
       if (item === 'info') {
       path = 'brand-info';
@@ -243,8 +235,6 @@ export class InfoComponent implements OnInit {
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
       forkJoin([itemApi, publicationApi]).subscribe((results) => {
         this.items = results[0].data;
-        console.log(this.items);
-        console.log(this.items.name);
         let metaData = results[0].meta;
         this.metaService.setSeo(metaData);
         this.metaService.setTitle(`${metaData.seo.title} | ${results[1].title}`);
@@ -292,7 +282,6 @@ export class InfoComponent implements OnInit {
             }
             return value;
           });
-          console.log(this.inquireFields);
           this.inquireFields.forEach((item, index) => {
             let validation = [];
             if (item.required) {
@@ -324,7 +313,6 @@ export class InfoComponent implements OnInit {
     }
     setActiveTab(val,item) {
       this.activeTab = val;
-      console.log(item);
       this.tab = item?.value;
       this.getContents(this.tab);
     }
