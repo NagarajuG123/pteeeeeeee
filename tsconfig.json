@@ -7,13 +7,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "noImplicitReturns": false,
-<<<<<<< HEAD
-=======
-        "strictPropertyInitialization": false,
->>>>>>> 29883fd1ddb10a41d4be8360dbddd05e58769443
+    "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "strictPropertyInitialization": false,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
