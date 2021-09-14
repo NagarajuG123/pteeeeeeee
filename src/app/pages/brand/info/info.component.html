@@ -44,7 +44,21 @@
         <div class="col-md-8">
             <div class="row pb-3">
                 <div class="col-md-12">
-                    <img class="brand-img" src="../../../../assets/img/brand-info.jpg" alt="brand-img">
+                    <img
+                    appYoutubeImage
+                    srcset="{{brandInfo?.media | defaultImage:953:535}}"
+                    class="img-fluid"
+                    sizes="{{
+                      '(max-width: 576px) 555px,
+                      (max-width: 992px) 400px,
+                      (max-width: 1200px) 238px,
+                      300px'
+                    }}"
+                    width="953"
+                    height="535"
+                    data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+                    alt="brand_img"
+                  />
                 </div>
             </div>
             <div class="question-container" *ngIf="isInfo">
