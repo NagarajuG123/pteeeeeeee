@@ -74,8 +74,8 @@
       </div>
       <!-- bottom -->
       <div class="list-data--wrapper isRow list-data-wrapper--2">
-        <div class="col-md-3" *ngFor="let item of items.slice(9, 13)">
-          <div class="row d-flex justify-content-center align-items-center">
+        <div *ngFor="let item of items.slice(9, 13)">
+          <div class="row justify-content-center align-items-center">
             <div class="col-md-4 list-data--item rankCol">
               <p class="list-data--bottom-rank">
                 {{ item.rank }}

@@ -8,15 +8,18 @@
             *ngFor="let publication of footer?.publication"
           >
             <div class="image me-3">
-              <img
-                src="{{ publication?.logo }}"
-                alt="logo"
-                width="57"
-                height="83"
-              />
+              <a href="{{ publication.url }}"
+                ><img
+                  src="{{ publication?.logo }}"
+                  alt="logo"
+                  width="57"
+                  height="83"
+              /></a>
             </div>
             <div>
-              <h4 class="m-0">{{ publication?.title }}</h4>
+              <a href="{{ publication.url }}"
+                ><h4 class="m-0">{{ publication?.title }}</h4></a
+              >
             </div>
           </li>
         </ul>
@@ -30,14 +33,24 @@
             <div class="col-6 col-md-4 col-lg">
               <div class="row">
                 <div class="col-12 col-lg" *ngFor="let menu of footer?.menus">
-                  <h4 class="text-uppercase primary-color">
+                  <h4
+                    class="text-uppercase primary-color"
+                    *ngIf="menu.title == 'Spotlight'"
+                  >
                     {{ menu?.title }}
                   </h4>
+                  <a
+                    routerLink="{{ menu.url }}"
+                    *ngIf="menu.title != 'Spotlight'"
+                    ><h4 class="text-uppercase primary-color">
+                      {{ menu?.title }}
+                    </h4></a
+                  >
                   <h4
                     class="text-uppercase mb-2"
                     *ngFor="let item of menu.items"
                   >
-                    <a routerLink="/{{ item.url }}">{{ item?.name }}</a>
+                    <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
                   </h4>
                 </div>
               </div>
