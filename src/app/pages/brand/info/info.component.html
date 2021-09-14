@@ -152,7 +152,7 @@
                     [innerHTML]="items?.content"
                   ></p>
                 </div>
-              </div>
+            </div>
 
               
         </div>
@@ -167,21 +167,19 @@
                 <div class="row p-3 financial-description">
                     <div class="col-md-12">
                         <p class="text">
-                            Sylvan Learning offers the industry’s best fees, with a low initial investment and a simplified royalty structure of 16% of monthly growth revenues with
-                            a total minimum annual royalty of no less than $32,000.
+                           {{ brandInfo?.more_info }}
                         </p>
                         <p class="text">
-                            Initial Franchise Fee: <span class="highlight-text"> $24,000 </span>
+                            Initial Franchise Fee: <span class="highlight-text"> {{ brandInfo?.franchise_fee }} </span>
                         </p>
                         <p class="text">
-                            Initial Investment Range: <span class="highlight-text"> $69,760 — $161,445 </span>
+                            Initial Investment Range: <span class="highlight-text"> {{ brandInfo?.startup_costs }} </span>
                         </p>
                         <p class="text">
                             Minimum Qualifications:
                         </p>
-                        <p class="highlight-text min-qualification">
-                            $75,000 minimum liquidity <br />
-                            $150,000 minimum net worth
+                        <p class="highlight-text min-qualification" *ngFor="let info of brandInfo?.optional_info">
+                           {{info.title}} {{ info.value }} <br />
                         </p>
                         <p class="text">
                             Territory: Protected territory with geographic rights to the Sylvan system in a well-defined area
