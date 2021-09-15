@@ -6,6 +6,7 @@ import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
@@ -24,7 +25,8 @@ export class MostPopularComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private tstate: TransferState,
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
+    public commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
