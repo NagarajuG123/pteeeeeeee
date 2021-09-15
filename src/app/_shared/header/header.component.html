@@ -226,12 +226,17 @@
       <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
         <!-- Search bar -->
         <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
-          <img
-            src="assets/img/search.svg"
-            height="15"
-            width="15"
-            alt="search"
-          />
+          <a
+            href="#"
+            onclick="return false;"
+            data-bs-toggle="modal"
+            data-bs-target="#searchModal"
+            ><img
+              src="assets/img/search.svg"
+              height="15"
+              width="15"
+              alt="search"
+          /></a>
         </div>
 
         <!-- Social Links -->
@@ -269,4 +274,77 @@
     </div>
   </main>
   <!-- main header section Close -->
+
+  <!-- Search Modal -->
+
+  <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="close text-right"
+          #searchCloseBtn
+          data-bs-dismiss="modal"
+        >
+          &times;
+        </button>
+        <form
+          [formGroup]="searchForm"
+          (ngSubmit)="onSearchSubmit(searchForm, 'header')"
+        >
+          <div class="form-group d-block">
+            <input
+              type="text"
+              class="form-control"
+              [placeholder]="'Search'"
+              (keyup)="onKeyUp()"
+              [formControl]="searchForm.controls['searchInput']"
+            />
+            <button
+              type="button"
+              class="d-block text-center"
+              (click)="onSearchSubmit(searchForm, 'header')"
+              data-bs-dismiss="modal"
+            >
+              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
+            </button>
+          </div>
+        </form>
+        <h5>MOST RECENT MATCHES</h5>
+        <div class="ArticlesNewsSection">
+          <h6 class="text-center" *ngIf="news == null">No articles found</h6>
+
+          <div class="container customContainer py-md-2">
+            <div class="row mt-2">
+              <div
+                class="col-sm-6 col-md-3 mb-2"
+                *ngFor="let list of news; index as i"
+              >
+                <div class="items card border-0 rounded-0">
+                  <a
+                    routerLink="{{ commonService.readMore(list) }}"
+                    fragment="franbuzz"
+                    (click)="closeModal()"
+                    ><img
+                      src="{{ list.media | defaultImage: 257:138 }}"
+                      class="card-img-top"
+                      alt="story"
+                      width="257"
+                      height="138"
+                    />
+                    <div class="card-body">
+                      <p class="card-text mb-1 text-black text-capitalize">
+                        {{ commonService.formatTitle(list.title) }}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Search Modal close -->
 </header>

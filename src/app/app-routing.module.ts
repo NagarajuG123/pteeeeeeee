@@ -54,6 +54,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'searchpopup',
+    loadChildren: () =>
+      import('./pages/search/search.module').then((m) => m.SearchModule),
+  },
+  {
     path: 'sitemap',
     loadChildren: () =>
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
