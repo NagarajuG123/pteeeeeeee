@@ -12,23 +12,21 @@ export class VideosComponent implements OnInit {
   customOptions: OwlOptions = {
     autoplay: true,
     loop: true,
+    margin: 5,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['<img src="assets/img/slider-left-arrow.png"/>', '<img src="assets/img/slider-right-arrow.png"/>'],
     responsive: {
       0: {
         items: 1,
       },
-      400: {
-        items: 2,
-      },
-      740: {
+      768: {
         items: 3,
       },
-      940: {
+      1200: {
         items: 5,
       },
     },
