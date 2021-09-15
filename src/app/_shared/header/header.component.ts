@@ -19,6 +19,16 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookF,
+  faLinkedinIn,
+  faYoutube,
+  faInstagram,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,7 +38,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn;
 
   header: any = [];
-  brandSlug:string;
+  brandSlug: string;
   brandTitle!: string;
   isMain: boolean;
   isShow: boolean;
@@ -56,6 +66,15 @@ export class HeaderComponent implements OnInit {
   isFranchiseMenu: boolean = false;
   isLearnMenu: boolean = false;
   isBrandLearnMenu: boolean = false;
+  socialIcons: any = [
+    faFacebookF,
+    faInstagram,
+    faLinkedinIn,
+    faYoutube,
+    faTwitter,
+  ];
+  faCaretRightIcon = faCaretRight;
+  faSearch = faSearch;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -141,12 +160,16 @@ export class HeaderComponent implements OnInit {
     this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
-    const header = this.apiService.getAPI(`${this.brandSlug}/header`);
+    let headerApi = 'header';
+    if (this.brandSlug !== '1851') {
+      headerApi = `header?slug=${this.brandSlug}`;
+    }
+    const header = this.apiService.getAPI2(headerApi);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const sidenav = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
-    
+
     forkJoin([header, news, inquire, publication, sidenav]).subscribe(
       (results) => {
         this.header = results[0].data;
@@ -155,7 +178,7 @@ export class HeaderComponent implements OnInit {
         this.publication = results[3];
         this.sidenav = results[4].data;
         this.isMain = true;
-    
+
         this.setFavicon();
         if (this.brandSlug != '1851') {
           this.isMain = false;
@@ -174,7 +197,6 @@ export class HeaderComponent implements OnInit {
           }
           this.setEditorialEmail();
         }
-        
       }
     );
   }
@@ -200,28 +222,34 @@ export class HeaderComponent implements OnInit {
       this.brandTitle
     );
   }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
-  onSearchSubmit(searchForm: FormGroup, type) {
+
+  onSearchSubmit(searchForm: any, type) {
     if (type === 'sidebar') {
       this.commonService.toggle();
     }
-
     this.searchCloseBtn.nativeElement.click();
-
     if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${
-        searchForm.controls['searchInput'].value
-      }&brand_id=${this.publication.id.toLowerCase()}`;
+      this.router.navigate(['/searchpopup'], {
+        queryParams: {
+          search_input: searchForm.controls['searchInput'].value,
+          brand_id: this.header.publication.id.toLowerCase(),
+        },
+      });
     } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
+      this.router.navigate([`/${this.brandSlug}/searchpopup`], {
+        queryParams: {
+          search_input: searchForm.controls['searchInput'].value,
+          brand_id: this.brandId,
+        },
+      });
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
-
   onKeyUp(): void {
     this.subject.next();
+  }
+  closeModal() {
+    this.searchCloseBtn.nativeElement.click();
   }
   submitInquireForm(values: any) {
     this.submittedInquireForm = true;
@@ -300,9 +328,9 @@ export class HeaderComponent implements OnInit {
       this.inquireForm = this.fb.group(group);
     }
   }
-  closeModal(id) {
-    $(`#${id}`).hide();
-  }
+  // closeModal(id) {
+  //   $(`#${id}`).hide();
+  // }
   getFormType(item) {
     let type = 'text';
     if (item === 'net_worth' || item === 'liquidity') {

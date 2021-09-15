@@ -1,0 +1,83 @@
+/* development fonts here */
+@font-face {
+  font-family: "ProximaNova-Regular";
+  src: url("/assets/fonts/ProximaNova-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProximaNova-Medium";
+  src: url("/assets/fonts/ProximaNova-Medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProximaNova-Semibold";
+  src: url("/assets/fonts/ProximaNova-Semibold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  src: url("/assets/fonts/ProximaNova-Bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProximaNova-Light";
+  src: url("/assets/fonts/ProximaNova-Light.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "ProximaNova-LightIt";
+  src: url("/assets/fonts/ProximaNova-LightIt.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ballinger Condensed";
+  src: url("/assets/fonts/Ballinger/BallingerCondensed-Light.eot");
+  src: local("Ballinger Condensed Light"), local("BallingerCondensed-Light"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Light.woff2")
+      format("woff2"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Light.woff") format("woff"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Light.ttf")
+      format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ballinger Condensed Regular";
+  src: url("/assets/fonts/Ballinger/BallingerCondensed-Regular.eot");
+  src: local("Ballinger Condensed Regular"), local("BallingerCondensed-Regular"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Regular.woff2")
+      format("woff2"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Regular.woff")
+      format("woff"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Regular.ttf")
+      format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ballinger Condensed Medium";
+  src: url("/assets/fonts/Ballinger/BallingerCondensed-Medium.eot");
+  src: local("Ballinger X-Condensed Medium"), local("BallingerCondensed-Medium"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.woff2")
+      format("woff2"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.woff") format("woff"),
+    url("/assets/fonts/Ballinger/BallingerCondensed-Medium.ttf")
+      format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,44 +1,63 @@
-@import "assets/scss/functions";
-@import "assets/scss/variables";
-@import "assets/scss/mixins";
-@import "assets/scss/utilities";
-@import "assets/scss/buttons";
-@import "assets/scss/carousel";
-@import "assets/scss/close";
-@import "assets/scss/code";
-@import "assets/scss/dropdown";
-@import "assets/scss/grid";
-@import "assets/scss/popover";
-@import "assets/scss/reboot";
-@import "assets/scss/root";
-@import "assets/scss/type";
-@import "assets/scss/bootstrap-grid";
-@import "assets/scss/bootstrap-reboot";
-@import "assets/scss/bootstrap";
-@import "assets/customize/main.scss";
-@import "assets/customize/base.scss";
-@import "assets/sass/slick.scss";
-@import "assets/customize/publication.scss";
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/typography.scss";
+@import "./assets/scss/theme-color.scss";
 
+html,
+body {
+  min-height: 100%;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 ul {
-  padding-left: 0rem !important;
+  padding: 0;
+  > li {
+    list-style: none;
+  }
+}
+.primary-color {
+  color: $primary;
+  &.link {
+    &:hover {
+      color: $primary-1;
+    }
+  }
+}
+.primary-bg {
+  background-color: $primary;
+}
+.primary-bg-1 {
+  background-color: $primary-1;
 }
 
-b,
-strong {
-  font-family: "ProximaNova-Medium";
+.gray-color {
+  color: $dark-gray;
 }
-ul li,
-p {
-  font-family: "ProximaNova-Regular" !important;
+.gray-bg {
+  background-color: $dark-gray;
 }
-h4 {
-  font-family: "ProximaNova-SemiBold";
+
+.noScrollBar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 8px;
+    background-color: rgb(107, 99, 99); /* or add it to the track */
+  }
 }
-.socialmedia span.d-block {
-  display: none !important;
+.container {
+  max-width: 1350px !important;
 }
-.sponsered_content_right .advertisement_data .slick-prev,
-.sponsered_content_right .advertisement_data .slick-next {
-  display: none !important;
+.customContainer {
+  max-width: 1210px !important;
+}
+
+// owl-carousel
+.custom-carousel {
+  .owl-stge {
+    display: flex;
+  }
+}
+.cursor {
+  cursor: pointer;
 }

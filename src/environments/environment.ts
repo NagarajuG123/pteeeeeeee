@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   port: 4200,
   apiUrl: 'https://api.1851franchise.com/v1',
+  api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
   imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
   appUrl: 'https://1851franchise.com',

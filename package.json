@@ -38,6 +38,8 @@
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-common-types": "^0.2.36",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@nguniversal/express-engine": "^12.1.0",
     "@popperjs/core": "^2.10.1",
     "@types/jquery": "^3.5.6",

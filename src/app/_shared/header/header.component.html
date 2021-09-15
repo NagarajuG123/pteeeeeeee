@@ -1,933 +1,285 @@
-<header *ngIf="header && isShow" class="col-12 p-0">
-  <div *ngIf="isMain" class="container">
-    <div class="header-details d-flex">
-      <div class="header-left col-lg-5 col-md-4 col-sm-8 col-12 d-flex">
-        <div class="menu col-xl-1 col-2">
-          <a href="#" onclick="return false;" (click)="commonService.toggle()">
-            <figure>
-              <img
-                [src]="
-                  commonService.showmenu
-                    ? '../../../assets/img/close.png'
-                    : '../../../assets/img/menu.png'
-                "
-                alt=""
-                width="35"
-                height="24"
-                [ngClass]="commonService.showmenu ? 'close-menu' : ''"
-              />
-            </figure>
-            <small
-              class="text-center d-block"
-              [ngClass]="commonService.showmenu ? 'invisible' : ''"
-              >MENU</small
-            >
+<header>
+  <!-- Top header section Start -->
+  <div class="top-head">
+    <div class="container d-flex">
+      Publications in the Mainland Community:
+      <ul class="list-group list-group-horizontal ms-3">
+        <li class="me-3">
+          <a
+            href="{{ header?.publication?.room1903Url }}"
+            target="_blank"
+            class="text-white"
+          >
+            <span
+              ><img
+                src="assets/img/room-service.png"
+                height="21"
+                width="21"
+                alt="room service"
+            /></span>
+            Room 1903&nbsp;
+            <fa-icon
+              [icon]="faCaretRightIcon"
+              [styles]="{ width: '5px' }"
+            ></fa-icon>
           </a>
-        </div>
-      
-        <div
-          *ngIf="sidenav"
-          class="menu-details"
-          [ngClass]="commonService.showmenu ? 'show' : ''"
-        >
-          <div class="menu-logo text-center">
-            <a routerLink="/"  
-            [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-            (click)="commonService.toggle()">
-              <figure>
-                <img
-                  class="logo-img lazyload"
-                  data-src="{{ sidenav?.logo }}"
-                  width="{{ publication?.id === 'EE' ? 200 : 53 }}"
-                  height="53"
-                  alt="logo"
-                />
-              </figure>
-            </a>
+        </li>
+        <li class="me-3">
+          <a
+            href="{{ header?.publication?.eeUrl }}"
+            target="_blank"
+            class="text-white"
+          >
+            <span
+              ><img
+                src="assets/img/Estatenvy.png"
+                height="21"
+                width="21"
+                alt="room service"
+            /></span>
+            Estatenvy&nbsp;
+            <fa-icon
+              [icon]="faCaretRightIcon"
+              [styles]="{ width: '5px' }"
+            ></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Top header section Close -->
+
+  <!-- main header section Start -->
+  <main class="container">
+    <div class="row g-0 align-items-center">
+      <div class="col-10 col-md-auto d-flex position-relative">
+        <a class="menuBtn me-3" (click)="commonService.toggle()">
+          <img
+            [src]="
+              commonService.showmenu
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
+            "
+            alt=""
+            width="35"
+            height="24"
+            [ngClass]="commonService.showmenu ? 'close-menu' : ''"
+          />
+          <small class="text-center d-none d-md-block">MENU</small>
+          <!-- [ngClass]="commonService.showmenu ? 'invisible' : ''" -->
+        </a>
+
+        <!-- Header Logo Section -->
+        <div class="logo d-flex align-items-center">
+          <a routerLink="/"
+            ><img
+              src="{{ header?.logo?.url }}"
+              height="41"
+              width="41"
+              alt="logo"
+              class="me-2"
+          /></a>
+          <div>
+            <a routerLink="{{ header?.subscribe?.url }}">{{
+              header?.subscribe?.title
+            }}</a
+            ><br />
+            <small class="d-flex align-items-center"
+              ><a routerLink="{{ header?.subscribe?.url }}">{{
+                header?.subscribe?.subTitle
+              }}</a>
+              &nbsp;
+              <img src="assets/img/logo.png" height="41" width="41" alt="logo"
+            /></small>
           </div>
+        </div>
+
+        <!-- Sub menu start-->
+        <div
+          class="subMenu noScrollBar"
+          [ngClass]="commonService.showmenu ? 'open' : ''"
+        >
           <div class="menu-search">
             <form
               [formGroup]="searchForm"
               (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
             >
-              <div class="form-group">
-                <input
-                  type="text"
-                  formControlName="searchInput"
-                  class="form-control"
-                  [placeholder]="sidenav?.search?.placeholder"
-                />
+              <div class="input-group mb-1">
                 <button
+                  class="ps-2"
                   type="button"
                   (click)="onSearchSubmit(searchForm, 'sidebar')"
                 >
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                  <img
+                    src="assets/img/search-p.svg"
+                    alt="search"
+                    width="11px"
+                    height="11px"
+                  />
                 </button>
+                <input
+                  type="text"
+                  class="form-control ps-0"
+                  placeholder="Search"
+                />
               </div>
             </form>
           </div>
-          <div class="monthly-covers">
-            <ul>
-              <li class="d-block">
-                <div class="monthly-covers-main">
-                  <a
-                    routerLink="/monthlycovers"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-database"></i>
-                    </figure>
-                    <strong>MONTHLY COVERS</strong>
-                  </a>
-                  <div
-                    *ngIf="sidenav['monthly-cover']"
-                    class="monthly-covers-details monthly-covers-details1"
-                  >
-                    <a
-                      routerLink="/{{ sidenav['monthly-cover']?.url }}"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <img
-                          appYoutubeImage
-                          data-src="{{
-                            sidenav['monthly-cover']?.media
-                              | defaultImage: 97:127
-                          }}"
-                          width="97"
-                          height="127"
-                          alt="monthly cover"
-                          class="lazyload"
-                        />
-                      </figure>
-                    </a>
-                  </div>
-                </div>
-                <div class="monthly-covers-main">
-                  <a class="cursor-default" href="#" onclick="return false;">
-                    <figure>
-                      <i class="fa fa-server"></i>
-                    </figure>
-                    <strong>{{ sidenav?.category?.label }}</strong>
-                  </a>
-                  <div
-                    class="monthly-covers-details"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <p *ngFor="let item of sidenav?.category?.items">
-                      <a routerLink="/{{ item?.url.split('+').join('-') }}">{{
-                        item.title
-                      }}</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li *ngIf="sidenav['awards']" class="d-block">
-                <div class="monthly-covers-main">
-                  <a class="cursor-default" href="#" onclick="return false;">
-                    <figure>
-                      <i class="fa fa-trophy"></i>
-                    </figure>
-                    <strong>AWARDS</strong>
-                  </a>
-                  <div class="monthly-covers-details">
-                    <p *ngFor="let item of sidenav['awards']">
-                      <a
-                        routerLink="{{ item?.url }}"
-                        [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                        (click)="commonService.toggle()"
-                        >{{ item?.title }}</a
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="monthly-covers-main"
-                  *ngIf="sidenav['power-rankings']"
-                >
-                  <a
-                    routerLink="/{{ sidenav['power-rankings']?.url }}"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-star"></i>
-                    </figure>
-                    <strong>POWER RANKINGS</strong>
-                  </a>
-                </div>
-              </li>
-              <li class="d-block">
-                <div class="monthly-covers-main" *ngIf="sidenav['about-1851']">
-                  <a
-                    routerLink="/{{ sidenav['about-1851']?.url }}"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-question-circle"></i>
-                    </figure>
-                    <strong
-                      >ABOUT
-                      <span>{{
-                        publication?.shortTitle?.toUpperCase()
-                      }}</span></strong
-                    >
-                  </a>
-                </div>
-                <div class="monthly-covers-main">
-                  <a
-                    routerLink="/termsofuse"
-                    fragment="sponsored"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-usd"></i>
-                    </figure>
-                    <strong>SPONSORED CONTENT</strong>
-                  </a>
-                </div>
-                <div class="monthly-covers-main">
-                  <a
-                    routerLink="/about"
-                    fragment="tellus"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-rss"></i>
-                    </figure>
-                    <strong
-                      >ADVERTISE ON
-                      <span>{{
-                        publication?.shortTitle?.toUpperCase()
-                      }}</span></strong
-                    >
-                  </a>
-                </div>
-                <div class="monthly-covers-main">
-                  <a
-                    routerLink="/{{ sidenav['contact-editorial']?.url }}"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-envelope-open"></i>
-                    </figure>
-                    <strong
-                      >CONTACT
-                      <span>{{ publication?.shortTitle?.toUpperCase() }}</span
-                      >&nbsp;<span *ngIf="publication.id !== 'EE'"
-                        >EDITORIAL</span
-                      ></strong
-                    >
-                  </a>
-                </div>
-                <div class="monthly-covers-main">
-                  <a
-                    routerLink="/{{ sidenav['terms-of-use']?.url }}"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
-                  >
-                    <figure>
-                      <i class="fa fa-list"></i>
-                    </figure>
-                    <strong>TERMS OF USE</strong>
-                  </a>
-                </div>
-              </li>
-              <li class="d-block">
-                <div class="monthly-covers-main">
-                  <a href="{{ sidenav['login']?.url }}">
-                    <figure>
-                      <i class="fa fa-home"></i>
-                    </figure>
-                    <strong>LOGIN</strong>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <nav class="d-sm-block d-md-none">
-            <ul>
-              <li
-                *ngIf="
-                  header?.subscribe && header?.subscribe['position'] != 'left'
-                "
-              >
-                <a [href]="header.subscribe['url']" class="text-uppercase">
-                  {{ header.subscribe["title"] }}
-                </a>
-              </li>
-              <li
-                *ngIf="header && header['Franchise Brands']"
-                class="has_dd d-block float-none"
-              >
-                <a class="text-uppercase" href="#" (click)="toggleFranchise()">
-                  {{ header["Franchise Brands"]?.title }}
-                  <span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i
-                  ></span>
-                </a>
-                <div [ngClass]="isFranchiseMenu ? 'show' : ''" class="megamenu">
-                  <ul>
-                    <li
-                      *ngFor="
-                        let subItem of header['Franchise Brands']?.dropdown
-                      "
-                    >
-                      <a
-                        href="{{ subItem.url }}"
-                        [target]="subItem['isExternalLink'] ? '_blank' : ''"
-                        rel="subItem['isExternalLink'] ? 'noreferrer' : ''"
-                        class="text-uppercase"
-                        >{{ subItem.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Learn -->
-              <li
-                *ngIf="header && header['Learn']"
-                class="has_dd d-block float-none"
-              >
-                <a class="text-uppercase" href="#" (click)="toggleLearn()">
-                  {{ header["Learn"]?.title }}
-                  <span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i
-                  ></span>
-                </a>
-                <div [ngClass]="isLearnMenu ? 'show' : ''" class="megamenu">
-                  <ul>
-                    <li *ngFor="let subItem of header['Learn']?.dropdown">
-                      <a
-                        *ngIf="subItem['isExternalLink']"
-                        href="{{ subItem.url }}"
-                        [target]="'_blank'"
-                        rel="'noreferrer'"
-                        class="text-uppercase"
-                        >{{ subItem.title }}</a
-                      >
-                      <a
-                        *ngIf="!subItem['isExternalLink']"
-                        href="{{ subItem.url }}"
-                        class="text-uppercase"
-                        >{{ subItem.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </nav>
-        </div>
-
-        <div class="logo col-xl-11 col-10 d-flex">
-          <a routerLink="/" [class]="header?.logo?.padding">
-            <figure>
-              <img
-                [src]="header?.logo?.url"
-                [width]="header?.logo?.width"
-                [height]="header?.logo?.height"
-                alt=""
-              />
-            </figure>
-          </a>
-          <div *ngFor="let item of header | keyvalue: unsorted">
-            <div
-              *ngIf="
-                !item.value['dropdown'] && item.value['position'] == 'left'
-              "
-              class="subscribe ml-1"
-            >
-              <h6>
-                <a
-                  routerLink="/{{ header?.subscribe?.url }}"
-                  class="text-uppercase"
-                  >{{ header?.subscribe?.title }}</a
-                >
-              </h6>
-
-              <a
-                class="sponsored_logo text-uppercase"
-                routerLink="/{{ header?.subscribe?.url }}"
-                >{{ header?.subscribe?.subtitle }}</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="header-right col-lg-7 col-md-8 col-4 d-none d-sm-block">
-        <div class="d-flex">
-          <nav class="header-nav col-xl-7 col-md-8 d-none d-md-block">
-            <ul class="d-flex">
-              <li
-                *ngIf="
-                  header?.subscribe && header?.subscribe['position'] != 'left'
-                "
-              >
-                <a [href]="header.subscribe['url']" class="text-uppercase">
-                  {{ header.subscribe["title"] }}
-                </a>
-              </li>
-              <li
-                *ngFor="let item of header | keyvalue: unsorted"
-                class="has_dd"
-              >
-                <a
-                  *ngIf="
-                    item.value['title'] != 'Subscribe' &&
-                    item.value['type'] &&
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    !item.value['dropdown'] &&
-                    item.value['position'] != 'left'
-                  "
-                  [href]="item.value['url']"
-                  class="text-uppercase"
-                >
-                  {{ item.value["title"] }}
-                </a>
-                <a
-                  *ngIf="
-                    item.value['type'] &&
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    item.value['dropdown']
-                  "
-                  href="javascript:void(0);"
-                  class="text-uppercase"
-                >
-                  {{ item.value["title"] }}
-                  <span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i
-                  ></span>
-                </a>
-                <div
-                  *ngIf="
-                    item.value['type'] &&
-                    item.value['type'] != 'logo' &&
-                    item.value['type'] != 'monthly-cover' &&
-                    item.value['dropdown']
-                  "
-                  class="megamenu"
-                >
-                  <ul>
-                    <li *ngFor="let brand of item.value['dropdown']">
-                      <a
-                        href="{{ brand.url }}"
-                        [target]="brand['isExternalLink'] ? '_blank' : ''"
-                        class="text-uppercase"
-                        >{{ brand.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </nav>
-          <div
-            class="search text-center col-xl-2 col-md-1 col-3 d-none d-sm-block"
-          >
-            <a
-              href="#"
-              onclick="return false;"
-              class="d-block"
-              data-bs-toggle="modal"
-              data-bs-target="#searchModal"
-            >
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-          </div>
-          <div
-            *ngIf="header && header['monthly-cover']"
-            class="profile col-xl-3 col-md-3 col-9 d-none d-sm-block"
-          >
-            <a
-              routerLink="/{{ header['monthly-cover']?.media?.url?.cover_url }}"
-            >
-              <figure>
-                <img
-                  appYoutubeImage
-                  data-src="{{
-                    header['monthly-cover']?.media | defaultImage: 119:157
-                  }}"
-                  width="119"
-                  height="157"
-                  alt="Monthly cover"
-                  class="lazyload"
-                />
-              </figure>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- brand header -->
-  <div *ngIf="!isMain" class="container">
-    <div class="header-details d-flex brand-header">
-      <div class="header-left col-xl-5 col-md-5 col-sm-4 d-flex">
-        <div class="menu col-xl-1 col-md-2 col-2">
-          <a href="#" onclick="return false;" (click)="commonService.toggle()">
-            <figure>
-              <img
-                [src]="
-                  commonService.showmenu
-                    ? '../../../assets/img/close.png'
-                    : '../../../assets/img/menu.png'
-                "
-                alt="menu"
-                width="35"
-                height="24"
-                [ngClass]="commonService.showmenu ? 'close-menu' : ''"
-              />
-            </figure>
-            <small
-              class="text-center d-block"
-              [ngClass]="commonService.showmenu ? 'invisible' : ''"
-              >MENU</small
-            >
-          </a>
-        </div>
-
-        <div
-          *ngIf="sidenav"
-          class="menu-details brand-menu-details"
-          [ngClass]="commonService.showmenu ? 'show' : ''"
-        >
-          <div class="menu-logo text-center">
-            <a
-              routerLink="/{{ brandSlug }}"
-              [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-              (click)="commonService.toggle()"
-            >
-              <figure>
-                <img
-                  class="logo-img sidebar-brand-images lazyload"
-                  data-src="{{ sidenav?.logo }}"
-                  [class.default-sidebar-brand-image]="
-                    publication.id == 'EE' &&
-                    header['logo'].includes(defaultBrandLogo)
-                  "
-                  [class.sidebar-brand-images]="
-                    publication.id != 'EE' ||
-                    !header['logo'].includes(defaultBrandLogo)
-                  "
-                  alt="logo"
-                />
-              </figure>
-            </a>
-          </div>
-          <div class="sponsored">
-            <h6 class="d-block text-uppercase text-center">
-              <small class="d-inline-block"></small>
-              SPONSORED CONTENT
-            </h6>
-            <div class="menu-search">
-              <form
-                [formGroup]="searchForm"
-                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
-              >
-                <div class="form-group">
-                  <input
-                    formControlName="searchInput"
-                    type="text"
-                    class="form-control"
-                    [placeholder]="sidenav?.search?.placeholder"
+          <ul class="submenu-list mb-0">
+            <li class="d-block">
+              <h3>
+                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
+              </h3>
+              <hr />
+              <div *ngIf="header?.monthlyCover" class="monthly-covers">
+                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
+                  <img
+                    appYoutubeImage
+                    src="{{ header?.monthlyCover?.url }}"
+                    width="68"
+                    height="89"
+                    alt="monthly cover"
+                    class="mb-2"
                   />
-                  <button
-                    type="button"
-                    (click)="onSearchSubmit(searchForm, 'sidebar')"
-                  >
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="monthly-covers">
-              <ul>
-                <li class="d-block">
-                  <div class="monthly-covers-main">
-                    <a
-                      routerLink="/"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <i class="fa fa-database"></i>
-                      </figure>
-                      <strong>RETURN TO MAIN SITE</strong>
-                    </a>
-                  </div>
-                  <div class="monthly-covers-main">
-                    <a
-                      routerLink="/{{ brandSlug }}"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <i class="fa fa-server"></i>
-                      </figure>
-                      <strong>{{ brandTitle }}</strong>
-                    </a>
-                    <div *ngIf="downloadPdfUrl" class="monthly-covers-details">
-                      <p>
-                        <a
-                          *ngIf="isPdfEmail === 'true'"
-                          data-bs-toggle="modal"
-                          data-bs-target="#pdfModal1"
-                          class="text-uppercase"
-                          href="#"
-                        >
-                          Download PDF
-                        </a>
-                        <a
-                          *ngIf="isPdfEmail === 'false'"
-                          href="{{ downloadPdfUrl }}"
-                          target="blank"
-                        >
-                          Download PDF
-                        </a>
-                      </p>
-                    </div>
-                    <div class="monthly-covers-details">
-                      <p>
-                        <a
-                          href="{{ visitSite }}"
-                          target="blank"
-                          (click)="visitBrandPage()"
-                          >Visit Website</a
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-block">
-                  <div class="monthly-covers-main">
-                    <a href="#" onclick="return false;">
-                      <figure>
-                        <i class="fa fa-trophy"></i>
-                      </figure>
-                      <strong>SOCIAL MEDIA</strong>
-                    </a>
-                    <div
-                      *ngFor="let item of sidenav['social_media']"
-                      class="monthly-covers-details"
-                    >
-                      <p>
-                        <a href="{{ item.url }}" target="blank">{{
-                          item.title
-                        }}</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="monthly-covers-main">
-                    <a
-                      routerLink="/{{ brandSlug }}"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <i class="fa fa-star"></i>
-                      </figure>
-                      <strong>{{ brandTitle }} MOST READ STORIES</strong>
-                    </a>
-                    <div
-                      *ngFor="let story of sidenav['most-read-stories']"
-                      class="monthly-covers-details"
-                    >
-                      <p>
-                        <a
-                          href="/{{ story.brand.slug }}/{{
-                            story.slug
-                          }}#stories"
-                          [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                          (click)="commonService.toggle()"
-                          >{{ story?.title }}</a
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-block">
-                  <div class="monthly-covers-main">
-                    <a href="https://brand.1851franchise.com">
-                      <figure>
-                        <i class="fa fa-home"></i>
-                      </figure>
-                      <strong>LOGIN</strong>
-                    </a>
-                  </div>
-                </li>
-                <li class="d-block">
-                  <div class="monthly-covers-main">
-                    <a
-                      routerLink="/{{ sidenav['about']?.url }}"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <i class="fa fa-envelope-open"></i>
-                      </figure>
-                      <strong>ABOUT {{ brandTitle }}</strong>
-                    </a>
-                  </div>
-                  <div *ngIf="isContact" class="monthly-covers-main">
-                    <a
-                      href="#"
-                      data-bs-toggle="modal"
-                      data-bs-target="#contactModal"
-                      [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                      (click)="commonService.toggle()"
-                    >
-                      <figure>
-                        <i class="fa fa-usd"></i>
-                      </figure>
-                      <strong>CONTACT {{ brandTitle }}</strong>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <nav class="d-sm-block d-md-none">
-              <ul>
-                <li
-                  *ngIf="isInquire && inquireData.menu_title"
-                  class="has_dd d-block float-none"
-                >
-                  <a
-                    href="#"
-                    onclick="return false;"
-                    class="text-uppercase"
-                    data-bs-toggle="modal"
-                    data-bs-target="#inquireModal"
-                  >
-                    {{ inquireData?.menu_title }}
-                  </a>
-                </li>
-                <li class="has_dd d-block float-none">
-                  <a href="{{ brandSlug }}/info" class="text-uppercase"
-                    >BRAND INFORMATION</a
-                  >
-                </li>
-                <li></li>
-
-                <li class="has_dd d-block float-none">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-uppercase"
-                    (click)="toggleBrandLearn()"
-                    >LEARN<span
-                      >&nbsp;<i
-                        class="fa fa-angle-down"
-                        aria-hidden="true"
-                      ></i></span
-                  ></a>
-                  <div
-                    [ngClass]="isBrandLearnMenu ? 'show' : ''"
-                    class="megamenu"
-                  >
-                    <ul>
-                      <li *ngFor="let item of header['learn']">
-                        <a
-                          href="{{ item.url }}"
-                          target="_blank"
-                          class="text-uppercase"
-                          >{{ item.title }}</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </nav>
-          </div>
-        </div>
-        <div class="logo col-xl-3 col-md-4 col-4" style="height: 50px">
-          <a
-            routerLink="/{{ brandSlug }}"
-            style="
-              width: 100px;
-              display: flex;
-              align-items: center;
-              margin: auto;
-            "
-          >
-            <img [src]="header?.logo" style="max-height: 70px" alt="" />
-          </a>
-          <!-- <a
-            *ngIf="isEEPublication && header['logo'].includes(defaultBrandLogo)"
-            href="{{ brandSlug }}"
-          >
-            <img style="max-height: 40px" [src]="header['logo']" />
-          </a> -->
-        </div>
-        <div class="subscribe col-xl-8 col-md-6 col-6">
-          <h6>
-            <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
-              {{ brandTitle }} </a
-            ><br />
-          </h6>
-          <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href="">
-            {{ publication?.sponsorHeading }} NEWS POWERED BY
-          </a>
-        </div>
-      </div>
-      <div class="header-right col-xl-7 col-md-7 col-sm-8 d-none d-sm-block">
-        <div class="d-flex">
-          <nav class="col-md-10 d-none d-md-block">
-            <ul class="float-right">
-              <li *ngIf="isInquire" class="has_dd">
-                <a
-                  href="#"
-                  onclick="return false;"
-                  class="text-uppercase"
-                  data-bs-toggle="modal"
-                  data-bs-target="#inquireModal"
-                >
-                  {{ inquireData?.menu_title }}
                 </a>
-              </li>
-              <li>
-                <a routerLink="{{ brandSlug }}/info" class="text-uppercase"
-                  >BRAND INFORMATION</a
+              </div>
+            </li>
+            <li>
+              <h3>Topics</h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let item of header?.sidebar?.categories"
                 >
-              </li>
-              <li class="has_dd">
-                <a href="#" onclick="return false;" class="text-uppercase"
-                  >LEARN<span
-                    ><i class="fa fa-angle-down" aria-hidden="true"></i></span
-                ></a>
-                <div class="megamenu megamenu1">
-                  <ul>
-                    <li *ngFor="let item of header['learn']">
-                      <a
-                        href="{{ item.url }}"
-                        target="blank"
-                        class="text-uppercase"
-                        >{{ item.title }}</a
-                      >
-                    </li>
-                  </ul>
-                </div>
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    routerLink="{{ item?.url }}"
+                    >{{ item.name }}
+                    <i class="fas fa-caret-right" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <hr />
+
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
+                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+              </h3>
+            </li>
+            <li>
+              <hr />
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
+                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
+                  menu.title
+                }}</a>
+                <a
+                  *ngIf="menu.fragment"
+                  routerLink="{{ menu.url }}"
+                  [fragment]="menu.fragment"
+                  >{{ menu.title }}</a
+                >
+              </h3>
+            </li>
+            <li>
+              <hr class="mb-2" />
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
+                <a href="{{ menu.url }}">{{ menu.title }}</a>
+              </h3>
+            </li>
+          </ul>
+        </div>
+        <!-- Sub menu close-->
+      </div>
+
+      <!-- Center menu link -->
+      <div class="col d-none d-md-block">
+        <ul class="center-menu nav justify-content-center">
+          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
+            <a [routerLink]="menu.url" class="d-flex align-items-center"
+              >{{ menu.title }}
+            </a>
+          </li>
+          <li
+            class="nav-item mx-2 px-1"
+            *ngFor="let action of header?.actions; index as i"
+          >
+            <a class="d-flex align-items-center"
+              >{{ action.title }}
+              <img
+                src="assets/img/down-arrow.svg"
+                height="30"
+                width="20"
+                class="ms-1"
+            /></a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let item of action.items">
+                <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
               </li>
             </ul>
-            <div class="clearfix"></div>
-          </nav>
-          <div class="search text-center col-md-2">
-            <a
-              href="#"
-              onclick="return false;"
-              class="d-block"
-              data-bs-toggle="modal"
-              data-bs-target="#searchModal"
-            >
-              <i class="fa fa-search" aria-hidden="true"></i>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
+        <!-- Search bar -->
+        <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
+          <a
+            href="#"
+            onclick="return false;"
+            data-bs-toggle="modal"
+            data-bs-target="#searchModal"
+            ><img
+              src="assets/img/search.svg"
+              height="15"
+              width="15"
+              alt="search"
+          /></a>
+        </div>
+
+        <!-- Social Links -->
+        <ul class="social d-flex align-items-center mb-0">
+          <li>
+            <a href="#" class="d-flex align-items-center">
+              <span class="follow text-capitalize">Follow Us:</span>
             </a>
-          </div>
+          </li>
+          <li
+            *ngFor="let item of header?.socialMedia; index as i"
+            class="mx-1 d-none d-lg-block"
+          >
+            <a
+              [href]="item.url"
+              target="_blank"
+              class="d-flex align-items-center"
+            >
+              <fa-icon *ngIf="socialIcons[i]" [icon]="socialIcons[i]"></fa-icon>
+            </a>
+          </li>
+        </ul>
+
+        <!-- User Image -->
+        <div class="userImage ms-3 d-none d-lg-block">
+          <img
+            routerLink="{{ header?.monthlyCover?.coverUrl }}"
+            src="{{ header?.monthlyCover?.url }}"
+            height="104"
+            width="92"
+            alt="cover"
+          />
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Inquire Modal -->
-
-  <div
-    *ngIf="isBrowser && isInquire"
-    class="search_pop_up modal"
-    id="inquireModal"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          id="inquireModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
-        <div class="modal-header">
-          <h1>{{ inquireTitle }}</h1>
-        </div>
-        <form
-          *ngIf="inquireForm"
-          [formGroup]="inquireForm"
-          (ngSubmit)="submitInquireForm(inquireForm.value)"
-        >
-          <div *ngFor="let fields of inquireFields" class="form-row mb-3">
-            <!-- <div class="form-group"> -->
-            <label class="form-label"
-              >{{ fields.title }}
-              <sup *ngIf="fields.required" class="text-danger">*</sup>
-            </label>
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            />
-            <select
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            >
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsValues[fields.key].touched ||
-                  submittedInquireForm) &&
-                (formControlsValues[fields.key].errors?.required ||
-                  formControlsValues[fields.key].errors?.email ||
-                  formControlsValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
-            </div>
-          </div>
-          <!-- [disabled]="!inquireForm.valid" -->
-          <div class="d-grid inquireSubmit">
-            <button type="submit" class="btn text-end rounded-0 btn-sm nextBtn">
-              Next
-            </button>
-          </div>
-          <br />
-          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-            submitErrMsg
-          }}</span>
-        </form>
-      </div>
-    </div>
-  </div>
+  </main>
+  <!-- main header section Close -->
 
   <!-- Search Modal -->
 
@@ -950,7 +302,7 @@
             <input
               type="text"
               class="form-control"
-              [placeholder]="header?.searchPleaceholder"
+              [placeholder]="'Search'"
               (keyup)="onKeyUp()"
               [formControl]="searchForm.controls['searchInput']"
             />
@@ -960,237 +312,45 @@
               (click)="onSearchSubmit(searchForm, 'header')"
               data-bs-dismiss="modal"
             >
-              <i class="fa fa-search" aria-hidden="true"></i>
+              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
             </button>
           </div>
         </form>
         <h5>MOST RECENT MATCHES</h5>
-        <div class="frannews-bottom">
-          <h6 *ngIf="news == null">No articles found</h6>
-          <ul
-            malihu-scrollbar
-            [scrollbarOptions]="scrollbarOptions"
-            class="vertical_scroll clearfix d-flex"
-          >
-            <li
-              *ngFor="let story of news; let i = index"
-              class="col-xl-3 col-lg-4 col-sm-6 col-12"
-            >
-              <a
-                class="frannews-bottom-details"
-                href="/{{ readMore(story) }}#franbuzz"
+        <div class="ArticlesNewsSection">
+          <h6 class="text-center" *ngIf="news == null">No articles found</h6>
+
+          <div class="container customContainer py-md-2">
+            <div class="row mt-2">
+              <div
+                class="col-sm-6 col-md-3 mb-2"
+                *ngFor="let list of news; index as i"
               >
-                <figure>
-                  <img
-                    appYoutubeImage
-                    data-src="{{ story['media'] | defaultImage: 248:139 }}"
-                    width="248"
-                    height="139"
-                    alt="frannews"
-                    class="lazyload"
-                  />
-                </figure>
-                <div class="socialmedia">
-                  <p
-                    title="{{ story['title'] }}"
-                    style="-webkit-box-orient: vertical"
-                  >
-                    {{ story.title }}
-                  </p>
+                <div class="items card border-0 rounded-0">
+                  <a
+                    routerLink="{{ commonService.readMore(list) }}"
+                    fragment="franbuzz"
+                    (click)="closeModal()"
+                    ><img
+                      src="{{ list.media | defaultImage: 257:138 }}"
+                      class="card-img-top"
+                      alt="story"
+                      width="257"
+                      height="138"
+                    />
+                    <div class="card-body">
+                      <p class="card-text mb-1 text-black text-capitalize">
+                        {{ commonService.formatTitle(list.title) }}
+                      </p>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Sponsor Modal -->
-
-  <div class="search_pop_up modal fade" id="sponsoredModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="sponsored-modal-content">
-          <button
-            type="button"
-            class="close text-right"
-            data-bs-dismiss="modal"
-          >
-            &times;
-          </button>
-          <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
-          <p>
-            This brand page has been paid for by
-            <span class="text-uppercase">{{ brandTitle }}</span
-            >. Content within this page that is paid will showcase a Sponsored
-            icon. This means the brand has engaged
-            <span class="text-uppercase">{{ publication?.shortTitle }}</span> to
-            write the content. Content without the Sponsored Icon is aggregated
-            media placements the brand earned. Questions can be sent to
-            <span>{{ editorialEmail }}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Modal -->
-  <div
-    *ngIf="isBrowser && isContact && contactFields"
-    class="search_pop_up modal"
-    id="contactModal"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          id="contactModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
-        <div class="modal-header">
-          <h1>{{ contactTitle }}</h1>
-        </div>
-        <form
-          *ngIf="contactForm"
-          [formGroup]="contactForm"
-          (ngSubmit)="submitContactForm(contactForm.value)"
-        >
-          <div *ngFor="let fields of contactFields" class="form-row mb-3">
-            <!-- <div class="form-group"> -->
-            <label class="form-label"
-              >{{ fields.title }}
-              <sup *ngIf="fields.required" class="text-danger">*</sup>
-            </label>
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            />
-            <textarea
-              *ngIf="fields.type === 'textarea'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              rows="3"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            ></textarea>
-            <select
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            >
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsContactValues[fields.key].touched ||
-                  submittedContactForm) &&
-                (formControlsContactValues[fields.key].errors?.required ||
-                  formControlsContactValues[fields.key].errors?.email ||
-                  formControlsContactValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
+              </div>
             </div>
           </div>
-          <div class="d-grid contactSubmit">
-            <button type="submit" class="btn text-end rounded-0 btn-sm nextBtn">
-              Next
-            </button>
-          </div>
-          <br />
-          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-            submitErrMsg
-          }}</span>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Thanks -->
-  <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <button
-          type="button"
-          class="close text-right"
-          (click)="closeModal('thanksModal')"
-        >
-          &times;
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- PDF Modal -->
-  <div
-    *ngIf="isBrowser && downloadPdfUrl"
-    class="search_pop_up modal"
-    id="pdfModal1"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="sponsored-modal-content">
-          <button
-            type="button"
-            class="close text-right"
-            data-bs-dismiss="modal"
-          >
-            &times;
-          </button>
-          <h2 class="text-uppercase">Download PDF</h2>
-          <div class="email-content">
-            <form [formGroup]="pdfForm" (ngSubmit)="emailSubscribe(pdfForm)">
-              <div class="form-group">
-                <label>Enter Email:</label>
-                <input
-                  type="text"
-                  [formControl]="pdfForm.controls['emailInput']"
-                  class="form-control"
-                />
-                <app-error-message
-                  *ngIf="isEmailSubmit"
-                  class="full-width"
-                  [control]="pdfForm.controls['emailInput']"
-                ></app-error-message>
-                <p *ngIf="emailSubValid" class="invalid">
-                  {{ emailSubMessage }}
-                </p>
-                <button type="button" (click)="emailSubscribe(pdfForm)">
-                  Download
-                </button>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Search Modal close -->
 </header>
