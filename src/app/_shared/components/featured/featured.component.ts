@@ -1,126 +1,77 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  SimpleChanges,
-  OnChanges,
-  PLATFORM_ID,
-  Inject,
-  ElementRef,
-  ViewChild,
-  Renderer2,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-import { CommonService } from 'src/app/_core/services/common.service';
+import { Details } from 'src/app/_core/models/details.model';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { CommonService } from 'src/app/_core/services/common.service';
+
+const FEATURE_KEY = makeStateKey<any>('featureState');
 
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.scss'],
 })
-export class FeaturedComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input() slug = '1851';
-  @Input() apiUrl!: any;
-  @Input() type = '';
-  @ViewChild('brandLeft') brandLeft: ElementRef | undefined;
-  @ViewChild('brandRight') brandRight: ElementRef | undefined;
-  @ViewChild('virtualScroll') virtualScroll: ElementRef | any;
+export class FeaturedComponent implements OnInit {
+  @Input() apiUrl!: string;
 
-  featuredData: any = [];
-  highlight: any = [];
-  scrollbarOptions: any;
-  isBrowser!: boolean;
-  highlightImageload!: boolean;
-  scrollOffset: number = 0;
-  isCall = false;
+  isBrowser: boolean;
+  featured: Details[] = [];
+  news: Details[] = [];
+  trending: Details[] = [];
+  brandNews: Details[] = [];
+
+  slug: string = '';
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
-    private renderer: Renderer2,
     private apiService: ApiService,
-    private commonService: CommonService,
-    @Inject(PLATFORM_ID) platformId: Object
+    private state: TransferState,
+    @Inject(PLATFORM_ID) private platformId: object,
+    public commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
-  ngOnInit(): void {
-    this.scrollbarOptions = {
-      axis: 'y',
-      theme: 'minimal-dark',
-      callbacks: {
-        onTotalScroll: () => {
-          if (!this.isCall) {
-            this.getMoreItem();
-          }
-        },
-      },
-    };
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.apiUrl = changes.apiUrl.currentValue;
+  ngOnInit(): void {
+    this.slug = '1851';
     this.getFeatured();
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      this.ajustHeight();
-    }
-  }
-  getFeatured() {
-      this.apiService
-        .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset}`)
-        .subscribe((response) => {
-          if (response.data != null) {
-           this.highlight = response.data[0];
-           this.featuredData = response.data.slice(1);
-          }
-        });
-  }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
-  isVideo(item: any) {
-    return this.commonService.isVideo(item);
-  }
-  getMoreItem() {
-    this.isCall = true;
-    this.apiService
-      .getAPI(`${this.apiUrl}?limit=10&offset=${this.scrollOffset + 10}`)
-      .subscribe((result) => {
-        result['data'].forEach((article: any) => {
-          this.featuredData.push(article);
-        });
-        this.scrollOffset += 10;
-        this.isCall = false;
-      });
-  }
 
-  onResize(event: any) {
-    this.highlightImageload = true;
-    this.ajustHeight();
-  }
-  ajustHeight() {
-    const vm = this;
-    const timer = setInterval(() => {
-      if (
-        typeof vm.brandLeft !== 'undefined' &&
-        typeof vm.brandRight !== 'undefined' &&
-        vm.highlightImageload
-      ) {
-        vm.renderer.setStyle(
-          vm.brandRight.nativeElement,
-          'height',
-          `${vm.brandLeft.nativeElement.offsetHeight}px`
-        );
-        vm.renderer.setStyle(
-          vm.virtualScroll.nativeElement,
-          'height',
-          `${vm.brandLeft.nativeElement.offsetHeight}px`
-        );
-        vm.highlightImageload = false;
-        clearInterval(timer);
-      }
-    }, 100);
+  getFeatured() {
+    const featured = this.state.get(FEATURE_KEY, null as any);
+    if (!featured) {
+      const featureApi = this.apiService.getAPI(
+        `${this.apiUrl}?limit=4&offset=0`
+      );
+      const newsApi = this.apiService.getAPI(
+        `${this.slug}/news?limit=4&offset=0`
+      );
+      const trending = this.apiService.getAPI(
+        `${this.slug}/trending?limit=9&offset=0`
+      );
+      const brandNews = this.apiService.getAPI(
+        `1851/news?limit=4&offset=0&isBrand=true`
+      );
+      const featured: any = {};
+      forkJoin([featureApi, newsApi, trending, brandNews])
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          featured['data'] = results[0].data;
+          featured['news'] = results[1].data;
+          featured['trending'] = results[2].data;
+          featured['brandNews'] = results[3].data;
+
+          this.state.set(FEATURE_KEY, featured as any);
+        });
+    } else {
+      this.featured = featured['data'];
+      this.news = featured['news'];
+      this.trending = featured['trending'];
+      this.brandNews = featured['brandNews'];
+    }
   }
 }

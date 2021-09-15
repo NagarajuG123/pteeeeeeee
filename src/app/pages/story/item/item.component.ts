@@ -13,8 +13,6 @@ import {
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
-import { BrandNews } from 'src/app/_core/models/brandNews';
-import { DetailsData } from 'src/app/_core/models/detailsData';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
@@ -26,8 +24,8 @@ declare var ga: Function;
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-  @Input() details: DetailsData;
-  @Input() news: BrandNews;
+  @Input() details: any;
+  @Input() news: any;
   @Input() brandSlug = '1851';
   @Input() index: string;
   @Input() type: string;
@@ -51,7 +49,7 @@ export class ItemComponent implements OnInit {
   date_time: Date;
   last_modified: Date;
   media: any;
-  brandNews: BrandNews[] = [];
+  brandNews: any;
   newsShow = false;
   designation: any;
   author_media: any;
@@ -377,15 +375,15 @@ export class ItemComponent implements OnInit {
     return false;
   }
 
-  isUpdate(){
+  isUpdate() {
     let postDate = this.date_time.toDateString();
     let lastDate = this.last_modified.toDateString();
-    if(postDate === lastDate){
+    if (postDate === lastDate) {
       return false;
     }
-      return true;
+    return true;
   }
-  
+
   openFbComment() {
     this.isViewComment = !this.isViewComment;
     window['FB'].init({

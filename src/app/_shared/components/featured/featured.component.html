@@ -1,147 +1,131 @@
-<div
-  *ngIf="isBrowser && highlight"
-  class="banner featured-banner"
-  [class.brand-banner]="type === 'brand'"
->
-  <div
-    (window:resize)="onResize($event)"
-    class="banner-left col-xl-8 col-md-7 p-0 float-left"
-    #brandLeft
-    style="cursor: pointer"
-  >
-    <a
-      *ngIf="!isVideo(highlight) && highlight?.media?.url"
-      class="d-block"
-      routerLink="/{{ readMore(highlight) }}"
-      fragment="featured"
-    >
-      <figure>
-        <img
-          appYoutubeImage
-          srcset="{{highlight.media | defaultImage:600:337}} 600w,
-                        {{highlight.media | defaultImage:700:393}} 700w,
-                        {{highlight.media | defaultImage:800:449}} 800w,
-                        {{highlight.media | defaultImage:1300:730}} 1300w"
-          sizes="{{
-            '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        1300px'
-          }}"
-          width="1300"
-          height="730"
-          data-src="{{ highlight.media | defaultImage: 1300:730 }}"
-          class="lazyload"
-          (click)="readMore(highlight)"
-          (load)="highlightImageload = true"
-          alt="featured"
-        />
-      </figure>
-    </a>
-    <a
-      *ngIf="isVideo(highlight) && highlight?.media?.url"
-      class="d-block video-btn"
-      data-bs-toggle="modal"
-      data-bs-target="#featuredModal"
-      href=""
-    >
-      <figure>
-        <img
-          appYoutubeImage
-          srcset="{{highlight.media | defaultImage:600:337}} 600w, {{highlight.media | defaultImage:700:393}} 700w, {{highlight.media | defaultImage:800:449}} 800w, {{highlight.media | defaultImage:1300:730}} 1300w"
-          sizes="{{
-            '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        1300px'
-          }}"
-          width="1300"
-          height="730"
-          data-src="{{ highlight.media | defaultImage: 1300:730 }}"
-          class="lazyload"
-          (load)="highlightImageload = true"
-          alt="featured"
-        />
-      </figure>
-      <img class="video-maker" src="assets/img/youtube.svg" alt="video" />
-      <app-modal
-        [videoUrl]="highlight?.media?.url"
-        [modalId]="'featuredModal'"
-      ></app-modal>
-    </a>
-    <div class="buffalowings">
-      <div class="buffalowings-wrap">
-        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
-          <h2>
-            {{ highlight?.title }}
-          </h2> </a
-        ><br />
-        <a routerLink="/{{ readMore(highlight) }}" fragment="featured">
-          <p>
-            {{ highlight?.short_description }}
-          </p>
-        </a>
-      </div>
-      <div class="buffalowings-bottom">
-        <a
-          routerLink="/{{ readMore(highlight) }}"
-          fragment="featured"
-          class="float-right text-uppercase"
-        >
-          READ MORE
-          <i class="fa fa-angle-right" aria-hidden="true"></i>
-        </a>
-        <div class="clearfix"></div>
-      </div>
-    </div>
+<div class="trending mb-1" *ngIf="trending.length">
+  <div class="container-fluid text-center py-2">
+    <span class="pe-md-5">
+      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+      TRENDING
+    </span>
   </div>
+</div>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 col-lg mb-3 mb-sm-0">
+      <!-- featured aarticle slider -->
 
-  <div class="banner-right col-xl-4 col-md-5 float-left" #brandRight>
-    <div class="banner-right-main">
-      <div
-        class="
-          banner-right-details
-          vertical_scroll vertical_scroll_featured_articles
-        "
-        [scrollbarOptions]="scrollbarOptions"
-        #virtualScroll
-      >
-        <ul>
-          <li *ngFor="let article of featuredData" style="cursor: pointer">
-            <a
-              routerLink="/{{ readMore(article) }}"
-              fragment="featured"
-              class="adweek d-flex"
+      <div class="row" *ngIf="featured.length">
+        <div
+          *ngFor="let item of featured; index as i"
+          [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
+        >
+          <div
+            class="position-relative"
+            [ngClass]="i === 0 ? 'main-image' : 'small-image'"
+          >
+            <div class="tag position-absolute text-center top-0 text-uppercase">
+              Feature Article
+            </div>
+            <img
+              appYoutubeImage
+              srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+              class="img-fluid"
+              sizes="{{
+                '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+              }}"
+              width="216"
+              height="135"
+              src="{{ item.media | defaultImage: 1300:730 }}"
+              alt="featured"
+            />
+            <div
+              class="
+                over-layer
+                position-absolute
+                text-capitalize
+                bottom-0
+                fw-bold
+                w-100
+              "
+              [ngClass]="i === 0 ? 'p-3' : 'p-2'"
             >
-              <div class="adweek-left col-lg-6 col-md-12 col-sm-6 col-12">
-                <figure>
-                  <img
-                    appYoutubeImage
-                    srcset="{{article.media | defaultImage:238:133}} 238w, {{article.media | defaultImage:300:168}} 300w, {{article.media | defaultImage:400:224}} 400w, {{article.media | defaultImage:555:310}} 555w"
-                    sizes="{{
-                      '(max-width: 576px) 555px,
-                                                (max-width: 992px) 400px,
-                                                (max-width: 1200px) 238px,
-                                                300px'
-                    }}"
-                    width="1300"
-                    height="730"
-                    data-src="{{ article.media | defaultImage: 1300:730 }}"
-                    class="lazyload"
-                    alt="featured"
-                  />
-                </figure>
-              </div>
-              <div class="adweek-right col-lg-6 col-md-12 col-sm-6 col-12">
-                <p style="-webkit-box-orient: vertical">{{ article.title }}</p>
-              </div>
-            </a>
-          </li>
-        </ul>
+              {{ commonService.formatTitle(item.title) }}
+              <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
+            </div>
+          </div>
+          <!-- if you want to add link on all slider screen use folloing link -->
+          <!-- <a href="#" class="stretched-link"></a> -->
+        </div>
       </div>
     </div>
+    <div
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+        latestListing
+      "
+    >
+      <!-- Brand news list -->
+      <span class="small-title mb-2">LATEST FRANCHISE BRAND NEWS</span>
+      <ul class="brand-list noScrollBar list-group">
+        <li
+          *ngFor="let item of brandNews; index as i"
+          class="pb-1"
+          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
+        >
+          <h3 class="m-0">
+            <a routerLink="{{ commonService.readMore(item) }}">{{
+              commonService.formatTitle(item.title)
+            }}</a>
+          </h3>
+          <span class="my-1">By {{ item.author?.name }}</span>
+          <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
+            {{ commonService.formatDescription(item.short_description) }}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+        border-start border-2
+        latestListing
+      "
+    >
+      <!-- Industry news list -->
+      <span class="small-title mb-2">Latest Franchise Industry News</span>
+      <ul class="news-list noScrollBar list-group">
+        <li
+          *ngFor="let item of news; index as i"
+          [ngClass]="
+            i === news.length - 1 ? 'pb-0 pb-md-0' : 'pb-2 pb-md-3 mb-2 mb-md-3'
+          "
+        >
+          <div class="newsImage me-2 me-md-3">
+            <img
+              appYoutubeImage
+              width="95"
+              height="100"
+              data-src="{{ item.media | defaultImage: 121:114 }}"
+              alt="industry"
+            />
+          </div>
+          <div>
+            <h3 class="m-0">
+              <a routerLink="{{ commonService.readMore(item) }}">{{
+                item.title
+              }}</a>
+            </h3>
+            <span>By {{ item.author.name }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="clearfix"></div>
 </div>

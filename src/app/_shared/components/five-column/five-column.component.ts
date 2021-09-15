@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FiveColumn } from 'src/app/_core/models/five';
 import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./five-column.component.scss'],
 })
 export class FiveColumnComponent implements OnInit {
-  @Input() contents: FiveColumn[] = [];
+  @Input() contents: any;
   @Input() slug: string = '';
   @Input() type = '';
   @Input() hasMore = false;

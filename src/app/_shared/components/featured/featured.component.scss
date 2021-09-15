@@ -1,0 +1,160 @@
+@import "../../../../assets/scss/theme-color.scss";
+
+.trending {
+  background-color: $border-color;
+  color: $medium-grey;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid $dark-gray;
+  span {
+    color: $primary;
+    font-family: "Ballinger Condensed Medium";
+    img {
+      width: auto;
+      margin-top: -4px;
+    }
+  }
+}
+
+img {
+  width: 100%;
+}
+.tag {
+  background: #eb0444;
+  font-family: "Ballinger Condensed Regular";
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 17.1429px;
+  box-sizing: border-box;
+}
+.over-layer {
+  font-family: "Roboto", sans-serif;
+  background: rgba(232, 238, 242, 0.67);
+  font-size: 36px;
+}
+.main-image {
+  .tag {
+    width: 139px;
+    padding: 3px 6px;
+  }
+}
+.small-image {
+  .tag {
+    font-size: 12px;
+    width: 102px !important;
+    padding: 1px 6px !important;
+  }
+  .over-layer {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .tag {
+    font-size: 12px;
+  }
+  .over-layer {
+    font-size: 24px;
+  }
+  .small-image {
+    .over-layer {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
+
+.small-title {
+  color: $primary;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.brand-list {
+  color: $dark-gray;
+  font-family: Roboto;
+  font-weight: normal;
+  height: calc(100% - 27px);
+  // width: 100%;
+  a {
+    color: $dark-gray;
+  }
+  li {
+    border-bottom: 1px solid $border-color;
+    &:last-child {
+      border: 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  span {
+    font-size: 10px;
+    display: block;
+  }
+  p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 116.09%;
+    color: #595959;
+  }
+  @media screen and (max-width: 960px) {
+    position: relative;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
+}
+
+.news-list {
+  font-family: Roboto;
+  height: calc(100% - 27px);
+  width: calc(100% - 30px);
+  a {
+    color: $primary;
+  }
+  li {
+    display: flex;
+    border-bottom: 1px solid #e8eef2;
+    &:last-child {
+      border: 0;
+    }
+    img {
+      min-width: 100px;
+    }
+    h3 {
+      font-weight: bold;
+      font-size: 17.5px;
+      color: $primary;
+    }
+    span {
+      font-size: 10px;
+      color: $dark-gray;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    position: relative;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .latestListing {
+    max-width: 318px;
+    p {
+      line-height: 114.99%;
+    }
+  }
+}

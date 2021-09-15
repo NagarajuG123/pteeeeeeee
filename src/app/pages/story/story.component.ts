@@ -22,8 +22,6 @@ import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { debounceTime, takeUntil } from 'rxjs/operators';
-import { BrandNews } from 'src/app/_core/models/brandNews';
-import { DetailsData } from 'src/app/_core/models/detailsData';
 import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
@@ -34,8 +32,8 @@ declare var ga: Function;
   styleUrls: ['./story.component.scss'],
 })
 export class StoryComponent implements OnInit {
-  detailsData: DetailsData[] = [];
-  newsData: BrandNews[] = [];
+  detailsData: any;
+  newsData: any;
   adsData: any = [];
   publication: any = [];
   storySlug: any = '';
