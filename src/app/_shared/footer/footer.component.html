@@ -1,257 +1,95 @@
-<div *ngIf="isFooter && footer != null" id="footer">
-  <footer>
-    <div class="container">
-      <div class="footer-details d-flex">
-        <div class="footer-left col-md-3 p-0">
-          <div class="footer-left-in d-flex">
-            <div
-              class="footer-logo col-md-4 col-sm-3 col-3"
-              *ngIf="footer.logo"
-            >
-              <a routerLink="/">
-                <figure>
-                  <img
-                    [src]="footer?.logo?.url"
-                    width="86"
-                    height="87"
-                    alt="footer"
-                  />
-                </figure>
-              </a>
-            </div>
-            <div class="franchise-news col-md-8 col-sm-9 col-9">
-              <h4>{{ publication?.title?.toUpperCase() }}</h4>
-              <p>
-                Your Number One Source For
-                <span>{{ publication?.newsType }}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="footer-middle col-md-6 p-0">
-          <div
-            class="footer-middle-in d-flex"
-            [class.hide-right-border]="isBrandFooter"
+<footer>
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-12 col-sm-6 border-end py-3 py-sm-0">
+        <ul class="p-0 d-flex flex-column justify-content-between m-0">
+          <li
+            class="d-flex align-items-center pb-2 d-none d-md-flex"
+            *ngFor="let publication of footer?.publication"
           >
-            <div class="footer-middle-left col-sm-6 col-6">
-              <h6>SPOTLIGHT</h6>
-              <ul>
-                <li *ngFor="let spotlight of footer?.spotlight">
-                  <a routerLink="/{{ spotlight?.url.split('+').join('-') }}">{{
-                    spotlight?.title | titlecase
-                  }}</a>
-                </li>
-              </ul>
+            <div class="image me-3">
+              <a href="{{ publication.url }}"
+                ><img
+                  src="{{ publication?.logo }}"
+                  alt="logo"
+                  width="57"
+                  height="83"
+              /></a>
             </div>
-            <div class="footer-middle-right col-sm-6 col-6">
-              <ul>
-                <li *ngIf="footer['about-us']">
-                  <a
-                    routerLink="/{{ footer['about-us']['url'] }}"
-                    class="text-uppercase"
-                    >ABOUT US</a
-                  >
-                </li>
-                <li *ngIf="footer['contact-editorial'] && !isBrandFooter">
-                  <a
-                    routerLink="/{{ footer['contact-editorial']['url'] }}"
-                    class="text-uppercase"
-                    >CONTACT</a
-                  >
-                </li>
-                <li *ngIf="isBrandFooter && brandContact">
-                  <a
-                    href="#"
-                    onclick="return false;"
-                    data-bs-toggle="modal"
-                    data-bs-target="#contactModal"
-                    class="text-uppercase"
-                    >CONTACT
-                  </a>
-                </li>
-                <li *ngIf="footer['site-map']">
-                  <a routerLink="/{{ footer['site-map']?.url }}" class="text-uppercase"
-                    >SITE MAP</a
-                  >
-                </li>
-                <li>
-                  <a
-                    routerLink="/{{ footer['terms-of-use']?.url }}"
-                    class="text-uppercase"
-                    >TERMS OF USE</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="!isBrandFooter" class="footer-right text-right col-md-3">
-          <h5 class="text-uppercase">WANT TO LEARN MORE?</h5>
-          <a routerLink="about"
-          fragment="tellus"
-            ><span class="d-block text-uppercase float-right text-center"
-              >LET’S TALK</span
-            ></a
-          >
-          <div class="clearfix"></div>
-          <a href="tel:3125263996">312.526.3996</a>
-          <div
-            class="social-blogs"
-            *ngIf="
-              footer &&
-              footer['learn-more'] &&
-              footer['learn-more']['social-media']
-            "
-          >
-            <ul class="float-right">
-              <li>
-                <a
-                  href="{{ [footer['learn-more']['social-media']['fb-url']] }}"
-                  target="blank"
-                  class="d-block text-center"
-                >
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{{
-                    [footer['learn-more']['social-media']['instagram-url']]
-                  }}"
-                  target="blank"
-                  class="d-block text-center"
-                >
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{{
-                    [footer['learn-more']['social-media']['twitter-url']]
-                  }}"
-                  target="blank"
-                  class="d-block text-center"
-                >
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{{
-                    [footer['learn-more']['social-media']['linkedin-url']]
-                  }}"
-                  target="blank"
-                  class="d-block text-center"
-                >
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="footer-bottom col-12">
-          <form
-            [formGroup]="searchForm"
-            (ngSubmit)="onSearchSubmit(searchForm)"
-          >
-            <div
-              class="form-group d-block"
-              data-bs-toggle="modal"
-              data-bs-target="#footerSearchModal"
-            >
-              <input
-                type="text"
-                class="form-control"
-                [placeholder]="footer?.search?.placeholder"
-                FormControlName="searchInput"
-              />
-              <button
-                type="button"
-                class="d-block text-center"
-                (click)="onSearchSubmit(searchForm)"
+            <div>
+              <a href="{{ publication.url }}"
+                ><h4 class="m-0">{{ publication?.title }}</h4></a
               >
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
             </div>
-          </form>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md py-3 px-lg-5">
+        <div class="footer-link">
+          <h1 class="text-uppercase d-none d-lg-block">
+            For the love of franchising
+          </h1>
+          <div class="row justify-content-center">
+            <div class="col-6 col-md-4 col-lg">
+              <div class="row">
+                <div class="col-12 col-lg" *ngFor="let menu of footer?.menus">
+                  <h4
+                    class="text-uppercase primary-color"
+                    *ngIf="menu.title == 'Spotlight'"
+                  >
+                    {{ menu?.title }}
+                  </h4>
+                  <a
+                    routerLink="{{ menu.url }}"
+                    *ngIf="menu.title != 'Spotlight'"
+                    ><h4 class="text-uppercase primary-color">
+                      {{ menu?.title }}
+                    </h4></a
+                  >
+                  <h4
+                    class="text-uppercase mb-2"
+                    *ngFor="let item of menu.items"
+                  >
+                    <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div *ngIf="isBrowser" class="search_pop_up modal" id="footerSearchModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <button
-            type="button"
-            class="close text-right"
-            data-bs-dismiss="modal"
-            #searchCloseBtn
-          >
-            &times;
-          </button>
-          <form
-            [formGroup]="searchForm"
-            (ngSubmit)="onSearchSubmit(searchForm)"
-          >
-            <div class="form-group d-block">
-              <input
-                type="text"
-                class="form-control"
-                [placeholder]="footer?.search?.placeholder"
-                (keyup)="onKeyUp()"
-                [formControl]="searchForm.controls['searchInput']"
-              />
-              <button
-                type="button"
-                class="d-block text-center"
-                (click)="onSearchSubmit(searchForm)"
-                data-bs-dismiss="modal"
-              >
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </div>
-          </form>
-          <h5>MOST RECENT MATCHES</h5>
-          <div class="frannews-bottom">
-            <h6 *ngIf="news == null">No articles found</h6>
-            <ul
-              malihu-scrollbar
-              [scrollbarOptions]="scrollbarOptions"
-              class="vertical_scroll clearfix d-flex"
+      <div
+        class="
+          col-12 col-sm-6
+          border-start
+          d-flex
+          flex-column
+          py-3 py-lg-4 py-sm-2
+          ps-md-5
+        "
+      >
+        <h4 class="mb-4">Find us on social</h4>
+
+        <ul class="social d-flex p-0">
+          <li *ngFor="let footer of footer?.socialMedia; index as i">
+            <a
+              href="{{ footer?.url }}"
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                me-1
+                primary-bg
+              "
             >
-              <li
-                *ngFor="let story of news; let i = index"
-                class="col-xl-3 col-lg-4 col-sm-6 col-12"
-              >
-                <a
-                  href="/{{ readMore(story) }}#franbuzz"
-                  class="frannews-bottom-details"
-                >
-                  <figure>
-                    <img
-                      appYoutubeImage
-                      src="{{ story['media'] | defaultImage: 248:139 }}"
-                      width="248"
-                      height="139"
-                      alt="frannews"
-                    />
-                  </figure>
-                  <div class="socialmedia">
-                    <p
-                      title="{{ story['title'] }}"
-                      style="-webkit-box-orient: vertical"
-                    >
-                      {{ story["title"] }}
-                    </p>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-        </div>
+              <fa-icon [icon]="socialIcons[i]"></fa-icon>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>

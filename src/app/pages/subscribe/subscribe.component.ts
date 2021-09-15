@@ -6,6 +6,7 @@ import { FiveColumn } from 'src/app/_core/models/five';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-subscribe',

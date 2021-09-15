@@ -1,46 +1,44 @@
-import {
-  Component,
-  Inject,
-  OnInit,
-  PLATFORM_ID,
-  ViewChild,
-} from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
-import { forkJoin, Subject } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
-
+import {
+  faFacebookF,
+  faLinkedinIn,
+  faYoutube,
+  faInstagram,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  @ViewChild('searchCloseBtn') searchCloseBtn;
-
   footer: any = [];
-  publication: any = [];
-  brandSlug:string;
+  brandSlug: string;
   isFooter: boolean;
-  isBrandFooter: boolean;
   brandContact: any;
-  searchForm: FormGroup;
   brandId: string = '1851';
   isBrowser: boolean;
-  subject: Subject<any> = new Subject();
   news: any;
+  socialIcons: any = [
+    faFacebookF,
+    faInstagram,
+    faLinkedinIn,
+    faYoutube,
+    faTwitter,
+  ];
+
   constructor(
     private apiService: ApiService,
     private router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
-    fb: FormBuilder,
     private commonService: CommonService
   ) {
-    this.searchForm = new FormGroup({
-      searchInput: new FormControl(''),
-    });
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -73,47 +71,20 @@ export class FooterComponent implements OnInit {
         }
       }
     });
-    this.subject.subscribe(() => {
-      this.apiService
-        .getAPI(
-          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
-        )
-        .subscribe((res) => {
-          this.news = res.data;
-        });
-    });
   }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
+
   setInit() {
-    const footer = this.apiService.getAPI(`${this.brandSlug}/footer`);
+    let footerApi = 'footer';
+    if (this.brandSlug !== '1851') {
+      footerApi = `footer?slug=${this.brandSlug}`;
+    }
+    const footer = this.apiService.getAPI2(footerApi);
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/contact`);
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
 
-    forkJoin([footer, news, inquire, publication]).subscribe((results) => {
-      this.footer = results[0].data;
-      this.news = results[1].data;
+    forkJoin([footer, news, inquire]).subscribe((results) => {
+      this.footer = results[0];
       this.brandContact = results[2].schema;
-      this.publication = results[3];
-      this.isBrandFooter = false;
-      if(this.brandSlug !== '1851'){
-        this.isBrandFooter = true;
-      }
     });
-  }
-  onSearchSubmit(searchForm: FormGroup) {
-    this.searchCloseBtn.nativeElement.click();
-
-    if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.publication.id.toLowerCase()}`;
-    } else {
-      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls["searchInput"].value}&brand_id=${this.brandId}`;
-    }
-    this.searchForm.controls['searchInput'].setValue('');
-  }
-  onKeyUp(): void {
-    this.subject.next();
   }
 }
