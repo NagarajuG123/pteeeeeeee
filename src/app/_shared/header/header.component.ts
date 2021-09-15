@@ -91,7 +91,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  onSearchSubmit(searchForm: any) {
+  onSearchSubmit(searchForm: any, type) {
+    if (type === 'sidebar') {
+      this.commonService.toggle();
+    }
     this.searchCloseBtn.nativeElement.click();
     if (this.brandId === '1851') {
       this.router.navigate(['/searchpopup'], {

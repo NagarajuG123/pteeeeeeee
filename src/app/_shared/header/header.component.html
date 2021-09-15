@@ -92,9 +92,16 @@
           [ngClass]="commonService.showmenu ? 'open' : ''"
         >
           <div class="menu-search">
-            <form>
+            <form
+              [formGroup]="searchForm"
+              (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+            >
               <div class="input-group mb-1">
-                <button class="ps-2" type="button">
+                <button
+                  class="ps-2"
+                  type="button"
+                  (click)="onSearchSubmit(searchForm, 'sidebar')"
+                >
                   <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
                   <img
                     src="assets/img/search-p.svg"
