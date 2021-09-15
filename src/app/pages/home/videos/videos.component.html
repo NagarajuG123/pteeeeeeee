@@ -1,1 +1,77 @@
-<p>videos works!</p>
+<div class="c-video-section--wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center c-section-header--wrapper">
+          <div class="c-section-header--group d-flex align-items-end">
+            <h2 class="c-section--title text-uppercase m-0">
+              Videos
+            </h2>
+            <span class="c-section-header--subInfo">
+              covering the franchise industry
+            </span>
+          </div>
+          <div class="c-section-header--btnGroup ms-auto">
+            <a href="#" class="c-link--btn">
+              SEE MORE >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-divider--wrapper"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex c-video-section--boxWrapper">
+          <div class="c-video-section--box">
+            <div class="c-video-section--boxContent">
+              <div class="badge badge-primary">
+                FEATURED Video
+              </div>
+              <a href="#" class="c-video-section--playBtn d-flex justify-content-center align-items-center">
+                <img src="../../../../assets/img/play.png" alt="Play" class="img-fluid">
+              </a>
+            </div>
+            <div class="c-video-section--title">
+              Title Lorem Ipsum: Conset Entumi Abudi
+            </div>
+          </div>
+          <div class="c-video-section--box">
+            <div class="c-video-section--boxContent">
+              <div class="badge badge-primary">
+                FEATURED Video
+              </div>
+              <a href="#" class="c-video-section--playBtn d-flex justify-content-center align-items-center">
+                <img src="../../../../assets/img/play.png" alt="Play" class="img-fluid">
+              </a>
+            </div>
+            <div class="c-video-section--title">
+              Title Lorem Ipsum: Conset Entumi Abudi
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <owl-carousel-o [options]="customOptions" class="c-video-slider--wrapper d-block position-relative">
+          <ng-template carouselSlide *ngFor="let item of [].constructor(10); let i = index">
+            <div class="c-video-section--box">
+              <div class="c-video-section--boxContent">
+                <a href="#" class="c-video-section--playBtn d-flex justify-content-center align-items-center">
+                  <img src="../../../../assets/img/play.png" alt="Play" class="img-fluid">
+                </a>
+              </div>
+              <div class="c-video-section--title">
+                Title Lorem Ipsum: Conset Entumi Abudi
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>
