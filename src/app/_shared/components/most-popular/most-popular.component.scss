@@ -1,0 +1,106 @@
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@import "../../../../assets/scss/theme-color.scss";
+
+.most-popular {
+  background: linear-gradient($dark-gray 385px, $white 0);
+  font-family: Roboto;
+  h2 {
+    font-family: "Ballinger Condensed Medium";
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 40px;
+  }
+  hr {
+    border-color: $primary;
+    background-color: $primary;
+    height: 2px;
+  }
+  .slideItem {
+    font-weight: bold;
+    margin-bottom: 47px;
+    .slide-body {
+      min-height: 130px;
+      padding-top: 31px;
+      padding-bottom: 31px;
+      > span {
+        font-size: 10px;
+        width: 58px;
+        height: 19px;
+      }
+      > h3 {
+        > span {
+          font-size: 49px;
+          line-height: 100%;
+          font-weight: bold;
+        }
+        font-size: 21px;
+      }
+    }
+    .slide-footer {
+      font-family: "Ballinger Condensed";
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+  .subSlideItem {
+    margin-bottom: 47px;
+    .slide-body {
+      > div {
+        > span {
+          font-size: 31px;
+          line-height: 100%;
+          font-weight: bold;
+        }
+        > h3 {
+          font-weight: bold;
+          font-size: 18px;
+        }
+        > small {
+          font-size: 10px;
+          line-height: 12px;
+        }
+        > p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+// carousel
+:host ::ng-deep .owl-carousel {
+  .owl-stage-outer {
+    overflow: hidden;
+    .owl-stage {
+      display: flex;
+      .slideItem {
+        padding: 0 20px;
+        box-sizing: border-box;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .owl-nav {
+    > div {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: 22px;
+      height: 43px;
+      width: 25px;
+      cursor: pointer;
+      &.owl-prev {
+        background-image: url("../../../../assets/img/left-arrow.svg");
+        left: -10px;
+      }
+      &.owl-next {
+        background-image: url("../../../../assets/img/right-arrow.svg");
+        right: -10px;
+      }
+    }
+  }
+}
