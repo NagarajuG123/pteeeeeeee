@@ -27,7 +27,6 @@ import { TopBannerComponent } from './components/top-banner/top-banner.component
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
-import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
@@ -57,7 +56,6 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
-    ErrorMessageComponent,
     MostPopularComponent,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
