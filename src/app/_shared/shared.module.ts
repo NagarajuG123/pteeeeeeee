@@ -30,6 +30,7 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
+import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 
 // Modals Components
 
@@ -59,6 +60,7 @@ import { EditorialSectionsComponent } from './components/editorial-sections/edit
     ErrorMessageComponent,
     MostPopularComponent,
     EditorialSectionsComponent,
+    SpecialFeatureComponent,
   ],
   imports: [
     CommonModule,
@@ -93,6 +95,7 @@ import { EditorialSectionsComponent } from './components/editorial-sections/edit
     FeaturedComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
+    SpecialFeatureComponent,
     LatestStoryComponent,
     ModalComponent,
     SlickCarouselModule,

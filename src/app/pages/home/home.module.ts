@@ -8,9 +8,10 @@ import { HomeComponent } from './home.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeFeatureComponent } from './home-feature/home-feature.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
-  declarations: [HomeComponent, SpotlightComponent, HomeFeatureComponent],
+  declarations: [HomeComponent, SpotlightComponent, HomeFeatureComponent, VideoComponent],
   imports: [CommonModule, HomeRoutingModule, SharedModule, CarouselModule],
 })
 export class HomeModule {}
