@@ -17,7 +17,7 @@
   </div>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
-<div *ngIf="type === 'category_page'">
+<!-- <div *ngIf="type === 'category_page'">
   <div class="empty"></div>
 
   <app-featured
@@ -81,6 +81,141 @@
           [typeSlug]="categoryParam"
           (more)="getMoreData()"
         ></app-five-column>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div *ngIf="type === 'category_page'">
+  <div class="container customContainer py-4">
+    <div class="row">
+      <div class="col-12 col-lg mb-3 mb-sm-0">
+        <div class="row">
+          <div>
+            <div class="position-relative">
+              <div class="tag position-absolute text-center top-0 text-uppercase">
+                People Spotlight
+              </div>
+              <img
+                appYoutubeImage
+                srcset="assets/img/video-img2.jpg"
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
+                  (max-width: 992px) 400px,
+                  (max-width: 1200px) 238px,
+                  300px'
+                }}"
+                width="850"
+                height="450"
+                src="assets/img/video-img2.jpg"
+                alt="featured"
+              />
+              <div
+                class="over-layer position-absolute text-capitalize bottom-0 fw-bold w-100">
+                 commonService.formatTitle(item.title) 
+                <a routerLink="" class="stretched-link"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div  class="position-relative col-12 col-sm-6 col-lg-3 align-items-stretch mb-3 mb-sm-0 border-start border-2 latestListing">
+        <!-- Category news list -->
+        <ul class="news-list noScrollBar list-group">
+          <li>
+            <div class="newsImage me-2 me-md-3">
+              <img
+                appYoutubeImage
+                width="95"
+                height="100"
+                src="assets/img/video-img2.jpg"
+                alt="category-feature"
+              />
+            </div>
+            <div>
+              <h3 class="m-0">
+                <a routerLink=" ">
+                  item.title
+                </a>
+              </h3>
+              <span>By item.author.name</span>
+            </div>
+          </li>
+          <li>
+            <div class="newsImage me-2 me-md-3">
+              <img
+                appYoutubeImage
+                width="95"
+                height="100"
+                src="assets/img/video-img2.jpg"
+                alt="category-feature"
+              />
+            </div>
+            <div>
+              <h3 class="m-0">
+                <a routerLink=" ">
+                  item.title
+                </a>
+              </h3>
+              <span>By item.author.name</span>
+            </div>
+          </li>
+          <li>
+            <div class="newsImage me-2 me-md-3">
+              <img
+                appYoutubeImage
+                width="95"
+                height="100"
+                src="assets/img/video-img2.jpg"
+                alt="category-feature"
+              />
+            </div>
+            <div>
+              <h3 class="m-0">
+                <a routerLink=" ">
+                  item.title
+                </a>
+              </h3>
+              <span>By item.author.name</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row py-4">
+      <div class="col-12 sm-6 lg-3">
+        <ul>
+          <li>
+            <a>
+              <img appYoutubeImage
+              width="95"
+              height="100"
+              src="assets/img/video-img2.jpg"
+              alt="category-feature">
+              <div>Article Description Title Section</div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <img appYoutubeImage
+              width="95"
+              height="100"
+              src="assets/img/video-img2.jpg"
+              alt="category-feature">
+              <div>Article Description Title Section</div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <img appYoutubeImage
+              width="95"
+              height="100"
+              src="assets/img/video-img2.jpg"
+              alt="category-feature">
+              <div>Article Description Title Section</div>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
