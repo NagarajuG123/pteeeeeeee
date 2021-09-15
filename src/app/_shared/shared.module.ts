@@ -28,6 +28,8 @@ import { TwoSideBannerComponent } from './components/two-side-banner/two-side-ba
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { MostPopularComponent } from './components/most-popular/most-popular.component';
+import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 
 // Modals Components
 
@@ -55,6 +57,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ModalComponent,
     LatestStoryComponent,
     ErrorMessageComponent,
+    MostPopularComponent,
+    EditorialSectionsComponent,
   ],
   imports: [
     CommonModule,
@@ -83,7 +87,9 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     VideoPlayerComponent,
     VideoPlayerComponent,
     CarouselComponent,
+    MostPopularComponent,
     FiveColumnComponent,
+    EditorialSectionsComponent,
     FeaturedComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
