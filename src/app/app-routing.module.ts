@@ -52,7 +52,6 @@ const routes: Routes = [
   },
   {
     path: 'author/:authorSlug',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/author/author.module').then((m) => m.AuthorModule),
   },
@@ -66,13 +65,11 @@ const routes: Routes = [
 
   {
     path: 'sitemap',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
     path: 'termsofuse',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/termsofuse/termsofuse.module').then(
         (m) => m.TermsofuseModule
@@ -88,7 +85,6 @@ const routes: Routes = [
   },
   {
     path: 'searchpopup',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/search/search.module').then((m) => m.SearchModule),
   },
@@ -110,7 +106,6 @@ const routes: Routes = [
   },
   {
     path: 'monthlydetails/:month/:year/:date/:id',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/monthly-details/monthly-details.module').then(
         (m) => m.MonthlyDetailsModule
@@ -118,7 +113,6 @@ const routes: Routes = [
   },
   {
     path: 'monthlycovers',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./pages/monthly-covers/monthly-covers.module').then(
         (m) => m.MonthlyCoversModule
