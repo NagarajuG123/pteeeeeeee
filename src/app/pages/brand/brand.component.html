@@ -1,4 +1,4 @@
-<div *ngIf="type === 'brand_page'">
+<!-- <div *ngIf="type === 'brand_page'">
   <div class="empty"></div>
   <app-featured [type]="'Brand'" [slug]="slug" [apiUrl]="apiUrl"></app-featured>
   <app-news [slug]="slug" (noData)="hideNews = true"></app-news>
@@ -16,6 +16,9 @@
     ></app-latest-story>
   </div>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
+</div> -->
+<div *ngIf="type === 'brand_page'">
+  <app-brand-page [slug]="slug"></app-brand-page>
 </div>
 <div *ngIf="type === 'category_page'">
   <div class="empty"></div>
