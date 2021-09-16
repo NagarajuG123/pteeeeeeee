@@ -1,24 +1,5 @@
 @import "../../../assets/scss/theme-color.scss";
-.toast {
-  width: 350px;
-  max-width: 100%;
-  font-size: 0.875rem;
-  pointer-events: auto;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
-  border-radius: 0.25rem;
-  position: fixed;
-  right: 15px;
-  top: 15px;
-  z-index: 99999;
-  .toast-body {
-    padding: 0.75rem;
-    word-wrap: break-word;
-    color: #fff;
-  }
-}
-
+@import "../../../assets/scss/mixins.scss";
 .d-flex {
   -webkit-flex-wrap: wrap;
   display: flex !important;
@@ -26,15 +7,23 @@
 .flex-row-reverse {
   flex-direction: row-reverse !important;
 }
+
 .banner-left_about {
   max-width: 79%;
+  flex: 0 0 79%;
   -webkit-flex: 0 0 79%;
+  @include desk-lg-below1 {
+    max-width: 71%;
+    flex: 0 0 71%;
+    -webkit-flex: 0 0 71%;
+  }
+  @include tablet-portrait {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+  }
   figure {
     position: relative;
-    img {
-      display: block;
-      width: 100%;
-    }
   }
 }
 .video-btn {
@@ -74,21 +63,81 @@ img {
 }
 .banner-right_about {
   max-width: 21%;
+  flex: 0 0 21%;
   -webkit-flex: 0 0 21%;
-  -webkit-box-shadow: 6px 0 15px #00000045;
+  box-shadow: 6px 0px 15px $grade_bg4_1;
+  -webkit-box-shadow: 6px 0px 15px $grade_bg4_1;
+  -moz-box-shadow: 6px 0px 15px $grade_bg4_1;
+  -ms-box-shadow: 6px 0px 15px $grade_bg4_1;
+  -o-box-shadow: 6px 0px 15px $grade_bg4_1;
+  @include desk-lg-below1 {
+    max-width: 29%;
+    flex: 0 0 29%;
+    -webkit-flex: 0 0 29%;
+  }
+  @include tablet-portrait {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+  }
   .info_btn {
     padding: 50px 42px 67px 34px;
+    @include desk-lg-below1 {
+      padding: 30px 15px 40px 15px;
+    }
+    @include tablet-portrait {
+      padding: 30px 15px;
+    }
+    @include tablet-landscape1 {
+      padding: 25px 15px;
+      width: 100%;
+    }
+
     a {
-      margin: 0 0 27px;
+      margin: 0 0 27px 0;
       width: 215px;
+      @include desk-lg-below1 {
+        margin: 0 0 16px 0;
+      }
+      @include tablet-landscape1 {
+        width: 100%;
+      }
+    }
+    h3 {
+      font-size: 27px;
+      line-height: 32px;
+      color: $white;
+      font-family: "ProximaNova-Bold";
+      padding: 0 0 9px 0;
+      @include desk-lg-below1 {
+        font-size: 25px;
+        line-height: 29px;
+      }
+      @include tablet-portrait {
+        font-size: 22px;
+        line-height: 24px;
+      }
+      br {
+        @include desk-xlg {
+          display: none;
+        }
+      }
     }
     em {
       font-size: 18px;
       line-height: 21px;
-      color: #f1f1f2;
-      font-family: ProximaNova-LightIt;
-      font-weight: 400;
+      color: $white1;
+      font-family: "ProximaNova-LightIt";
+      font-weight: normal;
       font-style: normal;
+      @include mobile-landscape1 {
+        font-size: 16px;
+      }
+      br {
+        @include desk-xlg {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -109,7 +158,7 @@ img {
     line-height: 52px;
     height: 52px;
     color: #fff;
-    font-family: ProximaNova-Light;
+    font-family: "ProximaNova-Light";
     font-weight: 400;
     cursor: unset;
   }
@@ -117,32 +166,67 @@ img {
     font-size: 33px;
     line-height: 39px;
     color: #fff;
-    font-family: ProximaNova-Bold;
+    font-family: "ProximaNova-Bold";
     font-weight: 400;
     padding: 0 0 8px;
   }
 }
 
 .franchise_main {
-  background: #fff;
-  padding: 99px 0 89px;
-  box-shadow: 0 6px 12px #00000045;
+  background: $white;
+  padding: 99px 0 89px 0;
+  box-shadow: 0px 6px 12px $grade_bg4_1;
   position: relative;
   z-index: 2;
+  @include tablet-landscape1 {
+    padding: 30px 0;
+  }
   .franchise_data {
     padding: 0 230px;
+    @include tablet-landscape1 {
+      padding: unset;
+    }
     h1 {
       font-size: 30px;
       line-height: 32px;
-      color: #263645;
-      font-family: ProximaNova-Light;
-      padding: 0 0 30px;
+      color: $dark-gray-1;
+      font-family: "ProximaNova-Light";
+      padding: 0 0 30px 0;
+      @include desk-lg-below1 {
+        padding: 0 0 8px 0;
+      }
+      @include tablet-portrait {
+        font-size: 28px;
+        line-height: 32px;
+      }
+      @include tablet-landscape1 {
+        font-size: 26px;
+        line-height: 29px;
+      }
+      @include mobile-landscape1 {
+        font-size: 24px;
+        line-height: 27px;
+      }
     }
     p {
       font-size: 20px;
       line-height: 28px;
-      letter-spacing: 0;
-      color: #263645;
+      letter-spacing: 0px;
+      color: $dark-gray-1;
+      font-family: "ProximaNova-Regular";
+      @include tablet-landscape1 {
+        font-size: 18px;
+        line-height: 25px;
+      }
+      @include mobile-landscape1 {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      br {
+        @include tablet-portrait {
+          display: none;
+        }
+      }
     }
   }
 }
