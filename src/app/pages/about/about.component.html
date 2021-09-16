@@ -1,0 +1,207 @@
+<div class="empty"></div>
+<div *ngIf="data?.media" class="banner d-flex flex-row-reverse">
+  <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
+    <a
+      class="d-block video-btn"
+      *ngIf="data?.media"
+      data-bs-target="#aboutModal"
+      data-bs-toggle="modal"
+      href=""
+    >
+      <figure>
+        <img
+          appYoutubeImage
+          data-src="{{ data?.media | defaultImage: 1300:730 }}"
+          width="1023"
+          height="575"
+          alt="about"
+          (imageLoad)="bannerImageLoad()"
+          class="lazyload"
+        />
+      </figure>
+        <div
+          class="modal fade"
+          id="aboutModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          (click)="openVideoPlayer = true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  (click)="openVideoPlayer = false"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <app-video-player
+                    *ngIf="openVideoPlayer"
+                    class="embed-responsive-item"
+                    [srcUrl]="data?.media?.url"
+                  >
+                  </app-video-player>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </a>
+  </div>
+  <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
+    <div class="buffalo_wings">
+      <div class="info_btn text-center">
+        <a
+          *ngIf="publication?.id !== 'EE'"
+          href="#"
+          onclick="return false;"
+          class="text-center"
+        >
+          ABOUT 1851
+        </a>
+        <h1 class="text-left">{{ data.title }}</h1>
+        <em class="text-left d-block">{{ data.description }}</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-content">
+  <div *ngIf="data.contents" class="franchise_main text-center">
+    <div class="container">
+      <div class="franchise_data">
+        <h1>{{ data.contents[0].title }}</h1>
+        <p [innerHtml]="data.contents[0].short_description"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="publication_main" *ngIf="publicationContents">
+    <div
+      *ngFor="let content of publicationContents; let i = index"
+      class="publication_content d-flex flex-wrap"
+      [class.flex-row-reverse]="i % 2 === 0"
+    >
+      <div class="publication_left col-lg-6 col-md-12">
+        <figure>
+          <img
+            *ngIf="i === 0"
+            [src]="content['media']['url']"
+            width="720"
+            height="485"
+            alt="about_img2"
+            (imageLoaded)="mainImageLoad()"
+          />
+          <img
+            *ngIf="i === 1"
+            [src]="content['media']['url']"
+            width="720"
+            height="485"
+            alt="about_img2"
+            (imageLoaded)="mainImageLoad()"
+          />
+        </figure>
+      </div>
+      <div
+        class="
+          publication_right
+          d-flex
+          justify-content-center
+          align-items-center
+          col-lg-6 col-md-12
+        "
+      >
+        <div class="publication_right_data col-lg-5 col-md-12">
+          <h3>{{ content.title }}</h3>
+          <p
+            style="color: black !important"
+            [innerHtml]="content.short_description"
+          ></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div #tellus id="tellus">
+    <div class="partner_main d-flex" *ngIf="isBrowser">
+      <div
+        class="
+          partner_left
+          d-flex
+          justify-content-center
+          text-center
+          align-items-center
+          col-lg-6
+        "
+      >
+        <figure>
+          <img
+            *ngIf="data?.demo?.media?.url"
+            data-src="{{ data?.demo?.media?.url }}"
+            width="491"
+            height="615"
+            alt="about-us-demo"
+            class="lazyload"
+          />
+        </figure>
+      </div>
+      <div
+        class="
+          partner_right
+          d-flex
+          justify-content-center
+          text-center
+          align-items-center
+          col-lg-6
+        "
+      >
+        <div class="partner_right_data col-lg-7">
+          <h4>REQUEST A DEMO</h4>
+          <p>
+            {{ data?.demo?.description }}
+          </p>
+          <form [formGroup]="contactForm"
+          class="fill-form"
+          (ngSubmit)="onContactSubmit(contactForm)">
+          
+          <div class="row">
+            <div class="mb-3 col-6">
+              <input type="text" class="form-control" placeholder="FIRST NAME" [formControl]="contactForm.controls['first_name']" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+            </div>
+            <div class="mb-3 col-6">
+              <input type="text" class="form-control" placeholder="LAST NAME" [formControl]="contactForm.controls['last_name']" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div *ngIf="errorMessage" class="error-message" [control]="contactForm.controls['last_name']">{{ errorMessage }}</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="EMAIL ADDRESS*" [formControl]="contactForm.controls['email']" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div *ngIf="errorMessage" class="error-message"  [control]="contactForm.controls['email']">{{ errorMessage }}</div>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" placeholder="YOUR MESSAGE" [formControl]="contactForm.controls['message']" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+            <div *ngIf="errorMessage" class="error-message"[control]="contactForm.controls['message']">{{ errorMessage }}</div>
+          </div>
+          <div class="row">
+          <div class="mb-3 col-8">
+            <re-captcha (resolved)="resolved($event)"
+            formControlName="reCaptchaCode"
+            siteKey="{{ siteKey }}"></re-captcha>
+            <div *ngIf="errorMessage" class="error-message" [control]="contactForm.controls['reCaptchaCode']">{{ errorMessage }}</div>
+          </div>
+          <div class="mb-3 col-4">
+            <button  (click)="onContactSubmit(contactForm)" type="button" >SUBMIT</button>
+          </div>
+          </div>
+          <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
+            <span *ngIf="isSubmitted" class="f_success">{{ submitSuccessMsg }}</span>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

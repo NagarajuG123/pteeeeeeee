@@ -122,7 +122,7 @@ const routes: Routes = [
     path: 'about',
     pathMatch: 'full',
     loadChildren: () =>
-      import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
+      import('./pages/about/about.module').then((m) => m.AboutModule),
   },
   {
     path: 'storypage/preview/:storyId',
