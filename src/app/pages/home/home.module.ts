@@ -11,7 +11,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { VideoComponent } from './video/video.component';
 
 @NgModule({
-  declarations: [HomeComponent, SpotlightComponent, HomeFeatureComponent, VideoComponent],
+  declarations: [
+    HomeComponent,
+    SpotlightComponent,
+    HomeFeatureComponent,
+    VideoComponent,
+  ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, CarouselModule],
 })
 export class HomeModule {}

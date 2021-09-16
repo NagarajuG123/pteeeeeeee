@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ApiService } from 'src/app/_core/services/api.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +15,19 @@ import { ApiService } from 'src/app/_core/services/api.service';
 })
 export class HomeComponent implements OnInit {
   publication: any = [];
+  newsletterForm!: FormGroup;
+  isSubmitted: boolean = false;
 
   constructor(
     private metaService: MetaService,
-    private apiService: ApiService
-  ) {}
+    private apiService: ApiService,
+    fb: FormBuilder
+  ) {
+    this.newsletterForm = fb.group({
+      name: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])],
+    });
+  }
 
   ngOnInit(): void {
     this.getMeta();
@@ -31,5 +45,11 @@ export class HomeComponent implements OnInit {
     this.apiService.getAPI(`1851/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
     });
+  }
+  onNewsletterSubmit(newsletterForm: FormGroup) {
+    const subscribe_form = {
+      email: this.newsletterForm.controls['email'].value,
+      name: this.newsletterForm.controls['name'].value,
+    };
   }
 }

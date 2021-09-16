@@ -30,6 +30,7 @@ import { LatestStoryComponent } from './components/latest-story/latest-story.com
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 // Modals Components
 
@@ -42,6 +43,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     FooterComponent,
     ErrorComponent,
     NewsComponent,
+    ErrorMessageComponent,
     TrendingBuzzComponent,
     DefaultImagePipe,
     SafeUrlPipe,
@@ -91,6 +93,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     FiveColumnComponent,
     EditorialSectionsComponent,
     FeaturedComponent,
+    ErrorMessageComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
     SpecialFeatureComponent,
