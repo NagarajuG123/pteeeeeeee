@@ -34,21 +34,18 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.slug);
     const FEATURE_KEY = makeStateKey<any>('featureState');
     const featured = this.state.get(FEATURE_KEY, null as any);
     if (!featured) {
       const featureApi = this.apiService.getAPI(`1851/${this.slug}/featured?limit=4&offset=0`);
       const mostRecentApi = this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=12&offset=0`);
-      // const metaApi = this.apiService.getAPI(`${this.slug}/meta`);
+
       const featured: any = {};
       forkJoin([featureApi, mostRecentApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           featured['data'] = results[0].data;
           featured['mostRecent'] = results[1].data;
-          // featured['meta'] = results[2].data;
-
           this.state.set(FEATURE_KEY, featured as any);
         });
     } else {
