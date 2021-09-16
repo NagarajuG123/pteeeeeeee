@@ -6,8 +6,6 @@ import {
   UrlSegment,
 } from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
-import { PowerRankingComponent } from './pages/power-ranking/power-ranking.component';
-import { TrendingbuzzComponent } from './pages/trendingbuzz/trendingbuzz.component';
 import { StoryComponent } from './pages/story/story.component';
 
 export function isArticlePage(url: UrlSegment[]) {
@@ -122,7 +120,7 @@ const routes: Routes = [
     path: 'about',
     pathMatch: 'full',
     loadChildren: () =>
-      import('./pages/about/about.module').then((m) => m.AboutModule),
+      import('./pages/about-us/about-us.module').then((m) => m.AboutUsModule),
   },
   {
     path: 'storypage/preview/:storyId',
