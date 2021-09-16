@@ -11,18 +11,13 @@
       <figure>
         <img
           appYoutubeImage
-          data-src="{{ data?.media | defaultImage: 1300:730 }}"
+          src="{{ data?.media | defaultImage: 1300:730 }}"
           width="1023"
           height="575"
           alt="about"
           (imageLoad)="bannerImageLoad()"
-          class="lazyload"
         />
       </figure>
-      <!-- <app-modal
-        [videoUrl]="data?.media?.url"
-        [modalId]="'aboutModal'"
-      ></app-modal> -->
     </a>
   </div>
   <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
@@ -53,9 +48,9 @@
     </div>
   </div>
 
-  <div class="publication_main" *ngIf="publication_contents">
+  <div class="publication_main" *ngIf="publicationContents">
     <div
-      *ngFor="let content of publication_contents; let i = index"
+      *ngFor="let content of publicationContents; let i = index"
       class="publication_content d-flex flex-wrap"
       [class.flex-row-reverse]="i % 2 === 0"
     >
@@ -67,7 +62,6 @@
             width="720"
             height="485"
             alt="about_img2"
-            (imageLoaded)="mainImageLoad()"
           />
           <img
             *ngIf="i === 1"
@@ -75,7 +69,6 @@
             width="720"
             height="485"
             alt="about_img2"
-            (imageLoaded)="mainImageLoad()"
           />
         </figure>
       </div>
@@ -138,65 +131,69 @@
           </p>
           <form
             [formGroup]="contactForm"
-            class="fill-form"
             (ngSubmit)="onContactSubmit(contactForm)"
           >
-            <ul class="d-flex">
-              <li class="col-lg-6">
+            <div class="row gx-2">
+              <div class="col-6 col-sm">
                 <input
                   type="text"
-                  class="feild1 partner-feild1 col-lg-12"
-                  placeholder="FIRST NAME*"
+                  placeholder="First Name*"
+                  class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
                   [formControl]="contactForm.controls['first_name']"
                 />
                 <app-error-message
                   *ngIf="isSubmitted"
-                  class="full-width"
                   [control]="contactForm.controls['first_name']"
                 ></app-error-message>
-              </li>
-              <li class="col-lg-6">
+              </div>
+              <div class="col-6 col-sm">
                 <input
                   type="text"
-                  class="feild2 partner-feild2 col-lg-12"
-                  placeholder="LAST NAME*"
+                  placeholder="Last Name*"
+                  class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
                   [formControl]="contactForm.controls['last_name']"
                 />
                 <app-error-message
                   *ngIf="isSubmitted"
-                  class="full-width"
                   [control]="contactForm.controls['last_name']"
                 ></app-error-message>
-              </li>
-              <li class="col-12">
+              </div>
+            </div>
+            <br />
+            <div class="row gx-2">
+              <div class="col-12 col-sm">
                 <input
                   type="text"
-                  class="feild3 col-lg-12"
-                  placeholder="EMAIL ADDRESS*"
+                  placeholder="Email Address*"
+                  class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
                   [formControl]="contactForm.controls['email']"
                 />
                 <app-error-message
                   *ngIf="isSubmitted"
-                  class="full-width"
                   [control]="contactForm.controls['email']"
                 ></app-error-message>
-              </li>
-              <li class="col-12">
+              </div>
+            </div>
+            <br />
+
+            <div class="row gx-2">
+              <div class="col-12 col-sm">
                 <textarea
-                  placeholder="YOUR MESSAGE"
                   cols="3"
                   rows="3"
-                  class="feild9 col-lg-12"
+                  placeholder="Your Message*"
+                  class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
                   [formControl]="contactForm.controls['message']"
                 ></textarea>
                 <app-error-message
                   *ngIf="isSubmitted"
-                  class="full-width"
                   [control]="contactForm.controls['message']"
                 ></app-error-message>
-              </li>
-
-              <li class="col-sm-8 col-12">
+              </div>
+            </div>
+            <br />
+            <div class="row gx-2">
+              <div class="col-8 col-sm">
                 <re-captcha
                   (resolved)="resolved($event)"
                   formControlName="reCaptchaCode"
@@ -208,19 +205,21 @@
                   class="full-width"
                   [control]="contactForm.controls['reCaptchaCode']"
                 ></app-error-message>
-              </li>
-              <li class="col-sm-4 col-12">
+              </div>
+              <div class="col-4 col-sm">
                 <button
                   type="button"
                   class="col-12 submit_btn"
                   (click)="onContactSubmit(contactForm)"
                 >
-                  SUBMIT <i class="fa fa-angle-right" aria-hidden="true"></i>
+                  SUBMIT
+                  <fa-icon [icon]="faAngleRight"></fa-icon>
                 </button>
-              </li>
-            </ul>
-            <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
-            <span *ngIf="isSubmitted" class="f_success">{{
+              </div>
+            </div>
+
+            <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+            <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
               submitSuccessMsg
             }}</span>
           </form>
@@ -248,7 +247,7 @@
           aria-label="Close"
         ></button>
         <iframe
-          [src]="videoUrl"
+          [src]="videoUrl | safeUrl"
           frameborder="0"
           width="100%"
           height="496px"
