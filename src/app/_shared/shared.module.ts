@@ -31,6 +31,7 @@ import { MostPopularComponent } from './components/most-popular/most-popular.com
 import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { TrendingComponent } from './components/trending/trending.component';
 
 // Modals Components
 
@@ -61,6 +62,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     MostPopularComponent,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
+    TrendingComponent,
   ],
   imports: [
     CommonModule,
@@ -89,6 +91,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     VideoPlayerComponent,
     VideoPlayerComponent,
     CarouselComponent,
+    TrendingComponent,
     MostPopularComponent,
     FiveColumnComponent,
     EditorialSectionsComponent,

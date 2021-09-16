@@ -20,7 +20,6 @@ export class FeaturedComponent implements OnInit {
   isBrowser: boolean;
   featured: Details[] = [];
   news: Details[] = [];
-  trending: Details[] = [];
   brandNews: Details[] = [];
 
   slug: string = '';
@@ -50,27 +49,22 @@ export class FeaturedComponent implements OnInit {
       const newsApi = this.apiService.getAPI(
         `${this.slug}/news?limit=4&offset=0`
       );
-      const trending = this.apiService.getAPI(
-        `${this.slug}/trending?limit=9&offset=0`
-      );
       const brandNews = this.apiService.getAPI(
         `1851/news?limit=4&offset=0&isBrand=true`
       );
       const featured: any = {};
-      forkJoin([featureApi, newsApi, trending, brandNews])
+      forkJoin([featureApi, newsApi, brandNews])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           featured['data'] = results[0].data;
           featured['news'] = results[1].data;
-          featured['trending'] = results[2].data;
-          featured['brandNews'] = results[3].data;
+          featured['brandNews'] = results[2].data;
 
           this.state.set(FEATURE_KEY, featured as any);
         });
     } else {
       this.featured = featured['data'];
       this.news = featured['news'];
-      this.trending = featured['trending'];
       this.brandNews = featured['brandNews'];
     }
   }
