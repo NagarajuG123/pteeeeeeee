@@ -92,12 +92,14 @@
         width: 25px;
         cursor: pointer;
         &.owl-prev {
-          background-image: url("../../../../assets/img/left-arrow.svg");
-          left: -10px;
+          background: url("../../../../assets/img/left-arrow.png") left top no-repeat;
+          left: -30px;
+          top: 150px;
         }
         &.owl-next {
-          background-image: url("../../../../assets/img/right-arrow.svg");
-          right: -10px;
+          background: url("../../../../assets/img/right-arrow.png") left top no-repeat;
+          right: -30px;
+          top: 150px;
         }
       }
     }

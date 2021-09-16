@@ -10,6 +10,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -68,6 +69,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     NgxYoutubePlayerModule,
     SlickCarouselModule,
     ShareButtonModule,
+    CarouselModule
   ],
   exports: [
     RouterModule,
@@ -98,6 +100,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
     ModalComponent,
     SlickCarouselModule,
     ShareButtonModule,
+    CarouselModule
   ],
 })
 export class SharedModule {}

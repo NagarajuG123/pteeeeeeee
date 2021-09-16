@@ -39,14 +39,19 @@ export class BrandPageComponent implements OnInit {
   ) { this.isBrowser = isPlatformBrowser(platformId); }
 
   customOptions: OwlOptions = {
-    autoplay: true,
     loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
+    autoplay: false,
+    center: true,
     dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    margin: 10,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+    ],
+    items:  this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
     responsive: {
       0: {
         items: 1,
