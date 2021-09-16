@@ -54,6 +54,7 @@
                 Join now
               </button>
             </div>
+            <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
           </div>
         </form>
       </div>

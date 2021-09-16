@@ -2,20 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/_shared/shared.module';
 
-import { AboutUsRoutingModule } from './about-us-routing.module';
-import { AboutUsComponent } from './about-us.component';
+import { AboutRoutingModule } from './about-routing.module';
+import { AboutComponent } from './about.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
-import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AboutUsComponent],
+  declarations: [AboutComponent],
   imports: [
     CommonModule,
-    AboutUsRoutingModule,
+    AboutRoutingModule,
     SharedModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    ToastrModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
-export class AboutUsModule {}
+export class AboutModule {}

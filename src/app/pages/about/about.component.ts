@@ -7,23 +7,21 @@ import {
   Output,
   PLATFORM_ID,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { forkJoin } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-about-us',
-  templateUrl: './about-us.component.html',
-  styleUrls: ['./about-us.component.scss'],
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
 })
-export class AboutUsComponent implements OnInit {
+export class AboutComponent implements OnInit {
   @Output() imageLoaded = new EventEmitter();
-  publication_contents: any = [];
+  publicationContents: any = [];
   loadedImageNum = 0;
 
   bannerImageLoaded: Boolean = false;
@@ -41,9 +39,9 @@ export class AboutUsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
+    private control: FormControl,
     @Inject(PLATFORM_ID) platformId: Object,
-    fb: FormBuilder,
-    private toastr: ToastrService
+    fb: FormBuilder
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = fb.group({
@@ -72,11 +70,22 @@ export class AboutUsComponent implements OnInit {
       this.publication = results[0];
       if (this.data?.contents?.length > 1) {
         for (let i = 1; i < this.data.contents.length; i++) {
-          this.publication_contents.push(this.data.contents[i]);
+          this.publicationContents.push(this.data.contents[i]);
         }
       }
       this.metaService.setSeo(results[2].data);
     });
+  }
+
+  get errorMessage() {
+    if (this.control && this.control.errors) {
+      for (const prop in this.control.errors) {
+        if (this.control.errors.hasOwnProperty(prop)) {
+          return ValidationService.getValidatorErrorMessage(prop);
+        }
+      }
+    }
+    return null;
   }
 
   onModalHide() {
@@ -101,7 +110,6 @@ export class AboutUsComponent implements OnInit {
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.toastr.success(result.data.message, 'Thanks!');
           this.isSubmitted = false;
           this.resetForm();
         } else {
@@ -118,7 +126,7 @@ export class AboutUsComponent implements OnInit {
       reCaptchaCode: '',
     });
   }
-  resolved(event) {}
+  resolved() {}
 
   handleReset() {}
 

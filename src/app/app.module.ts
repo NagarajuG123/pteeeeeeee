@@ -9,7 +9,7 @@ import { SharedModule } from './_shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { MonthlyCoversModule } from './pages/monthly-covers/monthly-covers.module';
-import { AboutUsModule } from './pages/about-us/about-us.module';
+import { AboutModule } from './pages/about/about.module';
 import { BrandModule } from './pages/brand/brand.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +28,7 @@ import { environment } from '../environments/environment';
     HomeModule,
     HttpClientModule,
     MonthlyCoversModule,
-    AboutUsModule,
+    AboutModule,
     BrandModule,
     CommonModule,
     BrowserAnimationsModule,
