@@ -1,28 +1,133 @@
-<!-- <div *ngIf="type === 'brand_page'">
-  <div class="empty"></div>
-  <app-featured [type]="'Brand'" [slug]="slug" [apiUrl]="apiUrl"></app-featured>
-  <app-news [slug]="slug" (noData)="hideNews = true"></app-news>
-  <app-carousel
-    [slug]="slug"
-    [type]="'trending'"
-    [title]="'TRENDING'"
-    (noData)="hideTrending = true"
-  ></app-carousel>
-  <div [class.hide-trending]="hideTrending && !hideNews">
-    <app-latest-story
-      [slug]="slug"
-      [isScroll]="true"
-      [company]="company"
-    ></app-latest-story>
-  </div>
-  <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
-</div> -->
 <div *ngIf="type === 'brand_page'">
-  <app-brand-page [slug]="slug"></app-brand-page>
+  <div class="trending mb-1">
+  <div class="container-fluid text-center py-2">
+    <span class="pe-md-5">
+      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+      TRENDING
+    </span>
+  </div>
 </div>
+<div class="py-4">
+<app-special-feature [apiUrl]="specialFeatureUrl" [slug]="slug"></app-special-feature>
+<div class="most-popular">
+    <div class="container customContainer">
+      <h2 class="py-3 m-0 text-white">MOST POPULAR</h2>
+    <hr class="m-0 mb-4" />
+    <owl-carousel-o [options]="customOptions" class="d-block position-relative">
+    <ng-container *ngFor="let item of data; index as i">
+      <ng-template carouselSlide [id]="item.id">
+        <div class="slideItem">
+          <img appYoutubeImage
+            srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+          {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+            class="img-fluid"
+            sizes="{{
+              '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+            }}"
+            width="380"
+            height="155"
+            data-src="{{ item.media | defaultImage: 100:95 }}"
+            alt="most-popular"/>
+          <div class="slide-body position-relative primary-bg px-3 d-block">
+            <span class="position-absolute top-0 start-0 bg-white primary-color d-flex 
+            align-items-center justify-content-center">POPULAR</span>
+            <h3 class="position-relative ps-4 text-white">
+              <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
+              <strong class="ms-3 d-block">{{ commonService.formatTitle(item.title) }}</strong>
+            </h3>
+          </div>
+          <div class="slide-footer primary-bg-1 d-flex flex-row-reverse py-1 px-2">
+            <a href="#" class="text-white">READ MORE ></a>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+    <div class="owl-controls">
+        <div class="owl-nav">
+          <div class="owl-prev">prev</div>
+          <div class="owl-next">next</div>
+        </div>
+        <div class="owl-dots">
+          <div class="owl-dot active"><span></span></div>
+          <div class="owl-dot"><span></span></div>
+          <div class="owl-dot"><span></span></div>
+        </div>
+      </div>
+    </owl-carousel-o>
+</div>
+</div>
+ <div class="tabs primary-bg">
+    <div class="container customContainer position-relative">
+      <div class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+        [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
+        (click)="prev()">
+        <img src="assets/img/left-arrow.svg" />
+      </div>
+      <ul class="row innerContent m-0">
+        <li *ngFor="let item of tabName; index as i"
+          class="col col-sm-6 col-md-4 col-lg border-end text-center"
+          [ngClass]="i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab ? 'active' : 'd-none'">
+          <span class=" position-relative"
+            [ngClass]="i + 1 === activeTab ? 'active' : ''"
+            (click)="setActiveTab(i + 1,item)">{{ item?.name }}</span>
+        </li>
+      </ul>
+      <div class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+        [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
+        (click)="next()">
+        <img src="assets/img/right-arrow.svg" />
+      </div>
+    </div>
+  </div> 
+  <div class="tabs-container container customContainer">
+    <div class="tabItemList innerContent mt-4 py-3">
+      <ul class="row gx-2">
+        <li class="mb-3 col-12 col-sm-6 col-md-4">
+          <a routerLink="">
+            <div class="items card border-0 rounded-0">
+              <img
+                appYoutubeImage
+                srcset="assets/img/video-img2.jpg"
+                class="card-img-top img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+                }}"
+                width="95"
+                height="100"
+                data-src="assets/img/video-img2.jpg"
+                alt="editorial"/>
+              <div class="card-body">
+                <h6 class="
+                    card-title
+                    primary-color
+                    text-uppercase text-truncate
+                    fw-bold "></h6>
+                <h4 class="card-text mb-1">
+                  <strong> commonService.formatTitle(list.title) </strong>
+                </h4>
+                <small> list.author?.name </small>
+                <h4 class="card-text mb-1">
+                   commonService.formatDescription(list.short_description) 
+                </h4>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
+</div> 
+</div>
+
 <div *ngIf="type === 'category_page'">
   <div class="empty"></div>
-
   <app-featured
     [type]="'Category'"
     [slug]="slug"

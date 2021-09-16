@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,6 +13,8 @@ const RESULT_KEY = makeStateKey<any>('specialFeatureState');
   styleUrls: ['./special-feature.component.scss'],
 })
 export class SpecialFeatureComponent implements OnInit {
+  @Input() apiUrl: string;
+  @Input() slug: string;
   specialFeature: any = [];
 
   constructor(
@@ -25,17 +27,20 @@ export class SpecialFeatureComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
 
   ngOnInit(): void {
+    console.log(this.apiUrl)
     if (this.tstate.hasKey(RESULT_KEY)) {
       const specialFeature = this.tstate.get(RESULT_KEY, {});
       this.specialFeature = specialFeature['data'];
     } else {
       const specialFeature = {};
       this.apiService
-        .getAPI(`home-page-featured-content`)
+        .getAPI(`${this.apiUrl}`)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
-          if (response.data.stories.length > 0) {
+          if (this.slug === '1851' && response.data.stories.length > 0) {
             specialFeature['data'] = response.data.stories;
+          } else if(this.slug !== '1851' && response.data.length > 0) {
+            specialFeature['data'] = response.data;
           }
           this.tstate.set(RESULT_KEY, specialFeature);
         });
