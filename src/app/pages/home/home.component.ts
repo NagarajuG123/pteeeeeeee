@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   newsletterForm!: FormGroup;
   isSubmitted: boolean = false;
   submitErrMsg = '';
+  successMsg = '';
   constructor(
     private metaService: MetaService,
     private apiService: ApiService,
@@ -60,8 +61,8 @@ export class HomeComponent implements OnInit {
     };
     this.apiService.postAPI('newsletter', subscribeForm).subscribe((result) => {
       if (typeof result.data !== 'undefined') {
-        this.toastr.success(result.data.message, 'Thanks!');
         this.isSubmitted = false;
+        this.successMsg = result.data.message;
         this.resetForm();
       } else {
         this.submitErrMsg = result.error.message;

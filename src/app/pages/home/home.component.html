@@ -55,6 +55,9 @@
               </button>
             </div>
             <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
+            <span *ngIf="!isSubmitted" class="success" id="hideAfter5Sec">{{
+              successMsg
+            }}</span>
           </div>
         </form>
       </div>
