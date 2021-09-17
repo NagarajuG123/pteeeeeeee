@@ -126,58 +126,144 @@
 <app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
 </div> 
 </div>
-
 <div *ngIf="type === 'category_page'">
-   <app-category [slug]="slug"></app-category>
-</div>
+  <div class="empty"></div>
 
-<div *ngIf="type === 'dynamic_page'">
-  <div class="top-space"></div>
-  <app-two-side-banner
-    *ngIf="dynamicSecond != ''"
-    [banner]="topBlock"
-    [item]="dynamicSecond[0]"
-    [type]="'dynamicPage'"
-    [data]="dynamicFirst[0]"
-  >
-  </app-two-side-banner>
-  <app-two-side-banner
-    *ngIf="dynamicSecond == ''"
-    [banner]="topBlock"
-    [item]="dynamicFirst[0]"
-    [type]="'dynamicPage'"
-    [data]="dynamicFirst[0]"
-  >
-  </app-two-side-banner>
+  <app-featured
+    [type]="'Category'"
+    [slug]="slug"
+    [apiUrl]="apiUrl"
+  ></app-featured>
 
-  <div class="frannews">
+  <app-category-trending [data]="categoryTrending" [subTitle]="categoryParam">
+  </app-category-trending>
+
+  <app-advertisement
+    [slug]="'1851'"
+    [type]="'Main Site Ad'"
+  ></app-advertisement>
+
+  <div *ngIf="mostRecent" class="frannews most-recent">
     <div class="container">
       <div class="frannews-details col-xl-11">
+        <div class="frannews-top d-flex">
+          <div class="frannews-top-left col-md-6 p-0">
+            <ul class="desktop-only">
+              <li class="header-title">
+                <h4 class="text-uppercase">
+                  <strong>MOST RECENT</strong>
+                </h4>
+              </li>
+              <li>
+                <h4 class="text-uppercase">
+                  <span>{{ categoryParam }}</span>
+                </h4>
+              </li>
+            </ul>
+            <ul class="mobile-only">
+              <li>
+                <h4 class="text-uppercase">
+                  <span
+                    ><strong>MOST RECENT | </strong>{{ categoryParam }}</span
+                  >
+                </h4>
+              </li>
+            </ul>
+          </div>
+          <div class="frannews-top-right col-md-6">
+            <a
+              routerLink="/{{ readMore(mostRecent[0]) }}"
+              fragment="{{ categoryParam }}"
+              class="float-right"
+            >
+              READ MORE
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
         <app-five-column
           [slug]="'1851'"
-          [contents]="dynamicFirst"
-          [type]="'dynamicPage'"
-          [typeSlug]="'dynamicpage'"
-        >
-        </app-five-column>
+          [contents]="mostRecent"
+          [type]="'categoryPage'"
+          [hasMore]="hasMore"
+          [typeSlug]="categoryParam"
+          (more)="getMoreData()"
+        ></app-five-column>
       </div>
     </div>
   </div>
+</div>
 
-  <app-advertisement [slug]="'1851'" [type]="'Main Site Ad'">
-  </app-advertisement>
-
-  <div class="container dynamic-story">
-    <div class="frannews-details col-xl-11">
-      <app-five-column
-        [slug]="'1851'"
-        [contents]="dynamicSecond"
-        [type]="'dynamicPage-bottom'"
-        [hasMore]="hasMore"
-        (more)="getMoreDynamic()"
-        [typeSlug]="'dynamicpage'"
-      >
-      </app-five-column>
+<div *ngIf="type === 'dynamic_page'">
+  <div class="banner d-flex contact-banner">
+    <figure>
+      <img
+        *ngIf="topBlock?.media?.url"
+        appYoutubeImage
+        [src]="topBlock?.media?.url"
+        width="1440"
+        height="493"
+        alt="banner"
+      />
+    </figure>
+    <div class="left-text d-flex col-5">
+      <a routerLink="{{ commonService.readMore(dynamicFirst[0]) }}">
+      <h2>{{ topBlock?.title }}</h2>
+      <p>{{ topBlock?.description }}</p>
+      <button class="align-items-center">READ MORE</button>
+    </a>
     </div>
+  </div>
+  <div class="container customContainer py-md-4">
+    <div class="row mt-2">
+      <div
+        class="col-sm-6 col-md-3 mb-2"
+        *ngFor="let list of dynamicFirst; index as i"
+      >
+        <div class="items card border-0 rounded-0">
+          <a
+            routerLink="{{ commonService.readMore(list) }}"
+            fragment="franbuzz"
+            (click)="closeModal()"
+            ><img
+              src="{{ list.media | defaultImage: 257:138 }}"
+              class="card-img-top"
+              alt="story"
+              width="257"
+              height="138"
+            />
+            <div class="card-body">
+              <h2 class="card-text mb-1 text-black text-capitalize">
+                {{ list.title }}
+              </h2>
+              <p class="card-text mb-1 text-black text-capitalize">
+                {{ list.short_description }}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+  <div class="row">
+    <div class="col d-none d-md-block userDetail"></div>
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="nextBtn px-5 bg-white">
+        <img
+          src="assets/img/nextIcon.svg"
+          width="32"
+          alt="next articles"
+          class="me-3"
+          (click)="getMoreDynamic()"
+        />
+        <span class="gray-color" (click)="getMoreDynamic()">SEE MORE</span
+        >
+      </div>
+    </div>
+  </div>
+  </div>
   </div>
 </div>

@@ -242,3 +242,77 @@ a {
     }
   }
 }
+.items {
+  font-family: "Roboto";
+  .card-body {
+    padding: 1rem 0;
+    h2{
+      font-size: 16px;
+      line-height: 16.7px;
+    }
+    p,
+    p a {
+      font-size: 13px;
+      line-height: 141.19%;
+    }
+  }
+}
+.gray-color {
+  color: #243444;
+}
+.nextLine{
+  &::after {
+      content: "";
+      position: absolute;
+      top: 60%;
+      width: 100%;
+      height: 1px;
+      background-color: #eb0444;
+      transform: translateY(-50%);
+  }
+  .nextBtn {
+      font-family: "ProximaNova-Regular";
+      font-size: 17px;
+      z-index: 1;
+      img{
+          cursor: pointer;
+      }
+  }
+}
+.banner {
+  position: relative;
+  .left-text {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-family: 'Ballinger Condensed';
+    p{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      color: black;
+    }
+    h2{
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 77px;
+      color: black;
+    }
+    button{
+      background-color: #ec0044;
+      color: white;
+      position: relative;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
+.contact-banner {
+  figure {
+    img {
+      min-height: 493px;
+      object-fit: cover;
+      height: 522px;
+    }
+  }
+}
