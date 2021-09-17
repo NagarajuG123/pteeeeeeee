@@ -1,4 +1,5 @@
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .brand-img {
   height: 506px;
@@ -391,4 +392,208 @@ img {
 .submit-btn{
   background-color: #eb0444;
   width: 300px;
+}
+.text-size{
+  font-size: 15px;
+}
+
+//search popup
+.search_pop_up {
+  .modal-dialog {
+    @media only screen and (min-device-width: 768px) {
+      max-width: 800px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (max-device-width: 1024px) {
+      max-width: 800px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (orientation: landscape) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 150px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (min-device-width: 768px) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 117px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (max-device-width: 1024px) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 38px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-dialog {
+    @media only screen and (orientation: portrait) {
+      max-width: 1134px;
+      margin: 0 auto;
+      top: 172px;
+      left: 0;
+      right: 0;
+      @include desk-lg-below2 {
+        max-width: 800px;
+        height: auto;
+      }
+      @include tablet-portrait {
+        max-width: 95%;
+      }
+    }
+  }
+  .modal-content {
+    padding: 0 71px 0 91px;
+    @include desk-lg-below2 {
+      padding: 0 15px;
+    }
+  }
+  &.modal {
+    padding-right: 0 !important;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 !important;
+  }
+  button.close {
+    position: absolute;
+    right: 35px;
+    top: 22px;
+    color: $primary-2;
+    font-size: 39px;
+    outline: 0;
+    opacity: 1;
+    border: 1px;
+    background-color: $white;
+    @include desk-lg-below1 {
+      top: 10px;
+      right: 15px;
+    }
+  }
+  .sponsored-modal-content {
+    padding: 70px 50px;
+    h2 {
+      color: #ec0044;
+      margin-bottom: 30px;
+    }
+    .email-content {
+      display: flex;
+      flex-direction: column;
+      input {
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 32px;
+        color: #000;
+        font-family: ProximaNova-Light;
+        font-weight: 400;
+        width: 350px;
+        background: #fff;
+        margin: 0 0 5px;
+        height: 32px;
+        padding: 0 12px;
+        outline: 0;
+        letter-spacing: .3px;
+      }
+      button {
+        position: relative;
+        background: #333;
+        color: #fff;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        margin-top: 40px;
+        width: 200px;
+        cursor: pointer;
+        border: unset;
+        border-radius: 0;
+      }
+    }
+  }
+  form {
+    padding: 0 17px 0px 0;
+    width: 69%;
+    margin: 32px auto 0;
+    @include desk-lg-below1 {
+      margin: 45px auto 0;
+      padding: 0 0 20px 0;
+    }
+    @include tablet-portrait {
+    }
+    @include mobile-portrait {
+      width: 100%;
+    }
+    .form-group {
+      position: relative;
+      margin: 0;
+    }
+  }
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #0003;
+  border-radius: .3rem;
+  outline: 0;
+}
+button.close {
+  padding: 0;
+  background-color: initial;
+  border: 0;
+  -webkit-appearance: none;
 }

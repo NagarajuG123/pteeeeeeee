@@ -16,13 +16,13 @@ const FEATURE_KEY = makeStateKey<any>('featureState');
 })
 export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
+  @Input() slug: string;
 
   isBrowser: boolean;
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
 
-  slug: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -36,7 +36,6 @@ export class FeaturedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slug = '1851';
     this.getFeatured();
   }
 

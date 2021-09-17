@@ -81,10 +81,10 @@
             </div>
 
             <div *ngIf="isPdf">
-                <div class="container">
+                <div class="container customContainer py-5 pl-5 ml-5">
                     <div class="frannews-top-left d-flex"> LEARN MORE ABOUT</div>
                     <img
-                    srcset="{{brandInfo?.media | defaultImage:303:150}}"
+                    srcset="{{ logo?.url | defaultImage:303:150}}"
                     class="img-fluid"
                     sizes="{{
                     '(max-width: 576px) 555px,
@@ -94,52 +94,49 @@
                     }}"
                     width="300"
                     height="150"
-                    data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+                    data-src="{{ logo?.url | defaultImage: 100:95 }}"
                     alt="brand_logo"
                  />
                  <div class="row download-btn"> 
+                   <a *ngIf="pdf?.email_popup"  data-bs-toggle="modal" data-bs-target="#pdfModal" href="#">
                     <button type="submit" class="btn text-center submit-btn text-white rounded-0 btn-sm "> Download PDF </button>
-                </div>
+                  </a>
+                  <a *ngIf="!pdf?.email_popup" href="{{ changeDownPDFUrl(pdf?.media?.url) }}">
+                    <button type="submit" class="btn text-center submit-btn text-white rounded-0 btn-sm "> Download PDF </button>
+                  </a>
+                  </div>
                 </div>  
             </div>
 
             <div [hidden]="!isStory">
-                <div class="tabs-container container customContainer">
+                <div class="tabs-container container customContainer py-md-2">
                     <div class="tabItemList innerContent mt-4 py-3">
-                      <ul class="row gx-2 gy-5" 
-                      >
-                        <li
-                          *ngFor="let list of items; index as i"
-                          class="mb-3 col-12 col-sm-6 col-md-4"
-                        >
+                      <div class="row mt-2">
+                        <div *ngFor="let list of items; index as i" class="mb-3 col-12 col-sm-6 col-md-4">
                           <div class="items card border-0 rounded-0">
-                            <img 
-                            appYoutubeImage
-                            srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
-                            {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
-                            class="card-img-top img-fluid"
-                            sizes="{{
-                              '(max-width: 576px) 555px,
-                              (max-width: 992px) 400px,
-                              (max-width: 1200px) 238px,
-                              300px'
-                            }}"
-                            width="95"
-                            height="100"
-                            data-src="{{ list.media | defaultImage: 100:95 }}"
-                            alt="editorial"/>
-                            <div class="card-body">
-                              <h4 class="card-text mb-1">
+                            <a
+                            routerLink="{{ commonService.readMore(list) }}"
+                            fragment="latest-stories">
+                            <img
+                            src="{{ list.media | defaultImage: 257:138 }}"
+                            class="card-img-top"
+                            alt="latest-stories"
+                            width="257"
+                            height="138"
+                          />
+                            <div class="card-body text-black text-capitalize">
+                              <h4 class="card-text mb-1 text-size">
                                 <strong>{{ list.title }}</strong>
                               </h4>
                               <small>{{ list.author?.name }}</small>
-                              <h4 class="card-text mb-1">
+                              <h4 class="card-text mb-1 text-size">
                                 <strong>{{ list.short_description }}</strong>
                               </h4>
                             </div>
+                          </a>
                           </div>
-                        </li>
-                      </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
               </div>
@@ -303,25 +300,16 @@
                         <p class="highlight-text min-qualification" *ngFor="let info of brandInfo?.optional_info">
                            {{info.title}} {{ info.value }} <br />
                         </p>
-                        <!-- <p class="text">
+                        <p class="text">
                             Territory: Protected territory with geographic rights to the Sylvan system in a well-defined area
                         </p>
                         <p class="text">
                             With an average gross revenue of $518,159 among the top 25% of territories, Sylvan Learning offers a business opportunity with both financial and
                             emotional rewards.
                         </p>
-                        <p class="text">
-                            Top 25% average gross revenue: <span class="highlight-text">$518,159</span>
+                        <p class="text" *ngFor="let info of brandInfo?.optional_info">
+                          {{info.title}} : <span class="highlight-text">{{ info.value }}</span>
                         </p>
-                        <p class="text">
-                            Mid-upper 25% average gross revenue: <span class="highlight-text">$271,959</span>
-                        </p>
-                        <p class="text">
-                            Mid-lower 25% average gross revenue: <span class="highlight-text">$180,972</span>
-                        </p>
-                        <p class="text">
-                            Bottom 25% average gross revenue: <span class="highlight-text">$104,646</span>
-                        </p> -->
                     </div>
                 </div>
             </div>
@@ -477,4 +465,45 @@
             </div> -->
         </div>
     </div>
+
+    <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="sponsored-modal-content">
+            <button
+              type="button"
+              class="close text-right"
+              data-bs-dismiss="modal"
+            >
+              &times;
+            </button>
+            <h2 class="text-uppercase">Download PDF</h2>
+            <div class="email-content">
+              <form [formGroup]="pdfForm" (ngSubmit)="emailSubscribe(pdfForm)">
+                <div class="form-group">
+                  <label>Enter Email:</label>
+                  <input
+                    type="text"
+                    [formControl]="pdfForm.controls['emailInput']"
+                    class="form-control"
+                  />
+                  <app-error-message
+                    *ngIf="isEmailSubmit"
+                    class="full-width"
+                    [control]="pdfForm.controls['emailInput']"
+                  ></app-error-message>
+                  <p *ngIf="emailSubValid" class="invalid">
+                    {{ emailSubMessage }}
+                  </p>
+                  <button type="button" (click)="emailSubscribe(pdfForm)">
+                    Download
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
