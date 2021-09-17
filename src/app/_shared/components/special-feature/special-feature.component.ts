@@ -27,7 +27,6 @@ export class SpecialFeatureComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
 
   ngOnInit(): void {
-    console.log(this.apiUrl)
     if (this.tstate.hasKey(RESULT_KEY)) {
       const specialFeature = this.tstate.get(RESULT_KEY, {});
       this.specialFeature = specialFeature['data'];

@@ -38,7 +38,6 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFeatured();
-    console.log(this.slug);
   }
 
   getFeatured() {
