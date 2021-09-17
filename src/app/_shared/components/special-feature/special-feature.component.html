@@ -71,9 +71,11 @@
                   data-src=""
                   alt="special-featured"
                 />
+                <a routerLink="{{ commonService.readMore(item) }}">
                 <div class="image-description">
                   {{ commonService.formatTitle(item.title) }}
                 </div>
+              </a>
               </div>
             </div>
           </div>
