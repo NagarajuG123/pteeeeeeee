@@ -31,6 +31,7 @@ export class InfoComponent implements OnInit {
   pdf: any;
   showToast: boolean = false;
   responseMessage: any;
+  logo: string;
 
   isStory!: boolean;
   isPdf!: boolean;
@@ -110,6 +111,11 @@ export class InfoComponent implements OnInit {
               .subscribe((response) => {
                 this.brandInfo = response.data;
               });
+              this.apiService
+              .getAPI2(`header?slug=${this.brandSlug}`)
+              .subscribe((response) => {
+                this.logo = response.data?.logo;
+              }); 
             this.isInfoPage = true;
             this.isCategory = false;
             this.getContents(params.get('item'));
