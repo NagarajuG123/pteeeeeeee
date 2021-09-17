@@ -1,324 +1,272 @@
-<!-- Brand Category -->
-<div *ngIf="isCategory">
-  <div class="empty"></div>
-  <app-featured
-    [type]="'BrandCategory'"
-    [slug]="brandSlug"
-    [apiUrl]="brandFeaturedUrl"
-  ></app-featured>
-  <app-category-trending
-    [data]="brandTrending?.data"
-    [subTitle]="categoryParam"
-  >
-  </app-category-trending>
-  <app-advertisement
-    [slug]="brandSlug"
-    [type]="'Main Site Ad'"
-  ></app-advertisement>
-  <div *ngIf="brandMostRecent" class="frannews">
-    <div class="container">
-      <div class="frannews-details col-xl-11">
-        <div class="frannews-top d-flex">
-          <div class="frannews-top-left col-md-6 p-0">
-            <ul class="desktop-only">
-              <li class="header-title">
-                <h4 class="text-uppercase">
-                  <strong>MOST RECENT</strong>
-                </h4>
-              </li>
-              <li>
-                <h4 class="text-uppercase">
-                  <span>{{ categoryParam }}</span>
-                </h4>
-              </li>
-            </ul>
+<div class="container-fluid">
+    <div class="tabs primary-bg">
+        <div class="container customContainer position-relative">
+          <div
+            class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+            [ngClass]="
+              categories.length > this.commonService.vtabsItem ? '' : 'd-none'
+            "
+            (click)="prev()"
+          >
+            <img src="assets/img/left-arrow.svg" />
           </div>
-          <div class="frannews-top-right col-md-6">
-            <a
-              routerLink="/{{ readMore(brandMostRecent[0]) }}"
-              fragment="{{ categoryParam }}"
-              class="float-right"
+          <ul class="row innerContent m-0">
+            <li
+              *ngFor="let item of categories; index as i"
+              class="col col-sm-6 col-md-4 col-lg border-end text-center"
+              [ngClass]="
+                i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab
+                  ? 'active'
+                  : 'd-none'
+              "
             >
-              READ MORE
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            <div class="clearfix"></div>
+              <span
+                class=" position-relative"
+                [ngClass]="i + 1 === activeTab ? 'active' : ''"
+                (click)="setActiveTab(i + 1,item)"
+                >{{ item?.name }}</span
+              >
+            </li>
+          </ul>
+          <div
+            class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+            [ngClass]="
+            categories.length > this.commonService.vtabsItem ? '' : 'd-none'
+            "
+            (click)="next()"
+          >
+            <img src="assets/img/right-arrow.svg" />
           </div>
         </div>
-        <app-five-column
-          [slug]="'1851'"
-          [contents]="brandMostRecent"
-          [type]="'categoryPage'"
-          [hasMore]="hasMore"
-          [typeSlug]="categoryParam"
-          (more)="getMoreData()"
-        ></app-five-column>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- Brand Info -->
-<div class="empty"></div>
-<div *ngIf="isInfoPage">
-  <app-info-top [brandSlug]="brandSlug" [data]="brandInfo"></app-info-top>
-
-  <div class="main-content">
-    <div class="main_content_tab">
-      <ul
-        *ngIf="isBrowser"
-        class="
-          resp-tabs-list
-          tab-identifier2
-          d-flex
-          justify-content-center
-          align-items-center
-          clearfix
-          nav nav-pills
-        "
-      >
-        <li
-          *ngFor="let category of categories"
-          [ngClass]="
-            selectedIndex === category['index'] ? 'resp-tab-active' : ''
-          "
-        >
-          <a
-            *ngIf="category['value'] !== 'brand_pdf'"
-            routerLink="/{{ brandSlug }}/{{ category['value'] }}"
-            class="text-uppercase"
-          >
-            {{ category["name"] }}
-          </a>
-          <!-- <a
-            *ngIf="category['value'] == 'available-markets'"
-            href="/{{ brandSlug }}/{{ category['value'] }}"
-            class="text-uppercase"
-          >
-            {{ category["name"] }}
-          </a> -->
-          <a
-            *ngIf="category['value'] === 'brand_pdf' && !pdf?.email_popup"
-            href="{{ changeDownPDFUrl(pdf?.media?.url) }}"
-            class="text-uppercase"
-            target="blank"
-          >
-            {{ category["name"] }}
-          </a>
-          <a
-            *ngIf="category['value'] === 'brand_pdf' && pdf?.email_popup"
-            class="text-uppercase"
-            data-bs-toggle="modal"
-            data-bs-target="#pdfModal"
-            href="#"
-          >
-            {{ category["name"] }}
-          </a>
-        </li>
-      </ul>
-      <div class="resp-tabs-container">
-        <div *ngFor="let category of categories" class="tab-content">
-          <h2
-            class="resp-accordion tab-identifier2"
-            [ngClass]="
-              selectedIndex === category['index'] ? 'resp-tab-active' : ''
-            "
-            role="tab"
-            style="background: none; border-color: rgb(193, 193, 193)"
-          >
-            <span class="resp-arrow"></span
-            ><a
-              class="text-uppercase"
-              href="{{ brandSlug }}/{{ category['value'] }}"
-              >{{ category["name"] }}</a
-            >
-          </h2>
-          <div
-            id="infoTab{{ i }}"
-            class="multi_conference tab-pane"
-            [ngClass]="selectedIndex === category['index'] ? 'in active' : ''"
-          >
-            <div class="container">
-              <div class="row">
-                <div class="multi_conference-left col-lg-8">
-                  <div *ngIf="isInfo">
-                    <h2 class="wings-title text-uppercase">
-                      {{ brandInfo?.name }} INFO
-                    </h2>
-                    <div
-                      class="wings"
-                      *ngFor="let item of items; let i = index"
-                    >
-                      <h3 class="wings-sub-title">{{ item?.title }}</h3>
-                      <a
-                        *ngIf="item?.media && !isVideo(item)"
-                        href="#"
-                        onclick="return false;"
-                        class="d-block video-btn"
-                      >
-                        <figure>
-                          <img
-                            appYoutubeImage
-                            src="{{ item?.media | defaultImage: 796:0 }}"
-                            width="796"
-                            height="796"
-                            alt="video"
-                          />
-                        </figure>
-                      </a>
-                      <div
-                        *ngIf="item?.media && isVideo(item)"
-                        class="d-block video-btn wings-video"
-                      >
-                        <iframe
-                          [src]="item?.media?.url | safeUrl"
-                          style="max-width: 100%; height: 400"
-                          height="400"
-                          width="55%"
-                          scrolling="no"
-                          frameborder="0"
-                          webkitallowfullscreen
-                          mozallowfullscreen
-                          allowfullscreen
-                        ></iframe>
-                      </div>
-                      <p
-                        *ngIf="item?.short_description"
-                        [innerHTML]="item?.short_description"
-                      ></p>
-                    </div>
-                  </div>
-                  <div [hidden]="!isStory">
-                    <app-latest-story
-                      [title]="'Latest stories'"
-                      [type]="'brandInfo'"
-                      [slug]="brandSlug"
-                      [company]="company"
-                    ></app-latest-story>
-                  </div>
-                  <div *ngIf="isBought">
-                    <div class="wings">
-                      <div class="frannews-top-left d-flex">
-                        <ul>
-                          <li class="header-title">
-                            <h2 class="text-uppercase">
-                              {{ items?.name }}
-                            </h2>
-                          </li>
-                          <li>
-                            <h2 class="text-uppercase">
-                              <span>WHY I BOUGHT</span>
-                            </h2>
-                          </li>
-                        </ul>
-                      </div>
-                      <p
-                        *ngIf="items?.content"
-                        [innerHTML]="items?.content"
-                      ></p>
-                    </div>
-                  </div>
-                  <div *ngIf="isExecutive">
-                    <div class="wings">
-                      <div class="frannews-top-left d-flex executive-qa">
-                        <ul>
-                          <li class="header-title">
-                            <h2 class="text-uppercase">
-                              {{ items?.name }}
-                            </h2>
-                          </li>
-                          <li>
-                            <h2 class="text-uppercase">
-                              <span>EXECUTIVE Q&A</span>
-                            </h2>
-                          </li>
-                        </ul>
-                      </div>
-                      <p
-                        class="executive-qa-content"
-                        *ngIf="items?.content"
-                        [innerHTML]="items?.content"
-                      ></p>
-                    </div>
-                  </div>
-                  <div *ngIf="isMarket">
-                    <div class="wings">
-                      <div class="frannews-top-left d-flex">
-                        <ul>
-                          <li>
-                            <h2 class="text-uppercase">Available Markets</h2>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <div
-                          *ngIf="
-                            items['available-markets'] != null &&
-                            items['available-markets'].length
-                          "
-                          class="mapcontainer"
-                        >
-                          <div
-                            class="lg-map-wrapper"
-                            style="width: 100%; height: auto"
-                          >
-                            <svg id="map" width="800" height="500"></svg>
-                          </div>
+    <div class="row p-4">
+        <div class="col-md-8">
+            <div class="row pb-3">
+                <div class="col-md-12">
+                    <img
+                    appYoutubeImage
+                    srcset="{{brandInfo?.media | defaultImage:953:535}}"
+                    class="img-fluid"
+                    sizes="{{
+                      '(max-width: 576px) 555px,
+                      (max-width: 992px) 400px,
+                      (max-width: 1200px) 238px,
+                      300px'
+                    }}"
+                    width="953"
+                    height="535"
+                    data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+                    alt="brand_img"
+                  />
+                </div>
+            </div>
+            <div class="question-container" *ngIf="isInfo">
+                <div class="title-highlighter">
+                    {{ brandInfo?.name }} INFO
+                </div>
+                <div class="question-section"  *ngFor="let item of items; let i = index">
+                    <div class="row d-flex justify-content-center align-items-center header header-highlighter">
+                        <div class="col-md-12 title">
+                         {{ item?.title }}
                         </div>
-                        <div
-                          *ngIf="
-                            items['available-markets'] != null &&
-                            items['available-markets'].length
-                          "
-                          class="map-legend"
+                    </div>
+                    <div class="row description">
+                        <div class="col-md-12">
+                            <p  *ngIf="item?.short_description"
+                            [innerHTML]="item?.short_description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isPdf">
+                <div class="container">
+                    <div class="frannews-top-left d-flex"> LEARN MORE ABOUT</div>
+                    <img
+                    srcset="{{brandInfo?.media | defaultImage:303:150}}"
+                    class="img-fluid"
+                    sizes="{{
+                    '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    300px'
+                    }}"
+                    width="300"
+                    height="150"
+                    data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+                    alt="brand_logo"
+                 />
+                 <div class="row download-btn"> 
+                    <button type="submit" class="btn text-center submit-btn text-white rounded-0 btn-sm "> Download PDF </button>
+                </div>
+                </div>  
+            </div>
+
+            <div [hidden]="!isStory">
+                <div class="tabs-container container customContainer">
+                    <div class="tabItemList innerContent mt-4 py-3">
+                      <ul class="row gx-2 gy-5" 
+                      >
+                        <li
+                          *ngFor="let list of items; index as i"
+                          class="mb-3 col-12 col-sm-6 col-md-4"
                         >
-                          MAP LEGEND:
-                          <div class="row">
+                          <div class="items card border-0 rounded-0">
+                            <img 
+                            appYoutubeImage
+                            srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
+                            {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
+                            class="card-img-top img-fluid"
+                            sizes="{{
+                              '(max-width: 576px) 555px,
+                              (max-width: 992px) 400px,
+                              (max-width: 1200px) 238px,
+                              300px'
+                            }}"
+                            width="95"
+                            height="100"
+                            data-src="{{ list.media | defaultImage: 100:95 }}"
+                            alt="editorial"/>
+                            <div class="card-body">
+                              <h4 class="card-text mb-1">
+                                <strong>{{ list.title }}</strong>
+                              </h4>
+                              <small>{{ list.author?.name }}</small>
+                              <h4 class="card-text mb-1">
+                                <strong>{{ list.short_description }}</strong>
+                              </h4>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+
+            <div *ngIf="isBought">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex">
+                    <ul>
+                      <li class="header-title">
+                        <h2 class="text-uppercase">
+                          {{ items?.name }}
+                        </h2>
+                      </li>
+                      <li>
+                        <h2 class="text-uppercase">
+                          <span>WHY I BOUGHT</span>
+                        </h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <p
+                    *ngIf="items?.content"
+                    [innerHTML]="items?.content"
+                  ></p>
+                </div>
+            </div>
+
+            <div *ngIf="isExecutive">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex executive-qa">
+                    <ul>
+                      <li class="header-title">
+                        <h2 class="text-uppercase">
+                          {{ items?.name }}
+                        </h2>
+                      </li>
+                      <li>
+                        <h2 class="text-uppercase">
+                          <span>EXECUTIVE Q&A</span>
+                        </h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <p
+                    class="executive-qa-content"
+                    *ngIf="items?.content"
+                    [innerHTML]="items?.content"
+                  ></p>
+                </div>
+            </div>
+
+            <div *ngIf="isMarket">
+                <div class="wings">
+                  <div class="frannews-top-left d-flex">
+                    <ul>
+                      <li>
+                        <h2 class="text-uppercase">Available Markets</h2>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div
+                      *ngIf="
+                        items['available-markets'] != null &&
+                        items['available-markets'].length
+                      "
+                      class="mapcontainer"
+                    >
+                      <div
+                        class="lg-map-wrapper"
+                        style="width: 100%; height: auto"
+                      >
+                        <svg id="map" width="800" height="500"></svg>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        items['available-markets'] != null &&
+                        items['available-markets'].length
+                      "
+                      class="map-legend"
+                    >
+                      MAP LEGEND:
+                      <div class="row">
+                        <div
+                          *ngFor="let market of items['available-markets']"
+                          class="col-sm-5 map-legend-item"
+                        >
+                          <div class="row market-names">
+                            <div class="col-xs-1">
+                              <div
+                                class="market-status-color"
+                                [style.backgroundColor]="market.color"
+                              ></div>
+                            </div>
                             <div
-                              *ngFor="let market of items['available-markets']"
-                              class="col-sm-5 map-legend-item"
+                              class="col-xs-10 align-self-center lh-base"
                             >
-                              <div class="row market-names">
-                                <div class="col-xs-1">
-                                  <div
-                                    class="market-status-color"
-                                    [style.backgroundColor]="market.color"
-                                  ></div>
-                                </div>
-                                <div
-                                  class="col-xs-10 align-self-center lh-base"
-                                >
-                                  <span class="text-uppercase market-name">{{
-                                    market.name
-                                  }}</span>
-                                </div>
-                              </div>
+                              <span class="text-uppercase market-name">{{
+                                market.name
+                              }}</span>
                             </div>
                           </div>
                         </div>
-                        <div style="padding-top: 0px">
+                      </div>
+                    </div>
+                    <div style="padding-top: 0px">
+                      <div
+                        *ngIf="
+                          items['international-markets'] != null &&
+                          items['international-markets'].length
+                        "
+                        class="map-legend"
+                      >
+                        <h3>INTERNATIONAL MARKETS:</h3>
+                        <div class="row">
                           <div
-                            *ngIf="
-                              items['international-markets'] != null &&
-                              items['international-markets'].length
+                            *ngFor="
+                              let market of items['international-markets']
                             "
-                            class="map-legend"
+                            class="col-sm-3 map-legend-item"
                           >
-                            <h3>INTERNATIONAL MARKETS:</h3>
-                            <div class="row">
-                              <div
-                                *ngFor="
-                                  let market of items['international-markets']
-                                "
-                                class="col-sm-3 map-legend-item"
-                              >
-                                <div class="row market-names">
-                                  <div class="col-xs-10">
-                                    <span class="text-uppercase market-name">{{
-                                      market.name
-                                    }}</span>
-                                  </div>
-                                </div>
+                            <div class="row market-names">
+                              <div class="col-xs-10">
+                                <span class="text-uppercase market-name">{{
+                                  market.name
+                                }}</span>
                               </div>
                             </div>
                           </div>
@@ -327,202 +275,206 @@
                     </div>
                   </div>
                 </div>
-                <div class="multi_conference-right col-lg-4">
-                  <div class="make_it d-flex">
-                    <h5 class="mr-xl-0 mr-lg-0 mr-auto text-uppercase">
-                      MAKE IT TREND
-                    </h5>
-                    <ul class="clearfix" *ngIf="isBrowser">
-                      <li>
-                        <a shareButton="facebook" [url]="shareUrl()"
-                          ><i class="fa fa-facebook" aria-hidden="true"></i
-                        ></a>
-                      </li>
-                      <li>
-                        <a shareButton="twitter" [url]="shareUrl()"
-                          ><i class="fa fa-twitter" aria-hidden="true"></i
-                        ></a>
-                      </li>
-                      <li>
-                        <a shareButton="linkedin" [url]="shareUrl()"
-                          ><i class="fa fa-linkedin" aria-hidden="true"></i
-                        ></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div *ngIf="brandInfo" class="more_brand">
-                    <h5 class="text-uppercase">MORE BRAND INFO</h5>
-                    <ul>
-                      <li *ngIf="brandInfo?.name">
-                        <strong>NAME</strong>
-                        <p>{{ brandInfo?.name }}</p>
-                      </li>
-                      <li *ngIf="brandInfo?.units">
-                        <strong>NO. OF UNITS CURRENTLY OPEN:</strong>
-                        <p>{{ brandInfo?.units }}</p>
-                      </li>
-                      <li *ngIf="brandInfo?.startup_costs">
-                        <strong>start-up costs</strong>
-                        <p>{{ brandInfo?.startup_costs }}</p>
-                      </li>
-                      <li *ngIf="brandInfo?.franchise_fee">
-                        <strong>FRANCHISE FEE:</strong>
-                        <p>{{ brandInfo?.franchise_fee }}</p>
-                      </li>
-                      <li *ngIf="brandInfo?.royalty">
-                        <strong>ROYALTY:</strong>
-                        <p>{{ brandInfo?.royalty }}</p>
-                      </li>
-                      <li *ngFor="let info of brandInfo?.optional_info">
-                        <strong>{{ info.title }}:</strong>
-                        <p>{{ info.value }}</p>
-                      </li>
-                      <li *ngIf="brandInfo?.more_info !== ''">
-                        <strong>More info:</strong>
-                        <p>{{ brandInfo?.more_info }}</p>
-                      </li>
-                    </ul>
-                    <h5 *ngIf="inquireForm" class="text-uppercase">
-                      INQUIRE ABOUT SERVICES
-                    </h5>
-                    <form
-                      *ngIf="inquireForm"
-                      [formGroup]="inquireForm"
-                      (ngSubmit)="submitInquireForm(inquireForm.value)"
-                    >
-                      <div
-                        *ngFor="let fields of inquireFields"
-                        class="form-row mb-3"
-                      >
-                        <!-- <div class="form-group"> -->
-                        <label class="form-label"
-                          >{{ fields.title }}
-                          <sup *ngIf="fields.required" class="text-danger"
-                            >*</sup
-                          >
-                        </label>
-                        <input
-                          *ngIf="fields.type === 'text'"
-                          [formControlName]="fields.key"
-                          [id]="fields.key"
-                          [type]="fields.type"
-                          class="form-control border-0 rounded-0"
-                          [pattern]="fields.pattern"
-                          [maxLength]="fields.maxLength || 1000"
-                          [ngClass]="{
-                            'is-invalid':
-                              (formControlsValues[fields.key].touched ||
-                                submittedInquireForm) &&
-                              formControlsValues[fields.key].errors?.required
-                          }"
-                        />
-                        <textarea
-                          *ngIf="fields.type === 'textarea'"
-                          [formControlName]="fields.key"
-                          [id]="fields.key"
-                          class="form-control border-0 rounded-0"
-                          rows="3"
-                          [ngClass]="{
-                            'is-invalid':
-                              (formControlsValues[fields.key].touched ||
-                                submittedInquireForm) &&
-                              formControlsValues[fields.key].errors?.required
-                          }"
-                        ></textarea>
-                        <select
-                          *ngIf="fields.type === 'dropdown'"
-                          [formControlName]="fields.key"
-                          [id]="fields.key"
-                          class="form-control border-0 rounded-0"
-                          [ngClass]="{
-                            'is-invalid':
-                              (formControlsValues[fields.key].touched ||
-                                submittedInquireForm) &&
-                              formControlsValues[fields.key].errors?.required
-                          }"
-                        >
-                          <option
-                            *ngFor="let value of fields.enum"
-                            value="{{ value }}"
-                          >
-                            <span>{{ value }}</span>
-                          </option>
-                        </select>
-                        <div
-                          class="invalid-feedback d-block"
-                          *ngIf="
+              </div>
+              
+        </div>
+
+        <div class="col-md-4">
+            <div class="financial-requirement-section">
+                <div class="row d-flex justify-content-center align-items-center header">
+                    <div class="col-md-12 title">
+                        Financial Requirments
+                    </div>
+                </div>
+                <div class="row p-3 financial-description">
+                    <div class="col-md-12">
+                        <p class="text">
+                           {{ brandInfo?.more_info }}
+                        </p>
+                        <p class="text">
+                            Initial Franchise Fee: <span class="highlight-text"> {{ brandInfo?.franchise_fee }} </span>
+                        </p>
+                        <p class="text">
+                            Initial Investment Range: <span class="highlight-text"> {{ brandInfo?.startup_costs }} </span>
+                        </p>
+                        <p class="text">
+                            Minimum Qualifications:
+                        </p>
+                        <p class="highlight-text min-qualification" *ngFor="let info of brandInfo?.optional_info">
+                           {{info.title}} {{ info.value }} <br />
+                        </p>
+                        <!-- <p class="text">
+                            Territory: Protected territory with geographic rights to the Sylvan system in a well-defined area
+                        </p>
+                        <p class="text">
+                            With an average gross revenue of $518,159 among the top 25% of territories, Sylvan Learning offers a business opportunity with both financial and
+                            emotional rewards.
+                        </p>
+                        <p class="text">
+                            Top 25% average gross revenue: <span class="highlight-text">$518,159</span>
+                        </p>
+                        <p class="text">
+                            Mid-upper 25% average gross revenue: <span class="highlight-text">$271,959</span>
+                        </p>
+                        <p class="text">
+                            Mid-lower 25% average gross revenue: <span class="highlight-text">$180,972</span>
+                        </p>
+                        <p class="text">
+                            Bottom 25% average gross revenue: <span class="highlight-text">$104,646</span>
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="inquiry-form-section">
+                <div class="row d-flex justify-content-center align-items-center header">
+                    <div class="col-md-12 title">
+                        INQUIRE NOW
+                    </div>
+                </div>
+                <form
+                *ngIf="inquireForm"
+                [formGroup]="inquireForm"
+                (ngSubmit)="submitInquireForm(inquireForm.value)">
+                <div class="row p-3"  *ngFor="let fields of inquireFields">
+                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
+                       
+                        <textarea *ngIf="fields.type === 'textarea'"
+                        [placeholder]="fields.title"
+                        [formControlName]="fields.key"
+                        [id]="fields.key"
+                        class="form-control"
+                        rows="3"
+                        [ngClass]="{
+                          'is-invalid':
                             (formControlsValues[fields.key].touched ||
                               submittedInquireForm) &&
-                            (formControlsValues[fields.key].errors?.required ||
-                              formControlsValues[fields.key].errors?.email ||
-                              formControlsValues[fields.key].errors?.pattern)
-                          "
-                        >
-                          {{ fields.errorMsg }}
-                        </div>
-                      </div>
-                      <!-- [disabled]="!inquireForm.valid" -->
-                      <div class="d-grid inquireSubmit">
-                        <button
-                          type="submit"
-                          class="btn text-end rounded-0 btn-sm nextBtn"
-                        >
-                          Next
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                            formControlsValues[fields.key].errors?.required
+                        }"></textarea>
+                        
+                        <select *ngIf="fields.type === 'dropdown'"
+                        [formControlName]="fields.key"
+                        [id]="fields.key"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid':
+                            (formControlsValues[fields.key].touched ||
+                              submittedInquireForm) &&
+                            formControlsValues[fields.key].errors?.required }" >
+                        <option *ngFor="let value of fields.enum"
+                          value="{{ value }}">
+                          <span>{{ value }}</span>
+                        </option>
+                      </select>
+                      <div
+                      class="invalid-feedback d-block"
+                      *ngIf="
+                        (formControlsValues[fields.key].touched ||
+                          submittedInquireForm) &&
+                        (formControlsValues[fields.key].errors?.required ||
+                          formControlsValues[fields.key].errors?.email ||
+                          formControlsValues[fields.key].errors?.pattern)
+                      "
+                    >
+                      {{ fields.errorMsg }}
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="sponsored-modal-content">
-          <button
-            type="button"
-            class="close text-right"
-            data-bs-dismiss="modal"
-          >
-            &times;
-          </button>
-          <h2 class="text-uppercase">Download PDF</h2>
-          <div class="email-content">
-            <form [formGroup]="pdfForm" (ngSubmit)="emailSubscribe(pdfForm)">
-              <div class="form-group">
-                <label>Enter Email:</label>
-                <input
-                  type="text"
-                  [formControl]="pdfForm.controls['emailInput']"
-                  class="form-control"
-                />
-                <app-error-message
-                  *ngIf="isEmailSubmit"
-                  class="full-width"
-                  [control]="pdfForm.controls['emailInput']"
-                ></app-error-message>
-                <p *ngIf="emailSubValid" class="invalid">
-                  {{ emailSubMessage }}
-                </p>
-                <button type="button" (click)="emailSubscribe(pdfForm)">
-                  Download
-                </button>
-              </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="divider-recent-feature">
+                <div class="row"> 
+                    <button type="submit" class="btn text-center text-white rounded-0 btn-sm "> Next </button>
+                </div>
+            </div> 
 
-  <app-advertisement
-    [slug]="brandSlug"
-    [type]="'Main Site Ad'"
-  ></app-advertisement>
+            <!-- Recent Features -->
+            <!-- <div class="recent-feature-article-section">
+                <div class="row p-3">
+                    <div class="col-md-12">
+                        <div class="title-tag">
+                            RECENT FEATURES
+                        </div>
+                        <div class="recent-item">
+                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
+                        </div>
+                        <div class="recent-item">
+                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi Lorem Ipsum...</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
+                        </div>
+                        <div class="recent-item">
+                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Featured Article Section -->
+            <!-- <div class="divider-main"></div>
+            <div class="feature-article-section">
+                <div class="row p-3 d-flex align-items-center justify-content-center">
+                    <div class="col-md-9">
+                        <div class="feature-item">
+                            <div class="image-tag">FEATURED ARTICLE</div>
+                            <div class="image-area"></div>
+                            <div class="image-description">
+                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="image-tag">FEATURED ARTICLE</div>
+                            <div class="image-area"></div>
+                            <div class="image-description">
+                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="image-tag">FEATURED ARTICLE</div>
+                            <div class="image-area"></div>
+                            <div class="image-description">
+                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Trending Secion -->
+            <!-- <div class="divider-main"></div>
+            <div class="trending-section">
+                <div class="row p-3">
+                    <div class="col-md-12">
+                        <div class="title-tag">
+                            TRENDING
+                        </div>
+                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
+                            <div class="col-md-4 image-area p-3"></div>
+                            <div class="col-md-8 image-decription">
+                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade con do
+                            </div>
+                        </div>
+                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
+                            <div class="col-md-4 image-area p-3"></div>
+                            <div class="col-md-8 image-decription">
+                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade
+                            </div>
+                        </div>
+                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
+                            <div class="col-md-4 image-area p-3"></div>
+                            <div class="col-md-8 image-decription">
+                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade
+                            </div>
+                        </div>
+                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
+                            <div class="col-md-4 image-area p-3"></div>
+                            <div class="col-md-8 image-decription">
+                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade con do
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div> -->
+        </div>
+    </div>
 </div>
