@@ -12,9 +12,9 @@ import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 
 import * as $ from 'jquery';
-import { ValidationService } from 'src/app/_core/services/validation.service';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 @Component({
@@ -25,7 +25,7 @@ const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 export class ContacteditorialComponent implements OnInit {
   publication: any;
   contactForm!: FormGroup;
-  isSubmitted: boolean = false;
+  isSubmitted: boolean;
   submitErrMsg: string = '';
   submitSuccessMsg: string = '';
   data: any = [];
@@ -33,6 +33,9 @@ export class ContacteditorialComponent implements OnInit {
   isServer: boolean;
   control!: FormControl;
   metaData: Meta[] = [];
+  faAngleRight = faAngleRight;
+  faAngleLeft = faAngleLeft;
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
@@ -100,17 +103,6 @@ export class ContacteditorialComponent implements OnInit {
     }
   }
 
-  get errorMessage() {
-    if (this.control && this.control.errors) {
-      for (const prop in this.control.errors) {
-        if (this.control.errors.hasOwnProperty(prop)) {
-          return ValidationService.getValidatorErrorMessage(prop);
-        }
-      }
-    }
-    return null;
-  }
-
   toggleCurrent(e: any) {
     $('.current-details').slideToggle();
     if (!e.target.checked) {
@@ -162,12 +154,12 @@ export class ContacteditorialComponent implements OnInit {
     return;
   }
   onContactSubmit(contactForm: FormGroup) {
-    this.submitErrMsg = '';
-    this.submitSuccessMsg = '';
+    this.isSubmitted = true;
+
     if (!contactForm.valid) {
       return;
     }
-    this.isSubmitted = true;
+
     const subscribe_form = {
       email: this.contactForm.controls['email'].value,
       first_name: this.contactForm.controls['first_name'].value,
@@ -232,6 +224,7 @@ export class ContacteditorialComponent implements OnInit {
       .postAPI('1851/contact-editorial', subscribe_form)
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
+          this.isSubmitted = false;
           $('.editors').hide();
           $('.sucess-message').show();
           this.submitSuccessMsg = result.data.message;
