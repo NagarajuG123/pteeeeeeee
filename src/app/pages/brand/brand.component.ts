@@ -156,7 +156,7 @@ export class BrandComponent implements OnInit {
         this.tabName = results[0].categories;
         this.defaultTab = results[0].defaultTab;
 
-        this.apiService.getAPI(`1851/spotlight/${this.defaultTab}?limit=10&offset=0`)
+        this.apiService.getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=5&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];

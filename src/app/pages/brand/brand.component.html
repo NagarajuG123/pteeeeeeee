@@ -85,12 +85,13 @@
   <div class="tabs-container container customContainer">
     <div class="tabItemList innerContent mt-4 py-3">
       <ul class="row gx-2">
-        <li class="mb-3 col-12 col-sm-6 col-md-4">
+        <li class="mb-3 col-3" *ngFor="let item of items;index as i">
           <a routerLink="">
             <div class="items card border-0 rounded-0">
               <img
                 appYoutubeImage
-                srcset="assets/img/video-img2.jpg"
+                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+                {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
                 class="card-img-top img-fluid"
                 sizes="{{
                   '(max-width: 576px) 555px,
@@ -100,7 +101,7 @@
                 }}"
                 width="95"
                 height="100"
-                data-src="assets/img/video-img2.jpg"
+                data-src="{{ item?.media }}"
                 alt="editorial"/>
               <div class="card-body">
                 <h6 class="
@@ -109,12 +110,12 @@
                     text-uppercase text-truncate
                     fw-bold "></h6>
                 <h4 class="card-text mb-1">
-                  <strong> commonService.formatTitle(list.title) </strong>
+                  <strong> {{ item?.title }}</strong>
                 </h4>
-                <small> list.author?.name </small>
                 <h4 class="card-text mb-1">
-                   commonService.formatDescription(list.short_description) 
+                   {{ item?.short_description }} 
                 </h4>
+                <small>{{ item.author?.name }}</small>
               </div>
             </div>
           </a>
