@@ -1,1 +1,394 @@
+@import "../../../../assets/scss/theme-color.scss";
 
+.brand-img {
+  height: 506px;
+  width: 100%;
+}
+.question-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.question-section {
+  padding-top: 50px;
+  .header-highlighter {
+    position: relative;
+    .title-highlighter {
+      color: $white;
+      background-color: $primary;
+      position: absolute;
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      padding: 1px 7px;
+      width: max-content;
+      top: -18px;
+    }
+  }
+  .header {
+    height: 67px;
+    background-color: $dark-gray;
+    .title {
+      color: $brand-info-question-title;
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  .description {
+    padding-top: 20px;
+    p {
+      font-family: "Roboto";
+      font-weight: 400;
+      font-size: 13.76px;
+      line-height: 18.85px;
+    }
+  }
+}
+.financial-requirement-section {
+  .header {
+    height: 67px;
+    background-color: $dark-gray;
+    .title {
+      color: $brand-info-question-title;
+      font-family: "Ballinger Condensed";
+      font-weight: 700;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+  .financial-description {
+    background-color: $border-color;
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 19.89px;
+    .text {
+      color: $dark-gray;
+    }
+    .highlight-text {
+      color: $primary;
+    }
+    .min-qualification {
+      padding-left: 35px;
+    }
+  }
+}
+.inquiry-form-section {
+  .row {
+    background-color: $dark-gray;
+  }
+  .header {
+    height: 78px;
+    border-bottom: 3px solid $primary;
+    .title {
+      color: $brand-info-question-title;
+      font-family: "Ballinger Condensed";
+      font-weight: 700;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+  .row:last-child {
+    padding-bottom: 3rem !important;
+  }
+}
+.divider-recent-feature .row {
+  height: 54px;
+  background-color: $primary;
+}
+.recent-feature-article-section {
+  .row {
+    background-color: $border-color;
+  }
+  .title-tag {
+    color: $primary;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 11.72px;
+    padding-bottom: 15px;
+  }
+  .recent-item {
+    width: 90%;
+    .title {
+      color: $dark-gray;
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 21.06px;
+      margin-bottom: 0.5rem !important;
+    }
+    .description {
+      color: $medium-grey;
+      font-family: "Roboto";
+      font-weight: 500;
+      font-size: 12.97px;
+      line-height: 16.7px;
+      padding-bottom: 15px;
+    }
+  }
+}
+.divider-main {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 22px;
+    height: 3px;
+    width: 90%;
+    background-color: #eb0444;
+    background-color: $primary;
+  }
+}
+.feature-article-section {
+  .row {
+    background-color: $border-color;
+  }
+  .feature-item {
+    padding-bottom: 20px;
+    position: relative;
+    .image-tag {
+      position: absolute;
+      background-color: $primary;
+      color: $white;
+      font-family: "ProximaNova-Semibold";
+      font-size: 12.27px;
+      padding: 4px;
+    }
+    .image-area {
+      background-color: $light-gray-1;
+      height: 126px;
+    }
+    .image-description {
+      padding: 5px;
+      background-color: $feature-article-description;
+      color: $dark-gray;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}
+.trending-section {
+  .row {
+    background-color: $border-color;
+  }
+  .title-tag {
+    color: $primary;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 11.72px;
+    padding-bottom: 15px;
+  }
+  .trending-item {
+    .image-area {
+      background-color: $light-gray-1;
+      height: 84px;
+    }
+    .image-description {
+      color: $dark-gray;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
+
+//TABS CSS
+ .tabs {
+  height: 60px;
+  .prev{
+    img{
+      width: auto;
+      cursor: pointer;
+    }
+  }
+}
+.primary-bg {
+  background-color: #eb0444;
+}
+.customContainer {
+  max-width: 1210px !important;
+}
+.position-relative {
+  position: relative!important;
+}
+.innerContent {
+  padding: 0 53px;
+}
+.customContainer {
+  .innerContent {
+    li {
+      background-color: $white;
+      height: 60px;
+      span {
+        min-width: 132px;
+        height: 100%;
+        color: $light-gray-1;
+        cursor: pointer;
+        font-family: "ProximaNova-Regular";
+        font-weight: bold;
+        font-size: 15px;
+        &.active,
+        &:hover {
+          color: $primary;
+          &::after {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -20px;
+            width: 7px;
+            border-width: 16px 16px 0 16px;
+            border-style: solid;
+            border-color: $primary transparent transparent transparent;
+          }
+          &::before {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            background-color: $primary;
+          }
+        }
+      }
+      border-color: $light-gray-1;
+    }
+  }
+}
+.title-highlighter{
+  color: #fff;
+  background-color: #eb0444;
+  font-family: "Ballinger Condensed";
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 1px 7px;
+  width: -webkit-max-content;
+  width: max-content;
+  top: -18px;
+
+}
+
+// Latest story
+.tabs-container
+ > .tabItemList{
+  .row {
+    margin: 0 -5px;
+    .col-md-4 {
+      max-width: 20%;
+      padding: 0 5px;
+    }
+  }
+  .items {
+    font-family: "Ballinger Condensed";
+    font-weight: bold;
+    img {
+      width: 100%;
+      min-height: 106px;
+      background-color: #c4c4c4;
+    }
+    > .card-body {
+      padding: 8px 16px 15px;
+      > h6.card-title {
+        font-size: 11px;
+    }
+    .card-text {
+      font-size: 12px;
+    }
+    small {
+      font-family: "ProximaNova-Regular";
+      font-weight: 500;
+      font-size: 10px;
+    }
+   }
+  }
+ }
+ .primary-color {
+  color: #eb0444;
+}
+
+//Why I Bought
+
+.wings {
+  .frannews-top-left {
+    margin-bottom: 67px;
+  }
+  .map-legend {
+    margin-bottom: 40px;
+    .map-legend-item {
+      margin: 20px 15px 0;
+    }
+  }
+}
+.multi_conference-left{ 
+  ul {
+  margin-bottom: 18px;
+    li {
+      display: inline-block;
+      float: left;
+      padding: 0 31px 0 0;
+      position: relative;
+    }
+  }
+  h2 {
+    letter-spacing: .6px;
+  }
+  p {
+    color: #272525;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin-bottom: 18px;
+ }
+}
+
+.frannews-top-left{
+  ul{
+    li {
+      display: inline-block;
+      float: left;
+      padding: 0 31px 0 0;
+      position: relative;
+    }
+  } 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+//Availabe market
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.market-status-color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.align-self-center {
+  align-self: center!important;
+}
+
+.download-btn{
+  padding-left: 15px;
+  padding-top: 15px;
+}
+.submit-btn{
+  background-color: #eb0444;
+  width: 300px;
+}
