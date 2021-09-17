@@ -180,7 +180,11 @@
     padding-left: 55px;
     width: 400px;
     flex: 1 1 400px;
+<<<<<<< HEAD
     z-index: 9;
+=======
+    z-index: 5;
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     @include media("<xl") {
       width: 300px;
       flex: 1 1 300px;
@@ -240,13 +244,23 @@
         }
         .c-filter-item--contentGroup {
           padding: 15px 30px 40px;
+<<<<<<< HEAD
+=======
+          @include media("<xl") {
+            padding: 15px 15px 20px;
+          }
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
           @include media("<lg") {
             max-height: 300px;
             overflow-y: auto;
           }
+<<<<<<< HEAD
           @include media("<md") {
             padding: 15px 15px 20px;
           }
+=======
+
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
           .c-filter-item--content {
             + .c-filter-item--content {
               margin-top: 15px;

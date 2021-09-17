@@ -1,0 +1,13 @@
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: *
+Disallow: /storypage/insertstats.html
+
+User-agent: *
+Disallow: /home/brandsearchajax.html
+
+Sitemap: https://1851franchise.com/sitemap.xml

@@ -1,1 +1,34 @@
+<<<<<<< HEAD
 <p>monthly-details works!</p>
+=======
+<div class="empty"></div>
+
+<!-- Top section Start-->
+<app-two-side-banner
+  [banner]="banner['data']"
+  [date]="banner['date']"
+  [type]="'monthlydetails'"
+></app-two-side-banner>
+<!-- Top section End-->
+
+<div class="trending-articles monthly-details-trending">
+  <div class="container">
+    <div class="trending-articles-details col-xl-11">
+      <h4 class="text-uppercase">
+        <strong>{{ banner["date"] | date }}</strong>
+        ISSUE
+      </h4>
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="details"
+        type="monthlydetails"
+        [hasMore]="hasMore"
+        (more)="getMoreData()"
+        [typeSlug]="'monthlydetailspage'"
+      ></app-five-column>
+    </div>
+  </div>
+</div>
+
+<app-advertisement [slug]="'1851'" [type]="'Main Site Ad'"></app-advertisement>
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb

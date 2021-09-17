@@ -42,7 +42,7 @@ ul {
   &::-webkit-scrollbar {
     width: 0;
     height: 8px;
-    background-color: #fff; /* or add it to the track */
+    background-color: rgb(107, 99, 99); /* or add it to the track */
   }
 }
 .container {
@@ -60,4 +60,7 @@ ul {
 }
 .cursor {
   cursor: pointer;
+}
+.modal-backdrop {
+  z-index: -1 !important;
 }

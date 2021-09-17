@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MetaService {
+  constructor(private title: Title, private meta: Meta) {}
 
-  constructor(private title: Title, private meta: Meta) { }
   setSeo(data: any) {
     if (typeof data.seo != 'undefined') {
       this.title.setTitle(data.seo.title);
@@ -72,7 +72,7 @@ export class MetaService {
     this.title.setTitle(data);
   }
 
-  updateTag(data: MetaDefinition, type: string | undefined) {
+  updateTag(data, type) {
     this.meta.updateTag(data, type);
   }
 }

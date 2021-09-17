@@ -2,13 +2,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Pipe({
-  name: 'defaultImage'
+  name: 'defaultImage',
 })
 export class DefaultImagePipe implements PipeTransform {
-
-  transform(value: any, width?: number, height?: number): string {
+  transform(value: any, width?: any, height?: any): string {
     let image = '';
-
+    // const emptyImage = `https://placeimg.com/${width}/${height}/any`;
+    // image = emptyImage;
     if (typeof value === 'undefined' || value === null) {
       return image;
     }
@@ -28,5 +28,4 @@ export class DefaultImagePipe implements PipeTransform {
     }
     return image;
   }
-
 }

@@ -10,7 +10,11 @@ const RESULT_KEY = makeStateKey<any>('specialFeatureState');
 @Component({
   selector: 'app-special-feature',
   templateUrl: './special-feature.component.html',
+<<<<<<< HEAD
   styleUrls: ['./special-feature.component.scss']
+=======
+  styleUrls: ['./special-feature.component.scss'],
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 })
 export class SpecialFeatureComponent implements OnInit {
   specialFeature: any = [];
@@ -19,6 +23,7 @@ export class SpecialFeatureComponent implements OnInit {
     private apiService: ApiService,
     private tstate: TransferState,
     public commonService: CommonService
+<<<<<<< HEAD
   ) { }
 
   private onDestroySubject = new Subject();
@@ -39,6 +44,29 @@ export class SpecialFeatureComponent implements OnInit {
         this.tstate.set(RESULT_KEY,specialFeature);
       });
     } 
+=======
+  ) {}
+
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
+  ngOnInit(): void {
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const specialFeature = this.tstate.get(RESULT_KEY, {});
+      this.specialFeature = specialFeature['data'];
+    } else {
+      const specialFeature = {};
+      this.apiService
+        .getAPI(`home-page-featured-content`)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((response) => {
+          if (response.data.stories.length > 0) {
+            specialFeature['data'] = response.data.stories;
+          }
+          this.tstate.set(RESULT_KEY, specialFeature);
+        });
+    }
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   }
 
   ngOnDestroy() {

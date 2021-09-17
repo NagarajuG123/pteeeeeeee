@@ -8,6 +8,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
 ];
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

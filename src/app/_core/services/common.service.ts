@@ -1,5 +1,5 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,6 @@ export class CommonService {
   public showmenu: boolean = false;
   public vtabsItem: number = 5;
   isBrowser: boolean = false;
-
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
@@ -19,11 +18,31 @@ export class CommonService {
   toggle() {
     this.showmenu = !this.showmenu;
     window.scrollTo(0, 0);
-    // if (this.isMenuOpen) {
-    //   this.isMenuOpen = !this.isMenuOpen;
-    // }
   }
-
+  readMore1(story: any, type: string) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}#${type}`;
+  }
+  readMore(story: any) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}`;
+  }
+  isVideo(item: { media: { type: string } | null } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   resizeSidebar(val: any) {
     if (val > 992) this.vtabsItem = 5;
     else if (val < 993 && val > 767) this.vtabsItem = 3;
@@ -43,12 +62,5 @@ export class CommonService {
       description = description.slice(0, 118) + '...';
     }
     return description;
-  }
-  readMore(story: any) {
-    let slug = '';
-    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
-      slug = `${story?.brand?.slug}/`;
-    }
-    return `${slug}${story?.slug}`;
   }
 }

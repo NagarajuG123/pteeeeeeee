@@ -5,7 +5,11 @@
       Publications in the Mainland Community:
       <ul class="list-group list-group-horizontal ms-3">
         <li class="me-3">
-          <a href="{{ room1903Url }}" target="_blank" class="text-white">
+          <a
+            href="{{ header?.publication?.room1903Url }}"
+            target="_blank"
+            class="text-white"
+          >
             <span
               ><img
                 src="assets/img/room-service.png"
@@ -21,7 +25,11 @@
           </a>
         </li>
         <li class="me-3">
-          <a href="{{ eeUrl }}" target="_blank" class="text-white">
+          <a
+            href="{{ header?.publication?.eeUrl }}"
+            target="_blank"
+            class="text-white"
+          >
             <span
               ><img
                 src="assets/img/Estatenvy.png"
@@ -65,20 +73,20 @@
         <div class="logo d-flex align-items-center">
           <a routerLink="/"
             ><img
-              src="{{ header?.data?.logo?.url }}"
+              src="{{ header?.logo?.url }}"
               height="41"
               width="41"
               alt="logo"
               class="me-2"
           /></a>
           <div>
-            <a routerLink="{{ header?.data?.subscribe?.url }}">{{
-              header?.data?.subscribe?.title
+            <a routerLink="{{ header?.subscribe?.url }}">{{
+              header?.subscribe?.title
             }}</a
             ><br />
             <small class="d-flex align-items-center"
-              ><a routerLink="{{ header?.data?.subscribe?.url }}">{{
-                header?.data?.subscribe?.subTitle
+              ><a routerLink="{{ header?.subscribe?.url }}">{{
+                header?.subscribe?.subTitle
               }}</a>
               &nbsp;
               <img src="assets/img/logo.png" height="41" width="41" alt="logo"
@@ -124,11 +132,11 @@
                 <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
               </h3>
               <hr />
-              <div *ngIf="header?.data?.monthlyCover" class="monthly-covers">
-                <a routerLink="{{ header?.data?.monthlyCover?.coverUrl }}">
+              <div *ngIf="header?.monthlyCover" class="monthly-covers">
+                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
                   <img
                     appYoutubeImage
-                    src="{{ header?.data?.monthlyCover?.url }}"
+                    src="{{ header?.monthlyCover?.url }}"
                     width="68"
                     height="89"
                     alt="monthly cover"
@@ -143,7 +151,7 @@
               <ul class="mb-2 ms-2">
                 <li
                   class="ms-1"
-                  *ngFor="let item of header?.data?.sidebar?.categories"
+                  *ngFor="let item of header?.sidebar?.categories"
                 >
                   <a
                     class="
@@ -163,17 +171,13 @@
             <li>
               <hr />
 
-              <h3
-                *ngFor="let menu of header?.data?.sidebar?.menus | slice: 0:2"
-              >
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
                 <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
               </h3>
             </li>
             <li>
               <hr />
-              <h3
-                *ngFor="let menu of header?.data?.sidebar?.menus | slice: 2:7"
-              >
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
                 <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
                   menu.title
                 }}</a>
@@ -187,9 +191,7 @@
             </li>
             <li>
               <hr class="mb-2" />
-              <h3
-                *ngFor="let menu of header?.data?.sidebar?.menus | slice: 7:8"
-              >
+              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
                 <a href="{{ menu.url }}">{{ menu.title }}</a>
               </h3>
             </li>
@@ -201,17 +203,14 @@
       <!-- Center menu link -->
       <div class="col d-none d-md-block">
         <ul class="center-menu nav justify-content-center">
-          <li
-            class="nav-item mt-1 px-1"
-            *ngFor="let menu of header?.data?.menus"
-          >
+          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
             <a [routerLink]="menu.url" class="d-flex align-items-center"
               >{{ menu.title }}
             </a>
           </li>
           <li
             class="nav-item mx-2 px-1"
-            *ngFor="let action of header?.data?.actions; index as i"
+            *ngFor="let action of header?.actions; index as i"
           >
             <a class="d-flex align-items-center"
               >{{ action.title }}
@@ -254,7 +253,7 @@
             </a>
           </li>
           <li
-            *ngFor="let item of header?.data?.socialMedia; index as i"
+            *ngFor="let item of header?.socialMedia; index as i"
             class="mx-1 d-none d-lg-block"
           >
             <a
@@ -270,8 +269,8 @@
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">
           <img
-            routerLink="{{ header?.data?.monthlyCover?.coverUrl }}"
-            src="{{ header?.data?.monthlyCover?.url }}"
+            routerLink="{{ header?.monthlyCover?.coverUrl }}"
+            src="{{ header?.monthlyCover?.url }}"
             height="104"
             width="92"
             alt="cover"

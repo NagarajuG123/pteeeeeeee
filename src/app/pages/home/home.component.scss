@@ -1,0 +1,36 @@
+@import "../../../assets/scss/theme-color.scss";
+.signUp {
+  h2 {
+    font-family: "Ballinger Condensed";
+  }
+  input {
+    font-family: "ProximaNova-Regular";
+    font-size: 13px;
+    height: 39px;
+    &::placeholder {
+      color: $dark-gray;
+    }
+  }
+  .joinBtn {
+    min-width: 196px;
+    background: $dark-gray;
+    border-color: $dark-gray;
+    font-family: "ProximaNova-Regular";
+    font-size: 25px;
+    height: 39px;
+  }
+}
+.success {
+  color: $white;
+}
+#hideAfter5Sec {
+  animation: hideAnimation 0s ease-in 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

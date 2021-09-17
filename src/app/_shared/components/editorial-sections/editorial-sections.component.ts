@@ -22,42 +22,51 @@ export class EditorialSectionsComponent implements OnInit {
   activeTab = 1;
   skipTab = 0;
   tab!: string;
-  
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  constructor(public commonService: CommonService,
+  constructor(
+    public commonService: CommonService,
     private tstate: TransferState,
-    private apiService:ApiService) {}
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
-    if(this.tstate.hasKey(RESULT_KEY)){
-      const editorialData = this.tstate.get(RESULT_KEY,{});
+    if (this.tstate.hasKey(RESULT_KEY)) {
+      const editorialData = this.tstate.get(RESULT_KEY, {});
       this.items = editorialData['items'];
       this.tabName = editorialData['tabsName'];
       this.defaultTab = editorialData['default'];
-    } else{
+    } else {
       const editorialData: any = {};
-      const spotlightCategoriesApi = this.apiService.getAPI(`1851/spotlights/categories`);
-      const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+      const spotlightCategoriesApi = this.apiService.getAPI(
+        `1851/spotlights/categories`
+      );
+      const publicationApi = this.apiService.getAPI(
+        `1851/publication-instance`
+      );
 
-    forkJoin([spotlightCategoriesApi, publicationApi])
-    .pipe(takeUntil(this.onDestroy$))
-    .subscribe(results => {
-      editorialData['tabsName'] = results[0].categories;
-      editorialData['default'] = results[0].defaultTab;
-    
-      this.apiService.getAPI(`1851/spotlight/${editorialData['default']}?limit=10&offset=0`)
-          .pipe(takeUntil(this.onDestroy$))
-          .subscribe(result => {
-            const data: any[] = [];
-            result['data'].forEach((item: any) => {
-               data.push(item);
-          });
-          editorialData['items'] = data;
-            this.tstate.set(RESULT_KEY, editorialData);
-      });
-    });
+      forkJoin([spotlightCategoriesApi, publicationApi])
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          editorialData['tabsName'] = results[0].categories;
+          editorialData['default'] = results[0].defaultTab;
+
+          this.apiService
+            .getAPI(
+              `1851/spotlight/${editorialData['default']}?limit=10&offset=0`
+            )
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((result) => {
+              const data: any[] = [];
+              result['data'].forEach((item: any) => {
+                data.push(item);
+              });
+              editorialData['items'] = data;
+              this.tstate.set(RESULT_KEY, editorialData);
+            });
+        });
     }
   }
 
@@ -65,7 +74,7 @@ export class EditorialSectionsComponent implements OnInit {
   onResize(event: any) {
     this.commonService.resizeSidebar(event.target.innerWidth);
   }
-  setActiveTab(val: any,item: any) {
+  setActiveTab(val: any, item: any) {
     this.activeTab = val;
     this.tab = item?.shortName;
     this.getData(this.tab);
@@ -80,18 +89,19 @@ export class EditorialSectionsComponent implements OnInit {
       this.skipTab += 1;
     }
   }
-  getData(tabName: any){
+  getData(tabName: any) {
     const apiUrl = `1851/spotlight/${tabName.toLowerCase()}`;
-    this.apiService.getAPI(`${apiUrl}?limit=10&offset=0`)
-    .pipe(takeUntil(this.onDestroy$))
-    .subscribe(result => {
-      const data: any[] =[];
-      if (result.data.length) {
-        result['data'].forEach((item: any, index: number) => {
-          data.push(item);
-        });
-        this.items = data;
-      }
-    });
-    }
+    this.apiService
+      .getAPI(`${apiUrl}?limit=10&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        const data: any[] = [];
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            data.push(item);
+          });
+          this.items = data;
+        }
+      });
+  }
 }

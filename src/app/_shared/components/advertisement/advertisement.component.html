@@ -1,0 +1,74 @@
+<!-- Main site  - Home page -->
+<div *ngIf="pageType === 'home-page' && adsData.length">
+  <div class="container">
+    <div class="advertisement col-xl-10">
+      <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+      <div class="clearfix"></div>
+      <div class="advertisement-details home-ads">
+        <ngx-slick-carousel
+          *ngIf="isBrowser"
+          class="carousel"
+          [config]="slideConfig"
+        >
+          <a
+            ngxSlickItem
+            *ngFor="let ad of adsData; let i = index"
+            href="{{ ad.url }}"
+            target="blank"
+            class="d-block"
+          >
+            <figure>
+              <img
+                appYoutubeImage
+                data-src="{{ ad.media | defaultImage: 970:89 }}"
+                width="970"
+                height="89"
+                style="width: 100%"
+                alt="Ads"
+                class="lazyload"
+              />
+            </figure>
+          </a>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Other Page -->
+<div *ngIf="pageType !== 'home-page' && adsData.length">
+  <div class="brand-advertisement category-advertisement">
+    <div class="container">
+      <div class="advertisement col-xl-9">
+        <h6 class="float-right text-uppercase">ADVERTISEMENT</h6>
+        <div class="clearfix"></div>
+        <div class="advertisement-details">
+          <ngx-slick-carousel
+            *ngIf="isBrowser"
+            class="carousel"
+            [config]="slideConfig"
+          >
+            <a
+              ngxSlickItem
+              *ngFor="let ad of adsData; let i = index"
+              href="{{ ad.url }}"
+              target="blank"
+              class="d-block"
+            >
+              <figure>
+                <img
+                  appYoutubeImage
+                  data-src="{{ ad.media | defaultImage: 970:89 }}"
+                  width="970"
+                  height="89"
+                  style="width: 100%"
+                  alt="Ads"
+                  class="lazyload"
+                />
+              </figure>
+            </a>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

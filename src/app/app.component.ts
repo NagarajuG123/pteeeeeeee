@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
+import { CommonService } from './_core/services/common.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = '1851 Franchise';
+export class AppComponent implements OnInit {
+  title = '1851';
+  constructor(public common: CommonService, private swUpdate: SwUpdate) {}
 
-  constructor(private router: Router, private swUpdate: SwUpdate) {}
-
-  ngOnInit() {
+  public ngOnInit(): void {
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         // if (confirm('New version available. Load New Version?')) {

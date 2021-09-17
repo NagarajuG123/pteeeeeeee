@@ -12,7 +12,7 @@ export class ImagePreloadDirective {
   @Input() src!: string;
   @Input() srcset = '';
 
-  constructor() { }
+  constructor() {}
 
   updateUrl() {
     if (this.src != null && typeof this.src !== 'undefined') {

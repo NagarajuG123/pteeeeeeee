@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+<<<<<<< HEAD
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
@@ -50,10 +51,53 @@ export class SitemapComponent implements OnInit {
       this.apiService
       .getAPI(`get-brand-by-slug/${this.brandSlug}`)
       .pipe(takeUntil(this.onDestroy$))
+=======
+import { MetaService } from 'src/app/_core/services/meta.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+@Component({
+  selector: 'app-sitemap',
+  templateUrl: './sitemap.component.html',
+  styleUrls: ['./sitemap.component.scss'],
+})
+export class SitemapComponent implements OnInit {
+  sitemap: any = [];
+  year: any = [];
+  month: any = [];
+  data: any = [];
+  brandSlug: any = [];
+  apiUrl: any;
+
+  constructor(
+    private apiService: ApiService,
+    private metaService: MetaService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.events.subscribe((events) => {
+      if (events instanceof NavigationEnd) {
+        this.brandSlug = events.url.split('/')[1];
+        if (
+          this.brandSlug === 'sitemap' ||
+          this.brandSlug === '' ||
+          this.brandSlug.includes('#')
+        ) {
+          this.brandSlug = '1851';
+        } else {
+          this.brandSlug = this.brandSlug.replace(/\+/g, '');
+        }
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.apiService
+      .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
       .subscribe((response) => {
         if (response.status != 404 && response.type === 'brand_page') {
           this.brandSlug = response.slug;
           this.apiUrl = `${this.brandSlug}/sitemap-page`;
+<<<<<<< HEAD
         } else {
           this.apiUrl = `sitemap-page`;
         }
@@ -86,6 +130,30 @@ export class SitemapComponent implements OnInit {
               : 0,
             url: sitemapData['data'][year][month]['url']
               ? sitemapData['data'][year][month]['url']
+=======
+          this.getSitemap();
+        } else {
+          this.apiUrl = `sitemap-page`;
+          this.getSitemap();
+        }
+      });
+    this.getMeta();
+  }
+
+  getSitemap() {
+    this.apiService.getAPI(`${this.apiUrl}`).subscribe((response) => {
+      this.sitemap = response;
+      Object.keys(this.sitemap).forEach((year: any) => {
+        const monthData: { month: string; number: any; url: any }[] = [];
+        Object.keys(this.sitemap[year]).forEach((month) => {
+          monthData.push({
+            month: month,
+            number: this.sitemap[year][month]['number']
+              ? this.sitemap[year][month]['number']
+              : 0,
+            url: this.sitemap[year][month]['url']
+              ? this.sitemap[year][month]['url']
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
               : '',
           });
         });
@@ -94,6 +162,7 @@ export class SitemapComponent implements OnInit {
           data: monthData,
         });
       });
+<<<<<<< HEAD
     }
     else{
       const sitemapData:any = {};
@@ -118,3 +187,27 @@ export class SitemapComponent implements OnInit {
   }
 
 }
+=======
+    });
+  }
+
+  getMeta() {
+    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+      this.metaService.setSeo(response.data);
+      this.apiService
+        .getAPI(`1851/publication-instance`)
+        .subscribe((result) => {
+          if (this.brandSlug === '1851') {
+            this.metaService.setTitle(
+              `Sitemap for ${result.title} | ${result.newsType}`
+            );
+          } else {
+            this.metaService.setTitle(
+              `Sitemap for ${this.brandSlug}  ${result.title}  | ${result.newsType}`
+            );
+          }
+        });
+    });
+  }
+}
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb

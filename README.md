@@ -1,6 +1,6 @@
-# 1851
+# 1851 FE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
 
 ## Development server
 
@@ -22,6 +22,18 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## SSR
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+`npm run dev:ssr`
+
+This command is similar to ng serve, which offers live reload during development, but uses server-side rendering. The application will run in watch mode and refresh the browser after every change. This command is slower than the actual ng serve command.
+
+`ng build && ng run app-name:server`
+
+This command builds both the server script and the application in production mode. Use this command when you want to build the project for deployment.
+
+`npm run serve:ssr`
+
+This command starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by ng run `build:ssr`, so make sure you have run that command as well.
+
+Note that serve:ssr is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally.

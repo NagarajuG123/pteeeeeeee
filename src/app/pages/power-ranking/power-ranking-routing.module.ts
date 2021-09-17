@@ -11,6 +11,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+<<<<<<< HEAD
   exports: [RouterModule],
 })
 export class PowerRankingRoutingModule {}
+=======
+  exports: [RouterModule]
+})
+export class PowerRankingRoutingModule { }
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb

@@ -1,0 +1,31 @@
+.author-img {
+  border-radius: 50%;
+  width: 81px !important;
+  height: 81px !important;
+}
+
+.comment-img {
+  width: 27px !important;
+  height: 26px !important;
+  margin-right: 15px;
+}
+
+.comment-div {
+  display: flex;
+  align-items: center;
+}
+.brian_jaeger_content p a {
+  text-decoration: underline;
+  background-color: transparent;
+  color: #077bff;
+}
+.video-maker {
+  position: absolute;
+  left: calc(50% - 90px);
+  top: calc(50% - 90px);
+  z-index: 10;
+  height: 90px;
+  width: 90px;
+  min-height: 90px;
+  transform: translate(50%, 50%);
+}

@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { ApiService } from 'src/app/_core/services/api.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { isPlatformBrowser } from '@angular/common';
+import { forkJoin } from 'rxjs';
+import { CommonService } from 'src/app/_core/services/common.service';
 import {
   faFacebookF,
   faLinkedinIn,
@@ -6,13 +12,6 @@ import {
   faInstagram,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
-import { ApiService } from 'src/app/_core/services/api.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
-const FOOTER_KEY = makeStateKey<any>('footerState');
-
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -20,7 +19,12 @@ const FOOTER_KEY = makeStateKey<any>('footerState');
 })
 export class FooterComponent implements OnInit {
   footer: any = [];
-  slug: string = '';
+  brandSlug: string;
+  isFooter: boolean;
+  brandContact: any;
+  brandId: string = '1851';
+  isBrowser: boolean;
+  news: any;
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -29,22 +33,58 @@ export class FooterComponent implements OnInit {
     faTwitter,
   ];
 
-  private onDestroySubject = new Subject();
-  onDestroy$ = this.onDestroySubject.asObservable();
-
-  constructor(private state: TransferState, private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    @Inject(PLATFORM_ID) platformId: Object,
+    private commonService: CommonService
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    this.slug = '1851';
-    this.footer = this.state.get(FOOTER_KEY, null as any);
-    if (!this.footer) {
-      this.apiService
-        .getAPI2(`footer`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          this.footer = response;
-          this.state.set(FOOTER_KEY, response as any);
-        });
+    this.isFooter = true;
+    this.router.events.subscribe((events) => {
+      if (events instanceof NavigationEnd) {
+        this.brandSlug = events.url.split('/')[1];
+        if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+          this.brandSlug = '1851';
+          this.setInit();
+        } else {
+          if (this.brandSlug === 'robots.txt') {
+            this.isFooter = false;
+          } else {
+            this.brandSlug = this.brandSlug.replace(/\+/g, '');
+            this.apiService
+              .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+              .subscribe((response) => {
+                if (response.type === 'brand_page') {
+                  this.brandSlug = response.slug;
+                  this.brandId = response.id;
+                } else {
+                  this.brandSlug = '1851';
+                  this.brandId = '1851';
+                }
+                this.setInit();
+              });
+          }
+        }
+      }
+    });
+  }
+
+  setInit() {
+    let footerApi = 'footer';
+    if (this.brandSlug !== '1851') {
+      footerApi = `footer?slug=${this.brandSlug}`;
     }
+    const footer = this.apiService.getAPI2(footerApi);
+    const news = this.apiService.getAPI(`${this.brandSlug}/news`);
+    const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/contact`);
+
+    forkJoin([footer, news, inquire]).subscribe((results) => {
+      this.footer = results[0];
+      this.brandContact = results[2].schema;
+    });
   }
 }

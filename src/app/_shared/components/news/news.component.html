@@ -1,0 +1,37 @@
+<div
+  *ngIf="newsData?.data?.length"
+  class="frannews frannews-trending"
+  [ngClass]="type === 'homepage' ? 'homenews' : ''"
+>
+  <div class="container">
+    <div class="frannews-details col-xl-11">
+      <div class="frannews-top d-flex">
+        <div class="frannews-top-left col-lg-9 col-md-10 p-0">
+          <ul>
+            <li>
+              <h4>{{ newsData?.title }}</h4>
+            </li>
+            <li class="frannews-subtitle">
+              <h1 *ngIf="slug != '1851'">{{ newsData?.subtitle }}</h1>
+              <span *ngIf="slug == '1851'">{{ newsData?.subtitle }}</span>
+            </li>
+          </ul>
+        </div>
+        <div
+          *ngIf="newsData?.has_more"
+          class="frannews-top-right col-lg-3 col-md-2"
+        >
+          <a class="float-right" routerLink="/{{ readMore(newsData?.data[0]) }}" fragment="frannews"
+            >READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i
+          ></a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="newsData?.data"
+        [typeSlug]="'frannews'"
+      ></app-five-column>
+    </div>
+  </div>
+</div>

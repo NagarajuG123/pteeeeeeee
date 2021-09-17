@@ -19,6 +19,10 @@ export class MostPopularComponent implements OnInit {
   isBrowser!: boolean;
   data: Details[] = [];
   slug: string = '';
+<<<<<<< HEAD
+=======
+  customOptions: OwlOptions = {};
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -31,6 +35,7 @@ export class MostPopularComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+<<<<<<< HEAD
   customOptions: OwlOptions = {
     autoplay: true,
     loop: true,
@@ -59,6 +64,11 @@ export class MostPopularComponent implements OnInit {
 
   ngOnInit(): void {
     this.slug = '1851';
+=======
+  ngOnInit(): void {
+    this.slug = '1851';
+    this.setOption();
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     this.getMostPopular();
   }
 
@@ -79,4 +89,34 @@ export class MostPopularComponent implements OnInit {
       this.tstate.set(RESULT_KEY, mostPopular);
     }
   }
+<<<<<<< HEAD
+=======
+  setOption() {
+    this.customOptions = {
+      autoplay: true,
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: ['', ''],
+      responsive: {
+        0: {
+          items: 1,
+        },
+        400: {
+          items: 2,
+        },
+        740: {
+          items: 3,
+        },
+        940: {
+          items: 3,
+        },
+      },
+      nav: true,
+    };
+  }
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }

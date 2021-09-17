@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <div class="empty"></div>
+=======
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 <div class="banner d-flex termsofuse-banner contact-banner">
   <figure>
     <img
@@ -10,6 +13,7 @@
       alt="subscribepage-banner"
     />
     <img
+<<<<<<< HEAD
     *ngIf="!data?.media"
     appYoutubeImage
     [src]="imgUrl"
@@ -17,6 +21,15 @@
     height="493"
     alt="subscribepage-banner"
   />
+=======
+      *ngIf="!data?.media"
+      appYoutubeImage
+      [src]="imgUrl"
+      width="1440"
+      height="493"
+      alt="subscribepage-banner"
+    />
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   </figure>
   <div class="termsofuse-banner-main text-center">
     <div class="container">
@@ -56,8 +69,17 @@
                     name="fname"
                     [formControl]="contactForm.controls['first_name']"
                   />
+<<<<<<< HEAD
                   <div *ngIf="errorMessage && isSubmitted" 
                   class="error-message full-width">{{ errorMessage }}</div>
+=======
+                  <div
+                    *ngIf="errorMessage && isSubmitted"
+                    class="error-message full-width"
+                  >
+                    {{ errorMessage }}
+                  </div>
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                 </div>
               </li>
               <li class="col-xl-6">
@@ -70,8 +92,17 @@
                     name="lname"
                     [formControl]="contactForm.controls['last_name']"
                   />
+<<<<<<< HEAD
                   <div *ngIf="errorMessage && isSubmitted" 
                   class="error-message full-width" >{{ errorMessage }}</div>
+=======
+                  <div
+                    *ngIf="errorMessage && isSubmitted"
+                    class="error-message full-width"
+                  >
+                    {{ errorMessage }}
+                  </div>
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                 </div>
               </li>
               <li class="col-xl-12">
@@ -84,8 +115,17 @@
                     name="femail"
                     [formControl]="contactForm.controls['email']"
                   />
+<<<<<<< HEAD
                   <div *ngIf="errorMessage && isSubmitted" 
                   class="error-message full-width">{{ errorMessage }}</div>
+=======
+                  <div
+                    *ngIf="errorMessage && isSubmitted"
+                    class="error-message full-width"
+                  >
+                    {{ errorMessage }}
+                  </div>
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                 </div>
               </li>
               <li class="col-xl-12">
@@ -97,6 +137,7 @@
                     name="fmessage"
                     [formControl]="contactForm.controls['message']"
                   ></textarea>
+<<<<<<< HEAD
                   <div *ngIf="errorMessage && isSubmitted" 
                   class="error-message full-width" 
                   >{{ errorMessage }}</div>
@@ -104,6 +145,21 @@
               </li>
             </ul>
             <div *ngIf="publication.id == '1851'" class="contact-editorial-main">
+=======
+                  <div
+                    *ngIf="errorMessage && isSubmitted"
+                    class="error-message full-width"
+                  >
+                    {{ errorMessage }}
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div
+              *ngIf="publication.id == '1851'"
+              class="contact-editorial-main"
+            >
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
               <h6>Click all of which apply to you:</h6>
               <ul class="pl-2">
                 <li>
@@ -113,7 +169,13 @@
                         type="checkbox"
                         class="text-field"
                         id="current"
+<<<<<<< HEAD
                         [formControl]="contactForm.controls['currentFranchisee']"
+=======
+                        [formControl]="
+                          contactForm.controls['currentFranchisee']
+                        "
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                         (change)="toggleCurrent($event)"
                       />
                       <span>Current Franchisee</span>
@@ -243,7 +305,13 @@
                         type="checkbox"
                         class="text-field checkboxbtn"
                         id="executive"
+<<<<<<< HEAD
                         [formControl]="contactForm.controls['franchiseExecutive']"
+=======
+                        [formControl]="
+                          contactForm.controls['franchiseExecutive']
+                        "
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                         (change)="toggleExecutive($event)"
                       />
                       <span>Franchise Executive</span>
@@ -305,7 +373,13 @@
                         type="checkbox"
                         class="text-field checkboxbtn"
                         id="executive1"
+<<<<<<< HEAD
                         [formControl]="contactForm.controls['businessExecutive']"
+=======
+                        [formControl]="
+                          contactForm.controls['businessExecutive']
+                        "
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
                         (change)="toggleExecutive1($event)"
                       />
                       <span>Business Executive</span>
@@ -414,5 +488,9 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>  
+=======
+  </div>
+>>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 </div>
