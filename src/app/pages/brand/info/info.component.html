@@ -307,17 +307,8 @@
                             With an average gross revenue of $518,159 among the top 25% of territories, Sylvan Learning offers a business opportunity with both financial and
                             emotional rewards.
                         </p>
-                        <p class="text">
-                            Top 25% average gross revenue: <span class="highlight-text">$518,159</span>
-                        </p>
-                        <p class="text">
-                            Mid-upper 25% average gross revenue: <span class="highlight-text">$271,959</span>
-                        </p>
-                        <p class="text">
-                            Mid-lower 25% average gross revenue: <span class="highlight-text">$180,972</span>
-                        </p>
-                        <p class="text">
-                            Bottom 25% average gross revenue: <span class="highlight-text">$104,646</span>
+                        <p class="text" *ngFor="let info of brandInfo?.optional_info">
+                          {{info.title}} : <span class="highlight-text">{{ info.value }}</span>
                         </p>
                     </div>
                 </div>
