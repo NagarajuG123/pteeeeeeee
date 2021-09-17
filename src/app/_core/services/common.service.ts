@@ -63,4 +63,11 @@ export class CommonService {
     }
     return description;
   }
+
+  responsiveTextFormating(text: String, textLength: number) {
+    if (text && text.length > textLength) {
+      text = text.slice(0, 118) + '...';
+    }
+    return text;
+  }
 }

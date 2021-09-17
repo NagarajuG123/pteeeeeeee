@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  PLATFORM_ID,
+  Inject,
+  HostListener,
+} from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
@@ -8,7 +15,6 @@ import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
-
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
@@ -66,5 +72,11 @@ export class FeaturedComponent implements OnInit {
       this.news = featured['news'];
       this.brandNews = featured['brandNews'];
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    // this.commonService.resizeSidebar(event.target.innerWidth);
+    console.log('event.target.innerWidth', event.target.innerWidth);
   }
 }
