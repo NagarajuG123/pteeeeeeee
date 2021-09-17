@@ -31,6 +31,7 @@ import { EditorialSectionsComponent } from './components/editorial-sections/edit
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Modals Components
 
@@ -70,6 +71,7 @@ import { TrendingComponent } from './components/trending/trending.component';
     ReactiveFormsModule,
     NgxYoutubePlayerModule,
     SlickCarouselModule,
+    FontAwesomeModule,
   ],
   exports: [
     RouterModule,
@@ -101,6 +103,7 @@ import { TrendingComponent } from './components/trending/trending.component';
     LatestStoryComponent,
     ModalComponent,
     SlickCarouselModule,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {}
