@@ -360,6 +360,21 @@ p {
       color: $dark-gray;
     }
   }
+  @include tablet-portrait {
+    #recaptchaBlock {
+      flex-direction: column;
+    }
+  }
+  @include tablet-landscape1 {
+    #recaptchaBlock {
+      flex-direction: column;
+    }
+  }
+  @include mobile-landscape1 {
+    #recaptchaBlock {
+      flex-direction: column;
+    }
+  }
 }
 
 .modal-body {
