@@ -35,6 +35,7 @@ figure {
   h1 {
     letter-spacing: 0.8px;
   }
+
   .termsofuse-banner-main {
     position: absolute;
     bottom: 0;
@@ -43,18 +44,39 @@ figure {
     right: 0;
     margin: 0 auto;
     background: $dark_gray_1;
+    @include tablet-landscape1 {
+      position: static;
+    }
+    h2,
     h1 {
       font-size: 28.92px;
       line-height: 31px;
       color: $white;
       font-family: $proxiMedium;
-    }
-    .termsofuse-banner-content {
-      padding: 43px 5px 33px;
+      @include tablet-landscape {
+        font-size: 26px;
+        line-height: 28px;
+      }
+      @include tablet-landscape1 {
+        font-size: 24px;
+        line-height: 26px;
+      }
+      @include mobile-landscape1 {
+        font-size: 22px;
+        line-height: 24px;
+      }
     }
   }
 }
-
+.termsofuse-banner-content {
+  padding: 43px 5px 33px 5px;
+  @include desk-lg-below1 {
+    padding: 20px 5px;
+  }
+  @include tablet-landscape1 {
+    padding: 15px;
+  }
+}
 .contact-editorial-details {
   margin: 0 auto;
   padding: 71px 10px 56px;
