@@ -1,5 +1,30 @@
-<div class="empty"></div>
-<app-top-banner [data]="data" [title]="title"></app-top-banner>
+<div class="banner d-flex contact-banner">
+  <figure>
+    <img
+      *ngIf="data?.media?.url"
+      appYoutubeImage
+      [src]="data?.media?.url"
+      width="1440"
+      height="493"
+      alt="banner"
+    />
+    <img
+      *ngIf="!data?.media"
+      appYoutubeImage
+      [src]="imgUrl"
+      width="1440"
+      height="493"
+      alt="banner"
+    />
+  </figure>
+  <div class="termsofuse-banner-main text-center">
+    <div class="container">
+      <div class="termsofuse-banner-content">
+        <h1 class="text-uppercase">{{ title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="main-content">
   <div class="contact-editorial subscribepage-wrap">
     <div class="container">
@@ -168,7 +193,7 @@
                     <label for="executive" class="radio_btns1">
                       <input
                         type="checkbox"
-                        class="text-field"
+                        class="text-field checkboxbtn"
                         id="executive"
                         [formControl]="
                           contactForm.controls['franchiseExecutive']
@@ -232,7 +257,7 @@
                     <label for="executive1" class="radio_btns1">
                       <input
                         type="checkbox"
-                        class="text-field"
+                        class="text-field checkboxbtn"
                         id="executive1"
                         [formControl]="
                           contactForm.controls['businessExecutive']
@@ -296,7 +321,7 @@
                     <label for="other" class="radio_btns1">
                       <input
                         type="checkbox"
-                        class="text-field"
+                        class="text-field checkboxbtn"
                         id="other"
                         [formControl]="contactForm.controls['other']"
                         (change)="toggleOther($event)"
@@ -320,11 +345,7 @@
                 />
                 <span>Sign me up for the 1851 newsletter</span>
               </label>
-              <app-error-message
-                *ngIf="isSubmitted"
-                class="full-width"
-                [control]="contactForm.controls['newsletter_signup']"
-              ></app-error-message>
+              <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
             </div>
             <button
               type="button"
@@ -332,7 +353,7 @@
               (click)="onContactSubmit(contactForm)"
             >
               SUBMIT
-              <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+              <span><fa-icon [icon]="faAngleRight"></fa-icon></span>
             </button>
             <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
           </form>
@@ -357,7 +378,7 @@
           </div>
           <h2 class="text-uppercase">THANK YOU</h2>
           <a href="#"
-            ><i class="fa fa-angle-left" aria-hidden="true"></i>BACK TO
+            ><fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO
             HOMEPAGE</a
           >
         </div>

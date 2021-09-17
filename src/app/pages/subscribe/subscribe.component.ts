@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 
 @Component({
@@ -20,10 +21,12 @@ export class SubscribeComponent implements OnInit {
   publication: any;
   isBrowser: boolean = false;
   contactForm: FormGroup;
-  isSubmitted: boolean = false;
+  isSubmitted: boolean;
   submitErrMsg: string | undefined;
   submitSuccessMsg: string | undefined;
   isSuccess: boolean = false;
+  faAngleRight = faAngleRight;
+  faAngleLeft = faAngleLeft;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -222,6 +225,7 @@ export class SubscribeComponent implements OnInit {
       .postAPI('1851/subscribe', subscribe_form)
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
+          this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;
           this.isSuccess = true;
         } else {
