@@ -1,13 +1,4 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-<<<<<<< HEAD
-import {
-  Component,
-  Inject,
-  OnInit,
-  PLATFORM_ID,
-} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-=======
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import {
   FormBuilder,
@@ -15,7 +6,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,10 +17,6 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
-<<<<<<< HEAD
-
-=======
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 @Component({
   selector: 'app-contacteditorial',
   templateUrl: './contacteditorial.component.html',
@@ -49,11 +35,6 @@ export class ContacteditorialComponent implements OnInit {
   metaData: Meta[] = [];
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   constructor(
     private apiService: ApiService,
     private tstate: TransferState,
@@ -64,16 +45,7 @@ export class ContacteditorialComponent implements OnInit {
     this.contactForm = fb.group({
       first_name: ['', Validators.compose([Validators.required])],
       last_name: ['', Validators.compose([Validators.required])],
-<<<<<<< HEAD
-      email: [
-        '',
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-=======
       email: ['', Validators.compose([Validators.required])],
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
       message: [''],
       currentFranchisee: [''],
       currentFranchiseeOwnsUp10units: [''],
@@ -94,35 +66,12 @@ export class ContacteditorialComponent implements OnInit {
   }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    if(this.tstate.hasKey(RESULT_KEY)){
-      const contactData = this.tstate.get(RESULT_KEY,{});
-=======
     if (this.tstate.hasKey(RESULT_KEY)) {
       const contactData = this.tstate.get(RESULT_KEY, {});
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
       this.data = contactData['data'];
       this.publication = contactData['publication'];
       this.metaData = contactData['meta'];
       this.metaService.setSeo(this.metaData);
-<<<<<<< HEAD
-      this.metaService.setTitle(`Contact Editorial | ${this.publication.title.toUpperCase()}`);
-    }
-    else{
-      const contactData: any = {};
-      const contactApi = this.apiService.getAPI('1851/contact-editorial');
-      const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
-      const metaApi = this.apiService.getAPI(`1851/meta`)
-      
-      forkJoin([contactApi,publicationApi,metaApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
-        contactData['data'] = response[0].data;
-        contactData['publication'] = response[1];
-        contactData['meta'] = response[2].data;
-        this.metaService.setSeo(contactData['meta']);
-        this.metaService.setTitle(`Contact Editorial | ${contactData['publication'].title.toUpperCase()}`);
-      });
-      this.tstate.set(RESULT_KEY,contactData);
-=======
       this.metaService.setTitle(
         `Contact Editorial | ${this.publication.title.toUpperCase()}`
       );
@@ -148,7 +97,6 @@ export class ContacteditorialComponent implements OnInit {
           );
         });
       this.tstate.set(RESULT_KEY, contactData);
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     }
   }
 
@@ -162,13 +110,8 @@ export class ContacteditorialComponent implements OnInit {
     }
     return null;
   }
-<<<<<<< HEAD
-  
-  toggleCurrent(e:any) {
-=======
 
   toggleCurrent(e: any) {
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     $('.current-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['currentFranchisee'].setValue('');
@@ -179,11 +122,7 @@ export class ContacteditorialComponent implements OnInit {
     }
     return;
   }
-<<<<<<< HEAD
-  toggleProspective(e:any) {
-=======
   toggleProspective(e: any) {
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     $('.prospective-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['prospectiveFranchisee'].setValue('');
@@ -197,11 +136,7 @@ export class ContacteditorialComponent implements OnInit {
     return;
   }
 
-<<<<<<< HEAD
-  toggleExecutive(e:any) {
-=======
   toggleExecutive(e: any) {
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     $('.executive-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['franchiseExecutive'].setValue('');
@@ -211,11 +146,7 @@ export class ContacteditorialComponent implements OnInit {
     return;
   }
 
-<<<<<<< HEAD
-  toggleExecutive1(e:any) {
-=======
   toggleExecutive1(e: any) {
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     $('.executive1-details').slideToggle();
     if (!e.target.checked) {
       this.contactForm.controls['businessExecutive'].setValue('');
@@ -224,11 +155,7 @@ export class ContacteditorialComponent implements OnInit {
     }
     return;
   }
-<<<<<<< HEAD
-  toggleOther(e:any) {
-=======
   toggleOther(e: any) {
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
     if (!e.target.checked) {
       this.contactForm.controls['other'].setValue('');
     }

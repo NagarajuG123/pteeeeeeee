@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ApiService } from 'src/app/_core/services/api.service';
 import {
@@ -10,22 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./home.component.scss']
-})
-export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
@@ -89,5 +75,4 @@ export class HomeComponent implements OnInit {
       email: '',
     });
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }

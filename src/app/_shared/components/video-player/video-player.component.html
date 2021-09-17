@@ -1,6 +1,4 @@
 <div class="w-100 h-100">
-<<<<<<< HEAD
-=======
   <!-- <vg-player
     *ngIf="videoType != 'vimeo' && videoType != 'youtube'"
     (onPlayerReady)="videoPlayerInit($event)"
@@ -9,7 +7,6 @@
       <source src="{{ src }}" type="video/mp4" />
     </video>
   </vg-player> -->
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   <youtube-player
     *ngIf="videoType === 'youtube'"
     [videoId]="id"
@@ -19,11 +16,7 @@
   </youtube-player>
   <div *ngIf="videoType === 'vimeo'">
     <iframe
-<<<<<<< HEAD
-      [src]="srcUrl"
-=======
       [src]="srcUrl | vimeo"
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
       width="256"
       height="144"
       frameborder="0"

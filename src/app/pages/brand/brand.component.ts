@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 
 @Component({
   selector: 'app-brand',
@@ -15,11 +12,6 @@ import { MetaService } from 'src/app/_core/services/meta.service';
   styleUrls: ['./brand.component.scss'],
 })
 export class BrandComponent implements OnInit {
-<<<<<<< HEAD
-  constructor() {}
-
-  ngOnInit(): void {}
-=======
   slug: any;
   type: string = '';
   mostRecent: any = [];
@@ -185,5 +177,4 @@ export class BrandComponent implements OnInit {
         });
     });
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }

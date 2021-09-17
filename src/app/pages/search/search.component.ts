@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
 import {
   ChangeDetectorRef,
   Component,
@@ -16,22 +13,10 @@ import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./search.component.scss']
-})
-export class SearchComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
@@ -561,5 +546,4 @@ export class SearchComponent implements OnInit {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }

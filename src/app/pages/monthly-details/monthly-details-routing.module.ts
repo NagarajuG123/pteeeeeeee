@@ -11,12 +11,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-<<<<<<< HEAD
   exports: [RouterModule],
 })
 export class MonthlyDetailsRoutingModule {}
-=======
-  exports: [RouterModule]
-})
-export class MonthlyDetailsRoutingModule { }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb

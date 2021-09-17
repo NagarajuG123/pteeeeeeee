@@ -1,26 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 
 @Component({
   selector: 'app-monthly-details',
   templateUrl: './monthly-details.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./monthly-details.component.scss']
-})
-export class MonthlyDetailsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   styleUrls: ['./monthly-details.component.scss'],
 })
 export class MonthlyDetailsComponent implements OnInit {
@@ -84,5 +70,4 @@ export class MonthlyDetailsComponent implements OnInit {
         });
       });
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }

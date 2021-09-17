@@ -1,19 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-
-@Component({
-  selector: 'app-author',
-  templateUrl: './author.component.html',
-  styleUrls: ['./author.component.scss']
-})
-export class AuthorComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
@@ -108,5 +93,4 @@ export class AuthorComponent implements OnInit {
   goReadMore(item: any) {
     return this.commonService.readMore(item);
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 }
