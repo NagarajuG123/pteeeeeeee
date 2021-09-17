@@ -22,8 +22,8 @@ export class SubscribeComponent implements OnInit {
   isBrowser: boolean = false;
   contactForm: FormGroup;
   isSubmitted: boolean;
-  submitErrMsg: string | undefined;
-  submitSuccessMsg: string | undefined;
+  submitErrMsg: string = '';
+  submitSuccessMsg: string = '';
   isSuccess: boolean = false;
   faAngleRight = faAngleRight;
   faAngleLeft = faAngleLeft;
@@ -154,7 +154,6 @@ export class SubscribeComponent implements OnInit {
   }
   onContactSubmit(contactForm: FormGroup) {
     this.submitErrMsg = '';
-    this.submitSuccessMsg = '';
     this.isSubmitted = true;
     this.isSuccess = false;
     if (!contactForm.valid) {
@@ -228,6 +227,8 @@ export class SubscribeComponent implements OnInit {
           this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;
           this.isSuccess = true;
+          $('.editors').hide();
+          $('.sucess-message').show();
         } else {
           this.submitErrMsg = result.error.message;
           this.isSuccess = false;

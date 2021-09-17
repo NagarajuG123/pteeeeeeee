@@ -19,7 +19,59 @@ figure {
   margin: 0 auto;
   display: block;
 }
+h5 {
+  font-size: 18px;
+  line-height: 20px;
+  color: $dark_gray_1;
+  font-weight: 400;
+  font-family: $proxiMedium;
+  letter-spacing: 0.8px;
+}
+.subscribepage-wrap {
+  box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  position: relative;
 
+  h4 {
+    letter-spacing: 0.4px;
+  }
+  .contact-editorial-details {
+    padding: 56px 67px 62px 66px;
+    @include desk-lg-below1 {
+      padding: 40px 0 30px 0;
+    }
+    @include tablet-landscape1 {
+      padding: 30px 0 30px 0;
+    }
+    .sucess-message {
+      display: block !important;
+    }
+  }
+  form {
+    padding: 24px 0 15px 0;
+    @include desk-lg-below1 {
+      padding: 20px 0 15px 0;
+    }
+  }
+  h5 {
+    letter-spacing: 0.4px;
+  }
+  .contact-editorial-main {
+    padding: 11px 0 11px 0;
+    @include desk-lg-below1 {
+      padding: 15px 0 25px 0;
+    }
+    @include tablet-landscape1 {
+      padding: 10px 0 15px 0;
+    }
+  }
+  .form-control {
+    border-color: $red;
+  }
+}
 .banner {
   -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
   position: relative;
@@ -43,6 +95,9 @@ figure {
     right: 0;
     margin: 0 auto;
     background: $dark_gray_1;
+    @include tablet-landscape1 {
+      position: static;
+    }
     h1 {
       font-size: 28.92px;
       line-height: 31px;
@@ -51,6 +106,12 @@ figure {
     }
     .termsofuse-banner-content {
       padding: 43px 5px 33px;
+      @include desk-lg-below1 {
+        padding: 20px 5px;
+      }
+      @include tablet-landscape1 {
+        padding: 15px;
+      }
     }
   }
 }
@@ -73,15 +134,10 @@ figure {
   color: $red;
 }
 .editors {
-    h5{
-        padding-left: 20px;
-    }
   .form-group {
     margin: 0;
   }
-  form {
-    padding: 50px 20px 15px;
-  }
+
   ul {
     margin: 0 -6px;
     li {
@@ -324,26 +380,26 @@ h6 {
     width: 274px;
   }
 }
-.signmeup{
-    margin: 0 auto;
-    padding: 0 0 17px 15px;
-    .checks{
+.signmeup {
+  margin: 0 auto;
+  padding: 0 0 17px 15px;
+  .checks {
     color: $light_gray_1;
-        margin: 0;
-    }
-    input{
-        display: none;
-    }
-    span{
-        background: url("/assets/img/unchecked2.png") no-repeat left 2px;
-        padding: 0 0 0 17px;
-        font-size: 12px;
-        line-height:21px;
-        font-weight: normal;
-        font-family: $proxiLight;
-        letter-spacing: 0.4px;
-    }
+    margin: 0;
+  }
+  input {
+    display: none;
+  }
+  span {
+    background: url("/assets/img/unchecked2.png") no-repeat left 2px;
+    padding: 0 0 0 17px;
+    font-size: 12px;
+    line-height: 21px;
+    font-weight: normal;
+    font-family: $proxiLight;
+    letter-spacing: 0.4px;
+  }
 }
-.signmeup input:checked+span {
-    background: url("/assets/img/checked2.png") no-repeat left 2px;
+.signmeup input:checked + span {
+  background: url("/assets/img/checked2.png") no-repeat left 2px;
 }
