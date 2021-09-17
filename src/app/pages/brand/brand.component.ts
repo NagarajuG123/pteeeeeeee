@@ -115,10 +115,10 @@ export class BrandComponent implements OnInit {
 
   getDynamic() {
     this.apiService
-      .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
+      .getAPI(`page/${this.dynamicUrl}?limit=12&offset=${this.scrollOffset}`)
       .subscribe((response) => {
         this.topBlock = response.data;
-        this.dynamicFirst = response.data.stories.slice(0, 10);
+        this.dynamicFirst = response.data.stories;
         this.dynamicSecond = response.data.stories.slice(10, 20);
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
