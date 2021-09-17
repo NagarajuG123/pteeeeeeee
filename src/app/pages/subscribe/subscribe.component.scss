@@ -1,0 +1,349 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.d-flex {
+  -webkit-flex-wrap: wrap;
+  display: flex !important;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+}
+
+.banner {
+  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+  position: relative;
+}
+.contact-banner {
+  figure {
+    img {
+      min-height: 493px;
+      object-fit: cover;
+      height: 522px;
+    }
+  }
+  h1 {
+    letter-spacing: 0.8px;
+  }
+  .termsofuse-banner-main {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    margin: 0 auto;
+    background: $dark_gray_1;
+    h1 {
+      font-size: 28.92px;
+      line-height: 31px;
+      color: $white;
+      font-family: $proxiMedium;
+    }
+    .termsofuse-banner-content {
+      padding: 43px 5px 33px;
+    }
+  }
+}
+
+.contact-editorial-details {
+  margin: 0 auto;
+  padding: 71px 10px 56px;
+  input {
+    font-family: $proxiRegular;
+    height: 39px;
+    &::placeholder {
+      color: $dark_gray_1;
+    }
+  }
+}
+.f_error {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+  color: $red;
+}
+.editors {
+    h5{
+        padding-left: 20px;
+    }
+  .form-group {
+    margin: 0;
+  }
+  form {
+    padding: 50px 20px 15px;
+  }
+  ul {
+    margin: 0 -6px;
+    li {
+      padding: 0 6px 16px;
+    }
+  }
+
+  h6 {
+    font-size: 16px;
+    line-height: 18px;
+    color: $light_gray_1;
+    font-family: $proxiRegular;
+    letter-spacing: 0.4px;
+    padding: 0 0 20px;
+  }
+  button {
+    border: 0;
+    outline: 0;
+    width: 159px;
+    height: 36px;
+    padding: 0 67px 0 32px;
+    cursor: pointer;
+    span {
+      left: auto;
+      right: 0;
+    }
+  }
+  a {
+    font-size: 12px;
+    line-height: 14px;
+    color: $light_gray_1;
+    font-family: " ProximaNova-Light";
+    letter-spacing: 0.4px;
+    margin: 19px 0 0;
+  }
+}
+
+h6 {
+  font-weight: 400;
+}
+
+.back {
+  width: 250px;
+  height: 36px;
+  background: $red;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $white;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 15px 0 67px;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: $dark_red;
+    fa-icon {
+      font-size: 25px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+}
+
+.submit_btn {
+  outline: 0 !important;
+}
+.contact-editorial-main {
+  padding: 19px 0 36px 0;
+  @include desk-lg-below1 {
+    padding: 15px 0 25px 0;
+  }
+  @include tablet-landscape1 {
+    padding: 10px 0 15px 0;
+  }
+  ul {
+    padding: 0 0 0 12px;
+  }
+  label {
+    margin: 0;
+  }
+  input {
+    display: none;
+  }
+  .radio_btns1 {
+    color: $dark_gray_1;
+  }
+  span {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+    font-family: $proxiMedium;
+    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+    padding: 0 0 0 25px;
+    letter-spacing: 0.4px;
+  }
+  .editors-details input:checked + span {
+    background: url("/assets/img/checked1.png") no-repeat left 1px;
+  }
+}
+.contact-editorial-main input:checked + span {
+  background: url("/assets/img/checked.png") no-repeat left 1px;
+}
+.editors-details {
+  padding: 8px 20px 0 46px;
+  display: none;
+  @include desk-lg-below1 {
+    padding: 8px 20px 0 35px;
+  }
+  ul {
+    margin: 0;
+    padding: 6px 20px 0 20px;
+    @include desk-lg-below1 {
+      padding: 6px 0 0 10px;
+    }
+    li {
+      vertical-align: top;
+      padding: 0 16px 0 0;
+    }
+  }
+
+  .radio_btns {
+    color: $light_gray;
+  }
+  span {
+    background: url("/assets/img/unchecked1.png") no-repeat left 1px;
+    padding: 0 0 0 17px;
+    font-size: 11px;
+    line-height: 17px;
+    font-weight: normal;
+    font-family: $proxiRegular;
+    letter-spacing: 0.4px;
+  }
+  strong {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: normal;
+    font-family: $proxiRegular;
+    color: $light_gray;
+    letter-spacing: 0.3px;
+  }
+}
+
+.sucess-message {
+  margin: 0 auto;
+  padding: 32px 4px 66px 1px;
+  display: none;
+  @include desk-lg-below1 {
+    padding: 15px 0 15px 0;
+  }
+  figure {
+    margin: 0 0 0 0px;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  em {
+    font-style: normal;
+    font-size: 70px;
+    line-height: 111px;
+    color: $white;
+    position: absolute;
+    top: 15px;
+    right: 3.4%;
+    background: url("/assets/img/contacteditorial-img3.png") no-repeat left top;
+    width: 111px;
+    height: 111px;
+    @include mobile-portrait {
+      width: 75px;
+      height: 75px;
+      background-size: 75px;
+      right: 3.4%;
+      line-height: 75px;
+      font-size: 46px;
+      top: 9px;
+    }
+  }
+  h3 {
+    color: $dark_gray_2;
+    font-family: $proxiLight;
+    position: absolute;
+    top: 33.4%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    line-height: 28px;
+    strong {
+      font-family: $proxiMedium;
+    }
+    @include mobile-portrait {
+      font-size: 16px;
+      line-height: 20px;
+      top: 28.4%;
+    }
+  }
+  h2 {
+    background: $dark_gray_1;
+    padding: 26px 0 21px 0;
+    font-size: 30.75px;
+    line-height: 32px;
+    color: $white;
+    font-family: $proxiRegular;
+    margin: -81px 0 32px 0;
+    position: relative;
+    z-index: 1;
+    @include mobile-portrait {
+      margin: -70px 0 20px 0;
+      padding: 20px 0 18px 0;
+      font-size: 24px;
+      line-height: 26px;
+    }
+  }
+  a {
+    margin: 0 auto;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    color: $white;
+    background: $red;
+    font-size: 9.1px;
+    display: inline-block;
+    vertical-align: top;
+    fa-icon {
+      font-size: 23px;
+      line-height: 35px;
+      color: $white;
+      padding: 0 10px 0 0;
+      vertical-align: top;
+    }
+  }
+}
+.sucess-message-details {
+  position: relative;
+  width: 380px;
+  margin: 0 auto;
+  @include mobile-portrait {
+    width: 274px;
+  }
+}
+.signmeup{
+    margin: 0 auto;
+    padding: 0 0 17px 15px;
+    .checks{
+    color: $light_gray_1;
+        margin: 0;
+    }
+    input{
+        display: none;
+    }
+    span{
+        background: url("/assets/img/unchecked2.png") no-repeat left 2px;
+        padding: 0 0 0 17px;
+        font-size: 12px;
+        line-height:21px;
+        font-weight: normal;
+        font-family: $proxiLight;
+        letter-spacing: 0.4px;
+    }
+}
+.signmeup input:checked+span {
+    background: url("/assets/img/checked2.png") no-repeat left 2px;
+}

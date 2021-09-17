@@ -1,3 +1,5 @@
+@import "../../../assets/scss/theme-color.scss";
+
 .most-recent,
 .dynamic-story {
   box-shadow: 0 13px 21px rgb(0 0 0 / 18%);
@@ -6,4 +8,311 @@
   -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
   -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
   position: relative;
+}
+.most-popular {
+    background: linear-gradient($dark-gray 385px, $white 0);
+    font-family: Roboto;
+    h2 {
+      font-family: "Ballinger Condensed Medium";
+      font-weight: bold;
+      font-size: 33px;
+      line-height: 40px;
+    }
+    hr {
+      border-color: $primary;
+      background-color: $primary;
+      height: 2px;
+    }
+    .slideItem {
+      font-weight: bold;
+      margin-bottom: 47px;
+      .slide-body {
+        min-height: 130px;
+        padding-top: 31px;
+        padding-bottom: 31px;
+        > span {
+          font-size: 10px;
+          width: 58px;
+          height: 19px;
+        }
+        > h3 {
+          > span {
+            font-size: 49px;
+            line-height: 100%;
+            font-weight: bold;
+          }
+          font-size: 21px;
+        }
+      }
+      .slide-footer {
+        font-family: "Ballinger Condensed";
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+    .subSlideItem {
+      margin-bottom: 47px;
+      .slide-body {
+        > div {
+          > span {
+            font-size: 31px;
+            line-height: 100%;
+            font-weight: bold;
+          }
+          > h3 {
+            font-weight: bold;
+            font-size: 18px;
+          }
+          > small {
+            font-size: 10px;
+            line-height: 12px;
+          }
+          > p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  // carousel
+:host ::ng-deep .owl-carousel {
+    .owl-stage-outer {
+      overflow: hidden;
+      .owl-stage {
+        display: flex;
+        .slideItem {
+          padding: 0 20px;
+          box-sizing: border-box;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .owl-nav {
+      > div {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        background-size: 22px;
+        height: 43px;
+        width: 25px;
+        cursor: pointer;
+        &.owl-prev {
+          background: url("../../../assets/img/left-arrow.png")left top no-repeat;
+          left: -30px;
+          top: 150px;
+        }
+        &.owl-next {
+          background: url("../../../assets/img/right-arrow.png") left top no-repeat;
+          right: -30px;
+          top: 150px;
+        }
+      }
+    }
+  }
+
+  //Spotlight Section
+
+.editorial-section {
+  background: $dark-gray;
+  font-family: Roboto;
+  h2 {
+    font-family: "Ballinger Condensed Medium";
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 40px;
+  }
+  .innerContent {
+    padding: 0 53px;
+  }
+
+.tabs {
+    height: 60px;
+    .prev{
+      img{
+        width: auto;
+        cursor: pointer;
+      }
+    }
+  }
+  .primary-bg {
+    background-color: #eb0444;
+  }
+  .customContainer {
+    max-width: 1210px !important;
+  }
+
+  .customContainer {
+    .innerContent {
+      li {
+        background-color: $white;
+        height: 60px;
+        span {
+          min-width: 132px;
+          height: 100%;
+          color: $light-gray-1;
+          cursor: pointer;
+          font-family: "ProximaNova-Regular";
+          font-weight: bold;
+          font-size: 15px;
+          &.active,
+          &:hover {
+            color: $primary;
+            &::after {
+              content: "";
+              height: 7px;
+              position: absolute;
+              bottom: -20px;
+              width: 7px;
+              border-width: 16px 16px 0 16px;
+              border-style: solid;
+              border-color: $primary transparent transparent transparent;
+            }
+            &::before {
+              content: "";
+              height: 7px;
+              position: absolute;
+              bottom: -5px;
+              width: 100%;
+              background-color: $primary;
+            }
+          }
+        }
+        >small{
+          font-weight: 500;
+          font-size: 12px;
+          font-family: "Ballinger Condensed";
+        }
+        border-color: $light-gray-1;
+      }
+    }
+  }
+}
+a {
+  color: $dark-gray;
+}
+.trending {
+  background-color: #e8eef2;
+  color: #595959;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid #243444;
+  span {
+    color: #eb0444;
+    font-family: "Ballinger Condensed Medium";
+  }
+}
+.tabs-container {
+  > .tabItemList {
+    .items {
+      font-family: "Ballinger Condensed";
+      font-weight: bold;
+      img {
+        width: 100%;
+        min-height: 106px;
+        background-color: $light-gray-1;
+      }
+      > .card-body {
+        padding: 8px 16px 15px;
+        > h6.card-title {
+          font-size: 11px;
+        }
+        > .card-text {
+          font-size: 12px;
+        }
+        > small {
+          font-family: "ProximaNova-Regular";
+          font-weight: 500;
+          font-size: 10px;
+        }
+      }
+    }
+    @media screen and (min-width: 992px) {
+      .row {
+        margin: 0 -5px;
+        .col-md-4 {
+          max-width: 20%;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}
+.items {
+  font-family: "Roboto";
+  .card-body {
+    padding: 1rem 0;
+    h2{
+      font-size: 16px;
+      line-height: 16.7px;
+    }
+    p,
+    p a {
+      font-size: 13px;
+      line-height: 141.19%;
+    }
+  }
+}
+.gray-color {
+  color: #243444;
+}
+.nextLine{
+  &::after {
+      content: "";
+      position: absolute;
+      top: 60%;
+      width: 100%;
+      height: 1px;
+      background-color: #eb0444;
+      transform: translateY(-50%);
+  }
+  .nextBtn {
+      font-family: "ProximaNova-Regular";
+      font-size: 17px;
+      z-index: 1;
+      img{
+          cursor: pointer;
+      }
+  }
+}
+.banner {
+  position: relative;
+  .left-text {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-family: 'Ballinger Condensed';
+    p{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      color: black;
+    }
+    h2{
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 77px;
+      color: black;
+    }
+    button{
+      background-color: #ec0044;
+      color: white;
+      position: relative;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
+.contact-banner {
+  figure {
+    img {
+      min-height: 493px;
+      object-fit: cover;
+      height: 522px;
+    }
+  }
 }

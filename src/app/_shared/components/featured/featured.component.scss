@@ -158,3 +158,32 @@ img {
     }
   }
 }
+
+//Special Feature
+.feature-article-section {
+  .feature-item {
+    padding-bottom: 20px;
+    position: relative;
+    .image-tag {
+      position: absolute;
+      background-color: $primary;
+      color: $white;
+      font-family: "ProximaNova-Semibold";
+      font-size: 12.27px;
+      padding: 4px;
+    }
+    .image-area {
+      background-color: $light-gray-1;
+      height: 126px;
+    }
+    .image-description {
+      padding: 5px;
+      background-color: $feature-article-description;
+      color: $dark-gray;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}

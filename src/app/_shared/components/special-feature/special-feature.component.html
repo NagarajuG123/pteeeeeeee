@@ -2,7 +2,8 @@
   <div class="col-12 col-lg mb-3 mb-sm-0">
     <!-- featured aarticle slider -->
     <div class="row">
-      <h2 class="featured-title pb-2"><strong> SPECIAL FEATURES </strong></h2>
+      <h2 class="featured-title pb-2" *ngIf="slug === '1851'"><strong> SPECIAL FEATURES </strong></h2>
+      <h2 class="featured-title pb-2 text-uppercase" *ngIf="slug !== '1851'"><strong> {{slug}} FEATURES </strong></h2>
       <div class="divider"></div>
       <div class="col-8 pt-4">
         <article>
@@ -70,9 +71,11 @@
                   data-src=""
                   alt="special-featured"
                 />
+                <a routerLink="{{ commonService.readMore(item) }}">
                 <div class="image-description">
                   {{ commonService.formatTitle(item.title) }}
                 </div>
+              </a>
               </div>
             </div>
           </div>

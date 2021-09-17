@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
+import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -29,6 +32,19 @@ export class BrandComponent implements OnInit {
   topBlock: any = [];
   hideTrending: boolean = false;
   hideNews: boolean = false;
+  isBrowser!: boolean;
+  data: Details[] = [];
+  items: Details[] = [];
+  tabName: any;
+  defaultTab!: string;
+  noOfTabsShow = 5;
+  activeTab = 1;
+  skipTab = 0;
+  tab!: string;
+  specialFeatureUrl: string;
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -37,6 +53,37 @@ export class BrandComponent implements OnInit {
     private metaService: MetaService,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {}
+
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: false,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    margin: 10,
+    navSpeed: 700,
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+    ],
+    items:  this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 3,
+      },
+    },
+    nav: true,
+  };
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -69,7 +116,10 @@ export class BrandComponent implements OnInit {
               );
             } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
+              this.specialFeatureUrl = `${this.slug}/brand-latest-stories`;
               this.getMeta();
+              this.getMostPopular();
+              this.getSpotlight();
               if (this.slug !== '1851' && response['ga']) {
                 this.googleAnalyticsService.appendGaTrackingCode(
                   response['ga']['1851_franchise'],
@@ -86,7 +136,68 @@ export class BrandComponent implements OnInit {
         });
     });
   }
+  getMostPopular() {
+    this.apiService
+      .getAPI(`${this.slug}/trending?limit=9&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        if (response.data.length) {
+          this.data  = response.data;
+        }
+      });
+  }
+  getSpotlight(){
+    const spotlightCategoriesApi = this.apiService.getAPI(`1851/spotlights/categories`);
+    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
 
+    forkJoin([spotlightCategoriesApi, publicationApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.tabName = results[0].categories;
+        this.defaultTab = results[0].defaultTab;
+
+        this.apiService.getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=4&offset=0`)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe((result) => {
+            const data: any[] = [];
+            result['data'].forEach((item: any) => {
+              data.push(item);
+            });
+            this.items = data;
+          });
+      });
+  }
+  setActiveTab(val: any, item: any) {
+    this.activeTab = val;
+    this.tab = item?.shortName;
+    this.getData(this.tab);
+  }
+  prev() {
+    if (this.skipTab > 0) {
+      this.skipTab -= 1;
+    } else this.skipTab = 0;
+  }
+  next() {
+    if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
+      this.skipTab += 1;
+    }
+  }
+  getData(tabName: any) {
+    const apiUrl = `1851/spotlight/${tabName.toLowerCase()}`;
+    this.apiService
+      .getAPI(`${apiUrl}?limit=10&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        const data: any[] = [];
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            data.push(item);
+          });
+          this.items = data;
+        }
+      });
+  }
+  
   setParam(slug) {
     if (slug.includes('people')) {
       this.categoryParam = 'people';
@@ -115,11 +226,10 @@ export class BrandComponent implements OnInit {
 
   getDynamic() {
     this.apiService
-      .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
+      .getAPI(`page/${this.dynamicUrl}?limit=12&offset=${this.scrollOffset}`)
       .subscribe((response) => {
         this.topBlock = response.data;
-        this.dynamicFirst = response.data.stories.slice(0, 10);
-        this.dynamicSecond = response.data.stories.slice(10, 20);
+        this.dynamicFirst = response.data.stories;
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
         this.apiService
@@ -134,16 +244,15 @@ export class BrandComponent implements OnInit {
   }
 
   getMoreDynamic() {
-    this.apiService
-      .getAPI(
-        `page/${this.dynamicUrl}?limit=10&offset=${
-          this.dynamicSecond.length + 10
+    this.apiService.getAPI(
+        `page/${this.dynamicUrl}?limit=4&offset=${
+          this.dynamicFirst.length
         }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
         result.data.stories.forEach((element: any) => {
-          this.dynamicSecond.push(element);
+          this.dynamicFirst.push(element);
         });
       });
   }

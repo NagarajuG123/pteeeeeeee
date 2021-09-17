@@ -1,0 +1,80 @@
+<div class="container py-4">
+    <div class="row">
+      <div class="col-12 col-lg mb-3 mb-sm-0">
+        <div class="row">
+          <div>
+            <div class="position-relative">
+              <div class="tag position-absolute text-center top-0 text-uppercase">
+                {{slug}} Spotlight
+              </div>
+              <img
+                appYoutubeImage
+                srcset="{{ featuredData[0]?.media | defaultImage:900:450 }}"
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
+                  (max-width: 992px) 400px,
+                  (max-width: 1200px) 238px,
+                  300px'
+                }}"
+                width="900"
+                height="450"
+                src="/{{ featuredData[0]?.media }}"
+                alt="featured"
+              />
+              <div
+                class="over-layer position-absolute text-capitalize bottom-0 fw-bold w-100">
+                 {{ featuredData[0]?.title }}
+                <a routerLink="{{ commonService.readMore(featuredData[0]) }}" class="stretched-link"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div  class="position-relative col-12 col-sm-6 col-lg-3 align-items-stretch mb-3 mb-sm-0 border-start border-2 latestListing">
+      
+        <ul class="news-list noScrollBar list-group">
+          <li *ngFor="let item of featuredData | slice: 1;index as i "
+          [ngClass]="i === featuredData.length - 1 ? 'pb-0 pb-md-0' : 'pb-2 pb-md-3 mb-2 mb-md-3'">
+            <div class="newsImage me-2 me-md-3">
+              <img
+                appYoutubeImage
+                width="95"
+                height="100"
+                class="img-fluid"
+                data-src="{{ item?.media | defaultImage:121:114 }}"
+                alt="category-feature"
+              />
+            </div>
+            <div>
+              <h3 class="m-0">
+                <a routerLink="/{{ commonService.readMore(item) }}">
+                 {{ item.title }}
+                </a>
+              </h3>
+              <span>By{{ item.author.name }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+<div class="container customContainer py-4">
+      <div class="col-12 sm-6 lg-3 py-4 most-recent">
+        <ul class="row  gy-4">
+          <li class="col-3 gx-4" *ngFor="let item of mostRecent">
+            <a routerLink="/{{ commonService.readMore(item) }}">
+              <img appYoutubeImage
+              width="290"
+              height="160"
+              class="img-fluid"
+              src="{{ item?.media | defaultImage:290:160 }}"
+              alt="category-feature">
+              <div class="d-flex pt-3">
+                <h3><strong>{{ item?.title }}</strong></h3></div>
+                 <h4> {{ item?.short_description }}</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+  </div>
