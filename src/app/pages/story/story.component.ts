@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit, HostListener } from '@angular/core';
-=======
 import {
   Component,
   HostListener,
@@ -28,7 +25,6 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
@@ -36,18 +32,12 @@ import {
   faYoutube,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
-<<<<<<< HEAD
-
-=======
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 @Component({
   selector: 'app-story',
   templateUrl: './story.component.html',
   styleUrls: ['./story.component.scss'],
 })
 export class StoryComponent implements OnInit {
-<<<<<<< HEAD
-=======
   detailsData: any;
   newsData: any;
   adsData: any = [];
@@ -92,7 +82,6 @@ export class StoryComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
   metaData: any;
 
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   faFacebookFIcon = faFacebookF;
   faLinkedinInIcon = faLinkedinIn;
   faYoutubeIcon = faYoutube;
@@ -125,14 +114,6 @@ export class StoryComponent implements OnInit {
       by: 'LOREM IPSUM',
     },
   ];
-<<<<<<< HEAD
-  constructor() {}
-
-  ngOnInit(): void {
-    window.scrollTo(0, 0);
-  }
-
-=======
 
   constructor(
     private apiService: ApiService,
@@ -1057,7 +1038,6 @@ export class StoryComponent implements OnInit {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
   @HostListener('window:scroll', [])
   async onScroll() {
     if (this.bottomReached() && this.enableScroll) {
@@ -1095,10 +1075,6 @@ export class StoryComponent implements OnInit {
     }
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> cc22ff94e7d3c2908354ce718963aa77624b7aeb
 const tabnewsList = [
   {
     media: '../../../assets/dummy-images/f1.jpg',
