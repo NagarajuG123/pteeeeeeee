@@ -1,7 +1,13 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
 .container {
-  width: 970px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 970px !important;
+  margin: 0 auto;
+  display: block;
+  @include desk-lg-below {
+    max-width: 100%;
+  }
 }
 .bws-sitemap {
   padding: 40px 15px !important;
@@ -45,7 +51,7 @@ h6 {
 }
 
 a {
-  color: #2bb3c7;
+  color: $light_blue;
   font-size: 17px;
   font-weight: 400;
 }

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SitemapComponent } from './sitemap.component';
-import { SitemapDetailComponent } from './sitemap-detail/sitemap-detail.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   {
     path: ':year/:month',
-    component: SitemapDetailComponent,
+    component: DetailsComponent,
   },
   {
     path: '**',

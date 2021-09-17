@@ -5,11 +5,11 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
-  selector: 'app-sitemap-detail',
-  templateUrl: './sitemap-detail.component.html',
-  styleUrls: ['./sitemap-detail.component.scss'],
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss'],
 })
-export class SitemapDetailComponent implements OnInit {
+export class DetailsComponent implements OnInit {
   sitemap: Sitemap[] = [];
   year!: any;
   month!: any;
