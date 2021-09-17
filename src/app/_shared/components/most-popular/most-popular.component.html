@@ -40,7 +40,7 @@
             <h3 class="position-relative ps-4 text-white">
               <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
               <strong class="ms-3 d-block">
-                {{ commonService.formatTitle(item.title) }}
+                {{ item.title }}
               </strong>
             </h3>
           </div>
@@ -73,7 +73,7 @@
 
     <owl-carousel-o
       [options]="customOptions"
-      class="d-block position-relative d-sm-none"
+      class="position-relative d-sm-none"
     >
       <ng-template carouselSlide *ngFor="let item of data; index as i">
         <div class="slideItem">

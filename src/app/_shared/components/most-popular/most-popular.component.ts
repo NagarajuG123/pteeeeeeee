@@ -19,6 +19,7 @@ export class MostPopularComponent implements OnInit {
   isBrowser!: boolean;
   data: Details[] = [];
   slug: string = '';
+  customOptions: OwlOptions = {};
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -31,34 +32,9 @@ export class MostPopularComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  customOptions: OwlOptions = {
-    autoplay: true,
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
-    },
-    nav: true,
-  };
-
   ngOnInit(): void {
     this.slug = '1851';
+    this.setOption();
     this.getMostPopular();
   }
 
@@ -78,5 +54,32 @@ export class MostPopularComponent implements OnInit {
         });
       this.tstate.set(RESULT_KEY, mostPopular);
     }
+  }
+  setOption() {
+    this.customOptions = {
+      autoplay: true,
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: ['', ''],
+      responsive: {
+        0: {
+          items: 1,
+        },
+        400: {
+          items: 2,
+        },
+        740: {
+          items: 3,
+        },
+        940: {
+          items: 3,
+        },
+      },
+      nav: true,
+    };
   }
 }

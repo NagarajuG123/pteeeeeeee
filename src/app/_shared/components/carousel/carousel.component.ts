@@ -34,7 +34,7 @@ export class CarouselComponent implements OnInit {
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  
+
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object
@@ -62,18 +62,21 @@ export class CarouselComponent implements OnInit {
       default:
         break;
     }
-    
-      this.apiService.getAPI(apiUrl).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+
+    this.apiService
+      .getAPI(apiUrl)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
         if (response && response.data) {
           this.list = response.data;
-  
+
           if (!this.list.length) {
             this.slideConfig = {};
             this.noData.emit();
           } else {
             this.slideConfig = {
               slidesToShow:
-              this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
+                this.list.length > 2 ? 3 : this.list.length > 1 ? 2 : 1,
               slidesToScroll: 1,
               responsive: [
                 {
@@ -92,7 +95,6 @@ export class CarouselComponent implements OnInit {
             };
           }
         }
-        
       });
   }
 
