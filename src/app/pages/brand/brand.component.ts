@@ -119,7 +119,6 @@ export class BrandComponent implements OnInit {
       .subscribe((response) => {
         this.topBlock = response.data;
         this.dynamicFirst = response.data.stories;
-        this.dynamicSecond = response.data.stories.slice(10, 20);
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicFirst[0].meta);
         this.apiService
@@ -134,16 +133,15 @@ export class BrandComponent implements OnInit {
   }
 
   getMoreDynamic() {
-    this.apiService
-      .getAPI(
-        `page/${this.dynamicUrl}?limit=10&offset=${
-          this.dynamicSecond.length + 10
+    this.apiService.getAPI(
+        `page/${this.dynamicUrl}?limit=4&offset=${
+          this.dynamicFirst.length
         }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
         result.data.stories.forEach((element: any) => {
-          this.dynamicSecond.push(element);
+          this.dynamicFirst.push(element);
         });
       });
   }

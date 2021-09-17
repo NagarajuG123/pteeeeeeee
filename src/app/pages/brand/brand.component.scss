@@ -45,3 +45,40 @@
       }
   }
 }
+.banner {
+  position: relative;
+  .left-text {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-family: 'Ballinger Condensed';
+    p{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      color: black;
+    }
+    h2{
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 77px;
+      color: black;
+    }
+    button{
+      background-color: #ec0044;
+      color: white;
+      position: relative;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
+.contact-banner {
+  figure {
+    img {
+      min-height: 493px;
+      object-fit: cover;
+      height: 522px;
+    }
+  }
+}
