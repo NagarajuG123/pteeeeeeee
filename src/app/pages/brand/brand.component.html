@@ -17,73 +17,9 @@
   </div>
   <app-advertisement [slug]="slug" [type]="'Main Site Ad'"></app-advertisement>
 </div>
+
 <div *ngIf="type === 'category_page'">
-  <div class="empty"></div>
-
-  <app-featured
-    [type]="'Category'"
-    [slug]="slug"
-    [apiUrl]="apiUrl"
-  ></app-featured>
-
-  <app-category-trending [data]="categoryTrending" [subTitle]="categoryParam">
-  </app-category-trending>
-
-  <app-advertisement
-    [slug]="'1851'"
-    [type]="'Main Site Ad'"
-  ></app-advertisement>
-
-  <div *ngIf="mostRecent" class="frannews most-recent">
-    <div class="container">
-      <div class="frannews-details col-xl-11">
-        <div class="frannews-top d-flex">
-          <div class="frannews-top-left col-md-6 p-0">
-            <ul class="desktop-only">
-              <li class="header-title">
-                <h4 class="text-uppercase">
-                  <strong>MOST RECENT</strong>
-                </h4>
-              </li>
-              <li>
-                <h4 class="text-uppercase">
-                  <span>{{ categoryParam }}</span>
-                </h4>
-              </li>
-            </ul>
-            <ul class="mobile-only">
-              <li>
-                <h4 class="text-uppercase">
-                  <span
-                    ><strong>MOST RECENT | </strong>{{ categoryParam }}</span
-                  >
-                </h4>
-              </li>
-            </ul>
-          </div>
-          <div class="frannews-top-right col-md-6">
-            <a
-              routerLink="/{{ readMore(mostRecent[0]) }}"
-              fragment="{{ categoryParam }}"
-              class="float-right"
-            >
-              READ MORE
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <app-five-column
-          [slug]="'1851'"
-          [contents]="mostRecent"
-          [type]="'categoryPage'"
-          [hasMore]="hasMore"
-          [typeSlug]="categoryParam"
-          (more)="getMoreData()"
-        ></app-five-column>
-      </div>
-    </div>
-  </div>
+   <app-category [slug]="slug"></app-category>
 </div>
 
 <div *ngIf="type === 'dynamic_page'">

@@ -11,12 +11,14 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 import { CategoryTrendingComponent } from './category-trending/category-trending.component';
+import { CategoryComponent } from './category/category.component';
 @NgModule({
   declarations: [
     BrandComponent,
     InfoComponent,
     InfoTopComponent,
     CategoryTrendingComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,
