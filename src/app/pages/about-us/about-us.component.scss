@@ -365,6 +365,11 @@ p {
       flex-direction: column;
     }
   }
+  @include tablet-landscape {
+    #recaptchaBlock {
+      flex-direction: column;
+    }
+  }
   @include tablet-landscape1 {
     #recaptchaBlock {
       flex-direction: column;

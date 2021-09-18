@@ -118,11 +118,17 @@ figure {
   }
   form {
     padding: 50px 20px 15px;
+    @include desk-lg-below1 {
+      padding: 20px 0 15px 0;
+    }
   }
   ul {
     margin: 0 -6px;
     li {
       padding: 0 6px 16px;
+      @include desk-lg-below1 {
+        padding: 0 6px 12px 6px;
+      }
     }
   }
 
@@ -133,6 +139,9 @@ figure {
     font-family: $proxiRegular;
     letter-spacing: 0.4px;
     padding: 0 0 20px;
+    @include desk-lg-below1 {
+      padding: 0 0 12px 0;
+    }
   }
   button {
     border: 0;

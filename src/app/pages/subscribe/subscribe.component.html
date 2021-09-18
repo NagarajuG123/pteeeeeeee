@@ -37,7 +37,7 @@
             (ngSubmit)="onContactSubmit(contactForm)"
           >
             <ul class="d-flex">
-              <li class="col-xl-12">
+              <li class="col-12">
                 <div class="form-group">
                   <input
                     type="email"
@@ -53,7 +53,7 @@
                 </div>
               </li>
             </ul>
-            <div  *ngIf="isCheckBoxVisible" class="contact-editorial-main">
+            <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
               <h6>Click all of which apply to you:</h6>
               <ul class="pl-2">
                 <li>
@@ -333,7 +333,7 @@
               </ul>
             </div>
             <div
-              *ngIf="isCheckBoxVisible" 
+              *ngIf="isCheckBoxVisible"
               class="signmeup text-center col-sm-8 col-12"
             >
               <label for="news" class="checks">
@@ -345,8 +345,9 @@
                 />
                 <span>Sign me up for the 1851 newsletter</span>
               </label>
-              <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
             </div>
+            <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+
             <button
               type="button"
               class="back d-block submit_btn"
@@ -355,11 +356,10 @@
               SUBMIT
               <span><fa-icon [icon]="faAngleRight"></fa-icon></span>
             </button>
-            <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
           </form>
         </div>
         <div
-          *ngIf="isSubmitted && isSuccess"
+          *ngIf="submitSuccessMsg"
           class="sucess-message col-xl-10 text-center"
         >
           <div class="sucess-message-details">
@@ -377,9 +377,8 @@
             </h3>
           </div>
           <h2 class="text-uppercase">THANK YOU</h2>
-          <a href="#"
-            ><fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO
-            HOMEPAGE</a
+          <a href="/"
+            ><fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO HOMEPAGE</a
           >
         </div>
       </div>
