@@ -6,11 +6,17 @@
   img {
     position: relative;
     width: 100%;
-    height: 80vh;
+    // height: 80vh;
+    @include media("<md") {
+      height: 600px;
+    }
+    @include media("<sm") {
+      height: 600px;
+    }
   }
   .text-box {
     position: absolute;
-    bottom: 15vh;
+    top: 80vh;
     left: 20vw;
     margin-left: -50px;
     border-top: 3px solid $dark-gray;
@@ -19,6 +25,14 @@
     width: 60%;
     margin: 0 auto;
     background-color: $white;
+    @include media("<md") {
+      top: 55vh;
+      width: 70%;
+    }
+    @include media("<sm") {
+      top: 55vh;
+      width: 70%;
+    }
     .title {
       margin: 0;
       color: $dark-gray;
@@ -27,13 +41,19 @@
       font-size: 44px;
     }
     .description {
-      width: 70%;
+      width: 430px;
       margin: 0 auto;
       color: $primary;
       font-family: "Ballinger Condensed";
       font-weight: bold;
       font-size: 20px;
       margin: 5px auto;
+      @include media("<md") {
+        width: 230px;
+      }
+      @include media("<sm") {
+        width: 230px;
+      }
     }
   }
 }
@@ -126,13 +146,6 @@
 
         @include media("<md") {
           margin-bottom: 10px;
-          &::before {
-            font-family: "ProximaNova-Bold";
-            content: "Industry";
-            display: block;
-            font-weight: 700;
-            font-size: 16px;
-          }
         }
       }
       .list-data--number {
@@ -144,13 +157,6 @@
 
         @include media("<md") {
           margin-bottom: 10px;
-          &::before {
-            font-family: "ProximaNova-Bold";
-            content: "Industry";
-            display: block;
-            font-weight: 700;
-            font-size: 16px;
-          }
         }
       }
     }
@@ -167,15 +173,7 @@
         @include media("<md") {
           font-size: 18px;
           margin-bottom: 10px;
-          &::before {
-            font-family: "ProximaNova-Bold";
-            content: "Latest Story";
-            display: block;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none !important;
-            color: $dark-gray;
-          }
+          text-align: center;
         }
       }
     }
@@ -193,4 +191,7 @@
   .list-data--section {
     flex: 1 1 100%;
   }
+}
+.otherBrand {
+  height: 200px;
 }

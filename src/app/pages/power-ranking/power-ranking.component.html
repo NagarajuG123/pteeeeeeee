@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div>
   <div class="top-container">
     <img
       src="assets/img/powerranking.jpg"
@@ -73,15 +73,15 @@
         </div>
       </div>
       <!-- bottom -->
-      <div class="list-data--wrapper isRow list-data-wrapper--2">
+      <div class="list-data--wrapper otherBrand list-data-wrapper--2">
         <div *ngFor="let item of items.slice(9, 13)">
           <div class="row justify-content-center align-items-center">
-            <div class="col-md-4 list-data--item rankCol">
+            <div class="col-xs-4 list-data--item rankCol">
               <p class="list-data--bottom-rank">
                 {{ item.rank }}
               </p>
             </div>
-            <div class="col-md-8 list-data--item brandCol">
+            <div class="col-xs-8 list-data--item brandCol">
               <a routerLink="/{{ item.slug }}">
                 <img
                   class="list-data--itemImg"
@@ -94,15 +94,15 @@
           </div>
         </div>
       </div>
-      <div class="list-data--wrapper isRow list-data-wrapper--1">
+      <div class="list-data--wrapper otherBrand list-data-wrapper--1">
         <div class="col-md-3" *ngFor="let item of items.slice(13, 17)">
           <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 list-data--item rankCol">
+            <div class="col-xs-4 list-data--item rankCol">
               <p class="list-data--bottom-rank">
                 {{ item.rank }}
               </p>
             </div>
-            <div class="col-md-8 list-data--item brandCol">
+            <div class="col-xs-8 list-data--item brandCol">
               <a routerLink="/{{ item.slug }}">
                 <img
                   class="list-data--itemImg"
