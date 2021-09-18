@@ -1,9 +1,6 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/variables.scss";
 
-.author-frannews {
-  padding: 0px;
-}
 a {
   display: inline-block;
   vertical-align: top;
@@ -62,6 +59,9 @@ img {
     }
   }
 }
+.author-frannews {
+  padding: 0px;
+}
 .frannews-bottom-details {
   text-decoration: none;
   width: 100%;
@@ -113,25 +113,8 @@ img {
     margin: 10px 0px 10px 0px;
   }
 }
-.frannews-bottom {
-  padding: 49px 0 0 0;
-  @include desk-lg-below1 {
-    padding: 25px 0 0 0;
-  }
-  @include tablet-landscape1 {
-    padding: 20px 0 0 0;
-  }
-  ul {
-    li {
-      padding: 0 15px 47px 15px;
-      @include tablet-landscape {
-        padding: 0 15px 25px 15px;
-      }
-      @include mobile-landscape1 {
-        padding: 0 0 20px 0;
-      }
-    }
-  }
+.author p {
+  color: $white;
 }
 .loadmore-btn {
   fa-icon {

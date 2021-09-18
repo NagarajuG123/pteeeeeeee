@@ -60,13 +60,13 @@
             [typeSlug]="'editorials'"
           ></app-five-column>
           <a
-            routerLink="/{{ goReadMore(editorials[0])}}"
+            routerLink="/{{ goReadMore(editorials[0]) }}"
             fragment="editorials"
             class="readmore d-block text-uppercase"
           >
             READ MORE
             <span class="d-block text-center">
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              <fa-icon [icon]="faAngleRight"></fa-icon>
             </span>
           </a>
         </div>
@@ -87,7 +87,7 @@
           >
             READ MORE
             <span class="d-block text-center">
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              <fa-icon [icon]="faAngleRight"></fa-icon>
             </span>
           </a>
         </div>
