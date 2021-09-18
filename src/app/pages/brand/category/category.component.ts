@@ -15,6 +15,7 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 })
 export class CategoryComponent implements OnInit {
   @Input() slug!: string;
+  @Input() apiUrl: string;
 
   isBrowser: boolean;
   featuredData: Details[] =[];
@@ -37,15 +38,17 @@ export class CategoryComponent implements OnInit {
     const FEATURE_KEY = makeStateKey<any>('featureState');
     const featured = this.state.get(FEATURE_KEY, null as any);
     if (!featured) {
-      const featureApi = this.apiService.getAPI(`1851/${this.slug}/featured?limit=4&offset=0`);
+      const featureApi = this.apiService.getAPI(`${this.apiUrl}?limit=4&offset=0`);
       const mostRecentApi = this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=12&offset=0`);
+      const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
 
       const featured: any = {};
-      forkJoin([featureApi, mostRecentApi])
+      forkJoin([featureApi, mostRecentApi, metaApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           featured['data'] = results[0].data;
           featured['mostRecent'] = results[1].data;
+          this.metaService.setSeo(results[2].data);
           this.state.set(FEATURE_KEY, featured as any);
         });
     } else {
