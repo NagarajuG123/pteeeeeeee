@@ -157,3 +157,11 @@
     }
   }
 }
+.video-btn{
+  cursor: pointer;
+  position: relative;
+  .vide-play{
+    position: absolute;
+    z-index: 1000;
+  }
+}
