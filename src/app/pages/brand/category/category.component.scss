@@ -1,4 +1,4 @@
-@import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/variables.scss";
 
 
 @media screen and (min-width: 992px) {
@@ -15,11 +15,11 @@
     height: calc(100% - 27px);
     width: calc(100% - 30px);
     a {
-      color: $primary;
+      color: $red;
     }
     li {
       display: flex;
-      border-bottom: 1px solid #e8eef2;
+      border-bottom: 1px solid $border-color;
       &:last-child {
         border: 0;
       }
@@ -29,7 +29,7 @@
       h3 {
         font-weight: bold;
         font-size: 17.5px;
-        color: $primary;
+        color: $red;
       }
       span {
         font-size: 10px;
@@ -44,15 +44,15 @@
     }
   }
   .tag {
-    background: #eb0444;
-    font-family: "Ballinger Condensed Regular";
-    color: #ffffff;
+    background: $red;
+    font-family: $balingerRegular;
+    color: $white_2;
     font-weight: bold;
     font-size: 17.1429px;
     box-sizing: border-box;
   }
   .over-layer {
-    font-family: "Roboto", sans-serif;
+    font-family: $roboto, sans-serif;
     background: rgba(232, 238, 242, 0.67);
     font-size: 36px;
   }
@@ -63,15 +63,15 @@
           font-style: normal;
           font-size: 16px;
           line-height: 18.72px;
-          font-family: 'Ballinger Condensed Regular';
-          color: #243444;
+          font-family: $balingerRegular;
+          color: $dark-gray;
       }
       h4{
           font-weight: 600;
           font-style: normal;
           font-size: 12.97px;
           line-height: 16.7px;
-          font-family: 'Ballinger Condensed Regular';
-          color: #243444;
+          font-family: $balingerRegular;
+          color: $dark-gray;
       }
   }
