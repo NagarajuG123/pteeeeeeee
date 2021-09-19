@@ -1,6 +1,25 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+  @include desk-lg-below {
+    max-width: 100%;
+  }
+}
+.banner {
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -webkit-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+
+  position: relative;
+  z-index: 5;
+}
+.d-flex {
+  -webkit-flex-wrap: wrap;
+  display: flex !important;
+}
 a {
   display: inline-block;
   vertical-align: top;
@@ -181,6 +200,18 @@ img {
     font-family: "ProximaNova-Medium";
     letter-spacing: 0.3px;
     padding: 0 0 66px 0;
+    @include tablet-landscape {
+      font-size: 23px;
+      line-height: 25px;
+    }
+    @include tablet-landscape1 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    @include mobile-landscape1 {
+      font-size: 18px;
+      line-height: 21px;
+    }
     @include desk-lg-below {
       padding: 0 0 20px 0;
     }
