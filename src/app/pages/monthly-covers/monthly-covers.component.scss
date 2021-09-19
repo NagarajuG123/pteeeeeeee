@@ -1,8 +1,10 @@
+@import '../../../assets/scss/media.scss';
+@import  '../../../assets/scss/theme-color.scss';
 $bodyBackgroundColor: #273444;
 $whiteColor: #fff;
 $subTitleColor: #c54c64;
 $textColor: #18222e;
-$cardGroupSpacing: 20px;
+$cardGroupSpacing: 14px;
 $defaultTransition: all 0.35s ease;
 // Global Class
 .c-ml--auto {
@@ -32,17 +34,42 @@ $defaultTransition: all 0.35s ease;
       align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
-      max-width: 1360px;
       margin: 0 auto;
+      @include media("<md"){
+        display: flex;
+        flex-flow: column;
+      }
+      @include media("<lg"){
+        justify-content: center;
+      }
       .c-card-box--col {
         flex: 1 0 calc(50% - 30px);
-        max-width: calc(50% - 30px);
+        max-width: calc(50% - 66px);
         padding: 15px;
+        @include media("<md"){
+          flex: auto;
+          max-width: calc(100% - 0px) !important ;
+          padding: 15px;
+        }
+        @include media("<lg"){
+          flex: 0 0 100%;
+          padding: 6px;
+          max-width: calc(50% - 0px) ;
+        }
       }
     }
     .c-card-box--contentRow {
       background-color: $whiteColor;
-      max-width: 100%;
+      .w-100{
+        max-width: 50%;
+        @include media("<md"){
+          
+        }
+        @include media("<lg"){
+        max-width: 100%;
+          
+        }
+      }
     }
     .c-card-box--contentGroup {
       .c-card-box--subTitle {
@@ -63,8 +90,16 @@ $defaultTransition: all 0.35s ease;
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -240px;
-        margin-left: 20px;
+        margin-top: -280px;
+        margin-left: 270px;
+        @include media("<md"){
+          margin-top: 0px;
+         margin-left: 0px;
+        }
+        @include media("<lg"){
+          margin-top: 0px;
+         margin-left: 0px;
+        }
         .card-image {
           max-height: 800px;
         }
@@ -76,12 +111,17 @@ $defaultTransition: all 0.35s ease;
 
     .c-card-box--group {
       display: flex;
+      flex-flow: row wrap;
       align-self: flex-start;
       gap: $cardGroupSpacing;
       margin-top: 10px;
       .c-card-box--item {
         flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
         max-width: calc(33.3333% - #{$cardGroupSpacing});
+        @include media("<md"){
+          flex: 1 0 100%;
+          max-width: 100%;
+        }
       }
       .c-card-box--itemTitle {
         color: $subTitleColor;
@@ -111,12 +151,35 @@ $defaultTransition: all 0.35s ease;
 
 //Bottom Section
 .monthy-cover {
+  .monthly-cover-wrapper{
+    flex-flow: row wrap;
+    width: 90%;
+    justify-content: center;
+    margin: 40px 0 0 155px;
+    @include media("<md"){
+      width: 100%;
+      margin: 40px 0 0 0 !important;
+    }
+    @include media("<lg"){
+      margin: 40px 0 0 40px ;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    margin-top: 45px;
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+    transform: translateY(-50%);
+  }
   h2 {
     font-family: "Ballinger Condensed";
     padding-left: 20px;
     font-weight: 700;
     line-height: 42px;
     font-style: normal;
+    margin-left:75px;
   }
   .monthly-covers-bottom {
     .monthly-covers1 {
@@ -129,7 +192,7 @@ $defaultTransition: all 0.35s ease;
     figure {
       img {
         display: block;
-        width: 100%;
+        width: 100% !important;
       }
     }
   }
@@ -138,23 +201,46 @@ $defaultTransition: all 0.35s ease;
     max-width: 300px;
   }
   .nextLine {
-    &::after {
-      content: "";
-      position: absolute;
-      top: 98%;
-      width: 100%;
-      height: 1px;
-      background-color: #eb0444;
-      transform: translateY(-50%);
-    }
-    .nextBtn {
-      font-family: "ProximaNova-Regular";
-      font-size: 17px;
-      z-index: 1;
-      img {
-        cursor: pointer;
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 98%;
+    //   width: 100%;
+    //   height: 1px;
+    //   background-color: #eb0444;
+    //   transform: translateY(-50%);
+    // }.
+    .customContainer{
+      div{
+        width: 220px;
+        padding: 0 18px;
+        @include media ("<md"){
+          width: 157px;
+          padding: 0 7px;
+        }
+        .nextBtn {
+          font-family: "ProximaNova-Regular";
+          font-size: 15px;
+          z-index: 1;
+          margin-top: 35px;
+          img {
+            cursor: pointer;
+          }
+        }
       }
     }
+  }
+  .see-more--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $primary ;
+  }
+  .see-more-right--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $primary ;
   }
 }
 .gray-color {
