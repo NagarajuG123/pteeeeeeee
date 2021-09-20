@@ -126,7 +126,7 @@
               </div>
             </form>
           </div>
-          <ul class="submenu-list mb-0">
+          <ul class="submenu-list mb-0" *ngIf="brandSlug === '1851'">
             <li class="d-block">
               <h3>
                 <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
@@ -193,6 +193,107 @@
               <hr class="mb-2" />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
                 <a href="{{ menu.url }}">{{ menu.title }}</a>
+              </h3>
+            </li>
+          </ul>
+
+          <ul class="submenu-list mb-0" *ngIf="brandSlug !== '1851'">
+            
+            <li>
+              <h3><a routerLink="/"> Return to Main Site </a></h3>
+              <h3><a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a></h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    [href]="header?.sidebar?.pdf?.url"
+                    target="_blank"
+                    >Download pdf
+                  </a>
+                </li>
+                <li
+                  class="ms-1"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    [href]="header?.sidebar?.website"
+                    target="_blank"
+                    >Visit Website
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h3>Social Media</h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let item of header?.sidebar?.socialMedia"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    [href]="item.url"
+                    target="_blank"
+                    >{{ item.title }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <hr />
+              <h3>
+                <a routerLink="/{{ brandSlug }}">{{ brandTitle }} Most read Stories</a>
+              </h3>
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let story of header?.sidebar?.articles "
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                    "
+                    [routerLink]="commonService.readMore(story)"
+                    target="_blank"
+                    >{{ story.title }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr class="mb-2" />
+              <h3 *ngIf="header?.sidebar?.login">
+                <a href="{{ header?.sidebar?.login }}"> Login</a>
+              </h3>
+              <hr class="mb-2" />
+              <h3 *ngIf="header?.sidebar?.about">
+                <a routerLink="/{{ header?.sidebar?.about }}">About {{ brandTitle }}</a>
+              </h3>
+              <h3>
+                <a routerLink="">Contact {{ brandTitle }}</a>
               </h3>
             </li>
           </ul>
