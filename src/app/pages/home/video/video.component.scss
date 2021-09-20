@@ -174,3 +174,15 @@
 .badge {
   background-color: $red;
 }
+.modal-body {
+  padding: 0rem !important;
+}
+.btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
+}

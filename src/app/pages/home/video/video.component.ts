@@ -14,6 +14,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class VideoComponent implements OnInit {
   videoData: Details[] = [];
   videoUrl: string;
+  url: string;
   openVideoPlayer = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -65,5 +66,9 @@ export class VideoComponent implements OnInit {
     //     this.videoData = videoData['data'];
     //     this.videoUrl =  videoData['url'];
     //   }
+  }
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
   }
 }

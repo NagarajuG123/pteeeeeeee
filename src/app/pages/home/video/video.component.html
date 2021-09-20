@@ -26,13 +26,14 @@
             class="c-video-section--box"
             *ngFor="let item of videoData | slice: 0:2; index as i"
           >
-            <!-- <div class="c-video-section--boxContent"> -->
             <div class="badge badge-primary">FEATURED Video</div>
             <a
               *ngIf="item?.media"
               (click)="openVideoPlayer = true"
-              data-bs-target="#videoModal{{ index }}"
+              attr.data-src="{{ item.media.url }}"
+              data-bs-target="#videoModal"
               data-bs-toggle="modal"
+              (click)="updateVideoUrl(item.media.url)"
               href="#"
               class="
                 video-btn
@@ -55,37 +56,6 @@
                 alt="Play"
                 class="img-fluid vide-play"
               />
-              <!-- modal -->
-              <div
-                class="modal fade"
-                id="videoModal{{ index }}"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-                (click)="openVideoPlayer = true"
-              >
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <button
-                        type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                        (click)="openVideoPlayer = false"
-                      ></button>
-                      <iframe
-                        [src]="item?.media?.url | safeUrl"
-                        frameborder="0"
-                        width="100%"
-                        height="496px"
-                        allowfullscreen
-                      >
-                      </iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </a>
             <!-- </div> -->
             <div class="c-video-section--title">
@@ -106,12 +76,13 @@
             *ngFor="let item of videoData | slice: 2:10; let i = index"
           >
             <div class="c-video-section--box">
-              <!-- <div class="c-video-section--boxContent"> -->
               <a
                 *ngIf="item?.media"
-                href="#"
+                attr.data-src="{{ item.media.url }}"
                 data-bs-target="#videoModal"
                 data-bs-toggle="modal"
+                (click)="updateVideoUrl(item.media.url)"
+                href="#"
                 class="
                   video-btn
                   c-video-section--playBtn
@@ -133,13 +104,43 @@
                   class="img-fluid vide-play"
                 />
               </a>
-              <!-- </div> -->
               <div class="c-video-section--title">
                 {{ item.title }}
               </div>
             </div>
           </ng-template>
         </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="videoModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    (click)="openVideoPlayer = true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="btn-close btn-close-black"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="openVideoPlayer = false"
+          ></button>
+          <iframe
+            [src]="url | safeUrl"
+            frameborder="0"
+            width="100%"
+            height="496px"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
