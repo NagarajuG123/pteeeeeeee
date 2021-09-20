@@ -18,7 +18,7 @@ export class PowerRankingComponent implements OnInit {
   data: Powerranking[] = [];
   contents: Brandsrank = {};
   metaData: Meta[] = [];
-  publication!: string;
+  publication!: any;
   items: Brandsrank[] = [];
 
   private onDestroySubject = new Subject();
@@ -31,33 +31,32 @@ export class PowerRankingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const powerRankingData: any = this.tstate.get(RESULT_KEY, {});
-      this.data = powerRankingData['data'];
-      this.contents = powerRankingData['contents'];
-      this.items = powerRankingData['contents'].brands;
-      this.metaData = powerRankingData['meta'];
-      this.publication = powerRankingData['publicationTitle'];
-    } else {
-      const powerRankingData: any = {};
-      const powerApi = this.apiService.getAPI(`1851/power-ranking`);
-      const publicationApi = this.apiService.getAPI(
-        '1851/publication-instance'
-      );
+    // if (this.tstate.hasKey(RESULT_KEY)) {
+    //   const powerRankingData: any = this.tstate.get(RESULT_KEY, {});
+    //   this.data = powerRankingData['data'];
+    //   this.contents = powerRankingData['contents'];
+    //   this.items = powerRankingData['contents'].brands;
+    //   this.metaData = powerRankingData['meta'];
+    //   this.publication = powerRankingData['publicationTitle'];
+    // } else {
+    //   const powerRankingData: any = {};
+    const powerApi = this.apiService.getAPI(`1851/power-ranking`);
+    const publicationApi = this.apiService.getAPI('1851/publication-instance');
 
-      forkJoin([powerApi, publicationApi])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((result) => {
-          powerRankingData['data'] = result[0];
-          powerRankingData['contents'] = result[0].data;
-          powerRankingData['meta'] = result[0].meta;
-          powerRankingData['publicationTitle'] = result[1].title;
-          this.metaService.setSeo(powerRankingData['meta']);
-          this.metaService.setTitle(
-            `Power Rankings | Franchise Brands | ${powerRankingData['publicationTitle']}`
-          );
-        });
-      this.tstate.set(RESULT_KEY, powerRankingData);
-    }
+    forkJoin([powerApi, publicationApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        this.data = result[0];
+        this.contents = result[0].data;
+        this.items = result[0].data.brands;
+        this.metaData = result[0].meta;
+        this.publication = result[1].title;
+        this.metaService.setSeo(this.metaData);
+        this.metaService.setTitle(
+          `Power Rankings | Franchise Brands | ${this.publication.title}`
+        );
+      });
+    //   this.tstate.set(RESULT_KEY, powerRankingData);
+    // }
   }
 }
