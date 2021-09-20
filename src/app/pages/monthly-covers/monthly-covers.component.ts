@@ -32,6 +32,7 @@ export class MonthlyCoversComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCoverData();
     if (this.tstate.hasKey(RESULT_KEY)) {
       const coverData = this.tstate.get(RESULT_KEY, {});
       this.firstBlock = coverData['first'];
@@ -80,6 +81,17 @@ export class MonthlyCoversComponent implements OnInit {
         });
       });
     this.cdr.detectChanges();
+  }
+  getCoverData() {
+    const offset = 10;
+    this.apiService
+      .getAPI(`1851/journal/monthly-covers?limit=10&offset=${offset}`)
+      .subscribe((response) => {
+        this.hasMore = response.has_more;
+        response.data.forEach((item: any) => {
+          this.secondBlock.push(item);
+        });
+      });
   }
   readMoreCover(item: any) {
     let slug = '';
