@@ -1,4 +1,4 @@
-<div class="trending mb-1" *ngIf=" slug === '1851'">
+<div class="trending mb-1" *ngIf="slug === '1851'">
   <div class="container-fluid text-center py-2">
     <span class="pe-md-5">
       <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
@@ -23,22 +23,25 @@
             <div class="tag position-absolute text-center top-0 text-uppercase">
               Feature Article
             </div>
-            <img
-              appYoutubeImage
-              srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            <a
+              routerLink="{{ commonService.readMore(item) }}"
+              fragment="featured"
+              ><img
+                appYoutubeImage
+                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
             {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-              class="img-fluid"
-              sizes="{{
-                '(max-width: 576px) 555px,
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
                 300px'
-              }}"
-              width="216"
-              height="135"
-              src="{{ item.media | defaultImage: 1300:730 }}"
-              alt="featured"
-            />
+                }}"
+                width="216"
+                height="135"
+                src="{{ item.media | defaultImage: 1300:730 }}"
+                alt="featured"
+            /></a>
             <div
               class="
                 over-layer
@@ -89,7 +92,7 @@
       </ul>
     </div>
     <div
-    *ngIf="slug === '1851'"
+      *ngIf="slug === '1851'"
       class="
         position-relative
         col-12 col-sm-6 col-lg-3
@@ -119,9 +122,11 @@
           </div>
           <div>
             <h3 class="m-0">
-              <a routerLink="{{ commonService.readMore(item) }}">{{
-                item.title
-              }}</a>
+              <a
+                routerLink="{{ commonService.readMore(item) }}"
+                fragment="frannews"
+                >{{ item.title }}</a
+              >
             </h3>
             <span>By {{ item.author.name }}</span>
           </div>
@@ -129,8 +134,18 @@
       </ul>
     </div>
 
-    <div *ngIf="slug !== '1851'" class=" position-relative col-12 col-sm-6 col-lg-3 align-items-stretch mb-3 mb-sm-0 border-start border-2 latestListing">
-      <div class="text-center"> FRANCHISOR RESEARCH</div>
+    <div
+      *ngIf="slug !== '1851'"
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+        border-start border-2
+        latestListing
+      "
+    >
+      <div class="text-center">FRANCHISOR RESEARCH</div>
       <div class="col-12 offset-1 pt-4">
         <div class="feature-article-section">
           <div class="row d-flex align-items-center justify-content-center">
@@ -153,7 +168,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
               <div class="feature-item">
@@ -174,7 +189,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
               <div class="feature-item">
@@ -195,7 +210,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
             </div>
@@ -203,6 +218,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

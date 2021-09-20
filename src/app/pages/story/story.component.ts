@@ -38,7 +38,7 @@ import {
   styleUrls: ['./story.component.scss'],
 })
 export class StoryComponent implements OnInit {
-  detailsData: any;
+  detailsData: any = [];
   newsData: any;
   adsData: any = [];
   publication: any = [];
@@ -77,7 +77,8 @@ export class StoryComponent implements OnInit {
   isRedirect: boolean;
   isServer: boolean;
   redirectUrl: string;
-
+  mainNews: any;
+  brandNews: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   metaData: any;
@@ -92,29 +93,6 @@ export class StoryComponent implements OnInit {
 
   articlesList = [0];
 
-  relatedArticles = [
-    {
-      media: '../../../assets/dummy-images/Rectangle 221.jpg',
-      title: 'Lorem ipsum morbi tristia con flubet o lemase...',
-      by: 'LOREM IPSUM',
-    },
-    {
-      media: '../../../assets/dummy-images/Rectangle 222.jpg',
-      title: 'Lorem ipsum morbi tristia con flubet o lemase...',
-      by: 'LOREM IPSUM',
-    },
-    {
-      media: '../../../assets/dummy-images/Rectangle 223.jpg',
-      title: 'Lorem ipsum morbi tristia con flubet o lemase...',
-      by: 'LOREM IPSUM',
-    },
-    {
-      media: '../../../assets/dummy-images/Rectangle 224.jpg',
-      title: 'Lorem ipsum morbi tristia con flubet o lemase...',
-      by: 'LOREM IPSUM',
-    },
-  ];
-
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -126,7 +104,7 @@ export class StoryComponent implements OnInit {
     private googleAnalyticsService: GoogleAnalyticsService,
     private rendererFactory: RendererFactory2,
     @Inject(DOCUMENT) private dom,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private location: Location,
     private meta: Meta
   ) {
@@ -135,8 +113,8 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setConfig();
-    this.setScrollEvent();
+    // this.setConfig();
+    // this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
   }
@@ -188,15 +166,15 @@ export class StoryComponent implements OnInit {
             let isAuthorPage = false;
             this.isBrand = this.brandSlug === '1851' ? false : true;
 
-            this.getAds();
+            // this.getAds();
 
-            this.apiService
-              .getAPI('1851/publication-instance')
-              .pipe(takeUntil(this.onDestroy$))
-              .subscribe((result) => {
-                this.publication = result;
-                this.getNewsTitle(this.publication.id);
-              });
+            // this.apiService
+            //   .getAPI('1851/publication-instance')
+            //   .pipe(takeUntil(this.onDestroy$))
+            //   .subscribe((result) => {
+            //     this.publication = result;
+            //     this.getNewsTitle(this.publication.id);
+            //   });
 
             this.apiService
               .getAPI(`get-brand-by-slug/${this.brandSlug}`)
@@ -220,6 +198,22 @@ export class StoryComponent implements OnInit {
                   this.brandId = '1851';
                   this.brandSlug = '1851';
                 }
+
+                forkJoin([
+                  this.apiService.getAPI(
+                    `${this.brandId}/news?lean=true&limit=4&offset=0`
+                  ),
+                  this.apiService.getAPI(`1851/news?limit=4&offset=0`),
+                  this.apiService.getAPI(
+                    `1851/news?limit=4&offset=0&isBrand=true`
+                  ),
+                ])
+                  .pipe(takeUntil(this.onDestroy$))
+                  .subscribe((result) => {
+                    this.newsData = result[0].data;
+                    this.mainNews = result[1].data;
+                    this.brandNews = result[2].data;
+                  });
                 switch (this.type) {
                   case 'stories':
                     this.apiUrl = `${this.brandId}/featured-articles`;
@@ -333,14 +327,6 @@ export class StoryComponent implements OnInit {
                       });
                     break;
 
-                  case 'brand':
-                    this.apiUrl = `${this.brandId}/brand-view`;
-                    break;
-
-                  case 'category-banner':
-                    this.apiUrl = `${this.brandId}/people/featured`;
-                    break;
-
                   case 'featured':
                     this.apiUrl = `${this.brandId}/featured-articles`;
                     break;
@@ -363,13 +349,6 @@ export class StoryComponent implements OnInit {
                 if (!isAuthorPage) {
                   this.initLoad();
                 }
-
-                this.apiService
-                  .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
-                  .pipe(takeUntil(this.onDestroy$))
-                  .subscribe((n_result) => {
-                    this.newsData = n_result.data;
-                  });
               });
           });
       });
@@ -400,8 +379,11 @@ export class StoryComponent implements OnInit {
           window.location.href = '404';
           return;
         }
+
+        // this.detailsData = this.htmlBinding(result['story'].data);
         this.detailsData.push(this.htmlBinding(result['story'].data));
-        this.detailsData = Object.assign([], this.detailsData);
+
+        // this.detailsData = Object.assign([], this.detailsData);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -494,20 +476,6 @@ export class StoryComponent implements OnInit {
         if (this.isBrowser) {
           this.isDefaultFb = true;
           this.checkFacebookPagePlugin(3000);
-          // if (
-          //   window.location.pathname !==
-          //   `${
-          //     result['story'].data.brand.slug === '1851'
-          //       ? ''
-          //       : `/${result['story'].data.brand.slug}`
-          //   }/${result['story'].data.slug}`
-          // ) {
-          //   window.location.href = `${window.location.origin}${
-          //     result['story'].data.brand.slug === '1851'
-          //       ? ''
-          //       : `/${result['story'].data.brand.slug}`
-          //   }/${result['story'].data.slug}${window.location.hash}`;
-          // }
         }
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
