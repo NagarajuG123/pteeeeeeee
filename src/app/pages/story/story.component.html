@@ -28,6 +28,10 @@
         </div>
         <h1 class="fw-bold mb-0">{{ story.author.name }}</h1>
         <h5 class="primary-color fw-bold">{{ story.author.designation }}</h5>
+        <span
+          >{{ story.posted_on | date: "h:mm a" }} •
+          {{ story.posted_on | date: "MM/dd/yy" }}</span
+        >
         <hr />
 
         <!-- social icons -->
