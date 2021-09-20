@@ -54,7 +54,7 @@ export class MonthlyCoversComponent implements OnInit {
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((response) => {
           coverData['first'] = response[0].data;
-          coverData['second'] = response[0].data.slice(4, 14);
+          coverData['second'] = response[0].data.slice(4, 12);
           coverData['hasMore'] = response[0].has_more;
           coverData['meta'] = response[1].data;
           coverData['publicationTitle'] = response[2].title;
@@ -73,7 +73,7 @@ export class MonthlyCoversComponent implements OnInit {
   getMoreData() {
     const offset = this.secondBlock.length + 4;
     this.apiService
-      .getAPI(`1851/journal/monthly-covers?limit=5&offset=${offset}`)
+      .getAPI(`1851/journal/monthly-covers?limit=4&offset=${offset}`)
       .subscribe((response) => {
         this.hasMore = response.has_more;
         response.data.forEach((item: any) => {

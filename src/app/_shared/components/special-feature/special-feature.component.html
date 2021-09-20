@@ -1,10 +1,30 @@
+<div class="c-video-section--wrapper">
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center c-section-header--wrapper">
+          <div class="c-section-header--group d-flex align-items-end">
+            <h2 class="c-section--title text-uppercase m-0">
+              Special Features
+            </h2>
+            <span class="c-section-header--subInfo"
+              >Indepth coverage of franchise industry topics
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="c-divider--wrapper"></div>
+
 <div class="container customContainer pb-5">
   <div class="col-12 col-lg mb-3 mb-sm-0">
     <!-- featured aarticle slider -->
     <div class="row">
-      <h2 class="featured-title pb-2" *ngIf="slug === '1851'"><strong> SPECIAL FEATURES </strong></h2>
-      <h2 class="featured-title pb-2 text-uppercase" *ngIf="slug !== '1851'"><strong> {{slug}} FEATURES </strong></h2>
-      <div class="divider"></div>
+      <h2 class="featured-title pb-2 text-uppercase" *ngIf="slug !== '1851'">
+        <strong> {{ slug }} FEATURES </strong>
+      </h2>
       <div class="col-8 pt-4">
         <article>
           <div class="position-relative">
@@ -72,10 +92,10 @@
                   alt="special-featured"
                 />
                 <a routerLink="{{ commonService.readMore(item) }}">
-                <div class="image-description">
-                  {{ commonService.formatTitle(item.title) }}
-                </div>
-              </a>
+                  <div class="image-description">
+                    {{ commonService.formatTitle(item.title) }}
+                  </div>
+                </a>
               </div>
             </div>
           </div>

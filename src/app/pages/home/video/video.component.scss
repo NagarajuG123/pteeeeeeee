@@ -1,6 +1,8 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/typography.scss";
 @import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+
 .c-video-section--wrapper {
   background: $sectionBGColor;
   padding: 25px 0;
@@ -157,11 +159,18 @@
     }
   }
 }
-.video-btn{
+.video-btn {
   cursor: pointer;
   position: relative;
-  .vide-play{
+  .vide-play {
     position: absolute;
+    left: calc(50% - 45px);
+    top: calc(50% - 45px);
     z-index: 1000;
+    height: 90px;
+    width: 90px;
   }
+}
+.badge {
+  background-color: $red;
 }

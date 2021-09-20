@@ -17,12 +17,10 @@ import { FooterComponent } from './footer/footer.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FiveColumnComponent } from './components/five-column/five-column.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { TopBannerComponent } from './components/top-banner/top-banner.component';
 import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
@@ -53,10 +51,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SplitArrayPipe,
     ImagePreloadDirective,
     VimeoPipe,
-    AdvertisementComponent,
     VideoPlayerComponent,
     FiveColumnComponent,
-    CarouselComponent,
     TopBannerComponent,
     TwoSideBannerComponent,
     ModalComponent,
@@ -75,7 +71,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SlickCarouselModule,
     FontAwesomeModule,
     ShareButtonModule,
-    CarouselModule
+    CarouselModule,
   ],
   exports: [
     RouterModule,
@@ -89,12 +85,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgxYoutubePlayerModule,
     HeaderComponent,
     FooterComponent,
-    AdvertisementComponent,
     NewsComponent,
     TrendingBuzzComponent,
     VideoPlayerComponent,
     VideoPlayerComponent,
-    CarouselComponent,
     TrendingComponent,
     MostPopularComponent,
     FiveColumnComponent,
@@ -109,7 +103,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SlickCarouselModule,
     FontAwesomeModule,
     ShareButtonModule,
-    CarouselModule
+    CarouselModule,
   ],
 })
 export class SharedModule {}

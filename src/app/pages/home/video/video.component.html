@@ -22,40 +22,48 @@
     <div class="row">
       <div class="col-12">
         <div class="d-flex c-video-section--boxWrapper">
-          <div class="c-video-section--box" *ngFor="let item of videoData | slice: 0:2;index as i;">
+          <div
+            class="c-video-section--box"
+            *ngFor="let item of videoData | slice: 0:2; index as i"
+          >
             <!-- <div class="c-video-section--boxContent"> -->
-              <div class="badge badge-primary">FEATURED Video</div>
-              <a
-                *ngIf="item?.media"
-                (click)="openVideoPlayer = true"
-                data-bs-target="#videoModal{{index}}"
-                data-bs-toggle="modal"
-                href=""
-                class="
-                  video-btn
-                  c-video-section--playBtn
-                  d-flex
-                  justify-content-center
-                  align-items-center
-                "
-              >
-                <img 
-                src="{{ item.media | defaultImage: 600:300 }}" 
+            <div class="badge badge-primary">FEATURED Video</div>
+            <a
+              *ngIf="item?.media"
+              (click)="openVideoPlayer = true"
+              data-bs-target="#videoModal{{ index }}"
+              data-bs-toggle="modal"
+              href="#"
+              class="
+                video-btn
+                c-video-section--playBtn
+                d-flex
+                justify-content-center
+                align-items-center
+              "
+            >
+              <img
+                src="{{ item.media | defaultImage: 600:300 }}"
                 class="img-fluid"
                 alt="video"
                 width="600"
                 height="300"
-                data-src="{{ item.media | defaultImage: 600:300}}"/>
-                <img src="assets/img/play.png" alt="Play" class="img-fluid vide-play" />
-                <!-- modal -->
-                <div
+                data-src="{{ item.media | defaultImage: 600:300 }}"
+              />
+              <img
+                src="assets/img/play.png"
+                alt="Play"
+                class="img-fluid vide-play"
+              />
+              <!-- modal -->
+              <div
                 class="modal fade"
-                id="videoModal{{index}}"
+                id="videoModal{{ index }}"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
                 (click)="openVideoPlayer = true"
-                >
+              >
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                   <div class="modal-content">
                     <div class="modal-body">
@@ -77,8 +85,8 @@
                     </div>
                   </div>
                 </div>
-                </div>
-              </a>
+              </div>
+            </a>
             <!-- </div> -->
             <div class="c-video-section--title">
               {{ item.title }}
@@ -99,31 +107,32 @@
           >
             <div class="c-video-section--box">
               <!-- <div class="c-video-section--boxContent"> -->
-                <a
-                  *ngIf="item?.media"
-                  href="#"
-                  data-bs-target="#videoModal"
-                  data-bs-toggle="modal"
-                  class="
-                    video-btn
-                    c-video-section--playBtn
-                    d-flex
-                    justify-content-center
-                    align-items-center
-                  "
-                >
-                  <img 
-                  src="{{ item.media | defaultImage: 300:150 }}" 
+              <a
+                *ngIf="item?.media"
+                href="#"
+                data-bs-target="#videoModal"
+                data-bs-toggle="modal"
+                class="
+                  video-btn
+                  c-video-section--playBtn
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <img
+                  src="{{ item.media | defaultImage: 300:150 }}"
                   class="img-fluid"
                   width="300"
                   height="150"
-                  alt="video"/>
-                  <img
-                    src="../../../../assets/img/play.png"
-                    alt="Play"
-                    class="img-fluid vide-play"
-                  />
-                </a>
+                  alt="video"
+                />
+                <img
+                  src="assets/img/play.png"
+                  alt="Play"
+                  class="img-fluid vide-play"
+                />
+              </a>
               <!-- </div> -->
               <div class="c-video-section--title">
                 {{ item.title }}
@@ -135,4 +144,3 @@
     </div>
   </div>
 </div>
-

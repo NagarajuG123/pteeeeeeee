@@ -5,9 +5,10 @@
         <div class="c-card-box--contentGroup">
           <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
-          <p class="c-card-box--content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi quae
-            officiis
-            veniam totam ratione officia sapiente repellendus.</p>
+          <p class="c-card-box--content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+            quae officiis veniam totam ratione officia sapiente repellendus.
+          </p>
           <a href="#" class="c-link--btn">Read more &gt;</a>
         </div>
       </div>
@@ -15,50 +16,40 @@
     <div class="c-card-box--row">
       <div class="c-card-box--col">
         <div class="c-card-box--imageWrapper isMainCardBox">
-          <img src="../../../assets/img/cover-section/mock-image-1.png" alt="Mock Image" class="card-image">
+          <a routerLink="/{{ firstBlock[0]?.url }}">
+            <img
+              appYoutubeImage
+              src="{{ firstBlock[0]?.media | defaultImage: 565:800 }}"
+              width="565"
+              height="800"
+              alt="monthly-covers-main"
+              class="card-image"
+            />
+          </a>
         </div>
       </div>
       <div class="c-card-box--col">
         <div class="c-card-box--group">
           <div class="c-card-box--item">
-            <div class="c-card-box--imageWrapper">
-              <img src="../../../assets/img/cover-section/mock-image-2.png" alt="Mock Image" class="card-image">
+            <div
+              class="c-card-box--imageWrapper"
+              *ngFor="let item of firstBlock | slice: 1:4"
+            >
+              <img
+                appYoutubeImage
+                src="{{ item?.media | defaultImage: 190:265 }}"
+                width="190"
+                height="265"
+                alt="monthly-covers-main"
+                class="card-image"
+              />
             </div>
-            <h4 class="c-card-box--itemTitle">
-              Lorem ipsum dolor
-            </h4>
+            <h4 class="c-card-box--itemTitle">Lorem ipsum dolor</h4>
             <p class="c-card-box--itemDec">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ipsum eveniet dignissimos
-              necessitatibus commodi nihil ad harum vel est cum obcaecati aliquam aut ratione cupiditate a? Odio amet
-              praesentium facere!
-            </p>
-            <a href="#" class="c-link--btn">Read more &gt;</a>
-          </div>
-          <div class="c-card-box--item">
-            <div class="c-card-box--imageWrapper">
-              <img src="../../../assets/img/cover-section/mock-image-3.png" alt="Mock Image" class="card-image">
-            </div>
-            <h4 class="c-card-box--itemTitle">
-              Lorem ipsum dolor
-            </h4>
-            <p class="c-card-box--itemDec">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ipsum eveniet dignissimos
-              necessitatibus commodi nihil ad harum vel est cum obcaecati aliquam aut ratione cupiditate a? Odio amet
-              praesentium facere!
-            </p>
-            <a href="#" class="c-link--btn">Read more &gt;</a>
-          </div>
-          <div class="c-card-box--item">
-            <div class="c-card-box--imageWrapper">
-              <img src="../../../assets/img/cover-section/mock-image-4.png" alt="Mock Image" class="card-image">
-            </div>
-            <h4 class="c-card-box--itemTitle">
-              Lorem ipsum dolor
-            </h4>
-            <p class="c-card-box--itemDec">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ipsum eveniet dignissimos
-              necessitatibus commodi nihil ad harum vel est cum obcaecati aliquam aut ratione cupiditate a? Odio amet
-              praesentium facere!
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Blanditiis, ipsum eveniet dignissimos necessitatibus commodi nihil
+              ad harum vel est cum obcaecati aliquam aut ratione cupiditate a?
+              Odio amet praesentium facere!
             </p>
             <a href="#" class="c-link--btn">Read more &gt;</a>
           </div>
@@ -74,8 +65,13 @@
     <div class="monthly-covers-bottom" *ngFor="let cover of secondBlock">
       <a class="monthly-covers1" routerLink="{{ cover?.url }}">
         <figure class="m-0">
-          <img appYoutubeImage src="{{ cover.media | defaultImage: 288:379 }}" width="290" height="380"
-            alt="monthly-covers-img8" />
+          <img
+            appYoutubeImage
+            src="{{ cover.media | defaultImage: 288:379 }}"
+            width="290"
+            height="380"
+            alt="monthly-covers"
+          />
         </figure>
       </a>
     </div>
@@ -89,7 +85,13 @@
         <div class="row d-flex align-items-center">
           <div class="d-flex justify-content-center align-items-center">
             <div class="nextBtn px-1 bg-white">
-              <img src="assets/img/nextIcon.svg" width="32" alt="next articles" class="me-3" (click)="getMoreData()" />
+              <img
+                src="assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3"
+                (click)="getMoreData()"
+              />
               <span class="gray-color" (click)="getMoreData()">SEE MORE</span>
             </div>
           </div>

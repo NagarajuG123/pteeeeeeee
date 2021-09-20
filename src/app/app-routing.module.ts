@@ -40,14 +40,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
-  {
-    path: 'trendingbrandbuzz',
-    pathMatch: 'full',
-    loadChildren: () =>
-      import('./pages/trendingbuzz/trendingbuzz.module').then(
-        (m) => m.TrendingbuzzModule
-      ),
-  },
+
   {
     path: 'author/:authorSlug',
     loadChildren: () =>
