@@ -33,41 +33,37 @@ export class EditorialSectionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const editorialData = this.tstate.get(RESULT_KEY, {});
-      this.items = editorialData['items'];
-      this.tabName = editorialData['tabsName'];
-      this.defaultTab = editorialData['default'];
-    } else {
-      const editorialData: any = {};
-      const spotlightCategoriesApi = this.apiService.getAPI(
-        `1851/spotlights/categories`
-      );
-      const publicationApi = this.apiService.getAPI(
-        `1851/publication-instance`
-      );
+    // if (this.tstate.hasKey(RESULT_KEY)) {
+    //   const editorialData = this.tstate.get(RESULT_KEY, {});
+    //   this.items = editorialData['items'];
+    //   this.tabName = editorialData['tabsName'];
+    //   this.defaultTab = editorialData['default'];
+    // } else {
+    //   const editorialData: any = {};
+    const spotlightCategoriesApi = this.apiService.getAPI(
+      `1851/spotlights/categories`
+    );
+    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
 
-      forkJoin([spotlightCategoriesApi, publicationApi])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((results) => {
-          editorialData['tabsName'] = results[0].categories;
-          editorialData['default'] = results[0].defaultTab;
+    forkJoin([spotlightCategoriesApi, publicationApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.tabName = results[0].categories;
+        this.defaultTab = results[0].defaultTab;
 
-          this.apiService
-            .getAPI(
-              `1851/spotlight/${editorialData['default']}?limit=10&offset=0`
-            )
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe((result) => {
-              const data: any[] = [];
-              result['data'].forEach((item: any) => {
-                data.push(item);
-              });
-              editorialData['items'] = data;
-              this.tstate.set(RESULT_KEY, editorialData);
+        this.apiService
+          .getAPI(`1851/spotlight/${this.defaultTab}?limit=10&offset=0`)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe((result) => {
+            const data: any[] = [];
+            result['data'].forEach((item: any) => {
+              data.push(item);
             });
-        });
-    }
+            this.items = data;
+            // this.tstate.set(RESULT_KEY, editorialData);
+          });
+      });
+    // }
   }
 
   @HostListener('window:resize', ['$event'])
