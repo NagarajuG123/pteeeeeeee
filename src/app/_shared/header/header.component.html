@@ -302,7 +302,7 @@
       </div>
 
       <!-- Center menu link -->
-      <div class="col d-none d-md-block">
+      <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
         <ul class="center-menu nav justify-content-center">
           <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
             <a [routerLink]="menu.url" class="d-flex align-items-center"
@@ -323,6 +323,32 @@
             /></a>
             <ul class="dropdown-menu">
               <li *ngFor="let item of action.items">
+                <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
+        <ul class="center-menu nav justify-content-center">
+          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
+            <a [routerLink]="menu.url" class="d-flex align-items-center"
+              >{{ menu.title }}
+            </a>
+          </li>
+          <li
+            class="nav-item mx-2 px-1"
+          >
+            <a class="d-flex align-items-center"
+              >{{ header?.actions?.title }}
+              <img
+                src="assets/img/down-arrow.svg"
+                height="30"
+                width="20"
+                class="ms-1"
+            /></a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let item of header?.actions?.items">
                 <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
               </li>
             </ul>
