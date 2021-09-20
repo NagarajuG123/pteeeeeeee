@@ -33,41 +33,50 @@ $defaultTransition: all 0.35s ease;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      width: 100%;
-      margin: 0 auto;
+      // width: 100%;
+      // margin: 0 auto;
       @include media("<md"){
         display: flex;
         flex-flow: column;
       }
       @include media("<lg"){
+        flex-flow: column;
         justify-content: center;
       }
       .c-card-box--col {
         flex: 1 0 calc(50% - 30px);
-        max-width: calc(50% - 66px);
-        padding: 15px;
-        @include media("<md"){
-          flex: auto;
-          max-width: calc(100% - 0px) !important ;
-          padding: 15px;
-        }
+        max-width: calc(50% - 30px);
+        // padding: 15px;
+        // @include media("<lg"){
+        //   flex: auto;
+        //   max-width: calc(100% - 0px) !important ;
+        //   padding: 15px;
+        // }
         @include media("<lg"){
           flex: 0 0 100%;
-          padding: 6px;
-          max-width: calc(50% - 0px) ;
+          padding: 6px 15px;
+          max-width: 100%;
+        }
+        &.c-card-main-imagebox--wrapper{
+          @include media("<lg"){
+            width: 100%;
+            text-align: center;
+            padding: 10px 0 0;
+          }
         }
       }
     }
     .c-card-box--contentRow {
       background-color: $whiteColor;
-      .w-100{
-        max-width: 50%;
-        @include media("<md"){
-          
-        }
+      .month-business--wrapper{
+        max-width: 52%;
+        margin-left: auto;
+        // flex: unset;
+        padding: 15px 0;        
         @include media("<lg"){
         max-width: 100%;
-          
+        padding: 15px 0 15px 30px;
+        margin-left: unset;
         }
       }
     }
@@ -75,36 +84,69 @@ $defaultTransition: all 0.35s ease;
       .c-card-box--subTitle {
         color: $subTitleColor;
         margin-top: 0;
+        font-size: 20px;
+        font-weight: bold;
+        @include media("<md"){
+          font-size: 16px;
+        }
       }
       .c-card-box--title {
-        font-size: 36px;
+        font-size: 40px;
+        font-weight: bold;
         color: $textColor;
         text-transform: capitalize;
+        @include media("<md"){
+          font-size: 30px;
+        }
       }
       .c-card-box--content {
         max-width: 480px;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 18px;
         color: #18222e;
+        @include media("<md"){
+          font-size: 14px;
+        }
       }
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -280px;
-        margin-left: 270px;
-        @include media("<md"){
+        margin-top: -290px;
+        margin-left: 100px;
+        margin-bottom: 45px;
+        width: 570px;
+        // margin-left: 270px;
+        @include media("<=xxl"){
+          margin-left: 60px;
+        }
+        @include media("<xl"){
+          width: 400px;
+          height: auto;
+          margin: -256px 0 0 20px;
+        }
+        @include media("<lg"){
+          width: 100%;
           margin-top: 0px;
          margin-left: 0px;
         }
-        @include media("<lg"){
+        @include media("<md"){
           margin-top: 0px;
+          padding: 6px 15px;
          margin-left: 0px;
+        }
+        .maincardbox-link--wrapper{
+          display: inline-block;
         }
         .card-image {
           max-height: 800px;
+          @include media("<xl"){
+            max-height: unset;
+            height: auto;
+          }
         }
       }
       img {
+        width: 100%;
         max-width: 100%;
       }
     }
@@ -115,32 +157,40 @@ $defaultTransition: all 0.35s ease;
       align-self: flex-start;
       gap: $cardGroupSpacing;
       margin-top: 10px;
+      @include media("<lg"){
+        gap: 0;        
+        justify-content: space-between;
+      }
       .c-card-box--item {
         flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
         max-width: calc(33.3333% - #{$cardGroupSpacing});
-        @include media("<md"){
+        @include media("<sm"){
           flex: 1 0 100%;
           max-width: 100%;
+          margin: 0 0 10px;
         }
       }
       .c-card-box--itemTitle {
         color: $subTitleColor;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 14px;
       }
       .c-card-box--itemDec {
         color: $whiteColor;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 13px;
         text-overflow: ellipsis;
         overflow: hidden;
         line-clamp: 4;
         -webkit-line-clamp: 4;
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        margin-bottom: 4px;
       }
 
       .c-link--btn {
+        font-size: 11px;
+        margin-top: 5px;
         &:hover {
           color: $whiteColor;
         }
@@ -152,16 +202,34 @@ $defaultTransition: all 0.35s ease;
 //Bottom Section
 .monthy-cover {
   .monthly-cover-wrapper{
-    flex-flow: row wrap;
+    flex-flow: row;
+    flex-wrap: wrap;
     width: 90%;
     justify-content: center;
-    margin: 40px 0 0 155px;
-    @include media("<md"){
+    // margin: 40px 0 0 155px;
+    padding: 40px 0 0 155px;
+    @include media("<xl"){
       width: 100%;
+      padding: 0;
+    }    
+    @include media("<md"){      
       margin: 40px 0 0 0 !important;
     }
-    @include media("<lg"){
-      margin: 40px 0 0 40px ;
+    .monthly-covers-bottom{   
+      flex: 0 0 25%;
+        max-width: 25%;   
+      @include media("<xl"){
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+      @include media("<lg"){
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      @include media("<sm"){
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
   }
   &::before {
@@ -183,9 +251,19 @@ $defaultTransition: all 0.35s ease;
   }
   .monthly-covers-bottom {
     .monthly-covers1 {
-      float: left;
+      // float: left;
       display: inline-block;
       width: 20%;
+      @include media("<xl"){
+        width: 100%;
+      }
+      img{
+        @include media("<xl"){
+          width: 100%;
+          height: 100%;
+          padding: 6px 15px;
+        } 
+      }
     }
   }
   .monthly-coverpage-details {
