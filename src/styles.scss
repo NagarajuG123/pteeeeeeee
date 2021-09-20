@@ -64,3 +64,10 @@ ul {
 .modal-backdrop {
   z-index: -1 !important;
 }
+.details .description a {
+  span {
+    color: #007bff !important;
+  }
+  display: contents;
+  text-decoration: underline !important;
+}

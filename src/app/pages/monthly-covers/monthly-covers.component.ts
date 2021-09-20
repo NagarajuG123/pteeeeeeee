@@ -32,39 +32,34 @@ export class MonthlyCoversComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getCoverData();
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const coverData = this.tstate.get(RESULT_KEY, {});
-      this.firstBlock = coverData['first'];
-      this.secondBlock = coverData['second'];
-      this.hasMore = coverData['hasMore'];
-      this.metaData = coverData['meta'];
-      this.publication = coverData['publicationTitle'];
-    } else {
-      const coverData = {};
-      const coverApi = this.apiService.getAPI(
-        `1851/journal/monthly-covers?limit=14&offset=0`
-      );
-      const metaApi = this.apiService.getAPI(`1851/meta`);
-      const publicationApi = this.apiService.getAPI(
-        `1851/publication-instance`
-      );
+    // if (this.tstate.hasKey(RESULT_KEY)) {
+    //   const coverData = this.tstate.get(RESULT_KEY, {});
+    //   this.firstBlock = coverData['first'];
+    //   this.secondBlock = coverData['second'];
+    //   this.hasMore = coverData['hasMore'];
+    //   this.metaData = coverData['meta'];
+    //   this.publication = coverData['publicationTitle'];
+    // } else {
+    // const coverData = {};
+    const coverApi = this.apiService.getAPI(
+      `1851/journal/monthly-covers?limit=14&offset=0`
+    );
+    const metaApi = this.apiService.getAPI(`1851/meta`);
+    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
 
-      forkJoin([coverApi, metaApi, publicationApi])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          coverData['first'] = response[0].data;
-          coverData['second'] = response[0].data.slice(4, 12);
-          coverData['hasMore'] = response[0].has_more;
-          coverData['meta'] = response[1].data;
-          coverData['publicationTitle'] = response[2].title;
-          this.metaService.setSeo(coverData['meta']);
-          this.metaService.setTitle(
-            `Monthly Issues | ${coverData['publicationTitle']}`
-          );
-        });
-      this.tstate.set(RESULT_KEY, coverData);
-    }
+    forkJoin([coverApi, metaApi, publicationApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        this.firstBlock = response[0].data;
+        this.secondBlock = response[0].data.slice(4, 12);
+        this.hasMore = response[0].has_more;
+        this.metaData = response[1].data;
+        this.publication = response[2].title;
+        this.metaService.setSeo(this.metaData);
+        this.metaService.setTitle(`Monthly Issues | ${this.publication}`);
+      });
+    //   this.tstate.set(RESULT_KEY, coverData);
+    // }
   }
   openDetails(date: any) {
     const params = date.split('-');
@@ -82,17 +77,7 @@ export class MonthlyCoversComponent implements OnInit {
       });
     this.cdr.detectChanges();
   }
-  getCoverData() {
-    const offset = 10;
-    this.apiService
-      .getAPI(`1851/journal/monthly-covers?limit=10&offset=${offset}`)
-      .subscribe((response) => {
-        this.hasMore = response.has_more;
-        response.data.forEach((item: any) => {
-          this.secondBlock.push(item);
-        });
-      });
-  }
+
   readMoreCover(item: any) {
     let slug = '';
     if (typeof item?.story !== 'undefined') {
