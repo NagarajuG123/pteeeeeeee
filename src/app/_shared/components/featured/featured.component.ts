@@ -6,6 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
 
@@ -22,6 +23,7 @@ export class FeaturedComponent implements OnInit {
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
+  trendingNews: Details[] = [];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -35,6 +37,36 @@ export class FeaturedComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: false,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    margin: 10,
+    navSpeed: 700,
+    navText: [
+      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
+      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+    ],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      740: {
+        items: 1,
+      },
+      940: {
+        items: 1,
+      },
+    },
+    nav: true,
+  };
+
   ngOnInit(): void {
     this.getFeatured();
   }
@@ -46,18 +78,22 @@ export class FeaturedComponent implements OnInit {
         `${this.apiUrl}?limit=4&offset=0`
       );
       const newsApi = this.apiService.getAPI(
-        `${this.slug}/news?limit=4&offset=0`
+        `${this.slug}/news?limit=10&offset=0`
       );
       const brandNews = this.apiService.getAPI(
         `1851/news?limit=4&offset=0&isBrand=true`
       );
+      const trendingNews = this.apiService.getAPI(
+        `1851/trending?limit=10&offset=0`
+      );
       const featured: any = {};
-      forkJoin([featureApi, newsApi, brandNews])
+      forkJoin([featureApi, newsApi, brandNews, trendingNews])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           featured['data'] = results[0].data;
           featured['news'] = results[1].data;
           featured['brandNews'] = results[2].data;
+          featured['trending'] = results[3].data
 
           this.state.set(FEATURE_KEY, featured as any);
         });
@@ -65,6 +101,7 @@ export class FeaturedComponent implements OnInit {
       this.featured = featured['data'];
       this.news = featured['news'];
       this.brandNews = featured['brandNews'];
+      this.trendingNews = featured['trending'];
     }
   }
 }
