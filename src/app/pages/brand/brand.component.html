@@ -2,7 +2,7 @@
   <div class="trending mb-1">
   <div class="container-fluid text-center py-2">
     <span class="pe-md-5">
-      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" loading="lazy"/>
       TRENDING
     </span>
   </div>
@@ -30,7 +30,8 @@
             width="380"
             height="155"
             data-src="{{ item.media | defaultImage: 100:95 }}"
-            alt="most-popular"/>
+            alt="most-popular"
+            loading="lazy"/>
           <div class="slide-body position-relative primary-bg px-3 d-block">
             <span class="position-absolute top-0 start-0 bg-white primary-color d-flex 
             align-items-center justify-content-center">POPULAR</span>
@@ -64,7 +65,7 @@
       <div class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
         [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
         (click)="prev()">
-        <img src="assets/img/left-arrow.svg" />
+        <img src="assets/img/left-arrow.svg" loading="lazy"/>
       </div>
       <ul class="row innerContent m-0">
         <li *ngFor="let item of tabName; index as i"
@@ -78,7 +79,7 @@
       <div class="next position-absolute top-50 end-0 translate-middle-y pe-3"
         [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
         (click)="next()">
-        <img src="assets/img/right-arrow.svg" />
+        <img src="assets/img/right-arrow.svg" loading="lazy"/>
       </div>
     </div>
   </div> 
@@ -102,7 +103,8 @@
                 width="95"
                 height="100"
                 data-src="{{ item?.media }}"
-                alt="editorial"/>
+                alt="editorial"
+                loading="lazy"/>
               <div class="card-body">
                 <h6 class="
                     card-title
@@ -140,6 +142,7 @@
         width="1440"
         height="493"
         alt="banner"
+        loading="lazy"
       />
     </figure>
     <div class="left-text d-flex col-5">
@@ -167,6 +170,7 @@
               alt="story"
               width="257"
               height="138"
+              loading="lazy"
             />
             <div class="card-body">
               <h2 class="card-text mb-1 text-black text-capitalize">
@@ -193,6 +197,7 @@
           alt="next articles"
           class="me-3"
           (click)="getMoreDynamic()"
+          loading="lazy"
         />
         <span class="gray-color" (click)="getMoreDynamic()">SEE MORE</span
         >

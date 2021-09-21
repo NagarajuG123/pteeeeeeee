@@ -31,6 +31,7 @@
               height="800"
               alt="monthly-covers-main"
               class="card-image"
+              loading="lazy"
             />
           </a>
         </div>
@@ -49,6 +50,7 @@
                 height="265"
                 alt="monthly-covers-main"
                 class="card-image"
+                loading="lazy"
               />
             </div>
             <h4 class="c-card-box--itemTitle">{{ item.story.title }}</h4>
@@ -80,6 +82,7 @@
             width="305"
             height="380"
             alt="monthly-covers"
+            loading="lazy"
           />
         </figure>
       </a>
@@ -100,6 +103,7 @@
                 alt="next articles"
                 class="me-3"
                 (click)="getMoreData()"
+                loading="lazy"
               />
               <span class="gray-color" (click)="getMoreData()">SEE MORE</span>
             </div>
