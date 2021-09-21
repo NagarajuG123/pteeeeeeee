@@ -28,6 +28,22 @@ export class FeaturedComponent implements OnInit {
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
+  descriptionLimit = 90;
+  descriptionLimitOptions = [
+    { width: 1200, limit: 85 },
+    { width: 992, limit: 30 },
+  ];
+  brandNewsTitleLimit = 70;
+  brandNewsTitleLimitOptions = [
+    { width: 1320, limit: 60 },
+    { width: 992, limit: 20 },
+  ];
+
+  NewsTitleLimit = 35;
+  NewsTitleLimitOptions = [
+    { width: 1200, limit: 35 },
+    { width: 992, limit: 20 },
+  ];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -43,6 +59,7 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFeatured();
+    this.setLimit('');
   }
 
   getFeatured() {
@@ -74,9 +91,50 @@ export class FeaturedComponent implements OnInit {
     }
   }
 
+  setLimitValues(Options, fieldName) {
+    let limitVal = 0;
+    Options.forEach((item) => {
+      if (window.innerWidth < item.width) {
+        limitVal = item.limit;
+      }
+    });
+    if (Number(limitVal) === 0) {
+      limitVal = Number(Options[0].limit);
+    }
+
+    switch (fieldName) {
+      case 'descriptionLimit':
+        this.descriptionLimit = Number(limitVal);
+        break;
+      case 'brandNewsTitleLimit':
+        this.brandNewsTitleLimit = Number(limitVal);
+        break;
+      case 'NewsTitleLimit':
+        this.NewsTitleLimit = Number(limitVal);
+        break;
+      default:
+        break;
+    }
+    // console.log(
+    //   'ss',
+    //   this.descriptionLimit,
+    //   this.brandNewsTitleLimit,
+    //   this.NewsTitleLimit
+    // );
+  }
+
+  async setLimit(event: any) {
+    console.log('ss');
+    await this.setLimitValues(this.descriptionLimitOptions, 'descriptionLimit');
+    await this.setLimitValues(
+      this.brandNewsTitleLimitOptions,
+      'brandNewsTitleLimit'
+    );
+    await this.setLimitValues(this.NewsTitleLimitOptions, 'NewsTitleLimit');
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    // this.commonService.resizeSidebar(event.target.innerWidth);
-    console.log('event.target.innerWidth', event.target.innerWidth);
+    this.setLimit(event);
   }
 }

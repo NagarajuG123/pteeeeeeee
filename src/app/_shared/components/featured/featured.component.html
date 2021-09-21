@@ -1,4 +1,4 @@
-<div class="trending mb-1" *ngIf=" slug === '1851'">
+<div class="trending mb-1" *ngIf="slug === '1851'">
   <div class="container-fluid text-center py-2">
     <span class="pe-md-5">
       <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
@@ -77,19 +77,32 @@
           [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h3 class="m-0">
-            <a routerLink="{{ commonService.readMore(item) }}">{{
-              item.title
-            }}</a>
+            <a routerLink="{{ commonService.readMore(item) }}">
+              <!-- {{ item.title }} -->
+              {{
+                commonService.responsiveTextFormating(
+                  item.title,
+                  brandNewsTitleLimit
+                )
+              }}
+            </a>
           </h3>
           <span class="my-1">By {{ item.author?.name }}</span>
           <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
-            {{ commonService.formatDescription(item.short_description) }}
+            <!-- {{ commonService.formatDescription(item.short_description) }} -->
+            <!-- {{ console.log("dd", descriptionLimit) }} -->
+            {{
+              commonService.responsiveTextFormating(
+                item.short_description,
+                descriptionLimit
+              )
+            }}
           </p>
         </li>
       </ul>
     </div>
     <div
-    *ngIf="slug === '1851'"
+      *ngIf="slug === '1851'"
       class="
         position-relative
         col-12 col-sm-6 col-lg-3
@@ -112,16 +125,21 @@
             <img
               appYoutubeImage
               width="95"
-              height="100"
               data-src="{{ item.media | defaultImage: 121:114 }}"
               alt="industry"
             />
           </div>
           <div>
             <h3 class="m-0">
-              <a routerLink="{{ commonService.readMore(item) }}">{{
-                item.title
-              }}</a>
+              <a routerLink="{{ commonService.readMore(item) }}">
+                <!-- {{ item.title }} -->
+                {{
+                  commonService.responsiveTextFormating(
+                    item.title,
+                    NewsTitleLimit
+                  )
+                }}
+              </a>
             </h3>
             <span>By {{ item.author.name }}</span>
           </div>
@@ -129,8 +147,18 @@
       </ul>
     </div>
 
-    <div *ngIf="slug !== '1851'" class=" position-relative col-12 col-sm-6 col-lg-3 align-items-stretch mb-3 mb-sm-0 border-start border-2 latestListing">
-      <div class="text-center"> FRANCHISOR RESEARCH</div>
+    <div
+      *ngIf="slug !== '1851'"
+      class="
+        position-relative
+        col-12 col-sm-6 col-lg-3
+        align-items-stretch
+        mb-3 mb-sm-0
+        border-start border-2
+        latestListing
+      "
+    >
+      <div class="text-center">FRANCHISOR RESEARCH</div>
       <div class="col-12 offset-1 pt-4">
         <div class="feature-article-section">
           <div class="row d-flex align-items-center justify-content-center">
@@ -153,7 +181,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
               <div class="feature-item">
@@ -174,7 +202,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
               <div class="feature-item">
@@ -195,7 +223,7 @@
                   alt="special-featured"
                 />
                 <div class="image-description">
-                    Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
                 </div>
               </div>
             </div>
@@ -203,6 +231,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

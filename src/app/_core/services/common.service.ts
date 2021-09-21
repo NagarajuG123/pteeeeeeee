@@ -66,7 +66,7 @@ export class CommonService {
 
   responsiveTextFormating(text: String, textLength: number) {
     if (text && text.length > textLength) {
-      text = text.slice(0, 118) + '...';
+      text = text.slice(0, textLength) + '...';
     }
     return text;
   }
