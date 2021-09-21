@@ -1,6 +1,6 @@
 <header class="col-12">
   <!-- Top header section Start -->
-  <div class="top-head">
+  <div class="top-head d-none d-lg-block">
     <div class="container d-flex">
       Publications in the Mainland Community:
       <ul class="list-group list-group-horizontal ms-3">
@@ -209,7 +209,7 @@
             </a>
           </li>
           <li
-            class="nav-item mx-2 px-1"
+            class="actions nav-item mx-2 px-1"
             *ngFor="let action of header?.actions; index as i"
           >
             <a class="d-flex align-items-center"
@@ -247,7 +247,7 @@
 
         <!-- Social Links -->
         <ul class="social d-flex align-items-center mb-0">
-          <li>
+          <li class="d-none d-lg-block">
             <a href="#" class="d-flex align-items-center">
               <span class="follow text-capitalize">Follow Us:</span>
             </a>
@@ -274,6 +274,7 @@
             height="104"
             width="92"
             alt="cover"
+            class="cursor"
           />
         </div>
       </div>
