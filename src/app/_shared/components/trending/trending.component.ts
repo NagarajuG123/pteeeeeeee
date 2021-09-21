@@ -27,8 +27,8 @@ export class TrendingComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: [
-      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
-      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="10px" height="10px"/>',
+      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="10px" height="10px"/>',
     ],
     responsive: {
       0: {

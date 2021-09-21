@@ -32,6 +32,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PodcastComponent } from './components/podcast/podcast.component';
 
 // Modals Components
 
@@ -61,6 +62,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EditorialSectionsComponent,
     SpecialFeatureComponent,
     TrendingComponent,
+    PodcastComponent,
   ],
   imports: [
     CommonModule,
