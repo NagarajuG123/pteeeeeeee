@@ -27,23 +27,24 @@ export class SpecialFeatureComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
 
   ngOnInit(): void {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const specialFeature = this.tstate.get(RESULT_KEY, {});
-      this.specialFeature = specialFeature['data'];
-    } else {
-      const specialFeature = {};
-      this.apiService
-        .getAPI(`${this.apiUrl}`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          if (this.slug === '1851' && response.data.stories.length > 0) {
-            specialFeature['data'] = response.data.stories;
-          } else if(this.slug !== '1851' && response.data.length > 0) {
-            specialFeature['data'] = response.data;
-          }
-          this.tstate.set(RESULT_KEY, specialFeature);
-        });
-    }
+    // if (this.tstate.hasKey(RESULT_KEY)) {
+    //   const specialFeature = this.tstate.get(RESULT_KEY, {});
+    //   this.specialFeature = specialFeature['data'];
+    // } else {
+    //   const specialFeature = {};
+    this.apiService
+      .getAPI(`${this.apiUrl}`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        if (this.slug === '1851' && response.data.stories.length > 0) {
+          this.specialFeature = response.data.stories;
+        } else if (this.slug !== '1851' && response.data.length > 0) {
+          this.specialFeature = response.data;
+        }
+        // this.tstate.set(RESULT_KEY, specialFeature);
+      });
+    console.log(this.specialFeature);
+    // }
   }
 
   ngOnDestroy() {
