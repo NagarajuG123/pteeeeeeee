@@ -831,9 +831,8 @@ export class StoryComponent implements OnInit {
     this.addItems(1, this.detailsData.length + 1);
     // }
     if (val === 'next') {
-      let ArticlesNewsSection: any = document.querySelector(
-        '.ArticlesNewsSection'
-      );
+      let ArticlesNewsSection: any = $('.ArticlesNewsSection');
+
       window.scrollTo(0, window.scrollY + ArticlesNewsSection.offsetHeight);
     }
   }
