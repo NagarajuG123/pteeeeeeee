@@ -16,7 +16,7 @@ const RESULT_KEY = makeStateKey<any>('coversState');
 })
 export class MonthlyCoversComponent implements OnInit {
   hasMore: boolean;
-  firstBlock: Cover[] = [];
+  firstBlock: Cover = {};
   secondBlock: Cover[] = [];
   metaData: Meta[] = [];
   publication!: string;

@@ -6,17 +6,24 @@
           <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
           <p class="c-card-box--content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            quae officiis veniam totam ratione officia sapiente repellendus.
+            {{ firstBlock[0]?.story?.title }}
           </p>
-          <a href="#" class="c-link--btn">Read more &gt;</a>
+          <a
+            routerLink="{{ firstBlock[0].story.slug }}"
+            fragment="monthlydetailspage"
+            class="c-link--btn"
+            >Read more &gt;</a
+          >
         </div>
       </div>
     </div>
     <div class="c-card-box--row">
       <div class="c-card-box--col c-card-main-imagebox--wrapper">
         <div class="c-card-box--imageWrapper isMainCardBox">
-          <a routerLink="/{{ firstBlock[0]?.url }}" class="maincardbox-link--wrapper">
+          <a
+            routerLink="/{{ firstBlock[0]?.url }}"
+            class="maincardbox-link--wrapper"
+          >
             <img
               appYoutubeImage
               src="{{ firstBlock[0]?.media | defaultImage: 565:800 }}"
@@ -30,10 +37,11 @@
       </div>
       <div class="c-card-box--col">
         <div class="c-card-box--group">
-          <div class="c-card-box--item" *ngFor="let item of firstBlock | slice: 1:4">
-            <div
-              class="c-card-box--imageWrapper"              
-            >
+          <div
+            class="c-card-box--item"
+            *ngFor="let item of firstBlock | slice: 1:4"
+          >
+            <div class="c-card-box--imageWrapper">
               <img
                 appYoutubeImage
                 src="{{ item?.media | defaultImage: 190:265 }}"
@@ -43,19 +51,21 @@
                 class="card-image"
               />
             </div>
-            <h4 class="c-card-box--itemTitle">Lorem ipsum dolor</h4>
+            <h4 class="c-card-box--itemTitle">{{ item.story.title }}</h4>
             <p class="c-card-box--itemDec">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Blanditiis, ipsum eveniet dignissimos necessitatibus commodi nihil
-              ad harum vel est cum obcaecati aliquam aut ratione cupiditate a?
-              Odio amet praesentium facere!
+              {{ item.story.title }}
             </p>
-            <a href="#" class="c-link--btn">Read more &gt;</a>
+            <a
+              routerLink="{{ item.story.slug }}"
+              fragment="monthlydetailspage"
+              class="c-link--btn"
+              >Read more &gt;</a
+            >
           </div>
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </section>
 
 <div class="monthy-cover">
