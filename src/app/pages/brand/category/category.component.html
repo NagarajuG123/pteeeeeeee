@@ -21,6 +21,7 @@
               height="450"
               src="/{{ featuredData[0]?.media }}"
               alt="featured"
+              loading="lazy"
             />
             <div
               class="
@@ -69,6 +70,7 @@
               class="img-fluid"
               data-src="{{ item?.media | defaultImage: 121:114 }}"
               alt="category-feature"
+              loading="lazy"
             />
           </div>
           <div>
@@ -96,6 +98,7 @@
             class="img-fluid"
             src="{{ item?.media | defaultImage: 290:160 }}"
             alt="category-feature"
+            loading="lazy"
           />
           <div class="d-flex pt-3">
             <h3>

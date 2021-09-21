@@ -22,8 +22,6 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { FeaturedComponent } from './components/featured/featured.component';
-import { TopBannerComponent } from './components/top-banner/top-banner.component';
-import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
@@ -33,7 +31,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PodcastComponent } from './components/podcast/podcast.component';
-import { TrendingTopComponent } from './trending-top/trending-top.component';
 
 // Modals Components
 
@@ -55,8 +52,6 @@ import { TrendingTopComponent } from './trending-top/trending-top.component';
     VimeoPipe,
     VideoPlayerComponent,
     FiveColumnComponent,
-    TopBannerComponent,
-    TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
     MostPopularComponent,
@@ -64,7 +59,6 @@ import { TrendingTopComponent } from './trending-top/trending-top.component';
     SpecialFeatureComponent,
     TrendingComponent,
     PodcastComponent,
-    TrendingTopComponent,
   ],
   imports: [
     CommonModule,
@@ -99,8 +93,6 @@ import { TrendingTopComponent } from './trending-top/trending-top.component';
     EditorialSectionsComponent,
     FeaturedComponent,
     ErrorMessageComponent,
-    TopBannerComponent,
-    TwoSideBannerComponent,
     SpecialFeatureComponent,
     LatestStoryComponent,
     ModalComponent,
@@ -108,7 +100,6 @@ import { TrendingTopComponent } from './trending-top/trending-top.component';
     FontAwesomeModule,
     ShareButtonModule,
     CarouselModule,
-    TrendingTopComponent,
   ],
 })
 export class SharedModule {}
