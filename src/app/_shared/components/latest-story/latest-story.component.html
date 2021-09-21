@@ -23,7 +23,11 @@
           </ul>
         </div>
         <div class="frannews-top-right col-md-3">
-          <a routerLink="/{{ readMore(items[0]) }}" fragment="brand-latest-stories" class="float-right">
+          <a
+            routerLink="/{{ readMore(items[0]) }}"
+            fragment="brand-latest-stories"
+            class="float-right"
+          >
             READ MORE
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
@@ -36,7 +40,11 @@
             [ngClass]="type === 'brandInfo' ? 'col-lg-4' : 'col-lg-3'"
             *ngFor="let item of items"
           >
-            <a routerLink="/{{ readMore(item) }}" fragment="brand-latest-stories" class="frannews-bottom-details">
+            <a
+              routerLink="/{{ readMore(item) }}"
+              fragment="brand-latest-stories"
+              class="frannews-bottom-details"
+            >
               <figure>
                 <img
                   appYoutubeImage
@@ -45,6 +53,7 @@
                   width="259"
                   height="145"
                   alt="Latest stories"
+                  loading="lazy"
                 />
               </figure>
               <div class="socialmedia">

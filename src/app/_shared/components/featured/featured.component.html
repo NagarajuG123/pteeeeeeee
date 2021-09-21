@@ -1,11 +1,3 @@
-<div class="trending mb-1" *ngIf="slug === '1851'">
-  <div class="container-fluid text-center py-2">
-    <span class="pe-md-5">
-      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
-      TRENDING
-    </span>
-  </div>
-</div>
 <div class="container py-4">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
@@ -41,6 +33,7 @@
                 height="135"
                 src="{{ item.media | defaultImage: 1300:730 }}"
                 alt="featured"
+                loading="lazy"
             /></a>
             <div
               class="
@@ -118,6 +111,7 @@
               height="100"
               data-src="{{ item.media | defaultImage: 121:114 }}"
               alt="industry"
+              loading="lazy"
             />
           </div>
           <div>
@@ -166,6 +160,7 @@
                   height="130"
                   data-src=""
                   alt="special-featured"
+                  loading="lazy"
                 />
                 <div class="image-description">
                   Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
@@ -187,6 +182,7 @@
                   height="130"
                   data-src=""
                   alt="special-featured"
+                  loading="lazy"
                 />
                 <div class="image-description">
                   Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
@@ -208,6 +204,7 @@
                   height="130"
                   data-src=""
                   alt="special-featured"
+                  loading="lazy"
                 />
                 <div class="image-description">
                   Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
