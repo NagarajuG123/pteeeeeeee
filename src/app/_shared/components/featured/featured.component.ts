@@ -24,6 +24,8 @@ export class FeaturedComponent implements OnInit {
   news: Details[] = [];
   brandNews: Details[] = [];
   trendingNews: Details[] = [];
+  url: string;
+  openVideoPlayer = false;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -47,8 +49,10 @@ export class FeaturedComponent implements OnInit {
     margin: 10,
     navSpeed: 700,
     navText: [
-      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
-      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+      // '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
+      // '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+      '<span class="glyphicon glyphicon-chevron-left"></span>',
+      '<span class="glyphicon glyphicon-chevron-left"></span>',
     ],
     responsive: {
       0: {
@@ -103,5 +107,19 @@ export class FeaturedComponent implements OnInit {
       this.brandNews = featured['brandNews'];
       this.trendingNews = featured['trending'];
     }
+  }
+  isVideo(item) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
   }
 }
