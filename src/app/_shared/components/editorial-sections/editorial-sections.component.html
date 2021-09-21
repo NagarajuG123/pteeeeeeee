@@ -90,7 +90,9 @@
                 <h4 class="card-text mb-1">
                   <strong>{{ list.title }}</strong>
                 </h4>
+                <a routerLink="{{ commonService.goAuthorPage(list) }}">
                 <small>{{ list.author?.name }}</small>
+                  </a>
                 <h4 class="card-text mb-1">
                   {{ commonService.formatDescription(list.short_description) }}
                 </h4>
