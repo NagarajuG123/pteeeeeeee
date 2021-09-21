@@ -2,7 +2,7 @@
 @import  '../../../assets/scss/theme-color.scss';
 $bodyBackgroundColor: #273444;
 $whiteColor: #fff;
-$subTitleColor: #c54c64;
+$subTitleColor: #EB0444;
 $textColor: #18222e;
 $cardGroupSpacing: 14px;
 $defaultTransition: all 0.35s ease;
@@ -91,7 +91,7 @@ $defaultTransition: all 0.35s ease;
         }
       }
       .c-card-box--title {
-        font-size: 40px;
+        font-size: 44px;
         font-weight: bold;
         color: $textColor;
         text-transform: capitalize;
@@ -111,7 +111,7 @@ $defaultTransition: all 0.35s ease;
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -290px;
+        margin-top: -278px;
         margin-left: 100px;
         margin-bottom: 45px;
         width: 570px;
@@ -136,6 +136,10 @@ $defaultTransition: all 0.35s ease;
         }
         .maincardbox-link--wrapper{
           display: inline-block;
+          width: 574px;
+          @include media("<xl"){
+           width: auto;
+          }
         }
         .card-image {
           max-height: 800px;
@@ -171,9 +175,10 @@ $defaultTransition: all 0.35s ease;
         }
       }
       .c-card-box--itemTitle {
+        padding-top: 6px;
         color: $subTitleColor;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 15px;
       }
       .c-card-box--itemDec {
         color: $whiteColor;
@@ -201,6 +206,7 @@ $defaultTransition: all 0.35s ease;
 
 //Bottom Section
 .monthy-cover {
+  padding-top: 40px;
   .monthly-cover-wrapper{
     flex-flow: row;
     flex-wrap: wrap;
@@ -245,7 +251,8 @@ $defaultTransition: all 0.35s ease;
     font-family: "Ballinger Condensed";
     padding-left: 20px;
     font-weight: 700;
-    line-height: 42px;
+    line-height: 35px;
+    padding-bottom: 20px;
     font-style: normal;
     margin-left:75px;
   }
@@ -321,6 +328,7 @@ $defaultTransition: all 0.35s ease;
     border: 1px solid $primary ;
   }
 }
-.gray-color {
+.seem-more-text-wrapper {
   color: #243444;
+  font-size: 17px;
 }
