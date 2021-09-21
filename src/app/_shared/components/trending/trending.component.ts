@@ -28,6 +28,7 @@ export class TrendingComponent implements OnInit {
     navSpeed: 700,
     animateOut: 'slideOutDown',
     animateIn: 'slideInDown',
+    lazyLoad: true,
     navText: [
       '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="7px" height="15px"/>',
       '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="7px" height="15px"/>',

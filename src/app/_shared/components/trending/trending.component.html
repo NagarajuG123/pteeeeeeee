@@ -1,32 +1,26 @@
-<!-- <div class="trending mb-1" *ngIf="data.length">
-  <div class="container-fluid text-center py-2">
-    <span class="pe-md-5">
-      <img
-        src="assets/img/fire.svg"
-        loading="lazy"
-        height="18"
-        width="22"
-        class="pe-2"
-        loading="lazy" 
-      />
-      TRENDING
-    </span>
-  </div>
-</div> -->
-
-<div>
+<div class="trending-head d-none d-md-block">
   <owl-carousel-o [options]="customOptions" class="d-block position-relative">
-      <ng-container *ngFor="let item of data; index as i">
-        <ng-template carouselSlide [id]="item.id">
-    <div class="trending mb-1 slideItem" *ngIf=" slug === '1851'">
-      <div class="container-fluid text-center py-2 row">
-        <span class="pe-md-5">
-          <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" loading="lazy" />
-          TRENDING <span class="text-black">{{ item.title }}</span>
-        </span>
-      </div>
-    </div>
-    </ng-template>
+    <ng-container *ngFor="let item of data; index as i">
+      <ng-template carouselSlide [id]="item.id">
+        <div class="trending mb-1 slideItem">
+          <div class="container-fluid text-center py-2 row">
+            <div class="col-12">
+              <span class="pe-md-5">
+                <img
+                  src="assets/img/fire.svg"
+                  height="18"
+                  width="22"
+                  class="pe-2"
+                  loading="lazy"
+                />
+                <span class="me-2">TRENDING</span>
+
+                <span class="text-black">{{ item.title }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
     </ng-container>
-    </owl-carousel-o>
-  </div>
+  </owl-carousel-o>
+</div>
