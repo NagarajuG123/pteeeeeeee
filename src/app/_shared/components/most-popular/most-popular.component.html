@@ -6,6 +6,7 @@
   <div class="container customContainer">
     <div class="row d-none d-sm-flex">
       <div class="col col-sm-4" *ngFor="let item of data; index as i">
+        <a routerLink="{{ commonService.readMore(item) }}" class="text-black">
         <div class="slideItem" *ngIf="i < 3; else elseBlock">
           <img
             appYoutubeImage
@@ -48,8 +49,9 @@
           <div
             class="slide-footer primary-bg-1 d-flex flex-row-reverse py-1 px-2"
           >
-            <a href="#" class="text-white">READ MORE ></a>
+            <a class="text-white">READ MORE ></a>
           </div>
+        
         </div>
         <ng-template #elseBlock>
           <div class="subSlideItem px-md-3">
@@ -61,7 +63,9 @@
                 <h3 class="mb-0">
                   <strong class="ms-3 d-block">{{ item.title }}</strong>
                 </h3>
+                <a routerLink="{{ commonService.goAuthorPage(item) }}" class="text-black">
                 <small class="ms-3">By {{ item?.author?.name }}</small>
+              </a>
                 <p class="ms-3">
                   {{ item.short_description }}
                 </p>
@@ -69,6 +73,7 @@
             </div>
           </div>
         </ng-template>
+      </a>
       </div>
     </div>
 
