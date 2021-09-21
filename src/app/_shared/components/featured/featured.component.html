@@ -31,7 +31,7 @@
               Feature Article
             </div>
             <a 
-            *ngIf="!isVideo(item)"
+            *ngIf="!commonService.isVideo(item)"
             >
             <img
             appYoutubeImage
@@ -50,7 +50,7 @@
             alt="featured"
           />
           </a>
-          <a  *ngIf="isVideo(item)"
+          <a  *ngIf="commonService.isVideo(item)"
             attr.data-src="{{ item.media.url }}"
             data-bs-target="#videoModal"
             data-bs-toggle="modal"

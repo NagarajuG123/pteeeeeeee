@@ -1,0 +1,16 @@
+<div class="pt-5">
+<owl-carousel-o [options]="customOptions" class="d-block position-relative">
+    <ng-container *ngFor="let item of trendingNews; index as i">
+      <ng-template carouselSlide [id]="item.id">
+  <div class="trending mb-1 slideItem" *ngIf=" slug === '1851'">
+    <div class="container-fluid text-center py-2 row">
+      <span class="pe-md-5">
+        <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+        TRENDING <span class="text-black">{{ item.title }}</span>
+      </span>
+    </div>
+  </div>
+  </ng-template>
+  </ng-container>
+  </owl-carousel-o>
+</div>

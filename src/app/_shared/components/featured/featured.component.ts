@@ -48,6 +48,8 @@ export class FeaturedComponent implements OnInit {
     autoWidth: true,
     margin: 10,
     navSpeed: 700,
+    animateOut: 'slideOutDown',
+    animateIn: 'slideInDown',
     navText: [
       '<img src="assets/img/slider-left-arrow.png" width="7px" height="15px" alt="slider arrow"/>',
       '<img src="assets/img/slider-right-arrow.png" width="7px" height="15px" alt="slider arrow"/>',
@@ -105,16 +107,6 @@ export class FeaturedComponent implements OnInit {
       this.brandNews = featured['brandNews'];
       this.trendingNews = featured['trending'];
     }
-  }
-  isVideo(item) {
-    if (typeof item !== 'undefined' && item !== null) {
-      if (typeof item.media !== 'undefined' && item.media !== null) {
-        if (item.media.type === 'video') {
-          return true;
-        }
-      }
-    }
-    return false;
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
