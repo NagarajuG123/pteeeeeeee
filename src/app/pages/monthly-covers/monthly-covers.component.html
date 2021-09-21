@@ -1,97 +1,116 @@
 <section class="c-card-box--section">
-    <div class="c-card-box--wrapper">
-      <div class="c-card-box--row c-card-box--contentRow">
-        <div class="c-card-box--col c-ml--auto">
-          <div class="c-card-box--contentGroup">
-            <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
-            <h1 class="c-card-box--title">Back to Business</h1>
-            <a routerLink="/{{ readMoreCover(firstBlock[0]) }}" >
-            <p class="c-card-box--content"> {{ firstBlock[0]?.story?.description }}</p>
-            <span class="c-link--btn">Read more &gt;</span></a>
-          </div>
+  <div class="c-card-box--wrapper">
+    <div class="c-card-box--row c-card-box--contentRow">
+      <div class="c-card-box--col month-business--wrapper">
+        <div class="c-card-box--contentGroup">
+          <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
+          <h1 class="c-card-box--title">Back to Business</h1>
+          <p class="c-card-box--content">
+            {{ firstBlock[0]?.story?.title }}
+          </p>
+          <a
+            routerLink="{{ firstBlock[0].story.slug }}"
+            fragment="monthlydetailspage"
+            class="c-link--btn"
+            >Read more &gt;</a
+          >
         </div>
       </div>
-      <div class="c-card-box--row">
-        <div class="c-card-box--col">
-          <div class="c-card-box--imageWrapper isMainCardBox">
-            <a routerLink="/{{ firstBlock[0]?.url }}">
+    </div>
+    <div class="c-card-box--row">
+      <div class="c-card-box--col c-card-main-imagebox--wrapper">
+        <div class="c-card-box--imageWrapper isMainCardBox">
+          <a
+            routerLink="/{{ firstBlock[0]?.url }}"
+            class="maincardbox-link--wrapper"
+          >
             <img
-            appYoutubeImage
-            src="{{ firstBlock[0]?.media | defaultImage: 565:800 }}"
-            width="565"
-            height="800"
-            alt="monthly-covers-main"
-            class="card-image img-fluid"/>
+              appYoutubeImage
+              src="{{ firstBlock[0]?.media | defaultImage: 565:800 }}"
+              width="574"
+              height="775"
+              alt="monthly-covers-main"
+              class="card-image"
+              loading="lazy"
+            />
           </a>
-          </div>
         </div>
-        <div class="c-card-box--col">
-          <div class="c-card-box--group">
-            <div class="c-card-box--item" *ngFor="let item of firstBlock | slice: 1:4;">
-              <a routerLink="/{{ item?.url }}">
-              <div class="c-card-box--imageWrapper">
-                <img
-                  appYoutubeImage
-                  src="{{ item?.media | defaultImage: 190:265 }}"
-                  width="190"
-                  height="265"
-                  alt="monthly-covers-main"
-                  class="card-image img-fluid"/>
-              </div>
-              <h4 class="c-card-box--itemTitle">
-                {{ item?.date }}
-              </h4>
-            </a> 
-              <a routerLink="/{{ readMoreCover(item) }}">
-                <p class="c-card-box--itemDec">
-                  {{ item?.story?.description }}
-                </p>
-                <span class="c-link--btn">Read more &gt;</span></a>
+      </div>
+      <div class="c-card-box--col">
+        <div class="c-card-box--group">
+          <div
+            class="c-card-box--item"
+            *ngFor="let item of firstBlock | slice: 1:4"
+          >
+            <div class="c-card-box--imageWrapper">
+              <img
+                appYoutubeImage
+                src="{{ item?.media | defaultImage: 190:265 }}"
+                width="190"
+                height="265"
+                alt="monthly-covers-main"
+                class="card-image"
+                loading="lazy"
+              />
             </div>
+            <h4 class="c-card-box--itemTitle">{{ item.story.title }}</h4>
+            <p class="c-card-box--itemDec">
+              {{ item.story.title }}
+            </p>
+            <a
+              routerLink="{{ item.story.slug }}"
+              fragment="monthlydetailspage"
+              class="c-link--btn"
+              >Read more &gt;</a
+            >
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="container monthy-cover">
-    <h2> ALL COVERS</h2>
-    <div class="monthly-covers-bottom"  *ngFor="let cover of secondBlock ">
-      <a
-        class="monthly-covers1"
-        routerLink="{{ cover?.url }}">
-        <figure>
+<div class="monthy-cover">
+  <h2>ALL COVERS</h2>
+  <div class="monthly-cover-wrapper d-flex">
+    <div class="monthly-covers-bottom" *ngFor="let cover of secondBlock">
+      <a class="monthly-covers1" routerLink="{{ cover?.url }}">
+        <figure class="m-0">
           <img
             appYoutubeImage
             src="{{ cover.media | defaultImage: 288:379 }}"
-            width="288"
-            height="379"
-            alt="monthly-covers-img8"
+            width="305"
+            height="380"
+            alt="monthly-covers"
+            loading="lazy"
           />
         </figure>
       </a>
     </div>
+  </div>
 
-            <!-- See More -->
+  <!-- See More -->
+  <div class="d-flex">
+    <div class="see-more--wrapper"></div>
     <div class="nextLine position-relative mb-5 mt-2">
       <div class="container customContainer">
-        <div class="row">
-          <div class="col d-none d-md-block userDetail"></div>
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="nextBtn px-5 bg-white">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white">
               <img
                 src="assets/img/nextIcon.svg"
                 width="32"
                 alt="next articles"
                 class="me-3"
                 (click)="getMoreData()"
+                loading="lazy"
               />
-              <span class="gray-color" (click)="getMoreData()">SEE MORE</span
-              >
+              <span class="seem-more-text-wrapper" (click)="getMoreData()">SEE MORE</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="see-more-right--wrapper"></div>
   </div>
-  
+</div>

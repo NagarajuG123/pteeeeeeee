@@ -39,21 +39,14 @@ export class MostPopularComponent implements OnInit {
   }
 
   getMostPopular() {
-    if (this.tstate.hasKey(RESULT_KEY)) {
-      const mostPopular = this.tstate.get(RESULT_KEY, {});
-      this.data = mostPopular['data'];
-    } else {
-      const mostPopular: any = {};
-      this.apiService
-        .getAPI(`${this.slug}/trending?limit=9&offset=0`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          if (response.data.length) {
-            mostPopular['data'] = response.data;
-          }
-        });
-      this.tstate.set(RESULT_KEY, mostPopular);
-    }
+    this.apiService
+      .getAPI(`${this.slug}/trending?limit=9&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        if (response.data.length) {
+          this.data = response.data;
+        }
+      });
   }
   setOption() {
     this.customOptions = {

@@ -86,7 +86,7 @@ export class BrandSearchComponent implements OnInit {
     var names = industry.map(function (item) {
       return item.name;
     });
-    return names.toString();
+    return names.join(', ');
   }
   selectAllIndustry() {
     this.industryValues = '';

@@ -80,11 +80,13 @@
           > .card-text {
             font-size: 12px;
           }
+          a{
           > small {
             font-family: "ProximaNova-Regular";
             font-weight: 500;
             font-size: 10px;
           }
+        }
         }
       }
       @media screen and (min-width: 992px) {
@@ -122,4 +124,7 @@
 }
 a {
   color: $dark-gray;
+}
+.card-body {
+  height: 147px;
 }

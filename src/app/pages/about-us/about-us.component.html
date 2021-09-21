@@ -17,6 +17,7 @@
             height="575"
             alt="about"
             (imageLoad)="bannerImageLoad()"
+            loading="lazy"
           />
         </figure>
       </a>
@@ -32,8 +33,8 @@
           >
             ABOUT 1851
           </a>
-          <h1 class="text-left">{{ data.title }}</h1>
-          <em class="text-left d-block">{{ data.description }}</em>
+          <h1 class="text-start">{{ data.title }}</h1>
+          <em class="text-start d-block">{{ data.description }}</em>
         </div>
       </div>
     </div>
@@ -63,6 +64,7 @@
               width="720"
               height="485"
               alt="about_img2"
+              loading="lazy"
             />
             <img
               *ngIf="i === 1"
@@ -70,6 +72,7 @@
               width="720"
               height="485"
               alt="about_img2"
+              loading="lazy"
             />
           </figure>
         </div>
@@ -111,7 +114,7 @@
               width="491"
               height="615"
               alt="about-us-demo"
-              class="lazyload"
+              loading="lazy"
             />
           </figure>
         </div>

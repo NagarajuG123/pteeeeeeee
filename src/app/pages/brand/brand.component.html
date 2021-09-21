@@ -2,7 +2,7 @@
   <div class="trending mb-1">
   <div class="container-fluid text-center py-2">
     <span class="pe-md-5">
-      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" loading="lazy"/>
       TRENDING
     </span>
   </div>
@@ -30,7 +30,8 @@
             width="380"
             height="155"
             data-src="{{ item.media | defaultImage: 100:95 }}"
-            alt="most-popular"/>
+            alt="most-popular"
+            loading="lazy"/>
           <div class="slide-body position-relative primary-bg px-3 d-block">
             <span class="position-absolute top-0 start-0 bg-white primary-color d-flex 
             align-items-center justify-content-center">POPULAR</span>
@@ -64,7 +65,7 @@
       <div class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
         [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
         (click)="prev()">
-        <img src="assets/img/left-arrow.svg" />
+        <img src="assets/img/left-arrow.svg" loading="lazy"/>
       </div>
       <ul class="row innerContent m-0">
         <li *ngFor="let item of tabName; index as i"
@@ -78,7 +79,7 @@
       <div class="next position-absolute top-50 end-0 translate-middle-y pe-3"
         [ngClass]="tabName.length > this.commonService.vtabsItem ? '' : 'd-none'"
         (click)="next()">
-        <img src="assets/img/right-arrow.svg" />
+        <img src="assets/img/right-arrow.svg" loading="lazy"/>
       </div>
     </div>
   </div> 
@@ -102,7 +103,8 @@
                 width="95"
                 height="100"
                 data-src="{{ item?.media }}"
-                alt="editorial"/>
+                alt="editorial"
+                loading="lazy"/>
               <div class="card-body">
                 <h6 class="
                     card-title
@@ -127,72 +129,7 @@
 </div> 
 </div>
 <div *ngIf="type === 'category_page'">
-  <div class="empty"></div>
-
-  <app-featured
-    [type]="'Category'"
-    [slug]="slug"
-    [apiUrl]="apiUrl"
-  ></app-featured>
-
-  <app-category-trending [data]="categoryTrending" [subTitle]="categoryParam">
-  </app-category-trending>
-
-  <app-advertisement
-    [slug]="'1851'"
-    [type]="'Main Site Ad'"
-  ></app-advertisement>
-
-  <div *ngIf="mostRecent" class="frannews most-recent">
-    <div class="container">
-      <div class="frannews-details col-xl-11">
-        <div class="frannews-top d-flex">
-          <div class="frannews-top-left col-md-6 p-0">
-            <ul class="desktop-only">
-              <li class="header-title">
-                <h4 class="text-uppercase">
-                  <strong>MOST RECENT</strong>
-                </h4>
-              </li>
-              <li>
-                <h4 class="text-uppercase">
-                  <span>{{ categoryParam }}</span>
-                </h4>
-              </li>
-            </ul>
-            <ul class="mobile-only">
-              <li>
-                <h4 class="text-uppercase">
-                  <span
-                    ><strong>MOST RECENT | </strong>{{ categoryParam }}</span
-                  >
-                </h4>
-              </li>
-            </ul>
-          </div>
-          <div class="frannews-top-right col-md-6">
-            <a
-              routerLink="/{{ readMore(mostRecent[0]) }}"
-              fragment="{{ categoryParam }}"
-              class="float-right"
-            >
-              READ MORE
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <app-five-column
-          [slug]="'1851'"
-          [contents]="mostRecent"
-          [type]="'categoryPage'"
-          [hasMore]="hasMore"
-          [typeSlug]="categoryParam"
-          (more)="getMoreData()"
-        ></app-five-column>
-      </div>
-    </div>
-  </div>
+  <app-category [slug]="slug" [apiUrl]="apiUrl"></app-category>
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
@@ -205,13 +142,14 @@
         width="1440"
         height="493"
         alt="banner"
+        loading="lazy"
       />
     </figure>
     <div class="left-text d-flex col-5">
       <a routerLink="{{ commonService.readMore(dynamicFirst[0]) }}">
       <h2>{{ topBlock?.title }}</h2>
       <p>{{ topBlock?.description }}</p>
-      <button class="align-items-center">READ MORE</button>
+      <div class="readmore-btn"><button class="align-items-center">READ MORE</button></div>
     </a>
     </div>
   </div>
@@ -232,6 +170,7 @@
               alt="story"
               width="257"
               height="138"
+              loading="lazy"
             />
             <div class="card-body">
               <h2 class="card-text mb-1 text-black text-capitalize">
@@ -258,6 +197,7 @@
           alt="next articles"
           class="me-3"
           (click)="getMoreDynamic()"
+          loading="lazy"
         />
         <span class="gray-color" (click)="getMoreDynamic()">SEE MORE</span
         >

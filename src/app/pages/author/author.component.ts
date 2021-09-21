@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { forkJoin } from 'rxjs';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -17,6 +18,7 @@ export class AuthorComponent implements OnInit {
   brandedContents: any = [];
   footer: any;
   schema: any;
+  faAngleRight = faAngleRight;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

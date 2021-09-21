@@ -1,4 +1,4 @@
-@import "../../../assets/scss/theme-color.scss";
+@import "../../../assets/scss/variables.scss";
 
 .most-recent,
 .dynamic-story {
@@ -13,14 +13,14 @@
     background: linear-gradient($dark-gray 385px, $white 0);
     font-family: Roboto;
     h2 {
-      font-family: "Ballinger Condensed Medium";
+      font-family: $balingerMedium;
       font-weight: bold;
       font-size: 33px;
       line-height: 40px;
     }
     hr {
-      border-color: $primary;
-      background-color: $primary;
+      border-color: $red;
+      background-color: $red;
       height: 2px;
     }
     .slideItem {
@@ -45,7 +45,7 @@
         }
       }
       .slide-footer {
-        font-family: "Ballinger Condensed";
+        font-family: $balinger;
         font-size: 15px;
         line-height: 18px;
       }
@@ -120,7 +120,7 @@
   background: $dark-gray;
   font-family: Roboto;
   h2 {
-    font-family: "Ballinger Condensed Medium";
+    font-family: $balingerMedium;
     font-weight: bold;
     font-size: 33px;
     line-height: 40px;
@@ -155,12 +155,12 @@
           height: 100%;
           color: $light-gray-1;
           cursor: pointer;
-          font-family: "ProximaNova-Regular";
+          font-family: $proxiRegular;
           font-weight: bold;
           font-size: 15px;
           &.active,
           &:hover {
-            color: $primary;
+            color: $red;
             &::after {
               content: "";
               height: 7px;
@@ -169,7 +169,7 @@
               width: 7px;
               border-width: 16px 16px 0 16px;
               border-style: solid;
-              border-color: $primary transparent transparent transparent;
+              border-color: $red transparent transparent transparent;
             }
             &::before {
               content: "";
@@ -177,14 +177,14 @@
               position: absolute;
               bottom: -5px;
               width: 100%;
-              background-color: $primary;
+              background-color: $red;
             }
           }
         }
         >small{
           font-weight: 500;
           font-size: 12px;
-          font-family: "Ballinger Condensed";
+          font-family: $balinger;
         }
         border-color: $light-gray-1;
       }
@@ -203,13 +203,13 @@ a {
   border-bottom: 1px solid #243444;
   span {
     color: #eb0444;
-    font-family: "Ballinger Condensed Medium";
+    font-family: $balingerMedium;
   }
 }
 .tabs-container {
   > .tabItemList {
     .items {
-      font-family: "Ballinger Condensed";
+      font-family: $balinger;
       font-weight: bold;
       img {
         width: 100%;
@@ -225,7 +225,7 @@ a {
           font-size: 12px;
         }
         > small {
-          font-family: "ProximaNova-Regular";
+          font-family: $proxiRegular;
           font-weight: 500;
           font-size: 10px;
         }
@@ -271,7 +271,7 @@ a {
       transform: translateY(-50%);
   }
   .nextBtn {
-      font-family: "ProximaNova-Regular";
+      font-family: $proxiRegular;
       font-size: 17px;
       z-index: 1;
       img{
@@ -285,7 +285,7 @@ a {
     position: absolute;
     top: 40%;
     left: 20%;
-    font-family: 'Ballinger Condensed';
+    font-family: $balinger;
     p{
       font-size: 14px;
       line-height: 20px;
@@ -294,16 +294,21 @@ a {
     }
     h2{
       font-weight: 700;
-      font-size: 64px;
+      font-size: 54px;
       line-height: 77px;
       color: black;
     }
     button{
-      background-color: #ec0044;
+      background-color: $red;
       color: white;
-      position: relative;
+      position: absolute;
       border: 0;
       cursor: pointer;
+      margin: auto;
+    }
+    .readmore-btn{
+      text-align: center;
+      padding-right: 25%;
     }
   }
 }

@@ -52,6 +52,7 @@
             data-src="{{ n.media | defaultImage: 210:118 }}"
             class="lazyload"
             alt="news"
+            loading="lazy"
           />
         </figure>
         <div
@@ -81,5 +82,5 @@
   class="text-center loadmore-btn d-block"
   (click)="getMoreData()"
 >
-  <i class="fa fa-angle-down" aria-hidden="true"></i>
-</a>
+  <fa-icon [icon]="faAngleDown"></fa-icon
+></a>

@@ -26,19 +26,22 @@ export class TrendingComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
+    animateOut: 'slideOutDown',
+    animateIn: 'slideInDown',
+    lazyLoad: true,
     navText: [
-      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
-      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="7px" height="15px"/>',
+      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="7px" height="15px"/>',
     ],
     responsive: {
       0: {
         items: 1,
       },
       600: {
-        items: 3,
+        items: 1,
       },
       1024: {
-        items: 5,
+        items: 1,
       },
     },
     nav: true,

@@ -17,15 +17,11 @@ import { FooterComponent } from './footer/footer.component';
 
 // Components
 import { ErrorComponent } from './components/error/error.component';
-import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { NewsComponent } from './components/news/news.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { FiveColumnComponent } from './components/five-column/five-column.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeaturedComponent } from './components/featured/featured.component';
-import { TopBannerComponent } from './components/top-banner/top-banner.component';
-import { TwoSideBannerComponent } from './components/two-side-banner/two-side-banner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LatestStoryComponent } from './components/latest-story/latest-story.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
@@ -34,6 +30,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PodcastComponent } from './components/podcast/podcast.component';
 
 // Modals Components
 
@@ -53,18 +50,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SplitArrayPipe,
     ImagePreloadDirective,
     VimeoPipe,
-    AdvertisementComponent,
     VideoPlayerComponent,
     FiveColumnComponent,
-    CarouselComponent,
-    TopBannerComponent,
-    TwoSideBannerComponent,
     ModalComponent,
     LatestStoryComponent,
     MostPopularComponent,
     EditorialSectionsComponent,
     SpecialFeatureComponent,
     TrendingComponent,
+    PodcastComponent,
   ],
   imports: [
     CommonModule,
@@ -75,7 +69,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SlickCarouselModule,
     FontAwesomeModule,
     ShareButtonModule,
-    CarouselModule
+    CarouselModule,
   ],
   exports: [
     RouterModule,
@@ -89,27 +83,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgxYoutubePlayerModule,
     HeaderComponent,
     FooterComponent,
-    AdvertisementComponent,
     NewsComponent,
     TrendingBuzzComponent,
     VideoPlayerComponent,
     VideoPlayerComponent,
-    CarouselComponent,
     TrendingComponent,
     MostPopularComponent,
     FiveColumnComponent,
     EditorialSectionsComponent,
     FeaturedComponent,
     ErrorMessageComponent,
-    TopBannerComponent,
-    TwoSideBannerComponent,
     SpecialFeatureComponent,
     LatestStoryComponent,
     ModalComponent,
     SlickCarouselModule,
     FontAwesomeModule,
     ShareButtonModule,
-    CarouselModule
+    CarouselModule,
   ],
 })
 export class SharedModule {}

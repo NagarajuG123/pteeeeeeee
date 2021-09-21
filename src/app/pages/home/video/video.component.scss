@@ -1,6 +1,8 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/typography.scss";
 @import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+
 .c-video-section--wrapper {
   background: $sectionBGColor;
   padding: 25px 0;
@@ -156,4 +158,31 @@
       }
     }
   }
+}
+.video-btn {
+  cursor: pointer;
+  position: relative;
+  .vide-play {
+    position: absolute;
+    left: calc(50% - 45px);
+    top: calc(50% - 45px);
+    z-index: 1000;
+    height: 90px;
+    width: 90px;
+  }
+}
+.badge {
+  background-color: $red;
+}
+.modal-body {
+  padding: 0rem !important;
+}
+.btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
 }

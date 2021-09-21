@@ -1,0 +1,185 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.banner {
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -webkit-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -ms-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -o-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -moz-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  position: relative;
+  z-index: 5;
+}
+a {
+  text-decoration: none !important;
+  display: inline-block;
+  vertical-align: top;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+}
+figure {
+  line-height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border: 0;
+}
+.trendingbrandbuzz-banner {
+  figure {
+    max-height: 680px;
+    img {
+      display: block;
+      width: 100%;
+    }
+    .legalplayer-banner {
+      height: 680px;
+      overflow: hidden;
+      @include tablet-landscape {
+        height: 640px;
+      }
+      @include tablet-landscape1 {
+        height: 550px;
+      }
+      @include mobile-landscape {
+        height: 440px;
+      }
+      @include mobile-portrait {
+        height: 300px;
+      }
+    }
+  }
+  .banner-left {
+    max-width: 29%;
+    flex: 0 0 29%;
+    -webkit-flex: 0 0 29%;
+    background: $dark_gray_1;
+    position: relative;
+    @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
+  }
+  .banner-right {
+    max-width: 71%;
+    flex: 0 0 71%;
+    -webkit-flex: 0 0 71%;
+    @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
+  }
+  .buffalowings-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $red;
+    @include desk-lg-below {
+      padding: 7px 15px;
+    }
+    @include tablet-portrait {
+      position: static;
+    }
+    a {
+      line-height: 23px;
+      font-size: 10px;
+      color: $white;
+      font-weight: 400;
+      font-family: "ProximaNova-Regular";
+      fa-icon {
+        font-size: 25px;
+        line-height: 11px;
+        color: $white;
+        padding: 0 0 0 7px;
+        vertical-align: top;
+      }
+      &:focus {
+        outline: 0 none;
+      }
+    }
+  }
+}
+
+.trendingbrandbuzz-content {
+  padding: 15px 59px 75px 49px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include desk-lg-below1 {
+    padding: 20px 15px 60px 15px;
+  }
+  @include tablet-portrait {
+    position: static;
+    padding: 30px 15px;
+  }
+  h4 {
+    background: $red;
+    color: $white;
+    font-family: $proxiLight;
+    margin: 0 7px 0 0;
+    padding: 17px 0 13px 0;
+    letter-spacing: 0.5px;
+    @include desk-lg-below {
+      margin: 0;
+      padding: 13px 5px;
+    }
+  }
+  h2,
+  h1 {
+    font-size: 27px;
+    line-height: 32px;
+    color: $white;
+    padding: 16px 0 5px 0;
+    @include tablet-landscape {
+      padding: 12px 0 5px 0;
+      font-size: 25px;
+      line-height: 29px;
+    }
+    @include mobile-landscape1 {
+      font-size: 24px;
+      line-height: 27px;
+    }
+  }
+  p {
+    font-size: 18px;
+    line-height: 22px;
+    color: $white;
+    font-family: $proxiRegular;
+    @include mobile-landscape1 {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  }
+}
+
+.monthly-details-trending {
+  border: 0 none;
+  h4 {
+    padding: 0 0 13px 0;
+    strong {
+      font-family: $proxiBold;
+    }
+  }
+
+  .trending-articles-details {
+    padding: 120px 41px 92px 39px;
+    h4 {
+      color: #263645;
+      border-bottom: 2px solid #a6a8aa;
+    }
+    @include desk-lg-below1 {
+      padding: 40px 0 30px 0;
+    }
+    @include tablet-landscape1 {
+      padding: 30px 0;
+    }
+  }
+}

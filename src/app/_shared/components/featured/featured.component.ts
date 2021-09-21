@@ -13,6 +13,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
 @Component({
@@ -45,6 +47,10 @@ export class FeaturedComponent implements OnInit {
     { width: 992, limit: 20 },
   ];
 
+  url: string;
+  openVideoPlayer = false;
+  faAngleDown = faAngleDown;
+  faAngleUp = faAngleUp;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -58,37 +64,28 @@ export class FeaturedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getFeatured();
     this.setLimit('');
+    const featureApi = this.apiService.getAPI(
+      `${this.apiUrl}?limit=4&offset=0`
+    );
+    const newsApi = this.apiService.getAPI(
+      `${this.slug}/news?limit=4&offset=0`
+    );
+    const brandNews = this.apiService.getAPI(
+      `1851/news?limit=4&offset=0&isBrand=true`
+    );
+
+    forkJoin([featureApi, newsApi, brandNews])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.featured = results[0].data;
+        this.news = results[1].data;
+        this.brandNews = results[2].data;
+      });
   }
-
-  getFeatured() {
-    const featured = this.state.get(FEATURE_KEY, null as any);
-    if (!featured) {
-      const featureApi = this.apiService.getAPI(
-        `${this.apiUrl}?limit=4&offset=0`
-      );
-      const newsApi = this.apiService.getAPI(
-        `${this.slug}/news?limit=4&offset=0`
-      );
-      const brandNews = this.apiService.getAPI(
-        `1851/news?limit=4&offset=0&isBrand=true`
-      );
-      const featured: any = {};
-      forkJoin([featureApi, newsApi, brandNews])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((results) => {
-          featured['data'] = results[0].data;
-          featured['news'] = results[1].data;
-          featured['brandNews'] = results[2].data;
-
-          this.state.set(FEATURE_KEY, featured as any);
-        });
-    } else {
-      this.featured = featured['data'];
-      this.news = featured['news'];
-      this.brandNews = featured['brandNews'];
-    }
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
   }
 
   setLimitValues(Options, fieldName) {

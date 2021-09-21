@@ -1,163 +1,334 @@
-  $bodyBackgroundColor: #273444;
-  $whiteColor: #fff;
-  $subTitleColor: #c54c64;
-  $textColor: #18222e;
-  $cardGroupSpacing: 20px;
-  $defaultTransition: all 0.35s ease;
-  // Global Class
-  .c-ml--auto {
-    margin-left: auto;
-  }
-  .c-link--btn {
-    color: $subTitleColor;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
+@import '../../../assets/scss/media.scss';
+@import  '../../../assets/scss/theme-color.scss';
+$bodyBackgroundColor: #273444;
+$whiteColor: #fff;
+$subTitleColor: #EB0444;
+$textColor: #18222e;
+$cardGroupSpacing: 14px;
+$defaultTransition: all 0.35s ease;
+// Global Class
+.c-ml--auto {
+  margin-left: auto;
+}
+.c-link--btn {
+  color: $subTitleColor;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 15px;
+  display: inline-block;
+  transition: $defaultTransition;
+  &:hover {
     text-decoration: none;
-    margin-top: 15px;
-    display: inline-block;
-    transition: $defaultTransition;
-    &:hover {
-      text-decoration: none;
-      color: $textColor;
-    }
+    color: $textColor;
   }
-  // Card Design
-  .c-card-box--section {
-    margin-top: 60px;
-    padding-top: 100px;
-    background-color: $bodyBackgroundColor;
-    .c-card-box--wrapper {
-      .c-card-box--row {
+}
+// Card Design
+.c-card-box--section {
+  padding-top: 100px;
+  background-color: $bodyBackgroundColor;
+  .c-card-box--wrapper {
+    .c-card-box--row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      // width: 100%;
+      // margin: 0 auto;
+      @include media("<md"){
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        width: 100%;
-        max-width: 1360px;
-        margin: 0 auto;
-        .c-card-box--col {
-          flex: 1 0 calc(50% - 30px);
-          max-width: calc(50% - 30px);
-          padding: 15px;
-        }
+        flex-flow: column;
       }
-      .c-card-box--contentRow {
-        background-color: $whiteColor;
-        max-width: 100%;
+      @include media("<lg"){
+        flex-flow: column;
+        justify-content: center;
       }
-      .c-card-box--contentGroup {
-        .c-card-box--subTitle {
-          color: $subTitleColor;
-          margin-top: 0;
-        }
-        .c-card-box--title {
-          font-size: 36px;
-          color: $textColor;
-          text-transform: capitalize;
-        }
-        .c-card-box--content {
-          max-width: 480px;
-          font-weight: 600;
-          font-size: 16px;
-          color: #18222e;
-        }
-      }
-      .c-card-box--imageWrapper {
-        &.isMainCardBox {
-          margin-top: -270px;
-          text-align: right;
-          .card-image {
-            max-height: 800px;
-          }
-        }
-        img {
+      .c-card-box--col {
+        flex: 1 0 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+        // padding: 15px;
+        // @include media("<lg"){
+        //   flex: auto;
+        //   max-width: calc(100% - 0px) !important ;
+        //   padding: 15px;
+        // }
+        @include media("<lg"){
+          flex: 0 0 100%;
+          padding: 6px 15px;
           max-width: 100%;
         }
-      }
-  
-      .c-card-box--group {
-        display: flex;
-        align-self: flex-start;
-        gap: $cardGroupSpacing;
-        margin-top: 10px;
-        .c-card-box--item {
-          flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
-          max-width: calc(33.3333% - #{$cardGroupSpacing});
-        }
-        .c-card-box--itemTitle {
-          color: $subTitleColor;
-          font-weight: 600;
-          font-size: 16px;
-        }
-        .c-card-box--itemDec {
-          color: $whiteColor;
-          font-weight: 500;
-          font-size: 14px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          line-clamp: 4;
-          -webkit-line-clamp: 4;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-        }
-  
-        .c-link--btn {
-          &:hover {
-            color: $whiteColor;
+        &.c-card-main-imagebox--wrapper{
+          @include media("<lg"){
+            width: 100%;
+            text-align: center;
+            padding: 10px 0 0;
           }
         }
       }
     }
-  }
-
-  //Bottom Section
-  .monthy-cover{
-    h2{
-        font-family: 'Ballinger Condensed';
-        padding-left: 20px;
-        font-weight: 700;
-        line-height: 42px;
-        font-style: normal;
-    }   
-  .monthly-covers-bottom {
-    .monthly-covers1 {
-        float: left;
-        display: inline-block;
-        width: 20%;
-    }
-  }
-  .monthly-coverpage-details{
-    figure {
-        img {
-          display: block;
-          width: 100%;
+    .c-card-box--contentRow {
+      background-color: $whiteColor;
+      .month-business--wrapper{
+        max-width: 52%;
+        margin-left: auto;
+        // flex: unset;
+        padding: 15px 0;        
+        @include media("<lg"){
+        max-width: 100%;
+        padding: 15px 0 15px 30px;
+        margin-left: unset;
         }
       }
-  } 
-    background-color: white;
-    .userDetail {
-        max-width: 300px;
     }
-    .nextLine{
-    &::after {
-        content: "";
-        position: absolute;
-        top: 98%;
-        width: 100%;
-        height: 1px;
-        background-color: #eb0444;
-        transform: translateY(-50%);
-    }
-    .nextBtn {
-        font-family: "ProximaNova-Regular";
-        font-size: 17px;
-        z-index: 1;
-        img{
-            cursor: pointer;
+    .c-card-box--contentGroup {
+      .c-card-box--subTitle {
+        color: $subTitleColor;
+        margin-top: 0;
+        font-size: 20px;
+        font-weight: bold;
+        @include media("<md"){
+          font-size: 16px;
         }
+      }
+      .c-card-box--title {
+        font-size: 44px;
+        font-weight: bold;
+        color: $textColor;
+        text-transform: capitalize;
+        @include media("<md"){
+          font-size: 30px;
+        }
+      }
+      .c-card-box--content {
+        max-width: 480px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #18222e;
+        @include media("<md"){
+          font-size: 14px;
+        }
+      }
+    }
+    .c-card-box--imageWrapper {
+      &.isMainCardBox {
+        margin-top: -278px;
+        margin-left: 100px;
+        margin-bottom: 45px;
+        width: 570px;
+        // margin-left: 270px;
+        @include media("<=xxl"){
+          margin-left: 60px;
+        }
+        @include media("<xl"){
+          width: 400px;
+          height: auto;
+          margin: -256px 0 0 20px;
+        }
+        @include media("<lg"){
+          width: 100%;
+          margin-top: 0px;
+         margin-left: 0px;
+        }
+        @include media("<md"){
+          margin-top: 0px;
+          padding: 6px 15px;
+         margin-left: 0px;
+        }
+        .maincardbox-link--wrapper{
+          display: inline-block;
+          width: 574px;
+          @include media("<xl"){
+           width: auto;
+          }
+        }
+        .card-image {
+          max-height: 800px;
+          @include media("<xl"){
+            max-height: unset;
+            height: auto;
+          }
+        }
+      }
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .c-card-box--group {
+      display: flex;
+      flex-flow: row wrap;
+      align-self: flex-start;
+      gap: $cardGroupSpacing;
+      margin-top: 10px;
+      @include media("<lg"){
+        gap: 0;        
+        justify-content: space-between;
+      }
+      .c-card-box--item {
+        flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
+        max-width: calc(33.3333% - #{$cardGroupSpacing});
+        @include media("<sm"){
+          flex: 1 0 100%;
+          max-width: 100%;
+          margin: 0 0 10px;
+        }
+      }
+      .c-card-box--itemTitle {
+        padding-top: 6px;
+        color: $subTitleColor;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .c-card-box--itemDec {
+        color: $whiteColor;
+        font-weight: 500;
+        font-size: 13px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        margin-bottom: 4px;
+      }
+
+      .c-link--btn {
+        font-size: 11px;
+        margin-top: 5px;
+        &:hover {
+          color: $whiteColor;
+        }
+      }
     }
   }
 }
-.gray-color {
-color: #243444;
+
+//Bottom Section
+.monthy-cover {
+  padding-top: 40px;
+  .monthly-cover-wrapper{
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    // margin: 40px 0 0 155px;
+    padding: 40px 0 0 155px;
+    @include media("<xl"){
+      width: 100%;
+      padding: 0;
+    }    
+    @include media("<md"){      
+      margin: 40px 0 0 0 !important;
+    }
+    .monthly-covers-bottom{   
+      flex: 0 0 25%;
+        max-width: 25%;   
+      @include media("<xl"){
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+      @include media("<lg"){
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      @include media("<sm"){
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    margin-top: 45px;
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+    transform: translateY(-50%);
+  }
+  h2 {
+    font-family: "Ballinger Condensed";
+    padding-left: 20px;
+    font-weight: 700;
+    line-height: 35px;
+    padding-bottom: 20px;
+    font-style: normal;
+    margin-left:75px;
+  }
+  .monthly-covers-bottom {
+    .monthly-covers1 {
+      // float: left;
+      display: inline-block;
+      width: 20%;
+      @include media("<xl"){
+        width: 100%;
+      }
+      img{
+        @include media("<xl"){
+          width: 100%;
+          height: 100%;
+          padding: 6px 15px;
+        } 
+      }
+    }
+  }
+  .monthly-coverpage-details {
+    figure {
+      img {
+        display: block;
+        width: 100% !important;
+      }
+    }
+  }
+  background-color: white;
+  .userDetail {
+    max-width: 300px;
+  }
+  .nextLine {
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 98%;
+    //   width: 100%;
+    //   height: 1px;
+    //   background-color: #eb0444;
+    //   transform: translateY(-50%);
+    // }.
+    .customContainer{
+      div{
+        width: 220px;
+        padding: 0 18px;
+        @include media ("<md"){
+          width: 157px;
+          padding: 0 7px;
+        }
+        .nextBtn {
+          font-family: "ProximaNova-Regular";
+          font-size: 15px;
+          z-index: 1;
+          margin-top: 35px;
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .see-more--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $primary ;
+  }
+  .see-more-right--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $primary ;
+  }
+}
+.seem-more-text-wrapper {
+  color: #243444;
+  font-size: 17px;
 }

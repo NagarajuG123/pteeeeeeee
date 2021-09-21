@@ -2,7 +2,7 @@
 <div class="banner author-banner">
   <div class="container">
     <div class="author-banner-content d-flex col-xl-8">
-      <div class="author-banner-left col-md-5 col-sm-6">
+      <div class="author-banner-left col-md-5 col-12">
         <figure>
           <img
             *ngIf="author?.data"
@@ -11,10 +11,11 @@
             width="298"
             height="297"
             alt="authorpage-img1"
+            loading="lazy"
           />
         </figure>
       </div>
-      <div class="author-banner-right col-md-7 col-sm-6 p-0">
+      <div class="author-banner-right col-md-7 col-12 p-0">
         <ul>
           <li class="d-block">
             <div class="cassidy text-center">
@@ -60,13 +61,13 @@
             [typeSlug]="'editorials'"
           ></app-five-column>
           <a
-            routerLink="/{{ goReadMore(editorials[0])}}"
+            routerLink="/{{ goReadMore(editorials[0]) }}"
             fragment="editorials"
             class="readmore d-block text-uppercase"
           >
             READ MORE
             <span class="d-block text-center">
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              <fa-icon [icon]="faAngleRight"></fa-icon>
             </span>
           </a>
         </div>
@@ -87,7 +88,7 @@
           >
             READ MORE
             <span class="d-block text-center">
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              <fa-icon [icon]="faAngleRight"></fa-icon>
             </span>
           </a>
         </div>

@@ -1,0 +1,258 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+  @include desk-lg-below {
+    max-width: 100%;
+  }
+}
+.banner {
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+  -webkit-box-shadow: 0 20px 8px rgba(0, 0, 0, 0.078);
+
+  position: relative;
+  z-index: 5;
+}
+.d-flex {
+  -webkit-flex-wrap: wrap;
+  display: flex !important;
+}
+a {
+  display: inline-block;
+  vertical-align: top;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+.author-banner {
+  position: relative;
+  background: url("/assets/img/author-banner.jpg") no-repeat left top;
+  background-size: cover;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.author-banner-content {
+  margin: 0 auto;
+  padding: 97px 29px 98px 0;
+  position: relative;
+  z-index: 1;
+  @include desk-lg-below1 {
+    padding: 90px 0;
+  }
+  @include tablet-landscape {
+    padding: 70px 0;
+  }
+  @include tablet-landscape1 {
+    padding: 50px 0;
+  }
+  @include mobile-landscape1 {
+    padding: 30px 0;
+  }
+}
+.author-banner-left {
+  padding: 0 20px 0 0;
+  figure {
+    border-radius: 100%;
+    img {
+      border-radius: 100%;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+      min-height: 1px;
+    }
+  }
+}
+.author-banner-right {
+  ul {
+    padding: 55px 0 0 14px;
+    @include tablet-landscape1 {
+      padding: 30px 0 0 14px;
+    }
+    @include mobile-landscape1 {
+      padding: 20px 0 0 0;
+    }
+    li {
+      padding: 0 0 10px 0;
+    }
+  }
+}
+.cassidy {
+  background: $red;
+  padding: 26px 5px 22px 5px;
+  @include desk-lg-below {
+    padding: 20px 5px;
+  }
+  h2 {
+    font-size: 27px;
+    line-height: 29px;
+    color: $white;
+    font-family: $proxiLight;
+    @include tablet-landscape1 {
+      font-size: 24px;
+      line-height: 26px;
+    }
+    @include mobile-landscape1 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+  }
+  span {
+    font-size: 21px;
+    line-height: 23px;
+    color: $white;
+    font-weight: normal;
+    font-family: $proxiLight;
+    @include mobile-landscape1 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+}
+.cassidy1 {
+  background: $grade_bg1;
+  h2 {
+    font-size: 29px;
+    line-height: 31px;
+    @include tablet-landscape1 {
+      font-size: 27px;
+      line-height: 29px;
+    }
+    @include mobile-landscape1 {
+      font-size: 24px;
+      line-height: 26px;
+    }
+  }
+}
+
+/* about-cassidy */
+.about-cassidy {
+  background: $white;
+}
+.about-cassidy-details {
+  padding: 110px 9px 105px 9px;
+  margin: 0 auto;
+  @include desk-lg-below1 {
+    padding: 40px 0 30px 0;
+  }
+  @include tablet-landscape1 {
+    padding: 30px 0;
+    text-align: center;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 32px;
+    color: $dark_gray_1;
+    font-family: $proxiLight;
+    padding: 0 0 30px 0;
+    @include desk-lg-below {
+      padding: 0 0 10px 0;
+    }
+    @include tablet-landscape1 {
+      font-size: 26px;
+      line-height: 28px;
+    }
+  }
+  p {
+    font-size: 20px;
+    line-height: 28px;
+    color: $dark_gray_1;
+    letter-spacing: 0.1px;
+    @include mobile-landscape1 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}
+
+/* editorial-stories */
+.editorial-stories {
+  background: $dark_gray_1;
+}
+.editorial-stories-details {
+  padding: 51px 39px 56px 39px;
+  margin: 0 auto;
+  @include desk-lg-below1 {
+    padding: 30px 0 0 0;
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 26px;
+    color: $white;
+    font-family: "ProximaNova-Medium";
+    letter-spacing: 0.3px;
+    padding: 0 0 66px 0;
+    @include tablet-landscape {
+      font-size: 23px;
+      line-height: 25px;
+    }
+    @include tablet-landscape1 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    @include mobile-landscape1 {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    @include desk-lg-below {
+      padding: 0 0 20px 0;
+    }
+  }
+  p {
+    color: $white;
+  }
+  .frannews-bottom {
+    padding: 35px 0 87px 0;
+    @include desk-lg-below1 {
+      padding: 0 0 50px 0;
+    }
+  }
+}
+.readmore {
+  width: 177px;
+  height: 36px;
+  background: $red;
+  position: relative;
+  margin: 72px auto 0 auto;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $white;
+  padding: 0 40px 0 30px;
+  @include desk-lg-below {
+    margin: 20px auto 0 auto;
+  }
+  span {
+    width: 36px;
+    height: 36px;
+    background: $dark_red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .fa {
+      font-size: 33px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+  &:hover {
+    color: $white;
+  }
+}

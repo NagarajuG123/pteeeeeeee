@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonService } from 'src/app/_core/services/common.service';
-
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-five-column',
   templateUrl: './five-column.component.html',
@@ -13,7 +13,7 @@ export class FiveColumnComponent implements OnInit {
   @Input() hasMore = false;
   @Input() typeSlug!: string;
   @Output() more = new EventEmitter();
-
+  faAngleDown = faAngleDown;
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {}

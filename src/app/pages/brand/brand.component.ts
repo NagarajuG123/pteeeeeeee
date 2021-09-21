@@ -17,22 +17,13 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 export class BrandComponent implements OnInit {
   slug: any;
   type: string = '';
-  mostRecent: any = [];
-  categoryTrending: any = [];
-  categoryParam = '';
   company: string = '';
   scrollOffset: number = 0;
   apiUrl: string = '';
   hasMore: boolean = false;
-  categorySlug: any = '';
-  mostRecentUrl: any;
   dynamicUrl: any;
   dynamicFirst: any = [];
-  dynamicSecond: any = [];
   topBlock: any = [];
-  hideTrending: boolean = false;
-  hideNews: boolean = false;
-  isBrowser!: boolean;
   data: Details[] = [];
   items: Details[] = [];
   tabName: any;
@@ -98,22 +89,6 @@ export class BrandComponent implements OnInit {
             this.company = response.name;
             if (this.type === 'category_page') {
               this.apiUrl = `1851/${this.slug}/featured`;
-              const mostRecentUrl = this.apiService.getAPI(
-                `1851/${this.slug}/most-recent`
-              );
-              const metaUrl = this.apiService.getAPI(`1851/${this.slug}/meta`);
-              const trendingUrl = this.apiService.getAPI(
-                `1851/${this.slug}/trending?limit=10&offset=0`
-              );
-              this.setParam(this.slug);
-              forkJoin([mostRecentUrl, metaUrl, trendingUrl]).subscribe(
-                (results) => {
-                  this.mostRecent = results[0].data;
-                  this.hasMore = results[0].has_more;
-                  this.metaService.setSeo(results[1].data);
-                  this.categoryTrending = results[2].data;
-                }
-              );
             } else if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.specialFeatureUrl = `${this.slug}/brand-latest-stories`;
@@ -197,32 +172,6 @@ export class BrandComponent implements OnInit {
         }
       });
   }
-  
-  setParam(slug) {
-    if (slug.includes('people')) {
-      this.categoryParam = 'people';
-    } else if (slug.includes('industry')) {
-      this.categoryParam = 'industry';
-    } else if (slug.includes('franchisee')) {
-      this.categoryParam = 'franchisee';
-    } else if (slug.includes('franchisor')) {
-      this.categoryParam = 'franchisor';
-    } else if (slug.includes('destinations')) {
-      this.categoryParam = 'destinations';
-    } else if (slug.includes('products')) {
-      this.categoryParam = 'products';
-    } else if (slug.includes('celebrities')) {
-      this.categoryParam = 'celebrities';
-    } else if (slug.includes('homes-to-own')) {
-      this.categoryParam = 'homes-to-own';
-    } else if (slug.includes('home-envy')) {
-      this.categoryParam = 'home-envy';
-    } else if (slug.includes('home-buzz')) {
-      this.categoryParam = 'home-buzz';
-    } else {
-      this.categoryParam = 'columns';
-    }
-  }
 
   getDynamic() {
     this.apiService
@@ -257,23 +206,6 @@ export class BrandComponent implements OnInit {
       });
   }
 
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
-  getMoreData() {
-    this.apiService
-      .getAPI(
-        `1851/${this.slug}/most-recent?limit=10&offset=${
-          this.mostRecent.length + 1
-        }`
-      )
-      .subscribe((result) => {
-        this.hasMore = result.has_more;
-        result.data.forEach((element: any) => {
-          this.mostRecent.push(element);
-        });
-      });
-  }
   getMeta() {
     this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);

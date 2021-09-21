@@ -8,7 +8,7 @@
             "
             (click)="prev()"
           >
-            <img src="assets/img/left-arrow.svg" />
+            <img src="assets/img/left-arrow.svg" loading="lazy"/>
           </div>
           <ul class="row innerContent m-0">
             <li
@@ -35,7 +35,7 @@
             "
             (click)="next()"
           >
-            <img src="assets/img/right-arrow.svg" />
+            <img src="assets/img/right-arrow.svg" loading="lazy"/>
           </div>
         </div>
       </div>
@@ -58,6 +58,7 @@
                     height="535"
                     data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
                     alt="brand_img"
+                    loading="lazy"
                   />
                 </div>
             </div>
@@ -96,6 +97,7 @@
                     height="150"
                     data-src="{{ logo?.url | defaultImage: 100:95 }}"
                     alt="brand_logo"
+                    loading="lazy"
                  />
                  <div class="row download-btn"> 
                    <a *ngIf="pdf?.email_popup"  data-bs-toggle="modal" data-bs-target="#pdfModal" href="#">
@@ -123,6 +125,7 @@
                             alt="latest-stories"
                             width="257"
                             height="138"
+                            loading="lazy"
                           />
                             <div class="card-body text-black text-capitalize">
                               <h4 class="card-text mb-1 text-size">

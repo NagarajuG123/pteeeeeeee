@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-monthly-details',
@@ -17,11 +19,14 @@ export class MonthlyDetailsComponent implements OnInit {
   date!: any;
   id!: any;
   hasMore: boolean = false;
+  faAngleRight = faAngleRight;
+  coverDate: any;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
     private metaService: MetaService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public commonService: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -31,17 +36,13 @@ export class MonthlyDetailsComponent implements OnInit {
       this.date = params.get('date');
       this.id = params.get('id');
       const date_number = Number(this.date);
-      const coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
+      this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
       this.apiService
         .getAPI(
           `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`
         )
         .subscribe((response) => {
-          this.banner['data'] = response.data[0];
-          this.banner['date'] = this.datePipe.transform(
-            coverDate,
-            'MMMM dd, YYYY'
-          );
+          this.banner = response.data[0];
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
@@ -49,7 +50,10 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
-                let title = this.datePipe.transform(coverDate, 'MMMM YYYY');
+                let title = this.datePipe.transform(
+                  this.coverDate,
+                  'MMMM YYYY'
+                );
                 this.metaService.setTitle(`${title} Issues | ${result.title}`);
               });
           });

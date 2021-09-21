@@ -11,8 +11,48 @@
     color: $primary;
     font-family: "Ballinger Condensed Medium";
     img {
-      width: auto;
+      // width: auto;
       margin-top: -4px;
     }
   }
+}
+
+:host ::ng-deep .owl-carousel {
+  .owl-stage-outer {
+    overflow: hidden;
+    .owl-stage {
+      display: flex;
+      .slideItem {
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .owl-nav {
+    > div {
+      position: absolute;
+      top: 50%;
+      transform: rotate(-90deg);
+      background-repeat: no-repeat;
+      background-size: 22px;
+      height: 43px;
+      width: 25px;
+      cursor: pointer;
+      &.owl-prev {
+        right: 250px;
+        top: 5px;
+        background: none;
+      }
+      &.owl-next {
+        right: 250px;
+        top: -15px;
+        background: none;
+      }
+    }
+  }
+}
+
+.slideItem {
+  font-weight: bold;
+  margin-bottom: 47px;
 }

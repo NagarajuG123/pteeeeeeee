@@ -1,5 +1,5 @@
 <div class="c-subheader--wrapper">
-  <img src="{{ bannerImage }}" alt="banner" width="1449" height="250" />
+  <img src="{{ bannerImage }}" alt="banner" width="1449" height="250" loading="lazy"/>
 </div>
 <div class="container-fluid">
   <div class="row">
@@ -110,6 +110,7 @@
                       class="list-data--itemImg"
                       src="{{ data.logo }}"
                       alt="logo"
+                      loading="lazy"
                   /></a>
                 </div>
                 <div class="list-data--item isInvestmentCol">
@@ -131,7 +132,7 @@
                       fragment="brand-latest-stories"
                       class="list-data--latestStoryLink"
                     >
-                      {{ commonService.formatTitle(data.latest_story.title) }}
+                      {{ data.latest_story.title }}
                     </a>
                   </p>
                 </div>

@@ -70,4 +70,11 @@ export class CommonService {
     }
     return text;
   }
+  goAuthorPage(item: any) {
+    let slug = '';
+    if (typeof item?.author !== 'undefined') {
+      return (slug = `author/${item?.author?.slug}`);
+    }
+    return `#`;
+  }
 }
