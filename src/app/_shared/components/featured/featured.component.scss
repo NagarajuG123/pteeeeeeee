@@ -197,9 +197,6 @@ img {
       .slideItem {
         padding: 0 20px;
         box-sizing: border-box;
-        img {
-          width: 100%;
-        }
       }
     }
   }
@@ -207,18 +204,20 @@ img {
     > div {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
+      transform: rotate(-90deg);
       background-repeat: no-repeat;
       background-size: 22px;
       height: 43px;
       width: 25px;
       cursor: pointer;
       &.owl-prev {
-        left: 0px;
+        right: 0px;
+        top: 10px;
         background: #e8eef2;
       }
       &.owl-next {
         right: 0px;
+        top: -10px;
         background: #e8eef2;
       }
     }

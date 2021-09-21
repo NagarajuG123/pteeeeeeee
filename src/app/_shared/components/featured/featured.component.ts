@@ -49,10 +49,8 @@ export class FeaturedComponent implements OnInit {
     margin: 10,
     navSpeed: 700,
     navText: [
-      // '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
-      // '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
-      '<span class="glyphicon glyphicon-chevron-left"></span>',
-      '<span class="glyphicon glyphicon-chevron-left"></span>',
+      '<img src="assets/img/slider-left-arrow.png" width="7px" height="15px" alt="slider arrow"/>',
+      '<img src="assets/img/slider-right-arrow.png" width="7px" height="15px" alt="slider arrow"/>',
     ],
     responsive: {
       0: {

@@ -2,12 +2,11 @@
   <ng-container *ngFor="let item of trendingNews; index as i">
     <ng-template carouselSlide [id]="item.id">
 <div class="trending mb-1 slideItem" *ngIf=" slug === '1851'">
-  <div class="container-fluid text-center py-2">
-    <span class="pe-md-5">
+  <div class="container-fluid text-center py-2 row carousel-inner vertical">
+    <span class="pe-md-5 item">
       <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
-      TRENDING
+      TRENDING <span class="text-black">{{ item.title }}</span>
     </span>
-    <p>{{ item.title }}</p>
   </div>
 </div>
 </ng-template>
