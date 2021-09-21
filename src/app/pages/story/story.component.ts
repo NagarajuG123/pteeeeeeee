@@ -89,7 +89,6 @@ export class StoryComponent implements OnInit {
   faInstagramIcon = faInstagram;
   faCaretDown = faCaretDown;
   enableScroll = true;
-  tabnewsList = tabnewsList;
 
   articlesList = [0];
 
@@ -113,7 +112,6 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.setConfig();
     // this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
@@ -165,8 +163,6 @@ export class StoryComponent implements OnInit {
               : `story/${this.storyId}`;
             let isAuthorPage = false;
             this.isBrand = this.brandSlug === '1851' ? false : true;
-
-            // this.getAds();
 
             // this.apiService
             //   .getAPI('1851/publication-instance')
@@ -380,7 +376,6 @@ export class StoryComponent implements OnInit {
           return;
         }
 
-        // this.detailsData = this.htmlBinding(result['story'].data);
         this.detailsData.push(this.htmlBinding(result['story'].data));
 
         // this.detailsData = Object.assign([], this.detailsData);
@@ -457,26 +452,7 @@ export class StoryComponent implements OnInit {
         } else {
           this.schema = {};
         }
-        // tslint:disable-next-line:max-line-length
-        this.defaultFbUrl = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
-        if (result['story'].data.brand) {
-          // tslint:disable-next-line:max-line-length
-          if (
-            typeof result['story'].data.brand.fb_page_url === 'undefined' ||
-            result['story'].data.brand.fb_page_url === null ||
-            result['story'].data.brand.fb_page_url === ''
-          ) {
-            this.fbUrl = environment.fbUrl;
-          } else {
-            this.fbUrl = result['story'].data.brand.fb_page_url;
-          }
-        } else {
-          this.fbUrl = environment.fbUrl;
-        }
-        if (this.isBrowser) {
-          this.isDefaultFb = true;
-          this.checkFacebookPagePlugin(3000);
-        }
+
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
           this.metaData = result['story'].meta;
@@ -554,7 +530,6 @@ export class StoryComponent implements OnInit {
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          // tslint:disable-next-line:max-line-length
           const image_url = `${
             environment.imageResizeUrl
           }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
@@ -568,9 +543,6 @@ export class StoryComponent implements OnInit {
             { property: `og:image:secure_url`, content: image_url },
             `property='og:image:secure_url'`
           );
-          // this.meta.updateTag({property: `og:image`, content: `${metas.og['media']['url']}`}, `property='og:image'`);
-          // tslint:disable-next-line:max-line-length
-          // this.meta.updateTag({property: `og:image:secure_url`, content: `${metas.og['media']['url']}`}, `property='og:image:secure_url'`);
         } else if (metas.og[key] !== null) {
           this.meta.updateTag(
             { property: `og:${key}`, content: metas.og[key] },
@@ -595,7 +567,6 @@ export class StoryComponent implements OnInit {
       const twitterKeys = Object.keys(metas.twitter);
       for (const key of twitterKeys) {
         if (key === 'media' && metas.twitter[key] !== null) {
-          // tslint:disable-next-line:max-line-length
           const twitter_url = `${
             environment.imageResizeUrl
           }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
@@ -627,15 +598,6 @@ export class StoryComponent implements OnInit {
       media = media.replace('sddefault', 'hqdefault');
     }
     return encodeURIComponent(media);
-  }
-
-  checkFacebookPagePlugin(delay) {
-    setTimeout(() => {
-      if ($('#block_fb_link').length === 1) {
-        FB.XFBML.parse();
-        this.checkFacebookPagePlugin(delay + 1500);
-      }
-    }, delay);
   }
 
   //brand list for check terms in main site story
@@ -671,39 +633,6 @@ export class StoryComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      this.subject
-        .pipe(debounceTime(500), takeUntil(this.onDestroy$))
-        .subscribe(() => {
-          const distance = this.adsData.length ? 900 : 500;
-          $(window).scroll(function () {
-            if (
-              $(document).height() -
-                $(window).scrollTop() -
-                $('#footer').outerHeight() >
-              $('#banner_brandNews').outerHeight()
-            ) {
-              if ($(window).scrollTop() > distance) {
-                $('#banner_brandNews').addClass('sticky_branner_header');
-                $('#banner_brandNews').removeClass('sticky_branner_bottom');
-              } else {
-                $('#banner_brandNews').removeClass('sticky_branner_header');
-                $('#banner_brandNews').removeClass('sticky_branner_bottom');
-              }
-            } else {
-              if ($(window).scrollTop() > distance) {
-                $('#banner_brandNews').addClass('sticky_branner_bottom');
-                $('#banner_brandNews').removeClass('sticky_branner_header');
-              } else {
-                $('#banner_brandNews').removeClass('sticky_branner_bottom');
-                $('#banner_brandNews').removeClass('sticky_branner_header');
-              }
-            }
-          });
-        });
-    }
-  }
   addItems(limit, offset) {
     if (this.pageType === 'details') {
       this.isLoading = true;
@@ -724,7 +653,10 @@ export class StoryComponent implements OnInit {
               response = result.data;
             }
           }
+          console.log(response);
           response.forEach((item) => {
+            console.log(this.detailsData);
+
             if (parseInt(this.storyId, 10) !== item.id) {
               this.detailsData.push(this.htmlBinding(item));
             } else {
@@ -756,6 +688,7 @@ export class StoryComponent implements OnInit {
         });
     }
   }
+
   createCanonicalURL(url) {
     const renderer = this.rendererFactory.createRenderer(this.dom, {
       id: '-1',
@@ -769,9 +702,7 @@ export class StoryComponent implements OnInit {
     renderer.setAttribute(link, 'href', url);
     renderer.appendChild(head, link);
   }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
+
   //Add tooltip and embed video
   htmlBinding(data) {
     if (typeof data === 'undefined' || data.content === null) {
@@ -810,41 +741,7 @@ export class StoryComponent implements OnInit {
     );
     return bypassHTML;
   }
-  setConfig() {
-    this.scrollbarOptions = {
-      axis: 'y',
-      theme: 'minimal-dark',
-      callbacks: {
-        onTotalScroll: () => {},
-      },
-    };
-  }
 
-  getAds() {
-    this.apiService.getAPI(`${this.brandSlug}/ads`).subscribe((result) => {
-      result.data.forEach((ads: { type: string }) => {
-        if (ads.type === 'Story Ad' || ads.type === 'story_ad') {
-          this.adsData.push(ads);
-        }
-      });
-      this.subject.next();
-    });
-  }
-  getNews() {
-    this.apiService
-      .getAPI(`${this.brandId}/news?limit=10&offset=0`)
-      .subscribe((result) => {
-        this.newsData = result.data;
-      });
-  }
-  getPublication() {
-    this.apiService
-      .getAPI('1851/publication-instance')
-      .subscribe((response) => {
-        this.publication = response;
-        this.getNewsTitle(this.publication.id);
-      });
-  }
   getNewsTitle(id) {
     if (id == '1851') {
       this.newsTitle = 'Franchise Q&A ';
@@ -860,103 +757,6 @@ export class StoryComponent implements OnInit {
       this.scrollEvent.next(true);
     }
   }
-  getFooter() {
-    this.apiService.getAPI(`1851/footer`).subscribe((response) => {
-      this.footer = response.data;
-    });
-  }
-  getHeader() {
-    this.apiService
-      .getAPI(`${this.brandSlug}/header`)
-      .subscribe(async (response) => {
-        this.header = response.data;
-      });
-  }
-  setSchema() {
-    this.apiService.getAPI(`${this.storyApiUrl}`).subscribe((result) => {
-      if (typeof result.meta !== 'undefined' && result.meta !== null) {
-        let posted_date = new Date(result.data.posted_on);
-        let hoursDiff =
-          posted_date.getHours() - posted_date.getTimezoneOffset() / 60;
-        let minutesDiff =
-          (posted_date.getHours() - posted_date.getTimezoneOffset()) % 60;
-        posted_date.setHours(hoursDiff);
-        posted_date.setMinutes(minutesDiff);
-        this.schema = {
-          '@context': 'https://schema.org/',
-          '@type': 'Article',
-          headline: result.meta.seo.title,
-          name: this.publication.title,
-          url: `${environment.appUrl}${this.router.url}`,
-          datePublished:
-            posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
-          dateModified:
-            posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
-          articleSection: result.data.category.name
-            ? result.data.category.name
-            : this.defaultArticleSection,
-          mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': `${environment.appUrl}${this.router.url}`,
-          },
-          author: {
-            '@type': 'Person',
-            name:
-              result.data.author === null ||
-              typeof result.data.author === 'undefined'
-                ? ''
-                : result.data.author.name,
-          },
-          image: {
-            '@type': 'ImageObject',
-            url:
-              result.data.media.type === 'image'
-                ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result.data.media.url}`
-                : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result.data.media.placeholder}`,
-            width: 802,
-            height: 451,
-          },
-          publisher: {
-            '@type': 'Organization',
-            name: this.publication.title,
-            logo: {
-              '@type': 'ImageObject',
-              url: this.header['logo']['url'],
-              width: this.header['logo']['width'],
-              height: this.header['logo']['height'],
-            },
-            sameAs: [
-              this.footer.data['learn-more']['social-media']['fb-url'],
-              this.footer.data['learn-more']['social-media']['twitter-url'],
-              this.footer.data['learn-more']['social-media']['instagram-url'],
-              this.footer.data['learn-more']['social-media']['linkedin-url'],
-            ],
-          },
-        };
-      } else {
-        this.schema = {};
-      }
-
-      //facebook
-      this.setFbUrl(result);
-    });
-  }
-  setFbUrl(result) {
-    this.defaultFbUrl = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
-    if (result.data.brand) {
-      if (
-        typeof result.data.brand.fb_page_url === 'undefined' ||
-        result.data.brand.fb_page_url === null ||
-        result.data.brand.fb_page_url === ''
-      ) {
-        this.fbUrl = environment.fbUrl;
-      } else {
-        this.fbUrl = result.data.brand.fb_page_url;
-      }
-    } else {
-      this.fbUrl = environment.fbUrl;
-    }
-  }
 
   isScrolledIntoView(elem) {
     const docViewTop = $(window).scrollTop();
@@ -964,63 +764,79 @@ export class StoryComponent implements OnInit {
 
     const elemTop = $(elem).offset().top;
     const elemBottom = elemTop + $(elem).height();
-
+    console.log(elemBottom);
+    console.log(docViewBottom);
+    console.log(elemBottom <= docViewBottom);
     return elemBottom <= docViewBottom && elemTop >= docViewTop;
   }
-  @HostListener('window:scroll', ['$event'])
-  scrollHandler(event) {
-    $('.element').each((index, element) => {
-      if (this.pageType === 'details') {
-        if (this.isScrolledIntoView(element)) {
-          if (typeof $(element).data('id') !== 'undefined') {
-            let newUrl =
-              this.brandSlug !== '1851' && this.brandSlug
-                ? `/${this.brandSlug}/${$(element).data('title')}`
-                : `/${$(element).data('title')}`;
-            newUrl =
-              this.type && this.type !== 'featured-articles'
-                ? `${newUrl}#${this.type}`
-                : newUrl;
-            if (this.originalUrl !== newUrl) {
-              this.originalUrl = newUrl;
-              if (this.isBrowser) {
-                for (let i = 0; i < this.gaVisitedUrls.length; i++) {
-                  if (this.gaVisitedUrls[i] === newUrl) {
-                    return;
-                  }
-                }
-                ga('set', 'page', newUrl);
-                ga('send', 'pageview');
-                ga(`${this.brandSlug}.set`, 'page', newUrl);
-                ga(`${this.brandSlug}.send`, 'pageview');
-                this.gaVisitedUrls.push(newUrl);
-              }
-            }
-            this.location.replaceState(newUrl);
-          }
-        }
-      }
-    });
-  }
+  // @HostListener('window:scroll', ['$event'])
+  // scrollHandler(event) {
+  //   $('.articles').each((index, element) => {
+  //     if (this.pageType === 'details') {
+  //       if (this.isScrolledIntoView(element) && this.enableScroll) {
+  //         this.enableScroll = false;
+
+  //         if (typeof $(element).data('id') !== 'undefined') {
+  //           let newUrl =
+  //             this.brandSlug !== '1851' && this.brandSlug
+  //               ? `/${this.brandSlug}/${$(element).data('title')}`
+  //               : `/${$(element).data('title')}`;
+  //           newUrl =
+  //             this.type && this.type !== 'featured-articles'
+  //               ? `${newUrl}#${this.type}`
+  //               : newUrl;
+  //           if (this.originalUrl !== newUrl) {
+  //             this.originalUrl = newUrl;
+  //             if (this.isBrowser) {
+  //               for (let i = 0; i < this.gaVisitedUrls.length; i++) {
+  //                 if (this.gaVisitedUrls[i] === newUrl) {
+  //                   return;
+  //                 }
+  //               }
+  //               ga('set', 'page', newUrl);
+  //               ga('send', 'pageview');
+  //               ga(`${this.brandSlug}.set`, 'page', newUrl);
+  //               ga(`${this.brandSlug}.send`, 'pageview');
+  //               this.gaVisitedUrls.push(newUrl);
+  //             }
+  //           }
+  //           this.location.replaceState(newUrl);
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
+
   @HostListener('window:scroll', [])
   async onScroll() {
     if (this.bottomReached() && this.enableScroll) {
       this.enableScroll = false;
-      if (this.articlesList.length < 5) {
-        // this.articlesList = [...this.articlesList, this.articlesList.length];
-        await this.loadArticles('');
-        window.scrollTo(0, window.scrollY - 50);
-        setTimeout(() => {
-          this.enableScroll = true;
-        }, 1000);
-      }
+      // if (this.detailsData.length < 2) {
+      await this.loadArticles('');
+      window.scrollTo(0, window.scrollY - 50);
+      setTimeout(() => {
+        this.enableScroll = true;
+      }, 1000);
+      // }
     }
   }
 
+  async loadArticles(val: any) {
+    // In this function you can call more article api or you add article in list
+    // if (this.articlesList.length < 5) {
+    this.addItems(1, this.detailsData.length + 1);
+    // }
+    if (val === 'next') {
+      let ArticlesNewsSection: any = document.querySelector(
+        '.ArticlesNewsSection'
+      );
+      window.scrollTo(0, window.scrollY + ArticlesNewsSection.offsetHeight);
+    }
+  }
   bottomReached(): boolean {
     // let footer: any = document.querySelector('footer');
     // featureNews.offsetHeight
@@ -1029,47 +845,4 @@ export class StoryComponent implements OnInit {
       document.body.offsetHeight
     );
   }
-
-  async loadArticles(val: any) {
-    // In this function you can call more article api or you add article in list
-    if (this.articlesList.length < 5) {
-      this.articlesList = [...this.articlesList, this.articlesList.length];
-    }
-    if (val === 'next') {
-      let ArticlesNewsSection: any = document.querySelector(
-        '.ArticlesNewsSection'
-      );
-      window.scrollTo(0, window.scrollY + ArticlesNewsSection.offsetHeight);
-    }
-  }
 }
-const tabnewsList = [
-  {
-    media: '../../../assets/dummy-images/f1.jpg',
-    title: 'Title Lorem Ipsum',
-    detail:
-      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
-    by: 'Lorem, ipsum',
-  },
-  {
-    media: '../../../assets/dummy-images/f2.jpg',
-    title: 'Title Lorem Ipsum',
-    detail:
-      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
-    by: 'Lorem, ipsum',
-  },
-  {
-    media: '../../../assets/dummy-images/f3.jpg',
-    title: 'Title Lorem Ipsum',
-    detail:
-      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
-    by: 'Lorem, ipsum',
-  },
-  {
-    media: '../../../assets/dummy-images/f4.jpg',
-    title: 'Title Lorem Ipsum',
-    detail:
-      'Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun...',
-    by: 'Lorem, ipsum',
-  },
-];

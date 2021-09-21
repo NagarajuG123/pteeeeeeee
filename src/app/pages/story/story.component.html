@@ -1,7 +1,8 @@
 <div
   class="articles"
   *ngFor="let story of detailsData; index as i"
-  [id]="'articles' + (i + 1)"
+  attr.data-id="{{ story.id }}"
+  attr.data-title="{{ story?.slug }}"
 >
   <div class="banner d-block">
     <img
