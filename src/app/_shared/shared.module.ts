@@ -33,6 +33,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PodcastComponent } from './components/podcast/podcast.component';
+import { TrendingTopComponent } from './trending-top/trending-top.component';
 
 // Modals Components
 
@@ -63,6 +64,7 @@ import { PodcastComponent } from './components/podcast/podcast.component';
     SpecialFeatureComponent,
     TrendingComponent,
     PodcastComponent,
+    TrendingTopComponent,
   ],
   imports: [
     CommonModule,
@@ -106,6 +108,7 @@ import { PodcastComponent } from './components/podcast/podcast.component';
     FontAwesomeModule,
     ShareButtonModule,
     CarouselModule,
+    TrendingTopComponent,
   ],
 })
 export class SharedModule {}
