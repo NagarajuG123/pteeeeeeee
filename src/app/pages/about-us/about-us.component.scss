@@ -61,6 +61,40 @@ img {
   padding: 0;
   overflow: hidden;
 }
+.banner-left-info {
+  figure {
+    img {
+      display: block;
+      width: 100%;
+      @include desk-lg-below1 {
+        min-height: 534px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.info_btn {
+  a {
+    display: block;
+    width: 100%;
+    background: #ec0044;
+    font-size: 20px;
+    line-height: 52px;
+    height: 52px;
+    color: #fff;
+    font-family: "ProximaNova-Light";
+    font-weight: 400;
+    cursor: unset;
+  }
+  h1 {
+    padding: 0;
+    font-size: 30px;
+    line-height: 33px;
+    color: #fff;
+    font-family: "ProximaNova-Bold";
+    font-weight: 400;
+  }
+}
 .banner-right_about {
   max-width: 21%;
   flex: 0 0 21%;
@@ -148,28 +182,6 @@ img {
 }
 .buffalo_wings {
   padding: 0;
-}
-.info_btn {
-  a {
-    display: block;
-    width: 100%;
-    background: #ec0044;
-    font-size: 20px;
-    line-height: 52px;
-    height: 52px;
-    color: #fff;
-    font-family: "ProximaNova-Light";
-    font-weight: 400;
-    cursor: unset;
-  }
-  h1 {
-    font-size: 33px;
-    line-height: 39px;
-    color: #fff;
-    font-family: "ProximaNova-Bold";
-    font-weight: 400;
-    padding: 0 0 8px;
-  }
 }
 
 .franchise_main {
