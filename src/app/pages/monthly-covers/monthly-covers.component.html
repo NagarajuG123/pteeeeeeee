@@ -1,7 +1,7 @@
 <section class="c-card-box--section">
   <div class="c-card-box--wrapper">
     <div class="c-card-box--row c-card-box--contentRow">
-      <div class="c-card-box--col c-ml--auto w-100">
+      <div class="c-card-box--col month-business--wrapper">
         <div class="c-card-box--contentGroup">
           <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
@@ -14,9 +14,9 @@
       </div>
     </div>
     <div class="c-card-box--row">
-      <div class="c-card-box--col">
+      <div class="c-card-box--col c-card-main-imagebox--wrapper">
         <div class="c-card-box--imageWrapper isMainCardBox">
-          <a routerLink="/{{ firstBlock[0]?.url }}">
+          <a routerLink="/{{ firstBlock[0]?.url }}" class="maincardbox-link--wrapper">
             <img
               appYoutubeImage
               src="{{ firstBlock[0]?.media | defaultImage: 565:800 }}"
@@ -30,10 +30,9 @@
       </div>
       <div class="c-card-box--col">
         <div class="c-card-box--group">
-          <div class="c-card-box--item">
+          <div class="c-card-box--item" *ngFor="let item of firstBlock | slice: 1:4">
             <div
-              class="c-card-box--imageWrapper"
-              *ngFor="let item of firstBlock | slice: 1:4"
+              class="c-card-box--imageWrapper"              
             >
               <img
                 appYoutubeImage
@@ -56,7 +55,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </section>
 
 <div class="monthy-cover">
@@ -68,7 +67,7 @@
           <img
             appYoutubeImage
             src="{{ cover.media | defaultImage: 288:379 }}"
-            width="290"
+            width="305"
             height="380"
             alt="monthly-covers"
           />
