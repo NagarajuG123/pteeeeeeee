@@ -1,3 +1,18 @@
+<owl-carousel-o [options]="customOptions" class="d-block position-relative">
+  <ng-container *ngFor="let item of trendingNews; index as i">
+    <ng-template carouselSlide [id]="item.id">
+<div class="trending mb-1 slideItem" *ngIf=" slug === '1851'">
+  <div class="container-fluid text-center py-2 row carousel-inner vertical">
+    <span class="pe-md-5 item">
+      <img src="assets/img/fire.svg" height="18" width="22" class="pe-2" />
+      TRENDING <span class="text-black">{{ item.title }}</span>
+    </span>
+  </div>
+</div>
+</ng-template>
+</ng-container>
+</owl-carousel-o>
+
 <div class="container py-4">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
@@ -15,12 +30,43 @@
             <div class="tag position-absolute text-center top-0 text-uppercase">
               Feature Article
             </div>
-            <a
-              routerLink="{{ commonService.readMore(item) }}"
-              fragment="featured"
-              ><img
-                appYoutubeImage
-                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            <a 
+            *ngIf="!commonService.isVideo(item)"
+            >
+            <img
+            appYoutubeImage
+            srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+          {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+            class="img-fluid"
+            sizes="{{
+              '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+            }}"
+            width="216"
+            height="135"
+            src="{{ item.media | defaultImage: 1300:730 }}"
+            alt="featured"
+          />
+          </a>
+          <a  *ngIf="commonService.isVideo(item)"
+            attr.data-src="{{ item.media.url }}"
+            data-bs-target="#videoModal"
+            data-bs-toggle="modal"
+            (click)="updateVideoUrl(item.media.url)"
+            href="#"
+            class="
+              video-btn
+              c-video-section--playBtn
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+            >
+            <img
+              appYoutubeImage
+              srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
             {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
                 class="img-fluid"
                 sizes="{{
@@ -28,13 +74,18 @@
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
                 300px'
-                }}"
-                width="216"
-                height="135"
-                src="{{ item.media | defaultImage: 1300:730 }}"
-                alt="featured"
-                loading="lazy"
-            /></a>
+              }}"
+              width="216"
+              height="135"
+              src="{{ item.media | defaultImage: 1300:730 }}"
+              alt="featured"
+            />
+            <img
+                  src="assets/img/play.png"
+                  alt="Play"
+                  class="img-fluid vide-play"
+                />
+          </a>
             <div
               class="
                 over-layer
@@ -217,3 +268,33 @@
     </div>
   </div>
 </div>
+<div
+    class="modal fade"
+    id="videoModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    (click)="openVideoPlayer = true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="btn-close btn-close-black"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="openVideoPlayer = false"
+          ></button>
+          <iframe
+            [src]="url | safeUrl"
+            frameborder="0"
+            width="100%"
+            height="496px"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
