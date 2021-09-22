@@ -74,4 +74,33 @@
           font-family: $balingerRegular;
           color: $dark-gray;
       }
+      @media screen and (max-width: 450px) {
+          .col-3 {
+            flex: 0 0 auto;
+            width: 100%;
+          }
+      }
+  }
+  @media screen and (max-width: 760px) {
+    .tag {
+      font-size: 12px;
+    }
+    .over-layer {
+      font-size: 24px;
+    }
+    .small-image {
+      .over-layer {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .latestListing {
+      max-width: 318px;
+      p {
+        line-height: 114.99%;
+      }
+    }
   }
