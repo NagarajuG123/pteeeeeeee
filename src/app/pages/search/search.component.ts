@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
+  faSearch = faSearch;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
