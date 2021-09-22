@@ -159,7 +159,6 @@ export class BrandSearchComponent implements OnInit {
         this.items.push(brand);
       });
       this.hasMore = res['has_more'];
-      console.log(this.hasMore);
     });
   }
   ngOnDestroy() {

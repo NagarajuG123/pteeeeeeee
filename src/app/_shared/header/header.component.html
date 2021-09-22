@@ -74,20 +74,44 @@
           <a routerLink="/"
             ><img
               src="{{ header?.logo?.url }}"
-              height="41"
-              width="41"
+              height="{{ header?.logo?.height }}"
+              width="{{ header?.logo?.width }}"
               alt="logo"
               class="me-2"
           /></a>
           <div>
-            <a routerLink="{{ header?.subscribe?.url }}">{{
-              header?.subscribe?.title
-            }}</a
-            ><br />
-            <small class="d-flex align-items-center"
-              ><a routerLink="{{ header?.subscribe?.url }}">{{
-                header?.subscribe?.subTitle
-              }}</a>
+            <!-- Main -->
+            <a
+              *ngIf="brandSlug === '1851'"
+              [routerLink]="header?.subscribe?.url"
+              >{{ header?.subscribe?.title }}</a
+            >
+            <!-- Brand -->
+            <a
+              *ngIf="brandSlug !== '1851'"
+              data-bs-toggle="modal"
+              data-bs-target="#sponsoredModal"
+              href="#"
+              onclick="return false"
+              >{{ header?.subscribe?.title }}</a
+            >
+            <br />
+            <small class="d-flex align-items-center">
+              <!-- Main -->
+              <a
+                *ngIf="brandSlug === '1851'"
+                [routerLink]="header?.subscribe?.url"
+                >{{ header?.subscribe?.subTitle }}</a
+              >
+              <!-- Brand -->
+              <a
+                *ngIf="brandSlug !== '1851'"
+                data-bs-toggle="modal"
+                data-bs-target="#sponsoredModal"
+                href="#"
+                onclick="return false"
+                >{{ header?.subscribe?.subTitle }}</a
+              >
               &nbsp;
               <img src="assets/img/logo.png" height="41" width="41" alt="logo"
             /></small>
@@ -110,7 +134,6 @@
                   type="button"
                   (click)="onSearchSubmit(searchForm, 'sidebar')"
                 >
-                  <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
                   <img
                     src="assets/img/search-p.svg"
                     alt="search"
@@ -159,11 +182,11 @@
                       justify-content-between
                       align-items-center
                       my-1
+                      text-capitalize
                     "
                     routerLink="{{ item?.url }}"
-                    >{{ item.name }}
-                    <i class="fas fa-caret-right" aria-hidden="true"></i
-                  ></a>
+                    >{{ item.name }} ></a
+                  >
                 </li>
               </ul>
             </li>
@@ -203,7 +226,6 @@
               <h3>
                 <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
               </h3>
-              <hr />
               <ul class="mb-2 ms-2">
                 <li class="ms-1">
                   <a
@@ -225,6 +247,7 @@
                       justify-content-between
                       align-items-center
                       my-1
+                      text-capitalize
                     "
                     [href]="header?.sidebar?.website"
                     target="_blank"
@@ -233,9 +256,10 @@
                 </li>
               </ul>
             </li>
+            <hr />
+
             <li>
               <h3>Social Media</h3>
-              <hr />
               <ul class="mb-2 ms-2">
                 <li
                   class="ms-1"
@@ -247,6 +271,7 @@
                       justify-content-between
                       align-items-center
                       my-1
+                      text-capitalize
                     "
                     [href]="item.url"
                     target="_blank"
@@ -260,7 +285,7 @@
               <hr />
               <h3>
                 <a routerLink="/{{ brandSlug }}"
-                  >{{ brandTitle }} Most read Stories</a
+                  >{{ brandTitle }} <br />Most read Stories</a
                 >
               </h3>
               <ul class="mb-2 ms-2">
@@ -274,6 +299,7 @@
                       justify-content-between
                       align-items-center
                       my-1
+                      text-capitalize
                     "
                     [routerLink]="commonService.readMore(story)"
                     target="_blank"
@@ -290,11 +316,15 @@
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
                 <a routerLink="/{{ header?.sidebar?.about }}"
-                  >About {{ brandTitle }}</a
+                  >About
+                  <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
               </h3>
               <h3>
-                <a routerLink="">Contact {{ brandTitle }}</a>
+                <a routerLink=""
+                  >Contact
+                  <span class="text-capitalize">{{ brandTitle }}</span></a
+                >
               </h3>
             </li>
           </ul>
@@ -484,4 +514,33 @@
     </div>
   </div>
   <!-- Search Modal close -->
+
+  <!-- Sponsor Modal -->
+
+  <div class="search_pop_up modal fade" id="sponsoredModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="sponsored-modal-content">
+          <button
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
+          <p>
+            This brand page has been paid for by
+            <span class="text-uppercase">{{ brandTitle }}</span
+            >. Content within this page that is paid will showcase a Sponsored
+            icon. This means the brand has engaged
+            <span class="text-uppercase">{{ publication?.shortTitle }}</span> to
+            write the content. Content without the Sponsored Icon is aggregated
+            media placements the brand earned. Questions can be sent to
+            <span>{{ editorialEmail }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

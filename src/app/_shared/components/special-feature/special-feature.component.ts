@@ -43,7 +43,6 @@ export class SpecialFeatureComponent implements OnInit {
         }
         // this.tstate.set(RESULT_KEY, specialFeature);
       });
-    console.log(this.specialFeature);
     // }
   }
 

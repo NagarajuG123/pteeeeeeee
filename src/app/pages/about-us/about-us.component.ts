@@ -79,7 +79,6 @@ export class AboutUsComponent implements OnInit {
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
-        console.log(result);
         if (typeof result.data !== 'undefined') {
           this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;

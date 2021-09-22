@@ -35,12 +35,12 @@ export class BrandComponent implements OnInit {
   specialFeatureUrl: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private apiService: ApiService,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private metaService: MetaService,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {}
@@ -54,11 +54,10 @@ export class BrandComponent implements OnInit {
     autoWidth: true,
     margin: 10,
     navSpeed: 700,
-    navText: [
-      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-      '<i class="fa fa-angle-right" aria-hidden="true"></i>',
-    ],
-    items:  this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
+    lazyLoad: true,
+
+    navText: ['', ''],
+    items: this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
     responsive: {
       0: {
         items: 1,
@@ -117,12 +116,14 @@ export class BrandComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         if (response.data.length) {
-          this.data  = response.data;
+          this.data = response.data;
         }
       });
   }
-  getSpotlight(){
-    const spotlightCategoriesApi = this.apiService.getAPI(`1851/spotlights/categories`);
+  getSpotlight() {
+    const spotlightCategoriesApi = this.apiService.getAPI(
+      `1851/spotlights/categories`
+    );
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
 
     forkJoin([spotlightCategoriesApi, publicationApi])
@@ -131,7 +132,8 @@ export class BrandComponent implements OnInit {
         this.tabName = results[0].categories;
         this.defaultTab = results[0].defaultTab;
 
-        this.apiService.getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=4&offset=0`)
+        this.apiService
+          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=4&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];
@@ -193,10 +195,9 @@ export class BrandComponent implements OnInit {
   }
 
   getMoreDynamic() {
-    this.apiService.getAPI(
-        `page/${this.dynamicUrl}?limit=4&offset=${
-          this.dynamicFirst.length
-        }`
+    this.apiService
+      .getAPI(
+        `page/${this.dynamicUrl}?limit=4&offset=${this.dynamicFirst.length}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;

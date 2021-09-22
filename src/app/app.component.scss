@@ -1,15 +1,15 @@
-// @import "../assets/sass/mixins.scss";
-// .wrapper {
-//   transition: all 0.4s ease;
-//   left: 0;
-//   position: relative;
-//   &.addeLeftSpace {
-//     position: fixed;
-//     left: 300px;
-//     transition: all 0.4s ease;
-//     max-height: 100vh;
-//     @include mobile-landscape1 {
-//       left: 250px;
-//     }
-//   }
-// }
+@import "../assets/scss/mixins.scss";
+.wrapper {
+  transition: all 0.4s ease;
+  left: 0;
+  position: relative;
+  &.addeLeftSpace {
+    position: fixed;
+    // left: 300px;
+    transition: all 0.4s ease;
+    max-height: 100vh;
+    @include mobile-landscape1 {
+      left: 250px;
+    }
+  }
+}

@@ -15,7 +15,7 @@
             <div class="tag position-absolute text-center top-0 text-uppercase">
               Feature Article
             </div>
-            <a *ngIf="!commonService.isVideo(item)">
+            <a *ngIf="i != 0 || !commonService.isVideo(item)">
               <img
                 appYoutubeImage
                 srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
@@ -34,7 +34,7 @@
               />
             </a>
             <a
-              *ngIf="commonService.isVideo(item)"
+              *ngIf="i == 0 && commonService.isVideo(item)"
               attr.data-src="{{ item.media.url }}"
               data-bs-target="#videoModal"
               data-bs-toggle="modal"

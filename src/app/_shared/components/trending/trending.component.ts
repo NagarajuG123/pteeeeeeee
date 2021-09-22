@@ -52,20 +52,26 @@ export class TrendingComponent implements OnInit {
   constructor(private state: TransferState, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    const data = this.state.get(TRENDING_KEY, null as any);
-    if (data != null) {
-      this.data = data;
-    } else {
-      const trending = this.apiService.getAPI(
-        `${this.slug}/trending?limit=9&offset=0`
-      );
-      const data: any = {};
-      forkJoin([trending])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((results) => {
-          this.data = results[0].data;
-          this.state.set(TRENDING_KEY, results[0].data as any);
-        });
+    // const data = this.state.get(TRENDING_KEY, null as any);
+    // if (data != null) {
+    //   this.data = data;
+    // } else {
+    const trending = this.apiService.getAPI(
+      `${this.slug}/trending?limit=9&offset=0`
+    );
+    // const data: any = {};
+    forkJoin([trending])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.data = results[0].data;
+        // this.state.set(TRENDING_KEY, results[0].data as any);
+      });
+    // }
+  }
+  formatTitle(title: any) {
+    if (title && title.length > 50) {
+      title = title.slice(0, 120) + '...';
     }
+    return title;
   }
 }
