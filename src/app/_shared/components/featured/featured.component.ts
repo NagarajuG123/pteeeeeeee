@@ -6,6 +6,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
 
@@ -24,7 +26,8 @@ export class FeaturedComponent implements OnInit {
   brandNews: Details[] = [];
   url: string;
   openVideoPlayer = false;
-
+  faAngleDown = faAngleDown;
+  faAngleUp = faAngleUp;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -47,7 +50,7 @@ export class FeaturedComponent implements OnInit {
     const brandNews = this.apiService.getAPI(
       `1851/news?limit=4&offset=0&isBrand=true`
     );
-    
+
     forkJoin([featureApi, newsApi, brandNews])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
