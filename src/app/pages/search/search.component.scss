@@ -13,6 +13,11 @@
               padding-top: 20px;
               .loadmore-btn {
                   margin: unset;
+                  .angleIcon {
+                    font-size: 19px;
+                    line-height: 19px;
+                    color: $red;
+                }
               }
           }
         }
