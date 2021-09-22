@@ -198,15 +198,14 @@
           </ul>
 
           <ul class="submenu-list mb-0" *ngIf="brandSlug !== '1851'">
-            
             <li>
               <h3><a routerLink="/"> Return to Main Site </a></h3>
-              <h3><a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a></h3>
+              <h3>
+                <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
+              </h3>
               <hr />
               <ul class="mb-2 ms-2">
-                <li
-                  class="ms-1"
-                >
+                <li class="ms-1">
                   <a
                     class="
                       d-flex
@@ -219,9 +218,7 @@
                     >Download pdf
                   </a>
                 </li>
-                <li
-                  class="ms-1"
-                >
+                <li class="ms-1">
                   <a
                     class="
                       d-flex
@@ -262,12 +259,14 @@
             <li>
               <hr />
               <h3>
-                <a routerLink="/{{ brandSlug }}">{{ brandTitle }} Most read Stories</a>
+                <a routerLink="/{{ brandSlug }}"
+                  >{{ brandTitle }} Most read Stories</a
+                >
               </h3>
               <ul class="mb-2 ms-2">
                 <li
                   class="ms-1"
-                  *ngFor="let story of header?.sidebar?.articles "
+                  *ngFor="let story of header?.sidebar?.articles"
                 >
                   <a
                     class="
@@ -290,7 +289,9 @@
               </h3>
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
-                <a routerLink="/{{ header?.sidebar?.about }}">About {{ brandTitle }}</a>
+                <a routerLink="/{{ header?.sidebar?.about }}"
+                  >About {{ brandTitle }}</a
+                >
               </h3>
               <h3>
                 <a routerLink="">Contact {{ brandTitle }}</a>
@@ -336,9 +337,7 @@
               >{{ menu.title }}
             </a>
           </li>
-          <li
-            class="nav-item mx-2 px-1"
-          >
+          <li class="nav-item mx-2 px-1">
             <a class="d-flex align-items-center"
               >{{ header?.actions?.title }}
               <img
@@ -388,7 +387,11 @@
               target="_blank"
               class="d-flex align-items-center"
             >
-            <img src="{{ item?.media?.image }}" width="{{ item?.media?.width }}" height="{{ item?.media?.height }}" />
+              <img
+                src="{{ item?.media?.image }}"
+                width="{{ item?.media?.width }}"
+                height="{{ item?.media?.height }}"
+              />
             </a>
           </li>
         </ul>

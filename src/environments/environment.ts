@@ -13,7 +13,7 @@ export const environment = {
   fbUrl: 'https://www.facebook.com/1851magazine/',
   room1903Url: 'https://room1903.com/',
   eeUrl: 'https://estatenvy.com/',
-  enableSW: true,
+  enableSW: false,
 };
 
 /*
