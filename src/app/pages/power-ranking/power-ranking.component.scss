@@ -3,57 +3,86 @@
 @import "../../../assets/scss/media.scss";
 
 .top-container {
+  height: 760px;
+  position: relative;
+  @include media("<xl"){
+    height: 680px;
+  }
+  @include media("<lg"){
+    height: 500px;
+  }
+  @include media("<md"){
+    height: 400px;
+  }
+  @include media("<sm"){
+    // height: 500px;
+  }
   img {
     position: relative;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     // height: 80vh;
-    @include media("<md") {
-      height: 600px;
+    @include media("<xl") {
+      // height: 600px;
     }
-    @include media("<sm") {
-      height: 600px;
+    @include media("<md"){
+      // height: 100%;
     }
+    // @include media("<sm") {
+    //   height: 600px;
+    // }
   }
   .text-box {
     position: absolute;
-    top: 80vh;
+    // top: 80vh;
+    bottom: 47px;
     left: 20vw;
     margin-left: -50px;
     border-top: 3px solid $dark-gray;
     border-bottom: 3px solid $dark-gray;
     text-align: center;
-    width: 60%;
+    width: 54.5%;
     margin: 0 auto;
     background-color: $white;
     @include media("<md") {
-      top: 55vh;
+      // top: 55vh;
       width: 70%;
+      left: 0;
+      right: 0;
     }
     @include media("<sm") {
-      top: 55vh;
+      // top: 55vh;
       width: 70%;
     }
     .title {
       margin: 0;
       color: $dark-gray;
-      font-family: "Ballinger Condensed";
+      font-family: "Ballinger Condensed Medium";
       font-weight: bold;
       font-size: 44px;
+      @include media("<xl"){
+        font-size: 36px;
+      }
+      @include media("<md"){
+        font-size: 26px;
+      }
     }
     .description {
       width: 430px;
       margin: 0 auto;
       color: $primary;
-      font-family: "Ballinger Condensed";
+      font-family: "Ballinger Condensed Medium";
       font-weight: bold;
       font-size: 20px;
       margin: 5px auto;
+      @include media("<xl"){
+        font-size: 18px;
+        width: calc(100% - 15px);        
+      }
       @include media("<md") {
-        width: 230px;
-      }
-      @include media("<sm") {
-        width: 230px;
-      }
+        font-size: 16px;
+      }      
     }
   }
 }
@@ -65,6 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  min-height: 160px;
 
   @include media("<md") {
     flex-flow: row wrap;
@@ -75,42 +105,67 @@
   }
 
   &.isHead {
-    background: $border-color;
+    // background: $border-color;
     font-family: "ProximaNova-Bold";
     color: $dark-gray;
     font-size: 20px;
-    padding: 15px 15px;
+    padding: 30px 10px 20px;
     text-align: center;
+    min-height: auto;
     @include media("<md") {
       display: none;
     }
   }
 
-  &.list-data-wrapper--2 {
-    background-color: $text-secondary-color;
+  &.list-data-wrapper--1 {
+    background-color: $text-secondary-color;    
   }
 
-  &.list-data-wrapper--1 {
+  &.list-data-wrapper--2 {
     background-color: $white;
   }
-
+  .list-data-row--wrapper{
+    @include media("<lg"){
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @include media("<sm"){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
   .list-data--item {
     flex: 1 0 25%;
     max-width: 25%;
-    padding: 0 15px;
-    @include media("<md") {
+    padding: 0 15px;    
+    @include media("<sm") {
       flex: 1 0 100%;
       max-width: 100%;
     }
+    &.rank-number--wrapper{
+      flex: 1 0 15%;
+      max-width: 15%;
+      @include media("<sm"){
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
+    }
     &.brandCol {
       text-align: center;
+      flex: 1 0 35%;
+      max-width: 35%;
+      @include media("<sm"){
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
       .list-data--itemImg {
-        max-width: 190px;
+        width: 120px;
+        max-width: 160px;
         @include media("<xl") {
-          max-width: 160px;
+          max-width: 90px;
         }
         @include media("<md") {
-          max-width: 140px;
+          max-width: 120px;
           margin-bottom: 15px;
         }
         @include media("<sm") {
@@ -118,7 +173,21 @@
         }
       }
     }
+    &.isBrandCol{
+      flex: 1 0 35%;
+      max-width: 35%;
+      @include media("<sm"){
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
+    }
     &.rankCol {
+      flex: 1 0 15%;
+      max-width: 15%;
+      @include media("<sm"){
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
       .list-data--rank {
         font-family: "ProximaNova-Regular";
         font-weight: bold;
@@ -126,6 +195,9 @@
         font-size: 84px;
         margin-bottom: 0;
         text-align: center;
+        @include media("<xl"){
+          font-size: 56px;
+        }
       }
       .list-data--bottom-rank {
         font-family: "ProximaNova-Regular";
@@ -134,13 +206,16 @@
         font-size: 56px;
         margin-bottom: 0;
         text-align: center;
+        @include media("<xl"){
+          font-size: 46px;
+        }
       }
     }
     &.lastWeekCol {
       .list-data--trending {
         font-family: "ProximaNova-Regular";
         color: $dark-gray;
-        font-size: 12px;
+        font-size: 13px;
         margin-bottom: 0;
         text-align: center;
 
@@ -152,6 +227,7 @@
         font-family: "ProximaNova-Regular";
         color: $primary;
         font-size: 38px;
+        line-height: 120%;
         margin-bottom: 0;
         text-align: center;
 
@@ -167,11 +243,17 @@
           font-family: "Ballinger Condensed Medium";
           color: $primary;
           font-size: 20px;
-          font-weight: bold;
+          font-weight: 700;
           text-decoration: underline;
+          @include media("<lg"){
+            font-size: 18px;
+          }
+          @include media("<md"){
+            font-size: 16px;
+          }
         }
         @include media("<md") {
-          font-size: 18px;
+          font-size: 16px;
           margin-bottom: 10px;
           text-align: center;
         }
@@ -193,5 +275,66 @@
   }
 }
 .otherBrand {
-  height: 200px;
+  height: 322px;
+  align-items: flex-start;
+  padding-top: 60px;
+  @include media("<xl"){
+    height: auto;
+    padding: 20px 0;
+  }
+  @include media("<lg") {    
+    flex-wrap: wrap;
+  }
+  &.list-data-wrapper--2, &.list-data-wrapper--1{
+    @include media("<sm"){
+      background-color: transparent;
+      .list-data-row--wrapper{
+        &:nth-child(even){
+          background-color: $text-secondary-color;
+        }
+      }
+    }
+  }  
+  .list-data-row--wrapper{
+    @include media("<lg"){
+      padding-left: 50px;
+    }
+    @include media("<md"){
+      padding: 0;
+    }
+    .d-flex{
+      @include media("<lg"){
+        padding: 15px 0;
+        margin: 0;
+      }
+      @include media("<md"){
+        flex-flow: column;
+        justify-content: center;
+      }
+    }
+  }
+  .list-data--item{
+    flex: unset !important;
+    max-width: unset !important;
+    padding: 0;
+    width: auto;
+    &.rankCol{
+      margin-right: 10px;
+      @include media("<md"){
+        margin: 0;
+      }
+    }
+    .list-data--bottom-rank{
+      @include media("<lg"){
+        margin-right: 115px;
+      }
+      @include media("<md"){
+        margin-right: 20px;
+      }
+      @include media("<sm"){
+        margin-right: 0;
+      }
+    }
+  }
 }
+
