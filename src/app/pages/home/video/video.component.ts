@@ -29,8 +29,8 @@ export class VideoComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: [
-      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow"/>',
-      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow"/>',
+      '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="15px" height="30px"/>',
+      '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="15px" height="30px"/>',
     ],
     responsive: {
       0: {
