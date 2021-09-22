@@ -13,10 +13,6 @@
               padding-top: 20px;
               .loadmore-btn {
                   margin: unset;
-                  .fa {
-                      font-size: 19px;
-                      line-height: 19px;
-                  }
               }
           }
         }
@@ -237,15 +233,6 @@
               }
           }
       }
-      .scroll_down_data{  
-      a{
-          .fa{
-          color: $red;
-          font-size: 50px;
-          line-height: 52px;
-          }
-      }
-      }
   }
 }
 
@@ -381,3 +368,161 @@
       margin: 10px 0px 10px 0px;
   }     
 }
+.arrow {
+  font-size: 19px;
+  line-height: 19px; 
+}
+.sort_main{
+  padding: 47px 0 5px 20px;
+  margin: 0 auto;
+  justify-content: center;
+  @include desk-lg-below{
+      max-width: 76%;
+      flex: 0 0 76%;
+      -webkit-flex:0 0 76%;
+  }
+  @include desk-lg-below1{
+      padding: 25px 0 0 0; 
+      max-width: 788px;
+      flex: 0 0 788px;
+      -webkit-flex:0 0 788px;
+  }
+  @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex:0 0 100%; 
+       justify-content: center;
+      -webkit-justify-content: center;
+  }
+  h6{
+      font-size: 17px;
+      line-height: 19px;
+      color: $red;
+      font-family: $proxiRegular;
+      letter-spacing: 0.9px;
+      @include tablet-portrait {
+          font-size: 16px;
+      }
+      @include tablet-landscape1{
+          padding: 0 0 8px 0;
+          display: block;
+          width: 100%;
+          text-align: center;
+      }
+  }
+  ul{
+      padding: 0 0 0 11px;
+      cursor: pointer;
+      @include tablet-landscape1{
+          display: block !important;
+          padding: 0;
+      }
+      li{
+          display: inline-block;
+          padding:0 18px;
+          position: relative;
+           @include tablet-portrait {
+              padding: 0 10px;
+          }
+          @include tablet-landscape1{
+              padding: 0 10px 10px 10px;
+          }
+          a{
+              display: block;
+          }
+          span{
+              font-size: 17px;
+              line-height: 17px;
+              color: $light_gray_4;
+              font-family:$proxiRegular;
+              display: block;
+              letter-spacing: 0.7px;
+              @include tablet-portrait {
+              font-size: 16px;
+              }
+          }
+          strong{
+              font-size: 17px;
+              line-height: 17px;
+              color: $light_gray_4;
+              font-family:$proxiBold;
+              display: block;
+              letter-spacing: 0.7px;
+              @include tablet-portrait {
+              font-size: 16px;
+              }
+          }
+          &:after{
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 1px;
+              height:13px;
+              background: $red;
+          }
+          &:last-child{
+              &:after{
+                  display: none;
+              }
+          }
+      }
+  }
+}
+.check_boxes_data{
+  padding:49px 10px 36px 55px;
+  @include desk-lg-below{
+      max-width: 82%;
+      flex: 0 0 82%;
+      -webkit-flex:0 0 82%;
+  }
+  @include desk-lg-below1{
+      max-width: 827px;
+      flex: 0 0 827px;
+      -webkit-flex:0 0 827px;
+      padding:25px 0;
+  }
+  @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex:0 0 100%; 
+      justify-content: center;
+      -webkit-justify-content: center;
+  }
+  ul{
+      padding: 0;
+         li{
+              border: 0;
+              padding: 0 25px;
+              @include tablet-portrait {
+                  padding: 0 10px;
+              }
+               @include tablet-landscape1{
+                  padding: 0 10px 10px 10px;
+              }
+             &:after{
+                 display: none;
+             }
+          } 
+      }
+  .checkboxes{
+      label{
+          margin: 0;
+          display:inline-block;
+      span{
+          padding: 0 0 0 25px;
+          display: inline-block;
+          background: url('/assets/img/checkbox.png') no-repeat 0 0px;
+          cursor: pointer;
+          line-height: 18px;
+           @include tablet-landscape1{
+              padding: 0 0 0 25px;
+          } 
+      }
+      input{
+          display: none;
+      }
+      input:checked + span{background-image: url('/assets/img/checked-checkbox.png');}
+      }
+  }
+}   
