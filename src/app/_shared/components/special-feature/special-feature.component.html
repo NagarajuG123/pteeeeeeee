@@ -108,7 +108,7 @@
                 p-2
               "
             >
-              {{ item.title }}
+              {{  commonService.responsiveTextFormating(item.title, titleLimit) }}
               <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
             </div>
           </div>

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -15,7 +16,12 @@ const RESULT_KEY = makeStateKey<any>('specialFeatureState');
 export class SpecialFeatureComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() slug: string;
-  specialFeature: any = [];
+  specialFeature: Details[] = [];
+  titleLimit = 50;
+  titleLimitOptions = [
+    { width: 1200, limit: 85 },
+    { width: 992, limit: 30 },
+  ];
 
   constructor(
     private apiService: ApiService,
@@ -46,7 +52,28 @@ export class SpecialFeatureComponent implements OnInit {
     console.log(this.specialFeature);
     // }
   }
+  setLimitValues(Options) {
+    let limitVal = 0;
+    Options.forEach((item) => {
+      if (window.innerWidth < item.width) {
+        limitVal = item.limit;
+      }
+    });
+    if (Number(limitVal) === 0) {
+      limitVal = Number(Options[0].limit);
+    }
+      this.titleLimit = Number(limitVal);
+  }
 
+  async setLimit(event: any) {
+    console.log('ss');
+    await this.setLimitValues(this.titleLimitOptions);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.setLimit(event);
+  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
