@@ -74,14 +74,11 @@
           font-family: $balingerRegular;
           color: $dark-gray;
       }
-      @media screen and (max-width: 375px) {
-        .row {
-          margin: 0 -5px;
+      @media screen and (max-width: 450px) {
           .col-3 {
-            width: 100% !important;
-            padding: 0 5px;
+            flex: 0 0 auto;
+            width: 100%;
           }
-        }
       }
   }
   @media screen and (max-width: 760px) {
