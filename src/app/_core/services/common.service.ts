@@ -52,8 +52,8 @@ export class CommonService {
   }
 
   formatTitle(title: any) {
-    if (title && title.length > 40) {
-      title = title.slice(0, 50) + '...';
+    if (title && title.length > 80) {
+      title = title.slice(0, 75) + '...';
     }
     return title;
   }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
@@ -16,9 +16,11 @@ const RESULT_KEY = makeStateKey<any>('mostPopularState');
   styleUrls: ['./most-popular.component.scss'],
 })
 export class MostPopularComponent implements OnInit {
+  @Input() type: string;
+  @Input() slug: string;
+
   isBrowser!: boolean;
   data: Details[] = [];
-  slug: string = '';
   customOptions: OwlOptions = {};
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -33,7 +35,6 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slug = '1851';
     this.setOption();
     this.getMostPopular();
   }
@@ -50,14 +51,17 @@ export class MostPopularComponent implements OnInit {
   }
   setOption() {
     this.customOptions = {
-      autoplay: true,
+      autoplay: false,
       loop: true,
       mouseDrag: true,
       touchDrag: true,
       pullDrag: false,
       dots: false,
       navSpeed: 700,
-      navText: ['', ''],
+      navText: [
+        '<img src="assets/img/left-arrow.svg" alt="slider arrow" width="15px" height="30px"/>',
+        '<img src="assets/img/right-arrow.svg" alt="slider arrow" width="15px" height="30px"/>',
+      ],
       responsive: {
         0: {
           items: 1,

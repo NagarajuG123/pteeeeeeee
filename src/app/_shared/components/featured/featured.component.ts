@@ -114,7 +114,6 @@ export class FeaturedComponent implements OnInit {
   }
 
   async setLimit(event: any) {
-    console.log('ss');
     await this.setLimitValues(this.descriptionLimitOptions, 'descriptionLimit');
     await this.setLimitValues(
       this.brandNewsTitleLimitOptions,
