@@ -14,28 +14,14 @@
   @include media("<md"){
     height: 400px;
   }
-  @include media("<sm"){
-    // height: 500px;
-  }
   img {
     position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    // height: 80vh;
-    @include media("<xl") {
-      // height: 600px;
-    }
-    @include media("<md"){
-      // height: 100%;
-    }
-    // @include media("<sm") {
-    //   height: 600px;
-    // }
   }
   .text-box {
     position: absolute;
-    // top: 80vh;
     bottom: 47px;
     left: 20vw;
     margin-left: -50px;
@@ -46,13 +32,11 @@
     margin: 0 auto;
     background-color: $white;
     @include media("<md") {
-      // top: 55vh;
       width: 70%;
       left: 0;
       right: 0;
     }
     @include media("<sm") {
-      // top: 55vh;
       width: 70%;
     }
     .title {
@@ -105,7 +89,6 @@
   }
 
   &.isHead {
-    // background: $border-color;
     font-family: "ProximaNova-Bold";
     color: $dark-gray;
     font-size: 20px;
