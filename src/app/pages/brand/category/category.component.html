@@ -155,6 +155,31 @@
     </ul>
   </div>
 </div>
+<!-- See More -->
+<div class="d-flex">
+  <div class="see-more--wrapper"></div>
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+      <div class="row align-items-center">
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="nextBtn px-5 bg-white">
+            <img
+              src="assets/img/nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3"
+              (click)="getMoreData()"
+              loading="lazy"
+            />
+            <span (click)="getMoreData()">SEE MORE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="see-more-right--wrapper"></div>
+</div>
+
 <div
   class="modal fade"
   id="videoModal"
@@ -185,3 +210,5 @@
     </div>
   </div>
 </div>
+  
+

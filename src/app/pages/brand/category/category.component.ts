@@ -95,5 +95,13 @@ export class CategoryComponent implements OnInit {
   onResize(event: any) {
     this.setLimit(event);
   }
-
+  getMoreData(){
+    const scrollOffset = this.mostRecent.length;
+    this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=4&offset=${scrollOffset}`).pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          results.data.forEach((item: any) => {
+            this.mostRecent.push(item);
+          });
+    });
+  }
 }
