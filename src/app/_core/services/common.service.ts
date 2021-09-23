@@ -52,8 +52,8 @@ export class CommonService {
   }
 
   formatTitle(title: any) {
-    if (title && title.length > 40) {
-      title = title.slice(0, 50) + '...';
+    if (title && title.length > 80) {
+      title = title.slice(0, 75) + '...';
     }
     return title;
   }
@@ -63,10 +63,17 @@ export class CommonService {
     }
     return description;
   }
-  goAuthorPage(item:any){
+
+  responsiveTextFormating(text: String, textLength: number) {
+    if (text && text.length > textLength) {
+      text = text.slice(0, textLength) + '...';
+    }
+    return text;
+  }
+  goAuthorPage(item: any) {
     let slug = '';
     if (typeof item?.author !== 'undefined') {
-      return slug = `author/${item?.author?.slug}`;
+      return (slug = `author/${item?.author?.slug}`);
     }
     return `#`;
   }

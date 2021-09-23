@@ -104,3 +104,47 @@
       }
     }
   }
+  .content{
+    h3{
+      text-decoration: none;
+      font-family: $balinger;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 103%;
+      color: $dark-gray;
+    }
+    p{
+      font-family: $balingerRegular;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 21px;
+      line-height: 141.19%;
+      color: $black;
+    }
+
+  }
+  .video-btn {
+    cursor: pointer;
+    position: relative;
+    .vide-play {
+      position: absolute;
+      left: calc(50% - 45px);
+      top: calc(50% - 45px);
+      z-index: 1000;
+      height: 90px;
+      width: 90px;
+    }
+  }
+  .modal-body {
+    padding: 0rem !important;
+  }
+  .btn-close {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    z-index: 999;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 1;
+  }

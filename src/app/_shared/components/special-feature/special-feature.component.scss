@@ -2,15 +2,21 @@
 @import "../../../../assets/scss/typography.scss";
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
+
 .c-video-section--wrapper {
   background: $white;
   padding: 25px 0;
+  &.brand {
+    padding: 0;
+  }
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
+    margin-bottom: 6px;
+
     &::before {
       content: "|";
       padding-left: 15px;
@@ -52,7 +58,7 @@
   }
   h3 {
     text-decoration: none;
-    font-family: "Ballinger Condensed";
+    font-family: "Ballinger Condensed Medium";
     font-style: normal;
     font-weight: bold;
     font-size: 48px;

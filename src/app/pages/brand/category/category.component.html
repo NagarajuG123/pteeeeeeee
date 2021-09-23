@@ -7,6 +7,10 @@
             <div class="tag position-absolute text-center top-0 text-uppercase">
               {{ slug.replace("-", " ") }}
             </div>
+            <a 
+             *ngIf="!commonService.isVideo(featuredData[0])"
+             routerLink="/{{ featuredData[0]?.slug  }}"
+              fragment="{{ slug }}">
             <img
               appYoutubeImage
               srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
@@ -20,25 +24,58 @@
               width="1008"
               height="450"
               src="/{{ featuredData[0]?.media }}"
-              alt="featured"
+              alt="category"
               loading="lazy"
             />
-            <div
+          
+          <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
+              <h3>{{ commonService.responsiveTextFormating(featuredData[0].title, titleLimit) }}</h3>
+              <p>{{ commonService.responsiveTextFormating(featuredData[0].short_description, descriptionLimitOptions) }}</p> 
+          </div>
+        </a>
+            <a
+              *ngIf = "commonService.isVideo(featuredData[0])"
+              attr.data-src="{{ featuredData[0].media.url }}"
+              data-bs-target="#videoModal"
+              data-bs-toggle="modal"
+              (click)="updateVideoUrl(featuredData[0].media.url)"
+              href="#"
               class="
-                over-layer
-                position-absolute
-                text-capitalize
-                bottom-0
-                fw-bold
-                w-100
+                video-btn
+                d-flex
+                justify-content-center
+                align-items-center
               "
             >
-              {{ featuredData[0]?.title }}
-              <a
-                routerLink="{{ commonService.readMore(featuredData[0]) }}"
-                class="stretched-link"
-              ></a>
-            </div>
+              <img
+                appYoutubeImage
+                srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    300px'
+                }}"
+                width="1008"
+                height="450"
+                src="/{{ featuredData[0]?.media }}"
+                alt="category"
+                loading="lazy"
+              />
+                <img
+                  src="assets/img/play.png"
+                  alt="Play"
+                  class="img-fluid vide-play"
+                />
+            </a>
+            <a routerLink="/{{ featuredData[0]?.slug  }}"
+             fragment="{{ slug }}">
+              <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
+                <h3>{{ featuredData[0].title }}</h3>
+                <p>{{ featuredData[0].short_description }}</p> 
+               </div>
+            </a>
           </div>
         </div>
       </div>
@@ -95,7 +132,7 @@
     </div>
   </div>
 </div>
-<div class="container customContainer py-4">
+<div class="container customContainer">
   <div class="col-12 sm-6 lg-3 py-4 most-recent">
     <ul class="row py-3">
       <li class="col-3 col-md-3 py-3" *ngFor="let item of mostRecent">
@@ -116,5 +153,35 @@
         </a>
       </li>
     </ul>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="videoModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  (click)="openVideoPlayer = true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn-close btn-close-black"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="openVideoPlayer = false"
+        ></button>
+        <iframe
+          [src]="url | safeUrl"
+          frameborder="0"
+          width="100%"
+          height="496px"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+    </div>
   </div>
 </div>

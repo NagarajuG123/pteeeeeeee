@@ -152,7 +152,9 @@
           <ul class="submenu-list mb-0" *ngIf="brandSlug === '1851'">
             <li class="d-block">
               <h3>
-                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
+                <a routerLink="/monthlycovers" 
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"> MONTHLY COVERS</a>
               </h3>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
@@ -185,8 +187,8 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
-                    >{{ item.name }} ></a
-                  >
+                    >{{ item.name }}
+                  </a>
                 </li>
               </ul>
             </li>

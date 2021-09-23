@@ -1,9 +1,10 @@
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/media.scss";
 
 .most-popular {
-  background: linear-gradient($dark-gray 458px, $white 0);
+  background: linear-gradient($dark-gray 425px, $white 0);
   font-family: Roboto;
   h2 {
     font-family: "Ballinger Condensed Medium";
@@ -19,8 +20,11 @@
   .slideItem {
     font-weight: bold;
     margin-bottom: 47px;
+    > img {
+      margin-bottom: -31px;
+    }
     .slide-body {
-      min-height: 147px;
+      min-height: 150px;
       padding-top: 31px;
       padding-bottom: 31px;
       > span {
@@ -67,41 +71,72 @@
     }
   }
 }
+.brand-most-popular {
+  background: linear-gradient($dark-gray 410px, $white 0);
+  .slideItem {
+    .slide-body {
+      max-height: 170px;
+      min-height: 170px;
+    }
+  }
+}
 
 // carousel
-:host ::ng-deep .owl-carousel {
-  .owl-stage-outer {
-    overflow: hidden;
-    .owl-stage {
-      display: flex;
-      .slideItem {
-        padding: 0 20px;
-        box-sizing: border-box;
-        img {
-          width: 100%;
+:host ::ng-deep {
+  .brand-carousel {
+    .owl-carousel {
+      .owl-stage-outer {
+        .owl-stage {
+          .slideItem {
+            padding: 0 10px;
+            @include media("<md") {
+              padding: 0 20px;
+            }
+          }
         }
       }
     }
   }
-  .owl-nav {
-    > div {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-repeat: no-repeat;
-      background-size: 22px;
-      height: 43px;
-      width: 25px;
-      cursor: pointer;
-      &.owl-prev {
-        background-image: url("../../../../assets/img/left-arrow.svg");
-        left: -10px;
-        background-color: #243444;
+  .owl-carousel {
+    .owl-stage-outer {
+      overflow: hidden;
+      .owl-stage {
+        display: flex;
+        .slideItem {
+          padding: 0 20px;
+          box-sizing: border-box;
+          img {
+            width: 100%;
+          }
+        }
       }
-      &.owl-next {
-        background-image: url("../../../../assets/img/right-arrow.svg");
-        right: -10px;
-        background-color: #243444;
+    }
+    .owl-nav {
+      .owl-prev,
+      .owl-next {
+        position: absolute;
+        top: 110px;
+        background: transparent !important;
+        &.owl-prev {
+          left: -60px;
+          @include media("<md") {
+            left: -17px;
+            img {
+              width: 15px;
+              margin-top: 5px;
+            }
+          }
+        }
+        &.owl-next {
+          right: -60px;
+          @include media("<md") {
+            right: -17px;
+            img {
+              width: 15px;
+              margin-top: 5px;
+            }
+          }
+        }
       }
     }
   }

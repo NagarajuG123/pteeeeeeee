@@ -1,7 +1,10 @@
-<div class="c-video-section--wrapper">
+<div
+  class="c-video-section--wrapper"
+  [ngClass]="type == 'brand' ? 'brand' : ''"
+>
   <div class="container customContainer">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 col-md-8">
         <div class="d-flex align-items-center c-section-header--wrapper">
           <div class="c-section-header--group d-flex align-items-end">
             <h2 class="c-section--title text-uppercase m-0">
@@ -20,7 +23,7 @@
 
 <div class="container py-4 customContainer">
   <div class="row">
-    <div class="col-12 col-lg mb-3 mb-sm-0">
+    <div class="col-12 col-md-4 col-lg mb-3 mb-sm-0">
       <div class="row" *ngIf="specialFeature.length">
         <div class="col-12 mb-2 mb-md-3">
           <div class="main-image position-relative">
@@ -51,8 +54,8 @@
               <a
                 routerLink="/{{ specialFeature[0].slug }}"
                 class="stretched-link"
-                ><h3>{{ specialFeature[0].title }}</h3>
-                <p>{{ specialFeature[0].short_description }}</p>
+                ><h3>{{  commonService.responsiveTextFormating(specialFeature[0].title, titleLimit) }}</h3>
+                <p>{{  commonService.responsiveTextFormating(specialFeature[0].short_description, descriptionLimit) }}</p>
               </a>
             </div>
           </div>
@@ -91,7 +94,7 @@
                 (max-width: 1200px) 238px,
                 300px'
                 }}"
-                width="253"
+                width="353"
                 height="137"
                 src="{{ item.media | defaultImage: 253:137 }}"
                 alt="featured"
@@ -108,7 +111,7 @@
                 p-2
               "
             >
-              {{ item.title }}
+              {{  commonService.responsiveTextFormating(item.title, titleLimit) }}
               <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
             </div>
           </div>

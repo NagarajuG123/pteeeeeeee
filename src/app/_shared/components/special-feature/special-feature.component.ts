@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -15,7 +16,19 @@ const RESULT_KEY = makeStateKey<any>('specialFeatureState');
 export class SpecialFeatureComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() slug: string;
-  specialFeature: any = [];
+  @Input() type: string;
+
+  specialFeature: Details[] = [];
+  titleLimit = 50;
+  titleLimitOptions = [
+    { width: 1200, limit: 85 },
+    { width: 992, limit: 30 },
+  ];
+  descriptionLimit = 200;
+  descriptionLimitOptions = [
+    { width: 1200, limit: 200 },
+    { width: 992, limit: 100 },
+  ];
 
   constructor(
     private apiService: ApiService,
@@ -45,7 +58,37 @@ export class SpecialFeatureComponent implements OnInit {
       });
     // }
   }
+  setLimitValues(Options,fieldName) {
+    let limitVal = 0;
+    Options.forEach((item) => {
+      if (window.innerWidth < item.width) {
+        limitVal = item.limit;
+      }
+    });
+    if (Number(limitVal) === 0) {
+      limitVal = Number(Options[0].limit);
+    }
+    switch (fieldName) {
+      case 'titleLimit':
+        this.titleLimit = Number(limitVal);
+        break;
+      case 'descriptionLimit':
+        this.descriptionLimit = Number(limitVal);
+        break;
+      default:
+        break;
+    }  
+  }
 
+  async setLimit(event: any) {
+    await this.setLimitValues(this.titleLimitOptions,'titleLimit');
+    await this.setLimitValues(this.descriptionLimitOptions,'descriptionLimit');
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.setLimit(event);
+  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();

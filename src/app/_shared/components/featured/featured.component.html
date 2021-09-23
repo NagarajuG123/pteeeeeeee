@@ -1,3 +1,4 @@
+
 <div class="container py-4">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
@@ -108,16 +109,28 @@
           [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h3 class="m-0">
-            <a routerLink="{{ commonService.readMore(item) }}">{{
-              item.title
-            }}</a>
+            <a routerLink="{{ commonService.readMore(item) }}">
+              <!-- {{ item.title }} -->
+              {{
+                commonService.responsiveTextFormating(
+                  item.title,
+                  brandNewsTitleLimit
+                )
+              }}
+            </a>
           </h3>
           <a routerLink="{{ commonService.goAuthorPage(item) }}">
             <span class="my-1">By {{ item.author?.name }}</span></a
           >
           <a routerLink="{{ commonService.readMore(item) }}">
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
-              {{ commonService.formatDescription(item.short_description) }}
+              <!-- {{ commonService.formatDescription(item.short_description) }} -->
+              {{
+                commonService.responsiveTextFormating(
+                  item.short_description,
+                  descriptionLimit
+                )
+              }}
             </p>
           </a>
         </li>
@@ -151,7 +164,6 @@
               <img
                 appYoutubeImage
                 width="95"
-                height="100"
                 data-src="{{ item.media | defaultImage: 121:114 }}"
                 alt="industry"
                 loading="lazy"
@@ -162,8 +174,15 @@
               <a
                 routerLink="{{ commonService.readMore(item) }}"
                 fragment="frannews"
-                >{{ item.title }}</a
               >
+                <!-- {{ item.title }} -->
+                {{
+                  commonService.responsiveTextFormating(
+                    item.title,
+                    NewsTitleLimit
+                  )
+                }}
+              </a>
             </h3>
             <a routerLink="{{ commonService.goAuthorPage(item) }}">
               <span>By {{ item.author.name }}</span>
