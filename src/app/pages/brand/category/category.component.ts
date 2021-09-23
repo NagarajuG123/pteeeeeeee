@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +22,16 @@ export class CategoryComponent implements OnInit {
   mostRecent: Details[] = [];
   openVideoPlayer: boolean = false;
   url: string;
+  titleLimit = 50;
+  titleLimitOptions = [
+    { width: 1200, limit: 85 },
+    { width: 992, limit: 30 },
+  ];
+  descriptionLimit = 200;
+  descriptionLimitOptions = [
+    { width: 1200, limit: 200 },
+    { width: 992, limit: 100 },
+  ];
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -61,6 +71,38 @@ export class CategoryComponent implements OnInit {
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
     this.url = url;
+  }
+
+  setLimitValues(Options,fieldName) {
+    let limitVal = 0;
+    Options.forEach((item) => {
+      if (window.innerWidth < item.width) {
+        limitVal = item.limit;
+      }
+    });
+    if (Number(limitVal) === 0) {
+      limitVal = Number(Options[0].limit);
+    }
+    switch (fieldName) {
+      case 'titleLimit':
+        this.titleLimit = Number(limitVal);
+        break;
+      case 'descriptionLimit':
+        this.descriptionLimit = Number(limitVal);
+        break;
+      default:
+        break;
+    }  
+  }
+
+  async setLimit(event: any) {
+    await this.setLimitValues(this.titleLimitOptions,'titleLimit');
+    await this.setLimitValues(this.descriptionLimitOptions,'descriptionLimit');
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.setLimit(event);
   }
 
 }

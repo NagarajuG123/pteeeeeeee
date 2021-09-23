@@ -29,8 +29,8 @@
             />
           
           <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
-              <h3>{{ featuredData[0].title }}</h3>
-              <p>{{ featuredData[0].short_description }}</p> 
+              <h3>{{ commonService.responsiveTextFormating(featuredData[0].title, titleLimit) }}</h3>
+              <p>{{ commonService.responsiveTextFormating(featuredData[0].short_description, descriptionLimitOptions) }}</p> 
           </div>
         </a>
             <a
