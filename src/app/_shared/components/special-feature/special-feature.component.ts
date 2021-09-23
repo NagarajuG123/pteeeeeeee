@@ -22,6 +22,11 @@ export class SpecialFeatureComponent implements OnInit {
     { width: 1200, limit: 85 },
     { width: 992, limit: 30 },
   ];
+  descriptionLimit = 200;
+  descriptionLimitOptions = [
+    { width: 1200, limit: 200 },
+    { width: 992, limit: 100 },
+  ];
 
   constructor(
     private apiService: ApiService,
@@ -52,7 +57,7 @@ export class SpecialFeatureComponent implements OnInit {
     console.log(this.specialFeature);
     // }
   }
-  setLimitValues(Options) {
+  setLimitValues(Options,fieldName) {
     let limitVal = 0;
     Options.forEach((item) => {
       if (window.innerWidth < item.width) {
@@ -62,12 +67,21 @@ export class SpecialFeatureComponent implements OnInit {
     if (Number(limitVal) === 0) {
       limitVal = Number(Options[0].limit);
     }
-      this.titleLimit = Number(limitVal);
+    switch (fieldName) {
+      case 'titleLimit':
+        this.titleLimit = Number(limitVal);
+        break;
+      case 'descriptionLimit':
+        this.descriptionLimit = Number(limitVal);
+        break;
+      default:
+        break;
+    }  
   }
 
   async setLimit(event: any) {
-    console.log('ss');
-    await this.setLimitValues(this.titleLimitOptions);
+    await this.setLimitValues(this.titleLimitOptions,'titleLimit');
+    await this.setLimitValues(this.descriptionLimitOptions,'descriptionLimit');
   }
 
   @HostListener('window:resize', ['$event'])

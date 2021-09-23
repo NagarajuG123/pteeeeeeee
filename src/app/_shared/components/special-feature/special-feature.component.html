@@ -51,8 +51,8 @@
               <a
                 routerLink="/{{ specialFeature[0].slug }}"
                 class="stretched-link"
-                ><h3>{{ specialFeature[0].title }}</h3>
-                <p>{{ specialFeature[0].short_description }}</p>
+                ><h3>{{  commonService.responsiveTextFormating(specialFeature[0].title, titleLimit) }}</h3>
+                <p>{{  commonService.responsiveTextFormating(specialFeature[0].short_description, descriptionLimit) }}</p>
               </a>
             </div>
           </div>
