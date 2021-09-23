@@ -182,6 +182,7 @@
         }
       }
       .list-data--bottom-rank {
+        margin-top: -16px;
         font-family: "ProximaNova-Regular";
         font-weight: bold;
         color: $primary;
@@ -314,6 +315,7 @@
         margin-right: 20px;
       }
       @include media("<sm"){
+        margin-top: 0px !important;
         margin-right: 0;
       }
     }
