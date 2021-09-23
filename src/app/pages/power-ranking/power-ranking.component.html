@@ -31,48 +31,41 @@
             <ng-container
               *ngFor="let item of items | slice: 0:9; let i = index"
             >
-              <div
-                class="list-data--wrapper isRow"
-                [ngClass]="
-                  i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
-                "
-              >
-                <div class="list-data--item rankCol">
-                  <p class="list-data--rank">
-                    {{ item.rank }}
-                  </p>
-                </div>
-                <div class="list-data--item brandCol">
-                  <a routerLink="/{{ item.slug }}">
-                    <img
-                      class="list-data--itemImg"
-                      src="{{ item.logo }}"
-                      alt="logo"
-                      width="149px"
-                      height="103px"
-                      loading="lazy"
-                  /></a>
-                </div>
-                <div class="list-data--item lastWeekCol">
-                  <p class="list-data--trending">Last Week</p>
-                  <p class="list-data--number">
-                    {{ item.last_week_rank }}
-                  </p>
-                </div>
-                <div class="list-data--item isLstSotryCol">
-                  <p class="list-data--latestStory">
-                    <a
-                      routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
-                      fragment="brand-latest-stories"
-                      class="list-data--latestStoryLink"
-                    >
-                      {{ item.latest_story_title }}
-                    </a>
-                  </p>
-                </div>
+              <div class="list-data--item rankCol">
+                <p class="list-data--rank">
+                  {{ item.rank }}
+                </p>
               </div>
-            </ng-container>
-          </div>
+              <div class="list-data--item brandCol">
+                <a routerLink="/{{ item.slug }}">
+                  <img
+                    class="list-data--itemImg"
+                    src="{{ item.logo }}"
+                    alt="logo"
+                    width="149px"
+                    height="103px"
+                    loading="lazy"
+                /></a>
+              </div>
+              <div class="list-data--item lastWeekCol">
+                <p class="list-data--trending">Last Week</p>
+                <p class="list-data--number">
+                  {{ item.last_week_rank }}
+                </p>
+              </div>
+              <div class="list-data--item isLstSotryCol">
+                <p class="list-data--latestStory">
+                  <a
+                    routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
+                    fragment="brand-latest-stories"
+                    class="list-data--latestStoryLink"
+                  >
+                    {{ item.latest_story_title }}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </ng-container>
         </div>
       </div>
       <!-- bottom -->
@@ -117,5 +110,6 @@
       </div>
     </div>
     <!-- </div>
+
   </div> -->
 </div>

@@ -96,10 +96,12 @@
       &.owl-prev {
         background-image: url("../../../../assets/img/left-arrow.svg");
         left: -10px;
+        background-color: #243444;
       }
       &.owl-next {
         background-image: url("../../../../assets/img/right-arrow.svg");
         right: -10px;
+        background-color: #243444;
       }
     }
   }

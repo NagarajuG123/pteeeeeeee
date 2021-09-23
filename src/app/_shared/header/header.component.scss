@@ -56,10 +56,7 @@ header {
       line-height: 128.69%;
       font-weight: bold;
       text-transform: uppercase;
-      > img {
-        height: 41px;
-        width: 41px;
-      }
+
       > div {
         font-family: "Ballinger Condensed Medium";
         font-weight: 800;
@@ -158,7 +155,7 @@ header {
       padding: 18px;
       z-index: 6;
       top: 100%;
-      width: 215px;
+      width: 300px;
       display: block;
       transition: all 0.5s ease;
       &.open {
@@ -234,11 +231,29 @@ header {
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
-  line-height: 128.69%;
+  line-height: 12.69%;
   color: $primary;
 }
 
 .search_pop_up {
+  .sponsored-modal-content {
+    padding: 70px 50px;
+    h2 {
+      color: #ec0044;
+      margin-bottom: 30px;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 30px;
+      font-family: $proxiBold;
+    }
+    p {
+      color: #272525;
+      font-family: $proxiRegular;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0;
+    }
+  }
   .modal-dialog {
     @media only screen and (min-device-width: 768px) {
       max-width: 800px;

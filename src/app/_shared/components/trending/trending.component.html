@@ -1,5 +1,5 @@
 <div class="trending-head d-none d-md-block">
-  <owl-carousel-o [options]="customOptions" class="d-block position-relative">
+  <owl-carousel-o [options]="customOptions" class="position-relative">
     <ng-container *ngFor="let item of data; index as i">
       <ng-template carouselSlide [id]="item.id">
         <div class="trending mb-1 slideItem">
@@ -15,7 +15,7 @@
                 />
                 <span class="me-2">TRENDING</span>
 
-                <span class="text-black">{{ item.title }}</span>
+                <span class="text-black">{{ formatTitle(item.title) }}</span>
               </span>
             </div>
           </div>

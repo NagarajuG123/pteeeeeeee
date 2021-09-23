@@ -653,10 +653,7 @@ export class StoryComponent implements OnInit {
               response = result.data;
             }
           }
-          console.log(response);
           response.forEach((item) => {
-            console.log(this.detailsData);
-
             if (parseInt(this.storyId, 10) !== item.id) {
               this.detailsData.push(this.htmlBinding(item));
             } else {
@@ -764,9 +761,7 @@ export class StoryComponent implements OnInit {
 
     const elemTop = $(elem).offset().top;
     const elemBottom = elemTop + $(elem).height();
-    console.log(elemBottom);
-    console.log(docViewBottom);
-    console.log(elemBottom <= docViewBottom);
+
     return elemBottom <= docViewBottom && elemTop >= docViewTop;
   }
   // @HostListener('window:scroll', ['$event'])
