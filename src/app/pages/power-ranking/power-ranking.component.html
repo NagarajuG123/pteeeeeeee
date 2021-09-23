@@ -18,59 +18,59 @@
 
   <!-- <div class="row">
     <div class="col-12 g-0"> -->
-      <div>
-      <div class="c-filter-with-box--wrapper">
-        <div class="list-data--section">
-          <div class="list-data--wrapper isHead">
-            <div class="list-data--item rank-number--wrapper">Rank</div>
-            <div class="list-data--item isBrandCol">Brand Page</div>
-            <div class="list-data--item isInvestmentCol">Trending</div>
-            <div class="list-data--item isLstSotryCol">Latest Story</div>
-          </div>
-          <div class="list-data--contentWrapper">
-            <ng-container
-              *ngFor="let item of items | slice: 0:9; let i = index"
-            >
-              <div class="list-data--item rankCol">
-                <p class="list-data--rank">
-                  {{ item.rank }}
-                </p>
-              </div>
-              <div class="list-data--item brandCol">
-                <a routerLink="/{{ item.slug }}">
-                  <img
-                    class="list-data--itemImg"
-                    src="{{ item.logo }}"
-                    alt="logo"
-                    width="149px"
-                    height="103px"
-                    loading="lazy"
-                /></a>
-              </div>
-              <div class="list-data--item lastWeekCol">
-                <p class="list-data--trending">Last Week</p>
-                <p class="list-data--number">
-                  {{ item.last_week_rank }}
-                </p>
-              </div>
-              <div class="list-data--item isLstSotryCol">
-                <p class="list-data--latestStory">
-                  <a
-                    routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
-                    fragment="brand-latest-stories"
-                    class="list-data--latestStoryLink"
-                  >
-                    {{ item.latest_story_title }}
-                  </a>
-                </p>
-              </div>
+  <div>
+    <div class="c-filter-with-box--wrapper">
+      <div class="list-data--section">
+        <div class="list-data--wrapper isHead">
+          <div class="list-data--item rank-number--wrapper">Rank</div>
+          <div class="list-data--item isBrandCol">Brand Page</div>
+          <div class="list-data--item isInvestmentCol">Trending</div>
+          <div class="list-data--item isLstSotryCol">Latest Story</div>
+        </div>
+        <div class="list-data--contentWrapper">
+          <ng-container *ngFor="let item of items | slice: 0:9; let i = index">
+            <div class="list-data--item rankCol">
+              <p class="list-data--rank">
+                {{ item.rank }}
+              </p>
+            </div>
+            <div class="list-data--item brandCol">
+              <a routerLink="/{{ item.slug }}">
+                <img
+                  class="list-data--itemImg"
+                  src="{{ item.logo }}"
+                  alt="logo"
+                  width="149px"
+                  height="103px"
+                  loading="lazy"
+              /></a>
+            </div>
+            <div class="list-data--item lastWeekCol">
+              <p class="list-data--trending">Last Week</p>
+              <p class="list-data--number">
+                {{ item.last_week_rank }}
+              </p>
+            </div>
+            <div class="list-data--item isLstSotryCol">
+              <p class="list-data--latestStory">
+                <a
+                  routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
+                  fragment="brand-latest-stories"
+                  class="list-data--latestStoryLink"
+                >
+                  {{ item.latest_story_title }}
+                </a>
+              </p>
             </div>
           </ng-container>
         </div>
       </div>
       <!-- bottom -->
       <div class="list-data--wrapper otherBrand list-data-wrapper--2">
-        <div class="list-data-row--wrapper" *ngFor="let item of items.slice(9, 13)">
+        <div
+          class="list-data-row--wrapper"
+          *ngFor="let item of items.slice(9, 13)"
+        >
           <div class="row d-flex">
             <div class="list-data--item rankCol">
               <p class="list-data--bottom-rank">
@@ -89,7 +89,10 @@
         </div>
       </div>
       <div class="list-data--wrapper otherBrand list-data-wrapper--1">
-        <div class="list-data-row--wrapper" *ngFor="let item of items.slice(13, 17)">
+        <div
+          class="list-data-row--wrapper"
+          *ngFor="let item of items.slice(13, 17)"
+        >
           <div class="row g-0 d-flex">
             <div class="list-data--item rankCol">
               <p class="list-data--bottom-rank">
@@ -112,4 +115,5 @@
     <!-- </div>
 
   </div> -->
+  </div>
 </div>
