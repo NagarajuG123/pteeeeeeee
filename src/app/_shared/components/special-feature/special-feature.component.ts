@@ -15,6 +15,8 @@ const RESULT_KEY = makeStateKey<any>('specialFeatureState');
 export class SpecialFeatureComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() slug: string;
+  @Input() type: string;
+
   specialFeature: any = [];
 
   constructor(
