@@ -1,6 +1,6 @@
-<div class="container py-5">
+<div class="container bg-grey py-5">
   <div class="row">
-    <div class="col-md-8 mb-3 mb-sm-0">
+    <div class="col-md-9 mb-3 mb-sm-0">
       <div class="row">
         <div>
           <div class="position-relative">
@@ -14,7 +14,7 @@
             >
               <img
                 appYoutubeImage
-                srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
+                srcset="{{ featuredData[0]?.media | defaultImage:1008:400 }}"
                 class="img-fluid"
                 sizes="{{
                   '(max-width: 576px) 555px,
@@ -23,7 +23,7 @@
                   300px'
                 }}"
                 width="1008"
-                height="450"
+                height="400"
                 src="/{{ featuredData[0]?.media }}"
                 alt="category"
                 loading="lazy"
@@ -59,17 +59,18 @@
             >
               <img
                 appYoutubeImage
-                srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
+                srcset="{{featuredData[0]?.media | defaultImage:600:337}} 600w, {{featuredData[0]?.media |  defaultImage:700:393}} 700w,
+            {{featuredData[0]?.media | defaultImage:800:449}} 800w, {{featuredData[0]?.media | defaultImage:1000:400}} 1200w"
                 class="img-fluid"
                 sizes="{{
                   '(max-width: 576px) 555px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 238px,
-                    300px'
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
                 }}"
-                width="1008"
-                height="450"
-                src="/{{ featuredData[0]?.media }}"
+                width="1000"
+                height="400"
+                data-src="{{ featuredData[0]?.media | defaultImage: 1000:400 }}"
                 alt="category"
                 loading="lazy"
               />
@@ -77,8 +78,6 @@
                 src="assets/img/play.png"
                 alt="Play"
                 class="img-fluid vide-play"
-                width="81px"
-                height="105px"
               />
             </a>
             <a routerLink="/{{ featuredData[0]?.slug }}" fragment="{{ slug }}">
@@ -94,7 +93,7 @@
     <div
       class="
         position-relative
-        col-md-4
+        col-md-3
         mb-3 mb-sm-0
         border-start border-2
         latestListing
@@ -103,27 +102,14 @@
       <ul class="news-list noScrollBar list-group">
         <li
           *ngFor="let item of featuredData | slice: 1; index as i"
-          [ngClass]="
-            i === featuredData.length - 1
-              ? 'pb-0 pb-md-0'
-              : 'pb-2 pb-md-3 mb-2 mb-md-3'
-          "
+          class="pb-2 pb-md-3 mb-2 mb-md-3"
         >
           <div class="me-2 me-md-3">
             <img
               appYoutubeImage
-              srcset="{{item.media | defaultImage:145:130}} 238w, {{item.media | defaultImage:300:168}} 300w, 
-                {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-              class="img-fluid"
-              sizes="{{
-                '(max-width: 576px) 555px,
-                (max-width: 992px) 400px,
-                (max-width: 1200px) 238px,
-                300px'
-              }}"
               width="145"
-              height="130"
-              src="{{ item.media | defaultImage: 145:130 }}"
+              height="84"
+              [src]="item.media | defaultImage: 145:84"
               alt="category-featured"
               loading="lazy"
             />
@@ -148,7 +134,7 @@
         <a routerLink="/{{ commonService.readMore(item) }}">
           <img
             appYoutubeImage
-            width="290"
+            width="340"
             height="160"
             class="img-fluid"
             src="{{ item?.media | defaultImage: 290:160 }}"

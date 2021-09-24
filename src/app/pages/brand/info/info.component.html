@@ -360,7 +360,7 @@
             <input
               *ngIf="fields.type === 'text'"
               [formControlName]="fields.key"
-              [placeholder]="fields.title"
+              placeholder="{{ fields.title }}*"
               [id]="fields.key"
               class="form-control"
               [type]="fields.type"
@@ -370,7 +370,7 @@
 
             <textarea
               *ngIf="fields.type === 'textarea'"
-              [placeholder]="fields.title"
+              placeholder="{{ fields.title }}*"
               [formControlName]="fields.key"
               [id]="fields.key"
               class="form-control"
@@ -412,20 +412,75 @@
               {{ fields.errorMsg }}
             </div>
           </div>
-        </form>
-        <div class="divider-recent-feature">
-          <div class="row">
-            <button
-              type="submit"
-              class="btn text-center text-white rounded-0 btn-sm"
-            >
-              Next
-            </button>
+          <div class="divider-recent-feature">
+            <div class="row">
+              <button
+                type="submit"
+                class="btn text-center text-white rounded-0 btn-sm"
+              >
+                Next
+              </button>
+            </div>
           </div>
-        </div>
 
-        <!-- Recent Features -->
-        <!-- <div class="recent-feature-article-section">
+          <textarea
+            *ngIf="fields.type === 'textarea'"
+            [placeholder]="fields.title"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            class="form-control"
+            rows="3"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched ||
+                  submittedInquireForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          ></textarea>
+
+          <select
+            *ngIf="fields.type === 'dropdown'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched ||
+                  submittedInquireForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          >
+            <option *ngFor="let value of fields.enum" value="{{ value }}">
+              <span>{{ value }}</span>
+            </option>
+          </select>
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="
+              (formControlsValues[fields.key].touched ||
+                submittedInquireForm) &&
+              (formControlsValues[fields.key].errors?.required ||
+                formControlsValues[fields.key].errors?.email ||
+                formControlsValues[fields.key].errors?.pattern)
+            "
+          >
+            {{ fields.errorMsg }}
+          </div>
+        </form>
+      </div>
+      <div class="divider-recent-feature">
+        <div class="row">
+          <button
+            type="submit"
+            class="btn text-center text-white rounded-0 btn-sm"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Features -->
+      <!-- <div class="recent-feature-article-section">
                 <div class="row p-3">
                     <div class="col-md-12">
                         <div class="title-tag">
@@ -447,8 +502,8 @@
                 </div>
             </div> -->
 
-        <!-- Featured Article Section -->
-        <!-- <div class="divider-main"></div>
+      <!-- Featured Article Section -->
+      <!-- <div class="divider-main"></div>
             <div class="feature-article-section">
                 <div class="row p-3 d-flex align-items-center justify-content-center">
                     <div class="col-md-9">
@@ -477,8 +532,8 @@
                 </div>
             </div> -->
 
-        <!-- Trending Secion -->
-        <!-- <div class="divider-main"></div>
+      <!-- Trending Secion -->
+      <!-- <div class="divider-main"></div>
             <div class="trending-section">
                 <div class="row p-3">
                     <div class="col-md-12">
@@ -512,7 +567,6 @@
                     </div>
                 </div> 
             </div> -->
-      </div>
     </div>
 
     <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
