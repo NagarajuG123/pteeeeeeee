@@ -99,22 +99,13 @@
         >
           <div class="me-2 me-md-3">
             <img
-                appYoutubeImage
-                srcset="{{item.media | defaultImage:145:130}} 238w, {{item.media | defaultImage:300:168}} 300w, 
-                {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-                class="img-fluid"
-                sizes="{{
-                  '(max-width: 576px) 555px,
-                (max-width: 992px) 400px,
-                (max-width: 1200px) 238px,
-                300px'
-                }}"
-                width="145"
-                height="130"
-                src="{{ item.media | defaultImage: 145:130 }}"
-                alt="category-featured"
-                loading="lazy"
-            />
+            appYoutubeImage
+            width="145"
+            height="84"
+            [src]="item.media | defaultImage: 145:84"
+            alt="category-featured"
+            loading="lazy"
+          />
           </div>
           <div>
             <h3 class="m-0">
