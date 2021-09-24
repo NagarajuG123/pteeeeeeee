@@ -84,6 +84,7 @@ export class FooterComponent implements OnInit {
 
     forkJoin([footer, news, inquire]).subscribe((results) => {
       this.footer = results[0];
+      console.log(this.footer);
       this.brandContact = results[2].schema;
     });
   }
