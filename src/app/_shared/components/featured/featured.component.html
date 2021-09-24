@@ -1,4 +1,3 @@
-
 <div class="container py-4">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
@@ -37,7 +36,7 @@
             <a
               *ngIf="i == 0 && commonService.isVideo(item)"
               attr.data-src="{{ item.media.url }}"
-              data-bs-target="#videoModal"
+              data-bs-target="#featuredVideo"
               data-bs-toggle="modal"
               (click)="updateVideoUrl(item.media.url)"
               href="#"
@@ -86,8 +85,6 @@
               <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
             </div>
           </div>
-          <!-- if you want to add link on all slider screen use folloing link -->
-          <!-- <a href="#" class="stretched-link"></a> -->
         </div>
       </div>
     </div>
@@ -110,7 +107,6 @@
         >
           <h3 class="m-0">
             <a routerLink="{{ commonService.readMore(item) }}">
-              <!-- {{ item.title }} -->
               {{
                 commonService.responsiveTextFormating(
                   item.title,
@@ -124,7 +120,6 @@
           >
           <a routerLink="{{ commonService.readMore(item) }}">
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
-              <!-- {{ commonService.formatDescription(item.short_description) }} -->
               {{
                 commonService.responsiveTextFormating(
                   item.short_description,
@@ -175,7 +170,6 @@
                 routerLink="{{ commonService.readMore(item) }}"
                 fragment="frannews"
               >
-                <!-- {{ item.title }} -->
                 {{
                   commonService.responsiveTextFormating(
                     item.title,
@@ -203,87 +197,59 @@
         latestListing
       "
     >
-      <div class="text-center">FRANCHISOR RESEARCH</div>
-      <div class="col-12 offset-1 pt-4">
-        <div class="feature-article-section">
-          <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-md-12">
-              <div class="feature-item">
-                <div class="image-tag">CEO & QA</div>
-                <img
-                  appYoutubeImage
-                  srcset="assets/img/video-img2.jpg"
-                  class="image-area"
-                  sizes="{{
-                    '(max-width: 576px) 555px,
-                            (max-width: 992px) 400px,
-                            (max-width: 1200px) 238px,
-                            300px'
-                  }}"
-                  width="278.5"
-                  height="130"
-                  data-src=""
-                  alt="special-featured"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="image-tag">MARKET GRWOTH</div>
-                <img
-                  appYoutubeImage
-                  srcset="assets/img/video-img2.jpg"
-                  class="image-area"
-                  sizes="{{
-                    '(max-width: 576px) 555px,
-                            (max-width: 992px) 400px,
-                            (max-width: 1200px) 238px,
-                            300px'
-                  }}"
-                  width="278.5"
-                  height="130"
-                  data-src=""
-                  alt="special-featured"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="image-tag">INVESTMENT</div>
-                <img
-                  appYoutubeImage
-                  srcset="assets/img/video-img2.jpg"
-                  class="image-area"
-                  sizes="{{
-                    '(max-width: 576px) 555px,
-                            (max-width: 992px) 400px,
-                            (max-width: 1200px) 238px,
-                            300px'
-                  }}"
-                  width="278.5"
-                  height="130"
-                  data-src=""
-                  alt="special-featured"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  Title lorem Ipsum Abudi Lorem Ipsum Yada Sed
-                </div>
-              </div>
+      <!-- Industry news list -->
+      <span class="small-title mb-2">Latest Franchise Industry News</span>
+      <ul class="news-list noScrollBar list-group">
+        <li class="mb-3" *ngFor="let item of news | slice: 1:5; index as i">
+          <div class="position-relative small-image">
+            <div class="tag position-absolute text-center top-0 text-uppercase">
+              Special Feature
+            </div>
+            <a
+              routerLink="{{ commonService.readMore(item) }}"
+              fragment="featured"
+              ><img
+                appYoutubeImage
+                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+                }}"
+                width="353"
+                height="137"
+                src="{{ item.media | defaultImage: 253:137 }}"
+                alt="featured"
+                loading="lazy"
+            /></a>
+            <div
+              class="
+                over-layer
+                position-absolute
+                text-capitalize
+                bottom-0
+                fw-bold
+                w-100
+                p-2
+              "
+            >
+              {{
+                commonService.responsiveTextFormating(item.title, titleLimit)
+              }}
+              <a routerLink="/{{ item.slug }}" class="stretched-link"></a>
             </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
 <div
   class="modal fade"
-  id="videoModal"
+  id="featuredVideo"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
