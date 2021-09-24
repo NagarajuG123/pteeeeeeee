@@ -54,7 +54,7 @@
                     <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
                   </h4>
                 </div>
-                <div class="col-12 col-lg" *ngIf="footer?.contact == ''"> 
+                <div class="col-12 col-lg" *ngIf="footer.hasOwnProperty('contact')"> 
                   <a
                     href="#"
                     data-bs-toggle="modal"
