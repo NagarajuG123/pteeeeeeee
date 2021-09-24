@@ -66,7 +66,6 @@
             [ngClass]="commonService.showmenu ? 'close-menu' : ''"
           />
           <small class="text-center d-none d-md-block">MENU</small>
-          <!-- [ngClass]="commonService.showmenu ? 'invisible' : ''" -->
         </a>
 
         <!-- Header Logo Section -->
@@ -371,20 +370,17 @@
               >{{ menu.title }}
             </a>
           </li>
-          <li
-                  *ngIf="isInquire && inquireData.menu_title"
-                  class="nav-item mt-1 px-1"
-                >
-                  <a
+          <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
+            <a
                     href="#"
                     onclick="return false;"
                     class="text-uppercase"
                     data-bs-toggle="modal"
                     data-bs-target="#inquireModal"
                   >
-                    {{ inquireData?.menu_title }}
+                    {{ header?.inquire }}
                   </a>
-            </li>
+          </li>
           <li class="nav-item mx-2 px-1">
             <a class="d-flex align-items-center"
               >{{ header?.actions?.title }}
@@ -637,7 +633,6 @@
           </div>
         </div>
       
-          <!-- [disabled]="!inquireForm.valid" -->
           <div class="d-grid inquireSubmit">
             <button type="submit" class="btn text-end align-items-center rounded-0 btn-sm nextBtn">
               Submit
@@ -677,7 +672,6 @@
           (ngSubmit)="submitContactForm(contactForm.value)"
         >
           <div *ngFor="let fields of contactFields" class="form-row mb-3">
-            <!-- <div class="form-group"> -->
             <input
               *ngIf="fields.type === 'text'"
               [formControlName]="fields.key"
