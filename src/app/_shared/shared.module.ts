@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
-import { VimeoPipe } from '../_core/pipes/vimeo.pipe';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
@@ -38,7 +37,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DefaultImagePipe,
     SafeUrlPipe,
     ImagePreloadDirective,
-    VimeoPipe,
     FiveColumnComponent,
     MostPopularComponent,
     EditorialSectionsComponent,
@@ -62,7 +60,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DefaultImagePipe,
     ImagePreloadDirective,
     SafeUrlPipe,
-
     HeaderComponent,
     FooterComponent,
     TrendingBuzzComponent,
