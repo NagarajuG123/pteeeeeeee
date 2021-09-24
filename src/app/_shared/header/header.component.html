@@ -158,7 +158,10 @@
               </h3>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
-                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
+                <a routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >
                   <img
                     appYoutubeImage
                     src="{{ header?.monthlyCover?.url }}"
@@ -187,7 +190,9 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
-                    >{{ item.name }}
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                     (click)="commonService.toggle()"
+                  >{{ item.name }}
                   </a>
                 </li>
               </ul>
@@ -197,19 +202,27 @@
               <hr />
 
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+                <a routerLink="{{ menu.url }}"
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >{{ menu.title }}</a>
               </h3>
             </li>
             <li>
               <hr />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
+                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}"
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >{{
                   menu.title
                 }}</a>
                 <a
                   *ngIf="menu.fragment"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
+                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                  (click)="commonService.toggle()"
                   >{{ menu.title }}</a
                 >
               </h3>
@@ -224,9 +237,15 @@
 
           <ul class="submenu-list mb-0" *ngIf="brandSlug !== '1851'">
             <li>
-              <h3><a routerLink="/"> Return to Main Site </a></h3>
+              <h3><a routerLink="/"
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                > Return to Main Site </a></h3>
               <h3>
-                <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
+                <a routerLink="/{{ brandSlug }}"
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >{{ brandTitle }}</a>
               </h3>
               <ul class="mb-2 ms-2">
                 <li class="ms-1">
@@ -287,7 +306,9 @@
               <hr />
               <h3>
                 <a routerLink="/{{ brandSlug }}"
-                  >{{ brandTitle }} <br />Most read Stories</a
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >{{ brandTitle }} <br />Most read Stories</a
                 >
               </h3>
               <ul class="mb-2 ms-2">
@@ -305,7 +326,9 @@
                     "
                     [routerLink]="commonService.readMore(story)"
                     target="_blank"
-                    >{{ story.title }}
+                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                    (click)="commonService.toggle()"
+                  >{{ story.title }}
                   </a>
                 </li>
               </ul>
@@ -318,13 +341,17 @@
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
                 <a routerLink="/{{ header?.sidebar?.about }}"
-                  >About
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >About
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
               </h3>
               <h3>
                 <a routerLink=""
-                  >Contact
+                [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
+                (click)="commonService.toggle()"
+                >Contact
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
               </h3>
