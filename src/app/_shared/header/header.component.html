@@ -66,7 +66,6 @@
             [ngClass]="commonService.showmenu ? 'close-menu' : ''"
           />
           <small class="text-center d-none d-md-block">MENU</small>
-          <!-- [ngClass]="commonService.showmenu ? 'invisible' : ''" -->
         </a>
 
         <!-- Header Logo Section -->
@@ -323,7 +322,9 @@
                 >
               </h3>
               <h3>
-                <a routerLink=""
+                <a href="#"
+                   data-bs-toggle="modal"
+                   data-bs-target="#contactModal"
                   >Contact
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
@@ -368,6 +369,17 @@
             <a [routerLink]="menu.url" class="d-flex align-items-center"
               >{{ menu.title }}
             </a>
+          </li>
+          <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
+            <a
+                    href="#"
+                    onclick="return false;"
+                    class="text-uppercase"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inquireModal"
+                  >
+                    {{ header?.inquire }}
+                  </a>
           </li>
           <li class="nav-item mx-2 px-1">
             <a class="d-flex align-items-center"
@@ -542,6 +554,192 @@
             <span>{{ editorialEmail }}</span>
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Inquire Modal -->
+
+    <div
+    *ngIf="isBrowser && isInquire"
+    class="search_pop_up modal"
+    id="inquireModal"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          id="inquireModalClose"
+          type="button"
+          class="close text-right"
+          data-bs-dismiss="modal"
+        >
+          &times;
+        </button>
+        <div class="modal-header">
+          <h1>{{ inquireTitle }}</h1>
+        </div>
+        <form
+          *ngIf="inquireForm"
+          [formGroup]="inquireForm"
+          (ngSubmit)="submitInquireForm(inquireForm.value)"
+        >
+
+        <div *ngFor="let fields of inquireFields" class="form-row mb-3">
+          
+            
+          <input
+            *ngIf="fields.type === 'text'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            [type]="fields.type"
+            class="form-control rounded-0"
+            placeholder="{{fields.title}}*"
+            [pattern]="fields.pattern"
+            [maxLength]="fields.maxLength || 1000"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched ||
+                  submittedInquireForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          />
+          <select
+            *ngIf="fields.type === 'dropdown'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched ||
+                  submittedInquireForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          >
+            <option *ngFor="let value of fields.enum" value="{{ value }}">
+              <span>{{ value }}</span>
+            </option>
+          </select>
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="
+              (formControlsValues[fields.key].touched ||
+                submittedInquireForm) &&
+              (formControlsValues[fields.key].errors?.required ||
+                formControlsValues[fields.key].errors?.email ||
+                formControlsValues[fields.key].errors?.pattern)
+            "
+          >
+            {{ fields.errorMsg }}
+          </div>
+        </div>
+      
+          <div class="d-grid inquireSubmit">
+            <button type="submit" class="btn text-end align-items-center rounded-0 btn-sm nextBtn">
+              Submit
+            </button>
+          </div>
+          <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div
+    *ngIf="isBrowser && isContact && contactFields"
+    class="search_pop_up modal"
+    id="contactModal"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          id="contactModalClose"
+          type="button"
+          class="close text-right"
+          data-bs-dismiss="modal"
+        >
+          &times;
+        </button>
+        <div class="modal-header">
+          <h1>{{ contactTitle }}</h1>
+        </div>
+        <form
+          *ngIf="contactForm"
+          [formGroup]="contactForm"
+          (ngSubmit)="submitContactForm(contactForm.value)"
+        >
+          <div *ngFor="let fields of contactFields" class="form-row mb-3">
+            <input
+              *ngIf="fields.type === 'text'"
+              [formControlName]="fields.key"
+              placeholder="{{fields.title}}*"
+              [id]="fields.key"
+              [type]="fields.type"
+              class="form-control rounded-0"
+              [pattern]="fields.pattern"
+              [maxLength]="fields.maxLength || 1000"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedContactForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            />
+            <textarea
+              *ngIf="fields.type === 'textarea'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control rounded-0"
+              rows="3"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedContactForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            ></textarea>
+            <select
+              *ngIf="fields.type === 'dropdown'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control rounded-0"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsContactValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsContactValues[fields.key].errors?.required
+              }"
+            >
+              <option *ngFor="let value of fields.enum" value="{{ value }}">
+                <span>{{ value }}</span>
+              </option>
+            </select>
+            <div
+              class="invalid-feedback d-block"
+              *ngIf="
+                (formControlsContactValues[fields.key].touched ||
+                  submittedContactForm) &&
+                (formControlsContactValues[fields.key].errors?.required ||
+                  formControlsContactValues[fields.key].errors?.email ||
+                  formControlsContactValues[fields.key].errors?.pattern)
+              "
+            >
+              {{ fields.errorMsg }}
+            </div>
+          </div>
+          <div class="d-grid contactSubmit">
+            <button type="submit" class="btn text-end rounded-0 btn-sm nextBtn">
+              Next
+            </button>
+          </div>
+          <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
+        </form>
       </div>
     </div>
   </div>

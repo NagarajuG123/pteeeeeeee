@@ -329,10 +329,17 @@
                 [formGroup]="inquireForm"
                 (ngSubmit)="submitInquireForm(inquireForm.value)">
                 <div class="row p-3"  *ngFor="let fields of inquireFields">
-                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
+                        <input 
+                        *ngIf="fields.type === 'text'" 
+                        [formControlName]="fields.key" 
+                        placeholder="{{fields.title}}*" 
+                        [id]="fields.key" class="form-control" 
+                        [type]="fields.type" 
+                        [pattern]="fields.pattern" 
+                        [maxLength]="fields.maxLength || 1000">
                        
                         <textarea *ngIf="fields.type === 'textarea'"
-                        [placeholder]="fields.title"
+                        placeholder="{{fields.title}}*"
                         [formControlName]="fields.key"
                         [id]="fields.key"
                         class="form-control"
