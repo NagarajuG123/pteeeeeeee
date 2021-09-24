@@ -14,6 +14,7 @@
     font-family: Roboto;
     height: calc(100% - 27px);
     width: calc(100% - 30px);
+    padding-top: 20px;
     a {
       color: $red;
     }
@@ -169,4 +170,7 @@
     img {
       cursor: pointer;
     }
+  }
+  .bg-grey{
+    background-color: $light_gray_8;
   }
