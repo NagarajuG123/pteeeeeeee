@@ -53,9 +53,13 @@
         "
         (click)="next()"
       >
-        <img src="assets/img/right-arrow.svg" loading="lazy" width="20px"
+        <img
+          src="assets/img/right-arrow.svg"
+          loading="lazy"
+          width="20px"
           height="39px"
-          alt="arrow"/>
+          alt="arrow"
+        />
       </div>
     </div>
   </div>
@@ -82,7 +86,7 @@
                 }}"
                 width="95"
                 height="100"
-                src="{{ list.media | defaultImage: 95:100 }}"
+                data-src="{{ list.media | defaultImage: 95:100 }}"
                 alt="editorial"
                 loading="lazy"
               />
@@ -94,10 +98,10 @@
                     text-uppercase text-truncate
                     fw-bold
                   "
-                ></h6>
-                <h4 class="card-text mb-1">
-                  <strong>{{ list.title }}</strong>
-                </h4>
+                >
+                  {{ list.title }}
+                </h6>
+
                 <a routerLink="{{ commonService.goAuthorPage(list) }}">
                   <small>{{ list.author?.name }}</small>
                 </a>
