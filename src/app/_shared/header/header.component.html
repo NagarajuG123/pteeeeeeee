@@ -585,60 +585,56 @@
           [formGroup]="inquireForm"
           (ngSubmit)="submitInquireForm(inquireForm.value)"
         >
-        <div class="row gx-2">
-          <div *ngFor="let fields of inquireFields | slice: 0:8" class="form-row mb-3">
-            <!-- <div class="form-group"> -->
 
-              
-                <div class="col-6 col-sm">
-                  <input
-                  *ngIf="fields.type === 'text'"
-                  [formControlName]="fields.key"
-                  [placeholder]="fields.title"
-                  [id]="fields.key"
-                  [type]="fields.type"
-                  class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
-                  [pattern]="fields.pattern"
-                  [maxLength]="fields.maxLength || 1000"
-                  [ngClass]="{
-                    'is-invalid':
-                      (formControlsValues[fields.key].touched ||
-                        submittedInquireForm) &&
-                      formControlsValues[fields.key].errors?.required
-                  }"
-                />
-                  </div>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
+        <div *ngFor="let fields of inquireFields" class="form-row mb-3">
+          
+            
+          <input
+            *ngIf="fields.type === 'text'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            [type]="fields.type"
+            class="form-control rounded-0"
+            placeholder="{{fields.title}}*"
+            [pattern]="fields.pattern"
+            [maxLength]="fields.maxLength || 1000"
+            [ngClass]="{
+              'is-invalid':
                 (formControlsValues[fields.key].touched ||
                   submittedInquireForm) &&
-                (formControlsValues[fields.key].errors?.required ||
-                  formControlsValues[fields.key].errors?.email ||
-                  formControlsValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
-            </div>
-          </div>
-          <div *ngFor="let fields of inquireFields | slice: 8:10" class="form-row mb-3">
-            <label class="form-label text-capitalize"
-              >{{ fields.title }}
-              <sup *ngIf="fields.required" class="text-danger">*</sup>
-            </label>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Yes</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">No</label>
-            </div>
-
+                formControlsValues[fields.key].errors?.required
+            }"
+          />
+          <select
+            *ngIf="fields.type === 'dropdown'"
+            [formControlName]="fields.key"
+            [id]="fields.key"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                (formControlsValues[fields.key].touched ||
+                  submittedInquireForm) &&
+                formControlsValues[fields.key].errors?.required
+            }"
+          >
+            <option *ngFor="let value of fields.enum" value="{{ value }}">
+              <span>{{ value }}</span>
+            </option>
+          </select>
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="
+              (formControlsValues[fields.key].touched ||
+                submittedInquireForm) &&
+              (formControlsValues[fields.key].errors?.required ||
+                formControlsValues[fields.key].errors?.email ||
+                formControlsValues[fields.key].errors?.pattern)
+            "
+          >
+            {{ fields.errorMsg }}
           </div>
         </div>
+      
           <!-- [disabled]="!inquireForm.valid" -->
           <div class="inquireSubmit">
             <button type="submit" class="btn text-end align-items-center rounded-0 btn-sm nextBtn">
