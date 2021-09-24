@@ -14,7 +14,13 @@
         "
         (click)="prev()"
       >
-        <img src="assets/img/left-arrow.svg" loading="lazy" />
+        <img
+          src="assets/img/left-arrow.svg"
+          width="20px"
+          height="39px"
+          loading="lazy"
+          alt="arrow"
+        />
       </div>
       <ul class="row innerContent m-0">
         <li
@@ -47,7 +53,9 @@
         "
         (click)="next()"
       >
-        <img src="assets/img/right-arrow.svg" loading="lazy" />
+        <img src="assets/img/right-arrow.svg" loading="lazy" width="20px"
+          height="39px"
+          alt="arrow"/>
       </div>
     </div>
   </div>
@@ -74,7 +82,7 @@
                 }}"
                 width="95"
                 height="100"
-                data-src="{{ list.media | defaultImage: 95:100 }}"
+                src="{{ list.media | defaultImage: 95:100 }}"
                 alt="editorial"
                 loading="lazy"
               />
