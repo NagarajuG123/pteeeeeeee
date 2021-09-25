@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="tabs primary-bg">
+  <div class="tabs primary-bg">
         <div class="container customContainer position-relative">
           <div
             class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
@@ -99,9 +99,9 @@
                     data-src="{{ logo?.url | defaultImage: 100:95 }}"
                     alt="brand_logo"
                     loading="lazy"
-                 />
-                 <div class="row download-btn"> 
-                   <a *ngIf="pdf?.email_popup"  data-bs-toggle="modal" data-bs-target="#pdfModal" href="#">
+                />
+                <div class="row download-btn"> 
+                  <a *ngIf="pdf?.email_popup"  data-bs-toggle="modal" data-bs-target="#pdfModal" href="#">
                     <button type="submit" class="btn text-center submit-btn text-white rounded-0 btn-sm "> Download PDF </button>
                   </a>
                   <a *ngIf="!pdf?.email_popup" href="{{ changeDownPDFUrl(pdf?.media?.url) }}">
@@ -111,7 +111,7 @@
                 </div>  
             </div>
 
-            <div [hidden]="!isStory">
+            <div  *ngIf="isStory">
                 <div class="tabs-container container customContainer py-md-2">
                     <div class="tabItemList innerContent mt-4 py-3">
                       <div class="row mt-2">
@@ -289,7 +289,7 @@
                 </div>
                 <div class="financial-description">
                         <p class="text">
-                           {{ brandInfo?.more_info }}
+                          {{ brandInfo?.more_info }}
                         </p>
                         <p class="text">
                             Initial Franchise Fee: <span class="highlight-text"> {{ brandInfo?.franchise_fee }} </span>
@@ -301,7 +301,7 @@
                             Minimum Qualifications:
                         </p>
                         <p class="highlight-text min-qualification" *ngFor="let info of brandInfo?.optional_info">
-                           {{info.title}} {{ info.value }} <br />
+                          {{info.title}} {{ info.value }} <br />
                         </p>
                         <p class="text">
                             Territory: Protected territory with geographic rights to the Sylvan system in a well-defined area
@@ -335,7 +335,7 @@
                         (formControlsValues[fields.key].errors?.required ||
                           formControlsValues[fields.key].errors?.email ||
                           formControlsValues[fields.key].errors?.pattern) ? 'isError' : ''" *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
-                       
+                      
                         <textarea *ngIf="fields.type === 'textarea'"
                         [placeholder]="fields.title"
                         [formControlName]="fields.key"

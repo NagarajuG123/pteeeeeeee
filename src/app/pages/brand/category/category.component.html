@@ -1,110 +1,66 @@
-<div class="container py-5 ">
+<div class="container bg-grey py-5">
   <div class="row">
-    <div class="col-md-8 mb-3 mb-sm-0">
+    <div class="col-md-9 mb-3 mb-sm-0">
       <div class="row">
         <div>
           <div class="position-relative">
             <div class="tag position-absolute text-center top-0 text-uppercase">
               {{ slug.replace("-", " ") }}
             </div>
-            <a 
-             *ngIf="!commonService.isVideo(featuredData[0])"
-             routerLink="/{{ featuredData[0]?.slug  }}"
-              fragment="{{ slug }}">
-            <img
-              appYoutubeImage
-              srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
-              class="img-fluid"
-              sizes="{{
-                '(max-width: 576px) 555px,
+            <a
+              *ngIf="!commonService.isVideo(featuredData[0])"
+              routerLink="/{{ featuredData[0]?.slug }}"
+              fragment="{{ slug }}"
+            >
+              <img
+                appYoutubeImage
+                srcset="{{ featuredData[0]?.media | defaultImage:1008:400 }}"
+                class="img-fluid"
+                sizes="{{
+                  '(max-width: 576px) 555px,
                   (max-width: 992px) 400px,
                   (max-width: 1200px) 238px,
                   300px'
-              }}"
-              width="1008"
-              height="450"
-              src="/{{ featuredData[0]?.media }}"
-              alt="category"
-              loading="lazy"
-            />
-          
-          <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
-              <h3>{{ commonService.responsiveTextFormating(featuredData[0].title, titleLimit) }}</h3>
-              <p>{{ commonService.responsiveTextFormating(featuredData[0].short_description, descriptionLimitOptions) }}</p> 
-          </div>
-        </a>
+                }}"
+                width="1008"
+                height="400"
+                src="/{{ featuredData[0]?.media }}"
+                alt="category"
+                loading="lazy"
+              />
+
+              <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
+                <h3>
+                  {{
+                    commonService.responsiveTextFormating(
+                      featuredData[0].title,
+                      titleLimit
+                    )
+                  }}
+                </h3>
+                <p>
+                  {{
+                    commonService.responsiveTextFormating(
+                      featuredData[0].short_description,
+                      descriptionLimitOptions
+                    )
+                  }}
+                </p>
+              </div>
+            </a>
             <a
-              *ngIf = "commonService.isVideo(featuredData[0])"
+              *ngIf="commonService.isVideo(featuredData[0])"
               attr.data-src="{{ featuredData[0].media.url }}"
               data-bs-target="#videoModal"
               data-bs-toggle="modal"
               (click)="updateVideoUrl(featuredData[0].media.url)"
               href="#"
-              class="
-                video-btn
-                d-flex
-                justify-content-center
-                align-items-center
-              "
+              class="video-btn d-flex justify-content-center align-items-center"
             >
               <img
                 appYoutubeImage
-                srcset="{{ featuredData[0]?.media | defaultImage:1008:450 }}"
-                class="img-fluid"
-                sizes="{{
-                  '(max-width: 576px) 555px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 238px,
-                    300px'
-                }}"
-                width="1008"
-                height="450"
-                src="/{{ featuredData[0]?.media }}"
-                alt="category"
-                loading="lazy"
-              />
-                <img
-                  src="assets/img/play.png"
-                  alt="Play"
-                  class="img-fluid vide-play"
-                />
-            </a>
-            <a routerLink="/{{ featuredData[0]?.slug  }}"
-             fragment="{{ slug }}">
-              <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
-                <h3>{{ featuredData[0].title }}</h3>
-                <p>{{ featuredData[0].short_description }}</p> 
-               </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="
-      position-relative
-        col-md-4
-        mb-3
-        mb-sm-0
-        border-start
-        border-2
-        latestListing
-      "
-    >
-      <ul class="news-list noScrollBar list-group">
-        <li
-          *ngFor="let item of featuredData | slice: 1; index as i"
-          [ngClass]="
-            i === featuredData.length - 1
-              ? 'pb-0 pb-md-0'
-              : 'pb-2 pb-md-3 mb-2 mb-md-3'
-          "
-        >
-          <div class="me-2 me-md-3">
-            <img
-                appYoutubeImage
-                srcset="{{item.media | defaultImage:145:130}} 238w, {{item.media | defaultImage:300:168}} 300w, 
-                {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
+                srcset="{{featuredData[0]?.media | defaultImage:600:337}} 600w, {{featuredData[0]?.media |  defaultImage:700:393}} 700w,
+            {{featuredData[0]?.media | defaultImage:800:449}} 800w, {{featuredData[0]?.media | defaultImage:1000:400}} 1200w"
                 class="img-fluid"
                 sizes="{{
                   '(max-width: 576px) 555px,
@@ -112,11 +68,50 @@
                 (max-width: 1200px) 238px,
                 300px'
                 }}"
-                width="145"
-                height="130"
-                src="{{ item.media | defaultImage: 145:130 }}"
-                alt="category-featured"
+                width="1000"
+                height="400"
+                data-src="{{ featuredData[0]?.media | defaultImage: 1000:400 }}"
+                alt="category"
                 loading="lazy"
+              />
+              <img
+                src="assets/img/play.png"
+                alt="Play"
+                class="img-fluid vide-play"
+              />
+            </a>
+            <a routerLink="/{{ featuredData[0]?.slug }}" fragment="{{ slug }}">
+              <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
+                <h3>{{ featuredData[0].title }}</h3>
+                <p>{{ featuredData[0].short_description }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="
+        position-relative
+        col-md-3
+        mb-3 mb-sm-0
+        border-start border-2
+        latestListing
+      "
+    >
+      <ul class="news-list noScrollBar list-group">
+        <li
+          *ngFor="let item of featuredData | slice: 1; index as i"
+          class="pb-2 pb-md-3 mb-2 mb-md-3"
+        >
+          <div class="me-2 me-md-3">
+            <img
+              appYoutubeImage
+              width="145"
+              height="84"
+              [src]="item.media | defaultImage: 145:84"
+              alt="category-featured"
+              loading="lazy"
             />
           </div>
           <div>
@@ -139,22 +134,47 @@
         <a routerLink="/{{ commonService.readMore(item) }}">
           <img
             appYoutubeImage
-            width="290"
+            width="340"
             height="160"
             class="img-fluid"
             src="{{ item?.media | defaultImage: 290:160 }}"
             alt="category-feature"
             loading="lazy"
           />
-            <h3 class="py-2">
-              <strong>{{ item?.title }}</strong>
-            </h3>
+          <h3 class="py-2">
+            <strong>{{ item?.title }}</strong>
+          </h3>
           <h4>{{ item?.short_description }}</h4>
         </a>
       </li>
     </ul>
   </div>
 </div>
+<!-- See More -->
+<div class="d-flex">
+  <div class="see-more--wrapper"></div>
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+      <div class="row align-items-center">
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="nextBtn px-5 bg-white">
+            <img
+              src="assets/img/nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3"
+              (click)="getMoreData()"
+              loading="lazy"
+            />
+            <span (click)="getMoreData()">SEE MORE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="see-more-right--wrapper"></div>
+</div>
+
 <div
   class="modal fade"
   id="videoModal"

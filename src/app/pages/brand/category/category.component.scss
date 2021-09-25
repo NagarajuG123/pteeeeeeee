@@ -14,6 +14,7 @@
     font-family: Roboto;
     height: calc(100% - 27px);
     width: calc(100% - 30px);
+    padding-top: 20px;
     a {
       color: $red;
     }
@@ -147,4 +148,29 @@
     font-size: 1rem;
     font-weight: 400;
     opacity: 1;
+  }
+
+  .see-more--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $red ;
+  }
+  .see-more-right--wrapper{
+    margin-top: 57px;
+    width: 50%;
+    height: 2px;
+    border: 1px solid $red ;
+  }
+  .nextBtn {
+    font-family: "ProximaNova-Regular";
+    font-size: 15px;
+    z-index: 1;
+    margin-top: 35px;
+    img {
+      cursor: pointer;
+    }
+  }
+  .bg-grey{
+    background-color: $light_gray_8;
   }

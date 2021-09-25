@@ -476,3 +476,29 @@ header {
     }
   }
 }
+.modal-header{
+  border-bottom: 3px solid $red;
+  h1{
+    font-family: $balinger;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+}
+.form-check-input{
+  border-radius: 50%;
+  height: 20px !important;
+  border: 1px solid $red;
+  margin-top: 0em;
+}
+.nextBtn {
+  position: relative !important;
+  width: 100% !important;
+  text-align: center !important;
+  height: 50px !important;
+  color: $white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $balinger;
+  line-height: 21.6px;
+}
