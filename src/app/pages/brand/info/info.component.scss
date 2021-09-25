@@ -6,12 +6,21 @@
   height: 506px;
   width: 100%;
 }
-.question-container {
-  padding-left: 40px;
-  padding-right: 40px;
-}
+
 .question-section {
-  padding-top: 50px;
+  padding-top: 40px;
+  @include tablet-landscape1{
+    padding-top: 30px;
+  }
+  @include mobile-landscape1{
+    padding-top: 15px;
+  }
+  + .question-section{
+    padding-top: 30px;
+    @include mobile-landscape1{
+      padding-top: 15px;
+    }
+  }
   .header-highlighter {
     position: relative;
     .title-highlighter {
@@ -30,21 +39,40 @@
   .header {
     height: 67px;
     background-color: $dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include tablet-landscape1{
+      height: 55px;
+    }
+    @include mobile-landscape1{
+      height: 45px;
+    }
     .title {
       color: $brand-info-question-title;
       font-family: $balinger;
       font-weight: bold;
       font-size: 20px;
       text-align: center;
+      @include tablet-landscape1{
+        font-size: 18px;
+      }
+      @include mobile-landscape1{
+        font-size: 16px;
+      }
     }
   }
   .description {
-    padding-top: 20px;
+    padding-top: 25px;
+    @include tablet-landscape1{
+      padding-top: 15px;
+    }
     p {
       font-family: $roboto;
       font-weight: 400;
       font-size: 13.76px;
-      line-height: 18.85px;
+      line-height: 137%;
+      color: $black;
     }
   }
 }
@@ -52,25 +80,49 @@
   .header {
     height: 67px;
     background-color: $dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include tablet-portrait{
+      height: 60px;
+    }
+    @include mobile-landscape1{
+      height: 50px;
+    }
     .title {
       color: $brand-info-question-title;
       font-family: $balinger;
       font-weight: 700;
       font-size: 30px;
       text-align: center;
+      @include mobile-landscape1{
+        font-size: 26px;
+      }
     }
   }
   .financial-description {
     background-color: $border-color;
     font-family: $roboto;
     font-weight: 700;
-    font-size: 17px;
-    line-height: 19.89px;
+    padding: 30px 23px;
+    @include mobile-landscape1{
+      padding: 15px;
+    }
     .text {
+      font-size: 17px;
+      line-height: 19.89px;
       color: $dark-gray;
+      @include tablet-portrait{
+        font-size: 16px;
+      }
+      @include mobile-landscape1{
+        line-height: 140%;
+        font-size: 14px;
+      }
     }
     .highlight-text {
       color: $red;
+      margin-bottom: 0;
     }
     .min-qualification {
       padding-left: 35px;
@@ -78,8 +130,49 @@
   }
 }
 .inquiry-form-section {
-  .row {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-color: $dark-gray;
+    padding-left: 22px;
+  }
+  form{
+    padding: 26px 22px 30px;
+    background-color: $dark-gray;
+    .inquirefrom-row{
+      .isError {
+        margin-bottom: 10px !important;
+      }
+      .invalid-feedback{
+        margin-bottom: 10px;
+      }
+      .form-control{
+        height: 54px;
+        margin-bottom: 25px;
+        background: $white;
+        border: 1px solid #C4C4C4;
+        border-radius: 0;
+        position: relative;
+        &:focus{
+          outline: none;
+          box-shadow: none;
+        }
+        &::placeholder{
+          position: absolute;
+          font-size: 13px;
+          color: $dark-gray;
+          top: 5px;
+          left: 10px;
+        }
+      }
+    }
+  }
+  .row {
+    margin: 0;
+    .inquirefrom-row{
+      padding: 0;
+    }
   }
   .header {
     height: 78px;
@@ -93,10 +186,14 @@
     }
   }
   .row:last-child {
-    padding-bottom: 3rem !important;
+    .inquirefrom-row{
+      .form-control {
+        margin-bottom: 0;
+      }
+    }
   }
 }
-.divider-recent-feature .row {
+.divider-recent-feature .btn{
   height: 54px;
   background-color: $red;
 }
@@ -204,6 +301,8 @@
 //TABS CSS
  .tabs {
   height: 60px;
+  margin: 0 -12px;
+  margin-bottom: 37px;
   .prev{
     img{
       width: auto;
@@ -222,12 +321,14 @@
 }
 .innerContent {
   padding: 0 53px;
+  border-bottom: 1px solid #C4C4C4;
 }
 .customContainer {
   .innerContent {
     li {
       background-color: $white;
       height: 60px;
+      padding: 0;
       span {
         min-width: 132px;
         height: 100%;
@@ -235,7 +336,10 @@
         cursor: pointer;
         font-family: $proxiRegular;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 18px;
+        @include desk-lg-below2{
+          font-size: 13px;
+        }
         &.active,
         &:hover {
           color: $red;
@@ -596,4 +700,47 @@ button.close {
   background-color: initial;
   border: 0;
   -webkit-appearance: none;
+}
+
+.brand-main-img--wrapper{
+  padding-bottom: 30px;
+}
+.pl-0{
+  padding-left: 0;
+}
+.pr-0{
+  padding-right: 0;
+}
+.brand-left-info--wrapper{
+  padding-right: 15px;
+  @include tablet-portrait{
+    padding-right: 0;
+  }
+}
+.brand-page-row--wrapper{
+  padding: 0 45px;
+  @include tablet-landscape1{
+    padding: 0 20px 20px;
+  }
+  @include mobile-landscape1{
+    padding: 0 0 20px;
+  }
+  @include tablet-portrait{
+    padding: 0px 45px 15px 45px;
+      }
+}
+.main-desc-bottom--wrapper{
+  position: relative;
+  .title-highlighter{
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+    @include mobile-portrait{
+      top: 0;
+      font-size: 14px;
+    }
+  }
 }

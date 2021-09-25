@@ -21,7 +21,11 @@
               "
             >
               <span
-                class=" position-relative"
+                class="d-inline-flex
+                justify-content-around
+                align-items-center
+                mx-auto
+                position-relative"
                 [ngClass]="i + 1 === activeTab ? 'active' : ''"
                 (click)="setActiveTab(i + 1,item)"
                 >{{ item?.name }}</span
@@ -40,10 +44,9 @@
         </div>
       </div>
 
-    <div class="row p-4">
-        <div class="col-md-8">
-            <div class="row pb-3">
-                <div class="col-md-12">
+    <div class="row m-0 brand-page-row--wrapper">
+        <div class="col-lg-8 col-md-12 pl-0 brand-left-info--wrapper">
+            <div class="brand-main-img--wrapper">
                     <img
                     appYoutubeImage
                     srcset="{{brandInfo?.media | defaultImage:953:535}}"
@@ -60,23 +63,21 @@
                     alt="brand_img"
                     loading="lazy"
                   />
-                </div>
+            </div>
+            <div class="main-desc-bottom--wrapper">
+            <div class="title-highlighter">
+              {{ brandInfo?.name }} INFO
             </div>
             <div class="question-container" *ngIf="isInfo">
-                <div class="title-highlighter">
-                    {{ brandInfo?.name }} INFO
-                </div>
-                <div class="question-section"  *ngFor="let item of items; let i = index">
-                    <div class="row d-flex justify-content-center align-items-center header header-highlighter">
-                        <div class="col-md-12 title">
-                         {{ item?.title }}
-                        </div>
-                    </div>
-                    <div class="row description">
-                        <div class="col-md-12">
+              <div class="question-section"  *ngFor="let item of items; let i = index">
+                <div class="header header-highlighter">
+                  <div class="col-md-12 title">
+                    {{ item?.title }}
+                  </div>
+                  </div>
+                    <div class="description">
                             <p  *ngIf="item?.short_description"
                             [innerHTML]="item?.short_description"></p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -276,18 +277,17 @@
                   </div>
                 </div>
               </div>
-              
+            </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-12 pr-0 pl-0">
             <div class="financial-requirement-section">
-                <div class="row d-flex justify-content-center align-items-center header">
-                    <div class="col-md-12 title">
+                <div class="header">
+                    <div class="title">
                         Financial Requirments
                     </div>
                 </div>
-                <div class="row p-3 financial-description">
-                    <div class="col-md-12">
+                <div class="financial-description">
                         <p class="text">
                            {{ brandInfo?.more_info }}
                         </p>
@@ -313,14 +313,13 @@
                         <p class="text" *ngFor="let info of brandInfo?.optional_info">
                           {{info.title}} : <span class="highlight-text">{{ info.value }}</span>
                         </p>
-                    </div>
                 </div>
             </div>
 
           
             <div class="inquiry-form-section">
-                <div class="row d-flex justify-content-center align-items-center header">
-                    <div class="col-md-12 title">
+                <div class="header">
+                    <div class="title">
                         INQUIRE NOW
                     </div>
                 </div>
@@ -328,8 +327,14 @@
                 *ngIf="inquireForm"
                 [formGroup]="inquireForm"
                 (ngSubmit)="submitInquireForm(inquireForm.value)">
-                <div class="row p-3"  *ngFor="let fields of inquireFields">
-                        <input *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
+                <div class="row"  *ngFor="let fields of inquireFields">
+                  <div class="col-12 inquirefrom-row">
+                        <input [ngClass]="
+                        (formControlsValues[fields.key].touched ||
+                          submittedInquireForm) &&
+                        (formControlsValues[fields.key].errors?.required ||
+                          formControlsValues[fields.key].errors?.email ||
+                          formControlsValues[fields.key].errors?.pattern) ? 'isError' : ''" *ngIf="fields.type === 'text'" [formControlName]="fields.key" [placeholder]="fields.title" [id]="fields.key" class="form-control" [type]="fields.type" [pattern]="fields.pattern" [maxLength]="fields.maxLength || 1000">
                        
                         <textarea *ngIf="fields.type === 'textarea'"
                         [placeholder]="fields.title"
@@ -370,12 +375,11 @@
                     >
                       {{ fields.errorMsg }}
                     </div>
+                  </div>
                 </div>
             </form>
             <div class="divider-recent-feature">
-                <div class="row"> 
-                    <button type="submit" class="btn text-center text-white rounded-0 btn-sm "> Next </button>
-                </div>
+                    <button type="submit" class="btn text-center text-white rounded-0 w-100 "> Next </button>
             </div> 
 
             <!-- Recent Features -->
