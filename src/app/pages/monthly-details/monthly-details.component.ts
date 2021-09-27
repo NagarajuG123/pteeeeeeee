@@ -42,7 +42,8 @@ export class MonthlyDetailsComponent implements OnInit {
           `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`
         )
         .subscribe((response) => {
-          this.banner = response.data[0];
+          this.banner = response.data;
+          console.log(this.banner)
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
@@ -69,9 +70,16 @@ export class MonthlyDetailsComponent implements OnInit {
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
-        result.data.forEach((element: any) => {
-          this.details.push(element);
+        result.data.forEach((item: any) => {
+          this.details.push(item);
         });
       });
   }
+  // readMoreCover(item: any) {
+  //   let slug = '';
+  //   if (typeof item?.story !== 'undefined') {
+  //     slug = `${item?.story?.slug}/`;
+  //   }
+  //   return `${slug}`;
+  // }
 }
