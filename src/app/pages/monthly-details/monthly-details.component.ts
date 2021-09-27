@@ -43,7 +43,6 @@ export class MonthlyDetailsComponent implements OnInit {
         )
         .subscribe((response) => {
           this.banner = response.data;
-          console.log(this.banner)
           this.details = response.data.slice(1, 11);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
@@ -75,11 +74,4 @@ export class MonthlyDetailsComponent implements OnInit {
         });
       });
   }
-  // readMoreCover(item: any) {
-  //   let slug = '';
-  //   if (typeof item?.story !== 'undefined') {
-  //     slug = `${item?.story?.slug}/`;
-  //   }
-  //   return `${slug}`;
-  // }
 }
