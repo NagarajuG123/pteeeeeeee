@@ -280,7 +280,7 @@ export class InfoComponent implements OnInit {
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
     forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
-      this.logo = results[2].data.logo;
+      this.logo = results[2].data.logo.url;
       if (results[0].meta) {
         this.metaService.setSeo(results[0].meta);
         this.metaService.setTitle(
