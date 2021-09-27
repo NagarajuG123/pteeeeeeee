@@ -811,6 +811,11 @@ export class StoryComponent implements OnInit {
     if (this.bottomReached() && this.enableScroll) {
       this.enableScroll = false;
       // if (this.detailsData.length < 2) {
+        let storyNo = this.detailsData.length-1;
+      const subUrl = this.brandSlug !== '1851'
+              ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
+              : `${this.detailsData[storyNo].slug}`;
+        this.location.replaceState(subUrl);
       await this.loadArticles('');
       window.scrollTo(0, window.scrollY - 50);
       setTimeout(() => {
