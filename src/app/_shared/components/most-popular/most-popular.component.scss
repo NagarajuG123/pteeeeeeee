@@ -2,12 +2,13 @@
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
 
 .most-popular {
   background: linear-gradient($dark-gray 425px, $white 0);
   font-family: Roboto;
   h2 {
-    font-family: "Ballinger Condensed Medium";
+    font-family: $proxiSemiBold;
     font-weight: bold;
     font-size: 33px;
     line-height: 40px;
@@ -42,7 +43,7 @@
       }
     }
     .slide-footer {
-      font-family: "Ballinger Condensed";
+      font-family: $roboto;
       font-size: 15px;
       line-height: 18px;
     }
