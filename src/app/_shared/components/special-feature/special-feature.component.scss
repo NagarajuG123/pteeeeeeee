@@ -12,6 +12,7 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
+    font-family: $proxiSemiBold;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
@@ -58,7 +59,7 @@
   }
   h3 {
     text-decoration: none;
-    font-family: "Ballinger Condensed Medium";
+    font-family: $roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 48px;

@@ -1,4 +1,5 @@
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/variables.scss";
 
 .trending {
   background-color: $border-color;
@@ -9,7 +10,7 @@
   border-bottom: 1px solid $dark-gray;
   span {
     color: $primary;
-    font-family: "Ballinger Condensed Medium";
+    font-family: $roboto;
     img {
       margin-top: -4px;
     }
