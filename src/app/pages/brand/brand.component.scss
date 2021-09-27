@@ -141,6 +141,7 @@ a {
     p a {
       font-size: 13px;
       line-height: 141.19%;
+      font-family: $proxiRegular;
     }
   }
 }
@@ -160,6 +161,7 @@ a {
       line-height: 20px;
       font-weight: 400;
       color: black;
+      font-family: $proxiRegular;
     }
     h2 {
       font-weight: 700;
@@ -174,6 +176,7 @@ a {
       border: 0;
       cursor: pointer;
       margin: auto;
+      font-family: $proxiRegular;
     }
     .readmore-btn {
       text-align: center;
