@@ -10,6 +10,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
+import { Details } from 'src/app/_core/models/details.model';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -32,6 +33,8 @@ export class InfoComponent implements OnInit {
   showToast: boolean = false;
   responseMessage: any;
   logo: string;
+  featured: Details[] = [];
+  trending: Details[] = [];
 
   isStory!: boolean;
   isPdf!: boolean;
@@ -113,10 +116,13 @@ export class InfoComponent implements OnInit {
                 .subscribe((response) => {
                   this.brandInfo = response.data;
                 });
-              this.apiService
-                .getAPI2(`header?slug=${this.brandSlug}`)
-                .subscribe((response) => {
-                  this.logo = response.data?.logo;
+                const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
+                const featuredApi = this.apiService.getAPI(`${this.brandSlug}/featured-articles?limit=6&offset=0`);
+                const trendingApi =  this.apiService.getAPI(`${this.brandSlug}/trending?limit=4&offset=0`);
+                forkJoin([headerApi,featuredApi,trendingApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
+                  this.logo = response[0].data?.logo;
+                  this.featured = response[1].data;
+                  this.trending = response[2].data;
                 });
               this.isInfoPage = true;
               this.isCategory = false;

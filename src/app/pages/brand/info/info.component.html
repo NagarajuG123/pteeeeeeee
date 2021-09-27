@@ -383,93 +383,70 @@
             </div> 
 
             <!-- Recent Features -->
-            <!-- <div class="recent-feature-article-section">
+            <div class="recent-feature-article-section">
                 <div class="row p-3">
                     <div class="col-md-12">
                         <div class="title-tag">
                             RECENT FEATURES
                         </div>
-                        <div class="recent-item">
-                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
-                        </div>
-                        <div class="recent-item">
-                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi Lorem Ipsum...</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
-                        </div>
-                        <div class="recent-item">
-                            <p class="title">Title Lorem Ipsum: Conset Entumi Abudi</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididun.A scelerisque purus semper eget..</p>
+                        <div class="recent-item" *ngFor="let item of featured | slice:0:3">
+                            <p class="title">{{ item.title }}</p>
+                            <p class="description">{{ item.short_description }}</p>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <!-- Featured Article Section -->
-            <!-- <div class="divider-main"></div>
+            <div class="divider-main"></div>
             <div class="feature-article-section">
                 <div class="row p-3 d-flex align-items-center justify-content-center">
                     <div class="col-md-9">
-                        <div class="feature-item">
+                        <div class="feature-item" *ngFor="let item of featured | slice:3:6">
                             <div class="image-tag">FEATURED ARTICLE</div>
-                            <div class="image-area"></div>
+                            <img
+                            appYoutubeImage
+                            src="{{ item?.media | defaultImage: 283:137 }}"
+                            width="283"
+                            height="137"
+                            alt="featured"
+                            class="img-fluid"
+                            loading="lazy"
+                          />
                             <div class="image-description">
-                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="image-tag">FEATURED ARTICLE</div>
-                            <div class="image-area"></div>
-                            <div class="image-description">
-                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="image-tag">FEATURED ARTICLE</div>
-                            <div class="image-area"></div>
-                            <div class="image-description">
-                                Title Lorem Ipsum Abudi Lorem Ipsum Yada Sed
+                                {{ item?.title }}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <!-- Trending Secion -->
-            <!-- <div class="divider-main"></div>
+            <div class="divider-main"></div>
             <div class="trending-section">
                 <div class="row p-3">
                     <div class="col-md-12">
                         <div class="title-tag">
                             TRENDING
                         </div>
-                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
-                            <div class="col-md-4 image-area p-3"></div>
-                            <div class="col-md-8 image-decription">
-                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade con do
-                            </div>
-                        </div>
-                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
-                            <div class="col-md-4 image-area p-3"></div>
-                            <div class="col-md-8 image-decription">
-                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade
-                            </div>
-                        </div>
-                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
-                            <div class="col-md-4 image-area p-3"></div>
-                            <div class="col-md-8 image-decription">
-                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade
-                            </div>
-                        </div>
-                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item">
-                            <div class="col-md-4 image-area p-3"></div>
-                            <div class="col-md-8 image-decription">
-                                Lorem ipsum morbi tristia con flubet o lemase asdew en asade con do
+                        <div class="row p-2 d-flex justify-content-center align-items-center trending-item"
+                        *ngFor="let item of trending">
+                        <img
+                          appYoutubeImage
+                          src="{{ item?.media | defaultImage: 120:126 }}"
+                          width="120"
+                          height="126"
+                          alt="trending"
+                          class="img-fluid image-area"
+                          loading="lazy"
+                        />
+                            <div class="col-md-8 image-description">
+                                {{ item?.title }}
                             </div>
                         </div>
                     </div>
                 </div> 
-            </div> -->
+            </div>
         </div>
     </div>
 
