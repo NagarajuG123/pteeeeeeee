@@ -146,6 +146,10 @@ header {
       padding-top: 0;
       bottom: -6px;
       position: relative;
+      figure{
+        height: 75px;
+        overflow: hidden;
+      }
     }
 
     // Sub menu style
@@ -502,4 +506,9 @@ header {
   font-weight: 700;
   font-family: $balinger;
   line-height: 21.6px;
+}
+img{
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
 }
