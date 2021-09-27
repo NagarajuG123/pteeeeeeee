@@ -96,7 +96,7 @@
               class="img-fluid"
               width="300"
               height="150"
-              data-src="{{ logo?.url | defaultImage: 303:150 }}"
+              src="{{ logo }}"
               alt="brand_logo"
               loading="lazy"
             />
@@ -129,40 +129,46 @@
           </div>
         </div>
 
-        <div *ngIf="isStory">
+        <div *ngIf="isStory && items">
           <div class="tabs-container container customContainer py-md-2">
             <div class="tabItemList innerContent mt-4 py-3">
-              <div class="row mt-2">
-                <div
+              <ul class="row gx-2">
+                <li
                   *ngFor="let list of items; index as i"
                   class="mb-3 col-12 col-sm-6 col-md-4"
                 >
-                  <div class="items card border-0 rounded-0">
-                    <a
-                      routerLink="{{ commonService.readMore(list) }}"
-                      fragment="latest-stories"
-                    >
+                  <a routerLink="{{ commonService.readMore(list) }}">
+                    <div class="items card border-0 rounded-0 h-100">
                       <img
-                        src="{{ list.media | defaultImage: 257:138 }}"
-                        class="card-img-top"
-                        alt="latest-stories"
-                        width="257"
-                        height="138"
+                        appYoutubeImage
+                        class="card-img-top img-fluid"
+                        width="95"
+                        height="100"
+                        data-src="{{ list.media | defaultImage: 95:100 }}"
+                        alt="editorial"
                         loading="lazy"
                       />
-                      <div class="card-body text-black text-capitalize">
-                        <h4 class="card-text mb-1 text-size">
-                          <strong>{{ list.title }}</strong>
-                        </h4>
+                      <div class="card-body">
+                        <h6
+                          class="
+                            card-title
+                            primary-color
+                            text-uppercase text-truncate
+                            fw-bold
+                          "
+                        >
+                          {{ list.title }}
+                        </h6>
+
                         <small>{{ list.author?.name }}</small>
-                        <h4 class="card-text mb-1 text-size">
-                          <strong>{{ list.short_description }}</strong>
+                        <h4 class="card-text mb-1">
+                          {{ list.short_description }}
                         </h4>
                       </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

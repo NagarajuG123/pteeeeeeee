@@ -70,9 +70,9 @@
 
         <!-- Header Logo Section -->
         <div class="logo d-flex align-items-center">
-          <a routerLink="/"
+          <a [routerLink]="header?.logo?.url"
             ><img
-              src="{{ header?.logo?.url }}"
+              src="{{ header?.logo?.image }}"
               height="{{ header?.logo?.height }}"
               width="{{ header?.logo?.width }}"
               alt="logo"
@@ -326,9 +326,10 @@
                 >
               </h3>
               <h3>
-                <a href="#"
-                   data-bs-toggle="modal"
-                   data-bs-target="#contactModal"
+                <a
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#contactModal"
                   >Contact
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
@@ -342,13 +343,13 @@
       <!-- Center menu link -->
       <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
         <ul class="center-menu nav justify-content-center">
-          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
+          <li class="nav-item px-2" *ngFor="let menu of header?.menus">
             <a [routerLink]="menu.url" class="d-flex align-items-center"
               >{{ menu.title }}
             </a>
           </li>
           <li
-            class="actions nav-item mx-2 px-1"
+            class="actions nav-item mx-2 px-2"
             *ngFor="let action of header?.actions; index as i"
           >
             <a class="d-flex align-items-center"
@@ -376,14 +377,14 @@
           </li>
           <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
             <a
-                    href="#"
-                    onclick="return false;"
-                    class="text-uppercase"
-                    data-bs-toggle="modal"
-                    data-bs-target="#inquireModal"
-                  >
-                    {{ header?.inquire }}
-                  </a>
+              href="#"
+              onclick="return false;"
+              class="text-uppercase"
+              data-bs-toggle="modal"
+              data-bs-target="#inquireModal"
+            >
+              {{ header?.inquire }}
+            </a>
           </li>
           <li class="nav-item mx-2 px-1">
             <a class="d-flex align-items-center"
@@ -446,14 +447,16 @@
 
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">
-          <img
-            routerLink="{{ header?.monthlyCover?.coverUrl }}"
-            src="{{ header?.monthlyCover?.url }}"
-            height="104"
-            width="92"
-            alt="cover"
-            class="cursor"
-          />
+          <figure>
+            <img
+              routerLink="{{ header?.monthlyCover?.coverUrl }}"
+              src="{{ header?.monthlyCover?.url }}"
+              height="101"
+              width="92"
+              alt="cover"
+              class="cursor"
+            />
+          </figure>
         </div>
       </div>
     </div>
@@ -562,9 +565,9 @@
     </div>
   </div>
 
-    <!-- Inquire Modal -->
+  <!-- Inquire Modal -->
 
-    <div
+  <div
     *ngIf="isBrowser && isInquire"
     class="search_pop_up modal"
     id="inquireModal"
@@ -587,58 +590,58 @@
           [formGroup]="inquireForm"
           (ngSubmit)="submitInquireForm(inquireForm.value)"
         >
-
-        <div *ngFor="let fields of inquireFields" class="form-row mb-3">
-          
-            
-          <input
-            *ngIf="fields.type === 'text'"
-            [formControlName]="fields.key"
-            [id]="fields.key"
-            [type]="fields.type"
-            class="form-control rounded-0"
-            placeholder="{{fields.title}}*"
-            [pattern]="fields.pattern"
-            [maxLength]="fields.maxLength || 1000"
-            [ngClass]="{
-              'is-invalid':
+          <div *ngFor="let fields of inquireFields" class="form-row mb-3">
+            <input
+              *ngIf="fields.type === 'text'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              [type]="fields.type"
+              class="form-control rounded-0"
+              placeholder="{{ fields.title }}*"
+              [pattern]="fields.pattern"
+              [maxLength]="fields.maxLength || 1000"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsValues[fields.key].errors?.required
+              }"
+            />
+            <select
+              *ngIf="fields.type === 'dropdown'"
+              [formControlName]="fields.key"
+              [id]="fields.key"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (formControlsValues[fields.key].touched ||
+                    submittedInquireForm) &&
+                  formControlsValues[fields.key].errors?.required
+              }"
+            >
+              <option *ngFor="let value of fields.enum" value="{{ value }}">
+                <span>{{ value }}</span>
+              </option>
+            </select>
+            <div
+              class="invalid-feedback d-block"
+              *ngIf="
                 (formControlsValues[fields.key].touched ||
                   submittedInquireForm) &&
-                formControlsValues[fields.key].errors?.required
-            }"
-          />
-          <select
-            *ngIf="fields.type === 'dropdown'"
-            [formControlName]="fields.key"
-            [id]="fields.key"
-            class="form-control"
-            [ngClass]="{
-              'is-invalid':
-                (formControlsValues[fields.key].touched ||
-                  submittedInquireForm) &&
-                formControlsValues[fields.key].errors?.required
-            }"
-          >
-            <option *ngFor="let value of fields.enum" value="{{ value }}">
-              <span>{{ value }}</span>
-            </option>
-          </select>
-          <div
-            class="invalid-feedback d-block"
-            *ngIf="
-              (formControlsValues[fields.key].touched ||
-                submittedInquireForm) &&
-              (formControlsValues[fields.key].errors?.required ||
-                formControlsValues[fields.key].errors?.email ||
-                formControlsValues[fields.key].errors?.pattern)
-            "
-          >
-            {{ fields.errorMsg }}
+                (formControlsValues[fields.key].errors?.required ||
+                  formControlsValues[fields.key].errors?.email ||
+                  formControlsValues[fields.key].errors?.pattern)
+              "
+            >
+              {{ fields.errorMsg }}
+            </div>
           </div>
-        </div>
-      
+
           <div class="d-grid inquireSubmit">
-            <button type="submit" class="btn text-end align-items-center rounded-0 btn-sm nextBtn">
+            <button
+              type="submit"
+              class="btn text-end align-items-center rounded-0 btn-sm nextBtn"
+            >
               Submit
             </button>
           </div>
@@ -679,7 +682,7 @@
             <input
               *ngIf="fields.type === 'text'"
               [formControlName]="fields.key"
-              placeholder="{{fields.title}}*"
+              placeholder="{{ fields.title }}*"
               [id]="fields.key"
               [type]="fields.type"
               class="form-control rounded-0"
