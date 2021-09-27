@@ -342,13 +342,13 @@
       <!-- Center menu link -->
       <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
         <ul class="center-menu nav justify-content-center">
-          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
+          <li class="nav-item mt-1 px-2" *ngFor="let menu of header?.menus">
             <a [routerLink]="menu.url" class="d-flex align-items-center"
               >{{ menu.title }}
             </a>
           </li>
           <li
-            class="actions nav-item mx-2 px-1"
+            class="actions nav-item mx-2 px-2"
             *ngFor="let action of header?.actions; index as i"
           >
             <a class="d-flex align-items-center"
