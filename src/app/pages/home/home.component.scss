@@ -1,10 +1,11 @@
 @import "../../../assets/scss/theme-color.scss";
+@import "../../../assets/scss/variables.scss";
 .signUp {
   h2 {
-    font-family: "Ballinger Condensed";
+    font-family: $roboto;
   }
   input {
-    font-family: "ProximaNova-Regular";
+    font-family: $roboto;
     font-size: 13px;
     height: 39px;
     &::placeholder {
@@ -15,7 +16,7 @@
     min-width: 196px;
     background: $dark-gray;
     border-color: $dark-gray;
-    font-family: "ProximaNova-Regular";
+    font-family: $roboto;
     font-size: 25px;
     height: 39px;
   }

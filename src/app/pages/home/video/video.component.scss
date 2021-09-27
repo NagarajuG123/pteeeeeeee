@@ -9,6 +9,7 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
+    font-family: $proxiSemiBold;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
@@ -77,7 +78,7 @@
   }
 }
 .c-video-section--title {
-  font-family: "Ballinger Condensed Medium";
+  font-family: $roboto;
   font-size: 20px;
   font-weight: 700;
   color: $dark-gray;
