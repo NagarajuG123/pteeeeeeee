@@ -7,7 +7,7 @@
           <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
           <p class="c-card-box--content">
-          {{ banner[0]?.meta?.seo?.title}}
+          {{ banner[0]?.short_description}}
           </p>
           <a
             routerLink="/{{ commonService.readMore(banner[0]) }}"
@@ -22,7 +22,7 @@
       <div class="c-card-box--col c-card-main-imagebox--wrapper">
         <div class="c-card-box--imageWrapper isMainCardBox">
           <a
-            routerLink="/{{ banner[0]?.url }}"
+            routerLink="/{{ commonService.readMore(banner[0]) }}"
             class="maincardbox-link--wrapper"
           >
             <img
@@ -61,6 +61,7 @@
               [src]="item.media | defaultImage: 257:138"
               alt="article"
               class="card-img-top"
+              loading="lazy"
             />
           </a>
           <div class="card-body">
@@ -85,4 +86,30 @@
         </div>
       </div>
         <!-- See More -->
-  
+        <div class="d-flex">
+          <div class="see-more--wrapper"></div>
+          <div class="nextLine position-relative mb-5 mt-2">
+            <div class="container customContainer">
+              <div class="row d-flex align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="nextBtn px-1 bg-white">
+                    <img
+                      src="assets/img/nextIcon.svg"
+                      width="32"
+                      alt="next articles"
+                      class="me-3"
+                      (click)="getMoreData()"
+                      loading="lazy"
+                    />
+                    <span class="seem-more-text-wrapper" (click)="getMoreData()"
+                      >SEE MORE</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="see-more-right--wrapper"></div>
+        </div>
+      </div>
+      

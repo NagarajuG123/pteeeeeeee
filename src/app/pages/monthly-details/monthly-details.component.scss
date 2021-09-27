@@ -1,11 +1,8 @@
 @import '../../../assets/scss/media.scss';
 @import  '../../../assets/scss/theme-color.scss';
-$bodyBackgroundColor: #273444;
-$whiteColor: #fff;
-$subTitleColor: #EB0444;
-$textColor: #18222e;
-$cardGroupSpacing: 14px;
-$defaultTransition: all 0.35s ease;
+@import  '../../../assets/scss/variables.scss';
+
+
 // Global Class
 .c-ml--auto {
   margin-left: auto;
@@ -65,7 +62,7 @@ $defaultTransition: all 0.35s ease;
       }
     }
     .c-card-box--contentRow {
-      background-color: $whiteColor;
+      background-color: $white;
       .month-business--wrapper{
         max-width: 52%;
         margin-left: auto;
@@ -183,7 +180,7 @@ $defaultTransition: all 0.35s ease;
         font-size: 15px;
       }
       .c-card-box--itemDec {
-        color: $whiteColor;
+        color: $white;
         font-weight: 500;
         font-size: 13px;
         text-overflow: ellipsis;
@@ -199,7 +196,7 @@ $defaultTransition: all 0.35s ease;
         font-size: 11px;
         margin-top: 5px;
         &:hover {
-          color: $whiteColor;
+          color: $white;
         }
       }
     }
@@ -235,5 +232,21 @@ $defaultTransition: all 0.35s ease;
       }
     }
   }
-
+//Seemore
+.see-more--wrapper{
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $primary ;
+}
+.see-more-right--wrapper{
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $primary ;
+}
+}
+.seem-more-text-wrapper {
+color: #243444;
+font-size: 17px;
 }
