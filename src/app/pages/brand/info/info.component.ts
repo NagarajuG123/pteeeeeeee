@@ -116,13 +116,18 @@ export class InfoComponent implements OnInit {
                 .subscribe((response) => {
                   this.brandInfo = response.data;
                 });
-                const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
-                const featuredApi = this.apiService.getAPI(`${this.brandSlug}/featured-articles?limit=6&offset=0`);
-                const trendingApi =  this.apiService.getAPI(`${this.brandSlug}/trending?limit=4&offset=0`);
-                forkJoin([headerApi,featuredApi,trendingApi]).pipe(takeUntil(this.onDestroy$)).subscribe((response) => {
-                  this.logo = response[0].data?.logo;
-                  this.featured = response[1].data;
-                  this.trending = response[2].data;
+
+              const featuredApi = this.apiService.getAPI(
+                `${this.brandSlug}/featured-articles?limit=6&offset=0`
+              );
+              const trendingApi = this.apiService.getAPI(
+                `${this.brandSlug}/trending?limit=4&offset=0`
+              );
+              forkJoin([featuredApi, trendingApi])
+                .pipe(takeUntil(this.onDestroy$))
+                .subscribe((response) => {
+                  this.featured = response[0].data;
+                  this.trending = response[1].data;
                 });
               this.isInfoPage = true;
               this.isCategory = false;
@@ -159,14 +164,6 @@ export class InfoComponent implements OnInit {
           }
         });
     });
-
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand-pdf`)
-      .subscribe((response) => {
-        if (response.data != '') {
-          this.pdf = response.data;
-        }
-      });
   }
   changeDownPDFUrl(url: any) {
     return url?.replace('api.', '');
@@ -280,11 +277,16 @@ export class InfoComponent implements OnInit {
     }
     const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
-    forkJoin([itemApi, publicationApi]).subscribe((results) => {
+    const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
+    forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
-      let metaData = results[0].meta;
-      this.metaService.setSeo(metaData);
-      this.metaService.setTitle(`${metaData.seo.title} | ${results[1].title}`);
+      this.logo = results[2].data.logo;
+      if (results[0].meta) {
+        this.metaService.setSeo(results[0].meta);
+        this.metaService.setTitle(
+          `${results[0].meta.seo.title} | ${results[1].title}`
+        );
+      }
       if (item === 'available-markets') {
         const vm = this;
         this.httpClient
