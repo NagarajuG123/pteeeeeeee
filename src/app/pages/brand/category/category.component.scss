@@ -1,176 +1,156 @@
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/theme-color.scss";
 
-
+.top-section {
+  background: $light_gray_8;
+}
+.content {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  font-size: 64px;
+  font-family: "Ballinger Condensed";
+  font-weight: 700;
+  color: #243444;
+}
 @media screen and (min-width: 992px) {
-    .latestListing {
-      max-width: 318px;
-      p {
-        line-height: 114.99%;
-      }
+  .latestListing {
+    max-width: 450px;
+    p {
+      line-height: 114.99%;
     }
   }
-  
-  .news-list {
-    font-family: Roboto;
-    height: calc(100% - 27px);
-    width: calc(100% - 30px);
-    padding-top: 20px;
-    a {
-      color: $red;
-    }
-    li {
-      display: flex;
-      border-bottom: 1px solid $border-color;
-      &:last-child {
-        border: 0;
-      }
-      img {
-        min-width: 100px;
-      }
-      h3 {
-        font-weight: bold;
-        font-size: 17.5px;
-        color: $red;
-      }
-      span {
-        font-size: 10px;
-        color: $dark-gray;
-      }
-    }
-    @media screen and (max-width: 960px) {
-      position: relative;
-      height: 100%;
-      overflow: visible;
-      width: 100%;
-    }
+}
+.news-list {
+  font-family: Roboto;
+  height: calc(100% - 27px);
+  width: calc(100% - 30px);
+  a {
+    color: $primary;
   }
-  .tag {
-    background: $red;
-    font-family: $balingerRegular;
-    color: $white_2;
-    font-weight: bold;
-    font-size: 17.1429px;
-    box-sizing: border-box;
-  }
-  .over-layer {
-    font-family: $roboto, sans-serif;
-    background: rgba(232, 238, 242, 0.67);
-    font-size: 36px;
-  }
-
-  .most-recent{
-      h3{
-          font-weight: 700;
-          font-style: normal;
-          font-size: 16px;
-          line-height: 18.72px;
-          font-family: $balingerRegular;
-          color: $dark-gray;
-      }
-      h4{
-          font-weight: 600;
-          font-style: normal;
-          font-size: 12.97px;
-          line-height: 16.7px;
-          font-family: $balingerRegular;
-          color: $dark-gray;
-      }
-      @media screen and (max-width: 450px) {
-          .col-3 {
-            flex: 0 0 auto;
-            width: 100%;
-          }
-      }
-  }
-  @media screen and (max-width: 760px) {
-    .tag {
-      font-size: 12px;
+  li {
+    display: flex;
+    border-bottom: 1px solid #e8eef2;
+    &:last-child {
+      border: 0;
     }
-    .over-layer {
-      font-size: 24px;
-    }
-    .small-image {
-      .over-layer {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+    img {
+      min-width: 141px;
+      max-height: 100%;
+      @media screen and (max-width: 1291px) {
+        min-width: 90px;
+        max-height: 90px;
       }
     }
-  }
-  @media screen and (min-width: 992px) {
-    .latestListing {
-      max-width: 318px;
-      p {
-        line-height: 114.99%;
-      }
+    h3 {
+      font-weight: bold;
+      font-size: 17.5px;
+      color: $primary;
     }
-  }
-  .content{
-    h3{
-      text-decoration: none;
-      font-family: $balinger;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 38px;
-      line-height: 103%;
+    span {
+      font-size: 10px;
       color: $dark-gray;
     }
-    p{
-      font-family: $balingerRegular;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 21px;
-      line-height: 141.19%;
-      color: $black;
-    }
-
   }
-  .video-btn {
-    cursor: pointer;
+
+  @media screen and (max-width: 960px) {
     position: relative;
-    .vide-play {
-      position: absolute;
-      left: calc(50% - 45px);
-      top: calc(50% - 45px);
-      z-index: 1000;
-      height: 90px;
-      width: 90px;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
+}
+.category {
+  background: $white_3;
+  .tabs {
+    height: 60px;
+    .prev,
+    .next {
+      img {
+        width: auto;
+        cursor: pointer;
+      }
+    }
+    .customContainer {
+      .innerContent {
+        li {
+          background-color: $white;
+          height: 60px;
+          span {
+            min-width: 132px;
+            height: 100%;
+            color: $light-gray-1;
+            cursor: pointer;
+            font-family: $roboto;
+            font-weight: bold;
+            font-size: 20px;
+            &.active,
+            &:hover {
+              color: $primary;
+              &::after {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: -13px;
+                width: 7px;
+                border-width: 16px 16px 0 16px;
+                border-style: solid;
+                border-color: $primary transparent transparent transparent;
+              }
+              &::before {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-color: $primary;
+              }
+            }
+          }
+          border-color: $light-gray-1;
+        }
+      }
     }
   }
-  .modal-body {
-    padding: 0rem !important;
-  }
-  .btn-close {
-    position: absolute;
-    right: -30px;
-    top: 0;
-    z-index: 999;
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 1;
-  }
-
-  .see-more--wrapper{
-    margin-top: 57px;
-    width: 50%;
-    height: 2px;
-    border: 1px solid $red ;
-  }
-  .see-more-right--wrapper{
-    margin-top: 57px;
-    width: 50%;
-    height: 2px;
-    border: 1px solid $red ;
-  }
-  .nextBtn {
-    font-family: "ProximaNova-Regular";
-    font-size: 15px;
-    z-index: 1;
-    margin-top: 35px;
-    img {
-      cursor: pointer;
+  .tabs-container {
+    > .tabItemList {
+      .items {
+        font-family: $roboto;
+        font-weight: bold;
+        img {
+          width: 100%;
+          min-height: 106px;
+          background-color: $light-gray-1;
+        }
+        > .card-body {
+          padding: 8px 16px 15px;
+          > h6.card-title {
+            font-size: 11px;
+          }
+          > .card-text {
+            font-size: 12px;
+          }
+          a {
+            > small {
+              font-family: $roboto;
+              font-weight: 500;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .row {
+          margin: 0 -5px;
+          .col-md-4 {
+            max-width: 20%;
+            padding: 0 5px;
+          }
+        }
+      }
     }
   }
-  .bg-grey{
-    background-color: $light_gray_8;
-  }
+}
+a {
+  color: $dark-gray;
+}
