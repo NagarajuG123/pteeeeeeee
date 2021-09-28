@@ -26,7 +26,8 @@
             class="c-video-section--box"
             *ngFor="let item of videoData | slice: 0:2; index as i"
           >
-            <div class="badge badge-primary">FEATURED Video</div>
+          <div  class="position-relative main-image ">
+            <div class="badge badge tag position-absolute  top-0 text-uppercase ">FEATURED Video</div>
             <a
               *ngIf="item?.media"
               (click)="openVideoPlayer = true"
@@ -63,6 +64,7 @@
             <div class="c-video-section--title">
               {{ item.title }}
             </div>
+          </div>
           </div>
         </div>
       </div>
