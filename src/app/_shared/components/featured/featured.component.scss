@@ -1,22 +1,5 @@
 @import "../../../../assets/scss/theme-color.scss";
 
-.trending {
-  background-color: $border-color;
-  color: $medium-grey;
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 16px;
-  border-bottom: 1px solid $dark-gray;
-  span {
-    color: $primary;
-    font-family: "Ballinger Condensed Medium";
-    img {
-      width: auto;
-      margin-top: -4px;
-    }
-  }
-}
-
 img {
   width: 100%;
 }
@@ -80,7 +63,6 @@ img {
   font-family: Roboto;
   font-weight: normal;
   height: calc(100% - 27px);
-  // width: 100%;
   a {
     color: $dark-gray;
   }
@@ -129,7 +111,7 @@ img {
       border: 0;
     }
     img {
-      min-width: 100px;
+      min-width: 121px;
       max-height: 100%;
       @media screen and (max-width: 1291px) {
         min-width: 90px;
@@ -193,71 +175,6 @@ img {
   }
 }
 
-//TRENDING
-:host ::ng-deep .owl-carousel {
-  .owl-stage-outer {
-    overflow: hidden;
-    .owl-stage {
-      display: flex;
-      .slideItem {
-        padding: 0 20px;
-        box-sizing: border-box;
-      }
-    }
-  }
-  .owl-nav {
-    > div {
-      position: absolute;
-      top: 50%;
-      transform: rotate(-90deg);
-      background-repeat: no-repeat;
-      background-size: 22px;
-      height: 43px;
-      width: 25px;
-      cursor: pointer;
-      &.owl-prev {
-        right: 0px;
-        top: 10px;
-        background: #e8eef2;
-      }
-      &.owl-next {
-        right: 0px;
-        top: -10px;
-        background: #e8eef2;
-      }
-    }
-  }
-}
-
-.slideItem {
-  font-weight: bold;
-  margin-bottom: 47px;
-}
-.video-btn {
-  cursor: pointer;
-  position: relative;
-  .vide-play {
-    position: absolute;
-    left: calc(50% - 45px);
-    top: calc(50% - 45px);
-    z-index: 1000;
-    height: 90px;
-    width: 90px;
-  }
-}
-.modal-body {
-  padding: 0rem !important;
-}
-.btn-close {
-  position: absolute;
-  right: -30px;
-  top: 0;
-  z-index: 999;
-  font-size: 1rem;
-  font-weight: 400;
-  opacity: 1;
-}
-
 .ticker-headline {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -265,123 +182,4 @@ img {
   padding: 15px 0;
   margin: 0;
   font-size: 18px;
-}
-
-.carousel.vertical .carousel-inner {
-  height: 100%;
-  width: auto;
-  > .item {
-    width: auto;
-    padding-right: 50px;
-    transition: 0.6s ease-in-out top;
-    @media all and (transform-3d), (-webkit-transform-3d) {
-      transition: 0.6s ease-in-out;
-      &.next,
-      &.active.right {
-        transform: translate3d(0, 100%, 0);
-        top: 0;
-      }
-      &.prev,
-      &.active.left {
-        transform: translate3d(0, -100%, 0);
-        top: 0;
-      }
-      &.next.left,
-      &.prev.right,
-      &.active {
-        transform: translate3d(0, 0, 0);
-        top: 0;
-      }
-    }
-  }
-  > .active,
-  > .next,
-  > .prev {
-    display: block;
-  }
-  > .active {
-    top: 0;
-  }
-  > .next,
-  > .prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-  > .next {
-    top: 100%;
-  }
-  > .prev {
-    top: -100%;
-  }
-  > .next.left,
-  > .prev.right {
-    top: 0;
-  }
-  > .active.left {
-    top: -100%;
-  }
-  > .active.right {
-    top: 100%;
-  }
-}
-
-.carousel.vertical {
-  .carousel-control {
-    left: auto;
-    width: 50px;
-    &.up {
-      top: 0;
-      right: 0;
-      bottom: 50%;
-    }
-    &.down {
-      top: 50%;
-      right: 0;
-      bottom: 0;
-    }
-    // Toggles
-    .icon-prev,
-    .icon-next,
-    fa-icon {
-      position: absolute;
-      top: 50%;
-      z-index: 5;
-      display: inline-block;
-    }
-    .icon-prev,
-    fa-icon {
-      left: 50%;
-      margin-left: -10px;
-      top: 50%;
-      margin-top: -10px;
-    }
-    .icon-next,
-    fa-icon {
-      left: 50%;
-      margin-left: -10px;
-      top: 50%;
-      margin-top: -10px;
-    }
-    .icon-up,
-    .icon-down {
-      width: 20px;
-      height: 20px;
-      //margin-top: -10px;
-      line-height: 1;
-      font-family: serif;
-    }
-    .icon-prev {
-      &:before {
-        content: "\2039";
-        // SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
-      }
-    }
-    .icon-next {
-      &:before {
-        content: "\203a";
-        // SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
-      }
-    }
-  }
 }
