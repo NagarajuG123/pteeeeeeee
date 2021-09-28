@@ -40,6 +40,7 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
+  logo: any;
   faSearch = faSearch;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
@@ -230,8 +231,9 @@ export class SearchComponent implements OnInit {
       const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
       const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
       const publication = this.apiService.getAPI(`1851/publication-instance`);
+      const mainHeader = this.apiService.getAPI2(`header`);
 
-      forkJoin([main_searchAPI, brand_searchAPI, publication])
+      forkJoin([main_searchAPI, brand_searchAPI, publication, mainHeader])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0]['data'] === null) {
@@ -247,7 +249,7 @@ export class SearchComponent implements OnInit {
           let title = results[2].title;
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
-
+          this.logo = results[3].data.logo;
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
           this.params = searchPopData['params'];

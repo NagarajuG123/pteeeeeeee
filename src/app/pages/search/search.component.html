@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-2">
         <img class="img-fluid"
-        src ="assets/img/logo.png"
+        src ="{{ logo?.image }}"
         width="195px"
         height="195px"
         loading="lazy"
@@ -32,7 +32,20 @@
           </div>
         </form>
         <div class="py-3">
-          <h6>VIEW SEARCH RESULTS</h6>
+          <h6
+            *ngIf="
+              brand_id !== '1851' &&
+              brand_id !== 'ee' &&
+              brand_id !== 'room-1903'
+            "
+          >
+            SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
+          </h6>
+          <h6  *ngIf="
+          brand_id === '1851' ||
+          brand_id === 'ee' ||
+          brand_id === 'room-1903'
+        ">VIEW SEARCH RESULTS</h6>
           <div class="sort_main d-flex">
             <h6 class="primary-color">SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
@@ -102,6 +115,41 @@
             </ul>
           </div>
         </div>
+        <div class="search-no-result" *ngIf="!recentPeoples.length">
+          <p>No articles found for selected search criteria</p>
+        </div>
+        <div *ngIf="isSpecificDate" class="position-relative banner ">
+          <div class="search_form col-lg-6">
+            <form
+              [formGroup]="specificSearchForm"
+              (ngSubmit)="onSearchSubmit(specificSearchForm)"
+            >
+              <div class="form-group d-block">
+                <input
+                  type="text"
+                  ngxDaterangepickerMd
+                  class="form-control"
+                  [(ngModel)]="dateSelected"
+                  [showCustomRangeLabel]="true"
+                  [alwaysShowCalendars]="true"
+                  [ranges]="ranges"
+                  [linkedCalendars]="true"
+                  [showClearButton]="true"
+                  [formControl]="specificSearchForm.controls['search_input']"
+                  placeholder="Select please.../"
+                  readonly
+                />
+                <button
+                  type="button"
+                  class="d-block text-center button"
+                  (click)="onSearchSubmit(specificSearchForm)"
+                >
+                <fa-icon [icon]="faSearch" class="searchFav"></fa-icon>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 </div>
@@ -161,8 +209,9 @@
                       alt="next articles"
                       class="me-3"
                       loading="lazy"
+                      click="getMoreItems()"
                     />
-                    <span class="seem-more-text-wrapper"
+                    <span class="seem-more-text-wrapper" click="getMoreItems()"
                       >SEE MORE</span
                     >
                   </div>
