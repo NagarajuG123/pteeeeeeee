@@ -32,10 +32,16 @@
           ><h1 class="fw-bold mb-0">{{ story.author.name }}</h1></a
         >
         <h5 class="primary-color fw-bold">{{ story.author.designation }}</h5>
-        <span
-          >{{ story.posted_on | date: "h:mm a" }} •
-          {{ story.posted_on | date: "MM/dd/yy" }}</span
-        >
+        <span *ngIf="isDate">
+          <span *ngIf="isUpdate"
+            >Updated {{ story.last_modified | date: "h:mm a" }} •
+            {{ story.last_modified | date: "MM/dd/yy" }}
+          </span>
+          <span *ngIf="!isUpdate"
+            >{{ story.posted_on | date: "h:mm a" }} •
+            {{ story.posted_on | date: "MM/dd/yy" }}</span
+          >
+        </span>
         <hr />
 
         <!-- social icons -->
@@ -230,11 +236,8 @@
               width="32"
               alt="next articles"
               class="me-3"
-              (click)="this.loadArticles('next')"
             />
-            <span class="gray-color" (click)="this.loadArticles('next')"
-              >Next Article</span
-            >
+            <span class="gray-color">Next Article</span>
           </div>
         </div>
       </div>

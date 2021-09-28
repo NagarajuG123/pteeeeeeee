@@ -15,4 +15,14 @@
       margin-top: -4px;
     }
   }
+  .carousel-control-prev-icon {
+    background-image: url("../../../../assets/img/slider-left-arrow.png");
+    width: 1rem;
+    height: 1.5rem;
+  }
+  .carousel-control-next-icon {
+    background-image: url("../../../../assets/img/slider-right-arrow.png");
+    width: 1rem;
+    height: 1.5rem;
+  }
 }

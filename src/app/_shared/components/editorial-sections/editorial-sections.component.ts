@@ -78,11 +78,15 @@ export class EditorialSectionsComponent implements OnInit {
   prev() {
     if (this.skipTab > 0) {
       this.skipTab -= 1;
+      this.activeTab -= 1;
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab]);
     } else this.skipTab = 0;
   }
   next() {
     if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
       this.skipTab += 1;
+      this.activeTab += 1;
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab]);
     }
   }
   @HostListener('window:resize', ['$event'])

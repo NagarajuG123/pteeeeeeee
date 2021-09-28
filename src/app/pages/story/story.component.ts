@@ -82,6 +82,8 @@ export class StoryComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   metaData: any;
+  isDate: boolean = false;
+  isUpdate: boolean = false;
 
   faFacebookFIcon = faFacebookF;
   faLinkedinInIcon = faLinkedinIn;
@@ -397,6 +399,12 @@ export class StoryComponent implements OnInit {
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
           modified_date.setHours(hours);
           modified_date.setMinutes(minutes);
+          if(posted_date || modified_date){
+            this.isDate = true;
+          }
+          let postedDate = posted_date.toDateString();
+          let modified = modified_date.toDateString();
+          postedDate === modified ? this.isUpdate = true : this.isUpdate = false;
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -500,7 +508,6 @@ export class StoryComponent implements OnInit {
         this.createCanonicalURL(url);
       });
   }
-
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
       return;
@@ -811,6 +818,11 @@ export class StoryComponent implements OnInit {
     if (this.bottomReached() && this.enableScroll) {
       this.enableScroll = false;
       // if (this.detailsData.length < 2) {
+        let storyNo = this.detailsData.length-1;
+      const subUrl = this.brandSlug !== '1851'
+              ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
+              : `${this.detailsData[storyNo].slug}`;
+        this.location.replaceState(subUrl);
       await this.loadArticles('');
       window.scrollTo(0, window.scrollY - 50);
       setTimeout(() => {

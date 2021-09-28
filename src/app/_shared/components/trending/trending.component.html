@@ -2,7 +2,11 @@
   <div class="trending mb-1 slideItem">
     <div class="container-fluid text-center py-2 row">
       <div class="col-12">
-        <div class="carousel slide" data-bs-ride="carousel">
+        <div
+          class="carousel slide"
+          data-bs-ride="carousel"
+          id="carouselExampleIndicators"
+        >
           <div class="carousel-inner">
             <ng-container *ngFor="let item of data; index as i">
               <div class="carousel-item" [ngClass]="{ active: i === 0 }">
