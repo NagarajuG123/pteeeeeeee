@@ -90,7 +90,7 @@
       height: 50px;
     }
     .title {
-      color: $brand-info-question-title;
+      color: $white;
       font-family: $balinger;
       font-weight: 700;
       font-size: 30px;
@@ -205,6 +205,7 @@
 .divider-recent-feature .btn{
   height: 54px;
   background-color: $red;
+  text-align: right;
 }
 .recent-feature-article-section {
   padding: 30px 25px;
