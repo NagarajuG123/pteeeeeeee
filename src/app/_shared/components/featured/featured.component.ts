@@ -29,21 +29,21 @@ export class FeaturedComponent implements OnInit {
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
-  descriptionLimit = 90;
+  descriptionLimit = 100;
   descriptionLimitOptions = [
-    { width: 1200, limit: 85 },
+    { width: 1200, limit: 100 },
+    { width: 992, limit: 50 },
+  ];
+  brandNewsTitleLimit = 85;
+  brandNewsTitleLimitOptions = [
+    { width: 1320, limit: 85 },
     { width: 992, limit: 30 },
   ];
-  brandNewsTitleLimit = 70;
-  brandNewsTitleLimitOptions = [
-    { width: 1320, limit: 60 },
-    { width: 992, limit: 20 },
-  ];
 
-  NewsTitleLimit = 35;
+  NewsTitleLimit = 45;
   NewsTitleLimitOptions = [
-    { width: 1200, limit: 35 },
-    { width: 992, limit: 20 },
+    { width: 1200, limit: 45 },
+    { width: 992, limit: 25 },
   ];
 
   url: string;

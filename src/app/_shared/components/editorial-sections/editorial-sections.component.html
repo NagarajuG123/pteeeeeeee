@@ -9,9 +9,7 @@
     <div class="container customContainer position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
-        [ngClass]="
-          tabName?.length > this.commonService.vtabsItem ? '' : 'd-none'
-        "
+        [ngClass]="tabName?.length > commonService.vtabsItem ? '' : 'd-none'"
         (click)="prev()"
       >
         <img
@@ -27,7 +25,7 @@
           *ngFor="let item of tabName; index as i"
           class="col col-sm-6 col-md-4 col-lg border-end text-center"
           [ngClass]="
-            i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab
+            i < commonService.vtabsItem + skipTab && i >= skipTab
               ? 'active'
               : 'd-none'
           "
@@ -103,7 +101,7 @@
                 </h6>
 
                 <a routerLink="{{ commonService.goAuthorPage(list) }}">
-                  <small>{{ list.author?.name }}</small>
+                  <small>By {{ list.author?.name }}</small>
                 </a>
                 <h4 class="card-text mb-1">
                   {{ list.short_description }}
