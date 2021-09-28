@@ -15,6 +15,8 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
 import { faSearch, faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
+import { CommonService } from 'src/app/_core/services/common.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -115,7 +117,8 @@ export class SearchComponent implements OnInit {
     private cdref: ChangeDetectorRef,
     private location: Location,
     private metaService: MetaService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.specificSearchForm = new FormGroup({

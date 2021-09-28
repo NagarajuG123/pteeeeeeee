@@ -1,316 +1,217 @@
-<div class="empty"></div>
 
-<div class="banner banner_search">
-  <figure>
-    <img
-      *ngIf="bannerImage"
-      data-src="{{ bannerImage }}"
-      width="1440"
-      height="300"
-      alt="banner_search"
-      loading="lazy"
-    />
-  </figure>
-  <div class="search_form col-lg-6">
-    <form
-      [formGroup]="searchForm"
-      (ngSubmit)="onSearchBannerSubmit(searchForm)"
-    >
-      <div class="form-group d-block">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="FIND AN 1851 BRAND..."
-          [formControl]="searchForm.controls['searchInput']"
-        />
-        <button
-          type="button"
-          class="d-block text-center"
-          (click)="onSearchBannerSubmit(searchForm)"
-        >
-          <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
-        </button>
+<div class="border-bg py-2">
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-2">
+        <img class="img-fluid"
+        src ="assets/img/logo.png"
+        width="195px"
+        height="195px"
+        loading="lazy"
+        alt="logo"/>
       </div>
-    </form>
-  </div>
+      <div class="col-10 py-4">
+        <form
+        [formGroup]="searchForm"
+        (ngSubmit)="onSearchBannerSubmit(searchForm)"
+        >
+          <div class="form-group d-block">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search..."
+              [formControl]="searchForm.controls['searchInput']"
+            />
+            <button
+              type="button"
+              class="d-block text-center"
+              (click)="onSearchBannerSubmit(searchForm)"
+            >
+            <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
+            </button>
+          </div>
+        </form>
+        <div class="py-3">
+          <h6>VIEW SEARCH RESULTS</h6>
+          <div class="sort_main d-flex">
+            <h6 class="primary-color">SORT BY:</h6>
+            <ul class="d-flex text-center justify-content-center">
+              <li *ngFor="let duration of published_duration; let i = index" class="px-2">
+                <a (click)="set_duration(i)">
+                  <span
+                    [style.font-weight]="
+                      published_value === i ? 'bold' : 'normal'
+                    "
+                    >{{ duration.title }}</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a (click)="set_range()">
+                  <span
+                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
+                    >{{ published_range }}</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="sort_main check_boxes_data d-flex">
+            <h6 class="primary-color">FILTER BY:</h6>
+            <ul class="d-flex checkboxes text-center justify-content-center">
+              <li class="px-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="by_author"
+                    (change)="onChangeFilter('author')"
+                  />
+                  <span class="px-1">BY AUTHOR</span>
+                </label>
+              </li>
+              <li class="px-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="by_title"
+                    (change)="onChangeFilter('title')"
+                  />
+                  <span class="px-1">BY TITLE</span>
+                </label>
+              </li>
+              <li class="px-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="by_desc"
+                    (change)="onChangeFilter('desc')"
+                  />
+                  <span class="px-1">BY DESCRIPTION</span>
+                </label>
+              </li>
+              <li class="px-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="by_keywords"
+                    (change)="onChangeFilter('keyword')"
+                  />
+                  <span class="px-1">BY KEYWORDS</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-
-<div class="main-content search-page">
-  <div class="search_keyword category-frannews d-flex justify-content-center">
-    <div class="category-container row">
-      <div class="container col-sm-12 col-md-9 col-lg-9 col-xl-9">
-        <div class="search_keyword_main">
-          <h5
-            class="text-center"
-            *ngIf="
-              brand_id !== '1851' &&
-              brand_id !== 'ee' &&
-              brand_id !== 'room-1903'
-            "
-          >
-            SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
-          </h5>
-          <h5
-            class="text-center"
-            *ngIf="
-              brand_id === '1851' ||
-              brand_id === 'ee' ||
-              brand_id === 'room-1903'
-            "
-          >
-            VIEW SEARCH FILTERS
-            <a
-              *ngIf="!hiddenSearchBar"
-              href="#"
-              onclick="return false;"
-              id="loadMore"
-              class="text-center loadmore-btn d-block"
-              (click)="hideSearchBar('hidden')"
-            >
-            <fa-icon [icon]="faAngleDown" class="angleIcon"></fa-icon>
+</div>
+<div class="gray-bg">
+  <div class="row">
+    <div class="col-8 py-4 card-section">
+      <div class="container customContainer">
+        <div class="row">
+        <div
+          class="col-sm-6 col-md-4 mb-2 card-group"
+          *ngFor="let item of recentPeoples | slice: 0:6; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="{{ commonService.readMore(item) }}">
+              <img
+                appYoutubeImage
+                width="257"
+                height="138"
+                [src]="item.media | defaultImage: 257:138"
+                alt="article"
+                class="card-img-top"
+              />
             </a>
-            <a
-              *ngIf="hiddenSearchBar"
-              href="#"
-              onclick="return false;"
-              id="loadMore"
-              class="text-center loadmore-btn d-block"
-              (click)="hideSearchBar('show')"
-            >
-            <fa-icon [icon]="faAngleUp" class="angleIcon"></fa-icon>
-            </a>
-          </h5>
-
-          <div
-            *ngIf="
-              (hiddenSearchBar &&
-                (brand_id === '1851' ||
-                  brand_id === 'ee' ||
-                  brand_id === 'room-1903')) ||
-              (brand_id !== '1851' &&
-                brand_id !== 'ee' &&
-                brand_id !== 'room-1903')
-            "
-          >
-            <div class="sort_main d-flex">
-              <h6>SORT BY:</h6>
-              <ul class="d-flex text-center justify-content-center">
-                <li *ngFor="let duration of published_duration; let i = index">
-                  <a (click)="set_duration(i)">
-                    <span
-                      [style.font-weight]="
-                        published_value === i ? 'bold' : 'normal'
-                      "
-                      >{{ duration.title }}</span
-                    >
-                  </a>
-                </li>
-                <li>
-                  <a (click)="set_range()">
-                    <span
-                      [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
-                      >{{ published_range }}</span
-                    >
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="sort_main check_boxes_data d-flex">
-              <h6>FILTER BY:</h6>
-              <ul class="d-flex checkboxes text-center justify-content-center">
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_author"
-                      (change)="onChangeFilter('author')"
-                    />
-                    <span>BY AUTHOR</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_title"
-                      (change)="onChangeFilter('title')"
-                    />
-                    <span>BY TITLE</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_desc"
-                      (change)="onChangeFilter('desc')"
-                    />
-                    <span>BY DESCRIPTION</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      [checked]="by_keywords"
-                      (change)="onChangeFilter('keyword')"
-                    />
-                    <span>BY KEYWORDS</span>
-                  </label>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="search-no-result" *ngIf="!recentPeoples.length">
-          <p>No articles found for selected search criteria</p>
-        </div>
-        <div *ngIf="isSpecificDate" class="banner specific_search">
-          <div class="search_form col-lg-6">
-            <form
-              [formGroup]="specificSearchForm"
-              (ngSubmit)="onSearchSubmit(specificSearchForm)"
-            >
-              <div class="form-group d-block">
-                <input
-                  type="text"
-                  ngxDaterangepickerMd
-                  class="form-control"
-                  [(ngModel)]="dateSelected"
-                  [showCustomRangeLabel]="true"
-                  [alwaysShowCalendars]="true"
-                  [ranges]="ranges"
-                  [linkedCalendars]="true"
-                  [showClearButton]="true"
-                  [formControl]="specificSearchForm.controls['search_input']"
-                  placeholder="Select please.../"
-                  readonly
-                />
-                <button
-                  type="button"
-                  class="d-block text-center button"
-                  (click)="onSearchSubmit(specificSearchForm)"
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a
+                  href="{{ commonService.readMore(item) }}"
+                  class="text-black text-uppercase text-truncate"
+                  >item.title</a
                 >
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
+              </h6>
+              <span class=""
+                ><a href="#">{{ item.author.name }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a
+                  href="{{ commonService.readMore(item) }}"
+                  class="text-black"
+                  >{{ item.short_description }}</a
+                >
+              </p>
+            </div>
           </div>
         </div>
-        <div *ngIf="recentPeoples.length">
-          <div class="frannews">
-            <div class="container">
-              <div class="frannews-details col-xl-11">
-                <div class="frannews-bottom">
-                  <div *ngIf="isBrowser" class="">
-                    <ul>
-                      <li *ngFor="let row of recentPeoples | splitArray: 4">
-                        <div class="category-list" *ngFor="let item of row">
-                          <a
-                            routerLink="/{{ goReadMore(item) }}"
-                            fragment="featured"
-                            class="frannews-bottom-details"
-                            style="text-decoration: none"
-                            *ngIf="item"
-                          >
-                            <figure>
-                              <img
-                                appYoutubeImage
-                                class="height-auto"
-                                srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
-                                sizes="{{
-                                  '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 210px'
-                                }}"
-                                src="{{ item.media | defaultImage: 210:118 }}"
-                                alt="img5"
-                                loading="lazy"
-                              />
-                            </figure>
-                            <div class="socialmedia">
-                              <p
-                                title="{{ item.title }}"
-                                style="-webkit-box-orient: vertical"
-                              >
-                                {{ item.title }}
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="clearfix"></div>
-                      </li>
-                    </ul>
+
+        <div class="d-flex border-bg">
+          <div class="see-more--wrapper"></div>
+          <div class="nextLine position-relative mb-5 mt-2">
+            <div class="container customContainer">
+              <div class="row d-flex align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="nextBtn px-1 bg-white">
+                    <img
+                      src="assets/img/nextIcon.svg"
+                      width="32"
+                      alt="next articles"
+                      class="me-3"
+                      loading="lazy"
+                    />
+                    <span class="seem-more-text-wrapper"
+                      >SEE MORE</span
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="see-more-right--wrapper"></div>
         </div>
+
       </div>
+    </div>
+    <div class="col-4 bg-white py-4 ml-2 card-section">
+      <h5 class="brand-news">BRAND NEWS</h5>
       <div
-        class="col-sm-12 col-md-3 col-lg-3 col-xl-3 search-page-right-rail"
-        *ngIf="
-          brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
-        "
-      >
-        <h5 class="text-center">BRAND STORIES</h5>
-        <div *ngIf="brandPeoples.length" class="search-page-brand-list row">
-          <div
-            class="search-page-brand col-12"
-            *ngFor="let item of brandPeoples"
-          >
-            <p class="search-page-brand-title" *ngIf="brand_id == '1851'">
-              {{ brand_id }}
-            </p>
-            <p class="search-page-brand-title" *ngIf="brand_id != '1851'">
-              {{ brand_id === "ee" ? "Estatenvy" : "Room1903" }}
-            </p>
-            <a
-              routerLink="/{{ goReadMoreBrand(item) }}"
-              fragment="brand-latest-stories"
-              class="frannews-bottom-details"
-              style="text-decoration: none"
-              *ngIf="item"
-            >
-              <figure>
-                <img
-                  appYoutubeImage
-                  class="height-auto"
-                  srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
-                  sizes="{{
-                    '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 210px'
-                  }}"
-                  src="{{ item.media | defaultImage: 210:118 }}"
-                  alt="img5"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="socialmedia">
-                <p
-                  title="{{ item.title }}"
-                  style="-webkit-box-orient: vertical"
-                >
-                  {{ item.title }}
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <a
-          *ngIf="has_more"
-          href="#"
-          onclick="return false;"
-          id="loadMore"
-          class="text-center loadmore-btn d-block"
+          class="col-sm-6 col-md-3 mb-2 card-group"
+          *ngFor="let item of brandPeoples; index as i"
         >
-          <i
-            class="fa fa-angle-down"
-            (click)="getMoreItems()"
-            aria-hidden="true"
-          ></i>
-        </a>
-      </div>
+          <div class="items card border-0 rounded-0">
+            <a href="{{ commonService.readMore(item) }}">
+              <img
+                appYoutubeImage
+                width="257"
+                height="138"
+                [src]="item.media | defaultImage: 257:138"
+                alt="article"
+                class="card-img-top"
+              />
+            </a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a
+                  href="{{ commonService.readMore(item) }}"
+                  class="text-black text-uppercase text-truncate"
+                  >item.title</a
+                >
+              </h6>
+              <span class=""
+                ><a href="#">{{ item.author.name }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a
+                  href="{{ commonService.readMore(item) }}"
+                  class="text-black"
+                  >{{ item.short_description }}</a
+                >
+              </p>
+            </div>
+          </div>
     </div>
   </div>
 </div>
