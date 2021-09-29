@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
   ];
 
   published_range = 'SPECIFIC DATES';
-  limit = 8;
+  limit = 6;
   offset = 0;
   params = '';
   isSpecificDate: boolean = false;
