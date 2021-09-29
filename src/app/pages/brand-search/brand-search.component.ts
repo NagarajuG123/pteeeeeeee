@@ -5,6 +5,7 @@ import { Publication } from 'src/app/_core/models/publication.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-brand-search',

@@ -3,8 +3,8 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-2">
-        <img class="img-fluid"
-        src ="{{ logo?.image }}"
+        <img class="img-fluid lazyload"
+        data-src ="{{ logo?.image }}"
         width="195px"
         height="195px"
         loading="lazy"
@@ -169,9 +169,9 @@
                 appYoutubeImage
                 width="257"
                 height="138"
-                [src]="item.media | defaultImage: 257:138"
+                [data-src]="item.media | defaultImage: 257:138"
                 alt="article"
-                class="card-img-top"
+                class="card-img-top lazyload"
               />
             </a>
             <div class="card-body">
@@ -204,10 +204,10 @@
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="nextBtn px-1 bg-white">
                     <img
-                      src="assets/img/nextIcon.svg"
+                      data-src="assets/img/nextIcon.svg"
                       width="32"
                       alt="next articles"
-                      class="me-3"
+                      class="me-3 lazyload"
                       loading="lazy"
                       click="getMoreItems()"
                     />
@@ -236,9 +236,9 @@
                 appYoutubeImage
                 width="257"
                 height="138"
-                [src]="item.media | defaultImage: 257:138"
+                [data-src]="item.media | defaultImage: 257:138"
                 alt="article"
-                class="card-img-top"
+                class="card-img-top lazyload"
               />
             </a>
             <div class="card-body">

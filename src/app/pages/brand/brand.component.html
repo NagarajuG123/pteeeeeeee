@@ -22,11 +22,12 @@
       <img
         *ngIf="topBlock?.media?.url"
         appYoutubeImage
-        [src]="topBlock?.media?.url"
+        [data-src]="topBlock?.media?.url"
         width="1440"
         height="493"
         alt="banner"
         loading="lazy"
+        class="lazyload"
       />
     </figure>
     <div class="left-text d-flex col-5">
@@ -51,8 +52,8 @@
             fragment="franbuzz"
             (click)="closeModal()"
             ><img
-              src="{{ list.media | defaultImage: 257:138 }}"
-              class="card-img-top"
+              data-src="{{ list.media | defaultImage: 257:138 }}"
+              class="card-img-top lazyload"
               alt="story"
               width="257"
               height="138"
@@ -79,10 +80,10 @@
           <div class="d-flex justify-content-center align-items-center">
             <div class="nextBtn px-1 bg-white">
               <img
-                src="assets/img/nextIcon.svg"
+                data-src="assets/img/nextIcon.svg"
                 width="32"
                 alt="next articles"
-                class="me-3"
+                class="me-3 lazyload"
                 (click)="getMoreDynamic()"
                 loading="lazy"
               />

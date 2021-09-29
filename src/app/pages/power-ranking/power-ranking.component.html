@@ -1,10 +1,11 @@
 <div>
   <div class="top-container">
     <img
-      src="assets/img/powerranking.jpg"
+      data-src="assets/img/powerranking.jpg"
       height="759"
       alt="power-ranking-image"
       loading="lazy"
+      class="lazyload"
     />
     <div class="text-box">
       <div style="padding: 15px 0">
@@ -41,11 +42,12 @@
                 <a routerLink="/{{ item.slug }}">
                   <img
                     class="list-data--itemImg"
-                    src="{{ item.logo }}"
+                    data-src="{{ item.logo }}"
                     alt="logo"
                     width="149px"
                     height="103px"
                     loading="lazy"
+                    class="lazyload"
                 /></a>
               </div>
               <div class="list-data--item lastWeekCol">
@@ -84,7 +86,7 @@
           </div>
           <div class="list-data--item brandCol">
             <a routerLink="/{{ item.slug }}">
-              <img class="list-data--itemImg" src="{{ item.logo }}" alt="logo"
+              <img class="list-data--itemImg lazyload" data-src="{{ item.logo }}" alt="logo"
             /></a>
           </div>
         </div>
@@ -104,8 +106,8 @@
           <div class="list-data--item brandCol">
             <a routerLink="/{{ item.slug }}">
               <img
-                class="list-data--itemImg"
-                src="{{ item.logo }}"
+                class="list-data--itemImg lazyload"
+                data-src="{{ item.logo }}"
                 alt="logo"
                 loading="lazy"
             /></a>

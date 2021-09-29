@@ -6,6 +6,7 @@ import { Cover } from 'src/app/_core/models/cover.model';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import 'lazysizes';
 
 const RESULT_KEY = makeStateKey<any>('coversState');
 

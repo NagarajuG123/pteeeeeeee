@@ -5,6 +5,7 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-monthly-details',

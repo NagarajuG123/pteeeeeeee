@@ -8,6 +8,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-brand',
