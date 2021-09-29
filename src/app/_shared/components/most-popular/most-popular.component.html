@@ -73,11 +73,9 @@
                   <h3 class="mb-0">
                     <strong class="ms-3 d-block">{{ item.title }}</strong>
                   </h3>
-
-                  <small 
-
-                    class="ms-3 text-black">By {{ item?.author?.name }} </small>
-                
+                  <small class="ms-3 text-black"
+                    >By {{ item?.author?.name }}
+                  </small>
                   <p class="ms-3">
                     {{ item.short_description }}
                   </p>
@@ -87,6 +85,7 @@
           </ng-template>
         </a>
       </div>
+    </div>
 
     <owl-carousel-o
       [options]="customOptions"
@@ -140,4 +139,4 @@
       </ng-template>
     </owl-carousel-o>
   </div>
-
+</div>

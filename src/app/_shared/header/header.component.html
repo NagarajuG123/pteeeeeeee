@@ -9,6 +9,7 @@
             href="{{ header?.publication?.room1903Url }}"
             target="_blank"
             class="text-white"
+            rel="noopener"
           >
             <span
               ><img
@@ -29,6 +30,7 @@
             href="{{ header?.publication?.eeUrl }}"
             target="_blank"
             class="text-white"
+            rel="noopener"
           >
             <span
               ><img
@@ -280,6 +282,7 @@
                     "
                     [href]="item.url"
                     target="_blank"
+                    rel="noopener"
                     >{{ item.title }}
                   </a>
                 </li>
@@ -359,6 +362,7 @@
                 height="30"
                 width="20"
                 class="ms-1"
+                alt=""
             /></a>
             <ul class="dropdown-menu">
               <li *ngFor="let item of action.items">
@@ -435,11 +439,13 @@
               [href]="item.url"
               target="_blank"
               class="d-flex align-items-center"
+              rel="noopener"
             >
               <img
                 src="{{ item?.media?.image }}"
                 width="{{ item?.media?.width }}"
                 height="{{ item?.media?.height }}"
+                alt="social"
               />
             </a>
           </li>
