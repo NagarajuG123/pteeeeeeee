@@ -61,6 +61,9 @@ $defaultTransition: all 0.35s ease;
             justify-content: space-between;
             margin-left: 15px;
           }
+          @include media("<desktop"){
+            margin-left: 0;
+          }
         }
       }
     }
@@ -115,6 +118,9 @@ $defaultTransition: all 0.35s ease;
         width: 570px;
         @include media("<=xxl"){
           margin-left: 60px;
+        }
+        @include media("<desktop"){
+          margin-left: 15px;
         }
         @include media("<xl"){
           width: 400px;
@@ -255,11 +261,8 @@ $defaultTransition: all 0.35s ease;
       margin-left: 50px;
     }
     @include media("<xl"){
-      margin-left: 20px;
-    }
-    @include media("<md"){
       margin-left: 10px;
-    }
+    }    
   }
   .monthly-covers-bottom {
     .monthly-covers1 {

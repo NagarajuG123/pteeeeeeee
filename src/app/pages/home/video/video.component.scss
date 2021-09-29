@@ -13,6 +13,8 @@
   }
   .c-section-header--subInfo {
     color: $section-info-color;
+    margin-bottom: 6px;
+
     &::before {
       content: "|";
       padding-left: 15px;
