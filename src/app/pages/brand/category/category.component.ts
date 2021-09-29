@@ -1,5 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  Input,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,28 +18,21 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
   @Input() slug!: string;
-  @Input() apiUrl: string;
 
   isBrowser: boolean;
-  featuredData: any[] =[];
+  featuredData: any[] = [];
   mostRecent: Details[] = [];
-  openVideoPlayer: boolean = false;
-  url: string;
-  titleLimit = 50;
-  titleLimitOptions = [
-    { width: 1200, limit: 85 },
-    { width: 992, limit: 30 },
-  ];
-  descriptionLimit = 200;
-  descriptionLimitOptions = [
-    { width: 1200, limit: 200 },
-    { width: 992, limit: 100 },
-  ];
-
+  tabName: any;
+  defaultTab!: string;
+  noOfTabsShow = 5;
+  activeTab = 1;
+  skipTab = 0;
+  tab!: string;
+  mainText: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -41,67 +41,88 @@ export class CategoryComponent implements OnInit {
     private metaService: MetaService,
     private state: TransferState,
     public commonService: CommonService,
-    @Inject(PLATFORM_ID) private platformId: object,
-  ) { 
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
-      const featureApi = this.apiService.getAPI(`${this.apiUrl}?limit=4&offset=0`);
-      const mostRecentApi = this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=12&offset=0`);
-      const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
+    this.mainText = this.slug.replace('-', ' ');
+    const featureApi = this.apiService.getAPI(
+      `1851/${this.slug}/featured?limit=24&offset=0`
+    );
 
-      forkJoin([featureApi, mostRecentApi, metaApi])
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((results) => {
-          this.featuredData  = results[0].data;
-          this.mostRecent  = results[1].data;
-          this.metaService.setSeo(results[2].data);
-        });
-  }
-  updateVideoUrl(url: string) {
-    this.openVideoPlayer = true;
-    this.url = url;
+    const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
+    const spotlightCategoriesApi = this.apiService.getAPI(
+      `1851/spotlights/categories`
+    );
+    forkJoin([featureApi, metaApi, spotlightCategoriesApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((results) => {
+        this.featuredData = results[0].data;
+        this.metaService.setSeo(results[1].data);
+        this.tabName = results[2].categories;
+        this.activeTab =
+          this.tabName
+            .map(function (e) {
+              return e.slug;
+            })
+            .indexOf(this.slug) + 1;
+      });
   }
 
-  setLimitValues(Options,fieldName) {
-    let limitVal = 0;
-    Options.forEach((item) => {
-      if (window.innerWidth < item.width) {
-        limitVal = item.limit;
-      }
-    });
-    if (Number(limitVal) === 0) {
-      limitVal = Number(Options[0].limit);
+  prev() {
+    if (this.skipTab > 0) {
+      this.skipTab -= 1;
+      this.activeTab -= 1;
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab]);
+    } else this.skipTab = 0;
+  }
+  next() {
+    if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
+      this.skipTab += 1;
+      this.activeTab += 1;
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab]);
     }
-    switch (fieldName) {
-      case 'titleLimit':
-        this.titleLimit = Number(limitVal);
-        break;
-      case 'descriptionLimit':
-        this.descriptionLimit = Number(limitVal);
-        break;
-      default:
-        break;
-    }  
   }
-
-  async setLimit(event: any) {
-    await this.setLimitValues(this.titleLimitOptions,'titleLimit');
-    await this.setLimitValues(this.descriptionLimitOptions,'descriptionLimit');
+  setActiveTab(val: any, item: any) {
+    this.activeTab = val;
+    this.tab = item?.shortName;
+    this.mainText = item.name;
+    this.getData(item.slug);
   }
-
+  getData(tabName: any) {
+    this.apiService
+      .getAPI(`1851/${tabName}/featured?limit=24&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        const data: any[] = [];
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            data.push(item);
+          });
+          this.featuredData = data;
+        }
+      });
+  }
+  getMore(tabName: any) {
+    this.apiService
+      .getAPI(
+        `1851/${tabName}/featured?limit=5&offset=${
+          this.featuredData.length + 1
+        }`
+      )
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            this.featuredData.push(item);
+          });
+        }
+      });
+  }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.setLimit(event);
-  }
-  getMoreData(){
-    const scrollOffset = this.mostRecent.length;
-    this.apiService.getAPI(`1851/${this.slug}/most-recent?limit=4&offset=${scrollOffset}`).pipe(takeUntil(this.onDestroy$))
-        .subscribe((results) => {
-          results.data.forEach((item: any) => {
-            this.mostRecent.push(item);
-          });
-    });
+    this.commonService.resizeSidebar(event.target.innerWidth);
   }
 }

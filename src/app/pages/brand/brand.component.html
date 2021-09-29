@@ -13,7 +13,7 @@
 </div>
 
 <div *ngIf="type === 'category_page'">
-  <app-category [slug]="slug" [apiUrl]="apiUrl"></app-category>
+  <app-category [slug]="slug"></app-category>
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
@@ -71,24 +71,29 @@
       </div>
     </div>
   </div>
-  <div class="nextLine position-relative mb-5 mt-2">
-    <div class="container customContainer">
-      <div class="row">
-        <div class="col d-none d-md-block userDetail"></div>
-        <div class="col d-flex justify-content-center align-items-center">
-          <div class="nextBtn px-5 bg-white">
-            <img
-              src="assets/img/nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3"
-              (click)="getMoreDynamic()"
-              loading="lazy"
-            />
-            <span class="gray-color" (click)="getMoreDynamic()">SEE MORE</span>
+  <div class="d-flex">
+    <div class="see-more--wrapper"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white">
+              <img
+                src="assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3"
+                (click)="getMoreDynamic()"
+                loading="lazy"
+              />
+              <span class="seem-more-text-wrapper" (click)="getMoreDynamic()"
+                >SEE MORE</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="see-more-right--wrapper"></div>
   </div>
 </div>

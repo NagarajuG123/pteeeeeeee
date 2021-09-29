@@ -1,4 +1,5 @@
 @import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/media.scss";
 
 //Spotlight Section
 
@@ -140,31 +141,14 @@ a {
     p a {
       font-size: 13px;
       line-height: 141.19%;
+      font-family: $proxiRegular;
     }
   }
 }
 .gray-color {
   color: #243444;
 }
-.nextLine {
-  &::after {
-    content: "";
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    height: 1px;
-    background-color: #eb0444;
-    transform: translateY(-50%);
-  }
-  .nextBtn {
-    font-family: $proxiRegular;
-    font-size: 17px;
-    z-index: 1;
-    img {
-      cursor: pointer;
-    }
-  }
-}
+
 .banner {
   position: relative;
   .left-text {
@@ -177,6 +161,7 @@ a {
       line-height: 20px;
       font-weight: 400;
       color: black;
+      font-family: $proxiRegular;
     }
     h2 {
       font-weight: 700;
@@ -191,6 +176,7 @@ a {
       border: 0;
       cursor: pointer;
       margin: auto;
+      font-family: $proxiRegular;
     }
     .readmore-btn {
       text-align: center;
@@ -206,4 +192,42 @@ a {
       height: 522px;
     }
   }
+}
+.nextLine {
+  .customContainer{
+     div{
+       width: 220px;
+       padding: 0 18px;
+       @include media ("<md"){
+         width: 157px;
+         padding: 0 7px;
+       }
+       .nextBtn {
+         font-family: "ProximaNova-Regular";
+         font-size: 15px;
+         z-index: 1;
+         margin-top: 35px;
+         img {
+           cursor: pointer;
+         }
+       }
+     }
+   }
+ }
+ 
+ .see-more--wrapper{
+   margin-top: 57px;
+   width: 50%;
+   height: 2px;
+   border: 1px solid $red ;
+ }
+ .see-more-right--wrapper{
+   margin-top: 57px;
+   width: 50%;
+   height: 2px;
+   border: 1px solid $red ;
+ }
+.seem-more-text-wrapper {
+ color: #243444;
+ font-size: 17px;
 }

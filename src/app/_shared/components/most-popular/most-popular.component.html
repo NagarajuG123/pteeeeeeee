@@ -23,7 +23,7 @@
               (max-width: 1200px) 238px,
               300px'
               }}"
-              width="100px"
+              width="400px"
               height="95px"
               src="{{ item.media | defaultImage: 100:95 }}"
               alt="most-popular"
@@ -73,12 +73,11 @@
                   <h3 class="mb-0">
                     <strong class="ms-3 d-block">{{ item.title }}</strong>
                   </h3>
-                  <a
-                    routerLink="{{ commonService.goAuthorPage(item) }}"
-                    class="text-black"
-                  >
-                    <small class="ms-3">By {{ item?.author?.name }}</small>
-                  </a>
+
+                  <small 
+
+                    class="ms-3 text-black">By {{ item?.author?.name }} </small>
+                
                   <p class="ms-3">
                     {{ item.short_description }}
                   </p>
@@ -88,7 +87,6 @@
           </ng-template>
         </a>
       </div>
-    </div>
 
     <owl-carousel-o
       [options]="customOptions"
@@ -142,4 +140,4 @@
       </ng-template>
     </owl-carousel-o>
   </div>
-</div>
+
