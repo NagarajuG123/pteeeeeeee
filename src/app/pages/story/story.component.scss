@@ -1,5 +1,6 @@
 @import "../../../assets/scss/theme-color.scss";
 .articles {
+  overflow-x: hidden;
   .banner {
     max-height: 754px;
     overflow: hidden;
