@@ -18,20 +18,27 @@
 
 <div *ngIf="type === 'dynamic_page'">
   <div class="banner d-flex contact-banner">
-    <figure>
+    <figure class="parent">
       <img
-        *ngIf="topBlock?.media?.url"
         appYoutubeImage
-        [src]="topBlock?.media?.url"
+        src="assets/img/dynamicbg.png"
+        class="dynamicbg"
         width="1440"
         height="493"
         alt="banner"
         loading="lazy"
       />
+      <img
+      src="assets/img/badge.png"
+      class="badge"
+      width="482"
+      height="482"
+      alt="badge"
+      loading="lazy"/>
     </figure>
     <div class="left-text d-flex col-5">
       <a routerLink="{{ commonService.readMore(dynamicFirst[0]) }}">
-        <h2>{{ topBlock?.title }}</h2>
+        <h2> FRANCHISE BROKER AWARDS</h2>
         <p>{{ topBlock?.description }}</p>
         <div class="readmore-btn">
           <button class="align-items-center">READ MORE</button>

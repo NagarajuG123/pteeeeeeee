@@ -231,3 +231,18 @@ a {
  color: #243444;
  font-size: 17px;
 }
+.parent{
+  position: relative;
+  top: 0;
+  left: 0;
+  .badge {
+    position: absolute;
+    top: 60px;
+    left: 80px;
+  }
+  .dynamicbg{
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
