@@ -22,7 +22,6 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 })
 export class CategoryComponent implements OnInit {
   @Input() slug!: string;
-  @Input() apiUrl: string;
 
   isBrowser: boolean;
   featuredData: any[] = [];
@@ -33,7 +32,7 @@ export class CategoryComponent implements OnInit {
   activeTab = 1;
   skipTab = 0;
   tab!: string;
-
+  mainText: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -48,8 +47,9 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mainText = this.slug.replace('-', ' ');
     const featureApi = this.apiService.getAPI(
-      `${this.apiUrl}?limit=24&offset=0`
+      `1851/${this.slug}/featured?limit=24&offset=0`
     );
 
     const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
@@ -62,20 +62,15 @@ export class CategoryComponent implements OnInit {
         this.featuredData = results[0].data;
         this.metaService.setSeo(results[1].data);
         this.tabName = results[2].categories;
+        this.activeTab =
+          this.tabName
+            .map(function (e) {
+              return e.slug;
+            })
+            .indexOf(this.slug) + 1;
       });
   }
 
-  getMoreData() {
-    const scrollOffset = this.mostRecent.length;
-    this.apiService
-      .getAPI(`1851/${this.slug}/most-recent?limit=4&offset=${scrollOffset}`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((results) => {
-        results.data.forEach((item: any) => {
-          this.mostRecent.push(item);
-        });
-      });
-  }
   prev() {
     if (this.skipTab > 0) {
       this.skipTab -= 1;
@@ -93,12 +88,12 @@ export class CategoryComponent implements OnInit {
   setActiveTab(val: any, item: any) {
     this.activeTab = val;
     this.tab = item?.shortName;
-    this.getData(this.tab);
+    this.mainText = item.name;
+    this.getData(item.slug);
   }
   getData(tabName: any) {
-    const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
     this.apiService
-      .getAPI(`${this.apiUrl}?limit=10&offset=0`)
+      .getAPI(`1851/${tabName}/featured?limit=24&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -107,6 +102,22 @@ export class CategoryComponent implements OnInit {
             data.push(item);
           });
           this.featuredData = data;
+        }
+      });
+  }
+  getMore(tabName: any) {
+    this.apiService
+      .getAPI(
+        `1851/${tabName}/featured?limit=5&offset=${
+          this.featuredData.length + 1
+        }`
+      )
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            this.featuredData.push(item);
+          });
         }
       });
   }
