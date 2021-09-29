@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
-  isMain: boolean;
   isShow: boolean;
   publication: any;
   type: any;
@@ -50,7 +49,6 @@ export class HeaderComponent implements OnInit {
   editorialEmail: string;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
-  scrollbarOptions: any;
   brandId: string = '1851';
   isSubmitted: boolean = false;
   isSubmitFailed: boolean = false;
@@ -61,11 +59,8 @@ export class HeaderComponent implements OnInit {
   inquireTitle = '';
   inquireData: any;
   submitErrMsg: string = '';
-  sidenav: any;
   ga: any;
-  isFranchiseMenu: boolean = false;
-  isLearnMenu: boolean = false;
-  isBrandLearnMenu: boolean = false;
+
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -89,7 +84,6 @@ export class HeaderComponent implements OnInit {
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
   isPdfEmail: any = false;
-  visitSite: any;
   defaultBrandLogo: string;
   constructor(
     private apiService: ApiService,
@@ -157,7 +151,6 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-    this.scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
   }
   setInit() {
     let headerApi = 'header';
@@ -168,37 +161,21 @@ export class HeaderComponent implements OnInit {
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    const sidenav = this.apiService.getAPI(`${this.brandSlug}/sidebar`);
 
-    forkJoin([header, news, inquire, publication, sidenav]).subscribe(
-      (results) => {
-        this.header = results[0].data;
-        this.news = results[1].data;
-        this.inquireData = results[2].schema;
-        this.publication = results[3];
-        this.sidenav = results[4].data;
-        this.isMain = true;
+    forkJoin([header, news, inquire, publication]).subscribe((results) => {
+      this.header = results[0].data;
+      this.news = results[1].data;
+      this.inquireData = results[2].schema;
+      this.publication = results[3];
 
-        this.setFavicon();
-        if (this.brandSlug != '1851') {
-          this.isMain = false;
-          this.getInquiry();
-          this.getContact();
-          if (this.sidenav[this.brandSlug]) {
-            this.downloadPdfUrl = `${
-              this.sidenav[this.brandSlug]['download-pdf']['url']
-            }`;
-            this.isPdfEmail = `${
-              this.sidenav[this.brandSlug]['download-pdf']['email_popup']
-            }`;
-            this.visitSite = `${
-              this.sidenav[this.brandSlug]['visit-website']['url']
-            }`;
-          }
-          this.setEditorialEmail();
-        }
+      this.setFavicon();
+      if (this.brandSlug != '1851') {
+        this.getInquiry();
+        this.getContact();
+
+        this.setEditorialEmail();
       }
-    );
+    });
   }
   setEditorialEmail() {
     if (this.publication.id === '1851') {
@@ -208,19 +185,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.editorialEmail = 'editorial@room1903.com';
     }
-  }
-  visitBrandPage() {
-    const action = this.visitSite
-      .replace(/^https?:\/\//, '')
-      .replace(/^http?:\/\//, '')
-      .match(/^([^\/]+)/gm)[0];
-    this._googleAnalyticsService.appendGaEventOutboundLink(
-      this.ga['1851_franchise'],
-      this.brandId,
-      action,
-      'Visit Website',
-      this.brandTitle
-    );
   }
 
   onSearchSubmit(searchForm: any, type) {
@@ -328,9 +292,7 @@ export class HeaderComponent implements OnInit {
       this.inquireForm = this.fb.group(group);
     }
   }
-  // closeModal(id) {
-  //   $(`#${id}`).hide();
-  // }
+
   getFormType(item) {
     let type = 'text';
     if (item === 'net_worth' || item === 'liquidity') {
@@ -415,15 +377,6 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  toggleFranchise() {
-    this.isFranchiseMenu = !this.isFranchiseMenu;
-  }
-  toggleLearn() {
-    this.isLearnMenu = !this.isLearnMenu;
-  }
-  toggleBrandLearn() {
-    this.isBrandLearnMenu = !this.isLearnMenu;
-  }
   emailSubscribe(pdfform: FormGroup) {
     this.isEmailSubmit = true;
     this.emailSubMessage = '';
