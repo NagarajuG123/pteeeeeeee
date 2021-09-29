@@ -16,12 +16,24 @@
             <a routerLink="/{{ item.slug }}" fragment="featured">
               <img
                 appYoutubeImage
-                class="img-fluid"
+                class="img-fluid lazyload"
                 width="216"
                 height="135"
-                src="{{ item.media | defaultImage: 1300:730 }}"
+                data-src="{{ item.media | defaultImage: 1300:730 }}"
                 alt="featured"
                 loading="lazy"
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                  item.media | defaultImage: 300:168
+                }} 300w, 
+            {{ item.media | defaultImage: 400:224 }} 400w, {{
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+                }}"
               />
             </a>
 
@@ -123,9 +135,22 @@
                 appYoutubeImage
                 width="121px"
                 height="114px"
-                src="{{ item.media | defaultImage: 121:114 }}"
+                data-src="{{ item.media | defaultImage: 121:114 }}"
+                class="lazyload"
                 alt="industry"
                 loading="lazy"
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                  item.media | defaultImage: 300:168
+                }} 300w, 
+            {{ item.media | defaultImage: 400:224 }} 400w, {{
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
+                (max-width: 992px) 400px,
+                (max-width: 1200px) 238px,
+                300px'
+                }}"
             /></a>
           </div>
           <div>
@@ -172,18 +197,22 @@
               fragment="featured"
               ><img
                 appYoutubeImage
-                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
-            {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-                class="img-fluid"
-                sizes="{{
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                  item.media | defaultImage: 300:168
+                }} 300w, 
+            {{ item.media | defaultImage: 400:224 }} 400w, {{
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                class="img-fluid lazyload"
+                data-sizes="{{
                   '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
                 300px'
                 }}"
-                width="353"
+                width="253"
                 height="137"
-                src="{{ item.media | defaultImage: 253:137 }}"
+                data-src="{{ item.media | defaultImage: 253:137 }}"
                 alt="featured"
                 loading="lazy"
             /></a>

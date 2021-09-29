@@ -13,11 +13,12 @@
         (click)="prev()"
       >
         <img
-          src="assets/img/left-arrow.svg"
+          data-src="assets/img/left-arrow.svg"
           width="20px"
           height="39px"
           loading="lazy"
           alt="arrow"
+          class="lazyload"
         />
       </div>
       <ul class="row innerContent m-0">
@@ -52,11 +53,12 @@
         (click)="next()"
       >
         <img
-          src="assets/img/right-arrow.svg"
+          data-src="assets/img/right-arrow.svg"
           loading="lazy"
           width="20px"
           height="39px"
           alt="arrow"
+          class="lazyload"
         />
       </div>
     </div>
@@ -73,10 +75,14 @@
             <div class="items card border-0 rounded-0 h-100">
               <img
                 appYoutubeImage
-                srcset="{{list.media | defaultImage:238:133}} 238w, {{list.media | defaultImage:300:168}} 300w, 
-            {{list.media | defaultImage:400:224}} 400w, {{list.media | defaultImage:555:310}} 555w"
-                class="card-img-top img-fluid"
-                sizes="{{
+                data-srcset="{{ list.media | defaultImage: 238:133 }} 238w, {{
+                  list.media | defaultImage: 300:168
+                }} 300w, 
+            {{ list.media | defaultImage: 400:224 }} 400w, {{
+                  list.media | defaultImage: 555:310
+                }} 555w"
+                class="card-img-top img-fluid lazyload"
+                data-sizes="{{
                   '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
               (max-width: 1200px) 238px,
@@ -99,9 +105,9 @@
                 >
                   {{ list.title }}
                 </h6>
-             
+
                 <small>By {{ list.author?.name }}</small>
-             
+
                 <h4 class="card-text mb-1">
                   {{ list.short_description }}
                 </h4>
