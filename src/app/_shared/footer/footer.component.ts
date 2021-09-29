@@ -22,6 +22,8 @@ export class FooterComponent implements OnInit {
   brandContact: any;
   brandId: string = '1851';
   isBrowser: boolean;
+  news: any;
+  isLoaded: boolean = false;
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -33,12 +35,18 @@ export class FooterComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private router: Router,
+    private commonService: CommonService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
+    this.commonService.isPageLoaded.subscribe((res) => {
+      if(res){
+        this.isLoaded = true;
+      }
+    })
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];

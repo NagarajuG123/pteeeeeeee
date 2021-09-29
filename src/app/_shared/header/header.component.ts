@@ -85,6 +85,7 @@ export class HeaderComponent implements OnInit {
   downloadPdfUrl: any;
   isPdfEmail: any = false;
   defaultBrandLogo: string;
+  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -113,6 +114,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isShow = true;
     this.setSlug();
+    this.commonService.isPageLoaded.subscribe((res) => {
+      if(res){
+        this.isLoaded = true;
+      }
+    })
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
