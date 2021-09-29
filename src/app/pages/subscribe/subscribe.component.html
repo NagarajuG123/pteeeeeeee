@@ -3,20 +3,22 @@
     <img
       *ngIf="data?.media?.url"
       appYoutubeImage
-      [src]="data?.media?.url"
+      data-[src]="data?.media?.url"
       width="1440"
       height="493"
       alt="banner"
       loading="lazy"
+      class="lazyload"
     />
     <img
       *ngIf="!data?.media"
       appYoutubeImage
-      [src]="imgUrl"
+      data-[src]="imgUrl"
       width="1440"
       height="493"
       alt="banner"
       loading="lazy"
+      class="lazyload"
     />
   </figure>
   <div class="termsofuse-banner-main text-center">

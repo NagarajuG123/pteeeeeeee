@@ -3,6 +3,7 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-trending',
