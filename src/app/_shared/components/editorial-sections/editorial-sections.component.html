@@ -99,12 +99,10 @@
                 >
                   {{ list.title }}
                 </h6>
-             
-                <small>By {{ list.author?.name }}</small>
-             
-                <h4 class="card-text mb-1">
-                  {{ list.short_description }}
-                </h4>
+
+                <a routerLink="{{ commonService.goAuthorPage(list) }}">
+                  <small>{{ list.author?.name }}</small>
+                </a>
               </div>
             </div>
           </a>
