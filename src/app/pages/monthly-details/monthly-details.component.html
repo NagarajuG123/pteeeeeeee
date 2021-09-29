@@ -1,101 +1,115 @@
-<div
-  class="
-    banner
-    d-flex
-    flex-row-reverse
-    monthlydetails-banner
-    trendingbrandbuzz-banner
-  "
-  *ngIf="banner"
->
-  <div class="banner-right col-md-8 p-0" *ngIf="banner.media">
-    <a
-      *ngIf="!commonService.isVideo(banner)"
-      class="d-block"
-      href=""
-      onclick="return false;"
-    >
-      <figure>
-        <img
-          appYoutubeImage
-          src="{{ banner.media | defaultImage: 1023:576 }}"
-          width="1023"
-          height="576"
-          alt="monthly-details-banner"
-          loading="lazy"
-        />
-      </figure>
-    </a>
-    <a
-      *ngIf="commonService.isVideo(banner)"
-      class="d-block video-btn"
-      data-bs-toggle="modal"
-      data-bs-target="#bannerModal"
-      href="#"
-    >
-      <figure>
-        <img
-          appYoutubeImage
-          src="{{ banner.media | defaultImage: 1023:576 }}"
-          width="1023"
-          height="576"
-          alt="banner"
-          loading="lazy"
-        />
-      </figure>
-      <img class="video-maker" src="assets/img/youtube.svg" alt="video-btn" loading="lazy"/>
-    </a>
-  </div>
-  <a
-    class="banner-left col-md-4 p-0"
-    routerLink="/{{ commonService.readMore(banner) }}"
-    fragment="{{ typeSlug }}"
-  >
-    <div class="trendingbrandbuzz-content">
-      <h4 class="text-uppercase text-center d-inline-block">
-        {{ coverDate | date: "MMMM dd, YYYY" }}
-      </h4>
-
-      <h1>
-        {{ banner.title }}
-      </h1>
-      <p>
-        {{ banner.short_description }}
-      </p>
+<!--Top Section-->
+<section class="c-card-box--section">
+  <div class="c-card-box--wrapper">
+    <div class="c-card-box--row c-card-box--contentRow">
+      <div class="c-card-box--col month-business--wrapper">
+        <div class="c-card-box--contentGroup">
+          <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
+          <h1 class="c-card-box--title">Back to Business</h1>
+          <p class="c-card-box--content">
+          {{ banner[0]?.title}}
+          </p>
+          <a
+            routerLink="/{{ commonService.readMore(banner[0]) }}"
+            fragment="monthlydetailspage"
+            class="c-link--btn"
+            >Read more &gt;</a
+          >
+        </div>
+      </div>
     </div>
-    <a
-      class="buffalowings-bottom float-end text-uppercase"
-      routerLink="/{{ commonService.readMore(banner) }}"
-      fragment="monthlydetailspage"
-    >
-      <a
-        class="float-end text-uppercase"
-        routerLink="/{{ commonService.readMore(banner) }}"
-        fragment="monthlydetailspage"
+    <div class="c-card-box--row">
+      <div class="c-card-box--col c-card-main-imagebox--wrapper">
+        <div class="c-card-box--imageWrapper isMainCardBox">
+          <a
+            routerLink="/{{ commonService.readMore(banner[0]) }}"
+            class="maincardbox-link--wrapper"
+          >
+            <img
+              appYoutubeImage
+              src="{{ banner[0]?.media | defaultImage: 1100:775 }}"
+              width="100%"
+              height="775"
+              alt="monthly-details-main"
+              class="card-image"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Bottom Section-->
+
+<div class="ArticlesNewsSection">
+  <div class="container customContainer py-md-2">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="primary-color fw-bold mb-3">Monthly Details</h4>
+      </div>
+      <div
+        class="col-sm-6 col-md-3 mb-2 card-group"
+        *ngFor="let item of banner; index as i"
       >
-        READ MORE
-        <fa-icon [icon]="faAngleRight"></fa-icon>
-      </a>
-      <div class="clearfix"></div>
-    </a>
-  </a>
-</div>
-
-<div class="trending-articles monthly-details-trending">
-  <div class="container">
-    <div class="trending-articles-details col-xl-11">
-      <h4 class="text-uppercase">
-        <strong>{{ coverDate | date }}</strong>
-        ISSUE
-      </h4>
-      <app-five-column
-        [slug]="'1851'"
-        [contents]="details"
-        type="monthlydetails"
-        [hasMore]="hasMore"
-        (more)="getMoreData()"
-        [typeSlug]="'monthlydetailspage'"
-      ></app-five-column>
-    </div>
-  </div>
-</div>
+        <div class="items card border-0 rounded-0">
+          <a href="{{ commonService.readMore(item) }}">
+            <img
+              appYoutubeImage
+              width="257"
+              height="138"
+              [src]="item.media | defaultImage: 257:138"
+              alt="article"
+              class="card-img-top"
+              loading="lazy"
+            />
+          </a>
+          <div class="card-body">
+            <h6 class="card-title fw-bold m-0">
+              <a
+                href="{{ commonService.readMore(item) }}"
+                class="text-black text-uppercase text-truncate"
+                >{{item.title }}</a
+              >
+            </h6>
+            <span class=""
+              ><a href="#">{{ item.author.name }}</a></span
+            >
+            <p class="card-text mb-1">
+              <a
+                href="{{ commonService.readMore(item) }}"
+                class="text-black"
+                >{{ item?.short_description }}</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+        <!-- See More -->
+        <div class="d-flex">
+          <div class="see-more--wrapper"></div>
+          <div class="nextLine position-relative mb-5 mt-2">
+            <div class="container customContainer">
+              <div class="row d-flex align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="nextBtn px-1 bg-white">
+                    <img
+                      src="assets/img/nextIcon.svg"
+                      width="32"
+                      alt="next articles"
+                      class="me-3"
+                      (click)="getMoreData()"
+                      loading="lazy"
+                    />
+                    <span class="seem-more-text-wrapper" (click)="getMoreData()"
+                      >SEE MORE</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="see-more-right--wrapper"></div>
+        </div>
+      </div>
+      

@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <div class="row m-0 brand-page-row--wrapper">
+  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4':''">
     <div class="col-lg-8 col-md-12 pl-0 brand-left-info--wrapper">
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
@@ -90,41 +90,48 @@
         </div>
 
         <div *ngIf="isPdf">
-          <div class="container customContainer py-5 pl-5 ml-5">
-            <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
-            <img
-              class="img-fluid"
-              width="300"
-              height="150"
-              src="{{ logo }}"
-              alt="brand_logo"
-              loading="lazy"
-            />
-            <div class="row download-btn">
-              <a
-                *ngIf="items?.email_popup"
-                data-bs-toggle="modal"
-                data-bs-target="#pdfModal"
-                href="#"
-              >
-                <button
-                  type="submit"
-                  class="btn text-center submit-btn text-white rounded-0 btn-sm"
+          <div class="container customContainer py-md-5 py-3 pl-5 ml-5 download-pdf--wrapper">
+            <div class="frannews-left--wrapper">
+              <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
+              <img
+                class="img-fluid"
+                width="300"
+                height="150"
+                src="{{ logo }}"
+                alt="brand_logo"
+                loading="lazy"
+              />
+              <div class="row download-btn">
+                <a
+                  *ngIf="items?.email_popup"
+                  data-bs-toggle="modal"
+                  data-bs-target="#pdfModal"
+                  href="#"
                 >
-                  Download PDF
-                </button>
-              </a>
-              <a
-                *ngIf="!items?.email_popup"
-                href="{{ changeDownPDFUrl(items?.media?.url) }}"
-              >
-                <button
-                  type="submit"
-                  class="btn text-center submit-btn text-white rounded-0 btn-sm"
+                  <button
+                    type="submit"
+                    class="btn text-center submit-btn text-white rounded-0 btn-sm"
+                  >
+                    Download PDF
+                  </button>
+                </a>
+                <a
+                  *ngIf="!items?.email_popup"
+                  href="{{ changeDownPDFUrl(items?.media?.url) }}"
                 >
-                  Download PDF
-                </button>
-              </a>
+                  <button
+                    type="submit"
+                    class="btn text-center submit-btn text-white rounded-0 btn-sm"
+                  >
+                    Download PDF
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="frannews-right--wrapper">
+              <div class="frannews-image--wrapper">
+                <!-- <img src="" /> -->
+              </div>
             </div>
           </div>
         </div>
@@ -246,19 +253,19 @@
                 class="map-legend"
               >
                 MAP LEGEND:
-                <div class="row">
+                <div class="row m-0">
                   <div
                     *ngFor="let market of items['available-markets']"
                     class="col-sm-5 map-legend-item"
                   >
-                    <div class="row market-names">
-                      <div class="col-xs-1">
+                    <div class="market-names">
+                      <div class="">
                         <div
                           class="market-status-color"
                           [style.backgroundColor]="market.color"
                         ></div>
                       </div>
-                      <div class="col-xs-10 align-self-center lh-base">
+                      <div class="align-self-center lh-base">
                         <span class="text-uppercase market-name">{{
                           market.name
                         }}</span>
@@ -299,7 +306,7 @@
     </div>
 
     <div class="col-lg-4 col-md-12 pr-0 pl-0" *ngIf="isInfo || isMarket">
-      <div class="financial-requirement-section">
+      <div class="financial-requirement-section" *ngIf="!isMarket">
         <div class="header">
           <div class="title">Financial Requirments</div>
         </div>
@@ -338,9 +345,34 @@
         </div>
       </div>
 
-      <div class="inquiry-form-section">
+      <div class="more-brand--wrapper">
         <div class="header">
+          <div class="title">More brand info</div>
+        </div>
+        <div class="brand-list">
+          <span class="brand-name">
+            Name
+          </span>
+          <span class="brand-name">
+            NO. OF UNITS CURRENTLY OPEN:
+          </span>
+          <span class="brand-name">
+            Start-up costs
+          </span>
+          <span class="brand-name">
+            Franchise Fee
+          </span>
+          <span class="brand-name">
+            Royalty
+          </span>
+        </div>
+      </div>
+      <div class="inquiry-form-section">
+        <div class="header" *ngIf="!isMarket">
           <div class="title">INQUIRE NOW</div>
+        </div>
+        <div class="header market-header" *ngIf="isMarket">
+          <div class="title">Inquire about services</div>
         </div>
         <form
           *ngIf="inquireForm"
@@ -425,8 +457,8 @@
         </form>
   
         <!-- Recent Features -->
-        <div class="recent-feature-article-section">
-          <div class="row p-3">
+        <div class="recent-feature-article-section" *ngIf="!isMarket">
+          <div class="row">
             <div class="col-md-12">
               <div class="title-tag">RECENT FEATURES</div>
               <div
@@ -441,9 +473,9 @@
         </div>
 
         <!-- Featured Article Section -->
-        <div class="divider-main"></div>
-        <div class="feature-article-section">
-          <div class="row p-3 d-flex align-items-center justify-content-center">
+        <div class="divider-main" *ngIf="!isMarket"></div>
+        <div class="feature-article-section" *ngIf="!isMarket">
+          <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-9">
               <div
                 class="feature-item"
@@ -468,18 +500,13 @@
         </div>
 
         <!-- Trending Secion -->
-        <div class="divider-main"></div>
-        <div class="trending-section">
-          <div class="row p-3">
+        <div class="divider-main" *ngIf="!isMarket"></div>
+        <div class="trending-section" *ngIf="!isMarket">
+          <div class="row">
             <div class="col-md-12">
               <div class="title-tag">TRENDING</div>
               <div
-                class="
-                  row
-                  p-2
-                  d-flex
-                  justify-content-center
-                  align-items-center
+                class="                  
                   trending-item
                 "
                 *ngFor="let item of trending"
@@ -544,3 +571,12 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+

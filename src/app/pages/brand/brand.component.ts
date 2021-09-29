@@ -86,9 +86,7 @@ export class BrandComponent implements OnInit {
           } else {
             this.type = response.type;
             this.company = response.name;
-            if (this.type === 'category_page') {
-              this.apiUrl = `1851/${this.slug}/featured`;
-            } else if (this.type === 'brand_page') {
+            if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
               this.specialFeatureUrl = `${this.slug}/brand-latest-stories`;
               this.getMeta();
