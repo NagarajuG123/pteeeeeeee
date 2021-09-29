@@ -14,6 +14,7 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
 @Component({
