@@ -32,28 +32,6 @@
     }
   }
 
-  .nextLine {
-    .customContainer{
-       div{
-         width: 220px;
-         padding: 0 18px;
-         @include media ("<md"){
-           width: 157px;
-           padding: 0 7px;
-         }
-         .nextBtn {
-           font-family: "ProximaNova-Regular";
-           font-size: 15px;
-           z-index: 1;
-           margin-top: 35px;
-           img {
-             cursor: pointer;
-           }
-         }
-       }
-     }
-   }
-   
    .see-more--wrapper{
      margin-top: 57px;
      width: 50%;
@@ -71,6 +49,7 @@
 
   .brand-news{
     border-bottom: 3px solid $red;
+    width: 350px;
   }
   .border-bg{
     background-color: $border-color;
@@ -96,6 +75,7 @@
 .form-group {
     position: relative;
     margin: 0;
+    width: 65%;
 }
 .primary-color{
     color: $red;
@@ -163,4 +143,7 @@
       }
     }
   }
+}
+.time-filter{
+   border-right: 2px solid $red;
 }

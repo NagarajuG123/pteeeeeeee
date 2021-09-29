@@ -241,6 +241,12 @@ header {
 }
 
 .search_pop_up {
+  h2{
+    font-family: $balinger;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+  }
   .sponsored-modal-content {
     padding: 70px 50px;
     h2 {
@@ -391,8 +397,8 @@ header {
   }
   button.close {
     position: absolute;
-    right: 35px;
-    top: 22px;
+    right: 10px;
+    top: 0;
     color: $primary-2;
     font-size: 39px;
     outline: 0;
@@ -419,6 +425,7 @@ header {
     }
     input {
       height: 50px;
+      color: $light_gray_8;
     }
     button {
       display: block;
@@ -463,9 +470,10 @@ header {
     margin-top: 30px;
     font-size: 17px;
     line-height: 20px;
-    color: $light-gray-2;
     font-family: "ProximaNova-Regular";
     text-align: center;
+    padding: 1rem;
+    border-top: 1px solid $red;
   }
 }
 .ArticlesNewsSection {
@@ -511,4 +519,7 @@ img{
   max-width: 100%;
   height: auto;
   display: inline-block;
+}
+.form-control{
+  border: 1px solid $black_1;
 }

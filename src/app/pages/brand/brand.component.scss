@@ -153,8 +153,8 @@ a {
   position: relative;
   .left-text {
     position: absolute;
-    top: 40%;
-    left: 20%;
+    top: 35%;
+    left: 7%;
     font-family: $balinger;
     p {
       font-size: 14px;
@@ -179,7 +179,7 @@ a {
       font-family: $proxiRegular;
     }
     .readmore-btn {
-      text-align: center;
+      text-align: left;
       padding-right: 25%;
     }
   }
