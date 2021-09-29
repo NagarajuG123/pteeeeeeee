@@ -14,7 +14,7 @@ import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
 import { faSearch, faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
-
+import 'lazysizes'
 import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
@@ -40,7 +40,6 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
-  logo: any;
   faSearch = faSearch;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
@@ -231,9 +230,8 @@ export class SearchComponent implements OnInit {
       const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
       const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
       const publication = this.apiService.getAPI(`1851/publication-instance`);
-      const mainHeader = this.apiService.getAPI2(`header`);
 
-      forkJoin([main_searchAPI, brand_searchAPI, publication, mainHeader])
+      forkJoin([main_searchAPI, brand_searchAPI, publication])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0]['data'] === null) {
@@ -249,7 +247,7 @@ export class SearchComponent implements OnInit {
           let title = results[2].title;
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
-          this.logo = results[3].data.logo;
+          
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
           this.params = searchPopData['params'];
