@@ -368,8 +368,11 @@
         </div>
       </div>
       <div class="inquiry-form-section">
-        <div class="header">
+        <div class="header" *ngIf="!isMarket">
           <div class="title">INQUIRE NOW</div>
+        </div>
+        <div class="header market-header" *ngIf="isMarket">
+          <div class="title">Inquire about services</div>
         </div>
         <form
           *ngIf="inquireForm"

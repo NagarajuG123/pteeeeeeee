@@ -1,6 +1,7 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/mixins.scss";
+@import "../../../../assets/scss/media.scss";
 
 .brand-img {
   height: 506px;
@@ -139,10 +140,24 @@
     justify-content: flex-start;
     background-color: $dark-gray;
     padding-left: 22px;
+    &.market-header{
+      height: auto;
+      @include mobile-landscape{
+        padding-left: 15px;
+      }
+      .title{
+        text-transform: uppercase;
+        font-size: 19px;
+        margin-bottom: 12px;
+      }
+    }
   }
   form{
     padding: 26px 22px 30px;
     background-color: $dark-gray;
+    @include mobile-landscape{
+      padding: 20px 15px 25px;
+    }
     .inquirefrom-row{
       .isError {
         margin-bottom: 10px !important;
@@ -858,7 +873,7 @@ button.close {
 }
 .brand-page-row--wrapper{
   padding: 0 45px;
-  justify-content: center;
+  justify-content: center;  
   @include tablet-portrait{
     padding: 0px 45px 15px 45px;
   }
@@ -879,8 +894,20 @@ button.close {
     margin: 0 auto;
     z-index: 9;
     @include mobile-portrait{
-      top: 0;
+      top: 8px;
       font-size: 14px;
+    }
+  
+  }
+}
+.question-container{
+  .question-section{
+    &:first-child{
+      .header{
+        @include media("<=xs"){
+        height: 65px;
+        }
+      }
     }
   }
 }
