@@ -2,7 +2,7 @@
   <app-trending [slug]="slug"></app-trending>
   <app-special-feature
     *ngIf="length < 8 || length == 8"
-    [apiUrl]="specialFeatureUrl"
+    [apiUrl]="apiUrl"
     [slug]="slug"
     [type]="'brand'"
   ></app-special-feature>
