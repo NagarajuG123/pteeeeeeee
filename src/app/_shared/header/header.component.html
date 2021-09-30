@@ -199,6 +199,26 @@
             </li>
 
             <li>
+              <h3>Awards</h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                      text-capitalize
+                    "
+                    routerLink="{{ item?.url }}"
+                    >{{ item.title }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
               <hr />
 
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
@@ -486,7 +506,7 @@
           [formGroup]="searchForm"
           (ngSubmit)="onSearchSubmit(searchForm, 'header')"
         >
-        <h2>SEARCH 1851 FRANCHISE</h2>
+          <h2>SEARCH 1851 FRANCHISE</h2>
           <div class="form-group d-block">
             <input
               type="text"
