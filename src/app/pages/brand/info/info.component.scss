@@ -912,3 +912,94 @@ button.close {
     }
   }
 }
+//latest story page 
+.strory-banner--img{
+  padding: 0 0 20px !important;
+  text-align: center;
+  img{
+    height: 325px;
+    @include media("<md"){
+      height: auto;
+    }
+  }
+}
+
+.info-wrapper{
+  background: #F3F8FB;
+  margin: 0 -12px !important;
+  padding: 0;
+  .customContainer {
+    max-width: 100% !important;
+    padding: 0;
+    .innerContent{
+      padding: 110px 150px 70px !important;
+      @include media("<xl"){
+        padding: 20px 12px 20px !important;
+      }
+      @include media("<md"){        
+        padding: 20px 12px 20px !important;
+      }      
+      .row{
+        @include media("<md"){
+          justify-content: space-between;
+        }
+      }
+      li{
+        height: auto;        
+        background: transparent;
+        margin-bottom: 12px;
+        @include media("<md"){
+          max-width: 50% !important;
+        }
+        @include media("<sm"){
+          max-width: 100% !important;
+        }
+      }
+    }
+  }
+  .stories-tabItem{
+    // display: inline-block;
+  }
+  .card-img-top{
+    height: 106px;
+    @include media("<md"){
+      height: 160px;
+    }
+  }
+  .card-body{
+    padding: 11px 10px 15px !important;
+  }
+  .card-title{
+    font-weight: bold !important;
+    font-size: 12px !important;
+    line-height: 117%;
+    color: #243444;
+    -webkit-line-clamp: 2;
+    height: 29px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif !important;
+  }
+  small{
+    font-size: 10px;
+    color: #243444;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif !important;
+  }
+  .card-text{
+    font-size: 10px !important;
+    line-height: 128.69%;
+    color: #595959 !important;
+    margin: 0;
+    -webkit-line-clamp: 2;
+    height: 26px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
