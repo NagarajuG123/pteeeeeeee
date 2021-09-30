@@ -1,15 +1,16 @@
 <div *ngIf="type === 'brand_page'">
   <app-trending [slug]="slug"></app-trending>
   <app-special-feature
+    *ngIf="length < 8 || length == 8"
     [apiUrl]="specialFeatureUrl"
     [slug]="slug"
     [type]="'brand'"
   ></app-special-feature>
+  <app-featured  *ngIf="length > 8" [apiUrl]="apiUrl" [slug]="slug"></app-featured>
   <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
 
   <app-editorial-sections [slug]="slug"></app-editorial-sections>
 
-  <app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
 </div>
 
 <div *ngIf="type === 'category_page'">

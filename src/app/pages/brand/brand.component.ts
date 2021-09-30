@@ -34,6 +34,7 @@ export class BrandComponent implements OnInit {
   skipTab = 0;
   tab!: string;
   specialFeatureUrl: string;
+  length: number;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -89,7 +90,13 @@ export class BrandComponent implements OnInit {
             this.company = response.name;
             if (this.type === 'brand_page') {
               this.apiUrl = `${this.slug}/featured-articles`;
-              this.specialFeatureUrl = `${this.slug}/brand-latest-stories`;
+              this.specialFeatureUrl = `${this.slug}/featured-articles`;
+              this.apiService.getAPI(`${this.specialFeatureUrl}`).
+              pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
+                if(response.data.length){
+                  this.length = response.data.length;
+                }
+              })
               this.getMeta();
               this.getMostPopular();
               this.getSpotlight();
