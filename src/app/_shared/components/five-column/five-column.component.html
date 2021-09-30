@@ -40,8 +40,8 @@
         <figure>
           <img
             appYoutubeImage
-            srcset="{{n.media | defaultImage:545:305}} 545w, {{n.media | defaultImage:355:199}} 355w, {{n.media | defaultImage:300:168}} 300w, {{n.media | defaultImage:210:118}} 210w"
-            sizes="{{
+            data-srcset="{{n.media | defaultImage:545:305}} 545w, {{n.media | defaultImage:355:199}} 355w, {{n.media | defaultImage:300:168}} 300w, {{n.media | defaultImage:210:118}} 210w"
+            data-sizes="{{
               '(max-width: 576px) 545px,
                (max-width: 768px) 355px,
                (max-width: 992px) 300px,
@@ -49,8 +49,9 @@
             }}"
             width="210px"
             height="118px"
-            src="{{ n.media | defaultImage: 210:118 }}"
+            data-src="{{ n.media | defaultImage: 210:118 }}"
             alt="news"
+            class="lazyload"
             loading="lazy"
           />
         </figure>

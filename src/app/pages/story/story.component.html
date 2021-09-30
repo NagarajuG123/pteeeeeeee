@@ -9,8 +9,9 @@
       appYoutubeImage
       width="100%"
       height="754"
-      [src]="story.media | defaultImage: 1440:754"
+      data-src="story.media | defaultImage: 1440:754"
       alt="article"
+      class="lazyload"
     />
   </div>
 
@@ -21,11 +22,11 @@
         <div class="userImage position-relative">
           <a routerLink="/author/{{ story.author.slug }}"
             ><img
-              src="{{ story.author.media.url }}"
+              data-src="{{ story.author.media.url }}"
               alt="author"
               width="179px"
               height="179px"
-              class="position-absolute d-block"
+              class="position-absolute d-block lazyload"
           /></a>
         </div>
         <a routerLink="/author/{{ story.author.slug }}"
@@ -129,8 +130,9 @@
                   appYoutubeImage
                   width="139"
                   height="84"
-                  [src]="item.media | defaultImage: 139:84"
+                  data-src="item.media | defaultImage: 139:84"
                   alt="news"
+                  class="lazyload"
                 />
               </a>
             </div>
@@ -232,10 +234,10 @@
         <div class="col d-flex justify-content-center align-items-center">
           <div class="nextBtn px-5 bg-white">
             <img
-              src="assets/img/nextIcon.svg"
+              data-src="assets/img/nextIcon.svg"
               width="32"
               alt="next articles"
-              class="me-3"
+              class="me-3 lazyload"
             />
             <span class="gray-color">Next Article</span>
           </div>
@@ -261,9 +263,9 @@
                 appYoutubeImage
                 width="257"
                 height="138"
-                [src]="mainItem.media | defaultImage: 257:138"
+                data-src="mainItem.media | defaultImage: 257:138"
                 alt="article"
-                class="card-img-top"
+                class="card-img-top lazyload"
               />
             </a>
             <div class="card-body">
@@ -303,9 +305,9 @@
                 appYoutubeImage
                 width="257"
                 height="138"
-                [src]="brandNew.media | defaultImage: 257:138"
+                data-src="brandNew.media | defaultImage: 257:138"
                 alt="article"
-                class="card-img-top"
+                class="card-img-top lazyload"
               />
             </a>
             <div class="card-body">

@@ -14,10 +14,10 @@
           <div class="slideItem" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
-              srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+              data-srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
           {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-              class="img-fluid"
-              sizes="{{
+              class="img-fluid lazyload"
+              data-sizes="{{
                 '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
               (max-width: 1200px) 238px,
@@ -25,7 +25,7 @@
               }}"
               width="400px"
               height="95px"
-              src="{{ item.media | defaultImage: 100:95 }}"
+              data-src="{{ item.media | defaultImage: 100:95 }}"
               alt="most-popular"
               loading="lazy"
             />
@@ -96,10 +96,10 @@
         <div class="slideItem">
           <img
             appYoutubeImage
-            srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+            data-srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
           {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-            class="img-fluid"
-            sizes="{{
+            class="img-fluid lazyload"
+            data-sizes="{{
               '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
               (max-width: 1200px) 238px,
@@ -107,7 +107,7 @@
             }}"
             width="380px"
             height="223px"
-            src="{{ item.media | defaultImage: 380:223 }}"
+            data-src="{{ item.media | defaultImage: 380:223 }}"
             alt="most-popular"
             loading="lazy"
           />

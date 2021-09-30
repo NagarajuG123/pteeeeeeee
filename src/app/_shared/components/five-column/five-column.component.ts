@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
+
 @Component({
   selector: 'app-five-column',
   templateUrl: './five-column.component.html',

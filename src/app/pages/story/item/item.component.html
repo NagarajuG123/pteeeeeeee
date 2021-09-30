@@ -36,23 +36,25 @@
             <img
               appYoutubeImage
               *ngIf="isMaxresultImg"
-              src="{{ media | defaultImage: 802:451 }}"
+              data-src="{{ media | defaultImage: 802:451 }}"
               width="802"
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
+              class="lazyload"
             />
             <img
               appYoutubeImage
               *ngIf="!isMaxresultImg"
-              src="{{ media | defaultImage: 802:451 }}"
+              data-src="{{ media | defaultImage: 802:451 }}"
               width="802"
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
+              class="lazyload"
             />
           </figure>
-          <img class="video-maker" src="assets/img/youtube.svg" alt="video" />
+          <img class="video-maker lazyload" data-src="assets/img/youtube.svg" alt="video" />
         </a>
         <a
           *ngIf="media && media.type !== 'video'"
@@ -63,20 +65,22 @@
             <img
               appYoutubeImage
               *ngIf="isMaxresultImg"
-              src="{{ media | defaultImage: 802:451 }}"
+              data-src="{{ media | defaultImage: 802:451 }}"
               width="802"
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
+              class="lazyload"
             />
             <img
               appYoutubeImage
               *ngIf="!isMaxresultImg"
-              src="{{ media | defaultImage: 802:451 }}"
+              data-src="{{ media | defaultImage: 802:451 }}"
               width="802"
               height="451"
               style="width: 802px !important; cursor: pointer"
               alt="sponsored"
+              class="lazyload"
             />
           </figure>
         </a>
@@ -94,10 +98,10 @@
           >
             <a routerLink="/{{ goAuthorPage() }}">
               <img
-                src="{{ author_media | defaultImage: 81:81 }}"
+                data-src="{{ author_media | defaultImage: 81:81 }}"
                 width="81"
                 height="81"
-                class="author-img"
+                class="author-img lazyload"
                 [alt]="details?.author?.name + ' Headshot'"
                 (error)="author_img.src = 'assets/img/placeholder.svg'"
                 #author_img
@@ -206,11 +210,11 @@
         </div>
         <div class="comment-div">
           <img
-            src="assets/img/comment_img.png"
+            data-src="assets/img/comment_img.png"
             width="27"
             height="26"
             alt="comment_img"
-            class="comment-img"
+            class="comment-img lazyload"
           />
           <a
             href="#"
@@ -251,8 +255,8 @@
         <div *ngIf="isLoading" class="loading-screen">
           <img
             alt=""
-            class="loading-image"
-            src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
+            class="loading-image lazyload"
+            data-src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
           />
         </div>
       </div>
@@ -307,11 +311,12 @@
             >
               <img
                 appYoutubeImage
-                src="{{ ad.media | defaultImage: 353:264 }}"
+                data-src="{{ ad.media | defaultImage: 353:264 }}"
                 width="353"
                 height="264"
                 style="width: 100%"
                 alt="story_add"
+                class="lazyload"
               />
             </a>
           </ngx-slick-carousel>
@@ -340,10 +345,11 @@
                       <figure>
                         <img
                           appYoutubeImage
-                          src="{{ article.media | defaultImage: 205:115 }}"
+                          data-src="{{ article.media | defaultImage: 205:115 }}"
                           width="205"
                           height="115"
                           alt="img3"
+                          class="lazyload"
                         />
                       </figure>
                     </div>

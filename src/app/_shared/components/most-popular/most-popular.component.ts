@@ -7,6 +7,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
+
 
 const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
