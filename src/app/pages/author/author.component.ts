@@ -6,6 +6,12 @@ import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { forkJoin } from 'rxjs';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookF,
+  faLinkedinIn,
+  faYoutube,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -19,6 +25,10 @@ export class AuthorComponent implements OnInit {
   footer: any;
   schema: any;
   faAngleRight = faAngleRight;
+  faFacebookFIcon = faFacebookF;
+  faLinkedinInIcon = faLinkedinIn;
+  faYoutubeIcon = faYoutube;
+  faInstagramIcon = faInstagram;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
