@@ -1,33 +1,28 @@
 @import '../../../assets/scss/media.scss';
 @import  '../../../assets/scss/theme-color.scss';
-$bodyBackgroundColor: #273444;
-$whiteColor: #fff;
-$subTitleColor: #EB0444;
-$textColor: #18222e;
-$cardGroupSpacing: 14px;
-$defaultTransition: all 0.35s ease;
+@import '../../../assets/scss/variables.scss';
 // Global Class
 .c-ml--auto {
   margin-left: auto;
 }
 .c-link--btn {
-  color: $subTitleColor;
+  color: $red_1;
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
   margin-top: 15px;
   display: inline-block;
-  transition: $defaultTransition;
+  transition: all 0.35s ease;
   &:hover {
     text-decoration: none;
-    color: $textColor;
+    color: $black_1;
   }
 }
 // Card Design
 .c-card-box--section {
   padding-top: 100px;
-  background-color: $bodyBackgroundColor;
+  background-color: $dark_gray_4;
   .c-card-box--wrapper {
     .c-card-box--row {
       display: flex;
@@ -68,7 +63,7 @@ $defaultTransition: all 0.35s ease;
       }
     }
     .c-card-box--contentRow {
-      background-color: $whiteColor;
+      background-color: $white;
       .month-business--wrapper{
         max-width: 52%;
         margin-left: auto;
@@ -83,7 +78,7 @@ $defaultTransition: all 0.35s ease;
     }
     .c-card-box--contentGroup {
       .c-card-box--subTitle {
-        color: $subTitleColor;
+        color: $red_1;
         margin-top: 0;
         font-size: 20px;
         font-weight: bold;
@@ -94,7 +89,7 @@ $defaultTransition: all 0.35s ease;
       .c-card-box--title {
         font-size: 44px;
         font-weight: bold;
-        color: $textColor;
+        color: $black_1;
         text-transform: capitalize;
         @include media("<md"){
           font-size: 30px;
@@ -179,12 +174,12 @@ $defaultTransition: all 0.35s ease;
       }
       .c-card-box--itemTitle {
         padding-top: 6px;
-        color: $subTitleColor;
+        color: $red_1;
         font-weight: 600;
         font-size: 15px;
       }
       .c-card-box--itemDec {
-        color: $whiteColor;
+        color: $white;
         font-weight: 500;
         font-size: 13px;
         text-overflow: ellipsis;
@@ -200,7 +195,7 @@ $defaultTransition: all 0.35s ease;
         font-size: 11px;
         margin-top: 5px;
         &:hover {
-          color: $whiteColor;
+          color: $white;
         }
       }
     }
