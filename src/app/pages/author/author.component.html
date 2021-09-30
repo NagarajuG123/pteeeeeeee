@@ -1,4 +1,4 @@
-<div class="top-space"></div>
+<!-- <div class="top-space"></div>
 <div class="banner author-banner">
   <div class="container">
     <div class="author-banner-content d-flex col-xl-8">
@@ -36,7 +36,7 @@
   <div class="overlay"></div>
 </div>
 
-<div class="main-content">
+
   <div class="about-cassidy">
     <div class="container">
       <div class="about-cassidy-details col-xl-7">
@@ -46,7 +46,39 @@
         <div class="content" [innerHTML]="author?.data?.about"></div>
       </div>
     </div>
+  </div> -->
+  <div>
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-4 py-5 px-5">
+        <figure>
+          <img
+            *ngIf="author?.data"
+            appYoutubeImage
+            data-src="{{ author?.data?.media | defaultImage: 312:446 }}"
+            width="312"
+            height="446"
+            alt="authorpage"
+            loading="lazy"
+            class="lazyloading"
+          />
+        </figure>
+      </div>
+      <div class="col-8">
+        <div>
+          <h5> ABOUT</h5>
+          <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+          <h5>{{ author?.data?.designation }}</h5>
+        </div>
+        <div>
+            <p>{{ author?.data?.about }}</p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+  <div class="main-content">
   <div class="editorial-stories">
     <div class="container">
       <div class="editorial-stories-details col-xl-11">
