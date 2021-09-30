@@ -3,7 +3,7 @@
     <img
       *ngIf="data?.media?.url"
       appYoutubeImage
-      data-[src]="data?.media?.url"
+      data-src="data?.media?.url"
       width="1440"
       height="493"
       alt="banner"
@@ -13,7 +13,7 @@
     <img
       *ngIf="!data?.media"
       appYoutubeImage
-      data-[src]="imgUrl"
+      data-src="imgUrl"
       width="1440"
       height="493"
       alt="banner"
@@ -369,11 +369,12 @@
           <div class="sucess-message-details">
             <figure>
               <img
-                src="assets/img/contacteditorial-img2.png"
+                data-src="assets/img/contacteditorial-img2.png"
                 width="339"
                 height="388"
                 alt="contacteditorial-img2"
                 loading="lazy"
+                class="lazyload"
               />
             </figure>
             <em>1</em>
