@@ -8,7 +8,7 @@
   margin-left: auto;
 }
 .c-link--btn {
-  color: $subTitleColor;
+  color: $red_1;
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
@@ -18,13 +18,13 @@
   transition: $defaultTransition;
   &:hover {
     text-decoration: none;
-    color: $textColor;
+    color: $black_1;
   }
 }
 // Card Design
 .c-card-box--section {
   padding-top: 100px;
-  background-color: $bodyBackgroundColor;
+  background-color: $dark_gray_4;
   .c-card-box--wrapper {
     .c-card-box--row {
       display: flex;
@@ -79,7 +79,7 @@
     .c-card-box--contentGroup {
       margin-left: -150px;
       .c-card-box--subTitle {
-        color: $subTitleColor;
+        color: $red_1;
         margin-top: 0;
         font-size: 20px;
         font-weight: bold;
@@ -90,7 +90,7 @@
       .c-card-box--title {
         font-size: 44px;
         font-weight: bold;
-        color: $textColor;
+        color: $black_1;
         text-transform: capitalize;
         @include media("<md"){
           font-size: 30px;
@@ -100,7 +100,7 @@
         max-width: 800px;
         font-weight: 600;
         font-size: 18px;
-        color: $textColor;
+        color: $black_1;
         @include media("<md"){
           font-size: 14px;
         }
@@ -173,7 +173,7 @@
       }
       .c-card-box--itemTitle {
         padding-top: 6px;
-        color: $subTitleColor;
+        color: $red_1;
         font-weight: 600;
         font-size: 15px;
       }
