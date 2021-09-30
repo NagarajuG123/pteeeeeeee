@@ -4,7 +4,7 @@
     <div class="c-card-box--row c-card-box--contentRow">
       <div class="c-card-box--col month-business--wrapper">
         <div class="c-card-box--contentGroup">
-          <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
+          <h4 class="c-card-box--subTitle">{{ title }}</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
           <p class="c-card-box--content">
           {{ banner[0]?.title}}
@@ -27,11 +27,11 @@
           >
             <img
               appYoutubeImage
-              src="{{ banner[0]?.media | defaultImage: 1100:775 }}"
-              width="100%"
-              height="775"
+              data-src="{{ banner[0]?.media | defaultImage: 437:589 }}"
+              width="437px"
+              height="589px"
               alt="monthly-details-main"
-              class="card-image"
+              class="img-fluid card-image lazyload"
               loading="lazy"
             />
           </a>
@@ -46,10 +46,10 @@
   <div class="container customContainer py-md-2">
     <div class="row">
       <div class="col-12">
-        <h4 class="primary-color fw-bold mb-3">Monthly Details</h4>
+        <h4 class="fw-bold py-2 mb-2 text-uppercase cover-title">{{ title }}</h4>
       </div>
       <div
-        class="col-sm-6 col-md-3 mb-2 card-group"
+        class="col-sm-6 col-md-3 mb-4 mt-3 card-group"
         *ngFor="let item of banner; index as i"
       >
         <div class="items card border-0 rounded-0">
@@ -58,9 +58,9 @@
               appYoutubeImage
               width="257"
               height="138"
-              [src]="item.media | defaultImage: 257:138"
-              alt="article"
-              class="card-img-top"
+              data-src="{{ item.media | defaultImage: 257:138 }}"
+              alt="monthly-cover"
+              class="card-img-top lazyload"
               loading="lazy"
             />
           </a>
@@ -68,12 +68,12 @@
             <h6 class="card-title fw-bold m-0">
               <a
                 href="{{ commonService.readMore(item) }}"
-                class="text-black text-uppercase text-truncate"
+                class="text-black text-uppercase"
                 >{{item.title }}</a
               >
             </h6>
             <span class=""
-              ><a href="#">{{ item.author.name }}</a></span
+              >By {{ item.author.name }}</span
             >
             <p class="card-text mb-1">
               <a
@@ -86,30 +86,21 @@
         </div>
       </div>
         <!-- See More -->
-        <div class="d-flex">
-          <div class="see-more--wrapper"></div>
-          <div class="nextLine position-relative mb-5 mt-2">
-            <div class="container customContainer">
-              <div class="row d-flex align-items-center">
-                <div class="d-flex justify-content-center align-items-center">
-                  <div class="nextBtn px-1 bg-white">
-                    <img
-                      src="assets/img/nextIcon.svg"
-                      width="32"
-                      alt="next articles"
-                      class="me-3"
-                      (click)="getMoreData()"
-                      loading="lazy"
-                    />
-                    <span class="seem-more-text-wrapper" (click)="getMoreData()"
-                      >SEE MORE</span
-                    >
-                  </div>
-                </div>
+      <div class="nextLine position-relative mb-5 mt-2">
+        <div class="container customContainer">
+          <div class="row">
+            <div class="col d-flex justify-content-center align-items-center">
+              <div class="nextBtn px-5 bg-white">
+                <img
+                  data-src="assets/img/nextIcon.svg"
+                  width="32"
+                  alt="next articles"
+                  class="me-3 lazyload"
+                  (click)="getMoreData()"
+                />
+                <span class="gray-color">See More</span>
               </div>
             </div>
           </div>
-          <div class="see-more-right--wrapper"></div>
         </div>
       </div>
-      
