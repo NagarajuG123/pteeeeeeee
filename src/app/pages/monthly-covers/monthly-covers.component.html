@@ -26,11 +26,11 @@
           >
             <img
               appYoutubeImage
-              src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
+              data-src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
               width="574"
               height="775"
               alt="monthly-covers-main"
-              class="card-image"
+              class="card-image lazyload"
               loading="lazy"
             />
           </a>
@@ -45,11 +45,11 @@
             <div class="c-card-box--imageWrapper">
               <img
                 appYoutubeImage
-                src="{{ item?.media | defaultImage: 190:265 }}"
+                data-src="{{ item?.media | defaultImage: 190:265 }}"
                 width="190"
                 height="265"
                 alt="monthly-covers-main"
-                class="card-image"
+                class="card-image lazyload "
                 loading="lazy"
               />
             </div>
@@ -78,11 +78,12 @@
         <figure class="m-0">
           <img
             appYoutubeImage
-            src="{{ cover.media | defaultImage: 288:379 }}"
+            data-src="{{ cover.media | defaultImage: 288:379 }}"
             width="305"
             height="380"
             alt="monthly-covers"
             loading="lazy"
+            class="lazyload"
           />
         </figure>
       </a>
@@ -98,10 +99,10 @@
           <div class="d-flex justify-content-center align-items-center">
             <div class="nextBtn px-1 bg-white">
               <img
-                src="assets/img/nextIcon.svg"
+                data-src="assets/img/nextIcon.svg"
                 width="32"
                 alt="next articles"
-                class="me-3"
+                class="me-3  lazyload"
                 (click)="getMoreData()"
                 loading="lazy"
               />

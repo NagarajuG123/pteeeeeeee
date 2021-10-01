@@ -53,11 +53,13 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
-                 this.title = this.datePipe.transform(
+                this.title = this.datePipe.transform(
                   this.coverDate,
                   'MMMM YYYY'
                 );
-                this.metaService.setTitle(`${this.title} Issues | ${result.title}`);
+                this.metaService.setTitle(
+                  `${this.title} Issues | ${result.title}`
+                );
               });
           });
         });

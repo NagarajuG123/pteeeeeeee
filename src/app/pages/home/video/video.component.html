@@ -41,18 +41,17 @@
               "
             >
               <img
-                src="{{ item.media | defaultImage: 600:300 }}"
-                class="img-fluid"
+                data-src="{{ item.media | defaultImage: 600:300 }}"
+                class="img-fluid lazyload"
                 alt="video"
                 width="600"
                 height="300"
-                data-src="{{ item.media | defaultImage: 600:300 }}"
                 loading="lazy"
               />
               <img
-                src="assets/img/play.png"
+                data-src="assets/img/play.png"
                 alt="Play"
-                class="img-fluid vide-play"
+                class="img-fluid vide-play lazyload"
                 loading="lazy"
               />
             </a>
@@ -91,17 +90,17 @@
                 "
               >
                 <img
-                  src="{{ item.media | defaultImage: 300:150 }}"
-                  class="img-fluid"
+                  data-src="{{ item.media | defaultImage: 300:150 }}"
+                  class="img-fluid lazyload"
                   width="300"
                   height="150"
                   alt="video"
                   loading="lazy"
                 />
                 <img
-                  src="assets/img/play.png"
+                  data-src="assets/img/play.png"
                   alt="Play"
-                  class="img-fluid vide-play"
+                  class="img-fluid vide-play lazyload"
                   loading="lazy"
                 />
               </a>

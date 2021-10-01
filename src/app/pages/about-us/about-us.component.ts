@@ -9,6 +9,7 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 
 @Component({
   selector: 'app-about-us',

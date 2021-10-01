@@ -58,8 +58,13 @@
               appYoutubeImage
               width="257"
               height="138"
+<<<<<<< HEAD
               data-src="{{ item.media | defaultImage: 257:138 }}"
               alt="monthly-cover"
+=======
+              [data-src]="item.media | defaultImage: 257:138"
+              alt="article"
+>>>>>>> origin/lazyloadclass
               class="card-img-top lazyload"
               loading="lazy"
             />
@@ -86,6 +91,7 @@
         </div>
       </div>
         <!-- See More -->
+<<<<<<< HEAD
       <div class="nextLine position-relative mb-5 mt-2">
         <div class="container customContainer">
           <div class="row">
@@ -99,6 +105,28 @@
                   (click)="getMoreData()"
                 />
                 <span class="gray-color">See More</span>
+=======
+        <div class="d-flex">
+          <div class="see-more--wrapper"></div>
+          <div class="nextLine position-relative mb-5 mt-2">
+            <div class="container customContainer">
+              <div class="row d-flex align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="nextBtn px-1 bg-white">
+                    <img
+                      data-src="assets/img/nextIcon.svg"
+                      width="32"
+                      alt="next articles"
+                      class="me-3 lazyload"
+                      (click)="getMoreData()"
+                      loading="lazy"
+                    />
+                    <span class="seem-more-text-wrapper" (click)="getMoreData()"
+                      >SEE MORE</span
+                    >
+                  </div>
+                </div>
+>>>>>>> origin/lazyloadclass
               </div>
             </div>
           </div>

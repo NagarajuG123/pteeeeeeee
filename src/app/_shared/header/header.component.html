@@ -13,10 +13,11 @@
           >
             <span
               ><img
-                src="assets/img/room-service.png"
+                data-src="assets/img/room-service.png"
                 height="21px"
                 width="21px"
                 alt="room service"
+                class="lazyload"
             /></span>
             Room 1903&nbsp;
             <fa-icon
@@ -34,10 +35,11 @@
           >
             <span
               ><img
-                src="assets/img/Estatenvy.png"
+                data-src="assets/img/Estatenvy.png"
                 height="21px"
                 width="21px"
                 alt="room"
+                class="lazyload"
             /></span>
             Estatenvy&nbsp;
             <fa-icon
@@ -57,15 +59,16 @@
       <div class="col-10 col-md-auto d-flex position-relative">
         <a class="menuBtn me-3" (click)="commonService.toggle()">
           <img
-            [src]="
-              commonService.showmenu
-                ? 'assets/img/close.png'
-                : 'assets/img/menu.png'
-            "
+            data-src="
+            commonService.showmenu
+              ? 'assets/img/close.png'
+              : 'assets/img/menu.png'
+          "
             alt="menu"
             width="35"
             height="24"
             [ngClass]="commonService.showmenu ? 'close-menu' : ''"
+            class="lazyload"
           />
           <small class="text-center d-none d-md-block">MENU</small>
         </a>
@@ -74,11 +77,11 @@
         <div class="logo d-flex align-items-center">
           <a [routerLink]="header?.logo?.url"
             ><img
-              src="{{ header?.logo?.image }}"
+              data-src="{{ header?.logo?.image }}"
               height="{{ header?.logo?.height }}"
               width="{{ header?.logo?.width }}"
               alt="logo"
-              class="me-2"
+              class="me-2 lazyload"
           /></a>
           <div class="d-none d-md-block">
             <!-- Main -->
@@ -114,7 +117,12 @@
                 >{{ header?.subscribe?.subTitle }}</a
               >
               &nbsp;
-              <img src="assets/img/logo.png" height="41" width="41" alt="logo"
+              <img
+                data-src="assets/img/logo.png"
+                height="41"
+                width="41"
+                alt="logo"
+                class="lazyload"
             /></small>
           </div>
         </div>
@@ -136,10 +144,11 @@
                   (click)="onSearchSubmit(searchForm, 'sidebar')"
                 >
                   <img
-                    src="assets/img/search-p.svg"
+                    data-src="assets/img/search-p.svg"
                     alt="search"
                     width="11px"
                     height="11px"
+                    class="lazyload"
                   />
                 </button>
                 <input
@@ -166,11 +175,11 @@
                 <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
                   <img
                     appYoutubeImage
-                    src="{{ header?.monthlyCover?.url }}"
+                    data-src="{{ header?.monthlyCover?.url }}"
                     width="68"
                     height="89"
                     alt="monthly cover"
-                    class="mb-2"
+                    class="mb-2 lazyload"
                   />
                 </a>
               </div>
@@ -378,11 +387,11 @@
             <a class="d-flex align-items-center"
               >{{ action.title }}
               <img
-                src="assets/img/down-arrow.svg"
+                data-src="assets/img/down-arrow.svg"
                 height="30"
                 width="20"
-                class="ms-1"
                 alt=""
+                class="ms-1 lazyload"
             /></a>
             <ul class="dropdown-menu">
               <li *ngFor="let item of action.items">
@@ -414,10 +423,10 @@
             <a class="d-flex align-items-center"
               >{{ header?.actions?.title }}
               <img
-                src="assets/img/down-arrow.svg"
+                data-src="assets/img/down-arrow.svg"
                 height="30"
                 width="20"
-                class="ms-1"
+                class="ms-1 lazyload"
             /></a>
             <ul class="dropdown-menu">
               <li *ngFor="let item of header?.actions?.items">
@@ -437,10 +446,11 @@
             data-bs-toggle="modal"
             data-bs-target="#searchModal"
             ><img
-              src="assets/img/search.svg"
+              data-src="assets/img/search.svg"
               height="15"
               width="15"
               alt="search"
+              class="lazyload"
           /></a>
         </div>
 
@@ -461,12 +471,10 @@
               class="d-flex align-items-center"
               rel="noopener"
             >
-              <img
-                src="{{ item?.media?.image }}"
-                width="{{ item?.media?.width }}"
-                height="{{ item?.media?.height }}"
-                alt="social"
-              />
+              <img data-src="{{ item?.media?.image }}" width="{{
+                item?.media?.width
+              }}" height="{{ item?.media?.height }}" <<<<<<< HEAD alt="social"
+              ======= class="lazyload" >>>>>>> origin/lazyloadclass />
             </a>
           </li>
         </ul>
@@ -476,11 +484,11 @@
           <figure>
             <img
               routerLink="{{ header?.monthlyCover?.coverUrl }}"
-              src="{{ header?.monthlyCover?.url }}"
+              data-src="{{ header?.monthlyCover?.url }}"
               height="101"
               width="92"
               alt="cover"
-              class="cursor"
+              class="cursor lazyload"
             />
           </figure>
         </div>
@@ -541,8 +549,8 @@
                     fragment="franbuzz"
                     (click)="closeModal()"
                     ><img
-                      src="{{ list.media | defaultImage: 257:138 }}"
-                      class="card-img-top"
+                      data-src="{{ list.media | defaultImage: 257:138 }}"
+                      class="card-img-top lazyload"
                       alt="story"
                       width="257"
                       height="138"

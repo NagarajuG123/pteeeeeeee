@@ -20,12 +20,19 @@
   <div class="banner d-flex contact-banner">
     <figure>
       <img
+<<<<<<< HEAD
         data-src="assets/img/dynamicpage_banner.png"
         class="lazyload"
+=======
+        *ngIf="topBlock?.media?.url"
+        appYoutubeImage
+        [data-src]="topBlock?.media?.url"
+>>>>>>> origin/lazyloadclass
         width="1440"
         height="493"
         alt="banner"
         loading="lazy"
+        class="lazyload"
       />
     </figure>
     <div class="left-text d-flex col-5">

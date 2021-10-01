@@ -1,5 +1,5 @@
 <div class="c-subheader--wrapper">
-  <img src="{{ bannerImage }}" alt="banner" width="1449" height="250" loading="lazy"/>
+  <img data-src="{{ bannerImage }}" alt="banner" width="1449" height="250" loading="lazy" class="lazyload"/>
 </div>
 <div class="container-fluid">
   <div class="row">
@@ -107,8 +107,8 @@
                 <div class="list-data--item isBrandCol">
                   <a routerLink="/{{ data.slug }}/info">
                     <img
-                      class="list-data--itemImg"
-                      src="{{ data.logo }}"
+                      class="list-data--itemImg lazyload"
+                      data-src="{{ data.logo }}"
                       alt="logo"
                       loading="lazy"
                   /></a>

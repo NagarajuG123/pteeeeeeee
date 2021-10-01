@@ -12,12 +12,13 @@
         <figure>
           <img
             appYoutubeImage
-            src="{{ data?.media | defaultImage: 1300:730 }}"
+            data-src="{{ data?.media | defaultImage: 1300:730 }}"
             width="1300"
             height="730"
             alt="about"
             (imageLoad)="bannerImageLoad()"
             loading="lazy"
+            class="lazyload"
           />
         </figure>
       </a>
@@ -60,19 +61,21 @@
           <figure>
             <img
               *ngIf="i === 0"
-              [src]="content['media']['url']"
+              [data-src]="content['media']['url']"
               width="720"
               height="485"
               alt="about"
               loading="lazy"
+              class="lazyload"
             />
             <img
               *ngIf="i === 1"
-              [src]="content['media']['url']"
+              [data-src]="content['media']['url']"
               width="720"
               height="485"
               alt="about"
               loading="lazy"
+              class="lazyload"
             />
           </figure>
         </div>
@@ -115,6 +118,7 @@
               height="615"
               alt="about-us-demo"
               loading="lazy"
+              class="lazyload"
             />
           </figure>
         </div>
