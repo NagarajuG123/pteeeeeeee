@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
-import { forkJoin, Subject } from 'rxjs';
+import { BehaviorSubject, forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +25,7 @@ const FEATURE_KEY = makeStateKey<any>('featureState');
 export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
   @Input() slug: string;
-
+  
   isBrowser: boolean;
   featured: Details[] = [];
   news: Details[] = [];
@@ -50,6 +50,7 @@ export class FeaturedComponent implements OnInit {
   url: string;
   openVideoPlayer = false;
   faAngleDown = faAngleDown;
+  isLoaded: boolean = false;
   faAngleUp = faAngleUp;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -81,6 +82,8 @@ export class FeaturedComponent implements OnInit {
         this.featured = results[0].data;
         this.news = results[1].data;
         this.brandNews = results[2].data;
+        this.isLoaded = true;
+        this.commonService.isPageLoaded.next(true);
       });
   }
   updateVideoUrl(url: string) {
