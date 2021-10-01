@@ -12,11 +12,12 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
-    font-family: $proxiSemiBold;
+    font-family:$balinger;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
     margin-bottom: 6px;
+    font-family:$balinger;
 
     &::before {
       content: "|";
@@ -41,7 +42,7 @@
 
 .tag {
   background: #eb0444;
-  font-family: "Ballinger Condensed Regular";
+  font-family:$balinger;
   color: #ffffff;
   font-weight: bold;
   font-size: 17.1429px;
@@ -59,7 +60,7 @@
   }
   h3 {
     text-decoration: none;
-    font-family: $roboto;
+    font-family: $balinger;
     font-style: normal;
     font-weight: bold;
     font-size: 48px;
