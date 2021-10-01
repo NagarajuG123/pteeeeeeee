@@ -924,6 +924,9 @@ button.close {
       height: auto;
       padding: 0;
     }
+    @include media("<xl"){
+      padding: 0;
+    }
   }
 }
 
