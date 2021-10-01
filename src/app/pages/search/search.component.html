@@ -2,7 +2,12 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-2">
-        <img class="img-fluid lazyload" data-src="assets/img/logo.png" />
+        <img class="img-fluid lazyload"
+        data-src ="assets/img/logo.png"
+        width="195px"
+        height="195px"
+        loading="lazy"
+        alt="logo"/>
       </div>
       <div class="col-10 py-4">
         <form
@@ -164,13 +169,13 @@
             class="col-sm-6 col-md-4 mb-2 card-group"
             *ngFor="let item of recentPeoples | slice: 0:6; index as i"
           >
-            <div class="items card border-0 rounded-0">
+            <div class="items card border-0 rounded-0 mt-4">
               <a href="{{ commonService.readMore(item) }}">
                 <img
                   appYoutubeImage
                   width="257"
                   height="138"
-                  [data-src]="item.media | defaultImage: 257:138"
+                  data-src="{{item.media | defaultImage: 257:138}}"
                   alt="article"
                   class="card-img-top lazyload"
                 />
@@ -179,12 +184,12 @@
                 <h6 class="card-title fw-bold m-0">
                   <a
                     href="{{ commonService.readMore(item) }}"
-                    class="text-black text-uppercase text-truncate"
-                    >item.title</a
+                    class="text-black text-uppercase"
+                    >{{ item.title }}</a
                   >
                 </h6>
                 <span class=""
-                  ><a href="#">{{ item.author.name }}</a></span
+                  >By {{ item.author.name }}</span
                 >
                 <p class="card-text mb-1">
                   <a
@@ -196,35 +201,9 @@
               </div>
             </div>
           </div>
-
-          <div class="d-flex border-bg">
-            <div class="see-more--wrapper"></div>
-            <div class="nextLine position-relative mb-5 mt-2">
-              <div class="container customContainer">
-                <div class="row d-flex align-items-center">
-                  <div class="d-flex justify-content-center align-items-center">
-                    <div class="nextBtn px-1 bg-white">
-                      <img
-                        data-src="assets/img/nextIcon.svg"
-                        width="32"
-                        alt="next articles"
-                        class="me-3 lazyload"
-                        loading="lazy"
-                        click="getMoreItems()"
-                      />
-                      <span
-                        class="seem-more-text-wrapper"
-                        click="getMoreItems()"
-                        >SEE MORE</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
       <div class="col-4 bg-white py-4 card-section px-4">
         <h5 class="brand-news">BRAND NEWS</h5>
         <div
@@ -238,6 +217,7 @@
                 width="257"
                 height="138"
                 data-src="{{ item.media | defaultImage: 257:138 }}"
+                class="card-img-top lazyload"
               />
             </a>
             <div class="card-body">
@@ -289,5 +269,3 @@
         <div class="col-4 bg-white"></div>
       </div>
     </div>
-  </div>
-</div>
