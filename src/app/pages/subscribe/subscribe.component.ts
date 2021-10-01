@@ -5,7 +5,7 @@ import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import 'lazysizes';
 
@@ -28,6 +28,7 @@ export class SubscribeComponent implements OnInit {
   isSuccess: boolean = false;
   faAngleRight = faAngleRight;
   faAngleLeft = faAngleLeft;
+  faCaretRight = faCaretRight;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
