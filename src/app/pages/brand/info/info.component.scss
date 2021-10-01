@@ -918,8 +918,11 @@ button.close {
   text-align: center;
   img{
     height: 325px;
+    width: 100%;
+    padding: 0px 152px 0px 137px;
     @include media("<md"){
       height: auto;
+      padding: 0;
     }
   }
 }
