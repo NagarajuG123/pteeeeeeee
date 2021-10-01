@@ -1,18 +1,20 @@
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/variables.scss";
 
 img {
   width: 100%;
 }
 .tag {
+
   background: #eb0444;
-  font-family: "Ballinger Condensed Regular";
+  font-family: $balinger;
   color: #ffffff;
   font-weight: bold;
   font-size: 17.1429px;
   box-sizing: border-box;
 }
 .over-layer {
-  font-family: "Roboto", sans-serif;
+  font-family: $roboto;
   background: rgba(232, 238, 242, 0.67);
   font-size: 30px;
 }
