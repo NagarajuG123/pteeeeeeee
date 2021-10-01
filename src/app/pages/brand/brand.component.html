@@ -1,15 +1,19 @@
 <div *ngIf="type === 'brand_page'">
   <app-trending [slug]="slug"></app-trending>
   <app-special-feature
-    [apiUrl]="specialFeatureUrl"
+    *ngIf="length < 8 || length == 8"
+    [apiUrl]="apiUrl"
     [slug]="slug"
     [type]="'brand'"
   ></app-special-feature>
+  <app-featured
+    *ngIf="length > 8"
+    [apiUrl]="apiUrl"
+    [slug]="slug"
+  ></app-featured>
   <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
 
   <app-editorial-sections [slug]="slug"></app-editorial-sections>
-
-  <app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
 </div>
 
 <div *ngIf="type === 'category_page'">
@@ -21,16 +25,16 @@
     <figure>
       <img
         data-src="assets/img/dynamicpage_banner.png"
-        class="lazyload"
         width="1440"
         height="493"
         alt="banner"
         loading="lazy"
+        class="lazyload"
       />
     </figure>
     <div class="left-text d-flex col-5">
       <a routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}">
-        <h2> Franchise Broker Awards</h2>
+        <h2>Franchise Broker Awards</h2>
         <p>{{ topBlock?.description }}</p>
         <div class="readmore-btn">
           <button class="align-items-center">READ MORE</button>

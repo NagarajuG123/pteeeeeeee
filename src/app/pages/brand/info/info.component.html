@@ -8,7 +8,7 @@
         "
         (click)="prev()"
       >
-        <img src="assets/img/left-arrow.svg" loading="lazy" />
+        <img data-src="assets/img/left-arrow.svg" loading="lazy"  class="lazyload" />
       </div>
       <ul class="row innerContent m-0">
         <li
@@ -41,7 +41,7 @@
         "
         (click)="next()"
       >
-        <img src="assets/img/right-arrow.svg" loading="lazy" />
+        <img data-src="assets/img/right-arrow.svg" loading="lazy"  class="lazyload" />
       </div>
     </div>
   </div>
@@ -51,9 +51,9 @@
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
-          srcset="{{brandInfo?.media | defaultImage:953:535}}"
-          class="img-fluid"
-          sizes="{{
+          data-srcset="{{brandInfo?.media | defaultImage:953:535}}"
+          class="img-fluid lazyload"
+          data-sizes="{{
             '(max-width: 576px) 555px,
                       (max-width: 992px) 400px,
                       (max-width: 1200px) 238px,
@@ -94,10 +94,10 @@
             <div class="frannews-left--wrapper">
               <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
               <img
-                class="img-fluid"
+                class="img-fluid lazyload"
                 width="300"
                 height="150"
-                src="{{ logo }}"
+                data-src="{{ logo }}"
                 alt="brand_logo"
                 loading="lazy"
               />
@@ -148,7 +148,7 @@
                     <div class="items card border-0 rounded-0 h-100">
                       <img
                         appYoutubeImage
-                        class="card-img-top img-fluid"
+                        class="card-img-top img-fluid lazyload"
                         width="95"
                         height="100"
                         data-src="{{ list.media | defaultImage: 95:100 }}"
@@ -484,11 +484,11 @@
                 <div class="image-tag">FEATURED ARTICLE</div>
                 <img
                   appYoutubeImage
-                  src="{{ item?.media | defaultImage: 283:137 }}"
+                  data-src="{{ item?.media | defaultImage: 283:137 }}"
                   width="283"
                   height="137"
                   alt="featured"
-                  class="img-fluid"
+                  class="img-fluid lazyload"
                   loading="lazy"
                 />
                 <div class="image-description">
@@ -513,11 +513,11 @@
               >
                 <img
                   appYoutubeImage
-                  src="{{ item?.media | defaultImage: 120:126 }}"
+                  data-src="{{ item?.media | defaultImage: 120:126 }}"
                   width="120"
                   height="126"
                   alt="trending"
-                  class="img-fluid image-area"
+                  class="img-fluid image-area lazyload"
                   loading="lazy"
                 />
                 <div class="col-md-8 image-description">

@@ -15,6 +15,7 @@ import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
 import { environment } from 'src/environments/environment';
 declare var ga: Function;
 

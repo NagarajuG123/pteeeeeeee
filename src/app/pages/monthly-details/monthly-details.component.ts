@@ -5,6 +5,8 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
+import { Details } from 'src/app/_core/models/details.model';
 
 @Component({
   selector: 'app-monthly-details',
@@ -12,8 +14,8 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./monthly-details.component.scss'],
 })
 export class MonthlyDetailsComponent implements OnInit {
-  details: any = [];
-  banner: any = [];
+  details: Details[] = [];
+  banner: Details[] = [];
   year!: any;
   month!: any;
   date!: any;
@@ -21,6 +23,7 @@ export class MonthlyDetailsComponent implements OnInit {
   hasMore: boolean = false;
   faAngleRight = faAngleRight;
   coverDate: any;
+  title: any;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -50,11 +53,13 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
-                let title = this.datePipe.transform(
+                this.title = this.datePipe.transform(
                   this.coverDate,
                   'MMMM YYYY'
                 );
-                this.metaService.setTitle(`${title} Issues | ${result.title}`);
+                this.metaService.setTitle(
+                  `${this.title} Issues | ${result.title}`
+                );
               });
           });
         });

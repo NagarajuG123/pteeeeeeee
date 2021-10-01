@@ -23,7 +23,9 @@
             class="c-video-section--box"
             *ngFor="let item of videoData | slice: 0:2; index as i"
           >
-            <div class="badge badge-primary">FEATURED Video</div>
+          <div  class="position-relative main-image  ">
+            <div class="badge tag position-absolute top-0 text-uppercase "
+            >FEATURED Video</div>
             <a
               *ngIf="item?.media"
               (click)="openVideoPlayer = true"
@@ -41,18 +43,17 @@
               "
             >
               <img
-                src="{{ item.media | defaultImage: 600:300 }}"
-                class="img-fluid"
+                data-src="{{ item.media | defaultImage: 600:300 }}"
+                class="img-fluid lazyload"
                 alt="video"
                 width="600"
                 height="300"
-                data-src="{{ item.media | defaultImage: 600:300 }}"
                 loading="lazy"
               />
               <img
-                src="assets/img/play.png"
+                data-src="assets/img/play.png"
                 alt="Play"
-                class="img-fluid vide-play"
+                class="img-fluid vide-play lazyload"
                 loading="lazy"
               />
             </a>
@@ -60,6 +61,7 @@
             <div class="c-video-section--title">
               {{ item.title }}
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -91,17 +93,17 @@
                 "
               >
                 <img
-                  src="{{ item.media | defaultImage: 300:150 }}"
-                  class="img-fluid"
+                  data-src="{{ item.media | defaultImage: 300:150 }}"
+                  class="img-fluid lazyload"
                   width="300"
                   height="150"
                   alt="video"
                   loading="lazy"
                 />
                 <img
-                  src="assets/img/play.png"
+                  data-src="assets/img/play.png"
                   alt="Play"
-                  class="img-fluid vide-play"
+                  class="img-fluid vide-play lazyload"
                   loading="lazy"
                 />
               </a>

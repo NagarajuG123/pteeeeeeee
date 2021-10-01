@@ -15,6 +15,7 @@ import * as $ from 'jquery';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 @Component({

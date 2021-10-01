@@ -28,6 +28,7 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 
 @Component({
   selector: 'app-header',

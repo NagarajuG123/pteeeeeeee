@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 import { faSearch, faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes'
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-search',

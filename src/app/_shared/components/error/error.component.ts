@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ApiService } from 'src/app/_core/services/api.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-error',

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { forkJoin } from 'rxjs';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',

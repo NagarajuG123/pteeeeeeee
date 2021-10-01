@@ -10,10 +10,11 @@
             <div class="image me-3">
               <a href="{{ publication.url }}"
                 ><img
-                  src="{{ publication?.logo }}"
+                  data-src="{{ publication?.logo }}"
                   alt="logo"
                   width="57"
                   height="83"
+                  class="lazyload"
               /></a>
             </div>
             <div>
@@ -96,7 +97,7 @@
                 primary-bg
               "
             >
-            <img src="{{ footer?.media?.image }}" width="{{ footer?.media?.width }}" height="{{ footer?.media?.height }}" alt="footer"/>
+            <img data-src="{{ footer?.media?.image }}" width="{{ footer?.media?.width }}" height="{{ footer?.media?.height }}" alt="footer"  class="lazyload"/>
             </a>
           </li>
         </ul>

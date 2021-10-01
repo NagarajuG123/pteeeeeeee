@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
+import 'lazysizes';
 import {
   faFacebookF,
   faLinkedinIn,
