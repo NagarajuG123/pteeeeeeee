@@ -97,7 +97,8 @@
                 primary-bg
               "
             >
-            <img data-src="{{ footer?.media?.image }}" width="{{ footer?.media?.width }}" height="{{ footer?.media?.height }}" alt="footer"  class="lazyload"/>
+            <fa-icon *ngIf="i === socialIcon['index']" [icon]="socialIcon[i]['icon']" ></fa-icon>
+            <!-- <img data-src="{{ footer?.media?.image }}" width="{{ footer?.media?.width }}" height="{{ footer?.media?.height }}" alt="footer"  class="lazyload"/> -->
             </a>
           </li>
         </ul>

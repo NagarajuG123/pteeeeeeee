@@ -30,6 +30,13 @@ export class FooterComponent implements OnInit {
     faYoutube,
     faTwitter,
   ];
+  socialIcon: any = [
+    {index: 0, icon: faFacebookF},
+    {index: 1, icon: faInstagram},
+    {index: 2, icon: faLinkedinIn},
+    {index: 3, icon: faYoutube},
+    {index: 4, icon: faTwitter},
+  ]
 
   constructor(
     private apiService: ApiService,
