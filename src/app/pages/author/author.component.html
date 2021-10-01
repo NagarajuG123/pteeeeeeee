@@ -1,53 +1,109 @@
-<div class="top-space"></div>
-<div class="banner author-banner">
-  <div class="container">
-    <div class="author-banner-content d-flex col-xl-8">
-      <div class="author-banner-left col-md-5 col-12">
-        <figure>
-          <img
-            *ngIf="author?.data"
-            appYoutubeImage
-            data-src="{{ author?.data?.media | defaultImage: 298:297 }}"
-            width="298"
-            height="297"
-            alt="authorpage"
-            loading="lazy"
-            class="lazyload"
-          />
-        </figure>
+<div class="c-card-box--section">
+    <div class="c-card-box--wrapper">
+      <div class="authorDetail c-card-box--row c-card-box--contentRow">
+        <div class="container customContainer">
+          <div class="row">
+            <div class="col-4 py-5 px-5">
+              <figure>
+                <img
+                  *ngIf="author?.data"
+                  appYoutubeImage
+                  data-src="{{ author?.data?.media | defaultImage: 312:446 }}"
+                  width="312"
+                  height="446"
+                  alt="authorpage"
+                  loading="lazy"
+                  class="lazyloading"
+                />
+              </figure>
+            </div>
+            <div class="col-8 py-5 px-5">
+              <div>
+                <h5> ABOUT</h5>
+                <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+                <h5 class="designation">{{ author?.data?.designation }}</h5>
+              </div>
+              <hr/>
+
+              <ul class="social d-flex p-0">
+                <li>
+                  <a
+                    href="#"
+                    target="blank"
+                    class="
+                      rounded-circle
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      me-1
+                      primary-bg
+                    "
+                  >
+                    <fa-icon [icon]="faFacebookFIcon"></fa-icon>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="blank"
+                    class="
+                      rounded-circle
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      me-1
+                      primary-bg
+                    "
+                  >
+                    <fa-icon [icon]="faInstagramIcon"></fa-icon>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="blank"
+                    class="
+                      rounded-circle
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      me-1
+                      primary-bg
+                    "
+                  >
+                    <fa-icon [icon]="faLinkedinInIcon"></fa-icon>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href=""
+                    target="blank"
+                    class="
+                      rounded-circle
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      primary-bg
+                    "
+                  >
+                    <fa-icon [icon]="faYoutubeIcon"></fa-icon>
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="author-banner-right col-md-7 col-12 p-0">
-        <ul>
-          <li class="d-block">
-            <div class="cassidy text-center">
-              <h2 class="text-uppercase">
-                {{ author?.data?.first_name }} {{ author?.data?.last_name }}
-              </h2>
-            </div>
-          </li>
-          <li class="d-block">
-            <div class="cassidy cassidy1 text-center">
-              <span class="d-block">{{ author?.data?.designation }}</span>
-            </div>
-          </li>
-        </ul>
+      <div class="c-card-box--row">
+        <div class="container customContainer">
+        <p>{{ author?.data?.about }}</p>
       </div>
     </div>
   </div>
-  <div class="overlay"></div>
 </div>
 
-<div class="main-content">
-  <div class="about-cassidy">
-    <div class="container">
-      <div class="about-cassidy-details col-xl-7">
-        <h2 class="text-uppercase">
-          ABOUT {{ author?.data?.first_name }} {{ author?.data?.last_name }}
-        </h2>
-        <div class="content" [innerHTML]="author?.data?.about"></div>
-      </div>
-    </div>
-  </div>
+  <div class="main-content">
   <div class="editorial-stories">
     <div class="container">
       <div class="editorial-stories-details col-xl-11">

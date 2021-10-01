@@ -31,7 +31,7 @@
               width="437px"
               height="589px"
               alt="monthly-details-main"
-              class="img-fluid card-image lazyload"
+              class="card-image lazyload mt-1"
               loading="lazy"
             />
           </a>
@@ -52,7 +52,7 @@
       </div>
       <div
         class="col-sm-6 col-md-3 mb-4 mt-3 card-group"
-        *ngFor="let item of banner; index as i"
+        *ngFor="let item of details; index as i"
       >
         <div class="items card border-0 rounded-0">
           <a href="{{ commonService.readMore(item) }}">
