@@ -6,11 +6,14 @@
     [slug]="slug"
     [type]="'brand'"
   ></app-special-feature>
-  <app-featured  *ngIf="length > 8" [apiUrl]="apiUrl" [slug]="slug"></app-featured>
+  <app-featured
+    *ngIf="length > 8"
+    [apiUrl]="apiUrl"
+    [slug]="slug"
+  ></app-featured>
   <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
 
   <app-editorial-sections [slug]="slug"></app-editorial-sections>
-
 </div>
 
 <div *ngIf="type === 'category_page'">
@@ -21,14 +24,7 @@
   <div class="banner d-flex contact-banner">
     <figure>
       <img
-<<<<<<< HEAD
         data-src="assets/img/dynamicpage_banner.png"
-        class="lazyload"
-=======
-        *ngIf="topBlock?.media?.url"
-        appYoutubeImage
-        [data-src]="topBlock?.media?.url"
->>>>>>> origin/lazyloadclass
         width="1440"
         height="493"
         alt="banner"
@@ -38,7 +34,7 @@
     </figure>
     <div class="left-text d-flex col-5">
       <a routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}">
-        <h2> Franchise Broker Awards</h2>
+        <h2>Franchise Broker Awards</h2>
         <p>{{ topBlock?.description }}</p>
         <div class="readmore-btn">
           <button class="align-items-center">READ MORE</button>

@@ -7,7 +7,7 @@
           <h4 class="c-card-box--subTitle">{{ title }}</h4>
           <h1 class="c-card-box--title">Back to Business</h1>
           <p class="c-card-box--content">
-          {{ banner[0]?.title}}
+            {{ banner[0]?.title }}
           </p>
           <a
             routerLink="/{{ commonService.readMore(banner[0]) }}"
@@ -46,7 +46,9 @@
   <div class="container customContainer py-md-2">
     <div class="row">
       <div class="col-12">
-        <h4 class="fw-bold py-2 mb-2 text-uppercase cover-title">{{ title }}</h4>
+        <h4 class="fw-bold py-2 mb-2 text-uppercase cover-title">
+          {{ title }}
+        </h4>
       </div>
       <div
         class="col-sm-6 col-md-3 mb-4 mt-3 card-group"
@@ -58,13 +60,8 @@
               appYoutubeImage
               width="257"
               height="138"
-<<<<<<< HEAD
               data-src="{{ item.media | defaultImage: 257:138 }}"
               alt="monthly-cover"
-=======
-              [data-src]="item.media | defaultImage: 257:138"
-              alt="article"
->>>>>>> origin/lazyloadclass
               class="card-img-top lazyload"
               loading="lazy"
             />
@@ -74,24 +71,19 @@
               <a
                 href="{{ commonService.readMore(item) }}"
                 class="text-black text-uppercase"
-                >{{item.title }}</a
+                >{{ item.title }}</a
               >
             </h6>
-            <span class=""
-              >By {{ item.author.name }}</span
-            >
+            <span class="">By {{ item.author.name }}</span>
             <p class="card-text mb-1">
-              <a
-                href="{{ commonService.readMore(item) }}"
-                class="text-black"
-                >{{ item?.short_description }}</a
-              >
+              <a href="{{ commonService.readMore(item) }}" class="text-black">{{
+                item?.short_description
+              }}</a>
             </p>
           </div>
         </div>
       </div>
-        <!-- See More -->
-<<<<<<< HEAD
+      <!-- See More -->
       <div class="nextLine position-relative mb-5 mt-2">
         <div class="container customContainer">
           <div class="row">
@@ -105,30 +97,11 @@
                   (click)="getMoreData()"
                 />
                 <span class="gray-color">See More</span>
-=======
-        <div class="d-flex">
-          <div class="see-more--wrapper"></div>
-          <div class="nextLine position-relative mb-5 mt-2">
-            <div class="container customContainer">
-              <div class="row d-flex align-items-center">
-                <div class="d-flex justify-content-center align-items-center">
-                  <div class="nextBtn px-1 bg-white">
-                    <img
-                      data-src="assets/img/nextIcon.svg"
-                      width="32"
-                      alt="next articles"
-                      class="me-3 lazyload"
-                      (click)="getMoreData()"
-                      loading="lazy"
-                    />
-                    <span class="seem-more-text-wrapper" (click)="getMoreData()"
-                      >SEE MORE</span
-                    >
-                  </div>
-                </div>
->>>>>>> origin/lazyloadclass
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
