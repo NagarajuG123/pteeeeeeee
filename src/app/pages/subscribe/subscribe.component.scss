@@ -1,17 +1,6 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
-.contact-editorial-details {
-  margin: 0 auto;
-  padding: 71px 10px 56px;
-  input {
-    font-family: $proxiRegular;
-    height: 39px;
-    &::placeholder {
-      color: $dark_gray_1;
-    }
-  }
-}
 .f_error {
   display: block;
   margin: 10px 0;
@@ -179,7 +168,7 @@
     line-height: 26px;
     text-align: left;
     font-weight: 500;
-    color: black;
+    color: $black;
   }
   .form-control {
     border-color: $red;
@@ -233,7 +222,7 @@
       font-size: 12px;
       line-height: 14px;
       color: $light_gray_1;
-      font-family: " ProximaNova-Light";
+      font-family: $proxiLight;
       letter-spacing: 0.4px;
       margin: 19px 0 0;
     }
@@ -280,9 +269,6 @@
     .editors-details input:checked + span {
       background: url("/assets/img/checked1.png") no-repeat left 1px;
     }
-  }
-  .contact-editorial-main input:checked + span {
-    background: url("/assets/img/checked.png") no-repeat left 1px;
   }
 }
 .bannerSection{
