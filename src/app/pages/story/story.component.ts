@@ -26,6 +26,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 import {
   faFacebookF,
   faLinkedinIn,

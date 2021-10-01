@@ -35,10 +35,10 @@
               fragment="dynamicPage"
               ><img
                 appYoutubeImage
-                srcset="{{specialFeature[0]?.media | defaultImage:806:439}} 806w, {{specialFeature[0]?.media | defaultImage:300:168}} 300w, 
+                data-srcset="{{specialFeature[0]?.media | defaultImage:806:439}} 806w, {{specialFeature[0]?.media | defaultImage:300:168}} 300w, 
             {{specialFeature[0]?.media | defaultImage:400:224}} 400w, {{specialFeature[0]?.media | defaultImage:555:310}} 555w"
-                class="img-fluid"
-                sizes="{{
+                class="img-fluid lazyload"
+                data-sizes="{{
                   '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
@@ -46,7 +46,7 @@
                 }}"
                 width="806"
                 height="439"
-                src="{{ specialFeature[0].media | defaultImage: 806:439 }}"
+                data-src="{{ specialFeature[0].media | defaultImage: 806:439 }}"
                 alt="featured"
                 loading="lazy"
             /></a>
@@ -85,10 +85,10 @@
               fragment="featured"
               ><img
                 appYoutubeImage
-                srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
+                data-srcset="{{item.media | defaultImage:238:133}} 238w, {{item.media | defaultImage:300:168}} 300w, 
             {{item.media | defaultImage:400:224}} 400w, {{item.media | defaultImage:555:310}} 555w"
-                class="img-fluid"
-                sizes="{{
+                class="img-fluid lazyload"
+                data-sizes="{{
                   '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
@@ -96,7 +96,7 @@
                 }}"
                 width="253"
                 height="137"
-                src="{{ item.media | defaultImage: 253:137 }}"
+                data-src="{{ item.media | defaultImage: 253:137 }}"
                 alt="featured"
                 loading="lazy"
             /></a>
