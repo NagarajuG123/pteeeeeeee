@@ -28,8 +28,14 @@
   }
   .carousel-control-prev-icon {
     background-image: url("../../../../assets/img/slider-left-arrow.png");
+    width: 1rem;
+    height: 20px;
+    padding-top: 0.25rem;
   }
   .carousel-control-next-icon {
     background-image: url("../../../../assets/img/slider-right-arrow.png");
+    width: 1rem;
+    height: 20px;
+    padding-top: 0.25rem;
   }
 }
