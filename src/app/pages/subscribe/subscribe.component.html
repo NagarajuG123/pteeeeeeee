@@ -1,41 +1,18 @@
-<div class="banner d-flex contact-banner">
-  <figure>
-    <img
-      *ngIf="data?.media?.url"
-      appYoutubeImage
-      data-src="data?.media?.url"
-      width="1440"
-      height="493"
-      alt="banner"
-      loading="lazy"
-      class="lazyload"
-    />
-    <img
-      *ngIf="!data?.media"
-      appYoutubeImage
-      data-src="imgUrl"
-      width="1440"
-      height="493"
-      alt="banner"
-      loading="lazy"
-      class="lazyload"
-    />
-  </figure>
-  <div class="termsofuse-banner-main text-center">
-    <div class="container">
-      <div class="termsofuse-banner-content">
-        <h1 class="text-uppercase">{{ title }}</h1>
-      </div>
+<div class="">
+  <div class="row">
+    <div class="col-6 col-sm-6 col-md-6 col-lg bannerSection">
+      <img 
+      class="img-fluid lazyload" 
+      height="616" 
+      width="100%" 
+      alt="subscribe_banner" 
+      data-src="{{ data?.media | defaultImage: 800:600}}"/>
     </div>
-  </div>
-</div>
-<div class="main-content">
-  <div class="contact-editorial subscribepage-wrap">
-    <div class="container">
-      <div class="contact-editorial-details col-xl-5 col-lg-8">
-        <div *ngIf="!isSuccess" class="editors">
-          <h5>Please provide us with the following information:</h5>
-          <form
+    <div class="col-6 col-sm-6 col-md-6 col-lg subscribe px-5 py-4">
+      <h1>{{ title }}</h1>
+      <h5>Please provide us with the following information:</h5>
+      <div *ngIf="!isSuccess" class="editors">
+        <form
             [formGroup]="contactForm"
             class="fill-form"
             (ngSubmit)="onContactSubmit(contactForm)"
@@ -58,7 +35,7 @@
               </li>
             </ul>
             <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
-              <h6>Click all of which apply to you:</h6>
+              <h6 class="pb-0 mb-1">Click all of which apply to you:</h6>
               <ul class="pl-2">
                 <li>
                   <div class="form-group">
@@ -334,22 +311,25 @@
                     </label>
                   </div>
                 </li>
+                <li>
+                  <div
+                  *ngIf="isCheckBoxVisible"
+                  class="signmeup"
+                >
+                  <label for="news" class="checks">
+                    <input
+                      type="checkbox"
+                      class="text-field"
+                      id="news"
+                      [formControl]="contactForm.controls['signUpNewsletter']"
+                    />
+                    <span>Sign me up for the 1851 newsletter</span>
+                  </label>
+                </div>
+                </li>
               </ul>
             </div>
-            <div
-              *ngIf="isCheckBoxVisible"
-              class="signmeup text-center col-sm-8 col-12"
-            >
-              <label for="news" class="checks">
-                <input
-                  type="checkbox"
-                  class="text-field"
-                  id="news"
-                  [formControl]="contactForm.controls['signUpNewsletter']"
-                />
-                <span>Sign me up for the 1851 newsletter</span>
-              </label>
-            </div>
+            
             <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
 
             <button
@@ -357,12 +337,12 @@
               class="back d-block submit_btn"
               (click)="onContactSubmit(contactForm)"
             >
-              SUBMIT
-              <span><fa-icon [icon]="faAngleRight"></fa-icon></span>
+              Subscribe
+              <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
             </button>
           </form>
-        </div>
-        <div
+      </div>
+      <div
           *ngIf="submitSuccessMsg"
           class="sucess-message col-xl-10 text-center"
         >
@@ -387,7 +367,6 @@
             ><fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO HOMEPAGE</a
           >
         </div>
-      </div>
     </div>
   </div>
 </div>
