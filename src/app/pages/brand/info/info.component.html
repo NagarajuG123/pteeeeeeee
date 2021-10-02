@@ -45,9 +45,31 @@
       </div>
     </div>
   </div>
-
-  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4':''">
-    <div class="col-lg-8 col-md-12 pl-0 brand-left-info--wrapper">
+  
+<!-- Main image for info page -->
+  <ng-container *ngIf="!isInfo">
+    <div class="brand-main-img--wrapper strory-banner--img">
+      <img
+        appYoutubeImage
+        srcset="{{brandInfo?.media | defaultImage:953:535}}"
+        class="img-fluid"
+        sizes="{{
+          '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    300px'
+        }}"
+        width="953"
+        height="535"
+        data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+        alt="brand_img"
+        loading="lazy"
+      />
+    </div>
+  </ng-container>
+  
+  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4':''" [class.info-wrapper]="!isInfo">
+    <div class="col-md-12 pl-0 brand-left-info--wrapper" [ngClass]="!isInfo?'col-lg-12':'col-lg-8'">
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
@@ -138,13 +160,13 @@
 
         <div *ngIf="isStory && items">
           <div class="tabs-container container customContainer py-md-2">
-            <div class="tabItemList innerContent mt-4 py-3">
+            <div class="tabItemList innerContent py-3">
               <ul class="row gx-2">
                 <li
                   *ngFor="let list of items; index as i"
-                  class="mb-3 col-12 col-sm-6 col-md-4"
+                  class="col-12 col-sm-6 col-md-4"
                 >
-                  <a routerLink="{{ commonService.readMore(list) }}">
+                  <a class="stories-tabItem" routerLink="{{ commonService.readMore(list) }}">
                     <div class="items card border-0 rounded-0 h-100">
                       <img
                         appYoutubeImage
@@ -160,7 +182,7 @@
                           class="
                             card-title
                             primary-color
-                            text-uppercase text-truncate
+                            text-uppercase
                             fw-bold
                           "
                         >
@@ -168,7 +190,7 @@
                         </h6>
 
                         <small>{{ list.author?.name }}</small>
-                        <h4 class="card-text mb-1">
+                        <h4 class="card-text">
                           {{ list.short_description }}
                         </h4>
                       </div>
