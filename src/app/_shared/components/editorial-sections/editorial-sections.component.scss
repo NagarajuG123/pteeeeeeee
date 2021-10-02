@@ -75,11 +75,12 @@
         }
         > .card-body {
           padding: 8px 16px 15px;
-          > h6.card-title {
-            font-size: 16px;
+          > h3.card-title {
+            font-size: 12px;
+            font-weight: 700;
           }
           > .card-text {
-            font-size: 12px;
+            font-size: 10px;
           }
           a {
             > small {
