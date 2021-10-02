@@ -32,7 +32,7 @@ export class FooterComponent implements OnInit {
     faYoutube,
     faTwitter,
   ];
-
+ 
   constructor(
     private apiService: ApiService,
     private router: Router,
