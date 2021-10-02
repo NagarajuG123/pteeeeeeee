@@ -44,7 +44,7 @@
     }
     h3 {
       font-weight: bold;
-      font-size: 17.5px;
+      font-size: 16px;
       color: $primary;
     }
     span {
@@ -126,6 +126,7 @@
           padding: 8px 16px 15px;
           > h6.card-title {
             font-size: 12px;
+            color:$dark-gray; 
           }
           > .card-text {
             font-size: 10px;
@@ -176,20 +177,3 @@
 a {
   color: $dark-gray;
 }
-.see-more--wrapper{
-  margin-top: 57px;
-  width: 50%;
-  height: 2px;
-  border: 1px solid $primary ;
-}
-.see-more-right--wrapper{
-  margin-top: 57px;
-  width: 50%;
-  height: 2px;
-  border: 1px solid $primary ;
-}
-.seem-more-text-wrapper {
-color: #243444;
-font-size: 17px;
-}
-
