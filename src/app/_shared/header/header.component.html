@@ -1,5 +1,6 @@
-<header class="col-12">
-  <!-- Top header section Start -->
+<header class="col-12" >
+  <div>
+   <!-- Top header section Start -->
   <div class="top-head d-none d-lg-block">
     <div class="container d-flex">
       Publications in the Mainland Community:
@@ -59,11 +60,11 @@
       <div class="col-10 col-md-auto d-flex position-relative">
         <a class="menuBtn me-3" (click)="commonService.toggle()">
           <img
-            data-src="
-            commonService.showmenu
-              ? 'assets/img/close.png'
-              : 'assets/img/menu.png'
-          "
+            data-src="{{
+              commonService.showmenu
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
+            }}"
             alt="menu"
             width="35"
             height="24"
@@ -827,4 +828,5 @@
       </div>
     </div>
   </div>
+</div>
 </header>

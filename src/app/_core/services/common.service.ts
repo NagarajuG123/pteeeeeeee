@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,8 +8,8 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 export class CommonService {
   public showmenu: boolean = false;
   public vtabsItem: number = 5;
-  public brandInfoTab: number = 6;
   isBrowser: boolean = false;
+  isPageLoaded = new BehaviorSubject<boolean>(false);
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {

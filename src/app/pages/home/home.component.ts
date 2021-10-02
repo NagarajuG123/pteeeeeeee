@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,14 @@ export class HomeComponent implements OnInit {
   publication: any = [];
   newsletterForm!: FormGroup;
   isSubmitted: boolean = false;
+  isLoaded: Boolean = false;
   submitErrMsg = '';
   successMsg = '';
   constructor(
     private metaService: MetaService,
     private apiService: ApiService,
     fb: FormBuilder,
+    private commonService: CommonService,
     private toastr: ToastrService
   ) {
     this.newsletterForm = fb.group({
@@ -35,6 +38,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getMeta();
     this.getPublication();
+    this.commonService.isPageLoaded.subscribe((res) => {
+      if(res){
+        this.isLoaded = true;
+      }
+    })
   }
   //Publication Instance
   getPublication() {
