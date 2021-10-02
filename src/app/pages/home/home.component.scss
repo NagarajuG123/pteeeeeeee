@@ -2,12 +2,13 @@
 @import "../../../assets/scss/variables.scss";
 .signUp {
   h2 {
-    font-family:$balinger;
+    font-family:$balinger !important;
   }
   input {
-    font-family:$proxi;
+    font-family:$proxiRegular;
     font-size: 13px;
     height: 39px;
+    color: $dark-gray;
     &::placeholder {
       color: $dark-gray;
     }
@@ -16,7 +17,7 @@
     min-width: 196px;
     background: $dark-gray;
     border-color: $dark-gray;
-    font-family: $proxi;
+    font-family: $proxiRegular;
     font-size: 25px;
     height: 39px;
   }
