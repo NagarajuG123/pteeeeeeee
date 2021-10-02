@@ -6,9 +6,9 @@
 
 .most-popular {
   background: linear-gradient($dark-gray 425px, $white 0);
-  font-family: Roboto;
+  font-family:$roboto;
   h2 {
-    font-family: $proxiSemiBold;
+    font-family: $balinger;
     font-weight: bold;
     font-size: 33px;
     line-height: 40px;
@@ -43,7 +43,7 @@
       }
     }
     .slide-footer {
-      font-family: $roboto;
+      font-family: $balinger;
       font-size: 15px;
       line-height: 18px;
     }
