@@ -11,7 +11,14 @@
   font-size: 64px;
   font-family: "Ballinger Condensed";
   font-weight: 700;
-  color: #243444;
+  color: $dark-gray;
+  p {
+    font-family: $proxiSemiBold;
+    font-weight: 400;
+    font-style: normal;
+    font: size 13px;
+    line-height: 19px;
+  }
 }
 @media screen and (min-width: 992px) {
   .latestListing {
