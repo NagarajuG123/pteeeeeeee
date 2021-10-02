@@ -4,75 +4,79 @@
   [slug]="'1851'"
 ></app-featured>
 <ng-container *ngIf="isLoaded">
-<app-most-popular [slug]="'1851'" [type]="'home'"></app-most-popular>
+  <app-most-popular [slug]="'1851'" [type]="'home'"></app-most-popular>
 
-<app-editorial-sections [slug]="'1851'"></app-editorial-sections>
+  <app-editorial-sections [slug]="'1851'"></app-editorial-sections>
 
-<!-- signUp for next webinar section-->
-<div class="primary-bg signUp">
-  <div class="container customContainer">
-    <div class="row align-items-center justify-content-center">
-      <div class="col-12 col-lg-auto text-uppercase text-white">
-        <h2 class="py-3 m-0 text-white text-uppercase fs-30">
-          Sign up for our newsletter
-        </h2>
-      </div>
+  <!-- signUp for next webinar section-->
+  <div class="primary-bg signUp">
+    <div class="container customContainer">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-lg-auto text-uppercase text-white">
+          <h2 class="py-3 m-0 text-white text-uppercase fs-30">
+            Sign up for our newsletter
+          </h2>
+        </div>
 
-      <div class="col-12 col-sm">
-        <form
-          [formGroup]="newsletterForm"
-          (ngSubmit)="onNewsletterSubmit(newsletterForm)"
-        >
-          <div class="row gx-2">
-            <div class="col-12 col-sm">
-              <input
-                type="text"
-                placeholder="Name"
-                class="form-control rounded-0 mb-3 mb-lg-0"
-                [formControl]="newsletterForm.controls['name']"
-              />
-              <app-error-message
-                *ngIf="isSubmitted"
-                [control]="newsletterForm.controls['name']"
-              ></app-error-message>
-            </div>
-            <div class="col-12 col-sm">
-              <input
-                type="email"
-                placeholder="Email"
-                class="form-control rounded-0 mb-3 mb-lg-0"
-                [formControl]="newsletterForm.controls['email']"
-              />
-              <app-error-message
-                *ngIf="isSubmitted"
-                [control]="newsletterForm.controls['email']"
-              ></app-error-message>
-            </div>
-            <div
-              class="col-12 col-sm-auto text-uppercase text-white pb-3 pb-lg-0"
-            >
-              <button
-                class="btn btn-dark text-uppercase fw-bold joinBtn py-0"
-                (click)="onNewsletterSubmit(newsletterForm)"
+        <div class="col-12 col-sm">
+          <form
+            [formGroup]="newsletterForm"
+            (ngSubmit)="onNewsletterSubmit(newsletterForm)"
+          >
+            <div class="row gx-2">
+              <div class="col-12 col-sm">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  class="form-control rounded-0 mb-3 mb-lg-0"
+                  [formControl]="newsletterForm.controls['name']"
+                />
+                <app-error-message
+                  *ngIf="isSubmitted"
+                  [control]="newsletterForm.controls['name']"
+                ></app-error-message>
+              </div>
+              <div class="col-12 col-sm">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  class="form-control rounded-0 mb-3 mb-lg-0"
+                  [formControl]="newsletterForm.controls['email']"
+                />
+                <app-error-message
+                  *ngIf="isSubmitted"
+                  [control]="newsletterForm.controls['email']"
+                ></app-error-message>
+              </div>
+              <div
+                class="
+                  col-12 col-sm-auto
+                  text-uppercase text-white
+                  pb-3 pb-lg-0
+                "
               >
-                Join now
-              </button>
+                <button
+                  class="btn btn-dark text-uppercase fw-bold joinBtn py-0"
+                  (click)="onNewsletterSubmit(newsletterForm)"
+                >
+                  Join now
+                </button>
+              </div>
+              <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
+              <span *ngIf="!isSubmitted" class="success" id="hideAfter5Sec">{{
+                successMsg
+              }}</span>
             </div>
-            <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
-            <span *ngIf="!isSubmitted" class="success" id="hideAfter5Sec">{{
-              successMsg
-            }}</span>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<app-video></app-video>
+  <app-video></app-video>
 
-<app-special-feature
-  [apiUrl]="'home-page-featured-content'"
-  [slug]="'1851'"
-></app-special-feature>
+  <app-special-feature
+    [apiUrl]="'home-page-featured-content'"
+    [slug]="'1851'"
+  ></app-special-feature>
 </ng-container>
