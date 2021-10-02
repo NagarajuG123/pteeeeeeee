@@ -5,7 +5,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { forkJoin } from 'rxjs';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import {
   faFacebookF,
@@ -26,10 +26,13 @@ export class AuthorComponent implements OnInit {
   footer: any;
   schema: any;
   faAngleRight = faAngleRight;
-  faFacebookFIcon = faFacebookF;
-  faLinkedinInIcon = faLinkedinIn;
-  faYoutubeIcon = faYoutube;
-  faInstagramIcon = faInstagram;
+  socialIcons: any = [
+    faFacebookF,
+    faInstagram,
+    faLinkedinIn,
+    faYoutube,
+    faEnvelope
+  ];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -57,6 +60,7 @@ export class AuthorComponent implements OnInit {
             this.router.navigateByUrl('/404');
           } else {
             this.author = results[0];
+            console.log(this.author.data.socialMedia);
             this.metaService.setSeo(results[0].meta);
             this.metaService.setTitle(
               `${results[0].data.first_name} ${results[0].data.last_name} | ${results[1].title}`

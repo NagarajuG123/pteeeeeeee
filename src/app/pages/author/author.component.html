@@ -25,10 +25,10 @@
               </div>
               <hr/>
 
-              <ul class="social d-flex p-0">
-                <li>
+              <ul class="social d-flex p-0" *ngIf="author?.data">
+                <li *ngFor="let item of author?.data?.socialMedia; index as i">
                   <a
-                    href="#"
+                    href="{{ item?.url }}"
                     target="blank"
                     class="
                       rounded-circle
@@ -39,58 +39,13 @@
                       primary-bg
                     "
                   >
-                    <fa-icon [icon]="faFacebookFIcon"></fa-icon>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    target="blank"
-                    class="
-                      rounded-circle
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      me-1
-                      primary-bg
-                    "
-                  >
-                    <fa-icon [icon]="faInstagramIcon"></fa-icon>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    target="blank"
-                    class="
-                      rounded-circle
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      me-1
-                      primary-bg
-                    "
-                  >
-                    <fa-icon [icon]="faLinkedinInIcon"></fa-icon>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    target="blank"
-                    class="
-                      rounded-circle
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      primary-bg
-                    "
-                  >
-                    <fa-icon [icon]="faYoutubeIcon"></fa-icon>
+                    <fa-icon
+                      [icon]="socialIcons[item.index]"
+                      class="searchIcon"
+                    ></fa-icon>
                   </a>
                 </li>
               </ul>
-              
             </div>
           </div>
         </div>
