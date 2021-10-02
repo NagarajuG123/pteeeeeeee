@@ -2,10 +2,10 @@
 @import "../../../assets/scss/variables.scss";
 .signUp {
   h2 {
-    font-family: $roboto;
+    font-family:$balinger;
   }
   input {
-    font-family: $roboto;
+    font-family:$proxi;
     font-size: 13px;
     height: 39px;
     &::placeholder {
@@ -16,7 +16,7 @@
     min-width: 196px;
     background: $dark-gray;
     border-color: $dark-gray;
-    font-family: $roboto;
+    font-family: $proxi;
     font-size: 25px;
     height: 39px;
   }
