@@ -1,68 +1,76 @@
 <section class="c-card-box--section">
   <div class="c-card-box--wrapper">
-    <div class="c-card-box--row c-card-box--contentRow">
-      <div class="c-card-box--col month-business--wrapper">
-        <div class="c-card-box--contentGroup">
-          <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
-          <h1 class="c-card-box--title">Back to Business</h1>
-          <p class="c-card-box--content">
-            {{ firstBlock[0]?.story?.title }}
-          </p>
-          <a
-            routerLink="{{ firstBlock[0]?.story?.slug }}"
-            fragment="monthlydetailspage"
-            class="c-link--btn"
-            >Read more &gt;</a
-          >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 p-0">
+          <div class="c-card-box--row c-card-box--contentRow">
+            <div class="c-card-box--col month-business--wrapper">
+              <div class="c-card-box--contentGroup">
+                <h4 class="c-card-box--subTitle">THIS MONTHS ISSUE</h4>
+                <h1 class="c-card-box--title">Back to Business</h1>
+                <p class="c-card-box--content">
+                  {{ firstBlock[0]?.story?.title }}
+                </p>
+                <a
+                  routerLink="{{ firstBlock[0]?.story?.slug }}"
+                  fragment="monthlydetailspage"
+                  class="c-link--btn"
+                  >Read more &gt;</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="c-card-box--row">
-      <div class="c-card-box--col c-card-main-imagebox--wrapper">
-        <div class="c-card-box--imageWrapper isMainCardBox">
-          <a
-            routerLink="/{{ firstBlock[0]?.url }}"
-            class="maincardbox-link--wrapper"
-          >
-            <img
-              appYoutubeImage
-              data-src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
-              width="574"
-              height="775"
-              alt="monthly-covers-main"
-              class="card-image lazyload"
-              loading="lazy"
-            />
-          </a>
-        </div>
-      </div>
-      <div class="c-card-box--col c-card-main-content-box--wrapper">
-        <div class="c-card-box--group">
-          <div
-            class="c-card-box--item"
-            *ngFor="let item of firstBlock | slice: 1:4"
-          >
-            <div class="c-card-box--imageWrapper">
+    <div class="container">
+      <div class="c-card-box--row">
+        <div class="c-card-box--col c-card-main-imagebox--wrapper">
+          <div class="c-card-box--imageWrapper isMainCardBox">
+            <a
+              routerLink="/{{ firstBlock[0]?.url }}"
+              class="maincardbox-link--wrapper"
+            >
               <img
                 appYoutubeImage
-                data-src="{{ item?.media | defaultImage: 190:265 }}"
-                width="190"
-                height="265"
+                data-src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
+                width="574"
+                height="775"
                 alt="monthly-covers-main"
                 class="card-image lazyload"
                 loading="lazy"
               />
-            </div>
-            <h4 class="c-card-box--itemTitle">{{ item.story.title }}</h4>
-            <p class="c-card-box--itemDec">
-              {{ item.story.title }}
-            </p>
-            <a
-              routerLink="{{ item.story.slug }}"
-              fragment="monthlydetailspage"
-              class="c-link--btn"
-              >Read more &gt;</a
+            </a>
+          </div>
+        </div>
+        <div class="c-card-box--col c-card-main-content-box--wrapper">
+          <div class="c-card-box--group">
+            <div
+              class="c-card-box--item"
+              *ngFor="let item of firstBlock | slice: 1:4"
             >
+              <div class="c-card-box--imageWrapper">
+                <img
+                  appYoutubeImage
+                  data-src="{{ item?.media | defaultImage: 190:265 }}"
+                  width="190"
+                  height="265"
+                  alt="monthly-covers-main"
+                  class="card-image lazyload"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="c-card-box--itemTitle">{{ item.story.title }}</h4>
+              <p class="c-card-box--itemDec">
+                {{ item.story.title }}
+              </p>
+              <a
+                routerLink="{{ item.story.slug }}"
+                fragment="monthlydetailspage"
+                class="c-link--btn"
+                >Read more &gt;</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -71,24 +79,31 @@
 </section>
 
 <div class="monthy-cover">
-  <h2>ALL COVERS</h2>
-  <div class="monthly-cover-wrapper d-flex">
-    <div class="monthly-covers-bottom" *ngFor="let cover of secondBlock">
-      <a class="monthly-covers1" routerLink="{{ cover?.url }}">
-        <figure class="m-0">
-          <img
-            appYoutubeImage
-            data-src="{{ cover.media | defaultImage: 288:379 }}"
-            width="305"
-            height="380"
-            alt="monthly-covers"
-            loading="lazy"
-            class="lazyload"
-          />
-        </figure>
-      </a>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="all-cover-header-content">ALL COVERS</h2>
+        <div class="monthly-cover-wrapper d-flex">
+          <div class="monthly-covers-bottom" *ngFor="let cover of secondBlock">
+            <a class="monthly-covers1" routerLink="{{ cover?.url }}">
+              <figure class="m-0">
+                <img
+                  appYoutubeImage
+                  data-src="{{ cover.media | defaultImage: 288:379 }}"
+                  width="305"
+                  height="380"
+                  alt="monthly-covers"
+                  loading="lazy"
+                  class="lazyload"
+                />
+              </figure>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  
 
   <!-- See More -->
   <div class="d-flex">
