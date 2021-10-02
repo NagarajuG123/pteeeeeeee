@@ -443,9 +443,9 @@
       </div>
       <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
         <ul class="center-menu nav justify-content-center">
-          <li class="nav-item mt-1 px-1" *ngFor="let menu of header?.menus">
-            <a [routerLink]="menu.url" class="d-flex align-items-center"
-              >{{ menu.title }}
+          <li class="nav-item mt-1 px-1">
+            <a [routerLink]="header?.menus?.url" class="d-flex align-items-center"
+              >{{ header?.menus?.title }}
             </a>
           </li>
           <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
@@ -459,7 +459,7 @@
               {{ header?.inquire }}
             </a>
           </li>
-          <li class="nav-item mx-2 px-1">
+          <li class="nav-item mx-2 px-1 mt-1">
             <a class="d-flex align-items-center"
               >{{ header?.actions?.title }}
               <img

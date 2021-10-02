@@ -8,7 +8,6 @@ import { BehaviorSubject } from 'rxjs';
 export class CommonService {
   public showmenu: boolean = false;
   public vtabsItem: number = 5;
-  public brandInfoTab: number = 6;
   isBrowser: boolean = false;
   isPageLoaded = new BehaviorSubject<boolean>(false);
   constructor(@Inject(PLATFORM_ID) platformId: Object) {

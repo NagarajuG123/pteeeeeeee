@@ -4,7 +4,7 @@
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
         [ngClass]="
-          categories.length > this.commonService.brandInfoTab ? '' : 'd-none'
+          categories.length > this.commonService.vtabsItem ? '' : 'd-none'
         "
         (click)="prev()"
       >
@@ -15,7 +15,7 @@
           *ngFor="let item of categories; index as i"
           class="col col-sm-6 col-md-4 col-lg border-end text-center"
           [ngClass]="
-            i < this.commonService.brandInfoTab + this.skipTab && i >= this.skipTab
+            i < this.commonService.vtabsItem + this.skipTab && i >= this.skipTab
               ? 'active'
               : 'd-none'
           "
@@ -37,7 +37,7 @@
       <div
         class="next position-absolute top-50 end-0 translate-middle-y pe-3"
         [ngClass]="
-          categories.length > this.commonService.brandInfoTab ? '' : 'd-none'
+          categories.length > this.commonService.vtabsItem ? '' : 'd-none'
         "
         (click)="next()"
       >
@@ -45,9 +45,28 @@
       </div>
     </div>
   </div>
-
-  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4 available-marketing--wrapper':''">
-    <div class="col-lg-8 col-md-12 pl-0 brand-left-info--wrapper">
+  <ng-container *ngIf="isStory">
+    <div class="brand-main-img--wrapper strory-banner--img">
+      <img
+        appYoutubeImage
+        srcset="{{brandInfo?.media | defaultImage:953:535}}"
+        class="img-fluid"
+        sizes="{{
+          '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    300px'
+        }}"
+        width="953"
+        height="535"
+        data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+        alt="brand_img"
+        loading="lazy"
+      />
+    </div>
+  </ng-container>
+  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4 available-marketing--wrapper':''" [class.info-wrapper]="isStory">
+    <div class="col-md-12 pl-0 brand-left-info--wrapper" [ngClass]="!isInfo?'col-lg-12':'col-lg-8'">
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
@@ -144,7 +163,7 @@
                   *ngFor="let list of items; index as i"
                   class="mb-3 col-12 col-sm-6 col-md-4"
                 >
-                  <a routerLink="{{ commonService.readMore(list) }}">
+                  <a  class="stories-tabItem" routerLink="{{ commonService.readMore(list) }}">
                     <div class="items card border-0 rounded-0 h-100">
                       <img
                         appYoutubeImage

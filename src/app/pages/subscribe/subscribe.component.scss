@@ -1,248 +1,17 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
-.d-flex {
-  -webkit-flex-wrap: wrap;
-  display: flex !important;
-}
-img {
-  max-width: 100%;
-}
-figure {
-  line-height: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 1380px;
-  margin: 0 auto;
-  display: block;
-}
-h5 {
-  font-size: 18px;
-  line-height: 20px;
-  color: $dark_gray_1;
-  font-weight: 400;
-  font-family: $proxiMedium;
-  letter-spacing: 0.8px;
-}
-.subscribepage-wrap {
-  box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -webkit-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  position: relative;
-
-  h4 {
-    letter-spacing: 0.4px;
-  }
-  .contact-editorial-details {
-    padding: 56px 67px 62px 66px;
-    @include desk-lg-below1 {
-      padding: 40px 0 30px 0;
-    }
-    @include tablet-landscape1 {
-      padding: 30px 0 30px 0;
-    }
-    .sucess-message {
-      display: block !important;
-    }
-  }
-  form {
-    padding: 24px 0 15px 0;
-    @include desk-lg-below1 {
-      padding: 20px 0 15px 0;
-    }
-  }
-  h5 {
-    letter-spacing: 0.4px;
-  }
-  .contact-editorial-main {
-    padding: 11px 0 11px 0;
-    @include desk-lg-below1 {
-      padding: 15px 0 25px 0;
-    }
-    @include tablet-landscape1 {
-      padding: 10px 0 15px 0;
-    }
-  }
-  .form-control {
-    border-color: $red;
-  }
-}
-.banner {
-  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
-  position: relative;
-}
-.contact-banner {
-  figure {
-    img {
-      min-height: 493px;
-      object-fit: cover;
-      height: 522px;
-    }
-  }
-  h1 {
-    letter-spacing: 0.8px;
-  }
-  .termsofuse-banner-main {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    right: 0;
-    margin: 0 auto;
-    background: $dark_gray_1;
-    @include tablet-landscape1 {
-      position: static;
-    }
-    h1 {
-      font-size: 28.92px;
-      line-height: 31px;
-      color: $white;
-      font-family: $proxiMedium;
-    }
-    .termsofuse-banner-content {
-      padding: 43px 5px 33px;
-      @include desk-lg-below1 {
-        padding: 20px 5px;
-      }
-      @include tablet-landscape1 {
-        padding: 15px;
-      }
-    }
-  }
-}
-
-.contact-editorial-details {
-  margin: 0 auto;
-  padding: 71px 10px 56px;
-  input {
-    font-family: $proxiRegular;
-    height: 39px;
-    &::placeholder {
-      color: $dark_gray_1;
-    }
-  }
-}
 .f_error {
   display: block;
   margin: 10px 0;
   text-align: center;
   color: $red;
 }
-.editors {
-  .form-group {
-    margin: 0;
-  }
-
-  ul {
-    margin: 0 -6px;
-    li {
-      padding: 0 6px 16px;
-    }
-  }
-
-  h6 {
-    font-size: 16px;
-    line-height: 18px;
-    color: $light_gray_1;
-    font-family: $proxiRegular;
-    letter-spacing: 0.4px;
-    padding: 0 0 20px;
-  }
-  button {
-    border: 0;
-    outline: 0;
-    width: 159px;
-    height: 36px;
-    padding: 0 67px 0 32px;
-    cursor: pointer;
-    span {
-      left: auto;
-      right: 0;
-    }
-  }
-  a {
-    font-size: 12px;
-    line-height: 14px;
-    color: $light_gray_1;
-    font-family: " ProximaNova-Light";
-    letter-spacing: 0.4px;
-    margin: 19px 0 0;
-  }
-}
-
-h6 {
-  font-weight: 400;
-}
-
-.back {
-  width: 250px;
-  height: 36px;
-  background: $red;
-  font-size: 15.66px;
-  line-height: 36px;
-  color: $white;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 15px 0 67px;
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    background: $dark_red;
-    fa-icon {
-      font-size: 25px;
-      line-height: 36px;
-      color: $white;
-    }
-  }
-}
 
 .submit_btn {
   outline: 0 !important;
 }
-.contact-editorial-main {
-  padding: 19px 0 36px 0;
-  @include desk-lg-below1 {
-    padding: 15px 0 25px 0;
-  }
-  @include tablet-landscape1 {
-    padding: 10px 0 15px 0;
-  }
-  ul {
-    padding: 0 0 0 12px;
-  }
-  label {
-    margin: 0;
-  }
-  input {
-    display: none;
-  }
-  .radio_btns1 {
-    color: $dark_gray_1;
-  }
-  span {
-    font-size: 15px;
-    line-height: 19px;
-    font-weight: normal;
-    font-family: $proxiMedium;
-    background: url("/assets/img/unchecked.png") no-repeat left 1px;
-    padding: 0 0 0 25px;
-    letter-spacing: 0.4px;
-  }
-  .editors-details input:checked + span {
-    background: url("/assets/img/checked1.png") no-repeat left 1px;
-  }
-}
-.contact-editorial-main input:checked + span {
-  background: url("/assets/img/checked.png") no-repeat left 1px;
-}
+
 .editors-details {
   padding: 8px 20px 0 46px;
   display: none;
@@ -381,26 +150,131 @@ h6 {
     width: 274px;
   }
 }
-.signmeup {
-  margin: 0 auto;
-  padding: 0 0 17px 15px;
-  .checks {
-    color: $light_gray_1;
-    margin: 0;
+
+//Redesign
+.subscribe{
+  background-color: $white_3;
+  h1{
+    font-size: 30px;
+    font-family: $balinger;
+    font-weight: 700;
+    line-height: 36px;
+    color: $red;
+    text-align: left;
   }
-  input {
-    display: none;
+  h5,h6{
+    font-size: 20px;
+    font-family: $roboto;
+    line-height: 26px;
+    text-align: left;
+    font-weight: 500;
+    color: $black;
   }
+  .form-control {
+    border-color: $red;
+    width: 65%;
+  }
+  .signmeup {
+    .checks {
+      margin: 0;
+    }
+    input {
+      display: none;
+    }
+    span {
+      background: url("/assets/img/unchecked2.png") no-repeat left 2px;
+      padding: 0 0 0 17px;
+      font-size: 12px;
+      line-height: 21px;
+      font-weight: normal;
+      font-family: $proxiLight;
+      letter-spacing: 0.4px;
+    }
+  }
+  .signmeup input:checked + span {
+    background: url("/assets/img/checked2.png") no-repeat left 2px;
+    font-size: 9px;
+  }
+  .editors {
+    .form-group {
+      margin: 0;
+    }
+  
+    ul {
+      margin: 0 -6px;
+      li {
+        padding: 0 6px 16px;
+      }
+    }
+    button {
+      border: 0;
+      outline: 0;
+      width: 130px;
+      height: 36px;
+      cursor: pointer;
+      float: left;
+      span {
+        left: auto;
+        right: 0;
+      }
+    }
+    a {
+      font-size: 12px;
+      line-height: 14px;
+      color: $light_gray_1;
+      font-family: $proxiLight;
+      letter-spacing: 0.4px;
+      margin: 19px 0 0;
+    }
+  }
+
+.back {
+  background: $red_1;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $white;
+  position: relative;
   span {
-    background: url("/assets/img/unchecked2.png") no-repeat left 2px;
-    padding: 0 0 0 17px;
-    font-size: 12px;
-    line-height: 21px;
-    font-weight: normal;
-    font-family: $proxiLight;
-    letter-spacing: 0.4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    fa-icon {
+      font-size: 25px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+  }
+  .contact-editorial-main {
+    label {
+      margin: 0;
+    }
+    input {
+      display: none;
+    }
+    .radio_btns1 {
+      color: $dark_gray_1;
+    }
+    span {
+      font-size: 15px;
+      line-height: 19px;
+      font-weight: normal;
+      font-family: $proxiMedium;
+      background: url("/assets/img/unchecked.png") no-repeat left 1px;
+      padding: 0 0 0 25px;
+      letter-spacing: 0.4px;
+    }
+    .editors-details input:checked + span {
+      background: url("/assets/img/checked1.png") no-repeat left 1px;
+    }
   }
 }
-.signmeup input:checked + span {
-  background: url("/assets/img/checked2.png") no-repeat left 2px;
+.bannerSection{
+ padding-right: 0;
+ height: 616px !important;
+ img{
+   height:616px;
+ }
 }

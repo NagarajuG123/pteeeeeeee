@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -29,7 +29,8 @@ export class MonthlyDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private metaService: MetaService,
     private datePipe: DatePipe,
-    public commonService: CommonService
+    public commonService: CommonService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +47,7 @@ export class MonthlyDetailsComponent implements OnInit {
         )
         .subscribe((response) => {
           this.banner = response.data;
-          this.details = response.data.slice(1, 11);
+          this.details = response.data.slice(1, 9);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
@@ -70,7 +71,7 @@ export class MonthlyDetailsComponent implements OnInit {
       .getAPI(
         `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${
           this.id
-        }?limit=10&offset=${this.details.length + 1}`
+        }?limit=4&offset=${this.details.length + 1}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
@@ -78,5 +79,6 @@ export class MonthlyDetailsComponent implements OnInit {
           this.details.push(item);
         });
       });
+    this.cdr.detectChanges();
   }
 }

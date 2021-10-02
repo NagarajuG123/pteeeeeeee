@@ -1,4 +1,4 @@
-<footer *ngIf="footer?.length > 0 && isLoaded">
+<footer *ngIf="isLoaded && footer">
   <div class="container customContainer">
     <div class="row">
       <div class="col-12 col-sm-6 border-end py-3 py-sm-0">
@@ -40,7 +40,7 @@
                   >
                     {{ menu?.title }}
                   </h4>
-                 
+
                   <a
                     routerLink="{{ menu.url }}"
                     *ngIf="menu.title != 'Spotlight'"
@@ -55,14 +55,15 @@
                     <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
                   </h4>
                 </div>
-                <div class="col-12 col-lg" *ngIf="footer.hasOwnProperty('contact')"> 
+                <div
+                  class="col-12 col-lg"
+                  *ngIf="footer.hasOwnProperty('contact')"
+                >
                   <a
                     href="#"
                     data-bs-toggle="modal"
                     data-bs-target="#contactModal"
-                    ><h4 class="text-uppercase primary-color">
-                      Contact
-                    </h4>
+                    ><h4 class="text-uppercase primary-color">Contact</h4>
                   </a>
                 </div>
               </div>
@@ -97,7 +98,10 @@
                 primary-bg
               "
             >
-            <img data-src="{{ footer?.media?.image }}" width="{{ footer?.media?.width }}" height="{{ footer?.media?.height }}" alt="footer"  class="lazyload"/>
+              <fa-icon
+                [icon]="socialIcons[footer.index]"
+                class="searchIcon"
+              ></fa-icon>
             </a>
           </li>
         </ul>

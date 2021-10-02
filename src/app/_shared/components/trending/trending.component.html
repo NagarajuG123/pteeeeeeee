@@ -1,22 +1,24 @@
 <div class="trending-head" *ngIf="isLoaded && data?.length > 0">
   <div class="trending mb-1 slideItem">
-    <div class="container-fluid text-center py-2 row">
+    <div class="container d-flex text-center py-2 row">
       <div class="col-12">
         <div
           class="carousel slide"
           data-bs-ride="carousel"
+          data-bs-interval="3000"
           id="carouselExampleIndicators"
         >
           <div class="carousel-inner">
             <ng-container *ngFor="let item of data; index as i">
               <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-                <span class="pe-md-5">
+                <span class="">
                   <img
                     data-src="assets/img/fire.svg"
                     height="18px"
                     width="22px"
                     class="pe-2 lazyload"
                     loading="lazy"
+                    alt=""
                   />
                   <span class="me-2">TRENDING</span> </span
                 >{{ item.title }}
@@ -24,7 +26,7 @@
             </ng-container>
           </div>
           <button
-            class="carousel-control-prev"
+            class="carousel-control-prev d-none d-lg-block"
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev"
@@ -33,7 +35,7 @@
             <span class="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            class="carousel-control-next d-none d-lg-block"
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next"
