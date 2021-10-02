@@ -4,20 +4,20 @@
 .trending {
   background-color: $border-color;
   color: $medium-grey;
-  font-family: "Roboto";
+  font-family: $roboto;
   font-weight: bold;
   font-size: 16px;
   border-bottom: 1px solid $dark-gray;
   span {
     color: $primary;
-    font-family: $roboto;
+    font-family: $balinger;
     img {
       margin-top: -4px;
     }
   }
   .carousel-control-next,
   .carousel-control-prev {
-    width: 1.25rem;
+    width: 1rem;
     height: 20px;
     background-color: none;
     top: calc(-20% -25%);
