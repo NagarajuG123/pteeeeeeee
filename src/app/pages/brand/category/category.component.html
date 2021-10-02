@@ -151,8 +151,7 @@
                 <h6
                   class="
                     card-title
-                    primary-color
-                    text-uppercase text-truncate
+                    text-uppercase 
                     fw-bold
                   "
                 >
@@ -172,22 +171,27 @@
       </ul>
     </div>
   </div>
-</div>
-<div class="nextLine position-relative mb-5 mt-2">
-  <div class="container customContainer">
-    <div class="row">
-      <div class="col d-flex justify-content-center align-items-center">
-        <div class="nextBtn px-5 bg-white">
-          <img
-            data-src="assets/img/nextIcon.svg"
-            width="32"
-            alt="next articles"
-            class="me-3 lazyload"
-            (click)="getMore(slug)"
-          />
-          <span class="gray-color">See More</span>
+
+  <!-- See More -->
+
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white"> 
+              <img 
+              data-src="assets/img/nextIcon.svg"
+              width="32" 
+              alt="next articles" 
+              class="me-3 lazyload" 
+              (click)="getMore(slug)" 
+              /> 
+              <span class="gray-color  text-uppercase "
+              >See More
+            </span> 
+          </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div> 
 </div>

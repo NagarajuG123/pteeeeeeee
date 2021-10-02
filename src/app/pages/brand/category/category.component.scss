@@ -9,9 +9,9 @@
   top: 40%;
   left: 10%;
   font-size: 64px;
-  font-family: "Ballinger Condensed";
+  font-family:$balinger;
   font-weight: 700;
-  color: #243444;
+  color:$dark-gray;
 }
 @media screen and (min-width: 992px) {
   .latestListing {
@@ -22,7 +22,7 @@
   }
 }
 .news-list {
-  font-family: Roboto;
+  font-family: $roboto;
   height: calc(100% - 27px);
   width: calc(100% - 30px);
   a {
@@ -30,7 +30,7 @@
   }
   li {
     display: flex;
-    border-bottom: 1px solid #e8eef2;
+    border-bottom: 1px solid $border-color;
     &:last-child {
       border: 0;
     }
@@ -81,7 +81,7 @@
             height: 100%;
             color: $light-gray-1;
             cursor: pointer;
-            font-family: $roboto;
+            font-family: $proxiRegular;
             font-weight: bold;
             font-size: 20px;
             &.active,
@@ -125,10 +125,11 @@
         > .card-body {
           padding: 8px 16px 15px;
           > h6.card-title {
-            font-size: 11px;
+            font-size: 12px;
           }
           > .card-text {
-            font-size: 12px;
+            font-size: 10px;
+            color: $dark_gray_5;
           }
           a {
             > small {
@@ -166,6 +167,7 @@
       z-index: 1;
       img,
       span {
+        font-family: $proxiRegular;
         cursor: pointer;
       }
     }
@@ -174,3 +176,20 @@
 a {
   color: $dark-gray;
 }
+.see-more--wrapper{
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $primary ;
+}
+.see-more-right--wrapper{
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $primary ;
+}
+.seem-more-text-wrapper {
+color: #243444;
+font-size: 17px;
+}
+
