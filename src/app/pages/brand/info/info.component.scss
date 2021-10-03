@@ -379,6 +379,9 @@
       background-color: $white;
       height: 60px;
       padding: 0;
+      @include media("<lg"){
+        flex: 1 0 0%;
+      }      
       span {
         min-width: 132px;
         height: 100%;
