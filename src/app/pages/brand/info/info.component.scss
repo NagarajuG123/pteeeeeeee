@@ -134,6 +134,11 @@
   }
 }
 .inquiry-form-section {
+  position: relative;
+  z-index: 1;
+  @include media("<md"){
+    padding: 0;
+  }
   .header {
     display: flex;
     align-items: center;
@@ -142,6 +147,9 @@
     padding-left: 22px;
     &.market-header{
       height: auto;
+      @include media("<md"){
+        height: 60px;
+      }
       @include mobile-landscape{
         padding-left: 15px;
       }
@@ -149,6 +157,9 @@
         text-transform: uppercase;
         font-size: 19px;
         margin-bottom: 12px;
+        @include media("<md"){
+          margin: 0;
+        }
       }
     }
   }
@@ -220,7 +231,7 @@
 .divider-recent-feature .btn{
   height: 54px;
   background-color: $red;
-  text-align: right;
+  text-align: center;
 }
 .recent-feature-article-section {
   padding: 30px 25px;
@@ -368,6 +379,9 @@
       background-color: $white;
       height: 60px;
       padding: 0;
+      @include media("<lg"){
+        flex: 1 0 0%;
+      }      
       span {
         min-width: 132px;
         height: 100%;
@@ -462,7 +476,7 @@
 
 .wings {
   .frannews-top-left {
-    margin-bottom: 67px;
+    margin-bottom: 50px;
   }
   .map-legend {
     margin-bottom: 40px;
@@ -477,7 +491,7 @@
     li {
       display: inline-block;
       float: left;
-      padding: 0 31px 0 0;
+      padding: 0 31px 0 20px;
       position: relative;
     }
   }
@@ -868,8 +882,20 @@ button.close {
 }
 .brand-left-info--wrapper{
   padding-right: 15px;
+  @include media("<md"){
+    padding: 0;
+  }
   @include tablet-portrait{
     padding-right: 0;
+  }
+  .map-legend{
+    display: none;
+    @include media("<lg"){
+      display: block;
+    }
+    @include media("<md"){
+      padding: 20px;
+    }
   }
 }
 .brand-page-row--wrapper{
@@ -883,6 +909,102 @@ button.close {
   }
   @include mobile-landscape1{
     padding: 0 0 20px;
+  } 
+}
+.available-marketing--wrapper{
+  position: relative;    
+  padding: 0 95px 0 65px;
+  @include media("<xl"){
+    padding: 0 15px;
+  }
+  @include media("<md"){
+    margin: 0 -12px !important;
+  }
+  &:before{
+    position: absolute;
+    content: "";
+    background: #EB0444;
+    width: 101.5%;
+    height: 2px;
+    top: 49px;
+    left: -12px;
+    right: 0;
+    @include media("<md"){
+      width: 100%;
+      left: 0;
+    }
+  }
+  .more-brand--wrapper{
+    margin-top: 50px;
+    @include media("<md"){
+      padding: 0;
+      margin-top: 30px;
+    }
+  }
+  .brand-left-info--wrapper{
+    flex: 0 0 calc(100% - 300px);
+    max-width: calc(100% - 300px);
+    @include media("<lg"){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .market-rightsiderbar{
+    flex: 0 0 300px;
+    max-width: 300px;
+    @include media("<lg"){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+.available-market-row--wrapper{
+  padding: 0;
+  margin-top: -760px;
+  @include media("<xl"){
+    margin-top: -700px;
+  }
+  @include media("<lg"){
+    display: none;
+  }
+  .lg-map-wrapper{
+    text-align: center;
+  }
+}
+.available-market-mobile--wrapper{
+  display: none;
+  margin-top: 50px;
+  @include media("<lg"){
+    display: block;
+  }
+}
+.map-legend{
+  padding: 20px 30px 40px 120px;
+  background: #E8EEF2;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  &:before{
+    position: absolute;
+    content: "";
+  }
+  .map-legend-item{
+    padding: 0;
+    margin-top: 13px;
+  }
+  .market-names{
+    display: flex;
+    .market-status-color{
+      width: 22px;
+      height: 22px;
+    }
+    .market-name{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 128.69%;
+    }
   }
 }
 .main-desc-bottom--wrapper{

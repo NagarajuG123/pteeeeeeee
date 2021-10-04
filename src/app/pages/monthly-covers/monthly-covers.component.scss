@@ -45,19 +45,38 @@
           max-width: 100%;
         }
         &.c-card-main-imagebox--wrapper{
+          flex: 0 0 574px;
+          max-width: 574px;
+          @include media("<xl"){
+            flex: 0 0 400px;
+            max-width: 400px;
+          }
           @include media("<lg"){
+            flex: 0 0 100%;
+            max-width: 100%;
             width: 100%;
             text-align: center;
             padding: 10px 0 0;
           }
         }
         &.c-card-main-content-box--wrapper{
+          flex: 0 0 calc(100% - 574px);
+          max-width: calc(100% - 574px);
+          padding-left: 15px;
           @include media("<xxl"){
             justify-content: space-between;
-            margin-left: 15px;
+            // margin-left: 15px;
           }
-          @include media("<desktop"){
-            margin-left: 0;
+          @include media("<xl"){
+            flex: 0 0 calc(100% - 400px);
+            max-width: calc(100% - 400px);
+          }          
+          @include media("<lg"){
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+          @include media("<sm"){
+            padding: 0;
           }
         }
       }
@@ -65,10 +84,16 @@
     .c-card-box--contentRow {
       background-color: $white;
       .month-business--wrapper{
-        max-width: 52%;
+        max-width: 54%;
         margin-left: auto;
         // flex: unset;
-        padding: 15px 0;        
+        padding: 15px 0;     
+        @include media("<xxl"){
+          max-width: 54.5%;
+        }
+        @include media("<xl"){
+          max-width: 58%;
+        }
         @include media("<lg"){
         max-width: 100%;
         padding: 15px 0 15px 30px;
@@ -108,19 +133,19 @@
     .c-card-box--imageWrapper {
       &.isMainCardBox {
         margin-top: -278px;
-        margin-left: 100px;
+        // margin-left: 100px;
         margin-bottom: 45px;
         width: 570px;
         @include media("<=xxl"){
-          margin-left: 60px;
+          // margin-left: 60px;
         }
         @include media("<desktop"){
-          margin-left: 15px;
+          // margin-left: 15px;
         }
         @include media("<xl"){
           width: 400px;
           height: auto;
-          margin: -256px 0 0 20px;
+          margin: -256px 0 0 0;
         }
         @include media("<lg"){
           width: 100%;
@@ -131,6 +156,9 @@
           margin-top: 0px;
           padding: 6px 15px;
          margin-left: 0px;
+        }
+        @include media("<sm"){
+          padding: 6px 0;
         }
         .maincardbox-link--wrapper{
           display: inline-block;
@@ -144,12 +172,15 @@
           @include media("<xl"){
             max-height: unset;
             height: auto;
-          }
+          }          
         }
       }
       img {
         width: 100%;
         max-width: 100%;
+        @include media("<sm"){
+          height: auto;
+        }
       }
     }
 
@@ -159,13 +190,16 @@
       align-self: flex-start;
       gap: $cardGroupSpacing;
       margin-top: 10px;
+      @include media("<xl"){
+        justify-content: space-between;
+      }
       @include media("<lg"){
         gap: 0;        
         justify-content: space-between;
       }
       .c-card-box--item {
-        flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
-        max-width: calc(33.3333% - #{$cardGroupSpacing});
+        flex: 1 0 calc(33.3333% - 12px);
+        max-width: calc(33.3333% - 12px);
         @include media("<sm"){
           flex: 1 0 100%;
           max-width: 100%;
@@ -205,15 +239,21 @@
 //Bottom Section
 .monthy-cover {
   padding-top: 40px;
+  .all-cover-header-content{
+    padding-left: 28px;
+    @include media("<xl"){
+      padding-left: 20px;
+    }
+  }
   .monthly-cover-wrapper{
     flex-flow: row;
     flex-wrap: wrap;
-    width: 90%;
+    // width: 90%;
     justify-content: center;
-    padding: 40px 0 0 20px;
+    padding: 40px 23px 0;
     margin: 0 auto;
     @include media("<xxl"){
-      padding: 40px 0 0;
+      padding: 40px 0 15px;
     }
     @include media("<xl"){
       width: 100%;
@@ -249,14 +289,15 @@
     padding-left: 20px;
     font-weight: 700;
     line-height: 35px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     font-style: normal;
-    margin-left:80px;
+    // margin-left:80px;
     @include media("<xxl"){
-      margin-left: 50px;
+      // margin-left: 50px;
     }
     @include media("<xl"){
-      margin-left: 10px;
+      // margin-left: 10px;
+      padding-left: 0;
     }    
   }
   .monthly-covers-bottom {
