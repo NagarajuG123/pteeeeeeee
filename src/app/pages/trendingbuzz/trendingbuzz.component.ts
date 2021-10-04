@@ -3,6 +3,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-trendingbuzz',
@@ -14,7 +15,7 @@ export class TrendingbuzzComponent implements OnInit {
   slug: string ='1851';
   hasMore: boolean = false;
   faAngleRight = faAngleRight;
-  constructor( private apiService : ApiService,private metaService: MetaService) { }
+  constructor( private apiService : ApiService,private metaService: MetaService, public commonService: CommonService) { }
 
   ngOnInit(): void {
     this.getTrending();
@@ -31,7 +32,6 @@ export class TrendingbuzzComponent implements OnInit {
     });
   }
    getMoreData() {
-     console.log(this.trendingData.length);
     this.apiService.getAPI(`${this.slug}/trending-buzz?limit=4&offset=${this.trendingData.length}`)
     .subscribe(result => {
       this.hasMore = result.has_more;

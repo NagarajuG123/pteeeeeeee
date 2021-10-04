@@ -35,28 +35,27 @@ h6 {
     line-height: 22px;
     color: $white;
   }
-  .bottom{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: $red;
-    .readMore{
-      font-size: 9.1px;
-      line-height: 11px;
-      color: #fff;
-      font-weight: 400;
-      font-family: $proxiRegular;
-    }
-    .fa{
-      font-size: 25px;
-      line-height: 11px;
-      color: #fff;
-      padding: 0 0 0 7px;
-      vertical-align: top;
-    }
-  }
 } 
+.bottom{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: $red;
+  .readMore{
+    font-size: 9.1px;
+    line-height: 11px;
+    color: $white;
+    font-weight: 400;
+    font-family: $proxiRegular;
+  }
+  .fa-icon{
+    font-size: 25px;
+    line-height: 11px;
+    color: $white;
+    padding: 0 0 0 7px;
+    vertical-align: top;
+  }
+}
 .items {
   font-family: "Roboto";
   .card-body {
@@ -125,5 +124,12 @@ h6 {
     padding: 7px 5px 9px;
     width: 35px;
 
+  }
+}
+.top-right{
+  img{
+    display: block;
+    width: 100%;
+    height: 575px;
   }
 }

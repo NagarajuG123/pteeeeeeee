@@ -1,13 +1,13 @@
 <div>
   <div class="row">
-    <div class="col-4 col-md-4 col-sm-4 bg-gray">
+    <a class="col-4 col-md-4 col-sm-4 bg-gray" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
       <div class="trendingbrandbuzz-content">
         <h4> TRENDING BRAND BUZZ</h4>
         <h1>{{ trendingData[0]?.title }}</h1>
         <p> {{ trendingData[0]?.short_description }} </p>
       </div>
       <a
-      class="bottom"
+      class="bottom text-uppercase float-right"
       routerLink=""
     >
       <a
@@ -15,22 +15,23 @@
         routerLink=""
       >
         READ MORE
-        <fa-icon class="fa" [icon]="faAngleRight"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
       </a>
       <div class="clearfix"></div>
     </a>
-    </div>
-    <div class="col-8 col-md-8 col-sm-8 p-0">
+    </a>
+    <div class="col-8 col-md-8 col-sm-8 p-0 top-right">
       <figure>
         <img
-        class="img-fluid lazyload"
-        data-src="{{ trendingData[0].media | defaultImage:1022:572 }}"
-        height="575"
-        width="1022"
+        class="lazyload"
+        data-src="{{ trendingData[0].media | defaultImage:1023:576 }}"
+        height="576"
+        width="1023"
         />
       </figure>
     </div>
   </div>
+
   <div class="container customContainer py-md-4">
     <h6 class="text-uppercase">SPONSORED</h6>
     <div class="row mt-2">
@@ -41,7 +42,7 @@
         <div class="items card border-0 rounded-0">
           <div class="sponsored text-center"><span class="d-inline-block"> {{ i + 1 }}</span></div>
           <a
-            routerLink=""
+          routerLink="/{{ commonService.readMore(list) }}"
             fragment="franbuzz"
             (click)="closeModal()"
             ><img
@@ -65,6 +66,7 @@
       </div>
     </div>
   </div>
+
   <div class="d-flex">
     <div class="see-more--wrapper"></div>
     <div class="nextLine position-relative mb-5 mt-2">
@@ -90,4 +92,4 @@
     </div>
     <div class="see-more-right--wrapper"></div>
   </div>
-</div>
+</div>  
