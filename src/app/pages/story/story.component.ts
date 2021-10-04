@@ -115,7 +115,7 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.setScrollEvent();
+    this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
   }
@@ -772,66 +772,66 @@ export class StoryComponent implements OnInit {
 
     return elemBottom <= docViewBottom && elemTop >= docViewTop;
   }
-  // @HostListener('window:scroll', ['$event'])
-  // scrollHandler(event) {
-  //   $('.articles').each((index, element) => {
-  //     if (this.pageType === 'details') {
-  //       if (this.isScrolledIntoView(element) && this.enableScroll) {
-  //         this.enableScroll = false;
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event) {
+    $('.articles').each((index, element) => {
+      if (this.pageType === 'details') {
+        if (this.isScrolledIntoView(element) && this.enableScroll) {
+          this.enableScroll = false;
 
-  //         if (typeof $(element).data('id') !== 'undefined') {
-  //           let newUrl =
-  //             this.brandSlug !== '1851' && this.brandSlug
-  //               ? `/${this.brandSlug}/${$(element).data('title')}`
-  //               : `/${$(element).data('title')}`;
-  //           newUrl =
-  //             this.type && this.type !== 'featured-articles'
-  //               ? `${newUrl}#${this.type}`
-  //               : newUrl;
-  //           if (this.originalUrl !== newUrl) {
-  //             this.originalUrl = newUrl;
-  //             if (this.isBrowser) {
-  //               for (let i = 0; i < this.gaVisitedUrls.length; i++) {
-  //                 if (this.gaVisitedUrls[i] === newUrl) {
-  //                   return;
-  //                 }
-  //               }
-  //               ga('set', 'page', newUrl);
-  //               ga('send', 'pageview');
-  //               ga(`${this.brandSlug}.set`, 'page', newUrl);
-  //               ga(`${this.brandSlug}.send`, 'pageview');
-  //               this.gaVisitedUrls.push(newUrl);
-  //             }
-  //           }
-  //           this.location.replaceState(newUrl);
-  //         }
-  //       }
-  //     }
-  //   });
-  // }
+          if (typeof $(element).data('id') !== 'undefined') {
+            let newUrl =
+              this.brandSlug !== '1851' && this.brandSlug
+                ? `/${this.brandSlug}/${$(element).data('title')}`
+                : `/${$(element).data('title')}`;
+            newUrl =
+              this.type && this.type !== 'featured-articles'
+                ? `${newUrl}#${this.type}`
+                : newUrl;
+            if (this.originalUrl !== newUrl) {
+              this.originalUrl = newUrl;
+              if (this.isBrowser) {
+                for (let i = 0; i < this.gaVisitedUrls.length; i++) {
+                  if (this.gaVisitedUrls[i] === newUrl) {
+                    return;
+                  }
+                }
+                ga('set', 'page', newUrl);
+                ga('send', 'pageview');
+                ga(`${this.brandSlug}.set`, 'page', newUrl);
+                ga(`${this.brandSlug}.send`, 'pageview');
+                this.gaVisitedUrls.push(newUrl);
+              }
+            }
+            this.location.replaceState(newUrl);
+          }
+        }
+      }
+    });
+  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
 
-  @HostListener('window:scroll', [])
-  async onScroll() {
-    if (this.bottomReached() && this.enableScroll) {
-      this.enableScroll = false;
-      // if (this.detailsData.length < 2) {
-        let storyNo = this.detailsData.length-1;
-      const subUrl = this.brandSlug !== '1851'
-              ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
-              : `${this.detailsData[storyNo].slug}`;
-        this.location.replaceState(subUrl);
-      await this.loadArticles('');
-      window.scrollTo(0, window.scrollY - 50);
-      setTimeout(() => {
-        this.enableScroll = true;
-      }, 1000);
-      // }
-    }
-  }
+  // @HostListener('window:scroll', [])
+  // async onScroll() {
+  //   if (this.bottomReached() && this.enableScroll) {
+  //     this.enableScroll = false;
+  //     // if (this.detailsData.length < 2) {
+  //       let storyNo = this.detailsData.length-1;
+  //     const subUrl = this.brandSlug !== '1851'
+  //             ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
+  //             : `${this.detailsData[storyNo].slug}`;
+  //       this.location.replaceState(subUrl);
+  //     await this.loadArticles('');
+  //     window.scrollTo(0, window.scrollY - 50);
+  //     setTimeout(() => {
+  //       this.enableScroll = true;
+  //     }, 1000);
+  //     // }
+  //   }
+  // }
 
   async loadArticles(val: any) {
     // In this function you can call more article api or you add article in list

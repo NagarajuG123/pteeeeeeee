@@ -1,4 +1,12 @@
 <div
+    class="search-results"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollUpDistance]="scrollUpDistance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()"
+  >
+<div
   class="articles"
   *ngFor="let story of detailsData; index as i"
   attr.data-id="{{ story.id }}"
@@ -334,4 +342,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
