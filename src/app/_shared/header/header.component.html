@@ -206,7 +206,13 @@
           </ul>
           <!-- Submenu brand -->
           <ul
-            class="dropdown-menu submenu-list noScrollBar dropdown-menu-dark"
+            class="
+              sidebar-dropdown-menu
+              dropdown-menu
+              submenu-list
+              noScrollBar
+              dropdown-menu-dark
+            "
             aria-labelledby="dropdownMenu2"
             *ngIf="brandSlug !== '1851'"
           >
@@ -241,21 +247,10 @@
             </li>
             <li>
               <h3>
-                <a
-                  routerLink="/"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                >
-                  Return to Main Site
-                </a>
+                <a routerLink="/"> Return to Main Site </a>
               </h3>
               <h3>
-                <a
-                  routerLink="/{{ brandSlug }}"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                  >{{ brandTitle }}</a
-                >
+                <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
               </h3>
               <ul class="mb-2 ms-2">
                 <li class="ms-1">
@@ -313,14 +308,11 @@
               </ul>
             </li>
 
-            <li>
+            <li class="ms-1">
               <hr />
               <h3>
-                <a
-                  routerLink="/{{ brandSlug }}"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                  >{{ brandTitle }} <br />Most read Stories</a
+                <a class="my-1" routerLink="/{{ brandSlug }}"
+                  >{{ brandTitle }} Most read Stories</a
                 >
               </h3>
               <ul class="mb-2 ms-2">
