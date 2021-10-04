@@ -199,9 +199,6 @@ export class StoryComponent implements OnInit {
                 }
 
                 forkJoin([
-                  this.apiService.getAPI(
-                    `${this.brandId}/news?lean=true&limit=4&offset=0`
-                  ),
                   this.apiService.getAPI(`1851/news?limit=4&offset=0`),
                   this.apiService.getAPI(
                     `1851/news?limit=4&offset=0&isBrand=true`
@@ -209,9 +206,8 @@ export class StoryComponent implements OnInit {
                 ])
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((result) => {
-                    this.newsData = result[0].data;
-                    this.mainNews = result[1].data;
-                    this.brandNews = result[2].data;
+                    this.mainNews = result[0].data;
+                    this.brandNews = result[1].data;
                   });
                 switch (this.type) {
                   case 'stories':
@@ -380,8 +376,8 @@ export class StoryComponent implements OnInit {
         }
 
         this.detailsData.push(this.htmlBinding(result['story'].data));
+        this.setTrending(result['story'].data);
 
-        // this.detailsData = Object.assign([], this.detailsData);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -400,12 +396,14 @@ export class StoryComponent implements OnInit {
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
           modified_date.setHours(hours);
           modified_date.setMinutes(minutes);
-          if(posted_date || modified_date){
+          if (posted_date || modified_date) {
             this.isDate = true;
           }
           let postedDate = posted_date.toDateString();
           let modified = modified_date.toDateString();
-          postedDate === modified ? this.isUpdate = true : this.isUpdate = false;
+          postedDate === modified
+            ? (this.isUpdate = true)
+            : (this.isUpdate = false);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -508,6 +506,24 @@ export class StoryComponent implements OnInit {
         }
         this.createCanonicalURL(url);
       });
+  }
+  setTrending(story) {
+    console.log(story.category);
+    if (story.category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    }
   }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
@@ -664,6 +680,7 @@ export class StoryComponent implements OnInit {
           response.forEach((item) => {
             if (parseInt(this.storyId, 10) !== item.id) {
               this.detailsData.push(this.htmlBinding(item));
+              this.setTrending(item);
             } else {
               if (limit === 1) {
                 this.addItems(limit, offset + 1);
