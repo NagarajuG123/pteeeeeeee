@@ -13,7 +13,7 @@ header {
   .top-head {
     background-color: $dark-gray;
     color: $light-gray;
-    >div {
+    > div {
       font-family: $balinger;
     }
     li {
@@ -80,7 +80,7 @@ header {
     a {
       color: $dark-gray;
     }
-   
+
     // center menu style
     .center-menu {
       font-family: $roboto;
@@ -149,84 +149,77 @@ header {
       padding-top: 0;
       bottom: -6px;
       position: relative;
-      figure{
+      figure {
         height: 75px;
         overflow: hidden;
       }
     }
 
     // Sub menu style
-    .subMenu {
-      background: $dark-gray;
-      position: absolute;
-      left: -100vw;
-      padding: 18px;
-      z-index: 6;
-      top: 100%;
+    .sidebar-dropdown-menu {
+      padding-left: 20px;
       width: 300px;
-      display: block;
-      transition: all 0.5s ease;
-      &.open {
-        // position: absolute;
-        transition: all 0.5s ease;
-        left: 0;
-      }
+      border: none !important;
+      border-radius: 0rem !important;
+    }
 
-      .menu-search {
-        button {
-          background: $white;
-          border: 0;
-          border-radius: 0;
-          z-index: 1;
-          box-sizing: border-box;
-          color: $primary;
-        }
-        input {
-          border-color: $white;
-          border-radius: 0;
-          height: 27px;
-          font-family: $roboto;
-          font-size: 9px;
-          line-height: 141.19%;
-          &:focus,
-          &:hover {
-            outline: 0;
-            box-shadow: 0 0 0;
-          }
+    .menu-search {
+      width: 200px;
+
+      button {
+        background: $white;
+        border: 0;
+        border-radius: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        color: $primary;
+      }
+      input {
+        border-color: $white;
+        border-radius: 0;
+        height: 27px;
+        font-family: $roboto;
+        font-size: 9px;
+        line-height: 141.19%;
+        &:focus,
+        &:hover {
+          outline: 0;
+          box-shadow: 0 0 0;
         }
       }
-      .submenu-list {
-        li {
-          hr {
-            height: 0px;
-            left: 25px;
-            border: 1px solid $primary;
-            margin: 0 0 10px;
+    }
+    .submenu-list {
+      li {
+        hr {
+          height: 0px;
+          left: 25px;
+          border: 1px solid $primary;
+          margin: 0 0 10px;
+        }
+        a {
+          color: $white;
+          text-decoration: none;
+          &:hover,
+          &:focus {
+            color: $primary;
           }
-          a {
-            color: $white;
-            text-decoration: none;
-            &:hover,
-            &:focus {
-              color: $primary;
-            }
-          }
-          > h3 {
-            font-family: $balingerRegular;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 200%;
-            text-transform: uppercase;
-            color: $white;
-            margin-bottom: 0;
-          }
-          ul {
-            li {
-              a {
-                font-family: $roboto;
-                font-weight: 500;
-                font-size: 11px;
-              }
+        }
+        > h3 {
+          font-family: $balingerRegular;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 30.8px;
+          text-transform: uppercase;
+          color: $white;
+          margin-bottom: 0;
+        }
+        ul {
+          li {
+            a {
+              font-family: $roboto;
+              font-weight: 500;
+              font-size: 11px;
+              line-height: 14.16px;
             }
           }
         }
@@ -244,7 +237,7 @@ header {
 }
 
 .search_pop_up {
-  h2{
+  h2 {
     font-family: $balinger;
     font-weight: 700;
     font-size: 30px;
@@ -492,16 +485,16 @@ header {
     }
   }
 }
-.modal-header{
+.modal-header {
   border-bottom: 3px solid $red;
-  h1{
+  h1 {
     font-family: $balinger;
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
   }
 }
-.form-check-input{
+.form-check-input {
   border-radius: 50%;
   height: 20px !important;
   border: 1px solid $red;
@@ -518,12 +511,12 @@ header {
   font-family: $balinger;
   line-height: 21.6px;
 }
-img{
+img {
   max-width: 100%;
   height: auto;
   display: inline-block;
 }
-.form-control{
+.form-control {
   border: 1px solid $dark-gray;
 }
 .container{

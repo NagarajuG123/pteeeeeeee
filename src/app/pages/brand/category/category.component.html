@@ -5,10 +5,11 @@
         <div class="col-12 mb-2 mb-md-3">
           <div class="position-relative main-image">
             <img
+              *ngIf="banner"
               appYoutubeImage
               width="100%"
               height="616"
-              data-src="assets/img/cat_banner_dummy.png"
+              data-src="{{ banner }}"
               alt="featured"
               loading="lazy"
               class="lazyload"
@@ -16,6 +17,7 @@
             <div class="content text-capitalize">
               {{ mainText }}
             </div>
+            <p *ngIf="description">{{ description }}</p>
           </div>
         </div>
       </div>
