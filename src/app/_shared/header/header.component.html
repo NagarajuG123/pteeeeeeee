@@ -1,183 +1,124 @@
-<header class="col-12" >
+<header class="col-12">
   <div>
-   <!-- Top header section Start -->
-  <div class="top-head d-none d-lg-block">
-    <div class="container d-flex">
-      Publications in the Mainland Community:
-      <ul class="list-group list-group-horizontal ms-3">
-        <li class="me-3">
-          <a
-            href="{{ header?.publication?.room1903Url }}"
-            target="_blank"
-            class="text-white"
-            rel="noopener"
-          >
-            <span
-              ><img
-                data-src="assets/img/room-service.png"
-                height="21px"
-                width="21px"
-                alt="room service"
-                class="lazyload"
-            /></span>
-            Room 1903&nbsp;
-            <fa-icon
-              [icon]="faCaretRightIcon"
-              [styles]="{ width: '5px' }"
-            ></fa-icon>
-          </a>
-        </li>
-        <li class="me-3">
-          <a
-            href="{{ header?.publication?.eeUrl }}"
-            target="_blank"
-            class="text-white"
-            rel="noopener"
-          >
-            <span
-              ><img
-                data-src="assets/img/Estatenvy.png"
-                height="21px"
-                width="21px"
-                alt="room"
-                class="lazyload"
-            /></span>
-            Estatenvy&nbsp;
-            <fa-icon
-              [icon]="faCaretRightIcon"
-              [styles]="{ width: '5px' }"
-            ></fa-icon>
-          </a>
-        </li>
-      </ul>
+    <!-- Top header section Start -->
+    <div class="top-head d-none d-lg-block">
+      <div class="container d-flex">
+        Publications in the Mainland Community:
+        <ul class="list-group list-group-horizontal ms-3">
+          <li class="me-3">
+            <a
+              href="{{ header?.publication?.room1903Url }}"
+              target="_blank"
+              class="text-white"
+              rel="noopener"
+            >
+              <span
+                ><img
+                  data-src="assets/img/room-service.png"
+                  height="21px"
+                  width="21px"
+                  alt="room service"
+                  class="lazyload"
+              /></span>
+              Room 1903&nbsp;
+              <fa-icon
+                [icon]="faCaretRightIcon"
+                [styles]="{ width: '5px' }"
+              ></fa-icon>
+            </a>
+          </li>
+          <li class="me-3">
+            <a
+              href="{{ header?.publication?.eeUrl }}"
+              target="_blank"
+              class="text-white"
+              rel="noopener"
+            >
+              <span
+                ><img
+                  data-src="assets/img/Estatenvy.png"
+                  height="21px"
+                  width="21px"
+                  alt="room"
+                  class="lazyload"
+              /></span>
+              Estatenvy&nbsp;
+              <fa-icon
+                [icon]="faCaretRightIcon"
+                [styles]="{ width: '5px' }"
+              ></fa-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <!-- Top header section Close -->
+    <!-- Top header section Close -->
 
-  <!-- main header section Start -->
-  <main class="container">
-    <div class="row g-0 align-items-center">
-      <div class="col-10 col-md-auto d-flex position-relative">
-        <a class="menuBtn me-3" (click)="commonService.toggle()">
-          <img
-            data-src="{{
-              commonService.showmenu
-                ? 'assets/img/close.png'
-                : 'assets/img/menu.png'
-            }}"
-            alt="menu"
-            width="35"
-            height="24"
-            [ngClass]="commonService.showmenu ? 'close-menu' : ''"
-            class="lazyload"
-          />
-          <small class="text-center d-none d-md-block">MENU</small>
-        </a>
-
-        <!-- Header Logo Section -->
-        <div class="logo d-flex align-items-center">
-          <a [routerLink]="header?.logo?.url"
-            ><img
-              data-src="{{ header?.logo?.image }}"
-              height="{{ header?.logo?.height }}"
-              width="{{ header?.logo?.width }}"
-              alt="logo"
-              class="me-2 lazyload"
-          /></a>
-          <div class="d-none d-md-block">
-            <!-- Main -->
-            <a
-              *ngIf="brandSlug === '1851'"
-              [routerLink]="header?.subscribe?.url"
-              >{{ header?.subscribe?.title }}</a
-            >
-            <!-- Brand -->
-            <a
-              *ngIf="brandSlug !== '1851'"
-              data-bs-toggle="modal"
-              data-bs-target="#sponsoredModal"
-              href="#"
-              onclick="return false"
-              >{{ header?.subscribe?.title }}</a
-            >
-            <br />
-            <small class="d-flex align-items-center">
-              <!-- Main -->
-              <a
-                *ngIf="brandSlug === '1851'"
-                [routerLink]="header?.subscribe?.url"
-                >{{ header?.subscribe?.subTitle }}</a
-              >
-              <!-- Brand -->
-              <a
-                *ngIf="brandSlug !== '1851'"
-                data-bs-toggle="modal"
-                data-bs-target="#sponsoredModal"
-                href="#"
-                onclick="return false"
-                >{{ header?.subscribe?.subTitle }}</a
-              >
-              &nbsp;
-              <img
-                data-src="assets/img/logo.png"
-                height="41"
-                width="41"
-                alt="logo"
-                class="lazyload"
-            /></small>
-          </div>
-        </div>
-
-        <!-- Sub menu start-->
-        <div
-          class="subMenu noScrollBar"
-          [ngClass]="commonService.showmenu ? 'open' : ''"
-        >
-          <div class="menu-search">
-            <form
-              [formGroup]="searchForm"
-              (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
-            >
-              <div class="input-group mb-1">
-                <button
-                  class="ps-2"
-                  type="button"
-                  (click)="onSearchSubmit(searchForm, 'sidebar')"
+    <!-- main header section Start -->
+    <main class="container">
+      <div class="row g-0 align-items-center">
+        <div class="col-10 col-md-auto d-flex position-relative">
+          <a
+            class="menuBtn me-3"
+            type="button"
+            id="dropdownMenu2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              data-src="{{
+                commonService.showmenu
+                  ? 'assets/img/close.png'
+                  : 'assets/img/menu.png'
+              }}"
+              alt="menu"
+              width="35"
+              height="24"
+              class="lazyload"
+            />
+            <small class="text-center d-none d-md-block">MENU</small>
+          </a>
+          <ul
+            class="dropdown-menu submenu-list noScrollBar dropdown-menu-dark"
+            aria-labelledby="dropdownMenu2"
+            *ngIf="brandSlug === '1851'"
+          >
+            <li>
+              <div class="menu-search">
+                <form
+                  [formGroup]="searchForm"
+                  (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
                 >
-                  <img
-                    data-src="assets/img/search-p.svg"
-                    alt="search"
-                    width="11px"
-                    height="11px"
-                    class="lazyload"
-                  />
-                </button>
-                <input
-                  type="text"
-                  class="form-control ps-0"
-                  placeholder="Search"
-                />
+                  <div class="input-group mb-1">
+                    <button
+                      class="ps-2"
+                      type="button"
+                      (click)="onSearchSubmit(searchForm, 'sidebar')"
+                    >
+                      <img
+                        data-src="assets/img/search-p.svg"
+                        alt="search"
+                        width="11px"
+                        height="11px"
+                        class="lazyload"
+                      />
+                    </button>
+                    <input
+                      type="text"
+                      class="form-control ps-0"
+                      placeholder="Search"
+                    />
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
-          <ul class="submenu-list mb-0" *ngIf="brandSlug === '1851'">
+            </li>
             <li class="d-block">
               <h3>
-                <a
-                  routerLink="/monthlycovers"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                >
-                  MONTHLY COVERS</a
-                >
+                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
               </h3>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
-                <a
-                  routerLink="{{ header?.monthlyCover?.coverUrl }}"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                >
+                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
                   <img
                     appYoutubeImage
                     data-src="{{ header?.monthlyCover?.url }}"
@@ -206,14 +147,11 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
-                    [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                    (click)="commonService.toggle()"
                     >{{ item.name }}
                   </a>
                 </li>
               </ul>
             </li>
-
             <li>
               <h3>Awards</h3>
               <hr />
@@ -233,48 +171,68 @@
                 </li>
               </ul>
             </li>
-
             <li>
               <hr />
 
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-                <a
-                  routerLink="{{ menu.url }}"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
-                >
+                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
               </h3>
             </li>
             <li>
               <hr />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a
-                  *ngIf="!menu.fragment"
-                  routerLink="{{ menu.url }}"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
-                >
+                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
+                  menu.title
+                }}</a>
                 <a
                   *ngIf="menu.fragment"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
-                  [ngClass]="commonService.showmenu ? 'closeMenu' : ''"
-                  (click)="commonService.toggle()"
                   >{{ menu.title }}</a
                 >
               </h3>
             </li>
             <li>
-              <hr class="mb-2" />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
                 <a href="{{ menu.url }}">{{ menu.title }}</a>
               </h3>
             </li>
           </ul>
-
-          <ul class="submenu-list mb-0" *ngIf="brandSlug !== '1851'">
+          <!-- Submenu brand -->
+          <ul
+            class="dropdown-menu submenu-list noScrollBar dropdown-menu-dark"
+            aria-labelledby="dropdownMenu2"
+            *ngIf="brandSlug !== '1851'"
+          >
+            <li>
+              <div class="menu-search">
+                <form
+                  [formGroup]="searchForm"
+                  (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+                >
+                  <div class="input-group mb-1">
+                    <button
+                      class="ps-2"
+                      type="button"
+                      (click)="onSearchSubmit(searchForm, 'sidebar')"
+                    >
+                      <img
+                        data-src="assets/img/search-p.svg"
+                        alt="search"
+                        width="11px"
+                        height="11px"
+                        class="lazyload"
+                      />
+                    </button>
+                    <input
+                      type="text"
+                      class="form-control ps-0"
+                      placeholder="Search"
+                    />
+                  </div>
+                </form>
+              </div>
+            </li>
             <li>
               <h3>
                 <a
@@ -408,202 +366,260 @@
               </h3>
             </li>
           </ul>
-        </div>
-        <!-- Sub menu close-->
-      </div>
-
-      <!-- Center menu link -->
-      <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
-        <ul class="center-menu nav justify-content-center">
-          <li class="nav-item px-2" *ngFor="let menu of header?.menus">
-            <a [routerLink]="menu.url" class="d-flex align-items-center"
-              >{{ menu.title }}
-            </a>
-          </li>
-          <li
-            class="actions nav-item mx-2 px-2"
-            *ngFor="let action of header?.actions; index as i"
-          >
-            <a class="d-flex align-items-center"
-              >{{ action.title }}
-              <img
-                data-src="assets/img/down-arrow.svg"
-                height="30"
-                width="20"
-                alt=""
-                class="ms-1 lazyload"
+          <!-- Header Logo Section -->
+          <div class="logo d-flex align-items-center">
+            <a [routerLink]="header?.logo?.url"
+              ><img
+                data-src="{{ header?.logo?.image }}"
+                height="{{ header?.logo?.height }}"
+                width="{{ header?.logo?.width }}"
+                alt="logo"
+                class="me-2 lazyload"
             /></a>
-            <ul class="dropdown-menu">
-              <li *ngFor="let item of action.items">
-                <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
-        <ul class="center-menu nav justify-content-center">
-          <li class="nav-item mt-1 px-1">
-            <a [routerLink]="header?.menus?.url" class="d-flex align-items-center"
-              >{{ header?.menus?.title }}
-            </a>
-          </li>
-          <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
+            <div class="d-none d-md-block">
+              <!-- Main -->
+              <a
+                *ngIf="brandSlug === '1851'"
+                [routerLink]="header?.subscribe?.url"
+                >{{ header?.subscribe?.title }}</a
+              >
+              <!-- Brand -->
+              <a
+                *ngIf="brandSlug !== '1851'"
+                data-bs-toggle="modal"
+                data-bs-target="#sponsoredModal"
+                href="#"
+                onclick="return false"
+                >{{ header?.subscribe?.title }}</a
+              >
+              <br />
+              <small class="d-flex align-items-center">
+                <!-- Main -->
+                <a
+                  *ngIf="brandSlug === '1851'"
+                  [routerLink]="header?.subscribe?.url"
+                  >{{ header?.subscribe?.subTitle }}</a
+                >
+                <!-- Brand -->
+                <a
+                  *ngIf="brandSlug !== '1851'"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sponsoredModal"
+                  href="#"
+                  onclick="return false"
+                  >{{ header?.subscribe?.subTitle }}</a
+                >
+                &nbsp;
+                <img
+                  data-src="assets/img/logo.png"
+                  height="41"
+                  width="41"
+                  alt="logo"
+                  class="lazyload"
+              /></small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center menu link -->
+        <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
+          <ul class="center-menu nav justify-content-center">
+            <li class="nav-item px-2" *ngFor="let menu of header?.menus">
+              <a [routerLink]="menu.url" class="d-flex align-items-center"
+                >{{ menu.title }}
+              </a>
+            </li>
+            <li
+              class="actions nav-item mx-2 px-2"
+              *ngFor="let action of header?.actions; index as i"
+            >
+              <a class="d-flex align-items-center"
+                >{{ action.title }}
+                <img
+                  data-src="assets/img/down-arrow.svg"
+                  height="30"
+                  width="20"
+                  alt=""
+                  class="ms-1 lazyload"
+              /></a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let item of action.items">
+                  <a class="dropdown-item" [href]="item.url">{{
+                    item?.title
+                  }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
+          <ul class="center-menu nav justify-content-center">
+            <li class="nav-item mt-1 px-1">
+              <a
+                [routerLink]="header?.menus?.url"
+                class="d-flex align-items-center"
+                >{{ header?.menus?.title }}
+              </a>
+            </li>
+            <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
+              <a
+                href="#"
+                onclick="return false;"
+                class="text-uppercase"
+                data-bs-toggle="modal"
+                data-bs-target="#inquireModal"
+              >
+                {{ header?.inquire }}
+              </a>
+            </li>
+            <li class="nav-item mx-2 px-1 mt-1">
+              <a class="d-flex align-items-center"
+                >{{ header?.actions?.title }}
+                <img
+                  data-src="assets/img/down-arrow.svg"
+                  height="30"
+                  width="20"
+                  class="ms-1 lazyload"
+              /></a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let item of header?.actions?.items">
+                  <a class="dropdown-item" [href]="item.url">{{
+                    item?.title
+                  }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
+          <!-- Search bar -->
+          <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
             <a
               href="#"
               onclick="return false;"
-              class="text-uppercase"
               data-bs-toggle="modal"
-              data-bs-target="#inquireModal"
-            >
-              {{ header?.inquire }}
-            </a>
-          </li>
-          <li class="nav-item mx-2 px-1 mt-1">
-            <a class="d-flex align-items-center"
-              >{{ header?.actions?.title }}
-              <img
-                data-src="assets/img/down-arrow.svg"
-                height="30"
-                width="20"
-                class="ms-1 lazyload"
-            /></a>
-            <ul class="dropdown-menu">
-              <li *ngFor="let item of header?.actions?.items">
-                <a class="dropdown-item" [href]="item.url">{{ item?.title }}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
-        <!-- Search bar -->
-        <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
-          <a
-            href="#"
-            onclick="return false;"
-            data-bs-toggle="modal"
-            data-bs-target="#searchModal"
-            ><img
-              data-src="assets/img/search.svg"
-              height="15"
-              width="15"
-              alt="search"
-              class="lazyload"
-          /></a>
-        </div>
-
-        <!-- Social Links -->
-        <ul class="social d-flex align-items-center mb-0">
-          <li class="d-none d-lg-block">
-            <a href="#" class="d-flex align-items-center">
-              <span class="follow text-capitalize">Follow Us:</span>
-            </a>
-          </li>
-          <li
-            *ngFor="let item of header?.socialMedia; index as i"
-            class="mx-1 d-none d-lg-block"
-          >
-            <a
-              [href]="item.url"
-              target="_blank"
-              class="d-flex align-items-center"
-              rel="noopener"
-            >
-              <img
-                data-src="{{ item?.media?.image }}"
-                width="{{ item?.media?.width }}"
-                height="{{ item?.media?.height }}"
-                alt="social"
+              data-bs-target="#searchModal"
+              ><img
+                data-src="assets/img/search.svg"
+                height="15"
+                width="15"
+                alt="search"
                 class="lazyload"
-              />
-            </a>
-          </li>
-        </ul>
+            /></a>
+          </div>
 
-        <!-- User Image -->
-        <div class="userImage ms-3 d-none d-lg-block">
-          <figure>
-            <img
-              routerLink="{{ header?.monthlyCover?.coverUrl }}"
-              data-src="{{ header?.monthlyCover?.url }}"
-              height="101"
-              width="92"
-              alt="cover"
-              class="cursor lazyload"
-            />
-          </figure>
+          <!-- Social Links -->
+          <ul class="social d-flex align-items-center mb-0">
+            <li class="d-none d-lg-block">
+              <a href="#" class="d-flex align-items-center">
+                <span class="follow text-capitalize">Follow Us:</span>
+              </a>
+            </li>
+            <li
+              *ngFor="let item of header?.socialMedia; index as i"
+              class="mx-1 d-none d-lg-block"
+            >
+              <a
+                [href]="item.url"
+                target="_blank"
+                class="d-flex align-items-center"
+                rel="noopener"
+              >
+                <img
+                  data-src="{{ item?.media?.image }}"
+                  width="{{ item?.media?.width }}"
+                  height="{{ item?.media?.height }}"
+                  alt="social"
+                  class="lazyload"
+                />
+              </a>
+            </li>
+          </ul>
+
+          <!-- User Image -->
+          <div class="userImage ms-3 d-none d-lg-block">
+            <figure>
+              <img
+                routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                data-src="{{ header?.monthlyCover?.url }}"
+                height="101"
+                width="92"
+                alt="cover"
+                class="cursor lazyload"
+              />
+            </figure>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-  <!-- main header section Close -->
+    </main>
+    <!-- main header section Close -->
 
-  <!-- Search Modal -->
+    <!-- Search Modal -->
 
-  <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          type="button"
-          class="close text-right"
-          #searchCloseBtn
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
-        <form
-          [formGroup]="searchForm"
-          (ngSubmit)="onSearchSubmit(searchForm, 'header')"
-        >
-          <h2>SEARCH 1851 FRANCHISE</h2>
-          <div class="form-group d-block">
-            <input
-              type="text"
-              class="form-control"
-              [placeholder]="'Search'"
-              (keyup)="onKeyUp()"
-              [formControl]="searchForm.controls['searchInput']"
-            />
-            <button
-              type="button"
-              class="d-block text-center"
-              (click)="onSearchSubmit(searchForm, 'header')"
-              data-bs-dismiss="modal"
-            >
-              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
-            </button>
-          </div>
-        </form>
-        <h5>MOST RECENT MATCHES</h5>
-        <div class="ArticlesNewsSection">
-          <h6 class="text-center" *ngIf="news == null">No articles found</h6>
-
-          <div class="container customContainer py-md-2">
-            <div class="row mt-2">
-              <div
-                class="col-sm-6 col-md-3 mb-2"
-                *ngFor="let list of news; index as i"
+    <div *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="close text-right"
+            #searchCloseBtn
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <form
+            [formGroup]="searchForm"
+            (ngSubmit)="onSearchSubmit(searchForm, 'header')"
+          >
+            <h2>SEARCH 1851 FRANCHISE</h2>
+            <div class="form-group d-block">
+              <input
+                type="text"
+                class="form-control"
+                [placeholder]="'Search'"
+                (keyup)="onKeyUp()"
+                [formControl]="searchForm.controls['searchInput']"
+              />
+              <button
+                type="button"
+                class="d-block text-center"
+                (click)="onSearchSubmit(searchForm, 'header')"
+                data-bs-dismiss="modal"
               >
-                <div class="items card border-0 rounded-0">
-                  <a
-                    routerLink="{{ commonService.readMore(list) }}"
-                    fragment="franbuzz"
-                    (click)="closeModal()"
-                    ><img
-                      data-src="{{ list.media | defaultImage: 257:138 }}"
-                      class="card-img-top lazyload"
-                      alt="story"
-                      width="257"
-                      height="138"
-                    />
-                    <div class="card-body">
-                      <p class="card-text mb-1 text-black text-capitalize">
-                        {{ commonService.formatTitle(list.title) }}
-                      </p>
-                    </div>
-                  </a>
+                <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
+              </button>
+            </div>
+          </form>
+          <h5>MOST RECENT MATCHES</h5>
+          <div class="ArticlesNewsSection">
+            <h6 class="text-center" *ngIf="news == null">No articles found</h6>
+
+            <div class="container customContainer py-md-2">
+              <div class="row mt-2">
+                <div
+                  class="col-sm-6 col-md-3 mb-2"
+                  *ngFor="let list of news; index as i"
+                >
+                  <div class="items card border-0 rounded-0">
+                    <a
+                      routerLink="{{ commonService.readMore(list) }}"
+                      fragment="franbuzz"
+                      (click)="closeModal()"
+                      ><img
+                        data-src="{{ list.media | defaultImage: 257:138 }}"
+                        class="card-img-top lazyload"
+                        alt="story"
+                        width="257"
+                        height="138"
+                      />
+                      <div class="card-body">
+                        <p class="card-text mb-1 text-black text-capitalize">
+                          {{ commonService.formatTitle(list.title) }}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -611,222 +627,225 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- Search Modal close -->
+    <!-- Search Modal close -->
 
-  <!-- Sponsor Modal -->
+    <!-- Sponsor Modal -->
 
-  <div class="search_pop_up modal fade" id="sponsoredModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="sponsored-modal-content">
+    <div class="search_pop_up modal fade" id="sponsoredModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="sponsored-modal-content">
+            <button
+              type="button"
+              class="close text-right"
+              data-bs-dismiss="modal"
+            >
+              &times;
+            </button>
+            <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
+            <p>
+              This brand page has been paid for by
+              <span class="text-uppercase">{{ brandTitle }}</span
+              >. Content within this page that is paid will showcase a Sponsored
+              icon. This means the brand has engaged
+              <span class="text-uppercase">{{ publication?.shortTitle }}</span>
+              to write the content. Content without the Sponsored Icon is
+              aggregated media placements the brand earned. Questions can be
+              sent to
+              <span>{{ editorialEmail }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inquire Modal -->
+
+    <div
+      *ngIf="isBrowser && isInquire"
+      class="search_pop_up modal"
+      id="inquireModal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
           <button
+            id="inquireModalClose"
             type="button"
             class="close text-right"
             data-bs-dismiss="modal"
           >
             &times;
           </button>
-          <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
-          <p>
-            This brand page has been paid for by
-            <span class="text-uppercase">{{ brandTitle }}</span
-            >. Content within this page that is paid will showcase a Sponsored
-            icon. This means the brand has engaged
-            <span class="text-uppercase">{{ publication?.shortTitle }}</span> to
-            write the content. Content without the Sponsored Icon is aggregated
-            media placements the brand earned. Questions can be sent to
-            <span>{{ editorialEmail }}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Inquire Modal -->
-
-  <div
-    *ngIf="isBrowser && isInquire"
-    class="search_pop_up modal"
-    id="inquireModal"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          id="inquireModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
-        <div class="modal-header">
-          <h1>{{ inquireTitle }}</h1>
-        </div>
-        <form
-          *ngIf="inquireForm"
-          [formGroup]="inquireForm"
-          (ngSubmit)="submitInquireForm(inquireForm.value)"
-        >
-          <div *ngFor="let fields of inquireFields" class="form-row mb-3">
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              placeholder="{{ fields.title }}*"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
+          <div class="modal-header">
+            <h1>{{ inquireTitle }}</h1>
+          </div>
+          <form
+            *ngIf="inquireForm"
+            [formGroup]="inquireForm"
+            (ngSubmit)="submitInquireForm(inquireForm.value)"
+          >
+            <div *ngFor="let fields of inquireFields" class="form-row mb-3">
+              <input
+                *ngIf="fields.type === 'text'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                [type]="fields.type"
+                class="form-control rounded-0"
+                placeholder="{{ fields.title }}*"
+                [pattern]="fields.pattern"
+                [maxLength]="fields.maxLength || 1000"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsValues[fields.key].errors?.required
+                }"
+              />
+              <select
+                *ngIf="fields.type === 'dropdown'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsValues[fields.key].errors?.required
+                }"
+              >
+                <option *ngFor="let value of fields.enum" value="{{ value }}">
+                  <span>{{ value }}</span>
+                </option>
+              </select>
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
                   (formControlsValues[fields.key].touched ||
                     submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            />
-            <select
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            >
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsValues[fields.key].touched ||
-                  submittedInquireForm) &&
-                (formControlsValues[fields.key].errors?.required ||
-                  formControlsValues[fields.key].errors?.email ||
-                  formControlsValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
+                  (formControlsValues[fields.key].errors?.required ||
+                    formControlsValues[fields.key].errors?.email ||
+                    formControlsValues[fields.key].errors?.pattern)
+                "
+              >
+                {{ fields.errorMsg }}
+              </div>
             </div>
-          </div>
 
-          <div class="d-grid inquireSubmit">
-            <button
-              type="submit"
-              class="btn text-end align-items-center rounded-0 btn-sm nextBtn"
-            >
-              Submit
-            </button>
-          </div>
-          <br />
-          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-            submitErrMsg
-          }}</span>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Modal -->
-  <div
-    *ngIf="isBrowser && isContact && contactFields"
-    class="search_pop_up modal"
-    id="contactModal"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          id="contactModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
-        <div class="modal-header">
-          <h1>{{ contactTitle }}</h1>
+            <div class="d-grid inquireSubmit">
+              <button
+                type="submit"
+                class="btn text-end align-items-center rounded-0 btn-sm nextBtn"
+              >
+                Submit
+              </button>
+            </div>
+            <br />
+            <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+              submitErrMsg
+            }}</span>
+          </form>
         </div>
-        <form
-          *ngIf="contactForm"
-          [formGroup]="contactForm"
-          (ngSubmit)="submitContactForm(contactForm.value)"
-        >
-          <div *ngFor="let fields of contactFields" class="form-row mb-3">
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              placeholder="{{ fields.title }}*"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div
+      *ngIf="isBrowser && isContact && contactFields"
+      class="search_pop_up modal"
+      id="contactModal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <button
+            id="contactModalClose"
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <div class="modal-header">
+            <h1>{{ contactTitle }}</h1>
+          </div>
+          <form
+            *ngIf="contactForm"
+            [formGroup]="contactForm"
+            (ngSubmit)="submitContactForm(contactForm.value)"
+          >
+            <div *ngFor="let fields of contactFields" class="form-row mb-3">
+              <input
+                *ngIf="fields.type === 'text'"
+                [formControlName]="fields.key"
+                placeholder="{{ fields.title }}*"
+                [id]="fields.key"
+                [type]="fields.type"
+                class="form-control rounded-0"
+                [pattern]="fields.pattern"
+                [maxLength]="fields.maxLength || 1000"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedContactForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              />
+              <textarea
+                *ngIf="fields.type === 'textarea'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control rounded-0"
+                rows="3"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedContactForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              ></textarea>
+              <select
+                *ngIf="fields.type === 'dropdown'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control rounded-0"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              >
+                <option *ngFor="let value of fields.enum" value="{{ value }}">
+                  <span>{{ value }}</span>
+                </option>
+              </select>
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
                   (formControlsContactValues[fields.key].touched ||
                     submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            />
-            <textarea
-              *ngIf="fields.type === 'textarea'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              rows="3"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            ></textarea>
-            <select
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            >
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsContactValues[fields.key].touched ||
-                  submittedContactForm) &&
-                (formControlsContactValues[fields.key].errors?.required ||
-                  formControlsContactValues[fields.key].errors?.email ||
-                  formControlsContactValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
+                  (formControlsContactValues[fields.key].errors?.required ||
+                    formControlsContactValues[fields.key].errors?.email ||
+                    formControlsContactValues[fields.key].errors?.pattern)
+                "
+              >
+                {{ fields.errorMsg }}
+              </div>
             </div>
-          </div>
-          <div class="d-grid contactSubmit">
-            <button type="submit" class="btn text-end rounded-0 btn-sm nextBtn">
-              Next
-            </button>
-          </div>
-          <br />
-          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-            submitErrMsg
-          }}</span>
-        </form>
+            <div class="d-grid contactSubmit">
+              <button
+                type="submit"
+                class="btn text-end rounded-0 btn-sm nextBtn"
+              >
+                Next
+              </button>
+            </div>
+            <br />
+            <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+              submitErrMsg
+            }}</span>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </header>

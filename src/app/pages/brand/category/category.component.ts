@@ -34,6 +34,8 @@ export class CategoryComponent implements OnInit {
   skipTab = 0;
   tab!: string;
   mainText: string;
+  description: string;
+  banner: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -69,6 +71,10 @@ export class CategoryComponent implements OnInit {
               return e.slug;
             })
             .indexOf(this.slug) + 1;
+        this.description = this.tabName.find(
+          (x) => x.slug == this.slug
+        ).description;
+        this.banner = this.tabName.find((x) => x.slug == this.slug).image;
       });
   }
 
@@ -90,6 +96,8 @@ export class CategoryComponent implements OnInit {
     this.activeTab = val;
     this.tab = item?.shortName;
     this.mainText = item.name;
+    this.description = item.description;
+    this.banner = item.image;
     this.getData(item.slug);
   }
   getData(tabName: any) {
