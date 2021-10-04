@@ -5,7 +5,7 @@
     position: relative;
     &.show {
       position: fixed;
-      background-color: $border-color;
+      background-color: $light_gray_5;
       transition: all 0.4s ease;
       max-height: 100vh;
     }
