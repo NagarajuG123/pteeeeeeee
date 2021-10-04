@@ -115,7 +115,7 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.setScrollEvent();
+    this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
   }
@@ -199,9 +199,6 @@ export class StoryComponent implements OnInit {
                 }
 
                 forkJoin([
-                  this.apiService.getAPI(
-                    `${this.brandId}/news?lean=true&limit=4&offset=0`
-                  ),
                   this.apiService.getAPI(`1851/news?limit=4&offset=0`),
                   this.apiService.getAPI(
                     `1851/news?limit=4&offset=0&isBrand=true`
@@ -209,9 +206,8 @@ export class StoryComponent implements OnInit {
                 ])
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((result) => {
-                    this.newsData = result[0].data;
-                    this.mainNews = result[1].data;
-                    this.brandNews = result[2].data;
+                    this.mainNews = result[0].data;
+                    this.brandNews = result[1].data;
                   });
                 switch (this.type) {
                   case 'stories':
@@ -380,8 +376,8 @@ export class StoryComponent implements OnInit {
         }
 
         this.detailsData.push(this.htmlBinding(result['story'].data));
+        this.setTrending(result['story'].data);
 
-        // this.detailsData = Object.assign([], this.detailsData);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -400,12 +396,14 @@ export class StoryComponent implements OnInit {
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
           modified_date.setHours(hours);
           modified_date.setMinutes(minutes);
-          if(posted_date || modified_date){
+          if (posted_date || modified_date) {
             this.isDate = true;
           }
           let postedDate = posted_date.toDateString();
           let modified = modified_date.toDateString();
-          postedDate === modified ? this.isUpdate = true : this.isUpdate = false;
+          postedDate === modified
+            ? (this.isUpdate = true)
+            : (this.isUpdate = false);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -508,6 +506,24 @@ export class StoryComponent implements OnInit {
         }
         this.createCanonicalURL(url);
       });
+  }
+  setTrending(story) {
+    console.log(story.category);
+    if (story.category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    }
   }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
@@ -664,6 +680,7 @@ export class StoryComponent implements OnInit {
           response.forEach((item) => {
             if (parseInt(this.storyId, 10) !== item.id) {
               this.detailsData.push(this.htmlBinding(item));
+              this.setTrending(item);
             } else {
               if (limit === 1) {
                 this.addItems(limit, offset + 1);
@@ -772,66 +789,66 @@ export class StoryComponent implements OnInit {
 
     return elemBottom <= docViewBottom && elemTop >= docViewTop;
   }
-  // @HostListener('window:scroll', ['$event'])
-  // scrollHandler(event) {
-  //   $('.articles').each((index, element) => {
-  //     if (this.pageType === 'details') {
-  //       if (this.isScrolledIntoView(element) && this.enableScroll) {
-  //         this.enableScroll = false;
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event) {
+    $('.articles').each((index, element) => {
+      if (this.pageType === 'details') {
+        if (this.isScrolledIntoView(element) && this.enableScroll) {
+          this.enableScroll = false;
 
-  //         if (typeof $(element).data('id') !== 'undefined') {
-  //           let newUrl =
-  //             this.brandSlug !== '1851' && this.brandSlug
-  //               ? `/${this.brandSlug}/${$(element).data('title')}`
-  //               : `/${$(element).data('title')}`;
-  //           newUrl =
-  //             this.type && this.type !== 'featured-articles'
-  //               ? `${newUrl}#${this.type}`
-  //               : newUrl;
-  //           if (this.originalUrl !== newUrl) {
-  //             this.originalUrl = newUrl;
-  //             if (this.isBrowser) {
-  //               for (let i = 0; i < this.gaVisitedUrls.length; i++) {
-  //                 if (this.gaVisitedUrls[i] === newUrl) {
-  //                   return;
-  //                 }
-  //               }
-  //               ga('set', 'page', newUrl);
-  //               ga('send', 'pageview');
-  //               ga(`${this.brandSlug}.set`, 'page', newUrl);
-  //               ga(`${this.brandSlug}.send`, 'pageview');
-  //               this.gaVisitedUrls.push(newUrl);
-  //             }
-  //           }
-  //           this.location.replaceState(newUrl);
-  //         }
-  //       }
-  //     }
-  //   });
-  // }
+          if (typeof $(element).data('id') !== 'undefined') {
+            let newUrl =
+              this.brandSlug !== '1851' && this.brandSlug
+                ? `/${this.brandSlug}/${$(element).data('title')}`
+                : `/${$(element).data('title')}`;
+            newUrl =
+              this.type && this.type !== 'featured-articles'
+                ? `${newUrl}#${this.type}`
+                : newUrl;
+            if (this.originalUrl !== newUrl) {
+              this.originalUrl = newUrl;
+              if (this.isBrowser) {
+                for (let i = 0; i < this.gaVisitedUrls.length; i++) {
+                  if (this.gaVisitedUrls[i] === newUrl) {
+                    return;
+                  }
+                }
+                ga('set', 'page', newUrl);
+                ga('send', 'pageview');
+                ga(`${this.brandSlug}.set`, 'page', newUrl);
+                ga(`${this.brandSlug}.send`, 'pageview');
+                this.gaVisitedUrls.push(newUrl);
+              }
+            }
+            this.location.replaceState(newUrl);
+          }
+        }
+      }
+    });
+  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
 
-  @HostListener('window:scroll', [])
-  async onScroll() {
-    if (this.bottomReached() && this.enableScroll) {
-      this.enableScroll = false;
-      // if (this.detailsData.length < 2) {
-        let storyNo = this.detailsData.length-1;
-      const subUrl = this.brandSlug !== '1851'
-              ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
-              : `${this.detailsData[storyNo].slug}`;
-        this.location.replaceState(subUrl);
-      await this.loadArticles('');
-      window.scrollTo(0, window.scrollY - 50);
-      setTimeout(() => {
-        this.enableScroll = true;
-      }, 1000);
-      // }
-    }
-  }
+  // @HostListener('window:scroll', [])
+  // async onScroll() {
+  //   if (this.bottomReached() && this.enableScroll) {
+  //     this.enableScroll = false;
+  //     // if (this.detailsData.length < 2) {
+  //       let storyNo = this.detailsData.length-1;
+  //     const subUrl = this.brandSlug !== '1851'
+  //             ? `${this.brandSlug}/${this.detailsData[storyNo].slug}`
+  //             : `${this.detailsData[storyNo].slug}`;
+  //       this.location.replaceState(subUrl);
+  //     await this.loadArticles('');
+  //     window.scrollTo(0, window.scrollY - 50);
+  //     setTimeout(() => {
+  //       this.enableScroll = true;
+  //     }, 1000);
+  //     // }
+  //   }
+  // }
 
   async loadArticles(val: any) {
     // In this function you can call more article api or you add article in list

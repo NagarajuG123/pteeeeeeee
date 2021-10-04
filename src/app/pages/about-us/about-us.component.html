@@ -61,7 +61,7 @@
           <figure>
             <img
               *ngIf="i === 0"
-              [data-src]="content['media']['url']"
+              data-src="{{ content['media']['url'] }}"
               width="720"
               height="485"
               alt="about"
@@ -70,7 +70,7 @@
             />
             <img
               *ngIf="i === 1"
-              [data-src]="content['media']['url']"
+              data-src="{{ content['media']['url'] }}"
               width="720"
               height="485"
               alt="about"

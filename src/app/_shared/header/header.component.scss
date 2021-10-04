@@ -519,3 +519,8 @@ img {
 .form-control {
   border: 1px solid $dark-gray;
 }
+.container{
+  @media screen and (max-width: 414px) {
+   padding: 0;
+  }
+}
