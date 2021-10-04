@@ -1,6 +1,6 @@
 <div>
   <div class="row">
-    <a class="col-4 col-md-4 col-sm-4 bg-gray top-left" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
+    <a class="col-4 col-md-4 col-sm-4 bg-gray top-left" fragment="trending" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
       <div class="trendingbrandbuzz-content">
         <h4> TRENDING BRAND BUZZ</h4>
         <h1>{{ trendingData[0]?.title }}</h1>
@@ -43,7 +43,7 @@
           <div class="sponsored text-center"><span class="d-inline-block"> {{ i + 1 }}</span></div>
           <a
           routerLink="/{{ commonService.readMore(list) }}"
-            fragment="franbuzz"
+            fragment="trending"
             (click)="closeModal()"
             ><img
               data-src="{{ list.media | defaultImage: 257:138 }}"
