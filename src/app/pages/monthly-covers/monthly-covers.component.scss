@@ -87,7 +87,7 @@
         max-width: 54%;
         margin-left: auto;
         // flex: unset;
-        padding: 15px 0;     
+        padding: 20px 0;     
         @include media("<xxl"){
           max-width: 54.5%;
         }
@@ -132,7 +132,7 @@
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -278px;
+        margin-top: -250px;
         // margin-left: 100px;
         margin-bottom: 45px;
         width: 570px;
@@ -145,7 +145,7 @@
         @include media("<xl"){
           width: 400px;
           height: auto;
-          margin: -256px 0 0 0;
+          margin: -244px 0 0 0;
         }
         @include media("<lg"){
           width: 100%;
@@ -168,7 +168,7 @@
           }
         }
         .card-image {
-          max-height: 800px;
+          max-height: 775px;
           @include media("<xl"){
             max-height: unset;
             height: auto;
