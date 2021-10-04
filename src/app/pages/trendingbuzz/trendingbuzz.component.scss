@@ -133,3 +133,21 @@ h6 {
     height: 575px;
   }
 }
+@media (max-width: 991px){
+  .top-left {
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
+  }
+  .top-right {
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
+  }
+}
+@media (max-width: 1024px){
+  .trending-bottom .article {
+    width: 32%;
+    padding: 0 15px 25px;
+    float: none;
+    vertical-align: top;
+  }
+}

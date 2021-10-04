@@ -1,6 +1,6 @@
 <div>
   <div class="row">
-    <a class="col-4 col-md-4 col-sm-4 bg-gray" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
+    <a class="col-4 col-md-4 col-sm-4 bg-gray top-left" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
       <div class="trendingbrandbuzz-content">
         <h4> TRENDING BRAND BUZZ</h4>
         <h1>{{ trendingData[0]?.title }}</h1>
@@ -32,11 +32,11 @@
     </div>
   </div>
 
-  <div class="container customContainer py-md-4">
+  <div class="container customContainer py-md-4 trending-bottom">
     <h6 class="text-uppercase">SPONSORED</h6>
     <div class="row mt-2">
       <div
-        class="col-sm-6 col-md-3 mb-2"
+        class="col-sm-6 col-md-3 mb-2 article"
         *ngFor="let list of trendingData | slice:0:12; index as i"
       >
         <div class="items card border-0 rounded-0">
