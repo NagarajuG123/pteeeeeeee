@@ -1,0 +1,12 @@
+@import "../assets/scss/variables.scss";
+.wrapper {
+    transition: all 0.4s ease;
+    left: 0;
+    position: relative;
+    &.show {
+      position: fixed;
+      background-color: $border-color;
+      transition: all 0.4s ease;
+      max-height: 100vh;
+    }
+  }
