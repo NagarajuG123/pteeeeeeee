@@ -1,4 +1,4 @@
-<div class="c-video-section--wrapper">
+<div class="c-video-section--wrapper" *ngIf="videoData">
   <div class="container customContainer">
     <div class="row">
       <div class="col-12">
@@ -23,45 +23,46 @@
             class="c-video-section--box"
             *ngFor="let item of videoData | slice: 0:2; index as i"
           >
-          <div  class="position-relative main-image  ">
-            <div class="badge tag position-absolute top-0 text-uppercase "
-            >FEATURED Video</div>
-            <a
-              *ngIf="item?.media"
-              (click)="openVideoPlayer = true"
-              attr.data-src="{{ item.media.url }}"
-              data-bs-target="#videoModal"
-              data-bs-toggle="modal"
-              (click)="updateVideoUrl(item.media.url)"
-              href="#"
-              class="
-                video-btn
-                c-video-section--playBtn
-                d-flex
-                justify-content-center
-                align-items-center
-              "
-            >
-              <img
-                data-src="{{ item.media | defaultImage: 600:300 }}"
-                class="img-fluid lazyload"
-                alt="video"
-                width="600"
-                height="300"
-                loading="lazy"
-              />
-              <img
-                data-src="assets/img/play.png"
-                alt="Play"
-                class="img-fluid vide-play lazyload"
-                loading="lazy"
-              />
-            </a>
-            <!-- </div> -->
-            <div class="c-video-section--title">
-              {{ item.title }}
+            <div class="position-relative main-image">
+              <div class="badge tag position-absolute top-0 text-uppercase">
+                FEATURED Video
+              </div>
+              <a
+                *ngIf="item?.media"
+                (click)="openVideoPlayer = true"
+                attr.data-src="{{ item.media.url }}"
+                data-bs-target="#videoModal"
+                data-bs-toggle="modal"
+                (click)="updateVideoUrl(item.media.url)"
+                href="#"
+                class="
+                  video-btn
+                  c-video-section--playBtn
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <img
+                  data-src="{{ item.media | defaultImage: 600:300 }}"
+                  class="img-fluid lazyload"
+                  alt="video"
+                  width="600"
+                  height="300"
+                  loading="lazy"
+                />
+                <img
+                  data-src="assets/img/play.png"
+                  alt="Play"
+                  class="img-fluid vide-play lazyload"
+                  loading="lazy"
+                />
+              </a>
+              <!-- </div> -->
+              <div class="c-video-section--title">
+                {{ item.title }}
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
