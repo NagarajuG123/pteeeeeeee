@@ -1,0 +1,129 @@
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets//scss/media.scss";
+h6 {
+  font-size: 13px;
+  line-height: 15px;
+  color: #bbbcbf;
+  font-family: ProximaNova-Medium;
+  text-decoration: underline;
+  padding: 0 0 45px;
+}
+.bg-gray{
+ background-color: $dark_gray_1
+}
+.trendingbrandbuzz-content{
+  padding: 150px 59px 75px 49px;
+  bottom: 0;
+  left: 0;
+  h4 {
+    background: $red;
+    color: $white;
+    font-family: $proxiLight;
+    letter-spacing: .5px;
+    padding: 17px 21px 13px 22px;
+    margin: 0;
+  }
+  h1{
+    padding: 27px 0 7px;
+    font-family: $proxiBold;
+    font-size: 27px;
+    line-height: 32px;
+    color: $white;
+  }
+  p{
+    font-size: 18px;
+    line-height: 22px;
+    color: $white;
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $red;
+    .readMore{
+      font-size: 9.1px;
+      line-height: 11px;
+      color: #fff;
+      font-weight: 400;
+      font-family: $proxiRegular;
+    }
+    .fa{
+      font-size: 25px;
+      line-height: 11px;
+      color: #fff;
+      padding: 0 0 0 7px;
+      vertical-align: top;
+    }
+  }
+} 
+.items {
+  font-family: "Roboto";
+  .card-body {
+    padding: 1rem 0;
+    h2 {
+      font-size: 16px;
+      line-height: 16.7px;
+    }
+    p,
+    p a {
+      font-size: 13px;
+      line-height: 141.19%;
+      font-family: $proxiRegular;
+    }
+  }
+}
+.nextLine {
+  .customContainer{
+     div{
+       width: 220px;
+       padding: 0 18px;
+       @include media ("<md"){
+         width: 157px;
+         padding: 0 7px;
+       }
+       .nextBtn {
+         font-family: "ProximaNova-Regular";
+         font-size: 15px;
+         z-index: 1;
+         margin-top: 35px;
+         img {
+           cursor: pointer;
+         }
+       }
+     }
+   }
+ }
+ 
+ .see-more--wrapper{
+   margin-top: 57px;
+   width: 50%;
+   height: 2px;
+   border: 1px solid $red ;
+ }
+ .see-more-right--wrapper{
+   margin-top: 57px;
+   width: 50%;
+   height: 2px;
+   border: 1px solid $red ;
+ }
+.seem-more-text-wrapper {
+ color: #243444;
+ font-size: 17px;
+}
+.sponsored {
+  position: absolute;
+  padding: 0;
+  span{
+    background: $red;
+    font-size: 17px;
+    line-height: 19px;
+    color: $white;
+    font-weight: 400;
+    font-family: $proxiBold;
+    vertical-align: top;
+    padding: 7px 5px 9px;
+    width: 35px;
+
+  }
+}

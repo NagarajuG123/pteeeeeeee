@@ -1,0 +1,93 @@
+<div>
+  <div class="row">
+    <div class="col-4 col-md-4 col-sm-4 bg-gray">
+      <div class="trendingbrandbuzz-content">
+        <h4> TRENDING BRAND BUZZ</h4>
+        <h1>{{ trendingData[0]?.title }}</h1>
+        <p> {{ trendingData[0]?.short_description }} </p>
+      </div>
+      <a
+      class="bottom"
+      routerLink=""
+    >
+      <a
+        class="readMore float-right text-uppercase"
+        routerLink=""
+      >
+        READ MORE
+        <fa-icon class="fa" [icon]="faAngleRight"></fa-icon>
+      </a>
+      <div class="clearfix"></div>
+    </a>
+    </div>
+    <div class="col-8 col-md-8 col-sm-8 p-0">
+      <figure>
+        <img
+        class="img-fluid lazyload"
+        data-src="{{ trendingData[0].media | defaultImage:1022:572 }}"
+        height="575"
+        width="1022"
+        />
+      </figure>
+    </div>
+  </div>
+  <div class="container customContainer py-md-4">
+    <h6 class="text-uppercase">SPONSORED</h6>
+    <div class="row mt-2">
+      <div
+        class="col-sm-6 col-md-3 mb-2"
+        *ngFor="let list of trendingData | slice:0:12; index as i"
+      >
+        <div class="items card border-0 rounded-0">
+          <div class="sponsored text-center"><span class="d-inline-block"> {{ i + 1 }}</span></div>
+          <a
+            routerLink=""
+            fragment="franbuzz"
+            (click)="closeModal()"
+            ><img
+              data-src="{{ list.media | defaultImage: 257:138 }}"
+              class="card-img-top lazyload"
+              alt="story"
+              width="257"
+              height="138"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h2 class="card-text mb-1 text-black text-capitalize">
+                {{ list.title }}
+              </h2>
+              <p class="card-text mb-1 text-black text-capitalize">
+                {{ list.short_description }}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div class="see-more--wrapper"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white">
+              <img
+                data-src="assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreData()"
+                loading="lazy"
+              />
+              <span class="seem-more-text-wrapper" (click)="getMoreData()"
+                >SEE MORE</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="see-more-right--wrapper"></div>
+  </div>
+</div>
