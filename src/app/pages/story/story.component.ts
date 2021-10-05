@@ -508,7 +508,6 @@ export class StoryComponent implements OnInit {
       });
   }
   setTrending(story) {
-    console.log(story.category);
     if (story.category.slug) {
       this.apiService
         .getAPI(
