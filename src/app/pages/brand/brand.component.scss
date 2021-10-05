@@ -3,132 +3,10 @@
 
 //Spotlight Section
 
-.editorial-section {
-  background: $dark-gray;
-  font-family: Roboto;
-  h2 {
-    font-family: $balingerMedium;
-    font-weight: bold;
-    font-size: 33px;
-    line-height: 40px;
-  }
-  .innerContent {
-    padding: 0 53px;
-  }
-
-  .tabs {
-    height: 60px;
-    .prev {
-      img {
-        width: auto;
-        cursor: pointer;
-      }
-    }
-  }
-  .primary-bg {
-    background-color: #eb0444;
-  }
-  .customContainer {
-    max-width: 1210px !important;
-  }
-
-  .customContainer {
-    .innerContent {
-      li {
-        background-color: $white;
-        height: 60px;
-        span {
-          min-width: 132px;
-          height: 100%;
-          color: $light-gray-1;
-          cursor: pointer;
-          font-family: $proxiRegular;
-          font-weight: bold;
-          font-size: 15px;
-          &.active,
-          &:hover {
-            color: $red;
-            &::after {
-              content: "";
-              height: 7px;
-              position: absolute;
-              bottom: -20px;
-              width: 7px;
-              border-width: 16px 16px 0 16px;
-              border-style: solid;
-              border-color: $red transparent transparent transparent;
-            }
-            &::before {
-              content: "";
-              height: 7px;
-              position: absolute;
-              bottom: -5px;
-              width: 100%;
-              background-color: $red;
-            }
-          }
-        }
-        > small {
-          font-weight: 500;
-          font-size: 12px;
-          font-family: $balinger;
-        }
-        border-color: $light-gray-1;
-      }
-    }
-  }
-}
 a {
   color: $dark-gray;
 }
-.trending {
-  background-color: #e8eef2;
-  color: #595959;
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 16px;
-  border-bottom: 1px solid #243444;
-  span {
-    color: #eb0444;
-    font-family: $balingerMedium;
-  }
-}
-.tabs-container {
-  > .tabItemList {
-    .items {
-      font-family: $balinger;
-      font-weight: bold;
-      img {
-        width: 100%;
-        min-height: 106px;
-        background-color: $light-gray-1;
-      }
-      > .card-body {
-        padding: 8px 16px 15px;
-        > h6.card-title {
-          font-size: 11px;
-        }
-        > .card-text {
-          font-size: 12px;
-        }
-        > small {
-          font-family: $proxiRegular;
-          font-weight: 500;
-          font-size: 10px;
-        }
-      }
-    }
-    @media screen and (min-width: 992px) {
-      .row {
-        margin: 0 -5px;
-        .col-md-4 {
-          max-width: 20%;
-          padding: 0 5px;
-        }
-      }
-    }
-  }
-}
+
 .items {
   font-family: "Roboto";
   .card-body {
@@ -145,9 +23,6 @@ a {
     }
   }
 }
-.gray-color {
-  color: #243444;
-}
 
 .banner {
   position: relative;
@@ -157,26 +32,28 @@ a {
     left: 7%;
     font-family: $balinger;
     p {
-      font-size: 14px;
+      font-size: 13.76px;
       line-height: 20px;
       font-weight: 400;
-      color: black;
+      color: $black;
       font-family: $proxiRegular;
     }
     h2 {
       font-weight: 700;
-      font-size: 54px;
+      font-size: 64px;
       line-height: 77px;
-      color: black;
+      color: $dark-gray;
+      font-family: $balingerMedium;
     }
     button {
       background-color: $red;
-      color: white;
+      color: $white;
       position: absolute;
       border: 0;
       cursor: pointer;
       margin: auto;
-      font-family: $proxiRegular;
+      font-family: $balinger;
+      width: 100px;
     }
     .readmore-btn {
       text-align: left;
@@ -194,40 +71,40 @@ a {
   }
 }
 .nextLine {
-  .customContainer{
-     div{
-       width: 220px;
-       padding: 0 18px;
-       @include media ("<md"){
-         width: 157px;
-         padding: 0 7px;
-       }
-       .nextBtn {
-         font-family: "ProximaNova-Regular";
-         font-size: 15px;
-         z-index: 1;
-         margin-top: 35px;
-         img {
-           cursor: pointer;
-         }
-       }
-     }
-   }
- }
- 
- .see-more--wrapper{
-   margin-top: 57px;
-   width: 50%;
-   height: 2px;
-   border: 1px solid $red ;
- }
- .see-more-right--wrapper{
-   margin-top: 57px;
-   width: 50%;
-   height: 2px;
-   border: 1px solid $red ;
- }
+  .customContainer {
+    div {
+      width: 220px;
+      padding: 0 18px;
+      @include media("<md") {
+        width: 157px;
+        padding: 0 7px;
+      }
+      .nextBtn {
+        font-family: "ProximaNova-Regular";
+        font-size: 15px;
+        z-index: 1;
+        margin-top: 35px;
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.see-more--wrapper {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
+.see-more-right--wrapper {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
 .seem-more-text-wrapper {
- color: #243444;
- font-size: 17px;
+  color: #243444;
+  font-size: 17px;
 }
