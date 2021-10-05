@@ -147,3 +147,12 @@
 .time-filter{
    border-right: 2px solid $red;
 }
+.sort_main{
+  .keyFilter{
+    padding-left: 20px;
+    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+  }
+  input{
+    display: none;
+  }
+}

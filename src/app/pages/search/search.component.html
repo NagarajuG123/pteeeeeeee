@@ -75,9 +75,9 @@
               </li>
             </ul>
           </div>
-          <div class="sort_main check_boxes_data d-flex">
+          <div class="d-flex sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
-            <ul class="d-flex checkboxes text-center justify-content-center">
+            <ul class="d-flex text-center justify-content-center">
               <li class="px-2">
                 <label>
                   <input
@@ -85,7 +85,7 @@
                     [checked]="by_author"
                     (change)="onChangeFilter('author')"
                   />
-                  <span class="px-1">BY AUTHOR</span>
+                  <span class="keyFilter">BY AUTHOR</span>
                 </label>
               </li>
               <li class="px-2">
@@ -95,7 +95,7 @@
                     [checked]="by_title"
                     (change)="onChangeFilter('title')"
                   />
-                  <span class="px-1">BY TITLE</span>
+                  <span class="keyFilter">BY TITLE</span>
                 </label>
               </li>
               <li class="px-2">
@@ -105,7 +105,7 @@
                     [checked]="by_desc"
                     (change)="onChangeFilter('desc')"
                   />
-                  <span class="px-1">BY DESCRIPTION</span>
+                  <span class="keyFilter">BY DESCRIPTION</span>
                 </label>
               </li>
               <li class="px-2">
@@ -115,7 +115,7 @@
                     [checked]="by_keywords"
                     (change)="onChangeFilter('keyword')"
                   />
-                  <span class="px-1">BY KEYWORDS</span>
+                  <span class="keyFilter">BY KEYWORDS</span>
                 </label>
               </li>
             </ul>
