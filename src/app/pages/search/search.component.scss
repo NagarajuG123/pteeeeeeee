@@ -48,8 +48,16 @@
   }
 
   .brand-news{
-    border-bottom: 3px solid $red;
-    width: 350px;
+    @media (min-width: 1200px){
+      .col-xl-3{
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    h5{
+      border-bottom: 3px solid $red;
+      width: 350px;
+    }
   }
   .border-bg{
     background-color: $border-color;
@@ -155,4 +163,12 @@
   input{
     display: none;
   }
+}
+.main_article{
+  @media (min-width: 1200px){
+    .col-xl-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+  }
+}
 }
