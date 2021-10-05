@@ -156,9 +156,9 @@ header {
     }
 
     // Sub menu style
-    .dropdown-menu {
+    .sidebar-dropdown-menu {
       padding-left: 20px;
-      width: 250px;
+      width: 300px;
       border: none !important;
       border-radius: 0rem !important;
     }
@@ -208,7 +208,7 @@ header {
           font-family: $balingerRegular;
           font-weight: 500;
           font-size: 14px;
-          line-height: 200%;
+          line-height: 30.8px;
           text-transform: uppercase;
           color: $white;
           margin-bottom: 0;
@@ -219,12 +219,12 @@ header {
               font-family: $roboto;
               font-weight: 500;
               font-size: 11px;
+              line-height: 14.16px;
             }
           }
         }
       }
     }
-    // }
   }
 }
 .follow {

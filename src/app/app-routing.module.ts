@@ -42,6 +42,15 @@ const routes: Routes = [
   },
 
   {
+    path: 'trendingbrandbuzz',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./pages/trendingbuzz/trendingbuzz.module').then(
+        (m) => m.TrendingbuzzModule
+      ),
+  },
+
+  {
     path: 'author/:authorSlug',
     loadChildren: () =>
       import('./pages/author/author.module').then((m) => m.AuthorModule),
