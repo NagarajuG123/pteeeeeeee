@@ -160,9 +160,9 @@
     </div>
   </div>
 </div>
-<div class="main_article gray-bg container col-sm-12 col-md-9 col-lg-9 col-xl-9">
-  <!-- <div class="row"> -->
-    <div class="col-xl-11 py-3 px-5 card-section">
+<div class="gray-bg">
+  <div class="row">
+    <div class="col-8 py-3 px-5 card-section" [ngClass]="brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee' ? '' : 'brandSearch'">
       <div class="container customContainer row">
         <div class="row">
           <div
@@ -204,8 +204,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-white py-4 brand-news card-section px-4"  
+  <div class="col-4 bg-white py-4 card-section px-4 brand-news"  
       *ngIf="
       brand_id === '1851' ||
       brand_id === 'ee' ||
@@ -246,7 +245,7 @@
           </div>
         </div>
       </div>
-   
+  </div>
 
     <div [ngClass]="brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee' ? 'border-bg' : 'bg-white'">
       <div class="row">
@@ -275,3 +274,4 @@
         <div class="col-4 bg-white"></div>
       </div>
     </div>
+  </div> 

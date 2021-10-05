@@ -1,7 +1,12 @@
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/mixins.scss";
 
 .card-section{
+  @include mobile-landscape1{
+    width: 100%;
+    padding-right: 0px !important;
+  }
     h4 {
       font-family: "Ballinger Condensed Medium";
       font-size: 18px;
@@ -171,4 +176,12 @@
       max-width: 75%;
   }
 }
+}
+.brandSearch{
+  width: 100%;
+  padding-left: 100px !important;
+  @include mobile-landscape1{
+    width: 100%;
+    padding-left: 50px !important;
+  }
 }
