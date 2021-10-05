@@ -696,11 +696,11 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               />
-              <select
+              <select required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class="form-control"
+                class="form-control form-select"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsValues[fields.key].touched ||
@@ -708,6 +708,7 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
+              <option value="" disabled selected hidden>{{ fields.title }}*</option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
@@ -797,11 +798,11 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               ></textarea>
-              <select
+              <select required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class="form-control rounded-0"
+                class="form-control form-select rounded-0"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsContactValues[fields.key].touched ||
@@ -809,6 +810,7 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               >
+              <option value="" disabled selected hidden>{{ fields.title }}*</option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
