@@ -1,4 +1,5 @@
 @import "../../../assets/scss/theme-color.scss";
+@import "../../../assets/scss/variables.scss";
 .articles {
   overflow-x: hidden;
   .banner {
@@ -199,3 +200,16 @@
     }
   }
 }
+
+.social-links{
+  .st-btn{
+  background-color: $dark_red_2 !important;
+  border-radius: 50%!important;
+  height: 33px !important;
+  width: 33px !important;
+    img{
+      display: inline-block;
+      height: 25px;
+    }
+  }
+} 

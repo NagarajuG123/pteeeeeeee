@@ -17,11 +17,11 @@ import {
   Location,
 } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Subject, forkJoin } from 'rxjs';
+import { BehaviorSubject, Subject, forkJoin, fromEvent } from 'rxjs';
 import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
@@ -85,6 +85,7 @@ export class StoryComponent implements OnInit {
   metaData: any;
   isDate: boolean = false;
   isUpdate: boolean = false;
+  index: number;
 
   faFacebookFIcon = faFacebookF;
   faLinkedinInIcon = faLinkedinIn;
@@ -869,5 +870,127 @@ export class StoryComponent implements OnInit {
       Math.ceil(window.innerHeight + window.scrollY) >=
       document.body.offsetHeight
     );
+  }
+  shareUrl() {
+    const subUrl =
+      this.brandSlug !== '1851'
+        ? `${this.brandSlug}/${this.detailsData.slug}`
+        : `${this.detailsData.slug}`;
+    return `${window.location.origin}/${subUrl}`;
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $('.tooltiptext').click(function (e) {
+        e.preventDefault();
+      });
+      $('.tooltiptext-link').click(function (e) {
+        e.preventDefault();
+        window.location.href = '/home/termsofuse#sponsored';
+      });
+      window['__sharethis__'].load('inline-share-buttons', {
+        alignment: 'left',
+        id: `inline-buttons-${this.index}`,
+        enabled: true,
+        font_size: 15,
+        padding: 8,
+        radius: 0,
+        networks: ['facebook', 'twitter', 'linkedin'],
+        size: 50,
+        url: this.shareUrl(),
+        title: this.detailsData.title,
+        image: 'social_image',
+        description: this.detailsData.title,
+      });
+      const fb_timer = setInterval(() => {
+        if (!$(`#mobile_block_fb_link${this.detailsData.id}`).length) {
+          clearInterval(fb_timer);
+          setTimeout(() => {
+            if ($(`#mobile_fb_plugin${this.detailsData.id}`).height() < 100) {
+              this.isDefaultFb = true;
+            }
+          }, 10000);
+        }
+      }, 1000);
+
+      // streams
+      const click$ = fromEvent(
+        $(`#inline-buttons-${this.index} .st-btn`),
+        'click'
+      );
+      click$
+        .pipe(
+          map((i: any) => i.currentTarget),
+          debounceTime(1000),
+          takeUntil(this.onDestroy$)
+        )
+        .subscribe((val) => {
+          const data = $(val).data();
+          this.apiService
+            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((result) => {
+              if (typeof result.id !== 'undefined' && result.id !== null) {
+                const brand_name = result.slug;
+                const gaData = result['ga'];
+                if (result.id !== '1851' && this.isBrowser) {
+                  if (gaData) {
+                    ga(`${brand_name}.send`, {
+                      hitType: 'social',
+                      socialNetwork: `ShareThis_${data.network}`,
+                      socialAction: 'share',
+                      socialTarget: this.shareUrl(),
+                    });
+                  }
+                }
+              } else {
+                ga(`send`, {
+                  hitType: 'social',
+                  socialNetwork: `ShareThis_${data.network}`,
+                  socialAction: 'share',
+                  socialTarget: this.shareUrl(),
+                });
+              }
+            });
+        });
+      this.apiService
+        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((result) => {
+          if (typeof result.id !== 'undefined' && result.id !== null) {
+            this.brandId = result.id;
+          } else {
+            this.brandId = '1851';
+          }
+          const a_tags = document
+            .getElementById(this.detailsData.id)
+            .getElementsByTagName('A');
+          const category = `${this.detailsData.id}+${this.brandId}+${this.type}`;
+          const vm = this;
+          const gaData = result['ga'];
+          for (let i = 0; i < a_tags.length; i++) {
+            if (
+              a_tags[i]['hostname'].toLowerCase() !==
+              window.location.hostname.toLowerCase()
+            ) {
+              a_tags[i].addEventListener('click', function (event) {
+                const action = a_tags[i]['hostname'].toLowerCase();
+                if (this.brandId === '1851') {
+                  ga('send', 'event', category, action, vm.brandId);
+                } else {
+                  if (gaData) {
+                    ga(
+                      `${vm.brandSlug}.send`,
+                      'event',
+                      category,
+                      action,
+                      vm.brandId
+                    );
+                  }
+                }
+              });
+            }
+          }
+        });
+    }
   }
 }
