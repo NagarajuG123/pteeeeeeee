@@ -1,7 +1,12 @@
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/mixins.scss";
 
 .card-section{
+  @include mobile-landscape1{
+    width: 100%;
+    padding-right: 0px !important;
+  }
     h4 {
       font-family: "Ballinger Condensed Medium";
       font-size: 18px;
@@ -48,8 +53,10 @@
   }
 
   .brand-news{
-    border-bottom: 3px solid $red;
-    width: 350px;
+    h5{
+      border-bottom: 3px solid $red;
+      width: 350px;
+    }
   }
   .border-bg{
     background-color: $border-color;
@@ -146,4 +153,21 @@
 }
 .time-filter{
    border-right: 2px solid $red;
+}
+.sort_main{
+  .keyFilter{
+    padding-left: 20px;
+    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+  }
+  input{
+    display: none;
+  }
+}
+.brandSearch{
+  width: 100%;
+  padding-left: 100px !important;
+  @include mobile-landscape1{
+    width: 100%;
+    padding-left: 50px !important;
+  }
 }

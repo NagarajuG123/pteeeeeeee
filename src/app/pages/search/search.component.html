@@ -75,9 +75,9 @@
               </li>
             </ul>
           </div>
-          <div class="sort_main check_boxes_data d-flex">
+          <div class="d-flex sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
-            <ul class="d-flex checkboxes text-center justify-content-center">
+            <ul class="d-flex text-center justify-content-center">
               <li class="px-2">
                 <label>
                   <input
@@ -85,7 +85,7 @@
                     [checked]="by_author"
                     (change)="onChangeFilter('author')"
                   />
-                  <span class="px-1">BY AUTHOR</span>
+                  <span class="keyFilter">BY AUTHOR</span>
                 </label>
               </li>
               <li class="px-2">
@@ -95,7 +95,7 @@
                     [checked]="by_title"
                     (change)="onChangeFilter('title')"
                   />
-                  <span class="px-1">BY TITLE</span>
+                  <span class="keyFilter">BY TITLE</span>
                 </label>
               </li>
               <li class="px-2">
@@ -105,7 +105,7 @@
                     [checked]="by_desc"
                     (change)="onChangeFilter('desc')"
                   />
-                  <span class="px-1">BY DESCRIPTION</span>
+                  <span class="keyFilter">BY DESCRIPTION</span>
                 </label>
               </li>
               <li class="px-2">
@@ -115,7 +115,7 @@
                     [checked]="by_keywords"
                     (change)="onChangeFilter('keyword')"
                   />
-                  <span class="px-1">BY KEYWORDS</span>
+                  <span class="keyFilter">BY KEYWORDS</span>
                 </label>
               </li>
             </ul>
@@ -162,7 +162,7 @@
 </div>
 <div class="gray-bg">
   <div class="row">
-    <div class="col-8 py-3 px-5 card-section">
+    <div class="col-8 py-3 px-5 card-section" [ngClass]="brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee' ? '' : 'brandSearch'">
       <div class="container customContainer row">
         <div class="row">
           <div
@@ -204,8 +204,13 @@
         </div>
       </div>
     </div>
-      <div class="col-4 bg-white py-4 card-section px-4">
-        <h5 class="brand-news">BRAND NEWS</h5>
+  <div class="col-4 bg-white py-4 card-section px-4 brand-news"  
+      *ngIf="
+      brand_id === '1851' ||
+      brand_id === 'ee' ||
+      brand_id === 'room-1903'
+    ">
+        <h5>BRAND NEWS</h5>
         <div
           class="col-sm-12 col-md-7 mb-2 card-group mx-4"
           *ngFor="let item of brandPeoples; index as i"
@@ -240,9 +245,9 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
 
-    <div class="border-bg">
+    <div [ngClass]="brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee' ? 'border-bg' : 'bg-white'">
       <div class="row">
         <div class="col-8">
           <div class="position-relative mt-2">
@@ -269,3 +274,4 @@
         <div class="col-4 bg-white"></div>
       </div>
     </div>
+  </div> 
