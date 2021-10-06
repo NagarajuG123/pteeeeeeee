@@ -15,9 +15,9 @@
               class="lazyload"
             />
             <div class="content text-capitalize">
-              {{ mainText }}
+              <h3>{{ mainText }}</h3>
+              <span *ngIf="description">{{ description }}</span>
             </div>
-            <p *ngIf="description">{{ description }}</p>
           </div>
         </div>
       </div>
@@ -153,8 +153,7 @@
                 <h6
                   class="
                     card-title
-                    primary-color
-                    text-uppercase text-truncate
+                    text-uppercase 
                     fw-bold
                   "
                 >
@@ -174,22 +173,27 @@
       </ul>
     </div>
   </div>
-</div>
-<div class="nextLine position-relative mb-5 mt-2">
-  <div class="container customContainer">
-    <div class="row">
-      <div class="col d-flex justify-content-center align-items-center">
-        <div class="nextBtn px-5 bg-white">
-          <img
-            data-src="assets/img/nextIcon.svg"
-            width="32"
-            alt="next articles"
-            class="me-3 lazyload"
-            (click)="getMore(slug)"
-          />
-          <span class="gray-color">See More</span>
+
+  <!-- See More -->
+
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white"> 
+              <img 
+              data-src="assets/img/nextIcon.svg"
+              width="32" 
+              alt="next articles" 
+              class="me-3 lazyload" 
+              (click)="getMore(slug)" 
+              /> 
+              <span class="gray-color  text-uppercase "
+              >See More
+            </span> 
+          </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div> 
 </div>

@@ -508,7 +508,6 @@ export class StoryComponent implements OnInit {
       });
   }
   setTrending(story) {
-    console.log(story.category);
     if (story.category.slug) {
       this.apiService
         .getAPI(
@@ -663,32 +662,34 @@ export class StoryComponent implements OnInit {
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
         .subscribe((result) => {
-          let response;
+          let storyId;
           this.isLoading = false;
           if (typeof result !== 'undefined') {
             if (
               this.type === 'dynamicpage' ||
               (this.type === 'brand-latest-stories' && this.brandId === '1851')
             ) {
-              response = result.data.stories;
+              storyId = result.data.stories[0].id;
             } else if (this.type === 'brand') {
-              response = result.data.articles;
+              storyId = result.data.articles[0].id;
             } else {
-              response = result.data;
+              storyId = result.data[0].id;
             }
           }
-          response.forEach((item) => {
-            if (parseInt(this.storyId, 10) !== item.id) {
-              this.detailsData.push(this.htmlBinding(item));
-              this.setTrending(item);
-            } else {
-              if (limit === 1) {
-                this.addItems(limit, offset + 1);
-                this.storyIndex = true;
-                return;
-              }
+          if (this.detailsData.find((o) => o.id !== storyId)) {
+            let url = this.brandSlug
+              ? `${this.brandSlug}/story/${storyId}`
+              : `story/${storyId}`;
+            this.apiService.getAPI(`${url}`).subscribe((result) => {
+              this.detailsData.push(this.htmlBinding(result.data));
+            });
+          } else {
+            if (limit === 1) {
+              this.addItems(limit, offset + 1);
+              this.storyIndex = true;
+              return;
             }
-          });
+          }
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;
           if (!this.isFirstSEO) {

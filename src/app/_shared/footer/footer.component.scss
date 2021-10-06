@@ -14,7 +14,7 @@ footer {
   }
   h1 {
     color: rgba(232, 238, 242, 0.18);
-    font-family: "Ballinger Condensed Medium";
+    font-family:$balinger;
     font-weight: bold;
     font-size: 39.434px;
     letter-spacing: 0.11em;
@@ -22,7 +22,7 @@ footer {
   }
   h4 {
     font-size: 14px;
-    font-family: $roboto;
+    font-family: $balinger;
     font-weight: 700;
   }
   p {

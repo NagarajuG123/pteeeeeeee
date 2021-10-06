@@ -60,7 +60,6 @@ export class AuthorComponent implements OnInit {
             this.router.navigateByUrl('/404');
           } else {
             this.author = results[0];
-            console.log(this.author.data.socialMedia);
             this.metaService.setSeo(results[0].meta);
             this.metaService.setTitle(
               `${results[0].data.first_name} ${results[0].data.last_name} | ${results[1].title}`

@@ -11,7 +11,7 @@
           <div class="carousel-inner">
             <ng-container *ngFor="let item of data; index as i">
               <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-                <span class="">
+                <span class="desktop-only">
                   <img
                     data-src="assets/img/fire.svg"
                     height="18px"
@@ -20,8 +20,21 @@
                     loading="lazy"
                     alt=""
                   />
-                  <span class="me-2">TRENDING</span> </span
-                >{{ item.title }}
+                  <span class="me-2 title">TRENDING</span>
+                  {{ item.title }}
+                </span>
+                <span class="mobile-only">
+                  <img
+                    data-src="assets/img/fire.svg"
+                    height="18px"
+                    width="22px"
+                    class="pe-2 lazyload"
+                    loading="lazy"
+                    alt=""
+                  />
+                  <span class="me-2 title">TRENDING</span>
+                  {{ commonService.responsiveTextFormating(item.title, 25) }}
+                </span>
               </div>
             </ng-container>
           </div>

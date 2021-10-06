@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/typography.scss";
 @import "./assets/scss/theme-color.scss";
+@import "./assets/scss/mixins.scss";
 
 html,
 body {
@@ -81,4 +82,18 @@ ul {
   }
   display: contents;
   text-decoration: underline !important;
+}
+
+.desktop-only {
+  display: none !important;
+  @media only screen and (min-width: 600px) {
+    display: block !important;
+  }
+}
+
+.mobile-only {
+  display: none !important;
+  @media only screen and (max-width: 599px) {
+    display: block !important;
+  }
 }

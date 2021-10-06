@@ -34,6 +34,9 @@ export class BrandComponent implements OnInit {
   skipTab = 0;
   tab!: string;
   length: number;
+  isCategory: boolean;
+  isBrand: boolean;
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -77,6 +80,8 @@ export class BrandComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.isBrand = false;
+
     this.route.paramMap.subscribe((params) => {
       this.slug = params.get('slug');
       this.apiService
@@ -87,14 +92,19 @@ export class BrandComponent implements OnInit {
           } else {
             this.type = response.type;
             this.company = response.name;
+            this.isCategory = true;
             if (this.type === 'brand_page') {
+              this.isCategory = false;
+              this.isBrand = true;
               this.apiUrl = `${this.slug}/featured-articles`;
-              this.apiService.getAPI(`${this.apiUrl}`).
-              pipe(takeUntil(this.onDestroy$)).subscribe((response) =>{
-                if(response.data.length){
-                  this.length = response.data.length;
-                }
-              })
+              this.apiService
+                .getAPI(`${this.apiUrl}`)
+                .pipe(takeUntil(this.onDestroy$))
+                .subscribe((response) => {
+                  if (response.data.length) {
+                    this.length = response.data.length;
+                  }
+                });
               this.getMeta();
               this.getMostPopular();
               this.getSpotlight();
@@ -107,6 +117,8 @@ export class BrandComponent implements OnInit {
                 );
               }
             } else if (this.type === 'dynamic_page') {
+              this.isCategory = false;
+              this.isBrand = false;
               this.dynamicUrl = `${this.slug}`;
               this.getDynamic();
             }
