@@ -16,7 +16,7 @@
   <app-editorial-sections [slug]="slug"></app-editorial-sections>
 </div>
 
-<div *ngIf="type === 'category_page'">
+<div *ngIf="isCategory && type === 'category_page'">
   <app-category [slug]="slug"></app-category>
 </div>
 

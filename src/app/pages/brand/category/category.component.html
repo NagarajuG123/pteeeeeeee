@@ -15,9 +15,9 @@
               class="lazyload"
             />
             <div class="content text-capitalize">
-              {{ mainText }}
+              <h3>{{ mainText }}</h3>
+              <span *ngIf="description">{{ description }}</span>
             </div>
-            <p *ngIf="description">{{ description }}</p>
           </div>
         </div>
       </div>
