@@ -72,11 +72,4 @@ export class VideoComponent implements OnInit {
     this.openVideoPlayer = true;
     this.url = url;
   }
-  ngAfterViewInit(){
-      $("body").click(function(){
-        var video = $("#player").attr("src");
-        $("#player").attr("src","");
-        $("#player").attr("src",video);
-      });
-  }
 }
