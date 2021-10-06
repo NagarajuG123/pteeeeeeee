@@ -99,4 +99,11 @@ export class AboutUsComponent implements OnInit {
     });
   }
   resolved(event) {}
+  ngAfterViewInit(){
+    $('.modal').on('hidden.bs.modal', function () {
+      $('#player').attr({
+        src: '', 
+      });
+    });
+  }
 }

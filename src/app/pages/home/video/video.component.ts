@@ -72,4 +72,11 @@ export class VideoComponent implements OnInit {
     this.openVideoPlayer = true;
     this.url = url;
   }
+  ngAfterViewInit(){
+    $('.modal').on('hidden.bs.modal', function () {
+      $('#player').attr({
+        src: '', 
+      });
+    });
+  }
 }
