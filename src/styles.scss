@@ -2,6 +2,7 @@
 @import "./assets/scss/typography.scss";
 @import "./assets/scss/theme-color.scss";
 @import "./assets/scss/mixins.scss";
+@import "./assets/scss/variables.scss";
 
 html,
 body {
@@ -97,3 +98,18 @@ ul {
     display: block !important;
   }
 }
+.social-links{
+  .st-btn{
+  background-color: $dark_red_2 !important;
+  border-radius: 50%!important;
+  height: 33px !important;
+  width: 33px !important;
+    img{
+      display: inline-block;
+      height: 25px;
+      padding-top: 5px;
+      padding-right: 5px;
+      position: static !important;
+    }
+  }
+} 
