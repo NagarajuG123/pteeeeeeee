@@ -176,7 +176,7 @@
         <div class="row">
           <div
             class="col-sm-6 col-md-4 mb-2 card-group"
-            *ngFor="let item of recentPeoples | slice: 0:6; index as i"
+            *ngFor="let item of recentPeoples; index as i"
           >
             <div class="items card border-0 rounded-0 mt-4">
               <a href="{{ commonService.readMore(item) }}">
