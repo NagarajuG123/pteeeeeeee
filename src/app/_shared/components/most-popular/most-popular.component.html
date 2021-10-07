@@ -38,7 +38,7 @@
               <h3 class="position-relative ps-4 text-white">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
                 <strong class="ms-3 d-block">
-                  {{ commonService.formatTitle(item.title) }}
+                  {{ item.title }}
                 </strong>
               </h3>
             </div>
@@ -68,7 +68,7 @@
                   <h3 class="mb-0">
                     <strong class="ms-3 d-block">{{ item.title }}</strong>
                   </h3>
-                  <small class="ms-3 text-black"
+                  <small class="ms-3 text-black" *ngIf="item.author != null"
                     >By {{ item?.author?.name }}
                   </small>
                   <p class="ms-3">

@@ -74,7 +74,7 @@
                 >{{ item.title }}</a
               >
             </h6>
-            <span class="">By {{ item.author.name }}</span>
+            <span *ngIf="item.author != null">By {{ item.author.name }}</span>
             <p class="card-text mb-1">
               <a href="{{ commonService.readMore(item) }}" class="text-black">{{
                 item?.short_description
