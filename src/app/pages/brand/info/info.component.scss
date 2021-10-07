@@ -180,7 +180,7 @@
         height: 54px;
         margin-bottom: 25px;
         background: $white;
-        border: 1px solid #C4C4C4;
+        border: 1px solid $light_gray_8;
         border-radius: 0;
         position: relative;
         &:focus{
@@ -197,6 +197,13 @@
       }
     }
   }
+  .form-select {
+    border: 1px solid $light_gray_8 ;
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+
+  
   .row {
     margin: 0;
     .inquirefrom-row{

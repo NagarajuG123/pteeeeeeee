@@ -475,11 +475,11 @@
                 }"
               ></textarea>
 
-              <select
+              <select required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class="form-control"
+                class=" form-select"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsValues[fields.key].touched ||
@@ -487,6 +487,7 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
+              <option value="" disabled selected hidden>{{ fields.title }}*</option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
