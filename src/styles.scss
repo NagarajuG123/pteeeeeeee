@@ -115,6 +115,6 @@ ul {
 }
 .sidebar-blur {
   &.show {
-    filter: blur(3px);
+    opacity: 0.6;
   }
 }

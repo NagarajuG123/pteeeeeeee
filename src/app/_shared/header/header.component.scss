@@ -163,6 +163,11 @@ header {
       border-radius: 0rem !important;
       max-height: 650px;
       overflow-y: auto;
+      &.show {
+        margin-top: 0.125rem;
+        top: 100%;
+        left: 0;
+      }
     }
 
     .menu-search {

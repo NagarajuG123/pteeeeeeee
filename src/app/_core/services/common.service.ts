@@ -21,10 +21,10 @@ export class CommonService {
     this.showmenu = !this.showmenu;
     window.scrollTo(0, 0);
     if (this.showmenu) {
-      // $('.sidebar-dropdown-menu').addClass('show');
+      $('.sidebar-dropdown-menu').addClass('show');
       $('.sidebar-blur').addClass('show');
     } else {
-      // $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-dropdown-menu').removeClass('show');
       $('.sidebar-blur').removeClass('show');
     }
   }
