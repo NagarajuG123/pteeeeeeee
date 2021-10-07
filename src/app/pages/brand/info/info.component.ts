@@ -165,6 +165,13 @@ export class InfoComponent implements OnInit {
           }
         });
     });
+    this.apiService
+      .getAPI(`${this.brandSlug}/brand-pdf`)
+      .subscribe((response) => {
+        if (response.data != '') {
+          this.pdf = response.data;
+        }
+      });
   }
   changeDownPDFUrl(url: any) {
     return url?.replace('api.', '');
