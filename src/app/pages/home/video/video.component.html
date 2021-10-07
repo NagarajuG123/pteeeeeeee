@@ -69,7 +69,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <owl-carousel-o
+        <!-- <owl-carousel-o
           [options]="customOptions"
           class="c-video-slider--wrapper d-block position-relative"
         >
@@ -113,7 +113,72 @@
               </div>
             </div>
           </ng-template>
-        </owl-carousel-o>
+        </owl-carousel-o> -->
+        <h2 style="text-align: center;">Standard Multislide</h2>
+        <ngx-light-carousel style="max-width: 800px; margin-bottom: 100px; display: block;" [options]="options2"
+        [data]="products2" class="wrapper c-accent">
+        <section ngx-light-carousel-container class="content">
+          <article class=" cursor-pointer" ngx-light-carousel-item *ngFor="let product of products2; let i = index">
+            <div class="item">
+              <div class="cursor-pointer">
+                <div class="product">
+                  <img class="w-100" src="{{product.image}}">
+                  <div class="text-left mt-2">
+                    <h3 class="title mb-1">{{product.title}}</h3>
+                    <div class="pricing d-flex">
+                      <span class="sale-price text-danger ml-2"
+                        *ngIf="product.salePrice">{{product.salePrice | currency}}</span>
+                      <span class="original-price"
+                        [ngClass]="{'on-sale ml-1': product.salePrice}">{{product.regularPrice | currency}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <ng-template #infiniteContainer></ng-template>
+        </section>
+      
+        <ng-template #carouselContent let-product let-i="index">
+          <article class="item cursor-pointer">
+            <div class="cursor-pointer">
+              <div class="product">
+                <a href="{{product.url}}">
+                  <img class="w-100" src="{{product.image}}">
+                </a>
+                  <div class="text-left mt-2">
+                    <a href="{{product.url}}">
+                      <h3 class="title mb-1">{{product.title}}</h3>
+                    </a>
+                    <div class="pricing d-flex">
+                      <span class="sale-price text-danger ml-2"
+                      *ngIf="product.salePrice">{{product.salePrice | currency}}</span>
+                      <span class="original-price"
+                      [ngClass]="{'on-sale ml-1': product.salePrice}">{{product.regularPrice | currency}}</span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </article>
+        </ng-template>
+      
+        <ng-template #carouselPrev>
+          <div class="click-area">
+          </div>
+        </ng-template>
+        <ng-template #carouselNext>
+          <div class="click-area">
+          </div>
+        </ng-template>
+      
+        <ng-template #carouselDot let-model>
+          <div class="ball bg-accent"></div>
+        </ng-template>
+      
+        <ng-template #carouselProgress let-progress>
+          <div class="progress"></div>
+        </ng-template>
+      </ngx-light-carousel>
       </div>
     </div>
   </div>
