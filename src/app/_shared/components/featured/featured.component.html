@@ -73,7 +73,7 @@
         >
           <h3 class="m-0">
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="frannews"
             >
               {{
@@ -86,7 +86,7 @@
           </h3>
           <span class="my-1">By {{ item.author?.name }}</span>
           <a
-            routerLink="{{ commonService.readMore(item) }}"
+            routerLink="/{{ commonService.readMore(item) }}"
             fragment="frannews"
           >
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
@@ -139,7 +139,7 @@
           <div>
             <h3 class="m-0">
               <a
-                routerLink="{{ commonService.readMore(item) }}"
+                routerLink="/{{ commonService.readMore(item) }}"
                 fragment="frannews"
               >
                 {{
