@@ -24,13 +24,17 @@ header {
         }
       }
     }
-    @media screen and (max-width: 760px) {
-      flex-direction: column;
-    }
   }
   main {
     height: 72px;
+    .leftMenuItem {
+      @include mobile-landscape1 {
+        width: 150px;
+      }
+    }
     .menuBtn {
+      border-width: 0px;
+
       background: #eb0444;
       display: flex;
       width: 78px;
@@ -87,13 +91,44 @@ header {
       text-transform: uppercase;
       color: $dark-gray;
       font-weight: bold;
-      //   height: 100%;
 
+      .actions {
+        @include tablet-landscape {
+          display: none;
+        }
+        @include tablet-landscape1 {
+          display: none;
+        }
+        @include mobile-landscape1 {
+          display: none;
+        }
+        @include desk-lg-below2 {
+          display: none;
+        }
+      }
+      .menus {
+        @include tablet-landscape {
+          display: none;
+        }
+        @include tablet-landscape1 {
+          display: none;
+        }
+        @include desk-lg-below2 {
+          display: none;
+        }
+        @include mobile-landscape1 {
+          display: inline-block;
+        }
+      }
       .nav-item {
         a {
           text-decoration: none;
           color: $dark-gray;
           font-size: 14px;
+          @include mobile-landscape1 {
+            color: $red;
+            font-size: 11px;
+          }
           &:hover {
             color: $primary;
             & + .dropdown-menu {
@@ -118,6 +153,14 @@ header {
             }
           }
         }
+      }
+      @include mobile-landscape1 {
+        flex-wrap: wrap-reverse;
+        width: 200px;
+      }
+      @include mobile-portrait1 {
+        flex-wrap: wrap-reverse;
+        width: 150px;
       }
     }
 

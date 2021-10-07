@@ -52,9 +52,19 @@
     @content;
   }
 }
+@mixin mobile-landscape2 {
+  @media (max-width: 568px) {
+    @content;
+  }
+}
 /*-- media query for mobile portrait */
 @mixin mobile-portrait {
   @media (max-width: 479px) {
+    @content;
+  }
+}
+@mixin mobile-portrait1 {
+  @media (max-width: 320px) {
     @content;
   }
 }
