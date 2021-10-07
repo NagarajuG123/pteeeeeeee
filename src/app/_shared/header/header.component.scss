@@ -161,6 +161,13 @@ header {
       width: 300px;
       border: none !important;
       border-radius: 0rem !important;
+      max-height: 650px;
+      overflow-y: auto;
+      &.show {
+        margin-top: 0.125rem;
+        top: 100%;
+        left: 0;
+      }
     }
 
     .menu-search {
@@ -218,7 +225,7 @@ header {
             a {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 11px;
+              font-size: 12px;
               line-height: 14.16px;
             }
           }
@@ -527,7 +534,8 @@ option{
   color:$black;
 }
 .container{
+
   @media screen and (max-width: 414px) {
-   padding: 0;
+    padding: 0;
   }
 }

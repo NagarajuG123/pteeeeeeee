@@ -1,4 +1,4 @@
-<section class="c-card-box--section">
+<section class="c-card-box--section sidebar-blur" *ngIf="firstBlock">
   <div class="c-card-box--wrapper">
     <div class="container-fluid">
       <div class="row">
@@ -78,7 +78,7 @@
   </div>
 </section>
 
-<div class="monthy-cover">
+<div class="monthy-cover" *ngIf="secondBlock">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -103,7 +103,6 @@
       </div>
     </div>
   </div>
-  
 
   <!-- See More -->
   <div class="d-flex">
