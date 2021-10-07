@@ -153,6 +153,10 @@
 
 //Redesign
 .subscribe{
+  @include mobile-landscape {
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
+  }
   background-color: $white_3;
   h1{
     font-size: 30px;
@@ -277,4 +281,8 @@
  img{
    height:616px;
  }
+  @include mobile-landscape {
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
+  }
 }
