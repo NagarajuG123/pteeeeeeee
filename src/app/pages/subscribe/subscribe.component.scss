@@ -1,6 +1,11 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
+.row {
+  @include mobile-landscape1 {
+    flex-direction: column;
+  }
+}
 .f_error {
   display: block;
   margin: 10px 0;
@@ -152,9 +157,9 @@
 }
 
 //Redesign
-.subscribe{
+.subscribe {
   background-color: $white_3;
-  h1{
+  h1 {
     font-size: 30px;
     font-family: $balinger;
     font-weight: 700;
@@ -162,7 +167,8 @@
     color: $red;
     text-align: left;
   }
-  h5,h6{
+  h5,
+  h6 {
     font-size: 20px;
     font-family: $roboto;
     line-height: 26px;
@@ -199,7 +205,7 @@
     .form-group {
       margin: 0;
     }
-  
+
     ul {
       margin: 0 -6px;
       li {
@@ -228,24 +234,24 @@
     }
   }
 
-.back {
-  background: $red_1;
-  font-size: 15.66px;
-  line-height: 36px;
-  color: $white;
-  position: relative;
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    fa-icon {
-      font-size: 25px;
-      line-height: 36px;
-      color: $white;
+  .back {
+    background: $red_1;
+    font-size: 15.66px;
+    line-height: 36px;
+    color: $white;
+    position: relative;
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      fa-icon {
+        font-size: 25px;
+        line-height: 36px;
+        color: $white;
+      }
     }
-  }
   }
   .contact-editorial-main {
     label {
@@ -271,10 +277,14 @@
     }
   }
 }
-.bannerSection{
- padding-right: 0;
- height: 616px !important;
- img{
-   height:616px;
- }
+.bannerSection {
+  width: 50%;
+  padding-right: 0;
+  height: 616px !important;
+  @include mobile-landscape1 {
+    width: 100%;
+  }
+  img {
+    height: 616px;
+  }
 }

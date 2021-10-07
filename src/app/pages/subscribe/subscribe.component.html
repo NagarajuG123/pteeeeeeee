@@ -1,6 +1,6 @@
 <div class="sidebar-blur">
   <div class="row">
-    <div class="col-6 col-sm-6 col-md-6 col-lg bannerSection">
+    <div class="bannerSection">
       <img
         class="img-fluid lazyload"
         height="616"
@@ -9,7 +9,7 @@
         data-src="{{ data?.media | defaultImage: 800:600 }}"
       />
     </div>
-    <div class="col-6 col-sm-6 col-md-6 col-lg subscribe px-5 py-4">
+    <div class="col subscribe px-5 py-4">
       <h1>{{ title }}</h1>
       <h5>Please provide us with the following information:</h5>
       <div *ngIf="!isSuccess" class="editors">
