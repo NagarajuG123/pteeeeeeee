@@ -33,15 +33,6 @@ export class MonthlyCoversComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (this.tstate.hasKey(RESULT_KEY)) {
-    //   const coverData = this.tstate.get(RESULT_KEY, {});
-    //   this.firstBlock = coverData['first'];
-    //   this.secondBlock = coverData['second'];
-    //   this.hasMore = coverData['hasMore'];
-    //   this.metaData = coverData['meta'];
-    //   this.publication = coverData['publicationTitle'];
-    // } else {
-    // const coverData = {};
     const coverApi = this.apiService.getAPI(
       `1851/journal/monthly-covers?limit=14&offset=0`
     );
@@ -59,8 +50,6 @@ export class MonthlyCoversComponent implements OnInit {
         this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(`Monthly Issues | ${this.publication}`);
       });
-    //   this.tstate.set(RESULT_KEY, coverData);
-    // }
   }
   openDetails(date: any) {
     const params = date.split('-');

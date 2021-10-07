@@ -1,64 +1,66 @@
-<div class="c-card-box--section">
-    <div class="c-card-box--wrapper">
-      <div class="authorDetail c-card-box--row c-card-box--contentRow">
-        <div class="container customContainer">
-          <div class="row">
-            <div class="col-4 py-5 px-5">
-              <figure>
-                <img
-                  *ngIf="author?.data"
-                  appYoutubeImage
-                  data-src="{{ author?.data?.media | defaultImage: 312:446 }}"
-                  width="312"
-                  height="446"
-                  alt="authorpage"
-                  loading="lazy"
-                  class="lazyloading"
-                />
-              </figure>
+<div class="c-card-box--section sidebar-blur">
+  <div class="c-card-box--wrapper">
+    <div class="authorDetail c-card-box--row c-card-box--contentRow">
+      <div class="container customContainer">
+        <div class="row">
+          <div class="col-4 py-5 px-5">
+            <figure>
+              <img
+                *ngIf="author?.data"
+                appYoutubeImage
+                data-src="{{ author?.data?.media | defaultImage: 312:446 }}"
+                width="312"
+                height="446"
+                alt="authorpage"
+                loading="lazy"
+                class="lazyloading"
+              />
+            </figure>
+          </div>
+          <div class="col-8 py-5 px-5">
+            <div>
+              <h5>ABOUT</h5>
+              <h1>
+                {{ author?.data?.first_name }} {{ author?.data?.last_name }}
+              </h1>
+              <h5 class="designation">{{ author?.data?.designation }}</h5>
             </div>
-            <div class="col-8 py-5 px-5">
-              <div>
-                <h5> ABOUT</h5>
-                <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
-                <h5 class="designation">{{ author?.data?.designation }}</h5>
-              </div>
-              <hr/>
+            <hr />
 
-              <ul class="social d-flex p-0" *ngIf="author?.data">
-                <li *ngFor="let item of author?.data?.socialMedia; index as i">
-                  <a
-                    href="{{ item?.url }}"
-                    target="blank"
-                    class="
-                      rounded-circle
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      me-1
-                      primary-bg
-                    "
-                  >
-                    <fa-icon
-                      [icon]="socialIcons[item.index]"
-                      class="searchIcon"
-                    ></fa-icon>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ul class="social d-flex p-0" *ngIf="author?.data">
+              <li *ngFor="let item of author?.data?.socialMedia; index as i">
+                <a
+                  href="{{ item?.url }}"
+                  target="blank"
+                  class="
+                    rounded-circle
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    me-1
+                    primary-bg
+                  "
+                >
+                  <fa-icon
+                    [icon]="socialIcons[item.index]"
+                    class="searchIcon"
+                  ></fa-icon>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="c-card-box--row">
-        <div class="container customContainer">
+    </div>
+    <div class="c-card-box--row">
+      <div class="container customContainer">
         <p>{{ author?.data?.about }}</p>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="main-content">
+<div class="main-content">
   <div class="editorial-stories">
     <div class="container">
       <div class="editorial-stories-details col-xl-11">

@@ -161,6 +161,8 @@ header {
       width: 300px;
       border: none !important;
       border-radius: 0rem !important;
+      max-height: 650px;
+      overflow-y: auto;
     }
 
     .menu-search {
@@ -519,8 +521,8 @@ img {
 .form-control {
   border: 1px solid $dark-gray;
 }
-.container{
+.container {
   @media screen and (max-width: 414px) {
-   padding: 0;
+    padding: 0;
   }
 }

@@ -20,6 +20,13 @@ export class CommonService {
   toggle() {
     this.showmenu = !this.showmenu;
     window.scrollTo(0, 0);
+    if (this.showmenu) {
+      // $('.sidebar-dropdown-menu').addClass('show');
+      $('.sidebar-blur').addClass('show');
+    } else {
+      // $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-blur').removeClass('show');
+    }
   }
   readMore1(story: any, type: string) {
     let slug = '';

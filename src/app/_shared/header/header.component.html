@@ -64,7 +64,8 @@
             id="dropdownMenu2"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            (click) = "commonService.showmenu = !commonService.showmenu"
+            data-bs-display="static"
+            (click)="commonService.toggle()"
           >
             <img
               data-src="{{
@@ -121,11 +122,16 @@
             </li>
             <li class="d-block">
               <h3>
-                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
+                <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+                  MONTHLY COVERS</a
+                >
               </h3>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
-                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
+                <a
+                  routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                  (click)="commonService.toggle()"
+                >
                   <img
                     appYoutubeImage
                     data-src="{{ header?.monthlyCover?.url }}"
@@ -343,8 +349,7 @@
               </h3>
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
-                <a
-                  routerLink="/{{ header?.sidebar?.about }}"
+                <a routerLink="/{{ header?.sidebar?.about }}"
                   >About
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
