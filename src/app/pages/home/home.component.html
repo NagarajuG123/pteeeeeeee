@@ -32,6 +32,7 @@
                   [formControl]="newsletterForm.controls['name']"
                 />
                 <app-error-message
+                  [type]="'signUpform'"
                   *ngIf="isSubmitted"
                   [control]="newsletterForm.controls['name']"
                 ></app-error-message>
@@ -44,6 +45,7 @@
                   [formControl]="newsletterForm.controls['email']"
                 />
                 <app-error-message
+                  [type]="'signUpform'"
                   *ngIf="isSubmitted"
                   [control]="newsletterForm.controls['email']"
                 ></app-error-message>

@@ -9,6 +9,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 })
 export class ErrorMessageComponent implements OnInit {
   @Input() control: FormControl;
+  @Input() type: string;
   constructor() {}
 
   ngOnInit(): void {}
