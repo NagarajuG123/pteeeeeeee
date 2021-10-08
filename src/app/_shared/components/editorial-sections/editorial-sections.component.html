@@ -98,8 +98,9 @@
                 <h3 class="card-title text-uppercase fw-bold">
                   {{ list.title }}
                 </h3>
-
-                <small>By {{ list.author?.name }}</small>
+                <a href="#">
+                <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
+              </a>
               </div>
             </div>
           </a>

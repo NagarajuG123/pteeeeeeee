@@ -57,6 +57,17 @@
       border-bottom: 3px solid $red;
       width: 350px;
     }
+    @media only screen and (min-device-width : 750px) and (max-device-width : 999px) {
+      max-width: 100%;
+      -webkit-flex: 0 0 100%;
+      padding-left:  100px !important;
+    } 
+  }
+  .search-page{
+    background-color: $border-color;
+    @include tablet-portrait{
+      overflow-x: hidden;
+    }
   }
   .border-bg{
     background-color: $border-color;
@@ -169,5 +180,16 @@
   @include mobile-landscape1{
     width: 100%;
     padding-left: 50px !important;
+  }
+}
+.bottom-right{
+  @include  tablet-portrait{
+    display: none;
+  }
+}
+.main-article{
+  @include tablet-portrait{
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
   }
 }

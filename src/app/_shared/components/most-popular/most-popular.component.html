@@ -10,7 +10,7 @@
   <div class="container customContainer">
     <div class="row d-none d-sm-flex" *ngIf="type == 'home'">
       <div class="col col-sm-4" *ngFor="let item of data; index as i">
-        <a routerLink="{{ commonService.readMore(item) }}" class="text-black">
+        <a routerLink="/{{ commonService.readMore(item) }}" class="text-black">
           <div class="slideItem" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
@@ -38,7 +38,7 @@
               <h3 class="position-relative ps-4 text-white">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
                 <strong class="ms-3 d-block">
-                  {{ commonService.formatTitle(item.title) }}
+                  {{ item.title }}
                 </strong>
               </h3>
             </div>
@@ -68,7 +68,7 @@
                   <h3 class="mb-0">
                     <strong class="ms-3 d-block">{{ item.title }}</strong>
                   </h3>
-                  <small class="ms-3 text-black"
+                  <small class="ms-3 text-black" *ngIf="commonService.authorName(item)"
                     >By {{ item?.author?.name }}
                   </small>
                   <p class="ms-3">
@@ -88,6 +88,7 @@
       [ngClass]="type == 'brand' ? 'brand-carousel' : 'd-sm-none'"
     >
       <ng-template carouselSlide *ngFor="let item of data; index as i">
+        <a routerLink="/{{ commonService.readMore(item) }}">
         <div class="slideItem">
           <img
             appYoutubeImage
@@ -132,9 +133,10 @@
           <div
             class="slide-footer primary-bg-1 d-flex flex-row-reverse py-1 px-2"
           >
-            <a href="#" class="text-white">READ MORE ></a>
+            <a class="text-white">READ MORE ></a>
           </div>
         </div>
+      </a>
       </ng-template>
     </owl-carousel-o>
   </div>
