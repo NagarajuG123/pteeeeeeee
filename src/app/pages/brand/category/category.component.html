@@ -63,7 +63,7 @@
                 {{ item.title }}
               </a>
             </h3>
-            <span *ngIf="item.author != null">By {{ item.author.name }}</span>
+            <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
           </div>
         </li>
       </ul>
@@ -153,9 +153,8 @@
                 <h6 class="card-title text-uppercase fw-bold">
                   {{ list.title }}
                 </h6>
-
-                <a routerLink="{{ commonService.goAuthorPage(list) }}">
-                  <small *ngIf="list.author != null">By {{ list.author?.name }}</small>
+                <a href="#">
+                  <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
                 </a>
                 <h4 class="card-text mb-1">
                   {{ list.short_description }}

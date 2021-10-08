@@ -99,7 +99,7 @@
                   {{ list.title }}
                 </h3>
                 <a href="#">
-                <small *ngIf="list.author != null">By {{ list.author?.name }}</small>
+                <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
               </a>
               </div>
             </div>
