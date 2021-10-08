@@ -98,10 +98,12 @@ header {
         font-weight: 800;
         font-size: 17px;
         color: $dark-gray;
+        line-height: 21.88px;
         > small {
           font-family: $roboto;
           font-size: 8px;
           color: $light-gray-1;
+          line-height:10px;
 
           > img {
             height: 8px;
