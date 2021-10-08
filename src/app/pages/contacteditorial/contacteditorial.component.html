@@ -1,14 +1,14 @@
-<div class="banner d-flex contact-banner">
+<div class="banner d-flex contact-banner sidebar-blur">
   <figure>
     <img
-    *ngIf="data?.media"
-    data-src="{{ data?.media | defaultImage: 1440:493 }}"
-    width="1440"
-    height="493"
-    alt="contact-banner"
-    loading="lazy"
-    class="lazyload"
-  />
+      *ngIf="data?.media"
+      data-src="{{ data?.media.url }}"
+      width="1440"
+      height="493"
+      alt="contact-banner"
+      loading="lazy"
+      class="lazyload"
+    />
     <img
       *ngIf="!data?.media"
       appYoutubeImage

@@ -57,14 +57,15 @@
     <!-- main header section Start -->
     <main class="container">
       <div class="row g-0 align-items-center">
-        <div class="col-10 col-md-auto d-flex position-relative">
-          <a
+        <div class="col col-md-auto d-flex position-relative leftMenuItem">
+          <button
             class="menuBtn me-3"
             type="button"
             id="dropdownMenu2"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            (click) = "commonService.showmenu = !commonService.showmenu"
+            data-bs-display="static"
+            (click)="commonService.toggle()"
           >
             <img
               data-src="{{
@@ -78,7 +79,7 @@
               class="lazyload"
             />
             <small class="text-center d-none d-md-block">MENU</small>
-          </a>
+          </button>
           <ul
             class="
               sidebar-dropdown-menu
@@ -121,11 +122,16 @@
             </li>
             <li class="d-block">
               <h3>
-                <a routerLink="/monthlycovers"> MONTHLY COVERS</a>
+                <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+                  MONTHLY COVERS</a
+                >
               </h3>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
-                <a routerLink="{{ header?.monthlyCover?.coverUrl }}">
+                <a
+                  routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                  (click)="commonService.toggle()"
+                >
                   <img
                     appYoutubeImage
                     data-src="{{ header?.monthlyCover?.url }}"
@@ -343,8 +349,7 @@
               </h3>
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
-                <a
-                  routerLink="/{{ header?.sidebar?.about }}"
+                <a routerLink="/{{ header?.sidebar?.about }}"
                   >About
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
@@ -417,11 +422,16 @@
         </div>
 
         <!-- Center menu link -->
-        <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
+        <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
           <ul class="center-menu nav justify-content-center">
-            <li class="nav-item px-2" *ngFor="let menu of header?.menus">
+            <li class="nav-item px-2 menus" *ngFor="let menu of header?.menus">
               <a [routerLink]="menu.url" class="d-flex align-items-center"
                 >{{ menu.title }}
+              </a>
+            </li>
+            <li class="nav-item px-2 subscribeMenu">
+              <a routerLink="/subscribe" class="d-flex align-items-center"
+                >Subscribe
               </a>
             </li>
             <li
@@ -697,10 +707,11 @@
                 }"
               />
               <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class="form-control"
+                class="form-control form-select"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsValues[fields.key].touched ||
@@ -708,6 +719,9 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
@@ -798,10 +812,11 @@
                 }"
               ></textarea>
               <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class="form-control rounded-0"
+                class="form-control form-select rounded-0"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsContactValues[fields.key].touched ||
@@ -809,6 +824,9 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               >
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>

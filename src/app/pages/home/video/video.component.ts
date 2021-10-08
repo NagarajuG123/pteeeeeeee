@@ -54,19 +54,6 @@ export class VideoComponent implements OnInit {
         this.videoData = result.data;
         this.videoUrl = result.data?.media?.url;
       });
-    //   const VIDEO_KEY = makeStateKey<any>('videoState');
-    //   const videoData = this.state.get(VIDEO_KEY,null as any);
-    //   if(!videoData){
-    //     this.apiService.getAPI(`1851/videos?site=1851`).pipe(takeUntil(this.onDestroy$))
-    //     .subscribe((result) => {
-    //       videoData['data'] = result.data;
-    //       videoData['url'] = result.data.media.url;
-    //     });
-    //     this.state.set(VIDEO_KEY,videoData as any);
-    //   } else{
-    //     this.videoData = videoData['data'];
-    //     this.videoUrl =  videoData['url'];
-    //   }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;

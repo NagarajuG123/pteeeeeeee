@@ -24,13 +24,23 @@ header {
         }
       }
     }
-    @media screen and (max-width: 760px) {
-      flex-direction: column;
-    }
   }
   main {
     height: 72px;
+    @include mobile-landscape1 {
+      height: 51px;
+    }
+    @include mobile-portrait1 {
+      height: 51px;
+    }
+    .leftMenuItem {
+      @include mobile-landscape1 {
+        width: 150px;
+      }
+    }
     .menuBtn {
+      border-width: 0px;
+
       background: #eb0444;
       display: flex;
       width: 78px;
@@ -44,9 +54,23 @@ header {
       font-family: $roboto;
       font-weight: 500;
       font-size: 12.3421px;
+      @include mobile-landscape1 {
+        width: 55px;
+        height: 51px;
+      }
+      @include mobile-portrait1 {
+        width: 55px;
+        height: 51px;
+      }
       img {
         filter: brightness(10);
         margin-bottom: 8px;
+        @include mobile-landscape1 {
+          margin-bottom: 0px;
+        }
+        @include mobile-portrait1 {
+          margin-bottom: 0px;
+        }
       }
       small {
         line-height: 12px;
@@ -59,7 +83,16 @@ header {
       line-height: 128.69%;
       font-weight: bold;
       text-transform: uppercase;
-
+      > img {
+        @include mobile-landscape1 {
+          width: 36px;
+          height: 36px;
+        }
+        @include mobile-portrait1 {
+          width: 36px;
+          height: 36px;
+        }
+      }
       > div {
         font-family: $balinger;
         font-weight: 800;
@@ -87,13 +120,50 @@ header {
       text-transform: uppercase;
       color: $dark-gray;
       font-weight: bold;
-      //   height: 100%;
 
+      .actions {
+        @include tablet-landscape {
+          display: none;
+        }
+        @include tablet-landscape1 {
+          display: none;
+        }
+        @include mobile-landscape1 {
+          display: none;
+        }
+        @include desk-lg-below2 {
+          display: none;
+        }
+      }
+      .subscribeMenu {
+        display: none;
+        @include mobile-landscape1 {
+          display: inline-block;
+        }
+      }
+      .menus {
+        @include tablet-landscape {
+          display: none;
+        }
+        @include tablet-landscape1 {
+          display: none;
+        }
+        @include desk-lg-below2 {
+          display: none;
+        }
+        @include mobile-landscape1 {
+          display: inline-block;
+        }
+      }
       .nav-item {
         a {
           text-decoration: none;
           color: $dark-gray;
           font-size: 14px;
+          @include mobile-landscape1 {
+            color: $red;
+            font-size: 11px;
+          }
           &:hover {
             color: $primary;
             & + .dropdown-menu {
@@ -118,6 +188,14 @@ header {
             }
           }
         }
+      }
+      @include mobile-landscape1 {
+        width: 230px;
+        text-transform: capitalize;
+      }
+      @include mobile-portrait1 {
+        width: 150px;
+        text-transform: capitalize;
       }
     }
 
@@ -161,6 +239,13 @@ header {
       width: 300px;
       border: none !important;
       border-radius: 0rem !important;
+      max-height: 650px;
+      overflow-y: auto;
+      &.show {
+        margin-top: 0.125rem;
+        top: 100%;
+        left: 0;
+      }
     }
 
     .menu-search {
@@ -218,7 +303,7 @@ header {
             a {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 11px;
+              font-size: 12px;
               line-height: 14.16px;
             }
           }
@@ -519,8 +604,14 @@ img {
 .form-control {
   border: 1px solid $dark-gray;
 }
-.container{
+select:invalid {
+  color: $light_gray_8;
+}
+option {
+  color: $black;
+}
+.container {
   @media screen and (max-width: 414px) {
-   padding: 0;
+    padding: 0;
   }
 }

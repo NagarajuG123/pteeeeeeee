@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid sidebar-blur">
   <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
@@ -8,7 +8,11 @@
         "
         (click)="prev()"
       >
-        <img data-src="assets/img/left-arrow.svg" loading="lazy"  class="lazyload" />
+        <img
+          data-src="assets/img/left-arrow.svg"
+          loading="lazy"
+          class="lazyload"
+        />
       </div>
       <ul class="row innerContent m-0">
         <li
@@ -41,7 +45,11 @@
         "
         (click)="next()"
       >
-        <img data-src="assets/img/right-arrow.svg" loading="lazy"  class="lazyload" />
+        <img
+          data-src="assets/img/right-arrow.svg"
+          loading="lazy"
+          class="lazyload"
+        />
       </div>
     </div>
   </div>
@@ -65,12 +73,19 @@
       />
     </div>
   </ng-container>
-  <div class="row m-0 brand-page-row--wrapper" [ngClass]="isMarket?'mb-4 available-marketing--wrapper':''" [class.info-wrapper]="isStory">
-    <div class="col-md-12 pl-0 brand-left-info--wrapper" [ngClass]="!isInfo?'col-lg-12':'col-lg-8'">
+  <div
+    class="row m-0 brand-page-row--wrapper"
+    [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
+    [class.info-wrapper]="isStory"
+  >
+    <div
+      class="col-md-12 pl-0 brand-left-info--wrapper"
+      [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
+    >
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
-          data-srcset="{{brandInfo?.media | defaultImage:953:535}}"
+          data-srcset="{{ brandInfo?.media | defaultImage: 953:535 }}"
           class="img-fluid lazyload"
           data-sizes="{{
             '(max-width: 576px) 555px,
@@ -109,7 +124,16 @@
         </div>
 
         <div *ngIf="isPdf">
-          <div class="container customContainer py-md-5 py-3 pl-5 ml-5 download-pdf--wrapper">
+          <div
+            class="
+              container
+              customContainer
+              py-md-5 py-3
+              pl-5
+              ml-5
+              download-pdf--wrapper
+            "
+          >
             <div class="frannews-left--wrapper">
               <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
               <img
@@ -129,7 +153,14 @@
                 >
                   <button
                     type="submit"
-                    class="btn text-center submit-btn text-white rounded-0 btn-sm"
+                    class="
+                      btn
+                      text-center
+                      submit-btn
+                      text-white
+                      rounded-0
+                      btn-sm
+                    "
                   >
                     Download PDF
                   </button>
@@ -140,7 +171,14 @@
                 >
                   <button
                     type="submit"
-                    class="btn text-center submit-btn text-white rounded-0 btn-sm"
+                    class="
+                      btn
+                      text-center
+                      submit-btn
+                      text-white
+                      rounded-0
+                      btn-sm
+                    "
                   >
                     Download PDF
                   </button>
@@ -163,7 +201,10 @@
                   *ngFor="let list of items; index as i"
                   class="mb-3 col-12 col-sm-6 col-md-4"
                 >
-                  <a  class="stories-tabItem" routerLink="{{ commonService.readMore(list) }}">
+                  <a
+                    class="stories-tabItem"
+                    routerLink="{{ commonService.readMore(list) }}"
+                  >
                     <div class="items card border-0 rounded-0 h-100">
                       <img
                         appYoutubeImage
@@ -263,58 +304,34 @@
                 <div class="lg-map-wrapper" style="width: 100%; height: auto">
                   <svg id="map" width="800" height="500"></svg>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
-      *ngIf="
-        items['available-markets'] != null &&
-        items['available-markets'].length
-      "
-      class="map-legend"
-    >
-      MAP LEGEND:
-      <div class="row">
-        <div class="col-xl-8 col-lg-12">
-          <div class="row m-0">
-            <div
-              *ngFor="let market of items['available-markets']"
-              class="col-sm-5 map-legend-item"
-            >
-              <div class="market-names">
-                <div class="">
-                  <div
-                    class="market-status-color"
-                    [style.backgroundColor]="market.color"
-                  ></div>
-                </div>
-                <div class="align-self-center lh-base">
-                  <span class="text-uppercase market-name">{{
-                    market.name
-                  }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="padding-top: 0px">
-          <div class="available-market-mobile--wrapper"
-            *ngIf="
-              items['international-markets'] != null &&
-              items['international-markets'].length
-            "
-            class="map-legend"
-          >
-            <h3>INTERNATIONAL MARKETS:</h3>
-            <div class="row">
+        *ngIf="
+          items['available-markets'] != null &&
+          items['available-markets'].length
+        "
+        class="map-legend"
+      >
+        MAP LEGEND:
+        <div class="row">
+          <div class="col-xl-8 col-lg-12">
+            <div class="row m-0">
               <div
-                *ngFor="let market of items['international-markets']"
-                class="col-sm-3 map-legend-item"
+                *ngFor="let market of items['available-markets']"
+                class="col-sm-5 map-legend-item"
               >
-                <div class="row market-names">
-                  <div class="col-xs-10">
+                <div class="market-names">
+                  <div class="">
+                    <div
+                      class="market-status-color"
+                      [style.backgroundColor]="market.color"
+                    ></div>
+                  </div>
+                  <div class="align-self-center lh-base">
                     <span class="text-uppercase market-name">{{
                       market.name
                     }}</span>
@@ -323,12 +340,41 @@
               </div>
             </div>
           </div>
-        </div>    
+          <div style="padding-top: 0px">
+            <div
+              class="available-market-mobile--wrapper"
+              *ngIf="
+                items['international-markets'] != null &&
+                items['international-markets'].length
+              "
+              class="map-legend"
+            >
+              <h3>INTERNATIONAL MARKETS:</h3>
+              <div class="row">
+                <div
+                  *ngFor="let market of items['international-markets']"
+                  class="col-sm-3 map-legend-item"
+                >
+                  <div class="row market-names">
+                    <div class="col-xs-10">
+                      <span class="text-uppercase market-name">{{
+                        market.name
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-12 pr-0 pl-0" *ngIf="isInfo || isMarket" [ngClass]="isMarket?'market-rightsiderbar':''">
+    <div
+      class="col-lg-4 col-md-12 pr-0 pl-0"
+      *ngIf="isInfo || isMarket"
+      [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
+    >
       <div class="financial-requirement-section" *ngIf="!isMarket">
         <div class="header">
           <div class="title">Financial Requirments</div>
@@ -373,21 +419,11 @@
           <div class="title">More brand info</div>
         </div>
         <div class="brand-list">
-          <span class="brand-name">
-            Name
-          </span>
-          <span class="brand-name">
-            NO. OF UNITS CURRENTLY OPEN:
-          </span>
-          <span class="brand-name">
-            Start-up costs
-          </span>
-          <span class="brand-name">
-            Franchise Fee
-          </span>
-          <span class="brand-name">
-            Royalty
-          </span>
+          <span class="brand-name"> Name </span>
+          <span class="brand-name"> NO. OF UNITS CURRENTLY OPEN: </span>
+          <span class="brand-name"> Start-up costs </span>
+          <span class="brand-name"> Franchise Fee </span>
+          <span class="brand-name"> Royalty </span>
         </div>
       </div>
       <div class="inquiry-form-section">
@@ -470,15 +506,12 @@
             </div>
           </div>
           <div class="divider-recent-feature">
-            <button
-              type="submit"
-              class="btn text-white rounded-0 w-100"
-            >
+            <button type="submit" class="btn text-white rounded-0 w-100">
               Next
             </button>
           </div>
         </form>
-  
+
         <!-- Recent Features -->
         <div class="recent-feature-article-section" *ngIf="!isMarket">
           <div class="row">
@@ -528,12 +561,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="title-tag">TRENDING</div>
-              <div
-                class="                  
-                  trending-item
-                "
-                *ngFor="let item of trending"
-              >
+              <div class="trending-item" *ngFor="let item of trending">
                 <img
                   appYoutubeImage
                   data-src="{{ item?.media | defaultImage: 120:126 }}"
@@ -595,72 +623,61 @@
   </div>
 </div>
 <div class="container-fluid available-market-row--wrapper">
-  
-      <div
+  <div
+    *ngIf="
+      items['available-markets'] != null && items['available-markets'].length
+    "
+    class="map-legend"
+  >
+    MAP LEGEND:
+    <div class="row">
+      <div class="col-xl-8 col-md-12">
+        <div class="row m-0">
+          <div
+            *ngFor="let market of items['available-markets']"
+            class="col-sm-5 map-legend-item"
+          >
+            <div class="market-names">
+              <div class="">
+                <div
+                  class="market-status-color"
+                  [style.backgroundColor]="market.color"
+                ></div>
+              </div>
+              <div class="align-self-center lh-base">
+                <span class="text-uppercase market-name">{{
+                  market.name
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 0px">
+        <div
           *ngIf="
-            items['available-markets'] != null &&
-            items['available-markets'].length
+            items['international-markets'] != null &&
+            items['international-markets'].length
           "
           class="map-legend"
         >
-          MAP LEGEND:
+          <h3>INTERNATIONAL MARKETS:</h3>
           <div class="row">
-            <div class="col-xl-8 col-md-12">
-              <div class="row m-0">
-                <div
-                  *ngFor="let market of items['available-markets']"
-                  class="col-sm-5 map-legend-item"
-                >
-                  <div class="market-names">
-                    <div class="">
-                      <div
-                        class="market-status-color"
-                        [style.backgroundColor]="market.color"
-                      ></div>
-                    </div>
-                    <div class="align-self-center lh-base">
-                      <span class="text-uppercase market-name">{{
-                        market.name
-                      }}</span>
-                    </div>
-                  </div>
+            <div
+              *ngFor="let market of items['international-markets']"
+              class="col-sm-3 map-legend-item"
+            >
+              <div class="row market-names">
+                <div class="col-xs-10">
+                  <span class="text-uppercase market-name">{{
+                    market.name
+                  }}</span>
                 </div>
               </div>
-            </div>
-            <div style="padding-top: 0px">
-              <div
-                *ngIf="
-                  items['international-markets'] != null &&
-                  items['international-markets'].length
-                "
-                class="map-legend"
-              >
-                <h3>INTERNATIONAL MARKETS:</h3>
-                <div class="row">
-                  <div
-                    *ngFor="let market of items['international-markets']"
-                    class="col-sm-3 map-legend-item"
-                  >
-                    <div class="row market-names">
-                      <div class="col-xs-10">
-                        <span class="text-uppercase market-name">{{
-                          market.name
-                        }}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>    
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-

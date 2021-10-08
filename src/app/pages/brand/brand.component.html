@@ -16,12 +16,12 @@
   <app-editorial-sections [slug]="slug"></app-editorial-sections>
 </div>
 
-<div *ngIf="type === 'category_page'">
+<div *ngIf="isCategory && type === 'category_page'">
   <app-category [slug]="slug"></app-category>
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
-  <div class="banner d-flex contact-banner">
+  <div class="banner d-flex contact-banner sidebar-blur">
     <figure>
       <img
         data-src="assets/img/dynamicpage_banner.png"

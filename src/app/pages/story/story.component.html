@@ -1,217 +1,153 @@
 <div
-    class="search-results"
-    infinite-scroll
-    [infiniteScrollDistance]="scrollDistance"
-    [infiniteScrollUpDistance]="scrollUpDistance"
-    [infiniteScrollThrottle]="throttle"
-    (scrolled)="onScrollDown()"
-  >
-<div
-  class="articles"
-  *ngFor="let story of detailsData; index as i"
-  attr.data-id="{{ story.id }}"
-  attr.data-title="{{ story?.slug }}"
+  class="search-results sidebar-blur"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScrollDown()"
 >
-  <div class="banner d-block">
-    <img
-      appYoutubeImage
-      width="100%"
-      height="754"
-      data-src="{{ story.media | defaultImage: 1440:754 }}"
-      alt="article"
-      class="lazyload"
-    />
-  </div>
+  <div
+    class="articles"
+    *ngFor="let story of detailsData; index as i"
+    attr.data-id="{{ story.id }}"
+    attr.data-title="{{ story?.slug }}"
+  >
+    <div class="banner d-block">
+      <img
+        appYoutubeImage
+        width="100%"
+        height="754"
+        data-src="{{ story.media | defaultImage: 1440:754 }}"
+        alt="article"
+        class="lazyload"
+      />
+    </div>
 
-  <!-- main articles details -->
-  <div class="container customContainer">
-    <div class="row">
-      <div class="col-12 col-md userDetail">
-        <div class="userImage position-relative">
+    <!-- main articles details -->
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col-12 col-md userDetail">
+          <div class="userImage position-relative">
+            <a routerLink="/author/{{ story.author.slug }}"
+              ><img
+                data-src="{{ story.author.media.url }}"
+                alt="author"
+                width="179px"
+                height="179px"
+                class="position-absolute d-block lazyload"
+            /></a>
+          </div>
           <a routerLink="/author/{{ story.author.slug }}"
-            ><img
-              data-src="{{ story.author.media.url }}"
-              alt="author"
-              width="179px"
-              height="179px"
-              class="position-absolute d-block lazyload"
-          /></a>
-        </div>
-        <a routerLink="/author/{{ story.author.slug }}"
-          ><h1 class="fw-bold mb-0">{{ story.author.name }}</h1></a
-        >
-        <h5 class="primary-color fw-bold">{{ story.author.designation }}</h5>
-        <span *ngIf="isDate">
-          <span *ngIf="isUpdate"
-            >Updated {{ story.last_modified | date: "h:mm a" }} •
-            {{ story.last_modified | date: "MM/dd/yy" }}
+            ><h1 class="fw-bold mb-0">{{ story.author.name }}</h1></a
+          >
+          <h5 class="primary-color fw-bold">{{ story.author.designation }}</h5>
+          <span *ngIf="isDate">
+            <span *ngIf="isUpdate"
+              >Updated {{ story.last_modified | date: "h:mm a" }} •
+              {{ story.last_modified | date: "MM/dd/yy" }}
+            </span>
+            <span *ngIf="!isUpdate"
+              >{{ story.posted_on | date: "h:mm a" }} •
+              {{ story.posted_on | date: "MM/dd/yy" }}</span
+            >
           </span>
-          <span *ngIf="!isUpdate"
-            >{{ story.posted_on | date: "h:mm a" }} •
-            {{ story.posted_on | date: "MM/dd/yy" }}</span
-          >
-        </span>
-        <hr />
+          <hr />
 
-        <!-- social icons -->
-        <ul class="social d-flex p-0">
-          <li>
-            <a
-              href="#"
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                me-1
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faFacebookFIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                me-1
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faInstagramIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                me-1
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faLinkedinInIcon"></fa-icon>
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              target="blank"
-              class="
-                rounded-circle
-                d-flex
-                justify-content-center
-                align-items-center
-                primary-bg
-              "
-            >
-              <fa-icon [icon]="faYoutubeIcon"></fa-icon>
-            </a>
-          </li>
-        </ul>
-        <!-- social icons -->
-        <hr />
+          <!-- social icons -->
+          <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
+          <!-- social icons -->
+          <hr />
 
-        <h5 class="fs-21 fw-bold mb-0">TRENDING ARTICLES</h5>
-        <fa-icon
-          [icon]="faCaretDown"
-          [styles]="{ width: '14px', 'margin-top': '-6px' }"
-          class="primary-color"
-          size="lg"
-        ></fa-icon>
+          <h5 class="fs-21 fw-bold mb-0">TRENDING ARTICLES</h5>
+          <fa-icon
+            [icon]="faCaretDown"
+            [styles]="{ width: '14px', 'margin-top': '-6px' }"
+            class="primary-color"
+            size="lg"
+          ></fa-icon>
 
-        <ul class="most-like-articles list-group mt-4 mb-3">
-          <li *ngFor="let item of newsData; index as i" class="mb-2">
-            <div class="newsImage me-2 pe-1 position-relative">
-              <a href="{{ commonService.readMore(item) }}">
-                <img
-                  appYoutubeImage
-                  width="139"
-                  height="84"
-                  data-src="{{ item.media | defaultImage: 139:84 }}"
-                  alt="news"
-                  class="lazyload"
-                />
-              </a>
-            </div>
-            <div>
-              <p class="m-0">
+          <ul class="most-like-articles list-group mt-4 mb-3">
+            <li *ngFor="let item of newsData; index as i" class="mb-2">
+              <div class="newsImage me-2 pe-1 position-relative">
                 <a href="{{ commonService.readMore(item) }}">
-                  {{ item.title }}</a
-                >
-              </p>
-              <span class="m-0">
-                <a
-                  routerLink="/author/{{ item.author.slug }}"
-                  class="primary-color text-uppercase"
-                  >{{ item.author.name }}</a
-                >
-              </span>
-            </div>
-          </li>
-        </ul>
-      </div>
+                  <img
+                    appYoutubeImage
+                    width="139"
+                    height="84"
+                    data-src="{{ item.media | defaultImage: 139:84 }}"
+                    alt="news"
+                    class="lazyload"
+                  />
+                </a>
+              </div>
+              <div>
+                <p class="m-0">
+                  <a href="{{ commonService.readMore(item) }}">
+                    {{ item.title }}</a
+                  >
+                </p>
+                <span class="m-0">
+                  <a
+                    routerLink="/author/{{ item.author.slug }}"
+                    class="primary-color text-uppercase"
+                    >{{ item.author.name }}</a
+                  >
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Articles detail section -->
-      <div class="col-12 col-md ps-md-5">
-        <div class="details position-relative bg-white">
-          <div
-            class="
-              detailHead
-              position-absolute
-              bg-white
-              w-100
-              d-flex
-              justify-content-center
-              align-items-center
-            "
-          >
+        <!-- Articles detail section -->
+        <div class="col-12 col-md ps-md-5">
+          <div class="details position-relative bg-white">
             <div
               class="
-                category
+                detailHead
                 position-absolute
-                top-0
-                start-50
-                translate-middle
-                primary-bg
-                text-white text-center
-                fw-bold
-                py-1
+                bg-white
+                w-100
+                d-flex
+                justify-content-center
+                align-items-center
               "
-              *ngIf="story.category.name"
             >
-              <a routerLink="{{ story.category.slug }}" class="text-white">{{
-                story.category.name
-              }}</a>
+              <div
+                class="
+                  category
+                  position-absolute
+                  top-0
+                  start-50
+                  translate-middle
+                  primary-bg
+                  text-white text-center
+                  fw-bold
+                  py-1
+                "
+                *ngIf="story.category.name"
+              >
+                <a routerLink="{{ story.category.slug }}" class="text-white">{{
+                  story.category.name
+                }}</a>
+              </div>
+              <h2 class="title text-center fw-bold text-black">
+                {{ story?.title }}
+              </h2>
             </div>
-            <h2 class="title text-center fw-bold text-black">
-              {{ story?.title }}
-            </h2>
-          </div>
 
-          <div
-            class="
-              subTitle
-              text-center text-white
-              gray-bg
-              position-relative
-              pb-3
-              pt-4
-              fw-bold
-              mb-4
-            "
-          >
-            <!-- <div
+            <div
+              class="
+                subTitle
+                text-center text-white
+                gray-bg
+                position-relative
+                pb-3
+                pt-4
+                fw-bold
+                mb-4
+              "
+            >
+              <!-- <div
               class="
                 authorName
                 position-absolute
@@ -226,121 +162,121 @@
             >
               <a href="#" class="text-white">LOREM IPSUM</a>
             </div> -->
-            {{ story.short_description }}
-          </div>
-          <div class="description" [innerHTML]="story.content"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- next article line -->
-  <div class="nextLine position-relative mb-5 mt-2">
-    <div class="container customContainer">
-      <div class="row">
-        <div class="col d-none d-md-block userDetail"></div>
-        <div class="col d-flex justify-content-center align-items-center">
-          <div class="nextBtn px-5 bg-white">
-            <img
-              data-src="assets/img/nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3 lazyload"
-            />
-            <span class="gray-color">Next Article</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- news blocks -->
-  <div class="ArticlesNewsSection gray-bg py-5">
-    <div class="container customContainer py-md-2">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="primary-color fw-bold mb-3">Featured Franchise News</h4>
-        </div>
-        <div
-          class="col-sm-6 col-md-3 mb-2 card-group"
-          *ngFor="let mainItem of mainNews; index as i"
-        >
-          <div class="items card border-0 rounded-0">
-            <a href="{{ commonService.readMore(mainItem) }}">
-              <img
-                appYoutubeImage
-                width="257"
-                height="138"
-                data-src="{{ mainItem.media | defaultImage: 257:138 }}"
-                alt="article"
-                class="card-img-top lazyload"
-              />
-            </a>
-            <div class="card-body">
-              <h6 class="card-title fw-bold m-0">
-                <a
-                  href="{{ commonService.readMore(mainItem) }}"
-                  class="text-black text-uppercase"
-                  >{{ mainItem.title }}</a
-                >
-              </h6>
-              <span class=""
-                ><a href="#">{{ mainItem.author.name }}</a></span
-              >
-              <p class="card-text mb-1">
-                <a
-                  href="{{ commonService.readMore(mainItem) }}"
-                  class="text-black"
-                  >{{ mainItem.short_description }}</a
-                >
-              </p>
+              {{ story.short_description }}
             </div>
+            <div class="description" [innerHTML]="story.content"></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="row mt-5">
-        <div class="col-12">
-          <h4 class="primary-color fw-bold mb-3">Featured Brand News</h4>
-        </div>
-        <div
-          class="col-sm-6 col-md-3 mb-2 card-group"
-          *ngFor="let brandNew of brandNews; index as i"
-        >
-          <div class="items card border-0 rounded-0">
-            <a href="{{ commonService.readMore(mainItem) }}">
+    <!-- next article line -->
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row">
+          <div class="col d-none d-md-block userDetail"></div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-5 bg-white">
               <img
-                appYoutubeImage
-                width="257"
-                height="138"
-                data-src="{{ brandNew.media | defaultImage: 257:138 }}"
-                alt="article"
-                class="card-img-top lazyload"
+                data-src="assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
               />
-            </a>
-            <div class="card-body">
-              <h6 class="card-title fw-bold m-0">
-                <a
-                  href="{{ commonService.readMore(brandNew) }}"
-                  class="text-black text-uppercase"
-                  >{{ brandNew.title }}</a
-                >
-              </h6>
-              <span class=""
-                ><a href="#">{{ brandNew.author.name }}</a></span
-              >
-              <p class="card-text mb-1">
-                <a
-                  href="{{ commonService.readMore(brandNew) }}"
-                  class="text-black"
-                  >{{ brandNew.short_description }}</a
-                >
-              </p>
+              <span class="gray-color">Next Article</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- news blocks -->
+    <div class="ArticlesNewsSection gray-bg py-5">
+      <div class="container customContainer py-md-2">
+        <div class="row">
+          <div class="col-12">
+            <h4 class="primary-color fw-bold mb-3">Featured Franchise News</h4>
+          </div>
+          <div
+            class="col-sm-6 col-md-3 mb-2 card-group"
+            *ngFor="let mainItem of mainNews; index as i"
+          >
+            <div class="items card border-0 rounded-0">
+              <a href="{{ commonService.readMore(mainItem) }}">
+                <img
+                  appYoutubeImage
+                  width="257"
+                  height="138"
+                  data-src="{{ mainItem.media | defaultImage: 257:138 }}"
+                  alt="article"
+                  class="card-img-top lazyload"
+                />
+              </a>
+              <div class="card-body">
+                <h6 class="card-title fw-bold m-0">
+                  <a
+                    href="{{ commonService.readMore(mainItem) }}"
+                    class="text-black text-uppercase"
+                    >{{ mainItem.title }}</a
+                  >
+                </h6>
+                <span class=""
+                  ><a href="#">{{ mainItem.author.name }}</a></span
+                >
+                <p class="card-text mb-1">
+                  <a
+                    href="{{ commonService.readMore(mainItem) }}"
+                    class="text-black"
+                    >{{ mainItem.short_description }}</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12">
+            <h4 class="primary-color fw-bold mb-3">Featured Brand News</h4>
+          </div>
+          <div
+            class="col-sm-6 col-md-3 mb-2 card-group"
+            *ngFor="let brandNew of brandNews; index as i"
+          >
+            <div class="items card border-0 rounded-0">
+              <a href="{{ commonService.readMore(mainItem) }}">
+                <img
+                  appYoutubeImage
+                  width="257"
+                  height="138"
+                  data-src="{{ brandNew.media | defaultImage: 257:138 }}"
+                  alt="article"
+                  class="card-img-top lazyload"
+                />
+              </a>
+              <div class="card-body">
+                <h6 class="card-title fw-bold m-0">
+                  <a
+                    href="{{ commonService.readMore(brandNew) }}"
+                    class="text-black text-uppercase"
+                    >{{ brandNew.title }}</a
+                  >
+                </h6>
+                <span class=""
+                  ><a href="#">{{ brandNew.author.name }}</a></span
+                >
+                <p class="card-text mb-1">
+                  <a
+                    href="{{ commonService.readMore(brandNew) }}"
+                    class="text-black"
+                    >{{ brandNew.short_description }}</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>

@@ -1,32 +1,30 @@
-<div>
+<div class="sidebar-blur">
   <div class="row">
-    <a class="col-4 col-md-4 col-sm-4 bg-gray top-left" fragment="trending" routerLink="/{{ commonService.readMore(trendingData[0]) }}">
-      <div class="trendingbrandbuzz-content">
-        <h4> TRENDING BRAND BUZZ</h4>
-        <h1>{{ trendingData[0]?.title }}</h1>
-        <p> {{ trendingData[0]?.short_description }} </p>
-      </div>
-      <a
-      class="bottom text-uppercase float-right"
-      routerLink=""
+    <a
+      class="col-4 col-md-4 col-sm-4 bg-gray top-left"
+      fragment="trending"
+      routerLink="/{{ commonService.readMore(trendingData[0]) }}"
     >
-      <a
-        class="readMore float-right text-uppercase"
-        routerLink=""
-      >
-        READ MORE
-        <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
+      <div class="trendingbrandbuzz-content">
+        <h4>TRENDING BRAND BUZZ</h4>
+        <h1>{{ trendingData[0]?.title }}</h1>
+        <p>{{ trendingData[0]?.short_description }}</p>
+      </div>
+      <a class="bottom text-uppercase float-right" routerLink="">
+        <a class="readMore float-right text-uppercase" routerLink="">
+          READ MORE
+          <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
+        </a>
+        <div class="clearfix"></div>
       </a>
-      <div class="clearfix"></div>
-    </a>
     </a>
     <div class="col-8 col-md-8 col-sm-8 p-0 top-right">
       <figure>
         <img
-        class="lazyload"
-        data-src="{{ trendingData[0].media | defaultImage:1023:576 }}"
-        height="576"
-        width="1023"
+          class="lazyload"
+          data-src="{{ trendingData[0].media | defaultImage: 1023:576 }}"
+          height="576"
+          width="1023"
         />
       </figure>
     </div>
@@ -37,12 +35,14 @@
     <div class="row mt-2">
       <div
         class="col-sm-6 col-md-3 mb-2 article"
-        *ngFor="let list of trendingData | slice:0:12; index as i"
+        *ngFor="let list of trendingData | slice: 0:12; index as i"
       >
         <div class="items card border-0 rounded-0">
-          <div class="sponsored text-center"><span class="d-inline-block"> {{ i + 1 }}</span></div>
+          <div class="sponsored text-center">
+            <span class="d-inline-block"> {{ i + 1 }}</span>
+          </div>
           <a
-          routerLink="/{{ commonService.readMore(list) }}"
+            routerLink="/{{ commonService.readMore(list) }}"
             fragment="trending"
             (click)="closeModal()"
             ><img
@@ -92,4 +92,4 @@
     </div>
     <div class="see-more-right--wrapper"></div>
   </div>
-</div>  
+</div>
