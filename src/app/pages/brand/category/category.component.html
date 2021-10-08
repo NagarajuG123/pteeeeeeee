@@ -41,7 +41,7 @@
         >
           <div class="newsImage me-2 me-md-3">
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="featured"
             >
               <img
@@ -57,7 +57,7 @@
           <div>
             <h3 class="m-0">
               <a
-                routerLink="{{ commonService.readMore(item) }}"
+                routerLink="/{{ commonService.readMore(item) }}"
                 fragment="featured"
               >
                 {{ item.title }}
@@ -138,7 +138,7 @@
           *ngFor="let list of featuredData | slice: 4; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
-          <a routerLink="{{ commonService.readMore(list) }}">
+          <a routerLink="/{{ commonService.readMore(list) }}">
             <div class="items card border-0 rounded-0 h-100">
               <img
                 appYoutubeImage
