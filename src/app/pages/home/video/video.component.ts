@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import 'lazysizes';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-video',
@@ -60,11 +59,10 @@ export class VideoComponent implements OnInit {
     this.openVideoPlayer = true;
     this.url = url;
   }
-  ngAfterViewInit() {
-    $('.modal').on('hidden.bs.modal', function () {
-      $('#player').attr({
-        src: '',
-      });
+  ngAfterViewInit(){
+    $('.modal').on('hidden.bs.modal', function(){
+      $('.modal').hide();
+      $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
     });
   }
 }

@@ -180,7 +180,7 @@
         height: 54px;
         margin-bottom: 25px;
         background: $white;
-        border: 1px solid #C4C4C4;
+        border: 1px solid $light_gray_8;
         border-radius: 0;
         position: relative;
         &:focus{
@@ -197,6 +197,13 @@
       }
     }
   }
+  .form-select {
+    border: 1px solid $light_gray_8 ;
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+
+  
   .row {
     margin: 0;
     .inquirefrom-row{
@@ -950,17 +957,32 @@ button.close {
     }
   }
   .market-rightsiderbar{
-    flex: 0 0 300px;
-    max-width: 300px;
+    flex: 0 0 298px;
+    max-width: 298px;
+    position: relative;
+    z-index: 1;
     @include media("<lg"){
       flex: 0 0 100%;
       max-width: 100%;
+    }
+    .inquiry-form-section{
+      .inquirefrom-row{
+        .form-control{
+          height: 36px;
+          margin-bottom: 14px;
+        }
+      }
+      .divider-recent-feature{
+        .btn{
+          height: 36px;
+        }
+      }
     }
   }
 }
 .available-market-row--wrapper{
   padding: 0;
-  margin-top: -760px;
+  margin-top: -460px;
   @include media("<xl"){
     margin-top: -700px;
   }

@@ -100,10 +100,9 @@ export class AboutUsComponent implements OnInit {
   }
   resolved(event) {}
   ngAfterViewInit(){
-    $('.modal').on('hidden.bs.modal', function () {
-      $('#player').attr({
-        src: '', 
-      });
+    $('.modal').on('hidden.bs.modal', function(){
+      $('.modal').hide();
+      $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
     });
   }
 }

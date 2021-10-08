@@ -57,8 +57,8 @@
     <!-- main header section Start -->
     <main class="container">
       <div class="row g-0 align-items-center">
-        <div class="col-10 col-md-auto d-flex position-relative">
-          <a
+        <div class="col col-md-auto d-flex position-relative leftMenuItem">
+          <button
             class="menuBtn me-3"
             type="button"
             id="dropdownMenu2"
@@ -79,7 +79,7 @@
               class="lazyload"
             />
             <small class="text-center d-none d-md-block">MENU</small>
-          </a>
+          </button>
           <ul
             class="
               sidebar-dropdown-menu
@@ -422,11 +422,16 @@
         </div>
 
         <!-- Center menu link -->
-        <div class="col d-none d-md-block" *ngIf="brandSlug === '1851'">
+        <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
           <ul class="center-menu nav justify-content-center">
-            <li class="nav-item px-2" *ngFor="let menu of header?.menus">
+            <li class="nav-item px-2 menus" *ngFor="let menu of header?.menus">
               <a [routerLink]="menu.url" class="d-flex align-items-center"
                 >{{ menu.title }}
+              </a>
+            </li>
+            <li class="nav-item px-2 subscribeMenu">
+              <a routerLink="/subscribe" class="d-flex align-items-center"
+                >Subscribe
               </a>
             </li>
             <li
@@ -615,7 +620,7 @@
                       />
                       <div class="card-body">
                         <p class="card-text mb-1 text-black text-capitalize">
-                          {{ commonService.formatTitle(list.title) }}
+                          {{ list.title }}
                         </p>
                       </div>
                     </a>
@@ -701,7 +706,8 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               />
-              <select required
+              <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
@@ -713,7 +719,9 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
-              <option value="" disabled selected hidden>{{ fields.title }}*</option>
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
@@ -803,7 +811,8 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               ></textarea>
-              <select required
+              <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
@@ -815,7 +824,9 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               >
-              <option value="" disabled selected hidden>{{ fields.title }}*</option>
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
