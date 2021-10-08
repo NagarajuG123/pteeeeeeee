@@ -403,8 +403,8 @@ export class StoryComponent implements OnInit {
           let postedDate = posted_date.toDateString();
           let modified = modified_date.toDateString();
           postedDate === modified
-            ? (this.isUpdate = true)
-            : (this.isUpdate = false);
+            ? (this.isUpdate = false)
+            : (this.isUpdate = true);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
