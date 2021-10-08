@@ -138,7 +138,7 @@ header {
       .subscribeMenu {
         display: none;
         @include mobile-landscape1 {
-          display: block;
+          display: inline-block;
         }
       }
       .menus {
@@ -190,7 +190,7 @@ header {
         }
       }
       @include mobile-landscape1 {
-        width: 200px;
+        width: 230px;
         text-transform: capitalize;
       }
       @include mobile-portrait1 {
