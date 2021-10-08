@@ -27,6 +27,12 @@ header {
   }
   main {
     height: 72px;
+    @include mobile-landscape1 {
+      height: 51px;
+    }
+    @include mobile-portrait1 {
+      height: 51px;
+    }
     .leftMenuItem {
       @include mobile-landscape1 {
         width: 150px;
@@ -48,9 +54,23 @@ header {
       font-family: $roboto;
       font-weight: 500;
       font-size: 12.3421px;
+      @include mobile-landscape1 {
+        width: 55px;
+        height: 51px;
+      }
+      @include mobile-portrait1 {
+        width: 55px;
+        height: 51px;
+      }
       img {
         filter: brightness(10);
         margin-bottom: 8px;
+        @include mobile-landscape1 {
+          margin-bottom: 0px;
+        }
+        @include mobile-portrait1 {
+          margin-bottom: 0px;
+        }
       }
       small {
         line-height: 12px;
@@ -63,7 +83,16 @@ header {
       line-height: 128.69%;
       font-weight: bold;
       text-transform: uppercase;
-
+      > img {
+        @include mobile-landscape1 {
+          width: 36px;
+          height: 36px;
+        }
+        @include mobile-portrait1 {
+          width: 36px;
+          height: 36px;
+        }
+      }
       > div {
         font-family: $balinger;
         font-weight: 800;
@@ -104,6 +133,12 @@ header {
         }
         @include desk-lg-below2 {
           display: none;
+        }
+      }
+      .subscribeMenu {
+        display: none;
+        @include mobile-landscape1 {
+          display: block;
         }
       }
       .menus {
@@ -155,12 +190,12 @@ header {
         }
       }
       @include mobile-landscape1 {
-        flex-wrap: wrap-reverse;
         width: 200px;
+        text-transform: capitalize;
       }
       @include mobile-portrait1 {
-        flex-wrap: wrap-reverse;
         width: 150px;
+        text-transform: capitalize;
       }
     }
 
@@ -569,15 +604,13 @@ img {
 .form-control {
   border: 1px solid $dark-gray;
 }
-select:invalid{
+select:invalid {
   color: $light_gray_8;
-
 }
-option{
-  color:$black;
+option {
+  color: $black;
 }
-.container{
-
+.container {
   @media screen and (max-width: 414px) {
     padding: 0;
   }
