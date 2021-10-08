@@ -30,7 +30,6 @@ export class InfoComponent implements OnInit {
   brandInfo: any = [];
   items: any;
   tab: any;
-  pdf: any;
   showToast: boolean = false;
   responseMessage: any;
   logo: string;
@@ -165,13 +164,6 @@ export class InfoComponent implements OnInit {
           }
         });
     });
-    this.apiService
-      .getAPI(`${this.brandSlug}/brand-pdf`)
-      .subscribe((response) => {
-        if (response.data != '') {
-          this.pdf = response.data;
-        }
-      });
   }
   changeDownPDFUrl(url: any) {
     return url?.replace('api.', '');
@@ -219,7 +211,7 @@ export class InfoComponent implements OnInit {
       .subscribe((res) => {
         $('#pdfModal').hide();
         if (res.success) {
-          window.open(this.pdf.media.url.replace('api.', ''), '_blank');
+          window.open(this.items.media.url.replace('api.', ''), '_blank');
         } else {
           this.emailSubValid = true;
           this.emailSubMessage = res.message;
