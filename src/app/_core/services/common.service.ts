@@ -79,11 +79,11 @@ export class CommonService {
     }
     return text;
   }
-  goAuthorPage(item: any) {
-    let slug = '';
-    if (typeof item?.author !== 'undefined') {
-      return (slug = `author/${item?.author?.slug}`);
+
+  authorName(item:any){
+    if(item?.author != null){
+      return true;
     }
-    return `#`;
+    return false;
   }
 }

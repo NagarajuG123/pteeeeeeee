@@ -73,20 +73,15 @@
         >
           <h3 class="m-0">
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="frannews"
             >
-              {{
-                commonService.responsiveTextFormating(
-                  item.title,
-                  brandNewsTitleLimit
-                )
-              }}
+              {{ item.title }}
             </a>
           </h3>
-          <span class="my-1">By {{ item.author?.name }}</span>
+          <span *ngIf="commonService.authorName(item)" class="my-1">By {{ item.author?.name }}</span>
           <a
-            routerLink="{{ commonService.readMore(item) }}"
+            routerLink="/{{ commonService.readMore(item) }}"
             fragment="frannews"
           >
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
@@ -123,7 +118,7 @@
         >
           <div class="newsImage me-2 me-md-3">
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="frannews"
             >
               <img
@@ -139,18 +134,13 @@
           <div>
             <h3 class="m-0">
               <a
-                routerLink="{{ commonService.readMore(item) }}"
+                routerLink="/{{ commonService.readMore(item) }}"
                 fragment="frannews"
               >
-                {{
-                  commonService.responsiveTextFormating(
-                    item.title,
-                    NewsTitleLimit
-                  )
-                }}
+                {{ item.title }}
               </a>
             </h3>
-            <span>By {{ item.author.name }}</span>
+            <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
           </div>
         </li>
       </ul>
@@ -175,7 +165,7 @@
               Special Feature
             </div>
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="featured"
               ><img
                 appYoutubeImage
@@ -197,9 +187,7 @@
                   p-2
                 "
               >
-                {{
-                  commonService.responsiveTextFormating(item.title, titleLimit)
-                }}
+                {{ item.title }}
               </div>
             </a>
           </div>
