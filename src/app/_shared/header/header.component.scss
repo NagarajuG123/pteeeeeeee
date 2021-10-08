@@ -245,6 +245,8 @@ header {
         margin-top: 0.125rem;
         top: 100%;
         left: 0;
+        height: 600px;
+        overflow-x: auto;
       }
     }
 
@@ -614,4 +616,7 @@ option {
   @media screen and (max-width: 414px) {
     padding: 0;
   }
+}
+.dropdown-menu-dark{
+  background-color: $dark-gray;
 }
