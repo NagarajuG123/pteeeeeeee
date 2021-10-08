@@ -1,7 +1,7 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/variables.scss";
 
-.trending {
+.trending-head {
   background-color: $border-color;
   color: $medium-grey;
   font-family: $roboto;
@@ -48,5 +48,10 @@
     -ms-transition: 0.6s ease-in-out top;
     -o-transition: 0.6s ease-in-out top;
     transition: 0.6s ease-in-out top;
+  }
+  .content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
