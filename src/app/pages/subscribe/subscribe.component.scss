@@ -273,9 +273,12 @@
       letter-spacing: 0.4px;
     }
     .editors-details input:checked + span {
-      background: url("/assets/img/checked1.png") no-repeat left 1px;
+      background: url("/assets/img/checked.png") no-repeat left 1px;
     }
   }
+}
+.contact-editorial-main input:checked + span {
+  background: url("/assets/img/checked.png") no-repeat left 1px;
 }
 .bannerSection {
   width: 50%;
