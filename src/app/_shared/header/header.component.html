@@ -160,6 +160,7 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
                     >{{ item.name }}
                   </a>
                 </li>
@@ -179,6 +180,7 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
                     >{{ item.title }}
                   </a>
                 </li>
@@ -188,19 +190,24 @@
               <hr />
 
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+                <a routerLink="{{ menu.url }}"
+                   (click)="commonService.toggle()"
+                >{{ menu.title }}</a>
               </h3>
             </li>
             <li>
               <hr />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
+                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}"
+                   (click)="commonService.toggle()"
+                >{{
                   menu.title
                 }}</a>
                 <a
                   *ngIf="menu.fragment"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
+                  (click)="commonService.toggle()"
                   >{{ menu.title }}</a
                 >
               </h3>
@@ -254,10 +261,14 @@
             </li>
             <li>
               <h3>
-                <a routerLink="/"> Return to Main Site </a>
+                <a routerLink="/"
+                   (click)="commonService.toggle()"
+                > Return to Main Site </a>
               </h3>
               <h3>
-                <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
+                <a routerLink="/{{ brandSlug }}"
+                  (click)="commonService.toggle()"
+                >{{ brandTitle }}</a>
               </h3>
               <ul class="mb-2 ms-2">
                 <li class="ms-1">
@@ -319,7 +330,8 @@
               <hr />
               <h3>
                 <a class="my-1" routerLink="/{{ brandSlug }}"
-                  >{{ brandTitle }} Most read Stories</a
+                   (click)="commonService.toggle()" 
+                 >{{ brandTitle }} Most read Stories</a
                 >
               </h3>
               <ul class="mb-2 ms-2">
@@ -336,6 +348,7 @@
                       text-capitalize
                     "
                     [routerLink]="commonService.readMore(story)"
+                    (click)="commonService.toggle()"
                     target="_blank"
                     >{{ story.title }}
                   </a>
@@ -350,6 +363,7 @@
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
                 <a routerLink="/{{ header?.sidebar?.about }}"
+                  (click)="commonService.toggle()"
                   >About
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
@@ -507,8 +521,8 @@
               data-bs-target="#searchModal"
               ><img
                 data-src="assets/img/search.svg"
-                height="15"
-                width="15"
+                height="18"
+                width="18"
                 alt="search"
                 class="lazyload"
             /></a>
