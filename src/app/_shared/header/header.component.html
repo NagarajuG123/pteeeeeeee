@@ -194,15 +194,18 @@
             <li>
               <hr />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
+                <a *ngIf="!menu.fragment && menu.title != 'Login'" routerLink="{{ menu.url }}">{{
                   menu.title
                 }}</a>
                 <a
-                  *ngIf="menu.fragment"
+                  *ngIf="menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
                   >{{ menu.title }}</a
                 >
+                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">{{
+                  menu.title
+                }}</a>
               </h3>
             </li>
             <li>
