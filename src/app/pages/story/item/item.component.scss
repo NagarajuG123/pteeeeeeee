@@ -1,31 +1,198 @@
-.author-img {
-  border-radius: 50%;
-  width: 81px !important;
-  height: 81px !important;
-}
+@import "../../../../assets/scss/theme-color.scss";
 
-.comment-img {
-  width: 27px !important;
-  height: 26px !important;
-  margin-right: 15px;
-}
+.articles {
+  overflow-x: hidden;
+  .banner {
+    max-height: 754px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
 
-.comment-div {
-  display: flex;
-  align-items: center;
-}
-.brian_jaeger_content p a {
-  text-decoration: underline;
-  background-color: transparent;
-  color: #077bff;
-}
-.video-maker {
-  position: absolute;
-  left: calc(50% - 90px);
-  top: calc(50% - 90px);
-  z-index: 10;
-  height: 90px;
-  width: 90px;
-  min-height: 90px;
-  transform: translate(50%, 50%);
+  .userDetail {
+    max-width: 300px;
+    span {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 128.69%;
+
+      color: #243444;
+    }
+    .userImage {
+      width: 179px;
+      margin: 80px 0 0 15px;
+      background: white;
+      border-radius: 100%;
+      height: 179px;
+      img {
+        bottom: -11px;
+        border-radius: 100%;
+      }
+    }
+    h1 {
+      font-family: "Ballinger Condensed Medium";
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 80px;
+      letter-spacing: -0.015em;
+      color: #243444;
+    }
+    h5 {
+      font-family: "Ballinger Condensed Medium";
+    }
+    hr {
+      background: #243444;
+      margin: 13px 0;
+    }
+    .fs-21 {
+      font-size: 21px;
+    }
+
+    .social {
+      > li {
+        > a {
+          height: 33px;
+          width: 33px;
+          transition: all 0.5s ease;
+          color: $white;
+          &:hover,
+          &:focus {
+            background-color: $white;
+            color: $primary;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 767px) {
+      max-width: inherit;
+      .userImage {
+        margin: 80px auto 0;
+      }
+      img {
+        border-radius: 100%;
+      }
+      h1,
+      h1 + h5 {
+        text-align: center;
+      }
+      ul.social {
+        justify-content: center;
+      }
+    }
+  }
+
+  .most-like-articles {
+    font-family: "Roboto";
+
+    li {
+      display: flex;
+      img {
+        min-width: 100px;
+      }
+      p {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        a {
+          color: #243444;
+        }
+      }
+      span {
+        font-size: 11px;
+        line-height: 13px;
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      position: relative;
+      height: 100%;
+      overflow: visible;
+      width: 100%;
+    }
+  }
+
+  //   articles detail style
+  .details {
+    line-height: 141.19%;
+    .detailHead {
+      bottom: 100%;
+      font-family: "Ballinger Condensed Medium";
+      min-height: 186px;
+    }
+    .category,
+    .authorName,
+    .subTitle {
+      min-width: 141px;
+      font-size: 20px;
+      font-family: "Ballinger Condensed Medium";
+      line-height: 141.19%;
+    }
+    .description {
+      p {
+        font-family: "Roboto";
+        font-size: 17px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .detailHead {
+        position: relative !important;
+        border-top: 1px solid $dark-gray;
+      }
+    }
+  }
+
+  .nextLine {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+      background-color: $primary;
+      transform: translateY(-50%);
+    }
+    .nextBtn {
+      font-family: "ProximaNova-Regular";
+      font-size: 17px;
+      z-index: 1;
+      img,
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+  .ArticlesNewsSection {
+    h4 {
+      font-family: "Ballinger Condensed Medium";
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .items {
+      font-family: "Roboto";
+      background: #e8eef2;
+      .card-body {
+        h6,
+        h6 a {
+          font-size: 18px;
+          font-family: "Ballinger Condensed Medium";
+        }
+        span,
+        span a {
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          color: #243444;
+        }
+        p,
+        p a {
+          font-size: 10px;
+          line-height: 141.19%;
+        }
+      }
+    }
+  }
 }

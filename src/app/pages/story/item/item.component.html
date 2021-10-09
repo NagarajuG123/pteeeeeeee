@@ -1,400 +1,251 @@
-<div class="sponsered_content">
-  <div class="week-videos-details">
-    <div class="sponsered_content_main row">
-      <div
-        class="sponsered_content-left col-sm-1 col-md-1 col-12 text-sm-right"
-      >
+<div *ngIf="details" class="articles">
+  <div class="banner d-block">
+    <img
+      appYoutubeImage
+      width="100%"
+      height="754"
+      data-src="{{ media | defaultImage: 1440:754 }}"
+      alt="article"
+      class="lazyload"
+    />
+  </div>
+  <!-- main articles details -->
+  <div class="container customContainer">
+    <div class="row">
+      <div class="col-12 col-md userDetail">
+        <div class="userImage position-relative">
+          <a routerLink="/author/{{ details?.author?.slug }}"
+            ><img
+              data-src="{{ details.author.media.url }}"
+              alt="author"
+              width="179px"
+              height="179px"
+              class="position-absolute d-block lazyload"
+          /></a>
+        </div>
+        <a routerLink="/author/{{ details?.author?.slug }}"
+          ><h1 class="fw-bold mb-0">{{ details.author.name }}</h1></a
+        >
+        <h5 class="primary-color fw-bold" [innerHTML]="designation"></h5>
+        <span *ngIf="isDate">
+          <span *ngIf="isUpdate"
+            >Updated {{ last_modified | date: "h:mm a" }} •
+            {{ last_modified | date: "MM/dd/yy" }}
+          </span>
+          <span *ngIf="!isUpdate"
+            >{{ date_time | date: "h:mm a" }} •
+            {{ date_time | date: "MM/dd/yy" }}</span
+          >
+        </span>
+        <hr />
+
+        <!-- social icons -->
         <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
-      </div>
-      <div
-        *ngIf="details"
-        class="sponsered_content_middle col-md-11 col-sm-11 col-12"
-      >
-        <div
-          *ngIf="sponsorship && sponsorship_position === 'story_title_section'"
-          class="sponsered_content_middle_title"
-        >
-          <a
-            href="#"
-            onclick="return false;"
-            data-bs-toggle="modal"
-            data-bs-target="#sponsoredModal"
-          >
-            SPONSORED
-          </a>
-        </div>
-        <a
-          *ngIf="media && media.type === 'video'"
-          class="d-block video-btn"
-          (click)="openVideoPlayer = true"
-          data-bs-toggle="modal"
-          attr.data-bs-target="#storyModal{{ index }}"
-          href="#"
-          onclick="return false;"
-        >
-          <figure>
-            <img
-              appYoutubeImage
-              *ngIf="isMaxresultImg"
-              data-src="{{ media | defaultImage: 802:451 }}"
-              width="802"
-              height="451"
-              style="width: 802px !important; cursor: pointer"
-              alt="sponsored"
-              class="lazyload"
-            />
-            <img
-              appYoutubeImage
-              *ngIf="!isMaxresultImg"
-              data-src="{{ media | defaultImage: 802:451 }}"
-              width="802"
-              height="451"
-              style="width: 802px !important; cursor: pointer"
-              alt="sponsored"
-              class="lazyload"
-            />
-          </figure>
-          <img class="video-maker lazyload" data-src="assets/img/youtube.svg" alt="video" />
-        </a>
-        <a
-          *ngIf="media && media.type !== 'video'"
-          class="d-block"
-          href="javascript:void(0)"
-        >
-          <figure>
-            <img
-              appYoutubeImage
-              *ngIf="isMaxresultImg"
-              data-src="{{ media | defaultImage: 802:451 }}"
-              width="802"
-              height="451"
-              style="width: 802px !important; cursor: pointer"
-              alt="sponsored"
-              class="lazyload"
-            />
-            <img
-              appYoutubeImage
-              *ngIf="!isMaxresultImg"
-              data-src="{{ media | defaultImage: 802:451 }}"
-              width="802"
-              height="451"
-              style="width: 802px !important; cursor: pointer"
-              alt="sponsored"
-              class="lazyload"
-            />
-          </figure>
-        </a>
-        <h1 class="m-0" [innerHTML]="title"></h1>
-        <h2 [innerHTML]="short_description"></h2>
-        <div class="brian_jaeger d-flex flex-wrap align-items-center">
-          <div
-            class="
-              brian_jaeger_main
-              d-flex
-              flex-wrap
-              align-items-center
-              col-xl-6 col-md-6 col-sm-6 col-12
-            "
-          >
-            <a routerLink="/{{ goAuthorPage() }}">
-              <img
-                data-src="{{ author_media | defaultImage: 81:81 }}"
-                width="81"
-                height="81"
-                class="author-img lazyload"
-                [alt]="details?.author?.name + ' Headshot'"
-                (error)="author_img.src = 'assets/img/placeholder.svg'"
-                #author_img
-              />
-            </a>
-            <div class="brian_content">
-              <h5>
-                <a routerLink="/{{ goAuthorPage() }}">{{ author_name }}</a>
-              </h5>
-              <small [innerHTML]="designation"></small>
-              <div
-                class="
-                  brian_jaeger_data
-                  col-xl-6 col-md-6 col-sm-6 col-12
-                  mobile-only
-                "
-              >
-                <em>
-                  <div
-                    *ngIf="
-                      sponsorship &&
-                      sponsorship_position === 'author_title_section'
-                    "
-                    class="sponsered_content_middle_title"
-                  >
-                    <a
-                      href="#"
-                      onclick="return false;"
-                      data-bs-toggle="modal"
-                      data-bs-target="#sponsoredModal"
-                    >
-                      SPONSORED
-                    </a>
-                  </div>
+        <!-- social icons -->
+        <hr />
 
-                  <span *ngIf="isDate()">
-                    <span *ngIf="isUpdate()"
-                      >Updated {{ last_modified | date: "h:mm a" }} •
-                      {{ last_modified | date: "MM/dd/yy" }}
-                    </span>
-                    <span *ngIf="!isUpdate()"
-                      >{{ date_time | date: "h:mm a" }} •
-                      {{ date_time | date: "MM/dd/yy" }}</span
-                    >
-                  </span>
+        <h5 class="fs-21 fw-bold mb-0">TRENDING ARTICLES</h5>
+        <fa-icon
+          [icon]="faCaretDown"
+          [styles]="{ width: '14px', 'margin-top': '-6px' }"
+          class="primary-color"
+          size="lg"
+        ></fa-icon>
 
-                  <a routerLink="/{{ category.slug }}">
-                    <small>&nbsp; &nbsp;{{ category.name }}</small>
-                  </a>
-                </em>
-              </div>
+        <!-- <ul class="most-like-articles list-group mt-4 mb-3">
+          <li *ngFor="let item of newsData; index as i" class="mb-2">
+            <div class="newsImage me-2 pe-1 position-relative">
+              <a href="{{ commonService.readMore(item) }}">
+                <img
+                  appYoutubeImage
+                  width="139"
+                  height="84"
+                  data-src="{{ item.media | defaultImage: 139:84 }}"
+                  alt="news"
+                  class="lazyload"
+                />
+              </a>
             </div>
-          </div>
+            <div>
+              <p class="m-0">
+                <a href="{{ commonService.readMore(item) }}">
+                  {{ item.title }}</a
+                >
+              </p>
+              <span class="m-0">
+                <a
+                  routerLink="/author/{{ item.author.slug }}"
+                  class="primary-color text-uppercase"
+                  >{{ author_name }}</a
+                >
+              </span>
+            </div>
+          </li>
+        </ul> -->
+      </div>
+
+      <!-- Articles detail section -->
+      <div class="col-12 col-md ps-md-5">
+        <div class="details position-relative bg-white">
           <div
             class="
-              brian_jaeger_data
-              col-xl-6 col-md-6 col-sm-6 col-12
-              desktop-only
+              detailHead
+              position-absolute
+              bg-white
+              w-100
+              d-flex
+              justify-content-center
+              align-items-center
             "
           >
-            <em>
-              <span
-                *ngIf="
-                  sponsorship && sponsorship_position === 'author_title_section'
-                "
-                class="sponsered_content_middle_title"
-              >
-                <a
-                  href="#"
-                  onclick="return false;"
-                  data-bs-toggle="modal"
-                  data-bs-target="#sponsoredModal"
-                >
-                  SPONSORED
-                </a>
-              </span>
-              <div>
-                <span *ngIf="isDate()">
-                  <span *ngIf="isUpdate()"
-                    >Updated {{ last_modified | date: "h:mm a" }} •
-                    {{ last_modified | date: "MM/dd/yy" }}
-                  </span>
-                  <span *ngIf="!isUpdate()"
-                    >{{ date_time | date: "h:mm a" }} •
-                    {{ date_time | date: "MM/dd/yy" }}</span
-                  >
-                </span>
-                <a routerLink="/{{ category.slug }}">
-                  <small>&nbsp; &nbsp;{{ category.name }}</small>
-                </a>
-              </div>
-            </em>
+            <div
+              class="
+                category
+                position-absolute
+                top-0
+                start-50
+                translate-middle
+                primary-bg
+                text-white text-center
+                fw-bold
+                py-1
+              "
+              *ngIf="category.name"
+            >
+              <a routerLink="{{ category.slug }}" class="text-white">{{
+                category.name
+              }}</a>
+            </div>
+            <h2
+              class="title text-center fw-bold text-black"
+              [innerHTML]="title"
+            ></h2>
           </div>
-        </div>
-        <div
-          id="{{ id }}"
-          class="brian_jaeger_content"
-          [innerHTML]="content"
-        ></div>
-        <div *ngIf="sponsorContent" class="brand-partner" data-nosnippet>
-          <p>
-            *This brand is a paid partner of {{ publication.title }}. For more
-            information on paid partnerships please
-            <span class="tooltiptext-link">click here.</span>
-          </p>
-        </div>
-        <div class="comment-div">
-          <img
-            data-src="assets/img/comment_img.png"
-            width="27"
-            height="26"
-            alt="comment_img"
-            class="comment-img lazyload"
-          />
-          <a
-            href="#"
-            onclick="return false;"
-            class="comment_section"
-            (click)="openFbComment()"
-          >
-            VIEW COMMENTS
-          </a>
-        </div>
-        <div
-          *ngIf="isBrowser && full_url"
-          [hidden]="!isViewComment"
-          class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop"
-          attr.data-href="{{ full_url }}"
-          data-numposts="5"
-          data-order-by="time"
-          data-width="100%"
-          fb-xfbml-state="rendered"
-          fb-iframe-plugin-query="app_id=346418588772225&container_width=760&height=100&href=https://www.1851franchise.com&locale=en_US&numposts=5&order_by=time&sdk=joey&version=v2.0"
-          style="width: 100%"
-        >
+
           <div
-            class="fb-comments"
-            data-href="http://www.facebook.com/plugins/comments.php?href=https://www.1851franchise.com"
-            data-width=""
-            data-numposts="5"
+            class="
+              subTitle
+              text-center text-white
+              gray-bg
+              position-relative
+              pb-3
+              pt-4
+              fw-bold
+              mb-4
+            "
+            [innerHTML]="short_description"
           ></div>
-        </div>
-        <div class="scroll_data">
-          <a href="#" onclick="return false;" class="text-center">
-            <span>
-              SCROLL FOR NEXT STORY
-              <i class="fa fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </a>
-        </div>
-        <div *ngIf="isLoading" class="loading-screen">
-          <img
-            alt=""
-            class="loading-image lazyload"
-            data-src="https://dmprqkmvewks9.cloudfront.net/vector-dots-loading.svg"
-          />
+          <div id="{{ id }}" class="description" [innerHTML]="content"></div>
         </div>
       </div>
-      <div *ngIf="details" class="sponsered_content_right col-12 mobile-rails">
-        <div class="facebook-plugin" *ngIf="isBrowser">
-          <iframe
-            *ngIf="isDefault_fb"
-            [src]="default_fb_url | safeUrl"
-            width="340"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-          <div
-            *ngIf="!isDefault_fb"
-            id="{{ 'mobile_fb_plugin' + id }}"
-            class="fb-page"
-            [attr.data-href]="fb_url"
-            data-tabs="timeline"
-            data-width=""
-            data-height=""
-            data-small-header="true"
-            data-adapt-container-width="true"
-            data-hide-cover="false"
-            data-show-facepile="true"
-          >
-            <blockquote [attr.cite]="fb_url" class="fb-xfbml-parse-ignore">
-              <a
-                id="{{ 'mobile_block_fb_link' + id }}"
-                href="https://www.facebook.com/facebook"
-                >Facebook</a
-              >
-            </blockquote>
+    </div>
+  </div>
+
+  <!-- next article line -->
+  <div class="nextLine position-relative mb-5 mt-2">
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col d-none d-md-block userDetail"></div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="nextBtn px-5 bg-white">
+            <img
+              data-src="assets/img/nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3 lazyload"
+            />
+            <span class="gray-color">Next Article</span>
           </div>
         </div>
-        <div *ngIf="adsImages.length" class="advertisement_data text-center">
-          <h6>ADVERTISEMENT</h6>
-          <ngx-slick-carousel
-            *ngIf="isBrowser"
-            class="carousel"
-            [config]="slideConfig"
-          >
-            <a
-              ngxSlickItem
-              *ngFor="let ad of adsImages; let i = index"
-              href="{{ ad.url }}"
-              target="blank"
-              class="d-block"
-            >
+      </div>
+    </div>
+  </div>
+
+  <!-- news blocks -->
+  <div class="ArticlesNewsSection gray-bg py-5">
+    <div class="container customContainer py-md-2">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Franchise News</h4>
+        </div>
+        <!-- <div
+          class="col-sm-6 col-md-3 mb-2 card-group"
+          *ngFor="let mainItem of mainNews; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="{{ commonService.readMore(mainItem) }}">
               <img
                 appYoutubeImage
-                data-src="{{ ad.media | defaultImage: 353:264 }}"
-                width="353"
-                height="264"
-                style="width: 100%"
-                alt="story_add"
-                class="lazyload"
+                width="257"
+                height="138"
+                data-src="{{ mainItem.media | defaultImage: 257:138 }}"
+                alt="article"
+                class="card-img-top lazyload"
               />
             </a>
-          </ngx-slick-carousel>
-        </div>
-        <div class="banner-right col-12" *ngIf="brandNews.length">
-          <h4 *ngIf="!isBrand">
-            {{ newsTitle }}
-          </h4>
-          <h4 *ngIf="isBrand">LATEST BRAND NEWS</h4>
-          <div class="banner-right-details" *ngIf="isBrowser">
-            <div
-              [scrollbarOptions]="scrollbarOptions"
-              class="banner-right-details vertical_scroll_featured_articles"
-              [className]="
-                isSmallWindow ? 'vertical_scroll_small' : 'vertical_scroll'
-              "
-              #virtualScroll
-            >
-              <ul>
-                <li *ngFor="let article of brandNews" style="cursor: pointer">
-                  <a
-                    href="/{{ readMore(article) }}#franbuzz"
-                    class="adweek d-flex"
-                  >
-                    <div class="adweek-left col-xl-7 col-lg-12 col-sm-6">
-                      <figure>
-                        <img
-                          appYoutubeImage
-                          data-src="{{ article.media | defaultImage: 205:115 }}"
-                          width="205"
-                          height="115"
-                          alt="img3"
-                          class="lazyload"
-                        />
-                      </figure>
-                    </div>
-                    <div class="adweek-right col-xl-5 col-lg-12 col-sm-6">
-                      <p>{{ article.title }}</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="modal fade"
-        id="storyModal{{ index }}"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <button
-                type="button"
-                class="close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true" (click)="openVideoPlayer = false">
-                  &times;
-                </span>
-              </button>
-              <div class="embed-responsive embed-responsive-16by9">
-                <app-video-player
-                  *ngIf="openVideoPlayer"
-                  class="embed-responsive-item"
-                  [srcUrl]="url"
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a
+                  href="{{ commonService.readMore(mainItem) }}"
+                  class="text-black text-uppercase"
+                  >{{ mainItem.title }}</a
                 >
-                </app-video-player>
-              </div>
+              </h6>
+              <span class=""
+                ><a href="#">{{ mainItem.author.name }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a
+                  href="{{ commonService.readMore(mainItem) }}"
+                  class="text-black"
+                  >{{ mainItem.short_description }}</a
+                >
+              </p>
             </div>
           </div>
+        </div> -->
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="primary-color fw-bold mb-3">Featured Brand News</h4>
         </div>
+        <!-- <div
+          class="col-sm-6 col-md-3 mb-2 card-group"
+          *ngFor="let brandNew of brandNews; index as i"
+        >
+          <div class="items card border-0 rounded-0">
+            <a href="{{ commonService.readMore(mainItem) }}">
+              <img
+                appYoutubeImage
+                width="257"
+                height="138"
+                data-src="{{ brandNew.media | defaultImage: 257:138 }}"
+                alt="article"
+                class="card-img-top lazyload"
+              />
+            </a>
+            <div class="card-body">
+              <h6 class="card-title fw-bold m-0">
+                <a
+                  href="{{ commonService.readMore(brandNew) }}"
+                  class="text-black text-uppercase"
+                  >{{ brandNew.title }}</a
+                >
+              </h6>
+              <span class=""
+                ><a href="#">{{ brandNew.author.name }}</a></span
+              >
+              <p class="card-text mb-1">
+                <a
+                  href="{{ commonService.readMore(brandNew) }}"
+                  class="text-black"
+                  >{{ brandNew.short_description }}</a
+                >
+              </p>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
