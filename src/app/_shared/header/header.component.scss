@@ -98,10 +98,12 @@ header {
         font-weight: 800;
         font-size: 17px;
         color: $dark-gray;
+        line-height: 21.88px;
         > small {
           font-family: $roboto;
           font-size: 8px;
           color: $light-gray-1;
+          line-height:10px;
 
           > img {
             height: 8px;
@@ -159,7 +161,9 @@ header {
         a {
           text-decoration: none;
           color: $dark-gray;
-          font-size: 14px;
+          font-size: 13px;
+          line-height: 16.73px;
+
           @include mobile-landscape1 {
             color: $red;
             font-size: 11px;
@@ -319,7 +323,7 @@ header {
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
-  line-height: 12.69%;
+  line-height:16.73px;
   color: $primary;
 }
 
