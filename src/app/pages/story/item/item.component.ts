@@ -28,7 +28,7 @@ declare var ga: Function;
 })
 export class ItemComponent implements OnInit {
   @Input() details: any;
-  @Input() news: any;
+  @Input() trending: any;
   @Input() brandSlug = '1851';
   @Input() index: string;
   @Input() type: string;
@@ -36,6 +36,8 @@ export class ItemComponent implements OnInit {
   @Input() socialImage: string;
   @Input() isSmallWindow: boolean;
   @Input() publication: any;
+  @Input() mainNewsData: any;
+  @Input() brandNewsData: any;
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
 
@@ -77,11 +79,14 @@ export class ItemComponent implements OnInit {
   isMaxresultImg: Boolean = true;
   sponsorContent = false;
   storyContent: any;
+  mainNews: any;
+  trendingNews: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
     private apiService: ApiService,
+    public commonService: CommonService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isServer = isPlatformServer(platformId);
@@ -138,7 +143,9 @@ export class ItemComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
-    const news: SimpleChange = changes.news;
+    const trending: SimpleChange = changes.trending;
+    const mainNewsData: SimpleChange = changes.mainNewsData;
+    const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
       typeof details !== 'undefined' &&
       typeof details.currentValue !== 'undefined'
@@ -188,14 +195,24 @@ export class ItemComponent implements OnInit {
       }
     }
     if (
-      typeof news !== 'undefined' &&
-      typeof news.currentValue !== 'undefined'
+      typeof trending !== 'undefined' &&
+      typeof trending.currentValue !== 'undefined'
     ) {
-      this.brandNews = news.currentValue;
+      this.trendingNews = trending.currentValue;
       this.newsShow = true;
+    }
+    if ( typeof mainNewsData !== 'undefined' && typeof mainNewsData.currentValue !== 'undefined') {
+      this.mainNews = mainNewsData.currentValue;
+    }
+    if ( typeof brandNewsData !== 'undefined' && typeof brandNewsData.currentValue !== 'undefined') {
+      this.brandNews = brandNewsData.currentValue;
     }
   }
   ngAfterViewInit() {
+    $('.modal').on('hidden.bs.modal', function(){
+      $('.modal').hide();
+      $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+    });
     if (this.isBrowser) {
       $('.tooltiptext').click(function (e) {
         e.preventDefault();

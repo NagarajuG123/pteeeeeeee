@@ -32,7 +32,7 @@ declare var ga: Function;
 })
 export class StoryComponent implements OnInit {
   detailsData: any[] = [];
-  newsData: any[] = [];
+  trendingData: any[] = [];
   adsData: any = [];
   publication: any = [];
   storySlug: any = '';
@@ -70,6 +70,8 @@ export class StoryComponent implements OnInit {
   isRedirect: boolean;
   isServer: boolean;
   redirectUrl: string;
+  mainNews: any;
+  brandNews: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -174,6 +176,17 @@ export class StoryComponent implements OnInit {
                   this.brandId = '1851';
                   this.brandSlug = '1851';
                 }
+                forkJoin([
+                  this.apiService.getAPI(`1851/news?limit=4&offset=0`),
+                  this.apiService.getAPI(
+                    `1851/news?limit=4&offset=0&isBrand=true`
+                  ),
+                ])
+                  .pipe(takeUntil(this.onDestroy$))
+                  .subscribe((result) => {
+                    this.mainNews = result[0].data;
+                    this.brandNews = result[1].data;
+                  });
                 switch (this.type) {
                   case 'stories':
                     this.apiUrl = `${this.brandId}/featured-articles`;
@@ -317,13 +330,6 @@ export class StoryComponent implements OnInit {
                 if (!isAuthorPage) {
                   this.initLoad();
                 }
-
-                this.apiService
-                  .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
-                  .pipe(takeUntil(this.onDestroy$))
-                  .subscribe((n_result) => {
-                    this.newsData = n_result.data;
-                  });
               });
           });
       });
@@ -355,7 +361,7 @@ export class StoryComponent implements OnInit {
           return;
         }
         this.detailsData.push(this.htmlBinding(result['story'].data));
-        this.detailsData = Object.assign([], this.detailsData);
+        this.setTrending(result['story'].data);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -494,7 +500,23 @@ export class StoryComponent implements OnInit {
         this.createCanonicalURL(url);
       });
   }
-
+  setTrending(story) {
+    if (story.category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.trendingData = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.trendingData = response.data;
+        });
+    }
+  }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
       return;
