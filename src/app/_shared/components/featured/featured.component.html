@@ -160,10 +160,10 @@
     >
       <span class="small-title mb-2">Latest Franchise Industry News</span>
       <ul class="news-list noScrollBar list-group">
-        <li class="mb-3" *ngFor="let item of news | slice: 1:5; index as i">
+        <li class="mb-3" *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
             <div class="tag position-absolute text-center top-0 text-uppercase">
-              Special Feature
+              {{ item?.title }}
             </div>
             <a
               routerLink="/{{ commonService.readMore(item) }}"
@@ -188,7 +188,7 @@
                   p-2
                 "
               >
-                {{ item.title }}
+                {{ item?.description }}
               </div>
             </a>
           </div>
