@@ -1,4 +1,4 @@
-<div class="container-fluid sidebar-blur">
+<div class="sidebar-blur">
   <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
@@ -296,6 +296,7 @@
             <div>
               <div
                 *ngIf="
+                  items['available-markets'] &&
                   items['available-markets'] != null &&
                   items['available-markets'].length
                 "
@@ -311,6 +312,7 @@
       </div>
       <div
         *ngIf="
+          items['available-markets'] &&
           items['available-markets'] != null &&
           items['available-markets'].length
         "
@@ -414,7 +416,7 @@
         </div>
       </div>
 
-      <div class="more-brand--wrapper">
+      <div class="more-brand--wrapper" *ngIf="isMarket">
         <div class="header">
           <div class="title">More brand info</div>
         </div>
@@ -475,11 +477,12 @@
                 }"
               ></textarea>
 
-              <select required
+              <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
-                class=" form-select"
+                class="form-select"
                 [ngClass]="{
                   'is-invalid':
                     (formControlsValues[fields.key].touched ||
@@ -487,7 +490,9 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
-              <option value="" disabled selected hidden>{{ fields.title }}*</option>
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
@@ -626,7 +631,9 @@
 <div class="container-fluid available-market-row--wrapper">
   <div
     *ngIf="
-      items['available-markets'] != null && items['available-markets'].length
+      items['available-markets'] &&
+      items['available-markets'] != null &&
+      items['available-markets'].length
     "
     class="map-legend"
   >
