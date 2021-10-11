@@ -32,7 +32,7 @@ declare var ga: Function;
 })
 export class StoryComponent implements OnInit {
   detailsData: any[] = [];
-  newsData: any[] = [];
+  trendingData: any[] = [];
   adsData: any = [];
   publication: any = [];
   storySlug: any = '';
@@ -332,13 +332,6 @@ export class StoryComponent implements OnInit {
                 if (!isAuthorPage) {
                   this.initLoad();
                 }
-
-                this.apiService
-                  .getAPI(`${this.brandId}/news?lean=true&limit=10&offset=0`)
-                  .pipe(takeUntil(this.onDestroy$))
-                  .subscribe((n_result) => {
-                    this.newsData = n_result.data;
-                  });
               });
           });
       });
@@ -370,7 +363,7 @@ export class StoryComponent implements OnInit {
           return;
         }
         this.detailsData.push(this.htmlBinding(result['story'].data));
-        this.detailsData = Object.assign([], this.detailsData);
+        this.setTrending(result['story'].data);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -509,7 +502,23 @@ export class StoryComponent implements OnInit {
         this.createCanonicalURL(url);
       });
   }
-
+  setTrending(story) {
+    if (story.category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.trendingData = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.trendingData = response.data;
+        });
+    }
+  }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
       return;
