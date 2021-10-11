@@ -10,8 +10,6 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-
-
 const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
 @Component({
@@ -26,7 +24,7 @@ export class MostPopularComponent implements OnInit {
   isBrowser!: boolean;
   data: Details[] = [];
   customOptions: OwlOptions = {};
-  faAngleRight=faAngleRight;
+  faAngleRight = faAngleRight;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -63,6 +61,7 @@ export class MostPopularComponent implements OnInit {
       pullDrag: false,
       dots: false,
       navSpeed: 700,
+      lazyLoad: true,
       navText: [
         '<img src="assets/img/left-arrow.svg" alt="slider arrow" width="15px" height="30px"/>',
         '<img src="assets/img/right-arrow.svg" alt="slider arrow" width="15px" height="30px"/>',
