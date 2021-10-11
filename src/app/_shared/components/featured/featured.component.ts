@@ -87,7 +87,7 @@ export class FeaturedComponent implements OnInit {
         this.commonService.isPageLoaded.next(true);
       });
 
-    if(this.slug === '1851'){
+    if(this.slug !== '1851'){
       this.apiService
       .getAPI(`info?slug=${this.slug}`)
       .pipe(takeUntil(this.onDestroy$))
