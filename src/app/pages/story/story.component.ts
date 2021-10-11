@@ -186,8 +186,6 @@ export class StoryComponent implements OnInit {
                   .subscribe((result) => {
                     this.mainNews = result[0].data;
                     this.brandNews = result[1].data;
-                    console.log(this.mainNews);
-                    console.log(this.brandNews);
                   });
                 switch (this.type) {
                   case 'stories':

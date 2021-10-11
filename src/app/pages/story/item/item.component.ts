@@ -151,7 +151,6 @@ export class ItemComponent implements OnInit {
       typeof details.currentValue !== 'undefined'
     ) {
       this.id = details.currentValue.id;
-      console.log(this.id);
       this.title = details.currentValue.title;
       this.shareDescription = details.currentValue.title;
       this.short_description = details.currentValue.short_description;
@@ -204,11 +203,9 @@ export class ItemComponent implements OnInit {
     }
     if ( typeof mainNewsData !== 'undefined' && typeof mainNewsData.currentValue !== 'undefined') {
       this.mainNews = mainNewsData.currentValue;
-      console.log(this.mainNews);
     }
     if ( typeof brandNewsData !== 'undefined' && typeof brandNewsData.currentValue !== 'undefined') {
       this.brandNews = brandNewsData.currentValue;
-      console.log(this.brandNews);
     }
   }
   ngAfterViewInit() {
