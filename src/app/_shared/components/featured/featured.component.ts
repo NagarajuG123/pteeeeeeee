@@ -30,6 +30,7 @@ export class FeaturedComponent implements OnInit {
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
+  brandInfoNews: Details[] = [];
   descriptionLimit = 100;
   descriptionLimitOptions = [
     { width: 1200, limit: 100 },
@@ -76,12 +77,17 @@ export class FeaturedComponent implements OnInit {
       `1851/news?limit=4&offset=0&isBrand=true`
     );
 
-    forkJoin([featureApi, newsApi, brandNews])
+    const brandInfo = this.apiService.getAPI(
+      `info?slug=${this.slug}`
+    );
+
+    forkJoin([featureApi, newsApi, brandNews, brandInfo])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.featured = results[0].data;
         this.news = results[1].data;
         this.brandNews = results[2].data;
+        this.brandInfoNews = results[3];
         this.isLoaded = true;
         this.commonService.isPageLoaded.next(true);
       });
