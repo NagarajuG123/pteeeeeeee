@@ -77,20 +77,24 @@ export class FeaturedComponent implements OnInit {
       `1851/news?limit=4&offset=0&isBrand=true`
     );
 
-    const brandInfo = this.apiService.getAPI(
-      `info?slug=${this.slug}`
-    );
-
-    forkJoin([featureApi, newsApi, brandNews, brandInfo])
+    forkJoin([featureApi, newsApi, brandNews])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.featured = results[0].data;
         this.news = results[1].data;
         this.brandNews = results[2].data;
-        this.brandInfoNews = results[3];
         this.isLoaded = true;
         this.commonService.isPageLoaded.next(true);
       });
+
+    if(this.slug === '1851'){
+      this.apiService
+      .getAPI(`info?slug=${this.slug}`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        this.brandInfoNews = response;
+      });
+    }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
