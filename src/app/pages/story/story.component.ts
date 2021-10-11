@@ -70,6 +70,8 @@ export class StoryComponent implements OnInit {
   isRedirect: boolean;
   isServer: boolean;
   redirectUrl: string;
+  mainNews: any;
+  brandNews: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -174,6 +176,19 @@ export class StoryComponent implements OnInit {
                   this.brandId = '1851';
                   this.brandSlug = '1851';
                 }
+                forkJoin([
+                  this.apiService.getAPI(`1851/news?limit=4&offset=0`),
+                  this.apiService.getAPI(
+                    `1851/news?limit=4&offset=0&isBrand=true`
+                  ),
+                ])
+                  .pipe(takeUntil(this.onDestroy$))
+                  .subscribe((result) => {
+                    this.mainNews = result[0].data;
+                    this.brandNews = result[1].data;
+                    console.log(this.mainNews);
+                    console.log(this.brandNews);
+                  });
                 switch (this.type) {
                   case 'stories':
                     this.apiUrl = `${this.brandId}/featured-articles`;

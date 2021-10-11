@@ -7,7 +7,6 @@
   [infiniteScrollThrottle]="throttle"
   (scrolled)="onScrollDown()"
 >
-  <div class="container customContainer">
     <div *ngIf="detailsData.length">
       <app-item
         *ngFor="let details of detailsData; let i = index"
@@ -16,6 +15,8 @@
         attr.data-title="{{ details['slug'] }}"
         attr.data-id="{{ details['id'] }}"
         [news]="newsData"
+        [mainNewsData]="mainNews"
+        [brandNewsData]="brandNews"
         [brandSlug]="brandSlug"
         [index]="i"
         [type]="type"
@@ -25,7 +26,6 @@
         [publication]="publication"
       ></app-item>
     </div>
-  </div>
 </div>
 
 <ngx-json-ld [json]="schema"></ngx-json-ld>

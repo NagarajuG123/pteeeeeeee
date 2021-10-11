@@ -36,6 +36,8 @@ export class ItemComponent implements OnInit {
   @Input() socialImage: string;
   @Input() isSmallWindow: boolean;
   @Input() publication: any;
+  @Input() mainNewsData: any;
+  @Input() brandNewsData: any;
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
 
@@ -77,6 +79,7 @@ export class ItemComponent implements OnInit {
   isMaxresultImg: Boolean = true;
   sponsorContent = false;
   storyContent: any;
+  mainNews: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -139,11 +142,14 @@ export class ItemComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
     const news: SimpleChange = changes.news;
+    const mainNewsData: SimpleChange = changes.mainNewsData;
+    const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
       typeof details !== 'undefined' &&
       typeof details.currentValue !== 'undefined'
     ) {
       this.id = details.currentValue.id;
+      console.log(this.id);
       this.title = details.currentValue.title;
       this.shareDescription = details.currentValue.title;
       this.short_description = details.currentValue.short_description;
@@ -187,12 +193,20 @@ export class ItemComponent implements OnInit {
         }
       }
     }
-    if (
-      typeof news !== 'undefined' &&
-      typeof news.currentValue !== 'undefined'
-    ) {
-      this.brandNews = news.currentValue;
-      this.newsShow = true;
+    // if (
+    //   typeof news !== 'undefined' &&
+    //   typeof news.currentValue !== 'undefined'
+    // ) {
+    //   this.brandNews = news.currentValue;
+    //   this.newsShow = true;
+    // }
+    if ( typeof mainNewsData !== 'undefined' && typeof mainNewsData.currentValue !== 'undefined') {
+      this.mainNews = mainNewsData.currentValue;
+      console.log(this.mainNews);
+    }
+    if ( typeof brandNewsData !== 'undefined' && typeof brandNewsData.currentValue !== 'undefined') {
+      this.brandNews = brandNewsData.currentValue;
+      console.log(this.brandNews);
     }
   }
   ngAfterViewInit() {
