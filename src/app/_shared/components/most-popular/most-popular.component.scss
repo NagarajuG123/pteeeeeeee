@@ -30,9 +30,12 @@
       padding-bottom: 31px;
       width:380px;
       > span {
-        font-size: 10px;
         width: 58px;
         height: 19px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 10px;
       }
       > h3 {
         > span {
