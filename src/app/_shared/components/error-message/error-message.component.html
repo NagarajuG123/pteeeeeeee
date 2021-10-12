@@ -1,1 +1,4 @@
-<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+<div *ngIf="errorMessage" 
+      [ngClass]="type == 'signUpform' ? 'signup' : 'error-message'"
+      >{{ errorMessage }}
+</div>

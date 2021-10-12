@@ -1,6 +1,6 @@
 <div
   class="most-popular"
-  *ngIf="data"
+  *ngIf="data.length"
   [ngClass]="type == 'brand' ? 'brand-most-popular' : ''"
 >
   <div class="container customContainer">
@@ -52,7 +52,10 @@
                 px-2
               "
             >
-              <a class="text-white">READ MORE ></a>
+              <a class="text-white"
+               >READ MORE
+                <fa-icon [icon]='faAngleRight' class="ng-fa-icon fa-icon"></fa-icon>
+              </a>
             </div>
           </div>
           <ng-template #elseBlock>

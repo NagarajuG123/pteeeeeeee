@@ -17,11 +17,11 @@ import {
   Location,
 } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Subject, forkJoin } from 'rxjs';
+import { BehaviorSubject, Subject, forkJoin, fromEvent } from 'rxjs';
 import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
@@ -85,6 +85,7 @@ export class StoryComponent implements OnInit {
   metaData: any;
   isDate: boolean = false;
   isUpdate: boolean = false;
+  index: number;
 
   faFacebookFIcon = faFacebookF;
   faLinkedinInIcon = faLinkedinIn;
@@ -199,9 +200,6 @@ export class StoryComponent implements OnInit {
                 }
 
                 forkJoin([
-                  this.apiService.getAPI(
-                    `${this.brandId}/news?lean=true&limit=4&offset=0`
-                  ),
                   this.apiService.getAPI(`1851/news?limit=4&offset=0`),
                   this.apiService.getAPI(
                     `1851/news?limit=4&offset=0&isBrand=true`
@@ -209,9 +207,8 @@ export class StoryComponent implements OnInit {
                 ])
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((result) => {
-                    this.newsData = result[0].data;
-                    this.mainNews = result[1].data;
-                    this.brandNews = result[2].data;
+                    this.mainNews = result[0].data;
+                    this.brandNews = result[1].data;
                   });
                 switch (this.type) {
                   case 'stories':
@@ -380,8 +377,8 @@ export class StoryComponent implements OnInit {
         }
 
         this.detailsData.push(this.htmlBinding(result['story'].data));
+        this.setTrending(result['story'].data);
 
-        // this.detailsData = Object.assign([], this.detailsData);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -400,12 +397,14 @@ export class StoryComponent implements OnInit {
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
           modified_date.setHours(hours);
           modified_date.setMinutes(minutes);
-          if(posted_date || modified_date){
+          if (posted_date || modified_date) {
             this.isDate = true;
           }
           let postedDate = posted_date.toDateString();
           let modified = modified_date.toDateString();
-          postedDate === modified ? this.isUpdate = true : this.isUpdate = false;
+          postedDate === modified
+            ? (this.isUpdate = true)
+            : (this.isUpdate = false);
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -508,6 +507,23 @@ export class StoryComponent implements OnInit {
         }
         this.createCanonicalURL(url);
       });
+  }
+  setTrending(story) {
+    if (story.category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.newsData = response.data;
+        });
+    }
   }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
@@ -647,31 +663,34 @@ export class StoryComponent implements OnInit {
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
         .subscribe((result) => {
-          let response;
+          let storyId;
           this.isLoading = false;
           if (typeof result !== 'undefined') {
             if (
               this.type === 'dynamicpage' ||
               (this.type === 'brand-latest-stories' && this.brandId === '1851')
             ) {
-              response = result.data.stories;
+              storyId = result.data.stories[0].id;
             } else if (this.type === 'brand') {
-              response = result.data.articles;
+              storyId = result.data.articles[0].id;
             } else {
-              response = result.data;
+              storyId = result.data[0].id;
             }
           }
-          response.forEach((item) => {
-            if (parseInt(this.storyId, 10) !== item.id) {
-              this.detailsData.push(this.htmlBinding(item));
-            } else {
-              if (limit === 1) {
-                this.addItems(limit, offset + 1);
-                this.storyIndex = true;
-                return;
-              }
+          if (this.detailsData.find((o) => o.id !== storyId)) {
+            let url = this.brandSlug
+              ? `${this.brandSlug}/story/${storyId}`
+              : `story/${storyId}`;
+            this.apiService.getAPI(`${url}`).subscribe((result) => {
+              this.detailsData.push(this.htmlBinding(result.data));
+            });
+          } else {
+            if (limit === 1) {
+              this.addItems(limit, offset + 1);
+              this.storyIndex = true;
+              return;
             }
-          });
+          }
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;
           if (!this.isFirstSEO) {
@@ -851,5 +870,127 @@ export class StoryComponent implements OnInit {
       Math.ceil(window.innerHeight + window.scrollY) >=
       document.body.offsetHeight
     );
+  }
+  shareUrl() {
+    const subUrl =
+      this.brandSlug !== '1851'
+        ? `${this.brandSlug}/${this.detailsData.slug}`
+        : `${this.detailsData.slug}`;
+    return `${window.location.origin}/${subUrl}`;
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $('.tooltiptext').click(function (e) {
+        e.preventDefault();
+      });
+      $('.tooltiptext-link').click(function (e) {
+        e.preventDefault();
+        window.location.href = '/home/termsofuse#sponsored';
+      });
+      window['__sharethis__'].load('inline-share-buttons', {
+        alignment: 'left',
+        id: `inline-buttons-${this.index}`,
+        enabled: true,
+        font_size: 15,
+        padding: 8,
+        radius: 0,
+        networks: ['facebook', 'twitter', 'linkedin'],
+        size: 50,
+        url: this.shareUrl(),
+        title: this.detailsData.title,
+        image: 'social_image',
+        description: this.detailsData.title,
+      });
+      const fb_timer = setInterval(() => {
+        if (!$(`#mobile_block_fb_link${this.detailsData.id}`).length) {
+          clearInterval(fb_timer);
+          setTimeout(() => {
+            if ($(`#mobile_fb_plugin${this.detailsData.id}`).height() < 100) {
+              this.isDefaultFb = true;
+            }
+          }, 10000);
+        }
+      }, 1000);
+
+      // streams
+      const click$ = fromEvent(
+        $(`#inline-buttons-${this.index} .st-btn`),
+        'click'
+      );
+      click$
+        .pipe(
+          map((i: any) => i.currentTarget),
+          debounceTime(1000),
+          takeUntil(this.onDestroy$)
+        )
+        .subscribe((val) => {
+          const data = $(val).data();
+          this.apiService
+            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((result) => {
+              if (typeof result.id !== 'undefined' && result.id !== null) {
+                const brand_name = result.slug;
+                const gaData = result['ga'];
+                if (result.id !== '1851' && this.isBrowser) {
+                  if (gaData) {
+                    ga(`${brand_name}.send`, {
+                      hitType: 'social',
+                      socialNetwork: `ShareThis_${data.network}`,
+                      socialAction: 'share',
+                      socialTarget: this.shareUrl(),
+                    });
+                  }
+                }
+              } else {
+                ga(`send`, {
+                  hitType: 'social',
+                  socialNetwork: `ShareThis_${data.network}`,
+                  socialAction: 'share',
+                  socialTarget: this.shareUrl(),
+                });
+              }
+            });
+        });
+      this.apiService
+        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((result) => {
+          if (typeof result.id !== 'undefined' && result.id !== null) {
+            this.brandId = result.id;
+          } else {
+            this.brandId = '1851';
+          }
+          const a_tags = document
+            .getElementById(this.detailsData.id)
+            .getElementsByTagName('A');
+          const category = `${this.detailsData.id}+${this.brandId}+${this.type}`;
+          const vm = this;
+          const gaData = result['ga'];
+          for (let i = 0; i < a_tags.length; i++) {
+            if (
+              a_tags[i]['hostname'].toLowerCase() !==
+              window.location.hostname.toLowerCase()
+            ) {
+              a_tags[i].addEventListener('click', function (event) {
+                const action = a_tags[i]['hostname'].toLowerCase();
+                if (this.brandId === '1851') {
+                  ga('send', 'event', category, action, vm.brandId);
+                } else {
+                  if (gaData) {
+                    ga(
+                      `${vm.brandSlug}.send`,
+                      'event',
+                      category,
+                      action,
+                      vm.brandId
+                    );
+                  }
+                }
+              });
+            }
+          }
+        });
+    }
   }
 }

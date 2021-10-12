@@ -1,13 +1,15 @@
-<div class="border-bg py-2">
+<div class="border-bg py-2 sidebar-blur">
   <div class="container customContainer">
     <div class="row">
       <div class="col-2">
-        <img class="img-fluid lazyload"
-        data-src ="assets/img/logo.png"
-        width="195px"
-        height="195px"
-        loading="lazy"
-        alt="logo"/>
+        <img
+          class="img-fluid lazyload"
+          data-src="assets/img/logo.png"
+          width="195px"
+          height="195px"
+          loading="lazy"
+          alt="logo"
+        />
       </div>
       <div class="col-10 py-4">
         <form
@@ -75,9 +77,9 @@
               </li>
             </ul>
           </div>
-          <div class="sort_main check_boxes_data d-flex">
+          <div class="d-flex sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
-            <ul class="d-flex checkboxes text-center justify-content-center">
+            <ul class="d-flex text-center justify-content-center">
               <li class="px-2">
                 <label>
                   <input
@@ -85,7 +87,7 @@
                     [checked]="by_author"
                     (change)="onChangeFilter('author')"
                   />
-                  <span class="px-1">BY AUTHOR</span>
+                  <span class="keyFilter">BY AUTHOR</span>
                 </label>
               </li>
               <li class="px-2">
@@ -95,7 +97,7 @@
                     [checked]="by_title"
                     (change)="onChangeFilter('title')"
                   />
-                  <span class="px-1">BY TITLE</span>
+                  <span class="keyFilter">BY TITLE</span>
                 </label>
               </li>
               <li class="px-2">
@@ -105,7 +107,7 @@
                     [checked]="by_desc"
                     (change)="onChangeFilter('desc')"
                   />
-                  <span class="px-1">BY DESCRIPTION</span>
+                  <span class="keyFilter">BY DESCRIPTION</span>
                 </label>
               </li>
               <li class="px-2">
@@ -115,7 +117,7 @@
                     [checked]="by_keywords"
                     (change)="onChangeFilter('keyword')"
                   />
-                  <span class="px-1">BY KEYWORDS</span>
+                  <span class="keyFilter">BY KEYWORDS</span>
                 </label>
               </li>
             </ul>
@@ -162,7 +164,14 @@
 </div>
 <div class="gray-bg">
   <div class="row">
-    <div class="col-8 py-3 px-5 card-section">
+    <div
+      class="col-8 py-3 px-5 card-section"
+      [ngClass]="
+        brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
+          ? ''
+          : 'brandSearch'
+      "
+    >
       <div class="container customContainer row">
         <div class="row">
           <div
@@ -175,7 +184,7 @@
                   appYoutubeImage
                   width="257"
                   height="138"
-                  data-src="{{item.media | defaultImage: 257:138}}"
+                  data-src="{{ item.media | defaultImage: 257:138 }}"
                   alt="article"
                   class="card-img-top lazyload"
                 />
@@ -188,9 +197,7 @@
                     >{{ item.title }}</a
                   >
                 </h6>
-                <span class=""
-                  >By {{ item.author.name }}</span
-                >
+                <span class="">By {{ item.author.name }}</span>
                 <p class="card-text mb-1">
                   <a
                     href="{{ commonService.readMore(item) }}"
@@ -204,68 +211,76 @@
         </div>
       </div>
     </div>
-      <div class="col-4 bg-white py-4 card-section px-4">
-        <h5 class="brand-news">BRAND NEWS</h5>
-        <div
-          class="col-sm-12 col-md-7 mb-2 card-group mx-4"
-          *ngFor="let item of brandPeoples; index as i"
-        >
-          <div class="items card border-0 rounded-0 my-2">
-            <a href="{{ commonService.readMore(item) }}">
-              <img
-                appYoutubeImage
-                width="257"
-                height="138"
-                data-src="{{ item.media | defaultImage: 257:138 }}"
-                class="card-img-top lazyload"
-              />
-            </a>
-            <div class="card-body">
-              <h6 class="card-title fw-bold m-0">
-                <a
-                  href="{{ commonService.readMore(item) }}"
-                  class="text-black text-uppercase"
-                  >{{ item.title }}</a
-                >
-              </h6>
-              <span class="">By {{ item.author.name }}</span>
-              <p class="card-text mb-1">
-                <a
-                  href="{{ commonService.readMore(item) }}"
-                  class="text-black"
-                  >{{ item.short_description }}</a
-                >
-              </p>
-            </div>
+    <div
+      class="col-4 bg-white py-4 card-section px-4 brand-news"
+      *ngIf="
+        brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
+      "
+    >
+      <h5>BRAND NEWS</h5>
+      <div
+        class="col-sm-12 col-md-7 mb-2 card-group mx-4"
+        *ngFor="let item of brandPeoples; index as i"
+      >
+        <div class="items card border-0 rounded-0 my-2">
+          <a href="{{ commonService.readMore(item) }}">
+            <img
+              appYoutubeImage
+              width="257"
+              height="138"
+              data-src="{{ item.media | defaultImage: 257:138 }}"
+              class="card-img-top lazyload"
+            />
+          </a>
+          <div class="card-body">
+            <h6 class="card-title fw-bold m-0">
+              <a
+                href="{{ commonService.readMore(item) }}"
+                class="text-black text-uppercase"
+                >{{ item.title }}</a
+              >
+            </h6>
+            <span class="">By {{ item.author.name }}</span>
+            <p class="card-text mb-1">
+              <a href="{{ commonService.readMore(item) }}" class="text-black">{{
+                item.short_description
+              }}</a>
+            </p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="border-bg">
-      <div class="row">
-        <div class="col-8">
-          <div class="position-relative mt-2">
-            <div class="container customContainer">
-              <div class="row">
-                <div
-                  class="col d-flex justify-content-center align-items-center"
-                >
-                  <div class="px-5">
-                    <img
-                      data-src="assets/img/nextIcon.svg"
-                      width="32"
-                      alt="next articles"
-                      class="me-3 lazyload"
-                      (click)="getMoreItems()"
-                    />
-                    <span (click)="getMoreItems()">See More</span>
-                  </div>
+  <div
+    [ngClass]="
+      brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
+        ? 'border-bg'
+        : 'bg-white'
+    "
+  >
+    <div class="row">
+      <div class="col-8">
+        <div class="position-relative mt-2">
+          <div class="container customContainer">
+            <div class="row">
+              <div class="col d-flex justify-content-center align-items-center">
+                <div class="px-5">
+                  <img
+                    data-src="assets/img/nextIcon.svg"
+                    width="32"
+                    alt="next articles"
+                    class="me-3 lazyload"
+                    (click)="getMoreItems()"
+                  />
+                  <span (click)="getMoreItems()">See More</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-4 bg-white"></div>
       </div>
+      <div class="col-4 bg-white"></div>
     </div>
+  </div>
+</div>

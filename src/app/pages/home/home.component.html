@@ -8,15 +8,15 @@
 
   <app-editorial-sections [slug]="'1851'"></app-editorial-sections>
 
-  <!-- signUp for next webinar section-->
-  <div class="primary-bg signUp">
-    <div class="container customContainer">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-12 col-lg-auto text-uppercase text-white">
-          <h2 class="py-3 m-0 text-white text-uppercase fs-30">
-            Sign up for our newsletter
-          </h2>
-        </div>
+ <!-- signUp for next webinar section-->
+ <div class="primary-bg signUp">
+   <div class="container customContainer">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-lg-auto text-uppercase text-white">
+        <h2 class="py-3 m-0 text-white text-uppercase fs-30 fw-bold">
+          Sign up for our newsletter
+        </h2>
+ </div>
 
         <div class="col-12 col-sm">
           <form
@@ -32,6 +32,7 @@
                   [formControl]="newsletterForm.controls['name']"
                 />
                 <app-error-message
+                  [type]="'signUpform'"
                   *ngIf="isSubmitted"
                   [control]="newsletterForm.controls['name']"
                 ></app-error-message>
@@ -44,6 +45,7 @@
                   [formControl]="newsletterForm.controls['email']"
                 />
                 <app-error-message
+                  [type]="'signUpform'"
                   *ngIf="isSubmitted"
                   [control]="newsletterForm.controls['email']"
                 ></app-error-message>

@@ -23,18 +23,24 @@
 .c-card-box--section {
   padding-top: 100px;
   background-color: $dark_gray_4;
+  @include media("<xl"){
+    padding-bottom: 40px;
+  }
+  @include media("<lg"){
+    padding-bottom: 15px;
+  }
   .c-card-box--wrapper {
     .c-card-box--row {
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      @include media("<md"){
-        display: flex;
-        flex-flow: column;
-      }
       @include media("<lg"){
         flex-flow: column;
         justify-content: center;
+      }
+      @include media("<md"){
+        display: flex;
+        flex-flow: column;
       }
       .c-card-box--col {
         flex: 1 0 calc(50% - 30px);
@@ -87,12 +93,13 @@
         max-width: 54%;
         margin-left: auto;
         // flex: unset;
-        padding: 15px 0;     
+        padding: 20px 0;     
         @include media("<xxl"){
           max-width: 54.5%;
         }
         @include media("<xl"){
           max-width: 58%;
+          padding: 15px 0;
         }
         @include media("<lg"){
         max-width: 100%;
@@ -116,6 +123,9 @@
         font-weight: bold;
         color: $black_1;
         text-transform: capitalize;
+        @include media("<xl"){
+          font-size: 36px;
+        }
         @include media("<md"){
           font-size: 30px;
         }
@@ -125,6 +135,9 @@
         font-weight: 600;
         font-size: 18px;
         color: #18222e;
+        @include media("<xl"){
+          margin-bottom: 0;
+        }
         @include media("<md"){
           font-size: 14px;
         }
@@ -132,7 +145,7 @@
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -278px;
+        margin-top: -250px;
         // margin-left: 100px;
         margin-bottom: 45px;
         width: 570px;
@@ -145,7 +158,7 @@
         @include media("<xl"){
           width: 400px;
           height: auto;
-          margin: -256px 0 0 0;
+          margin: -230px 0 0 0;
         }
         @include media("<lg"){
           width: 100%;
@@ -168,9 +181,12 @@
           }
         }
         .card-image {
-          max-height: 800px;
+          max-height: 775px;
           @include media("<xl"){
+            height: 600px;
             max-height: unset;
+          }
+          @include media("<lg"){
             height: auto;
           }          
         }
@@ -211,18 +227,27 @@
         color: $red_1;
         font-weight: 600;
         font-size: 15px;
+        -webkit-line-clamp: 1;
+        height: 26px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 2px;
       }
       .c-card-box--itemDec {
         color: $white;
         font-weight: 500;
-        font-size: 13px;
+        height: 32px;        
         text-overflow: ellipsis;
         overflow: hidden;
-        line-clamp: 4;
-        -webkit-line-clamp: 4;
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         margin-bottom: 4px;
+        font-size: 12.974px;
+        line-height: 128.69%;
       }
 
       .c-link--btn {

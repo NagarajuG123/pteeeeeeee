@@ -9,10 +9,14 @@
   font-size: 16px;
   border-bottom: 1px solid $dark-gray;
   span {
-    color: $primary;
-    font-family: $balinger;
+    color: $light_gray_9;
+    font-family: $roboto;
     img {
       margin-top: -4px;
+    }
+    &.title {
+      color: $primary;
+      font-family: $balinger;
     }
   }
   .carousel-control-next,
@@ -37,5 +41,12 @@
     width: 1rem;
     height: 20px;
     padding-top: 0.25rem;
+  }
+  .carousel-item {
+    -webkit-transition: 0.6s ease-in-out top;
+    -moz-transition: 0.6s ease-in-out top;
+    -ms-transition: 0.6s ease-in-out top;
+    -o-transition: 0.6s ease-in-out top;
+    transition: 0.6s ease-in-out top;
   }
 }

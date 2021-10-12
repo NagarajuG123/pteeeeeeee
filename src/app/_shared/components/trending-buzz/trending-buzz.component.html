@@ -1,4 +1,7 @@
-<div *ngIf="trending?.data?.length" class="frannews frannews-trending">
+<div
+  *ngIf="trending?.data?.length"
+  class="frannews frannews-trending sidebar-blur"
+>
   <div class="container">
     <div class="frannews-details col-xl-11">
       <div class="frannews-top d-flex">
@@ -12,11 +15,8 @@
             </li>
           </ul>
         </div>
-        <div
-          class="frannews-top-right col-lg-3 col-md-2"
-        >
-          <a class="float-right" routerLink="/trendingbrandbuzz"
-            >READ MORE </a>
+        <div class="frannews-top-right col-lg-3 col-md-2">
+          <a class="float-right" routerLink="/trendingbrandbuzz">READ MORE </a>
           <div class="clearfix"></div>
         </div>
       </div>
