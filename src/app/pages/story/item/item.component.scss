@@ -2,6 +2,9 @@
 
 .articles {
   overflow-x: hidden;
+  .container {
+    max-width: 1350px !important;
+ }
   .banner {
     max-height: 754px;
     overflow: hidden;
