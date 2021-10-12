@@ -1,4 +1,4 @@
-<div class="search-page py-2 sidebar-blur">
+<div class="search-page sidebar-blur">
   <div class="container customContainer">
     <div class="row topblock">
       <div class="col-2">
@@ -162,10 +162,10 @@
     </div>
   </div>
 </div>
-<div class="gray-bg">
+<div class="gray-bg" [ngClass]="!recentPeoples.length ? 'd-none' : ''">
   <div class="row">
     <div
-      class="col-8 py-3 px-5 card-section main-article"
+      class="col-8 py-3 card-section main-article"
       [ngClass]="
         brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
           ? ''
@@ -258,6 +258,7 @@
         ? 'border-bg'
         : 'bg-white'
     "
+    *ngIf="recentPeoples.length > 3"
   >
     <div class="row">
       <div class="col-8">
