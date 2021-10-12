@@ -118,8 +118,8 @@ ul {
     opacity: 0.6;
   }
 }
-.modal{
-  @include desk-lg-below3{
+.modal {
+  @include desk-lg-below3 {
     left: 30px;
     top: 60px;
   }
