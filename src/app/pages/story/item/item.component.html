@@ -57,12 +57,12 @@
           ><h1 class="fw-bold mb-0">{{ details.author.name }}</h1></a
         >
         <h5 class="primary-color fw-bold" [innerHTML]="designation"></h5>
-        <span *ngIf="isDate">
-          <span *ngIf="isUpdate"
+        <span *ngIf="isDate()">
+          <span *ngIf="isUpdate()"
             >Updated {{ last_modified | date: "h:mm a" }} •
             {{ last_modified | date: "MM/dd/yy" }}
           </span>
-          <span *ngIf="!isUpdate"
+          <span *ngIf="!isUpdate()"
             >{{ date_time | date: "h:mm a" }} •
             {{ date_time | date: "MM/dd/yy" }}</span
           >
