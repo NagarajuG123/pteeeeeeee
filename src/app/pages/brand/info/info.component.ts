@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent implements OnInit {
+  
   categories: any = [];
   brandSlug!: string;
   noOfTabsShow = 5;
@@ -57,7 +58,9 @@ export class InfoComponent implements OnInit {
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
   emailSubValid: boolean = false;
+  isSubmitFailed: boolean = false;
   submittedInquireForm: boolean = false;
+  submitErrMsg: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
@@ -180,12 +183,16 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.toastr.success(result.data.message, 'Thanks!');
-          this.submittedInquireForm = false;
-          this.inquireForm.reset();
-        } else {
-          this.toastr.error(result.error.message, 'Error!');
-        }
+        $('#inquireModalClose').click();
+        $('#thanksModal').show();
+        setTimeout(() => {
+          $('#thanksModal').hide();
+        },10000);
+        this.inquireForm.reset();
+      } else {
+        this.submitErrMsg = result.error.message;
+        this.isSubmitFailed = true;
+      }
         this.submittedInquireForm = false;
       });
   }
@@ -343,6 +350,9 @@ export class InfoComponent implements OnInit {
           this.inquireForm = this.fb.group(group);
         }
       });
+  }
+  closeModal(id) {
+    $(`#${id}`).hide();
   }
   getFormType(item: any) {
     let type = 'text';

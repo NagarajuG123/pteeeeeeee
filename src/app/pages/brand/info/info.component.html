@@ -516,8 +516,25 @@
               Next
             </button>
           </div>
+          <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
         </form>
-
+ <!-- Thanks -->
+ <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button
+        type="button"
+        class="close text-right"
+        (click)="closeModal('thanksModal')"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+</div>
         <!-- Recent Features -->
         <div class="recent-feature-article-section" *ngIf="!isMarket">
           <div class="row">

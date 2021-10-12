@@ -1153,3 +1153,19 @@ button.close {
     font-family: 'Roboto', sans-serif !important;
   }
 }
+
+.thanks-modal {
+  background: rgba(0,0,0,.5);
+  padding: 0!important;
+  .modal-content {
+      background: url("/assets/img/thanks.png") no-repeat 0 0;
+      height: 234px;
+      width: 480px;
+      border: unset;
+      .close {
+          margin-right: 10px;
+          margin-top: 5px;
+          color: white;
+      }
+  }
+}
