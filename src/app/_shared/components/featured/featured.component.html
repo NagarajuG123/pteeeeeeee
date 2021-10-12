@@ -147,7 +147,7 @@
     </div>
 
     <div
-      *ngIf="slug !== '1851'"
+      *ngIf="slug !== '1851' && !isAwards()"
       class="
         position-relative
         col-12 col-sm-6 col-lg-3
@@ -156,7 +156,6 @@
         border-start border-2
         latestListing
       "
-      [ngClass]="slug === 'franchisedevelopmentawards' ? 'd-none' : ''"
     >
       <span class="small-title mb-2">Latest Franchise Industry News</span>
       <ul class="news-list noScrollBar list-group">

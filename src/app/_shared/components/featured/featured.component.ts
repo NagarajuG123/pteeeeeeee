@@ -140,4 +140,7 @@ export class FeaturedComponent implements OnInit {
   onResize(event: any) {
     this.setLimit(event);
   }
+  isAwards() {
+    return this.slug === 'franchisedevelopmentawards' ? true : false;
+  }
 }
