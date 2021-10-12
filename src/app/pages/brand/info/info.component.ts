@@ -12,6 +12,7 @@ import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { Details } from 'src/app/_core/models/details.model';
 import 'lazysizes';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -67,6 +68,7 @@ export class InfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private toastr: ToastrService,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient
   ) {
@@ -178,14 +180,13 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.showToast = true;
-          this.responseMessage = { status: true, message: result.data.message };
-          this.submittedInquireForm = false;
-          this.inquireForm.reset();
+          $('#contactModalClose').click();
+          $('#thanksModal').show();
           setTimeout(() => {
-            this.showToast = false;
-          }, 4000);
+            $('#thanksModal').hide();
+          }, 10000);
         } else {
+          this.toastr.error(result.error.message, 'Error!');
           this.responseMessage = {
             status: false,
             message: result.data.message,
