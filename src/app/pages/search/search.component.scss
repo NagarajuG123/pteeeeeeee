@@ -73,6 +73,7 @@
   }
   .search-page{
     background-color: $border-color;
+    padding-top: 30px;
     @include tablet-portrait{
       overflow-x: hidden;
       .topblock{
@@ -110,7 +111,7 @@
 .form-group {
     position: relative;
     margin: 0;
-    width: 65%;
+    width: 80%;
     .form-control{
       border: 1px solid $black;
     }
@@ -193,6 +194,9 @@
   input{
     display: none;
   }
+  input:checked + span{
+    background: url("/assets/img/checked.png") no-repeat left 1px;
+  }
   h6,span{
     font-family: $roboto;
     font-size: 20px;
@@ -219,8 +223,13 @@
   }
 }
 .main-article{
+  padding-left: 3rem !important;
   @include tablet-portrait{
     max-width: 100%;
     -webkit-flex: 0 0 100%;
+  }
+  .row{
+    padding-left: 50px;
+    padding-right: 0;
   }
 }
