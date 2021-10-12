@@ -1,5 +1,145 @@
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets//scss/media.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.banner {
+  box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+
+  position: relative;
+  z-index: 5;
+}
+a {
+  display: inline-block;
+  vertical-align: top;
+}
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+.trendingbrandbuzz-banner {
+  figure {
+    max-height: 680px;
+    img {
+      display: block;
+      width: 100%;
+    }
+    .legalplayer-banner {
+      height: 680px;
+      overflow: hidden;
+      @include tablet-landscape {
+        height: 640px;
+      }
+      @include tablet-landscape1 {
+        height: 550px;
+      }
+      @include mobile-landscape {
+        height: 440px;
+      }
+      @include mobile-portrait {
+        height: 300px;
+      }
+    }
+  }
+  .banner-left {
+    position: relative;
+    max-width: 29%;
+    flex: 0 0 29%;
+    -webkit-flex: 0 0 29%;
+    background: $dark_gray_1;
+    @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
+  }
+  .banner-right {
+    max-width: 71%;
+    flex: 0 0 71%;
+    -webkit-flex: 0 0 71%;
+    @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
+  }
+  .buffalowings-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $red;
+    font-size: 9.1px;
+    line-height: 11px;
+    color: $white;
+    font-weight: 400;
+    font-family: $proxiRegular;
+    padding: 10px;
+    @include tablet-portrait {
+      position: static;
+    }
+  }
+}
+
+.trendingbrandbuzz-content {
+  padding: 15px 59px 75px 49px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include desk-lg-below1 {
+    padding: 20px 15px 60px 15px;
+  }
+  @include tablet-portrait {
+    position: static;
+    padding: 30px 15px;
+  }
+  h4 {
+    background: $red;
+    color: $white;
+    font-family: $proxiLight;
+    margin: 0 7px 0 0;
+    padding: 17px 0 13px 0;
+    letter-spacing: 0.5px;
+    @include desk-lg-below {
+      margin: 0;
+      padding: 13px 5px;
+    }
+  }
+  h2,
+  h1 {
+    font-size: 27px;
+    line-height: 32px;
+    color: $white;
+    padding: 16px 0 5px 0;
+    @include tablet-landscape {
+      padding: 12px 0 5px 0;
+      font-size: 25px;
+      line-height: 29px;
+    }
+    @include mobile-landscape1 {
+      font-size: 24px;
+      line-height: 27px;
+    }
+  }
+  p {
+    font-size: 18px;
+    line-height: 22px;
+    color: $white;
+    font-family: $proxiLightIt;
+    @include mobile-landscape1 {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  }
+}
+
 h6 {
   font-size: 13px;
   line-height: 15px;
@@ -8,53 +148,10 @@ h6 {
   text-decoration: underline;
   padding: 0 0 45px;
 }
-.bg-gray{
- background-color: $dark_gray_1
-}
-.trendingbrandbuzz-content{
-  padding: 150px 59px 75px 49px;
-  bottom: 0;
-  left: 0;
-  h4 {
-    background: $red;
-    color: $white;
-    font-family: $proxiLight;
-    letter-spacing: .5px;
-    padding: 17px 21px 13px 22px;
-    margin: 0;
-  }
-  h1{
-    padding: 27px 0 7px;
-    font-family: $proxiBold;
-    font-size: 27px;
-    line-height: 32px;
-    color: $white;
-  }
-  p{
-    font-size: 18px;
-    line-height: 22px;
-    color: $white;
-  }
-} 
-.bottom{
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: $red;
-  .readMore{
-    font-size: 9.1px;
-    line-height: 11px;
-    color: $white;
-    font-weight: 400;
-    font-family: $proxiRegular;
-  }
-  .fa-icon{
-    font-size: 25px;
-    line-height: 11px;
-    color: $white;
-    padding: 0 0 0 7px;
-    vertical-align: top;
-  }
+.monthlydetails-banner h4 {
+  padding: 17px 21px 13px 22px;
+  margin: 0;
+  font-size: 20px;
 }
 .items {
   font-family: "Roboto";
@@ -73,47 +170,50 @@ h6 {
   }
 }
 .nextLine {
-  .customContainer{
-     div{
-       width: 220px;
-       padding: 0 18px;
-       @include media ("<md"){
-         width: 157px;
-         padding: 0 7px;
-       }
-       .nextBtn {
-         font-family: $proxiRegular;
-         font-size: 15px;
-         z-index: 1;
-         margin-top: 35px;
-         img {
-           cursor: pointer;
-         }
-       }
-     }
-   }
- }
- 
- .see-more--wrapper{
-   margin-top: 57px;
-   width: 50%;
-   height: 2px;
-   border: 1px solid $red ;
- }
- .see-more-right--wrapper{
-   margin-top: 57px;
-   width: 50%;
-   height: 2px;
-   border: 1px solid $red ;
- }
+  .customContainer {
+    div {
+      width: 220px;
+      padding: 0 18px;
+      @include media("<md") {
+        width: 157px;
+        padding: 0 7px;
+      }
+      .nextBtn {
+        font-family: $proxiRegular;
+        font-size: 15px;
+        z-index: 1;
+        margin-top: 35px;
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.see-more--wrapper {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
+.see-more-right--wrapper {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
 .seem-more-text-wrapper {
- color: $dark-gray;
- font-size: 17px;
+  color: $dark-gray;
+  font-size: 17px;
+  @include media("<md") {
+    font-size: 15px;
+  }
 }
 .sponsored {
   position: absolute;
   padding: 0;
-  span{
+  span {
     background: $red;
     font-size: 17px;
     line-height: 19px;
@@ -123,31 +223,5 @@ h6 {
     vertical-align: top;
     padding: 7px 5px 9px;
     width: 35px;
-
-  }
-}
-.top-right{
-  img{
-    display: block;
-    width: 100%;
-    height: 575px;
-  }
-}
-@media (max-width: 991px){
-  .top-left {
-    max-width: 100%;
-    -webkit-flex: 0 0 100%;
-  }
-  .top-right {
-    max-width: 100%;
-    -webkit-flex: 0 0 100%;
-  }
-}
-@media (max-width: 1024px){
-  .trending-bottom .article {
-    width: 32%;
-    padding: 0 15px 25px;
-    float: none;
-    vertical-align: top;
   }
 }
