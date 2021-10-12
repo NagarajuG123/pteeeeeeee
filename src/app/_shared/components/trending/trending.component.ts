@@ -17,14 +17,17 @@ export class TrendingComponent implements OnInit {
   isLoaded: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  constructor(private apiService: ApiService, private commonService: CommonService) {}
+  constructor(
+    private apiService: ApiService,
+    public commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.commonService.isPageLoaded.subscribe((res) => {
-      if(res){
+      if (res) {
         this.isLoaded = true;
       }
-    })
+    });
     const trending = this.apiService.getAPI(
       `${this.slug}/trending?limit=9&offset=0`
     );
