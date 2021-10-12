@@ -180,17 +180,11 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          $('#contactModalClose').click();
-          $('#thanksModal').show();
-          setTimeout(() => {
-            $('#thanksModal').hide();
-          }, 10000);
+          this.toastr.success(result.data.message, 'Thanks!');
+          this.submittedInquireForm = false;
+          this.inquireForm.reset();
         } else {
           this.toastr.error(result.error.message, 'Error!');
-          this.responseMessage = {
-            status: false,
-            message: result.data.message,
-          };
         }
         this.submittedInquireForm = false;
       });
