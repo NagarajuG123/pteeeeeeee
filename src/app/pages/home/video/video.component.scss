@@ -112,7 +112,7 @@
   background: $dark_red_2;
   font-family:$balinger;
   font-weight: bold;
-  font-size: 17.1429px;
+  font-size: 10px;
   box-sizing: border-box;
   z-index: 1;
   border-radius:unset;
@@ -120,10 +120,23 @@
 
 .main-image {
   .tag {
-    width: 139px;
+    width: 99px;
+    height: 22px;
   }
+  .video-btn {
+    cursor: pointer;
+    position: relative;
+    .vide-play {
+      position: absolute;
+      left: calc(50% - 45px);
+      top: calc(50% - 45px);
+      z-index: 1000;
+      height: 47px;
+      width: 75.34px;
+      border-radius: 12px;
+    }
 }
-
+}
 .c-video-slider--wrapper {
   margin-top: 40px;
   .owl-nav {
@@ -185,11 +198,12 @@
   position: relative;
   .vide-play {
     position: absolute;
-    left: calc(50% - 45px);
-    top: calc(50% - 45px);
+    left: calc(50% - 40px);
+    top: calc(50% - 20px);
     z-index: 1000;
-    height: 90px;
-    width: 90px;
+    height: 28px;
+    width: 49px;
+    border-radius: 5px;
   }
 }
 .modal-body {

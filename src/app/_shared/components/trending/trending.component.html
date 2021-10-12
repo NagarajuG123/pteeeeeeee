@@ -21,20 +21,13 @@
                     alt=""
                   />
                   <span class="me-2 title">TRENDING </span>
-                  {{ item.title }}
+                  <a
+                    routerLink="{{ commonService.readMore(item) }}"
+                    fragment="trending"
+                  >
+                    {{ item.title }}</a
+                  >
                 </span>
-                <!-- <span class="mobile-only">
-                  <img
-                    data-src="assets/img/fire.svg"
-                    height="18px"
-                    width="22px"
-                    class="pe-2 lazyload"
-                    loading="lazy"
-                    alt=""
-                  />
-                  <span class="me-2 title">TRENDING</span>
-                  {{ commonService.responsiveTextFormating(item.title, 25) }}
-                </span> -->
               </div>
             </ng-container>
           </div>

@@ -5,10 +5,12 @@
   background: $dark-gray;
   font-family: Roboto;
   h2 {
-    font-family: $proxiSemiBold;
+    font-family: $balinger;
     font-weight: bold;
     font-size: 33px;
     line-height: 40px;
+    width: 362px;
+    color: $white_2;
   }
   .innerContent {
     padding: 0 53px;
@@ -76,7 +78,7 @@
         > .card-body {
           padding: 8px 16px 15px;
           > h3.card-title {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 700;
           }
           > .card-text {

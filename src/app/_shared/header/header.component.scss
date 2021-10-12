@@ -103,7 +103,7 @@ header {
           font-family: $roboto;
           font-size: 8px;
           color: $light-gray-1;
-          line-height:10px;
+          line-height: 10px;
 
           > img {
             height: 8px;
@@ -251,6 +251,9 @@ header {
         left: 0;
         height: 600px;
         overflow-x: auto;
+        @include desk-lg-below3 {
+          height: 550px;
+        }
       }
     }
 
@@ -323,7 +326,7 @@ header {
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
-  line-height:16.73px;
+  line-height: 16.73px;
   color: $primary;
 }
 
@@ -512,7 +515,7 @@ header {
     }
     input {
       height: 50px;
-      color: $light_gray_8;
+      color: $black;
     }
     button {
       display: block;
@@ -621,6 +624,43 @@ option {
     padding: 0;
   }
 }
-.dropdown-menu-dark{
+.dropdown-menu-dark {
   background-color: $dark-gray;
+}
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: $black;
+  text-shadow: 0 1px 0 $white;
+  opacity: 0.5;
+}
+button.close {
+  position: absolute;
+  right: 35px;
+  top: 22px;
+  color: $red;
+  font-size: 39px;
+  outline: 0;
+  opacity: 1;
+  @include desk-lg-below1 {
+    top: 10px;
+    right: 15px;
+  }
+}
+.thanks-modal {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 !important;
+  .modal-content {
+    background: url("/assets/img/thanks.png") no-repeat 0 0;
+    height: 234px;
+    width: 480px;
+    border: unset;
+    .close {
+      margin-right: 10px;
+      margin-top: 5px;
+      color: $white;
+    }
+  }
 }
