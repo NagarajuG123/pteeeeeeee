@@ -12,14 +12,12 @@ import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { Details } from 'src/app/_core/models/details.model';
 import 'lazysizes';
-import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent implements OnInit {
-  
   categories: any = [];
   brandSlug!: string;
   noOfTabsShow = 5;
@@ -71,7 +69,6 @@ export class InfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private toastr: ToastrService,
     @Inject(PLATFORM_ID) platformId: Object,
     private httpClient: HttpClient
   ) {
