@@ -1,41 +1,58 @@
 <div class="sidebar-blur">
-  <div class="row">
+  <div
+    class="
+      banner
+      d-flex
+      trendingbrandbuzz-banner
+      flex-row-reverse
+      monthlydetails-banner
+    "
+    *ngIf="trendingData[0]"
+  >
+    <div class="banner-right col-md-8 p-0" *ngIf="trendingData[0].media">
+      <a class="d-block" href="" onclick="return false;">
+        <figure>
+          <img
+            appYoutubeImage
+            data-src="{{ trendingData[0].media | defaultImage: 1023:576 }}"
+            width="1023"
+            height="576"
+            class="lazyload"
+            alt="monthly-details-banner"
+          />
+        </figure>
+      </a>
+    </div>
     <a
-      class="col-4 col-md-4 col-sm-4 bg-gray top-left"
-      fragment="trending"
+      class="banner-left col-md-4 p-0"
       routerLink="/{{ commonService.readMore(trendingData[0]) }}"
+      fragment="trending"
     >
       <div class="trendingbrandbuzz-content">
-        <h4>TRENDING BRAND BUZZ</h4>
-        <h1>{{ trendingData[0]?.title }}</h1>
-        <p>{{ trendingData[0]?.short_description }}</p>
+        <h4 class="text-uppercase text-center d-inline-block">
+          TRENDING BRAND BUZZ
+        </h4>
+        <h1>
+          {{ trendingData[0]?.title }}
+        </h1>
+        <p>
+          {{ trendingData[0]?.short_description }}
+        </p>
       </div>
-      <a class="bottom text-uppercase float-right" routerLink="">
-        <a class="readMore float-right text-uppercase" routerLink="">
-          READ MORE
-          <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
-        </a>
+      <a class="buffalowings-bottom text-end text-uppercase">
+        READ MORE
+        <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
         <div class="clearfix"></div>
       </a>
     </a>
-    <div class="col-8 col-md-8 col-sm-8 p-0 top-right">
-      <figure>
-        <img
-          class="lazyload"
-          data-src="{{ trendingData[0].media | defaultImage: 1023:576 }}"
-          height="576"
-          width="1023"
-        />
-      </figure>
-    </div>
   </div>
 
-  <div class="container customContainer py-md-4 trending-bottom">
+  <div class="container customContainer py-md-5 py-5 trending-bottom">
     <h6 class="text-uppercase">SPONSORED</h6>
     <div class="row mt-2">
       <div
         class="col-sm-6 col-md-3 mb-2 article"
-        *ngFor="let list of trendingData | slice: 0:12; index as i"
+        *ngFor="let list of trendingData; index as i"
       >
         <div class="items card border-0 rounded-0">
           <div class="sponsored text-center">

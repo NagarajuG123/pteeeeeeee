@@ -52,6 +52,10 @@ figure {
       line-height: 77px;
       color: $dark-gray;
       font-family: $balingerMedium;
+      @include mobile-landscape1 {
+        font-size: 30px;
+        line-height: 30px;
+      }
     }
     button {
       background-color: $red;
@@ -78,7 +82,7 @@ figure {
       width: 450px;
     }
     @include mobile-landscape1 {
-      width: 300px;
+      width: 180px;
     }
   }
 }
@@ -87,6 +91,10 @@ figure {
     img {
       min-height: 493px;
       height: 522px;
+      @include mobile-landscape1 {
+        min-height: 300px;
+        height: 300px;
+      }
     }
   }
 }

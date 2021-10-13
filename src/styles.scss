@@ -118,3 +118,31 @@ ul {
     opacity: 0.6;
   }
 }
+.modal {
+  @include desk-lg-below3 {
+    left: 30px;
+    top: 60px;
+  }
+}
+.details{
+  .description{
+    figure{
+      margin: 0 0 30px;
+      line-height: 1.5;
+      img{
+        display: block;
+        width: 100%;
+      }
+    }
+    .image-style-align-left {
+      float: left;
+      width: 50%;
+      margin-right: 20px;
+    }
+    .image-style-align-right {
+      float: right;
+      width: 50%;
+      margin-left: 20px;
+    }
+  }
+}

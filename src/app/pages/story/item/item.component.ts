@@ -17,6 +17,8 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
 declare var ga: Function;
 
 @Component({
@@ -26,7 +28,7 @@ declare var ga: Function;
 })
 export class ItemComponent implements OnInit {
   @Input() details: any;
-  @Input() news: any;
+  @Input() trending: any;
   @Input() brandSlug = '1851';
   @Input() index: string;
   @Input() type: string;
@@ -34,13 +36,15 @@ export class ItemComponent implements OnInit {
   @Input() socialImage: string;
   @Input() isSmallWindow: boolean;
   @Input() publication: any;
-  @Input() newsTitle: string;
+  @Input() mainNewsData: any;
+  @Input() brandNewsData: any;
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
 
   public isBrowser = false;
   public isServer: boolean;
 
+  faCaretDown = faCaretDown;
   id: string;
   title: string;
   short_description: string;
@@ -75,18 +79,18 @@ export class ItemComponent implements OnInit {
   isMaxresultImg: Boolean = true;
   sponsorContent = false;
   storyContent: any;
+  mainNews: any;
+  trendingNews: any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
     private apiService: ApiService,
-    private commonService: CommonService,
-    private _googleAnalyticsService: GoogleAnalyticsService,
+    public commonService: CommonService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isServer = isPlatformServer(platformId);
     this.isBrowser = isPlatformBrowser(platformId);
-    this.newsTitle = '';
   }
 
   ngOnInit(): void {
@@ -122,7 +126,6 @@ export class ItemComponent implements OnInit {
           }
         });
       });
-    // tslint:disable-next-line:max-line-length
     this.default_fb_url = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
     if (this.details.brand) {
       if (
@@ -131,19 +134,18 @@ export class ItemComponent implements OnInit {
       ) {
         this.fb_url = environment.fbUrl;
       } else {
-        // tslint:disable-next-line:max-line-length
         this.fb_url = this.details.brand.fb_page_url;
       }
     } else {
       this.fb_url = environment.fbUrl;
     }
   }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
+
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
-    const news: SimpleChange = changes.news;
+    const trending: SimpleChange = changes.trending;
+    const mainNewsData: SimpleChange = changes.mainNewsData;
+    const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
       typeof details !== 'undefined' &&
       typeof details.currentValue !== 'undefined'
@@ -193,15 +195,25 @@ export class ItemComponent implements OnInit {
       }
     }
     if (
-      typeof news !== 'undefined' &&
-      typeof news.currentValue !== 'undefined'
+      typeof trending !== 'undefined' &&
+      typeof trending.currentValue !== 'undefined'
     ) {
-      this.brandNews = news.currentValue;
+      this.trendingNews = trending.currentValue;
       this.newsShow = true;
+    }
+    if ( typeof mainNewsData !== 'undefined' && typeof mainNewsData.currentValue !== 'undefined') {
+      this.mainNews = mainNewsData.currentValue;
+    }
+    if ( typeof brandNewsData !== 'undefined' && typeof brandNewsData.currentValue !== 'undefined') {
+      this.brandNews = brandNewsData.currentValue;
     }
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+      });
       $('.tooltiptext').click(function (e) {
         e.preventDefault();
       });
@@ -316,18 +328,6 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  goAuthorPage() {
-    if (this.details.author) {
-      return `author/${this.details.author.slug}`;
-    } else {
-      return '#';
-    }
-  }
-
-  getTrustUrl() {
-    return ``;
-  }
-
   shareUrl() {
     const subUrl =
       this.brandSlug !== '1851'
@@ -336,39 +336,6 @@ export class ItemComponent implements OnInit {
     return `${window.location.origin}/${subUrl}`;
   }
 
-  getMoreItem() {
-    if (this.brandSlug === '1851') {
-      this.apiService
-        .getAPI(
-          `${this.brandSlug}/news?lean=true&limit=10&offset=${this.brandNews.length}`
-        )
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((result) => {
-          result['data'].forEach((news, index) => {
-            this.brandNews.push(news);
-          });
-        });
-    } else {
-      this.apiService
-        .getAPI(
-          `${this.brandSlug}/brand-latest-stories?limit=10&offset=${this.brandNews.length}`
-        )
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((result) => {
-          result.data.forEach((item) => {
-            this.brandNews.push(item);
-          });
-        });
-    }
-  }
-
-  goBrandNews(news) {
-    let slug = '';
-    if (typeof news.brand !== 'undefined' && news.brand.id !== '1851') {
-      slug = `${news.brand.slug}/`;
-    }
-    return `${slug}${news.slug}#${this.type}`;
-  }
   isDate() {
     if (this.date_time || this.last_modified) {
       return true;
@@ -385,34 +352,6 @@ export class ItemComponent implements OnInit {
     return true;
   }
 
-  openFbComment() {
-    this.isViewComment = !this.isViewComment;
-    window['FB'].init({
-      appId: '346418588772225',
-      autoLogAppEvents: true,
-      xfbml: true,
-      version: 'v3.3',
-    });
-  }
-
-  // setSponsorContent() {
-  //   this.apiService.getAPI(`terms`).subscribe((result) => {
-  //     if (typeof result !== 'undefined' && result.data !== null) {
-  //       result.data.forEach((brand: string) => {
-  //         if (brand !== '' && brand !== null) {
-  //           let brandRegex = new RegExp(brand);
-  //           if (brandRegex.test(this.details.content)) {
-  //             this.sponsorContent = true;
-  //             // this.publishDate = new Date(this.details.posted_on.replace(/-/g, '/'));
-  //           }
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-  isVideo(item: any) {
-    return this.commonService.isVideo(item);
-  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();

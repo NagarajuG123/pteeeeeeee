@@ -58,8 +58,8 @@
           <a href="{{ commonService.readMore(item) }}">
             <img
               appYoutubeImage
-              width="257"
-              height="138"
+              width="292.82"
+              height="157.24"
               data-src="{{ item.media | defaultImage: 257:138 }}"
               alt="monthly-cover"
               class="card-img-top lazyload"
@@ -74,7 +74,7 @@
                 >{{ item.title }}</a
               >
             </h6>
-            <span class="">By {{ item.author.name }}</span>
+            <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
             <p class="card-text mb-1">
               <a href="{{ commonService.readMore(item) }}" class="text-black">{{
                 item?.short_description

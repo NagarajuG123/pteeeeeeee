@@ -57,7 +57,7 @@
     <!-- main header section Start -->
     <main class="container">
       <div class="row g-0 align-items-center">
-        <div class="col-10 col-md-auto d-flex position-relative leftMenuItem">
+        <div class="col col-md-auto d-flex position-relative leftMenuItem">
           <button
             class="menuBtn me-3"
             type="button"
@@ -160,6 +160,7 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
                     >{{ item.name }}
                   </a>
                 </li>
@@ -179,6 +180,7 @@
                       text-capitalize
                     "
                     routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
                     >{{ item.title }}
                   </a>
                 </li>
@@ -188,21 +190,31 @@
               <hr />
 
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-                <a routerLink="{{ menu.url }}">{{ menu.title }}</a>
+                <a
+                  routerLink="{{ menu.url }}"
+                  (click)="commonService.toggle()"
+                  >{{ menu.title }}</a
+                >
               </h3>
             </li>
             <li>
               <hr />
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a *ngIf="!menu.fragment" routerLink="{{ menu.url }}">{{
-                  menu.title
-                }}</a>
                 <a
-                  *ngIf="menu.fragment"
+                  *ngIf="!menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
-                  [fragment]="menu.fragment"
                   >{{ menu.title }}</a
                 >
+                <a
+                  *ngIf="menu.fragment && menu.title != 'Login'"
+                  routerLink="{{ menu.url }}"
+                  [fragment]="menu.fragment"
+                  (click)="commonService.toggle()"
+                  >{{ menu.title }}</a
+                >
+                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">{{
+                  menu.title
+                }}</a>
               </h3>
             </li>
             <li>
@@ -254,10 +266,16 @@
             </li>
             <li>
               <h3>
-                <a routerLink="/"> Return to Main Site </a>
+                <a routerLink="/" (click)="commonService.toggle()">
+                  Return to Main Site
+                </a>
               </h3>
               <h3>
-                <a routerLink="/{{ brandSlug }}">{{ brandTitle }}</a>
+                <a
+                  routerLink="/{{ brandSlug }}"
+                  (click)="commonService.toggle()"
+                  >{{ brandTitle }}</a
+                >
               </h3>
               <ul class="mb-2 ms-2">
                 <li class="ms-1">
@@ -318,7 +336,10 @@
             <li class="ms-1">
               <hr />
               <h3>
-                <a class="my-1" routerLink="/{{ brandSlug }}"
+                <a
+                  class="my-1"
+                  routerLink="/{{ brandSlug }}"
+                  (click)="commonService.toggle()"
                   >{{ brandTitle }} Most read Stories</a
                 >
               </h3>
@@ -336,6 +357,7 @@
                       text-capitalize
                     "
                     [routerLink]="commonService.readMore(story)"
+                    (click)="commonService.toggle()"
                     target="_blank"
                     >{{ story.title }}
                   </a>
@@ -349,7 +371,9 @@
               </h3>
               <hr class="mb-2" />
               <h3 *ngIf="header?.sidebar?.about">
-                <a routerLink="/{{ header?.sidebar?.about }}"
+                <a
+                  routerLink="/{{ header?.sidebar?.about }}"
+                  (click)="commonService.toggle()"
                   >About
                   <span class="text-capitalize">{{ brandTitle }}</span></a
                 >
@@ -359,6 +383,7 @@
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#contactModal"
+                  (click)="commonService.toggle()"
                   >Contact
 
                   <span class="text-capitalize">{{ brandTitle }}</span></a
@@ -424,12 +449,14 @@
         <!-- Center menu link -->
         <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
           <ul class="center-menu nav justify-content-center">
-            <li
-              class="nav-item px-2 menus"
-              *ngFor="let menu of header?.menus"
-            >
+            <li class="nav-item px-2 menus" *ngFor="let menu of header?.menus">
               <a [routerLink]="menu.url" class="d-flex align-items-center"
                 >{{ menu.title }}
+              </a>
+            </li>
+            <li class="nav-item px-2 subscribeMenu">
+              <a routerLink="/subscribe" class="d-flex align-items-center"
+                >Subscribe
               </a>
             </li>
             <li
@@ -505,8 +532,8 @@
               data-bs-target="#searchModal"
               ><img
                 data-src="assets/img/search.svg"
-                height="15"
-                width="15"
+                height="18"
+                width="18"
                 alt="search"
                 class="lazyload"
             /></a>
@@ -618,7 +645,7 @@
                       />
                       <div class="card-body">
                         <p class="card-text mb-1 text-black text-capitalize">
-                          {{ commonService.formatTitle(list.title) }}
+                          {{ list.title }}
                         </p>
                       </div>
                     </a>
@@ -704,7 +731,8 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               />
-              <select required
+              <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
@@ -716,7 +744,9 @@
                     formControlsValues[fields.key].errors?.required
                 }"
               >
-              <option value="" disabled selected hidden>{{ fields.title }}*</option>
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>
@@ -752,6 +782,20 @@
       </div>
     </div>
 
+    <!-- Thanks -->
+    <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="close text-end"
+            (click)="closeThanksModal('thanksModal')"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- Contact Modal -->
     <div
       *ngIf="isBrowser && isContact && contactFields"
@@ -806,7 +850,8 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               ></textarea>
-              <select required
+              <select
+                required
                 *ngIf="fields.type === 'dropdown'"
                 [formControlName]="fields.key"
                 [id]="fields.key"
@@ -818,7 +863,9 @@
                     formControlsContactValues[fields.key].errors?.required
                 }"
               >
-              <option value="" disabled selected hidden>{{ fields.title }}*</option>
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
                 <option *ngFor="let value of fields.enum" value="{{ value }}">
                   <span>{{ value }}</span>
                 </option>

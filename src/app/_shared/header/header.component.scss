@@ -27,6 +27,12 @@ header {
   }
   main {
     height: 72px;
+    @include mobile-landscape1 {
+      height: 51px;
+    }
+    @include mobile-portrait1 {
+      height: 51px;
+    }
     .leftMenuItem {
       @include mobile-landscape1 {
         width: 150px;
@@ -48,9 +54,23 @@ header {
       font-family: $roboto;
       font-weight: 500;
       font-size: 12.3421px;
+      @include mobile-landscape1 {
+        width: 55px;
+        height: 51px;
+      }
+      @include mobile-portrait1 {
+        width: 55px;
+        height: 51px;
+      }
       img {
         filter: brightness(10);
         margin-bottom: 8px;
+        @include mobile-landscape1 {
+          margin-bottom: 0px;
+        }
+        @include mobile-portrait1 {
+          margin-bottom: 0px;
+        }
       }
       small {
         line-height: 12px;
@@ -63,16 +83,27 @@ header {
       line-height: 128.69%;
       font-weight: bold;
       text-transform: uppercase;
-
+      > img {
+        @include mobile-landscape1 {
+          width: 36px;
+          height: 36px;
+        }
+        @include mobile-portrait1 {
+          width: 36px;
+          height: 36px;
+        }
+      }
       > div {
         font-family: $balinger;
         font-weight: 800;
         font-size: 17px;
         color: $dark-gray;
+        line-height: 21.88px;
         > small {
           font-family: $roboto;
           font-size: 8px;
           color: $light-gray-1;
+          line-height: 10px;
 
           > img {
             height: 8px;
@@ -106,6 +137,12 @@ header {
           display: none;
         }
       }
+      .subscribeMenu {
+        display: none;
+        @include mobile-landscape1 {
+          display: inline-block;
+        }
+      }
       .menus {
         @include tablet-landscape {
           display: none;
@@ -124,7 +161,9 @@ header {
         a {
           text-decoration: none;
           color: $dark-gray;
-          font-size: 14px;
+          font-size: 13px;
+          line-height: 16.73px;
+
           @include mobile-landscape1 {
             color: $red;
             font-size: 11px;
@@ -155,12 +194,12 @@ header {
         }
       }
       @include mobile-landscape1 {
-        flex-wrap: wrap-reverse;
-        width: 200px;
+        width: 230px;
+        text-transform: capitalize;
       }
       @include mobile-portrait1 {
-        flex-wrap: wrap-reverse;
         width: 150px;
+        text-transform: capitalize;
       }
     }
 
@@ -210,6 +249,11 @@ header {
         margin-top: 0.125rem;
         top: 100%;
         left: 0;
+        height: 600px;
+        overflow-x: auto;
+        @include desk-lg-below3 {
+          height: 550px;
+        }
       }
     }
 
@@ -282,7 +326,7 @@ header {
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
-  line-height: 12.69%;
+  line-height: 16.73px;
   color: $primary;
 }
 
@@ -471,7 +515,7 @@ header {
     }
     input {
       height: 50px;
-      color: $light_gray_8;
+      color: $black;
     }
     button {
       display: block;
@@ -569,16 +613,54 @@ img {
 .form-control {
   border: 1px solid $dark-gray;
 }
-select:invalid{
+select:invalid {
   color: $light_gray_8;
-
 }
-option{
-  color:$black;
+option {
+  color: $black;
 }
-.container{
-
+.container {
   @media screen and (max-width: 414px) {
     padding: 0;
+  }
+}
+.dropdown-menu-dark {
+  background-color: $dark-gray;
+}
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: $black;
+  text-shadow: 0 1px 0 $white;
+  opacity: 0.5;
+}
+button.close {
+  position: absolute;
+  right: 35px;
+  top: 22px;
+  color: $red;
+  font-size: 39px;
+  outline: 0;
+  opacity: 1;
+  @include desk-lg-below1 {
+    top: 10px;
+    right: 15px;
+  }
+}
+.thanks-modal {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 !important;
+  .modal-content {
+    background: url("/assets/img/thanks.png") no-repeat 0 0;
+    height: 234px;
+    width: 480px;
+    border: unset;
+    .close {
+      margin-right: 10px;
+      margin-top: 5px;
+      color: $white;
+    }
   }
 }

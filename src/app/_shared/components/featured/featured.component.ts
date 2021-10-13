@@ -30,6 +30,7 @@ export class FeaturedComponent implements OnInit {
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
+  brandInfoNews: Details[] = [];
   descriptionLimit = 100;
   descriptionLimitOptions = [
     { width: 1200, limit: 100 },
@@ -85,6 +86,15 @@ export class FeaturedComponent implements OnInit {
         this.isLoaded = true;
         this.commonService.isPageLoaded.next(true);
       });
+
+    if(this.slug !== '1851'){
+      this.apiService
+      .getAPI(`info?slug=${this.slug}`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+        this.brandInfoNews = response;
+      });
+    }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
@@ -129,5 +139,8 @@ export class FeaturedComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.setLimit(event);
+  }
+  isAwards() {
+    return this.slug === 'franchisedevelopmentawards' ? true : false;
   }
 }

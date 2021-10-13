@@ -31,7 +31,7 @@
               Special Feature
             </div>
             <a
-              routerLink="{{ commonService.readMore(specialFeature[0]) }}"
+              routerLink="/{{ commonService.readMore(specialFeature[0]) }}"
               fragment="dynamicPage"
               ><img
                 appYoutubeImage
@@ -58,12 +58,7 @@
               />
               <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
                 <h3>
-                  {{
-                    commonService.responsiveTextFormating(
-                      specialFeature[0].title,
-                      titleLimit
-                    )
-                  }}
+                  {{ specialFeature[0].title }}
                 </h3>
                 <p>
                   {{
@@ -98,7 +93,7 @@
               Special Feature
             </div>
             <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="featured"
               ><img
                 appYoutubeImage
@@ -132,9 +127,7 @@
                   p-2
                 "
               >
-                {{
-                  commonService.responsiveTextFormating(item.title, titleLimit)
-                }}
+                {{ item.title }}
               </div>
             </a>
           </div>

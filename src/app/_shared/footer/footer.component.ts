@@ -31,7 +31,7 @@ export class FooterComponent implements OnInit {
     faYoutube,
     faTwitter,
   ];
- 
+
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -79,5 +79,8 @@ export class FooterComponent implements OnInit {
       this.footer = results[0];
       this.brandContact = results[1].schema;
     });
+  }
+  isAwards() {
+    return this.brandSlug === 'franchisedevelopmentawards' ? true : false;
   }
 }

@@ -116,10 +116,10 @@ export class HeaderComponent implements OnInit {
     this.isShow = true;
     this.setSlug();
     this.commonService.isPageLoaded.subscribe((res) => {
-      if(res){
+      if (res) {
         this.isLoaded = true;
       }
-    })
+    });
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
@@ -222,6 +222,9 @@ export class HeaderComponent implements OnInit {
   closeModal() {
     this.searchCloseBtn.nativeElement.click();
   }
+  closeThanksModal(id) {
+    $(`#${id}`).hide();
+  }
   submitInquireForm(values: any) {
     this.submittedInquireForm = true;
     this.isSubmitted = true;
@@ -235,9 +238,9 @@ export class HeaderComponent implements OnInit {
         if (typeof result.data !== 'undefined') {
           $('#inquireModalClose').click();
           $('#thanksModal').show();
-          setTimeout(() => {
-            $('#thanksModal').hide();
-          }, 10000);
+          // setTimeout(() => {
+          //   $('#thanksModal').hide();
+          // }, 10000);
         } else {
           this.submitErrMsg = result.error.message;
           this.isSubmitFailed = true;

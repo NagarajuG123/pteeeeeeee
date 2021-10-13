@@ -30,7 +30,6 @@ export class InfoComponent implements OnInit {
   brandInfo: any = [];
   items: any;
   tab: any;
-  pdf: any;
   showToast: boolean = false;
   responseMessage: any;
   logo: string;
@@ -212,7 +211,7 @@ export class InfoComponent implements OnInit {
       .subscribe((res) => {
         $('#pdfModal').hide();
         if (res.success) {
-          window.open(this.pdf.media.url.replace('api.', ''), '_blank');
+          window.open(this.items.media.url.replace('api.', ''), '_blank');
         } else {
           this.emailSubValid = true;
           this.emailSubMessage = res.message;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subject } from 'rxjs';
@@ -9,6 +9,7 @@ import 'lazysizes';
 import * as $ from 'jquery';
 import { SwiperComponent } from "swiper/angular";
 import { SwiperOptions } from 'swiper';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-video',
@@ -27,6 +28,7 @@ export class VideoComponent implements OnInit {
   videoUrl: string;
   url: string;
   openVideoPlayer = false;
+  isBrowser: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   config: SwiperOptions = {
@@ -41,7 +43,8 @@ export class VideoComponent implements OnInit {
     }
   };
   @ViewChild('swiperRef', { static: false }) swiperRef?: SwiperComponent;
-  constructor(private state: TransferState, private apiService: ApiService) {}
+  constructor(private state: TransferState, private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object) {this.isBrowser = isPlatformBrowser(platformId);}
   customOptions: OwlOptions = {
     autoplay: false,
     loop: true,
@@ -81,11 +84,12 @@ export class VideoComponent implements OnInit {
     this.openVideoPlayer = true;
     this.url = url;
   }
-  ngAfterViewInit() {
-    $('.modal').on('hidden.bs.modal', function () {
-      $('#player').attr({
-        src: '',
+  ngAfterViewInit(){
+    if(this.isBrowser){
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
       });
-    });
+    }
   }
 }

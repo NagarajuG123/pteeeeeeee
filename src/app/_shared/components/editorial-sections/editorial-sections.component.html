@@ -71,7 +71,7 @@
           *ngFor="let list of items; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
-          <a routerLink="{{ commonService.readMore(list) }}">
+          <a routerLink="/{{ commonService.readMore(list) }}">
             <div class="items card border-0 rounded-0 h-100">
               <img
                 appYoutubeImage
@@ -95,11 +95,12 @@
                 loading="lazy"
               />
               <div class="card-body">
-                <h3 class="card-title text-uppercase fw-bold">
+                <h3 class="card-title fw-bold">
                   {{ list.title }}
                 </h3>
-
-                <small>By {{ list.author?.name }}</small>
+                <a href="#">
+                <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
+              </a>
               </div>
             </div>
           </a>

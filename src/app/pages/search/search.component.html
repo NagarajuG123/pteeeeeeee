@@ -1,10 +1,10 @@
-<div class="border-bg py-2 sidebar-blur">
+<div class="search-page sidebar-blur">
   <div class="container customContainer">
-    <div class="row">
+    <div class="row topblock">
       <div class="col-2">
         <img
           class="img-fluid lazyload"
-          data-src="assets/img/logo.png"
+          data-src="assets/img/logo1.png"
           width="195px"
           height="195px"
           loading="lazy"
@@ -20,7 +20,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search..."
+              placeholder="Search"
               [formControl]="searchForm.controls['searchInput']"
             />
             <button
@@ -49,7 +49,7 @@
               brand_id === 'room-1903'
             "
           >
-            VIEW SEARCH RESULTS
+            VIEW SEARCH FILTERS
           </h6>
           <div class="sort_main d-flex">
             <h6 class="primary-color">SORT BY:</h6>
@@ -162,10 +162,10 @@
     </div>
   </div>
 </div>
-<div class="gray-bg">
+<div class="gray-bg" [ngClass]="!recentPeoples.length ? 'd-none' : ''">
   <div class="row">
     <div
-      class="col-8 py-3 px-5 card-section"
+      class="col-8 py-3 card-section main-article"
       [ngClass]="
         brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
           ? ''
@@ -176,7 +176,7 @@
         <div class="row">
           <div
             class="col-sm-6 col-md-4 mb-2 card-group"
-            *ngFor="let item of recentPeoples | slice: 0:6; index as i"
+            *ngFor="let item of recentPeoples; index as i"
           >
             <div class="items card border-0 rounded-0 mt-4">
               <a href="{{ commonService.readMore(item) }}">
@@ -197,7 +197,7 @@
                     >{{ item.title }}</a
                   >
                 </h6>
-                <span class="">By {{ item.author.name }}</span>
+                <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
                 <p class="card-text mb-1">
                   <a
                     href="{{ commonService.readMore(item) }}"
@@ -240,7 +240,7 @@
                 >{{ item.title }}</a
               >
             </h6>
-            <span class="">By {{ item.author.name }}</span>
+            <span *ngIf="item.author != null">By {{ item.author.name }}</span>
             <p class="card-text mb-1">
               <a href="{{ commonService.readMore(item) }}" class="text-black">{{
                 item.short_description
@@ -258,6 +258,7 @@
         ? 'border-bg'
         : 'bg-white'
     "
+    *ngIf="recentPeoples.length > 3"
   >
     <div class="row">
       <div class="col-8">
@@ -280,7 +281,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4 bg-white"></div>
+      <div class="col-4 bg-white bottom-right"></div>
     </div>
   </div>
 </div>

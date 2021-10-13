@@ -51,11 +51,40 @@
    color: #243444;
    font-size: 17px;
   }
+  img,
+    span {
+      cursor: pointer;
+    }
 
   .brand-news{
     h5{
       border-bottom: 3px solid $red;
       width: 350px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 21.6px;
+      font-family: $balinger;
+    }
+    @media only screen and (min-device-width : 750px) and (max-device-width : 999px) {
+      max-width: 100%;
+      -webkit-flex: 0 0 100%;
+      padding-left:  100px !important;
+    } 
+  }
+  .search-page{
+    background-color: $border-color;
+    padding-top: 30px;
+    @include tablet-portrait{
+      overflow-x: hidden;
+      .topblock{
+        display: block;
+      }
+    }
+    h6{
+      font-family: $roboto;
+      font-size: 20px;
+      line-height: 25.74px;
+      font-weight: 500;
     }
   }
   .border-bg{
@@ -82,7 +111,10 @@
 .form-group {
     position: relative;
     margin: 0;
-    width: 65%;
+    width: 80%;
+    .form-control{
+      border: 1px solid $black;
+    }
 }
 .primary-color{
     color: $red;
@@ -120,10 +152,10 @@
     }
     input{
       font-size: 20px;
-      line-height: 62px;
-      color: #929496;
-      font-family: ProximaNova-Light;
-      font-weight: 400;
+      line-height: 25.74px;
+      color: $light_gray_8;
+      font-family: $roboto;
+      font-weight: 500;
       display: block;
       position: relative;
       background: #fff;
@@ -162,6 +194,20 @@
   input{
     display: none;
   }
+  input:checked + span{
+    background: url("/assets/img/checked.png") no-repeat left 1px;
+  }
+  h6,span{
+    font-family: $roboto;
+    font-size: 20px;
+    line-height: 25.74px;
+    font-weight: 500;
+  }
+  @include  tablet-portrait{
+   h6,span{
+     font-size: 12px;
+   }
+  }
 }
 .brandSearch{
   width: 100%;
@@ -169,5 +215,21 @@
   @include mobile-landscape1{
     width: 100%;
     padding-left: 50px !important;
+  }
+}
+.bottom-right{
+  @include  tablet-portrait{
+    display: none;
+  }
+}
+.main-article{
+  padding-left: 3rem !important;
+  @include tablet-portrait{
+    max-width: 100%;
+    -webkit-flex: 0 0 100%;
+  }
+  .row{
+    padding-left: 50px;
+    padding-right: 0;
   }
 }
