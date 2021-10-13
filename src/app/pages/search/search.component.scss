@@ -206,9 +206,23 @@
     font-weight: 500;
   }
   @include  tablet-portrait{
-   h6,span{
-     font-size: 12px;
-   }
+    h6,span{
+      font-size: 12px;
+    }
+  }
+  @include mobile-portrait{
+    h6{
+      -webkit-flex: 0 0 100%;
+      text-align: center;
+    }
+    ul{
+      display: block !important;
+      -webkit-flex-wrap: wrap;
+        li{
+          display: inline-block;
+          position: relative;
+        }
+    }
   }
 }
 .brandSearch{
