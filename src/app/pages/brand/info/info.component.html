@@ -115,6 +115,38 @@
               </div>
             </div>
             <div class="description">
+              <a
+                *ngIf="item?.media && item?.media?.type === 'image'"
+                href="#"
+                onclick="return false;"
+                class="d-block"
+              >
+                <figure>
+                  <img
+                    appYoutubeImage
+                    src="{{ item?.media | defaultImage: 796:0 }}"
+                    width="100%"
+                    height="796"
+                    alt="info-image"
+                  />
+                </figure>
+              </a>
+              <div
+                *ngIf="item?.media && item?.media?.type === 'video'"
+                class="d-block video-btn"
+              >
+                <iframe
+                  [src]="item?.media?.url | safeUrl"
+                  style="max-width: 100%; height: 400"
+                  height="400"
+                  width="100%"
+                  scrolling="no"
+                  frameborder="0"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowfullscreen
+                ></iframe>
+              </div>
               <p
                 *ngIf="item?.short_description"
                 [innerHTML]="item?.short_description"
