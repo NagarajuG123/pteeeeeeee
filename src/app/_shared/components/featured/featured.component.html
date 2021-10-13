@@ -17,23 +17,11 @@
               <img
                 appYoutubeImage
                 class="img-fluid lazyload"
-                width="216"
-                height="135"
-                data-src="{{ item.media | defaultImage: 1300:730 }}"
+                width="690"
+                height="386"
+                data-src="{{ item.media | defaultImage: 690:386 }}"
                 alt="featured"
                 loading="lazy"
-                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
-            {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
-                (max-width: 992px) 400px,
-                (max-width: 1200px) 238px,
-                300px'
-                }}"
               />
 
               <div
