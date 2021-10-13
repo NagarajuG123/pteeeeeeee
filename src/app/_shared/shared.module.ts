@@ -21,7 +21,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxCarouselModule } from 'ngx-light-carousel';
+// import { NgxCarouselModule } from 'ngx-light-carousel';
 
 // Modals Components
 
@@ -52,7 +52,7 @@ import { NgxCarouselModule } from 'ngx-light-carousel';
     FontAwesomeModule,
     ShareButtonModule,
     CarouselModule,
-    NgxCarouselModule,
+    // NgxCarouselModule,
   ],
   exports: [
     RouterModule,

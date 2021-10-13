@@ -1,3 +1,26 @@
+<swiper [config]="config" #swiperRef>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+  <div>
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="img-fluid" alt="">
+  </div>
+</swiper>
 <div class="c-video-section--wrapper" *ngIf="videoData">
   <div class="container customContainer">
     <div class="row">
@@ -19,44 +42,23 @@
     <div class="row">
       <div class="col-12">
         <div class="d-flex c-video-section--boxWrapper">
-          <div
-            class="c-video-section--box"
-            *ngFor="let item of videoData | slice: 0:2; index as i"
-          >
+          <div class="c-video-section--box" *ngFor="let item of videoData | slice: 0:2; index as i">
             <div class="position-relative main-image">
               <div class="badge tag position-absolute top-0 text-uppercase">
                 FEATURED Video
               </div>
-              <a
-                *ngIf="item?.media"
-                (click)="openVideoPlayer = true"
-                attr.data-src="{{ item.media.url }}"
-                data-bs-target="#videoModal"
-                data-bs-toggle="modal"
-                (click)="updateVideoUrl(item.media.url)"
-                href="#"
+              <a *ngIf="item?.media" (click)="openVideoPlayer = true" attr.data-src="{{ item.media.url }}"
+                data-bs-target="#videoModal" data-bs-toggle="modal" (click)="updateVideoUrl(item.media.url)" href="#"
                 class="
                   video-btn
                   c-video-section--playBtn
                   d-flex
                   justify-content-center
                   align-items-center
-                "
-              >
-                <img
-                  data-src="{{ item.media | defaultImage: 600:300 }}"
-                  class="img-fluid lazyload"
-                  alt="video"
-                  width="600"
-                  height="300"
-                  loading="lazy"
-                />
-                <img
-                  data-src="assets/img/play.png"
-                  alt="Play"
-                  class="img-fluid vide-play lazyload"
-                  loading="lazy"
-                />
+                ">
+                <img data-src="{{ item.media | defaultImage: 600:300 }}" class="img-fluid lazyload" alt="video"
+                  width="600" height="300" loading="lazy" />
+                <img data-src="assets/img/play.png" alt="Play" class="img-fluid vide-play lazyload" loading="lazy" />
               </a>
               <!-- </div> -->
               <div class="c-video-section--title">
@@ -115,7 +117,7 @@
           </ng-template>
         </owl-carousel-o> -->
         <h2 style="text-align: center;">Standard Multislide</h2>
-        <ngx-light-carousel style="max-width: 800px; margin-bottom: 100px; display: block;" [options]="options2"
+        <!-- <ngx-light-carousel style="max-width: 800px; margin-bottom: 100px; display: block;" [options]="options2"
         [data]="products2" class="wrapper c-accent">
         <section ngx-light-carousel-container class="content">
           <article class=" cursor-pointer" ngx-light-carousel-item *ngFor="let product of products2; let i = index">
@@ -178,36 +180,19 @@
         <ng-template #carouselProgress let-progress>
           <div class="progress"></div>
         </ng-template>
-      </ngx-light-carousel>
+      </ngx-light-carousel> -->
       </div>
     </div>
   </div>
   <!-- modal -->
-  <div
-    class="modal fade"
-    id="videoModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    (click)="openVideoPlayer = true"
-  >
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    (click)="openVideoPlayer = true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-body">
-          <button
-            type="button"
-            class="btn-close btn-close-black"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-            (click)="openVideoPlayer = false"
-          ></button>
-          <iframe
-            [src]="url | safeUrl"
-            id="player"
-            frameborder="0"
-            width="100%"
-            height="496px"
-            allowfullscreen
-          >
+          <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"
+            (click)="openVideoPlayer = false"></button>
+          <iframe [src]="url | safeUrl" id="player" frameborder="0" width="100%" height="496px" allowfullscreen>
           </iframe>
         </div>
       </div>
