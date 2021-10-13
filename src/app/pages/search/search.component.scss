@@ -86,6 +86,9 @@
       line-height: 25.74px;
       font-weight: 500;
     }
+    .form-group{
+      width: 80% !important;
+    }
   }
   .border-bg{
     background-color: $border-color;
@@ -111,7 +114,6 @@
 .form-group {
     position: relative;
     margin: 0;
-    width: 80%;
     .form-control{
       border: 1px solid $black;
     }
@@ -141,13 +143,13 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
   right: 0;
-  margin: 0 auto;
   form{
     width: 667px!important;
     padding: 0 16px 0 7px;
     .form-group{
       margin: 0;
       position: relative;
+      width: 100% !important;
       -webkit-box-shadow: 0 3px 12px rgb(0 0 0 / 38%);
     }
     input{
