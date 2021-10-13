@@ -145,29 +145,19 @@
                 loading="lazy"
               />
               <div class="row download-btn">
-                <a
+                <button
                   *ngIf="items?.email_popup"
                   data-bs-toggle="modal"
                   data-bs-target="#pdfModal"
-                  href="#"
+                  type="submit"
+                  class="btn text-center submit-btn text-white rounded-0 btn-sm"
                 >
-                  <button
-                    type="submit"
-                    class="
-                      btn
-                      text-center
-                      submit-btn
-                      text-white
-                      rounded-0
-                      btn-sm
-                    "
-                  >
-                    Download PDF
-                  </button>
-                </a>
+                  Download PDF
+                </button>
                 <a
                   *ngIf="!items?.email_popup"
                   href="{{ changeDownPDFUrl(items?.media?.url) }}"
+                  target="_blank"
                 >
                   <button
                     type="submit"
