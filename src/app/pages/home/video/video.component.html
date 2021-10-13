@@ -1,4 +1,4 @@
-<swiper [config]="config" #swiperRef>
+<!-- <swiper [config]="config" #swiperRef>
   <ng-container *ngFor="let item of videoData | slice: 2:10;">
     <div>
       <div class="c-video-section--box">
@@ -39,7 +39,7 @@
     </div>
   </ng-container>
   
-</swiper>
+</swiper> -->
 <div class="c-video-section--wrapper" *ngIf="videoData">
   <div class="container customContainer">
     <div class="row">
@@ -200,6 +200,48 @@
           <div class="progress"></div>
         </ng-template>
       </ngx-light-carousel> -->
+      <swiper [config]="config" #swiperRef>
+        <ng-container *ngFor="let item of videoData | slice: 2:10;">
+          <div>
+            <div class="c-video-section--box">
+              <a
+                *ngIf="item?.media"
+                attr.data-src="{{ item.media.url }}"
+                data-bs-target="#videoModal"
+                data-bs-toggle="modal"
+                (click)="updateVideoUrl(item.media.url)"
+                href="#"
+                class="
+                  video-btn
+                  c-video-section--playBtn
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <img
+                  data-src="{{ item.media | defaultImage: 300:150 }}"
+                  class="img-fluid lazyload"
+                  width="300"
+                  height="150"
+                  alt="video"
+                  loading="lazy"
+                />
+                <img
+                  data-src="assets/img/play.png"
+                  alt="Play"
+                  class="img-fluid vide-play lazyload"
+                  loading="lazy"
+                />
+              </a>
+              <div class="c-video-section--title">
+                {{ item.title }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        
+      </swiper>
       </div>
     </div>
   </div>
