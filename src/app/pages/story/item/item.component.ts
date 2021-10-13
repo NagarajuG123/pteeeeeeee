@@ -209,11 +209,11 @@ export class ItemComponent implements OnInit {
     }
   }
   ngAfterViewInit() {
-    $('.modal').on('hidden.bs.modal', function(){
-      $('.modal').hide();
-      $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
-    });
     if (this.isBrowser) {
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+      });
       $('.tooltiptext').click(function (e) {
         e.preventDefault();
       });

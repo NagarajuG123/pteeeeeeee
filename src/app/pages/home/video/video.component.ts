@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subject } from 'rxjs';
@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import 'lazysizes';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-video',
@@ -17,9 +18,11 @@ export class VideoComponent implements OnInit {
   videoUrl: string;
   url: string;
   openVideoPlayer = false;
+  isBrowser: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  constructor(private state: TransferState, private apiService: ApiService) {}
+  constructor(private state: TransferState, private apiService: ApiService,
+    @Inject(PLATFORM_ID) platformId: Object) {this.isBrowser = isPlatformBrowser(platformId);}
   customOptions: OwlOptions = {
     autoplay: false,
     loop: true,
@@ -60,9 +63,11 @@ export class VideoComponent implements OnInit {
     this.url = url;
   }
   ngAfterViewInit(){
-    $('.modal').on('hidden.bs.modal', function(){
-      $('.modal').hide();
-      $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
-    });
+    if(this.isBrowser){
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+      });
+    }
   }
 }
