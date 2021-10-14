@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ApiService } from 'src/app/_core/services/api.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,14 +15,14 @@ export class HomeComponent implements OnInit {
   newsletterForm!: FormGroup;
   isSubmitted: boolean = false;
   isLoaded: Boolean = false;
+  isLoad: boolean = false;
   submitErrMsg = '';
   successMsg = '';
   constructor(
     private metaService: MetaService,
     private apiService: ApiService,
     fb: FormBuilder,
-    private commonService: CommonService,
-    private toastr: ToastrService
+    private commonService: CommonService
   ) {
     this.newsletterForm = fb.group({
       name: ['', Validators.compose([Validators.required])],
@@ -36,27 +31,21 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getMeta();
-    this.getPublication();
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const meta = this.apiService.getAPI(`1851/meta`);
+    forkJoin([publication, meta]).subscribe((results) => {
+      this.publication = results[0];
+      this.metaService.setSeo(results[1].data);
+      this.isLoad = true;
+    });
+
     this.commonService.isPageLoaded.subscribe((res) => {
-      if(res){
+      if (res) {
         this.isLoaded = true;
       }
-    })
-  }
-  //Publication Instance
-  getPublication() {
-    this.apiService
-      .getAPI(`1851/publication-instance`)
-      .subscribe((response) => {
-        this.publication = response;
-      });
-  }
-  getMeta() {
-    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
-      this.metaService.setSeo(response.data);
     });
   }
+
   onNewsletterSubmit(newsletterForm: FormGroup) {
     this.isSubmitted = true;
 

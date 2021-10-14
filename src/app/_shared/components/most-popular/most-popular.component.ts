@@ -25,6 +25,7 @@ export class MostPopularComponent implements OnInit {
   data: Details[] = [];
   customOptions: OwlOptions = {};
   faAngleRight = faAngleRight;
+  isLoaded: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -49,6 +50,7 @@ export class MostPopularComponent implements OnInit {
       .subscribe((response) => {
         if (response.data.length) {
           this.data = response.data;
+          this.isLoaded = true;
         }
       });
   }

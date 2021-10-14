@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
   inquireData: any;
   submitErrMsg: string = '';
   ga: any;
-
+  isLoaded: boolean = false;
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -86,7 +86,6 @@ export class HeaderComponent implements OnInit {
   downloadPdfUrl: any;
   isPdfEmail: any = false;
   defaultBrandLogo: string;
-  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -115,11 +114,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isShow = true;
     this.setSlug();
-    this.commonService.isPageLoaded.subscribe((res) => {
-      if (res) {
-        this.isLoaded = true;
-      }
-    });
+
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
@@ -174,6 +169,7 @@ export class HeaderComponent implements OnInit {
       this.news = results[1].data;
       this.inquireData = results[2].schema;
       this.publication = results[3];
+      this.isLoaded = true;
 
       this.setFavicon();
       if (this.brandSlug != '1851') {
