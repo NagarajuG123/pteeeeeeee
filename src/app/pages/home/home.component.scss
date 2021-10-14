@@ -1,23 +1,26 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/variables.scss";
+
 .signUp {
-   width: 1440px !important;
   h2 {
-    font-family:$balinger !important;
+    font-family: $balinger !important;
     width: 407px;
     font-size: 30px;
     line-height: 36px;
   }
+
   input {
-    font-family:$proxiRegular;
+    font-family: $proxiRegular;
     font-size: 13px;
     line-height: 16px;
     height: 37px;
     color: $dark-gray;
+
     &::placeholder {
       color: $dark-gray;
     }
   }
+
   .joinBtn {
     min-width: 189px;
     background: $dark-gray;
@@ -28,13 +31,16 @@
     height: 38px;
   }
 }
+
 .success {
   color: $white;
 }
+
 #hideAfter5Sec {
   animation: hideAnimation 0s ease-in 5s;
   animation-fill-mode: forwards;
 }
+
 @keyframes hideAnimation {
   to {
     visibility: hidden;
