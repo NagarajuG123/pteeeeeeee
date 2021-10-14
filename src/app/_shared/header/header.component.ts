@@ -419,7 +419,7 @@ export class HeaderComponent implements OnInit {
   }
   ngAfterViewInit() {
     // For sticky header
-    if (this.isBrowser && this.isShow) {
+    if (this.isBrowser && this.isShow && this.isLoaded) {
       const distance = $('header').offset().top,
         $window = $(window);
       $(window).scroll(function () {
