@@ -85,6 +85,8 @@
         margin-top: 0;
         font-size: 20px;
         font-weight: bold;
+        line-height: 25.74px;
+        font-family: $balinger;
         @include media("<md") {
           font-size: 16px;
         }
@@ -92,8 +94,9 @@
       .c-card-box--title {
         font-size: 44px;
         font-weight: bold;
-        color: $black_1;
+        color: $dark-gray;
         text-transform: capitalize;
+        font-family:$balinger;
         @include media("<md") {
           font-size: 30px;
         }
@@ -102,7 +105,9 @@
         max-width: 800px;
         font-weight: 600;
         font-size: 18px;
-        color: $black_1;
+        color: $dark-gray;
+        font-family: $roboto;
+        line-height: 23px;
         @include media("<md") {
           font-size: 14px;
         }
@@ -202,7 +207,7 @@
   h4 {
     font-family: $balinger;
     font-size: 35px;
-    line-height: 22px;
+    line-height: 42px;
     border-bottom: 2px solid $red;
   }
   .items {
@@ -211,20 +216,22 @@
     .card-body {
       h6,
       h6 a {
-        font-size: 18px;
+        font-weight: bold;
+        font-size: 20.5091px;
+        line-height: 25px;
         font-family: $balinger;
       }
       span,
       span a {
         font-weight: 500;
-        font-size: 10px;
-        line-height: 12px;
+        font-size: 11.39px;
+        line-height:13.35px;
         color: $dark-gray;
       }
       p,
       p a {
-        font-size: 10px;
-        line-height: 141.19%;
+        font-size:11.39px;
+        line-height : 16.09px;
       }
     }
   }
