@@ -17,23 +17,11 @@
               <img
                 appYoutubeImage
                 class="img-fluid lazyload"
-                width="216"
-                height="135"
-                data-src="{{ item.media | defaultImage: 1300:730 }}"
+                width="690"
+                height="386"
+                data-src="{{ item.media | defaultImage: 690:386 }}"
                 alt="featured"
                 loading="lazy"
-                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
-            {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
-                (max-width: 992px) 400px,
-                (max-width: 1200px) 238px,
-                300px'
-                }}"
               />
 
               <div
@@ -44,7 +32,7 @@
                   fw-bold
                   w-100
                 "
-                [ngClass]="i === 0 ? 'p-3' : 'p-2'"
+                [ngClass]="i === 0 ? '' : 'p-2'"
               >
                 {{ item.title }}
               </div>
@@ -67,7 +55,7 @@
       <ul class="brand-list noScrollBar list-group">
         <li
           *ngFor="let item of brandNews; index as i"
-          class="pb-1"
+          class="pb-2"
           [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
         >
           <h3 class="m-0">
@@ -112,7 +100,7 @@
         <li
           *ngFor="let item of news; index as i"
           [ngClass]="
-            i === news.length - 1 ? 'pb-0 pb-md-0' : 'pb-2 pb-md-3 mb-2 mb-md-3'
+            i === news.length - 1 ? 'pb-0 pt-1 pb-md-0' : 'pb-2 pt-1 pb-md-3 mb-2 mb-md-3'
           "
         >
           <div class="newsImage me-2 me-md-3">
@@ -178,7 +166,6 @@
               <div
                 class="
                   over-layer
-                  position-absolute
                   text-capitalize
                   bottom-0
                   fw-bold

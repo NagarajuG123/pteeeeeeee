@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
   &.show {
-    position: fixed;
+    position: absolute;
   }
 }
