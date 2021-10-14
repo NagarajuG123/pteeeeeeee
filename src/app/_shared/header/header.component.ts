@@ -431,8 +431,10 @@ export class HeaderComponent implements OnInit {
           $('body').addClass('sticky');
           const ht = $('header').innerHeight();
           $('.empty').css({ 'min-height': ht });
+          $('.banner').css({ 'margin-top': ht });
         } else {
           $('body').removeClass('sticky');
+          $('.banner').css({ 'margin-top': '0' });
         }
       });
     }
