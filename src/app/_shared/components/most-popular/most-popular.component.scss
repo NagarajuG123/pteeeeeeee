@@ -25,10 +25,11 @@
       margin-bottom: -31px;
     }
     .slide-body {
-      min-height: 130px;
+      min-height: 126px;
       padding-top: 31px;
       padding-bottom: 31px;
       width:380px;
+      max-height: 126px;
       > span {
         width: 58px;
         height: 19px;
@@ -54,6 +55,7 @@
       font-family: $balinger;
       font-size: 15px;
       line-height: 18px;
+      width: 380px;
     }
   }
   .subSlideItem {
@@ -76,8 +78,8 @@
           line-height: 12px;
         }
         > p {
-          font-weight: 500;
-          font-size: 13px;
+          font-weight: 400;
+          font-size: 14px;
           line-height:17px;
         }
       }
