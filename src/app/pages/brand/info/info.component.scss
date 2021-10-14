@@ -359,73 +359,68 @@
   height: 60px;
   margin: 0 -12px;
   margin-bottom: 37px;
-  .prev {
+  .prev,
+  .next {
     img {
-      width: auto;
+      width: 20px;
+      height: 39px;
       cursor: pointer;
     }
   }
 }
-.primary-bg {
-  background-color: $red;
-}
-.customContainer {
-  max-width: 1210px !important;
-}
-.position-relative {
-  position: relative !important;
-}
+
 .innerContent {
   padding: 0 53px;
   border-bottom: 1px solid #c4c4c4;
-}
-.customContainer {
-  .innerContent {
-    li {
-      background-color: $white;
-      height: 60px;
-      padding: 0;
-      @include media("<lg") {
-        flex: 1 0 0%;
-      }
-      span {
-        min-width: 132px;
-        height: 100%;
-        color: $light-gray-1;
-        cursor: pointer;
-        font-family: $proxiRegular;
-        font-weight: bold;
-        font-size: 18px;
-        @include desk-lg-below2 {
-          font-size: 13px;
-        }
-        &.active,
-        &:hover {
-          color: $red;
-          &::after {
-            content: "";
-            height: 7px;
-            position: absolute;
-            bottom: -20px;
-            width: 7px;
-            border-width: 16px 16px 0 16px;
-            border-style: solid;
-            border-color: $red transparent transparent transparent;
-          }
-          &::before {
-            content: "";
-            height: 7px;
-            position: absolute;
-            bottom: -5px;
-            width: 100%;
-            background-color: $red;
-          }
-        }
-      }
-      border-color: $light-gray-1;
+  li {
+    background-color: $white;
+    height: 60px;
+    padding: 0;
+    @include media("<lg") {
+      flex: 1 0 0%;
     }
+    .tabTitle {
+      text-transform: capitalize;
+    }
+    span {
+      min-width: 132px;
+      height: 100%;
+      color: $light-gray-1;
+      cursor: pointer;
+      font-family: $proxiRegular;
+      font-weight: bold;
+      font-size: 20px;
+
+      @include desk-lg-below2 {
+        font-size: 13px;
+      }
+      &.active,
+      &:hover {
+        color: $red;
+        &::after {
+          content: "";
+          height: 7px;
+          position: absolute;
+          bottom: -20px;
+          width: 7px;
+          border-width: 16px 16px 0 16px;
+          border-style: solid;
+          border-color: $red transparent transparent transparent;
+        }
+        &::before {
+          content: "";
+          height: 7px;
+          position: absolute;
+          bottom: -5px;
+          width: 100%;
+          background-color: $red;
+        }
+      }
+    }
+    border-color: $light-gray-1;
   }
 }
+
 .title-highlighter {
   color: $white;
   background-color: $red;
