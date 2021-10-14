@@ -6,7 +6,7 @@
   margin-left: auto;
 }
 .c-link--btn {
-  color: $red_1;
+  color:$dark_red_2;
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
@@ -110,7 +110,7 @@
     }
     .c-card-box--contentGroup {
       .c-card-box--subTitle {
-        color: $red_1;
+        color: $dark_red_2;
         margin-top: 0;
         font-size: 20px;
         font-weight: bold;
@@ -224,7 +224,7 @@
       }
       .c-card-box--itemTitle {
         padding-top: 6px;
-        color: $red_1;
+        color:$dark_red_2;
         font-weight: 600;
         font-size: 15px;
         -webkit-line-clamp: 1;

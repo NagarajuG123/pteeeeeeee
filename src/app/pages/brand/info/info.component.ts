@@ -56,7 +56,9 @@ export class InfoComponent implements OnInit {
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
   emailSubValid: boolean = false;
+  isSubmitFailed: boolean = false;
   submittedInquireForm: boolean = false;
+  submitErrMsg: string = '';
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
@@ -178,19 +180,16 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-          this.showToast = true;
-          this.responseMessage = { status: true, message: result.data.message };
-          this.submittedInquireForm = false;
-          this.inquireForm.reset();
-          setTimeout(() => {
-            this.showToast = false;
-          }, 4000);
-        } else {
-          this.responseMessage = {
-            status: false,
-            message: result.data.message,
-          };
-        }
+        $('#inquireModalClose').click();
+        $('#thanksModal').show();
+        setTimeout(() => {
+          $('#thanksModal').hide();
+        },10000);
+        this.inquireForm.reset();
+      } else {
+        this.submitErrMsg = result.error.message;
+        this.isSubmitFailed = true;
+      }
         this.submittedInquireForm = false;
       });
   }
@@ -348,6 +347,9 @@ export class InfoComponent implements OnInit {
           this.inquireForm = this.fb.group(group);
         }
       });
+  }
+  closeModal(id) {
+    $(`#${id}`).hide();
   }
   getFormType(item: any) {
     let type = 'text';
@@ -673,9 +675,11 @@ export class InfoComponent implements OnInit {
     selection.each((d) => {});
   }
   ngAfterViewInit(){
-    $('#pdf-btn').click(function () {
-      $('body').removeClass('modal-open');
-      $('.modal-backdrop').remove();
-    });
+    if(this.isBrowser){
+      $('#pdf-btn').click(function () {
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+      });
+    }
   }
 }

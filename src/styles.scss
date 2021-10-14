@@ -63,9 +63,7 @@ ul {
 .cursor {
   cursor: pointer;
 }
-.modal-backdrop {
-  z-index: -1 !important;
-}
+
 .sticky {
   header {
     position: fixed;
@@ -85,19 +83,6 @@ ul {
   text-decoration: underline !important;
 }
 
-.desktop-only {
-  display: none !important;
-  @media only screen and (min-width: 600px) {
-    display: block !important;
-  }
-}
-
-.mobile-only {
-  display: none !important;
-  @media only screen and (max-width: 599px) {
-    display: block !important;
-  }
-}
 .social-links {
   .st-btn {
     background-color: $dark_red_2 !important;
@@ -118,18 +103,13 @@ ul {
     opacity: 0.6;
   }
 }
-.modal {
-  @include desk-lg-below3 {
-    left: 30px;
-    top: 60px;
-  }
-}
-.details{
-  .description{
-    figure{
+
+.details {
+  .description {
+    figure {
       margin: 0 0 30px;
       line-height: 1.5;
-      img{
+      img {
         display: block;
         width: 100%;
       }

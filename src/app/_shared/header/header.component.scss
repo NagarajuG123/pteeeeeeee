@@ -657,10 +657,12 @@ button.close {
     height: 234px;
     width: 480px;
     border: unset;
-    .close {
+    button.close {
       margin-right: 10px;
       margin-top: 5px;
       color: $white;
+      background: none;
+      border: none;
     }
   }
 }

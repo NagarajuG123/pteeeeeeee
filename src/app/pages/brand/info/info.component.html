@@ -177,29 +177,19 @@
                 loading="lazy"
               />
               <div class="row download-btn">
-                <a
+                <button
                   *ngIf="items?.email_popup"
                   data-bs-toggle="modal"
                   data-bs-target="#pdfModal"
-                  href="#"
+                  type="submit"
+                  class="btn text-center submit-btn text-white rounded-0 btn-sm"
                 >
-                  <button
-                    type="submit"
-                    class="
-                      btn
-                      text-center
-                      submit-btn
-                      text-white
-                      rounded-0
-                      btn-sm
-                    "
-                  >
-                    Download PDF
-                  </button>
-                </a>
+                  Download PDF
+                </button>
                 <a
                   *ngIf="!items?.email_popup"
                   href="{{ changeDownPDFUrl(items?.media?.url) }}"
+                  target="_blank"
                 >
                   <button
                     type="submit"
@@ -485,10 +475,27 @@
               Next
             </button>
           </div>
+          <br />
+          <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+            submitErrMsg
+          }}</span>
         </form>
- -->
-    <!-- Recent Features -->
-    <!-- <div class="recent-feature-article-section" *ngIf="!isMarket">
+ <!-- Thanks -->
+ <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button
+        type="button"
+        class="close text-right"
+        (click)="closeModal('thanksModal')"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+</div>
+        <!-- Recent Features -->
+        <!-- <div class="recent-feature-article-section" *ngIf="!isMarket">
           <div class="row">
             <div class="col-md-12">
               <div class="title-tag">RECENT FEATURES</div>
@@ -501,7 +508,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>  -->
 
     <!-- Featured Article Section -->
     <!-- <div class="divider-main" *ngIf="!isMarket"></div>
