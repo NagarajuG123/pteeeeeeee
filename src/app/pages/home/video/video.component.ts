@@ -35,7 +35,7 @@ export class VideoComponent implements OnInit {
     spaceBetween: 5,
     navigation: true,
     pagination: { clickable: true },
-    scrollbar: { draggable: true },
+    scrollbar: false,
     breakpoints: {
       0: { slidesPerView: 1 },
       640: { slidesPerView: 3 },
@@ -91,5 +91,10 @@ export class VideoComponent implements OnInit {
         $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
       });
     }
+    var sliderContentWrapper = document.querySelector(".swiper-wrapper");
+    var wrapper = document.createElement('div');
+    wrapper.classList.add("swiper-content--wrapper");
+    sliderContentWrapper.parentNode.insertBefore(wrapper, sliderContentWrapper);
+    wrapper.appendChild(sliderContentWrapper);
   }
 }

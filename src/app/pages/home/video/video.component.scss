@@ -10,7 +10,7 @@
     font-size: 35px;
     font-weight: 700;
     font-family: $balinger;
-    color:$dark-gray;
+    color: $dark-gray;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
@@ -31,7 +31,7 @@
   @include media("<lg") {
     display: none !important;
   }
-  .c-video-section--box {    
+  .c-video-section--box {
     flex: 1 1 50%;
     max-width: 50%;
   }
@@ -110,12 +110,12 @@
 
 .tag {
   background: $dark_red_2;
-  font-family:$balinger;
+  font-family: $balinger;
   font-weight: bold;
   font-size: 10px;
   box-sizing: border-box;
   z-index: 1;
-  border-radius:unset;
+  border-radius: unset;
 }
 
 .main-image {
@@ -135,7 +135,7 @@
       width: 75.34px;
       border-radius: 12px;
     }
-}
+  }
 }
 .c-video-slider--wrapper {
   margin-top: 40px;
@@ -156,6 +156,11 @@
 }
 
 ::ng-deep {
+  @include media("<md") {
+    :root {
+      --swiper-navigation-size: 30px !important;
+    }
+  }
   .c-video-slider--wrapper {
     @include media("<xxl") {
       padding: 0 60px;
@@ -189,6 +194,28 @@
             }
           }
         }
+      }
+    }
+
+    .swiper-container {
+      overflow: visible;
+    }
+    .swiper-content--wrapper {
+      overflow: hidden;
+    }
+
+    .swiper-button-prev {
+      left: -60px;
+      color: $dark-gray;
+      @include media("<md") {
+        left: -35px;
+      }
+    }
+    .swiper-button-next {
+      right: -60px;
+      color: $dark-gray;
+      @include media("<md") {
+        right: -35px;
       }
     }
   }
