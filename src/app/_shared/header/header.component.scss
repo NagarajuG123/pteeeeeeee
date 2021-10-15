@@ -14,7 +14,7 @@ header {
     background-color: $dark-gray;
     color: $light-gray;
     > div {
-      font-family: $balinger;
+      font-family: $balingerBold;
     }
     li {
       > a {
@@ -100,11 +100,14 @@ header {
         color: $dark-gray;
         line-height: 21.88px;
         > small {
-          font-family: $roboto;
+          font-family: $robotoBold;
+          font-weight: 700;
           font-size: 8px;
           color: $light-gray-1;
           line-height: 10px;
-
+          >a{
+            color: $light_gray_8;
+          }
           > img {
             height: 8px;
             width: 8px;
@@ -118,7 +121,7 @@ header {
 
     // center menu style
     .center-menu {
-      font-family: $roboto;
+      font-family: $robotoBold;
       text-transform: uppercase;
       color: $dark-gray;
       font-weight: bold;
@@ -322,9 +325,8 @@ header {
   }
 }
 .follow {
-  font-family: $balinger;
+  font-family: $balingerBold;
   font-style: normal;
-  font-weight: 700;
   font-size: 13px;
   line-height: 16.73px;
   color: $primary;
