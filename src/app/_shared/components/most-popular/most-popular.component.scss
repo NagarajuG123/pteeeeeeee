@@ -27,7 +27,7 @@
       min-height: 126px;
       padding-top: 31px;
       padding-bottom: 31px;
-      width:380px;
+      width: 380px;
       max-height: 126px;
       > span {
         width: 58px;
@@ -36,7 +36,7 @@
         font-weight: 700;
         font-size: 10px;
         line-height: 10px;
-        font-family:$robotoBold;
+        font-family: $robotoBold;
       }
       > h2 {
         > span {
@@ -44,8 +44,7 @@
           line-height: 103%;
           font-weight: bold;
         }
-        > strong
-        {
+        > strong {
           line-height: 22px;
           overflow: hidden;
           max-height: 67px;
@@ -73,11 +72,12 @@
           font-family: $robotoBold;
         }
         > h3 {
-          color:$dark-gray;
+          color: $dark-gray;
           font-size: 18px;
           line-height: 19px;
           font-family: $robotoBold;
-          >strong{
+          font-weight: 700;
+          > strong {
             font-weight: 700;
           }
         }
@@ -89,7 +89,7 @@
         > p {
           font-weight: 500;
           font-size: 14px;
-          line-height:17px;
+          line-height: 17px;
           font-family: $robotoMedium;
         }
       }
@@ -165,8 +165,8 @@
       }
     }
   }
-  article{
-    .article-img{
+  article {
+    .article-img {
       width: 400px !important;
     }
   }
