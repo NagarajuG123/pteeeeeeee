@@ -43,28 +43,24 @@
 
                   <a
                     routerLink="{{ menu.url }}"
-                    *ngIf="menu.title != 'Spotlight'"
+                    *ngIf="menu.title != 'Spotlight' && menu.url != ''"
                     ><h4 class="text-uppercase primary-color">
                       {{ menu?.title }}
                     </h4></a
                   >
+                  <a
+                    *ngIf="menu.url ==''"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactModal"
+                    ><h4 class="text-uppercase primary-color">{{ menu.title }}</h4>
+                  </a>
                   <h4
                     class="text-uppercase mb-2"
                     *ngFor="let item of menu.items"
                   >
                     <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
                   </h4>
-                </div>
-                <div
-                  class="col-12 col-lg"
-                  *ngIf="footer.hasOwnProperty('contact')"
-                >
-                  <a
-                    href="#"
-                    data-bs-toggle="modal"
-                    data-bs-target="#contactModal"
-                    ><h4 class="text-uppercase primary-color">Contact</h4>
-                  </a>
                 </div>
               </div>
             </div>
