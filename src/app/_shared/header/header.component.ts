@@ -200,21 +200,13 @@ export class HeaderComponent implements OnInit {
     }
     this.searchCloseBtn.nativeElement.click();
     if (this.brandId === '1851') {
-      this.router.navigate(['/searchpopup'], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.header.publication.id.toLowerCase(),
-        },
-      });
+      window.location.href = `/searchpopup?search_input=${searchForm.controls['searchInput'].value
+                  }&brand_id=${this.header.publication.id.toLowerCase()}`;
     } else {
-      this.router.navigate([`/${this.brandSlug}/searchpopup`], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.brandId,
-        },
-      });
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
+
   }
   onKeyUp(): void {
     this.subject.next();
