@@ -227,13 +227,23 @@ export class SubscribeComponent implements OnInit {
         if (typeof result.data !== 'undefined') {
           this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;
-          this.isSuccess = true;
-          $('.editors').hide();
-          $('.sucess-message').show();
+          this.contactForm.reset();
+          $('.current-details').slideUp();
+          $('.prospective-details').slideUp();
+          $('.executive-details').slideUp();
+          $('.executive1-details').slideUp();
+
         } else {
           this.submitErrMsg = result.error.message;
-          this.isSuccess = false;
         }
       });
+  }
+  ngAfterViewInit(){
+    if(this.isBrowser){
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
+      });
+    }
   }
 }
