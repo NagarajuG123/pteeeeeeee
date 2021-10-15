@@ -1,6 +1,9 @@
 .wrapper {
   position: relative;
+  overflow: auto;
+
   &.show {
     position: absolute;
+    overflow: hidden;
   }
 }
