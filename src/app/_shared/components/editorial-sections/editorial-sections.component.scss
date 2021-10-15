@@ -3,14 +3,16 @@
 
 .editorial-section {
   background: $dark-gray;
-  font-family: Roboto;
   h2 {
-    font-family: $balinger;
-    font-weight: bold;
+    font-family: $balingerBold;
+    font-weight: 700;
     font-size: 33px;
     line-height: 40px;
     width: 362px;
     color: $white_2;
+    > strong{
+      font-weight: 700;
+    }
   }
   .innerContent {
     padding: 0 53px;
@@ -34,8 +36,8 @@
             height: 100%;
             color: $light-gray-1;
             cursor: pointer;
-            font-family: $roboto;
-            font-weight: bold;
+            font-family: $robotoBold;
+            font-weight: 700;
             font-size: 20px;
             &.active,
             &:hover {
@@ -68,8 +70,8 @@
   .tabs-container {
     > .tabItemList {
       .items {
-        font-family: $roboto;
-        font-weight: bold;
+        font-family: $robotoBold;
+        font-weight: 700;
         img {
           width: 100%;
           min-height: 106px;
@@ -86,7 +88,7 @@
           }
           a {
             > small {
-              font-family: $roboto;
+              font-family: $robotoMedium;
               font-weight: 500;
               font-size: 11px;
             }

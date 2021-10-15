@@ -6,15 +6,15 @@
   background-color: $border-color;
   color: $medium-grey;
   font-family: $roboto;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   border-bottom: 1px solid $dark-gray;
   a {
-    color: $light_gray_9;
-    font-family: $roboto;
+    color: $dark_gray_5;
+    font-family: $robotoBold;
   }
   span {
-    color: $light_gray_9;
+    color: $dark_gray_5;
     font-family: $roboto;
     img {
       margin-top: -4px;

@@ -86,7 +86,6 @@
         font-size: 20px;
         font-weight: bold;
         line-height: 25.74px;
-        font-family: $balinger;
         @include media("<md") {
           font-size: 16px;
         }
@@ -96,7 +95,6 @@
         font-weight: bold;
         color: $dark-gray;
         text-transform: capitalize;
-        font-family:$balinger;
         @include media("<md") {
           font-size: 30px;
         }
@@ -205,7 +203,6 @@
 //Bottom Section
 .ArticlesNewsSection {
   h4 {
-    font-family: $balinger;
     font-size: 35px;
     line-height: 42px;
     border-bottom: 2px solid $red;
@@ -219,7 +216,6 @@
         font-weight: bold;
         font-size: 20.5091px;
         line-height: 25px;
-        font-family: $balinger;
       }
       span,
       span a {
