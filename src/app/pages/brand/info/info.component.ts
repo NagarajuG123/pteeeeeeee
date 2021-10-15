@@ -674,4 +674,12 @@ export class InfoComponent implements OnInit {
   getBB(selection: any) {
     selection.each((d) => {});
   }
+  ngAfterViewInit(){
+    if(this.isBrowser){
+      $('#pdf-btn').click(function () {
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+      });
+    }
+  }
 }

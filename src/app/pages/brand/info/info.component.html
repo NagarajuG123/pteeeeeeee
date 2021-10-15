@@ -117,6 +117,38 @@
               </div>
             </div>
             <div class="description">
+              <a
+                *ngIf="item?.media && item?.media?.type === 'image'"
+                href="#"
+                onclick="return false;"
+                class="d-block"
+              >
+                <figure>
+                  <img
+                    appYoutubeImage
+                    src="{{ item?.media | defaultImage: 796:0 }}"
+                    width="100%"
+                    height="796"
+                    alt="info-image"
+                  />
+                </figure>
+              </a>
+              <div
+                *ngIf="item?.media && item?.media?.type === 'video'"
+                class="d-block video-btn"
+              >
+                <iframe
+                  [src]="item?.media?.url | safeUrl"
+                  style="max-width: 100%; height: 400"
+                  height="400"
+                  width="100%"
+                  scrolling="no"
+                  frameborder="0"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowfullscreen
+                ></iframe>
+              </div>
               <p
                 *ngIf="item?.short_description"
                 [innerHTML]="item?.short_description"
@@ -199,9 +231,9 @@
                       <img
                         appYoutubeImage
                         class="card-img-top img-fluid lazyload"
-                        width="95"
-                        height="100"
-                        data-src="{{ list.media | defaultImage: 95:100 }}"
+                        width="221"
+                        height="106"
+                        data-src="{{ list.media | defaultImage: 221:106 }}"
                         alt="editorial"
                         loading="lazy"
                       />
@@ -465,7 +497,7 @@
   </div>
 </div>
         <!-- Recent Features -->
-        <div class="recent-feature-article-section" *ngIf="!isMarket">
+        <!-- <div class="recent-feature-article-section" *ngIf="!isMarket">
           <div class="row">
             <div class="col-md-12">
               <div class="title-tag">RECENT FEATURES</div>
@@ -478,7 +510,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>  -->
 
     <!-- Featured Article Section -->
     <!-- <div class="divider-main" *ngIf="!isMarket"></div>
@@ -562,7 +594,7 @@
                   <p *ngIf="emailSubValid" class="invalid">
                     {{ emailSubMessage }}
                   </p>
-                  <button type="button" (click)="emailSubscribe(pdfForm)">
+                  <button type="button" id="pdf-btn" (click)="emailSubscribe(pdfForm)">
                     Download
                   </button>
                 </div>
