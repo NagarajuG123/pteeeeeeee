@@ -19,8 +19,8 @@ img {
   color:$black;
   font-weight: bold;
   line-height:37px;
-  margin: 0 0 -15px -15px;
-  padding: 8px 16px 0 16px;
+  margin: 0 0 -15px 0;
+  padding: 8px 16px 8px 0;
 }
 .main-image {
   .tag {
@@ -36,7 +36,7 @@ img {
   }
   .over-layer {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 16px;
     margin: 0 0 -10px -8px;
   }
@@ -129,7 +129,7 @@ img {
     }
     h3 {
       font-weight: bold;
-      font-size: 17.5px;
+      font-size: 18px;
       color: $primary;
     }
     span {
