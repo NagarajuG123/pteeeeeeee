@@ -12,7 +12,7 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
-    font-family:$balinger;
+    font-family:$balingerBold;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
@@ -41,15 +41,15 @@
 }
 
 .tag {
-  background: #eb0444;
-  font-family:$balinger;
-  color: #ffffff;
-  font-weight: bold;
+  background: $dark_red_2;
+  font-family:$balingerBold;
+  color: $white;
+  font-weight: 700;
   font-size: 17.1429px;
   box-sizing: border-box;
 }
 .over-layer {
-  font-family: "Roboto", sans-serif;
+  font-family: $robotoBold;
   background: rgba(232, 238, 242, 0.67);
   font-size: 36px;
   color: $dark-gray;
@@ -61,7 +61,7 @@
   }
   h2 {
     text-decoration: none;
-    font-family: $balinger;
+    font-family: $balingerBold;
     font-style: normal;
     font-weight: bold;
     font-size: 48px;
@@ -70,9 +70,9 @@
     color: #243444;
   }
   p {
-    font-family: "Roboto";
+    font-family: $robotoRegular;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 21px;
     line-height: 141.19%;
 
