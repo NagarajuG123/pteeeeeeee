@@ -393,7 +393,7 @@
           </ul>
           <!-- Header Logo Section -->
           <div class="logo d-flex align-items-center">
-            <a [routerLink]="header?.logo?.url"
+            <a [routerLink]="header?.logo?.url" (click)="closeSidebar()"
               ><img
                 data-src="{{ header?.logo?.image }}"
                 height="{{ header?.logo?.height }}"
@@ -406,11 +406,13 @@
               <a
                 *ngIf="brandSlug === '1851'"
                 [routerLink]="header?.subscribe?.url"
+                (click)="closeSidebar()"
                 >{{ header?.subscribe?.title }}</a
               >
               <!-- Brand -->
               <a
                 *ngIf="brandSlug !== '1851'"
+                (click)="closeSidebar()"
                 data-bs-toggle="modal"
                 data-bs-target="#sponsoredModal"
                 href="#"
@@ -423,6 +425,7 @@
                 <a
                   *ngIf="brandSlug === '1851'"
                   [routerLink]="header?.subscribe?.url"
+                  (click)="closeSidebar()"
                   >{{ header?.subscribe?.subTitle }}</a
                 >
                 <!-- Brand -->
@@ -450,12 +453,18 @@
         <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
           <ul class="center-menu nav justify-content-center">
             <li class="nav-item px-2 menus" *ngFor="let menu of header?.menus">
-              <a [routerLink]="menu.url" class="d-flex align-items-center"
+              <a
+                [routerLink]="menu.url"
+                class="d-flex align-items-center"
+                (click)="closeSidebar()"
                 >{{ menu.title }}
               </a>
             </li>
             <li class="nav-item px-2 subscribeMenu">
-              <a routerLink="/subscribe" class="d-flex align-items-center"
+              <a
+                routerLink="/subscribe"
+                class="d-flex align-items-center"
+                (click)="closeSidebar()"
                 >Subscribe
               </a>
             </li>
@@ -463,7 +472,7 @@
               class="actions nav-item mx-2 px-2"
               *ngFor="let action of header?.actions; index as i"
             >
-              <a class="d-flex align-items-center"
+              <a class="d-flex align-items-center" (click)="closeSidebar()"
                 >{{ action.title }}
                 <img
                   data-src="assets/img/down-arrow.svg"
@@ -474,9 +483,12 @@
               /></a>
               <ul class="dropdown-menu">
                 <li *ngFor="let item of action.items">
-                  <a class="dropdown-item" [href]="item.url">{{
-                    item?.title
-                  }}</a>
+                  <a
+                    class="dropdown-item"
+                    [href]="item.url"
+                    (click)="closeSidebar()"
+                    >{{ item?.title }}</a
+                  >
                 </li>
               </ul>
             </li>
@@ -487,6 +499,7 @@
             <li class="nav-item mt-1 px-1">
               <a
                 [routerLink]="header?.menus?.url"
+                (click)="closeSidebar()"
                 class="d-flex align-items-center"
                 >{{ header?.menus?.title }}
               </a>
@@ -572,6 +585,7 @@
             <figure>
               <img
                 routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                (click)="closeSidebar()"
                 data-src="{{ header?.monthlyCover?.url }}"
                 height="101"
                 width="92"

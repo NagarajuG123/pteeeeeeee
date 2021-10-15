@@ -428,16 +428,12 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-  @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
-    if (this.isBrowser) {
-      const clickedInside =
-        this._elementRef.nativeElement.contains(targetElement);
-      if (!clickedInside) {
-        this.commonService.showmenu = false;
-        $('.sidebar-dropdown-menu').removeClass('show');
-        $('.sidebar-blur').removeClass('show');
-      }
+  closeSidebar() {
+    if (this.commonService.showmenu) {
+      this.commonService.showmenu = false;
+      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-blur').removeClass('show');
+      $('body').removeClass('overflow-hidden');
     }
   }
 }

@@ -79,11 +79,13 @@ export class VideoComponent implements OnInit {
       var sliderContentWrapper = document.querySelector('.swiper-wrapper');
       var wrapper = document.createElement('div');
       wrapper.classList.add('swiper-content--wrapper');
-      sliderContentWrapper.parentNode.insertBefore(
-        wrapper,
-        sliderContentWrapper
-      );
-      wrapper.appendChild(sliderContentWrapper);
+      if (sliderContentWrapper) {
+        sliderContentWrapper.parentNode.insertBefore(
+          wrapper,
+          sliderContentWrapper
+        );
+        wrapper.appendChild(sliderContentWrapper);
+      }
     }
   }
 }
