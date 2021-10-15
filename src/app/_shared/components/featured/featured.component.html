@@ -24,7 +24,8 @@
                 loading="lazy"
               />
 
-              <div
+              <h2
+              *ngIf="i===0"
                 class="
                   over-layer
                   text-capitalize
@@ -32,10 +33,21 @@
                   fw-bold
                   w-100
                 "
-                [ngClass]="i === 0 ? '' : 'p-2'"
               >
                 {{ item.title }}
-              </div>
+            </h2>
+            <h3
+               *ngIf="i!==0"
+                class="
+                  over-layer
+                  text-capitalize
+                  bottom-0
+                  fw-bold
+                  w-100
+                  p-2
+                ">
+              {{ item.title }}
+            </h3>
             </a>
           </div>
         </div>
@@ -163,7 +175,7 @@
                 alt="featured"
                 loading="lazy"
               />
-              <div
+              <h3
                 class="
                   over-layer
                   text-capitalize
@@ -174,7 +186,7 @@
                 "
               >
                 {{ item?.description }}
-              </div>
+              </h3>
             </a>
           </div>
         </li>
