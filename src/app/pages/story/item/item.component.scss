@@ -3,6 +3,7 @@
 .articles {
   overflow-x: hidden;
   .banner {
+    min-height: 130px;
     max-height: 754px;
     overflow: hidden;
   }
@@ -29,7 +30,7 @@
         border-radius: 100%;
       }
     }
-    h1 {
+    h3 {
       font-family: "Ballinger Condensed Medium";
       font-weight: bold;
       font-size: 42px;
@@ -213,7 +214,7 @@
     left: calc(50% - 45px);
     top: calc(50% - 45px);
     z-index: 1000;
-    height: 90px;
-    width: 90px;
+    height: 47px;
+    width: 75px;
   }
 }
