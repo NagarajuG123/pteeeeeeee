@@ -1,5 +1,7 @@
 import {
   Component,
+  ElementRef,
+  HostListener,
   Inject,
   OnInit,
   PLATFORM_ID,
@@ -93,7 +95,8 @@ export class HeaderComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
     private _googleAnalyticsService: GoogleAnalyticsService,
-    @Inject(DOCUMENT) private _document: HTMLDocument
+    @Inject(DOCUMENT) private _document: HTMLDocument,
+    private _elementRef : ElementRef
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -427,4 +430,16 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
+  @HostListener('document:click', ['$event.target'])
+  public onClick(targetElement) {
+      
+    const clickedInside = this._elementRef.nativeElement.contains(targetElement);
+    if (!clickedInside) {
+      this.commonService.showmenu=false;
+      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-blur').removeClass('show');
+
+    }
+}
+
 }
