@@ -30,7 +30,7 @@ export class SpecialFeatureComponent implements OnInit {
     { width: 1200, limit: 200 },
     { width: 992, limit: 100 },
   ];
-
+  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     private tstate: TransferState,
@@ -41,11 +41,6 @@ export class SpecialFeatureComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
 
   ngOnInit(): void {
-    // if (this.tstate.hasKey(RESULT_KEY)) {
-    //   const specialFeature = this.tstate.get(RESULT_KEY, {});
-    //   this.specialFeature = specialFeature['data'];
-    // } else {
-    //   const specialFeature = {};
     this.apiService
       .getAPI(`${this.apiUrl}`)
       .pipe(takeUntil(this.onDestroy$))
@@ -55,11 +50,10 @@ export class SpecialFeatureComponent implements OnInit {
         } else if (this.slug !== '1851' && response.data.length > 0) {
           this.specialFeature = response.data;
         }
-        // this.tstate.set(RESULT_KEY, specialFeature);
+        this.isLoaded = true;
       });
-    // }
   }
-  setLimitValues(Options,fieldName) {
+  setLimitValues(Options, fieldName) {
     let limitVal = 0;
     Options.forEach((item) => {
       if (window.innerWidth < item.width) {
@@ -78,12 +72,12 @@ export class SpecialFeatureComponent implements OnInit {
         break;
       default:
         break;
-    }  
+    }
   }
 
   async setLimit(event: any) {
-    await this.setLimitValues(this.titleLimitOptions,'titleLimit');
-    await this.setLimitValues(this.descriptionLimitOptions,'descriptionLimit');
+    await this.setLimitValues(this.titleLimitOptions, 'titleLimit');
+    await this.setLimitValues(this.descriptionLimitOptions, 'descriptionLimit');
   }
 
   @HostListener('window:resize', ['$event'])

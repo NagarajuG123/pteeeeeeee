@@ -1,138 +1,148 @@
-<div
-  class="c-video-section--wrapper sidebar-blur"
-  [ngClass]="type == 'brand' ? 'brand' : ''"
->
-  <div class="container customContainer">
-    <div class="row">
-      <div class="col-12 col-md-8">
-        <div class="d-flex align-items-center c-section-header--wrapper">
-          <div class="c-section-header--group d-flex align-items-end">
-            <h2 class="c-section--title text-uppercase m-0">
-              Special Features
-            </h2>
-            <span class="c-section-header--subInfo"
-              >Indepth coverage of franchise industry topics
-            </span>
+<div class="sidebar-blur" *ngIf="isLoaded">
+  <div
+    class="c-video-section--wrapper"
+    [ngClass]="type == 'brand' ? 'brand' : ''"
+  >
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="d-flex align-items-center c-section-header--wrapper">
+            <div class="c-section-header--group d-flex align-items-end">
+              <h2 class="c-section--title text-uppercase m-0">
+                Special Features
+              </h2>
+              <span class="c-section-header--subInfo"
+                >Indepth coverage of franchise industry topics
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="c-divider--wrapper"></div>
+  <div class="c-divider--wrapper"></div>
 
-<div class="container py-4 customContainer sidebar-blur">
-  <div class="row">
-    <div class="col-12 col-md-4 col-lg mb-3 mb-sm-0">
-      <div class="row" *ngIf="specialFeature.length">
-        <div class="col-12 mb-2 mb-md-3">
-          <div class="main-image position-relative">
-            <div class="tag position-absolute text-center top-0 text-uppercase">
-              Special Feature
-            </div>
-            <a
-              routerLink="/{{ commonService.readMore(specialFeature[0]) }}"
-              fragment="dynamicPage"
-              ><img
-                appYoutubeImage
-                data-srcset="{{
-                  specialFeature[0]?.media | defaultImage: 806:439
-                }} 806w, {{
-                  specialFeature[0]?.media | defaultImage: 300:168
-                }} 300w, 
+  <div class="container py-4 customContainer sidebar-blur">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg mb-3 mb-sm-0">
+        <div class="row" *ngIf="specialFeature.length">
+          <div class="col-12 mb-2 mb-md-3">
+            <div class="main-image position-relative">
+              <div
+                class="tag position-absolute text-center top-0 text-uppercase"
+              >
+                Special Feature
+              </div>
+              <a
+                routerLink="/{{ commonService.readMore(specialFeature[0]) }}"
+                fragment="dynamicPage"
+                ><img
+                  appYoutubeImage
+                  data-srcset="{{
+                    specialFeature[0]?.media | defaultImage: 806:439
+                  }} 806w, {{
+                    specialFeature[0]?.media | defaultImage: 300:168
+                  }} 300w, 
             {{ specialFeature[0]?.media | defaultImage: 400:224 }} 400w, {{
-                  specialFeature[0]?.media | defaultImage: 555:310
-                }} 555w"
-                class="img-fluid lazyload"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
+                    specialFeature[0]?.media | defaultImage: 555:310
+                  }} 555w"
+                  class="img-fluid lazyload"
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
                 300px'
-                }}"
-                width="806"
-                height="439"
-                data-src="{{ specialFeature[0].media | defaultImage: 806:439 }}"
-                alt="featured"
-                loading="lazy"
-              />
-              <div class="content text-capitalize bottom-0 fw-bold w-100 pt-3">
-                <h3>
-                  {{ specialFeature[0].title }}
-                </h3>
-                <p>
-                  {{
-                    commonService.responsiveTextFormating(
-                      specialFeature[0].short_description,
-                      descriptionLimit
-                    )
-                  }}
-                </p>
-              </div>
-            </a>
+                  }}"
+                  width="806"
+                  height="439"
+                  data-src="{{
+                    specialFeature[0].media | defaultImage: 806:439
+                  }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <div
+                  class="content text-capitalize bottom-0 fw-bold w-100 pt-3"
+                >
+                  <h3>
+                    {{ specialFeature[0].title }}
+                  </h3>
+                  <p>
+                    {{
+                      commonService.responsiveTextFormating(
+                        specialFeature[0].short_description,
+                        descriptionLimit
+                      )
+                    }}
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="
-        position-relative
-        col-12 col-sm-6 col-lg-3
-        align-items-stretch
-        mb-3 mb-sm-0
-        latestListing
-      "
-    >
-      <ul class="news-list noScrollBar list-group">
-        <li
-          class="mb-3"
-          *ngFor="let item of specialFeature | slice: 1:5; index as i"
-        >
-          <div class="position-relative small-image">
-            <div class="tag position-absolute text-center top-0 text-uppercase">
-              Special Feature
-            </div>
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="featured"
-              ><img
-                appYoutubeImage
-                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
+      <div
+        class="
+          position-relative
+          col-12 col-sm-6 col-lg-3
+          align-items-stretch
+          mb-3 mb-sm-0
+          latestListing
+        "
+      >
+        <ul class="news-list noScrollBar list-group">
+          <li
+            class="mb-3"
+            *ngFor="let item of specialFeature | slice: 1:5; index as i"
+          >
+            <div class="position-relative small-image">
+              <div
+                class="tag position-absolute text-center top-0 text-uppercase"
+              >
+                Special Feature
+              </div>
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="featured"
+                ><img
+                  appYoutubeImage
+                  data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                    item.media | defaultImage: 300:168
+                  }} 300w, 
             {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                }} 555w"
-                class="img-fluid lazyload"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
+                    item.media | defaultImage: 555:310
+                  }} 555w"
+                  class="img-fluid lazyload"
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
                 (max-width: 992px) 400px,
                 (max-width: 1200px) 238px,
                 300px'
-                }}"
-                width="253"
-                height="137"
-                data-src="{{ item.media | defaultImage: 253:137 }}"
-                alt="featured"
-                loading="lazy"
-              />
-              <div
-                class="
-                  over-layer
-                  position-absolute
-                  text-capitalize
-                  bottom-0
-                  fw-bold
-                  w-100
-                  p-2
-                "
-              >
-                {{ item.title }}
-              </div>
-            </a>
-          </div>
-        </li>
-      </ul>
+                  }}"
+                  width="253"
+                  height="137"
+                  data-src="{{ item.media | defaultImage: 253:137 }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <div
+                  class="
+                    over-layer
+                    position-absolute
+                    text-capitalize
+                    bottom-0
+                    fw-bold
+                    w-100
+                    p-2
+                  "
+                >
+                  {{ item.title }}
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

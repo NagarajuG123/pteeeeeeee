@@ -22,6 +22,7 @@ export class EditorialSectionsComponent implements OnInit {
   activeTab = 1;
   skipTab = 0;
   tab!: string;
+  isLoaded: boolean = false;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -52,6 +53,7 @@ export class EditorialSectionsComponent implements OnInit {
               data.push(item);
             });
             this.items = data;
+            this.isLoaded = true;
           });
       });
   }
