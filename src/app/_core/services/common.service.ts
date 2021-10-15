@@ -80,8 +80,8 @@ export class CommonService {
     return text;
   }
 
-  authorName(item:any){
-    if(item?.author != null){
+  authorName(item: any) {
+    if (item?.author != null) {
       return true;
     }
     return false;

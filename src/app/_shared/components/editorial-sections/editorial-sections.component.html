@@ -1,4 +1,4 @@
-<div class="editorial-section pb-4">
+<div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded">
   <div class="container customContainer">
     <h2 class="py-3 m-0 text-white text-uppercase">
       <strong>Editorial Sections</strong>
@@ -99,8 +99,10 @@
                   {{ list.title }}
                 </h3>
                 <a href="#">
-                <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
-              </a>
+                  <small *ngIf="commonService.authorName(list)"
+                    >By {{ list.author?.name }}</small
+                  >
+                </a>
               </div>
             </div>
           </a>

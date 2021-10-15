@@ -1,6 +1,6 @@
 <div
-  class="most-popular"
-  *ngIf="data.length"
+  class="most-popular sidebar-blur"
+  *ngIf="isLoaded"
   [ngClass]="type == 'brand' ? 'brand-most-popular' : ''"
 >
   <div class="container customContainer">
