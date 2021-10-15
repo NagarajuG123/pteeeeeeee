@@ -21,9 +21,6 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { NgxCarouselModule } from 'ngx-light-carousel';
-
-// Modals Components
 
 // Pipes
 
@@ -52,7 +49,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     ShareButtonModule,
     CarouselModule,
-    // NgxCarouselModule,
   ],
   exports: [
     RouterModule,

@@ -162,12 +162,6 @@
     }
   }
   .c-video-slider--wrapper {
-    @include media("<xxl") {
-      padding: 0 60px;
-    }
-    @include media("<md") {
-      padding: 0 30px;
-    }
     .owl-nav {
       .owl-prev,
       .owl-next {
