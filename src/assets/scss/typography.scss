@@ -70,3 +70,24 @@
   src:url("https://use.typekit.net/af/d56ea7/00000000000000007735c6a3/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff2"),url("https://use.typekit.net/af/d56ea7/00000000000000007735c6a3/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff"),url("https://use.typekit.net/af/d56ea7/00000000000000007735c6a3/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("opentype");
   font-display:auto;font-style:normal;font-weight:800;
 }
+
+@font-face {
+  font-family:"Roboto Regular";
+  src:url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  font-display:auto;font-style:normal;font-weight:400;
+}
+@font-face {
+  font-family:"Roboto Medium";
+  src:url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+  font-display:auto;font-style:normal;font-weight:500;
+}
+@font-face {
+  font-family:"Roboto Bold";
+  src:url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+  font-display:auto;font-style:normal;font-weight:700;
+}
+@font-face {
+  font-family:"Roboto X-Bold";
+  src:url('https://fonts.googleapis.com/css2?family=Roboto:wght@800&display=swap');
+  font-display:auto;font-style:normal;font-weight:800;
+}
