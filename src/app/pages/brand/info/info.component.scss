@@ -28,7 +28,6 @@
       color: $white;
       background-color: $red;
       position: absolute;
-      font-family: $balinger;
       font-weight: bold;
       font-size: 20px;
       text-align: center;
@@ -51,7 +50,6 @@
     }
     .title {
       color: $brand-info-question-title;
-      font-family: $balinger;
       font-weight: bold;
       font-size: 20px;
       text-align: center;
@@ -96,7 +94,6 @@
     }
     .title {
       color: $white;
-      font-family: $balinger;
       font-weight: 700;
       font-size: 30px;
       text-align: center;
@@ -218,7 +215,6 @@
     border-bottom: 3px solid $red;
     .title {
       color: $brand-info-question-title;
-      font-family: $balinger;
       font-weight: 700;
       font-size: 30px;
       text-align: center;
@@ -261,7 +257,6 @@
     width: 90%;
     .title {
       color: $dark-gray;
-      font-family: $balinger;
       font-weight: bold;
       font-size: 18px;
       line-height: 21.06px;
@@ -428,7 +423,6 @@
 .title-highlighter {
   color: $white;
   background-color: $red;
-  font-family: $balinger;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
@@ -448,7 +442,6 @@
     }
   }
   .items {
-    font-family: $balinger;
     font-weight: bold;
     img {
       width: 100%;
