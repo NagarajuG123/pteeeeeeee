@@ -9,7 +9,7 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
-    font-family: $balinger;
+    font-family: $balingerBold;
     color:$dark-gray;
   }
   .c-section-header--subInfo {
@@ -82,7 +82,7 @@
   }
 }
 .c-video-section--title {
-  font-family: $roboto;
+  font-family: $robotoBold;
   font-size: 18px;
   font-weight: 700;
   color: $dark-gray;
@@ -110,9 +110,9 @@
 
 .tag {
   background: $dark_red_2;
-  font-family:$balinger;
+  font-family:$balingerBold;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
   box-sizing: border-box;
   z-index: 1;
   border-radius:unset;
