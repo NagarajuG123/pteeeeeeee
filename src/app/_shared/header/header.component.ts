@@ -63,7 +63,6 @@ export class HeaderComponent implements OnInit {
   inquireData: any;
   submitErrMsg: string = '';
   ga: any;
-  isLoaded: boolean = false;
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -96,7 +95,7 @@ export class HeaderComponent implements OnInit {
     private fb: FormBuilder,
     private _googleAnalyticsService: GoogleAnalyticsService,
     @Inject(DOCUMENT) private _document: HTMLDocument,
-    private _elementRef : ElementRef
+    private _elementRef: ElementRef
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -172,7 +171,6 @@ export class HeaderComponent implements OnInit {
       this.news = results[1].data;
       this.inquireData = results[2].schema;
       this.publication = results[3];
-      this.isLoaded = true;
 
       this.setFavicon();
       if (this.brandSlug != '1851') {
@@ -199,13 +197,13 @@ export class HeaderComponent implements OnInit {
     }
     this.searchCloseBtn.nativeElement.click();
     if (this.brandId === '1851') {
-      window.location.href = `/searchpopup?search_input=${searchForm.controls['searchInput'].value
-                  }&brand_id=${this.header.publication.id.toLowerCase()}`;
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.header.publication.id.toLowerCase()}`;
     } else {
       window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
-
   }
   onKeyUp(): void {
     this.subject.next();
@@ -229,9 +227,9 @@ export class HeaderComponent implements OnInit {
         if (typeof result.data !== 'undefined') {
           $('#inquireModalClose').click();
           $('#thanksModal').show();
-          // setTimeout(() => {
-          //   $('#thanksModal').hide();
-          // }, 10000);
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
         } else {
           this.submitErrMsg = result.error.message;
           this.isSubmitFailed = true;
@@ -414,7 +412,7 @@ export class HeaderComponent implements OnInit {
   }
   ngAfterViewInit() {
     // For sticky header
-    if (this.isBrowser && this.isShow && this.isLoaded) {
+    if (this.isBrowser && this.isShow) {
       const distance = $('header').offset().top,
         $window = $(window);
       $(window).scroll(function () {
@@ -432,14 +430,14 @@ export class HeaderComponent implements OnInit {
   }
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement) {
-      
-    const clickedInside = this._elementRef.nativeElement.contains(targetElement);
-    if (!clickedInside) {
-      this.commonService.showmenu=false;
-      $('.sidebar-dropdown-menu').removeClass('show');
-      $('.sidebar-blur').removeClass('show');
-
+    if (this.isBrowser) {
+      const clickedInside =
+        this._elementRef.nativeElement.contains(targetElement);
+      if (!clickedInside) {
+        this.commonService.showmenu = false;
+        $('.sidebar-dropdown-menu').removeClass('show');
+        $('.sidebar-blur').removeClass('show');
+      }
     }
-}
-
+  }
 }

@@ -2,6 +2,7 @@
 @import "../../../../assets/scss/typography.scss";
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .c-video-section--wrapper {
   background: $sectionBGColor;
@@ -139,58 +140,13 @@
 }
 .c-video-slider--wrapper {
   margin-top: 40px;
-  .owl-nav {
-    .owl-prev {
-      position: absolute;
-      top: 35px;
-      left: -60px;
-      background: transparent;
-    }
-    .owl-next {
-      position: absolute;
-      top: 35px;
-      right: -60px;
-      background: transparent;
-    }
-  }
 }
 
 ::ng-deep {
-  @include media("<md") {
-    :root {
-      --swiper-navigation-size: 30px !important;
-    }
+  :root {
+    --swiper-navigation-size: 30px !important;
   }
   .c-video-slider--wrapper {
-    .owl-nav {
-      .owl-prev,
-      .owl-next {
-        position: absolute;
-        top: 35px;
-        background: transparent !important;
-        &.owl-prev {
-          left: -60px;
-          @include media("<md") {
-            left: -40px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
-        &.owl-next {
-          right: -60px;
-          @include media("<md") {
-            right: -40px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
-      }
-    }
-
     .swiper-container {
       overflow: visible;
     }
@@ -199,17 +155,21 @@
     }
 
     .swiper-button-prev {
-      left: -60px;
+      left: -40px;
       color: $dark-gray;
-      @include media("<md") {
-        left: -35px;
+
+      @include desk-lg-below1 {
+        left: -25px;
       }
     }
     .swiper-button-next {
-      right: -60px;
+      right: -40px;
       color: $dark-gray;
       @include media("<md") {
-        right: -35px;
+        right: -25px;
+      }
+      @include desk-lg-below1 {
+        right: -25px;
       }
     }
   }
