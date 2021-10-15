@@ -218,7 +218,6 @@ header {
       .badge.rounded-pill {
         border-color: $primary !important;
         color: $primary;
-        font-family: $balinger;
         font-weight: bold;
         font-size: 8px;
         &:hover {
@@ -334,7 +333,6 @@ header {
 
 .search_pop_up {
   h2 {
-    font-family: $balinger;
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
@@ -584,7 +582,6 @@ header {
 .modal-header {
   border-bottom: 3px solid $red;
   h1 {
-    font-family: $balinger;
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
@@ -604,7 +601,6 @@ header {
   color: $white;
   font-size: 18px;
   font-weight: 700;
-  font-family: $balinger;
   line-height: 21.6px;
 }
 img {
