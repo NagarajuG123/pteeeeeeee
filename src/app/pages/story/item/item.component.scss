@@ -1,4 +1,5 @@
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/variables.scss";
 
 .articles {
   overflow-x: hidden;
@@ -11,18 +12,18 @@
   .userDetail {
     max-width: 300px;
     span {
-      font-family: "Roboto";
+      font-family: $robotoMedium;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
       line-height: 128.69%;
 
-      color: #243444;
+      color: $dark-gray;
     }
     .userImage {
       width: 179px;
       margin: 80px 0 0 15px;
-      background: white;
+      background: $white;
       border-radius: 100%;
       height: 179px;
       img {
@@ -31,18 +32,18 @@
       }
     }
     h3 {
-      font-family: "Ballinger Condensed Medium";
-      font-weight: bold;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 42px;
       line-height: 80px;
       letter-spacing: -0.015em;
-      color: #243444;
+      color: $dark-gray;
     }
     h5 {
-      font-family: "Ballinger Condensed Medium";
+      font-family: $balingerBold;
     }
     hr {
-      background: #243444;
+      background: $dark-gray;
       margin: 13px 0;
     }
     .fs-21 {
@@ -83,7 +84,7 @@
   }
 
   .most-like-articles {
-    font-family: "Roboto";
+    font-family: $balingerBold;
 
     li {
       display: flex;
@@ -95,12 +96,14 @@
         font-size: 14px;
         line-height: 17px;
         a {
-          color: #243444;
+          color: $dark-gray;
         }
       }
       span {
         font-size: 11px;
         line-height: 13px;
+        font-family: $balingerBold;
+        font-weight: 700;
       }
     }
 
@@ -117,20 +120,20 @@
     line-height: 141.19%;
     .detailHead {
       bottom: 100%;
-      font-family: "Ballinger Condensed Medium";
+      font-family: $robotoBold;
       min-height: 186px;
     }
     .category,
-    .authorName,
     .subTitle {
       min-width: 141px;
       font-size: 20px;
-      font-family: "Ballinger Condensed Medium";
+      font-family: $balingerBold;
       line-height: 141.19%;
+      font-weight: 700;
     }
     .description {
+      font-family: $robotoRegular;
       p {
-        font-family: "Roboto";
         font-size: 17px;
       }
     }
@@ -165,30 +168,32 @@
   }
   .ArticlesNewsSection {
     h4 {
-      font-family: "Ballinger Condensed Medium";
+      font-family: $balingerBold;
       font-size: 18px;
       line-height: 22px;
+      font-weight: 700;
     }
     .items {
-      font-family: "Roboto";
-      background: #e8eef2;
+      font-family: $robotoMedium;
+      background: $border-color;
       .card-body {
         h6,
         h6 a {
           font-size: 18px;
-          font-family: "Ballinger Condensed Medium";
+          font-family: $balingerBold;
         }
         span,
         span a {
           font-weight: 500;
           font-size: 11px;
           line-height: 12px;
-          color: #243444;
+          color: $dark-gray;
         }
         p,
         p a {
           font-size: 14px;
           line-height: 141.19%;
+          font-family: $robotoRegular;
         }
       }
     }
