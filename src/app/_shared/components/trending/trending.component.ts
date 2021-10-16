@@ -5,7 +5,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
-import { faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-trending',
@@ -26,11 +26,6 @@ export class TrendingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.commonService.isPageLoaded.subscribe((res) => {
-      if (res) {
-        this.isLoaded = true;
-      }
-    });
     const trending = this.apiService.getAPI(
       `${this.slug}/trending?limit=9&offset=0`
     );
@@ -38,6 +33,7 @@ export class TrendingComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.data = results[0].data;
+        this.isLoaded = true;
       });
   }
 }

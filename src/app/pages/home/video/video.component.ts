@@ -76,11 +76,16 @@ export class VideoComponent implements OnInit {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
       });
+      var sliderContentWrapper = document.querySelector('.swiper-wrapper');
+      var wrapper = document.createElement('div');
+      wrapper.classList.add('swiper-content--wrapper');
+      if (sliderContentWrapper) {
+        sliderContentWrapper.parentNode.insertBefore(
+          wrapper,
+          sliderContentWrapper
+        );
+        wrapper.appendChild(sliderContentWrapper);
+      }
     }
-    var sliderContentWrapper = document.querySelector('.swiper-wrapper');
-    var wrapper = document.createElement('div');
-    wrapper.classList.add('swiper-content--wrapper');
-    sliderContentWrapper.parentNode.insertBefore(wrapper, sliderContentWrapper);
-    wrapper.appendChild(sliderContentWrapper);
   }
 }

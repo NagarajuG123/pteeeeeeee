@@ -28,6 +28,7 @@ export class SubscribeComponent implements OnInit {
   isSuccess: boolean = false;
   faAngleLeft = faAngleLeft;
   faCaretRight = faCaretRight;
+  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -83,6 +84,7 @@ export class SubscribeComponent implements OnInit {
         this.data = results[0].data;
         this.publication = results[1];
         this.metaService.setSeo(results[2].data);
+        this.isLoaded = true;
         let defaultTitle = '';
         if (this.publication.id === '1851') {
           defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
