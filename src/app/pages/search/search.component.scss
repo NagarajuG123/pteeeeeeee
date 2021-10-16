@@ -63,7 +63,6 @@
       font-size: 18px;
       font-weight: 700;
       line-height: 21.6px;
-      font-family: $balinger;
     }
     @media only screen and (min-device-width : 750px) and (max-device-width : 999px) {
       max-width: 100%;
@@ -85,6 +84,9 @@
       font-size: 20px;
       line-height: 25.74px;
       font-weight: 500;
+    }
+    .form-group{
+      width: 80% !important;
     }
   }
   .border-bg{
@@ -111,7 +113,6 @@
 .form-group {
     position: relative;
     margin: 0;
-    width: 80%;
     .form-control{
       border: 1px solid $black;
     }
@@ -141,13 +142,13 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
   right: 0;
-  margin: 0 auto;
   form{
     width: 667px!important;
     padding: 0 16px 0 7px;
     .form-group{
       margin: 0;
       position: relative;
+      width: 100% !important;
       -webkit-box-shadow: 0 3px 12px rgb(0 0 0 / 38%);
     }
     input{
@@ -204,9 +205,23 @@
     font-weight: 500;
   }
   @include  tablet-portrait{
-   h6,span{
-     font-size: 12px;
-   }
+    h6,span{
+      font-size: 12px;
+    }
+  }
+  @include mobile-portrait{
+    h6{
+      -webkit-flex: 0 0 100%;
+      text-align: center;
+    }
+    ul{
+      display: block !important;
+      -webkit-flex-wrap: wrap;
+        li{
+          display: inline-block;
+          position: relative;
+        }
+    }
   }
 }
 .brandSearch{

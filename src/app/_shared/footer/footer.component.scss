@@ -14,7 +14,7 @@ footer {
   }
   h1 {
     color: rgba(232, 238, 242, 0.18);
-    font-family:$balinger;
+    font-family:$balingerBold;
     font-weight: bold;
     font-size: 39.434px;
     letter-spacing: 0.11em;
@@ -22,11 +22,11 @@ footer {
   }
   h4 {
     font-size: 14px;
-    font-family: $balinger;
+    font-family: $balingerBold;
     font-weight: 700;
   }
   p {
-    font-family: Roboto;
+    font-family: $roboto;
     font-size: 9px;
     line-height: 11px;
   }
@@ -91,7 +91,6 @@ footer {
 .modal-header{
   border-bottom: 3px solid $red;
   h1{
-    font-family: $balinger;
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
@@ -111,6 +110,5 @@ footer {
   color: $white;
   font-size: 18px;
   font-weight: 700;
-  font-family: $balinger;
   line-height: 21.6px;
 }

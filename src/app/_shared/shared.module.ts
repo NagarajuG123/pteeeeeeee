@@ -22,8 +22,6 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
 import { TrendingComponent } from './components/trending/trending.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Modals Components
-
 // Pipes
 
 @NgModule({

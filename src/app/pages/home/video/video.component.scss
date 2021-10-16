@@ -2,6 +2,7 @@
 @import "../../../../assets/scss/typography.scss";
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .c-video-section--wrapper {
   background: $sectionBGColor;
@@ -9,13 +10,13 @@
   .c-section--title {
     font-size: 35px;
     font-weight: 700;
-    font-family: $balinger;
+    font-family: $balingerBold;
     color:$dark-gray;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
     margin-bottom: 6px;
-    font-family: $balinger;
+    font-family: $balingerBold;
 
     &::before {
       content: "|";
@@ -31,7 +32,7 @@
   @include media("<lg") {
     display: none !important;
   }
-  .c-video-section--box {    
+  .c-video-section--box {
     flex: 1 1 50%;
     max-width: 50%;
   }
@@ -82,8 +83,8 @@
   }
 }
 .c-video-section--title {
-  font-family: $roboto;
-  font-size: 20px;
+  font-family: $robotoBold;
+  font-size: 18px;
   font-weight: 700;
   color: $dark-gray;
   margin-top: 7px;
@@ -110,12 +111,12 @@
 
 .tag {
   background: $dark_red_2;
-  font-family:$balinger;
+  font-family:$balingerBold;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
   box-sizing: border-box;
   z-index: 1;
-  border-radius:unset;
+  border-radius: unset;
 }
 
 .main-image {
@@ -135,60 +136,40 @@
       width: 75.34px;
       border-radius: 12px;
     }
-}
+  }
 }
 .c-video-slider--wrapper {
   margin-top: 40px;
-  .owl-nav {
-    .owl-prev {
-      position: absolute;
-      top: 35px;
-      left: -60px;
-      background: transparent;
-    }
-    .owl-next {
-      position: absolute;
-      top: 35px;
-      right: -60px;
-      background: transparent;
-    }
-  }
 }
 
 ::ng-deep {
+  :root {
+    --swiper-navigation-size: 30px !important;
+  }
   .c-video-slider--wrapper {
-    @include media("<xxl") {
-      padding: 0 60px;
+    .swiper-container {
+      overflow: visible;
     }
-    @include media("<md") {
-      padding: 0 30px;
+    .swiper-content--wrapper {
+      overflow: hidden;
     }
-    .owl-nav {
-      .owl-prev,
-      .owl-next {
-        position: absolute;
-        top: 35px;
-        background: transparent !important;
-        &.owl-prev {
-          left: -60px;
-          @include media("<md") {
-            left: -40px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
-        &.owl-next {
-          right: -60px;
-          @include media("<md") {
-            right: -40px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
+
+    .swiper-button-prev {
+      left: -40px;
+      color: $dark-gray;
+
+      @include desk-lg-below1 {
+        left: -25px;
+      }
+    }
+    .swiper-button-next {
+      right: -40px;
+      color: $dark-gray;
+      @include media("<md") {
+        right: -25px;
+      }
+      @include desk-lg-below1 {
+        right: -25px;
       }
     }
   }

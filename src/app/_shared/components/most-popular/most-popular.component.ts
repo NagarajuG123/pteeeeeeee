@@ -25,8 +25,16 @@ export class MostPopularComponent implements OnInit {
   data: Details[] = [];
   customOptions: OwlOptions = {};
   faAngleRight = faAngleRight;
+  isLoaded: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
+  public innerWidth: any;
+  products: any;
+  products2: any;
+  products3: any;
+  options1: any;
+  options2: any;
+  options3: any;
 
   constructor(
     private apiService: ApiService,
@@ -35,6 +43,92 @@ export class MostPopularComponent implements OnInit {
     public commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+    this.options2 = {
+      animation: {
+        animationClass: 'transition', // done
+        animationTime: 500,
+      },
+      swipe: {
+        swipeable: true, // done
+        swipeVelocity: 0.004, // done - check amount
+      },
+      drag: {
+        draggable: true, // done
+        dragMany: true, // todo
+      },
+      autoplay: {
+        enabled: true,
+        direction: 'right',
+        delay: 5000,
+        stopOnHover: true,
+        speed: 6000,
+      },
+      arrows: true,
+      infinite: false,
+      breakpoints: [
+        {
+          width: 768,
+          number: 1,
+        },
+        {
+          width: 991,
+          number: 3,
+        },
+        {
+          width: 9999,
+          number: 3,
+        },
+      ],
+    };
+    this.products2 = [];
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?5`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?6`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?7`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?6`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?7`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?8`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?8`,
+    });
+    this.products2.push({
+      title: 'Black Widgets',
+      url: 'https://url',
+      regularPrice: '100.00',
+      image: `https://picsum.photos/600/400/?8`,
+    });
   }
 
   ngOnInit(): void {
@@ -49,6 +143,7 @@ export class MostPopularComponent implements OnInit {
       .subscribe((response) => {
         if (response.data.length) {
           this.data = response.data;
+          this.isLoaded = true;
         }
       });
   }

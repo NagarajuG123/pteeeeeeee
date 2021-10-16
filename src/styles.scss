@@ -100,7 +100,8 @@ ul {
 }
 .sidebar-blur {
   &.show {
-    opacity: 0.6;
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
 
@@ -125,4 +126,11 @@ ul {
       margin-left: 20px;
     }
   }
+}
+
+body.noscroll
+{
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
 }

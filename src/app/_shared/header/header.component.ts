@@ -1,5 +1,7 @@
 import {
   Component,
+  ElementRef,
+  HostListener,
   Inject,
   OnInit,
   PLATFORM_ID,
@@ -61,7 +63,6 @@ export class HeaderComponent implements OnInit {
   inquireData: any;
   submitErrMsg: string = '';
   ga: any;
-
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -86,7 +87,6 @@ export class HeaderComponent implements OnInit {
   downloadPdfUrl: any;
   isPdfEmail: any = false;
   defaultBrandLogo: string;
-  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
@@ -94,7 +94,8 @@ export class HeaderComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
     private _googleAnalyticsService: GoogleAnalyticsService,
-    @Inject(DOCUMENT) private _document: HTMLDocument
+    @Inject(DOCUMENT) private _document: HTMLDocument,
+    private _elementRef: ElementRef
   ) {
     this.searchForm = new FormGroup({
       searchInput: new FormControl(''),
@@ -115,11 +116,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isShow = true;
     this.setSlug();
-    this.commonService.isPageLoaded.subscribe((res) => {
-      if (res) {
-        this.isLoaded = true;
-      }
-    });
+
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
@@ -200,19 +197,11 @@ export class HeaderComponent implements OnInit {
     }
     this.searchCloseBtn.nativeElement.click();
     if (this.brandId === '1851') {
-      this.router.navigate(['/searchpopup'], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.header.publication.id.toLowerCase(),
-        },
-      });
+      window.location.href = `/searchpopup?search_input=${
+        searchForm.controls['searchInput'].value
+      }&brand_id=${this.header.publication.id.toLowerCase()}`;
     } else {
-      this.router.navigate([`/${this.brandSlug}/searchpopup`], {
-        queryParams: {
-          search_input: searchForm.controls['searchInput'].value,
-          brand_id: this.brandId,
-        },
-      });
+      window.location.href = `/${this.brandSlug}/searchpopup?search_input=${searchForm.controls['searchInput'].value}&brand_id=${this.brandId}`;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
@@ -238,9 +227,9 @@ export class HeaderComponent implements OnInit {
         if (typeof result.data !== 'undefined') {
           $('#inquireModalClose').click();
           $('#thanksModal').show();
-          // setTimeout(() => {
-          //   $('#thanksModal').hide();
-          // }, 10000);
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
         } else {
           this.submitErrMsg = result.error.message;
           this.isSubmitFailed = true;
@@ -437,6 +426,14 @@ export class HeaderComponent implements OnInit {
           $('.banner').css({ 'margin-top': '0' });
         }
       });
+    }
+  }
+  closeSidebar() {
+    if (this.commonService.showmenu) {
+      this.commonService.showmenu = false;
+      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-blur').removeClass('show');
+      $('body').removeClass('overflow-hidden');
     }
   }
 }

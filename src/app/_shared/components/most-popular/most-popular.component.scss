@@ -5,11 +5,10 @@
 @import "../../../../assets/scss/variables.scss";
 
 .most-popular {
-  background: linear-gradient($dark-gray 425px, $white 0);
-  font-family:$roboto;
+  background: linear-gradient($dark-gray 400px, $white 0);
   h2 {
-    font-family: $balinger;
-    font-weight: bold;
+    font-family: $balingerBold;
+    font-weight: 700;
     font-size: 33px;
     line-height: 40px;
   }
@@ -25,35 +24,41 @@
       margin-bottom: -31px;
     }
     .slide-body {
-      min-height: 130px;
+      min-height: 126px;
       padding-top: 31px;
       padding-bottom: 31px;
-      width:380px;
+      width: 380px;
+      max-height: 126px;
       > span {
         width: 58px;
         height: 19px;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 700;
         font-size: 10px;
         line-height: 10px;
+        font-family: $robotoBold;
       }
-      > h3 {
+      > h2 {
         > span {
           font-size: 49px;
           line-height: 103%;
           font-weight: bold;
         }
-        > strong
-        {
+        > strong {
           line-height: 22px;
+          overflow: hidden;
+          max-height: 67px;
+          font-weight: 700;
         }
         font-size: 21px;
+        font-family: $robotoBold;
       }
     }
     .slide-footer {
-      font-family: $balinger;
+      font-family: $balingerBold;
       font-size: 15px;
       line-height: 18px;
+      width: 380px;
     }
   }
   .subSlideItem {
@@ -63,22 +68,29 @@
         > span {
           font-size: 31px;
           line-height: 36px;
-          font-weight: bold;
+          font-weight: 700;
+          font-family: $robotoBold;
         }
         > h3 {
-          color:$dark-gray;
-          font-weight: bold;
-          font-size: 16px;
+          color: $dark-gray;
+          font-size: 18px;
           line-height: 19px;
+          font-family: $robotoBold;
+          font-weight: 700;
+          > strong {
+            font-weight: 700;
+          }
         }
         > small {
-          font-size: 10px !important ;
+          font-size: 11px !important ;
           line-height: 12px;
+          font-family: $robotoRegular;
         }
         > p {
           font-weight: 500;
-          font-size: 13px;
-          line-height:17px;
+          font-size: 14px;
+          line-height: 17px;
+          font-family: $robotoMedium;
         }
       }
     }
@@ -151,6 +163,11 @@
           }
         }
       }
+    }
+  }
+  article {
+    .article-img {
+      width: 400px !important;
     }
   }
 }

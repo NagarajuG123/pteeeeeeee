@@ -23,9 +23,11 @@ export class CommonService {
     if (this.showmenu) {
       $('.sidebar-dropdown-menu').addClass('show');
       $('.sidebar-blur').addClass('show');
+      $('body').addClass('noscroll');
     } else {
       $('.sidebar-dropdown-menu').removeClass('show');
       $('.sidebar-blur').removeClass('show');
+      $('body').removeClass('noscroll');
     }
   }
   readMore1(story: any, type: string) {
@@ -80,8 +82,8 @@ export class CommonService {
     return text;
   }
 
-  authorName(item:any){
-    if(item?.author != null){
+  authorName(item: any) {
+    if (item?.author != null) {
       return true;
     }
     return false;

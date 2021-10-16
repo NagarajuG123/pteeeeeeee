@@ -1,49 +1,67 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .trending-head {
   background-color: $border-color;
   color: $medium-grey;
   font-family: $roboto;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   border-bottom: 1px solid $dark-gray;
   a {
-    color: $light_gray_9;
-    font-family: $roboto;
+    color: $dark_gray_5;
+    font-family: $robotoBold;
   }
   span {
-    color: $light_gray_9;
+    color: $dark_gray_5;
     font-family: $roboto;
     img {
       margin-top: -4px;
     }
     &.title {
       color: $primary;
-      font-family: $balinger;
+      font-family: $balingerBold;
     }
   }
-  .carousel-control-next,
+
   .carousel-control-prev {
     width: 1rem;
-    height: 20px;
-    background-color: none;
-    top: calc(-20% -25%);
+    margin-top: -10px;
+    left: 96%;
   }
-  .carousel-control-prev {
+  .carousel-control-next {
     left: unset;
-    right: 35px;
+    top: 50%;
+    margin-top: -6px;
+    right: -54px;
+    height: 22px;
+
+    @include desk-lg-below1 {
+      right: -46px;
+    }
+    @include desk-lg-below2 {
+      right: -46px;
+    }
+    @include tablet-landscape {
+      right: -43px;
+    }
   }
   .carousel-item {
-    -webkit-transition: 0.6s ease-in-out top;
-    -moz-transition: 0.6s ease-in-out top;
-    -ms-transition: 0.6s ease-in-out top;
-    -o-transition: 0.6s ease-in-out top;
+    padding-right: 50px;
     transition: 0.6s ease-in-out top;
+    @media all and (transform-3d), (-webkit-transform-3d) {
+      transition: 0.6s ease-in-out;
+    }
   }
   .content {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 15px 0;
+    margin: 0;
+  }
+  fa-icon {
+    font-size: 25px;
   }
 }
