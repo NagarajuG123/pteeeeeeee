@@ -240,12 +240,4 @@ export class SubscribeComponent implements OnInit {
         }
       });
   }
-  ngAfterViewInit(){
-    if(this.isBrowser){
-      $('.modal').on('hidden.bs.modal', function(){
-        $('.modal').hide();
-        $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
-      });
-    }
-  }
 }
