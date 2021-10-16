@@ -23,11 +23,11 @@ export class CommonService {
     if (this.showmenu) {
       $('.sidebar-dropdown-menu').addClass('show');
       $('.sidebar-blur').addClass('show');
-      $('body').addClass('overflow-hidden');
+      $('body').addClass('noscroll');
     } else {
       $('.sidebar-dropdown-menu').removeClass('show');
       $('.sidebar-blur').removeClass('show');
-      $('body').removeClass('overflow-hidden');
+      $('body').removeClass('noscroll');
     }
   }
   readMore1(story: any, type: string) {
