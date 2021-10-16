@@ -73,7 +73,7 @@ header {
         }
       }
       small {
-        line-height: 12px;
+        line-height: 17.43px;
         font-size: 12.34px;
       }
     }
@@ -103,11 +103,9 @@ header {
           font-family: $robotoBold;
           font-weight: 700;
           font-size: 8px;
-          color: $light-gray-1;
-          line-height: 10px;
-          > a {
-            color: $light_gray_8;
-          }
+          color: $light_gray_8;
+          line-height: 10.3px;
+
           > img {
             height: 8px;
             width: 8px;

@@ -452,7 +452,7 @@
         <!-- Center menu link -->
         <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
           <ul class="center-menu nav justify-content-center">
-            <li class="nav-item px-2 menus" *ngFor="let menu of header?.menus">
+            <li class="nav-item px-3 menus" *ngFor="let menu of header?.menus">
               <a
                 [routerLink]="menu.url"
                 class="d-flex align-items-center"
@@ -460,7 +460,7 @@
                 >{{ menu.title }}
               </a>
             </li>
-            <li class="nav-item px-2 subscribeMenu">
+            <li class="nav-item px-3 subscribeMenu">
               <a
                 routerLink="/subscribe"
                 class="d-flex align-items-center"
@@ -469,15 +469,15 @@
               </a>
             </li>
             <li
-              class="actions nav-item mx-2 px-2"
+              class="actions nav-item mx-2 px-3"
               *ngFor="let action of header?.actions; index as i"
             >
               <a class="d-flex align-items-center" (click)="closeSidebar()"
                 >{{ action.title }}
                 <img
                   data-src="assets/img/down-arrow.svg"
-                  height="30"
-                  width="20"
+                  height="12"
+                  width="12"
                   alt=""
                   class="ms-1 lazyload"
               /></a>
@@ -544,7 +544,7 @@
               data-bs-toggle="modal"
               data-bs-target="#searchModal"
               ><img
-                data-src="assets/img/search.svg"
+                data-src="assets/img/search.png"
                 height="18"
                 width="18"
                 alt="search"
