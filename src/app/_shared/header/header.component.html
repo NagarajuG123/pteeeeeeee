@@ -554,14 +554,14 @@
 
           <!-- Social Links -->
           <ul class="social d-flex align-items-center mb-0">
-            <li class="d-none d-lg-block">
+            <li class="d-none mx-1 d-lg-block">
               <a href="#" class="d-flex align-items-center">
                 <span class="follow text-capitalize">Follow Us:</span>
               </a>
             </li>
             <li
               *ngFor="let item of header?.socialMedia; index as i"
-              class="mx-1 d-none d-lg-block"
+              class="mx-2 d-none d-lg-block"
             >
               <a
                 [href]="item.url"
