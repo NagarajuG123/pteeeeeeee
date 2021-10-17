@@ -6,6 +6,7 @@
   margin-left: auto;
 }
 .c-link--btn {
+  font-family: $proxiBold;
   color:$dark_red_2;
   font-size: 15px;
   font-weight: 700;
@@ -114,11 +115,13 @@
         margin-top: 0;
         font-size: 20px;
         font-weight: bold;
+        font-family: $balingerBold;
         @include media("<md"){
           font-size: 16px;
         }
       }
       .c-card-box--title {
+        font-family: $balingerBold;
         font-size: 44px;
         font-weight: bold;
         color: $black_1;
@@ -132,9 +135,10 @@
       }
       .c-card-box--content {
         max-width: 480px;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 18px;
         color: #18222e;
+        font-family: $robotoMedium;
         @include media("<xl"){
           margin-bottom: 0;
         }
@@ -223,9 +227,10 @@
         }
       }
       .c-card-box--itemTitle {
+        font-family: $balingerBold;
         padding-top: 6px;
         color:$dark_red_2;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 15px;
         -webkit-line-clamp: 1;
         height: 26px;
@@ -236,6 +241,7 @@
         margin-bottom: 2px;
       }
       .c-card-box--itemDec {
+        font-family: $robotoMedium;
         color: $white;
         font-weight: 500;
         height: 32px;        
@@ -253,6 +259,9 @@
       .c-link--btn {
         font-size: 11px;
         margin-top: 5px;
+        font-family: $robotoMedium;
+        font-weight: 500;
+        text-transform: lowercase;
         &:hover {
           color: $white;
         }
@@ -310,7 +319,7 @@
     transform: translateY(-50%);
   }
   h2 {
-    font-family: "Ballinger Condensed";
+    font-family: $balingerBold;
     padding-left: 20px;
     font-weight: 700;
     line-height: 35px;
