@@ -22,7 +22,7 @@ img {
   font-size: 30px;
   color: $dark-gray;
   font-weight: 700;
-  line-height: 37px;
+  line-height: 45px;
   margin: 0 0 -15px 0;
   padding: 8px 16px 8px 0;
 }
@@ -30,6 +30,7 @@ img {
   .tag {
     width: 169px;
     padding: 3px 6px;
+    line-height: 20.57px;
   }
   .tagBrand {
     width: 139px;
@@ -40,11 +41,12 @@ img {
     font-size: 12px;
     width: 102px !important;
     padding: 1px 6px !important;
+    line-height: 14.4px;
   }
   .over-layer {
     font-weight: bold;
     font-size: 18px;
-    line-height: 16px;
+    line-height: 14px;
     margin: 0 0 -10px -8px;
   }
 }
@@ -72,6 +74,7 @@ img {
   font-size: 10px;
   text-transform: uppercase;
   display: block;
+  line-height: 12px;
 }
 
 .brand-list {
@@ -94,19 +97,21 @@ img {
   h3 {
     font-size: 18px;
     font-weight: bold;
+    line-height: 18.72px;
   }
   span {
     font-size: 11px;
     display: block;
     font-family: $roboto;
     font-weight: 400;
+    line-height: 12px;
   }
   p {
     font-weight: 500;
     font-size: 14px;
-    line-height: 116.09%;
     color: $dark_gray_5;
     font-family: $roboto;
+    line-height: 16.73px;
   }
   @media screen and (max-width: 960px) {
     position: relative;
@@ -142,12 +147,14 @@ img {
       font-weight: bold;
       font-size: 18px;
       color: $primary;
+      line-height: 18.72px;
     }
     span {
       font-size: 11px;
       color: $dark-gray;
       font-family: $roboto;
       font-weight: 400;
+      line-height: 12px;
     }
   }
 
@@ -163,7 +170,7 @@ img {
   .latestListing {
     max-width: 318px;
     p {
-      line-height: 114.99%;
+      line-height: 16.73px;
     }
   }
 }
