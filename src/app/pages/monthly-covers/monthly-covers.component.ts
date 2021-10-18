@@ -7,6 +7,7 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
+import { faAngleRight,faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const RESULT_KEY = makeStateKey<any>('coversState');
 
@@ -21,6 +22,8 @@ export class MonthlyCoversComponent implements OnInit {
   secondBlock: Cover[] = [];
   metaData: Meta[] = [];
   publication!: string;
+  faPlus = faPlus;
+  faAngleRight = faAngleRight;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
