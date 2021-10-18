@@ -128,9 +128,22 @@ ul {
   }
 }
 
-body.noscroll
-{
-    position: fixed; 
-    overflow-y: scroll;
-    width: 100%;
+body.noscroll {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.desktop-only {
+  display: none !important;
+  @media only screen and (min-width: 600px) {
+    display: block !important;
+  }
+}
+
+.mobile-only {
+  display: none !important;
+  @media only screen and (max-width: 599px) {
+    display: block !important;
+  }
 }
