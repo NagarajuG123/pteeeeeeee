@@ -5,7 +5,6 @@ img {
   width: 100%;
 }
 .tag {
-
   background: #eb0444;
   font-family: $balingerBold;
   color: $white;
@@ -14,11 +13,11 @@ img {
   box-sizing: border-box;
 }
 .over-layer {
-  font-family: $robotoBold;
+  font-family: $roboto;
   font-size: 30px;
-  color:$black;
-  font-weight: bold;
-  line-height:37px;
+  color: $black;
+  font-weight: 700;
+  line-height: 37px;
   margin: 0 0 -15px 0;
   padding: 8px 16px 8px 0;
 }
@@ -60,7 +59,7 @@ img {
 
 .small-title {
   color: $primary;
-  font-family: $robotoMedium;
+  font-family: $roboto;
   font-weight: 500;
   font-size: 10px;
   text-transform: uppercase;
@@ -69,8 +68,8 @@ img {
 
 .brand-list {
   color: $dark-gray;
-  font-family: $robotoBold;
-  font-weight: normal;
+  font-family: $roboto;
+  font-weight: 700;
   height: calc(100% - 27px);
   a {
     color: $dark-gray;
@@ -91,14 +90,15 @@ img {
   span {
     font-size: 11px;
     display: block;
-    font-family: $robotoRegular;
+    font-family: $roboto;
+    font-weight: 400;
   }
   p {
     font-weight: 500;
     font-size: 14px;
     line-height: 116.09%;
     color: $dark_gray_5;
-    font-family: $robotoMedium;
+    font-family: $roboto;
   }
   @media screen and (max-width: 960px) {
     position: relative;
@@ -113,7 +113,8 @@ img {
   width: calc(100% - 30px);
   a {
     color: $primary;
-    font-family: $robotoBold;
+    font-family: $roboto;
+    font-weight: 700;
   }
   li {
     display: flex;
@@ -137,7 +138,8 @@ img {
     span {
       font-size: 11px;
       color: $dark-gray;
-      font-family: $robotoRegular;
+      font-family: $roboto;
+      font-weight: 400;
     }
   }
 
