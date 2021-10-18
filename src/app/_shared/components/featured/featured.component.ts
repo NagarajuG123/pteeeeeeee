@@ -25,7 +25,7 @@ const FEATURE_KEY = makeStateKey<any>('featureState');
 export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
   @Input() slug: string;
-  
+
   isBrowser: boolean;
   featured: Details[] = [];
   news: Details[] = [];
@@ -71,10 +71,10 @@ export class FeaturedComponent implements OnInit {
       `${this.apiUrl}?limit=4&offset=0`
     );
     const newsApi = this.apiService.getAPI(
-      `${this.slug}/news?limit=4&offset=0`
+      `${this.slug}/spotlight/industry?limit=4&offset=0`
     );
     const brandNews = this.apiService.getAPI(
-      `1851/news?limit=4&offset=0&isBrand=true`
+      `${this.slug}/latest?limit=4&offset=0`
     );
 
     forkJoin([featureApi, newsApi, brandNews])
@@ -87,13 +87,13 @@ export class FeaturedComponent implements OnInit {
         this.commonService.isPageLoaded.next(true);
       });
 
-    if(this.slug !== '1851'){
+    if (this.slug !== '1851') {
       this.apiService
-      .getAPI(`info?slug=${this.slug}`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((response) => {
-        this.brandInfoNews = response;
-      });
+        .getAPI(`info?slug=${this.slug}`)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((response) => {
+          this.brandInfoNews = response;
+        });
     }
   }
   updateVideoUrl(url: string) {
