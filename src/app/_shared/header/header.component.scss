@@ -103,12 +103,14 @@ header {
           font-family: $roboto;
           font-weight: 700;
           font-size: 8px;
-          color: $light_gray_8;
           line-height: 10.3px;
 
           > img {
             height: 8px;
             width: 8px;
+          }
+          >a{
+            color: $light_gray_8;
           }
         }
       }
