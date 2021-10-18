@@ -338,9 +338,12 @@
       *ngIf="isInfo || isMarket"
       [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
     >
-      <div class="financial-requirement-section" *ngIf="!isMarket">
-        <div class="header">
+      <div class="financial-requirement-section more-brand--wrapper">
+        <div class="header" *ngIf="isInfo">
           <div class="title">Financial Requirments</div>
+        </div>
+        <div class="headerMarket" *ngIf="isMarket">
+          <div class="titleMarket">More Brand Info</div>
         </div>
         <div class="financial-description">
           <p class="text">
