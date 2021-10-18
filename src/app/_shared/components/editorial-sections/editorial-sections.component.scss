@@ -34,11 +34,12 @@
           span {
             min-width: 132px;
             height: 100%;
-            color: $light-gray-1;
+            color: $light_gray_8;
             cursor: pointer;
             font-family: $roboto;
             font-weight: 700;
             font-size: 20px;
+            line-height: 28.24px;
             &.active,
             &:hover {
               color: $primary;
