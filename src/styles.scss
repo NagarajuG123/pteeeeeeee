@@ -75,13 +75,6 @@ ul {
 .empty {
   display: none;
 }
-.details .description a {
-  span {
-    color: #007bff !important;
-  }
-  display: contents;
-  text-decoration: underline !important;
-}
 
 .social-links {
   .st-btn {
@@ -107,6 +100,13 @@ ul {
 
 .details {
   .description {
+    a {
+      span {
+        color: #007bff !important;
+      }
+      display: contents;
+      text-decoration: underline !important;
+    }
     figure {
       margin: 0 0 30px;
       line-height: 1.5;

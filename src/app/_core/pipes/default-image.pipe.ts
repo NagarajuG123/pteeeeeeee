@@ -7,8 +7,7 @@ import { environment } from '../../../environments/environment';
 export class DefaultImagePipe implements PipeTransform {
   transform(value: any, width?: any, height?: any): string {
     let image = '';
-    // const emptyImage = `https://placeimg.com/${width}/${height}/any`;
-    // image = emptyImage;
+
     if (typeof value === 'undefined' || value === null) {
       return image;
     }

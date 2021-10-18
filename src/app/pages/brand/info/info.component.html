@@ -32,7 +32,6 @@
               align-items-center
               mx-auto
               position-relative
-              tabTitle
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
             (click)="setActiveTab(i + 1, item)"
@@ -59,17 +58,10 @@
     <div class="brand-main-img--wrapper strory-banner--img">
       <img
         appYoutubeImage
-        srcset="{{brandInfo?.media | defaultImage:953:535}}"
         class="img-fluid"
-        sizes="{{
-          '(max-width: 576px) 555px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 238px,
-                    300px'
-        }}"
         width="953"
         height="535"
-        data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+        data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
         alt="brand_img"
         loading="lazy"
       />
@@ -87,17 +79,10 @@
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
-          data-srcset="{{ brandInfo?.media | defaultImage: 953:535 }}"
           class="img-fluid lazyload"
-          data-sizes="{{
-            '(max-width: 576px) 555px,
-                      (max-width: 992px) 400px,
-                      (max-width: 1200px) 238px,
-                      300px'
-          }}"
           width="953"
           height="535"
-          data-src="{{ brandInfo.media | defaultImage: 100:95 }}"
+          data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
           alt="brand_img"
           loading="lazy"
         />
@@ -126,10 +111,11 @@
                 <figure>
                   <img
                     appYoutubeImage
-                    src="{{ item?.media | defaultImage: 796:0 }}"
+                    data-src="{{ item?.media | defaultImage: 796:0 }}"
                     width="100%"
                     height="796"
                     alt="info-image"
+                    class="lazyload"
                   />
                 </figure>
               </a>
@@ -209,8 +195,17 @@
                 </a>
               </div>
             </div>
-            <div class="frannews-right--wrapper">
-              <div class="frannews-image--wrapper"></div>
+            <div class="frannews-right--wrapper" *ngIf="items.image">
+              <div class="frannews-image--wrapper">
+                <img
+                  appYoutubeImage
+                  data-src="{{ items?.image | defaultImage: 417:353 }}"
+                  class="lazyload"
+                  width="417"
+                  height="353"
+                  alt="pdf"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -238,18 +233,11 @@
                         loading="lazy"
                       />
                       <div class="card-body">
-                        <h6
-                          class="
-                            card-title
-                            primary-color
-                            text-uppercase
-                            fw-bold
-                          "
-                        >
+                        <h6 class="card-title primary-color">
                           {{ list.title }}
                         </h6>
 
-                        <small>{{ list.author?.name }}</small>
+                        <small>By {{ list.author?.name }}</small>
                         <h4 class="card-text mb-1">
                           {{ list.short_description }}
                         </h4>
@@ -380,18 +368,6 @@
         </div>
       </div>
 
-      <!-- <div class="more-brand--wrapper" *ngIf="isMarket">
-        <div class="header">
-          <div class="title">More brand info</div>
-        </div>
-        <div class="brand-list">
-          <span class="brand-name"> Name </span>
-          <span class="brand-name"> NO. OF UNITS CURRENTLY OPEN: </span>
-          <span class="brand-name"> Start-up costs </span>
-          <span class="brand-name"> Franchise Fee </span>
-          <span class="brand-name"> Royalty </span>
-        </div>
-      </div> -->
       <div class="inquiry-form-section">
         <div class="header" *ngIf="!isMarket">
           <div class="title">INQUIRE NOW</div>
@@ -530,8 +506,8 @@
         </div>
 
         <!-- Trending Secion -->
-        <div class="divider-main" *ngIf="!isMarket"></div>
-        <div class="trending-section" *ngIf="!isMarket">
+        <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
+        <div class="trending-section" *ngIf="trending.length && !isMarket">
           <div class="row">
             <div class="col-md-12">
               <div class="title-tag">TRENDING</div>

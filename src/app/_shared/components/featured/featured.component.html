@@ -18,11 +18,22 @@
             </div>
             <a routerLink="/{{ item.slug }}" fragment="featured">
               <img
+                *ngIf="i === 0"
                 appYoutubeImage
-                class="img-fluid lazyload"
+                class="lazyload"
                 width="690"
                 height="386"
                 data-src="{{ item.media | defaultImage: 690:386 }}"
+                alt="featured"
+                loading="lazy"
+              />
+              <img
+                *ngIf="i !== 0"
+                appYoutubeImage
+                class="lazyload"
+                width="228"
+                height="128"
+                data-src="{{ item.media | defaultImage: 228:128 }}"
                 alt="featured"
                 loading="lazy"
               />
@@ -48,7 +59,13 @@
       "
     >
       <!-- Brand news list -->
-      <span class="small-title mb-2">LATEST FRANCHISE BRAND NEWS</span>
+      <span class="small-title mb-2" *ngIf="slug === '1851'"
+        >LATEST FRANCHISE BRAND NEWS</span
+      >
+      <span class="small-title mb-2" *ngIf="slug !== '1851'"
+        >Franchise Brand Features
+      </span>
+
       <ul class="brand-list noScrollBar list-group">
         <li
           *ngFor="let item of brandNews; index as i"
@@ -77,6 +94,8 @@
         </li>
       </ul>
     </div>
+    <!-- Industry 1851 news list -->
+
     <div
       *ngIf="slug === '1851'"
       class="
@@ -88,7 +107,6 @@
         latestListing
       "
     >
-      <!-- Industry news list -->
       <span class="small-title mb-2">Latest Franchise Industry News</span>
       <ul class="news-list noScrollBar list-group">
         <li
@@ -142,11 +160,19 @@
         latestListing
       "
     >
-      <span class="small-title mb-2">Latest Franchise Industry News</span>
-      <ul class="news-list noScrollBar list-group">
-        <li class="mb-3" *ngFor="let item of brandInfoNews; index as i">
+      <ul class="noScrollBar list-group">
+        <li *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
-            <div class="tag position-absolute text-center top-0 text-uppercase">
+            <div
+              class="
+                tag
+                brandInfo
+                position-absolute
+                text-center
+                top-0
+                text-uppercase
+              "
+            >
               {{ item?.title }}
             </div>
             <img
@@ -158,7 +184,7 @@
               alt="featured"
               loading="lazy"
             />
-            <h3 class="over-layer text-capitalize bottom-0 fw-bold w-100 p-2">
+            <h3 class="over-layer-brand bottom-0 p-2">
               {{ item?.description }}
             </h3>
           </div>

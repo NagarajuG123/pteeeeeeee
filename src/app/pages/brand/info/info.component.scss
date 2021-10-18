@@ -371,6 +371,7 @@
 .innerContent {
   padding: 0 53px;
   border-bottom: 1px solid #c4c4c4;
+
   li {
     background-color: $white;
     height: 60px;
@@ -378,9 +379,7 @@
     @include media("<lg") {
       flex: 1 0 0%;
     }
-    .tabTitle {
-      text-transform: capitalize;
-    }
+
     span {
       min-width: 132px;
       height: 100%;
@@ -416,6 +415,7 @@
         }
       }
     }
+
     border-color: $light-gray-1;
   }
 }
@@ -540,8 +540,8 @@
   }
   .frannews-right--wrapper {
     .frannews-image--wrapper {
-      width: 420px;
-      height: 350px;
+      width: 417px;
+      height: 353px;
       border: 1px solid #243444;
       position: relative;
       background: #ffffff;

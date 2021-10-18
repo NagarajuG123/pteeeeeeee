@@ -180,16 +180,16 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result.data !== 'undefined') {
-        $('#inquireModalClose').click();
-        $('#thanksModal').show();
-        setTimeout(() => {
-          $('#thanksModal').hide();
-        },10000);
-        this.inquireForm.reset();
-      } else {
-        this.submitErrMsg = result.error.message;
-        this.isSubmitFailed = true;
-      }
+          $('#inquireModalClose').click();
+          $('#thanksModal').show();
+          setTimeout(() => {
+            $('#thanksModal').hide();
+          }, 10000);
+          this.inquireForm.reset();
+        } else {
+          this.submitErrMsg = result.error.message;
+          this.isSubmitFailed = true;
+        }
         this.submittedInquireForm = false;
       });
   }
@@ -674,8 +674,8 @@ export class InfoComponent implements OnInit {
   getBB(selection: any) {
     selection.each((d) => {});
   }
-  ngAfterViewInit(){
-    if(this.isBrowser){
+  ngAfterViewInit() {
+    if (this.isBrowser) {
       $('#pdf-btn').click(function () {
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
