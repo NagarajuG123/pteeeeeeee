@@ -411,6 +411,7 @@
               >
               <!-- Brand -->
               <a
+                class="company"
                 *ngIf="brandSlug !== '1851'"
                 (click)="closeSidebar()"
                 data-bs-toggle="modal"
@@ -496,7 +497,7 @@
         </div>
         <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
           <ul class="center-menu nav justify-content-center">
-            <li class="nav-item mt-1 px-1">
+            <li class="nav-item mt-1 px-2">
               <a
                 [routerLink]="header?.menus?.url"
                 (click)="closeSidebar()"
@@ -504,24 +505,24 @@
                 >{{ header?.menus?.title }}
               </a>
             </li>
-            <li *ngIf="header?.inquire" class="nav-item mt-1 px-1">
+            <li *ngIf="header?.inquire" class="nav-item mt-1 px-2">
               <a
                 href="#"
                 onclick="return false;"
-                class="text-uppercase"
+                class="d-flex align-items-center"
                 data-bs-toggle="modal"
                 data-bs-target="#inquireModal"
               >
                 {{ header?.inquire }}
               </a>
             </li>
-            <li class="nav-item mx-2 px-1 mt-1">
+            <li class="nav-item mx-2 px-2 mt-1">
               <a class="d-flex align-items-center"
                 >{{ header?.actions?.title }}
                 <img
                   data-src="assets/img/down-arrow.svg"
-                  height="30"
-                  width="20"
+                  height="12"
+                  width="12"
                   class="ms-1 lazyload"
               /></a>
               <ul class="dropdown-menu">
