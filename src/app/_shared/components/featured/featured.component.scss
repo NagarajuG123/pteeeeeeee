@@ -20,9 +20,9 @@ img {
 .over-layer {
   font-family: $roboto;
   font-size: 30px;
-  color: $dark-gray;
+  color: $dark_black;
   font-weight: 700;
-  line-height: 45px;
+  line-height: 37.5px;
   margin: 0 0 -15px 0;
   padding: 8px 16px 8px 0;
 }
@@ -38,15 +38,15 @@ img {
 }
 .small-image {
   .tag {
-    font-size: 12px;
-    width: 102px !important;
+    font-size: 15px;
+    width: 130px !important;
     padding: 1px 6px !important;
-    line-height: 14.4px;
+    line-height: 18px;
   }
   .over-layer {
     font-weight: bold;
-    font-size: 18px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16.41px;
     margin: 0 0 -10px -8px;
   }
 }
