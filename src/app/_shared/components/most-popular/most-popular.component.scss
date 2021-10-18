@@ -36,7 +36,7 @@
         font-weight: 700;
         font-size: 10px;
         line-height: 10px;
-        font-family: $robotoBold;
+        font-family: $roboto;
       }
       > h2 {
         > span {
@@ -51,7 +51,7 @@
           font-weight: 700;
         }
         font-size: 21px;
-        font-family: $robotoBold;
+        font-family: $roboto;
       }
     }
     .slide-footer {
@@ -69,13 +69,13 @@
           font-size: 31px;
           line-height: 36px;
           font-weight: 700;
-          font-family: $robotoBold;
+          font-family: $roboto;
         }
         > h3 {
           color: $dark-gray;
           font-size: 18px;
           line-height: 19px;
-          font-family: $robotoBold;
+          font-family: $roboto;
           font-weight: 700;
           > strong {
             font-weight: 700;
@@ -84,13 +84,13 @@
         > small {
           font-size: 11px !important ;
           line-height: 12px;
-          font-family: $robotoRegular;
+          font-family: $roboto;
         }
         > p {
           font-weight: 500;
           font-size: 14px;
           line-height: 17px;
-          font-family: $robotoMedium;
+          font-family: $roboto;
         }
       }
     }

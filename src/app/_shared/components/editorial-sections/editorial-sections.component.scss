@@ -36,7 +36,7 @@
             height: 100%;
             color: $light-gray-1;
             cursor: pointer;
-            font-family: $robotoBold;
+            font-family: $roboto;
             font-weight: 700;
             font-size: 20px;
             &.active,
@@ -70,7 +70,7 @@
   .tabs-container {
     > .tabItemList {
       .items {
-        font-family: $robotoBold;
+        font-family: $roboto;
         font-weight: 700;
         img {
           width: 100%;
@@ -88,7 +88,7 @@
           }
           a {
             > small {
-              font-family: $robotoMedium;
+              font-family: $roboto;
               font-weight: 500;
               font-size: 11px;
             }

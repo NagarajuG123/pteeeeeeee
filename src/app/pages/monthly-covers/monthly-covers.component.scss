@@ -138,7 +138,7 @@
         font-weight: 500;
         font-size: 18px;
         color: #18222e;
-        font-family: $robotoMedium;
+        font-family: $roboto;
         @include media("<xl"){
           margin-bottom: 0;
         }
@@ -241,7 +241,7 @@
         margin-bottom: 2px;
       }
       .c-card-box--itemDec {
-        font-family: $robotoMedium;
+        font-family: $roboto;
         color: $white;
         font-weight: 500;
         height: 32px;        
@@ -259,7 +259,7 @@
       .c-link--btn {
         font-size: 11px;
         margin-top: 5px;
-        font-family: $robotoMedium;
+        font-family: $roboto;
         font-weight: 500;
         text-transform: lowercase;
         &:hover {

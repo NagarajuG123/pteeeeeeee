@@ -12,7 +12,7 @@
   .userDetail {
     max-width: 300px;
     span {
-      font-family: $robotoMedium;
+      font-family: $roboto;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -120,7 +120,7 @@
     line-height: 141.19%;
     .detailHead {
       bottom: 100%;
-      font-family: $robotoBold;
+      font-family: $roboto;
       min-height: 186px;
     }
     .category,
@@ -132,7 +132,7 @@
       font-weight: 700;
     }
     .description {
-      font-family: $robotoRegular;
+      font-family: $roboto;
       p {
         font-size: 17px;
       }
@@ -174,7 +174,7 @@
       font-weight: 700;
     }
     .items {
-      font-family: $robotoMedium;
+      font-family: $roboto;
       background: $border-color;
       .card-body {
         h6,
@@ -193,7 +193,7 @@
         p a {
           font-size: 14px;
           line-height: 141.19%;
-          font-family: $robotoRegular;
+          font-family: $roboto;
         }
       }
     }
