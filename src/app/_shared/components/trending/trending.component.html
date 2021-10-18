@@ -2,13 +2,16 @@
   <div class="container trending mb-1 slideItem">
     <div class="d-flex text-center py-2 row">
       <div class="col-12">
-        <div class="carousel slide vertical carousel-fade" data-bs-ride="carousel" data-bs-interval="6000"
-          id="carouselExampleIndicators">
+        <div
+          class="carousel slide vertical carousel-fade"
+          data-bs-ride="carousel"
+          data-bs-interval="6000"
+          id="carouselExampleIndicators"
+        >
           <div class="carousel-inner">
             <ng-container *ngFor="let item of data; index as i">
               <div class="carousel-item" [ngClass]="{ active: i === 0 }">
                 <span class="content">
-<<<<<<< HEAD
                   <img
                     data-src="assets/img/fire.svg"
                     height="12px"
@@ -17,27 +20,35 @@
                     loading="lazy"
                     alt=""
                   />
-=======
-                  <img data-src="assets/img/fire.svg" height="18px" width="22px" class="pe-2 lazyload" loading="lazy"
-                    alt="" />
->>>>>>> 7e2520e761c3e4a8f2f411c5d862a203f121df11
                   <span class="me-2 title">TRENDING </span>
-                  <a routerLink="{{ commonService.readMore(item) }}" fragment="trending">
-                    {{ item.title }}</a>
+                  <a
+                    routerLink="{{ commonService.readMore(item) }}"
+                    fragment="trending"
+                  >
+                    {{ item.title }}</a
+                  >
                 </span>
               </div>
             </ng-container>
           </div>
 
-          <button class="carousel-control-prev d-none d-lg-block" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <button
+            class="carousel-control-prev d-none d-lg-block"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
             <span aria-hidden="true">
               <fa-icon [icon]="faAngleUp"></fa-icon>
             </span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next d-none d-lg-block" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <button
+            class="carousel-control-next d-none d-lg-block"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
             <span aria-hidden="true">
               <fa-icon [icon]="faAngleDown"></fa-icon>
             </span>

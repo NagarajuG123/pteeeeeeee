@@ -152,22 +152,18 @@
             <div class="tag position-absolute text-center top-0 text-uppercase">
               {{ item?.title }}
             </div>
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="featured"
-              ><img
-                appYoutubeImage
-                class="img-fluid lazyload"
-                width="253"
-                height="137"
-                data-src="{{ item.media | defaultImage: 253:137 }}"
-                alt="featured"
-                loading="lazy"
-              />
-              <h3 class="over-layer text-capitalize bottom-0 fw-bold w-100 p-2">
-                {{ item?.description }}
-              </h3>
-            </a>
+            <img
+              appYoutubeImage
+              class="img-fluid lazyload"
+              width="253"
+              height="137"
+              data-src="{{ item.media | defaultImage: 253:137 }}"
+              alt="featured"
+              loading="lazy"
+            />
+            <h3 class="over-layer text-capitalize bottom-0 fw-bold w-100 p-2">
+              {{ item?.description }}
+            </h3>
           </div>
         </li>
       </ul>
