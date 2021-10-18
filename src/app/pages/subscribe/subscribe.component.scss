@@ -58,101 +58,21 @@
   }
 }
 
-.sucess-message {
-  margin: 0 auto;
-  padding: 32px 4px 66px 1px;
-  display: none;
-  @include desk-lg-below1 {
-    padding: 15px 0 15px 0;
-  }
-  figure {
-    margin: 0 0 0 0px;
-    img {
-      display: block;
-      margin: 0 auto;
-    }
-  }
-  em {
-    font-style: normal;
-    font-size: 70px;
-    line-height: 111px;
-    color: $white;
-    position: absolute;
-    top: 15px;
-    right: 3.4%;
-    background: url("/assets/img/contacteditorial-img3.png") no-repeat left top;
-    width: 111px;
-    height: 111px;
-    @include mobile-portrait {
-      width: 75px;
-      height: 75px;
-      background-size: 75px;
-      right: 3.4%;
-      line-height: 75px;
-      font-size: 46px;
-      top: 9px;
-    }
-  }
-  h3 {
-    color: $dark_gray_2;
-    font-family: $proxiLight;
-    position: absolute;
-    top: 33.4%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    line-height: 28px;
-    strong {
-      font-family: $proxiMedium;
-    }
-    @include mobile-portrait {
-      font-size: 16px;
-      line-height: 20px;
-      top: 28.4%;
-    }
-  }
-  h2 {
-    background: $dark_gray_1;
-    padding: 26px 0 21px 0;
-    font-size: 30.75px;
-    line-height: 32px;
-    color: $white;
-    font-family: $proxiRegular;
-    margin: -81px 0 32px 0;
-    position: relative;
-    z-index: 1;
-    @include mobile-portrait {
-      margin: -70px 0 20px 0;
-      padding: 20px 0 18px 0;
-      font-size: 24px;
-      line-height: 26px;
-    }
-  }
-  a {
-    margin: 0 auto;
-    width: 150px;
-    height: 35px;
-    line-height: 35px;
-    color: $white;
-    background: $red;
-    font-size: 9.1px;
-    display: inline-block;
-    vertical-align: top;
-    fa-icon {
-      font-size: 23px;
-      line-height: 35px;
-      color: $white;
-      padding: 0 10px 0 0;
-      vertical-align: top;
-    }
-  }
+.f_success {
+  color: $green;
+  display: block;
+  margin: 10px 0;
+  text-align: center;
 }
-.sucess-message-details {
-  position: relative;
-  width: 380px;
-  margin: 0 auto;
-  @include mobile-portrait {
-    width: 274px;
+#hideAfter5Sec {
+  animation: hideAnimation 0s ease-in 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
   }
 }
 

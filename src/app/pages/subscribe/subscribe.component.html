@@ -322,8 +322,6 @@
             </ul>
           </div>
 
-          <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
-
           <button
             type="button"
             class="back d-block submit_btn"
@@ -332,31 +330,9 @@
             Subscribe
             <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
           </button>
-        </form>
-      </div>
-      <div
-        *ngIf="submitSuccessMsg"
-        class="sucess-message col-xl-10 text-center"
-      >
-        <div class="sucess-message-details">
-          <figure>
-            <img
-              data-src="assets/img/contacteditorial-img2.png"
-              width="339"
-              height="388"
-              alt="contacteditorial-img2"
-              loading="lazy"
-              class="lazyload"
-            />
-          </figure>
-          <em>1</em>
-          <h3>
-            WELCOME TO <strong class="d-block">{{ publicationTitle }}</strong>
-          </h3>
-        </div>
-        <h2 class="text-uppercase">THANK YOU</h2>
-        <a href="/"><fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO HOMEPAGE</a>
-      </div>
-    </div>
-  </div>
-</div>
+      <span *ngIf="isSubmitted" class="f_error">{{
+        submitErrMsg
+      }}</span>
+      <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
+        submitSuccessMsg
+      }}</span>
