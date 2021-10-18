@@ -12,6 +12,8 @@
   a {
     color: $dark_gray_5;
     font-family: $roboto;
+    font-weight: 700;
+    line-height: 22.59px;
   }
   span {
     color: $dark_gray_5;
@@ -22,6 +24,7 @@
     &.title {
       color: $primary;
       font-family: $balingerBold;
+      line-height: 22.59px;
     }
   }
 
