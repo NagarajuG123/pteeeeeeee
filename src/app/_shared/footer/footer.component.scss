@@ -26,6 +26,9 @@ footer {
     font-family: $balingerBold;
     font-weight: 700;
     line-height: 14.42px;
+    >a{
+      line-height: 17px;
+    }
   }
   p {
     font-family: $roboto;
