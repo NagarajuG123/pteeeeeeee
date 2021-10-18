@@ -5,7 +5,6 @@ img {
   width: 100%;
 }
 .tag {
-
   background: #eb0444;
   font-family: $balingerBold;
   color: $white;
@@ -16,9 +15,9 @@ img {
 .over-layer {
   font-family: $roboto;
   font-size: 30px;
-  color:$black;
-  font-weight: bold;
-  line-height:37px;
+  color: $black;
+  font-weight: 700;
+  line-height: 37px;
   margin: 0 0 -15px 0;
   padding: 8px 16px 8px 0;
 }
@@ -70,7 +69,7 @@ img {
 .brand-list {
   color: $dark-gray;
   font-family: $roboto;
-  font-weight: normal;
+  font-weight: 700;
   height: calc(100% - 27px);
   a {
     color: $dark-gray;
@@ -92,6 +91,7 @@ img {
     font-size: 11px;
     display: block;
     font-family: $roboto;
+    font-weight: 400;
   }
   p {
     font-weight: 500;
@@ -114,6 +114,7 @@ img {
   a {
     color: $primary;
     font-family: $roboto;
+    font-weight: 700;
   }
   li {
     display: flex;
@@ -138,6 +139,7 @@ img {
       font-size: 11px;
       color: $dark-gray;
       font-family: $roboto;
+      font-weight: 400;
     }
   }
 
