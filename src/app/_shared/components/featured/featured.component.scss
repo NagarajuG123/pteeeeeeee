@@ -5,7 +5,7 @@ img {
   width: 100%;
 }
 .tag {
-  background: #eb0444;
+  background: $dark_red_2;
   font-family: $balingerBold;
   color: $white;
   font-weight: bold;
@@ -15,7 +15,7 @@ img {
 .over-layer {
   font-family: $roboto;
   font-size: 30px;
-  color: $black;
+  color: $dark-gray;
   font-weight: 700;
   line-height: 37px;
   margin: 0 0 -15px 0;
@@ -181,8 +181,8 @@ img {
       padding: 5px;
       background-color: $feature-article-description;
       color: $dark-gray;
-      font-family: "Roboto";
-      font-weight: bold;
+      font-family: $roboto;
+      font-weight: 700;
       font-size: 14px;
       line-height: 16px;
     }
