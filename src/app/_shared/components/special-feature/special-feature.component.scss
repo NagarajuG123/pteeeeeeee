@@ -14,12 +14,15 @@
     font-weight: 700;
     font-family:$balingerBold;
     line-height: 40px;
+    color: $dark-gray;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
     margin-bottom: 6px;
     font-family:$roboto;
     font-weight: 700;
+    font-size: 15px;
+    line-height: 17.58px;
     &::before {
       content: "|";
       padding-left: 15px;
@@ -58,7 +61,7 @@
 }
 .main-image {
   .tag {
-    width: 139px;
+    width: 135px;
     padding: 3px 6px;
     line-height: 21px;
   }
@@ -85,13 +88,14 @@
 .small-image {
   .tag {
     font-size: 12.94px;
-    width: 102px !important;
+    width: 107px !important;
     padding: 1px 6px !important;
     line-height: 16px;
   }
   .over-layer {
     font-size: 18px;
     margin: 0;
+    line-height: 14px;
   }
 }
 

@@ -12,11 +12,13 @@
     font-weight: 700;
     font-family: $balingerBold;
     color:$dark-gray;
+    line-height: 40px;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
     margin-bottom: 6px;
     font-family: $balingerBold;
+    font-weight: 700;
 
     &::before {
       content: "|";
@@ -48,6 +50,7 @@
   }
   .c-video-section--title {
     margin-top: 20px;
+    line-height: 23.4px;
   }
 }
 
@@ -89,7 +92,7 @@
   color: $dark-gray;
   margin-top: 7px;
   margin-bottom: 20px;
-  line-height: 23.4px;
+  line-height: 18.72px;
 }
 
 .c-link--btn {
@@ -122,8 +125,10 @@
 
 .main-image {
   .tag {
-    width: 99px;
+    width: 111px;
     height: 22px;
+    line-height: 17px;
+    padding: 3px 4px;
   }
   .video-btn {
     cursor: pointer;

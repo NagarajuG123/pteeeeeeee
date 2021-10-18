@@ -88,12 +88,12 @@
           line-height: 12px;
           font-family: $roboto;
           font-weight: 400;
-          color:  $dark-gray;
+          color:  $dark-gray !important;
         }
         > p {
-          font-weight: 500;
+          font-weight: 400;
           font-size: 14px;
-          line-height: 17px;
+          line-height: 16.73px;
           font-family: $roboto;
           color: $dark_gray_5;
         }
