@@ -15,6 +15,7 @@ header {
     color: $light_gray_9;
     > div {
       font-family: $balingerBold;
+      line-height: 18px;
     }
     li {
       > a {
@@ -275,8 +276,10 @@ header {
         border-radius: 0;
         height: 27px;
         font-family: $roboto;
+        font-weight: 400;
         font-size: 9px;
-        line-height: 141.19%;
+        line-height: 12.71px;
+        color: $light_gray_8;
         &:focus,
         &:hover {
           outline: 0;
@@ -293,7 +296,7 @@ header {
           margin: 0 0 10px;
         }
         a {
-          color: $white;
+          color: $white_4;
           text-decoration: none;
           &:hover,
           &:focus {
@@ -314,7 +317,7 @@ header {
             a {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 12px;
+              font-size: 11px;
               line-height: 14.16px;
             }
           }
