@@ -15,10 +15,16 @@
 
 .bws-sitemap-title {
   margin-bottom: 40px;
+  font-family: $proxiRegular;
+  font-size: 32px;
+  color: $dark_gray_1;
 }
 
 .bws-sitemap-subtitle {
   margin-bottom: 20px;
+  font-family: $proxiRegular;
+  font-size: 28px;
+  color: $dark_gray_1;
 }
 
 .bws-sitemap-col {
@@ -54,4 +60,5 @@ a {
   color: $light_blue;
   font-size: 17px;
   font-weight: 400;
+  font-family: $proxiRegular;
 }
