@@ -1,5 +1,6 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
 .d-flex {
   -webkit-flex-wrap: wrap;
   display: flex !important;
@@ -87,9 +88,9 @@ img {
     cursor: unset;
   }
   h1 {
+    line-height: 39px !important;
     padding: 0;
-    font-size: 30px;
-    line-height: 33px;
+    font-size: 33px;
     color: #fff;
     font-family: "ProximaNova-Bold";
     font-weight: 400;
@@ -281,6 +282,9 @@ img {
     line-height: 30px;
     color: #263645;
     padding: 0 0 15px;
+    font-family: $proxiMedium;
+    font-size: 24px;
+    font-weight: 400;
   }
 }
 .publication_right_data {
@@ -295,6 +299,7 @@ img {
 p {
   font-size: 16px;
   line-height: 24px;
+  font-family:$proxiRegular;
   margin: 0;
   padding: 0;
 }
@@ -334,6 +339,7 @@ p {
     text-align: left;
   }
   .submit_btn {
+    font-family: $proxiRegular;
     display: block;
     text-align: center;
     width: 160px;
@@ -361,15 +367,19 @@ p {
   }
   input {
     font-family: "ProximaNova-Regular";
+    font-size: 16px;
+    line-height: 20px;
     height: 39px;
     &::placeholder {
-      color: $dark-gray;
+      color: $light_gray_1;
     }
   }
   textarea {
     font-family: "ProximaNova-Regular";
+    font-size: 16px;
+    line-height: 20px;
     &::placeholder {
-      color: $dark-gray;
+      color:  $light_gray_1;
     }
   }
   @include tablet-portrait {

@@ -332,15 +332,18 @@
         </div>
       </div>
     </div>
-    <!-- 
+
     <div
       class="col-lg-4 col-md-12 pr-0 pl-0"
       *ngIf="isInfo || isMarket"
       [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
     >
-      <div class="financial-requirement-section" *ngIf="!isMarket">
-        <div class="header">
+      <div class="financial-requirement-section more-brand--wrapper">
+        <div class="header" *ngIf="isInfo">
           <div class="title">Financial Requirments</div>
+        </div>
+        <div class="headerMarket" *ngIf="isMarket">
+          <div class="titleMarket">More Brand Info</div>
         </div>
         <div class="financial-description">
           <p class="text">
@@ -377,7 +380,7 @@
         </div>
       </div>
 
-      <div class="more-brand--wrapper" *ngIf="isMarket">
+      <!-- <div class="more-brand--wrapper" *ngIf="isMarket">
         <div class="header">
           <div class="title">More brand info</div>
         </div>
@@ -388,7 +391,7 @@
           <span class="brand-name"> Franchise Fee </span>
           <span class="brand-name"> Royalty </span>
         </div>
-      </div>
+      </div> -->
       <div class="inquiry-form-section">
         <div class="header" *ngIf="!isMarket">
           <div class="title">INQUIRE NOW</div>
@@ -482,22 +485,9 @@
             submitErrMsg
           }}</span>
         </form>
- <!-- Thanks -->
- <div *ngIf="isBrowser" class="thanks-modal modal" id="thanksModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <button
-        type="button"
-        class="close text-right"
-        (click)="closeModal('thanksModal')"
-      >
-        &times;
-      </button>
-    </div>
-  </div>
-</div>
+
         <!-- Recent Features -->
-        <!-- <div class="recent-feature-article-section" *ngIf="!isMarket">
+        <div class="recent-feature-article-section" *ngIf="!isMarket">
           <div class="row">
             <div class="col-md-12">
               <div class="title-tag">RECENT FEATURES</div>
@@ -510,10 +500,10 @@
               </div>
             </div>
           </div>
-        </div>  -->
+        </div>
 
-    <!-- Featured Article Section -->
-    <!-- <div class="divider-main" *ngIf="!isMarket"></div>
+        <!-- Featured Article Section -->
+        <div class="divider-main" *ngIf="!isMarket"></div>
         <div class="feature-article-section" *ngIf="!isMarket">
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-9">
@@ -537,10 +527,10 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
-    <!-- Trending Secion -->
-    <!-- <div class="divider-main" *ngIf="!isMarket"></div>
+        <!-- Trending Secion -->
+        <div class="divider-main" *ngIf="!isMarket"></div>
         <div class="trending-section" *ngIf="!isMarket">
           <div class="row">
             <div class="col-md-12">
@@ -563,7 +553,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
       <div class="modal-dialog modal-dialog-centered">
@@ -594,7 +584,11 @@
                   <p *ngIf="emailSubValid" class="invalid">
                     {{ emailSubMessage }}
                   </p>
-                  <button type="button" id="pdf-btn" (click)="emailSubscribe(pdfForm)">
+                  <button
+                    type="button"
+                    id="pdf-btn"
+                    (click)="emailSubscribe(pdfForm)"
+                  >
                     Download
                   </button>
                 </div>

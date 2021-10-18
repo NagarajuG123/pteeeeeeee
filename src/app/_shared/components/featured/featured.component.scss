@@ -8,9 +8,14 @@ img {
   background: $dark_red_2;
   font-family: $balingerBold;
   color: $white;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 20px;
+  line-height: 24px;
   box-sizing: border-box;
+}
+.tagBrand {
+  line-height: 20.57px;
+  font-size: 17.14px;
 }
 .over-layer {
   font-family: $roboto;
@@ -26,6 +31,9 @@ img {
     width: 169px;
     padding: 3px 6px;
     line-height: 24px;
+  }
+  .tagBrand {
+    width: 139px;
   }
 }
 .small-image {

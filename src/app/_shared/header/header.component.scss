@@ -85,6 +85,8 @@ header {
       font-weight: bold;
       text-transform: uppercase;
       > img {
+        width: 53px;
+        height: 30px;
         @include mobile-landscape1 {
           width: 36px;
           height: 36px;
@@ -110,10 +112,15 @@ header {
             height: 8px;
             width: 8px;
           }
-          >a{
+          > a {
             color: $light_gray_8;
           }
         }
+      }
+      .company {
+        font-family: $balingerBold;
+        font-weight: 700;
+        color: $dark-gray;
       }
     }
     a {
@@ -317,7 +324,7 @@ header {
             a {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 11px;
+              font-size: 12px;
               line-height: 14.16px;
             }
           }

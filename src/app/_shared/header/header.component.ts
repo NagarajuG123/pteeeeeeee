@@ -433,7 +433,18 @@ export class HeaderComponent implements OnInit {
       this.commonService.showmenu = false;
       $('.sidebar-dropdown-menu').removeClass('show');
       $('.sidebar-blur').removeClass('show');
-      $('body').removeClass('overflow-hidden');
+      $('body').removeClass('noscroll');
+    }
+  }
+  @HostListener('document:click', ['$event.target'])
+  public onClick(targetElement) {
+    const clickedInside =
+      this._elementRef.nativeElement.contains(targetElement);
+    if (!clickedInside) {
+      this.commonService.showmenu = false;
+      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar-blur').removeClass('show');
+      $('body').removeClass('noscroll');
     }
   }
 }

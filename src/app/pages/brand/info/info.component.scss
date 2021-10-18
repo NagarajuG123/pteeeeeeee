@@ -588,13 +588,13 @@ img {
 }
 
 .more-brand--wrapper {
-  .header {
+  .headerMarket {
     height: 60px;
     background: #eb0444;
     display: flex;
     align-items: center;
     justify-content: center;
-    .title {
+    .titleMarket {
       font-family: Ballinger Condensed;
       font-style: normal;
       font-weight: bold;
@@ -1048,8 +1048,8 @@ button.close {
 .strory-banner--img {
   padding: 0 0 20px !important;
   text-align: center;
-  img{
-    @include media("<md"){
+  img {
+    @include media("<md") {
       height: auto;
       padding: 0;
     }
@@ -1066,9 +1066,9 @@ button.close {
   .customContainer {
     max-width: 100% !important;
     padding: 0;
-    .innerContent{
+    .innerContent {
       padding: 50px 150px 70px !important;
-      @include media("<xl"){
+      @include media("<xl") {
         padding: 20px 12px 20px !important;
       }
       @include media("<md") {
