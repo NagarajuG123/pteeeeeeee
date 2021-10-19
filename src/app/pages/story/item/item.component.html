@@ -54,9 +54,9 @@
           /></a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
-          ><h3 class="fw-bold mb-0">{{ details.author.name }}</h3></a
+          ><h3 class="mb-0">{{ details.author.name }}</h3></a
         >
-        <h5 class="primary-color fw-bold" [innerHTML]="designation"></h5>
+        <h5 class="primary-color" [innerHTML]="designation"></h5>
         <span *ngIf="isDate()">
           <span *ngIf="isUpdate()"
             >Updated {{ last_modified | date: "h:mm a" }} •
@@ -74,7 +74,7 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="fs-21 fw-bold mb-0">TRENDING ARTICLES</h5>
+        <h5 class="fs-21 mb-0">TRENDING ARTICLES</h5>
         <fa-icon
           [icon]="faCaretDown"
           [styles]="{ width: '14px', 'margin-top': '-6px' }"
@@ -137,7 +137,6 @@
                 translate-middle
                 primary-bg
                 text-white text-center
-                fw-bold
                 py-1
               "
               *ngIf="category.name"
@@ -147,7 +146,7 @@
               }}</a>
             </div>
             <h1
-              class="title text-center fw-bold text-black"
+              class="title text-center text-black"
               [innerHTML]="title"
             ></h1>
           </div>
