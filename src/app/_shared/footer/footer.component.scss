@@ -1,51 +1,61 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/variables.scss";
+
 footer {
   background-color: $dark-gray;
   color: $white;
   width: 100%;
   padding: 61px 0;
   transition: all 0.5s ease;
+
   a {
     color: $white;
+
     &:hover {
       color: $primary;
     }
   }
+
   h1 {
     color: rgba(232, 238, 242, 0.18);
-    font-family:$balingerBold;
+    font-family: $balingerBold;
     font-weight: bold;
     font-size: 39.434px;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.16em;
     margin-bottom: 13px;
     line-height: 55.68px;
   }
+
   h4 {
     font-size: 14px;
     font-family: $balingerBold;
     font-weight: 700;
     line-height: 14.42px;
   }
+
   p {
     font-family: $roboto;
     font-size: 9px;
     line-height: 11px;
   }
+
   .image {
     text-align: center;
     width: 65px;
   }
+
   .footer-link {
     max-width: 687px;
     margin: 0 auto;
   }
+
   .social {
-    > li {
-      > a {
+    >li {
+      >a {
         height: 33px;
         width: 33px;
         transition: all 0.5s ease;
+
         &:hover,
         &:focus {
           background-color: $white;
@@ -54,27 +64,34 @@ footer {
       }
     }
   }
+
   @media screen and (max-width: 992px) {
     padding: 5px;
   }
+
   @media screen and (max-width: 766px) {
     .row {
-      > .col-12 {
+      >.col-12 {
         border-left-width: 0px !important;
         border-right-width: 0px !important;
       }
-      > .col-sm-6 {
+
+      >.col-sm-6 {
         width: 100%;
       }
-      > div.border-end {
+
+      >div.border-end {
         border-bottom: 1px solid;
       }
-      > div.border-start {
+
+      >div.border-start {
         border-top: 1px solid;
       }
+
       .footer-link {
         margin: 0;
       }
+
       .image {
         text-align: left;
         width: auto;
@@ -82,28 +99,26 @@ footer {
     }
   }
 
-  @media screen and (min-width: 767px) {
-    .row {
-      > .col-sm-6 {
-        max-width: 250px;
-      }
-    }
-  }
+
 }
-.modal-header{
+
+.modal-header {
   border-bottom: 3px solid $red;
-  h1{
+
+  h1 {
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
   }
 }
-.form-check-input{
+
+.form-check-input {
   border-radius: 50%;
   height: 20px !important;
   border: 1px solid $red;
   margin-top: 0em;
 }
+
 .nextBtn {
   position: relative !important;
   width: 100% !important;
