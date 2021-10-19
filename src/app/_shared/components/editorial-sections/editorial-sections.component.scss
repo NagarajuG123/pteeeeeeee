@@ -10,7 +10,7 @@
     line-height: 40px;
     width: 362px;
     color: $white_2;
-    > strong{
+    > strong {
       font-weight: 700;
     }
   }
@@ -74,8 +74,8 @@
         font-family: $roboto;
         font-weight: 700;
         img {
-          width: 100%;
-          min-height: 106px;
+          // width: 100%;
+          // min-height: 106px;
           background-color: $light-gray-1;
         }
         > .card-body {
