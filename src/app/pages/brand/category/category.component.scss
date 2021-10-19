@@ -2,7 +2,9 @@
 @import "../../../../assets/scss/theme-color.scss";
 
 .top-section {
-  background: $light_gray_8;
+  width:100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .content
 {
@@ -25,11 +27,13 @@
     font-size :13.76px !important;
     line-height: 19.43px;
     color:$black;
+    max-width: 50%;
   }
 }
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 450px;
+    border-left: 2px solid $dark-gray;
     p {
       line-height: 114.99%;
     }
@@ -39,12 +43,13 @@
   font-family: $roboto;
   height: calc(100% - 27px);
   width: calc(100% - 30px);
+  margin-left: 10px;
   a {
     color: $primary;
   }
   li {
     display: flex;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $dark-gray;
     &:last-child {
       border: 0;
     }
