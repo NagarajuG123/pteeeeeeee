@@ -42,7 +42,7 @@ export class EditorialSectionsComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.tabName = results[0].categories;
-        this.defaultTab = results[0].defaultTab;
+        this.defaultTab = this.tab = results[0].defaultTab;
 
         this.apiService
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=10&offset=0`)
