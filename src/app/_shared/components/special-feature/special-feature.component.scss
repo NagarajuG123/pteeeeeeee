@@ -69,11 +69,11 @@
     text-decoration: none;
     font-family: $balingerBold;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 48px;
-    line-height: 103%;
+    line-height:49.44px;
 
-    color: #243444;
+    color: $dark-gray;
   }
   p {
     font-family: $roboto;
@@ -95,7 +95,7 @@
   .over-layer {
     font-size: 18px;
     margin: 0;
-    line-height: 14px;
+    line-height: 18px;
   }
 }
 
