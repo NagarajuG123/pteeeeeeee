@@ -33,6 +33,7 @@ img {
     li {
       vertical-align: top;
       padding: 0 16px 0 0;
+      font-family: $roboto;
     }
   }
 
@@ -86,11 +87,20 @@ img {
     line-height: 36px;
     color: $dark_red_2;
     text-align: left;
+    font-family: $balingerBold;
   }
   h5 {
     font-size: 20px;
     font-family: $roboto;
-    line-height: 26px;
+    line-height: 25.74px;
+    text-align: left;
+    font-weight: 500;
+    color: $dark-gray;
+  }
+  h5 {
+    font-size: 20px;
+    font-family: $roboto;
+    line-height: 25.74px;
     text-align: left;
     font-weight: 500;
     color: $black;
@@ -174,6 +184,10 @@ img {
   .signmeup input:checked + span {
     background: url("/assets/img/checked2.png") no-repeat left -1px;
     font-size: 9px;
+    font-family: $roboto;
+    font-weight: 700;
+    line-height: 12.71px;
+    color: $dark-gray;
   }
   .editors {
     .form-group {

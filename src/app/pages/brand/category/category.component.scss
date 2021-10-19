@@ -2,14 +2,16 @@
 @import "../../../../assets/scss/theme-color.scss";
 
 .top-section {
-  background: $light_gray_8;
+  width:100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .content
 {
   position: absolute;
   top: 40%;
   left: 10%;
-     >h3
+  >h3
  {
   font-family: $balingerBold;
   font-size: 64px  !important;
@@ -22,14 +24,16 @@
     font-family: $proxiRegular;
     font-weight: 400;
     font-style: normal;
-    font-size :13px !important;
-    line-height: 19px;
+    font-size :13.76px !important;
+    line-height: 19.43px;
     color:$black;
+    max-width: 50%;
   }
 }
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 450px;
+    border-left: 2px solid $dark-gray;
     p {
       line-height: 114.99%;
     }
@@ -39,17 +43,18 @@
   font-family: $roboto;
   height: calc(100% - 27px);
   width: calc(100% - 30px);
+  margin-left: 10px;
   a {
     color: $primary;
   }
   li {
     display: flex;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $dark-gray;
     &:last-child {
       border: 0;
     }
     img {
-      min-width: 141px;
+      min-width: 121px;
       max-height: 100%;
       @media screen and (max-width: 1291px) {
         min-width: 90px;
@@ -61,11 +66,13 @@
       font-weight: bold;
       font-size: 16px;
       color: $primary;
+      line-height: 18.72px;
     }
     span {
-      font-size: 10px;
+      font-size: 11px;
       color: $dark-gray;
       font-family: $roboto;
+      line-height: 12px;
     }
   }
 
@@ -100,6 +107,7 @@
             font-family: $proxiBold;
             font-weight: bold;
             font-size: 20px;
+            line-height: 28.24px;
             &.active,
             &:hover {
               color: $primary;
@@ -143,6 +151,7 @@
             color:$dark-gray; 
             font-family: $roboto;
             font-weight: 700;
+            line-height: 14.04px;
           }
           > .card-text {
             font-size: 10px;
@@ -154,7 +163,8 @@
             > small {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 10px;
+              font-size: 11px;
+              line-height: 12px;
             }
           }
         }
@@ -183,6 +193,7 @@
     .nextBtn {
       font-family: "ProximaNova-Regular";
       font-size: 17px;
+      line-height: 24px;
       z-index: 1;
       img,
       span {
@@ -194,4 +205,7 @@
 }
 a {
   color: $dark-gray;
+}
+.bg-blue{
+  background: $white_3;
 }

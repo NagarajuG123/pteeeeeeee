@@ -12,6 +12,7 @@ import {
   faInstagram,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -30,6 +31,7 @@ export class FooterComponent implements OnInit {
     faLinkedinIn,
     faYoutube,
     faTwitter,
+    faGlobe,
   ];
 
   constructor(

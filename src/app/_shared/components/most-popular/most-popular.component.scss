@@ -3,9 +3,9 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
-
+@import "../../../../assets/scss/mixins.scss";
 .most-popular {
-  background: linear-gradient($dark-gray 400px, $white 0);
+  background: linear-gradient($dark-gray 385px, $white 0);
   h2 {
     font-family: $balingerBold;
     font-weight: 700;
@@ -16,6 +16,7 @@
     border-color: $primary;
     background-color: $primary;
     height: 2px;
+    opacity: 1;
   }
   .slideItem {
     font-weight: bold;
@@ -24,19 +25,30 @@
       margin-bottom: -31px;
     }
     .slide-body {
-      min-height: 126px;
+      min-height: 130px;
       padding-top: 31px;
       padding-bottom: 31px;
       width: 380px;
-      max-height: 126px;
+      max-height: 130px;
+      @include desk-lg-below2 {
+        width: 320px;
+      }
+      @include tablet-landscape {
+        width: 300px;
+      }
+      @include mobile-portrait {
+        margin-left: 1px;
+        width: 320px;
+      }
+
       > span {
-        width: 58px;
-        height: 19px;
-        font-style: normal;
+        width: 48px;
+        height: 15px;
+        font-family: $roboto;
         font-weight: 700;
         font-size: 10px;
-        line-height: 103%;
-        font-family: $roboto;
+        line-height: 10.3px;
+        color: $dark_red_2;
       }
       > h2 {
         > span {
@@ -61,6 +73,17 @@
       font-size: 15px;
       line-height: 18px;
       width: 380px;
+      height: 24px;
+      @include desk-lg-below2 {
+        width: 320px;
+      }
+      @include tablet-landscape {
+        width: 300px;
+      }
+      @include mobile-portrait {
+        margin-left: 1px;
+        width: 320px;
+      }
     }
   }
   .subSlideItem {
@@ -88,7 +111,7 @@
           line-height: 12px;
           font-family: $roboto;
           font-weight: 400;
-          color:  $dark-gray !important;
+          color: $dark-gray !important;
         }
         > p {
           font-weight: 400;
@@ -101,15 +124,15 @@
     }
   }
 }
-.brand-most-popular {
-  background: linear-gradient($dark-gray 410px, $white 0);
-  .slideItem {
-    .slide-body {
-      max-height: 170px;
-      min-height: 170px;
-    }
-  }
-}
+// .brand-most-popular {
+//   background: linear-gradient($dark-gray 410px, $white 0);
+//   .slideItem {
+//     .slide-body {
+//       max-height: 170px;
+//       min-height: 170px;
+//     }
+//   }
+// }
 
 // carousel
 :host ::ng-deep {
@@ -119,8 +142,15 @@
         .owl-stage {
           .slideItem {
             padding: 0 10px;
-            @include media("<md") {
+            @include desk-lg-below2 {
               padding: 0 20px;
+            }
+            @include mobile-portrait {
+              padding: 0 10px;
+            }
+            @include mobile-portrait {
+              margin-left: 1px;
+              width: 320px;
             }
           }
         }
@@ -136,7 +166,17 @@
           padding: 0 20px;
           box-sizing: border-box;
           img {
-            width: 100%;
+            width: 380px;
+            @include desk-lg-below2 {
+              width: 320px;
+            }
+            @include tablet-landscape {
+              width: 300px;
+            }
+            @include mobile-portrait {
+              margin-left: 1px;
+              width: 320px;
+            }
           }
         }
       }
@@ -147,8 +187,15 @@
         position: absolute;
         top: 110px;
         background: transparent !important;
+        img {
+          width: 22px;
+          height: 39px;
+        }
         &.owl-prev {
           left: -60px;
+          @include desk-lg-below2 {
+            left: -17px;
+          }
           @include media("<md") {
             left: -17px;
             img {
@@ -159,6 +206,9 @@
         }
         &.owl-next {
           right: -60px;
+          @include desk-lg-below2 {
+            right: -17px;
+          }
           @include media("<md") {
             right: -17px;
             img {
