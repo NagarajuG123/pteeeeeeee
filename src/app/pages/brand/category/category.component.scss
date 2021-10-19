@@ -49,7 +49,7 @@
       border: 0;
     }
     img {
-      min-width: 141px;
+      min-width: 121px;
       max-height: 100%;
       @media screen and (max-width: 1291px) {
         min-width: 90px;
@@ -102,6 +102,7 @@
             font-family: $proxiBold;
             font-weight: bold;
             font-size: 20px;
+            line-height: 28.24px;
             &.active,
             &:hover {
               color: $primary;
@@ -145,6 +146,7 @@
             color:$dark-gray; 
             font-family: $roboto;
             font-weight: 700;
+            line-height: 14.04px;
           }
           > .card-text {
             font-size: 10px;
@@ -156,7 +158,8 @@
             > small {
               font-family: $roboto;
               font-weight: 500;
-              font-size: 10px;
+              font-size: 11px;
+              line-height: 12px;
             }
           }
         }
@@ -185,6 +188,7 @@
     .nextBtn {
       font-family: "ProximaNova-Regular";
       font-size: 17px;
+      line-height: 24px;
       z-index: 1;
       img,
       span {

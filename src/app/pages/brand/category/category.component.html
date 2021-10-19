@@ -48,7 +48,7 @@
                 appYoutubeImage
                 width="121px"
                 height="114px"
-                data-src="{{ item.media | defaultImage: 141:114 }}"
+                data-src="{{ item.media | defaultImage: 121:114 }}"
                 alt="industry"
                 loading="lazy"
                 class="lazyload"
@@ -156,9 +156,6 @@
                 <a href="#">
                   <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
                 </a>
-                <h4 class="card-text mb-1">
-                  {{ list.short_description }}
-                </h4>
               </div>
             </div>
           </a>
