@@ -9,7 +9,7 @@
   position: absolute;
   top: 40%;
   left: 10%;
-     >h3
+  >h3
  {
   font-family: $balingerBold;
   font-size: 64px  !important;
@@ -22,8 +22,8 @@
     font-family: $proxiRegular;
     font-weight: 400;
     font-style: normal;
-    font-size :13px !important;
-    line-height: 19px;
+    font-size :13.76px !important;
+    line-height: 19.43px;
     color:$black;
   }
 }
@@ -61,11 +61,13 @@
       font-weight: bold;
       font-size: 16px;
       color: $primary;
+      line-height: 18.72px;
     }
     span {
-      font-size: 10px;
+      font-size: 11px;
       color: $dark-gray;
       font-family: $roboto;
+      line-height: 12px;
     }
   }
 
