@@ -23,6 +23,17 @@
     margin-bottom: 47px;
     > img {
       margin-bottom: -31px;
+      width: 380px;
+      @include desk-lg-below2 {
+        width: 320px;
+      }
+      @include tablet-landscape {
+        width: 300px;
+      }
+      @include mobile-portrait {
+        margin-left: 1px;
+        width: 320px;
+      }
     }
     .slide-body {
       min-height: 130px;
@@ -124,15 +135,6 @@
     }
   }
 }
-// .brand-most-popular {
-//   background: linear-gradient($dark-gray 410px, $white 0);
-//   .slideItem {
-//     .slide-body {
-//       max-height: 170px;
-//       min-height: 170px;
-//     }
-//   }
-// }
 
 // carousel
 :host ::ng-deep {
