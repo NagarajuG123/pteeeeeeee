@@ -147,3 +147,16 @@ body.noscroll {
     display: block !important;
   }
 }
+.terms-of-use-ul {
+  list-style: disc !important;
+  margin-left: 30px;
+  b {
+    font-family: $proxiMedium !important;
+    font-weight: 500;
+  }
+  .terms-of-use-li {
+    margin: 10px 0;
+    padding: 0 0 15px 0;
+    list-style: disc !important;
+  }
+}

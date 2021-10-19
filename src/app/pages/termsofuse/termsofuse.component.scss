@@ -8,6 +8,7 @@
   position: relative;
   z-index: 5;
 }
+
 .container {
   max-width: 1380px;
   margin: 0 auto;
@@ -106,6 +107,8 @@ img {
     padding: 0 0 22px 0;
     letter-spacing: 0.1px;
     margin: 0 0 16px 0;
+    line-height: 26px;
+
     @include desk-lg-below1 {
       padding: 0 0 10px 0;
       margin: 0 0 10px 0;
@@ -146,18 +149,11 @@ img {
       }
     }
   }
-  .terms-of-use-ul {
-    list-style-type: disc;
-    margin-left: 30px;
-    .terms-of-use-li {
-      margin: 10px 0;
-      padding: 0 0 15px 0;
-    }
-  }
-  .termsofuse-content{
+
+  .termsofuse-content {
     color: $dark_gray_3;
     font-family: $proxiRegular;
-    font-size: 20px; 
+    font-size: 20px;
     line-height: 28px;
   }
 }
