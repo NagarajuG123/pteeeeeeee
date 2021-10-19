@@ -15,6 +15,7 @@
     line-height: 16px;
     height: 37px;
     color: $dark-gray;
+    width: 287px;
 
     &::placeholder {
       color: $dark-gray;
@@ -35,7 +36,9 @@
 .success {
   color: $white;
 }
-
+.pl12{
+  padding-left: 12px;
+}
 #hideAfter5Sec {
   animation: hideAnimation 0s ease-in 5s;
   animation-fill-mode: forwards;
@@ -46,5 +49,11 @@
     visibility: hidden;
     width: 0;
     height: 0;
+  }
+}
+@media (min-width: 992px){
+  .col-lg-auto {
+    flex: 0 0 auto;
+    width: 31%;
   }
 }

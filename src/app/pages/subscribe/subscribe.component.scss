@@ -32,6 +32,7 @@
     li {
       vertical-align: top;
       padding: 0 16px 0 0;
+      font-family: $roboto;
     }
   }
 
@@ -85,12 +86,20 @@
     line-height: 36px;
     color: $red;
     text-align: left;
+    font-family: $balingerBold;
   }
-  h5,
+  h5{
+    font-size: 20px;
+    font-family: $roboto;
+    line-height: 25.74px;
+    text-align: left;
+    font-weight: 500;
+    color: $dark-gray;
+  }
   h6 {
     font-size: 20px;
     font-family: $roboto;
-    line-height: 26px;
+    line-height: 25.74px;
     text-align: left;
     font-weight: 500;
     color: $black;
@@ -98,6 +107,11 @@
   .form-control {
     border-color: $red;
     width: 65%;
+    font-family: $roboto;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25.74px;
+    color: $light_gray_8;
   }
   .signmeup {
     .checks {
@@ -119,6 +133,10 @@
   .signmeup input:checked + span {
     background: url("/assets/img/checked2.png") no-repeat left 2px;
     font-size: 9px;
+    font-family: $roboto;
+    font-weight: 700;
+    line-height: 12.71px;
+    color: $dark-gray;
   }
   .editors {
     .form-group {
@@ -136,6 +154,10 @@
       outline: 0;
       width: 130px;
       height: 36px;
+      font-family: $balingerBold;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
       cursor: pointer;
       float: left;
       span {
@@ -183,13 +205,14 @@
       color: $dark_gray_1;
     }
     span {
-      font-size: 15px;
-      line-height: 19px;
-      font-weight: normal;
-      font-family: $proxiMedium;
+      font-size: 17px;
+      line-height: 30.46px;
+      font-weight: 400;
+      font-family: $roboto;
       background: url("/assets/img/unchecked.png") no-repeat left 1px;
       padding: 0 0 0 25px;
       letter-spacing: 0.4px;
+      color: $black;
     }
     .editors-details input:checked + span {
       background: url("/assets/img/checked.png") no-repeat left 1px;
