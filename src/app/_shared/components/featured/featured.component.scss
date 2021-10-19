@@ -72,13 +72,6 @@ img {
   .over-layer {
     font-size: 24px;
   }
-  .small-image {
-    .over-layer {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
 }
 
 .small-title {
@@ -217,13 +210,4 @@ img {
       line-height: 16px;
     }
   }
-}
-
-.ticker-headline {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 15px 0;
-  margin: 0;
-  font-size: 18px;
 }

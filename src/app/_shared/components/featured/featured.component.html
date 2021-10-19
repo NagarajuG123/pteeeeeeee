@@ -23,16 +23,41 @@
                 class="lazyload"
                 width="690"
                 height="386"
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                  item.media | defaultImage: 300:168
+                }} 300w, 
+            {{ item.media | defaultImage: 400:224 }} 400w, {{
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+                }}"
                 data-src="{{ item.media | defaultImage: 690:386 }}"
                 alt="featured"
                 loading="lazy"
               />
+
               <img
                 *ngIf="i !== 0"
                 appYoutubeImage
                 class="lazyload"
                 width="228"
                 height="128"
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                  item.media | defaultImage: 300:168
+                }} 300w, 
+            {{ item.media | defaultImage: 400:224 }} 400w, {{
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+                }}"
                 data-src="{{ item.media | defaultImage: 228:128 }}"
                 alt="featured"
                 loading="lazy"
