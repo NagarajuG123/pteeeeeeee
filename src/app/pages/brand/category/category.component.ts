@@ -15,6 +15,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
+import { faAngleLeft,faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-category',
@@ -36,6 +37,8 @@ export class CategoryComponent implements OnInit {
   mainText: string;
   description: string;
   banner: string;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
