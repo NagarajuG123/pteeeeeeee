@@ -1,6 +1,7 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/typography.scss";
 @import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/variables.scss";
 
 .c-subheader--wrapper {
   width: 100%;
@@ -37,7 +38,9 @@
 
   &.isHead {
     background: $border-color;
-    font-family: "ProximaNova-Bold";
+    font-family: $proxiSemiBold;
+    font-weight: 700;
+    line-height: 28.24px;
     color: $dark-gray;
     font-size: 20px;
     padding: 15px 15px;
@@ -88,11 +91,12 @@
     }
     &.isInvestmentCol {
       .list-data--investment {
-        font-family: "ProximaNova-Regular";
+        font-family: $proxiMedium;
         font-weight: 500;
         color: $dark-gray;
         font-size: 20px;
         margin-bottom: 0;
+        line-height: 28.24px;
         text-align: center;
         a {
           color: $dark-gray;
@@ -113,9 +117,11 @@
     }
     &.isIndustryCol {
       .list-data--industry {
-        font-family: "ProximaNova-Regular";
+        font-family: $proxiMedium;
         color: $dark-gray;
         font-size: 15px;
+        font-weight: 500;
+        line-height: 18.27px;
         margin-bottom: 0;
         a {
           color: $dark-gray;
@@ -136,9 +142,10 @@
       .list-data--latestStory {
         margin-bottom: 0;
         .list-data--latestStoryLink {
-          font-family: "Ballinger Condensed Medium";
-          color: $primary;
+          font-family: $balingerBold;
+          color: $dark_red_2;
           font-size: 20px;
+          line-height: 24px;
           font-weight: 700;
           text-decoration: underline;
         }
@@ -161,8 +168,8 @@
 }
 .scroll-bottom {
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 65px;
+  margin-top: 25px;
+  margin-bottom: 50px;
   .scroll-bottom--img {
     max-width: 100%;
   }
@@ -226,7 +233,10 @@
           }
         }
         .c-filter-item--title {
-          font-family: "Ballinger Condensed Medium";
+          font-family: $balingerBold;
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 36px;
           padding: 20px 14px;
           text-transform: uppercase;
           color: $white;
@@ -259,8 +269,11 @@
               height: 17px;
             }
             .form-check-label {
-              color: $medium-grey;
+              font-family: $roboto;
+              color: $dark_gray_5;
               font-weight: 500;
+              font-size: 16px;
+              line-height: 32.27px;
               margin-left: 15px;
             }
           }
@@ -283,7 +296,9 @@
     display: none;
   }
   .c-filter-action--btn {
-    color: $primary;
+    font-family: $roboto;
+    line-height: 15.23px;
+    color: $dark_red_2;
     text-decoration: underline;
     font-weight: 700;
     width: 104px;
@@ -291,4 +306,7 @@
     text-transform: uppercase;
     font-size: 13px;
   }
+}
+.form-check-input {
+  margin-top: 0.5rem !important;
 }
