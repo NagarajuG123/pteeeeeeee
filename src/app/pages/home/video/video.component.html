@@ -70,8 +70,11 @@
     <div class="row">
       <div class="col-12">
         <div class="c-video-slider--wrapper">
-          <swiper [config]="config" #swiperRef>
-            <ng-container *ngFor="let item of videoData | slice: 2:10">
+          <owl-carousel-o
+          [options]="customOptions"
+          class="position-relative"
+         >
+            <ng-template carouselSlide *ngFor="let item of videoData | slice: 2:10">
               <div class="">
                 <div class="c-video-section--box">
                   <a
@@ -90,10 +93,22 @@
                     "
                   >
                     <img
-                      data-src="{{ item.media | defaultImage: 300:150 }}"
-                      class="img-fluid lazyload"
-                      width="300"
-                      height="150"
+                    data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                      item.media | defaultImage: 300:168
+                    }} 300w, 
+                    {{ item.media | defaultImage: 400:224 }} 400w, {{
+                        item.media | defaultImage: 555:310
+                      }} 555w"  
+                    data-sizes="{{
+                      '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    225px'
+                    }}"
+                      data-src="{{ item.media | defaultImage: 225:131 }}"
+                      class="img-fluid lazyload video-img"
+                      width="225"
+                      height="131"
                       alt="video"
                       loading="lazy"
                     />
@@ -109,8 +124,8 @@
                   </h3>
                 </div>
               </div>
-            </ng-container>
-          </swiper>
+        </ng-template>
+        </owl-carousel-o>
         </div>
       </div>
     </div>
