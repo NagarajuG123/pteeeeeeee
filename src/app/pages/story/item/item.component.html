@@ -49,7 +49,7 @@
               data-src="{{ details.author.media.url }}"
               alt="author"
               width="179px"
-              height="179px"
+              height="269px"
               class="position-absolute d-block lazyload"
           /></a>
         </div>
@@ -106,7 +106,7 @@
                 <a
                   routerLink="/author/{{ item.author.slug }}"
                   class="primary-color text-uppercase"
-                  >{{ author_name }}</a
+                  >By {{ author_name }}</a
                 >
               </span>
             </div>
@@ -174,7 +174,7 @@
               alt="next articles"
               class="me-3 lazyload"
             />
-            <span class="gray-color">Next Article</span>
+            <span class="gray-color next-article">Next Article</span>
           </div>
         </div>
       </div>
