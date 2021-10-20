@@ -3,11 +3,6 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
-.brand-img {
-  height: 506px;
-  width: 100%;
-}
-
 .question-section {
   padding-top: 40px;
 
@@ -59,9 +54,11 @@
     }
 
     .title {
-      color: $brand-info-question-title;
-      font-weight: bold;
+      color: $white_4;
+      font-weight: 700;
+      font-family: $balingerBold;
       font-size: 20px;
+      line-height: 28.24px;
       text-align: center;
 
       @include tablet-landscape1 {
@@ -75,17 +72,16 @@
   }
 
   .description {
-    padding-top: 25px;
-
     @include tablet-landscape1 {
       padding-top: 15px;
     }
 
     p {
+      line-height: 18.85px;
+      color: $dark_black;
       font-family: $roboto;
       font-weight: 400;
       font-size: 13.76px;
-      line-height: 137%;
       color: $black;
     }
   }
@@ -117,6 +113,8 @@
       font-weight: 700;
       font-size: 30px;
       text-align: center;
+      font-family: $balingerBold;
+      line-height: 36px;
 
       @include mobile-landscape1 {
         font-size: 26px;
@@ -149,9 +147,8 @@
 
     .text {
       font-size: 17px;
-      line-height: 19.89px;
       color: $dark-gray;
-
+      line-height: 21.25px;
       @include tablet-portrait {
         font-size: 16px;
       }
@@ -163,8 +160,10 @@
     }
 
     .highlight-text {
-      color: $red;
+      color: $dark_red_2;
       margin-bottom: 0;
+      font-weight: 400;
+      line-height: 19.89px;
     }
 
     .min-qualification {
@@ -187,6 +186,7 @@
     justify-content: flex-start;
     background-color: $dark-gray;
     padding-left: 22px;
+    border-bottom: 3px solid $red;
 
     &.market-header {
       height: auto;
@@ -200,10 +200,12 @@
       }
 
       .title {
-        text-transform: uppercase;
-        font-size: 19px;
-        margin-bottom: 12px;
-        font-weight: 500;
+        color: $white;
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+        font-family: $balingerBold;
+        line-height: 36px;
 
         @include media("<md") {
           margin: 0;
@@ -264,26 +266,6 @@
 
     .inquirefrom-row {
       padding: 0;
-    }
-  }
-
-  .header {
-    height: 78px;
-    border-bottom: 3px solid $red;
-
-    .title {
-      color: $brand-info-question-title;
-      font-weight: 700;
-      font-size: 30px;
-      text-align: center;
-
-      @include tablet-landscape1 {
-        font-size: 26px;
-      }
-
-      @include mobile-portrait {
-        font-size: 24px;
-      }
     }
   }
 
@@ -705,8 +687,9 @@
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  // max-width: 100%;
+  // height: auto;
   display: inline-block;
 }
 
@@ -1074,8 +1057,6 @@ button.close {
 }
 
 .brand-page-row--wrapper {
-  padding: 0 45px;
-  justify-content: center;
   margin-top: 90px;
 
   @include tablet-portrait {
@@ -1237,7 +1218,13 @@ button.close {
     right: 0;
     margin: 0 auto;
     z-index: 9;
-
+    font-family: $balingerBold;
+    font-weight: 700;
+    line-height: 28.24px;
+    font-size: 20px;
+    color: $white_4;
+    height: 32px;
+    background: $dark_red_2;
     @include mobile-portrait {
       top: 8px;
       font-size: 14px;
@@ -1314,10 +1301,6 @@ button.close {
         }
       }
     }
-  }
-
-  .stories-tabItem {
-    // display: inline-block;
   }
 
   .card-img-top {
