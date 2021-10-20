@@ -304,6 +304,7 @@ header {
         a {
           color: $white_4;
           text-decoration: none;
+          display: -webkit-flex;
           &:hover,
           &:focus {
             color: $primary;
