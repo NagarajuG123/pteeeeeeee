@@ -19,7 +19,7 @@
     padding-top: 20px;
   }
 
-  +.question-section {
+  + .question-section {
     padding-top: 30px;
 
     @include mobile-landscape1 {
@@ -133,9 +133,8 @@
     font-family: $roboto;
     font-weight: 400;
     font-size: 13px;
-    color: #F3F8FB;
+    color: #f3f8fb;
     padding: 22px 33px;
-
   }
 
   .financial-description {
@@ -462,6 +461,7 @@
 .innerContent {
   padding: 0 53px;
   border-bottom: 1px solid #c4c4c4;
+  border-top: 1px solid #c4c4c4;
 
   li {
     background-color: $white;
@@ -528,7 +528,7 @@
 }
 
 // Latest story
-.tabs-container>.tabItemList {
+.tabs-container > .tabItemList {
   .row {
     margin: 0 -5px;
 
@@ -547,10 +547,10 @@
       background-color: #c4c4c4;
     }
 
-    >.card-body {
+    > .card-body {
       padding: 8px 16px 15px;
 
-      >h6.card-title {
+      > h6.card-title {
         font-size: 11px;
       }
 
@@ -622,14 +622,13 @@
   }
 
   .frannews-top-left {
-    font-family: Ballinger Condensed;
-    font-style: normal;
-    font-weight: bold;
+    font-family: $balingerBold;
+    font-weight: 700;
     font-size: 30px;
     line-height: 36px;
     text-transform: uppercase;
     margin-bottom: 8px;
-
+    color: $dark-gray;
     @include tablet-landscape1 {
       font-size: 24px;
     }
@@ -645,6 +644,9 @@
   }
 
   .frannews-left--wrapper {
+    img {
+      height: 168px;
+    }
     @include tablet-landscape1 {
       margin-right: 20px;
     }
@@ -751,7 +753,7 @@ img {
     text-transform: uppercase;
     color: #f3f8fb;
 
-    +.brand-name {
+    + .brand-name {
       margin-top: 38px;
 
       @include tablet-landscape {
@@ -788,6 +790,10 @@ img {
 .download-btn {
   padding-left: 15px;
   padding-top: 15px;
+  line-height: 21.6px;
+  font-family: $balingerBold;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .submit-btn {
@@ -999,7 +1005,8 @@ img {
       padding: 0 0 20px 0;
     }
 
-    @include tablet-portrait {}
+    @include tablet-portrait {
+    }
 
     @include mobile-portrait {
       width: 100%;
@@ -1056,8 +1063,6 @@ button.close {
   }
 
   .map-legend {
-
-
     @include media("<lg") {
       display: block;
     }
