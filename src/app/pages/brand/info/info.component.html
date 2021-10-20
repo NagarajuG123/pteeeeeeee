@@ -266,7 +266,7 @@
         <div class="container customContainer whyIBought" *ngIf="isBought">
           <div>
             <ul class="d-flex">
-              <li class="header-title pe-2">
+              <li class="header-title me-3">
                 <h2 class="text-uppercase">
                   {{ items?.name }}
                 </h2>
@@ -279,51 +279,43 @@
           <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isExecutive">
-          <div class="wings">
-            <div class="frannews-top-left d-flex executive-qa">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>EXECUTIVE Q&A</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p
-              class="executive-qa-content"
-              *ngIf="items?.content"
-              [innerHTML]="items?.content"
-            ></p>
+        <div class="container customContainer whyIBought" *ngIf="isExecutive">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title me-3">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">EXECUTIVE Q&A</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isMarket">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li>
-                  <h2 class="text-uppercase">Available Markets</h2>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div
-                *ngIf="
-                  items['available-markets'] != null &&
-                  items['available-markets'].length
-                "
-                class="mapcontainer"
-              >
-                <div class="lg-map-wrapper" style="width: 100%; height: auto">
-                  <svg id="map" width="800" height="500"></svg>
-                </div>
-              </div>
+        <div
+          class="container customContainer whyIBought d-flex"
+          *ngIf="isMarket"
+        >
+          <ul>
+            <li>
+              <h2 class="text-uppercase">Available Markets</h2>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div
+            *ngIf="
+              isMarket &&
+              items['available-markets'] != null &&
+              items['available-markets'].length
+            "
+            class="mapcontainer"
+          >
+            <div class="lg-map-wrapper" style="width: 100%; height: auto">
+              <svg id="map" width="800" height="500"></svg>
             </div>
           </div>
         </div>
@@ -364,9 +356,11 @@
           </div>
           <div
             *ngIf="
+              isMarket &&
               items['international-markets'] != null &&
               items['international-markets'].length
             "
+            class="mt-2"
           >
             <h3 class="map-legend-internatioal">INTERNATIONAL MARKETS:</h3>
             <div class="row ms-1">
@@ -473,8 +467,8 @@
         <div class="header py-2" *ngIf="!isMarket">
           <h2 class="title">INQUIRE NOW</h2>
         </div>
-        <div class="header market-header" *ngIf="isMarket">
-          <div class="title">Inquire about services</div>
+        <div class="header" *ngIf="isMarket">
+          <h2 class="market-header text-uppercase">Inquire about services</h2>
         </div>
         <form
           *ngIf="inquireForm"

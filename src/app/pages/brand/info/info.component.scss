@@ -133,6 +133,7 @@
     font-size: 13px;
     color: #f3f8fb;
     padding: 22px 33px;
+    line-height: 15.23px;
   }
 
   .financial-description {
@@ -187,26 +188,36 @@
     background-color: $dark-gray;
     padding-left: 22px;
     border-bottom: 3px solid $red;
-    color: $white;
-    font-weight: 700;
-    font-size: 30px;
-    text-align: center;
-    font-family: $balingerBold;
-    line-height: 36px;
-    &.market-header {
-      height: auto;
 
-      @include media("<md") {
-        height: 60px;
+    h2 {
+      &.title {
+        color: $white;
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+        font-family: $balingerBold;
+        line-height: 36px;
       }
-
-      @include mobile-landscape {
-        padding-left: 15px;
-      }
-
-      .title {
+      &.market-header {
+        height: auto;
+        color: $white;
+        font-weight: 500;
+        font-size: 19px;
+        text-align: center;
+        font-family: $roboto;
+        line-height: 22.27px;
         @include media("<md") {
-          margin: 0;
+          height: 60px;
+        }
+
+        @include mobile-landscape {
+          padding-left: 15px;
+        }
+
+        .title {
+          @include media("<md") {
+            margin: 0;
+          }
         }
       }
     }
@@ -558,11 +569,11 @@
 //Why I Bought
 
 .whyIBought {
-  ul li {
+  ul li h2 {
     font-family: $balingerBold;
-    font-weight: 700;
-    font-size: 35px;
-    line-height: 42px;
+    font-weight: 700 !important;
+    font-size: 35px !important;
+    line-height: 42px !important;
     color: $dark-gray;
   }
   p {
@@ -572,17 +583,6 @@
     color: $dark_black;
     font-size: 13.76px;
   }
-  // .frannews-top-left {
-  //   margin-bottom: 50px;
-  // }
-
-  // .map-legend {
-  //   margin-bottom: 40px;
-
-  //   .map-legend-item {
-  //     margin: 20px 0 0;
-  //   }
-  // }
 }
 
 .multi_conference-left {
@@ -624,7 +624,6 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    text-transform: uppercase;
     margin-bottom: 8px;
     color: $dark-gray;
     @include tablet-landscape1 {
@@ -673,10 +672,6 @@
         height: 250px;
       }
 
-      @include mobile-portrait {
-        // width: auto;
-      }
-
       &:before {
         position: absolute;
         content: "";
@@ -718,13 +713,12 @@ img {
     justify-content: center;
 
     .titleMarket {
-      font-family: "Ballinger Condensed Bold";
-      font-style: normal;
-      font-weight: bold;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 30px;
       line-height: 36px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $white;
 
       @include mobile-portrait {
         font-size: 24px;
@@ -1195,9 +1189,12 @@ button.close {
 .map-legend {
   padding: 20px 30px 40px 120px;
   background: #e8eef2;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: $roboto;
   font-size: 16px;
+  line-height: 18.75px;
   position: relative;
+  color: $dark_black;
 
   &:before {
     position: absolute;
@@ -1218,11 +1215,11 @@ button.close {
     }
 
     .market-name {
-      font-family: Roboto;
-      font-style: normal;
+      font-family: $roboto;
       font-weight: 500;
       font-size: 13px;
-      line-height: 128.69%;
+      line-height: 16.73px;
+      color: $dark-gray;
     }
   }
 }
@@ -1287,16 +1284,6 @@ button.close {
 
   .customContainer {
     .innerContent {
-      // padding: 50px 150px 70px !important;
-
-      // @include media("<xl") {
-      //   padding: 20px 12px 20px !important;
-      // }
-
-      // @include media("<md") {
-      //   padding: 20px 12px 20px !important;
-      // }
-
       .row {
         @include media("<md") {
           justify-content: space-between;
@@ -1365,7 +1352,9 @@ button.close {
 }
 
 .map-legend-internatioal {
-  font-weight: bold;
+  font-weight: 700;
+  font-family: $roboto;
   font-size: 16px;
-  margin-top: 22px;
+  line-height: 18.75px;
+  color: $dark_black;
 }
