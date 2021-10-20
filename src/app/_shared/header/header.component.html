@@ -121,11 +121,8 @@
               </div>
             </li>
             <li class="d-block">
-              <h3>
-                <a routerLink="/monthlycovers" (click)="commonService.toggle()">
-                  MONTHLY COVERS</a
-                >
-              </h3>
+              <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+                <h3>MONTHLY COVERS</h3></a>
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
                 <a
@@ -189,38 +186,33 @@
             </li>
             <li>
               <hr />
-
-              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
                 <a
+                 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
                   routerLink="{{ menu.url }}"
                   (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
+                  > <h3>{{ menu.title }}</h3></a
                 >
-              </h3>
             </li>
-            <li>
+            <li *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
               <hr />
-              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
                 <a
                   *ngIf="!menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
-                  >{{ menu.title }}</a
+                  ><h3>{{ menu.title }}</h3></a
                 >
                 <a
                   *ngIf="menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
                   (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
+                  ><h3>{{ menu.title }}</h3></a
                 >
-                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">{{
-                  menu.title
-                }}</a>
-              </h3>
+                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">
+                  <h3>{{ menu.title }}</h3></a>
             </li>
             <li>
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
-                <a href="{{ menu.url }}">{{ menu.title }}</a>
+                <a href="{{ menu.url }}"><h3>{{ menu.title }}</h3></a>
               </h3>
             </li>
           </ul>
