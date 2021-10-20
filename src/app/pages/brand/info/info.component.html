@@ -391,7 +391,7 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <h1 class="title text-uppercase">Financial Requirments</h1>
+          <h2 class="title text-uppercase">Financial Requirements</h2>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
@@ -467,7 +467,7 @@
 
       <div class="inquiry-form-section">
         <div class="header py-2" *ngIf="!isMarket">
-          <h1 class="title">INQUIRE NOW</h1>
+          <h2 class="title">INQUIRE NOW</h2>
         </div>
         <div class="header market-header" *ngIf="isMarket">
           <div class="title">Inquire about services</div>
@@ -491,7 +491,7 @@
                 "
                 *ngIf="fields.type === 'text'"
                 [formControlName]="fields.key"
-                [placeholder]="fields.title"
+                placeholder="{{ fields.title }}*"
                 [id]="fields.key"
                 class="form-control"
                 [type]="fields.type"
@@ -568,8 +568,13 @@
                 class="recent-item"
                 *ngFor="let item of featured | slice: 0:3"
               >
-                <p class="title">{{ item.title }}</p>
-                <p class="description">{{ item.short_description }}</p>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <p class="title">{{ item.title }}</p>
+                  <p class="description">{{ item.short_description }}</p>
+                </a>
               </div>
             </div>
           </div>
@@ -585,18 +590,23 @@
                 *ngFor="let item of featured | slice: 3:6"
               >
                 <div class="image-tag">FEATURED ARTICLE</div>
-                <img
-                  appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 283:137 }}"
-                  width="283"
-                  height="137"
-                  alt="featured"
-                  class="img-fluid lazyload"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  {{ item?.title }}
-                </div>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item?.media | defaultImage: 281:125 }}"
+                    width="281"
+                    height="125"
+                    alt="featured"
+                    class="lazyload"
+                    loading="lazy"
+                  />
+                  <div class="image-description">
+                    {{ item?.title }}
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -605,23 +615,31 @@
         <!-- Trending Secion -->
         <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
         <div class="trending-section" *ngIf="trending.length && !isMarket">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title-tag">TRENDING</div>
-              <div class="trending-item" *ngFor="let item of trending">
+          <div class="title-tag ml-1">TRENDING</div>
+
+          <div class="row trending-item" *ngFor="let item of trending">
+            <div class="col-5">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+              >
                 <img
                   appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 120:126 }}"
-                  width="120"
-                  height="126"
+                  data-src="{{ item?.media | defaultImage: 139:84 }}"
+                  width="139"
+                  height="84"
                   alt="trending"
-                  class="img-fluid image-area lazyload"
+                  class="image-area lazyload"
                   loading="lazy"
-                />
-                <div class="col-md-8 image-description">
-                  {{ item?.title }}
-                </div>
-              </div>
+              /></a>
+            </div>
+
+            <div class="col image-description">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+                >{{ item?.title }}
+              </a>
             </div>
           </div>
         </div>
