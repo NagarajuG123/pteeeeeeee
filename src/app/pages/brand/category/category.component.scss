@@ -97,6 +97,8 @@
     }
     .customContainer {
       .innerContent {
+        border-bottom: 1px solid #c4c4c4;
+        border-top: 1px solid #c4c4c4;
         li {
           background-color: $white;
           height: 60px;
