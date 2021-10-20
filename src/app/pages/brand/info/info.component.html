@@ -54,6 +54,7 @@
       </div>
     </div>
   </div>
+  <!-- Tabs end -->
   <ng-container *ngIf="isStory">
     <div class="brand-main-img--wrapper strory-banner--img">
       <img
@@ -67,8 +68,9 @@
       />
     </div>
   </ng-container>
+  <!-- story tab banner -->
   <div
-    class="row brand-page-row--wrapper"
+    class="row container brand-page-row--wrapper"
     [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
@@ -79,29 +81,32 @@
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
-          class="img-fluid lazyload"
-          width="953"
-          height="535"
-          data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
+          class="lazyload"
+          width="888"
+          height="506"
+          data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
           alt="brand_img"
           loading="lazy"
         />
       </div>
       <div class="main-desc-bottom--wrapper">
-        <div class="title-highlighter" *ngIf="isInfo">
+        <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
           {{ brandInfo?.name }} INFO
-        </div>
-        <div class="question-container" *ngIf="isInfo">
+        </h2>
+        <div
+          class="question-container container customContainer"
+          *ngIf="isInfo"
+        >
           <div
             class="question-section"
             *ngFor="let item of items; let i = index"
           >
-            <div class="header header-highlighter">
-              <div class="col-md-12 title">
+            <div class="header header-highlighter align-items-center">
+              <h3 class="col-md-12 title">
                 {{ item?.title }}
-              </div>
+              </h3>
             </div>
-            <div class="description">
+            <div class="description pt-4 px-3">
               <a
                 *ngIf="item?.media && item?.media?.type === 'image'"
                 href="#"
@@ -386,7 +391,7 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <div class="title">Financial Requirments</div>
+          <h1 class="title text-uppercase">Financial Requirments</h1>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
@@ -461,8 +466,8 @@
       </div>
 
       <div class="inquiry-form-section">
-        <div class="header" *ngIf="!isMarket">
-          <div class="title">INQUIRE NOW</div>
+        <div class="header py-2" *ngIf="!isMarket">
+          <h1 class="title">INQUIRE NOW</h1>
         </div>
         <div class="header market-header" *ngIf="isMarket">
           <div class="title">Inquire about services</div>
