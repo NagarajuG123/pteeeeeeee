@@ -8,27 +8,34 @@ html,
 body {
   min-height: 100%;
 }
+
 a {
   text-decoration: none;
   cursor: pointer;
 }
+
 ul {
   padding: 0;
-  > li {
+
+  >li {
     list-style: none;
   }
 }
+
 .primary-color {
   color: $primary;
+
   &.link {
     &:hover {
       color: $primary-1;
     }
   }
 }
+
 .primary-bg {
   background-color: $primary;
 }
+
 .primary-bg-1 {
   background-color: $primary-1;
 }
@@ -36,6 +43,7 @@ ul {
 .gray-color {
   color: $dark-gray;
 }
+
 .gray-bg {
   background-color: $dark-gray;
 }
@@ -44,12 +52,15 @@ ul {
   &::-webkit-scrollbar {
     width: 0;
     height: 8px;
-    background-color: rgb(107, 99, 99); /* or add it to the track */
+    background-color: rgb(107, 99, 99);
+    /* or add it to the track */
   }
 }
+
 .container {
   max-width: 1350px !important;
 }
+
 .customContainer {
   max-width: 1210px !important;
 }
@@ -60,6 +71,7 @@ ul {
     display: flex;
   }
 }
+
 .cursor {
   cursor: pointer;
 }
@@ -72,6 +84,7 @@ ul {
     z-index: 9999;
   }
 }
+
 .empty {
   display: none;
 }
@@ -82,6 +95,7 @@ ul {
     border-radius: 50% !important;
     height: 33px !important;
     width: 33px !important;
+
     img {
       display: inline-block;
       height: 25px;
@@ -91,6 +105,7 @@ ul {
     }
   }
 }
+
 .sidebar-blur {
   &.show {
     opacity: 0.3;
@@ -104,22 +119,27 @@ ul {
       span {
         color: #007bff !important;
       }
+
       display: contents;
       text-decoration: underline !important;
     }
+
     figure {
       margin: 0 0 30px;
       line-height: 1.5;
+
       img {
         display: block;
         width: 100%;
       }
     }
+
     .image-style-align-left {
       float: left;
       width: 50%;
       margin-right: 20px;
     }
+
     .image-style-align-right {
       float: right;
       width: 50%;
@@ -136,6 +156,7 @@ body.noscroll {
 
 .desktop-only {
   display: none !important;
+
   @media only screen and (min-width: 600px) {
     display: block !important;
   }
@@ -143,20 +164,33 @@ body.noscroll {
 
 .mobile-only {
   display: none !important;
+
   @media only screen and (max-width: 599px) {
     display: block !important;
   }
 }
+
 .terms-of-use-ul {
   list-style: disc !important;
   margin-left: 30px;
+
   b {
     font-family: $proxiMedium !important;
     font-weight: 500;
   }
+
   .terms-of-use-li {
     margin: 10px 0;
     padding: 0 0 15px 0;
     list-style: disc !important;
   }
+}
+
+#inline-buttons-0 .st-btn>img {
+  display: inline-block !important;
+  height: 27px !important;
+  width: 22px !important;
+  position: relative;
+  top: 14px !important;
+  vertical-align: top;
 }
