@@ -2,8 +2,7 @@ import {
   Component,
   Inject,
   OnInit,
-  PLATFORM_ID,
-  ViewChild,
+  PLATFORM_ID
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,9 +10,8 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import 'lazysizes';
 import * as $ from 'jquery';
-import { SwiperComponent } from 'swiper/angular';
-import { SwiperOptions } from 'swiper';
 import { isPlatformBrowser } from '@angular/common';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-video',
@@ -34,21 +32,10 @@ export class VideoComponent implements OnInit {
   openVideoPlayer = false;
   isBrowser: boolean = false;
   isLoaded: boolean = false;
+  customOptions: OwlOptions = {};
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  config: SwiperOptions = {
-    spaceBetween: 5,
-    navigation: true,
-    pagination: { clickable: true },
-    scrollbar: false,
-    breakpoints: {
-      0: { slidesPerView: 1 },
-      640: { slidesPerView: 3 },
-      1024: { slidesPerView: 5 },
-    },
-  };
-  @ViewChild('swiperRef', { static: false }) swiperRef?: SwiperComponent;
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object
@@ -57,6 +44,7 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setOption();
     this.apiService
       .getAPI(`1851/videos?site=1851`)
       .pipe(takeUntil(this.onDestroy$))
@@ -87,5 +75,35 @@ export class VideoComponent implements OnInit {
         wrapper.appendChild(sliderContentWrapper);
       }
     }
+  }
+  setOption(){
+    this.customOptions = {
+      autoplay: false,
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: [
+        '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" />',
+        '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" />',
+      ],
+      responsive: {
+        0: {
+          items: 1,
+        },
+        400: {
+          items: 2,
+        },
+        740: {
+          items: 3,
+        },
+        940: {
+          items: 5,
+        },
+      },
+      nav: true,
+    };
   }
 }
