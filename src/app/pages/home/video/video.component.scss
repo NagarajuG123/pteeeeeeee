@@ -205,3 +205,26 @@
   font-weight: 400;
   opacity: 1;
 }
+:host ::ng-deep {
+  .owl-carousel {
+    .owl-nav{
+      .owl-prev{
+        position: absolute;
+        left: -60px;
+        top: 50px;
+        background: transparent;
+      }
+      .owl-next{
+        position: absolute;
+        right: -60px;
+        top: 50px;
+        background: transparent;
+      }
+    }
+  }
+}
+.video-img{
+  padding-left: 6px;
+  padding-right: 6px;
+  min-height: 131px;
+}
