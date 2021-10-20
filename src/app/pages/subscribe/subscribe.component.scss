@@ -150,11 +150,12 @@ img {
         line-height: 17px;
         font-weight: 400;
         font-family: $proxiRegular;
-        color: $dark_black;
+        color: $light_gray_5;
         background: url("/assets/img/unchecked.png") no-repeat left 1px;
         padding: 0 0 0 25px;
         letter-spacing: 0.4px;
       }
+      
     }
     .editors-details input:checked + span {
       background: url("/assets/img/checked.png") no-repeat left 1px;
