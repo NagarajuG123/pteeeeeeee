@@ -557,18 +557,32 @@
 
 //Why I Bought
 
-.wings {
-  .frannews-top-left {
-    margin-bottom: 50px;
+.whyIBought {
+  ul li {
+    font-family: $balingerBold;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    color: $dark-gray;
   }
-
-  .map-legend {
-    margin-bottom: 40px;
-
-    .map-legend-item {
-      margin: 20px 0 0;
-    }
+  p {
+    font-family: $roboto;
+    font-weight: 400;
+    line-height: 18.85px;
+    color: $dark_black;
+    font-size: 13.76px;
   }
+  // .frannews-top-left {
+  //   margin-bottom: 50px;
+  // }
+
+  // .map-legend {
+  //   margin-bottom: 40px;
+
+  //   .map-legend-item {
+  //     margin: 20px 0 0;
+  //   }
+  // }
 }
 
 .multi_conference-left {

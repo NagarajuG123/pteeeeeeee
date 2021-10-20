@@ -263,24 +263,20 @@
           </div>
         </div>
 
-        <div *ngIf="isBought">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>WHY I BOUGHT</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
+        <div class="container customContainer whyIBought" *ngIf="isBought">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title pe-2">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">WHY I BOUGHT</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
         <div *ngIf="isExecutive">
