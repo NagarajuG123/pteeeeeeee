@@ -1,6 +1,11 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
+img {
+  @include desk-xxlg {
+    width: 100%;
+  }
+}
 .row {
   @include mobile-landscape1 {
     flex-direction: column;
@@ -11,10 +16,6 @@
   margin: 10px 0;
   text-align: center;
   color: $red;
-}
-
-.submit_btn {
-  outline: 0 !important;
 }
 
 .editors-details {
@@ -42,12 +43,11 @@
   span {
     background: url("/assets/img/unchecked1.png") no-repeat left 1px;
     padding: 0 0 0 17px;
-    font-size: 11px;
-    line-height: 17px;
-    font-weight: normal;
-    font-family: $proxiRegular;
-    letter-spacing: 0.4px;
-    color: $light_gray_5;
+    font-size: 17px;
+    line-height: 30.46px;
+    font-weight: 400;
+    font-family: $roboto;
+    color: $dark_black;
   }
   strong {
     font-size: 11px;
@@ -81,14 +81,15 @@
 .subscribe {
   background-color: $white_3;
   h1 {
+    font-family: $balingerBold;
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
-    color: $red;
+    color: $dark_red_2;
     text-align: left;
     font-family: $balingerBold;
   }
-  h5{
+  h5 {
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
@@ -96,7 +97,7 @@
     font-weight: 500;
     color: $dark-gray;
   }
-  h6 {
+  h5 {
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
@@ -104,14 +105,63 @@
     font-weight: 500;
     color: $black;
   }
+  h6 {
+    font-size: 17px;
+    font-family: $roboto;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 400;
+    color: $dark-gray;
+  }
   .form-control {
     border-color: $red;
-    width: 65%;
+    width: 74%;
+  }
+  .form-control::placeholder {
     font-family: $roboto;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 25.74px;
     color: $light_gray_8;
+  }
+  .contact-editorial-main {
+    label {
+      margin: 0;
+    }
+    input {
+      display: none;
+    }
+    .radio_btns1 {
+      color: $dark_gray_1;
+    }
+    span {
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 400;
+      font-family: $roboto;
+      color: $dark_black;
+      background: url("/assets/img/unchecked.png") no-repeat left 3px;
+      padding: 0 0 0 25px;
+      letter-spacing: 0.4px;
+    }
+    .editors-details {
+      span {
+        font-size: 12px;
+        line-height: 17px;
+        font-weight: 400;
+        font-family: $proxiRegular;
+        color: $dark_black;
+        background: url("/assets/img/unchecked.png") no-repeat left 1px;
+        padding: 0 0 0 25px;
+        letter-spacing: 0.4px;
+      }
+    }
+    .editors-details input:checked + span {
+      background: url("/assets/img/checked.png") no-repeat left 1px;
+    }
+  }
+  .contact-editorial-main input:checked + span {
+    background: url("/assets/img/checked.png") no-repeat left 3px;
   }
   .signmeup {
     .checks {
@@ -121,17 +171,18 @@
       display: none;
     }
     span {
-      background: url("/assets/img/unchecked2.png") no-repeat left 2px;
-      padding: 0 0 0 17px;
-      font-size: 12px;
-      line-height: 21px;
-      font-weight: normal;
-      font-family: $proxiLight;
+      background: url("/assets/img/unchecked2.png") no-repeat left 1px;
+      padding: 0 0 0 25px;
+      font-size: 9px;
+      line-height: 12.71px;
+      font-weight: 700;
+      font-family: $roboto;
       letter-spacing: 0.4px;
+      color: $dark-gray;
     }
   }
   .signmeup input:checked + span {
-    background: url("/assets/img/checked2.png") no-repeat left 2px;
+    background: url("/assets/img/checked2.png") no-repeat left -1px;
     font-size: 9px;
     font-family: $roboto;
     font-weight: 700;
@@ -146,23 +197,16 @@
     ul {
       margin: 0 -6px;
       li {
-        padding: 0 6px 16px;
+        padding: 0 6px 6px;
       }
     }
     button {
       border: 0;
-      outline: 0;
-      width: 130px;
-      height: 36px;
-      font-family: $balingerBold;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 22px;
-      cursor: pointer;
-      float: left;
+      width: 110px;
+      height: 35px;
       span {
-        left: auto;
-        right: 0;
+        left: unset;
+        right: 4px;
       }
     }
     a {
@@ -176,60 +220,32 @@
   }
 
   .back {
+    font-family: $balingerBold;
+    font-weight: 700;
     background: $dark_red_2;
-    font-size: 15.66px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 21.6px;
     color: $white;
     position: relative;
     span {
       position: absolute;
       top: 0;
       left: 0;
-      width: 36px;
-      height: 36px;
+      width: 13px;
+      height: 10px;
       fa-icon {
-        font-size: 25px;
-        line-height: 36px;
+        font-size: 18px;
+        line-height: 38px;
         color: $white;
       }
     }
   }
-  .contact-editorial-main {
-    label {
-      margin: 0;
-    }
-    input {
-      display: none;
-    }
-    .radio_btns1 {
-      color: $dark_gray_1;
-    }
-    span {
-      font-size: 17px;
-      line-height: 30.46px;
-      font-weight: 400;
-      font-family: $roboto;
-      background: url("/assets/img/unchecked.png") no-repeat left 1px;
-      padding: 0 0 0 25px;
-      letter-spacing: 0.4px;
-      color: $black;
-    }
-    .editors-details input:checked + span {
-      background: url("/assets/img/checked.png") no-repeat left 1px;
-    }
-  }
 }
-.contact-editorial-main input:checked + span {
-  background: url("/assets/img/checked.png") no-repeat left 1px;
-}
+
 .bannerSection {
   width: 50%;
   padding-right: 0;
-  height: 616px !important;
   @include mobile-landscape1 {
     width: 100%;
-  }
-  img {
-    height: 616px;
   }
 }

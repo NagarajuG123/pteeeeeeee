@@ -2,11 +2,23 @@
   <div class="row">
     <div class="bannerSection">
       <img
-        class="img-fluid lazyload"
-        height="616"
-        width="100%"
+        class="lazyload"
+        height="514"
+        width="763"
         alt="subscribe_banner"
-        data-src="{{ data?.media | defaultImage: 800:600 }}"
+        data-src="{{ data?.media | defaultImage: 763:514 }}"
+        data-srcset="{{ data.media | defaultImage: 238:133 }} 238w, {{
+          data.media | defaultImage: 300:168
+        }} 300w, 
+            {{ data.media | defaultImage: 400:224 }} 400w, {{
+          data.media | defaultImage: 555:310
+        }} 555w"
+        data-sizes="{{
+          '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+        }}"
       />
     </div>
     <div class="col subscribe px-5 py-4">
@@ -330,9 +342,12 @@
             Subscribe
             <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
           </button>
-      <span *ngIf="isSubmitted" class="f_error">{{
-        submitErrMsg
-      }}</span>
-      <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
-        submitSuccessMsg
-      }}</span>
+          <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+          <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
+            submitSuccessMsg
+          }}</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

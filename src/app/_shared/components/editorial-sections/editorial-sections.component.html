@@ -71,8 +71,11 @@
           *ngFor="let list of items; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
-          <a routerLink="/{{ commonService.readMore(list) }}">
-            <div class="items card border-0 rounded-0 h-100">
+          <a
+            routerLink="/{{ commonService.readMore(list) }}"
+            fragment="{{ tab }}"
+          >
+            <div class="items card border-0 h-100">
               <img
                 appYoutubeImage
                 data-srcset="{{ list.media | defaultImage: 238:133 }} 238w, {{
@@ -81,16 +84,16 @@
             {{ list.media | defaultImage: 400:224 }} 400w, {{
                   list.media | defaultImage: 555:310
                 }} 555w"
-                class="card-img-top img-fluid lazyload"
+                class="card-img-top lazyload"
                 data-sizes="{{
                   '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
               (max-width: 1200px) 238px,
               300px'
                 }}"
-                width="95"
-                height="100"
-                data-src="{{ list.media | defaultImage: 95:100 }}"
+                width="195px"
+                height="103px"
+                data-src="{{ list.media | defaultImage: 195:103 }}"
                 alt="editorial"
                 loading="lazy"
               />

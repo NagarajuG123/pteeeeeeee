@@ -20,10 +20,22 @@
               appYoutubeImage
               width="380px"
               height="223px"
-              data-src="{{ item.media | defaultImage: 400:223 }}"
+              data-src="{{ item.media | defaultImage: 380:223 }}"
+              data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
+                item.media | defaultImage: 300:168
+              }} 300w, 
+          {{ item.media | defaultImage: 400:224 }} 400w, {{
+                item.media | defaultImage: 555:310
+              }} 555w"
+              data-sizes="{{
+                '(max-width: 576px) 555px,
+              (max-width: 992px) 400px,
+              (max-width: 1200px) 238px,
+              300px'
+              }}"
               alt="most-popular"
               loading="lazy"
-              class="lazyload img-fluid"
+              class="lazyload"
             />
             <div class="slide-body position-relative primary-bg px-3 d-block">
               <span
@@ -98,7 +110,7 @@
     >
       <ng-template carouselSlide *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
-          <div class="slideItem">
+          <div class="slideItem col-md-4">
             <img
               appYoutubeImage
               data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
@@ -107,7 +119,7 @@
           {{ item.media | defaultImage: 400:224 }} 400w, {{
                 item.media | defaultImage: 555:310
               }} 555w"
-              class="img-fluid lazyload"
+              class="lazyload"
               data-sizes="{{
                 '(max-width: 576px) 555px,
               (max-width: 992px) 400px,
@@ -149,7 +161,13 @@
                 px-2
               "
             >
-              <a class="text-white">READ MORE ></a>
+              <a class="text-white"
+                >READ MORE
+                <fa-icon
+                  [icon]="faAngleRight"
+                  class="ng-fa-icon fa-icon"
+                ></fa-icon
+              ></a>
             </div>
           </div>
         </a>
