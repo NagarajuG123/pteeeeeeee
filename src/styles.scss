@@ -23,7 +23,7 @@ ul {
 }
 
 .primary-color {
-  color: $primary;
+  color: $primary !important;
 
   &.link {
     &:hover {
