@@ -308,6 +308,15 @@ header {
           &:focus {
             color: $primary;
           }
+          > h3 {
+            font-family: $balingerMedium;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 30.8px;
+            text-transform: uppercase;
+            color: $white;
+            margin-bottom: 0;
+          }
         }
         > h3 {
           font-family: $balingerMedium;
