@@ -133,6 +133,7 @@
     font-size: 13px;
     color: #f3f8fb;
     padding: 22px 33px;
+    line-height: 15.23px;
   }
 
   .financial-description {
@@ -188,27 +189,35 @@
     padding-left: 22px;
     border-bottom: 3px solid $red;
 
-    &.market-header {
-      height: auto;
-
-      @include media("<md") {
-        height: 60px;
-      }
-
-      @include mobile-landscape {
-        padding-left: 15px;
-      }
-
-      .title {
+    h2 {
+      &.title {
         color: $white;
         font-weight: 700;
         font-size: 30px;
         text-align: center;
         font-family: $balingerBold;
         line-height: 36px;
-
+      }
+      &.market-header {
+        height: auto;
+        color: $white;
+        font-weight: 500;
+        font-size: 19px;
+        text-align: center;
+        font-family: $roboto;
+        line-height: 22.27px;
         @include media("<md") {
-          margin: 0;
+          height: 60px;
+        }
+
+        @include mobile-landscape {
+          padding-left: 15px;
+        }
+
+        .title {
+          @include media("<md") {
+            margin: 0;
+          }
         }
       }
     }
@@ -250,6 +259,9 @@
           color: $dark-gray;
           top: 5px;
           left: 10px;
+          font-family: $roboto;
+          font-weight: 400;
+          line-height: 15.23px;
         }
       }
     }
@@ -262,8 +274,6 @@
   }
 
   .row {
-    margin: 0;
-
     .inquirefrom-row {
       padding: 0;
     }
@@ -280,7 +290,7 @@
 
 .divider-recent-feature .btn {
   height: 54px;
-  background-color: $red;
+  background-color: $dark_red_2;
   text-align: center;
 }
 
@@ -293,7 +303,7 @@
   }
 
   .title-tag {
-    color: $red;
+    color: $dark_red_2;
     font-family: $roboto;
     font-weight: 500;
     font-size: 10px;
@@ -306,14 +316,15 @@
 
     .title {
       color: $dark-gray;
-      font-weight: bold;
       font-size: 18px;
       line-height: 21.06px;
       margin-bottom: 0.5rem !important;
+      font-family: $balingerBold;
+      font-weight: 700;
     }
 
     .description {
-      color: $medium-grey;
+      color: $dark_gray_5;
       font-family: $roboto;
       font-weight: 500;
       font-size: 12.97px;
@@ -333,7 +344,7 @@
     right: 22px;
     height: 3px;
     width: 90%;
-    background-color: $red;
+    background-color: $dark_red_2;
   }
 }
 
@@ -356,26 +367,27 @@
 
     .image-tag {
       position: absolute;
-      background-color: $red;
+      background-color: $dark_red_2;
       color: $white;
       font-family: $proxiSemiBold;
       font-size: 12.27px;
+      line-height: 14.95px;
       padding: 4px;
     }
 
     .image-area {
-      background-color: $light-gray-1;
+      background-color: $white_6;
       height: 126px;
     }
 
     .image-description {
-      padding: 10px;
-      background-color: #dce0e3;
+      padding-top: 10px;
+      background-color: $white_6;
       color: $dark-gray;
       font-family: $roboto;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 14px;
-      line-height: 16px;
+      line-height: 16.41px;
     }
   }
 }
@@ -389,12 +401,13 @@
   }
 
   .title-tag {
-    color: $red;
+    color: $dark_red_2;
     font-family: $roboto;
     font-weight: 500;
     font-size: 10px;
     line-height: 11.72px;
     padding-bottom: 15px;
+    margin-left: -5px;
   }
 
   .trending-item {
@@ -404,16 +417,19 @@
 
     .image-area {
       height: 84px;
-      width: 140px;
+      width: 139px;
       margin-right: 15px;
     }
 
     .image-description {
       color: $dark-gray;
       font-family: $roboto;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 14.06px;
+      a {
+        color: $dark-gray;
+      }
     }
   }
 }
@@ -521,11 +537,8 @@
   }
 
   .items {
-    font-weight: bold;
-
     img {
       width: 100%;
-      min-height: 106px;
       background-color: #c4c4c4;
     }
 
@@ -555,17 +568,20 @@
 
 //Why I Bought
 
-.wings {
-  .frannews-top-left {
-    margin-bottom: 50px;
+.whyIBought {
+  ul li h2 {
+    font-family: $balingerBold;
+    font-weight: 700 !important;
+    font-size: 35px !important;
+    line-height: 42px !important;
+    color: $dark-gray;
   }
-
-  .map-legend {
-    margin-bottom: 40px;
-
-    .map-legend-item {
-      margin: 20px 0 0;
-    }
+  p {
+    font-family: $roboto;
+    font-weight: 400;
+    line-height: 18.85px;
+    color: $dark_black;
+    font-size: 13.76px;
   }
 }
 
@@ -608,7 +624,6 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    text-transform: uppercase;
     margin-bottom: 8px;
     color: $dark-gray;
     @include tablet-landscape1 {
@@ -657,10 +672,6 @@
         height: 250px;
       }
 
-      @include mobile-portrait {
-        // width: auto;
-      }
-
       &:before {
         position: absolute;
         content: "";
@@ -702,13 +713,12 @@ img {
     justify-content: center;
 
     .titleMarket {
-      font-family: "Ballinger Condensed Bold";
-      font-style: normal;
-      font-weight: bold;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 30px;
       line-height: 36px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $white;
 
       @include mobile-portrait {
         font-size: 24px;
@@ -1141,6 +1151,9 @@ button.close {
       .divider-recent-feature {
         .btn {
           height: 36px;
+          font-family: $balingerBold;
+          font-weight: 700;
+          font-size: 18px;
         }
       }
     }
@@ -1176,9 +1189,12 @@ button.close {
 .map-legend {
   padding: 20px 30px 40px 120px;
   background: #e8eef2;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: $roboto;
   font-size: 16px;
+  line-height: 18.75px;
   position: relative;
+  color: $dark_black;
 
   &:before {
     position: absolute;
@@ -1199,11 +1215,11 @@ button.close {
     }
 
     .market-name {
-      font-family: Roboto;
-      font-style: normal;
+      font-family: $roboto;
       font-weight: 500;
       font-size: 13px;
-      line-height: 128.69%;
+      line-height: 16.73px;
+      color: $dark-gray;
     }
   }
 }
@@ -1246,7 +1262,7 @@ button.close {
 
 //latest story page
 .strory-banner--img {
-  padding: 0 0 20px !important;
+  margin-top: 90px;
   text-align: center;
 
   img {
@@ -1267,20 +1283,7 @@ button.close {
   padding: 0;
 
   .customContainer {
-    max-width: 100% !important;
-    padding: 0;
-
     .innerContent {
-      padding: 50px 150px 70px !important;
-
-      @include media("<xl") {
-        padding: 20px 12px 20px !important;
-      }
-
-      @include media("<md") {
-        padding: 20px 12px 20px !important;
-      }
-
       .row {
         @include media("<md") {
           justify-content: space-between;
@@ -1316,39 +1319,29 @@ button.close {
   }
 
   .card-title {
-    font-weight: bold !important;
     font-size: 12px !important;
-    line-height: 117%;
-    color: #243444;
+    line-height: 14.04px;
+    color: $dark-gray;
     -webkit-line-clamp: 2;
-    height: 29px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin: 0 !important;
-    font-family: "Roboto", sans-serif !important;
+
+    font-family: $roboto;
+    font-weight: 700;
   }
 
   small {
     font-size: 10px;
-    color: #243444;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif !important;
+    color: $dark-gray;
+    font-family: $roboto;
+    font-weight: 500;
+    line-height: 11.72px;
   }
 
   .card-text {
     font-size: 10px !important;
-    line-height: 128.69%;
-    color: #595959 !important;
-    margin: 0;
-    -webkit-line-clamp: 2;
-    height: 26px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-family: "Roboto", sans-serif !important;
+    line-height: 12.87px;
+    color: $dark_gray_5 !important;
+    font-weight: 500;
+    font-family: $roboto;
   }
 }
 
@@ -1359,7 +1352,9 @@ button.close {
 }
 
 .map-legend-internatioal {
-  font-weight: bold;
+  font-weight: 700;
+  font-family: $roboto;
   font-size: 16px;
-  margin-top: 22px;
+  line-height: 18.75px;
+  color: $dark_black;
 }

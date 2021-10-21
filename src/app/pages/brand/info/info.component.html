@@ -56,13 +56,20 @@
   </div>
   <!-- Tabs end -->
   <ng-container *ngIf="isStory">
-    <div class="brand-main-img--wrapper strory-banner--img">
+    <div
+      class="
+        brand-main-img--wrapper
+        strory-banner--img
+        container
+        customContainer
+      "
+    >
       <img
         appYoutubeImage
-        class="img-fluid"
-        width="953"
-        height="535"
-        data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
+        class="lazyload"
+        width="888"
+        height="506"
+        data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
         alt="brand_img"
         loading="lazy"
       />
@@ -217,7 +224,7 @@
 
         <div *ngIf="isStory && items">
           <div class="tabs-container container customContainer py-md-2">
-            <div class="tabItemList innerContent mt-4 py-3">
+            <div class="tabItemList mt-4 py-3">
               <ul class="row gx-2">
                 <li
                   *ngFor="let list of items; index as i"
@@ -226,8 +233,9 @@
                   <a
                     class="stories-tabItem"
                     routerLink="{{ commonService.readMore(list) }}"
+                    fragment="brand-latest-stories"
                   >
-                    <div class="items card border-0 rounded-0 h-100">
+                    <div class="items card border-0 h-100">
                       <img
                         appYoutubeImage
                         class="card-img-top img-fluid lazyload"
@@ -238,7 +246,7 @@
                         loading="lazy"
                       />
                       <div class="card-body">
-                        <h6 class="card-title primary-color">
+                        <h6 class="card-title">
                           {{ list.title }}
                         </h6>
 
@@ -255,71 +263,59 @@
           </div>
         </div>
 
-        <div *ngIf="isBought">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>WHY I BOUGHT</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
+        <div class="container customContainer whyIBought" *ngIf="isBought">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title me-3">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">WHY I BOUGHT</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isExecutive">
-          <div class="wings">
-            <div class="frannews-top-left d-flex executive-qa">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>EXECUTIVE Q&A</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p
-              class="executive-qa-content"
-              *ngIf="items?.content"
-              [innerHTML]="items?.content"
-            ></p>
+        <div class="container customContainer whyIBought" *ngIf="isExecutive">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title me-3">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">EXECUTIVE Q&A</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isMarket">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li>
-                  <h2 class="text-uppercase">Available Markets</h2>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div
-                *ngIf="
-                  items['available-markets'] != null &&
-                  items['available-markets'].length
-                "
-                class="mapcontainer"
-              >
-                <div class="lg-map-wrapper" style="width: 100%; height: auto">
-                  <svg id="map" width="800" height="500"></svg>
-                </div>
-              </div>
+        <div
+          class="container customContainer whyIBought d-flex"
+          *ngIf="isMarket"
+        >
+          <ul>
+            <li>
+              <h2 class="text-uppercase">Available Markets</h2>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div
+            *ngIf="
+              isMarket &&
+              items['available-markets'] != null &&
+              items['available-markets'].length
+            "
+            class="mapcontainer"
+          >
+            <div class="lg-map-wrapper" style="width: 100%; height: auto">
+              <svg id="map" width="800" height="500"></svg>
             </div>
           </div>
         </div>
@@ -360,9 +356,11 @@
           </div>
           <div
             *ngIf="
+              isMarket &&
               items['international-markets'] != null &&
               items['international-markets'].length
             "
+            class="mt-2"
           >
             <h3 class="map-legend-internatioal">INTERNATIONAL MARKETS:</h3>
             <div class="row ms-1">
@@ -391,7 +389,7 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <h1 class="title text-uppercase">Financial Requirments</h1>
+          <h2 class="title text-uppercase">Financial Requirements</h2>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
@@ -467,10 +465,10 @@
 
       <div class="inquiry-form-section">
         <div class="header py-2" *ngIf="!isMarket">
-          <h1 class="title">INQUIRE NOW</h1>
+          <h2 class="title">INQUIRE NOW</h2>
         </div>
-        <div class="header market-header" *ngIf="isMarket">
-          <div class="title">Inquire about services</div>
+        <div class="header" *ngIf="isMarket">
+          <h2 class="market-header text-uppercase">Inquire about services</h2>
         </div>
         <form
           *ngIf="inquireForm"
@@ -491,7 +489,7 @@
                 "
                 *ngIf="fields.type === 'text'"
                 [formControlName]="fields.key"
-                [placeholder]="fields.title"
+                placeholder="{{ fields.title }}*"
                 [id]="fields.key"
                 class="form-control"
                 [type]="fields.type"
@@ -568,8 +566,13 @@
                 class="recent-item"
                 *ngFor="let item of featured | slice: 0:3"
               >
-                <p class="title">{{ item.title }}</p>
-                <p class="description">{{ item.short_description }}</p>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <p class="title">{{ item.title }}</p>
+                  <p class="description">{{ item.short_description }}</p>
+                </a>
               </div>
             </div>
           </div>
@@ -585,18 +588,23 @@
                 *ngFor="let item of featured | slice: 3:6"
               >
                 <div class="image-tag">FEATURED ARTICLE</div>
-                <img
-                  appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 283:137 }}"
-                  width="283"
-                  height="137"
-                  alt="featured"
-                  class="img-fluid lazyload"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  {{ item?.title }}
-                </div>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item?.media | defaultImage: 281:125 }}"
+                    width="281"
+                    height="125"
+                    alt="featured"
+                    class="lazyload"
+                    loading="lazy"
+                  />
+                  <div class="image-description">
+                    {{ item?.title }}
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -605,23 +613,31 @@
         <!-- Trending Secion -->
         <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
         <div class="trending-section" *ngIf="trending.length && !isMarket">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title-tag">TRENDING</div>
-              <div class="trending-item" *ngFor="let item of trending">
+          <div class="title-tag ml-1">TRENDING</div>
+
+          <div class="row trending-item" *ngFor="let item of trending">
+            <div class="col-5">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+              >
                 <img
                   appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 120:126 }}"
-                  width="120"
-                  height="126"
+                  data-src="{{ item?.media | defaultImage: 139:84 }}"
+                  width="139"
+                  height="84"
                   alt="trending"
-                  class="img-fluid image-area lazyload"
+                  class="image-area lazyload"
                   loading="lazy"
-                />
-                <div class="col-md-8 image-description">
-                  {{ item?.title }}
-                </div>
-              </div>
+              /></a>
+            </div>
+
+            <div class="col image-description">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+                >{{ item?.title }}
+              </a>
             </div>
           </div>
         </div>
