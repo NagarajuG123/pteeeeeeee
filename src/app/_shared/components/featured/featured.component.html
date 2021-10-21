@@ -147,7 +147,7 @@
               <img
                 appYoutubeImage
                 width="121px"
-                height="114px"
+                height="auto"
                 data-src="{{ item.media | defaultImage: 121:114 }}"
                 class="lazyload"
                 alt="industry"
@@ -185,6 +185,7 @@
       <ul class="noScrollBar list-group">
         <li *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
+            <a routerLink="{{ slug }}/info">
             <div
               class="
                 tag
@@ -209,6 +210,7 @@
             <h3 class="over-layer-brand bottom-0 p-2">
               {{ item?.description }}
             </h3>
+            </a>
           </div>
         </li>
       </ul>
