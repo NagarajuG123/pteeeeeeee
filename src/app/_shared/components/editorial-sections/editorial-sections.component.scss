@@ -73,6 +73,7 @@
       .items {
         font-family: $roboto;
         font-weight: 700;
+        width: 195px;
         img {
           // width: 100%;
           // min-height: 106px;
@@ -83,7 +84,7 @@
           > h3.card-title {
             font-size: 18px;
             font-weight: 700;
-            line-height: 18.72px;
+            line-height: 1.2rem;
             color: $dark-gray;
           }
           > .card-text {

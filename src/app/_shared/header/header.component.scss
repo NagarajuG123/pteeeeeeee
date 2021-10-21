@@ -252,17 +252,14 @@ header {
       width: 300px;
       border: none !important;
       border-radius: 0rem !important;
-      max-height: 650px;
+
       overflow-y: auto;
+      max-height: 80vh;
+
       &.show {
         margin-top: 0.125rem;
         top: 100%;
         left: 0;
-        height: 600px;
-        overflow-x: auto;
-        @include desk-lg-below3 {
-          height: 550px;
-        }
       }
     }
 
@@ -304,9 +301,19 @@ header {
         a {
           color: $white_4;
           text-decoration: none;
+          display: -webkit-flex;
           &:hover,
           &:focus {
             color: $primary;
+          }
+          > h3 {
+            font-family: $balingerMedium;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 30.8px;
+            text-transform: uppercase;
+            color: $white;
+            margin-bottom: 0;
           }
         }
         > h3 {

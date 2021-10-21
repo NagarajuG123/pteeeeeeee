@@ -1,17 +1,17 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/typography.scss";
 @import "../../../assets/scss/media.scss";
-
+@import "../../../assets/scss/variables.scss";
 .top-container {
   height: 760px;
   position: relative;
-  @include media("<xl"){
+  @include media("<xl") {
     height: 680px;
   }
-  @include media("<lg"){
+  @include media("<lg") {
     height: 500px;
   }
-  @include media("<md"){
+  @include media("<md") {
     height: 400px;
   }
   img {
@@ -42,31 +42,33 @@
     .title {
       margin: 0;
       color: $dark-gray;
-      font-family: "Ballinger Condensed Medium";
-      font-weight: bold;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 44px;
-      @include media("<xl"){
+      line-height: 52.8px;
+      @include media("<xl") {
         font-size: 36px;
       }
-      @include media("<md"){
+      @include media("<md") {
         font-size: 26px;
       }
     }
     .description {
       width: 430px;
       margin: 0 auto;
-      color: $primary;
-      font-family: "Ballinger Condensed Medium";
-      font-weight: bold;
+      color: $dark_red_2;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 20px;
+      line-height: 24.54px;
       margin: 5px auto;
-      @include media("<xl"){
+      @include media("<xl") {
         font-size: 18px;
-        width: calc(100% - 15px);        
+        width: calc(100% - 15px);
       }
       @include media("<md") {
         font-size: 16px;
-      }      
+      }
     }
   }
 }
@@ -89,7 +91,9 @@
   }
 
   &.isHead {
-    font-family: "ProximaNova-Bold";
+    font-family: $proxiBold;
+    font-weight: 700;
+    line-height: 28.24px;
     color: $dark-gray;
     font-size: 20px;
     padding: 30px 10px 20px;
@@ -100,18 +104,18 @@
     }
   }
   &.list-data-wrapper--1 {
-    background-color: $text-secondary-color;    
+    background-color: $text-secondary-color;
   }
 
   &.list-data-wrapper--2 {
     background-color: $white;
   }
-  .list-data-row--wrapper{
-    @include media("<lg"){
+  .list-data-row--wrapper {
+    @include media("<lg") {
       flex: 0 0 50%;
       max-width: 50%;
     }
-    @include media("<sm"){
+    @include media("<sm") {
       flex: 0 0 100%;
       max-width: 100%;
     }
@@ -119,15 +123,15 @@
   .list-data--item {
     flex: 1 0 25%;
     max-width: 25%;
-    padding: 0 15px;    
+    padding: 0 15px;
     @include media("<sm") {
       flex: 1 0 100%;
       max-width: 100%;
     }
-    &.rank-number--wrapper{
+    &.rank-number--wrapper {
       flex: 1 0 15%;
       max-width: 15%;
-      @include media("<sm"){
+      @include media("<sm") {
         flex: 1 0 100%;
         max-width: 100%;
       }
@@ -136,7 +140,7 @@
       text-align: center;
       flex: 1 0 35%;
       max-width: 35%;
-      @include media("<sm"){
+      @include media("<sm") {
         flex: 1 0 100%;
         max-width: 100%;
       }
@@ -155,10 +159,10 @@
         }
       }
     }
-    &.isBrandCol{
+    &.isBrandCol {
       flex: 1 0 35%;
       max-width: 35%;
-      @include media("<sm"){
+      @include media("<sm") {
         flex: 1 0 100%;
         max-width: 100%;
       }
@@ -166,39 +170,43 @@
     &.rankCol {
       flex: 1 0 15%;
       max-width: 15%;
-      @include media("<sm"){
+      @include media("<sm") {
         flex: 1 0 100%;
         max-width: 100%;
       }
       .list-data--rank {
-        font-family: "ProximaNova-Regular";
-        font-weight: bold;
-        color: $primary;
+        font-family: $proxiBold;
+        font-weight: 700;
+        color: $dark_red_2;
         font-size: 84px;
+        line-height: 102.31px;
         margin-bottom: 0;
         text-align: center;
-        @include media("<xl"){
+        @include media("<xl") {
           font-size: 56px;
         }
       }
       .list-data--bottom-rank {
         margin-top: -16px;
-        font-family: "ProximaNova-Regular";
-        font-weight: bold;
-        color: $primary;
+        font-family: $proxiBold;
+        font-weight: 700;
+        color: $dark_red_2;
         font-size: 56px;
+        line-height: 68.21px;
         margin-bottom: 0;
         text-align: center;
-        @include media("<xl"){
+        @include media("<xl") {
           font-size: 46px;
         }
       }
     }
     &.lastWeekCol {
       .list-data--trending {
-        font-family: "ProximaNova-Regular";
+        font-family: $roboto;
+        font-weight: 700;
         color: $dark-gray;
-        font-size: 13px;
+        font-size: 12.54px;
+        line-height: 14.69px;
         margin-bottom: 0;
         text-align: center;
 
@@ -207,10 +215,11 @@
         }
       }
       .list-data--number {
-        font-family: "ProximaNova-Regular";
-        color: $primary;
+        font-family: $roboto;
+        font-weight: 700;
+        color: $dark_red_2;
         font-size: 38px;
-        line-height: 120%;
+        line-height: 44.53px;
         margin-bottom: 0;
         text-align: center;
 
@@ -223,15 +232,16 @@
       .list-data--latestStory {
         margin-bottom: 0;
         .list-data--latestStoryLink {
-          font-family: "Ballinger Condensed Medium";
-          color: $primary;
+          font-family: $balingerBold;
+          color: $dark_red_2;
           font-size: 20px;
           font-weight: 700;
+          line-height: 24px;
           text-decoration: underline;
-          @include media("<lg"){
+          @include media("<lg") {
             font-size: 18px;
           }
-          @include media("<md"){
+          @include media("<md") {
             font-size: 16px;
           }
         }
@@ -261,64 +271,64 @@
   height: 322px;
   align-items: flex-start;
   padding-top: 60px;
-  @include media("<xl"){
+  @include media("<xl") {
     height: auto;
     padding: 20px 0;
   }
-  @include media("<lg") {    
+  @include media("<lg") {
     flex-wrap: wrap;
   }
-  &.list-data-wrapper--2, &.list-data-wrapper--1{
-    @include media("<sm"){
+  &.list-data-wrapper--2,
+  &.list-data-wrapper--1 {
+    @include media("<sm") {
       background-color: transparent;
-      .list-data-row--wrapper{
-        &:nth-child(even){
+      .list-data-row--wrapper {
+        &:nth-child(even) {
           background-color: $text-secondary-color;
         }
       }
     }
-  }  
-  .list-data-row--wrapper{
-    @include media("<lg"){
+  }
+  .list-data-row--wrapper {
+    @include media("<lg") {
       padding-left: 50px;
     }
-    @include media("<md"){
+    @include media("<md") {
       padding: 0;
     }
-    .d-flex{
-      @include media("<lg"){
+    .d-flex {
+      @include media("<lg") {
         padding: 15px 0;
         margin: 0;
       }
-      @include media("<md"){
+      @include media("<md") {
         flex-flow: column;
         justify-content: center;
       }
     }
   }
-  .list-data--item{
+  .list-data--item {
     flex: unset !important;
     max-width: unset !important;
     padding: 0;
     width: auto;
-    &.rankCol{
+    &.rankCol {
       margin-right: 10px;
-      @include media("<md"){
+      @include media("<md") {
         margin: 0;
       }
     }
-    .list-data--bottom-rank{
-      @include media("<lg"){
+    .list-data--bottom-rank {
+      @include media("<lg") {
         margin-right: 115px;
       }
-      @include media("<md"){
+      @include media("<md") {
         margin-right: 20px;
       }
-      @include media("<sm"){
+      @include media("<sm") {
         margin-top: 0px !important;
         margin-right: 0;
       }
     }
   }
 }
-

@@ -15,6 +15,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -44,17 +45,19 @@ export class CategoryComponent implements OnInit {
     private metaService: MetaService,
     private state: TransferState,
     public commonService: CommonService,
+    private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
+    this.route.parent.params.subscribe((param) => {
+      this.slug = param.slug;
     this.mainText = this.slug.replace('-', ' ');
     const featureApi = this.apiService.getAPI(
       `1851/${this.slug}/featured?limit=24&offset=0`
     );
-
     const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
     const spotlightCategoriesApi = this.apiService.getAPI(
       `1851/spotlights/categories`
@@ -76,6 +79,7 @@ export class CategoryComponent implements OnInit {
         ).description;
         this.banner = this.tabName.find((x) => x.slug == this.slug).image;
       });
+    });  
   }
 
   prev() {

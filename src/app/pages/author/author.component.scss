@@ -105,7 +105,7 @@ img {
     color: $white;
   }
 }
-.authorDetail{
+.authorDetail {
   h1 {
     font-family: $balingerBold;
     font-size: 42px;
@@ -116,12 +116,20 @@ img {
     margin-top: -15px;
     font-weight: 700;
   }
-  h5{
+  .about {
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.41px;
+    color: $dark_red_2;
+    margin-bottom: 0;
+  }
+  h5 {
     font-family: $roboto;
     color: $red;
     margin-bottom: 0;
   }
-  img{
+  img {
     border-radius: 100%;
     height: 301.96px !important;
   }
@@ -130,10 +138,13 @@ img {
     margin: 13px 0;
     width: 300px;
   }
-  .designation{
+  .designation {
     margin-top: -15px;
     font-family: $balingerBold;
     font-weight: 700;
+    color: $dark_red_2;
+    line-height: 28.24px;
+    font-size: 20px;
   }
   .social {
     > li {
@@ -151,23 +162,24 @@ img {
     }
   }
 }
-.c-card-box--section{
-  .c-card-box--wrapper{
-      .c-card-box--contentRow {
-         background-color: $white_3;
-      }
+
+.c-card-box--section {
+  .c-card-box--wrapper {
+    .c-card-box--contentRow {
+      background-color: $white_3;
     }
-    .c-card-box--row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      height: 235px;
-      p{
-        margin-left: 200px;
-        padding-left: 240px;
-        padding-top: 10px;
-        font-family: $roboto;
-        font-weight: 500;
-      }
+  }
+  .c-card-box--row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 235px;
+    p {
+      margin-left: 200px;
+      padding-left: 240px;
+      padding-top: 10px;
+      font-family: $roboto;
+      font-weight: 500;
+    }
   }
 }

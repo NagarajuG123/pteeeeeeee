@@ -18,6 +18,7 @@ export class SpecialFeatureComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() slug: string;
   @Input() type: string;
+  @Input() company: string;
 
   specialFeature: Details[] = [];
   titleLimit = 50;
@@ -31,6 +32,8 @@ export class SpecialFeatureComponent implements OnInit {
     { width: 992, limit: 100 },
   ];
   isLoaded: boolean = false;
+  brandInfoNews: any;
+  title: string;
   constructor(
     private apiService: ApiService,
     private tstate: TransferState,
@@ -47,11 +50,20 @@ export class SpecialFeatureComponent implements OnInit {
       .subscribe((response) => {
         if (this.slug === '1851' && response.data.stories.length > 0) {
           this.specialFeature = response.data.stories;
+          this.title = response.data.title;
         } else if (this.slug !== '1851' && response.data.length > 0) {
           this.specialFeature = response.data;
         }
         this.isLoaded = true;
       });
+    if (this.slug !== '1851') {
+      this.apiService
+        .getAPI(`info?slug=${this.slug}`)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((response) => {
+          this.brandInfoNews = response;
+        });
+    }
   }
   setLimitValues(Options, fieldName) {
     let limitVal = 0;

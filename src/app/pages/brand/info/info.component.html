@@ -54,21 +54,30 @@
       </div>
     </div>
   </div>
+  <!-- Tabs end -->
   <ng-container *ngIf="isStory">
-    <div class="brand-main-img--wrapper strory-banner--img">
+    <div
+      class="
+        brand-main-img--wrapper
+        strory-banner--img
+        container
+        customContainer
+      "
+    >
       <img
         appYoutubeImage
-        class="img-fluid"
-        width="953"
-        height="535"
-        data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
+        class="lazyload"
+        width="888"
+        height="506"
+        data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
         alt="brand_img"
         loading="lazy"
       />
     </div>
   </ng-container>
+  <!-- story tab banner -->
   <div
-    class="row m-0 brand-page-row--wrapper"
+    class="row container brand-page-row--wrapper"
     [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
@@ -79,29 +88,32 @@
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
         <img
           appYoutubeImage
-          class="img-fluid lazyload"
-          width="953"
-          height="535"
-          data-src="{{ brandInfo.media | defaultImage: 953:535 }}"
+          class="lazyload"
+          width="888"
+          height="506"
+          data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
           alt="brand_img"
           loading="lazy"
         />
       </div>
       <div class="main-desc-bottom--wrapper">
-        <div class="title-highlighter" *ngIf="isInfo">
+        <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
           {{ brandInfo?.name }} INFO
-        </div>
-        <div class="question-container" *ngIf="isInfo">
+        </h2>
+        <div
+          class="question-container container customContainer"
+          *ngIf="isInfo"
+        >
           <div
             class="question-section"
             *ngFor="let item of items; let i = index"
           >
-            <div class="header header-highlighter">
-              <div class="col-md-12 title">
+            <div class="header header-highlighter align-items-center">
+              <h3 class="col-md-12 title">
                 {{ item?.title }}
-              </div>
+              </h3>
             </div>
-            <div class="description">
+            <div class="description pt-4 px-3">
               <a
                 *ngIf="item?.media && item?.media?.type === 'image'"
                 href="#"
@@ -157,9 +169,9 @@
             <div class="frannews-left--wrapper">
               <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
               <img
-                class="img-fluid lazyload"
-                width="300"
-                height="150"
+                class="lazyload"
+                width="298"
+                height="168"
                 data-src="{{ logo }}"
                 alt="brand_logo"
                 loading="lazy"
@@ -212,7 +224,7 @@
 
         <div *ngIf="isStory && items">
           <div class="tabs-container container customContainer py-md-2">
-            <div class="tabItemList innerContent mt-4 py-3">
+            <div class="tabItemList mt-4 py-3">
               <ul class="row gx-2">
                 <li
                   *ngFor="let list of items; index as i"
@@ -221,8 +233,9 @@
                   <a
                     class="stories-tabItem"
                     routerLink="{{ commonService.readMore(list) }}"
+                    fragment="brand-latest-stories"
                   >
-                    <div class="items card border-0 rounded-0 h-100">
+                    <div class="items card border-0 h-100">
                       <img
                         appYoutubeImage
                         class="card-img-top img-fluid lazyload"
@@ -233,7 +246,7 @@
                         loading="lazy"
                       />
                       <div class="card-body">
-                        <h6 class="card-title primary-color">
+                        <h6 class="card-title">
                           {{ list.title }}
                         </h6>
 
@@ -250,69 +263,117 @@
           </div>
         </div>
 
-        <div *ngIf="isBought">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>WHY I BOUGHT</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
+        <div class="container customContainer whyIBought" *ngIf="isBought">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title me-3">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">WHY I BOUGHT</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isExecutive">
-          <div class="wings">
-            <div class="frannews-top-left d-flex executive-qa">
-              <ul>
-                <li class="header-title">
-                  <h2 class="text-uppercase">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase">
-                    <span>EXECUTIVE Q&A</span>
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p
-              class="executive-qa-content"
-              *ngIf="items?.content"
-              [innerHTML]="items?.content"
-            ></p>
+        <div class="container customContainer whyIBought" *ngIf="isExecutive">
+          <div>
+            <ul class="d-flex">
+              <li class="header-title me-3">
+                <h2 class="text-uppercase">
+                  {{ items?.name }}
+                </h2>
+              </li>
+              <li>
+                <h2 class="text-uppercase">EXECUTIVE Q&A</h2>
+              </li>
+            </ul>
           </div>
+          <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
         </div>
 
-        <div *ngIf="isMarket">
-          <div class="wings">
-            <div class="frannews-top-left d-flex">
-              <ul>
-                <li>
-                  <h2 class="text-uppercase">Available Markets</h2>
-                </li>
-              </ul>
+        <div
+          class="container customContainer whyIBought d-flex"
+          *ngIf="isMarket"
+        >
+          <ul>
+            <li>
+              <h2 class="text-uppercase">Available Markets</h2>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div
+            *ngIf="
+              isMarket &&
+              items['available-markets'] != null &&
+              items['available-markets'].length
+            "
+            class="mapcontainer"
+          >
+            <div class="lg-map-wrapper" style="width: 100%; height: auto">
+              <svg id="map" width="800" height="500"></svg>
             </div>
-            <div>
+          </div>
+        </div>
+      </div>
+      <div class="market-map-legend">
+        <div
+          *ngIf="
+            isMarket &&
+            items['available-markets'] != null &&
+            items['available-markets'].length
+          "
+          class="map-legend"
+        >
+          MAP LEGEND:
+          <div class="row">
+            <div class="col-xl-8 col-md-12">
+              <div class="row m-0">
+                <div
+                  *ngFor="let market of items['available-markets']"
+                  class="col-sm-5 map-legend-item"
+                >
+                  <div class="market-names">
+                    <div class="">
+                      <div
+                        class="market-status-color"
+                        [style.backgroundColor]="market.color"
+                      ></div>
+                    </div>
+                    <div class="align-self-center lh-base">
+                      <span class="text-uppercase market-name">{{
+                        market.name
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="
+              isMarket &&
+              items['international-markets'] != null &&
+              items['international-markets'].length
+            "
+            class="mt-2"
+          >
+            <h3 class="map-legend-internatioal">INTERNATIONAL MARKETS:</h3>
+            <div class="row ms-1">
               <div
-                *ngIf="
-                  items['available-markets'] != null &&
-                  items['available-markets'].length
-                "
-                class="mapcontainer"
+                class="col-sm-3 map-legend-item"
+                *ngFor="let market of items['international-markets']"
               >
-                <div class="lg-map-wrapper" style="width: 100%; height: auto">
-                  <svg id="map" width="800" height="500"></svg>
+                <div class="row market-names">
+                  <div class="col-xs-10">
+                    <span class="text-uppercase market-name">{{
+                      market.name
+                    }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -328,12 +389,46 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <div class="title">Financial Requirments</div>
+          <h2 class="title text-uppercase">Financial Requirements</h2>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
         </div>
-        <div class="financial-description">
+        <div class="financial-description" *ngIf="isInfo">
+          <p class="text">
+            {{ brandInfo?.more_info }}
+          </p>
+          <p class="text">
+            Initial Franchise Fee:
+            <span class="highlight-text"> {{ brandInfo?.franchise_fee }} </span>
+          </p>
+          <p class="text">
+            Initial Investment Range:
+            <span class="highlight-text"> {{ brandInfo?.startup_costs }} </span>
+          </p>
+          <p class="text">Minimum Qualifications:</p>
+          <p
+            class="highlight-text min-qualification"
+            *ngFor="let info of brandInfo?.optional_info"
+          >
+            {{ info.title }} {{ info.value }} <br />
+          </p>
+          <p class="text">
+            Territory: Protected territory with geographic rights to the Sylvan
+            system in a well-defined area
+          </p>
+          <p class="text">
+            With an average gross revenue of $518,159 among the top 25% of
+            territories, Sylvan Learning offers a business opportunity with both
+            financial and emotional rewards.
+          </p>
+          <p class="text" *ngFor="let info of brandInfo?.optional_info">
+            {{ info.title }} :
+            <span class="highlight-text">{{ info.value }}</span>
+          </p>
+        </div>
+
+        <div class="market" *ngIf="isMarket">
           <p class="text">
             {{ brandInfo?.more_info }}
           </p>
@@ -369,11 +464,11 @@
       </div>
 
       <div class="inquiry-form-section">
-        <div class="header" *ngIf="!isMarket">
-          <div class="title">INQUIRE NOW</div>
+        <div class="header py-2" *ngIf="!isMarket">
+          <h2 class="title">INQUIRE NOW</h2>
         </div>
-        <div class="header market-header" *ngIf="isMarket">
-          <div class="title">Inquire about services</div>
+        <div class="header" *ngIf="isMarket">
+          <h2 class="market-header text-uppercase">Inquire about services</h2>
         </div>
         <form
           *ngIf="inquireForm"
@@ -394,7 +489,7 @@
                 "
                 *ngIf="fields.type === 'text'"
                 [formControlName]="fields.key"
-                [placeholder]="fields.title"
+                placeholder="{{ fields.title }}*"
                 [id]="fields.key"
                 class="form-control"
                 [type]="fields.type"
@@ -471,8 +566,13 @@
                 class="recent-item"
                 *ngFor="let item of featured | slice: 0:3"
               >
-                <p class="title">{{ item.title }}</p>
-                <p class="description">{{ item.short_description }}</p>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <p class="title">{{ item.title }}</p>
+                  <p class="description">{{ item.short_description }}</p>
+                </a>
               </div>
             </div>
           </div>
@@ -488,18 +588,23 @@
                 *ngFor="let item of featured | slice: 3:6"
               >
                 <div class="image-tag">FEATURED ARTICLE</div>
-                <img
-                  appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 283:137 }}"
-                  width="283"
-                  height="137"
-                  alt="featured"
-                  class="img-fluid lazyload"
-                  loading="lazy"
-                />
-                <div class="image-description">
-                  {{ item?.title }}
-                </div>
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="featured"
+                >
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item?.media | defaultImage: 281:125 }}"
+                    width="281"
+                    height="125"
+                    alt="featured"
+                    class="lazyload"
+                    loading="lazy"
+                  />
+                  <div class="image-description">
+                    {{ item?.title }}
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -508,23 +613,31 @@
         <!-- Trending Secion -->
         <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
         <div class="trending-section" *ngIf="trending.length && !isMarket">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title-tag">TRENDING</div>
-              <div class="trending-item" *ngFor="let item of trending">
+          <div class="title-tag ml-1">TRENDING</div>
+
+          <div class="row trending-item" *ngFor="let item of trending">
+            <div class="col-5">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+              >
                 <img
                   appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 120:126 }}"
-                  width="120"
-                  height="126"
+                  data-src="{{ item?.media | defaultImage: 139:84 }}"
+                  width="139"
+                  height="84"
                   alt="trending"
-                  class="img-fluid image-area lazyload"
+                  class="image-area lazyload"
                   loading="lazy"
-                />
-                <div class="col-md-8 image-description">
-                  {{ item?.title }}
-                </div>
-              </div>
+              /></a>
+            </div>
+
+            <div class="col image-description">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="trending"
+                >{{ item?.title }}
+              </a>
             </div>
           </div>
         </div>
@@ -569,67 +682,6 @@
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div
-      *ngIf="
-        isMarket &&
-        items['available-markets'] != null &&
-        items['available-markets'].length
-      "
-      class="map-legend"
-    >
-      MAP LEGEND:
-      <div class="row">
-        <div class="col-xl-8 col-md-12">
-          <div class="row m-0">
-            <div
-              *ngFor="let market of items['available-markets']"
-              class="col-sm-5 map-legend-item"
-            >
-              <div class="market-names">
-                <div class="">
-                  <div
-                    class="market-status-color"
-                    [style.backgroundColor]="market.color"
-                  ></div>
-                </div>
-                <div class="align-self-center lh-base">
-                  <span class="text-uppercase market-name">{{
-                    market.name
-                  }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="padding-top: 0px">
-          <div
-            *ngIf="
-              items['international-markets'] != null &&
-              items['international-markets'].length
-            "
-            class="map-legend"
-          >
-            <h3>INTERNATIONAL MARKETS:</h3>
-            <div class="row">
-              <div
-                *ngFor="let market of items['international-markets']"
-                class="col-sm-3 map-legend-item"
-              >
-                <div class="row market-names">
-                  <div class="col-xs-10">
-                    <span class="text-uppercase market-name">{{
-                      market.name
-                    }}</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

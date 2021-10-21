@@ -52,6 +52,7 @@ figure {
       font-size: 28.92px;
       line-height: 31px;
       color: $white;
+      font-weight: 400;
       font-family: $proxiMedium;
       @include tablet-landscape {
         font-size: 26px;
@@ -82,24 +83,42 @@ figure {
   padding: 71px 10px 56px;
   h4 {
     letter-spacing: 0.5px;
+    font-family: $proxiSemiBold;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    color: $dark_gray_1;
   }
   p {
     color: $dark_gray_1;
-    font-family: $proxiLight;
+    font-family: $proxiRegular;
     letter-spacing: 0.4px;
     padding: 5px 0 0;
   }
+
   input {
     font-family: $proxiRegular;
-    height: 39px;
+    height: 44px;
+    border: 1px solid #d4d5d6;
+    font-size: 16px;
+    line-height: 44px;
+
     &::placeholder {
-      color: $dark_gray_1;
+      color: $light_gray_1;
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 44px;
     }
   }
   textarea {
     font-family: $proxiRegular;
+    border: 1px solid #d4d5d6;
+    height: 129px;
     &::placeholder {
-      color: $dark_gray_1;
+      color: $light_gray_1;
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 44px;
     }
   }
   .sucess-message {
@@ -196,6 +215,7 @@ h6 {
 
 .submit_btn {
   outline: 0 !important;
+  font-family: $proxiRegular;
 }
 .contact-editorial-main {
   padding: 19px 0 36px 0;
@@ -354,6 +374,7 @@ h6 {
     font-size: 9.1px;
     display: inline-block;
     vertical-align: top;
+    font-family: $proxiRegular;
     fa-icon {
       font-size: 23px;
       line-height: 35px;

@@ -3,27 +3,28 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
-.brand-img {
-  height: 506px;
-  width: 100%;
-}
-
 .question-section {
   padding-top: 40px;
+
   @include tablet-landscape1 {
     padding-top: 30px;
   }
+
   @include mobile-landscape1 {
     padding-top: 20px;
   }
+
   + .question-section {
     padding-top: 30px;
+
     @include mobile-landscape1 {
       padding-top: 15px;
     }
   }
+
   .header-highlighter {
     position: relative;
+
     .title-highlighter {
       color: $white;
       background-color: $red;
@@ -36,49 +37,61 @@
       top: -18px;
     }
   }
+
   .header {
     height: 67px;
     background-color: $dark-gray;
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include tablet-landscape1 {
       height: 55px;
     }
+
     @include mobile-landscape1 {
       height: 45px;
     }
+
     .title {
-      color: $brand-info-question-title;
-      font-weight: bold;
+      color: $white_4;
+      font-weight: 700;
+      font-family: $balingerBold;
       font-size: 20px;
+      line-height: 28.24px;
       text-align: center;
+
       @include tablet-landscape1 {
         font-size: 18px;
       }
+
       @include mobile-landscape1 {
         font-size: 16px;
       }
     }
   }
+
   .description {
-    padding-top: 25px;
     @include tablet-landscape1 {
       padding-top: 15px;
     }
+
     p {
+      line-height: 18.85px;
+      color: $dark_black;
       font-family: $roboto;
       font-weight: 400;
       font-size: 13.76px;
-      line-height: 137%;
       color: $black;
     }
   }
+
   .video-btn {
     cursor: pointer;
     position: relative;
   }
 }
+
 .financial-requirement-section {
   .header {
     height: 67px;
@@ -86,97 +99,147 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include tablet-portrait {
       height: 60px;
     }
+
     @include mobile-landscape1 {
       height: 50px;
     }
+
     .title {
       color: $white;
       font-weight: 700;
       font-size: 30px;
       text-align: center;
+      font-family: $balingerBold;
+      line-height: 36px;
+
       @include mobile-landscape1 {
         font-size: 26px;
       }
+
       @include mobile-portrait {
         font-size: 24px;
       }
     }
   }
+
+  .market {
+    background: #243444;
+    font-family: $roboto;
+    font-weight: 400;
+    font-size: 13px;
+    color: #f3f8fb;
+    padding: 22px 33px;
+    line-height: 15.23px;
+  }
+
   .financial-description {
     background-color: $border-color;
     font-family: $roboto;
     font-weight: 700;
     padding: 30px 23px;
+
     @include mobile-landscape1 {
       padding: 15px;
     }
+
     .text {
       font-size: 17px;
-      line-height: 19.89px;
       color: $dark-gray;
+      line-height: 21.25px;
       @include tablet-portrait {
         font-size: 16px;
       }
+
       @include mobile-landscape1 {
         line-height: 140%;
         font-size: 14px;
       }
     }
+
     .highlight-text {
-      color: $red;
+      color: $dark_red_2;
       margin-bottom: 0;
+      font-weight: 400;
+      line-height: 19.89px;
     }
+
     .min-qualification {
       padding-left: 35px;
     }
   }
 }
+
 .inquiry-form-section {
   position: relative;
   z-index: 1;
+
   @include media("<md") {
     padding: 0;
   }
+
   .header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     background-color: $dark-gray;
     padding-left: 22px;
-    &.market-header {
-      height: auto;
-      @include media("<md") {
-        height: 60px;
+    border-bottom: 3px solid $red;
+
+    h2 {
+      &.title {
+        color: $white;
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+        font-family: $balingerBold;
+        line-height: 36px;
       }
-      @include mobile-landscape {
-        padding-left: 15px;
-      }
-      .title {
-        text-transform: uppercase;
+      &.market-header {
+        height: auto;
+        color: $white;
+        font-weight: 500;
         font-size: 19px;
-        margin-bottom: 12px;
+        text-align: center;
+        font-family: $roboto;
+        line-height: 22.27px;
         @include media("<md") {
-          margin: 0;
+          height: 60px;
+        }
+
+        @include mobile-landscape {
+          padding-left: 15px;
+        }
+
+        .title {
+          @include media("<md") {
+            margin: 0;
+          }
         }
       }
     }
   }
+
   form {
     padding: 26px 22px 30px;
     background-color: $dark-gray;
+
     @include mobile-landscape {
       padding: 20px 15px 25px;
     }
+
     .inquirefrom-row {
       .isError {
         margin-bottom: 10px !important;
       }
+
       .invalid-feedback {
         margin-bottom: 10px;
       }
+
       .form-control {
         height: 54px;
         margin-bottom: 25px;
@@ -184,20 +247,26 @@
         border: 1px solid $light_gray_8;
         border-radius: 0;
         position: relative;
+
         &:focus {
           outline: none;
           box-shadow: none;
         }
+
         &::placeholder {
           position: absolute;
           font-size: 13px;
           color: $dark-gray;
           top: 5px;
           left: 10px;
+          font-family: $roboto;
+          font-weight: 400;
+          line-height: 15.23px;
         }
       }
     }
   }
+
   .form-select {
     border: 1px solid $light_gray_8;
     font-size: 13px;
@@ -205,27 +274,11 @@
   }
 
   .row {
-    margin: 0;
     .inquirefrom-row {
       padding: 0;
     }
   }
-  .header {
-    height: 78px;
-    border-bottom: 3px solid $red;
-    .title {
-      color: $brand-info-question-title;
-      font-weight: 700;
-      font-size: 30px;
-      text-align: center;
-      @include tablet-landscape1 {
-        font-size: 26px;
-      }
-      @include mobile-portrait {
-        font-size: 24px;
-      }
-    }
-  }
+
   .row:last-child {
     .inquirefrom-row {
       .form-control {
@@ -234,36 +287,44 @@
     }
   }
 }
+
 .divider-recent-feature .btn {
   height: 54px;
-  background-color: $red;
+  background-color: $dark_red_2;
   text-align: center;
 }
+
 .recent-feature-article-section {
   padding: 30px 25px;
   background-color: $border-color;
+
   @include mobile-portrait {
     padding: 20px 15px;
   }
+
   .title-tag {
-    color: $red;
+    color: $dark_red_2;
     font-family: $roboto;
     font-weight: 500;
     font-size: 10px;
     line-height: 11.72px;
     margin-bottom: 22px;
   }
+
   .recent-item {
     width: 90%;
+
     .title {
       color: $dark-gray;
-      font-weight: bold;
       font-size: 18px;
       line-height: 21.06px;
       margin-bottom: 0.5rem !important;
+      font-family: $balingerBold;
+      font-weight: 700;
     }
+
     .description {
-      color: $medium-grey;
+      color: $dark_gray_5;
       font-family: $roboto;
       font-weight: 500;
       font-size: 12.97px;
@@ -272,8 +333,10 @@
     }
   }
 }
+
 .divider-main {
   position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -281,74 +344,92 @@
     right: 22px;
     height: 3px;
     width: 90%;
-    background-color: $red;
+    background-color: $dark_red_2;
   }
 }
+
 .feature-article-section {
   background-color: $border-color;
   padding: 40px 20px 20px;
+
   @include mobile-portrait {
     padding: 20px 15px;
   }
+
   .feature-item {
     padding-bottom: 20px;
     position: relative;
+
     @include tablet-portrait {
       margin: 0 auto;
       max-width: 280px;
     }
+
     .image-tag {
       position: absolute;
-      background-color: $red;
+      background-color: $dark_red_2;
       color: $white;
       font-family: $proxiSemiBold;
       font-size: 12.27px;
+      line-height: 14.95px;
       padding: 4px;
     }
+
     .image-area {
-      background-color: $light-gray-1;
+      background-color: $white_6;
       height: 126px;
     }
+
     .image-description {
-      padding: 10px;
-      background-color: #dce0e3;
+      padding-top: 10px;
+      background-color: $white_6;
       color: $dark-gray;
       font-family: $roboto;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 14px;
-      line-height: 16px;
+      line-height: 16.41px;
     }
   }
 }
+
 .trending-section {
   background-color: $border-color;
   padding: 30px 40px 40px;
+
   @include mobile-portrait {
     padding: 20px 15px;
   }
+
   .title-tag {
-    color: $red;
+    color: $dark_red_2;
     font-family: $roboto;
     font-weight: 500;
     font-size: 10px;
     line-height: 11.72px;
     padding-bottom: 15px;
+    margin-left: -5px;
   }
+
   .trending-item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
     .image-area {
       height: 84px;
-      width: 140px;
+      width: 139px;
       margin-right: 15px;
     }
+
     .image-description {
       color: $dark-gray;
       font-family: $roboto;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 14.06px;
+      a {
+        color: $dark-gray;
+      }
     }
   }
 }
@@ -358,6 +439,13 @@
   height: 60px;
   margin: 0 -12px;
   margin-bottom: 37px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 93px;
+  z-index: 99;
+
   .prev,
   .next {
     img {
@@ -371,11 +459,13 @@
 .innerContent {
   padding: 0 53px;
   border-bottom: 1px solid #c4c4c4;
+  border-top: 1px solid #c4c4c4;
 
   li {
     background-color: $white;
     height: 60px;
     padding: 0;
+
     @include media("<lg") {
       flex: 1 0 0%;
     }
@@ -392,9 +482,11 @@
       @include desk-lg-below2 {
         font-size: 13px;
       }
+
       &.active,
       &:hover {
         color: $red;
+
         &::after {
           content: "";
           height: 7px;
@@ -405,6 +497,7 @@
           border-style: solid;
           border-color: $red transparent transparent transparent;
         }
+
         &::before {
           content: "";
           height: 7px;
@@ -436,26 +529,30 @@
 .tabs-container > .tabItemList {
   .row {
     margin: 0 -5px;
+
     .col-md-4 {
       max-width: 20%;
       padding: 0 5px;
     }
   }
+
   .items {
-    font-weight: bold;
     img {
       width: 100%;
-      min-height: 106px;
       background-color: #c4c4c4;
     }
+
     > .card-body {
       padding: 8px 16px 15px;
+
       > h6.card-title {
         font-size: 11px;
       }
+
       .card-text {
         font-size: 12px;
       }
+
       small {
         font-family: $proxiRegular;
         font-weight: 500;
@@ -464,26 +561,34 @@
     }
   }
 }
+
 .primary-color {
   color: $red;
 }
 
 //Why I Bought
 
-.wings {
-  .frannews-top-left {
-    margin-bottom: 50px;
+.whyIBought {
+  ul li h2 {
+    font-family: $balingerBold;
+    font-weight: 700 !important;
+    font-size: 35px !important;
+    line-height: 42px !important;
+    color: $dark-gray;
   }
-  .map-legend {
-    margin-bottom: 40px;
-    .map-legend-item {
-      margin: 20px 0 0;
-    }
+  p {
+    font-family: $roboto;
+    font-weight: 400;
+    line-height: 18.85px;
+    color: $dark_black;
+    font-size: 13.76px;
   }
 }
+
 .multi_conference-left {
   ul {
     margin-bottom: 18px;
+
     li {
       display: inline-block;
       float: left;
@@ -491,9 +596,11 @@
       position: relative;
     }
   }
+
   h2 {
     letter-spacing: 0.6px;
   }
+
   p {
     color: #272525;
     line-height: 21px;
@@ -501,26 +608,29 @@
     margin-bottom: 18px;
   }
 }
+
 .download-pdf--wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 10rem;
+
   @include mobile-portrait {
     flex-flow: column;
   }
+
   .frannews-top-left {
-    font-family: Ballinger Condensed;
-    font-style: normal;
-    font-weight: bold;
+    font-family: $balingerBold;
+    font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    text-transform: uppercase;
     margin-bottom: 8px;
+    color: $dark-gray;
     @include tablet-landscape1 {
       font-size: 24px;
     }
   }
+
   .submit-btn {
     width: 148px;
     font-weight: bold;
@@ -529,15 +639,21 @@
     letter-spacing: 0.005em;
     padding: 9px 6px;
   }
+
   .frannews-left--wrapper {
+    img {
+      height: 168px;
+    }
     @include tablet-landscape1 {
       margin-right: 20px;
     }
+
     @include mobile-portrait {
       margin-right: 0;
       margin-bottom: 55px;
     }
   }
+
   .frannews-right--wrapper {
     .frannews-image--wrapper {
       width: 417px;
@@ -545,17 +661,17 @@
       border: 1px solid #243444;
       position: relative;
       background: #ffffff;
+
       @include tablet-landscape {
         width: 300px;
         height: 300px;
       }
+
       @include tablet-portrait {
         width: 250px;
         height: 250px;
       }
-      @include mobile-portrait {
-        // width: auto;
-      }
+
       &:before {
         position: absolute;
         content: "";
@@ -582,8 +698,9 @@
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  // max-width: 100%;
+  // height: auto;
   display: inline-block;
 }
 
@@ -594,28 +711,32 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .titleMarket {
-      font-family: Ballinger Condensed;
-      font-style: normal;
-      font-weight: bold;
+      font-family: $balingerBold;
+      font-weight: 700;
       font-size: 30px;
       line-height: 36px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $white;
+
       @include mobile-portrait {
         font-size: 24px;
       }
     }
   }
+
   .brand-list {
     display: flex;
     flex-flow: column;
     padding: 20px 30px 60px;
     background: #243444;
+
     @include tablet-landscape {
       padding: 20px 15px 30px;
     }
   }
+
   .brand-name {
     font-family: Roboto;
     font-style: normal;
@@ -624,11 +745,14 @@ img {
     line-height: 15px;
     text-transform: uppercase;
     color: #f3f8fb;
+
     + .brand-name {
       margin-top: 38px;
+
       @include tablet-landscape {
         margin-top: 25px;
       }
+
       @include mobile-portrait {
         margin-top: 20px;
       }
@@ -651,6 +775,7 @@ img {
   border-radius: 50%;
   margin-right: 8px;
 }
+
 .align-self-center {
   align-self: center !important;
 }
@@ -658,11 +783,17 @@ img {
 .download-btn {
   padding-left: 15px;
   padding-top: 15px;
+  line-height: 21.6px;
+  font-family: $balingerBold;
+  font-weight: 700;
+  font-size: 18px;
 }
+
 .submit-btn {
   background-color: $red;
   width: 300px;
 }
+
 .text-size {
   font-size: 15px;
 }
@@ -676,15 +807,18 @@ img {
       top: 150px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-dialog {
     @media only screen and (max-device-width: 1024px) {
       max-width: 800px;
@@ -692,15 +826,18 @@ img {
       top: 150px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-dialog {
     @media only screen and (orientation: landscape) {
       max-width: 1134px;
@@ -708,15 +845,18 @@ img {
       top: 150px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-dialog {
     @media only screen and (min-device-width: 768px) {
       max-width: 1134px;
@@ -724,15 +864,18 @@ img {
       top: 117px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-dialog {
     @media only screen and (max-device-width: 1024px) {
       max-width: 1134px;
@@ -740,15 +883,18 @@ img {
       top: 38px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-dialog {
     @media only screen and (orientation: portrait) {
       max-width: 1134px;
@@ -756,25 +902,31 @@ img {
       top: 172px;
       left: 0;
       right: 0;
+
       @include desk-lg-below2 {
         max-width: 800px;
         height: auto;
       }
+
       @include tablet-portrait {
         max-width: 95%;
       }
     }
   }
+
   .modal-content {
     padding: 0 71px 0 91px;
+
     @include desk-lg-below2 {
       padding: 0 15px;
     }
   }
+
   &.modal {
     padding-right: 0 !important;
     padding: 0 !important;
   }
+
   button.close {
     position: absolute;
     right: 35px;
@@ -785,20 +937,25 @@ img {
     opacity: 1;
     border: 1px;
     background-color: $white;
+
     @include desk-lg-below1 {
       top: 10px;
       right: 15px;
     }
   }
+
   .sponsored-modal-content {
     padding: 70px 50px;
+
     h2 {
       color: $red;
       margin-bottom: 30px;
     }
+
     .email-content {
       display: flex;
       flex-direction: column;
+
       input {
         text-transform: uppercase;
         font-size: 12px;
@@ -814,6 +971,7 @@ img {
         outline: 0;
         letter-spacing: 0.3px;
       }
+
       button {
         position: relative;
         background: #333;
@@ -829,25 +987,31 @@ img {
       }
     }
   }
+
   form {
     padding: 0 17px 0px 0;
     width: 69%;
     margin: 32px auto 0;
+
     @include desk-lg-below1 {
       margin: 45px auto 0;
       padding: 0 0 20px 0;
     }
+
     @include tablet-portrait {
     }
+
     @include mobile-portrait {
       width: 100%;
     }
+
     .form-group {
       position: relative;
       margin: 0;
     }
   }
 }
+
 .modal-content {
   position: relative;
   display: flex;
@@ -860,6 +1024,7 @@ img {
   border-radius: 0.3rem;
   outline: 0;
 }
+
 button.close {
   padding: 0;
   background-color: initial;
@@ -870,52 +1035,65 @@ button.close {
 .brand-main-img--wrapper {
   padding-bottom: 30px;
 }
+
 .pl-0 {
   padding-left: 0;
 }
+
 .pr-0 {
   padding-right: 0;
 }
+
 .brand-left-info--wrapper {
   padding-right: 15px;
+
   @include media("<md") {
     padding: 0;
   }
+
   @include tablet-portrait {
     padding-right: 0;
   }
+
   .map-legend {
-    display: none;
     @include media("<lg") {
       display: block;
     }
+
     @include media("<md") {
       padding: 20px;
     }
   }
 }
+
 .brand-page-row--wrapper {
-  padding: 0 45px;
-  justify-content: center;
+  margin-top: 90px;
+
   @include tablet-portrait {
     padding: 0px 45px 15px 45px;
   }
+
   @include tablet-landscape1 {
     padding: 0 20px 20px;
   }
+
   @include mobile-landscape1 {
     padding: 0 0 20px;
   }
 }
+
 .available-marketing--wrapper {
   position: relative;
   padding: 0 95px 0 65px;
+
   @include media("<xl") {
     padding: 0 15px;
   }
+
   @include media("<md") {
     margin: 0 -12px !important;
   }
+
   &:before {
     position: absolute;
     content: "";
@@ -925,35 +1103,43 @@ button.close {
     top: 49px;
     left: -12px;
     right: 0;
+
     @include media("<md") {
       width: 100%;
       left: 0;
     }
   }
+
   .more-brand--wrapper {
     margin-top: 50px;
+
     @include media("<md") {
       padding: 0;
       margin-top: 30px;
     }
   }
+
   .brand-left-info--wrapper {
     flex: 0 0 calc(100% - 300px);
     max-width: calc(100% - 300px);
+
     @include media("<lg") {
       flex: 0 0 100%;
       max-width: 100%;
     }
   }
+
   .market-rightsiderbar {
     flex: 0 0 298px;
     max-width: 298px;
     position: relative;
     z-index: 1;
+
     @include media("<lg") {
       flex: 0 0 100%;
       max-width: 100%;
     }
+
     .inquiry-form-section {
       .inquirefrom-row {
         .form-control {
@@ -961,65 +1147,86 @@ button.close {
           margin-bottom: 14px;
         }
       }
+
       .divider-recent-feature {
         .btn {
           height: 36px;
+          font-family: $balingerBold;
+          font-weight: 700;
+          font-size: 18px;
         }
       }
     }
   }
 }
+
 .available-market-row--wrapper {
   padding: 0;
   margin-top: -460px;
+
   @include media("<xl") {
     margin-top: -700px;
   }
+
   @include media("<lg") {
     display: none;
   }
+
   .lg-map-wrapper {
     text-align: center;
   }
 }
+
 .available-market-mobile--wrapper {
   display: none;
   margin-top: 50px;
+
   @include media("<lg") {
     display: block;
   }
 }
+
 .map-legend {
   padding: 20px 30px 40px 120px;
   background: #e8eef2;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: $roboto;
   font-size: 16px;
+  line-height: 18.75px;
   position: relative;
+  color: $dark_black;
+
   &:before {
     position: absolute;
     content: "";
   }
+
   .map-legend-item {
     padding: 0;
     margin-top: 13px;
   }
+
   .market-names {
     display: flex;
+
     .market-status-color {
       width: 22px;
       height: 22px;
     }
+
     .market-name {
-      font-family: Roboto;
-      font-style: normal;
+      font-family: $roboto;
       font-weight: 500;
       font-size: 13px;
-      line-height: 128.69%;
+      line-height: 16.73px;
+      color: $dark-gray;
     }
   }
 }
+
 .main-desc-bottom--wrapper {
   position: relative;
+
   .title-highlighter {
     position: absolute;
     top: 25px;
@@ -1027,12 +1234,20 @@ button.close {
     right: 0;
     margin: 0 auto;
     z-index: 9;
+    font-family: $balingerBold;
+    font-weight: 700;
+    line-height: 28.24px;
+    font-size: 20px;
+    color: $white_4;
+    height: 32px;
+    background: $dark_red_2;
     @include mobile-portrait {
       top: 8px;
       font-size: 14px;
     }
   }
 }
+
 .question-container {
   .question-section {
     &:first-child {
@@ -1044,15 +1259,18 @@ button.close {
     }
   }
 }
+
 //latest story page
 .strory-banner--img {
-  padding: 0 0 20px !important;
+  margin-top: 90px;
   text-align: center;
+
   img {
     @include media("<md") {
       height: auto;
       padding: 0;
     }
+
     @include media("<xl") {
       padding: 0;
     }
@@ -1063,78 +1281,80 @@ button.close {
   background: #f3f8fb;
   margin: 0 -12px !important;
   padding: 0;
+
   .customContainer {
-    max-width: 100% !important;
-    padding: 0;
     .innerContent {
-      padding: 50px 150px 70px !important;
-      @include media("<xl") {
-        padding: 20px 12px 20px !important;
-      }
-      @include media("<md") {
-        padding: 20px 12px 20px !important;
-      }
       .row {
         @include media("<md") {
           justify-content: space-between;
         }
       }
+
       li {
         height: auto;
         background: transparent;
         margin-bottom: 12px;
+
         @include media("<md") {
           max-width: 50% !important;
         }
+
         @include media("<sm") {
           max-width: 100% !important;
         }
       }
     }
   }
-  .stories-tabItem {
-    // display: inline-block;
-  }
+
   .card-img-top {
     height: 106px;
+
     @include media("<md") {
       height: 160px;
     }
   }
+
   .card-body {
     padding: 11px 10px 15px !important;
   }
+
   .card-title {
-    font-weight: bold !important;
     font-size: 12px !important;
-    line-height: 117%;
-    color: #243444;
+    line-height: 14.04px;
+    color: $dark-gray;
     -webkit-line-clamp: 2;
-    height: 29px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin: 0 !important;
-    font-family: "Roboto", sans-serif !important;
+
+    font-family: $roboto;
+    font-weight: 700;
   }
+
   small {
     font-size: 10px;
-    color: #243444;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif !important;
+    color: $dark-gray;
+    font-family: $roboto;
+    font-weight: 500;
+    line-height: 11.72px;
   }
+
   .card-text {
     font-size: 10px !important;
-    line-height: 128.69%;
-    color: #595959 !important;
-    margin: 0;
-    -webkit-line-clamp: 2;
-    height: 26px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-family: "Roboto", sans-serif !important;
+    line-height: 12.87px;
+    color: $dark_gray_5 !important;
+    font-weight: 500;
+    font-family: $roboto;
   }
+}
+
+.market-map-legend {
+  position: absolute !important;
+  width: 100%;
+  left: 0;
+}
+
+.map-legend-internatioal {
+  font-weight: 700;
+  font-family: $roboto;
+  font-size: 16px;
+  line-height: 18.75px;
+  color: $dark_black;
 }
