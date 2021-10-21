@@ -21,23 +21,22 @@
                 *ngIf="i === 0"
                 appYoutubeImage
                 class="lazyload"
-                width="690"
-                height="386"
-                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
-            {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
-                }}"
-                data-src="{{ item.media | defaultImage: 690:386 }}"
                 alt="featured"
                 loading="lazy"
+                data-srcset="{{ item.media | defaultImage: 600:337 }} 600w,
+                        {{ item.media | defaultImage: 700:393 }} 700w,
+                        {{ item.media | defaultImage: 800:449 }} 800w,
+                        {{ item.media | defaultImage: 688:386 }} 688w"
+                data-sizes="{{
+                  '(max-width: 576px) 600px,
+                        (max-width: 768px) 800px,
+                        (max-width: 992px) 600px,
+                        (max-width: 1200px) 700px,
+                        688px'
+                }}"
+                width="688"
+                height="auto"
+                data-src="{{ item.media | defaultImage: 688:386 }}"
               />
 
               <img
@@ -45,18 +44,17 @@
                 appYoutubeImage
                 class="lazyload"
                 width="228"
-                height="128"
-                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
-            {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                }} 555w"
+                height="auto"
+                data-srcset="{{ item.media | defaultImage: 600:337 }} 600w,
+                        {{ item.media | defaultImage: 700:393 }} 700w,
+                        {{ item.media | defaultImage: 800:449 }} 800w,
+                        {{ item.media | defaultImage: 228:128 }} 228w"
                 data-sizes="{{
-                  '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
+                  '(max-width: 576px) 600px,
+                        (max-width: 768px) 800px,
+                        (max-width: 992px) 700px,
+                        (max-width: 1200px) 228px,
+                        228px'
                 }}"
                 data-src="{{ item.media | defaultImage: 228:128 }}"
                 alt="featured"
