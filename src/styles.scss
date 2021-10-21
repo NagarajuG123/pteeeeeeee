@@ -17,7 +17,7 @@ a {
 ul {
   padding: 0;
 
-  >li {
+  > li {
     list-style: none;
   }
 }
@@ -175,7 +175,7 @@ body.noscroll {
 
   b {
     font-family: $proxiMedium !important;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .terms-of-use-li {
@@ -185,7 +185,7 @@ body.noscroll {
   }
 }
 
-#inline-buttons-0 .st-btn>img {
+#inline-buttons-0 .st-btn > img {
   display: inline-block !important;
   height: 27px !important;
   width: 22px !important;

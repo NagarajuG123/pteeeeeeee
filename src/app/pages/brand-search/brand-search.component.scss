@@ -38,7 +38,7 @@
 
   &.isHead {
     background: $border-color;
-    font-family: $proxiSemiBold;
+    font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
     color: $dark-gray;
@@ -262,8 +262,8 @@
               margin-top: 15px;
             }
             .form-check-input {
-              background-color: $light-gray-1;
-              border-color: $light-gray-1;
+              background-color: $light_gray_8;
+              border-color: $light_gray_8;
               border-radius: 0;
               width: 17px;
               height: 17px;
