@@ -46,24 +46,20 @@
                 ><img
                   appYoutubeImage
                   class="lazyload"
-                  width="806"
-                  height="493"
-                  data-src="{{
-                    specialFeature[0].media | defaultImage: 806:493
-                  }}"
-                  data-srcset="{{
-                    specialFeature[0].media | defaultImage: 238:133
-                  }} 238w, {{
-                    specialFeature[0].media | defaultImage: 300:168
-                  }} 300w, 
-          {{ specialFeature[0].media | defaultImage: 400:224 }} 400w, {{
-                    specialFeature[0].media | defaultImage: 555:310
-                  }} 555w"
+                  width="780"
+                  height="auto"
+                  data-src="{{ specialFeature[0].media | defaultImage: 780:425 }}"
+                  data-srcset="{{ specialFeature[0].media | defaultImage: 555:300 }} 555w, 
+                      {{ specialFeature[0].media | defaultImage: 700:400 }} 760w, 
+                      {{ specialFeature[0].media | defaultImage: 600:340 }} 600w, 
+                      {{ specialFeature[0].media | defaultImage: 700:400 }} 700w, 
+                      {{ specialFeature[0].media | defaultImage: 780:425 }} 780w"
                   data-sizes="{{
                     '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
+                    (max-width: 768px) 760px
+                    (max-width: 992px) 600px,
+                    (max-width: 1200px) 700px,
+                    780px'
                   }}"
                   alt="featured"
                   loading="lazy"
@@ -107,12 +103,10 @@
                 ><img
                   appYoutubeImage
                   class="img-fluid lazyload"
-                  data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, {{
-                    item.media | defaultImage: 300:168
-                  }} 300w, 
-                {{ item.media | defaultImage: 400:224 }} 400w, {{
-                  item.media | defaultImage: 555:310
-                    }} 555w"
+                  data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
+                  {{ item.media | defaultImage: 300:168 }} 244w, 
+                  {{ item.media | defaultImage: 400:224 }} 400w, 
+                  {{ item.media | defaultImage: 555:310 }} 555w"
                 data-sizes="{{
                   '(max-width: 576px) 555px,
                     (max-width: 992px) 400px,
@@ -144,12 +138,10 @@
               <img
                 appYoutubeImage
                 class="img-fluid lazyload"
-                data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, {{
-                  item.media | defaultImage: 300:168
-                }} 300w, 
-              {{ item.media | defaultImage: 400:224 }} 400w, {{
-                item.media | defaultImage: 555:310
-                  }} 555w"
+                data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
+                {{ item.media | defaultImage: 300:168 }} 244w, 
+                {{ item.media | defaultImage: 400:224 }} 400w, 
+                {{ item.media | defaultImage: 555:310}} 555w"
               data-sizes="{{
                 '(max-width: 576px) 555px,
                   (max-width: 992px) 400px,
