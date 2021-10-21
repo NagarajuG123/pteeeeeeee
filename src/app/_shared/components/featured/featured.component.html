@@ -2,21 +2,15 @@
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
       <div class="row" *ngIf="featured.length">
-        <div
-          *ngFor="let item of featured; index as i"
-          [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-4 my-2'"
-        >
-          <div
-            class="position-relative"
-            [ngClass]="i === 0 ? 'main-image' : 'small-image'"
-          >
-            <div
-              class="tag position-absolute text-center top-0 text-uppercase"
-              [ngClass]="slug !== '1851' ? 'tagBrand' : ''"
-            >
+        <div *ngFor="let item of featured; index as i"
+          [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-12 col-md-4 my-2'">
+          <div class="position-relative" [ngClass]="i === 0 ? 'main-image' : 'small-image'">
+            <div class="tag position-absolute text-center top-0 text-uppercase"
+              [ngClass]="slug !== '1851' ? 'tagBrand' : ''">
               Featured Article
             </div>
             <a routerLink="/{{ item.slug }}" fragment="featured">
+             
               <img
                 *ngIf="i === 0"
                 appYoutubeImage
@@ -71,44 +65,28 @@
         </div>
       </div>
     </div>
-    <div
-      class="
+    <div class="
         position-relative
         col-12 col-sm-6 col-lg-3
         align-items-stretch
         mb-3 mb-sm-0
         latestListing
-      "
-    >
+      ">
       <!-- Brand news list -->
-      <span class="small-title mb-2" *ngIf="slug === '1851'"
-        >LATEST FINANCE BRAND NEWS</span
-      >
-      <span class="small-title mb-2" *ngIf="slug !== '1851'"
-        >Franchise Brand Features
+      <span class="small-title mb-2" *ngIf="slug === '1851'">LATEST FINANCE BRAND NEWS</span>
+      <span class="small-title mb-2" *ngIf="slug !== '1851'">Franchise Brand Features
       </span>
 
       <ul class="brand-list noScrollBar list-group">
-        <li
-          *ngFor="let item of brandNews; index as i"
-          class="pb-2"
-          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'"
-        >
+        <li *ngFor="let item of brandNews; index as i" class="pb-2"
+          [ngClass]="i === brandNews.length - 1 ? '' : 'mb-1 mb-md-2'">
           <h3 class="m-0">
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="frannews"
-            >
+            <a routerLink="/{{ commonService.readMore(item) }}" fragment="frannews">
               {{ item.title }}
             </a>
           </h3>
-          <span *ngIf="commonService.authorName(item)" class="my-1"
-            >By {{ item.author?.name }}</span
-          >
-          <a
-            routerLink="/{{ commonService.readMore(item) }}"
-            fragment="frannews"
-          >
+          <span *ngIf="commonService.authorName(item)" class="my-1">By {{ item.author?.name }}</span>
+          <a routerLink="/{{ commonService.readMore(item) }}" fragment="frannews">
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
               {{ item.short_description }}
             </p>
@@ -118,94 +96,61 @@
     </div>
     <!-- Industry 1851 news list -->
 
-    <div
-      *ngIf="slug === '1851'"
-      class="
+    <div *ngIf="slug === '1851'" class="
         position-relative
         col-12 col-sm-6 col-lg-3
         align-items-stretch
         mb-3 mb-sm-0
         border-start border-2
         latestListing
-      "
-    >
+      ">
       <span class="small-title mb-2">Latest Finance Industry News</span>
       <ul class="news-list noScrollBar list-group">
-        <li
-          *ngFor="let item of news; index as i"
-          [ngClass]="
+        <li *ngFor="let item of news; index as i" [ngClass]="
             i === news.length - 1
               ? 'pb-0 pt-1 pb-md-0'
               : 'pb-2 pt-1 pb-md-3 mb-2 mb-md-3'
-          "
-        >
+          ">
           <div class="newsImage me-2 me-md-3">
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="frannews"
-            >
-              <img
-                appYoutubeImage
-                width="121px"
-                height="114px"
-                data-src="{{ item.media | defaultImage: 121:114 }}"
-                class="lazyload"
-                alt="industry"
-                loading="lazy"
-            /></a>
+            <a routerLink="/{{ commonService.readMore(item) }}" fragment="frannews">
+              <img appYoutubeImage width="121px" height="114px" data-src="{{ item.media | defaultImage: 121:114 }}"
+                class="lazyload" alt="industry" loading="lazy" /></a>
           </div>
           <div>
             <h3 class="m-0">
-              <a
-                routerLink="/{{ commonService.readMore(item) }}"
-                fragment="frannews"
-              >
+              <a routerLink="/{{ commonService.readMore(item) }}" fragment="frannews">
                 {{ item.title }}
               </a>
             </h3>
-            <span *ngIf="commonService.authorName(item)"
-              >By {{ item.author.name }}</span
-            >
+            <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
           </div>
         </li>
       </ul>
     </div>
 
-    <div
-      *ngIf="slug !== '1851' && !isAwards()"
-      class="
+    <div *ngIf="slug !== '1851' && !isAwards()" class="
         position-relative
         col-12 col-sm-6 col-lg-3
         align-items-stretch
         mb-3 mb-sm-0
         border-start border-2
         latestListing
-      "
-    >
+      ">
       <ul class="noScrollBar list-group">
         <li *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
-            <div
-              class="
+            <div class="
                 tag
                 brandInfo
                 position-absolute
                 text-center
                 top-0
                 text-uppercase
-              "
-            >
+              ">
               {{ item?.title }}
             </div>
-            <img
-              appYoutubeImage
-              class="img-fluid lazyload"
-              width="253"
-              height="137"
-              data-src="{{ item.media | defaultImage: 253:137 }}"
-              alt="featured"
-              loading="lazy"
-            />
+            <img appYoutubeImage class="img-fluid lazyload" width="253" height="137"
+              data-src="{{ item.media | defaultImage: 253:137 }}" alt="featured" loading="lazy" />
             <h3 class="over-layer-brand bottom-0 p-2">
               {{ item?.description }}
             </h3>
