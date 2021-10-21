@@ -27,7 +27,7 @@
     <a
       *ngIf="media && media.type !== 'video'"
       class="d-block"
-      href="javascript:void(0)"
+      href="#"
     >
       <img
         appYoutubeImage
@@ -85,7 +85,7 @@
         <ul class="most-like-articles list-group mt-4 mb-3">
           <li *ngFor="let item of trendingNews; index as i" class="mb-2">
             <div class="newsImage me-2 pe-1 position-relative">
-              <a href="{{ commonService.readMore(item) }}">
+              <a href="{{ commonService.readMore(item) }}"  fragment="trending">
                 <img
                   appYoutubeImage
                   width="139"
