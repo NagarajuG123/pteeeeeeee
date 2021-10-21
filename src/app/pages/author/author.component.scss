@@ -49,6 +49,7 @@ img {
     font-family: $proxiMedium;
     letter-spacing: 0.3px;
     padding: 0 0 66px 0;
+    font-weight: 400;
     @include tablet-landscape {
       font-size: 23px;
       line-height: 25px;
@@ -85,6 +86,7 @@ img {
   line-height: 36px;
   color: $white;
   padding: 0 40px 0 30px;
+  font-family: $proxiRegular;
   @include desk-lg-below {
     margin: 20px auto 0 auto;
   }
@@ -109,12 +111,13 @@ img {
   h1 {
     font-family: $balingerBold;
     font-size: 42px;
-    line-height: 80px;
+    line-height: 56.57px;
     letter-spacing: -0.015em;
     color: $dark-gray;
     margin-bottom: 0;
     margin-top: -15px;
     font-weight: 700;
+    padding: 8px 0 8px;
   }
   .about {
     font-family: $roboto;
