@@ -17,6 +17,7 @@
     font-family: $balingerBold;
     line-height: 42px;
     color: $dark-gray;
+    width: 1000px;
   }
   .c-section-header--subInfo {
     color: $section-info-color;
@@ -25,6 +26,7 @@
     font-weight: 700;
     font-size: 15px;
     line-height: 17.58px;
+    text-transform: capitalize;
     &::before {
       content: "|";
       padding-left: 15px;
@@ -200,9 +202,6 @@
       line-height: 16px;
     }
   }
-}
-.c-section-header--group {
-  display: flex;
 }
 @include mobile-landscape{
   .c-section-header--group {
