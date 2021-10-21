@@ -291,13 +291,13 @@ header {
       }
     }
     .submenu-list {
+      hr {
+        height: 0px;
+        left: 25px;
+        border: 1px solid $primary;
+        margin: 0 0 10px;
+      }
       li {
-        hr {
-          height: 0px;
-          left: 25px;
-          border: 1px solid $primary;
-          margin: 0 0 10px;
-        }
         a {
           color: $white_4;
           text-decoration: none;

@@ -28,6 +28,7 @@
       *ngIf="media && media.type !== 'video'"
       class="d-block"
       href="#"
+      onclick="return false;"
     >
       <img
         appYoutubeImage
@@ -85,7 +86,7 @@
         <ul class="most-like-articles list-group mt-4 mb-3">
           <li *ngFor="let item of trendingNews; index as i" class="mb-2">
             <div class="newsImage me-2 pe-1 position-relative">
-              <a href="{{ commonService.readMore(item) }}"  fragment="trending">
+              <a href="{{ readMore(item, 'trending') }}">
                 <img
                   appYoutubeImage
                   width="139"
@@ -98,13 +99,11 @@
             </div>
             <div>
               <p class="m-0">
-                <a href="{{ commonService.readMore(item) }}">
-                  {{ item.title }}</a
-                >
+                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
               </p>
               <span class="m-0">
                 <a
-                  routerLink="/author/{{ item.author.slug }}"
+                  href="#"
                   class="primary-color text-uppercase"
                   >By {{ author_name }}</a
                 >
@@ -141,14 +140,11 @@
               "
               *ngIf="category.name"
             >
-              <a routerLink="{{ category.slug }}" class="text-white">{{
+              <a routerLink="/{{ category.slug }}" class="text-white">{{
                 category.name
               }}</a>
             </div>
-            <h1
-              class="title text-center text-black"
-              [innerHTML]="title"
-            ></h1>
+            <h1 class="title text-center text-black" [innerHTML]="title"></h1>
           </div>
 
           <h2
@@ -194,7 +190,7 @@
           *ngFor="let mainItem of mainNews; index as i"
         >
           <div class="items card border-0 rounded-0">
-            <a href="{{ commonService.readMore(mainItem) }}">
+            <a href="{{ readMore(mainItem, 'frannews') }}">
               <img
                 appYoutubeImage
                 width="257"
@@ -207,8 +203,9 @@
             <div class="card-body">
               <h6 class="card-title m-0">
                 <a
-                  href="{{ commonService.readMore(mainItem) }}"
+                  href="{{ readMore(mainItem, 'frannews') }}"
                   class="text-black"
+                  fragment="frannews"
                   >{{ mainItem.title }}</a
                 >
               </h6>
@@ -217,7 +214,7 @@
               >
               <p class="card-text mb-1">
                 <a
-                  href="{{ commonService.readMore(mainItem) }}"
+                  href="{{ readMore(mainItem, 'frannews') }}"
                   class="text-black"
                   >{{ mainItem.short_description }}</a
                 >
@@ -236,7 +233,7 @@
           *ngFor="let brandNew of brandNews; index as i"
         >
           <div class="items card border-0 rounded-0">
-            <a href="{{ commonService.readMore(mainItem) }}">
+            <a href="{{ readMore(brandNew, 'frannews') }}">
               <img
                 appYoutubeImage
                 width="257"
@@ -249,8 +246,9 @@
             <div class="card-body">
               <h6 class="card-title m-0">
                 <a
-                  href="{{ commonService.readMore(brandNew) }}"
+                  href="{{ readMore(brandNew, 'frannews') }}"
                   class="text-black"
+                  fragment="frannews"
                   >{{ brandNew.title }}</a
                 >
               </h6>
@@ -259,8 +257,9 @@
               >
               <p class="card-text mb-1">
                 <a
-                  href="{{ commonService.readMore(brandNew) }}"
+                  href="{{ readMore(brandNew, 'frannews') }}"
                   class="text-black"
+                  fragment="frannews"
                   >{{ brandNew.short_description }}</a
                 >
               </p>

@@ -201,18 +201,31 @@ export class ItemComponent implements OnInit {
       this.trendingNews = trending.currentValue;
       this.newsShow = true;
     }
-    if ( typeof mainNewsData !== 'undefined' && typeof mainNewsData.currentValue !== 'undefined') {
+    if (
+      typeof mainNewsData !== 'undefined' &&
+      typeof mainNewsData.currentValue !== 'undefined'
+    ) {
       this.mainNews = mainNewsData.currentValue;
     }
-    if ( typeof brandNewsData !== 'undefined' && typeof brandNewsData.currentValue !== 'undefined') {
+    if (
+      typeof brandNewsData !== 'undefined' &&
+      typeof brandNewsData.currentValue !== 'undefined'
+    ) {
       this.brandNews = brandNewsData.currentValue;
     }
   }
+  readMore(story: any, fragment) {
+    let slug = '';
+    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
+      slug = `${story?.brand?.slug}/`;
+    }
+    return `${slug}${story?.slug}#${fragment}`;
+  }
   ngAfterViewInit() {
     if (this.isBrowser) {
-      $('.modal').on('hidden.bs.modal', function(){
+      $('.modal').on('hidden.bs.modal', function () {
         $('.modal').hide();
-        $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+        $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
       });
       $('.tooltiptext').click(function (e) {
         e.preventDefault();

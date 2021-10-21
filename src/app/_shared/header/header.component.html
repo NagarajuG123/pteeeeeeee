@@ -1,7 +1,7 @@
 <header class="col-12">
   <div>
     <!-- Top header section Start -->
-    <div class="top-head d-none d-lg-block">
+    <div class="top-head d-none d-lg-block" (click)="closeSidebar()">
       <div class="container d-flex">
         Publications in the Mainland Community:
         <ul class="list-group list-group-horizontal ms-3">
@@ -122,7 +122,8 @@
             </li>
             <li class="d-block">
               <a routerLink="/monthlycovers" (click)="commonService.toggle()">
-                <h3>MONTHLY COVERS</h3></a>
+                <h3>MONTHLY COVERS</h3></a
+              >
               <hr />
               <div *ngIf="header?.monthlyCover" class="monthly-covers">
                 <a
@@ -163,10 +164,10 @@
                 </li>
               </ul>
             </li>
+            <hr />
 
             <li>
               <h3>Awards</h3>
-              <hr />
               <ul class="mb-2 ms-2">
                 <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
                   <a
@@ -185,34 +186,39 @@
               </ul>
             </li>
             <li>
-              <hr />
-                <a
-                 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
-                  routerLink="{{ menu.url }}"
-                  (click)="commonService.toggle()"
-                  > <h3>{{ menu.title }}</h3></a
-                >
+              <a
+                *ngFor="let menu of header?.sidebar?.menus | slice: 0:1"
+                routerLink="{{ menu.url }}"
+                (click)="commonService.toggle()"
+              >
+                <h3>{{ menu.title }}</h3></a
+              >
             </li>
-            <li *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-              <hr />
-                <a
-                  *ngIf="!menu.fragment && menu.title != 'Login'"
-                  routerLink="{{ menu.url }}"
-                  ><h3>{{ menu.title }}</h3></a
-                >
-                <a
-                  *ngIf="menu.fragment && menu.title != 'Login'"
-                  routerLink="{{ menu.url }}"
-                  [fragment]="menu.fragment"
-                  (click)="commonService.toggle()"
-                  ><h3>{{ menu.title }}</h3></a
-                >
-                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">
-                  <h3>{{ menu.title }}</h3></a>
+            <hr />
+
+            <li *ngFor="let menu of header?.sidebar?.menus | slice: 1:7">
+              <a
+                *ngIf="!menu.fragment && menu.title != 'Login'"
+                routerLink="{{ menu.url }}"
+                ><h3>{{ menu.title }}</h3></a
+              >
+              <a
+                *ngIf="menu.fragment && menu.title != 'Login'"
+                routerLink="{{ menu.url }}"
+                [fragment]="menu.fragment"
+                (click)="commonService.toggle()"
+                ><h3>{{ menu.title }}</h3></a
+              >
+              <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">
+                <h3>{{ menu.title }}</h3></a
+              >
             </li>
+
             <li>
               <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
-                <a href="{{ menu.url }}"><h3>{{ menu.title }}</h3></a>
+                <a href="{{ menu.url }}"
+                  ><h3>{{ menu.title }}</h3></a
+                >
               </h3>
             </li>
           </ul>
@@ -385,8 +391,8 @@
             </li>
           </ul>
           <!-- Header Logo Section -->
-          <div class="logo d-flex align-items-center">
-            <a [routerLink]="header?.logo?.url" (click)="closeSidebar()"
+          <div class="logo d-flex align-items-center" (click)="closeSidebar()">
+            <a [routerLink]="header?.logo?.url"
               ><img
                 data-src="{{ header?.logo?.image }}"
                 height="{{ header?.logo?.height }}"
@@ -399,14 +405,12 @@
               <a
                 *ngIf="brandSlug === '1851'"
                 [routerLink]="header?.subscribe?.url"
-                (click)="closeSidebar()"
                 >{{ header?.subscribe?.title }}</a
               >
               <!-- Brand -->
               <a
                 class="company"
                 *ngIf="brandSlug !== '1851'"
-                (click)="closeSidebar()"
                 data-bs-toggle="modal"
                 data-bs-target="#sponsoredModal"
                 href="#"
@@ -419,7 +423,6 @@
                 <a
                   *ngIf="brandSlug === '1851'"
                   [routerLink]="header?.subscribe?.url"
-                  (click)="closeSidebar()"
                   >{{ header?.subscribe?.subTitle }}</a
                 >
                 <!-- Brand -->
@@ -444,21 +447,19 @@
         </div>
 
         <!-- Center menu link -->
-        <div *ngIf="brandSlug === '1851'" class="col centerMenuItem">
+        <div
+          *ngIf="brandSlug === '1851'"
+          class="col centerMenuItem"
+          (click)="closeSidebar()"
+        >
           <ul class="center-menu nav justify-content-center">
             <li class="nav-item px-3 menus" *ngFor="let menu of header?.menus">
-              <a
-                [routerLink]="menu.url"
-                class="d-flex align-items-center"
-                (click)="closeSidebar()"
+              <a [routerLink]="menu.url" class="d-flex align-items-center"
                 >{{ menu.title }}
               </a>
             </li>
             <li class="nav-item px-3 subscribeMenu">
-              <a
-                routerLink="/subscribe"
-                class="d-flex align-items-center"
-                (click)="closeSidebar()"
+              <a routerLink="/subscribe" class="d-flex align-items-center"
                 >Subscribe
               </a>
             </li>
@@ -466,7 +467,7 @@
               class="actions nav-item mx-2 px-3"
               *ngFor="let action of header?.actions; index as i"
             >
-              <a class="d-flex align-items-center" (click)="closeSidebar()"
+              <a class="d-flex align-items-center"
                 >{{ action.title }}
                 <img
                   data-src="assets/img/down-arrow.svg"
@@ -477,23 +478,23 @@
               /></a>
               <ul class="dropdown-menu">
                 <li *ngFor="let item of action.items">
-                  <a
-                    class="dropdown-item"
-                    [href]="item.url"
-                    (click)="closeSidebar()"
-                    >{{ item?.title }}</a
-                  >
+                  <a class="dropdown-item" [href]="item.url">{{
+                    item?.title
+                  }}</a>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
-        <div class="col d-none d-md-block" *ngIf="brandSlug !== '1851'">
+        <div
+          class="col d-none d-md-block"
+          *ngIf="brandSlug !== '1851'"
+          (click)="closeSidebar()"
+        >
           <ul class="center-menu nav justify-content-center">
             <li class="nav-item mt-1 px-2">
               <a
                 [routerLink]="header?.menus?.url"
-                (click)="closeSidebar()"
                 class="d-flex align-items-center"
                 >{{ header?.menus?.title }}
               </a>
@@ -529,7 +530,10 @@
           </ul>
         </div>
 
-        <div class="col-2 col-sm-auto d-flex align-items-center pe-lg-5">
+        <div
+          class="col-2 col-sm-auto d-flex align-items-center pe-lg-5"
+          (click)="closeSidebar()"
+        >
           <!-- Search bar -->
           <div class="search-bar me-3 me-lg-5 d-none d-lg-block">
             <a

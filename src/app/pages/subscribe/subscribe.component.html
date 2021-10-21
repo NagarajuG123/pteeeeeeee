@@ -2,23 +2,11 @@
   <div class="row">
     <div class="bannerSection">
       <img
-        class="lazyload"
+        class="lazyload img-fluid"
         height="514"
         width="763"
         alt="subscribe_banner"
-        data-src="{{ data?.media | defaultImage: 763:514 }}"
-        data-srcset="{{ data.media | defaultImage: 238:133 }} 238w, {{
-          data.media | defaultImage: 300:168
-        }} 300w, 
-            {{ data.media | defaultImage: 400:224 }} 400w, {{
-          data.media | defaultImage: 555:310
-        }} 555w"
-        data-sizes="{{
-          '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
-        }}"
+        data-src="{{ data?.media.url }}"
       />
     </div>
     <div class="col subscribe px-5 py-4">

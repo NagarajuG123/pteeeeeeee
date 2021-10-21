@@ -2,8 +2,10 @@
 @import "../../../assets/scss/variables.scss";
 
 img {
-  @include desk-xxlg {
-    width: 100%;
+  height: 514px;
+  width: 100%;
+  @include tablet-landscape1 {
+    height: auto;
   }
 }
 .row {
@@ -155,7 +157,6 @@ img {
         padding: 0 0 0 25px;
         letter-spacing: 0.4px;
       }
-      
     }
     .editors-details input:checked + span {
       background: url("/assets/img/checked.png") no-repeat left 1px;
