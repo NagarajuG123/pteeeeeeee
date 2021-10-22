@@ -71,7 +71,7 @@ img {
     }
 }
 .back {
-    width: 200px;
+    width: 250px;
     height: 36px;
     background: $red;
     font-size: 15.66px;
@@ -81,4 +81,17 @@ img {
     margin: 0 auto;
     padding: 0 15px 0 15px;
     text-align: center;
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        background: #b00034;
+        .angleLeft {
+            font-size: 25px;
+            line-height: 36px;
+            color: #fff;
+        }
+    }
 }
