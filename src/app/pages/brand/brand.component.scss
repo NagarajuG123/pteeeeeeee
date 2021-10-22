@@ -22,6 +22,9 @@ figure {
     h2 {
       font-size: 16px;
       line-height: 18.72px;
+      font-family: $roboto;
+      font-weight: 700;
+      color: $dark-gray !important;
     }
     p,
     p a {
@@ -45,25 +48,29 @@ figure {
       color: $black;
       font-family: $proxiRegular;
     }
-    h2 {
+    h1 {
       font-weight: 700;
       font-size: 64px;
       line-height: 77px;
       color: $dark-gray;
-      font-family: $balingerMedium;
+      font-family: $balingerBold;
       @include mobile-landscape1 {
         font-size: 30px;
         line-height: 30px;
       }
     }
     button {
-      background-color: $red;
+      background-color: $dark_red_2;
       color: $white;
       position: absolute;
       border: 0;
       cursor: pointer;
       margin: auto;
       width: 100px;
+      font-family: $balingerBold;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21.6px;
     }
     .readmore-btn {
       text-align: left;
@@ -110,6 +117,7 @@ figure {
         font-size: 15px;
         z-index: 1;
         margin-top: 35px;
+        cursor: pointer;
         img {
           cursor: pointer;
         }
@@ -122,17 +130,20 @@ figure {
   margin-top: 57px;
   width: 50%;
   height: 2px;
-  border: 1px solid $red;
+  border: 1px solid $dark_red_2;
 }
 .see-more-right--wrapper {
   margin-top: 57px;
   width: 50%;
   height: 2px;
-  border: 1px solid $red;
+  border: 1px solid $dark_red_2;
 }
 .seem-more-text-wrapper {
   color: $dark-gray;
   font-size: 17px;
+  font-family: $proxiRegular;
+  font-weight: 400;
+  line-height: 24px;
   @include mobile-landscape1 {
     font-size: 15px;
   }
