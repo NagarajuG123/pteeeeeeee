@@ -13,7 +13,9 @@
                 *ngIf="slug === '1851'"
               >
                 {{ title }}
-                <span class="c-section-header--subInfo">Indepth coverage of franchise industry topics</span>
+                <span class="c-section-header--subInfo"
+                  >Indepth coverage of franchise industry topics</span
+                >
               </h2>
               <h2
                 class="c-section--title text-uppercase m-0"
@@ -45,15 +47,27 @@
                 fragment="dynamicPage"
                 ><img
                   appYoutubeImage
-                  class="lazyload"
+                  class="img-fluid lazyload"
                   width="780"
                   height="auto"
-                  data-src="{{ specialFeature[0].media | defaultImage: 780:425 }}"
-                  data-srcset="{{ specialFeature[0].media | defaultImage: 555:300 }} 555w, 
-                      {{ specialFeature[0].media | defaultImage: 700:400 }} 760w, 
-                      {{ specialFeature[0].media | defaultImage: 600:340 }} 600w, 
-                      {{ specialFeature[0].media | defaultImage: 700:400 }} 700w, 
-                      {{ specialFeature[0].media | defaultImage: 780:425 }} 780w"
+                  data-src="{{
+                    specialFeature[0].media | defaultImage: 780:425
+                  }}"
+                  data-srcset="{{
+                    specialFeature[0].media | defaultImage: 555:300
+                  }} 555w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 700:400
+                  }} 760w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 600:340
+                  }} 600w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 700:400
+                  }} 700w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 780:425
+                  }} 780w"
                   data-sizes="{{
                     '(max-width: 576px) 555px,
                     (max-width: 768px) 760px
@@ -104,22 +118,22 @@
                   appYoutubeImage
                   class="img-fluid lazyload"
                   data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
-                  {{ item.media | defaultImage: 300:168 }} 244w, 
+                  {{ item.media | defaultImage: 244:133 }} 244w, 
                   {{ item.media | defaultImage: 400:224 }} 400w, 
                   {{ item.media | defaultImage: 555:310 }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
                     (max-width: 992px) 400px,
                     (max-width: 1200px) 238px,
                     244px'
-                      }}"
+                  }}"
                   width="244"
-                  height="93"
-                  data-src="{{ item.media | defaultImage: 244:93 }}"
+                  height="auto"
+                  data-src="{{ item.media | defaultImage: 244:133 }}"
                   alt="featured"
                   loading="lazy"
                 />
-                <h3 class="over-layer text-capitalize bottom-0 w-100 p-2">
+                <h3 class="over-layer bottom-0 w-100 p-2">
                   {{ item.title }}
                 </h3>
               </a>
@@ -141,13 +155,13 @@
                 data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
                 {{ item.media | defaultImage: 300:168 }} 244w, 
                 {{ item.media | defaultImage: 400:224 }} 400w, 
-                {{ item.media | defaultImage: 555:310}} 555w"
-              data-sizes="{{
-                '(max-width: 576px) 555px,
+                {{ item.media | defaultImage: 555:310 }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
                   (max-width: 992px) 400px,
                   (max-width: 1200px) 238px,
                   244px'
-                    }}"
+                }}"
                 width="244"
                 height="93"
                 data-src="{{ item.media | defaultImage: 244:93 }}"
