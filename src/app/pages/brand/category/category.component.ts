@@ -58,7 +58,7 @@ export class CategoryComponent implements OnInit {
     const featureApi = this.apiService.getAPI(
       `1851/${this.slug}/featured?limit=24&offset=0`
     );
-    const metaApi = this.apiService.getAPI(`1851/${this.slug}/most-recent`);
+    const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
     const spotlightCategoriesApi = this.apiService.getAPI(
       `1851/spotlights/categories`
     );
