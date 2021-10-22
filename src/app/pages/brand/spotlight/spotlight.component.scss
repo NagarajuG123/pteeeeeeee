@@ -1,0 +1,134 @@
+@import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/variables.scss";
+
+.editorial-section {
+  background: $white;
+  h2 {
+    font-family: $balingerBold;
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 36px;
+    width: 362px;
+    color: $dark_red_2;
+  }
+  .innerContent {
+    padding: 0 53px;
+  }
+  .tabs {
+    border-top: 1px solid $dark-gray;
+    border-bottom: 1px solid $dark-gray;
+    .prev,
+    .next {
+      img {
+        width: auto;
+        cursor: pointer;
+      }
+    }
+    .customContainer {
+      .innerContent {
+        li {
+          background-color: $white;
+          height: 60px;
+          span {
+            min-width: 132px;
+            height: 100%;
+            color: $light_gray_8;
+            cursor: pointer;
+            font-family: $proxiBold;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 28.24px;
+            &.active,
+            &:hover {
+              color: $primary;
+              &::after {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: -13px;
+                width: 7px;
+                border-width: 16px 16px 0 16px;
+                border-style: solid;
+                border-color: $primary transparent transparent transparent;
+              }
+              &::before {
+                content: "";
+                height: 7px;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-color: $primary;
+              }
+            }
+          }
+          border-color: $light-gray-1;
+        }
+      }
+    }
+  }
+  .tabs-container {
+    > .tabItemList {
+      .items {
+        font-family: $roboto;
+        font-weight: 700;
+        width: 195px;
+        img {
+          background-color: $light-gray-1;
+        }
+        > .card-body {
+          padding: 8px 16px 15px;
+          > h3.card-title {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 16.38px;
+            color: $dark-gray;
+          }
+          > .card-text {
+            font-size: 10px;
+          }
+          a {
+            > small {
+              font-family: $roboto;
+              font-weight: 500;
+              font-size: 11px;
+              line-height: 12px;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .row {
+          margin: 0 -5px;
+          .col-md-4 {
+            max-width: 20%;
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .fs-30 {
+    font-size: 30px;
+  }
+
+  input {
+    font-family: "ProximaNova-Regular";
+    font-size: 13px;
+    height: 39px;
+    &::placeholder {
+      color: $dark-gray;
+    }
+  }
+  .joinBtn {
+    min-width: 196px;
+    background: $dark-gray;
+    border-color: $dark-gray;
+    font-family: "ProximaNova-Regular";
+    font-size: 25px;
+    height: 39px;
+  }
+}
+a {
+  color: $dark-gray;
+}
