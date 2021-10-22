@@ -110,6 +110,8 @@ img {
     margin: 0 7px 0 0;
     padding: 17px 0 13px 0;
     letter-spacing: 0.5px;
+    line-height: 22px;
+    font-weight: 400;
     @include desk-lg-below {
       margin: 0;
       padding: 13px 5px;
@@ -121,6 +123,8 @@ img {
     line-height: 32px;
     color: $white;
     padding: 16px 0 5px 0;
+    font-family: $proxiBold;
+    font-weight: 400;
     @include tablet-landscape {
       padding: 12px 0 5px 0;
       font-size: 25px;
@@ -135,7 +139,7 @@ img {
     font-size: 18px;
     line-height: 22px;
     color: $white;
-    font-family: $proxiLightIt;
+    font-family: $proxiRegular;
     @include mobile-landscape1 {
       font-size: 16px;
       line-height: 23px;
@@ -150,6 +154,7 @@ h6 {
   font-family: $proxiMedium;
   text-decoration: underline;
   padding: 0 0 45px;
+  font-weight: 400;
 }
 .monthlydetails-banner h4 {
   padding: 17px 21px 13px 22px;
