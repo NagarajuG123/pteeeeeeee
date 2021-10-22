@@ -10,8 +10,9 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 import { CategoryComponent } from './category/category.component';
+import { SpotlightComponent } from './spotlight/spotlight.component';
 @NgModule({
-  declarations: [BrandComponent, InfoComponent, CategoryComponent],
+  declarations: [BrandComponent, InfoComponent, CategoryComponent,SpotlightComponent],
   imports: [
     CommonModule,
     BrandRoutingModule,

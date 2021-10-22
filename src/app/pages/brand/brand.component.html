@@ -14,7 +14,7 @@
   ></app-featured>
   <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
 
-  <app-editorial-sections [slug]="slug"></app-editorial-sections>
+  <app-spotlight [slug]="slug"></app-spotlight>
 </div>
 
 <div *ngIf="isCategory && type === 'category_page'">
@@ -27,18 +27,18 @@
       <img
         data-src="assets/img/dynamicpage_banner.png"
         width="1440"
-        height="493"
+        height="559"
         alt="banner"
         loading="lazy"
         class="lazyload"
       />
     </figure>
     <div class="left-text d-flex">
-      <a routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}">
-        <h2>Franchise Broker Awards</h2>
+      <a routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}" fragment="franbuzz">
+        <h1>Franchise Broker Awards</h1>
         <p>{{ topBlock?.description }}</p>
         <div class="readmore-btn">
-          <button class="align-items-center">READ MORE</button>
+          <button class="align-items-center">Read More</button>
         </div>
       </a>
     </div>
@@ -55,11 +55,23 @@
             fragment="franbuzz"
             (click)="closeModal()"
             ><img
+               data-srcset="{{list.media | defaultImage:545:305}} 545w, 
+                      {{list.media | defaultImage:355:199}} 355w, 
+                      {{list.media | defaultImage:300:168}} 300w, 
+                      {{list.media | defaultImage:250:90}} 200w,
+                      {{list.media | defaultImage:305:166}} 305w"
+                data-sizes="{{
+                  '(max-width: 576px) 545px,
+                  (max-width: 768px) 355px,
+                  (max-width: 992px) 300px,
+                  (max-width: 1200px) 200px,
+                  305px'
+                }}"
               data-src="{{ list.media | defaultImage: 305:166 }}"
-              class="card-img-top lazyload"
+              class="card-img-top lazyload img-fluid"
               alt="story"
               width="305"
-              height="166"
+              height="auto"
               loading="lazy"
             />
             <div class="card-body">
