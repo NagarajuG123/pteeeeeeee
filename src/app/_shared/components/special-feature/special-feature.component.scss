@@ -4,6 +4,9 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
+img {
+  width: 100%;
+}
 .c-video-section--wrapper {
   background: $white;
   padding: 25px 0;
@@ -101,6 +104,12 @@
     font-size: 18px;
     margin: 0;
     line-height: 1.2rem;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: unset;
   }
 }
 
@@ -110,18 +119,6 @@
   }
   .over-layer {
     font-size: 24px;
-  }
-  .small-image {
-    padding-left: 40px;
-    .over-layer {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: unset;
-      width: 80% !important;
-    }
-    img{
-      width: 80% !important;
-    }
   }
 }
 
@@ -137,21 +134,13 @@
 .news-list {
   font-family: $roboto;
   font-weight: 700;
-  height: calc(100% - 27px);
-  width: calc(100% - 30px);
+
   a {
     color: $primary;
   }
   li {
     display: flex;
-    border-bottom: 1px solid #e8eef2;
-    &:last-child {
-      border: 0;
-    }
-    img {
-      min-width: 100px;
-      max-height: 93px;
-    }
+
     span {
       font-size: 10px;
       color: $dark-gray;
@@ -203,7 +192,7 @@
     }
   }
 }
-@include mobile-landscape{
+@include mobile-landscape {
   .c-section-header--group {
     display: block !important;
   }
