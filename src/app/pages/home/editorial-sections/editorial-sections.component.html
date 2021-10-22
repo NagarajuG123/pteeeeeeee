@@ -78,21 +78,18 @@
             <div class="items card border-0 h-100">
               <img
                 appYoutubeImage
-                data-srcset="{{ list.media | defaultImage: 238:133 }} 238w, {{
-                  list.media | defaultImage: 300:168
-                }} 300w, 
-            {{ list.media | defaultImage: 400:224 }} 400w, {{
-                  list.media | defaultImage: 555:310
-                }} 555w"
+                data-srcset="{{ list.media | defaultImage: 195:103 }} 195w, 
+                {{ list.media | defaultImage: 300:200 }} 300w,
+                {{ list.media | defaultImage: 555:450 }} 555w"
                 class="card-img-top lazyload"
                 data-sizes="{{
                   '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
+                   (max-width: 992px) 300px,
+                   (max-width: 1200px) 195px,
+                   195px'
                 }}"
                 width="195px"
-                height="103px"
+                height="auto"
                 data-src="{{ list.media | defaultImage: 195:103 }}"
                 alt="editorial"
                 loading="lazy"

@@ -6,19 +6,11 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { VideoComponent } from './video/video.component';
-import { SwiperConfigInterface, SwiperModule, SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  direction: 'horizontal',
-  slidesPerView: 'auto'
-};
+import { EditorialSectionsComponent } from './editorial-sections/editorial-sections.component';
+
 @NgModule({
-  declarations: [HomeComponent, VideoComponent],
-  imports: [CommonModule, HomeRoutingModule, SharedModule,SwiperModule],
-  providers: [
-    {
-      provide: SWIPER_CONFIG,
-      useValue: DEFAULT_SWIPER_CONFIG
-    }
-  ],
+  declarations: [HomeComponent, VideoComponent, EditorialSectionsComponent],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
+  providers: [],
 })
 export class HomeModule {}
