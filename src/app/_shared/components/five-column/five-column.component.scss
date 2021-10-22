@@ -58,6 +58,21 @@ img {
       }
     }
   }
+  .sponsored {
+    position: absolute;
+    padding: 0;
+    span {
+      background: $red;
+      font-size: 17px;
+      line-height: 19px;
+      color: $white;
+      font-weight: 400;
+      font-family: $proxiBold;
+      vertical-align: top;
+      padding: 7px 5px 9px;
+      width: 35px;
+    }
+  }
 }
 .author-frannews {
   padding: 0px;
@@ -95,6 +110,8 @@ img {
     letter-spacing: -0.1px;
     margin-bottom: 21px;
     text-align: left;
+    font-family: $proxiRegular;
+    font-weight: 400;
     @include mobile-landscape1 {
       margin: 0 0 6px 0;
       margin-bottom: 0px;

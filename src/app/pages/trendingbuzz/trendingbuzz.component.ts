@@ -27,7 +27,7 @@ export class TrendingbuzzComponent implements OnInit {
 
   getTrending() {
     this.apiService
-      .getAPI(`${this.slug}/trending-buzz?limit=8&offset=0`)
+      .getAPI(`${this.slug}/trending-buzz?limit=10&offset=0`)
       .subscribe((response) => {
         this.metaService.setSeo(response.data[0].meta);
         this.trendingData = response.data;
@@ -42,7 +42,7 @@ export class TrendingbuzzComponent implements OnInit {
   getMoreData() {
     this.apiService
       .getAPI(
-        `${this.slug}/trending-buzz?limit=4&offset=${this.trendingData.length}`
+        `${this.slug}/trending-buzz?limit=5&offset=${this.trendingData.length}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
