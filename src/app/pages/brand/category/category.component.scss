@@ -1,5 +1,6 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/theme-color.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .top-section {
   width:100%;
@@ -9,9 +10,10 @@
 }
 .content
 {
-  position: absolute;
-  top: 40%;
-  left: 10%;
+  padding: 150px 0 0 50px;
+  @include mobile-landscape{
+    padding: 0 0 0 15px;
+  }
   >h3
  {
   font-family: $balingerBold;
@@ -67,6 +69,9 @@
       font-family: $roboto;
       line-height: 12px;
     }
+    @include mobile-landscape{
+      padding: 10px 0 10px;
+    }
   }
 
   @media screen and (max-width: 960px) {
@@ -77,6 +82,9 @@
   }
 }
 .category {
+  @include mobile-landscape{
+    padding-top: 100px
+  }
   background: $white_3;
   .tabs {
     height: 60px;
