@@ -133,15 +133,17 @@
     .category,
     .subTitle {
       min-width: 141px;
-      font-size: 20px;
+      font-size: 14px;
       font-family: $balingerBold;
       line-height: 141.19%;
       font-weight: 700;
+      color: $white_4;
     }
     .description {
       font-family: $roboto;
       p {
-        font-size: 17px;
+        font-size: 14px;
+        line-height: 24px;
       }
     }
 
