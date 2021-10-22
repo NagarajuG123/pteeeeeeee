@@ -1,8 +1,9 @@
+@import "../../../../assets/scss/variables.scss";
 .empty {
     display: none;
 }
 .error-banner {
-    background: #263645;
+    background: $dark_gray_1;
 }
 .banner {
     -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
@@ -23,11 +24,12 @@
 .error-banner-details {
     margin: 0 auto;
     padding: 97px 38px 95px;
-    h2 {
+    h1 {
         font-size: 28.92px;
         line-height: 31px;
-        color: #ec0044;
-        font-family: 'ProximaNova-Medium';
+        color: $red;
+        font-family: $proxiMedium;
+        font-weight: 400;
         padding: 39px 0 19px;
         letter-spacing: .7px;
     }
@@ -39,7 +41,7 @@
 }
 h3 {
     font-size: 24px;
-    color: #fff;
+    color: $white;
 }
 
 @media (min-width: 1200px){
@@ -60,4 +62,23 @@ img {
     max-width: 100%;
     height: auto;
     display: inline-block;
+}
+.trending-articles {
+    background: $white;
+    border-bottom: 1px solid $light_gray_4;
+    .back-home {
+        margin-bottom: 100px;
+    }
+}
+.back {
+    width: 200px;
+    height: 36px;
+    background: $red;
+    font-size: 15.66px;
+    line-height: 36px;
+    color: $white;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 15px 0 15px;
+    text-align: center;
 }

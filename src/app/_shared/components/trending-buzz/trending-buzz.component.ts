@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-trending-buzz',
@@ -11,6 +12,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 export class TrendingBuzzComponent implements OnInit {
   trending: any = [];
   slug: string = '1851';
+  faAngleRight = faAngleRight;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();

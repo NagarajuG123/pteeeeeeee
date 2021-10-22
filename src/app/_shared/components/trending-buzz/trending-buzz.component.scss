@@ -1,0 +1,90 @@
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.frannews-trending {
+    margin-top: -40px;
+    padding-top: 40px;
+}
+.frannews {
+    background: $white;
+}
+.frannews-details {
+    padding: 66px 41px 69px 40px;
+    margin: 0 auto;
+}
+.frannews-top {
+    border-bottom: 2px solid #bbbcbf;
+    padding: 0 0 10px;
+}
+.frannews-top-left
+{
+    ul {
+        li {
+        display: inline-block;
+        float: left;
+        padding: 0 31px 0 0;
+        position: relative;
+            &.frannews-subtitle {
+                display: flex;
+                font-size: 15px;
+                line-height: 24px;
+                color: $light_gray_4;
+                font-family: $proxiRegular;
+                letter-spacing: .1px;
+                font-weight: 400;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: 2px;
+                right: 16px;
+                background: $light_gray_4;
+                width: 2px;
+                height: 15px;
+                @include tablet-landscape1 {
+                  right: 10px;
+                }
+                @include mobile-landscape1 {
+                  display: none;
+                }
+              }
+              &:last-child {
+                &:after {
+                  display: none;
+                }
+              }
+        }
+    }
+} 
+h4 {
+    font-size: 20px;
+    line-height: 22px;
+    color: $dark_gray_1;
+    font-weight: 400;
+    font-family: $proxiSemiBold;
+    letter-spacing: 1px;
+}
+.frannews-top-right {
+    padding: 7px 0 0;
+    a {
+        font-size: 11.67px;
+        line-height: 13px;
+        color: $dark_gray_1;
+        font-weight: 400;
+        font-family: $proxiMedium;
+        float: right;
+        .rightIcon {
+            font-size: 14px;
+            line-height: 10px;
+            color: $red;
+            padding: 0 0 0 5px;
+            vertical-align: top;
+        }
+    }
+}
+@media (min-width: 992px){
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
