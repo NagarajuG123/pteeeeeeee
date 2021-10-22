@@ -15,6 +15,7 @@
   margin-top: 15px;
   display: inline-block;
   transition: all 0.35s ease;
+  line-height: 18px;
   &:hover {
     text-decoration: none;
     color: $black_1;
@@ -23,7 +24,7 @@
 // Card Design
 .c-card-box--section {
   padding-top: 100px;
-  background-color: $dark_gray_4;
+  background-color: $dark_gray;
   @include media("<xl"){
     padding-bottom: 40px;
   }
@@ -114,8 +115,9 @@
         color: $dark_red_2;
         margin-top: 0;
         font-size: 20px;
-        font-weight: bold;
+        font-weight: 700;
         font-family: $balingerBold;
+        line-height: 25.74px;
         @include media("<md"){
           font-size: 16px;
         }
@@ -123,9 +125,10 @@
       .c-card-box--title {
         font-family: $balingerBold;
         font-size: 44px;
-        font-weight: bold;
-        color: $black_1;
+        font-weight: 700;
+        color: $dark-gray;
         text-transform: capitalize;
+        line-height: 53px;
         @include media("<xl"){
           font-size: 36px;
         }
@@ -137,8 +140,9 @@
         max-width: 480px;
         font-weight: 500;
         font-size: 18px;
-        color: #18222e;
+        color: $dark-gray;
         font-family: $roboto;
+        line-height: 23.16px;
         @include media("<xl"){
           margin-bottom: 0;
         }
@@ -239,6 +243,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         margin-bottom: 2px;
+        line-height: 18.55px;
       }
       .c-card-box--itemDec {
         font-family: $roboto;
@@ -253,7 +258,7 @@
         -webkit-box-orient: vertical;
         margin-bottom: 4px;
         font-size: 12.974px;
-        line-height: 128.69%;
+        line-height: 16.7px;
       }
 
       .c-link--btn {
@@ -262,6 +267,7 @@
         font-family: $roboto;
         font-weight: 500;
         text-transform: lowercase;
+        line-height: 13px;
         &:hover {
           color: $white;
         }
@@ -322,10 +328,10 @@
     font-family: $balingerBold;
     padding-left: 20px;
     font-weight: 700;
-    line-height: 35px;
-    // padding-bottom: 20px;
+    line-height: 42px;
     font-style: normal;
-    // margin-left:80px;
+    font-size: 35px;
+    color: $dark-gray;
     @include media("<xxl"){
       // margin-left: 50px;
     }
@@ -394,6 +400,10 @@
   }
 }
 .seem-more-text-wrapper {
-  color: #243444;
+  color: $dark-gray;
   font-size: 17px;
+  font-family: $proxiRegular;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
 }
