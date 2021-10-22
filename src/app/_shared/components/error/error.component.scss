@@ -87,11 +87,11 @@ img {
         left: 0;
         width: 36px;
         height: 36px;
-        background: #b00034;
+        background: $dark_red;
         .angleLeft {
             font-size: 25px;
             line-height: 36px;
-            color: #fff;
+            color: $white;
         }
     }
 }
