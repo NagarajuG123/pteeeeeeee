@@ -99,9 +99,10 @@ figure {
   input {
     font-family: $proxiRegular;
     height: 44px;
-    border: 1px solid #d4d5d6;
+    border: 1px solid $light_gray_2;
     font-size: 16px;
     line-height: 44px;
+    color: $light_gray_1;
 
     &::placeholder {
       color: $light_gray_1;
@@ -112,8 +113,9 @@ figure {
   }
   textarea {
     font-family: $proxiRegular;
-    border: 1px solid #d4d5d6;
+    border: 1px solid $light_gray_2;
     height: 129px;
+    color: $light_gray_1;
     &::placeholder {
       color: $light_gray_1;
       text-transform: uppercase;
