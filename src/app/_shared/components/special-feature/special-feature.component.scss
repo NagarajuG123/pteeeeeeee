@@ -9,32 +9,56 @@ img {
 }
 .c-video-section--wrapper {
   background: $white;
-  padding: 25px 0;
   &.brand {
     padding: 0;
     padding-top: 10px;
   }
-  .c-section--title {
-    font-size: 35px;
-    font-weight: 700;
-    font-family: $balingerBold;
-    line-height: 42px;
-    color: $dark-gray;
-    width: 1000px;
-  }
-  .c-section-header--subInfo {
-    color: $section-info-color;
-    margin-bottom: 6px;
-    font-family: $roboto;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 17.58px;
-    text-transform: capitalize;
-    &::before {
-      content: "|";
-      padding-left: 15px;
-      padding-right: 15px;
-      display: inline-block;
+  .frannews-top-left {
+    ul {
+      li {
+        display: inline-block;
+        float: left;
+        padding: 0 31px 0 0;
+        position: relative;
+        h2 {
+          font-weight: 700;
+          font-family: $balingerBold;
+          font-size: 33px;
+          line-height: 40px;
+          color: $dark-gray;
+        }
+        &.frannews-subtitle {
+          display: flex;
+          font-size: 15px;
+          line-height: 17.58px;
+          color: $light_gray_9;
+          font-family: $roboto;
+          letter-spacing: 0.1px;
+          font-weight: 700;
+          margin-top: 14px;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          right: 16px;
+          background: $light_gray_4;
+          width: 2px;
+          height: 15px;
+          margin-top: 12px;
+          @include tablet-landscape1 {
+            right: 10px;
+          }
+          @include mobile-landscape1 {
+            display: none;
+          }
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
     }
   }
 }
