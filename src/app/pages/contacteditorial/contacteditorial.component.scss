@@ -116,6 +116,7 @@ figure {
     border: 1px solid $light_gray_2;
     height: 129px;
     color: $light_gray_1;
+    line-height: 19px;
     &::placeholder {
       color: $light_gray_1;
       text-transform: uppercase;
