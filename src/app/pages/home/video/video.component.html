@@ -19,118 +19,116 @@
   <div class="c-divider--wrapper"></div>
 
   <div class="container customContainer">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex c-video-section--boxWrapper">
-          <div
-            class="c-video-section--box"
-            *ngFor="let item of videoData | slice: 0:2; index as i"
-          >
-            <div class="position-relative main-image">
-              <div class="badge tag position-absolute top-0 text-uppercase">
-                FEATURED Video
-              </div>
-              <a
-                *ngIf="item?.media"
-                (click)="openVideoPlayer = true"
-                attr.data-src="{{ item.media.url }}"
-                data-bs-target="#videoModal"
-                data-bs-toggle="modal"
-                (click)="updateVideoUrl(item.media.url)"
-                href="#"
-                class="
-                  video-btn
-                  c-video-section--playBtn
-                  d-flex
-                  justify-content-center
-                  align-items-center
-                "
-              >
-                <img
-                  data-src="{{ item.media | defaultImage: 600:300 }}"
-                  class="img-fluid lazyload"
-                  alt="video"
-                  width="600"
-                  height="300"
-                  loading="lazy"
-                />
-                <img
-                  data-src="assets/img/play.png"
-                  alt="Play"
-                  class="img-fluid vide-play lazyload"
-                  loading="lazy"
-                />
-              </a>
-              <!-- </div> -->
-              <h2 class="c-video-section--title">
-                {{ item.title }}
-              </h2>
-            </div>
+    <div class="d-flex row c-video-section--boxWrapper">
+      <div
+        class="c-video-section--box col-lg-6 col-sm-6"
+        *ngFor="let item of videoData | slice: 0:2; index as i"
+      >
+        <div class="position-relative main-image">
+          <div class="badge tag position-absolute top-0 text-uppercase">
+            FEATURED Video
           </div>
+          <a
+            *ngIf="item?.media"
+            (click)="openVideoPlayer = true"
+            attr.data-src="{{ item.media.url }}"
+            data-bs-target="#videoModal"
+            data-bs-toggle="modal"
+            (click)="updateVideoUrl(item.media.url)"
+            href="#"
+            class="
+              video-btn
+              c-video-section--playBtn
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+          >
+            <img
+              data-src="{{ item.media | defaultImage: 550:304 }}"
+              data-srcset="{{ item.media | defaultImage: 550:304 }} 550w, 
+                      {{ item.media | defaultImage: 225:133 }} 225w,
+                    {{ item.media | defaultImage: 300:174 }} 300w"
+              data-sizes="{{
+                '(max-width: 576px) 300px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 550px,
+                    550px'
+              }}"
+              class="img-fluid lazyload"
+              alt="video"
+              width="550"
+              height="auto"
+              loading="lazy"
+            />
+            <img
+              data-src="assets/img/play.png"
+              alt="Play"
+              class="img-fluid vide-play lazyload"
+              loading="lazy"
+            />
+          </a>
+          <h2 class="c-video-section--title">
+            {{ item.title }}
+          </h2>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="c-video-slider--wrapper">
-          <owl-carousel-o [options]="customOptions" class="position-relative">
-            <ng-template
-              carouselSlide
-              *ngFor="let item of videoData | slice: 2:10"
+
+    <div class="c-video-slider--wrapper d-flex row">
+      <owl-carousel-o
+        [options]="customOptions"
+        class="position-relative carousel"
+      >
+        <ng-template carouselSlide *ngFor="let item of videoData | slice: 2:10">
+          <div class="col">
+            <a
+              *ngIf="item?.media"
+              attr.data-src="{{ item.media.url }}"
+              data-bs-target="#videoModal"
+              data-bs-toggle="modal"
+              (click)="updateVideoUrl(item.media.url)"
+              href="#"
+              class="
+                video-btn
+                c-video-section--playBtn
+                d-flex
+                justify-content-center
+                align-items-center
+              "
             >
-              <div class="">
-                <div class="c-video-section--box">
-                  <a
-                    *ngIf="item?.media"
-                    attr.data-src="{{ item.media.url }}"
-                    data-bs-target="#videoModal"
-                    data-bs-toggle="modal"
-                    (click)="updateVideoUrl(item.media.url)"
-                    href="#"
-                    class="
-                      video-btn
-                      c-video-section--playBtn
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                    "
-                  >
-                    <img
-                      data-srcset="{{
-                        item.media | defaultImage: 238:133
-                      }} 238w, {{ item.media | defaultImage: 300:168 }} 300w, 
+              <img
+                data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, 
+                      {{ item.media | defaultImage: 225:133 }} 225w,
                     {{ item.media | defaultImage: 400:224 }} 400w, {{
-                        item.media | defaultImage: 555:310
-                      }} 555w"
-                      data-sizes="{{
-                        '(max-width: 576px) 555px,
+                  item.media | defaultImage: 555:310
+                }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
                     (max-width: 992px) 400px,
                     (max-width: 1200px) 238px,
                     225px'
-                      }}"
-                      data-src="{{ item.media | defaultImage: 225:131 }}"
-                      class="img-fluid lazyload video-img"
-                      width="225"
-                      height="131"
-                      alt="video"
-                      loading="lazy"
-                    />
-                    <img
-                      data-src="assets/img/play.png"
-                      alt="Play"
-                      class="img-fluid vide-play lazyload"
-                      loading="lazy"
-                    />
-                  </a>
-                  <h3 class="c-video-section--title">
-                    {{ item.title }}
-                  </h3>
-                </div>
-              </div>
-            </ng-template>
-          </owl-carousel-o>
-        </div>
-      </div>
+                }}"
+                data-src="{{ item.media | defaultImage: 225:131 }}"
+                class="img-fluid lazyload video-img"
+                width="225"
+                height="131"
+                alt="video"
+                loading="lazy"
+              />
+              <img
+                data-src="assets/img/play.png"
+                alt="Play"
+                class="img-fluid vide-play lazyload"
+                loading="lazy"
+              />
+            </a>
+            <h3 class="c-video-section--title">
+              {{ item.title }}
+            </h3>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
     </div>
   </div>
   <div
