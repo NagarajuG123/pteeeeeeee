@@ -54,14 +54,6 @@
     &:last-child {
       border: 0;
     }
-    img {
-      min-width: 121px;
-      max-height: 100%;
-      @media screen and (max-width: 1291px) {
-        min-width: 90px;
-        max-height: 90px;
-      }
-    }
     h3 {
       font-family: $roboto;
       font-weight: bold;
@@ -144,7 +136,6 @@
       .items {
         img {
           width: 100%;
-          min-height: 106px;
           background-color: $light-gray-1;
         }
         > .card-body {
