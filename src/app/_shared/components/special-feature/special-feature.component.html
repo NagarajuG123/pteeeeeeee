@@ -1,31 +1,23 @@
 <div class="sidebar-blur" *ngIf="isLoaded">
   <div
-    class="c-video-section--wrapper"
+    class="c-video-section--wrapper container customContainer pt-4"
     [ngClass]="type == 'brand' ? 'brand' : ''"
   >
-    <div class="container customContainer">
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <div class="align-items-center c-section-header--wrapper">
-            <div class="c-section-header--group align-items-end">
-              <h2
-                class="c-section--title text-uppercase m-0"
-                *ngIf="slug === '1851'"
-              >
-                {{ title }}
-                <span class="c-section-header--subInfo"
-                  >Indepth coverage of franchise industry topics</span
-                >
-              </h2>
-              <h2
-                class="c-section--title text-uppercase m-0"
-                *ngIf="slug !== '1851'"
-              >
-                {{ company }} Features
-              </h2>
-            </div>
-          </div>
-        </div>
+    <div class="frannews-top d-flex">
+      <div class="frannews-top-left col-lg-11 col-md-10 p-0">
+        <ul>
+          <li>
+            <h2 *ngIf="slug === '1851'" class="text-uppercase">{{ title }}</h2>
+            <h2 *ngIf="slug !== '1851'" class="text-uppercase">
+              {{ company }} Features
+            </h2>
+          </li>
+          <li class="frannews-subtitle">
+            <span *ngIf="slug == '1851'"
+              >Indepth coverage of franchise industry topics</span
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -66,7 +58,7 @@
                     specialFeature[0].media | defaultImage: 700:400
                   }} 700w, 
                       {{
-                    specialFeature[0].media | defaultImage: 780:425
+                    specialFeature[0].media | defaultImage: 780:450
                   }} 780w"
                   data-sizes="{{
                     '(max-width: 576px) 555px,
