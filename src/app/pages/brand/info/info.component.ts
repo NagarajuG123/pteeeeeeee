@@ -59,6 +59,8 @@ export class InfoComponent implements OnInit {
   isSubmitFailed: boolean = false;
   submittedInquireForm: boolean = false;
   submitErrMsg: string = '';
+  openVideoPlayer: boolean;
+  brandVideoUrl: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
@@ -121,6 +123,9 @@ export class InfoComponent implements OnInit {
                 .getAPI(`${this.brandSlug}/brand-view`)
                 .subscribe((response) => {
                   this.brandInfo = response.data;
+                  if (this.commonService.isVideo(response.data.media)) {
+                    this.brandVideoUrl = response.data.media.url;
+                  }
                 });
 
               const featuredApi = this.apiService.getAPI(

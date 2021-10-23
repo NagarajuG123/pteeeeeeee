@@ -19,23 +19,21 @@
             <img
               appYoutubeImage
               width="380px"
-              height="223px"
+              height="auto"
               data-src="{{ item.media | defaultImage: 380:223 }}"
-              data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                item.media | defaultImage: 300:168
-              }} 300w, 
-          {{ item.media | defaultImage: 400:224 }} 400w, {{
-                item.media | defaultImage: 555:310
-              }} 555w"
+              data-srcset="{{ item.media | defaultImage: 380:223 }} 380w, {{
+                item.media | defaultImage: 350:200
+              }} 350w, 
+          {{ item.media | defaultImage: 555:310 }} 555w"
               data-sizes="{{
                 '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
+              (max-width: 992px) 350px,
+              (max-width: 1200px) 380px,
+              380px'
               }}"
               alt="most-popular"
               loading="lazy"
-              class="lazyload"
+              class="img-fluid lazyload"
             />
             <div class="slide-body position-relative primary-bg px-3 d-block">
               <span
@@ -102,76 +100,80 @@
         </a>
       </div>
     </div>
-
-    <owl-carousel-o
-      [options]="customOptions"
-      class="position-relative"
-      [ngClass]="type == 'brand' ? 'brand-carousel' : 'd-sm-none'"
-    >
-      <ng-template carouselSlide *ngFor="let item of data; index as i">
-        <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
-          <div class="slideItem col-md-4">
-            <img
-              appYoutubeImage
-              data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, {{
-                item.media | defaultImage: 300:168
-              }} 300w, 
-          {{ item.media | defaultImage: 400:224 }} 400w, {{
-                item.media | defaultImage: 555:310
-              }} 555w"
-              class="lazyload"
-              data-sizes="{{
-                '(max-width: 576px) 555px,
-              (max-width: 992px) 400px,
-              (max-width: 1200px) 238px,
-              300px'
-              }}"
-              width="380px"
-              height="223px"
-              data-src="{{ item.media | defaultImage: 380:223 }}"
-              alt="most-popular"
-              loading="lazy"
-            />
-            <div class="slide-body position-relative primary-bg px-3 d-block">
-              <span
-                class="
-                  position-absolute
-                  top-0
-                  start-0
-                  bg-white
-                  primary-color
-                  d-flex
-                  align-items-center
-                  justify-content-center
-                "
-                >POPULAR</span
-              >
-              <h2 class="position-relative ps-4 text-white">
-                <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
-                <strong class="ms-3 d-block">{{ item.title }}</strong>
-              </h2>
-            </div>
-            <div
-              class="
-                slide-footer
-                primary-bg-1
-                d-flex
-                flex-row-reverse
-                py-1
-                px-2
-              "
+    <div class="row d-flex">
+      <owl-carousel-o
+        [options]="customOptions"
+        class="position-relative"
+        [ngClass]="type == 'brand' ? 'brand-carousel' : 'd-sm-none'"
+      >
+        <ng-template carouselSlide *ngFor="let item of data; index as i">
+          <div class="slideItem col-md-4 col-sm-4">
+            <a
+              routerLink="/{{ commonService.readMore(item) }}"
+              fragment="trending"
             >
-              <a class="text-white"
-                >READ MORE
-                <fa-icon
-                  [icon]="faAngleRight"
-                  class="ng-fa-icon fa-icon"
-                ></fa-icon
-              ></a>
-            </div>
+              <img
+                appYoutubeImage
+                data-srcset="{{ item.media | defaultImage: 380:223 }} 380w, {{
+                  item.media | defaultImage: 350:200
+                }} 350w, 
+          {{ item.media | defaultImage: 555:310 }} 555w"
+                data-sizes="{{
+                  '(max-width: 576px) 555px,
+              (max-width: 992px) 350px,
+              (max-width: 1200px) 380px,
+              380px'
+                }}"
+                class="img-fluid lazyload"
+                width="380px"
+                height="auto"
+                data-src="{{ item.media | defaultImage: 380:223 }}"
+                alt="most-popular"
+                loading="lazy"
+              />
+              <div class="slide-body position-relative primary-bg px-3 d-block">
+                <span
+                  class="
+                    position-absolute
+                    top-0
+                    start-0
+                    bg-white
+                    primary-color
+                    d-flex
+                    align-items-center
+                    justify-content-center
+                  "
+                  >POPULAR</span
+                >
+                <h2 class="position-relative ps-4 text-white">
+                  <span class="position-absolute top-0 start-0">{{
+                    i + 1
+                  }}</span>
+                  <strong class="ms-3 d-block">{{ item.title }}</strong>
+                </h2>
+              </div>
+              <div
+                class="
+                  slide-footer
+                  primary-bg-1
+                  d-flex
+                  flex-row-reverse
+                  py-1
+                  px-2
+                "
+              >
+                <a class="text-white"
+                  >READ MORE
+                  <fa-icon
+                    [icon]="faAngleRight"
+                    class="ng-fa-icon fa-icon"
+                  ></fa-icon
+                ></a>
+              </div>
+            </a>
           </div>
-        </a>
-      </ng-template>
-    </owl-carousel-o>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
   </div>
 </div>

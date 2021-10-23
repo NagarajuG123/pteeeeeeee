@@ -1358,3 +1358,15 @@ button.close {
   line-height: 18.75px;
   color: $dark_black;
 }
+.video-btn {
+  cursor: pointer;
+  position: relative;
+  .vide-play {
+    position: absolute;
+    left: calc(50% - 45px);
+    top: calc(50% - 45px);
+    z-index: 1000;
+    height: 47px;
+    width: 75.34px;
+  }
+}
