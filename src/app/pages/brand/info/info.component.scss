@@ -1370,3 +1370,15 @@ button.close {
     width: 75.34px;
   }
 }
+.btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
+}
+.modal-body {
+  padding: 0rem !important;
+}
