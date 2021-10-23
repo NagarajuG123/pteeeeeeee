@@ -68,32 +68,21 @@
   }
   .tabs-container {
     > .tabItemList {
-      .items {
-        font-family: $roboto;
-        font-weight: 700;
-        width: 195px;
-        img {
-          background-color: $light-gray-1;
+      .spotlight-detail{
+        padding: 8px 4px;
+        h3{
+          font-family: $roboto;
+          font-size: 14px;
+          line-height: 16.38px;
+          color: $dark-gray;
+          font-weight: 700;
         }
-        > .card-body {
-          padding: 8px;
-          > h3.card-title {
-            font-size: 14px;
-            font-weight: 700;
-            line-height: 16.38px;
-            color: $dark-gray;
-          }
-          > .card-text {
-            font-size: 10px;
-          }
-          a {
-            > small {
-              font-family: $roboto;
-              font-weight: 500;
-              font-size: 11px;
-              line-height: 12px;
-            }
-          }
+        small{
+          font-family: $roboto;
+          font-size: 11px;
+          line-height: 12px;
+          color: $dark-gray;
+          font-weight: 500;
         }
       }
       @media screen and (min-width: 992px) {
