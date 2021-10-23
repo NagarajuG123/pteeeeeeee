@@ -110,6 +110,10 @@ export class InfoComponent implements OnInit {
               .getAPI(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
                 this.categories = result.categories;
+                this.activeTab =this.categories.map(function (e) {
+                  return e.value;
+                })
+                .indexOf(this.categories.index) + 1;
               });
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
@@ -368,11 +372,15 @@ export class InfoComponent implements OnInit {
   prev() {
     if (this.skipTab > 0) {
       this.skipTab -= 1;
+      this.activeTab -= 1;
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab]);
     } else this.skipTab = 0;
   }
   next() {
     if (this.skipTab < this.categories.length - this.commonService.vtabsItem) {
       this.skipTab += 1;
+      this.activeTab += 1;
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab]);
     }
   }
   marketingColor(state, items) {
