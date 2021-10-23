@@ -75,37 +75,31 @@
               routerLink="/{{ commonService.readMore(list) }}"
               fragment="{{ tab }}"
             >
-              <div class="items card border-0 h-100">
-                <img
+            <img
                   appYoutubeImage
                   data-srcset="{{ list.media | defaultImage: 238:133 }} 238w, 
-                  {{ list.media | defaultImage: 253:133 }} 253w, 
-                  {{ list.media | defaultImage: 400:224 }} 400w, 
-                  {{ list.media | defaultImage: 555:310 }} 555w"
-                  class="card-img-top lazyload"
+                      {{ list.media | defaultImage: 253:133 }} 253w, 
+                      {{ list.media | defaultImage: 400:224 }} 400w, 
+                      {{ list.media | defaultImage: 555:310 }} 555w"
                   data-sizes="{{
                     '(max-width: 576px) 555px,
                     (max-width: 992px) 400px,
                     (max-width: 1200px) 238px,
                     253px'
                     }}"
+                  class="lazyload img-fluid"
                   width="253"
                   height="auto"
                   data-src="{{ list.media | defaultImage: 253:133 }}"
                   alt="editorial"
                   loading="lazy"
-                />
-                <div class="card-body">
-                  <h3 class="card-title">
-                    {{ list.title }}
-                  </h3>
+              />
+                <div  class="spotlight-detail">
+                  <h3>{{ list.title }}</h3>
                   <a href="#">
-                    <small *ngIf="commonService.authorName(list)"
-                      >By {{ list.author?.name }}</small
-                    >
+                    <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
                   </a>
                 </div>
-              </div>
             </a>
           </li>
         </ul>
