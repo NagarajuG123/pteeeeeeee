@@ -66,11 +66,23 @@
           <a href="{{ commonService.readMore(item) }}">
             <img
               appYoutubeImage
-              width="292.82"
-              height="157.24"
-              data-src="{{ item.media | defaultImage: 257:138 }}"
+              data-srcset="{{item.media | defaultImage:292:157}} 545w, 
+                {{item.media | defaultImage:355:199}} 355w, 
+                {{item.media | defaultImage:300:168}} 300w, 
+                {{item.media | defaultImage:250:90}} 200w,
+                {{item.media | defaultImage:292:157}} 292w"
+              data-sizes="{{
+                '(max-width: 576px) 545px,
+                (max-width: 768px) 355px,
+                (max-width: 992px) 300px,
+                (max-width: 1200px) 200px,
+                292px'
+              }}"
+              width="292"
+              height="auto"
+              data-src="{{ item.media | defaultImage: 292:157 }}"
               alt="monthly-cover"
-              class="card-img-top lazyload"
+              class="card-img-top lazyload img-fluid"
               loading="lazy"
             />
           </a>

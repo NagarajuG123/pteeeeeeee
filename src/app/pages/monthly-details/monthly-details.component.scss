@@ -15,6 +15,8 @@
   margin-top: 15px;
   display: inline-block;
   transition: $defaultTransition;
+  font-family: $proxiBold;
+  line-height: 18px;
   &:hover {
     text-decoration: none;
     color: $black_1;
@@ -24,7 +26,7 @@
 .c-card-box--section {
   margin-bottom: 30px;
   padding-top: 100px;
-  background-color: $dark_gray_4;
+  background-color: $dark_gray;
   .c-card-box--wrapper {
     padding-bottom: 2.5rem;
     .c-card-box--row {
@@ -66,7 +68,7 @@
       background-color: $white;
       .month-business--wrapper {
         max-width: 52%;
-        margin-left: auto;
+        margin-left: 550px;
         // flex: unset;
         padding: 15px 0;
         @include media("<xxl"){
@@ -88,7 +90,8 @@
         color: $dark_red_2;
         margin-top: 0;
         font-size: 20px;
-        font-weight: bold;
+        font-weight: 700;
+        font-family: $balingerBold;
         line-height: 25.74px;
         @include media("<md") {
           font-size: 16px;
@@ -96,16 +99,18 @@
       }
       .c-card-box--title {
         font-size: 44px;
-        font-weight: bold;
+        font-weight: 700;
         color: $dark-gray;
         text-transform: capitalize;
+        font-family: $balingerBold;
+        line-height: 53px;
         @include media("<md") {
           font-size: 30px;
         }
       }
       .c-card-box--content {
         max-width: 800px;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 18px;
         color: $dark-gray;
         font-family: $roboto;
@@ -119,9 +124,6 @@
       &.isMainCardBox {
         margin-top: -303px;
         margin-bottom: -40px;
-        @include media("<=xxl") {
-          margin-left: 60px;
-        }
         @include media("<xl") {
           width: 400px;
           height: auto;
@@ -206,7 +208,10 @@
   h4 {
     font-size: 35px;
     line-height: 42px;
-    border-bottom: 2px solid $red;
+    border-bottom: 2px solid $dark_red_2;
+    font-family: $balingerBold;
+    font-weight: 700;
+    color: $dark-gray;
   }
   .items {
     font-family: $roboto;
@@ -214,9 +219,10 @@
     .card-body {
       h6,
       h6 a {
-        font-weight: bold;
+        font-weight: 700;
         font-size: 20.5091px;
         line-height: 25px;
+        font-family: $balingerBold;
       }
       span,
       span a {
@@ -262,9 +268,12 @@
     transform: translateY(-50%);
   }
   .nextBtn {
-    font-family: "ProximaNova-Regular";
+    font-family: $proxiRegular;
     font-size: 17px;
     z-index: 1;
+    line-height: 24px;
+    font-weight: 400;
+    color: $dark-gray;
     img,
     span {
       cursor: pointer;
