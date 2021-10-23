@@ -23,7 +23,6 @@
 // Card Design
 .c-card-box--section {
   margin-bottom: 30px;
-
   padding-top: 100px;
   background-color: $dark_gray_4;
   .c-card-box--wrapper {
@@ -32,7 +31,6 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      height: 225px;
       @include media("<md") {
         display: flex;
         flex-flow: column;
@@ -71,6 +69,13 @@
         margin-left: auto;
         // flex: unset;
         padding: 15px 0;
+        @include media("<xxl"){
+          max-width: 54.5%;
+        }
+        @include media("<xl"){
+          max-width: 58%;
+          padding: 15px 0;
+        }
         @include media("<lg") {
           max-width: 100%;
           padding: 15px 0 15px 30px;
@@ -79,7 +84,6 @@
       }
     }
     .c-card-box--contentGroup {
-      margin-left: -150px;
       .c-card-box--subTitle {
         color: $dark_red_2;
         margin-top: 0;
@@ -113,9 +117,8 @@
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -330px;
-        margin-left: 100px;
-        margin-bottom: 45px;
+        margin-top: -303px;
+        margin-bottom: -40px;
         @include media("<=xxl") {
           margin-left: 60px;
         }
@@ -141,9 +144,7 @@
           }
         }
         .card-image {
-          // max-height: 589px;
-          margin-left: -46px;
-          // margin-top: -20px;
+          max-height: 590px;
           @include media("<xl") {
             max-height: unset;
             height: auto;
