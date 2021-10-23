@@ -50,37 +50,13 @@
   <div class="container customContainer py-md-5 py-5 trending-bottom">
     <h6 class="text-uppercase">SPONSORED</h6>
     <div class="row mt-2">
-      <div
-        class="col-sm-6 col-md-3 mb-2 article"
-        *ngFor="let list of trendingData; index as i"
-      >
-        <div class="items card border-0 rounded-0">
-          <div class="sponsored text-center">
-            <span class="d-inline-block"> {{ i + 1 }}</span>
-          </div>
-          <a
-            routerLink="/{{ commonService.readMore(list) }}"
-            fragment="trendingbrandbuzz"
-            (click)="closeModal()"
-            ><img
-              data-src="{{ list.media | defaultImage: 257:138 }}"
-              class="card-img-top lazyload"
-              alt="story"
-              width="257"
-              height="138"
-              loading="lazy"
-            />
-            <div class="card-body">
-              <h2 class="card-text mb-1">
-                {{ list.title }}
-              </h2>
-              <p class="card-text mb-1">
-                {{ list.short_description }}
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
+      <app-five-column
+      [slug]="'1851'"
+      [contents]="trendingData"
+      [type]="'trendingbrandbuzz'"
+      [typeSlug]="'trendingbrandbuzz'"
+     >
+    </app-five-column>
     </div>
   </div>
 

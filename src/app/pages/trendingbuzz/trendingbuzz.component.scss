@@ -205,17 +205,20 @@ h6 {
   margin-top: 57px;
   width: 50%;
   height: 2px;
-  border: 1px solid $red;
+  border: 1px solid $dark_red_2;
 }
 .see-more-right--wrapper {
   margin-top: 57px;
   width: 50%;
   height: 2px;
-  border: 1px solid $red;
+  border: 1px solid $dark_red_2;
 }
 .seem-more-text-wrapper {
   color: $dark-gray;
   font-size: 17px;
+  line-height: 24px;
+
+  cursor: pointer;
   @include media("<md") {
     font-size: 15px;
   }
