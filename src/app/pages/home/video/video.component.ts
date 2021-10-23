@@ -1,9 +1,4 @@
-import {
-  Component,
-  Inject,
-  OnInit,
-  PLATFORM_ID
-} from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
@@ -76,7 +71,7 @@ export class VideoComponent implements OnInit {
       }
     }
   }
-  setOption(){
+  setOption() {
     this.customOptions = {
       autoplay: false,
       loop: true,
@@ -86,8 +81,8 @@ export class VideoComponent implements OnInit {
       dots: false,
       navSpeed: 700,
       navText: [
-        '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" />',
-        '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" />',
+        '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="19" height="30"/>',
+        '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="19" height="30"/>',
       ],
       responsive: {
         0: {

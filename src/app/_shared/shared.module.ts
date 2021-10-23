@@ -16,7 +16,6 @@ import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.
 import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
-import { EditorialSectionsComponent } from './components/editorial-sections/editorial-sections.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TrendingComponent } from './components/trending/trending.component';
@@ -37,7 +36,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ImagePreloadDirective,
     FiveColumnComponent,
     MostPopularComponent,
-    EditorialSectionsComponent,
     SpecialFeatureComponent,
     TrendingComponent,
   ],
@@ -64,7 +62,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TrendingComponent,
     MostPopularComponent,
     FiveColumnComponent,
-    EditorialSectionsComponent,
     FeaturedComponent,
     ErrorMessageComponent,
     SpecialFeatureComponent,
