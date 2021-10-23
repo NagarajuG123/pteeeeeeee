@@ -86,15 +86,30 @@
       [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
     >
       <div class="brand-main-img--wrapper" *ngIf="isInfo">
-        <img
-          appYoutubeImage
-          class="lazyload"
-          width="888"
-          height="506"
-          data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
-          alt="brand_img"
-          loading="lazy"
-        />
+        <a
+          href="#"
+          onclick="return false;"
+          class="d-block video-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#brandInfoModal"
+          (click)="openVideoPlayer = true"
+        >
+          <img
+            appYoutubeImage
+            class="lazyload"
+            width="888"
+            height="506"
+            data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
+            alt="brand_img"
+            loading="lazy"
+          />
+          <img
+            data-src="assets/img/play.png"
+            alt="Play"
+            class="img-fluid vide-play lazyload"
+            loading="lazy"
+          />
+        </a>
       </div>
       <div class="main-desc-bottom--wrapper">
         <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
@@ -685,6 +700,37 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div
+  class="modal fade"
+  id="brandInfoModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn-close btn-close-black"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="openVideoPlayer = false"
+        ></button>
+        <iframe
+          *ngIf="openVideoPlayer"
+          [src]="brandVideoUrl | safeUrl"
+          frameborder="0"
+          width="100%"
+          height="496px"
+          allowfullscreen
+        >
+        </iframe>
       </div>
     </div>
   </div>
