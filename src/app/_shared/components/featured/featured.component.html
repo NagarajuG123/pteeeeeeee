@@ -16,7 +16,7 @@
             >
               Featured Article
             </div>
-            <a routerLink="/{{ item.slug }}" fragment="featured">
+            <a routerLink="/{{ commonService.readMore(item) }}" fragment="featured">
               <img
                 *ngIf="i === 0"
                 appYoutubeImage
