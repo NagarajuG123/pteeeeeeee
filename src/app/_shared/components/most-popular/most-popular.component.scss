@@ -4,6 +4,7 @@
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
+
 .most-popular {
   background: linear-gradient($dark-gray 385px, $white 0);
   h2 {
@@ -23,34 +24,12 @@
     margin-bottom: 47px;
     > img {
       margin-bottom: -31px;
-      width: 380px;
-      @include desk-lg-below2 {
-        width: 320px;
-      }
-      @include tablet-landscape {
-        width: 300px;
-      }
-      @include mobile-portrait {
-        margin-left: 1px;
-        width: 320px;
-      }
     }
     .slide-body {
       min-height: 130px;
       padding-top: 31px;
       padding-bottom: 31px;
-      width: 380px;
       max-height: 130px;
-      @include desk-lg-below2 {
-        width: 320px;
-      }
-      @include tablet-landscape {
-        width: 300px;
-      }
-      @include mobile-portrait {
-        margin-left: 1px;
-        width: 320px;
-      }
 
       > span {
         width: 48px;
@@ -83,18 +62,7 @@
       font-family: $balingerBold;
       font-size: 15px;
       line-height: 18px;
-      width: 380px;
       height: 24px;
-      @include desk-lg-below2 {
-        width: 320px;
-      }
-      @include tablet-landscape {
-        width: 300px;
-      }
-      @include mobile-portrait {
-        margin-left: 1px;
-        width: 320px;
-      }
     }
   }
   .subSlideItem {
@@ -138,27 +106,6 @@
 
 // carousel
 :host ::ng-deep {
-  .brand-carousel {
-    .owl-carousel {
-      .owl-stage-outer {
-        .owl-stage {
-          .slideItem {
-            padding: 0 10px;
-            @include desk-lg-below2 {
-              padding: 0 20px;
-            }
-            @include mobile-portrait {
-              padding: 0 10px;
-            }
-            @include mobile-portrait {
-              margin-left: 1px;
-              width: 320px;
-            }
-          }
-        }
-      }
-    }
-  }
   .owl-carousel {
     .owl-stage-outer {
       overflow: hidden;
@@ -167,18 +114,18 @@
         .slideItem {
           padding: 0 20px;
           box-sizing: border-box;
-          img {
+          @media (min-width: 481px) {
             width: 380px;
-            @include desk-lg-below2 {
-              width: 320px;
-            }
-            @include tablet-landscape {
-              width: 300px;
-            }
-            @include mobile-portrait {
-              margin-left: 1px;
-              width: 320px;
-            }
+          }
+          @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            padding: 0 30px;
+            width: 350px;
+          }
+          @media only screen and (min-width: 834px) and (max-width: 1112px) {
+            padding: 0 30px;
+          }
+          @media (min-width: 1200px) {
+            padding: 0 10px;
           }
         }
       }
@@ -194,7 +141,7 @@
           height: 39px;
         }
         &.owl-prev {
-          left: -60px;
+          left: -40px;
           @include desk-lg-below2 {
             left: -17px;
           }
@@ -207,7 +154,7 @@
           }
         }
         &.owl-next {
-          right: -60px;
+          right: -20px;
           @include desk-lg-below2 {
             right: -17px;
           }
@@ -220,11 +167,6 @@
           }
         }
       }
-    }
-  }
-  article {
-    .article-img {
-      width: 400px !important;
     }
   }
 }
