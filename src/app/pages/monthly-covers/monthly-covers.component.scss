@@ -1,13 +1,13 @@
-@import '../../../assets/scss/media.scss';
-@import  '../../../assets/scss/theme-color.scss';
-@import '../../../assets/scss/variables.scss';
+@import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/theme-color.scss";
+@import "../../../assets/scss/variables.scss";
 // Global Class
 .c-ml--auto {
   margin-left: auto;
 }
 .c-link--btn {
   font-family: $proxiBold;
-  color:$dark_red_2;
+  color: $dark_red_2;
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
@@ -25,10 +25,10 @@
 .c-card-box--section {
   padding-top: 100px;
   background-color: $dark_gray;
-  @include media("<xl"){
+  @include media("<xl") {
     padding-bottom: 40px;
   }
-  @include media("<lg"){
+  @include media("<lg") {
     padding-bottom: 15px;
   }
   .c-card-box--wrapper {
@@ -36,30 +36,30 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      @include media("<lg"){
+      @include media("<lg") {
         flex-flow: column;
         justify-content: center;
       }
-      @include media("<md"){
+      @include media("<md") {
         display: flex;
         flex-flow: column;
       }
       .c-card-box--col {
         flex: 1 0 calc(50% - 30px);
         max-width: calc(50% - 30px);
-        @include media("<lg"){
+        @include media("<lg") {
           flex: 0 0 100%;
           padding: 6px 15px;
           max-width: 100%;
         }
-        &.c-card-main-imagebox--wrapper{
+        &.c-card-main-imagebox--wrapper {
           flex: 0 0 574px;
           max-width: 574px;
-          @include media("<xl"){
+          @include media("<xl") {
             flex: 0 0 400px;
             max-width: 400px;
           }
-          @include media("<lg"){
+          @include media("<lg") {
             flex: 0 0 100%;
             max-width: 100%;
             width: 100%;
@@ -67,23 +67,23 @@
             padding: 10px 0 0;
           }
         }
-        &.c-card-main-content-box--wrapper{
+        &.c-card-main-content-box--wrapper {
           flex: 0 0 calc(100% - 574px);
           max-width: calc(100% - 574px);
           padding-left: 15px;
-          @include media("<xxl"){
+          @include media("<xxl") {
             justify-content: space-between;
             // margin-left: 15px;
           }
-          @include media("<xl"){
+          @include media("<xl") {
             flex: 0 0 calc(100% - 400px);
             max-width: calc(100% - 400px);
-          }          
-          @include media("<lg"){
+          }
+          @include media("<lg") {
             flex: 0 0 100%;
             max-width: 100%;
           }
-          @include media("<sm"){
+          @include media("<sm") {
             padding: 0;
           }
         }
@@ -91,22 +91,22 @@
     }
     .c-card-box--contentRow {
       background-color: $white;
-      .month-business--wrapper{
+      .month-business--wrapper {
         max-width: 54%;
         margin-left: auto;
         // flex: unset;
-        padding: 20px 0;     
-        @include media("<xxl"){
+        padding: 20px 0;
+        @include media("<xxl") {
           max-width: 54.5%;
         }
-        @include media("<xl"){
+        @include media("<xl") {
           max-width: 58%;
           padding: 15px 0;
         }
-        @include media("<lg"){
-        max-width: 100%;
-        padding: 15px 0 15px 30px;
-        margin-left: unset;
+        @include media("<lg") {
+          max-width: 100%;
+          padding: 15px 0 15px 30px;
+          margin-left: unset;
         }
       }
     }
@@ -118,7 +118,7 @@
         font-weight: 700;
         font-family: $balingerBold;
         line-height: 25.74px;
-        @include media("<md"){
+        @include media("<md") {
           font-size: 16px;
         }
       }
@@ -129,10 +129,10 @@
         color: $dark-gray;
         text-transform: capitalize;
         line-height: 53px;
-        @include media("<xl"){
+        @include media("<xl") {
           font-size: 36px;
         }
-        @include media("<md"){
+        @include media("<md") {
           font-size: 30px;
         }
       }
@@ -143,10 +143,10 @@
         color: $dark-gray;
         font-family: $roboto;
         line-height: 23.16px;
-        @include media("<xl"){
+        @include media("<xl") {
           margin-bottom: 0;
         }
-        @include media("<md"){
+        @include media("<md") {
           font-size: 14px;
         }
       }
@@ -154,55 +154,52 @@
     .c-card-box--imageWrapper {
       &.isMainCardBox {
         margin-top: -250px;
-        // margin-left: 100px;
         margin-bottom: 45px;
         width: 570px;
-        @include media("<=xxl"){
-          // margin-left: 60px;
+        @include media("<=xxl") {
         }
-        @include media("<desktop"){
-          // margin-left: 15px;
+        @include media("<desktop") {
         }
-        @include media("<xl"){
+        @include media("<xl") {
           width: 400px;
           height: auto;
           margin: -230px 0 0 0;
         }
-        @include media("<lg"){
+        @include media("<lg") {
           width: 100%;
           margin-top: 0px;
-         margin-left: 0px;
+          margin-left: 0px;
         }
-        @include media("<md"){
+        @include media("<md") {
           margin-top: 0px;
           padding: 6px 15px;
-         margin-left: 0px;
+          margin-left: 0px;
         }
-        @include media("<sm"){
+        @include media("<sm") {
           padding: 6px 0;
         }
-        .maincardbox-link--wrapper{
+        .maincardbox-link--wrapper {
           display: inline-block;
           width: 574px;
-          @include media("<xl"){
-           width: auto;
+          @include media("<xl") {
+            width: auto;
           }
         }
         .card-image {
           max-height: 775px;
-          @include media("<xl"){
+          @include media("<xl") {
             height: 600px;
             max-height: unset;
           }
-          @include media("<lg"){
+          @include media("<lg") {
             height: auto;
-          }          
+          }
         }
       }
       img {
         width: 100%;
         max-width: 100%;
-        @include media("<sm"){
+        @include media("<sm") {
           height: auto;
         }
       }
@@ -214,17 +211,17 @@
       align-self: flex-start;
       gap: $cardGroupSpacing;
       margin-top: 10px;
-      @include media("<xl"){
+      @include media("<xl") {
         justify-content: space-between;
       }
-      @include media("<lg"){
-        gap: 0;        
+      @include media("<lg") {
+        gap: 0;
         justify-content: space-between;
       }
       .c-card-box--item {
         flex: 1 0 calc(33.3333% - 12px);
         max-width: calc(33.3333% - 12px);
-        @include media("<sm"){
+        @include media("<sm") {
           flex: 1 0 100%;
           max-width: 100%;
           margin: 0 0 10px;
@@ -233,7 +230,7 @@
       .c-card-box--itemTitle {
         font-family: $balingerBold;
         padding-top: 6px;
-        color:$dark_red_2;
+        color: $dark_red_2;
         font-weight: 700;
         font-size: 15px;
         -webkit-line-clamp: 1;
@@ -249,7 +246,7 @@
         font-family: $roboto;
         color: $white;
         font-weight: 500;
-        height: 32px;        
+        height: 32px;
         text-overflow: ellipsis;
         overflow: hidden;
         line-clamp: 2;
@@ -279,37 +276,36 @@
 //Bottom Section
 .monthy-cover {
   padding-top: 40px;
-  .all-cover-header-content{
+  .all-cover-header-content {
     padding-left: 28px;
-    @include media("<xl"){
+    @include media("<xl") {
       padding-left: 20px;
     }
   }
-  .monthly-cover-wrapper{
+  .monthly-cover-wrapper {
     flex-flow: row;
     flex-wrap: wrap;
-    // width: 90%;
     justify-content: center;
     padding: 40px 23px 0;
     margin: 0 auto;
-    @include media("<xxl"){
+    @include media("<xxl") {
       padding: 40px 0 15px;
     }
-    @include media("<xl"){
+    @include media("<xl") {
       width: 100%;
       padding: 0;
-    }    
-    @include media("<md"){      
+    }
+    @include media("<md") {
       margin: 40px 0 0 0 !important;
-    }    
-    .monthly-covers-bottom{   
+    }
+    .monthly-covers-bottom {
       flex: 0 0 25%;
-        max-width: 25%;   
-      @include media("<lg"){
+      max-width: 25%;
+      @include media("<lg") {
         flex: 0 0 50%;
         max-width: 50%;
       }
-      @include media("<sm"){
+      @include media("<sm") {
         flex: 0 0 100%;
         max-width: 100%;
       }
@@ -332,22 +328,22 @@
     font-style: normal;
     font-size: 35px;
     color: $dark-gray;
-    @include media("<xxl"){
+    @include media("<xxl") {
       // margin-left: 50px;
     }
-    @include media("<xl"){
+    @include media("<xl") {
       // margin-left: 10px;
       padding-left: 0;
-    }    
+    }
   }
   .monthly-covers-bottom {
     .monthly-covers1 {
       display: inline-block;
       width: 100%;
-      @include media("<xl"){
+      @include media("<xl") {
         width: 100%;
       }
-      img{
+      img {
         width: 100%;
         height: 100%;
       }
@@ -366,11 +362,11 @@
     max-width: 300px;
   }
   .nextLine {
-   .customContainer{
-      div{
+    .customContainer {
+      div {
         width: 220px;
         padding: 0 18px;
-        @include media ("<md"){
+        @include media("<md") {
           width: 187px;
           padding: 0 7px;
         }
@@ -386,17 +382,17 @@
       }
     }
   }
-  .see-more--wrapper{
+  .see-more--wrapper {
     margin-top: 57px;
     width: 50%;
     height: 2px;
-    border: 1px solid $primary ;
+    border: 1px solid $primary;
   }
-  .see-more-right--wrapper{
+  .see-more-right--wrapper {
     margin-top: 57px;
     width: 50%;
     height: 2px;
-    border: 1px solid $primary ;
+    border: 1px solid $primary;
   }
 }
 .seem-more-text-wrapper {
