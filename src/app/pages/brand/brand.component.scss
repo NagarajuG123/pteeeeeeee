@@ -1,18 +1,9 @@
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/media.scss";
 @import "../../../assets/scss/mixins.scss";
-//Spotlight Section
 
 a {
   color: $dark-gray;
-}
-img {
-  max-width: 100%;
-}
-figure {
-  line-height: 0;
-  margin: 0;
-  padding: 0;
 }
 
 .items {
@@ -41,6 +32,9 @@ figure {
     position: absolute;
     top: 35%;
     left: 7%;
+    @include mobile-landscape {
+      width: 160px;
+    }
     p {
       font-size: 13.76px;
       line-height: 20px;
@@ -54,8 +48,14 @@ figure {
       line-height: 77px;
       color: $dark-gray;
       font-family: $balingerBold;
-      @include mobile-landscape1 {
-        font-size: 30px;
+      @include tablet-landscape1 {
+        font-size: 40px;
+      }
+      @include tablet-landscape2 {
+        font-size: 40px;
+      }
+      @include mobile-landscape {
+        font-size: 20px;
         line-height: 30px;
       }
     }
@@ -76,33 +76,9 @@ figure {
       text-align: left;
       padding-right: 25%;
     }
-    @include tablet-landscape {
-      width: 450px;
-    }
-    @include tablet-landscape1 {
-      width: 400px;
-    }
+  }
+}
 
-    @include desk-lg-below1 {
-      width: 450px;
-    }
-    @include mobile-landscape1 {
-      width: 180px;
-    }
-  }
-}
-.contact-banner {
-  figure {
-    img {
-      min-height: 493px;
-      height: 522px;
-      @include mobile-landscape1 {
-        min-height: 300px;
-        height: 300px;
-      }
-    }
-  }
-}
 .nextLine {
   .customContainer {
     div {

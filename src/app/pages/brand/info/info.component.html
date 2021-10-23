@@ -421,7 +421,7 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <h2 class="title text-uppercase">Financial Requirements</h2>
+          <h1 class="title text-uppercase">Financial Requirements</h1>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
@@ -497,7 +497,7 @@
 
       <div class="inquiry-form-section">
         <div class="header py-2" *ngIf="!isMarket">
-          <h2 class="title">INQUIRE NOW</h2>
+          <h1 class="title">INQUIRE NOW</h1>
         </div>
         <div class="header" *ngIf="isMarket">
           <h2 class="market-header text-uppercase">Inquire about services</h2>
@@ -626,7 +626,18 @@
                 >
                   <img
                     appYoutubeImage
-                    data-src="{{ item?.media | defaultImage: 281:125 }}"
+                    data-src="{{ item?.media | defaultImage: 281:175 }}"
+                    data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
+                      {{ item.media | defaultImage: 355:199 }} 355w, 
+                      {{ item.media | defaultImage: 300:168 }} 300w,
+                      {{ item.media | defaultImage: 121:114 }} 281w"
+                    data-sizes="{{
+                      '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      (max-width: 1200px) 281px,
+                      281px'
+                    }}"
                     width="281"
                     height="auto"
                     alt="featured"

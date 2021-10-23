@@ -112,10 +112,12 @@ export class InfoComponent implements OnInit {
               .getAPI(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
                 this.categories = result.categories;
-                this.activeTab =this.categories.map(function (e) {
-                  return e.value;
-                })
-                .indexOf(this.categories.index) + 1;
+                this.activeTab =
+                  this.categories
+                    .map(function (e) {
+                      return e.value;
+                    })
+                    .indexOf(params.get('item')) + 1;
               });
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
