@@ -44,8 +44,8 @@
     >
       <img
         appYoutubeImage
-        width="100%"
-        height="754"
+        width="1440"
+        height="auto"
         data-src="{{ media | defaultImage: 1440:754 }}"
         alt="article"
         class="lazyload"
@@ -62,8 +62,8 @@
               data-src="{{ details.author.media.url }}"
               alt="author"
               width="179px"
-              height="269px"
-              class="position-absolute d-block lazyload"
+              height="auto"
+              class="position-absolute d-block lazyload img-fluid"
           /></a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
