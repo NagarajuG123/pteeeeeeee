@@ -11,23 +11,15 @@
       <div
         class="sponsored text-center"
         *ngIf="
-          type === 'trendingbrandbuzz' ||
-          type === 'trendingbrandbuzz-bottom' ||
-          type === 'dynamicPage' ||
-          type === 'dynamicPage-bottom'
+          type === 'trendingbrandbuzz' || type === 'trendingbrandbuzz-bottom'
         "
       >
-        <span
-          class="d-inline-block"
-          *ngIf="type === 'trendingbrandbuzz' || type === 'dynamicPage'"
-        >
+        <span class="d-inline-block" *ngIf="type === 'trendingbrandbuzz'">
           {{ i + 1 }}
         </span>
         <span
           class="d-inline-block"
-          *ngIf="
-            type === 'trendingbrandbuzz-bottom' || type === 'dynamicPage-bottom'
-          "
+          *ngIf="type === 'trendingbrandbuzz-bottom'"
         >
           {{ i + 11 }}
         </span>
@@ -52,7 +44,7 @@
                210px'
             }}"
             width="210px"
-            height="118px"
+            height="auto"
             data-src="{{ n.media | defaultImage: 210:118 }}"
             alt="news"
             class="lazyload"
@@ -71,20 +63,14 @@
     </li>
   </ul>
   <div class="clearfix"></div>
+  <a
+    *ngIf="hasMore && type === 'trendingbrandbuzz-bottom'"
+    href="#"
+    onclick="return false;"
+    id="loadMore"
+    class="text-center loadmore-btn d-block"
+    (click)="getMoreData()"
+  >
+    <fa-icon [icon]="faAngleDown"></fa-icon
+  ></a>
 </div>
-<a
-  *ngIf="
-    hasMore &&
-    (type === 'monthlydetails' ||
-      type === 'categoryPage' ||
-      type === 'trendingbrandbuzz-bottom' ||
-      type === 'dynamicPage-bottom')
-  "
-  href="#"
-  onclick="return false;"
-  id="loadMore"
-  class="text-center loadmore-btn d-block"
-  (click)="getMoreData()"
->
-  <fa-icon [icon]="faAngleDown"></fa-icon
-></a>
