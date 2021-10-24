@@ -348,10 +348,12 @@ header {
 }
 
 .search_pop_up {
-  h2 {
+  h1 {
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
+    font-family: $balingerBold;
+    color: $dark-gray;
   }
   .sponsored-modal-content {
     padding: 70px 50px;
@@ -503,14 +505,18 @@ header {
   }
   button.close {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 0;
-    color: $primary-2;
+    color: $dark_red_2;
     font-size: 39px;
     outline: 0;
     opacity: 1;
     border: 1px;
     background-color: $white;
+    width: 13.86px;
+    height: 27px;
+    font-family: $balingerBold;
+    line-height: 26px;
     @include desk-lg-below1 {
       top: 10px;
       right: 15px;
@@ -531,18 +537,21 @@ header {
     }
     input {
       height: 50px;
-      color: $black;
+      color: $light_gray_8;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 25.74px;
     }
     button {
       display: block;
-      width: 50px;
-      height: 50px;
-      background: $primary-2;
+      width: 51px;
+      height: 49px;
+      background: $dark_red_2;
       position: absolute;
       right: 0;
       top: 0;
       border-radius: 0;
-      border: 1px solid $primary-2;
+      border: 1px solid $dark_red_2;
       cursor: pointer;
       outline: 0;
       @include mobile-portrait {
@@ -575,11 +584,12 @@ header {
   h5 {
     margin-top: 30px;
     font-size: 17px;
-    line-height: 20px;
-    font-family: $proxiRegular;
+    line-height: 24px;
+    font-family: $roboto;
+    font-weight: 400;
     text-align: center;
     padding: 1rem;
-    border-top: 1px solid $red;
+    border-top: 1px solid $dark_red_2;
   }
 }
 .ArticlesNewsSection {
@@ -589,8 +599,10 @@ header {
     .card-body {
       p,
       p a {
-        font-size: 13px;
-        line-height: 141.19%;
+        font-size: 13.6px;
+        line-height: 16.32px;
+        font-family: $balingerBold;
+        background-color: $white_6;
       }
     }
   }
@@ -678,4 +690,8 @@ button.close {
       border: none;
     }
   }
+}
+.svg-inline--fa{
+  width: 15px;
+  height: 15px;
 }
