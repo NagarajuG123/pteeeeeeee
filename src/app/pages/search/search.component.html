@@ -32,7 +32,7 @@
             </button>
           </div>
         </form>
-        <div class="py-3">
+        <div class="py-3 filter-section">
           <h6
             *ngIf="
               brand_id !== '1851' &&
@@ -196,7 +196,7 @@
                 <h6 class="card-title m-0">
                   <a
                     href="{{ commonService.readMore(item) }}"
-                    class="text-black text-uppercase"
+                    class="text-black"
                     >{{ item.title }}</a
                   >
                 </h6>
@@ -241,7 +241,7 @@
             <h6 class="card-title m-0">
               <a
                 href="{{ commonService.readMore(item) }}"
-                class="text-black text-uppercase"
+                class="text-black"
                 >{{ item.title }}</a
               >
             </h6>
@@ -279,7 +279,7 @@
                     class="me-3 lazyload"
                     (click)="getMoreItems()"
                   />
-                  <span (click)="getMoreItems()">See More</span>
+                  <span class="see-more text-uppercase" (click)="getMoreItems()">See More</span>
                 </div>
               </div>
             </div>

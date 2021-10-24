@@ -8,48 +8,46 @@
     padding-right: 0px !important;
   }
     h4 {
-      font-family: "Ballinger Condensed Medium";
+      font-family: $balingerMedium;
       font-size: 18px;
       line-height: 22px;
     }
     .items {
       font-family: "Roboto";
-      background: #e8eef2;
+      background: $white_6;
       .card-body {
         h6,
         h6 a {
           font-size: 18px;
-          font-family: "Ballinger Condensed Medium";
+          font-family: $balingerMedium;
+          font-weight: 700;
+          line-height: 22px;
+          color: $black;
         }
         span,
         span a {
           font-weight: 500;
-          font-size: 10px;
+          font-size: 11px;
           line-height: 12px;
-          color: #243444;
+          color: $dark-gray;
+          font-family: $roboto;
         }
         p,
         p a {
           font-size: 10px;
-          line-height: 141.19%;
+          line-height: 14.12px;
+          font-family: $roboto;
+          font-weight: 400;
         }
       }
     }
   }
-
-   .see-more--wrapper{
-     margin-top: 57px;
-     width: 50%;
-     height: 2px;
-   }
-   .see-more-right--wrapper{
-     margin-top: 57px;
-     width: 50%;
-     height: 2px;
-   }
-  .seem-more-text-wrapper {
-   color: #243444;
-   font-size: 17px;
+  .see-more{
+    font-family: $proxiRegular;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24px;
+    color: $dark-gray;
   }
   img,
     span {
@@ -63,6 +61,8 @@
       font-size: 18px;
       font-weight: 700;
       line-height: 21.6px;
+      font-family: $balingerBold;
+      color: $dark-gray;
     }
     @media only screen and (min-device-width : 750px) and (max-device-width : 999px) {
       max-width: 100%;
@@ -87,6 +87,13 @@
     }
     .form-group{
       width: 80% !important;
+      input{
+        font-family: $roboto;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 25.74px;
+        color: $light_gray_8;
+      }
     }
   }
   .border-bg{
@@ -188,6 +195,11 @@
    border-right: 2px solid $red;
 }
 .sort_main{
+    font-family: $roboto;
+    font-weight: 500 !important;
+    font-size: 20px;
+    line-height: 25.74px;
+    color: $dark-gray;
   .keyFilter{
     padding-left: 20px;
     background: url("/assets/img/unchecked.png") no-repeat left 1px;
@@ -246,5 +258,14 @@
   .row{
     padding-left: 50px;
     padding-right: 0;
+  }
+}
+.filter-section{
+  h6{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25.74px;
+    color: $dark-gray;
   }
 }
