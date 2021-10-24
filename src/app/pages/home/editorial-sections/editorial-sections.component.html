@@ -65,7 +65,7 @@
   </div>
 
   <div class="tabs-container container customContainer">
-    <div class="tabItemList innerContent mt-4 py-3">
+    <div class="tabItemList mt-4 py-3">
       <ul class="row gx-2">
         <li
           *ngFor="let list of items; index as i"
@@ -98,11 +98,9 @@
                 <h3 class="card-title">
                   {{ list.title }}
                 </h3>
-                <a href="#">
-                  <small *ngIf="commonService.authorName(list)"
-                    >By {{ list.author?.name }}</small
-                  >
-                </a>
+                <small *ngIf="commonService.authorName(list)"
+                  >By {{ list.author?.name }}</small
+                >
               </div>
             </div>
           </a>
