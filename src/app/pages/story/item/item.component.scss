@@ -1,5 +1,6 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .articles {
   overflow-x: hidden;
@@ -128,6 +129,9 @@
         font-size: 38px;
         line-height: 45px;
         color: $dark-gray !important;
+        @include tablet-landscape{
+          padding-top: 20px;
+        }
       }
     }
     .category,
