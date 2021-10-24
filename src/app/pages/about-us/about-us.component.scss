@@ -1,6 +1,12 @@
 @import "../../../assets/scss/theme-color.scss";
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
+
+.banner {
+  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+  position: relative;
+  z-index: 5;
+}
 .d-flex {
   -webkit-flex-wrap: wrap;
   display: flex !important;
@@ -49,11 +55,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-.banner {
-  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
-  position: relative;
-  z-index: 5;
-}
 
 .embed-responsive {
   position: relative;
@@ -98,13 +99,8 @@ img {
 }
 .banner-right_about {
   max-width: 21%;
-  flex: 0 0 21%;
   -webkit-flex: 0 0 21%;
-  box-shadow: 6px 0px 15px $grade_bg4_1;
-  -webkit-box-shadow: 6px 0px 15px $grade_bg4_1;
-  -moz-box-shadow: 6px 0px 15px $grade_bg4_1;
-  -ms-box-shadow: 6px 0px 15px $grade_bg4_1;
-  -o-box-shadow: 6px 0px 15px $grade_bg4_1;
+  -webkit-box-shadow: 6px 0 15px #00000045;
   @include desk-lg-below1 {
     max-width: 29%;
     flex: 0 0 29%;
@@ -293,8 +289,8 @@ img {
 }
 @media (max-width: 1800px) {
   .publication_right_data {
-    max-width: 60%;
-    -webkit-flex: 0 0 60%;
+    max-width: 70%;
+    -webkit-flex: 0 0 70%;
   }
 }
 p {
@@ -372,7 +368,7 @@ p {
     font-size: 16px;
     line-height: 20px;
     height: 39px;
-    border: 1px solid $white_5;
+    border: 1px solid $light_gray_1;
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
