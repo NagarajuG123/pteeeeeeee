@@ -44,11 +44,7 @@
     >
       <img
         appYoutubeImage
-<<<<<<< HEAD
-        width="100%"
-=======
         width="1440"
->>>>>>> 5bad80d5a9e26f313c5420ba7882fd556e0e7c95
         height="auto"
         data-src="{{ media | defaultImage: 1440:754 }}"
         alt="article"
@@ -62,29 +58,25 @@
       <div class="col-12 col-md userDetail">
         <div class="userImage position-relative">
           <a routerLink="/author/{{ details?.author?.slug }}"
-            ><img
-             data-srcset="{{ details.author.media | defaultImage: 400:600 }} 550w ,
-              {{ details.author.media | defaultImage: 400:475 }} 400w,
-              {{ details.author.media | defaultImage: 300:390 }} 300w,
-                {{ details.author.media | defaultImage: 200:290 }} 260w,
-              {{ details.author.media | defaultImage: 179:269 }} 269w"
-              data-sizes="{{
-              '(max-width: 576px) 550px,
+            ><img data-srcset="{{
+              details.author.media | defaultImage: 400:600
+            }}
+            550w , {{ details.author.media | defaultImage: 400:475 }} 400w,
+            {{ details.author.media | defaultImage: 300:390 }} 300w,
+            {{ details.author.media | defaultImage: 200:290 }} 260w,
+            {{ details.author.media | defaultImage: 179:269 }} 269w"
+            data-sizes="{{
+              "(max-width: 576px) 550px,
               (max-width: 768px) 400px,
               (max-width: 992px) 300px,
               (max-width: 1200px) 260px,
-              269px'
-              }}"
-              data-src="{{ details.author.media.url | defaultImage: 179:269}}"
-              alt="author"
-              width="179px"
-<<<<<<< HEAD
-              height="auto"
-=======
-              height="100%"
->>>>>>> 5bad80d5a9e26f313c5420ba7882fd556e0e7c95
-              class="position-absolute d-block lazyload"
-          /></a>
+              269px"
+            }}" data-src="{{
+              details.author.media.url | defaultImage: 179:269
+            }}" alt="author" width="179px" <<<<<<< HEAD height="auto" =======
+            height="100%" >>>>>>> 5bad80d5a9e26f313c5420ba7882fd556e0e7c95
+            class="position-absolute d-block lazyload" /></a
+          >
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
           ><h3 class="mb-0">{{ details.author.name }}</h3></a

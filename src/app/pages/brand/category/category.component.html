@@ -19,67 +19,76 @@
               <span class="d-flex" *ngIf="description">{{ description }}</span>
             </div>
           </div>
-          <div class="
-          position-relative
-          col-sm-6 col-md-4
-          align-items-stretch
-          mb-3 mb-sm-0
-          border-2
-          latestListing">
-          <ul class="news-list noScrollBar list-group">
-            <li
-              *ngFor="let item of featuredData | slice: 0:4; index as i"
-              [ngClass]="
-                i === featuredData.length - 1 ? 'pb-0 pb-md-0' : ' pb-md-3  mb-md-3'
-              "
-            >
-              <div class="newsImage me-2 me-md-3">
-                <a
-                  routerLink="/{{ commonService.readMore(item) }}"
-                  fragment="featured"
-                >
-                  <img
-                    appYoutubeImage
-                    data-srcset="{{item.media | defaultImage:545:305}} 545w, 
-                      {{item.media | defaultImage:355:199}} 355w, 
-                      {{item.media | defaultImage:300:168}} 300w,
-                      {{item.media | defaultImage:121:114}} 121w"
-                    data-sizes="{{
-                      '(max-width: 576px) 545px,
-                      (max-width: 768px) 355px,
-                      (max-width: 992px) 300px,
-                      (max-width: 1200px) 121px,
-                      121px'
-                    }}"
-                    width="121px"
-                    height="auto"
-                    data-src="{{ item.media | defaultImage: 121:114 }}"
-                    alt="industry"
-                    loading="lazy"
-                    class="lazyload"
-                /></a>
-              </div>
-              <div>
-                <h3 class="m-0">
+          <div
+            class="
+              position-relative
+              col-sm-6 col-md-4
+              align-items-stretch
+              mb-3 mb-sm-0
+              border-2
+              latestListing
+            "
+          >
+            <ul class="news-list noScrollBar list-group">
+              <li
+                *ngFor="let item of featuredData | slice: 0:4; index as i"
+                [ngClass]="
+                  i === featuredData.length - 1
+                    ? 'pb-0 pb-md-0'
+                    : ' pb-md-3  mb-md-3'
+                "
+              >
+                <div class="newsImage me-2 me-md-3">
                   <a
                     routerLink="/{{ commonService.readMore(item) }}"
                     fragment="featured"
                   >
-                    {{ item.title }}
-                  </a>
-                </h3>
-                <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
+                    <img
+                      appYoutubeImage
+                      data-srcset="{{
+                        item.media | defaultImage: 545:305
+                      }} 545w, 
+                      {{ item.media | defaultImage: 355:199 }} 355w, 
+                      {{ item.media | defaultImage: 300:168 }} 300w,
+                      {{ item.media | defaultImage: 121:114 }} 121w"
+                      data-sizes="{{
+                        '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      (max-width: 1200px) 121px,
+                      121px'
+                      }}"
+                      width="121px"
+                      height="auto"
+                      data-src="{{ item.media | defaultImage: 121:114 }}"
+                      alt="industry"
+                      loading="lazy"
+                      class="lazyload"
+                  /></a>
+                </div>
+                <div>
+                  <h3 class="m-0">
+                    <a
+                      routerLink="/{{ commonService.readMore(item) }}"
+                      fragment="featured"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </h3>
+                  <span *ngIf="commonService.authorName(item)"
+                    >By {{ item.author.name }}</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- tabs -->
-<div class="category">
+<div class="category sidebar-blur">
   <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
@@ -150,11 +159,11 @@
             <div class="items card border-0 rounded-0 h-100">
               <img
                 appYoutubeImage
-                data-srcset="{{list.media | defaultImage:545:305}} 545w, 
-                      {{list.media | defaultImage:355:199}} 355w, 
-                      {{list.media | defaultImage:300:168}} 300w, 
-                      {{list.media | defaultImage:200:90}} 200w,
-                      {{list.media | defaultImage:221:106}} 221w"
+                data-srcset="{{ list.media | defaultImage: 545:305 }} 545w, 
+                      {{ list.media | defaultImage: 355:199 }} 355w, 
+                      {{ list.media | defaultImage: 300:168 }} 300w, 
+                      {{ list.media | defaultImage: 200:90 }} 200w,
+                      {{ list.media | defaultImage: 221:106 }} 221w"
                 data-sizes="{{
                   '(max-width: 576px) 545px,
                   (max-width: 768px) 355px,
@@ -174,7 +183,9 @@
                   {{ list.title }}
                 </h6>
                 <a href="#">
-                  <small *ngIf="commonService.authorName(list)">By {{ list.author?.name }}</small>
+                  <small *ngIf="commonService.authorName(list)"
+                    >By {{ list.author?.name }}</small
+                  >
                 </a>
               </div>
             </div>

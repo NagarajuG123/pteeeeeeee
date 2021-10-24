@@ -16,8 +16,8 @@
                   routerLink="/{{ commonService.readMore(banner[0]) }}"
                   fragment="monthlydetailspage"
                   class="c-link--btn"
-                  >Read more <fa-icon [icon]="faAngleRight"></fa-icon></a
-                >
+                  >Read more <fa-icon [icon]="faAngleRight"></fa-icon
+                ></a>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
 </section>
 <!--Bottom Section-->
 
-<div class="ArticlesNewsSection">
+<div class="ArticlesNewsSection sidebar-blur">
   <div class="container customContainer py-md-2">
     <div class="row">
       <div class="col-12">
@@ -66,11 +66,11 @@
           <a href="{{ commonService.readMore(item) }}">
             <img
               appYoutubeImage
-              data-srcset="{{item.media | defaultImage:292:157}} 545w, 
-                {{item.media | defaultImage:355:199}} 355w, 
-                {{item.media | defaultImage:300:168}} 300w, 
-                {{item.media | defaultImage:250:90}} 200w,
-                {{item.media | defaultImage:292:157}} 292w"
+              data-srcset="{{ item.media | defaultImage: 292:157 }} 545w, 
+                {{ item.media | defaultImage: 355:199 }} 355w, 
+                {{ item.media | defaultImage: 300:168 }} 300w, 
+                {{ item.media | defaultImage: 250:90 }} 200w,
+                {{ item.media | defaultImage: 292:157 }} 292w"
               data-sizes="{{
                 '(max-width: 576px) 545px,
                 (max-width: 768px) 355px,
@@ -94,7 +94,9 @@
                 >{{ item.title }}</a
               >
             </h6>
-            <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
+            <span *ngIf="commonService.authorName(item)"
+              >By {{ item.author.name }}</span
+            >
             <p class="card-text mb-1">
               <a href="{{ commonService.readMore(item) }}" class="text-black">{{
                 item?.short_description

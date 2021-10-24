@@ -162,7 +162,10 @@
     </div>
   </div>
 </div>
-<div class="gray-bg" [ngClass]="!recentPeoples.length ? 'd-none' : ''">
+<div
+  class="gray-bg sidebar-blur"
+  [ngClass]="!recentPeoples.length ? 'd-none' : ''"
+>
   <div class="row">
     <div
       class="col-8 py-3 card-section main-article"
@@ -197,7 +200,9 @@
                     >{{ item.title }}</a
                   >
                 </h6>
-                <span *ngIf="commonService.authorName(item)">By {{ item.author.name }}</span>
+                <span *ngIf="commonService.authorName(item)"
+                  >By {{ item.author.name }}</span
+                >
                 <p class="card-text mb-1">
                   <a
                     href="{{ commonService.readMore(item) }}"
