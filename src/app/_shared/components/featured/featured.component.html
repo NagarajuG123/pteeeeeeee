@@ -16,7 +16,10 @@
             >
               Featured Article
             </div>
-            <a routerLink="/{{ commonService.readMore(item) }}" fragment="featured">
+            <a
+              routerLink="/{{ commonService.readMore(item) }}"
+              fragment="featured"
+            >
               <img
                 *ngIf="i === 0"
                 appYoutubeImage
@@ -97,7 +100,7 @@
           <h3 class="m-0">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="frannews"
+              fragment="featured"
             >
               {{ item.title }}
             </a>
@@ -107,7 +110,7 @@
           >
           <a
             routerLink="/{{ commonService.readMore(item) }}"
-            fragment="frannews"
+            fragment="featured"
           >
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
               {{ item.short_description }}

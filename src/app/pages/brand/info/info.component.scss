@@ -3,6 +3,10 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
+img {
+  width: 100%;
+  display: inline-block;
+}
 .question-section {
   padding-top: 40px;
 
@@ -618,10 +622,13 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: $dark-gray;
     @include tablet-landscape1 {
       font-size: 24px;
+    }
+    img {
+      width: 298px !important;
     }
   }
 
@@ -635,9 +642,6 @@
   }
 
   .frannews-left--wrapper {
-    img {
-      height: 168px;
-    }
     @include tablet-landscape1 {
       margin-right: 20px;
     }
@@ -689,13 +693,6 @@
       position: relative;
     }
   }
-}
-
-img {
-  width: 100%;
-  // max-width: 100%;
-  // height: auto;
-  display: inline-block;
 }
 
 .more-brand--wrapper {
@@ -775,8 +772,6 @@ img {
 }
 
 .download-btn {
-  padding-left: 15px;
-  padding-top: 15px;
   line-height: 21.6px;
   font-family: $balingerBold;
   font-weight: 700;
@@ -1273,7 +1268,6 @@ button.close {
 
 .info-wrapper {
   background: #f3f8fb;
-  margin: 0 -12px !important;
   padding: 0;
 
   .customContainer {

@@ -9,7 +9,7 @@ import 'lazysizes';
 @Component({
   selector: 'app-spotlight',
   templateUrl: './spotlight.component.html',
-  styleUrls: ['./spotlight.component.scss']
+  styleUrls: ['./spotlight.component.scss'],
 })
 export class SpotlightComponent implements OnInit {
   @Input() slug: string;
@@ -28,7 +28,7 @@ export class SpotlightComponent implements OnInit {
   constructor(
     public commonService: CommonService,
     private apiService: ApiService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const spotlightCategoriesApi = this.apiService.getAPI(
@@ -43,7 +43,9 @@ export class SpotlightComponent implements OnInit {
         this.defaultTab = this.tab = results[0].defaultTab;
 
         this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=10&offset=0`)
+          .getAPI(
+            `${this.slug}/spotlight/${this.defaultTab}?limit=${this.tabName.length}&offset=0`
+          )
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];
@@ -63,7 +65,7 @@ export class SpotlightComponent implements OnInit {
   getData(tabName: any) {
     const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
     this.apiService
-      .getAPI(`${apiUrl}?limit=10&offset=0`)
+      .getAPI(`${apiUrl}?limit=${this.tabName.length}&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
