@@ -1,6 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subject } from 'rxjs';
@@ -384,11 +390,18 @@ export class InfoComponent implements OnInit {
     } else this.skipTab = 0;
   }
   next() {
-    if (this.skipTab < this.categories.length - this.commonService.vtabsItem) {
+    if (
+      this.skipTab <
+      this.categories.length - this.commonService.brandInfoTabs
+    ) {
       this.skipTab += 1;
       this.activeTab += 1;
       this.setActiveTab(this.activeTab, this.categories[this.activeTab]);
     }
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.commonService.resizeBrandInfo(event.target.innerWidth);
   }
   marketingColor(state, items) {
     if (items['available-markets'] === null) {

@@ -4,7 +4,7 @@
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
         [ngClass]="
-          categories.length > this.commonService.vtabsItem + 1 ? '' : 'd-none'
+          categories.length > this.commonService.brandInfoTabs ? '' : 'd-none'
         "
         (click)="prev()"
       >
@@ -19,7 +19,7 @@
           *ngFor="let item of categories; index as i"
           class="col col-sm-6 col-md-4 col-lg border-end text-center"
           [ngClass]="
-            i < this.commonService.vtabsItem + 1 + this.skipTab &&
+            i < this.commonService.brandInfoTabs + this.skipTab &&
             i >= this.skipTab
               ? 'active'
               : 'd-none'
@@ -42,7 +42,7 @@
       <div
         class="next position-absolute top-50 end-0 translate-middle-y pe-3"
         [ngClass]="
-          categories.length > this.commonService.vtabsItem + 1 ? '' : 'd-none'
+          categories.length > this.commonService.brandInfoTabs ? '' : 'd-none'
         "
         (click)="next()"
       >
