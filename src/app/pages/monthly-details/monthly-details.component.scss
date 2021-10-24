@@ -124,6 +124,10 @@
       &.isMainCardBox {
         margin-top: -303px;
         margin-bottom: -40px;
+        @include media("<=xxl") {
+        }
+        @include media("<desktop") {
+        }
         @include media("<xl") {
           width: 400px;
           height: auto;
@@ -139,6 +143,9 @@
           padding: 6px 15px;
           margin-left: 0px;
         }
+        @include media("<sm") {
+          padding: 6px 0;
+        }
         .maincardbox-link--wrapper {
           display: inline-block;
           @include media("<xl") {
@@ -148,9 +155,19 @@
         .card-image {
           max-height: 590px;
           @include media("<xl") {
+            height: 600px;
             max-height: unset;
+          }
+          @include media("<lg") {
             height: auto;
           }
+        }
+      }
+      img {
+        width: 100%;
+        max-width: 100%;
+        @include media("<sm") {
+          height: auto;
         }
       }
     }
