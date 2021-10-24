@@ -37,6 +37,7 @@ export class CategoryComponent implements OnInit {
   mainText: string;
   description: string;
   banner: string;
+  isLoaded: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -54,32 +55,33 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.parent.params.subscribe((param) => {
       this.slug = param.slug;
-    this.mainText = this.slug.replace('-', ' ');
-    const featureApi = this.apiService.getAPI(
-      `1851/${this.slug}/featured?limit=24&offset=0`
-    );
-    const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
-    const spotlightCategoriesApi = this.apiService.getAPI(
-      `1851/spotlights/categories`
-    );
-    forkJoin([featureApi, metaApi, spotlightCategoriesApi])
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((results) => {
-        this.featuredData = results[0].data;
-        this.metaService.setSeo(results[1].data);
-        this.tabName = results[2].categories;
-        this.activeTab =
-          this.tabName
-            .map(function (e) {
-              return e.slug;
-            })
-            .indexOf(this.slug) + 1;
-        this.description = this.tabName.find(
-          (x) => x.slug == this.slug
-        ).description;
-        this.banner = this.tabName.find((x) => x.slug == this.slug).image;
-      });
-    });  
+      this.mainText = this.slug.replace('-', ' ');
+      const featureApi = this.apiService.getAPI(
+        `1851/${this.slug}/featured?limit=24&offset=0`
+      );
+      const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
+      const spotlightCategoriesApi = this.apiService.getAPI(
+        `1851/spotlights/categories`
+      );
+      forkJoin([featureApi, metaApi, spotlightCategoriesApi])
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((results) => {
+          this.featuredData = results[0].data;
+          this.metaService.setSeo(results[1].data);
+          this.tabName = results[2].categories;
+          this.activeTab =
+            this.tabName
+              .map(function (e) {
+                return e.slug;
+              })
+              .indexOf(this.slug) + 1;
+          this.description = this.tabName.find(
+            (x) => x.slug == this.slug
+          ).description;
+          this.banner = this.tabName.find((x) => x.slug == this.slug).image;
+          this.isLoaded = true;
+        });
+    });
   }
 
   prev() {

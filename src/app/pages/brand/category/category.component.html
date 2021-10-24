@@ -1,4 +1,4 @@
-<div class="sidebar-blur">
+<div class="sidebar-blur" *ngIf="isLoaded">
   <div class="row">
     <div class="position-relative d-flex">
       <img
@@ -88,7 +88,7 @@
   </div>
 </div>
 <!-- tabs -->
-<div class="category sidebar-blur">
+<div class="category sidebar-blur" *ngIf="isLoaded">
   <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
