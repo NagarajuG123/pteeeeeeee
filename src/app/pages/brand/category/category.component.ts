@@ -57,7 +57,7 @@ export class CategoryComponent implements OnInit {
       this.slug = param.slug;
       this.mainText = this.slug.replace('-', ' ');
       const featureApi = this.apiService.getAPI(
-        `1851/${this.slug}/featured?limit=24&offset=0`
+        `1851/${this.slug}/featured?limit=25&offset=0`
       );
       const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
