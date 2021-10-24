@@ -87,6 +87,13 @@
     }
     .form-group{
       width: 80% !important;
+      input{
+        font-family: $roboto;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 25.74px;
+        color: $light_gray_8;
+      }
     }
   }
   .border-bg{
@@ -246,5 +253,20 @@
   .row{
     padding-left: 50px;
     padding-right: 0;
+  }
+}
+.filter-section{
+  h6{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25.74px;
+    color: $dark-gray;
+  }
+  .sort_main{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25.74px;
   }
 }
