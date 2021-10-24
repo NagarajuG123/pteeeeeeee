@@ -205,10 +205,18 @@
 }
 //Bottom Section
 .ArticlesNewsSection {
+  &::before {
+    content: "";
+    position: absolute;
+    margin-top: 65px;
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+    transform: translateY(-50%);
+  }
   h4 {
     font-size: 35px;
     line-height: 42px;
-    border-bottom: 2px solid $dark_red_2;
     font-family: $balingerBold;
     font-weight: 700;
     color: $dark-gray;
@@ -239,6 +247,27 @@
     }
   }
   //Seemore
+  .nextLine {
+    .customContainer {
+      div {
+        width: 220px;
+        padding: 0 18px;
+        @include media("<md") {
+          width: 187px;
+          padding: 0 7px;
+        }
+        .nextBtn {
+          font-family: "ProximaNova-Regular";
+          font-size: 15px;
+          z-index: 1;
+          margin-top: 35px;
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
   .see-more--wrapper {
     margin-top: 57px;
     width: 50%;
@@ -252,31 +281,12 @@
     border: 1px solid $primary;
   }
 }
-.seem-more-text-wrapper {
+.seem-more-text-wrapper 
+{
   color: $dark-gray;
   font-size: 17px;
-}
-
-.nextLine {
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: $primary;
-    transform: translateY(-50%);
-  }
-  .nextBtn {
-    font-family: $proxiRegular;
-    font-size: 17px;
-    z-index: 1;
-    line-height: 24px;
-    font-weight: 400;
-    color: $dark-gray;
-    img,
-    span {
-      cursor: pointer;
-    }
-  }
+  font-family: $proxiRegular;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
 }

@@ -103,25 +103,31 @@
           </div>
         </div>
       </div>
-      <!-- See More -->
-      <div class="nextLine position-relative mb-5 mt-2">
-        <div class="container customContainer">
-          <div class="row">
-            <div class="col d-flex justify-content-center align-items-center">
-              <div class="nextBtn px-5 bg-white">
-                <img
-                  data-src="assets/img/nextIcon.svg"
-                  width="32"
-                  alt="next articles"
-                  class="me-3 lazyload"
-                  (click)="getMoreData()"
-                />
-                <span class="gray-color">See More</span>
-              </div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div class="see-more--wrapper"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="nextBtn px-1 bg-white">
+              <img
+                data-src="assets/img/nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreData()"
+                loading="lazy"
+              />
+              <span class="seem-more-text-wrapper" (click)="getMoreData()"
+                >SEE MORE</span
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="see-more-right--wrapper"></div>
   </div>
 </div>
