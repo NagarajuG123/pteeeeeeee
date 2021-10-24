@@ -64,15 +64,31 @@
         customContainer
       "
     >
-      <img
-        appYoutubeImage
-        class="lazyload"
-        width="888"
-        height="506"
-        data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
-        alt="brand_img"
-        loading="lazy"
-      />
+      <a
+        href="#"
+        onclick="return false;"
+        class="d-block video-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#brandInfoModal"
+        (click)="openVideoPlayer = true"
+      >
+        <img
+          appYoutubeImage
+          class="lazyload"
+          width="888"
+          height="auto"
+          data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
+          alt="brand_img"
+          loading="lazy"
+        />
+        <img
+          *ngIf="brandInfo.media.type === 'video'"
+          data-src="assets/img/play.png"
+          alt="Play"
+          class="img-fluid vide-play lazyload"
+          loading="lazy"
+        />
+      </a>
     </div>
   </ng-container>
   <!-- story tab banner -->
@@ -98,12 +114,13 @@
             appYoutubeImage
             class="lazyload"
             width="888"
-            height="506"
+            height="auto"
             data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
             alt="brand_img"
             loading="lazy"
           />
           <img
+            *ngIf="brandInfo.media.type === 'video'"
             data-src="assets/img/play.png"
             alt="Play"
             class="img-fluid vide-play lazyload"
@@ -140,7 +157,7 @@
                     appYoutubeImage
                     data-src="{{ item?.media | defaultImage: 796:0 }}"
                     width="100%"
-                    height="796"
+                    height="auto"
                     alt="info-image"
                     class="lazyload"
                   />
@@ -186,7 +203,7 @@
               <img
                 class="lazyload"
                 width="298"
-                height="168"
+                height="auto"
                 data-src="{{ logo }}"
                 alt="brand_logo"
                 loading="lazy"
@@ -229,7 +246,7 @@
                   data-src="{{ items?.image | defaultImage: 417:353 }}"
                   class="lazyload"
                   width="417"
-                  height="353"
+                  height="auto"
                   alt="pdf"
                 />
               </div>
@@ -255,7 +272,7 @@
                         appYoutubeImage
                         class="card-img-top img-fluid lazyload"
                         width="221"
-                        height="106"
+                        height="auto"
                         data-src="{{ list.media | defaultImage: 221:106 }}"
                         alt="editorial"
                         loading="lazy"
@@ -404,7 +421,7 @@
     >
       <div class="financial-requirement-section more-brand--wrapper">
         <div class="header" *ngIf="isInfo">
-          <h2 class="title text-uppercase">Financial Requirements</h2>
+          <h1 class="title text-uppercase">Financial Requirements</h1>
         </div>
         <div class="headerMarket" *ngIf="isMarket">
           <div class="titleMarket">More Brand Info</div>
@@ -480,7 +497,7 @@
 
       <div class="inquiry-form-section">
         <div class="header py-2" *ngIf="!isMarket">
-          <h2 class="title">INQUIRE NOW</h2>
+          <h1 class="title">INQUIRE NOW</h1>
         </div>
         <div class="header" *ngIf="isMarket">
           <h2 class="market-header text-uppercase">Inquire about services</h2>
@@ -609,9 +626,20 @@
                 >
                   <img
                     appYoutubeImage
-                    data-src="{{ item?.media | defaultImage: 281:125 }}"
+                    data-src="{{ item?.media | defaultImage: 281:175 }}"
+                    data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
+                      {{ item.media | defaultImage: 355:199 }} 355w, 
+                      {{ item.media | defaultImage: 300:168 }} 300w,
+                      {{ item.media | defaultImage: 121:114 }} 281w"
+                    data-sizes="{{
+                      '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      (max-width: 1200px) 281px,
+                      281px'
+                    }}"
                     width="281"
-                    height="125"
+                    height="auto"
                     alt="featured"
                     class="lazyload"
                     loading="lazy"
@@ -640,7 +668,7 @@
                   appYoutubeImage
                   data-src="{{ item?.media | defaultImage: 139:84 }}"
                   width="139"
-                  height="84"
+                  height="auto"
                   alt="trending"
                   class="image-area lazyload"
                   loading="lazy"
@@ -707,6 +735,7 @@
 
 <!-- modal -->
 <div
+  *ngIf="brandInfo.media && brandInfo.media.type === 'video'"
   class="modal fade"
   id="brandInfoModal"
   tabindex="-1"

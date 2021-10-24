@@ -23,7 +23,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class TrendingComponent implements OnInit {
   @Input() slug: string;
-  @ViewChild('carouselBtn') carouselBtn: ElementRef;
+  @ViewChild('carouselBtn', { read: ElementRef, static: true })
+  carouselBtn: ElementRef;
 
   data: Details[] = [];
   isLoaded: boolean = false;
@@ -53,7 +54,7 @@ export class TrendingComponent implements OnInit {
       });
   }
   ngAfterViewInit() {
-    if (this.isBrowser) {
+    if (this.isBrowser && $('.carousel').hasClass('carousel-control-next')) {
       setInterval(() => {
         this.carouselBtn.nativeElement.click();
       }, 6000);

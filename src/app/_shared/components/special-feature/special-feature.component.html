@@ -8,9 +8,9 @@
         <ul>
           <li>
             <h2 *ngIf="slug === '1851'" class="text-uppercase">{{ title }}</h2>
-            <h2 *ngIf="slug !== '1851'" class="text-uppercase">
+            <h1 *ngIf="slug !== '1851'" class="text-uppercase">
               {{ company }} Features
-            </h2>
+            </h1>
           </li>
           <li class="frannews-subtitle">
             <span *ngIf="slug == '1851'"
@@ -36,7 +36,7 @@
               </div>
               <a
                 routerLink="/{{ commonService.readMore(specialFeature[0]) }}"
-                fragment="dynamicPage"
+                fragment="{{ fragment }}"
                 ><img
                   appYoutubeImage
                   class="img-fluid lazyload"
@@ -136,33 +136,38 @@
         <ul class="news-list noScrollBar list-group" *ngIf="slug !== '1851'">
           <li class="mb-3" *ngFor="let item of brandInfoNews; index as i">
             <div class="position-relative small-image">
-              <div
-                class="tag position-absolute text-center top-0 text-uppercase"
-              >
-                {{ item?.title }}
-              </div>
-              <img
-                appYoutubeImage
-                class="img-fluid lazyload"
-                data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
+              <a routerLink="{{ item.slug }}">
+                <div
+                  class="tag position-absolute text-center top-0 text-uppercase"
+                >
+                  {{ item?.title }}
+                </div>
+                <img
+                  appYoutubeImage
+                  class="img-fluid lazyload"
+                  data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
                 {{ item.media | defaultImage: 300:168 }} 244w, 
                 {{ item.media | defaultImage: 400:224 }} 400w, 
                 {{ item.media | defaultImage: 555:310 }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
                   (max-width: 992px) 400px,
                   (max-width: 1200px) 238px,
                   244px'
-                }}"
-                width="244"
-                height="93"
-                data-src="{{ item.media | defaultImage: 244:93 }}"
-                alt="featured"
-                loading="lazy"
-              />
-              <h3 class="over-layer text-capitalize bottom-0 w-100 p-2">
-                {{ item?.description }}
-              </h3>
+                  }}"
+                  width="244"
+                  height="93"
+                  data-src="{{ item.media | defaultImage: 244:93 }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <h3
+                  class="over-layer text-capitalize bottom-0 w-100 p-2"
+                  *ngIf="item?.description"
+                >
+                  {{ item?.description }}
+                </h3>
+              </a>
             </div>
           </li>
         </ul>

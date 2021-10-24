@@ -22,19 +22,31 @@
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
-  <div class="banner d-flex contact-banner sidebar-blur">
-    <figure>
-      <img
-        data-src="assets/img/dynamicpage_banner.png"
-        width="1440"
-        height="559"
-        alt="banner"
-        loading="lazy"
-        class="lazyload"
-      />
-    </figure>
+  <div class="banner container d-flex contact-banner sidebar-blur">
+    <img
+      data-srcset="{{ topBlock.image | defaultImage: 500:250 }} 500w, 
+                      {{ topBlock.image | defaultImage: 1000:300 }} 1000w, 
+                    {{ topBlock.image | defaultImage: 700:200 }} 700w, 
+                      {{ topBlock.image | defaultImage: 1439:539 }} 1439w"
+      data-sizes="{{
+        '(max-width: 576px) 500x,
+                  (max-width: 768px) 700px,
+                  (max-width: 992px) 1000px,
+                  (max-width: 1200px) 1439px,
+                  1439px'
+      }}"
+      data-src="{{ topBlock.image | defaultImage: 1439:559 }}"
+      width="1440"
+      height="auto"
+      alt="banner"
+      loading="lazy"
+      class="lazyload img-fluid"
+    />
     <div class="left-text d-flex">
-      <a routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}" fragment="franbuzz">
+      <a
+        routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}"
+        fragment="franbuzz"
+      >
         <h1>Franchise Broker Awards</h1>
         <p>{{ topBlock?.description }}</p>
         <div class="readmore-btn">
@@ -55,18 +67,18 @@
             fragment="franbuzz"
             (click)="closeModal()"
             ><img
-               data-srcset="{{list.media | defaultImage:545:305}} 545w, 
-                      {{list.media | defaultImage:355:199}} 355w, 
-                      {{list.media | defaultImage:300:168}} 300w, 
-                      {{list.media | defaultImage:250:90}} 200w,
-                      {{list.media | defaultImage:305:166}} 305w"
-                data-sizes="{{
-                  '(max-width: 576px) 545px,
+              data-srcset="{{ list.media | defaultImage: 545:305 }} 545w, 
+                      {{ list.media | defaultImage: 355:199 }} 355w, 
+                      {{ list.media | defaultImage: 300:168 }} 300w, 
+                      {{ list.media | defaultImage: 250:90 }} 200w,
+                      {{ list.media | defaultImage: 305:166 }} 305w"
+              data-sizes="{{
+                '(max-width: 576px) 545px,
                   (max-width: 768px) 355px,
                   (max-width: 992px) 300px,
                   (max-width: 1200px) 200px,
                   305px'
-                }}"
+              }}"
               data-src="{{ list.media | defaultImage: 305:166 }}"
               class="card-img-top lazyload img-fluid"
               alt="story"

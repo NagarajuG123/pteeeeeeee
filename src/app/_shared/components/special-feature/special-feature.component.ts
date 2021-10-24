@@ -34,9 +34,9 @@ export class SpecialFeatureComponent implements OnInit {
   isLoaded: boolean = false;
   brandInfoNews: any;
   title: string;
+  fragment: string;
   constructor(
     private apiService: ApiService,
-    private tstate: TransferState,
     public commonService: CommonService
   ) {}
 
@@ -50,9 +50,11 @@ export class SpecialFeatureComponent implements OnInit {
       .subscribe((response) => {
         if (this.slug === '1851' && response.data.stories.length > 0) {
           this.specialFeature = response.data.stories;
+          this.fragment = 'dynamicPage';
           this.title = response.data.title;
         } else if (this.slug !== '1851' && response.data.length > 0) {
           this.specialFeature = response.data;
+          this.fragment = 'featured';
         }
         this.isLoaded = true;
       });

@@ -8,7 +8,6 @@
     font-weight: 700;
     font-size: 33px;
     line-height: 36px;
-    width: 362px;
     color: $dark_red_2;
   }
   .innerContent {
@@ -68,16 +67,16 @@
   }
   .tabs-container {
     > .tabItemList {
-      .spotlight-detail{
+      .spotlight-detail {
         padding: 8px 4px;
-        h3{
+        h2 {
           font-family: $roboto;
           font-size: 14px;
           line-height: 16.38px;
           color: $dark-gray;
           font-weight: 700;
         }
-        small{
+        p {
           font-family: $roboto;
           font-size: 11px;
           line-height: 12px;

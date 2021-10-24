@@ -9,10 +9,7 @@ img {
 }
 .c-video-section--wrapper {
   background: $white;
-  &.brand {
-    padding: 0;
-    padding-top: 10px;
-  }
+
   .frannews-top-left {
     ul {
       li {
@@ -20,7 +17,8 @@ img {
         float: left;
         padding: 0 31px 0 0;
         position: relative;
-        h2 {
+        h2,
+        h1 {
           font-weight: 700;
           font-family: $balingerBold;
           font-size: 33px;
@@ -58,6 +56,14 @@ img {
             display: none;
           }
         }
+      }
+    }
+  }
+  &.brand {
+    padding-top: 10px !important;
+    .frannews-top-left ul li {
+      &:after {
+        display: none;
       }
     }
   }
@@ -100,9 +106,8 @@ img {
   h2 {
     text-decoration: none;
     font-family: $balingerBold;
-    font-style: normal;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 48px !important;
     line-height: 49.44px;
 
     color: $dark-gray;

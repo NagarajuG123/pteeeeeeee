@@ -418,18 +418,12 @@ export class HeaderComponent implements OnInit {
       $(window).scroll(function () {
         if ($(this).scrollTop() > 5) {
           $('body').addClass('sticky');
-          $('.brand-page-row--wrapper').css({
-            'margin-top': '200px',
-          });
           const ht = $('header').innerHeight();
           $('.empty').css({ 'min-height': ht });
           $('.banner').css({ 'margin-top': ht });
         } else {
           $('body').removeClass('sticky');
           $('.banner').css({ 'margin-top': '0' });
-          $('.brand-page-row--wrapper').css({
-            'margin-top': '90px',
-          });
         }
       });
     }

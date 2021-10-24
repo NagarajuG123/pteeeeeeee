@@ -51,6 +51,11 @@
     @content;
   }
 }
+@mixin tablet-landscape2 {
+  @media (max-width: 1124px) {
+    @content;
+  }
+}
 /*-- media query for mobile landscape */
 @mixin mobile-landscape {
   @media (max-width: 599px) {
