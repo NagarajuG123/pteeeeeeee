@@ -1,5 +1,5 @@
 <div
-  class="frannews-bottom"
+  class="frannews-bottom sidebar-blur"
   [ngClass]="
     type === 'authorpage' || type === 'trendingbrandbuzz'
       ? 'author-frannews'
@@ -40,7 +40,11 @@
         <figure>
           <img
             appYoutubeImage
-            data-srcset="{{n.media | defaultImage:545:305}} 545w, {{n.media | defaultImage:355:199}} 355w, {{n.media | defaultImage:300:168}} 300w, {{n.media | defaultImage:210:118}} 210w"
+            data-srcset="{{ n.media | defaultImage: 545:305 }} 545w, {{
+              n.media | defaultImage: 355:199
+            }} 355w, {{ n.media | defaultImage: 300:168 }} 300w, {{
+              n.media | defaultImage: 210:118
+            }} 210w"
             data-sizes="{{
               '(max-width: 576px) 545px,
                (max-width: 768px) 355px,
