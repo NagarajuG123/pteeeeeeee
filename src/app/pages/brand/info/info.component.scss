@@ -3,10 +3,6 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
-img {
-  width: 100%;
-  display: inline-block;
-}
 .question-section {
   padding-top: 40px;
 
@@ -614,9 +610,6 @@ img {
 //Why I Bought
 
 .whyIBought {
-  img {
-    width: 100%;
-  }
   ul {
     @include mobile-landscape1 {
       flex-direction: column;
@@ -666,6 +659,9 @@ img {
       line-height: 18.85px;
       color: $dark_black;
       font-size: 13.76px;
+      img {
+        width: 100% !important;
+      }
     }
   }
 }
@@ -1160,9 +1156,9 @@ button.close {
     padding: 0 15px;
   }
 
-  @include media("<md") {
-    margin: 0 -12px !important;
-  }
+  // @include media("<md") {
+  //   margin: 0 -12px !important;
+  // }
 
   &:before {
     position: absolute;
@@ -1211,6 +1207,7 @@ button.close {
     }
 
     .inquiry-form-section {
+      padding: 0px;
       .inquirefrom-row {
         .form-control {
           margin-bottom: 14px;
@@ -1342,16 +1339,16 @@ button.close {
   // margin-top: 90px;
   text-align: center;
 
-  img {
-    @include media("<md") {
-      height: auto;
-      padding: 0;
-    }
+  // img {
+  //   @include media("<md") {
+  //     height: auto;
+  //     padding: 0;
+  //   }
 
-    @include media("<xl") {
-      padding: 0;
-    }
-  }
+  //   @include media("<xl") {
+  //     padding: 0;
+  //   }
+  // }
 }
 
 .info-wrapper {
@@ -1449,4 +1446,9 @@ button.close {
 }
 .modal-body {
   padding: 0rem !important;
+}
+img {
+  width: 100%;
+  height: auto;
+  display: inline-block;
 }

@@ -27,7 +27,7 @@
       data-srcset="{{ topBlock.image | defaultImage: 500:250 }} 500w, 
                       {{ topBlock.image | defaultImage: 1000:300 }} 1000w, 
                     {{ topBlock.image | defaultImage: 700:200 }} 700w, 
-                      {{ topBlock.image | defaultImage: 1439:539 }} 1439w"
+                      {{ topBlock.image | defaultImage: 1439:559 }} 1439w"
       data-sizes="{{
         '(max-width: 576px) 500x,
                   (max-width: 768px) 700px,
@@ -70,13 +70,12 @@
               data-srcset="{{ list.media | defaultImage: 545:305 }} 545w, 
                       {{ list.media | defaultImage: 355:199 }} 355w, 
                       {{ list.media | defaultImage: 300:168 }} 300w, 
-                      {{ list.media | defaultImage: 250:90 }} 200w,
                       {{ list.media | defaultImage: 305:166 }} 305w"
               data-sizes="{{
                 '(max-width: 576px) 545px,
                   (max-width: 768px) 355px,
                   (max-width: 992px) 300px,
-                  (max-width: 1200px) 200px,
+                  (max-width: 1200px) 305px,
                   305px'
               }}"
               data-src="{{ list.media | defaultImage: 305:166 }}"
@@ -90,7 +89,7 @@
               <h2 class="card-text mb-1 text-black text-capitalize">
                 {{ list.title }}
               </h2>
-              <p class="card-text mb-1 text-black text-capitalize">
+              <p class="card-text mb-1 text-capitalize">
                 {{ list.short_description }}
               </p>
             </div>
