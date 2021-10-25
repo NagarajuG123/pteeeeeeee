@@ -654,6 +654,7 @@ img {
 
   @include mobile-portrait {
     flex-flow: column;
+    padding-left: 3rem;
   }
 
   .frannews-top-left {
