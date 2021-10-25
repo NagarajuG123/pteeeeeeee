@@ -614,6 +614,9 @@ img {
 //Why I Bought
 
 .whyIBought {
+  img {
+    width: 100%;
+  }
   ul {
     @include mobile-landscape1 {
       flex-direction: column;
@@ -625,6 +628,11 @@ img {
         font-size: 35px !important;
         line-height: 42px !important;
         color: $dark-gray;
+      }
+      &.marketHeading h2 {
+        @include mobile-portrait {
+          font-size: 25px !important;
+        }
       }
       display: inline-block;
       float: start;
@@ -1308,6 +1316,8 @@ button.close {
       top: 8px;
       font-size: 14px;
       width: -webkit-fit-content;
+      line-height: 20px;
+      height: 25px;
     }
   }
 }
@@ -1401,7 +1411,7 @@ button.close {
 }
 
 .market-map-legend {
-  position: absolute !important;
+  // position: absolute !important;
   width: 100%;
   left: 0;
 }

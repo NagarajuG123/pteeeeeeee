@@ -340,7 +340,7 @@
 
           <div class="container whyIBought d-flex" *ngIf="isMarket">
             <ul>
-              <li>
+              <li class="marketHeading">
                 <h2 class="text-uppercase">Available Markets</h2>
               </li>
             </ul>
@@ -358,61 +358,63 @@
                 <svg id="map" width="800" height="500"></svg>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="market-map-legend">
-          <div
-            *ngIf="
-              isMarket &&
-              items['available-markets'] != null &&
-              items['available-markets'].length
-            "
-            class="map-legend"
-          >
-            MAP LEGEND:
-            <div class="row">
-              <div class="col-xl-8 col-md-12">
-                <div class="row m-0">
-                  <div
-                    *ngFor="let market of items['available-markets']"
-                    class="col-sm-5 map-legend-item"
-                  >
-                    <div class="market-names">
-                      <div class="">
-                        <div
-                          class="market-status-color"
-                          [style.backgroundColor]="market.color"
-                        ></div>
-                      </div>
-                      <div class="align-self-center lh-base">
-                        <span class="text-uppercase market-name">{{
-                          market.name
-                        }}</span>
+            <div class="market-map-legend">
+              <div
+                *ngIf="
+                  isMarket &&
+                  items['available-markets'] != null &&
+                  items['available-markets'].length
+                "
+                class="map-legend"
+              >
+                MAP LEGEND:
+                <div class="row">
+                  <div class="col-xl-8 col-md-12">
+                    <div class="row m-0">
+                      <div
+                        *ngFor="let market of items['available-markets']"
+                        class="col-sm-5 map-legend-item"
+                      >
+                        <div class="market-names">
+                          <div class="">
+                            <div
+                              class="market-status-color"
+                              [style.backgroundColor]="market.color"
+                            ></div>
+                          </div>
+                          <div class="align-self-center lh-base">
+                            <span class="text-uppercase market-name">{{
+                              market.name
+                            }}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div
-              *ngIf="
-                isMarket &&
-                items['international-markets'] != null &&
-                items['international-markets'].length
-              "
-              class="mt-2"
-            >
-              <h3 class="map-legend-internatioal">INTERNATIONAL MARKETS:</h3>
-              <div class="row ms-1">
                 <div
-                  class="col-sm-3 map-legend-item"
-                  *ngFor="let market of items['international-markets']"
+                  *ngIf="
+                    isMarket &&
+                    items['international-markets'] != null &&
+                    items['international-markets'].length
+                  "
+                  class="mt-2"
                 >
-                  <div class="row market-names">
-                    <div class="col-xs-10">
-                      <span class="text-uppercase market-name">{{
-                        market.name
-                      }}</span>
+                  <h3 class="map-legend-internatioal">
+                    INTERNATIONAL MARKETS:
+                  </h3>
+                  <div class="row ms-1">
+                    <div
+                      class="col-sm-3 map-legend-item"
+                      *ngFor="let market of items['international-markets']"
+                    >
+                      <div class="row market-names">
+                        <div class="col-xs-10">
+                          <span class="text-uppercase market-name">{{
+                            market.name
+                          }}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
