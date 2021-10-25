@@ -606,19 +606,51 @@ img {
 //Why I Bought
 
 .whyIBought {
-  ul li h2 {
-    font-family: $balingerBold;
-    font-weight: 700 !important;
-    font-size: 35px !important;
-    line-height: 42px !important;
-    color: $dark-gray;
-  }
-  p {
-    font-family: $roboto;
-    font-weight: 400;
-    line-height: 18.85px;
-    color: $dark_black;
-    font-size: 13.76px;
+  ul {
+    @include mobile-landscape1 {
+      flex-direction: column;
+    }
+    li {
+      h2 {
+        font-family: $balingerBold;
+        font-weight: 700 !important;
+        font-size: 35px !important;
+        line-height: 42px !important;
+        color: $dark-gray;
+      }
+      display: inline-block;
+      float: start;
+      padding: 0 30px 0 0;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        right: 16px;
+        background: $light_gray_4;
+        width: 3px;
+        height: 20px;
+        margin-top: 12px;
+        @include tablet-landscape1 {
+          right: 10px;
+        }
+        @include mobile-landscape1 {
+          display: none;
+        }
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    p {
+      font-family: $roboto;
+      font-weight: 400;
+      line-height: 18.85px;
+      color: $dark_black;
+      font-size: 13.76px;
+    }
   }
 }
 
