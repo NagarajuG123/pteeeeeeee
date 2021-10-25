@@ -21,6 +21,9 @@
   @include mobile-landscape {
     padding: 0 0 0 15px;
   }
+  @include tablet-portrait {
+    padding: 0;
+  }
   > h3 {
     font-family: $balingerBold;
     font-size: 64px !important;
@@ -113,7 +116,7 @@
         li {
           background-color: $white;
           height: 60px;
-          span {
+          h3 {
             min-width: 132px;
             height: 100%;
             color: $light-gray-1;
