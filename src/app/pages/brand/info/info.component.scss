@@ -37,8 +37,8 @@ img {
       font-size: 20px;
       text-align: center;
       padding: 1px 7px;
-      width: max-content;
       top: -18px;
+      display: table;
     }
   }
 
@@ -67,10 +67,12 @@ img {
 
       @include tablet-landscape1 {
         font-size: 18px;
+        line-height: 20px;
       }
 
       @include mobile-landscape1 {
         font-size: 16px;
+        line-height: 18px;
       }
     }
   }
@@ -97,6 +99,9 @@ img {
 }
 
 .financial-requirement-section {
+  @include mobile-portrait {
+    padding: 0 20px;
+  }
   .header {
     height: 67px;
     background-color: $dark-gray;
@@ -182,7 +187,7 @@ img {
   z-index: 1;
 
   @include media("<md") {
-    padding: 0;
+    padding: 0 20px;
   }
 
   .header {
@@ -250,7 +255,10 @@ img {
         border: 1px solid $light_gray_8;
         border-radius: 0;
         position: relative;
-
+        font-family: $roboto;
+        line-height: 15.23px;
+        font-size: 13px;
+        height: 40px;
         &:focus {
           outline: none;
           box-shadow: none;
@@ -517,8 +525,8 @@ img {
   font-size: 20px;
   text-align: center;
   padding: 1px 7px;
-  width: -webkit-max-content;
-  width: max-content;
+  // width: -webkit-max-content;
+  // width: max-content;
   top: -18px;
 }
 
@@ -606,6 +614,9 @@ img {
 //Why I Bought
 
 .whyIBought {
+  img {
+    width: 100%;
+  }
   ul {
     @include mobile-landscape1 {
       flex-direction: column;
@@ -617,6 +628,11 @@ img {
         font-size: 35px !important;
         line-height: 42px !important;
         color: $dark-gray;
+      }
+      &.marketHeading h2 {
+        @include mobile-portrait {
+          font-size: 25px !important;
+        }
       }
       display: inline-block;
       float: start;
@@ -1294,9 +1310,14 @@ button.close {
     color: $white_4;
     height: 32px;
     background: $dark_red_2;
-    @include tablet-landscape1 {
-      top: 0px;
+    display: table;
+    width: -webkit-fit-content;
+    @include mobile-portrait {
+      top: 8px;
       font-size: 14px;
+      width: -webkit-fit-content;
+      line-height: 20px;
+      height: 25px;
     }
   }
 }
@@ -1309,7 +1330,7 @@ button.close {
           height: 65px;
         }
         @include tablet-landscape1 {
-         padding-top: 10px;
+          padding-top: 10px;
         }
       }
     }
@@ -1393,7 +1414,7 @@ button.close {
 }
 
 .market-map-legend {
-  position: absolute !important;
+  // position: absolute !important;
   width: 100%;
   left: 0;
 }
