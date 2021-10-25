@@ -2,7 +2,7 @@
   <div class="tabs primary-bg">
     <div class="container position-relative">
       <div
-        class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+        class="prev position-absolute top-50 start-0 translate-middle-y ps-4"
         [ngClass]="
           categories.length > this.commonService.brandInfoTabs ? '' : 'd-none'
         "
@@ -39,7 +39,7 @@
         </li>
       </ul>
       <div
-        class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+        class="next position-absolute top-50 end-0 translate-middle-y pe-4"
         [ngClass]="
           categories.length > this.commonService.brandInfoTabs ? '' : 'd-none'
         "
@@ -356,7 +356,7 @@
           <div class="container customContainer whyIBought" *ngIf="isBought">
             <div>
               <ul class="d-flex">
-                <li class="header-title me-3">
+                <li class="header-title">
                   <h2 class="text-uppercase">
                     {{ items?.name }}
                   </h2>
@@ -372,7 +372,7 @@
           <div class="container customContainer whyIBought" *ngIf="isExecutive">
             <div>
               <ul class="d-flex">
-                <li class="header-title me-3">
+                <li class="header-title">
                   <h2 class="text-uppercase">
                     {{ items?.name }}
                   </h2>
@@ -479,7 +479,7 @@
             <h1 class="title text-uppercase">Financial Requirements</h1>
           </div>
           <div class="headerMarket" *ngIf="isMarket">
-            <div class="titleMarket">More Brand Info</div>
+            <h2 class="titleMarket">More Brand Info</h2>
           </div>
           <div class="financial-description" *ngIf="isInfo">
             <p class="text">
