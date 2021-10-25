@@ -26,7 +26,6 @@ import 'lazysizes';
 export class InfoComponent implements OnInit {
   categories: any = [];
   brandSlug!: string;
-  noOfTabsShow = 5;
   activeTab = 1;
   skipTab = 0;
   inquireForm!: FormGroup;
@@ -166,7 +165,6 @@ export class InfoComponent implements OnInit {
               );
               const meta = this.apiService.getAPI(`1851/${categorySlug}/meta`);
 
-              this.setParam(categorySlug);
               forkJoin([mostRecent, trending, meta])
                 .pipe(takeUntil(this.onDestroy$))
                 .subscribe((results) => {
@@ -315,7 +313,6 @@ export class InfoComponent implements OnInit {
       }
     });
   }
-  setParam(categorySlug: string | null) {}
   getInquiry() {
     this.apiService
       .getAPI(`${this.brandSlug}/brand/inquire`)
@@ -385,8 +382,9 @@ export class InfoComponent implements OnInit {
   prev() {
     if (this.skipTab > 0) {
       this.skipTab -= 1;
+
       this.activeTab -= 1;
-      this.setActiveTab(this.activeTab, this.categories[this.activeTab]);
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab - 1]);
     } else this.skipTab = 0;
   }
   next() {
@@ -396,7 +394,7 @@ export class InfoComponent implements OnInit {
     ) {
       this.skipTab += 1;
       this.activeTab += 1;
-      this.setActiveTab(this.activeTab, this.categories[this.activeTab]);
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab - 1]);
     }
   }
   @HostListener('window:resize', ['$event'])

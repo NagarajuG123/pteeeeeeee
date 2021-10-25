@@ -1,17 +1,17 @@
-<div class="sidebar-blur">
+<div class="sidebar-blur" *ngIf="isLoaded">
   <div class="row">
-    <div class="position-relative d-flex">
+    <div class="position-relative d-flex main">
       <img
         *ngIf="banner"
         appYoutubeImage
         width="100%"
-        height="616"
+        height="auto"
         data-src="{{ banner }}"
         alt="featured"
         loading="lazy"
         class="lazyload"
       />
-      <div class="position-absolute top-section">
+      <div class="position-absolute top-section container">
         <div class="row">
           <div class="col-md-8 mb-3 mb-sm-0">
             <div class="content text-capitalize">
@@ -31,7 +31,7 @@
           >
             <ul class="news-list noScrollBar list-group">
               <li
-                *ngFor="let item of featuredData | slice: 0:4; index as i"
+                *ngFor="let item of featuredData | slice: 0:5; index as i"
                 [ngClass]="
                   i === featuredData.length - 1
                     ? 'pb-0 pb-md-0'
@@ -88,7 +88,7 @@
   </div>
 </div>
 <!-- tabs -->
-<div class="category sidebar-blur">
+<div class="category sidebar-blur" *ngIf="isLoaded">
   <div class="tabs primary-bg">
     <div class="container customContainer position-relative">
       <div
@@ -152,7 +152,7 @@
     <div class="tabItemList innerContent mt-4 py-3">
       <ul class="row gx-2">
         <li
-          *ngFor="let list of featuredData | slice: 4; index as i"
+          *ngFor="let list of featuredData | slice: 5; index as i"
           class="mb-3 col-12 col-sm-6 col-md-4"
         >
           <a routerLink="/{{ commonService.readMore(list) }}">

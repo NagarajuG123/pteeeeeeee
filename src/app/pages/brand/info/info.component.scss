@@ -228,7 +228,7 @@ img {
   }
 
   form {
-    padding: 26px 22px 30px;
+    padding: 25px 20px 10px;
     background-color: $dark-gray;
 
     @include mobile-landscape {
@@ -245,8 +245,7 @@ img {
       }
 
       .form-control {
-        height: 54px;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         background: $white;
         border: 1px solid $light_gray_8;
         border-radius: 0;
@@ -476,7 +475,7 @@ img {
       font-family: $proxiRegular;
       font-weight: bold;
       font-size: 20px;
-
+      line-height: 28.24px;
       @include desk-lg-below2 {
         font-size: 13px;
       }
@@ -524,46 +523,86 @@ img {
 }
 
 // Latest story
-.tabs-container > .tabItemList {
-  .row {
-    margin: 0 -5px;
+// .tabs-container > .tabItemList {
+//   // .row {
+//   //   margin: 0 -5px;
 
-    .col-md-4 {
-      max-width: 20%;
-      padding: 0 5px;
-    }
-  }
+//   //   .col-md-4 {
+//   //     max-width: 20%;
+//   //     padding: 0 5px;
+//   //   }
+//   // }
 
-  .items {
-    img {
-      width: 100%;
-      background-color: #c4c4c4;
-    }
+//   .items {
+//     img {
+//       width: 100%;
+//       background-color: #c4c4c4;
+//     }
 
-    > .card-body {
-      padding: 8px 16px 15px;
+//     > .card-body {
+//       padding: 8px 16px 15px;
 
-      > h6.card-title {
-        font-size: 11px;
-      }
+//       > h6.card-title {
+//         font-size: 11px;
+//       }
 
-      .card-text {
-        font-size: 12px;
-      }
+//       .card-text {
+//         font-size: 12px;
+//       }
 
-      small {
-        font-family: $proxiRegular;
-        font-weight: 500;
-        font-size: 10px;
-      }
-    }
-  }
-}
+//       small {
+//         font-family: $proxiRegular;
+//         font-weight: 500;
+//         font-size: 10px;
+//       }
+//     }
+//   }
+// }
 
 .primary-color {
   color: $red;
 }
 
+.tabs-container {
+  > .tabItemList {
+    .items {
+      font-family: $roboto;
+      font-weight: 700;
+      img {
+        background-color: $light-gray-1;
+      }
+      > .card-body {
+        padding: 8px 16px 15px;
+        > h3.card-title {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.2rem;
+          color: $dark-gray;
+        }
+        > .card-text {
+          font-size: 10px;
+        }
+        a {
+          > small {
+            font-family: $roboto;
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+    @media screen and (min-width: 992px) {
+      .row {
+        margin: 0 -5px;
+        .col-md-4 {
+          max-width: 20%;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}
 //Why I Bought
 
 .whyIBought {
@@ -615,6 +654,7 @@ img {
 
   @include mobile-portrait {
     flex-flow: column;
+    padding-left: 3rem;
   }
 
   .frannews-top-left {
@@ -752,13 +792,6 @@ img {
 }
 
 //Availabe market
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
 
 .market-status-color {
   height: 20px;
@@ -1073,7 +1106,7 @@ button.close {
 
 .available-marketing--wrapper {
   position: relative;
-  padding: 0 95px 0 65px;
+  // padding: 0 95px 0 65px;
 
   @include media("<xl") {
     padding: 0 15px;
@@ -1132,7 +1165,6 @@ button.close {
     .inquiry-form-section {
       .inquirefrom-row {
         .form-control {
-          height: 36px;
           margin-bottom: 14px;
         }
       }
@@ -1251,7 +1283,7 @@ button.close {
 
 //latest story page
 .strory-banner--img {
-  margin-top: 90px;
+  // margin-top: 90px;
   text-align: center;
 
   img {
@@ -1291,14 +1323,6 @@ button.close {
           max-width: 100% !important;
         }
       }
-    }
-  }
-
-  .card-img-top {
-    height: 106px;
-
-    @include media("<md") {
-      height: 160px;
     }
   }
 
