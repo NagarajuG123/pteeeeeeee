@@ -59,7 +59,17 @@
         <div class="userImage position-relative">
           <a routerLink="/author/{{ details?.author?.slug }}"
             ><img
-              data-src="{{ details.author.media.url }}"
+              data-src="{{ details.author.media | defaultImage: 179:150 }}"
+              data-srcset="{{
+                details.author.media | defaultImage: 179:150
+              }} 179w"
+              data-sizes="{{
+                '(max-width: 576px) 179px,
+                  (max-width: 768px) 179px,
+                  (max-width: 992px) 179px,
+                  (max-width: 1200px) 179px,
+                  179px'
+              }}"
               alt="author"
               width="179px"
               height="100%"
