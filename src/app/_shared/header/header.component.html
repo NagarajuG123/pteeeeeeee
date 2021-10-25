@@ -232,7 +232,7 @@
                 <a routerLink="/{{ header?.sidebar?.about }}" (click)="commonService.toggle()">About
                   <span class="text-capitalize">{{ brandTitle }}</span></a>
               </h3>
-              <h3>
+              <h3 *ngIf="header?.sidebar?.contact?.hasOwnProperty()">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"
                   (click)="commonService.toggle()">Contact
 
