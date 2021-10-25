@@ -1294,8 +1294,8 @@ button.close {
     color: $white_4;
     height: 32px;
     background: $dark_red_2;
-    @include mobile-portrait {
-      top: 8px;
+    @include tablet-landscape1 {
+      top: 0px;
       font-size: 14px;
     }
   }
@@ -1307,6 +1307,9 @@ button.close {
       .header {
         @include media("<=xs") {
           height: 65px;
+        }
+        @include tablet-landscape1 {
+         padding-top: 10px;
         }
       }
     }
