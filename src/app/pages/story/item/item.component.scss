@@ -8,7 +8,7 @@
     min-height: 130px;
     max-height: 754px;
     overflow: hidden;
-    padding: 0;
+    // padding: 0;
   }
 
   .userDetail {
@@ -125,12 +125,12 @@
       bottom: 100%;
       font-family: $roboto;
       min-height: 186px;
-      .title{
+      .title {
         font-weight: 700;
         font-size: 38px;
         line-height: 45px;
         color: $dark-gray !important;
-        @include tablet-landscape{
+        @include tablet-landscape {
           padding-top: 20px;
         }
       }
@@ -237,7 +237,7 @@
     width: 75.34px;
   }
 }
-.next-article{
+.next-article {
   font-size: 17px;
   font-family: $proxiRegular;
   font-weight: 400;
