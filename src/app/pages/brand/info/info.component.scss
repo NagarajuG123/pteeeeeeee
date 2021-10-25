@@ -1329,6 +1329,9 @@ button.close {
         @include media("<=xs") {
           height: 65px;
         }
+        @include tablet-landscape1 {
+          padding-top: 10px;
+        }
       }
     }
   }

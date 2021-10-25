@@ -56,6 +56,7 @@ export class CategoryComponent implements OnInit {
     this.route.parent.params.subscribe((param) => {
       this.slug = param.slug;
       this.mainText = this.slug.replace('-', ' ');
+      this.tab = this.slug.replace('-spotlight','');
       const featureApi = this.apiService.getAPI(
         `1851/${this.slug}/featured?limit=25&offset=0`
       );
