@@ -648,6 +648,10 @@ header {
     opacity: 1;
     border: 1px;
     background-color: $white;
+    font-family: $balingerBold;
+    line-height: 26px;
+    width: 13.86px;
+    height: 27px;
     @include desk-lg-below1 {
       top: 10px;
       right: 15px;
@@ -729,6 +733,7 @@ header {
     text-align: center;
     padding: 1rem;
     border-top: 1px solid $dark_red_2;
+    color: $black;
   }
 }
 
@@ -823,7 +828,6 @@ button.close {
   font-size: 39px;
   outline: 0;
   opacity: 1;
-
   @include desk-lg-below1 {
     top: 10px;
     right: 15px;
