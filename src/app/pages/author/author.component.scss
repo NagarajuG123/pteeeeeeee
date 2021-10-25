@@ -185,4 +185,16 @@ img {
       font-weight: 500;
     }
   }
+  .c-card-box-description{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    p {
+      margin-left: 200px;
+      padding-left: 240px;
+      padding-top: 10px;
+      font-family: $roboto;
+      font-weight: 500;
+    }
+  }
 }
