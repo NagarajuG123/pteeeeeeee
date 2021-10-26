@@ -166,21 +166,91 @@
   class="sidebar-blur bottomSection"
   [ngClass]="!recentPeoples.length ? 'd-none' : ''"
 >
-  <div class="container customContainer position-relative d-flex row">
-    <div
-      class="col-md-9 col-sm-12 leftSide"
-      [ngClass]="
-        brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
-          ? ''
-          : 'brandSearch'
-      "
-    >
-      <div class="row pe-3">
+  <div class="container customContainer position-relative">
+    <div class="row">
+      <div
+        class="col-md-9 col-sm-12 leftSide"
+        [ngClass]="
+          brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
+            ? ''
+            : 'brandSearch'
+        "
+      >
+        <div class="row pe-3">
+          <div
+            class="col-md-4 card-group"
+            *ngFor="let item of recentPeoples; index as i"
+          >
+            <div class="items card border-0 rounded-0 mt-4">
+              <a href="{{ commonService.readMore(item) }}">
+                <img
+                  appYoutubeImage
+                  width="257"
+                  height="auto"
+                  data-src="{{ item.media | defaultImage: 257:138 }}"
+                  data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
+                    {{ item.media | defaultImage: 355:199 }} 355w, 
+                    {{ item.media | defaultImage: 300:168 }} 300w, 
+                    {{ item.media | defaultImage: 257:138 }} 257w"
+                  data-sizes="{{
+                    '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 257px'
+                  }}"
+                  alt="article"
+                  class="lazyload img-fluid"
+                />
+              </a>
+              <div class="card-body">
+                <h6 class="card-title m-0">
+                  <a
+                    href="{{ commonService.readMore(item) }}"
+                    class="text-black"
+                    >{{ item.title }}</a
+                  >
+                </h6>
+                <span *ngIf="commonService.authorName(item)"
+                  >By {{ item.author.name }}</span
+                >
+                <p class="card-text mb-1">
+                  <a
+                    href="{{ commonService.readMore(item) }}"
+                    class="text-black"
+                    >{{ item.short_description }}</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row seeMoreIcon mt-4 desktop-only">
+          <div
+            class="col d-flex align-items-center justify-content-center py-1"
+          >
+            <img
+              data-src="assets/img/nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3 lazyload"
+              (click)="getMoreItems()"
+            />
+            <span class="see-more text-uppercase" (click)="getMoreItems()"
+              >See More</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-sm-12 col-md-3 rightSide brand-news"
+        *ngIf="
+          brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
+        "
+      >
+        <h5 class="ps-4 mt-2">BRAND NEWS</h5>
+        <hr />
         <div
-          class="col-md-4 card-group"
-          *ngFor="let item of recentPeoples; index as i"
+          class="col card-group mx-4"
+          *ngFor="let item of brandPeoples; index as i"
         >
-          <div class="items card border-0 rounded-0 mt-4">
+          <div class="items card border-0 rounded-0 my-2">
             <a href="{{ commonService.readMore(item) }}">
               <img
                 appYoutubeImage
@@ -188,14 +258,16 @@
                 height="auto"
                 data-src="{{ item.media | defaultImage: 257:138 }}"
                 data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
-                    {{ item.media | defaultImage: 355:199 }} 355w, 
-                    {{ item.media | defaultImage: 300:168 }} 300w, 
-                    {{ item.media | defaultImage: 257:138 }} 257w"
+              {{ item.media | defaultImage: 355:199 }} 355w, 
+              {{ item.media | defaultImage: 300:168 }} 300w,
+              {{ item.media | defaultImage: 257:138 }} 257w"
                 data-sizes="{{
-                  '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 257px'
+                  '(max-width: 576px) 545px, 
+                (max-width: 768px) 355px, 
+                (max-width: 992px) 300px,
+                257px'
                 }}"
-                alt="article"
-                class="lazyload img-fluid"
+                class="lazyload"
               />
             </a>
             <div class="card-body">
@@ -206,9 +278,7 @@
                   >{{ item.title }}</a
                 >
               </h6>
-              <span *ngIf="commonService.authorName(item)"
-                >By {{ item.author.name }}</span
-              >
+              <span *ngIf="item.author != null">By {{ item.author.name }}</span>
               <p class="card-text mb-1">
                 <a
                   href="{{ commonService.readMore(item) }}"
@@ -220,67 +290,19 @@
           </div>
         </div>
       </div>
-      <div class="row seeMoreIcon mt-4">
-        <div class="col d-flex align-items-center justify-content-center py-1">
-          <img
-            data-src="assets/img/nextIcon.svg"
-            width="32"
-            alt="next articles"
-            class="me-3 lazyload"
-            (click)="getMoreItems()"
-          />
-          <span class="see-more text-uppercase" (click)="getMoreItems()"
-            >See More</span
-          >
-        </div>
-      </div>
     </div>
-    <div
-      class="col-sm-12 col-md-3 rightSide brand-news"
-      *ngIf="
-        brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
-      "
-    >
-      <h5 class="ps-4 mt-2">BRAND NEWS</h5>
-      <hr />
-      <div
-        class="col card-group mx-4"
-        *ngFor="let item of brandPeoples; index as i"
-      >
-        <div class="items card border-0 rounded-0 my-2">
-          <a href="{{ commonService.readMore(item) }}">
-            <img
-              appYoutubeImage
-              width="257"
-              height="auto"
-              data-src="{{ item.media | defaultImage: 257:138 }}"
-              data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
-              {{ item.media | defaultImage: 355:199 }} 355w, 
-              {{ item.media | defaultImage: 300:168 }} 300w,
-              {{ item.media | defaultImage: 257:138 }} 257w"
-              data-sizes="{{
-                '(max-width: 576px) 545px, 
-                (max-width: 768px) 355px, 
-                (max-width: 992px) 300px,
-                257px'
-              }}"
-              class="lazyload"
-            />
-          </a>
-          <div class="card-body">
-            <h6 class="card-title m-0">
-              <a href="{{ commonService.readMore(item) }}" class="text-black">{{
-                item.title
-              }}</a>
-            </h6>
-            <span *ngIf="item.author != null">By {{ item.author.name }}</span>
-            <p class="card-text mb-1">
-              <a href="{{ commonService.readMore(item) }}" class="text-black">{{
-                item.short_description
-              }}</a>
-            </p>
-          </div>
-        </div>
+    <div class="row seeMoreIcon mobile-only">
+      <div class="col d-flex align-items-center justify-content-center py-1">
+        <img
+          data-src="assets/img/nextIcon.svg"
+          width="32"
+          alt="next articles"
+          class="me-3 lazyload"
+          (click)="getMoreItems()"
+        />
+        <span class="see-more text-uppercase" (click)="getMoreItems()"
+          >See More</span
+        >
       </div>
     </div>
   </div>
