@@ -658,7 +658,7 @@ export class StoryComponent implements OnInit {
   }
 
   addItems(limit, offset) {
-    if (this.pageType === 'details') {
+    if (this.pageType === 'details' && this.apiUrl) {
       this.isLoading = true;
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
