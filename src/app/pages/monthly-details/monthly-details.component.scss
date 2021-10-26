@@ -26,7 +26,7 @@
 // Card Design
 .c-card-box--section {
   margin-bottom: 30px;
-  padding-top: 100px;
+  padding-top: 200px;
   background-color: $dark_gray;
   .c-card-box--wrapper {
     padding-bottom: 2.5rem;
@@ -67,7 +67,7 @@
       background-color: $white;
       .month-business--wrapper {
         max-width: 52%;
-        margin-left: 550px;
+        margin-left: 60%;
         // flex: unset;
         padding: 15px 0;
         @include media("<xxl") {
@@ -121,7 +121,7 @@
     }
     .c-card-box--imageWrapper {
       &.isMainCardBox {
-        margin-top: -303px;
+        margin-top: -403px;
         margin-bottom: -40px;
         @include media("<=xxl") {
         }
@@ -152,7 +152,7 @@
           }
         }
         .card-image {
-          max-height: 590px;
+          max-height: 600px;
           @include media("<xl") {
             height: 600px;
             max-height: unset;
