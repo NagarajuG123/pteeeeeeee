@@ -2,22 +2,20 @@
   <div class="c-card-box--wrapper">
     <div class="authorDetail c-card-box--row c-card-box--contentRow">
       <div class="container customContainer">
-        <div class="row">
-          <div class="col-4 py-5 px-5">
+        <div class="d-flex col">
+          <div class="col-md-5 col-sm-6 py-4 px-4">
             <figure>
               <img
                 *ngIf="author?.data"
                 appYoutubeImage
-                data-src="{{ author?.data?.media | defaultImage: 700:700 }}"
-                width="301.96"
-                height="301.96"
+                src="{{ author?.data?.media | defaultImage: 298:297 }}"
+                width="298"
+                height="297"
                 alt="authorpage"
-                loading="lazy"
-                class="lazyloading"
               />
             </figure>
           </div>
-          <div class="col-8 py-5 px-5">
+          <div class="col-md-7 col-sm-6 py-5 px-5">
             <div>
               <span class="about">ABOUT</span>
               <h1>
