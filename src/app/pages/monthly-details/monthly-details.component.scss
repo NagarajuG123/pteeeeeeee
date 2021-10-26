@@ -28,8 +28,12 @@
   margin-bottom: 30px;
   padding-top: 200px;
   background-color: $dark_gray;
+  @include media("<md") {
+    padding-top: 50px;
+  }
   .c-card-box--wrapper {
     padding-bottom: 2.5rem;
+
     .c-card-box--row {
       display: flex;
       align-items: flex-start;
