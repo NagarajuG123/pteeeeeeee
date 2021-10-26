@@ -33,16 +33,14 @@
                 >
                   <img
                     appYoutubeImage
-                    data-srcset="{{ item.media | defaultImage: 545:305 }} 545w, 
-                      {{ item.media | defaultImage: 355:199 }} 355w, 
-                      {{ item.media | defaultImage: 500:400 }} 500w,
-                      {{ item.media | defaultImage: 121:114 }} 121w"
+                    data-srcset="{{ item.media | defaultImage: 121:114 }} 121w, 
+                          {{ item.media | defaultImage: 225:133 }} 225w,
+                        {{ item.media | defaultImage: 300:174 }} 300w"
                     data-sizes="{{
-                      '(max-width: 576px) 545px,
-                      (max-width: 768px) 355px,
-                      (max-width: 992px) 500px,
-                      (max-width: 1200px) 121px,
-                      121px'
+                      '(max-width: 576px) 300px,
+                        (max-width: 992px) 400px,
+                        (max-width: 1200px) 121px,
+                        121px'
                     }}"
                     width="121px"
                     height="auto"
