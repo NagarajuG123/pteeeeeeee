@@ -262,7 +262,7 @@
   .row{
     padding-left: 50px;
     padding-right: 0;
-    @include mobile-portrait{
+    @include tablet-landscape{
       padding: 0;
     }
   }
