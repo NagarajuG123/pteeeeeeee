@@ -2,14 +2,7 @@
   <div class="container customContainer sidebar-blur mobile-only px-4">
     <div class="d-flex align-items-center pb-2 border-bottom">
       <div class="image me-3">
-        <a href="#"
-          ><img
-            data-src="assets/img/1851-footer.svg"
-            alt="logo"
-            width="57"
-            height="83"
-            class="lazyload"
-        /></a>
+        <a href="#"><img data-src="assets/img/1851-footer.svg" alt="logo" width="57" height="83" class="lazyload" /></a>
       </div>
       <div>
         <a href="#">
@@ -40,8 +33,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="
+    <div class="
         col-12 col-sm-6
         d-flex
         flex-column
@@ -49,29 +41,20 @@
         px-2
         py-lg-4 py-sm-2
         ps-md-5
-      "
-      *ngIf="!isAwards()"
-    >
-      <h4 class="mb-3">Find us on social</h4>
+      " *ngIf="!isAwards()">
+      <h4 class="mb-3 text-uppercase">Find us on social</h4>
 
       <ul class="social d-flex p-0">
         <li *ngFor="let footer of footer?.socialMedia; index as i">
-          <a
-            href="{{ footer?.url }}"
-            target="blank"
-            class="
+          <a href="{{ footer?.url }}" target="blank" class="
               rounded-circle
               d-flex
               justify-content-center
               align-items-center
               me-1
               primary-bg
-            "
-          >
-            <fa-icon
-              [icon]="socialIcons[footer.index]"
-              class="searchIcon"
-            ></fa-icon>
+            ">
+            <fa-icon [icon]="socialIcons[footer.index]" class="searchIcon"></fa-icon>
           </a>
         </li>
       </ul>
@@ -79,21 +62,12 @@
   </div>
   <div class="container customContainer sidebar-blur desktop-only d-md-flex">
     <div class="row text-uppercase">
-      <div class="col-12 col-sm-6 col-lg-2 border-end py-3 py-sm-0">
+      <div class="col-12 col-sm-4 col-lg-2 border-end py-3 py-sm-0">
         <ul class="p-0 d-flex flex-column justify-content-between m-0">
-          <li
-            class="d-flex align-items-center pb-2 d-none d-md-flex"
-            *ngFor="let publication of footer?.publication"
-          >
+          <li class="d-flex align-items-center pb-2 d-none d-md-flex" *ngFor="let publication of footer?.publication">
             <div class="image me-3">
-              <a href="{{ publication.url }}" target="_blank"
-                ><img
-                  data-src="{{ publication?.logo }}"
-                  alt="logo"
-                  width="55.13"
-                  height="80.27"
-                  class="lazyload"
-              /></a>
+              <a href="{{ publication.url }}" target="_blank"><img data-src="{{ publication?.logo }}" alt="logo"
+                  width="55.13" height="80.27" class="lazyload" /></a>
             </div>
             <div>
               <a href="{{ publication.url }}" target="_blank">
@@ -103,44 +77,53 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-lg-8 py-3 px-lg-5">
+      <div class="col-12 col-lg-8 col-sm-4 py-3 px-lg-5">
         <div class="footer-link">
-          <h1 class="text-uppercase -none d-lg-block text-center">
+          <h1 class="text-uppercase d-none d-lg-block text-center">
             For the love of franchising
           </h1>
-          <div class="row justify-content-center ps-2">
-            <div class="col-6 col-md-4 col-lg">
-              <div class="row px-2">
-                <div class="col-12 col-lg" *ngFor="let menu of footer?.menus">
-                  <h4
-                    class="text-uppercase primary-color"
-                    *ngIf="menu.title == 'Spotlight'"
-                  >
-                    {{ menu?.title }}
-                  </h4>
-
-                  <a
-                    routerLink="{{ menu.url }}"
-                    *ngIf="menu.title != 'Spotlight' && menu.url != ''"
-                  >
+          <div class="d-md-flex py-2 px-2 d-lg-none">
+            <div *ngFor="let menu of footer?.menus">
+              <div class="d-block" *ngIf="menu.title == 'Spotlight'">
+                <h4 class="text-uppercase primary-color">
+                  {{ menu?.title }}
+                </h4>
+                <h4 class="mb-2" *ngFor="let item of menu.items">
+                  <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
+                </h4>
+              </div>
+            </div>
+            <div class="d-block ms-3">
+              <div *ngFor="let menu of footer?.menus">
+                <div class="d-block" *ngIf="menu.title != 'Spotlight'">
+                  <a routerLink="{{ menu.url }}">
                     <h4 class="text-uppercase primary-color">
                       {{ menu?.title }}
                     </h4>
                   </a>
-                  <a
-                    *ngIf="menu.url == ''"
-                    href="#"
-                    data-bs-toggle="modal"
-                    data-bs-target="#contactModal"
-                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center ps-2 d-none d-lg-flex">
+            <div class="col-6 col-md-4 col-lg">
+              <div class="row px-2">
+                <div class="col-12 col-lg" *ngFor="let menu of footer?.menus">
+                  <h4 class="text-uppercase primary-color" *ngIf="menu.title == 'Spotlight'">
+                    {{ menu?.title }}
+                  </h4>
+
+                  <a routerLink="{{ menu.url }}" *ngIf="menu.title != 'Spotlight' && menu.url != ''">
+                    <h4 class="text-uppercase primary-color">
+                      {{ menu?.title }}
+                    </h4>
+                  </a>
+                  <a *ngIf="menu.url == ''" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
                     <h4 class="text-uppercase primary-color">
                       {{ menu.title }}
                     </h4>
                   </a>
-                  <h4
-                    class="text-capitalize mb-2"
-                    *ngFor="let item of menu.items"
-                  >
+                  <h4 class="text-capitalize mb-2" *ngFor="let item of menu.items">
                     <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
                   </h4>
                 </div>
@@ -150,37 +133,27 @@
         </div>
       </div>
 
-      <div
-        class="
-          col-12 col-sm-6 col-lg-2
+      <div class="
+          col-12 col-sm-4 col-lg-2
           border-start
           d-flex
           flex-column
           py-3 py-lg-4 py-sm-2
-          ps-md-5
-        "
-        *ngIf="!isAwards()"
-      >
-        <h4 class="mb-4">Find us on social</h4>
+          px-md-3
+        " *ngIf="!isAwards()">
+        <h4 class="mb-4 text-uppercase">Find us on social</h4>
 
         <ul class="social d-flex p-0">
           <li *ngFor="let footer of footer?.socialMedia; index as i">
-            <a
-              href="{{ footer?.url }}"
-              target="blank"
-              class="
+            <a href="{{ footer?.url }}" target="blank" class="
                 rounded-circle
                 d-flex
                 justify-content-center
                 align-items-center
                 me-1
                 primary-bg
-              "
-            >
-              <fa-icon
-                [icon]="socialIcons[footer.index]"
-                class="searchIcon"
-              ></fa-icon>
+              ">
+              <fa-icon [icon]="socialIcons[footer.index]" class="searchIcon"></fa-icon>
             </a>
           </li>
         </ul>
