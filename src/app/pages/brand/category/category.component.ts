@@ -56,7 +56,7 @@ export class CategoryComponent implements OnInit {
     this.route.parent.params.subscribe((param) => {
       this.slug = param.slug;
       this.mainText = this.slug.replace('-', ' ');
-      this.tab = this.slug.replace('-spotlight','');
+      this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
         `1851/${this.slug}/featured?limit=25&offset=0`
       );
@@ -109,7 +109,7 @@ export class CategoryComponent implements OnInit {
   }
   getData(tabName: any) {
     this.apiService
-      .getAPI(`1851/${tabName}/featured?limit=24&offset=0`)
+      .getAPI(`1851/${tabName}/featured?limit=25&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
