@@ -101,7 +101,7 @@
           <h3 class="m-0">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="featured"
+              fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
             >
               {{ item.title }}
             </a>
@@ -111,7 +111,7 @@
           >
           <a
             routerLink="/{{ commonService.readMore(item) }}"
-            fragment="featured"
+            fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
           >
             <p [ngClass]="i === brandNews.length - 1 ? 'mb-0' : 'mb-2'">
               {{ item.short_description }}
