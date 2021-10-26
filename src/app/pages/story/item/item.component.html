@@ -69,8 +69,18 @@
     <div class="row">
       <div class="col-12 col-md userDetail">
         <div class="userImage position-relative">
-          <a routerLink="/author/{{ details?.author?.slug }}"
-            ><img
+          <a routerLink="/author/{{ details?.author?.slug }}">
+            <img
+              src="{{ author_media | defaultImage: 200:200 }}"
+              width="200"
+              height="200"
+              class="author-img position-absolute d-block lazyload"
+              [alt]="details?.author?.name + ' Headshot'"
+              (error)="author_img.src = 'assets/img/placeholder.svg'"
+              #author_img
+            />
+
+            <!-- <img
               data-src="{{ details.author.media | defaultImage: 179:150 }}"
               data-srcset="{{
                 details.author.media | defaultImage: 179:150
@@ -86,7 +96,8 @@
               width="179px"
               height="100%"
               class="position-absolute d-block lazyload"
-          /></a>
+          /> -->
+          </a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
           ><h3 class="mb-0">{{ details.author.name }}</h3></a
