@@ -51,7 +51,7 @@
           >
             VIEW SEARCH FILTERS
           </h6>
-          <div class="sort_main d-flex">
+          <div class="sort_main">
             <h6 class="primary-color">SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
               <li
@@ -77,7 +77,7 @@
               </li>
             </ul>
           </div>
-          <div class="d-flex sort_main">
+          <div class="sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
             <ul class="d-flex text-center justify-content-center">
               <li class="px-2">
@@ -188,6 +188,13 @@
                   width="257"
                   height="138"
                   data-src="{{ item.media | defaultImage: 257:138 }}"
+                  data-srcset="{{item.media | defaultImage:545:305}} 545w, 
+                    {{item.media | defaultImage:355:199}} 355w, 
+                    {{item.media | defaultImage:300:168}} 300w, 
+                    {{item.media | defaultImage:210:118}} 257w"
+                  data-sizes="{{
+                        '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 257px'
+                      }}"
                   alt="article"
                   class="card-img-top lazyload"
                 />
@@ -234,9 +241,17 @@
               width="257"
               height="138"
               data-src="{{ item.media | defaultImage: 257:138 }}"
+              data-srcset="{{item.media | defaultImage:545:305}} 545w, 
+              {{item.media | defaultImage:355:199}} 355w, 
+              {{item.media | defaultImage:300:168}} 300w,
+              {{item.media | defaultImage:257:138}} 250w"
+              data-sizes="{{
+                    '(max-width: 576px) 545px, (max-width: 768px) 355px, (max-width: 992px) 300px, 257px'
+                  }}"   
               class="card-img-top lazyload"
             />
           </a>
+          <!-- src="{{ item.media | defaultImage: 210:118 }}" -->
           <div class="card-body">
             <h6 class="card-title m-0">
               <a

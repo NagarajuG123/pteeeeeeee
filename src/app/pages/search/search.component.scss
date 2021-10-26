@@ -200,6 +200,10 @@
     font-size: 20px;
     line-height: 25.74px;
     color: $dark-gray;
+    display: flex;
+    @include mobile-portrait{
+      display: block !important;
+    }
   .keyFilter{
     padding-left: 20px;
     background: url("/assets/img/unchecked.png") no-repeat left 1px;
@@ -258,6 +262,9 @@
   .row{
     padding-left: 50px;
     padding-right: 0;
+    @include mobile-portrait{
+      padding: 0;
+    }
   }
 }
 .filter-section{
