@@ -26,10 +26,13 @@ figure {
 }
 .contact-banner {
   figure {
+    width: 100%;
     img {
       min-height: 493px;
       object-fit: cover;
       height: 522px;
+      display: block;
+      width: 100%;
     }
   }
   h1 {
