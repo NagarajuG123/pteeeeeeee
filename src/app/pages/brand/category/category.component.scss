@@ -2,14 +2,15 @@
 @import "../../../../assets/scss/theme-color.scss";
 @import "../../../../assets/scss/mixins.scss";
 
+.banner {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+}
 .sidebar-blur {
   overflow: hidden;
 }
-.main {
-  @media screen and (min-width: 1366px) {
-    height: 665px;
-  }
-}
+
 .top-section {
   width: 100%;
   padding-top: 20px;
@@ -17,7 +18,7 @@
   min-height: 665px;
 }
 .content {
-  padding: 150px 0 0 50px;
+  padding: 150px 0 0 0;
   @include mobile-landscape {
     padding: 0 0 0 15px;
   }
