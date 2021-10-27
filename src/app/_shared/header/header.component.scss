@@ -18,13 +18,13 @@ header {
     background-color: $dark-gray;
     color: $light_gray_9;
 
-    >div {
+    > div {
       font-family: $balingerBold;
       line-height: 18px;
     }
 
     li {
-      >a {
+      > a {
         fa-icon {
           width: 6px;
           overflow: hidden;
@@ -38,12 +38,11 @@ header {
       position: absolute;
       right: 0;
       background: $red;
-      padding: .3em;
+      padding: 0.3em;
 
       a {
         color: #fff;
       }
-
     }
   }
 
@@ -66,7 +65,8 @@ header {
     }
 
     .leftMenuItem {
-      @include mobile-landscape1 {}
+      @include mobile-landscape1 {
+      }
     }
 
     .menuBtn {
@@ -127,7 +127,7 @@ header {
       font-weight: bold;
       text-transform: uppercase;
 
-      >img {
+      > img {
         width: 53px;
         height: 30px;
 
@@ -142,25 +142,25 @@ header {
         }
       }
 
-      >div {
+      > div {
         font-family: $balingerXBold;
         font-weight: 800;
         font-size: 17px;
         color: $dark-gray;
         line-height: 21.88px;
 
-        >small {
+        > small {
           font-family: $roboto;
           font-weight: 700;
           font-size: 8px;
           line-height: 10.3px;
 
-          >img {
+          > img {
             height: 8px;
             width: 8px;
           }
 
-          >a {
+          > a {
             color: $light_gray_8;
           }
         }
@@ -207,8 +207,8 @@ header {
 
         @include mobile-landscape1 {
           display: inline-block;
-          border: 1px solid #EB0444;
-          background: #EB0444;
+          border: 1px solid #eb0444;
+          background: #eb0444;
           color: #fff;
           border-radius: 14px;
         }
@@ -247,8 +247,6 @@ header {
         }
       }
 
-
-
       .nav-item {
         a {
           text-decoration: none;
@@ -264,7 +262,7 @@ header {
           &:hover {
             color: $primary;
 
-            &+.dropdown-menu {
+            & + .dropdown-menu {
               display: block;
               border-radius: 0rem;
               background: #6c6d6f;
@@ -277,7 +275,7 @@ header {
           }
         }
 
-        >.dropdown-menu {
+        > .dropdown-menu {
           &:hover {
             display: block;
             border-radius: 0rem;
@@ -335,6 +333,9 @@ header {
       figure {
         height: 75px;
         overflow: hidden;
+        img {
+          width: 100%;
+        }
       }
     }
 
@@ -425,7 +426,7 @@ header {
           }
         }
 
-        >h3 {
+        > h3 {
           font-family: $balingerMedium;
           font-weight: 500;
           font-size: 14px;
@@ -673,7 +674,8 @@ header {
       padding: 0 0 20px 0;
     }
 
-    @include tablet-portrait {}
+    @include tablet-portrait {
+    }
 
     @include mobile-portrait {
       width: 100%;
@@ -748,7 +750,6 @@ header {
     background: #e8eef2;
 
     .card-body {
-
       p,
       p a {
         font-size: 13.6px;
@@ -858,7 +859,7 @@ button.close {
     }
   }
 }
-.svg-inline--fa{
+.svg-inline--fa {
   width: 15px;
   height: 15px;
 }
