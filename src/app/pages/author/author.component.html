@@ -28,6 +28,7 @@
             <ul class="social d-flex p-0" *ngIf="author?.data">
               <li *ngFor="let item of author?.data?.socialMedia; index as i">
                 <a
+                 *ngIf="item.title !== 'Email'"
                   href="{{ item?.url }}"
                   target="blank"
                   class="

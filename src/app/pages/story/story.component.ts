@@ -177,9 +177,9 @@ export class StoryComponent implements OnInit {
                   this.brandSlug = '1851';
                 }
                 forkJoin([
-                  this.apiService.getAPI(`1851/news?limit=4&offset=0`),
+                  this.apiService.getAPI(`1851/spotlight/industry?limit=4&offset=0`),
                   this.apiService.getAPI(
-                    `1851/news?limit=4&offset=0&isBrand=true`
+                    `1851/latest?limit=4&offset=0`
                   ),
                 ])
                   .pipe(takeUntil(this.onDestroy$))

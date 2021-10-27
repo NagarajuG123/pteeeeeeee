@@ -1,4 +1,7 @@
-<div class="sidebar-blur">
+<div class="sidebar-blur" *ngIf="isCategory">
+  <app-category [slug]="categorySlug" [type]="brandSlug"></app-category>
+</div>
+<div class="sidebar-blur" *ngIf="isInfoPage">
   <div class="tabs primary-bg">
     <div class="container position-relative">
       <div

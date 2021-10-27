@@ -9,7 +9,11 @@ header {
   font-size: 14px;
   text-transform: uppercase;
   background-color: $white;
-
+  box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
   .top-head {
     background-color: $dark-gray;
     color: $light_gray_9;
