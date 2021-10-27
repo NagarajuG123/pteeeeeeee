@@ -13,7 +13,7 @@
         appYoutubeImage
         width="1440"
         data-src="{{ media | defaultImage: 1440:697 }}"
-        height="auto"
+        height="697"
         data-srcset="{{ media | defaultImage: 800:400 }} 800w,
                         {{ media | defaultImage: 950:475 }} 950w,
                          {{ media | defaultImage: 1000:500 }} 1000w,
@@ -45,7 +45,7 @@
       <img
         appYoutubeImage
         width="1440"
-        height="auto"
+        height="697"
         data-src="{{ media | defaultImage: 1440:697 }}"
         data-srcset="{{ media | defaultImage: 800:400 }} 800w,
                         {{ media | defaultImage: 950:475 }} 950w,
@@ -120,8 +120,9 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="fs-21 mb-0" *ngIf="trendingNews">TRENDING ARTICLES</h5>
+        <h5 class="fs-21 mb-0" *ngIf="trendingNews.length">TRENDING ARTICLES</h5>
         <fa-icon
+          *ngIf="trendingNews.length"
           [icon]="faCaretDown"
           [styles]="{ width: '14px', 'margin-top': '-6px' }"
           class="primary-color"

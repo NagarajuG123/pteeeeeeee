@@ -220,7 +220,7 @@ form {
     font-family: $roboto;
     font-size: 20px;
     line-height: 25.74px;
-    font-weight: 500;
+    font-weight: 500 !important;
   }
   @include tablet-portrait {
     h6,

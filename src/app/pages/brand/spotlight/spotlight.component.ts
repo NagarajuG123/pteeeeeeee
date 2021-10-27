@@ -32,7 +32,7 @@ export class SpotlightComponent implements OnInit {
 
   ngOnInit(): void {
     const spotlightCategoriesApi = this.apiService.getAPI(
-      `1851/spotlights/categories`
+      `${this.slug}/spotlights/categories`
     );
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
 
