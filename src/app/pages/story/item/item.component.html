@@ -120,7 +120,7 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="fs-21 mb-0">TRENDING ARTICLES</h5>
+        <h5 class="fs-21 mb-0" *ngIf="trendingNews">TRENDING ARTICLES</h5>
         <fa-icon
           [icon]="faCaretDown"
           [styles]="{ width: '14px', 'margin-top': '-6px' }"
@@ -327,7 +327,7 @@
       <div class="modal-body">
         <button
           type="button"
-          class="btn-close btn-close-black"
+          class="btn-close btn-close-white"
           data-bs-dismiss="modal"
           aria-label="Close"
           (click)="openVideoPlayer = false"
