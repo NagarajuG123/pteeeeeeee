@@ -1,4 +1,4 @@
-<div class="sidebar-blur">
+<div class="sidebar-blur" *ngIf="isLoaded">
   <div
     class="
       banner
@@ -29,9 +29,7 @@
       fragment="trendingbrandbuzz"
     >
       <div class="trendingbrandbuzz-content">
-        <h4 class="text-uppercase text-center d-inline-block">
-          TRENDING BRAND BUZZ
-        </h4>
+        <h4 class="text-center d-inline-block">TRENDING BRAND BUZZ</h4>
         <h1>
           {{ trendingData[0]?.title }}
         </h1>
@@ -39,24 +37,23 @@
           {{ trendingData[0]?.short_description }}
         </p>
       </div>
-      <a class="buffalowings-bottom text-end text-uppercase">
+      <a class="buffalowings-bottom text-end" ng-cloak>
         READ MORE
-        <fa-icon class="fa-icon" [icon]="faAngleRight"></fa-icon>
-        <div class="clearfix"></div>
+        <fa-icon [icon]="faAngleRight" *ngIf="trendingData[0]?.title"></fa-icon>
       </a>
     </a>
   </div>
 
   <div class="container customContainer py-md-5 py-5 trending-bottom">
-    <h6 class="text-uppercase">SPONSORED</h6>
+    <h6>SPONSORED</h6>
     <div class="row mt-2">
       <app-five-column
-      [slug]="'1851'"
-      [contents]="trendingData"
-      [type]="'trendingbrandbuzz'"
-      [typeSlug]="'trendingbrandbuzz'"
-     >
-    </app-five-column>
+        [slug]="'1851'"
+        [contents]="trendingData"
+        [type]="'trendingbrandbuzz'"
+        [typeSlug]="'trendingbrandbuzz'"
+      >
+      </app-five-column>
     </div>
   </div>
 
