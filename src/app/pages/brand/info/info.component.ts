@@ -69,6 +69,7 @@ export class InfoComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
+  categorySlug: string;
   constructor(
     public commonService: CommonService,
     private apiService: ApiService,
@@ -152,31 +153,9 @@ export class InfoComponent implements OnInit {
               this.getContents(params.get('item'));
               this.getInquiry();
             } else {
-              const categorySlug = params.get('item');
+              this.categorySlug = params.get('item');
               this.isCategory = true;
               this.isInfoPage = false;
-              this.brandFeaturedUrl = `${this.brandSlug}/${categorySlug}/featured`;
-              const mostRecent = this.apiService.getAPI(
-                `${this.brandSlug}/${categorySlug}/most-recent`
-              );
-              this.mostRecent = `${this.brandSlug}/${categorySlug}/most-recent`;
-              const trending = this.apiService.getAPI(
-                `${this.brandSlug}/${categorySlug}/trending?limit=10&offset=0`
-              );
-              const meta = this.apiService.getAPI(`1851/${categorySlug}/meta`);
-
-              forkJoin([mostRecent, trending, meta])
-                .pipe(takeUntil(this.onDestroy$))
-                .subscribe((results) => {
-                  if (results[0].data[0] != null) {
-                    this.brandMostRecent = results[0].data;
-                  }
-                  this.brandTrending = results[1];
-                  this.hasMore = results[0]['has_more'];
-                  if (results[2] != null) {
-                    this.metaService.setSeo(results[2].data);
-                  }
-                });
             }
           }
         });

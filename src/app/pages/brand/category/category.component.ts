@@ -24,6 +24,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
   @Input() slug!: string;
+  @Input() type!:string;
 
   isBrowser: boolean;
   featuredData: any[] = [];
@@ -55,10 +56,15 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.parent.params.subscribe((param) => {
       this.slug = param.slug;
+    });
+    this.route.paramMap.subscribe((params) => {
+      if(this.type !== '1851'){
+        this.slug = params.get('item');
+      }
       this.mainText = this.slug.replace('-', ' ');
       this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
-        `1851/${this.slug}/featured?limit=25&offset=0`
+        `${this.type}/${this.slug}/featured?limit=25&offset=0`
       );
       const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
@@ -109,7 +115,7 @@ export class CategoryComponent implements OnInit {
   }
   getData(tabName: any) {
     this.apiService
-      .getAPI(`1851/${tabName}/featured?limit=25&offset=0`)
+      .getAPI(`${this.type}/${tabName}/featured?limit=25&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -124,7 +130,7 @@ export class CategoryComponent implements OnInit {
   getMore(tabName: any) {
     this.apiService
       .getAPI(
-        `1851/${tabName}/featured?limit=5&offset=${
+        `${this.type}/${tabName}/featured?limit=5&offset=${
           this.featuredData.length + 1
         }`
       )
