@@ -68,7 +68,7 @@ export class CategoryComponent implements OnInit {
       );
       const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
-        `1851/spotlights/categories`
+        `${this.type}/spotlights/categories`
       );
       forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
