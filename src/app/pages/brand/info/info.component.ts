@@ -203,6 +203,9 @@ export class InfoComponent implements OnInit {
       .postAPI(`${this.brandSlug}/brand-pdf`, payload)
       .subscribe((res) => {
         $('#pdfModal').hide();
+        $('body').removeClass('modal-open');
+        $('body').removeAttr('style');
+        $('.modal-backdrop').remove();
         if (res.success) {
           window.open(this.items.media.url.replace('api.', ''), '_blank');
         } else {
@@ -678,13 +681,5 @@ export class InfoComponent implements OnInit {
   }
   getBB(selection: any) {
     selection.each((d) => {});
-  }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $('#pdf-btn').click(function () {
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-      });
-    }
   }
 }
