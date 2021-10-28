@@ -15,6 +15,7 @@ export class TrendingbuzzComponent implements OnInit {
   slug: string = '1851';
   hasMore: boolean = false;
   faAngleRight = faAngleRight;
+  isLoaded: boolean;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -32,6 +33,7 @@ export class TrendingbuzzComponent implements OnInit {
         this.metaService.setSeo(response.data[0].meta);
         this.trendingData = response.data;
         this.hasMore = response.has_more;
+        this.isLoaded = true;
         this.apiService
           .getAPI(`1851/publication-instance`)
           .subscribe((result) => {

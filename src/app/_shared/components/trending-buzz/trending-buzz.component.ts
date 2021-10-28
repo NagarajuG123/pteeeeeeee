@@ -7,26 +7,29 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-trending-buzz',
   templateUrl: './trending-buzz.component.html',
-  styleUrls: ['./trending-buzz.component.scss']
+  styleUrls: ['./trending-buzz.component.scss'],
 })
 export class TrendingBuzzComponent implements OnInit {
   trending: any = [];
   slug: string = '1851';
   faAngleRight = faAngleRight;
-
+  isLoaded: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  
-  constructor( private apiService: ApiService) { }
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getTrendingBuzz();
   }
 
   getTrendingBuzz() {
-      this.apiService.getAPI(`${this.slug}/trending-buzz?limit=10&offset=0`).pipe(takeUntil(this.onDestroy$))
-      .subscribe((response ) =>{
+    this.apiService
+      .getAPI(`${this.slug}/trending-buzz?limit=10&offset=0`)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
         this.trending = response;
+        this.isLoaded = true;
       });
   }
 

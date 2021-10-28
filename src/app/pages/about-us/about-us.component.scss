@@ -376,12 +376,13 @@ p {
     font-family: $proxiRegular;
     font-size: 16px;
     line-height: 20px;
+    color: $light_gray_1;
     height: 39px;
     border: 1px solid $light_gray_1;
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
-      color: $light_gray_1;
+     
     }
   }
   textarea {
