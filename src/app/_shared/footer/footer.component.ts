@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 import {
   faFacebookF,
   faLinkedinIn,
@@ -25,6 +26,7 @@ export class FooterComponent implements OnInit {
   brandId: string = '1851';
   isBrowser: boolean;
   news: any;
+  s3Url = environment.s3Url;
   socialIcons: any = [
     faFacebookF,
     faInstagram,

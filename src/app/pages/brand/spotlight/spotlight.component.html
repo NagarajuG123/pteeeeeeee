@@ -11,7 +11,7 @@
         (click)="prev()"
       >
         <img
-          data-src="assets/img/left-arrow.svg"
+          data-src="{{ s3Url }}left-arrow.svg"
           width="20px"
           height="39px"
           loading="lazy"
@@ -51,7 +51,7 @@
         (click)="next()"
       >
         <img
-          data-src="assets/img/right-arrow.svg"
+          data-src="{{ s3Url }}right-arrow.svg"
           loading="lazy"
           width="20px"
           height="39px"
@@ -71,7 +71,7 @@
         >
           <a
             routerLink="/{{ commonService.readMore(list) }}"
-            fragment="{{ tab | lowercase}}"
+            fragment="{{ tab | lowercase }}"
           >
             <img
               appYoutubeImage

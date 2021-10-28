@@ -7,7 +7,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { Details } from 'src/app/_core/models/details.model';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-monthly-details',
   templateUrl: './monthly-details.component.html',
@@ -24,6 +24,7 @@ export class MonthlyDetailsComponent implements OnInit {
   faAngleRight = faAngleRight;
   coverDate: any;
   title: any;
+  s3Url = environment.s3Url;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,

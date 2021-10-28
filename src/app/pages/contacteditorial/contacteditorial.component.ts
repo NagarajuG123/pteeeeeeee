@@ -10,7 +10,7 @@ import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
-
+import { environment } from 'src/environments/environment';
 import * as $ from 'jquery';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
@@ -36,7 +36,7 @@ export class ContacteditorialComponent implements OnInit {
   metaData: Meta[] = [];
   faAngleRight = faAngleRight;
   faAngleLeft = faAngleLeft;
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(

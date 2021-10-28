@@ -9,6 +9,7 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { Meta } from 'src/app/_core/models/meta.model';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 
 const RESULT_KEY = makeStateKey<any>('termsState');
 
@@ -87,6 +88,6 @@ export class TermsofuseComponent implements OnInit {
     }
   }
   errorHandler(event: any) {
-    event.target.src = '/assets/img/termsofuse.png';
+    event.target.src = `${environment.s3Url}termsofuse.png`;
   }
 }

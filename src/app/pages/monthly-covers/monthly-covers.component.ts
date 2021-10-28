@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Cover } from 'src/app/_core/models/cover.model';
@@ -7,9 +6,8 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-import { faAngleRight,faPlus } from '@fortawesome/free-solid-svg-icons';
-
-const RESULT_KEY = makeStateKey<any>('coversState');
+import { faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-monthly-covers',
@@ -24,13 +22,12 @@ export class MonthlyCoversComponent implements OnInit {
   publication!: string;
   faPlus = faPlus;
   faAngleRight = faAngleRight;
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
-    private tstate: TransferState,
     private cdr: ChangeDetectorRef,
     private metaService: MetaService
   ) {}

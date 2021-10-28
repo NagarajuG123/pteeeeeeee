@@ -1,5 +1,5 @@
 <div *ngIf="details" class="articles">
-  <div class="banner d-block container">
+  <div class="d-block container">
     <a
       *ngIf="media && media.type === 'video'"
       class="d-block video-btn"
@@ -30,7 +30,7 @@
         class="lazyload img-fluid"
       />
       <img
-        data-src="assets/img/play.png"
+        data-src="{{ s3Url }}play.png"
         alt="Play"
         class="img-fluid vide-play lazyload"
         loading="lazy"
@@ -79,24 +79,6 @@
               (error)="author_img.src = 'assets/img/placeholder.svg'"
               #author_img
             />
-
-            <!-- <img
-              data-src="{{ details.author.media | defaultImage: 179:150 }}"
-              data-srcset="{{
-                details.author.media | defaultImage: 179:150
-              }} 179w"
-              data-sizes="{{
-                '(max-width: 576px) 179px,
-                  (max-width: 768px) 179px,
-                  (max-width: 992px) 179px,
-                  (max-width: 1200px) 179px,
-                  179px'
-              }}"
-              alt="author"
-              width="179px"
-              height="100%"
-              class="position-absolute d-block lazyload"
-          /> -->
           </a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
@@ -120,7 +102,9 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="fs-21 mb-0" *ngIf="trendingNews.length">TRENDING ARTICLES</h5>
+        <h5 class="fs-21 mb-0" *ngIf="trendingNews.length">
+          TRENDING ARTICLES
+        </h5>
         <fa-icon
           *ngIf="trendingNews.length"
           [icon]="faCaretDown"
@@ -210,7 +194,7 @@
         <div class="col d-flex justify-content-center align-items-center">
           <div class="nextBtn px-5 bg-white">
             <img
-              data-src="assets/img/nextIcon.svg"
+              data-src="{{ s3Url }}nextIcon.svg"
               width="32"
               alt="next articles"
               class="me-3 lazyload"

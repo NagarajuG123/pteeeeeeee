@@ -29,17 +29,25 @@ a {
 }
 
 .banner {
-  position: relative;
+  height: auto;
+  @include mobile-portrait {
+    img {
+      height: 250px;
+    }
+  }
   .left-text {
-    position: absolute;
     top: 35%;
     left: 7%;
-    @include mobile-landscape {
-      width: 160px;
+    @include tablet-landscape2 {
+      top: 25%;
     }
     @include tablet-portrait {
       width: 50%;
     }
+    @include mobile-portrait {
+      width: 60%;
+    }
+
     p {
       font-size: 13.76px;
       line-height: 20px;
@@ -58,6 +66,7 @@ a {
       }
       @include tablet-landscape2 {
         font-size: 40px;
+        line-height: 42px;
       }
       @include mobile-landscape {
         font-size: 20px;
@@ -65,6 +74,7 @@ a {
       }
     }
     button {
+      height: 35px;
       background-color: $dark_red_2;
       color: $white;
       position: absolute;

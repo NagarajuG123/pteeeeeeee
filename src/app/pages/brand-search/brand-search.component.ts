@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-brand-search',
   templateUrl: './brand-search.component.html',
@@ -21,7 +21,6 @@ export class BrandSearchComponent implements OnInit {
   industryValues: any = '';
   investValues: any = '';
   sortBrandValue = 'asc';
-
   hasMore: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -76,11 +75,11 @@ export class BrandSearchComponent implements OnInit {
   }
   setBannerImage() {
     if (this.publication.id == '1851') {
-      this.bannerImage = 'assets/img/banner_search_1851.png';
+      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     } else if (this.publication.id == 'EE') {
-      this.bannerImage = 'assets/img/banner_search_ee.jpg';
+      this.bannerImage = `${environment.s3Url}banner_search_ee.jpg`;
     } else {
-      this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
+      this.bannerImage = `${environment.s3Url}banner_search_page_1903.jpg`;
     }
   }
   getIndustry(industry: any[]) {

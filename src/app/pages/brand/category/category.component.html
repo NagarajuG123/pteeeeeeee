@@ -80,7 +80,7 @@
         (click)="prev()"
       >
         <img
-          data-src="assets/img/left-arrow.svg"
+          data-src="{{ s3Url }}left-arrow.svg"
           width="20px"
           height="39px"
           loading="lazy"
@@ -121,7 +121,7 @@
         (click)="next()"
       >
         <img
-          data-src="assets/img/right-arrow.svg"
+          data-src="{{ s3Url }}right-arrow.svg"
           loading="lazy"
           width="20px"
           height="39px"
@@ -188,7 +188,7 @@
         <div class="d-flex justify-content-center align-items-center">
           <div class="nextBtn px-1 bg-blue">
             <img
-              data-src="assets/img/nextIcon.svg"
+              data-src="{{s3Url}}nextIcon.svg"
               width="32"
               alt="next articles"
               class="me-3 lazyload"

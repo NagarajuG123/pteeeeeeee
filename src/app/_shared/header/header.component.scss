@@ -845,7 +845,8 @@ button.close {
   padding: 0 !important;
 
   .modal-content {
-    background: url("/assets/img/thanks.png") no-repeat 0 0;
+    background: url("https://1851-static.s3.amazonaws.com/thanks.png") no-repeat
+      0 0;
     height: 234px;
     width: 480px;
     border: unset;

@@ -43,7 +43,8 @@ img {
     color: $light_gray;
   }
   span {
-    background: url("/assets/img/unchecked1.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/unchecked1.png")
+      no-repeat left 1px;
     padding: 0 0 0 17px;
     font-size: 17px;
     line-height: 30.46px;
@@ -142,7 +143,8 @@ img {
       font-weight: 400;
       font-family: $roboto;
       color: $dark_black;
-      background: url("/assets/img/unchecked.png") no-repeat left 3px;
+      background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
+        no-repeat left 3px;
       padding: 0 0 0 25px;
       letter-spacing: 0.4px;
     }
@@ -153,17 +155,20 @@ img {
         font-weight: 400;
         font-family: $proxiRegular;
         color: $light_gray_5;
-        background: url("/assets/img/unchecked.png") no-repeat left 1px;
+        background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
+          no-repeat left 1px;
         padding: 0 0 0 25px;
         letter-spacing: 0.4px;
       }
     }
     .editors-details input:checked + span {
-      background: url("/assets/img/checked.png") no-repeat left 1px;
+      background: url("https://1851-static.s3.amazonaws.com/checked.png")
+        no-repeat left 1px;
     }
   }
   .contact-editorial-main input:checked + span {
-    background: url("/assets/img/checked.png") no-repeat left 3px;
+    background: url("https://1851-static.s3.amazonaws.com/checked.png")
+      no-repeat left 3px;
   }
   .signmeup {
     .checks {
@@ -173,7 +178,8 @@ img {
       display: none;
     }
     span {
-      background: url("/assets/img/unchecked2.png") no-repeat left 1px;
+      background: url("https://1851-static.s3.amazonaws.com/unchecked2.png")
+        no-repeat left 1px;
       padding: 0 0 0 25px;
       font-size: 9px;
       line-height: 12.71px;
@@ -184,7 +190,8 @@ img {
     }
   }
   .signmeup input:checked + span {
-    background: url("/assets/img/checked2.png") no-repeat left -1px;
+    background: url("https://1851-static.s3.amazonaws.com/checked2.png")
+      no-repeat left -1px;
     font-size: 9px;
     font-family: $roboto;
     font-weight: 700;

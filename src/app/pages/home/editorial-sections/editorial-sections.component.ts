@@ -6,7 +6,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-editorial-sections',
   templateUrl: './editorial-sections.component.html',
@@ -23,7 +23,7 @@ export class EditorialSectionsComponent implements OnInit {
   skipTab = 0;
   tab!: string;
   isLoaded: boolean = false;
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 

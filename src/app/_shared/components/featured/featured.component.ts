@@ -1,19 +1,10 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  PLATFORM_ID,
-  Inject,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
-import { isPlatformBrowser } from '@angular/common';
-import { BehaviorSubject, forkJoin, Subject } from 'rxjs';
+import { makeStateKey } from '@angular/platform-browser';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 
 const FEATURE_KEY = makeStateKey<any>('featureState');
@@ -26,11 +17,12 @@ export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
   @Input() slug: string;
 
-  isBrowser: boolean;
   featured: Details[] = [];
   news: Details[] = [];
   brandNews: Details[] = [];
   brandInfoNews: Details[] = [];
+  isLoaded: boolean = false;
+
   descriptionLimit = 100;
   descriptionLimitOptions = [
     { width: 1200, limit: 100 },
@@ -48,22 +40,13 @@ export class FeaturedComponent implements OnInit {
     { width: 992, limit: 25 },
   ];
 
-  url: string;
-  openVideoPlayer = false;
-  faAngleDown = faAngleDown;
-  isLoaded: boolean = false;
-  faAngleUp = faAngleUp;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
-    private state: TransferState,
-    @Inject(PLATFORM_ID) private platformId: object,
     public commonService: CommonService
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.setLimit('');
@@ -95,10 +78,6 @@ export class FeaturedComponent implements OnInit {
           this.brandInfoNews = response;
         });
     }
-  }
-  updateVideoUrl(url: string) {
-    this.openVideoPlayer = true;
-    this.url = url;
   }
 
   setLimitValues(Options, fieldName) {

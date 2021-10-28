@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
@@ -36,7 +36,7 @@ export class BrandComponent implements OnInit {
   length: number;
   isCategory: boolean;
   isBrand: boolean;
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
