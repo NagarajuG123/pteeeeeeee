@@ -61,6 +61,11 @@ img {
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
     }
+    @include tablet-landscape1{
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
   }
   .banner-right {
     max-width: 71%;
@@ -68,6 +73,11 @@ img {
     -webkit-flex: 0 0 71%;
     overflow: hidden;
     @include tablet-portrait {
+      max-width: 100%;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+    }
+    @include tablet-landscape1{
       max-width: 100%;
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
@@ -88,6 +98,9 @@ img {
     @include tablet-portrait {
       position: static;
     }
+    @include tablet-landscape1{
+      position: static;
+    }
   }
 }
 
@@ -102,6 +115,10 @@ img {
   @include tablet-portrait {
     position: static;
     padding: 30px 15px;
+  }
+  @include tablet-landscape1{
+    padding: 30px 15px;
+    position: static;
   }
   h4 {
     background: $red;

@@ -28,6 +28,11 @@
     flex: 0 0 100%;
     -webkit-flex: 0 0 100%;
   }
+  @include tablet-landscape1 {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+  }
   figure {
     position: relative;
   }
@@ -106,6 +111,11 @@ img {
     -webkit-flex: 0 0 29%;
   }
   @include tablet-portrait {
+    max-width: 100%;
+    flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+  }
+  @include tablet-landscape1{
     max-width: 100%;
     flex: 0 0 100%;
     -webkit-flex: 0 0 100%;
