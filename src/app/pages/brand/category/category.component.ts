@@ -15,7 +15,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -48,6 +48,7 @@ export class CategoryComponent implements OnInit {
     private state: TransferState,
     public commonService: CommonService,
     private route: ActivatedRoute,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -73,20 +74,25 @@ export class CategoryComponent implements OnInit {
       forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
-          this.featuredData = results[0].data;
-          this.metaService.setSeo(results[1].data);
-          this.tabName = results[2].categories;
-          this.activeTab =
-            this.tabName
-              .map(function (e) {
-                return e.slug;
-              })
-              .indexOf(this.slug) + 1;
-          this.description = this.tabName.find(
-            (x) => x.slug == this.slug
-          ).description;
-          this.banner = this.tabName.find((x) => x.slug == this.slug).image;
-          this.isLoaded = true;
+          if(results[0].data.length){
+            this.featuredData = results[0].data;
+            this.metaService.setSeo(results[1].data);
+            this.tabName = results[2].categories;
+            this.activeTab =
+              this.tabName
+                .map(function (e) {
+                  return e.slug;
+                })
+                .indexOf(this.slug) + 1;
+            this.description = this.tabName.find(
+              (x) => x.slug == this.slug
+            ).description;
+            this.banner = this.tabName.find((x) => x.slug == this.slug).image;
+            this.isLoaded = true;
+          }
+          else{
+            this.router.navigateByUrl(`/${this.type}`);
+          }
         });
     });
   }
