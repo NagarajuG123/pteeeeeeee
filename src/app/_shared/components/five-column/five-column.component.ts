@@ -10,19 +10,15 @@ import 'lazysizes';
 })
 export class FiveColumnComponent implements OnInit {
   @Input() contents: any;
-  @Input() slug: string = '';
   @Input() type = '';
   @Input() hasMore = false;
   @Input() typeSlug!: string;
   @Output() more = new EventEmitter();
   faAngleDown = faAngleDown;
-  constructor(private commonService: CommonService) {}
+  constructor(public commonService: CommonService) {}
 
   ngOnInit(): void {}
   getMoreData() {
     this.more.emit('');
-  }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
   }
 }

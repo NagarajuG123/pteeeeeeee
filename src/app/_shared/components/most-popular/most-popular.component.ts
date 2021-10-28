@@ -1,17 +1,13 @@
-import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
-import { isPlatformBrowser } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
-
-const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
 @Component({
   selector: 'app-most-popular',
@@ -22,28 +18,18 @@ export class MostPopularComponent implements OnInit {
   @Input() type: string;
   @Input() slug: string;
 
-  isBrowser!: boolean;
   data: Details[] = [];
   customOptions: OwlOptions = {};
   faAngleRight = faAngleRight;
   isLoaded: boolean = false;
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  public innerWidth: any;
-  products: any;
-  products2: any;
-  products3: any;
-  options1: any;
-  options2: any;
-  options3: any;
 
   constructor(
     private apiService: ApiService,
-    @Inject(PLATFORM_ID) private platformId: object,
     public commonService: CommonService
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.setOption();
