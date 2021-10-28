@@ -22,7 +22,7 @@
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
-  <div class="banner container d-flex contact-banner sidebar-blur">
+  <div class="banner position-relative container contact-banner sidebar-blur">
     <img
       data-srcset="{{ topBlock.image | defaultImage: 500:250 }} 500w, 
                       {{ topBlock.image | defaultImage: 1000:300 }} 1000w, 
@@ -42,17 +42,19 @@
       loading="lazy"
       class="lazyload img-fluid"
     />
-    <div class="left-text d-flex">
-      <a
-        routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}"
-        fragment="franbuzz"
-      >
-        <h1>Franchise Broker Awards</h1>
-        <p>{{ topBlock?.description }}</p>
-        <div class="readmore-btn">
-          <button class="align-items-center">Read More</button>
-        </div>
-      </a>
+    <div class="left-text position-absolute row">
+      <div class="col-md-9 col-lg-12">
+        <a
+          routerLink="/{{ commonService.readMore(dynamicFirst[0]) }}"
+          fragment="franbuzz"
+        >
+          <h1>Franchise Broker Awards</h1>
+          <p>{{ topBlock?.description }}</p>
+          <div class="readmore-btn">
+            <button class="align-items-center">Read More</button>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
   <div class="container customContainer py-md-4 sidebar-blur">
