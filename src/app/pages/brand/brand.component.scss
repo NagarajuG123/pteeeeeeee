@@ -37,6 +37,9 @@ a {
     @include mobile-landscape {
       width: 160px;
     }
+    @include tablet-portrait {
+      width: 50%;
+    }
     p {
       font-size: 13.76px;
       line-height: 20px;
@@ -78,6 +81,11 @@ a {
       text-align: left;
       padding-right: 25%;
     }
+  }
+  img{
+    @include mobile-portrait{
+      height: 300px;
+    } 
   }
 }
 
