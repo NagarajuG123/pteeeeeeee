@@ -9,6 +9,11 @@
     max-height: 754px;
     overflow: hidden;
     // padding: 0;
+    img{
+      @include mobile-portrait{
+        height: 300px;
+      }
+    }
   }
 
   .userDetail {
