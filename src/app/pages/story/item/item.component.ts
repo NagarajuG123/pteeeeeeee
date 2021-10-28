@@ -18,7 +18,6 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
 declare var ga: Function;
 
 @Component({
@@ -44,6 +43,7 @@ export class ItemComponent implements OnInit {
   public isBrowser = false;
   public isServer: boolean;
 
+  s3Url = environment.s3Url;
   faCaretDown = faCaretDown;
   id: string;
   title: string;

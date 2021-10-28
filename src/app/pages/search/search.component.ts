@@ -13,10 +13,15 @@ import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
-import { faSearch, faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes'
+import {
+  faSearch,
+  faAngleUp,
+  faAngleDown,
+} from '@fortawesome/free-solid-svg-icons';
+import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-search',
@@ -44,6 +49,7 @@ export class SearchComponent implements OnInit {
   faSearch = faSearch;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
+  s3Url = environment.s3Url;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
@@ -248,7 +254,7 @@ export class SearchComponent implements OnInit {
           let title = results[2].title;
           searchPopData['has_more'] =
             results[0].has_more || results[1].has_more;
-          
+
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
           this.params = searchPopData['params'];
@@ -263,11 +269,11 @@ export class SearchComponent implements OnInit {
   }
   setBannerImage(publication) {
     if (publication.id == '1851') {
-      this.bannerImage = 'assets/img/banner_search_page.jpg';
+      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     } else if (publication.id == 'EE') {
-      this.bannerImage = 'assets/img/banner_search_ee.jpg';
+      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     } else {
-      this.bannerImage = 'assets/img/banner_search_page_1903.jpg';
+      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     }
   }
   ngAfterViewInit() {

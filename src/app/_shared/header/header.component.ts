@@ -31,6 +31,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -63,6 +64,7 @@ export class HeaderComponent implements OnInit {
   inquireData: any;
   submitErrMsg: string = '';
   ga: any;
+  s3Url = environment.s3Url;
   socialIcons: any = [
     faFacebookF,
     faInstagram,

@@ -14,7 +14,7 @@
             >
               <span
                 ><img
-                  data-src="assets/img/room-service.png"
+                  data-src="{{ s3Url }}room-service.png"
                   height="21px"
                   width="21px"
                   alt="1903"
@@ -36,7 +36,7 @@
             >
               <span
                 ><img
-                  data-src="assets/img/Estatenvy.png"
+                  data-src="{{ s3Url }}Estatenvy.png"
                   height="21px"
                   width="21px"
                   alt="EE"
@@ -105,7 +105,7 @@
                       (click)="onSearchSubmit(searchForm, 'sidebar')"
                     >
                       <img
-                        data-src="assets/img/search-p.svg"
+                        data-src="{{ s3Url }}search-p.svg"
                         alt="search"
                         width="11px"
                         height="11px"
@@ -253,7 +253,7 @@
                       (click)="onSearchSubmit(searchForm, 'sidebar')"
                     >
                       <img
-                        data-src="assets/img/search-p.svg"
+                        data-src="{{ s3Url }}search-p.svg"
                         alt="search"
                         width="11px"
                         height="11px"
@@ -445,7 +445,7 @@
                 >
                 &nbsp;
                 <img
-                  data-src="assets/img/logo.png"
+                  data-src="{{ s3Url }}logo.png"
                   height="41"
                   width="41"
                   alt="logo"
@@ -487,7 +487,7 @@
               <a class="d-flex align-items-center" (click)="closeSidebar()"
                 >{{ action.title }}
                 <img
-                  data-src="assets/img/down-arrow.svg"
+                  data-src="{{ s3Url }}down-arrow.svg"
                   height="12"
                   width="12"
                   alt="down-arrow"
@@ -535,10 +535,11 @@
               <a class="d-flex align-items-center"
                 >{{ header?.actions?.title }}
                 <img
-                  data-src="assets/img/down-arrow.svg"
+                  data-src="{{ s3Url }}down-arrow.svg"
                   height="12"
                   width="12"
                   class="ms-1 lazyload"
+                  alt="down"
               /></a>
               <ul class="dropdown-menu">
                 <li *ngFor="let item of header?.actions?.items">
@@ -560,7 +561,7 @@
               data-bs-toggle="modal"
               data-bs-target="#searchModal"
               ><img
-                data-src="assets/img/search.png"
+                data-src="{{ s3Url }}search.png"
                 height="18"
                 width="18"
                 alt="search"
@@ -637,7 +638,7 @@
             [formGroup]="searchForm"
             (ngSubmit)="onSearchSubmit(searchForm, 'header')"
           >
-            <h1>SEARCH 1851 FRANCHISE</h1>
+            <h2>SEARCH 1851 FRANCHISE</h2>
             <div class="form-group d-block">
               <input
                 type="text"

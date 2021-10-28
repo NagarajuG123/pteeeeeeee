@@ -9,6 +9,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 const RESULT_KEY = makeStateKey<any>('mostPopularState');
 
@@ -70,8 +71,8 @@ export class MostPopularComponent implements OnInit {
       dots: false,
       navSpeed: 700,
       navText: [
-        '<img src="assets/img/left-arrow.svg" alt="slider arrow" />',
-        '<img src="assets/img/right-arrow.svg" alt="slider arrow" />',
+        `<img src="${environment.s3Url}left-arrow.svg" alt="slider arrow" />`,
+        `<img src="${environment.s3Url}right-arrow.svg" alt="slider arrow" />`,
       ],
       responsive: {
         0: {

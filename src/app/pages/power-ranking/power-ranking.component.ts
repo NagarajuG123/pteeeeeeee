@@ -7,8 +7,7 @@ import { Powerranking } from 'src/app/_core/models/powerranking.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-
-const RESULT_KEY = makeStateKey<any>('powerRankingState');
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-power-ranking',
@@ -21,26 +20,16 @@ export class PowerRankingComponent implements OnInit {
   metaData: Meta[] = [];
   publication!: any;
   items: Brandsrank[] = [];
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
-    private metaService: MetaService,
-    private tstate: TransferState
+    private metaService: MetaService
   ) {}
 
   ngOnInit(): void {
-    // if (this.tstate.hasKey(RESULT_KEY)) {
-    //   const powerRankingData: any = this.tstate.get(RESULT_KEY, {});
-    //   this.data = powerRankingData['data'];
-    //   this.contents = powerRankingData['contents'];
-    //   this.items = powerRankingData['contents'].brands;
-    //   this.metaData = powerRankingData['meta'];
-    //   this.publication = powerRankingData['publicationTitle'];
-    // } else {
-    //   const powerRankingData: any = {};
     const powerApi = this.apiService.getAPI(`1851/power-ranking`);
     const publicationApi = this.apiService.getAPI('1851/publication-instance');
 
@@ -57,7 +46,5 @@ export class PowerRankingComponent implements OnInit {
           `Power Rankings | Franchise Brands | ${this.publication.title}`
         );
       });
-    //   this.tstate.set(RESULT_KEY, powerRankingData);
-    // }
   }
 }

@@ -5,7 +5,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-spotlight',
   templateUrl: './spotlight.component.html',
@@ -14,6 +14,7 @@ import 'lazysizes';
 export class SpotlightComponent implements OnInit {
   @Input() slug: string;
 
+  s3Url = environment.s3Url;
   items: Details[] = [];
   tabName: any;
   defaultTab!: string;

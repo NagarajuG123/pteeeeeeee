@@ -207,13 +207,13 @@ form {
   }
   .keyFilter {
     padding-left: 20px;
-    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/unchecked.png") no-repeat left 1px;
   }
   input {
     display: none;
   }
   input:checked + span {
-    background: url("/assets/img/checked.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/checked.png") no-repeat left 1px;
   }
   h6,
   span {

@@ -248,16 +248,19 @@ h6 {
     line-height: 19px;
     font-weight: normal;
     font-family: $proxiMedium;
-    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
+      no-repeat left 1px;
     padding: 0 0 0 25px;
     letter-spacing: 0.4px;
   }
   .editors-details input:checked + span {
-    background: url("/assets/img/checked1.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/checked1.png")
+      no-repeat left 1px;
   }
 }
 .contact-editorial-main input:checked + span {
-  background: url("/assets/img/checked.png") no-repeat left 1px;
+  background: url("https://1851-static.s3.amazonaws.com/checked.png") no-repeat
+    left 1px;
 }
 .editors-details {
   padding: 8px 20px 0 46px;
@@ -281,7 +284,8 @@ h6 {
     color: $light_gray;
   }
   span {
-    background: url("/assets/img/unchecked1.png") no-repeat left 1px;
+    background: url("https://1851-static.s3.amazonaws.com/unchecked1.png")
+      no-repeat left 1px;
     padding: 0 0 0 17px;
     font-size: 11px;
     line-height: 17px;
@@ -322,7 +326,8 @@ h6 {
     position: absolute;
     top: 15px;
     right: 3.4%;
-    background: url("/assets/img/contacteditorial-img3.png") no-repeat left top;
+    background: url("https://1851-static.s3.amazonaws.com/contacteditorial-img3.png")
+      no-repeat left top;
     width: 111px;
     height: 111px;
     @include mobile-portrait {

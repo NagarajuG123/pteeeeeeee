@@ -1266,7 +1266,11 @@ button.close {
     position: absolute;
     content: "";
   }
-
+  @include media("<lg") {
+    .items {
+      padding: 0 35px;
+    }
+  }
   .map-legend-item {
     padding: 0;
     margin-top: 13px;
@@ -1336,19 +1340,7 @@ button.close {
 
 //latest story page
 .strory-banner--img {
-  // margin-top: 90px;
   text-align: center;
-
-  // img {
-  //   @include media("<md") {
-  //     height: auto;
-  //     padding: 0;
-  //   }
-
-  //   @include media("<xl") {
-  //     padding: 0;
-  //   }
-  // }
 }
 
 .info-wrapper {
@@ -1422,6 +1414,11 @@ button.close {
   font-size: 16px;
   line-height: 18.75px;
   color: $dark_black;
+  @include media("<lg") {
+    .items {
+      padding: 0 35px;
+    }
+  }
 }
 .video-btn {
   cursor: pointer;

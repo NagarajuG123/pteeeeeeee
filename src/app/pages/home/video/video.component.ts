@@ -7,7 +7,7 @@ import 'lazysizes';
 import * as $ from 'jquery';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -28,6 +28,7 @@ export class VideoComponent implements OnInit {
   isBrowser: boolean = false;
   isLoaded: boolean = false;
   customOptions: OwlOptions = {};
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -81,8 +82,8 @@ export class VideoComponent implements OnInit {
       dots: false,
       navSpeed: 700,
       navText: [
-        '<img src="assets/img/slider-left-arrow.png" alt="slider arrow" width="19" height="30"/>',
-        '<img src="assets/img/slider-right-arrow.png" alt="slider arrow" width="19" height="30"/>',
+        `<img src="${environment.s3Url}slider-left-arrow.png" alt="slider arrow" width="19" height="30"/>`,
+        `<img src="${environment.s3Url}slider-right-arrow.png" alt="slider arrow" width="19" height="30"/>`,
       ],
       responsive: {
         0: {

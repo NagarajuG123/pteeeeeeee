@@ -12,7 +12,7 @@
         (click)="prev()"
       >
         <img
-          data-src="assets/img/left-arrow.svg"
+          data-src="{{ s3Url }}left-arrow.svg"
           loading="lazy"
           class="lazyload"
         />
@@ -49,7 +49,7 @@
         (click)="next()"
       >
         <img
-          data-src="assets/img/right-arrow.svg"
+          data-src="{{ s3Url }}right-arrow.svg"
           loading="lazy"
           class="lazyload"
         />
@@ -78,7 +78,7 @@
         />
         <img
           *ngIf="brandInfo.media.type === 'video'"
-          data-src="assets/img/play.png"
+          data-src="{{ s3Url }}play.png"
           alt="Play"
           class="img-fluid vide-play lazyload"
           loading="lazy"
@@ -117,7 +117,7 @@
             />
             <img
               *ngIf="brandInfo.media && brandInfo.media.type === 'video'"
-              data-src="assets/img/play.png"
+              data-src="{{ s3Url }}play.png"
               alt="Play"
               class="img-fluid vide-play lazyload"
               loading="lazy"
@@ -371,7 +371,7 @@
                 class="map-legend"
               >
                 MAP LEGEND:
-                <div class="row">
+                <div class="row items">
                   <div class="col-xl-8 col-md-12">
                     <div class="row m-0">
                       <div
@@ -406,7 +406,7 @@
                   <h3 class="map-legend-internatioal">
                     INTERNATIONAL MARKETS:
                   </h3>
-                  <div class="row ms-1">
+                  <div class="row ms-1 items">
                     <div
                       class="col-sm-3 map-legend-item"
                       *ngFor="let market of items['international-markets']"

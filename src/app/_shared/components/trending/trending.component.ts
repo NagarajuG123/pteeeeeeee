@@ -15,7 +15,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-trending',
   templateUrl: './trending.component.html',
@@ -31,7 +31,7 @@ export class TrendingComponent implements OnInit {
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
   isBrowser: boolean;
-
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
