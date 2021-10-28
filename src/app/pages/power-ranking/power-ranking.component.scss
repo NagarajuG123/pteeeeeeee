@@ -3,7 +3,6 @@
 @import "../../../assets/scss/media.scss";
 @import "../../../assets/scss/variables.scss";
 .top-container {
-  height: 760px;
   position: relative;
   @include media("<xl") {
     height: 680px;
