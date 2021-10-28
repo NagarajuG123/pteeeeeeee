@@ -205,15 +205,18 @@ form {
   @include mobile-portrait {
     display: block !important;
   }
-  .keyFilter {
-    padding-left: 20px;
-    background: url("/assets/img/unchecked.png") no-repeat left 1px;
+  .form-check {
+    .form-check-input{
+      margin-top: 0;
+      margin-left: 0;
+    }
   }
-  input {
-    display: none;
+  .form-check-input:checked {
+    background-color: $dark_red_2;
+    border-color: $dark_red_2;
   }
-  input:checked + span {
-    background: url("/assets/img/checked.png") no-repeat left 1px;
+  .form-check-label {
+    padding-left: 10px;
   }
   h6,
   span {
