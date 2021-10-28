@@ -16,20 +16,9 @@
           [formGroup]="searchForm"
           (ngSubmit)="onSearchBannerSubmit(searchForm)"
         >
-          <div class="form-group d-block">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search"
-              [formControl]="searchForm.controls['searchInput']"
-            />
-            <button
-              type="button"
-              class="d-block text-center"
-              (click)="onSearchBannerSubmit(searchForm)"
-            >
-              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
-            </button>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
+            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
           </div>
         </form>
         <div class="py-3 filter-section">
