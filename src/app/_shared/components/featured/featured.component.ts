@@ -1,13 +1,11 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
-import { makeStateKey } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 
-const FEATURE_KEY = makeStateKey<any>('featureState');
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
@@ -23,23 +21,6 @@ export class FeaturedComponent implements OnInit {
   brandInfoNews: Details[] = [];
   isLoaded: boolean = false;
 
-  descriptionLimit = 100;
-  descriptionLimitOptions = [
-    { width: 1200, limit: 100 },
-    { width: 992, limit: 50 },
-  ];
-  brandNewsTitleLimit = 85;
-  brandNewsTitleLimitOptions = [
-    { width: 1320, limit: 85 },
-    { width: 992, limit: 30 },
-  ];
-
-  NewsTitleLimit = 45;
-  NewsTitleLimitOptions = [
-    { width: 1200, limit: 45 },
-    { width: 992, limit: 25 },
-  ];
-
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -49,7 +30,6 @@ export class FeaturedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.setLimit('');
     const featureApi = this.apiService.getAPI(
       `${this.apiUrl}?limit=4&offset=0`
     );
@@ -80,45 +60,6 @@ export class FeaturedComponent implements OnInit {
     }
   }
 
-  setLimitValues(Options, fieldName) {
-    let limitVal = 0;
-    Options.forEach((item) => {
-      if (window.innerWidth < item.width) {
-        limitVal = item.limit;
-      }
-    });
-    if (Number(limitVal) === 0) {
-      limitVal = Number(Options[0].limit);
-    }
-
-    switch (fieldName) {
-      case 'descriptionLimit':
-        this.descriptionLimit = Number(limitVal);
-        break;
-      case 'brandNewsTitleLimit':
-        this.brandNewsTitleLimit = Number(limitVal);
-        break;
-      case 'NewsTitleLimit':
-        this.NewsTitleLimit = Number(limitVal);
-        break;
-      default:
-        break;
-    }
-  }
-
-  async setLimit(event: any) {
-    await this.setLimitValues(this.descriptionLimitOptions, 'descriptionLimit');
-    await this.setLimitValues(
-      this.brandNewsTitleLimitOptions,
-      'brandNewsTitleLimit'
-    );
-    await this.setLimitValues(this.NewsTitleLimitOptions, 'NewsTitleLimit');
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.setLimit(event);
-  }
   isAwards() {
     return this.slug === 'franchisedevelopmentawards' ? true : false;
   }

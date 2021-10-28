@@ -16,6 +16,7 @@ import 'lazysizes';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-trending',
   templateUrl: './trending.component.html',

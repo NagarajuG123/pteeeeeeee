@@ -20,7 +20,6 @@ import {
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
@@ -44,12 +43,9 @@ export class HeaderComponent implements OnInit {
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
-  isShow: boolean;
   publication: any;
-  type: any;
   isBrowser!: boolean;
   news: any;
-  resultData: any;
   editorialEmail: string;
   searchForm: FormGroup;
   subject: Subject<any> = new Subject();
@@ -63,7 +59,6 @@ export class HeaderComponent implements OnInit {
   inquireTitle = '';
   inquireData: any;
   submitErrMsg: string = '';
-  ga: any;
   s3Url = environment.s3Url;
   socialIcons: any = [
     faFacebookF,
@@ -74,9 +69,6 @@ export class HeaderComponent implements OnInit {
   ];
   faCaretRightIcon = faCaretRight;
   faSearch = faSearch;
-  private onDestroySubject = new Subject();
-  onDestroy$ = this.onDestroySubject.asObservable();
-
   pdfForm: any;
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
@@ -87,15 +79,16 @@ export class HeaderComponent implements OnInit {
   contactForm!: FormGroup;
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
-  isPdfEmail: any = false;
-  defaultBrandLogo: string;
+
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
+
   constructor(
     private apiService: ApiService,
     public commonService: CommonService,
     private router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
-    private _googleAnalyticsService: GoogleAnalyticsService,
     @Inject(DOCUMENT) private _document: HTMLDocument,
     private _elementRef: ElementRef
   ) {
@@ -112,11 +105,9 @@ export class HeaderComponent implements OnInit {
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
-    this.defaultBrandLogo = 'EE-logo-mark-01.svg';
   }
 
   ngOnInit(): void {
-    this.isShow = true;
     this.setSlug();
 
     this.subject.subscribe(() => {
@@ -135,7 +126,6 @@ export class HeaderComponent implements OnInit {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === 'robots.txt') {
-          this.isShow = false;
         } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
@@ -147,7 +137,6 @@ export class HeaderComponent implements OnInit {
                 this.brandTitle = response.name;
                 this.brandSlug = response.slug;
                 this.brandId = response.id;
-                this.ga = response.ga;
               } else {
                 this.brandSlug = '1851';
                 this.brandId = '1851';
@@ -178,7 +167,6 @@ export class HeaderComponent implements OnInit {
       if (this.brandSlug != '1851') {
         this.getInquiry();
         this.getContact();
-
         this.setEditorialEmail();
       }
     });
@@ -414,7 +402,7 @@ export class HeaderComponent implements OnInit {
   }
   ngAfterViewInit() {
     // For sticky header
-    if (this.isBrowser && this.isShow) {
+    if (this.isBrowser) {
       const distance = $('header').offset().top,
         $window = $(window);
       $(window).scroll(function () {
