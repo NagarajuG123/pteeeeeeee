@@ -27,12 +27,13 @@ footer {
   }
 
   h4 {
-    font-size: 14px;
+    font-size: 0.86em;
     font-family: $balingerBold;
     font-weight: 700;
     line-height: 14.42px;
     color: $white;
-    >a{
+
+    >a {
       line-height: 17px;
     }
   }
