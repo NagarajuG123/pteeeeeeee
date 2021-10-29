@@ -42,20 +42,21 @@ export class SpotlightComponent implements OnInit {
       .subscribe((results) => {
         this.tabName = results[0].categories;
         this.defaultTab = this.tab = results[0].defaultTab;
-
-        this.apiService
-          .getAPI(
-            `${this.slug}/spotlight/${this.defaultTab}?limit=${this.tabName.length}&offset=0`
-          )
-          .pipe(takeUntil(this.onDestroy$))
-          .subscribe((result) => {
-            const data: any[] = [];
-            result['data'].forEach((item: any) => {
-              data.push(item);
+        if (this.tabName && this.tabName.length > 0) {
+          this.apiService
+            .getAPI(
+              `${this.slug}/spotlight/${this.defaultTab}?limit=${this.tabName.length}&offset=0`
+            )
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((result) => {
+              const data: any[] = [];
+              result['data'].forEach((item: any) => {
+                data.push(item);
+              });
+              this.items = data;
+              this.isLoaded = true;
             });
-            this.items = data;
-            this.isLoaded = true;
-          });
+        }
       });
   }
   setActiveTab(val: any, item: any) {
