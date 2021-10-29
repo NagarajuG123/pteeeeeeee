@@ -31,13 +31,13 @@ export class AuthorComponent implements OnInit {
     faInstagram,
     faLinkedinIn,
     faYoutube,
-    faEnvelope
+    faEnvelope,
   ];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private apiService: ApiService,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private metaService: MetaService
   ) {}
 
@@ -102,11 +102,5 @@ export class AuthorComponent implements OnInit {
         ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.url}`
         : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.placeholder}`;
     }
-  }
-  readMore(item: any) {
-    return this.commonService.readMore(item);
-  }
-  goReadMore(item: any) {
-    return this.commonService.readMore(item);
   }
 }

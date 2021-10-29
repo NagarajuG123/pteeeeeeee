@@ -33,13 +33,7 @@ export class CommonService {
       $('body').removeClass('noscroll');
     }
   }
-  readMore1(story: any, type: string) {
-    let slug = '';
-    if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
-      slug = `${story?.brand?.slug}/`;
-    }
-    return `${slug}${story?.slug}#${type}`;
-  }
+
   readMore(story: any) {
     let slug = '';
     if (typeof story?.brand !== 'undefined' && story?.brand?.slug !== '1851') {
@@ -70,25 +64,6 @@ export class CommonService {
     else if (val < 768 && val > 575) this.brandInfoTabs = 2;
     else if (val < 576) this.brandInfoTabs = 1;
     else this.brandInfoTabs = 6;
-  }
-  formatTitle(title: any) {
-    if (title && title.length > 80) {
-      title = title.slice(0, 75) + '...';
-    }
-    return title;
-  }
-  formatDescription(description: any) {
-    if (description && description.length > 118) {
-      description = description.slice(0, 118) + '...';
-    }
-    return description;
-  }
-
-  responsiveTextFormating(text: String, textLength: number) {
-    if (text && text.length > textLength) {
-      text = text.slice(0, textLength) + '...';
-    }
-    return text;
   }
 
   authorName(item: any) {
