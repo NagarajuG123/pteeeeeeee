@@ -43,8 +43,6 @@ img {
     color: $light_gray;
   }
   span {
-    background: url("https://1851-static.s3.amazonaws.com/unchecked1.png")
-      no-repeat left 1px;
     padding: 0 0 0 17px;
     font-size: 17px;
     line-height: 30.46px;
@@ -131,56 +129,35 @@ img {
     label {
       margin: 0;
     }
-    input {
-      display: none;
-    }
     .radio_btns1 {
       color: $dark_gray_1;
     }
-    span {
+    label {
       font-size: 14px;
       line-height: 16px;
       font-weight: 400;
       font-family: $roboto;
       color: $dark_black;
-      background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
-        no-repeat left 3px;
-      padding: 0 0 0 25px;
       letter-spacing: 0.4px;
     }
     .editors-details {
-      span {
+      label {
         font-size: 12px;
         line-height: 17px;
         font-weight: 400;
         font-family: $proxiRegular;
         color: $light_gray_5;
-        background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
-          no-repeat left 1px;
-        padding: 0 0 0 25px;
+        padding: 0 0 0 10px;
         letter-spacing: 0.4px;
       }
     }
-    .editors-details input:checked + span {
-      background: url("https://1851-static.s3.amazonaws.com/checked.png")
-        no-repeat left 1px;
-    }
-  }
-  .contact-editorial-main input:checked + span {
-    background: url("https://1851-static.s3.amazonaws.com/checked.png")
-      no-repeat left 3px;
   }
   .signmeup {
     .checks {
       margin: 0;
     }
-    input {
-      display: none;
-    }
-    span {
-      background: url("https://1851-static.s3.amazonaws.com/unchecked2.png")
-        no-repeat left 1px;
-      padding: 0 0 0 25px;
+    label {
+      padding: 0 0 0 10px;
       font-size: 9px;
       line-height: 12.71px;
       font-weight: 700;
@@ -190,8 +167,6 @@ img {
     }
   }
   .signmeup input:checked + span {
-    background: url("https://1851-static.s3.amazonaws.com/checked2.png")
-      no-repeat left -1px;
     font-size: 9px;
     font-family: $roboto;
     font-weight: 700;
@@ -248,6 +223,15 @@ img {
         color: $white;
       }
     }
+  }
+  .form-check-input:checked {
+    background-color: $dark_red_2;
+    border-color: $dark_red_2;
+  }
+  .d-inline-block{
+    .form-check-input {
+      margin-left: 0;
+     }
   }
 }
 
