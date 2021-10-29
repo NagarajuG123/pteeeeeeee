@@ -1,19 +1,6 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
-.container {
-  max-width: 1380px;
-  margin: 0 auto;
-  display: block;
-  @include desk-lg-below {
-    max-width: 100%;
-  }
-}
-
-.d-flex {
-  -webkit-flex-wrap: wrap;
-  display: flex !important;
-}
 a {
   display: inline-block;
   vertical-align: top;
@@ -39,6 +26,80 @@ figure {
     min-height: 1px;
     vertical-align: middle;
     border: 0;
+  }
+}
+.row {
+  @include mobile-landscape1 {
+    flex-direction: column;
+  }
+}
+.authorSection {
+  .authorDetail {
+    background-color: $white_3;
+
+    h1 {
+      font-family: $balingerBold;
+      font-size: 42px;
+      line-height: 56.57px;
+      letter-spacing: -0.015em;
+      color: $dark-gray;
+      margin-bottom: 0;
+      margin-top: -15px;
+      font-weight: 700;
+      padding: 8px 0 8px;
+    }
+    .about {
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16.41px;
+      color: $dark_red_2;
+      margin-bottom: 0;
+    }
+    h5 {
+      font-family: $roboto;
+      color: $red;
+      margin-bottom: 0;
+    }
+
+    hr {
+      background: $dark-gray;
+      margin: 13px 0;
+      width: 300px;
+    }
+    .designation {
+      margin-top: -15px;
+      font-family: $balingerBold;
+      font-weight: 700;
+      color: $dark_red_2;
+      line-height: 28.24px;
+      font-size: 20px;
+    }
+    .social {
+      > li {
+        > a {
+          height: 33px;
+          width: 33px;
+          transition: all 0.5s ease;
+          color: $white;
+          &:hover,
+          &:focus {
+            background-color: $white;
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+  .authorDescription {
+    p {
+      padding-top: 10px;
+      font-family: $roboto;
+      font-weight: 500;
+      min-height: 200px;
+      font-size: 13px;
+      line-height: 16.73px;
+    }
   }
 }
 
@@ -115,97 +176,5 @@ figure {
   }
   &:hover {
     color: $white;
-  }
-}
-.authorDetail {
-  h1 {
-    font-family: $balingerBold;
-    font-size: 42px;
-    line-height: 56.57px;
-    letter-spacing: -0.015em;
-    color: $dark-gray;
-    margin-bottom: 0;
-    margin-top: -15px;
-    font-weight: 700;
-    padding: 8px 0 8px;
-  }
-  .about {
-    font-family: $roboto;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16.41px;
-    color: $dark_red_2;
-    margin-bottom: 0;
-  }
-  h5 {
-    font-family: $roboto;
-    color: $red;
-    margin-bottom: 0;
-  }
-
-  hr {
-    background: $dark-gray;
-    margin: 13px 0;
-    width: 300px;
-  }
-  .designation {
-    margin-top: -15px;
-    font-family: $balingerBold;
-    font-weight: 700;
-    color: $dark_red_2;
-    line-height: 28.24px;
-    font-size: 20px;
-  }
-  .social {
-    > li {
-      > a {
-        height: 33px;
-        width: 33px;
-        transition: all 0.5s ease;
-        color: $white;
-        &:hover,
-        &:focus {
-          background-color: $white;
-          color: $red;
-        }
-      }
-    }
-  }
-  .authorTop{
-    margin-left: -55px;
-  }
-}
-
-.c-card-box--section {
-  .c-card-box--wrapper {
-    .c-card-box--contentRow {
-      background-color: $white_3;
-    }
-  }
-  .c-card-box--row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 235px;
-    p {
-      margin-left: 200px;
-      padding-left: 240px;
-      padding-top: 10px;
-      font-family: $roboto;
-      font-weight: 500;
-    }
-  }
-  .c-card-box-description {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    p {
-      margin-left: 200px;
-      padding-left: 240px;
-      padding-top: 10px;
-      font-family: $roboto;
-      font-weight: 500;
-      min-height: 200px;
-    }
   }
 }
