@@ -72,10 +72,6 @@ img {
     img {
       display: block;
       width: 100%;
-      @include desk-lg-below1 {
-        min-height: 534px;
-        object-fit: cover;
-      }
     }
   }
 }

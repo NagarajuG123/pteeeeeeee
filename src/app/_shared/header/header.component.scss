@@ -359,6 +359,9 @@ header {
         @include desk-lg-below3 {
           height: 550px;
         }
+        @include tablet-landscape{
+          height: 700px;
+        }
       }
     }
 
