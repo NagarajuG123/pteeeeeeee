@@ -16,20 +16,9 @@
           [formGroup]="searchForm"
           (ngSubmit)="onSearchBannerSubmit(searchForm)"
         >
-          <div class="form-group d-block">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search"
-              [formControl]="searchForm.controls['searchInput']"
-            />
-            <button
-              type="button"
-              class="d-block text-center"
-              (click)="onSearchBannerSubmit(searchForm)"
-            >
-              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
-            </button>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
+            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
           </div>
         </form>
         <div class="py-3 filter-section">
@@ -77,47 +66,32 @@
               </li>
             </ul>
           </div>
+
           <div class="sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
             <ul class="d-flex text-center justify-content-center">
-              <li class="px-2">
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_author"
-                    (change)="onChangeFilter('author')"
-                  />
-                  <span class="keyFilter">BY AUTHOR</span>
+              <li class="form-check px-2">
+                <input class="form-check-input" type="checkbox" [checked]="by_author" (change)="onChangeFilter('author')" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  BY AUTHOR
                 </label>
               </li>
-              <li class="px-2">
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_title"
-                    (change)="onChangeFilter('title')"
-                  />
-                  <span class="keyFilter">BY TITLE</span>
+              <li class="form-check px-2">
+                <input class="form-check-input" [checked]="by_title" type="checkbox"  (change)="onChangeFilter('title')" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  BY TITLE
                 </label>
               </li>
-              <li class="px-2">
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_desc"
-                    (change)="onChangeFilter('desc')"
-                  />
-                  <span class="keyFilter">BY DESCRIPTION</span>
+              <li class="form-check px-2">
+                <input class="form-check-input" type="checkbox" [checked]="by_desc" (change)="onChangeFilter('desc')" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  BY DESCRIPTION
                 </label>
               </li>
-              <li class="px-2">
-                <label>
-                  <input
-                    type="checkbox"
-                    [checked]="by_keywords"
-                    (change)="onChangeFilter('keyword')"
-                  />
-                  <span class="keyFilter">BY KEYWORDS</span>
+              <li class="form-check px-2">
+                <input class="form-check-input" type="checkbox" [checked]="by_keywords" (change)="onChangeFilter('keyword')" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  BY KEYWORDS
                 </label>
               </li>
             </ul>

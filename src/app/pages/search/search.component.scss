@@ -205,15 +205,18 @@ form {
   @include mobile-portrait {
     display: block !important;
   }
-  .keyFilter {
-    padding-left: 20px;
-    background: url("https://1851-static.s3.amazonaws.com/unchecked.png") no-repeat left 1px;
+  .form-check {
+    .form-check-input{
+      margin-top: 0;
+      margin-left: 0;
+    }
   }
-  input {
-    display: none;
+  .form-check-input:checked {
+    background-color: $dark_red_2;
+    border-color: $dark_red_2;
   }
-  input:checked + span {
-    background: url("https://1851-static.s3.amazonaws.com/checked.png") no-repeat left 1px;
+  .form-check-label {
+    padding-left: 10px;
   }
   h6,
   span {
@@ -297,4 +300,7 @@ form {
     line-height: 24px;
     color: $dark-gray;
   }
+}
+.input-group-text{
+  background: $dark_red_2;
 }

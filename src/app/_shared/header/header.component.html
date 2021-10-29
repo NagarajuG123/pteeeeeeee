@@ -638,23 +638,10 @@
             [formGroup]="searchForm"
             (ngSubmit)="onSearchSubmit(searchForm, 'header')"
           >
-            <h2>SEARCH 1851 FRANCHISE</h2>
-            <div class="form-group d-block">
-              <input
-                type="text"
-                class="form-control"
-                [placeholder]="'Search'"
-                (keyup)="onKeyUp()"
-                [formControl]="searchForm.controls['searchInput']"
-              />
-              <button
-                type="button"
-                class="d-block text-center"
-                (click)="onSearchSubmit(searchForm, 'header')"
-                data-bs-dismiss="modal"
-              >
-                <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon>
-              </button>
+            <h1>SEARCH 1851 FRANCHISE</h1>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
+              <span class="input-group-text" (click)="onSearchSubmit(searchForm, 'header')"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
             </div>
           </form>
           <h5>MOST RECENT MATCHES</h5>

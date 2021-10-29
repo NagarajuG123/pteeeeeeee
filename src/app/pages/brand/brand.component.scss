@@ -41,6 +41,9 @@ a {
     @include tablet-landscape2 {
       top: 25%;
     }
+    @include tablet-portrait {
+      width: 50%;
+    }
     @include mobile-portrait {
       width: 60%;
     }
@@ -88,6 +91,11 @@ a {
       text-align: left;
       padding-right: 25%;
     }
+  }
+  img{
+    @include mobile-portrait{
+      height: 300px;
+    } 
   }
 }
 
