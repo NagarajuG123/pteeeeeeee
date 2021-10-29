@@ -22,8 +22,8 @@
                 {{ author?.data?.first_name }} {{ author?.data?.last_name }}
               </h1>
               <h5 class="designation">{{ author?.data?.designation }}</h5>
+              <hr />
             </div>
-            <hr />
 
             <ul class="social d-flex p-0" *ngIf="author?.data">
               <li *ngFor="let item of author?.data?.socialMedia; index as i">
