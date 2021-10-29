@@ -39,62 +39,24 @@
             <h6 class="pb-0 mb-1">Click all of which apply to you:</h6>
             <ul class="pl-2">
               <li>
-                <div class="form-group">
-                  <label for="current" class="radio_btns1">
-                    <input
-                      type="checkbox"
-                      class="text-field"
-                      id="current"
-                      [formControl]="contactForm.controls['currentFranchisee']"
-                      (change)="toggleCurrent($event)"
-                    />
-                    <span>Current Franchisee</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"  [formControl]="contactForm.controls['currentFranchisee']" (change)="toggleCurrent($event)" id="current">
+                  <label class="form-check-label">
+                    Current Franchisee
                   </label>
                   <div class="editors-details current-details">
                     <strong class="d-block">Number of Units</strong>
                     <ul class="pl-3">
                       <li class="d-inline-block">
-                        <label for="units" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="units"
-                            name="unit"
-                            class="unit"
-                            value="1-10"
-                            [formControl]="
-                              contactForm.controls[
-                                'currentFranchiseeOwnsUp10units'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'currentFranchiseeOwns10Plusunits'
-                              ].setValue('')
-                            "
-                          />
-                          <span>1-10</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['currentFranchiseeOwnsUp10units']" (click)="contactForm.controls['currentFranchiseeOwns10Plusunits'].setValue('')" id="units" name="unit" value="1-10">
+                        <label class="form-check-label">
+                          1-10
                         </label>
                       </li>
                       <li class="d-inline-block">
-                        <label for="units1" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="units1"
-                            name="unit"
-                            class="unit"
-                            value="10+"
-                            [formControl]="
-                              contactForm.controls[
-                                'currentFranchiseeOwns10Plusunits'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'currentFranchiseeOwnsUp10units'
-                              ].setValue('')
-                            "
-                          />
-                          <span>10+</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['currentFranchiseeOwns10Plusunits']" (click)="contactForm.controls['currentFranchiseeOwnsUp10units'].setValue('')" id="units1" name="unit" value="10+">
+                        <label class="form-check-label">
+                          10+
                         </label>
                       </li>
                     </ul>
@@ -102,18 +64,10 @@
                 </div>
               </li>
               <li>
-                <div class="form-group">
-                  <label for="prospective" class="radio_btns1">
-                    <input
-                      type="checkbox"
-                      class="text-field"
-                      id="prospective"
-                      [formControl]="
-                        contactForm.controls['prospectiveFranchisee']
-                      "
-                      (change)="toggleProspective($event)"
-                    />
-                    <span>Prospective Franchisee</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['prospectiveFranchisee']" (change)="toggleProspective($event)" id="prospective">
+                  <label class="form-check-label">
+                    Prospective Franchisee
                   </label>
                   <div class="editors-details prospective-details">
                     <strong class="d-block"
@@ -121,47 +75,15 @@
                     >
                     <ul class="pl-3">
                       <li class="d-inline-block">
-                        <label for="months" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="months"
-                            name="unit1"
-                            class="unit"
-                            value="Under 6 months"
-                            [formControl]="
-                              contactForm.controls[
-                                'prospectiveFranchiseeUnder6Months'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'prospectiveFranchiseeOver6Months'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Under 6 months</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['prospectiveFranchiseeUnder6Months']" (click)="contactForm.controls['prospectiveFranchiseeOver6Months'].setValue('')" id="months" name="unit1" value="Under 6 months">
+                        <label class="form-check-label">
+                          Under 6 months
                         </label>
                       </li>
                       <li class="d-inline-block">
-                        <label for="months1" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="months1"
-                            name="unit1"
-                            class="unit"
-                            value="Over 6 months"
-                            [formControl]="
-                              contactForm.controls[
-                                'prospectiveFranchiseeOver6Months'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'prospectiveFranchiseeUnder6Months'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Over 6 months</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['prospectiveFranchiseeOver6Months']" (click)="contactForm.controls['prospectiveFranchiseeUnder6Months'].setValue('')" id="months1" name="unit1" value="Over 6 months">
+                        <label class="form-check-label">
+                          Over 6 months
                         </label>
                       </li>
                     </ul>
@@ -169,61 +91,23 @@
                 </div>
               </li>
               <li>
-                <div class="form-group">
-                  <label for="executive" class="radio_btns1">
-                    <input
-                      type="checkbox"
-                      class="text-field checkboxbtn"
-                      id="executive"
-                      [formControl]="contactForm.controls['franchiseExecutive']"
-                      (change)="toggleExecutive($event)"
-                    />
-                    <span>Franchise Executive</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['franchiseExecutive']" (change)="toggleExecutive($event)" id="executive">
+                  <label class="form-check-label">
+                    Franchise Executive
                   </label>
                   <div class="editors-details executive-details">
                     <ul class="pl-3">
                       <li class="d-inline-block">
-                        <label for="leadership" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="leadership"
-                            name="unit2"
-                            class="unit"
-                            value="Executive leadership"
-                            [formControl]="
-                              contactForm.controls[
-                                'franchiseExecutiveLeadership'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'franchiseNonExecutiveLeadership'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Executive leadership</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['franchiseExecutiveLeadership']" (click)="contactForm.controls['franchiseNonExecutiveLeadership'].setValue('')" id="leadership" name="unit2" value="Executive leadership">
+                        <label class="form-check-label">
+                          Executive leadership
                         </label>
                       </li>
                       <li class="d-inline-block">
-                        <label for="leadership1" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="leadership1"
-                            name="unit2"
-                            class="unit"
-                            value="Non-executive leadership"
-                            [formControl]="
-                              contactForm.controls[
-                                'franchiseNonExecutiveLeadership'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'franchiseExecutiveLeadership'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Non-executive leadership</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['franchiseNonExecutiveLeadership']" (click)="contactForm.controls['franchiseExecutiveLeadership'].setValue('')" id="leadership1" name="unit2" value="Non-executive leadership">
+                        <label class="form-check-label">
+                          Non-executive leadership
                         </label>
                       </li>
                     </ul>
@@ -231,61 +115,23 @@
                 </div>
               </li>
               <li>
-                <div class="form-group">
-                  <label for="executive1" class="radio_btns1">
-                    <input
-                      type="checkbox"
-                      class="text-field checkboxbtn"
-                      id="executive1"
-                      [formControl]="contactForm.controls['businessExecutive']"
-                      (change)="toggleExecutive1($event)"
-                    />
-                    <span>Business Executive</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['businessExecutive']" (change)="toggleExecutive1($event)" id="executive1">
+                  <label class="form-check-label">
+                    Business Executive
                   </label>
                   <div class="editors-details executive1-details">
                     <ul class="pl-3">
                       <li class="d-inline-block">
-                        <label for="leadership2" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="leadership2"
-                            name="unit3"
-                            class="unit"
-                            value="Executive leadership"
-                            [formControl]="
-                              contactForm.controls[
-                                'businessExecutiveLeadership'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'businessNonExecutiveLeadership'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Executive leadership</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['businessExecutiveLeadership']" (click)="contactForm.controls['businessNonExecutiveLeadership'].setValue('')" id="leadership2" name="unit3" value="Executive leadership">
+                        <label class="form-check-label">
+                          Executive leadership
                         </label>
                       </li>
                       <li class="d-inline-block">
-                        <label for="leadership3" class="radio_btns">
-                          <input
-                            type="radio"
-                            id="leadership3"
-                            name="unit3"
-                            class="unit"
-                            value="Non-executive leadership"
-                            [formControl]="
-                              contactForm.controls[
-                                'businessNonExecutiveLeadership'
-                              ]
-                            "
-                            (click)="
-                              contactForm.controls[
-                                'businessExecutiveLeadership'
-                              ].setValue('')
-                            "
-                          />
-                          <span>Non-executive leadership</span>
+                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['businessNonExecutiveLeadership']" (click)="contactForm.controls['businessExecutiveLeadership'].setValue('')" id="leadership3" name="unit3" value="Non-executive leadership">
+                        <label class="form-check-label">
+                          Non-executive leadership
                         </label>
                       </li>
                     </ul>
@@ -293,29 +139,18 @@
                 </div>
               </li>
               <li>
-                <div class="form-group">
-                  <label for="other" class="radio_btns1">
-                    <input
-                      type="checkbox"
-                      class="text-field checkboxbtn"
-                      id="other"
-                      [formControl]="contactForm.controls['other']"
-                      (change)="toggleOther($event)"
-                    />
-                    <span>Other</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['other']" (change)="toggleOther($event)" id="other">
+                  <label class="form-check-label">
+                    Other
                   </label>
                 </div>
               </li>
               <li>
                 <div *ngIf="isCheckBoxVisible" class="signmeup">
-                  <label for="news" class="checks">
-                    <input
-                      type="checkbox"
-                      class="text-field"
-                      id="news"
-                      [formControl]="contactForm.controls['signUpNewsletter']"
-                    />
-                    <span>Sign me up for the 1851 newsletter</span>
+                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['signUpNewsletter']" id="news">
+                  <label class="form-check-label">
+                    Sign me up for the 1851 newsletter
                   </label>
                 </div>
               </li>
