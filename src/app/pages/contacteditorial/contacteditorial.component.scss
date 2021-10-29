@@ -101,7 +101,6 @@ figure {
 
   input {
     font-family: $proxiRegular;
-    height: 44px;
     border: 1px solid $light_gray_2;
     font-size: 16px;
     line-height: 44px;
@@ -237,30 +236,16 @@ h6 {
   label {
     margin: 0;
   }
-  input {
-    display: none;
-  }
-  .radio_btns1 {
+  .d-inline-block{
     color: $dark_gray_1;
   }
-  span {
+  label {
     font-size: 15px;
     line-height: 19px;
     font-weight: normal;
     font-family: $proxiMedium;
-    background: url("https://1851-static.s3.amazonaws.com/unchecked.png")
-      no-repeat left 1px;
-    padding: 0 0 0 25px;
     letter-spacing: 0.4px;
   }
-  .editors-details input:checked + span {
-    background: url("https://1851-static.s3.amazonaws.com/checked1.png")
-      no-repeat left 1px;
-  }
-}
-.contact-editorial-main input:checked + span {
-  background: url("https://1851-static.s3.amazonaws.com/checked.png") no-repeat
-    left 1px;
 }
 .editors-details {
   padding: 8px 20px 0 46px;
@@ -283,10 +268,8 @@ h6 {
   .radio_btns {
     color: $light_gray;
   }
-  span {
-    background: url("https://1851-static.s3.amazonaws.com/unchecked1.png")
-      no-repeat left 1px;
-    padding: 0 0 0 17px;
+  label {
+    padding: 0 0 0 10px;
     font-size: 11px;
     line-height: 17px;
     font-weight: normal;
@@ -402,4 +385,13 @@ h6 {
   @include mobile-portrait {
     width: 274px;
   }
+}
+.form-check-input:checked {
+  background-color: $dark_red_2;
+  border-color: $dark_red_2;
+}
+.d-inline-block{
+  .form-check-input {
+    margin-left: 0;
+   }
 }
