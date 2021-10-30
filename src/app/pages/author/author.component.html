@@ -1,56 +1,55 @@
-<div class="c-card-box--section sidebar-blur">
-  <div class="c-card-box--wrapper">
-    <div class="authorDetail c-card-box--row c-card-box--contentRow">
-      <div class="container customContainer">
-        <div class="d-flex col">
-          <div class="col-md-5 col-sm-6 py-4 px-4">
-            <figure>
-              <img
-                *ngIf="author?.data"
-                appYoutubeImage
-                src="{{ author?.data?.media | defaultImage: 298:297 }}"
-                width="298"
-                height="297"
-                alt="authorpage"
-              />
-            </figure>
-          </div>
-          <div class="col-md-7 col-sm-6 py-5 authorTop">
-              <span class="about">ABOUT</span>
-              <h1>
-                {{ author?.data?.first_name }} {{ author?.data?.last_name }}
-              </h1>
-              <h5 class="designation">{{ author?.data?.designation }}</h5>
-              <hr />
+<div class="authorSection">
+  <div class="sidebar-blur authorDetail">
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col-md-5 col-sm-6 py-4 px-4">
+          <figure>
+            <img
+              *ngIf="author?.data"
+              appYoutubeImage
+              src="{{ author?.data?.media | defaultImage: 298:297 }}"
+              width="298"
+              height="297"
+              alt="authorpage"
+            />
+          </figure>
+        </div>
+        <div class="col-md-7 col-sm-6 py-5 px-4">
+          <span class="about">ABOUT</span>
+          <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+          <h5 class="designation">{{ author?.data?.designation }}</h5>
+          <hr />
 
-            <ul class="social d-flex p-0" *ngIf="author?.data">
-              <li *ngFor="let item of author?.data?.socialMedia; index as i">
-                <a
-                  *ngIf="item.title !== 'Email'"
-                  href="{{ item?.url }}"
-                  target="blank"
-                  class="
-                    rounded-circle
-                    d-flex
-                    justify-content-center
-                    align-items-center
-                    me-1
-                    primary-bg
-                  "
-                >
-                  <fa-icon
-                    [icon]="socialIcons[item.index]"
-                    class="searchIcon"
-                  ></fa-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <ul class="social d-flex p-0" *ngIf="author?.data">
+            <li *ngFor="let item of author?.data?.socialMedia; index as i">
+              <a
+                *ngIf="item.title !== 'Email'"
+                href="{{ item?.url }}"
+                target="blank"
+                class="
+                  rounded-circle
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  me-1
+                  primary-bg
+                "
+              >
+                <fa-icon
+                  [icon]="socialIcons[item.index]"
+                  class="searchIcon"
+                ></fa-icon>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="c-card-box-description">
-      <div class="container customContainer">
+  </div>
+  <div class="container customContainer authorDescription">
+    <div class="row">
+      <div class="col-md-5 col-sm-6 px-4"></div>
+      <div class="col-md-7 col-sm-6 px-4">
         <p [innerHtml]="author?.data?.about"></p>
       </div>
     </div>

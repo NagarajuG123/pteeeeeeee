@@ -134,7 +134,8 @@
                   (click)="commonService.toggle()"
                 >
                   <img
-                    data-src="{{ header?.monthlyCover?.url }}"
+                    appYoutubeImage
+                    data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
                     width="97"
                     height="127"
                     alt="monthly "
@@ -603,8 +604,9 @@
               <img
                 routerLink="{{ header?.monthlyCover?.coverUrl }}"
                 (click)="closeSidebar()"
-                data-src="{{ header?.monthlyCover?.url }}"
-                width="119"
+                appYoutubeImage
+                data-src="{{ header?.monthlyCover | defaultImage: 90:120 }}"
+                width="90"
                 height="120"
                 alt="Monthly"
                 class="lazyload"
@@ -640,8 +642,18 @@
           >
             <h1>SEARCH 1851 FRANCHISE</h1>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
-              <span class="input-group-text" (click)="onSearchSubmit(searchForm, 'header')"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                [formControl]="searchForm.controls['searchInput']"
+              />
+              <span
+                class="input-group-text"
+                (click)="onSearchSubmit(searchForm, 'header')"
+              >
+                <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon
+              ></span>
             </div>
           </form>
           <h5>MOST RECENT MATCHES</h5>

@@ -1321,6 +1321,11 @@ button.close {
       height: 25px;
     }
   }
+  .mapcontainer {
+    @include mobile-portrait {
+      padding: 0 20px;
+    }
+  }
 }
 
 .question-container {
