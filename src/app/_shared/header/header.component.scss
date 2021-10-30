@@ -870,3 +870,15 @@ button.close {
 .input-group-text{
   background: $dark_red_2;
 }
+@include tablet-portrait{
+  .col-md-auto {
+    flex: 0 0 33.33% !important;
+    max-width: 33.33% !important;
+  }
+}
+@include desk-lg-below3{
+  .col-md-auto {
+    flex: 0 0 33.33% !important;
+    max-width: 33.33% !important;
+  }
+}

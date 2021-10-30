@@ -56,7 +56,7 @@
 
     <!-- main header section Start -->
     <main class="container">
-      <div class="row g-0 align-items-center">
+      <div class="d-flex g-0 align-items-center">
         <div class="col-3 col-md-auto d-flex position-relative leftMenuItem">
           <button
             class="menuBtn me-3"
@@ -461,59 +461,60 @@
           *ngIf="brandSlug === '1851'"
           class="col-9 col-md-auto centerMenuItem"
         >
-          <ul class="center-menu nav justify-content-center">
-            <li
-              class="nav-item px-1 px-md-3 menus"
-              *ngFor="let menu of header?.menus"
-            >
-              <a
-                [routerLink]="menu.url"
-                class="d-flex align-items-center"
-                (click)="closeSidebar()"
-                >{{ menu.title }}
-              </a>
-            </li>
-            <li class="nav-item px-3 subscribeMenu">
-              <a
-                routerLink="/subscribe"
-                class="d-flex align-items-center"
-                (click)="closeSidebar()"
-                >Subscribe
-              </a>
-            </li>
-            <li
-              class="actions nav-item mx-2 px-3"
-              *ngFor="let action of header?.actions; index as i"
-            >
-              <a class="d-flex align-items-center" (click)="closeSidebar()"
-                >{{ action.title }}
-                <img
-                  data-src="{{ s3Url }}down-arrow.svg"
-                  height="12"
-                  width="12"
-                  alt="down-arrow"
-                  class="ms-1 lazyload"
-              /></a>
-              <ul class="dropdown-menu">
-                <li *ngFor="let item of action.items">
-                  <a
-                    class="dropdown-item"
-                    [href]="item.url"
-                    (click)="closeSidebar()"
-                    >{{ item?.title }}</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div
+          <nav class="px-3">
+            <ul class="center-menu nav justify-content-center">
+              <li
+                class="nav-item px-1 menus"
+                *ngFor="let menu of header?.menus"
+              >
+                <a
+                  [routerLink]="menu.url"
+                  class="d-flex align-items-center"
+                  (click)="closeSidebar()"
+                  >{{ menu.title }}
+                </a>
+              </li>
+              <li class="nav-item px-3 subscribeMenu">
+                <a
+                  routerLink="/subscribe"
+                  class="d-flex align-items-center"
+                  (click)="closeSidebar()"
+                  >Subscribe
+                </a>
+              </li>
+              <li
+                class="actions nav-item mx-2 "
+                *ngFor="let action of header?.actions; index as i"
+              >
+                <a class="d-flex align-items-center" (click)="closeSidebar()"
+                  >{{ action.title }}
+                  <img
+                    data-src="{{ s3Url }}down-arrow.svg"
+                    height="12"
+                    width="12"
+                    alt="down-arrow"
+                    class="ms-1 lazyload"
+                /></a>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let item of action.items">
+                    <a
+                      class="dropdown-item"
+                      [href]="item.url"
+                      (click)="closeSidebar()"
+                      >{{ item?.title }}</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div
           class="col d-none d-md-block"
           *ngIf="brandSlug !== '1851'"
           (click)="closeSidebar()"
         >
           <ul class="center-menu nav justify-content-center">
-            <li class="nav-item mt-1 px-1 px-md-3">
+            <li class="nav-item mt-1 px-1">
               <a
                 [routerLink]="header?.menus?.url"
                 (click)="closeSidebar()"
@@ -552,6 +553,8 @@
             </li>
           </ul>
         </div>
+        </div>
+        
 
         <div class="col col-sm-auto d-flex align-items-center pe-lg-5">
           <!-- Search bar -->
