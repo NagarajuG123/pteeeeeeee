@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
+import { makeStateKey } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
@@ -41,7 +41,6 @@ export class ContacteditorialComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
     private apiService: ApiService,
-    private tstate: TransferState,
     private metaService: MetaService,
     @Inject(PLATFORM_ID) platformId: Object,
     fb: FormBuilder

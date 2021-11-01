@@ -7,7 +7,6 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
@@ -47,7 +46,6 @@ export class CategoryComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
-    private state: TransferState,
     public commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router,
