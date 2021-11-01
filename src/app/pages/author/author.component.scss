@@ -101,6 +101,11 @@ figure {
       line-height: 16.73px;
     }
   }
+  .details{
+    @include mobile-landscape{
+      padding-bottom: 0 !important;
+    }
+  }
 }
 
 /* editorial-stories */
