@@ -18,7 +18,6 @@ export class SitemapComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
-    private route: ActivatedRoute,
     private router: Router
   ) {
     this.router.events.subscribe((events) => {
