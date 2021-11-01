@@ -20,7 +20,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 
 @Component({

@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, map, takeUntil } from 'rxjs/operators';
-import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
@@ -61,13 +60,11 @@ export class ItemComponent implements OnInit {
   url: string;
   shareDescription: string;
   shareHashtags: string;
-  shareVia: string;
   scrollbarOptions: any;
   openVideoPlayer = false;
   sponsorship = false;
   sponsorship_position: string;
   isViewComment: boolean;
-  facebookHTML = '';
   full_url;
   slideConfig: any;
   isBrand: boolean;
@@ -76,7 +73,6 @@ export class ItemComponent implements OnInit {
   default_fb_url: string;
   isDefault_fb = false;
   brand_id: string;
-  isMaxresultImg: Boolean = true;
   sponsorContent = false;
   storyContent: any;
   mainNews: any;
