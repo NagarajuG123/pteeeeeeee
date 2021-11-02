@@ -375,7 +375,7 @@ p {
     line-height: 20px;
     color: $light_gray_1;
     height: 39px;
-    border: 1px solid $light_gray_1;
+    border: 1px solid $white_5;
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
@@ -387,6 +387,7 @@ p {
     font-size: 16px;
     line-height: 20px;
     border: 1px solid $white_5;
+    color: $light_gray_1;
 
     &::placeholder {
       text-transform: uppercase;
