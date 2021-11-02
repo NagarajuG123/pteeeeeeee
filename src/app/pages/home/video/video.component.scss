@@ -9,7 +9,7 @@
     display: none;
   }
   .carousel-inner .carousel-item > div:first-child {
-    display: block;
+    display: block;  
   }
 }
 
@@ -36,6 +36,7 @@
 .carousel-inner .carousel-item-start {
   transform: translateX(0);
 }
+
 img {
   width: 100%;
 }
@@ -173,8 +174,40 @@ img {
 }
 .c-video-slider--wrapper {
   margin-top: 40px;
-  .carousel {
-    // padding: 0 30px;
+  .carousel-inner{
+    > .item{
+      transition: transform 500ms ease-in-out left;
+
+    }
+    .active{
+      &.left{
+        left:-33%;
+      }
+      &.right{
+        left:33%;
+      }
+    }
+    .next{
+      left: 33%;
+    }
+  
+  }
+  .carouse-control{
+    &.left, &.right{
+      background-image: none;
+    }
+  }
+  .carousel-control-prev{
+    top: 25%;
+    bottom: 50%;
+    justify-content: left;
+    margin-left:-20px;
+  }
+  .carousel-control-next{
+    top: 25%;
+    bottom: 50%;
+    justify-content: right;
+    margin-right:-20px;
   }
 }
 

@@ -60,27 +60,32 @@ export class VideoComponent implements OnInit {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
       });
-      let items = document.querySelectorAll('.carousel .carousel-item');
+      const minPerSlide = 4;
+      const parent = document.querySelector(".carousel-inner");
 
-      items.forEach((el) => {
-        const minPerSlide = 4;
-        let next = el.nextElementSibling;
-        for (var i = 1; i < minPerSlide; i++) {
-          if (!next) {
-            // wrap carousel by using first child
-            next = items[0];
-          }
-          // let cloneChild = next.cloneNode(true);
-          // el.appendChild(cloneChild.children[0]);
-          // next = next.nextElementSibling;
+      document.querySelectorAll('.carousel-item').forEach(function(item) {
+      let next = item.nextElementSibling;
+      if (!next) {
+        next = parent.querySelector(".carousel-item");
+      }
+      let clone = next.querySelector("div").cloneNode(true);
+      item.appendChild(clone)
+
+      for (var i = 0; i < minPerSlide; i++) {
+        next = next.nextElementSibling;
+        if (!next) {
+          next = parent.querySelector(".carousel-item");
         }
+        clone = next.querySelector("div").cloneNode(true);
+        item.appendChild(clone)
+      }
       });
-    }
-  }
+        }
+      }
   setOption() {
     this.customOptions = {
       autoplay: false,
-      loop: true,
+      loop: false,
       mouseDrag: true,
       touchDrag: true,
       pullDrag: false,
