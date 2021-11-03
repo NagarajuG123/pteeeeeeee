@@ -668,7 +668,6 @@ header {
   }
 
   form {
-    padding: 0 17px 0px 0;
     width: 69%;
     margin: 32px auto 0;
 
@@ -685,7 +684,6 @@ header {
     }
 
     input {
-      height: 50px;
       color: $light_gray_8;
       font-size: 20px;
       font-weight: 500;
@@ -797,10 +795,6 @@ img {
   display: inline-block;
 }
 
-.form-control {
-  border: 1px solid $dark-gray;
-}
-
 select:invalid {
   color: $light_gray_8;
 }
@@ -869,4 +863,5 @@ button.close {
 }
 .input-group-text{
   background: $dark_red_2;
+  border-radius: 0;
 }
