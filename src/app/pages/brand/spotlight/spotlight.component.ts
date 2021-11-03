@@ -36,16 +36,16 @@ export class SpotlightComponent implements OnInit {
       `${this.slug}/spotlights/categories`
     );
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
-
+    
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.tabName = results[0].categories;
         this.defaultTab = this.tab = results[0].defaultTab;
-        if (this.tabName && this.tabName.length > 0) {
+        
           this.apiService
             .getAPI(
-              `${this.slug}/spotlight/${this.defaultTab}?limit=${this.tabName.length}&offset=0`
+              `${this.slug}/spotlight/${this.defaultTab}?limit=5&offset=0`
             )
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((result) => {
@@ -56,7 +56,6 @@ export class SpotlightComponent implements OnInit {
               this.items = data;
               this.isLoaded = true;
             });
-        }
       });
   }
   setActiveTab(val: any, item: any) {
@@ -67,7 +66,7 @@ export class SpotlightComponent implements OnInit {
   getData(tabName: any) {
     const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
     this.apiService
-      .getAPI(`${apiUrl}?limit=${this.tabName.length}&offset=0`)
+      .getAPI(`${apiUrl}?limit=5&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];

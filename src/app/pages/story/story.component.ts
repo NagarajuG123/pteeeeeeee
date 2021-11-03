@@ -33,7 +33,6 @@ declare var ga: Function;
 export class StoryComponent implements OnInit {
   detailsData: any[] = [];
   trendingData: any[] = [];
-  adsData: any = [];
   publication: any = [];
   storySlug: any = '';
   storyId: any;
@@ -65,11 +64,9 @@ export class StoryComponent implements OnInit {
   isAuthorPage: boolean = false;
   defaultFbUrl: string;
   fbUrl: string;
-  newsTitle = '';
   isDefaultFb = false;
   isRedirect: boolean;
   isServer: boolean;
-  redirectUrl: string;
   mainNews: any;
   brandNews: any;
 

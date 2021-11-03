@@ -41,16 +41,6 @@ export class TermsofuseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (this.tstate.hasKey(RESULT_KEY)) {
-    //   const termsData = this.tstate.get(RESULT_KEY, {});
-    //   this.termsData = termsData['data'];
-    //   this.metaData = termsData['meta'];
-    //   this.publication = termsData['publication'];
-    //   this.metaService.setSeo(this.metaData);
-    //   this.metaService.setTitle(`Terms of use | ${this.publication}`);
-    // } else {
-    //   const termsData: any = {};
-
     const termsApi = this.apiService.getAPI(`${this.slug}/terms-of-use`);
     const metaApi = this.apiService.getAPI(`${this.slug}/meta`);
     const publicationApi = this.apiService.getAPI(
@@ -66,9 +56,6 @@ export class TermsofuseComponent implements OnInit {
         this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(`Terms of use | ${this.publication}`);
       });
-
-    //   this.tstate.set(RESULT_KEY, termsData);
-    // }
   }
   ngAfterViewInit() {
     if (this.isBrowser) {

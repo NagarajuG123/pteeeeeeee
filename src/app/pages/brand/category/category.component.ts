@@ -7,7 +7,6 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
@@ -16,6 +15,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-category',
@@ -39,13 +39,13 @@ export class CategoryComponent implements OnInit {
   description: string;
   banner: string;
   isLoaded: boolean;
+  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
-    private state: TransferState,
     public commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router,

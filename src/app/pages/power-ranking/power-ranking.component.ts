@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { makeStateKey, Meta, TransferState } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Brandsrank } from 'src/app/_core/models/brandsrank.model';

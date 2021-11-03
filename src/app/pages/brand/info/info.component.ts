@@ -36,8 +36,6 @@ export class InfoComponent implements OnInit {
   brandInfo: any = [];
   items: any;
   tab: any;
-  showToast: boolean = false;
-  responseMessage: any;
   logo: string;
   featured: Details[] = [];
   trending: Details[] = [];
@@ -55,10 +53,6 @@ export class InfoComponent implements OnInit {
   company!: string;
   isCategory!: boolean;
   isInfoPage!: boolean;
-  mostRecent: any;
-  brandTrending: any;
-  brandMostRecent: any;
-  brandFeaturedUrl: any;
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
   emailSubValid: boolean = false;
@@ -71,6 +65,7 @@ export class InfoComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
   categorySlug: string;
+  
   constructor(
     public commonService: CommonService,
     private apiService: ApiService,
