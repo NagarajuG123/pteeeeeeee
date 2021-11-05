@@ -2,18 +2,7 @@
   <div class="sidebar-blur authorDetail">
     <div class="container customContainer">
       <div class="row">
-        <div class="col-md-5 col-sm-6 py-4 px-4">
-          <figure>
-            <img
-              *ngIf="author?.data"
-              appYoutubeImage
-              src="{{ author?.data?.media | defaultImage: 298:297 }}"
-              width="298"
-              height="297"
-              alt="authorpage"
-            />
-          </figure>
-        </div>
+        <div class="col-md-5 col-sm-6 py-4 px-4"></div>
         <div class="col-md-7 col-sm-6 py-5 px-4 details">
           <span class="about">ABOUT</span>
           <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
@@ -46,12 +35,24 @@
       </div>
     </div>
   </div>
-  <div class="container customContainer authorDescription">
+  <div class="container customContainer authorDescription position-relative">
     <div class="row">
       <div class="col-md-5 col-sm-6 px-4"></div>
       <div class="col-md-7 col-sm-6 px-4">
         <p [innerHtml]="author?.data?.about"></p>
       </div>
+    </div>
+    <div class="position-absolute authorProfile">
+      <figure>
+        <img
+          *ngIf="author?.data"
+          appYoutubeImage
+          src="{{ author?.data?.media | defaultImage: 298:297 }}"
+          width="298"
+          height="297"
+          alt="authorpage"
+        />
+      </figure>
     </div>
   </div>
 </div>
