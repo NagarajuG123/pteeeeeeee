@@ -173,11 +173,22 @@ img {
   }
 }
 .c-video-slider--wrapper {
+
   margin-top: 40px;
+  @include tablet-landscape1
+  { 
+    margin-left: 50px;
+  }
   .carousel-inner{
     > .item{
       transition: transform 500ms ease-in-out left;
-
+    @include tablet-landscape1 
+    {
+      display: flex;
+      align-items: center;
+     }
+    
+    
     }
     .active{
       &.left{
@@ -198,18 +209,41 @@ img {
     }
   }
   .carousel-control-prev{
+    @include tablet-landscape1
+    { 
+      bottom:100%;
+    }
     top: 25%;
     bottom: 50%;
     justify-content: left;
     margin-left:-20px;
   }
   .carousel-control-next{
+    @include tablet-landscape1
+    { 
+      margin-right:70px;
+      bottom:100%;
+    }
+    @media (min-width:360px) and (max-width:800px) 
+    
+    {
+      margin-right:70px;
+      justify-content: right;
+    }
+    @media only screen and (min-width: 375px) and (max-width: 954px) {  
+        float:left;
+        left: 250px;
+        justify-content: right;
+        bottom: 80px;
+        top: -50px
+    }
     top: 25%;
     bottom: 50%;
     justify-content: right;
     margin-right:-20px;
   }
 }
+
 
 .video-btn {
   cursor: pointer;
@@ -241,10 +275,12 @@ img {
   padding-left: 6px;
   padding-right: 6px;
   min-height: 131px;
+
 }
 @include mobile-landscape {
   .video-img {
     width: 280px !important;
+    align-items: center;
   }
   .c-video-section--title {
     margin-left: 40px;
