@@ -306,6 +306,7 @@
                       my-1
                       text-capitalize
                     "
+                    (click)="commonService.toggle()"
                     [href]="header?.sidebar?.website"
                     target="_blank"
                     >Visit Website
@@ -330,6 +331,7 @@
                       my-1
                       text-capitalize
                     "
+                    (click)="commonService.toggle()"
                     [href]="item.url"
                     target="_blank"
                     rel="noopener"
@@ -483,7 +485,7 @@
                 </a>
               </li>
               <li
-                class="actions nav-item mx-2 "
+                class="actions nav-item mx-2"
                 *ngFor="let action of header?.actions; index as i"
               >
                 <a class="d-flex align-items-center" (click)="closeSidebar()"
@@ -509,54 +511,53 @@
             </ul>
           </nav>
         </div>
-          <div
+        <div
           class="col d-none d-md-block"
           *ngIf="brandSlug !== '1851'"
           (click)="closeSidebar()"
         >
-        <nav>
-          <ul class="center-menu nav justify-content-center">
-            <li class="nav-item mt-1 px-1">
-              <a
-                [routerLink]="header?.menus?.url"
-                (click)="closeSidebar()"
-                class="d-flex align-items-center"
-                >{{ header?.menus?.title }}
-              </a>
-            </li>
-            <li *ngIf="header?.inquire" class="nav-item mt-1 px-2">
-              <a
-                href="#"
-                onclick="return false;"
-                class="d-flex align-items-center"
-                data-bs-toggle="modal"
-                data-bs-target="#inquireModal"
-              >
-                {{ header?.inquire }}
-              </a>
-            </li>
-            <li class="nav-item mx-2 px-2 mt-1">
-              <a class="d-flex align-items-center"
-                >{{ header?.actions?.title }}
-                <img
-                  data-src="{{ s3Url }}down-arrow.svg"
-                  height="12"
-                  width="12"
-                  class="ms-1 lazyload"
-                  alt="down"
-              /></a>
-              <ul class="dropdown-menu">
-                <li *ngFor="let item of header?.actions?.items">
-                  <a class="dropdown-item" [href]="item.url">{{
-                    item?.title
-                  }}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+          <nav>
+            <ul class="center-menu nav justify-content-center">
+              <li class="nav-item mt-1 px-1">
+                <a
+                  [routerLink]="header?.menus?.url"
+                  (click)="closeSidebar()"
+                  class="d-flex align-items-center"
+                  >{{ header?.menus?.title }}
+                </a>
+              </li>
+              <li *ngIf="header?.inquire" class="nav-item mt-1 px-2">
+                <a
+                  href="#"
+                  onclick="return false;"
+                  class="d-flex align-items-center"
+                  data-bs-toggle="modal"
+                  data-bs-target="#inquireModal"
+                >
+                  {{ header?.inquire }}
+                </a>
+              </li>
+              <li class="nav-item mx-2 px-2 mt-1">
+                <a class="d-flex align-items-center"
+                  >{{ header?.actions?.title }}
+                  <img
+                    data-src="{{ s3Url }}down-arrow.svg"
+                    height="12"
+                    width="12"
+                    class="ms-1 lazyload"
+                    alt="down"
+                /></a>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let item of header?.actions?.items">
+                    <a class="dropdown-item" [href]="item.url">{{
+                      item?.title
+                    }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
         </div>
-        
 
         <div class="col col-sm-auto d-flex align-items-center pe-lg-5">
           <!-- Search bar -->
