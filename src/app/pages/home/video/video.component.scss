@@ -179,6 +179,17 @@ img {
   { 
     margin-left: 50px;
   }
+  @include desk-lg-below3
+  {
+    margin-top: 30px;
+    padding-left: 15px;
+    padding-right:30px;
+  }
+  @media (min-width: 800px) and (max-width: 1085px)
+  {
+    padding-right:50px;
+  }
+
   .carousel-inner{
     > .item{
       transition: transform 500ms ease-in-out left;
@@ -213,6 +224,12 @@ img {
     { 
       bottom:100%;
     }
+    @include desk-lg-below3
+    {top: 15%;
+      bottom: 50%;
+      justify-content: left;
+      margin-left:-10px;
+    }
     top: 25%;
     bottom: 50%;
     justify-content: left;
@@ -230,12 +247,33 @@ img {
       margin-right:70px;
       justify-content: right;
     }
-    @media only screen and (min-width: 375px) and (max-width: 954px) {  
+    @media (min-width: 375px) and (max-width: 954px) {  
         float:left;
         left: 250px;
         justify-content: right;
         bottom: 80px;
         top: -50px
+    }
+    @media (min-width: 1024px) and (max-width: 1365px)
+    {
+      background-color:sandybrown;
+      right:150px;
+      top: -10px;
+      bottom: 80px;
+      justify-content: right;
+      margin-left:-10px;
+    }
+    @media (min-width: 750px) and (max-width: 1024px) {  
+      left:460px;
+      margin-left: 250px;
+      background-color:rgb(235, 69, 19);
+      top: -10px;
+      bottom: 80px;
+    }
+    @media (min-width: 800px) and (max-width: 1085px)
+    {
+      background-color:rgb(1, 155, 53);
+      right:100px;
     }
     top: 25%;
     bottom: 50%;
