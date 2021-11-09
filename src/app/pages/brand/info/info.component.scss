@@ -487,8 +487,8 @@
       &.active,
       &:hover {
         color: $red;
-
-        &::after {
+       
+        &::after {            
           content: "";
           height: 7px;
           position: absolute;
@@ -497,6 +497,11 @@
           border-width: 16px 16px 0 16px;
           border-style: solid;
           border-color: $red transparent transparent transparent;
+          @include mobile-portrait2
+           {
+            display: flex;
+            left:50px;
+          }
         }
 
         &::before {
@@ -507,6 +512,7 @@
           width: 100%;
           background-color: $red;
         }
+      
       }
     }
 
