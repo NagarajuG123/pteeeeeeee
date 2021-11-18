@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.1851franchise.com/v1',
-  api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
+  api2Url: 'https://api2.1851franchise.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   port: 4200,
   imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
@@ -15,6 +15,9 @@ export const environment = {
   room1903Url: 'https://room1903.com/',
   eeUrl: 'https://estatenvy.com/',
   enableSW: false,
+  env: 'local',
+  sentryDsn:
+    'https://ab986fe6fce04ddebd8785260a08f048@o1061606.ingest.sentry.io/6052001',
 };
 
 /*

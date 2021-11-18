@@ -34,6 +34,16 @@ figure {
   }
 }
 .authorSection {
+  .authorProfile {
+    bottom: 50%;
+    left: 10%;
+    @include mobile-landscape {
+      position: static !important;
+    }
+    @include mobile-portrait {
+      position: static !important;
+    }
+  }
   .authorDetail {
     background-color: $white_3;
 
@@ -75,6 +85,7 @@ figure {
       line-height: 28.24px;
       font-size: 20px;
     }
+
     .social {
       > li {
         > a {
@@ -101,8 +112,8 @@ figure {
       line-height: 16.73px;
     }
   }
-  .details{
-    @include mobile-landscape{
+  .details {
+    @include mobile-landscape {
       padding-bottom: 0 !important;
     }
   }
