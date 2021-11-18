@@ -36,7 +36,7 @@
 }
 /*-- media query for tablet */
 @mixin tablet-portrait {
-  @media (min-width:768px) and (max-width: 991px) {
+  @media (min-width: 768px) and (max-width: 991px) {
     @content;
   }
 }
@@ -83,8 +83,8 @@
     @content;
   }
 }
-  @mixin mobile-portrait2 {
-    @media (max-width: 736px) {
-      @content;
-    }
+@mixin mobile-portrait2 {
+  @media (min-width: 390px) and (max-width: 900px) {
+    @content;
+  }
 }

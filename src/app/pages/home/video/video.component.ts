@@ -50,7 +50,7 @@ export class VideoComponent implements OnInit {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
       });
-      const minPerSlide = 4;
+      const minPerSlide = 5;
       const parent = document.querySelector('.carousel-inner');
 
       document.querySelectorAll('.carousel-item').forEach(function (item) {
