@@ -12,7 +12,7 @@
               Featured Article
             </div>
             <a
-              routerLink="/{{ commonService.readMore(featured) }}"
+              routerLink="/{{ commonService.readMore(featured[0]) }}"
               fragment="featured"
             >
               <img
@@ -20,10 +20,10 @@
                 class="lazyload"
                 alt="featured"
                 loading="lazy"
-                data-srcset="{{ featured.media | defaultImage: 600:337 }} 600w,
-                        {{ featured.media | defaultImage: 700:393 }} 700w,
-                        {{ featured.media | defaultImage: 800:449 }} 800w,
-                        {{ featured.media | defaultImage: 688:386 }} 688w"
+                data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
+                        {{ featured[0].media | defaultImage: 700:393 }} 700w,
+                        {{ featured[0].media | defaultImage: 800:449 }} 800w,
+                        {{ featured[0].media | defaultImage: 688:386 }} 688w"
                 data-sizes="{{
                   '(max-width: 576px) 600px,
                         (max-width: 768px) 800px,
@@ -36,9 +36,9 @@
                 data-src="{{ featured.media | defaultImage: 688:386 }}"
               />
               <h2 class="over-layer bottom-0 w-100">
-                {{ featured.title }}
+                {{ featured[0].title }}
               </h2>
-              <span class="timeStamp"> {{ featured.posted_on }} </span>
+              <span class="timeStamp"> {{ featured[0].posted_on }} </span>
             </a>
           </div>
       </div>

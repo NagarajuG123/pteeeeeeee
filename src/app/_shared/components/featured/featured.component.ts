@@ -31,7 +31,7 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit(): void {
     const featureApi = this.apiService.getAPI(
-      `${this.apiUrl}?limit=4&offset=0`
+      `${this.apiUrl}?limit=1&offset=0`
     );
     const newsApi = this.apiService.getAPI(
       `${this.slug}/spotlight/industry?limit=4&offset=0`
@@ -43,7 +43,7 @@ export class FeaturedComponent implements OnInit {
     forkJoin([featureApi, newsApi, brandNews])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
-        this.featured = results[0].data[0];
+        this.featured = results[0].data;
         this.news = results[1].data;
         this.brandNews = results[2].data;
         this.isLoaded = true;
