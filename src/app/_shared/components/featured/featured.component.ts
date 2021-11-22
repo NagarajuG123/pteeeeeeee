@@ -43,7 +43,7 @@ export class FeaturedComponent implements OnInit {
     forkJoin([featureApi, newsApi, brandNews])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
-        this.featured = results[0].data;
+        this.featured = results[0].data[0];
         this.news = results[1].data;
         this.brandNews = results[2].data;
         this.isLoaded = true;

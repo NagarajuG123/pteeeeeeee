@@ -20,7 +20,7 @@ img {
   font-size: 17.14px;
 }
 .over-layer {
-  font-family: $roboto;
+  font-family: $aktiv;
   font-size: 30px;
   color: $black;
   font-weight: 700;
@@ -36,34 +36,6 @@ img {
   }
   .tagBrand {
     width: 139px;
-  }
-}
-.small-image {
-  .tag {
-    font-size: 15px;
-    width: auto;
-    padding: 1px 6px !important;
-    line-height: 18px;
-  }
-  .over-layer {
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 1.2rem;
-    margin: 0 0 -10px -8px;
-  }
-  .brandInfo {
-    font-size: 12.94px;
-    font-weight: 600;
-    font-family: $proxiSemiBold;
-    line-height: 15.76px;
-    padding: 6px 6px !important;
-  }
-  .over-layer-brand {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16.72px;
-    font-family: $roboto;
-    color: $dark-gray;
   }
 }
 

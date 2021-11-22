@@ -1,14 +1,9 @@
 <div class="container py-4 sidebar-blur" *ngIf="isLoaded">
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
-      <div class="row" *ngIf="featured.length">
-        <div
-          *ngFor="let item of featured; index as i"
-          [ngClass]="i === 0 ? 'col-12 mb-2 mb-md-3' : 'col-12 col-md-4 my-2'"
-        >
+      <div class="row">
           <div
-            class="position-relative"
-            [ngClass]="i === 0 ? 'main-image' : 'small-image'"
+            class="position-relative main-image"
           >
             <div
               class="tag position-absolute text-center top-0 text-uppercase"
@@ -17,19 +12,18 @@
               Featured Article
             </div>
             <a
-              routerLink="/{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(featured) }}"
               fragment="featured"
             >
               <img
-                *ngIf="i === 0"
                 appYoutubeImage
                 class="lazyload"
                 alt="featured"
                 loading="lazy"
-                data-srcset="{{ item.media | defaultImage: 600:337 }} 600w,
-                        {{ item.media | defaultImage: 700:393 }} 700w,
-                        {{ item.media | defaultImage: 800:449 }} 800w,
-                        {{ item.media | defaultImage: 688:386 }} 688w"
+                data-srcset="{{ featured.media | defaultImage: 600:337 }} 600w,
+                        {{ featured.media | defaultImage: 700:393 }} 700w,
+                        {{ featured.media | defaultImage: 800:449 }} 800w,
+                        {{ featured.media | defaultImage: 688:386 }} 688w"
                 data-sizes="{{
                   '(max-width: 576px) 600px,
                         (max-width: 768px) 800px,
@@ -39,39 +33,13 @@
                 }}"
                 width="688"
                 height="386"
-                data-src="{{ item.media | defaultImage: 688:386 }}"
+                data-src="{{ featured.media | defaultImage: 688:386 }}"
               />
-              <img
-                *ngIf="i !== 0"
-                appYoutubeImage
-                class="lazyload"
-                width="228"
-                height="128"
-                data-srcset="{{ item.media | defaultImage: 600:337 }} 600w,
-                        {{ item.media | defaultImage: 700:393 }} 700w,
-                        {{ item.media | defaultImage: 800:449 }} 800w,
-                        {{ item.media | defaultImage: 228:128 }} 228w"
-                data-sizes="{{
-                  '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 700px,
-                        (max-width: 1200px) 228px,
-                        228px'
-                }}"
-                data-src="{{ item.media | defaultImage: 228:128 }}"
-                alt="featured"
-                loading="lazy"
-              />
-
-              <h2 *ngIf="i === 0" class="over-layer bottom-0 w-100">
-                {{ item.title }}
+              <h2 class="over-layer bottom-0 w-100">
+                {{ featured.title }}
               </h2>
-              <h3 *ngIf="i !== 0" class="over-layer bottom-0 w-100 p-2">
-                {{ item.title }}
-              </h3>
             </a>
           </div>
-        </div>
       </div>
     </div>
     <div
