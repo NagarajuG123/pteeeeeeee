@@ -75,6 +75,7 @@ img {
   }
   li {
     border-bottom: 1px solid $border-color;
+    padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
     }
@@ -112,10 +113,12 @@ img {
     font-family: $aktiv;
     font-weight: 700;
     color: $black;
+    padding-top: 5px;
   }
   li {
     display: flex;
     border-bottom: 1px solid #e8eef2;
+    padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
     }
