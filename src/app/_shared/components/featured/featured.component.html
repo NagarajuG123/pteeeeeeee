@@ -12,6 +12,7 @@
               Featured Article
             </div>
             <a
+              *ngIf="!commonService.isVideo(featured[0])"
               routerLink="/{{ commonService.readMore(featured[0]) }}"
               fragment="featured"
             >
@@ -35,9 +36,45 @@
                 height="386"
                 data-src="{{ featured.media | defaultImage: 688:386 }}"
               />
-              <h2 class="over-layer bottom-0 w-100">
-                {{ featured[0].title }}
-              </h2>
+            </a>
+
+            <a
+              *ngIf="commonService.isVideo(featured[0])"
+              data-bs-toggle="modal"
+              data-bs-target="#featuredModal"
+              fragment="featured"
+              class="video-btn"
+            >
+              <img
+                appYoutubeImage
+                class="lazyload"
+                alt="featured"
+                loading="lazy"
+                data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
+                        {{ featured[0].media | defaultImage: 700:393 }} 700w,
+                        {{ featured[0].media | defaultImage: 800:449 }} 800w,
+                        {{ featured[0].media | defaultImage: 688:386 }} 688w"
+                data-sizes="{{
+                  '(max-width: 576px) 600px,
+                        (max-width: 768px) 800px,
+                        (max-width: 992px) 600px,
+                        (max-width: 1200px) 700px,
+                        688px'
+                }}"
+                width="688"
+                height="386"
+                data-src="{{ featured.media | defaultImage: 688:386 }}"
+              />
+              <img
+              data-src="videoIcon.png"
+              alt="Play"
+              class="img-fluid vide-play lazyload"
+              loading="lazy"
+            />
+            </a>
+            <h2 class="over-layer bottom-0 w-100">
+              {{ featured[0].title }}
+            </h2>
               <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
                 <span *ngIf="commonService.isUpdate(featured[0])"
                   >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
@@ -48,7 +85,6 @@
                   {{ featured[0].posted_on | date: "shortTime" }}</span
                 >
               </span>
-            </a>
           </div>
       </div>
     </div>
@@ -57,7 +93,7 @@
     *ngIf="!isAwards()"
       class="
         position-relative
-        col-12 col-sm-6 col-lg-3
+        col-12 col-sm-6 col-lg-4
         align-items-stretch
         mb-3 mb-sm-0
         latestListing
@@ -105,7 +141,7 @@
       *ngIf="slug === '1851'"
       class="
         position-relative
-        col-12 col-sm-6 col-lg-3
+        col-12 col-sm-6 col-lg-4
         align-items-stretch
         mb-3 mb-sm-0
         border-start border-2
@@ -168,7 +204,7 @@
       *ngIf="slug !== '1851' && !isAwards()"
       class="
         position-relative
-        col-12 col-sm-6 col-lg-3
+        col-12 col-sm-6 col-lg-4
         align-items-stretch
         mb-3 mb-sm-0
         border-start border-2
@@ -210,4 +246,33 @@
       </ul>
     </div>
   </div>
+  <div
+      class="modal fade"
+      id="featuredModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      (click)="openVideoPlayer = true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              (click)="openVideoPlayer = false"
+            ></button>
+            <iframe
+              [src]="featured[0]?.media.url | safeUrl"
+              frameborder="0"
+              width="100%"
+              height="496px"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

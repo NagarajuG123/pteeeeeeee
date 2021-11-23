@@ -6,6 +6,9 @@ img {
   width: 100%;
   height: auto;
 }
+a{
+  color: $black;
+}
 .tag {
   background: $red;
   font-family: $roboto;
@@ -78,12 +81,6 @@ img {
 }
 
 .news-list {
-  a {
-    font-family: $aktiv;
-    font-weight: 700;
-    color: $black;
-    padding-top: 5px;
-  }
   li {
     display: flex;
     border-bottom: 1px solid #e8eef2;
@@ -151,5 +148,18 @@ img {
       font-size: 14px;
       line-height: 16px;
     }
+  }
+}
+.video-btn {
+  cursor: pointer;
+  position: relative;
+  .vide-play {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: calc(50% - 20px);
+    z-index: 1000;
+    height: 28px;
+    width: 49px;
+    border-radius: 5px;
   }
 }
