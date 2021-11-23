@@ -38,7 +38,16 @@
               <h2 class="over-layer bottom-0 w-100">
                 {{ featured[0].title }}
               </h2>
-              <span class="timeStamp"> {{ featured[0].posted_on }} </span>
+              <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
+                <span *ngIf="commonService.isUpdate(featured[0])"
+                  >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
+                  {{ featured[0].last_modified | date: "shortTime" }}
+                </span>
+                <span *ngIf="!commonService.isUpdate(featured[0])"
+                  >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
+                  {{ featured[0].posted_on | date: "shortTime" }}</span
+                >
+              </span>
             </a>
           </div>
       </div>
@@ -68,9 +77,16 @@
               {{ item.title }}
             </a>
           </h3>
-          <span *ngIf="commonService.authorName(item)" class="my-1"
-            > {{ item.posted_on }}</span
-          >
+          <span *ngIf="commonService.isDate(item)">
+            <span *ngIf="commonService.isUpdate(item)"
+              >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+              {{ item.last_modified | date: "shortTime" }}
+            </span>
+            <span *ngIf="!commonService.isUpdate(item)"
+              >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+              {{ item.posted_on | date: "shortTime" }}</span
+            >
+          </span>
           <a
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
