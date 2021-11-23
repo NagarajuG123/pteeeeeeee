@@ -72,4 +72,20 @@ export class CommonService {
     }
     return false;
   }
+
+  isDate(story:any) {
+    if ( new Date(story?.posted_on) || new Date(story?.last_modified) ) {
+      return true;
+    }
+    return false;
+  }
+
+  isUpdate(story:any) {
+    let post = new Date(story?.posted_on).toDateString();
+    let last = new Date(story?.last_modified).toDateString();
+    if (post !== last) {
+      return true;
+    }
+    return false;
+  }
 }

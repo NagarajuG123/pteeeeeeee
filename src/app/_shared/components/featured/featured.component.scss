@@ -7,7 +7,7 @@ img {
   height: auto;
 }
 .tag {
-  background: $dark_red_2;
+  background: $red;
   font-family: $balingerBold;
   color: $white;
   font-weight: 700;
@@ -21,6 +21,7 @@ img {
   font-weight: 400;
   line-height: 12px;
   color: $red;
+  padding-top: 10px;
 }
 .tagBrand {
   line-height: 20.57px;
@@ -92,6 +93,7 @@ img {
     font-weight: 400;
     line-height: 12px;
     color: $red;
+    padding: 10px 0 10px;
   }
   p {
     font-weight: 400;

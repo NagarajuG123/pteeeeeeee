@@ -62,8 +62,8 @@ span {
     color: $dark-gray;
   }
   hr {
-    border-color: $dark_red_2;
-    background-color: $dark_red_2;
+    border-color: $red;
+    background-color: $red;
     height: 2px;
     opacity: 1;
   }
@@ -212,8 +212,8 @@ form {
     }
   }
   .form-check-input:checked {
-    background-color: $dark_red_2;
-    border-color: $dark_red_2;
+    background-color: $red;
+    border-color: $red;
   }
   .form-check-label {
     padding-left: 10px;
@@ -302,5 +302,5 @@ form {
   }
 }
 .input-group-text{
-  background: $dark_red_2;
+  background: $red;
 }
