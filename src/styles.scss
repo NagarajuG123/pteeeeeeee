@@ -3,6 +3,7 @@
 @import "./assets/scss/theme-color.scss";
 @import "./assets/scss/mixins.scss";
 @import "./assets/scss/variables.scss";
+@import "./assets/scss/common.scss";
 
 html,
 body {
@@ -195,26 +196,4 @@ body.noscroll {
 }
 .whyIBought img {
   width: 100%;
-}
-.timeStamp{
-  font-family: $roboto;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 12px;
-  color: $red;
-  padding: 10px 0 10px;
-}
-.articleTitles{
-  font-size: 16px;
-  line-height: 117%;
-  color: $black;
-  font-weight: 700;
-  font-family: $aktiv;
-}
-.description {
-  font-weight: 400;
-  font-size: 12px;
-  color: $dark_gray_5;
-  font-family: $roboto;
-  line-height: 128.7%;
 }
