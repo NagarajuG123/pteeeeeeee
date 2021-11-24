@@ -11,6 +11,7 @@
   }
   .tabs {
     height: 60px;
+    background-color: $red;
     .prev,
     .next {
       img {
@@ -26,7 +27,7 @@
           span {
             min-width: 132px;
             height: 100%;
-            color: $light_gray_8;
+            color: $dark_gray_5;
             cursor: pointer;
             font-family: $roboto;
             font-weight: 700;
@@ -34,7 +35,7 @@
             line-height: 28.24px;
             &.active,
             &:hover {
-              color: $primary;
+              color: $red;
               &::after {
                 content: "";
                 height: 7px;
@@ -43,7 +44,7 @@
                 width: 7px;
                 border-width: 16px 16px 0 16px;
                 border-style: solid;
-                border-color: $primary transparent transparent transparent;
+                border-color: $red transparent transparent transparent;
               }
               &::before {
                 content: "";
@@ -51,7 +52,7 @@
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                background-color: $primary;
+                background-color: $red;
               }
             }
           }
@@ -70,12 +71,6 @@
         }
         > .card-body {
           padding: 8px 16px 15px;
-          > h3.card-title {
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.2rem;
-            color: $dark-gray;
-          }
           > .card-text {
             font-size: 10px;
           }

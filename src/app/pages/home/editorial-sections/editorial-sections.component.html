@@ -5,7 +5,7 @@
     </h2>
   </div>
 
-  <div class="tabs primary-bg">
+  <div class="tabs">
     <div class="container customContainer position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
@@ -95,13 +95,20 @@
                 loading="lazy"
               />
               <div class="card-body">
-                <h3 class="card-title">
+                <h3 class="card-title articleTitles">
                   {{ list.title }}
                 </h3>
-                <small *ngIf="commonService.authorName(list)"
-                  >By {{ list.author?.name }}</small
-                >
               </div>
+              <small class="timeStamp ms-3" *ngIf="commonService.isDate(list)">
+                <span *ngIf="commonService.isUpdate(list)"
+                  >{{ list.last_modified | date: "MM-dd-YYYY" }} |
+                  {{ list.last_modified | date: "shortTime" }}
+                </span>
+                <span *ngIf="!commonService.isUpdate(list)"
+                  >{{ list.posted_on | date: "MM-dd-YYYY" }} |
+                  {{ list.posted_on | date: "shortTime" }}</span
+                >
+              </small>
             </div>
           </a>
         </li>
