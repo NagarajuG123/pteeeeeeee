@@ -38,6 +38,7 @@ line-height: 128.7%;
     font-size: 20px;
     font-weight: 800;
     color: $white;
+    text-transform: uppercase;
 }
 .video-btn {
     cursor: pointer;
@@ -63,4 +64,11 @@ line-height: 128.7%;
     font-size: 1rem;
     font-weight: 400;
     opacity: 1;
+  }
+  .large-main-article{
+      font-size: 34px;
+      line-height: 125%;
+      font-family: $aktiv;
+      font-weight: 700;
+      color: $black;
   }

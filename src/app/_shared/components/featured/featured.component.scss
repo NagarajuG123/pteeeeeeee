@@ -65,7 +65,7 @@ a {
   font-weight: 700;
   height: calc(100% - 27px);
   li {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $light_gray_9;
     padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
@@ -82,7 +82,7 @@ a {
 .news-list {
   li {
     display: flex;
-    border-bottom: 1px solid #e8eef2;
+    border-bottom: 1px solid $light_gray_9;
     padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
@@ -115,9 +115,6 @@ a {
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 318px;
-    p {
-      line-height: 16.73px;
-    }
   }
 }
 
