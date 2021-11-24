@@ -72,7 +72,7 @@
               loading="lazy"
             />
             </a>
-            <h2 class="over-layer bottom-0 w-100">
+            <h2 class="large-main-article bottom-0 w-100">
               {{ featured[0].title }}
             </h2>
               <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
@@ -105,11 +105,10 @@
           *ngFor="let item of news; index as i"
           class=""
         >
-          <h3 class="m-0">
+          <h3 class="m-0 articleTitles">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
               fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
-              class="articleTitles"
             >
               {{ item.title }}
             </a>
@@ -186,11 +185,10 @@
           </div>
           <div>
             <h2 class="small-red-headers">{{ item.brand.name }}</h2>
-            <h3 class="m-0">
+            <h3 class="m-0 articleTitles">
               <a
                 routerLink="/{{ commonService.readMore(item) }}"
                 fragment="industry"
-                class="articleTitles"
               >
                 {{ item.title }}
               </a>
