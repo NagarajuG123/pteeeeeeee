@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
   contactForm!: FormGroup;
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
-
+  trending: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -156,20 +156,26 @@ export class HeaderComponent implements OnInit {
     const news = this.apiService.getAPI(`${this.brandSlug}/news`);
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const trending = this.apiService.getAPI(
+      `${this.brandSlug}/trending?limit=3&offset=0`
+    );
 
-    forkJoin([header, news, inquire, publication]).subscribe((results) => {
-      this.header = results[0].data;
-      this.news = results[1].data;
-      this.inquireData = results[2].schema;
-      this.publication = results[3];
+    forkJoin([header, news, inquire, publication, trending]).subscribe(
+      (results) => {
+        this.header = results[0].data;
+        this.news = results[1].data;
+        this.inquireData = results[2].schema;
+        this.publication = results[3];
+        this.trending = results[4].data;
 
-      this.setFavicon();
-      if (this.brandSlug != '1851') {
-        this.getInquiry();
-        this.getContact();
-        this.setEditorialEmail();
+        this.setFavicon();
+        if (this.brandSlug != '1851') {
+          this.getInquiry();
+          this.getContact();
+          this.setEditorialEmail();
+        }
       }
-    });
+    );
   }
   setEditorialEmail() {
     if (this.publication.id === '1851') {
