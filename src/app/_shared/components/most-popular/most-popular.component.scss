@@ -5,7 +5,7 @@
 @import "../../../../assets/scss/mixins.scss";
 
 .most-popular {
-  background: linear-gradient($dark-gray 385px, $white 0);
+  background: linear-gradient($dark_gray 385px, $white 0);
   .customContainer{
     padding-left: 35px;
     padding-right: 35px;
@@ -70,7 +70,7 @@
           color: $red;
         }
         > h3 {
-          color: $dark-gray;
+          color: $dark_gray;
           font-size: 18px;
           line-height: 1.2rem;
           font-family: $roboto;

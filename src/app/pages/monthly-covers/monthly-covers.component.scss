@@ -125,7 +125,7 @@
         font-family: $balingerBold;
         font-size: 44px;
         font-weight: 700;
-        color: $dark-gray;
+        color: $dark_gray;
         text-transform: capitalize;
         line-height: 53px;
         @include media("<xl") {
@@ -139,7 +139,7 @@
         max-width: 480px;
         font-weight: 500;
         font-size: 18px;
-        color: $dark-gray;
+        color: $dark_gray;
         font-family: $roboto;
         line-height: 23.16px;
         @include media("<xl") {
@@ -326,7 +326,7 @@
     line-height: 42px;
     font-style: normal;
     font-size: 35px;
-    color: $dark-gray;
+    color: $dark_gray;
     @include media("<xxl") {
       // margin-left: 50px;
     }
@@ -395,7 +395,7 @@
   }
 }
 .seem-more-text-wrapper {
-  color: $dark-gray;
+  color: $dark_gray;
   font-size: 17px;
   font-family: $proxiRegular;
   font-weight: 400;

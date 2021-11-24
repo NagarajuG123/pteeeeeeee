@@ -14,18 +14,18 @@
     font-size: 13px;
     line-height: 16px;
     height: 37px;
-    color: $dark-gray;
+    color: $dark_gray;
     width: 287px;
 
     &::placeholder {
-      color: $dark-gray;
+      color: $dark_gray;
     }
   }
 
   .joinBtn {
     min-width: 189px;
-    background: $dark-gray;
-    border-color: $dark-gray;
+    background: $dark_gray;
+    border-color: $dark_gray;
     font-family: $proxiBold;
     font-size: 25px;
     line-height: 30px;
@@ -37,7 +37,7 @@
 .success {
   color: $white;
 }
-.pl12{
+.pl12 {
   padding-left: 12px;
 }
 #hideAfter5Sec {
@@ -52,7 +52,7 @@
     height: 0;
   }
 }
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .col-lg-auto {
     flex: 0 0 auto;
     width: 31%;

@@ -102,7 +102,7 @@
       .c-card-box--title {
         font-size: 44px;
         font-weight: 700;
-        color: $dark-gray;
+        color: $dark_gray;
         text-transform: capitalize;
         font-family: $balingerBold;
         line-height: 53px;
@@ -114,7 +114,7 @@
         max-width: 800px;
         font-weight: 500;
         font-size: 18px;
-        color: $dark-gray;
+        color: $dark_gray;
         font-family: $roboto;
         line-height: 23px;
         @include media("<md") {
@@ -238,7 +238,7 @@
     line-height: 42px;
     font-family: $balingerBold;
     font-weight: 700;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   .items {
     font-family: $roboto;
@@ -256,7 +256,7 @@
         font-weight: 500;
         font-size: 11.39px;
         line-height: 13.35px;
-        color: $dark-gray;
+        color: $dark_gray;
       }
       p,
       p a {
@@ -301,7 +301,7 @@
   }
 }
 .seem-more-text-wrapper {
-  color: $dark-gray;
+  color: $dark_gray;
   font-size: 17px;
   font-family: $proxiRegular;
   font-weight: 400;

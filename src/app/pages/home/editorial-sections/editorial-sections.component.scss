@@ -1,8 +1,8 @@
 @import "../../../../assets/scss/variables.scss";
 
 .editorial-section {
-  background: $dark-gray;
-  .customContainer{
+  background: $dark_gray;
+  .customContainer {
     padding: 0 35px;
   }
   .innerContent {
@@ -104,20 +104,20 @@
     font-size: 13px;
     height: 39px;
     &::placeholder {
-      color: $dark-gray;
+      color: $dark_gray;
     }
   }
   .joinBtn {
     min-width: 196px;
-    background: $dark-gray;
-    border-color: $dark-gray;
+    background: $dark_gray;
+    border-color: $dark_gray;
     font-family: "ProximaNova-Regular";
     font-size: 25px;
     height: 39px;
   }
 }
 a {
-  color: $dark-gray;
+  color: $dark_gray;
 }
 .card {
   border-radius: 0;

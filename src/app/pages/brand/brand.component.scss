@@ -3,7 +3,7 @@
 @import "../../../assets/scss/mixins.scss";
 
 a {
-  color: $dark-gray;
+  color: $dark_gray;
 }
 
 .items {
@@ -15,7 +15,7 @@ a {
       line-height: 18.72px;
       font-family: $roboto;
       font-weight: 700;
-      color: $dark-gray !important;
+      color: $dark_gray !important;
     }
     p,
     p a {
@@ -59,7 +59,7 @@ a {
       font-weight: 700;
       font-size: 64px;
       line-height: 77px;
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $balingerBold;
       @include tablet-landscape1 {
         font-size: 40px;
@@ -135,7 +135,7 @@ a {
   border: 1px solid $red;
 }
 .seem-more-text-wrapper {
-  color: $dark-gray;
+  color: $dark_gray;
   font-size: 17px;
   font-family: $proxiRegular;
   font-weight: 400;

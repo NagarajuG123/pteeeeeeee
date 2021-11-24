@@ -2,33 +2,19 @@
 @import "../../../assets/scss/variables.scss";
 
 header {
-  // position: absolute;
   font-family: $roboto;
-  font-weight: bold;
-  font-size: 14px;
   text-transform: uppercase;
   background-color: $white;
-  box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -webkit-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -ms-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -o-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
-  -moz-box-shadow: 0 13px 21px rgba(0, 0, 0, 0.178);
+
   .top-head {
-    background-color: $dark-gray;
+    background-color: $dark_gray;
+    height: 21px;
     color: $light_gray_9;
 
     > div {
-      font-family: $balingerBold;
-      line-height: 18px;
-    }
-
-    li {
-      > a {
-        fa-icon {
-          width: 6px;
-          overflow: hidden;
-        }
-      }
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15.44px;
     }
   }
 
@@ -145,7 +131,7 @@ header {
         font-family: $balingerXBold;
         font-weight: 800;
         font-size: 17px;
-        color: $dark-gray;
+        color: $dark_gray;
         line-height: 21.88px;
 
         > small {
@@ -168,19 +154,19 @@ header {
       .company {
         font-family: $balingerBold;
         font-weight: 700;
-        color: $dark-gray;
+        color: $dark_gray;
       }
     }
 
     a {
-      color: $dark-gray;
+      color: $dark_gray;
     }
 
     // center menu style
     .center-menu {
       font-family: $roboto;
       text-transform: uppercase;
-      color: $dark-gray;
+      color: $dark_gray;
       font-weight: bold;
 
       .actions {
@@ -249,7 +235,7 @@ header {
       .nav-item {
         a {
           text-decoration: none;
-          color: $dark-gray;
+          color: $dark_gray;
           font-size: 14px;
           line-height: 16.73px;
 
@@ -468,7 +454,7 @@ header {
     font-size: 30px;
     line-height: 36px;
     font-family: $balingerBold;
-    color: $dark-gray;
+    color: $dark_gray;
   }
 
   .sponsored-modal-content {
@@ -810,7 +796,7 @@ option {
 }
 
 .dropdown-menu-dark {
-  background-color: $dark-gray;
+  background-color: $dark_gray;
 }
 
 .close {

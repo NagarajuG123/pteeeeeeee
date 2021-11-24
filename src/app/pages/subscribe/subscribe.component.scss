@@ -96,7 +96,7 @@ img {
     line-height: 25.74px;
     text-align: left;
     font-weight: 500;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   h5 {
     font-size: 20px;
@@ -112,7 +112,7 @@ img {
     line-height: 24px;
     text-align: left;
     font-weight: 400;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   .form-control {
     border-color: $red;
@@ -163,7 +163,7 @@ img {
       font-weight: 700;
       font-family: $roboto;
       letter-spacing: 0.4px;
-      color: $dark-gray;
+      color: $dark_gray;
     }
   }
   .signmeup input:checked + span {
@@ -171,7 +171,7 @@ img {
     font-family: $roboto;
     font-weight: 700;
     line-height: 12.71px;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   .editors {
     .form-group {
@@ -228,10 +228,10 @@ img {
     background-color: $red;
     border-color: $red;
   }
-  .d-inline-block{
+  .d-inline-block {
     .form-check-input {
       margin-left: 0;
-     }
+    }
   }
 }
 

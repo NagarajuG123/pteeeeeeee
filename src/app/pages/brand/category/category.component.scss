@@ -29,7 +29,7 @@
     font-family: $balingerBold;
     font-size: 64px !important;
     font-weight: 700;
-    color: $dark-gray;
+    color: $dark_gray;
     line-height: 77px;
     @include mobile-landscape {
       font-size: 32px !important;
@@ -51,7 +51,7 @@
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 450px;
-    border-left: 2px solid $dark-gray;
+    border-left: 2px solid $dark_gray;
     p {
       line-height: 114.99%;
     }
@@ -67,7 +67,7 @@
   }
   li {
     display: flex;
-    border-bottom: 1px solid $dark-gray;
+    border-bottom: 1px solid $dark_gray;
     &:last-child {
       border: 0;
     }
@@ -80,7 +80,7 @@
     }
     span {
       font-size: 11px;
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $roboto;
       line-height: 12px;
     }
@@ -165,7 +165,7 @@
           padding: 8px 16px 15px;
           > h6.card-title {
             font-size: 12px;
-            color: $dark-gray;
+            color: $dark_gray;
             font-family: $roboto;
             font-weight: 700;
             line-height: 14.04px;
@@ -221,7 +221,7 @@
   }
 }
 a {
-  color: $dark-gray;
+  color: $dark_gray;
 }
 .bg-blue {
   background: $white_3;

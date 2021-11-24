@@ -24,7 +24,7 @@
       font-size: 16px;
       line-height: 20.59px;
 
-      color: $dark-gray;
+      color: $dark_gray;
     }
     .userImage {
       width: 179px;
@@ -45,7 +45,7 @@
       font-size: 42px;
       line-height: 80px;
       letter-spacing: -0.015em;
-      color: $dark-gray;
+      color: $dark_gray;
     }
     h5 {
       font-family: $balingerBold;
@@ -53,13 +53,13 @@
       line-height: 28px;
     }
     hr {
-      background: $dark-gray;
+      background: $dark_gray;
       margin: 13px 0;
     }
     .fs-21 {
       font-size: 21px;
       line-height: 29.65px;
-      color: $dark-gray;
+      color: $dark_gray;
     }
 
     .social {
@@ -105,7 +105,7 @@
         font-size: 14px;
         line-height: 17px;
         a {
-          color: $dark-gray;
+          color: $dark_gray;
         }
       }
       span {
@@ -135,7 +135,7 @@
         font-weight: 700;
         font-size: 38px;
         line-height: 45px;
-        color: $dark-gray !important;
+        color: $dark_gray !important;
         @include tablet-landscape {
           padding-top: 20px;
         }
@@ -159,7 +159,7 @@
     @media screen and (max-width: 767px) {
       .detailHead {
         position: relative !important;
-        border-top: 1px solid $dark-gray;
+        border-top: 1px solid $dark_gray;
       }
     }
   }
@@ -203,7 +203,7 @@
           font-weight: 500;
           font-size: 11px;
           line-height: 12px;
-          color: $dark-gray;
+          color: $dark_gray;
         }
         p,
         p a {

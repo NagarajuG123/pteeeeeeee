@@ -13,8 +13,8 @@
     padding: 0 53px;
   }
   .tabs {
-    border-top: 1px solid $dark-gray;
-    border-bottom: 1px solid $dark-gray;
+    border-top: 1px solid $dark_gray;
+    border-bottom: 1px solid $dark_gray;
     .prev,
     .next {
       img {
@@ -72,14 +72,14 @@
           font-family: $roboto;
           font-size: 14px;
           line-height: 16.38px;
-          color: $dark-gray;
+          color: $dark_gray;
           font-weight: 700;
         }
         p {
           font-family: $roboto;
           font-size: 11px;
           line-height: 12px;
-          color: $dark-gray;
+          color: $dark_gray;
           font-weight: 500;
         }
       }
@@ -96,5 +96,5 @@
   }
 }
 a {
-  color: $dark-gray;
+  color: $dark_gray;
 }

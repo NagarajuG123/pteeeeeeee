@@ -33,7 +33,7 @@
         font-weight: 500;
         font-size: 11px;
         line-height: 12px;
-        color: $dark-gray;
+        color: $dark_gray;
         font-family: $roboto;
       }
       p,
@@ -59,7 +59,7 @@ span {
     font-weight: 700;
     line-height: 21.6px;
     font-family: $balingerBold;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   hr {
     border-color: $red;
@@ -200,13 +200,13 @@ form {
   font-weight: 500 !important;
   font-size: 20px;
   line-height: 25.74px;
-  color: $dark-gray;
+  color: $dark_gray;
   display: flex;
   @include mobile-portrait {
     display: block !important;
   }
   .form-check {
-    .form-check-input{
+    .form-check-input {
       margin-top: 0;
       margin-left: 0;
     }
@@ -278,14 +278,14 @@ form {
     font-weight: 500;
     font-size: 20px;
     line-height: 25.74px;
-    color: $dark-gray;
+    color: $dark_gray;
   }
 }
 .bottomSection {
-  background-color: $dark-gray;
+  background-color: $dark_gray;
 
   .leftSide {
-    background-color: $dark-gray;
+    background-color: $dark_gray;
   }
   .rightSide {
     background-color: $white;
@@ -298,9 +298,9 @@ form {
     font-weight: 400;
     font-size: 17px;
     line-height: 24px;
-    color: $dark-gray;
+    color: $dark_gray;
   }
 }
-.input-group-text{
+.input-group-text {
   background: $red;
 }

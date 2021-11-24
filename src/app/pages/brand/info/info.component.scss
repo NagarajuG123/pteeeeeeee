@@ -39,7 +39,7 @@
 
   .header {
     height: 67px;
-    background-color: $dark-gray;
+    background-color: $dark_gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +99,7 @@
   }
   .header {
     height: 67px;
-    background-color: $dark-gray;
+    background-color: $dark_gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +152,7 @@
 
     .text {
       font-size: 17px;
-      color: $dark-gray;
+      color: $dark_gray;
       line-height: 21.25px;
       @include tablet-portrait {
         font-size: 16px;
@@ -189,7 +189,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-color: $dark-gray;
+    background-color: $dark_gray;
     padding-left: 22px;
     border-bottom: 3px solid $red;
 
@@ -229,7 +229,7 @@
 
   form {
     padding: 25px 20px 10px;
-    background-color: $dark-gray;
+    background-color: $dark_gray;
 
     @include mobile-landscape {
       padding: 20px 15px 25px;
@@ -262,7 +262,7 @@
         &::placeholder {
           position: absolute;
           font-size: 13px;
-          color: $dark-gray;
+          color: $dark_gray;
           top: 5px;
           left: 10px;
           font-family: $roboto;
@@ -321,7 +321,7 @@
     width: 90%;
 
     .title {
-      color: $dark-gray;
+      color: $dark_gray;
       font-size: 18px;
       line-height: 21.06px;
       margin-bottom: 0.5rem !important;
@@ -389,7 +389,7 @@
     .image-description {
       padding-top: 10px;
       background-color: $white_6;
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $roboto;
       font-weight: 700;
       font-size: 14px;
@@ -428,13 +428,13 @@
     }
 
     .image-description {
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $roboto;
       font-weight: 700;
       font-size: 12px;
       line-height: 14.06px;
       a {
-        color: $dark-gray;
+        color: $dark_gray;
       }
     }
   }
@@ -586,7 +586,7 @@
           font-size: 18px;
           font-weight: 700;
           line-height: 1.2rem;
-          color: $dark-gray;
+          color: $dark_gray;
         }
         > .card-text {
           font-size: 10px;
@@ -625,7 +625,7 @@
         font-weight: 700 !important;
         font-size: 35px !important;
         line-height: 42px !important;
-        color: $dark-gray;
+        color: $dark_gray;
       }
       &.marketHeading h2 {
         @include mobile-portrait {
@@ -712,7 +712,7 @@
     font-size: 30px;
     line-height: 36px;
     margin-bottom: 10px;
-    color: $dark-gray;
+    color: $dark_gray;
     @include tablet-landscape1 {
       font-size: 24px;
     }
@@ -1294,7 +1294,7 @@ button.close {
       font-weight: 500;
       font-size: 13px;
       line-height: 16.73px;
-      color: $dark-gray;
+      color: $dark_gray;
     }
   }
 }
@@ -1388,7 +1388,7 @@ button.close {
   .card-title {
     font-size: 12px !important;
     line-height: 14.04px;
-    color: $dark-gray;
+    color: $dark_gray;
     -webkit-line-clamp: 2;
 
     font-family: $roboto;
@@ -1397,7 +1397,7 @@ button.close {
 
   small {
     font-size: 10px;
-    color: $dark-gray;
+    color: $dark_gray;
     font-family: $roboto;
     font-weight: 500;
     line-height: 11.72px;
