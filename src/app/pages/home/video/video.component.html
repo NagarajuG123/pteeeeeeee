@@ -5,9 +5,9 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-12">
-        <div class="d-flex align-items-center c-section-header--wrapper">
-          <div class="c-section-header--group d-flex align-items-end">
-            <h2 class="c-section--title text-uppercase m-0">Videos</h2>
+        <div class="d-flex align-items-center">
+          <div class="d-flex align-items-end">
+            <h2 class="sectionTitle m-0">Videos</h2>
             <span class="c-section-header--subInfo">
               Covering the franchise industry
             </span>
@@ -62,13 +62,13 @@
               loading="lazy"
             />
             <img
-              data-src="{{ s3Url }}play.png"
+              data-src="{{ s3Url }}videoIcon.png"
               alt="Play"
               class="img-fluid vide-play lazyload"
               loading="lazy"
             />
           </a>
-          <h2 class="c-video-section--title">
+          <h2 class="hightLightTitle">
             {{ item.title }}
           </h2>
         </div>
@@ -118,13 +118,13 @@
                     loading="lazy"
                   />
                   <img
-                    data-src="{{ s3Url }}play.png"
+                    data-src="{{ s3Url }}videoIcon.png"
                     alt="Play"
                     class="img-fluid vide-play lazyload"
                     loading="lazy"
                   />
                 </a>
-                <h3 class="c-video-section--title">
+                <h3 class="articleTitles">
                   {{ item.title }}
                 </h3>
               </div>
