@@ -1,19 +1,30 @@
 @import "./variables.scss";
 
-.timeStamp{
-    font-family: $roboto;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 12px;
-    color: $red;
-    padding: 10px 0 10px;
+//color
+.primary-color {
+  color: $primary !important;
+  &.link {
+    &:hover {
+      color: $primary-1;
+    }
+  }
 }
-.articleTitles{
-font-size: 16px;
-line-height: 117%;
-color: $black;
-font-weight: 700;
-font-family: $aktiv;
+
+//content
+.timeStamp {
+  font-family: $roboto;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: $red;
+  padding: 10px 0 10px;
+}
+.articleTitles {
+  font-size: 16px;
+  line-height: 117%;
+  color: $black;
+  font-weight: 700;
+  font-family: $aktiv;
 }
 .description {
 font-weight: 400;

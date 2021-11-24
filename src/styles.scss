@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/typography.scss";
-@import "./assets/scss/theme-color.scss";
 @import "./assets/scss/mixins.scss";
 @import "./assets/scss/variables.scss";
 @import "./assets/scss/common.scss";
@@ -23,14 +22,7 @@ ul {
   }
 }
 
-.primary-color {
-  color: $primary !important;
-  &.link {
-    &:hover {
-      color: $primary-1;
-    }
-  }
-}
+
 
 .primary-bg {
   background-color: $primary;
