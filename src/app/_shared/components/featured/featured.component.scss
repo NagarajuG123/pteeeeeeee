@@ -8,15 +8,7 @@ img {
 a {
   color: $black;
 }
-.tag {
-  background: $red;
-  font-family: $roboto;
-  color: $white;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  box-sizing: border-box;
-}
+
 .tagBrand {
   line-height: 20.57px;
   font-size: 17.14px;
@@ -33,7 +25,6 @@ a {
 .main-image {
   .tag {
     padding: 3px 6px;
-    line-height: 19px;
   }
   .tagBrand {
     width: 139px;

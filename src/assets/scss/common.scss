@@ -72,3 +72,14 @@ line-height: 128.7%;
       font-weight: 700;
       color: $black;
   }
+  .tag {
+    background: $red;
+    font-family: $roboto;
+    color: $white;
+    font-weight: 700;
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: unset;
+    z-index: 1;
+  }
+  
