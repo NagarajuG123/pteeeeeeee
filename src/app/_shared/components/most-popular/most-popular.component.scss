@@ -6,15 +6,13 @@
 
 .most-popular {
   background: linear-gradient($dark-gray 385px, $white 0);
-  h2 {
-    font-family: $balingerBold;
-    font-weight: 700;
-    font-size: 33px;
-    line-height: 40px;
+  .customContainer{
+    padding-left: 35px;
+    padding-right: 35px;
   }
   hr {
-    border-color: $primary;
-    background-color: $primary;
+    border-color: $red;
+    background-color: $red;
     height: 2px;
     opacity: 1;
   }
@@ -29,6 +27,7 @@
       padding-top: 31px;
       padding-bottom: 31px;
       max-height: 130px;
+      background-color: $red;
 
       > span {
         width: 48px;
@@ -46,12 +45,6 @@
           font-weight: bold;
           color: $white_4;
         }
-        > strong {
-          line-height: 21.63px;
-          overflow: hidden;
-          max-height: 85px;
-          font-weight: 700;
-        }
         font-size: 21px;
         font-family: $roboto;
         font-weight: 700;
@@ -62,6 +55,7 @@
       font-size: 15px;
       line-height: 18px;
       height: 24px;
+      background-color: $dark_red;
     }
   }
   .subSlideItem {
@@ -73,6 +67,7 @@
           line-height: 36px;
           font-weight: 700;
           font-family: $roboto;
+          color: $red;
         }
         > h3 {
           color: $dark-gray;
@@ -83,20 +78,6 @@
           > strong {
             font-weight: 700;
           }
-        }
-        > small {
-          font-size: 11px !important ;
-          line-height: 12px;
-          font-family: $roboto;
-          font-weight: 400;
-          color: $dark-gray !important;
-        }
-        > p {
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 16.73px;
-          font-family: $roboto;
-          color: $dark_gray_5;
         }
       }
     }
