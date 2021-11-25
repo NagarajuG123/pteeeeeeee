@@ -42,7 +42,7 @@ export class StoryComponent implements OnInit {
   throttle = 1000;
   scrollDistance = 3;
   scrollUpDistance = 2;
-  dataLoading: boolean = false;
+  dataLoading: boolean;
   schema: any;
   footer: any = [];
   header: any = [];
@@ -51,7 +51,7 @@ export class StoryComponent implements OnInit {
   subject: Subject<any> = new Subject();
   storyIndex: boolean;
   pageType = 'details';
-  isLoading: boolean = false;
+  isLoading: boolean;
   isFirstSEO: boolean;
   apiUrl = '';
   isBrand: boolean;
@@ -61,7 +61,7 @@ export class StoryComponent implements OnInit {
   originalUrl = '';
   gaVisitedUrls: Array<any> = [];
   storyApiUrl = '';
-  isAuthorPage: boolean = false;
+  isAuthorPage: boolean;
   defaultFbUrl: string;
   fbUrl: string;
   isDefaultFb = false;
@@ -73,6 +73,8 @@ export class StoryComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   metaData: any;
+  first: boolean;
+  duplicate: boolean;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -95,6 +97,11 @@ export class StoryComponent implements OnInit {
     this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
+    this.isLoading = false;
+    this.dataLoading = false;
+    this.isAuthorPage = false;
+    this.storyIndex = false;
+    this.duplicate = false;
   }
 
   setbrand() {
@@ -475,9 +482,6 @@ export class StoryComponent implements OnInit {
             }
           }
         }
-        if (this.pageType === 'details') {
-          this.addItems(1, 0);
-        }
         let url = '';
         if (this.brandId === '1851') {
           url = `${environment.appUrl}${
@@ -655,7 +659,7 @@ export class StoryComponent implements OnInit {
   }
 
   addItems(limit, offset) {
-    if (this.pageType === 'details' && this.apiUrl) {
+    if (this.pageType === 'details' && !this.isLoading && this.apiUrl) {
       this.isLoading = true;
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
@@ -674,8 +678,14 @@ export class StoryComponent implements OnInit {
               storyId = result.data[0].id;
             }
           }
-
-          if (this.detailsData.find((o) => o.id !== storyId)) {
+          if (
+            this.detailsData.find((o) => o.id == storyId) &&
+            !this.duplicate
+          ) {
+            this.addItems(1, this.detailsData.length);
+            this.duplicate = true;
+            return;
+          } else if (this.detailsData.find((o) => o.id !== storyId)) {
             let url = this.brandSlug
               ? `${this.brandSlug}/story/${storyId}`
               : `story/${storyId}`;
@@ -683,9 +693,9 @@ export class StoryComponent implements OnInit {
               this.detailsData.push(this.htmlBinding(result.data));
             });
           } else {
-            if (limit === 1) {
-              this.addItems(limit, offset + 1);
-              this.storyIndex = true;
+            if (this.detailsData.length == 1) {
+              this.addItems(1, 1);
+              this.first = true;
               return;
             }
           }
@@ -765,9 +775,15 @@ export class StoryComponent implements OnInit {
   }
 
   onScrollDown() {
-    if (!this.dataLoading) {
+    if (!this.dataLoading && this.apiUrl) {
       this.dataLoading = true;
-      this.scrollEvent.next(true);
+      let offset;
+      if (this.first || this.duplicate) {
+        offset = this.detailsData.length;
+      } else {
+        offset = this.detailsData.length - 1;
+      }
+      this.storyIndex ? this.addItems(1, offset) : this.addItems(1, 0);
     }
   }
 
