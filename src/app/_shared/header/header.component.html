@@ -1,6 +1,6 @@
 <header class="col-12">
   <!-- Top header section Start -->
-  <div class="top-head d-none d-lg-block" (click)="closeSidebar()">
+  <div class="top-head d-none d-xl-block" (click)="closeSidebar()">
     <div class="d-flex container">
       <div class="col-lg-11 d-flex">
         <span class="py-1">Publications in the Mainland Community:</span>
@@ -56,7 +56,26 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-1 d-flex">icons</div>
+      <div class="col-lg-1 d-flex">
+        <ul class="list-group list-group-horizontal py-1">
+          <li *ngFor="let item of header?.socialMedia; index as i" class="mx-1">
+            <a
+              [href]="item.url"
+              target="_blank"
+              class="align-items-center"
+              rel="noopener"
+            >
+              <img
+                data-src="{{ item?.media?.image }}"
+                width="{{ item?.media?.width }}"
+                height="{{ item?.media?.height }}"
+                alt="social"
+                class="lazyload"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <!-- Top header section Close -->
@@ -565,34 +584,6 @@
               class="lazyload"
           /></a>
         </div>
-
-        <!-- Social Links -->
-        <ul class="social d-flex align-items-center mb-0">
-          <li class="d-none mx-1 d-md-block">
-            <a href="#" class="d-flex align-items-center">
-              <span class="follow text-capitalize">Follow Us:</span>
-            </a>
-          </li>
-          <li
-            *ngFor="let item of header?.socialMedia; index as i"
-            class="mx-2 d-none d-md-block"
-          >
-            <a
-              [href]="item.url"
-              target="_blank"
-              class="d-flex align-items-center"
-              rel="noopener"
-            >
-              <img
-                data-src="{{ item?.media?.image }}"
-                width="{{ item?.media?.width }}"
-                height="{{ item?.media?.height }}"
-                alt="social"
-                class="lazyload"
-              />
-            </a>
-          </li>
-        </ul>
 
         <!-- User Image -->
         <div class="userImage ms-3 d-none d-lg-block">

@@ -31,13 +31,6 @@ header {
     }
   }
 
-  .social {
-    @include tablet-portrait {
-      position: absolute;
-      right: 10%;
-    }
-  }
-
   main {
     height: 72px;
 
@@ -284,30 +277,6 @@ header {
       }
     }
 
-    .social {
-      a {
-        color: $light-gray;
-        transition: all 0.5s ease;
-
-        &:hover {
-          color: $primary;
-          transition: all 0.5s ease;
-        }
-      }
-
-      .badge.rounded-pill {
-        border-color: $primary !important;
-        color: $primary;
-        font-weight: bold;
-        font-size: 8px;
-
-        &:hover {
-          background-color: $primary;
-          color: #fff;
-        }
-      }
-    }
-
     .userImage {
       height: 60px;
       overflow: hidden;
@@ -438,14 +407,6 @@ header {
       }
     }
   }
-}
-
-.follow {
-  font-family: $balingerBold;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 16.73px;
-  color: $primary;
 }
 
 .search_pop_up {
