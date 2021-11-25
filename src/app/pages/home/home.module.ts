@@ -7,9 +7,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { VideoComponent } from './video/video.component';
 import { EditorialSectionsComponent } from './editorial-sections/editorial-sections.component';
+import { SpecialfeatureComponent } from './specialfeature/specialfeature.component';
 
 @NgModule({
-  declarations: [HomeComponent, VideoComponent, EditorialSectionsComponent],
+  declarations: [HomeComponent, VideoComponent, EditorialSectionsComponent, SpecialfeatureComponent],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
   providers: [],
 })

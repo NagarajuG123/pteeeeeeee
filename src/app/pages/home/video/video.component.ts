@@ -20,7 +20,6 @@ export class VideoComponent implements OnInit {
   openVideoPlayer = false;
   isBrowser: boolean = false;
   isLoaded: boolean = false;
-  s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -39,37 +38,5 @@ export class VideoComponent implements OnInit {
         this.videoData = result.data;
         this.isLoaded = true;
       });
-  }
-  updateVideoUrl(url: string) {
-    this.openVideoPlayer = true;
-    this.url = url;
-  }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $('.modal').on('hidden.bs.modal', function () {
-        $('.modal').hide();
-        $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
-      });
-      const minPerSlide = 5;
-      const parent = document.querySelector('.carousel-inner');
-
-      document.querySelectorAll('.carousel-item').forEach(function (item) {
-        let next = item.nextElementSibling;
-        if (!next) {
-          next = parent.querySelector('.carousel-item');
-        }
-        let clone = next.querySelector('div').cloneNode(true);
-        item.appendChild(clone);
-
-        for (var i = 0; i < minPerSlide; i++) {
-          next = next.nextElementSibling;
-          if (!next) {
-            next = parent.querySelector('.carousel-item');
-          }
-          clone = next.querySelector('div').cloneNode(true);
-          item.appendChild(clone);
-        }
-      });
-    }
   }
 }
