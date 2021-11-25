@@ -83,4 +83,18 @@ line-height: 128.7%;
     z-index: 1;
     padding: 3px 6px;
   }
-  
+  hr {
+    border-color: $red;
+    background-color: $red;
+    height: 2px;
+    opacity: 1;
+  }
+  .small-red-headers {
+    color: $red;
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 12px;
+  }

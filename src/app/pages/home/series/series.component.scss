@@ -1,0 +1,18 @@
+@import "./../../../../assets/scss/variables.scss";
+.series{
+    .sectionTitle{
+        color: $dark_gray;
+    }
+    .highlight {
+        font-family: $aktiv;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 117%;
+        color: $black;
+        margin-top: 10px;
+    } 
+    hr{
+        border-color: $dark_gray_5;
+        background-color: $dark_gray_5;
+    }
+}
