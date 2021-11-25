@@ -76,10 +76,6 @@
     </div>
   </div>
 
-  <app-video></app-video>
+  <app-carousel [data]="videoData" [type]="'video'"></app-carousel>
 
-  <app-special-feature
-    [apiUrl]="'home-page-featured-content'"
-    [slug]="'1851'"
-  ></app-special-feature>
-</ng-container>
+  <app-carousel [data]="specialFeature" [type]="'specialFeature'" [title]="title"></app-carousel>
