@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  @Input() Data: any;
+  @Input() data: any;
   @Input() type: string;
   @Input() title: string;
   openVideoPlayer: boolean;

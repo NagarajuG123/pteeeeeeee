@@ -16,15 +16,7 @@
       }
       .articleTitles {
         margin-top: 10px;
-      }
-      .hightLightTitle {
-        font-family: $aktiv;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 117%;
-        color: $black;
-        margin-top: 10px;
-      }  
+      } 
     .c-section-header--subInfo {
         color: $dark_gray_5;
         font-family: $balingerBold;
@@ -38,6 +30,14 @@
         }
     }
     .c-video-section--boxWrapper {
+        h2 {
+            font-family: $aktiv;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 117%;
+            color: $black;
+            margin-top: 10px;
+          } 
         .c-video-section--boxContent {
         height: 314px;
         .c-video-section--playBtn {
