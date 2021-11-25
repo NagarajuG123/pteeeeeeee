@@ -47,7 +47,6 @@ export class StoryComponent implements OnInit {
   footer: any = [];
   header: any = [];
   defaultArticleSection = 'aggregated articles';
-  scrollEvent = new BehaviorSubject<boolean>(false);
   subject: Subject<any> = new Subject();
   storyIndex: boolean;
   pageType = 'details';
@@ -94,7 +93,6 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setScrollEvent();
     this.getBrandList();
     this.setbrand();
     this.isLoading = false;
@@ -644,16 +642,6 @@ export class StoryComponent implements OnInit {
           this.brandList.sort();
           this.brandList.reverse();
         }
-      }
-    });
-  }
-  //scroll stroy
-  setScrollEvent() {
-    this.scrollEvent.subscribe((res) => {
-      if (res && this.detailsData) {
-        this.storyIndex
-          ? this.addItems(1, this.detailsData.length + 1)
-          : this.addItems(1, this.detailsData.length);
       }
     });
   }
