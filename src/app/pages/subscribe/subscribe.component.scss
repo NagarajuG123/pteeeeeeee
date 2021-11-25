@@ -82,13 +82,12 @@ img {
 .subscribe {
   background-color: $white_3;
   h1 {
-    font-family: $balingerBold;
-    font-size: 30px;
+    font-family: $aktiv;
+    font-size: 34px;
     font-weight: 700;
-    line-height: 36px;
+    line-height: 42.5px;
     color: $red;
     text-align: left;
-    font-family: $balingerBold;
   }
   h5 {
     font-size: 20px;
@@ -115,7 +114,8 @@ img {
     color: $dark-gray;
   }
   .form-control {
-    border-color: $red;
+    border: 1px solid #595959;
+    border-radius: unset;
     width: 74%;
   }
   .form-control::placeholder {
@@ -186,11 +186,12 @@ img {
     }
     button {
       border: 0;
-      width: 110px;
+      width: 118px;
       height: 35px;
+      padding: 9px 15px 16px 0px;
       span {
         left: unset;
-        right: 4px;
+        padding: 8px 1px 0px 7px;
       }
     }
     a {
@@ -204,11 +205,12 @@ img {
   }
 
   .back {
-    font-family: $balingerBold;
+    font-family: $roboto;
     font-weight: 700;
     background: $red;
-    font-size: 18px;
-    line-height: 21.6px;
+    font-size: 16px;
+    line-height: 18.75px;
+    text-transform: uppercase;
     color: $white;
     position: relative;
     span {
@@ -219,7 +221,6 @@ img {
       height: 10px;
       fa-icon {
         font-size: 18px;
-        line-height: 38px;
         color: $white;
       }
     }
@@ -228,6 +229,11 @@ img {
     background-color: $red;
     border-color: $red;
   }
+  .form-check-input[type=checkbox] {
+    border: 1px solid $red;
+    border-radius:0rem;
+
+}
   .d-inline-block{
     .form-check-input {
       margin-left: 0;
