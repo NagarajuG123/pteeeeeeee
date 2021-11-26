@@ -1,22 +1,10 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
-img {
-  width: 100%;
-  height: auto;
-}
 a {
   color: $black;
 }
-.tag {
-  background: $red;
-  font-family: $roboto;
-  color: $white;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  box-sizing: border-box;
-}
+
 .tagBrand {
   line-height: 20.57px;
   font-size: 17.14px;
@@ -31,10 +19,6 @@ a {
   padding: 8px 16px 8px 0;
 }
 .main-image {
-  .tag {
-    padding: 3px 6px;
-    line-height: 19px;
-  }
   .tagBrand {
     width: 139px;
   }
@@ -49,23 +33,13 @@ a {
   }
 }
 
-.small-red-headers {
-  color: $red;
-  font-family: $roboto;
-  font-weight: 500;
-  font-size: 10px;
-  text-transform: uppercase;
-  display: block;
-  line-height: 12px;
-}
-
 .brand-list {
   color: $black;
   font-family: $roboto;
   font-weight: 700;
   height: calc(100% - 27px);
   li {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $light_gray_9;
     padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
@@ -82,25 +56,13 @@ a {
 .news-list {
   li {
     display: flex;
-    border-bottom: 1px solid #e8eef2;
+    border-bottom: 1px solid $light_gray_9;
     padding: 25px 0 25px !important;
     &:last-child {
       border: 0;
     }
-    img {
-      min-width: 121px;
-      max-height: 100%;
-      @media screen and (max-width: 1291px) {
-        min-width: 90px;
-        max-height: 90px;
-      }
-    }
-    h3 {
-      font-weight: bold;
-      font-size: 18px;
-      color: $black;
-      line-height: 1.2rem;
-      // width: 147px;
+    .articleTitles {
+      padding-top: 5px;
     }
   }
 
@@ -115,9 +77,6 @@ a {
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 318px;
-    p {
-      line-height: 16.73px;
-    }
   }
 }
 
@@ -141,24 +100,11 @@ a {
     .image-description {
       padding: 5px;
       background-color: $feature-article-description;
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $roboto;
       font-weight: 700;
       font-size: 14px;
       line-height: 16px;
     }
-  }
-}
-.video-btn {
-  cursor: pointer;
-  position: relative;
-  .vide-play {
-    position: absolute;
-    left: calc(50% - 40px);
-    top: calc(50% - 20px);
-    z-index: 1000;
-    height: 28px;
-    width: 49px;
-    border-radius: 5px;
   }
 }

@@ -1,11 +1,11 @@
 <div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded">
   <div class="container customContainer">
-    <h2 class="py-3 m-0 text-white text-uppercase">
-      <strong>Editorial Sections</strong>
+    <h2 class="py-3 m-0 sectionTitle  ">
+      Editorial Sections
     </h2>
   </div>
 
-  <div class="tabs primary-bg">
+  <div class="tabs">
     <div class="container customContainer position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
@@ -78,30 +78,28 @@
             <div class="items card border-0 h-100">
               <img
                 appYoutubeImage
-                data-src="{{ list.media | defaultImage: 550:304 }}"
-                data-srcset="{{ list.media | defaultImage: 550:304 }} 550w, 
-                      {{ list.media | defaultImage: 225:133 }} 225w,
-                    {{ list.media | defaultImage: 300:174 }} 300w"
-                data-sizes="{{
-                  '(max-width: 576px) 300px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 550px,
-                    550px'
-                }}"
-                class="img-fluid lazyload"
-                width="550"
-                height="304"
+                data-src="{{ list.media | defaultImage: 1280:720 }}"
+                class="w-100 img-fluid lazyload"
+                width="196"
+                height="110"
                 alt="editorial"
                 loading="lazy"
               />
               <div class="card-body">
-                <h3 class="card-title">
+                <h3 class="card-title articleTitles">
                   {{ list.title }}
                 </h3>
-                <small *ngIf="commonService.authorName(list)"
-                  >By {{ list.author?.name }}</small
-                >
               </div>
+              <small class="timeStamp ms-3" *ngIf="commonService.isDate(list)">
+                <span *ngIf="commonService.isUpdate(list)"
+                  >{{ list.last_modified | date: "MM-dd-YYYY" }} |
+                  {{ list.last_modified | date: "shortTime" }}
+                </span>
+                <span *ngIf="!commonService.isUpdate(list)"
+                  >{{ list.posted_on | date: "MM-dd-YYYY" }} |
+                  {{ list.posted_on | date: "shortTime" }}</span
+                >
+              </small>
             </div>
           </a>
         </li>

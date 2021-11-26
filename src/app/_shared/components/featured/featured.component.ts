@@ -5,6 +5,7 @@ import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-featured',
@@ -20,6 +21,7 @@ export class FeaturedComponent implements OnInit {
   brandNews: Details[] = [];
   brandInfoNews: Details[] = [];
   isLoaded: boolean = false;
+  s3Url = environment.s3Url;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -34,10 +36,10 @@ export class FeaturedComponent implements OnInit {
       `${this.apiUrl}?limit=1&offset=0`
     );
     const newsApi = this.apiService.getAPI(
-      `${this.slug}/spotlight/industry?limit=4&offset=0`
+      `${this.slug}/spotlight/industry?limit=3&offset=0`
     );
     const brandNews = this.apiService.getAPI(
-      `${this.slug}/latest?limit=4&offset=0`
+      `${this.slug}/latest?limit=5&offset=0`
     );
 
     forkJoin([featureApi, newsApi, brandNews])

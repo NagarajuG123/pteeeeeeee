@@ -23,8 +23,8 @@
     bottom: 47px;
     left: 20vw;
     margin-left: -50px;
-    border-top: 3px solid $dark-gray;
-    border-bottom: 3px solid $dark-gray;
+    border-top: 3px solid $dark_gray;
+    border-bottom: 3px solid $dark_gray;
     text-align: center;
     width: 54.5%;
     margin: 0 auto;
@@ -39,7 +39,7 @@
     }
     .title {
       margin: 0;
-      color: $dark-gray;
+      color: $dark_gray;
       font-family: $balingerBold;
       font-weight: 700;
       font-size: 44px;
@@ -92,7 +92,7 @@
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
-    color: $dark-gray;
+    color: $dark_gray;
     font-size: 20px;
     padding: 30px 10px 20px;
     text-align: center;
@@ -202,7 +202,7 @@
       .list-data--trending {
         font-family: $roboto;
         font-weight: 700;
-        color: $dark-gray;
+        color: $dark_gray;
         font-size: 12.54px;
         line-height: 14.69px;
         margin-bottom: 0;

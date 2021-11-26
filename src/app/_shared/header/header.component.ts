@@ -20,7 +20,11 @@ import {
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCaretRight,
+  faAngleDown,
+  faAngleUp,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
   faLinkedinIn,
@@ -39,6 +43,8 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn;
+  @ViewChild('carouselBtn', { read: ElementRef, static: true })
+  carouselBtn: ElementRef;
 
   header: any = [];
   brandSlug: string;
@@ -80,6 +86,8 @@ export class HeaderComponent implements OnInit {
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
   trending: any;
+  faAngleDown = faAngleDown;
+  faAngleUp = faAngleUp;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -157,7 +165,7 @@ export class HeaderComponent implements OnInit {
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const trending = this.apiService.getAPI(
-      `${this.brandSlug}/trending?limit=3&offset=0`
+      `${this.brandSlug}/trending?limit=9&offset=0`
     );
 
     forkJoin([header, news, inquire, publication, trending]).subscribe(
@@ -167,7 +175,6 @@ export class HeaderComponent implements OnInit {
         this.inquireData = results[2].schema;
         this.publication = results[3];
         this.trending = results[4].data;
-
         this.setFavicon();
         if (this.brandSlug != '1851') {
           this.getInquiry();
@@ -422,6 +429,11 @@ export class HeaderComponent implements OnInit {
           $('.banner').css({ 'margin-top': '0' });
         }
       });
+      if (this.isBrowser && $('.carousel').hasClass('carousel-control-next')) {
+        setInterval(() => {
+          this.carouselBtn.nativeElement.click();
+        }, 6000);
+      }
     }
   }
   closeSidebar() {

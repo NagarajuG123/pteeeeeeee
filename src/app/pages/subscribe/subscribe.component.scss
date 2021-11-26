@@ -92,15 +92,33 @@ img {
     line-height: 25.74px;
     text-align: left;
     font-weight: 500;
+<<<<<<< HEAD
     color: $dark_black;
     }
    .clickall {
+=======
+    color: $dark_gray;
+  }
+  h5 {
+>>>>>>> 0c9fd50d99fdf2114daa1463b50637e93724c77a
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
     text-align: left;
     font-weight: 500;
+<<<<<<< HEAD
     color: $dark-gray;
+=======
+    color: $black;
+  }
+  h6 {
+    font-size: 17px;
+    font-family: $roboto;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 400;
+    color: $dark_gray;
+>>>>>>> 0c9fd50d99fdf2114daa1463b50637e93724c77a
   }
   .form-control {
     border: 1px solid $dark_gray_5 !important ;
@@ -215,12 +233,16 @@ img {
     background-color: $red;
     border-color: $red;
   }
+<<<<<<< HEAD
   .form-check-input[type=checkbox] {
     border: 1px solid $red !important;
     border-radius:0rem;
 
 }
   .d-inline-block{
+=======
+  .d-inline-block {
+>>>>>>> 0c9fd50d99fdf2114daa1463b50637e93724c77a
     .form-check-input {
       margin-left: 0;
     }

@@ -40,7 +40,7 @@
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
-    color: $dark-gray;
+    color: $dark_gray;
     font-size: 20px;
     padding: 15px 15px;
     text-align: center;
@@ -92,13 +92,13 @@
       .list-data--investment {
         font-family: $proxiMedium;
         font-weight: 500;
-        color: $dark-gray;
+        color: $dark_gray;
         font-size: 20px;
         margin-bottom: 0;
         line-height: 28.24px;
         text-align: center;
         a {
-          color: $dark-gray;
+          color: $dark_gray;
         }
         @include media("<md") {
           margin-bottom: 10px;
@@ -117,13 +117,13 @@
     &.isIndustryCol {
       .list-data--industry {
         font-family: $proxiMedium;
-        color: $dark-gray;
+        color: $dark_gray;
         font-size: 15px;
         font-weight: 500;
         line-height: 18.27px;
         margin-bottom: 0;
         a {
-          color: $dark-gray;
+          color: $dark_gray;
         }
         @include media("<md") {
           margin-bottom: 10px;
@@ -158,7 +158,7 @@
             font-weight: 700;
             font-size: 16px;
             text-decoration: none !important;
-            color: $dark-gray;
+            color: $dark_gray;
           }
         }
       }

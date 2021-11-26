@@ -9,9 +9,20 @@ body {
   min-height: 100%;
 }
 
+.container {
+  max-width: 1350px !important;
+}
+
+.customContainer {
+  max-width: 1210px !important;
+}
 a {
   text-decoration: none;
   cursor: pointer;
+  color: $dark_gray;
+  &:hover {
+    color: $dark_gray;
+  }
 }
 
 ul {
@@ -22,8 +33,6 @@ ul {
   }
 }
 
-
-
 .primary-bg {
   background-color: $primary;
 }
@@ -33,28 +42,11 @@ ul {
 }
 
 .gray-color {
-  color: $dark-gray;
+  color: $dark_gray;
 }
 
 .gray-bg {
-  background-color: $dark-gray;
-}
-
-.noScrollBar {
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 8px;
-    background-color: rgb(107, 99, 99);
-    /* or add it to the track */
-  }
-}
-
-.container {
-  max-width: 1350px !important;
-}
-
-.customContainer {
-  max-width: 1210px !important;
+  background-color: $dark_gray;
 }
 
 // owl-carousel

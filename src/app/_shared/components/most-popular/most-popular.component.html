@@ -4,7 +4,7 @@
   [ngClass]="type == 'brand' ? 'brand-most-popular' : ''"
 >
   <div class="container customContainer">
-    <h2 class="py-3 m-0 text-white">MOST POPULAR</h2>
+    <h2 class="py-3 m-0 sectionTitle">MOST POPULAR</h2>
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
@@ -15,58 +15,46 @@
           fragment="trending"
           class="text-black"
         >
-          <div class="slideItem" *ngIf="i < 3; else elseBlock">
+          <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
               width="380px"
               height="223"
-              data-src="{{ item.media | defaultImage: 380:223 }}"
-              data-srcset="{{ item.media | defaultImage: 380:223 }} 380w, {{
-                item.media | defaultImage: 350:200
-              }} 350w, 
-          {{ item.media | defaultImage: 555:310 }} 555w"
-              data-sizes="{{
-                '(max-width: 576px) 555px,
-              (max-width: 992px) 350px,
-              (max-width: 1200px) 380px,
-              380px'
-              }}"
+              data-src="{{ item.media | defaultImage: 1280:720 }}"
               alt="most-popular"
               loading="lazy"
               class="img-fluid lazyload"
             />
-            <div class="slide-body position-relative primary-bg px-3 d-block">
+            <div class="card-body position-relative px-3 d-block">
               <span
                 class="
                   position-absolute
                   top-0
                   start-0
                   bg-white
-                  primary-color
                   d-flex
                   align-items-center
                   justify-content-center
                 "
                 >POPULAR</span
               >
-              <h2 class="position-relative ps-4 text-white">
+              <h2 class="position-relative ps-4 card-title">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
-                <strong class="ms-3 d-block">
+                <strong class="ms-3 d-block articleTitles text-white">
                   {{ item.title }}
                 </strong>
               </h2>
             </div>
             <div
               class="
-                slide-footer
-                primary-bg-1
+                card-footer
                 d-flex
                 flex-row-reverse
                 py-1
                 px-2
               "
             >
-              <a class="text-white"
+              <a class="text-white timeStamp p-0"
                 >READ MORE
                 <fa-icon
                   [icon]="faAngleRight"
@@ -76,21 +64,26 @@
             </div>
           </div>
           <ng-template #elseBlock>
-            <div class="subSlideItem px-md-3">
-              <div class="slide-body position-relative px-3 d-block">
+            <div class="subItem px-md-3">
+              <div class="card-body position-relative px-3 d-block">
                 <div class="position-relative ps-4">
-                  <span class="position-absolute top-0 start-0 primary-color">{{
+                  <span class="position-absolute top-0 start-0">{{
                     i + 1
                   }}</span>
-                  <h3 class="mb-0 ms-3 d-block">
+                  <h3 class="mb-0 ms-3 d-block card-title">
                     {{ item.title }}
                   </h3>
-                  <small
-                    class="ms-3 text-black"
-                    *ngIf="commonService.authorName(item)"
-                    >By {{ item?.author?.name }}
+                  <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
+                    <span *ngIf="commonService.isUpdate(item)"
+                      >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+                      {{ item.last_modified | date: "shortTime" }}
+                    </span>
+                    <span *ngIf="!commonService.isUpdate(item)"
+                      >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+                      {{ item.posted_on | date: "shortTime" }}</span
+                    >
                   </small>
-                  <p class="ms-3">
+                  <p class="ms-3 description">
                     {{ item.short_description }}
                   </p>
                 </div>
@@ -131,14 +124,13 @@
                 alt="most-popular"
                 loading="lazy"
               />
-              <div class="slide-body position-relative primary-bg px-3 d-block">
+              <div class="slide-body position-relative px-3 d-block">
                 <span
                   class="
                     position-absolute
                     top-0
                     start-0
                     bg-white
-                    primary-color
                     d-flex
                     align-items-center
                     justify-content-center
@@ -149,20 +141,19 @@
                   <span class="position-absolute top-0 start-0">{{
                     i + 1
                   }}</span>
-                  <strong class="ms-3 d-block">{{ item.title }}</strong>
+                  <strong class="ms-3 d-block articleTitles text-white">{{ item.title }}</strong>
                 </h2>
               </div>
               <div
                 class="
                   slide-footer
-                  primary-bg-1
                   d-flex
                   flex-row-reverse
                   py-1
                   px-2
                 "
               >
-                <a class="text-white"
+                <a class="timeStamp text-white p-0"
                   >READ MORE
                   <fa-icon
                     [icon]="faAngleRight"

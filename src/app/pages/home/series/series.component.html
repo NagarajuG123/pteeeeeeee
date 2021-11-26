@@ -1,0 +1,52 @@
+<div class="series" *ngIf="seriesData">
+<div class="container customContainer">
+    <h2 class="py-3 m-0 sectionTitle  ">Featured Series</h2>
+</div>
+<hr>
+<div class="container customContainer">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-8">
+            <div class="position-relative">
+                <div class="tag text-center top-0 position-absolute text-uppercase">featured series</div>
+                <a>
+                    <img
+                        appYoutubeImage
+                        class="img-fluid lazyload"
+                        width="741"
+                        height="417"
+                        data-src="{{ seriesData[0].media | defaultImage: 1280:720 }}"
+                        alt="series"
+                        loading="lazy"
+                        />
+                    <h2 class="highlight">{{ seriesData[0]?.title }}
+                        <span class="timeStamp px-5">SEE ALL <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon></span>
+                    </h2>
+                    
+                </a>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 featured-right">
+            <span class="small-red-headers">featured series</span>
+            <ul>
+                <li *ngFor="let item of seriesData | slice:1:4 " class="d-flex">
+                        <a>
+                            <img
+                              appYoutubeImage
+                              class="img-fluid lazyload"
+                              width="192"
+                              height="108"
+                              data-src="{{ item.media | defaultImage: 1280:720 }}"
+                              alt="featured"
+                              loading="lazy"
+                            />
+                        </a>
+                    <div>
+                        <h3 class="px-3 mb-0 articleTitles"> {{ item.title }} </h3>
+                        <span class="px-3 timeStamp">SEE ALL <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>

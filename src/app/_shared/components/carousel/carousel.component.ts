@@ -1,28 +1,24 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { Details } from 'src/app/_core/models/details.model';
-import { ApiService } from 'src/app/_core/services/api.service';
-import 'lazysizes';
-import * as $ from 'jquery';
 import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
-@Component({
-  selector: 'app-video',
-  templateUrl: './video.component.html',
-  styleUrls: ['./video.component.scss'],
-})
-export class VideoComponent implements OnInit {
-  public innerWidth: any;
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-  videoData: Details[] = [];
+@Component({
+  selector: 'app-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss']
+})
+export class CarouselComponent implements OnInit {
+  @Input() data: any;
+  @Input() type: string;
+  @Input() title: string;
+  openVideoPlayer: boolean;
   url: string;
-  openVideoPlayer = false;
-  isBrowser: boolean = false;
-  isLoaded: boolean = false;
+  isBrowser: boolean;
   s3Url = environment.s3Url;
-  private onDestroySubject = new Subject();
-  onDestroy$ = this.onDestroySubject.asObservable();
+  isLoaded: boolean;
+  faAngleRight = faAngleRight;
 
   constructor(
     private apiService: ApiService,
@@ -32,14 +28,9 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService
-      .getAPI(`1851/videos?site=1851`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((result) => {
-        this.videoData = result.data;
-        this.isLoaded = true;
-      });
+    this.isLoaded = true;
   }
+
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
     this.url = url;
@@ -50,7 +41,7 @@ export class VideoComponent implements OnInit {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
       });
-      const minPerSlide = 5;
+      const minPerSlide = 6;
       const parent = document.querySelector('.carousel-inner');
 
       document.querySelectorAll('.carousel-item').forEach(function (item) {
