@@ -11,6 +11,9 @@
   padding: 25px 0;
   .customContainer {
     padding: 0 35px;
+    .timeStamp{
+      float: right;
+    }
     .sectionTitle {
         color: $dark-gray;
       }

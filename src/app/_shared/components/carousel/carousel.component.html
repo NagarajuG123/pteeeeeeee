@@ -6,13 +6,17 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-12">
-        <div class="d-flex align-items-center">
-          <div class="d-flex align-items-end">
-            <h2 *ngIf="type === 'video'" class="sectionTitle py-3 m-0">Videos</h2>
-            <h2 *ngIf="type === 'specialFeature'" class="sectionTitle py-3 m-0 text-white">{{ title }}</h2>
+        <div class="align-items-center">
+          <div class="align-items-end">
+            <h2 *ngIf="type === 'video'" class="sectionTitle py-3 m-0">Videos </h2>
+            <h2 *ngIf="type === 'specialFeature'" class="sectionTitle py-3 m-0 text-white">{{ title }}
+              <span class="timeStamp">See More <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon></span>
+            </h2>
             <span *ngIf="type === 'video'" class="c-section-header--subInfo py-3">
               Covering the franchise industry
+              <span class="timeStamp">See More <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon></span>
             </span>
+            <hr>
           </div>
         </div>
       </div>

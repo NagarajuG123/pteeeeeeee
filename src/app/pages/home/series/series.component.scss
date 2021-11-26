@@ -10,9 +10,20 @@
         line-height: 117%;
         color: $black;
         margin-top: 10px;
+        > span{
+            float: right;
+        }
     } 
-    hr{
-        border-color: $dark_gray_5;
-        background-color: $dark_gray_5;
+    .featured-right{
+      li{
+          border-bottom: 1px solid $dark_gray_4;
+          padding: 25px 0;
+          &:last-child {
+            border: 0;
+          }
+      }
+      img{
+          max-width: unset;
+      }
     }
 }
