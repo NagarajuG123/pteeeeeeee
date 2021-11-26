@@ -1,6 +1,7 @@
 @import "../../../assets/scss/typography.scss";
 @import "../../../assets/scss/media.scss";
 @import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins.scss";
 .top-container {
   position: relative;
   @include media("<xl") {
@@ -26,7 +27,8 @@
     border-top: 3px solid $dark_gray;
     border-bottom: 3px solid $dark_gray;
     text-align: center;
-    width: 54.5%;
+    width: 829px;
+    height:186px;
     margin: 0 auto;
     background-color: $white;
     @include media("<md") {
@@ -37,35 +39,35 @@
     @include media("<sm") {
       width: 70%;
     }
-    .title {
-      margin: 0;
-      color: $dark_gray;
-      font-family: $balingerBold;
-      font-weight: 700;
-      font-size: 44px;
-      line-height: 52.8px;
-      @include media("<xl") {
-        font-size: 36px;
-      }
-      @include media("<md") {
-        font-size: 26px;
-      }
+    @include tablet-landscape{
+      width:60%;
     }
-    .description {
-      width: 430px;
-      margin: 0 auto;
-      color: $red;
-      font-family: $balingerBold;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 24.54px;
-      margin: 5px auto;
+    .large-main-article { 
+      margin: 0;
+      color: $dark_black;
+      line-height: 42.5px;
       @include media("<xl") {
-        font-size: 18px;
-        width: calc(100% - 15px);
+        font-size: 26px;
       }
       @include media("<md") {
         font-size: 16px;
+      }
+    }
+    .description {
+      width: 441px;
+      margin: 0 auto;
+      color: $red;
+      font-family: $aktiv;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18.72px;
+      margin: 5px auto;
+      @include media("<xl") {
+        font-size: 14px;
+        width: calc(100% - 15px);
+      }
+      @include media("<md") {
+        font-size: 12px;
       }
     }
   }
@@ -92,7 +94,7 @@
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
-    color: $dark_gray;
+    color: $dark_black;
     font-size: 20px;
     padding: 30px 10px 20px;
     text-align: center;
@@ -202,9 +204,9 @@
       .list-data--trending {
         font-family: $roboto;
         font-weight: 700;
-        color: $dark_gray;
-        font-size: 12.54px;
-        line-height: 14.69px;
+        color: $dark_black;
+        font-size: 12px;
+        line-height: 14.06px;
         margin-bottom: 0;
         text-align: center;
 
@@ -230,11 +232,11 @@
       .list-data--latestStory {
         margin-bottom: 0;
         .list-data--latestStoryLink {
-          font-family: $balingerBold;
+          font-family: $aktiv;
           color: $red;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 700;
-          line-height: 24px;
+          line-height: 18.72px;
           text-decoration: underline;
           @include media("<lg") {
             font-size: 18px;
