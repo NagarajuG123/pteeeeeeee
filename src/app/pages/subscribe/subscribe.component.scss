@@ -103,20 +103,23 @@ img {
     line-height: 25.74px;
     text-align: left;
     font-weight: 500;
-    color: $black;
+    color: $dark_black;
   }
   h6 {
-    font-size: 17px;
+    font-size: 20px;
     font-family: $roboto;
-    line-height: 24px;
+    line-height: 25.74px;
     text-align: left;
-    font-weight: 400;
+    font-weight: 500;
     color: $dark-gray;
   }
   .form-control {
-    border: 1px solid #595959;
+    border: 1px solid $dark_gray_5;
     border-radius: unset;
     width: 74%;
+    height: 47px;
+    background: $white;
+
   }
   .form-control::placeholder {
     font-family: $roboto;
