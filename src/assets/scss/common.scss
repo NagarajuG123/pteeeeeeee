@@ -27,51 +27,54 @@
   font-family: $aktiv;
 }
 .description {
-font-weight: 400;
-font-size: 12px;
-color: $dark_gray_5;
-font-family: $roboto;
-line-height: 128.7%;
+  font-weight: 400;
+  font-size: 12px;
+  color: $dark_gray_5;
+  font-family: $roboto;
+  line-height: 128.7%;
 }
-.sectionTitle{
-    font-family: $aktiv;
-    font-size: 20px;
-    font-weight: 800;
-    color: $white;
-    text-transform: uppercase;
+.sectionTitle {
+  font-family: $aktiv;
+  font-size: 20px;
+  font-weight: 800;
+  color: $white;
+  text-transform: uppercase;
 }
+
+.large-main-article {
+  font-size: 34px;
+  line-height: 125%;
+  font-family: $aktiv;
+  font-weight: 700;
+  color: $black;
+}
+.tag {
+  background: $red;
+  font-family: $roboto;
+  color: $white;
+  font-weight: 700;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-radius: unset;
+  z-index: 1;
+  padding: 3px 6px;
+}
+
+//video
+
 .video-btn {
-    cursor: pointer;
-    position: relative;
-    .vide-play {
-      position: absolute;
-      left: calc(50% - 40px);
-      top: calc(50% - 20px);
-      z-index: 1000;
-      height: 28px;
-      width: 49px;
-      border-radius: 5px;
-    }
-  }
-  .modal-body {
-    padding: 0rem !important;
-  }
-  .btn-close {
+  cursor: pointer;
+  position: relative;
+  .vide-play {
     position: absolute;
-    right: -30px;
-    top: 0;
-    z-index: 999;
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 1;
+    left: calc(50% - 40px);
+    top: calc(50% - 20px);
+    z-index: 1000;
+    height: 28px;
+    width: 49px;
+    border-radius: 5px;
   }
-  .large-main-article{
-      font-size: 34px;
-      line-height: 125%;
-      font-family: $aktiv;
-      font-weight: 700;
-      color: $black;
-  }
+}
   .tag {
     background: $red;
     font-family: $roboto;
@@ -99,3 +102,30 @@ line-height: 128.7%;
     display: block;
     line-height: 12px;
   }
+
+//modal
+
+.modal-body {
+  padding: 0rem !important;
+}
+.btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
+}
+//button
+button {
+  font-family: $roboto;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18.75px;
+  color: $white_2;
+  text-transform: uppercase;
+  border-width: 0px;
+  background-color: $red;
+  padding: 0.5rem;
+}

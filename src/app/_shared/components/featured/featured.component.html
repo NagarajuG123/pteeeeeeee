@@ -2,95 +2,93 @@
   <div class="row">
     <div class="col-12 col-lg mb-3 mb-sm-0">
       <div class="row">
+        <div class="position-relative main-image">
           <div
-            class="position-relative main-image"
+            class="tag position-absolute text-center top-0 text-uppercase"
+            [ngClass]="slug !== '1851' ? 'tagBrand' : ''"
           >
-            <div
-              class="tag position-absolute text-center top-0 text-uppercase"
-              [ngClass]="slug !== '1851' ? 'tagBrand' : ''"
-            >
-              Featured Article
-            </div>
-            <a
-              *ngIf="!commonService.isVideo(featured[0])"
-              routerLink="/{{ commonService.readMore(featured[0]) }}"
-              fragment="featured"
-            >
-              <img
-                appYoutubeImage
-                class="lazyload"
-                alt="featured"
-                loading="lazy"
-                data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
+            Featured Article
+          </div>
+          <a
+            *ngIf="!commonService.isVideo(featured[0])"
+            routerLink="/{{ commonService.readMore(featured[0]) }}"
+            fragment="featured"
+          >
+            <img
+              appYoutubeImage
+              class="lazyload"
+              alt="featured"
+              loading="lazy"
+              data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
                         {{ featured[0].media | defaultImage: 700:393 }} 700w,
                         {{ featured[0].media | defaultImage: 800:449 }} 800w,
                         {{ featured[0].media | defaultImage: 688:386 }} 688w"
-                data-sizes="{{
-                  '(max-width: 576px) 600px,
+              data-sizes="{{
+                '(max-width: 576px) 600px,
                         (max-width: 768px) 800px,
                         (max-width: 992px) 600px,
                         (max-width: 1200px) 700px,
                         688px'
-                }}"
-                width="688"
-                height="386"
-                data-src="{{ featured.media | defaultImage: 688:386 }}"
-              />
-            </a>
+              }}"
+              width="688"
+              height="386"
+              data-src="{{ featured.media | defaultImage: 688:386 }}"
+            />
+          </a>
 
-            <a
-              *ngIf="commonService.isVideo(featured[0])"
-              data-bs-toggle="modal"
-              data-bs-target="#featuredModal"
-              fragment="featured"
-              class="video-btn"
-            >
-              <img
-                appYoutubeImage
-                class="lazyload"
-                alt="featured"
-                loading="lazy"
-                data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
+          <a
+            *ngIf="commonService.isVideo(featured[0])"
+            data-bs-toggle="modal"
+            data-bs-target="#featuredModal"
+            fragment="featured"
+            class="video-btn"
+          >
+            <img
+              appYoutubeImage
+              class="lazyload"
+              alt="featured"
+              loading="lazy"
+              data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
                         {{ featured[0].media | defaultImage: 700:393 }} 700w,
                         {{ featured[0].media | defaultImage: 800:449 }} 800w,
                         {{ featured[0].media | defaultImage: 688:386 }} 688w"
-                data-sizes="{{
-                  '(max-width: 576px) 600px,
+              data-sizes="{{
+                '(max-width: 576px) 600px,
                         (max-width: 768px) 800px,
                         (max-width: 992px) 600px,
                         (max-width: 1200px) 700px,
                         688px'
-                }}"
-                width="688"
-                height="386"
-                data-src="{{ featured.media | defaultImage: 688:386 }}"
-              />
-              <img
+              }}"
+              width="688"
+              height="386"
+              data-src="{{ featured.media | defaultImage: 688:386 }}"
+            />
+            <img
               data-src="{{ s3Url }}videoIcon.png"
               alt="Play"
               class="img-fluid vide-play lazyload"
               loading="lazy"
             />
-            </a>
-            <h2 class="large-main-article bottom-0 w-100">
-              {{ featured[0].title }}
-            </h2>
-              <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
-                <span *ngIf="commonService.isUpdate(featured[0])"
-                  >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
-                  {{ featured[0].last_modified | date: "shortTime" }}
-                </span>
-                <span *ngIf="!commonService.isUpdate(featured[0])"
-                  >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
-                  {{ featured[0].posted_on | date: "shortTime" }}</span
-                >
-              </span>
-          </div>
+          </a>
+          <h2 class="large-main-article bottom-0 w-100">
+            {{ featured[0].title }}
+          </h2>
+          <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
+            <span *ngIf="commonService.isUpdate(featured[0])"
+              >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
+              {{ featured[0].last_modified | date: "shortTime" }}
+            </span>
+            <span *ngIf="!commonService.isUpdate(featured[0])"
+              >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
+              {{ featured[0].posted_on | date: "shortTime" }}</span
+            >
+          </span>
+        </div>
       </div>
     </div>
-     <!-- Industry 1851 news list -->
+    <!-- Industry 1851 news list -->
     <div
-    *ngIf="!isAwards()"
+      *ngIf="!isAwards()"
       class="
         position-relative
         col-12 col-sm-6 col-lg-4
@@ -99,16 +97,13 @@
         latestListing
       "
     >
-    <span class="small-red-headers">Latest Finance Industry News</span>
-      <ul class="brand-list noScrollBar list-group">
-        <li
-          *ngFor="let item of news; index as i"
-          class=""
-        >
+      <span class="small-red-headers">Latest Finance Industry News</span>
+      <ul class="brand-list list-group">
+        <li *ngFor="let item of news; index as i" class="">
           <h3 class="m-0 articleTitles">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
+              fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
             >
               {{ item.title }}
             </a>
@@ -125,7 +120,7 @@
           </span>
           <a
             routerLink="/{{ commonService.readMore(item) }}"
-            fragment="{{ item?.category?.slug.replace('-spotlight','') }}"
+            fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
           >
             <p class="description">
               {{ item.short_description }}
@@ -153,10 +148,8 @@
       <span class="small-red-headers" *ngIf="slug !== '1851'"
         >Franchise Brand Features
       </span>
-      <ul class="news-list noScrollBar list-group">
-        <li
-          *ngFor="let item of brandNews; index as i"
-        >
+      <ul class="news-list  list-group">
+        <li *ngFor="let item of brandNews; index as i">
           <div class="newsImage me-2 me-md-3">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
@@ -209,7 +202,7 @@
         latestListing
       "
     >
-      <ul class="noScrollBar list-group">
+      <ul class=" list-group">
         <li *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
             <a routerLink="{{ item.slug }}">
@@ -245,32 +238,32 @@
     </div>
   </div>
   <div
-      class="modal fade"
-      id="featuredModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      (click)="openVideoPlayer = true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-body">
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              (click)="openVideoPlayer = false"
-            ></button>
-            <iframe
-              [src]="featured[0]?.media.url | safeUrl"
-              frameborder="0"
-              width="100%"
-              height="496px"
-              allowfullscreen
-            >
-            </iframe>
-          </div>
+    class="modal fade"
+    id="featuredModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    (click)="openVideoPlayer = true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="openVideoPlayer = false"
+          ></button>
+          <iframe
+            [src]="featured[0]?.media.url | safeUrl"
+            frameborder="0"
+            width="100%"
+            height="496px"
+            allowfullscreen
+          >
+          </iframe>
         </div>
       </div>
     </div>
+  </div>
 </div>
