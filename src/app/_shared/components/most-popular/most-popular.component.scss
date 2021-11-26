@@ -10,19 +10,11 @@
     padding-left: 35px;
     padding-right: 35px;
   }
-  .slideItem {
-    font-weight: bold;
-    margin-bottom: 47px;
-    > img {
-      // margin-bottom: -31px;
-    }
-    .slide-body {
-      min-height: 130px;
+  .card{
+    > .card-body {
       padding-top: 31px;
       padding-bottom: 31px;
-      max-height: 130px;
       background-color: $red;
-
       > span {
         width: 48px;
         height: 15px;
@@ -44,17 +36,18 @@
         font-weight: 700;
       }
     }
-    .slide-footer {
+    > .card-footer {
       font-family: $balingerBold;
       font-size: 15px;
       line-height: 18px;
       height: 24px;
       background-color: $dark_red;
+      border: unset;
     }
   }
-  .subSlideItem {
+  .subItem {
     margin-bottom: 47px;
-    .slide-body {
+    .card-body {
       > div {
         > span {
           font-size: 31px;

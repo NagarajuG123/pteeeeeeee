@@ -15,7 +15,7 @@
           fragment="trending"
           class="text-black"
         >
-          <div class="slideItem" *ngIf="i < 3; else elseBlock">
+          <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
               width="380px"
@@ -35,7 +35,7 @@
               loading="lazy"
               class="img-fluid lazyload"
             />
-            <div class="slide-body position-relative px-3 d-block">
+            <div class="card-body position-relative px-3 d-block">
               <span
                 class="
                   position-absolute
@@ -48,7 +48,7 @@
                 "
                 >POPULAR</span
               >
-              <h2 class="position-relative ps-4">
+              <h2 class="position-relative ps-4 card-title">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
                 <strong class="ms-3 d-block articleTitles text-white">
                   {{ item.title }}
@@ -57,7 +57,7 @@
             </div>
             <div
               class="
-                slide-footer
+                card-footer
                 d-flex
                 flex-row-reverse
                 py-1
@@ -74,13 +74,13 @@
             </div>
           </div>
           <ng-template #elseBlock>
-            <div class="subSlideItem px-md-3">
-              <div class="slide-body position-relative px-3 d-block">
+            <div class="subItem px-md-3">
+              <div class="card-body position-relative px-3 d-block">
                 <div class="position-relative ps-4">
                   <span class="position-absolute top-0 start-0">{{
                     i + 1
                   }}</span>
-                  <h3 class="mb-0 ms-3 d-block">
+                  <h3 class="mb-0 ms-3 d-block card-title">
                     {{ item.title }}
                   </h3>
                   <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
