@@ -81,31 +81,20 @@ img {
 //Redesign
 .subscribe {
   background-color: $white_3;
-  h1 {
-    font-family: $aktiv;
-    font-size: 34px;
-    font-weight: 700;
+  .large-main-article  {
     line-height: 42.5px;
     color: $red;
     text-align: left;
   }
-  h5 {
-    font-size: 20px;
-    font-family: $roboto;
-    line-height: 25.74px;
-    text-align: left;
-    font-weight: 500;
-    color: $dark-gray;
-  }
-  h5 {
+   h5 {
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
     text-align: left;
     font-weight: 500;
     color: $dark_black;
-  }
-  h6 {
+    }
+   .clickall {
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
@@ -114,20 +103,21 @@ img {
     color: $dark-gray;
   }
   .form-control {
-    border: 1px solid $dark_gray_5;
-    border-radius: unset;
+    border: 1px solid $dark_gray_5 !important ;
     width: 74%;
     height: 47px;
     background: $white;
 
   }
-  .form-control::placeholder {
+  input{
+    &::placeholder {
     font-family: $roboto;
     font-weight: 500;
     font-size: 16px;
     line-height: 25.74px;
     color: $light_gray_8;
   }
+}
   .contact-editorial-main {
     label {
       margin: 0;
@@ -166,7 +156,7 @@ img {
       font-weight: 700;
       font-family: $roboto;
       letter-spacing: 0.4px;
-      color: $dark-gray;
+      color: $dark_gray;
     }
   }
   .signmeup input:checked + span {
@@ -174,7 +164,7 @@ img {
     font-family: $roboto;
     font-weight: 700;
     line-height: 12.71px;
-    color: $dark-gray;
+    color: $dark_gray;
   }
   .editors {
     .form-group {
@@ -208,13 +198,6 @@ img {
   }
 
   .back {
-    font-family: $roboto;
-    font-weight: 700;
-    background: $red;
-    font-size: 16px;
-    line-height: 18.75px;
-    text-transform: uppercase;
-    color: $white;
     position: relative;
     span {
       position: absolute;
@@ -233,14 +216,14 @@ img {
     border-color: $red;
   }
   .form-check-input[type=checkbox] {
-    border: 1px solid $red;
+    border: 1px solid $red !important;
     border-radius:0rem;
 
 }
   .d-inline-block{
     .form-check-input {
       margin-left: 0;
-     }
+    }
   }
 }
 
