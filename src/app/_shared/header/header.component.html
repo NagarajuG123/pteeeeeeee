@@ -491,7 +491,7 @@
       </div>
     </div>
   </div>
-  <div class="bottom-head" (click)="closeSidebar()">
+  <div class="bottom-head" (click)="closeSidebar()" *ngIf="trending.length">
     <div class="container py-2">
       <div class="col-12 d-flex">
         <ul class="list-group list-group-horizontal">
