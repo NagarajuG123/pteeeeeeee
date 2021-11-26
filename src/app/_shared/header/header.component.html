@@ -78,9 +78,7 @@
       </div>
     </div>
   </div>
-  <!-- Top header section Close -->
 
-  <!-- main header section Start -->
   <div class="container middle-head">
     <div class="d-flex g-0 align-items-center">
       <div class="col-lg-9 col-md-4 col-sm-8 col-12 d-flex">
@@ -105,8 +103,149 @@
               class="lazyload"
             />
           </a>
+          <ul
+            class="sidebar dropdown-menu"
+            aria-labelledby="dropdownMenu2"
+            *ngIf="brandSlug === '1851'"
+          >
+            <li class="menu-search">
+              <form
+                [formGroup]="searchForm"
+                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+              >
+                <div class="input-group mb-1">
+                  <button
+                    class="ps-2"
+                    type="button"
+                    (click)="onSearchSubmit(searchForm, 'sidebar')"
+                  >
+                    <img
+                      data-src="{{ s3Url }}search-p.svg"
+                      alt="search"
+                      width="11px"
+                      height="11px"
+                      class="lazyload"
+                    />
+                  </button>
+                  <input
+                    type="text"
+                    class="form-control ps-0"
+                    placeholder="Search"
+                  />
+                </div>
+              </form>
+            </li>
+            <li>
+              <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+                <h3>MONTHLY COVERS</h3></a
+              >
+              <hr />
+              <a
+                routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                (click)="commonService.toggle()"
+                *ngIf="header?.monthlyCover"
+              >
+                <img
+                  appYoutubeImage
+                  data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
+                  width="97"
+                  height="127"
+                  alt="monthly "
+                  class="mb-2 lazyload"
+                />
+              </a>
+            </li>
+            <li>
+              <h3>Topics</h3>
+              <hr />
+              <ul class="mb-2 ms-2">
+                <li
+                  class="ms-1"
+                  *ngFor="let item of header?.sidebar?.categories"
+                >
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                      text-capitalize
+                    "
+                    routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
+                    >{{ item.name }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr />
+
+            <li>
+              <h3>Awards</h3>
+              <ul class="mb-2 ms-2">
+                <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
+                  <a
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      my-1
+                      text-capitalize
+                    "
+                    routerLink="{{ item?.url }}"
+                    (click)="commonService.toggle()"
+                    >{{ item.title }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr />
+
+              <a
+                routerLink="{{ menu.url }}"
+                (click)="commonService.toggle()"
+                *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
+                ><h3>{{ menu.title }}</h3></a
+              >
+            </li>
+            <li>
+              <hr />
+              <div *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
+                <a
+                  routerLink="{{ menu.url }}"
+                  *ngIf="!menu.fragment && menu.title != 'Login'"
+                >
+                  <h3>
+                    {{ menu.title }}
+                  </h3>
+                </a>
+                <a
+                  *ngIf="menu.fragment && menu.title != 'Login'"
+                  routerLink="{{ menu.url }}"
+                  [fragment]="menu.fragment"
+                  (click)="commonService.toggle()"
+                  ><h3>{{ menu.title }}</h3></a
+                >
+                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}"
+                  ><h3>{{ menu.title }}</h3></a
+                >
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="{{ menu.url }}"
+                *ngFor="let menu of header?.sidebar?.menus | slice: 7:8"
+                ><h3>{{ menu.title }}</h3></a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="col-lg-10 col-10 d-flex align-items-center logo">
+        <div
+          class="col-lg-10 col-10 d-flex align-items-center logo"
+          (click)="closeSidebar()"
+        >
           <a
             [routerLink]="header?.logo?.url"
             (click)="closeSidebar()"
@@ -153,7 +292,7 @@
           </nav>
         </div>
       </div>
-      <div class="col-lg-3 d-flex align-items-center">
+      <div class="col-lg-3 d-flex align-items-center" (click)="closeSidebar()">
         <a
           href="#"
           onclick="return false;"
@@ -167,7 +306,9 @@
             alt="search"
             class="lazyload"
         /></a>
-        <a class="pe-4" routerLink="/subscribe"><button>Subscribe</button></a>
+        <a class="pe-4" routerLink="/subscribe"
+          ><button class="subscribe">Subscribe</button></a
+        >
         <a
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
@@ -185,148 +326,6 @@
         ></a>
       </div>
       <div class="col-3 col-md-auto d-flex position-relative leftMenuItem">
-        <ul
-          ng-cloak
-          class="
-            sidebar-dropdown-menu
-            dropdown-menu
-            submenu-list
-            dropdown-menu-dark
-          "
-          aria-labelledby="dropdownMenu2"
-          *ngIf="brandSlug === '1851'"
-        >
-          <li>
-            <div class="menu-search">
-              <form
-                [formGroup]="searchForm"
-                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
-              >
-                <div class="input-group mb-1">
-                  <button
-                    class="ps-2"
-                    type="button"
-                    (click)="onSearchSubmit(searchForm, 'sidebar')"
-                  >
-                    <img
-                      data-src="{{ s3Url }}search-p.svg"
-                      alt="search"
-                      width="11px"
-                      height="11px"
-                      class="lazyload"
-                    />
-                  </button>
-                  <input
-                    type="text"
-                    class="form-control ps-0"
-                    placeholder="Search"
-                  />
-                </div>
-              </form>
-            </div>
-          </li>
-          <li class="d-block">
-            <h3>
-              <a routerLink="/monthlycovers" (click)="commonService.toggle()">
-                MONTHLY COVERS</a
-              >
-            </h3>
-            <hr />
-            <div *ngIf="header?.monthlyCover" class="monthly-covers">
-              <a
-                routerLink="{{ header?.monthlyCover?.coverUrl }}"
-                (click)="commonService.toggle()"
-              >
-                <img
-                  appYoutubeImage
-                  data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
-                  width="97"
-                  height="127"
-                  alt="monthly "
-                  class="mb-2 lazyload"
-                />
-              </a>
-            </div>
-          </li>
-          <li>
-            <h3>Topics</h3>
-            <hr />
-            <ul class="mb-2 ms-2">
-              <li class="ms-1" *ngFor="let item of header?.sidebar?.categories">
-                <a
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-center
-                    my-1
-                    text-capitalize
-                  "
-                  routerLink="{{ item?.url }}"
-                  (click)="commonService.toggle()"
-                  >{{ item.name }}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <hr />
-
-          <li>
-            <h3>Awards</h3>
-            <ul class="mb-2 ms-2">
-              <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
-                <a
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-center
-                    my-1
-                    text-capitalize
-                  "
-                  routerLink="{{ item?.url }}"
-                  (click)="commonService.toggle()"
-                  >{{ item.title }}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <hr />
-
-            <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-              <a routerLink="{{ menu.url }}" (click)="commonService.toggle()">{{
-                menu.title
-              }}</a>
-            </h3>
-          </li>
-          <li>
-            <hr />
-            <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-              <a
-                *ngIf="!menu.fragment && menu.title != 'Login'"
-                routerLink="{{ menu.url }}"
-                >{{ menu.title }}</a
-              >
-              <a
-                *ngIf="menu.fragment && menu.title != 'Login'"
-                routerLink="{{ menu.url }}"
-                [fragment]="menu.fragment"
-                (click)="commonService.toggle()"
-                >{{ menu.title }}</a
-              >
-              <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">{{
-                menu.title
-              }}</a>
-            </h3>
-          </li>
-
-          <li>
-            <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
-              <a href="{{ menu.url }}"
-                ><h3>{{ menu.title }}</h3></a
-              >
-            </h3>
-          </li>
-        </ul>
         <!-- Submenu brand -->
         <ul
           ng-cloak
