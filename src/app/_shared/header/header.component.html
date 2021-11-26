@@ -135,28 +135,25 @@
                 </div>
               </form>
             </li>
-            <li class="d-block">
-              <h3>
-                <a routerLink="/monthlycovers" (click)="commonService.toggle()">
-                  MONTHLY COVERS</a
-                >
-              </h3>
+            <li>
+              <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+                <h3>MONTHLY COVERS</h3></a
+              >
               <hr />
-              <div *ngIf="header?.monthlyCover" class="monthly-covers">
-                <a
-                  routerLink="{{ header?.monthlyCover?.coverUrl }}"
-                  (click)="commonService.toggle()"
-                >
-                  <img
-                    appYoutubeImage
-                    data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
-                    width="97"
-                    height="127"
-                    alt="monthly "
-                    class="mb-2 lazyload"
-                  />
-                </a>
-              </div>
+              <a
+                routerLink="{{ header?.monthlyCover?.coverUrl }}"
+                (click)="commonService.toggle()"
+                *ngIf="header?.monthlyCover"
+              >
+                <img
+                  appYoutubeImage
+                  data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
+                  width="97"
+                  height="127"
+                  alt="monthly "
+                  class="mb-2 lazyload"
+                />
+              </a>
             </li>
             <li>
               <h3>Topics</h3>
@@ -205,45 +202,50 @@
             <li>
               <hr />
 
-              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 0:2">
-                <a
-                  routerLink="{{ menu.url }}"
-                  (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
-                >
-              </h3>
+              <a
+                routerLink="{{ menu.url }}"
+                (click)="commonService.toggle()"
+                *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
+                ><h3>{{ menu.title }}</h3></a
+              >
             </li>
             <li>
               <hr />
-              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
+              <div *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
                 <a
-                  *ngIf="!menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
-                  >{{ menu.title }}</a
+                  *ngIf="!menu.fragment && menu.title != 'Login'"
                 >
+                  <h3>
+                    {{ menu.title }}
+                  </h3>
+                </a>
                 <a
                   *ngIf="menu.fragment && menu.title != 'Login'"
                   routerLink="{{ menu.url }}"
                   [fragment]="menu.fragment"
                   (click)="commonService.toggle()"
-                  >{{ menu.title }}</a
+                  ><h3>{{ menu.title }}</h3></a
                 >
-                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}">{{
-                  menu.title
-                }}</a>
-              </h3>
+                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}"
+                  ><h3>{{ menu.title }}</h3></a
+                >
+              </div>
             </li>
 
             <li>
-              <h3 *ngFor="let menu of header?.sidebar?.menus | slice: 7:8">
-                <a href="{{ menu.url }}"
-                  ><h3>{{ menu.title }}</h3></a
-                >
-              </h3>
+              <a
+                href="{{ menu.url }}"
+                *ngFor="let menu of header?.sidebar?.menus | slice: 7:8"
+                ><h3>{{ menu.title }}</h3></a
+              >
             </li>
           </ul>
         </div>
-        <div class="col-lg-10 col-10 d-flex align-items-center logo">
+        <div
+          class="col-lg-10 col-10 d-flex align-items-center logo"
+          (click)="closeSidebar()"
+        >
           <a
             [routerLink]="header?.logo?.url"
             (click)="closeSidebar()"
@@ -290,7 +292,7 @@
           </nav>
         </div>
       </div>
-      <div class="col-lg-3 d-flex align-items-center">
+      <div class="col-lg-3 d-flex align-items-center" (click)="closeSidebar()">
         <a
           href="#"
           onclick="return false;"
@@ -304,7 +306,9 @@
             alt="search"
             class="lazyload"
         /></a>
-        <a class="pe-4" routerLink="/subscribe"><button>Subscribe</button></a>
+        <a class="pe-4" routerLink="/subscribe"
+          ><button class="subscribe">Subscribe</button></a
+        >
         <a
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
