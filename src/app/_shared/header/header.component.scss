@@ -130,6 +130,36 @@ header {
         }
       }
     }
+    .nav-item {
+      a {
+        font-size: 14px;
+        line-height: 16.73px;
+        &:hover {
+          & + .dropdown-menu {
+            display: block;
+            border-radius: 0rem;
+            background: $dark_gray_7;
+
+            a {
+              color: $white;
+              background: $dark_gray_7;
+            }
+          }
+        }
+      }
+      > .dropdown-menu {
+        &:hover {
+          display: block;
+          border-radius: 0rem;
+          background: $dark_gray_7 !important;
+
+          a {
+            color: $white;
+            background: $dark_gray_7;
+          }
+        }
+      }
+    }
   }
 
   .bottom-head {
