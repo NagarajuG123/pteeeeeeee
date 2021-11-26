@@ -1,14 +1,16 @@
 <div
   class="c-video-section--wrapper sidebar-blur"
-  *ngIf="isLoaded && videoData"
+  *ngIf="isLoaded && data"
+  [ngClass] = "type =='video' ? '' : 'bgGray'"
 >
   <div class="container customContainer">
     <div class="row">
       <div class="col-12">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-end">
-            <h2 class="sectionTitle m-0">Videos</h2>
-            <span class="c-section-header--subInfo">
+            <h2 *ngIf="type === 'video'" class="sectionTitle py-3 m-0">Videos</h2>
+            <h2 *ngIf="type === 'specialFeature'" class="sectionTitle py-3 m-0 text-white">{{ title }}</h2>
+            <span *ngIf="type === 'video'" class="c-section-header--subInfo py-3">
               Covering the franchise industry
             </span>
           </div>
@@ -22,10 +24,10 @@
     <div class="d-flex row c-video-section--boxWrapper">
       <div
         class="c-video-section--box col-lg-6 col-sm-6"
-        *ngFor="let item of videoData | slice: 0:2; index as i"
+        *ngFor="let item of data | slice: 0:2; index as i"
       >
-        <div class="position-relative main-image">
-          <div class="badge tag position-absolute top-0 text-uppercase">
+        <div class="position-relative">
+          <div *ngIf="type === 'video'" class="tag text-center position-absolute top-0 text-uppercase">
             FEATURED Video
           </div>
           <a
@@ -55,7 +57,7 @@
                     (max-width: 1200px) 550px,
                     550px'
               }}"
-              class="img-fluid lazyload"
+              class="w-100 img-fluid lazyload"
               alt="video"
               width="550"
               height="304"
@@ -68,7 +70,7 @@
               loading="lazy"
             />
           </a>
-          <h2 class="hightLightTitle">
+          <h2 [ngClass] = "type =='video' ? '' : 'text-white'">
             {{ item.title }}
           </h2>
         </div>
@@ -79,7 +81,7 @@
       <div id="carouselExampleControls" class="carousel carousel-dark">
         <div class="carousel-inner w-100" role="listbox">
           <ng-container
-            *ngFor="let item of videoData | slice: 2:10; index as i"
+            *ngFor="let item of data | slice: 2:10; index as i"
           >
             <div class="carousel-item" [ngClass]="{ active: i === 0 }">
               <div class="col-md-3 px-1">
@@ -94,7 +96,6 @@
                     video-btn
                     c-video-section--playBtn
                     d-flex
-                    justify-content-center
                     align-items-center
                   "
                 >
@@ -124,7 +125,7 @@
                     loading="lazy"
                   />
                 </a>
-                <h3 class="articleTitles">
+                <h3 [ngClass] = "type =='video' ? '' : 'text-white'" class="articleTitles align-items-center">
                   {{ item.title }}
                 </h3>
               </div>
