@@ -17,7 +17,7 @@
             latestListing
           "
         >
-          <ul class="news-list noScrollBar list-group pt-4">
+          <ul class="news-list list-group pt-4">
             <li
               *ngFor="let item of featuredData | slice: 0:4; index as i"
               [ngClass]="
@@ -188,7 +188,7 @@
         <div class="d-flex justify-content-center align-items-center">
           <div class="nextBtn px-1 bg-blue">
             <img
-              data-src="{{s3Url}}nextIcon.svg"
+              data-src="{{ s3Url }}nextIcon.svg"
               width="32"
               alt="next articles"
               class="me-3 lazyload"

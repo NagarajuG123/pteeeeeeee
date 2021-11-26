@@ -92,7 +92,7 @@
           latestListing
         "
       >
-        <ul class="news-list noScrollBar list-group" *ngIf="slug === '1851'">
+        <ul class="news-list  list-group" *ngIf="slug === '1851'">
           <li
             class="mb-3"
             *ngFor="let item of specialFeature | slice: 1:4; index as i"
@@ -133,7 +133,7 @@
           </li>
         </ul>
         <!-- Brand -->
-        <ul class="news-list noScrollBar list-group" *ngIf="slug !== '1851'">
+        <ul class="news-list  list-group" *ngIf="slug !== '1851'">
           <li class="mb-3" *ngFor="let item of brandInfoNews; index as i">
             <div class="position-relative small-image">
               <a routerLink="{{ item.slug }}">
