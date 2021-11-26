@@ -1,0 +1,29 @@
+@import "./../../../../assets/scss/variables.scss";
+.series{
+    .sectionTitle{
+        color: $dark_gray;
+    }
+    .highlight {
+        font-family: $aktiv;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 117%;
+        color: $black;
+        margin-top: 10px;
+        > span{
+            float: right;
+        }
+    } 
+    .featured-right{
+      li{
+          border-bottom: 1px solid $dark_gray_4;
+          padding: 25px 0;
+          &:last-child {
+            border: 0;
+          }
+      }
+      img{
+          max-width: unset;
+      }
+    }
+}

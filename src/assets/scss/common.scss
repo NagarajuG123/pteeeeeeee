@@ -75,6 +75,34 @@
     border-radius: 5px;
   }
 }
+  .tag {
+    background: $red;
+    font-family: $roboto;
+    color: $white;
+    font-weight: 700;
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: unset;
+    z-index: 1;
+    padding: 3px 6px;
+  }
+  hr {
+    border-color: $red;
+    background-color: $red;
+    height: 2px;
+    opacity: 1;
+    margin-top: 0;
+  }
+  .small-red-headers {
+    color: $red;
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 12px;
+  }
+
 //modal
 
 .modal-body {

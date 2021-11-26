@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-carousel',
@@ -17,6 +18,7 @@ export class CarouselComponent implements OnInit {
   isBrowser: boolean;
   s3Url = environment.s3Url;
   isLoaded: boolean;
+  faAngleRight = faAngleRight;
 
   constructor(
     private apiService: ApiService,
