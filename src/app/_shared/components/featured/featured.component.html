@@ -75,7 +75,7 @@
         latestListing
       "
     >
-      <span class="small-red-headers">Latest Finance Industry News</span>
+      <span class="small-red-headers">Latest Franchise Industry News</span>
       <ul class="brand-list list-group">
         <li *ngFor="let item of news; index as i" class="">
           <h3 class="m-0 articleTitles">
@@ -120,10 +120,10 @@
         latestListing
       "
     >
-      <span class="small-red-headers" *ngIf="slug === '1851'"
-        >LATEST FINANCE BRAND NEWS</span
+      <span class="small-red-headers m-0" *ngIf="slug === '1851'"
+        >LATEST FRANCHISE BRAND NEWS</span
       >
-      <span class="small-red-headers" *ngIf="slug !== '1851'"
+      <span class="small-red-headers m-0" *ngIf="slug !== '1851'"
         >Franchise Brand Features
       </span>
       <ul class="news-list  list-group">
@@ -144,7 +144,7 @@
             /></a>
           </div>
           <div>
-            <h2 class="small-red-headers">{{ item.brand.name }}</h2>
+            <h2 class="small-red-headers m-0">{{ item.brand.name }}</h2>
             <h3 class="m-0 articleTitles">
               <a
                 routerLink="/{{ commonService.readMore(item) }}"
