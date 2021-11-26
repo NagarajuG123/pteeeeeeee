@@ -10,16 +10,9 @@
                     <img
                         appYoutubeImage
                         class="img-fluid lazyload"
-                        width="742"
+                        width="741"
                         height="417"
                         data-src="{{ seriesData[0].media | defaultImage: 1280:720 }}"
-                        data-sizes="{{
-                            '(max-width: 1280px) 555px,
-                            (max-width: 1280px) 760px
-                            (max-width: 1280px) 600px,
-                            (max-width: 1280px) 700px,
-                            780px'
-                        }}"
                         alt="series"
                         loading="lazy"
                         />
@@ -38,12 +31,6 @@
                             <img
                               appYoutubeImage
                               class="img-fluid lazyload"
-                              data-sizes="{{
-                                '(max-width: 1280px) 555px,
-                                (max-width: 1280px) 400px,
-                                (max-width: 1280px) 238px,
-                                244px'
-                              }}"
                               width="192"
                               height="108"
                               data-src="{{ item.media | defaultImage: 1280:720 }}"

@@ -20,17 +20,7 @@
               appYoutubeImage
               width="380px"
               height="223"
-              data-src="{{ item.media | defaultImage: 380:223 }}"
-              data-srcset="{{ item.media | defaultImage: 380:223 }} 380w, {{
-                item.media | defaultImage: 350:200
-              }} 350w, 
-          {{ item.media | defaultImage: 555:310 }} 555w"
-              data-sizes="{{
-                '(max-width: 576px) 555px,
-              (max-width: 992px) 350px,
-              (max-width: 1200px) 380px,
-              380px'
-              }}"
+              data-src="{{ item.media | defaultImage: 1280:720 }}"
               alt="most-popular"
               loading="lazy"
               class="img-fluid lazyload"

@@ -49,16 +49,7 @@
             "
           >
             <img
-              data-src="{{ item.media | defaultImage: 550:304 }}"
-              data-srcset="{{ item.media | defaultImage: 550:304 }} 550w, 
-                      {{ item.media | defaultImage: 225:133 }} 225w,
-                    {{ item.media | defaultImage: 300:174 }} 300w"
-              data-sizes="{{
-                '(max-width: 576px) 300px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 550px,
-                    550px'
-              }}"
+              data-src="{{ item.media | defaultImage: 1280:720 }}"
               class="w-100 img-fluid lazyload"
               alt="video"
               width="550"
@@ -102,18 +93,7 @@
                   "
                 >
                   <img
-                    data-srcset="{{ item.media | defaultImage: 238:133 }} 238w, 
-                      {{ item.media | defaultImage: 225:133 }} 225w,
-                    {{ item.media | defaultImage: 400:224 }} 400w, {{
-                      item.media | defaultImage: 555:310
-                    }} 555w"
-                    data-sizes="{{
-                      '(max-width: 576px) 555px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 238px,
-                    225px'
-                    }}"
-                    data-src="{{ item.media | defaultImage: 225:131 }}"
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
                     class="img-fluid lazyload video-img"
                     width="225"
                     height="131"
