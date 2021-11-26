@@ -16,23 +16,12 @@
           >
             <img
               appYoutubeImage
-              class="lazyload"
+              class="w-100 img-fluid lazyload"
               alt="featured"
               loading="lazy"
-              data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
-                        {{ featured[0].media | defaultImage: 700:393 }} 700w,
-                        {{ featured[0].media | defaultImage: 800:449 }} 800w,
-                        {{ featured[0].media | defaultImage: 688:386 }} 688w"
-              data-sizes="{{
-                '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        688px'
-              }}"
-              width="688"
-              height="386"
-              data-src="{{ featured.media | defaultImage: 688:386 }}"
+              width="661"
+              height="372"
+              data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
             />
           </a>
 
@@ -45,23 +34,12 @@
           >
             <img
               appYoutubeImage
-              class="lazyload"
+              class="w-100 img-fluid lazyload"
               alt="featured"
               loading="lazy"
-              data-srcset="{{ featured[0].media | defaultImage: 600:337 }} 600w,
-                        {{ featured[0].media | defaultImage: 700:393 }} 700w,
-                        {{ featured[0].media | defaultImage: 800:449 }} 800w,
-                        {{ featured[0].media | defaultImage: 688:386 }} 688w"
-              data-sizes="{{
-                '(max-width: 576px) 600px,
-                        (max-width: 768px) 800px,
-                        (max-width: 992px) 600px,
-                        (max-width: 1200px) 700px,
-                        688px'
-              }}"
-              width="688"
-              height="386"
-              data-src="{{ featured.media | defaultImage: 688:386 }}"
+              width="661"
+              height="372"
+              data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
             />
             <img
               data-src="{{ s3Url }}videoIcon.png"
@@ -157,23 +135,12 @@
             >
               <img
                 appYoutubeImage
-                width="121px"
+                width="128"
                 class="lazyload"
                 alt="industry"
                 loading="lazy"
-                height="114"
-                data-srcset="{{ item.media | defaultImage: 150:130 }} 150w,
-                        {{ item.media | defaultImage: 121:114 }} 121w,
-                         {{ item.media | defaultImage: 300:250 }} 300w"
-                data-sizes="{{
-                  '(max-width: 576px) 300px,
-                    (max-width: 768px) 150px,
-                        (max-width: 992px) 150px,
-                        (max-width: 1112px) 150px,
-                        (max-width: 1200px) 121px,
-                        121px'
-                }}"
-                data-src="{{ item.media | defaultImage: 121:114 }}"
+                height="72"
+                data-src="{{ item.media | defaultImage: 1280:720 }}"
             /></a>
           </div>
           <div>

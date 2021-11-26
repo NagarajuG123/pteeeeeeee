@@ -429,7 +429,7 @@
             </ul>
           </li>
 
-          <li class="ms-1" *ngIf="trending && trending.length">
+          <li class="ms-1" *ngIf="trending">
             <hr />
             <h3>
               <a
@@ -486,11 +486,7 @@
       </div>
     </div>
   </div>
-  <div
-    class="bottom-head"
-    (click)="closeSidebar()"
-    *ngIf="trending && trending.length"
-  >
+  <div class="bottom-head" (click)="closeSidebar()" *ngIf="trending">
     <div class="container py-2">
       <div class="col-12 d-flex">
         <ul class="list-group list-group-horizontal">
