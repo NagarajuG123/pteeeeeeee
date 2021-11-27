@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./mixins.scss";
 
 //color
 .primary-color {
@@ -120,4 +121,8 @@ button {
   text-transform: uppercase;
   border-width: 0px;
   background-color: $red;
+  @include mobile-portrait {
+    font-size: 11px;
+    line-height: 14px;
+  }
 }

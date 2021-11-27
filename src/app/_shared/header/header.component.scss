@@ -21,16 +21,38 @@ header {
   .middle-head {
     .logo {
       padding-left: 2.25rem;
+      img {
+        @include mobile-portrait {
+          width: 36px;
+          height: 36px;
+        }
+      }
+      @include mobile-portrait {
+        padding-left: 0.5rem;
+      }
+    }
+    .menu {
+      @include mobile-portrait {
+        width: 55px;
+        height: 51px;
+      }
     }
     h6 {
       font-size: 16px;
       line-height: 20.59px;
       font-weight: 500;
       color: $dark_gray;
+      @include mobile-portrait {
+        font-size: 11px;
+        line-height: 14px;
+      }
     }
     .subscribe {
       color: $white_2;
       padding: 0.5rem;
+      @include mobile-portrait {
+        padding: 0.25rem;
+      }
     }
     .cover {
       height: 60px;
@@ -128,6 +150,11 @@ header {
             color: $white_4;
           }
         }
+      }
+    }
+    .nav {
+      @include mobile-portrait {
+        flex-wrap: nowrap;
       }
     }
     .nav-item {

@@ -81,8 +81,8 @@
 
   <div class="container middle-head">
     <div class="d-flex g-0 align-items-center">
-      <div class="col-lg-9 col-md-4 col-sm-8 col-12 d-flex">
-        <div class="col-lg-1 col-2 dropdown">
+      <div class="col-lg-9 col-md-10 col-sm-8 col-10 d-flex">
+        <div class="col-lg-1 col-sm-1 dropdown">
           <a
             href="#"
             role="button"
@@ -100,7 +100,7 @@
               width="78"
               height="72"
               alt="menu"
-              class="lazyload"
+              class="lazyload menu"
             />
           </a>
           <ul
@@ -249,7 +249,7 @@
           <a
             [routerLink]="header?.logo?.url"
             (click)="closeSidebar()"
-            class="pe-5"
+            class="pe-lg-5 pe-2"
             ><img
               data-src="{{ header?.logo?.image }}"
               height="{{ header?.logo?.height }}"
@@ -259,13 +259,13 @@
           /></a>
           <nav class="pt-2">
             <ul class="nav justify-content-center">
-              <li *ngFor="let menu of header?.menus" class="pe-4">
+              <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
                 <a [routerLink]="menu.url" (click)="closeSidebar()"
                   ><h6>{{ menu.title }}</h6>
                 </a>
               </li>
               <li
-                class="nav-item pe-4"
+                class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
                 *ngFor="let action of header?.actions; index as i"
               >
                 <a class="d-flex align-items-center" (click)="closeSidebar()"
@@ -298,7 +298,7 @@
           onclick="return false;"
           data-bs-toggle="modal"
           data-bs-target="#searchModal"
-          class="pe-4"
+          class="pe-4 d-none d-xl-block"
           ><img
             data-src="{{ s3Url }}search_header.png"
             height="18"
@@ -312,7 +312,7 @@
         <a
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
-          class="cover"
+          class="cover d-none d-lg-block"
         >
           <figure>
             <img
@@ -524,7 +524,7 @@
                 </ng-container>
               </div>
 
-              <button
+              <!-- <button
                 class="carousel-control-prev d-none d-lg-block"
                 type="button"
                 data-bs-target="#carouselTrendingIndicators"
@@ -554,7 +554,7 @@
                   class="lazyload"
                 />
                 <span class="visually-hidden">Next</span>
-              </button>
+              </button> -->
             </div>
           </li>
         </ul>
