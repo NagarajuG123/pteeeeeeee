@@ -44,8 +44,10 @@
             <img
               data-src="{{ s3Url }}videoIcon.png"
               alt="Play"
-              class="img-fluid vide-play lazyload"
+              class="img-fluid video-play lazyload"
               loading="lazy"
+              width="120"
+              height="71"
             />
           </a>
           <h2 class="large-main-article bottom-0 w-100">
@@ -126,7 +128,7 @@
       <span class="small-red-headers m-0" *ngIf="slug !== '1851'"
         >Franchise Brand Features
       </span>
-      <ul class="news-list  list-group">
+      <ul class="news-list list-group">
         <li *ngFor="let item of brandNews; index as i">
           <div class="newsImage me-2 me-md-3">
             <a
@@ -169,7 +171,7 @@
         latestListing
       "
     >
-      <ul class=" list-group">
+      <ul class="list-group">
         <li *ngFor="let item of brandInfoNews; index as i">
           <div class="position-relative small-image">
             <a routerLink="{{ item.slug }}">
