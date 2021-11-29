@@ -134,51 +134,7 @@
 
   <div class="tabs-container container customContainer">
     <div class="tabItemList innerContent mt-4 py-3">
-      <ul class="row gx-2">
-        <li
-          *ngFor="let list of featuredData | slice: 5; index as i"
-          class="mb-3 col-12 col-sm-6 col-md-4"
-        >
-          <a
-            routerLink="/{{ commonService.readMore(list) }}"
-            fragment="{{ tab | lowercase }}"
-          >
-            <div class="items card border-0 rounded-0 h-100">
-              <img
-                appYoutubeImage
-                data-srcset="{{ list.media | defaultImage: 545:305 }} 545w, 
-                      {{ list.media | defaultImage: 355:199 }} 355w, 
-                      {{ list.media | defaultImage: 300:168 }} 300w, 
-                      {{ list.media | defaultImage: 200:90 }} 200w,
-                      {{ list.media | defaultImage: 221:106 }} 221w"
-                data-sizes="{{
-                  '(max-width: 576px) 545px,
-                  (max-width: 768px) 355px,
-                  (max-width: 992px) 300px,
-                  (max-width: 1200px) 200px,
-                  221px'
-                }}"
-                width="221"
-                height="106"
-                data-src="{{ list.media | defaultImage: 221:106 }}"
-                alt="editorial"
-                loading="lazy"
-                class="lazyload img-fluid"
-              />
-              <div class="card-body">
-                <h6 class="card-title">
-                  {{ list.title }}
-                </h6>
-                <a href="#">
-                  <small *ngIf="commonService.authorName(list)"
-                    >By {{ list.author?.name }}</small
-                  >
-                </a>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
+      <app-article-component [typeSlug]="tab" [contents]="featuredData" [type]="'five'"></app-article-component>
     </div>
   </div>
 

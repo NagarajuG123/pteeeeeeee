@@ -64,43 +64,7 @@
 
   <div class="tabs-container container customContainer">
     <div class="tabItemList innerContent mt-4 py-3">
-      <ul class="row gx-2">
-        <li
-          *ngFor="let list of items; index as i"
-          class="mb-3 col-12 col-sm-6 col-md-4"
-        >
-          <a
-            routerLink="/{{ commonService.readMore(list) }}"
-            fragment="{{ tab | lowercase }}"
-          >
-            <img
-              appYoutubeImage
-              data-srcset="{{ list.media | defaultImage: 238:133 }} 238w, 
-                      {{ list.media | defaultImage: 253:133 }} 253w, 
-                      {{ list.media | defaultImage: 400:224 }} 400w, 
-                      {{ list.media | defaultImage: 555:310 }} 555w"
-              data-sizes="{{
-                '(max-width: 576px) 555px,
-                    (max-width: 992px) 400px,
-                    (max-width: 1200px) 238px,
-                    253px'
-              }}"
-              class="lazyload img-fluid"
-              width="253"
-              height="133"
-              data-src="{{ list.media | defaultImage: 253:133 }}"
-              alt="editorial"
-              loading="lazy"
-            />
-            <div class="spotlight-detail">
-              <h2>{{ list.title }}</h2>
-              <p *ngIf="commonService.authorName(list)">
-                By {{ list.author?.name }}
-              </p>
-            </div>
-          </a>
-        </li>
-      </ul>
+      <app-article-component [typeSlug]="tab" [contents]="items" [type]="'five'"></app-article-component>
     </div>
   </div>
 </div>

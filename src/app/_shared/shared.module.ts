@@ -21,6 +21,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
 import { TrendingComponent } from './components/trending/trending.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ArticleComponentComponent } from './components/article-component/article-component.component';
 
 // Pipes
 
@@ -40,6 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SpecialFeatureComponent,
     TrendingComponent,
     CarouselComponent,
+    ArticleComponentComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +73,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ShareButtonModule,
     CarouselModule,
     CarouselComponent,
+    ArticleComponentComponent
   ],
 })
 export class SharedModule {}

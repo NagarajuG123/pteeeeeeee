@@ -23,7 +23,7 @@ export class BrandComponent implements OnInit {
   apiUrl: string = '';
   hasMore: boolean = false;
   dynamicUrl: any;
-  dynamicFirst: any = [];
+  dynamicStories: any = [];
   topBlock: any = [];
   data: Details[] = [];
   items: Details[] = [];
@@ -196,9 +196,9 @@ export class BrandComponent implements OnInit {
       .getAPI(`page/${this.dynamicUrl}?limit=12&offset=${this.scrollOffset}`)
       .subscribe((response) => {
         this.topBlock = response.data;
-        this.dynamicFirst = response.data.stories;
+        this.dynamicStories = response.data.stories;
         this.hasMore = response.has_more;
-        this.metaService.setSeo(this.dynamicFirst[0].meta);
+        this.metaService.setSeo(this.dynamicStories[0].meta);
         this.apiService
           .getAPI(`1851/publication-instance`)
           .subscribe((result) => {
@@ -213,12 +213,12 @@ export class BrandComponent implements OnInit {
   getMoreDynamic() {
     this.apiService
       .getAPI(
-        `page/${this.dynamicUrl}?limit=4&offset=${this.dynamicFirst.length}`
+        `page/${this.dynamicUrl}?limit=4&offset=${this.dynamicStories.length}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
         result.data.stories.forEach((element: any) => {
-          this.dynamicFirst.push(element);
+          this.dynamicStories.push(element);
         });
       });
   }

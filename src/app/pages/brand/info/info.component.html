@@ -260,51 +260,7 @@
           <div *ngIf="isStory && items">
             <div class="tabs-container container customContainer">
               <div class="tabItemList mt-4 py-3">
-                <ul class="row gx-2">
-                  <li
-                    *ngFor="let list of items; index as i"
-                    class="mb-3 col-12 col-sm-6 col-md-4"
-                  >
-                    <a
-                      routerLink="/{{ commonService.readMore(list) }}"
-                      fragment="{{ tab | lowercase }}"
-                    >
-                      <div class="items card border-0 h-100">
-                        <img
-                          appYoutubeImage
-                          data-srcset="{{
-                            list.media | defaultImage: 195:103
-                          }} 195w, 
-                {{ list.media | defaultImage: 260:145 }} 300w,
-                {{ list.media | defaultImage: 555:450 }} 555w"
-                          class="card-img-top lazyload"
-                          data-sizes="{{
-                            '(max-width: 576px) 555px,
-                   (max-width: 992px) 300px,
-                   (max-width: 1200px) 195px,
-                   195px'
-                          }}"
-                          width="195px"
-                          height="103"
-                          data-src="{{ list.media | defaultImage: 195:103 }}"
-                          alt="editorial"
-                          loading="lazy"
-                        />
-                        <div class="card-body">
-                          <h3 class="card-title">
-                            {{ list.title }}
-                          </h3>
-                          <small *ngIf="commonService.authorName(list)"
-                            >By {{ list.author?.name }}</small
-                          >
-                          <h4 class="card-text mb-1">
-                            {{ list.short_description }}
-                          </h4>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+                <app-article-component [typeSlug]="tab" [contents]="items" [type]="'five'"></app-article-component>
               </div>
             </div>
           </div>

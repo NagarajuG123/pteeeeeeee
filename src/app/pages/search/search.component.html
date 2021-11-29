@@ -150,7 +150,8 @@
             : 'brandSearch'
         "
       >
-        <div class="row pe-3">
+      <app-article-component [typeSlug]="'franbuzz'" [contents]="recentPeoples" [type]="'three'"></app-article-component>
+        <!-- <div class="row pe-3">
           <div
             class="col-md-4 card-group"
             *ngFor="let item of recentPeoples; index as i"
@@ -194,7 +195,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row seeMoreIcon mt-4 desktop-only">
           <div
             class="col d-flex align-items-center justify-content-center py-1"
@@ -220,7 +221,8 @@
       >
         <h5 class="ps-4 mt-2">BRAND NEWS</h5>
         <hr />
-        <div
+        <app-article-component [typeSlug]="'franbuzz'" [contents]="brandPeoples" [type]="'one'"></app-article-component>
+        <!-- <div
           class="col card-group mx-4"
           *ngFor="let item of brandPeoples; index as i"
         >
@@ -262,7 +264,7 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="row seeMoreIcon mobile-only">
