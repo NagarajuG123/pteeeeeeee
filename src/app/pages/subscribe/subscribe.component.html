@@ -10,7 +10,7 @@
       />
     </div>
     <div class="col subscribe px-5 py-4">
-      <h1>{{ title }}</h1>
+      <h1 class="large-main-article ">{{ title }}</h1>
       <h5>Please provide us with the following information:</h5>
       <div *ngIf="!isSuccess" class="editors">
         <form
@@ -23,7 +23,7 @@
               <div class="form-group">
                 <input
                   type="email"
-                  class="form-control feild1"
+                  class="form-control"
                   placeholder="EMAIL ADDRESS*"
                   [formControl]="contactForm.controls['email']"
                 />
@@ -36,7 +36,7 @@
             </li>
           </ul>
           <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
-            <h6 class="pb-0 mb-1">Click all of which apply to you:</h6>
+            <h6 class="pb-0 mb-1 clickall">Click all of which apply to you:</h6>
             <ul class="pl-2">
               <li>
                 <div class="form-check">
