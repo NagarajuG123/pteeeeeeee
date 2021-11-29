@@ -28,7 +28,7 @@
         class="c-video-section--box col-lg-6 col-sm-6"
         *ngFor="let item of data | slice: 0:2; index as i"
       >
-        <div class="position-relative">
+        <div class="position-relative main-image">
           <div *ngIf="type === 'video'" class="tag text-center position-absolute top-0 text-uppercase">
             FEATURED Video
           </div>
@@ -41,12 +41,11 @@
             (click)="updateVideoUrl(item.media.url)"
             href="#"
             class="
-              video-btn
-              c-video-section--playBtn
               d-flex
               justify-content-center
               align-items-center
             "
+            [ngClass]="type==='video' ? 'video-btn' : ''"
           >
             <img
               data-src="{{ item.media | defaultImage: 1280:720 }}"
@@ -57,9 +56,10 @@
               loading="lazy"
             />
             <img
+              *ngIf="type === 'video'"
               data-src="{{ s3Url }}videoIcon.png"
               alt="Play"
-              class="img-fluid vide-play lazyload"
+              class="img-fluid video-play lazyload"
               loading="lazy"
             />
           </a>
@@ -86,11 +86,10 @@
                   (click)="updateVideoUrl(item.media.url)"
                   href="#"
                   class="
-                    video-btn
-                    c-video-section--playBtn
                     d-flex
                     align-items-center
                   "
+                  [ngClass]="type==='video' ? 'video-btn' : ''"
                 >
                   <img
                     data-src="{{ item.media | defaultImage: 1280:720 }}"
@@ -103,8 +102,9 @@
                   <img
                     data-src="{{ s3Url }}videoIcon.png"
                     alt="Play"
-                    class="img-fluid vide-play lazyload"
+                    class="img-fluid lazyload"
                     loading="lazy"
+                    [ngClass]="type==='video' ? 'video-play' : ''"
                   />
                 </a>
                 <h3 [ngClass] = "type =='video' ? '' : 'text-white'" class="articleTitles align-items-center">
