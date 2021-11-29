@@ -14,10 +14,6 @@
     object-fit: cover;
   }
 }
-
-.list-data--contentWrapper {
-  border-top: 1px solid $light-gray-1;
-}
 .list-data--wrapper {
   display: flex;
   align-items: center;
@@ -36,7 +32,7 @@
   }
 
   &.isHead {
-    background: $border-color;
+    background:$white_8;
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
@@ -44,6 +40,7 @@
     font-size: 20px;
     padding: 15px 15px;
     text-align: center;
+    height: 68px;
     @include media("<md") {
       display: none;
     }
@@ -57,7 +54,7 @@
   }
 
   &.list-data-wrapper--2 {
-    background-color: $text-secondary-color;
+    background-color: $white_8;
   }
 
   &.list-data-wrapper--1 {
@@ -115,13 +112,10 @@
       }
     }
     &.isIndustryCol {
-      .list-data--industry {
-        font-family: $proxiMedium;
+      .articleTitles  {
         color: $dark_gray;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 18.27px;
-        margin-bottom: 0;
+        margin-bottom: -1px;
+
         a {
           color: $dark_gray;
         }
@@ -140,13 +134,8 @@
     &.isLstSotryCol {
       .list-data--latestStory {
         margin-bottom: 0;
-        .list-data--latestStoryLink {
-          font-family: $balingerBold;
+        .articleTitles {
           color: $red;
-          font-size: 20px;
-          line-height: 24px;
-          font-weight: 700;
-          text-decoration: underline;
         }
         @include media("<md") {
           font-size: 18px;
@@ -231,11 +220,7 @@
             margin-top: 15px;
           }
         }
-        .c-filter-item--title {
-          font-family: $balingerBold;
-          font-weight: 700;
-          font-size: 30px;
-          line-height: 36px;
+        .large-main-article  {
           padding: 20px 14px;
           text-transform: uppercase;
           color: $white;

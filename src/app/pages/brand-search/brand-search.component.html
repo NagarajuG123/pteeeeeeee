@@ -15,7 +15,7 @@
         <div class="c-filter--wrapper">
           <div class="c-filter-sub--wrapper">
             <div class="c-filter-item--wrapper">
-              <h1 class="c-filter-item--title">Filter by industry</h1>
+              <h1 class="large-main-article ">Filter by industry</h1>
               <div class="c-filter-item--contentGroup">
                 <div class="c-filter-action--btnGroup">
                   <a
@@ -54,7 +54,7 @@
             </div>
 
             <div class="c-filter-item--wrapper">
-              <h1 class="c-filter-item--title">Filter by investment</h1>
+              <h1 class="large-main-article">Filter by investment</h1>
               <div class="c-filter-item--contentGroup">
                 <div class="c-filter-action--btnGroup">
                   <a
@@ -126,7 +126,7 @@
                   </p>
                 </div>
                 <div class="list-data--item isIndustryCol">
-                  <p class="list-data--industry">
+                  <p class="articleTitles ">
                     <a routerLink="/{{ data.slug }}">
                       {{ getIndustry(data.industry) }}</a
                     >
@@ -137,7 +137,7 @@
                     <a
                       routerLink="/{{ data.slug }}/{{ data.latest_story.slug }}"
                       fragment="brand-latest-stories"
-                      class="list-data--latestStoryLink"
+                      class="articleTitles"
                     >
                       {{ data.latest_story.title }}
                     </a>
