@@ -66,44 +66,7 @@
 
   <div class="tabs-container container customContainer">
     <div class="tabItemList mt-4 py-3">
-      <ul class="row gx-2">
-        <li
-          *ngFor="let list of items; index as i"
-          class="mb-3 col-12 col-sm-6 col-md-4"
-        >
-          <a
-            routerLink="/{{ commonService.readMore(list) }}"
-            fragment="{{ tab | lowercase }}"
-          >
-            <div class="items card border-0 h-100">
-              <img
-                appYoutubeImage
-                data-src="{{ list.media | defaultImage: 1280:720 }}"
-                class="w-100 img-fluid lazyload"
-                width="196"
-                height="110"
-                alt="editorial"
-                loading="lazy"
-              />
-              <div class="card-body">
-                <h3 class="card-title articleTitles">
-                  {{ list.title }}
-                </h3>
-              </div>
-              <small class="timeStamp ms-3" *ngIf="commonService.isDate(list)">
-                <span *ngIf="commonService.isUpdate(list)"
-                  >{{ list.last_modified | date: "MM-dd-YYYY" }} |
-                  {{ list.last_modified | date: "shortTime" }}
-                </span>
-                <span *ngIf="!commonService.isUpdate(list)"
-                  >{{ list.posted_on | date: "MM-dd-YYYY" }} |
-                  {{ list.posted_on | date: "shortTime" }}</span
-                >
-              </small>
-            </div>
-          </a>
-        </li>
-      </ul>
+     <app-article-component [typeSlug]="tab" [contents]="items" [type]="'five'"></app-article-component>
     </div>
   </div>
 </div>

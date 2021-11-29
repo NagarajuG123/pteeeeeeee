@@ -1,0 +1,42 @@
+<div class="article-section row gx-2">
+        <ng-container  *ngFor="let item of contents; index as i">
+        <div class="py-2"
+            [ngClass]="{'mb-3 col-12 col-sm-6 col-md-5': type==='five',
+            'mb-3 col-12 col-sm-6 col-md-3': type==='four',
+            'mb-3 col-12 col-sm-6 col-md-12': type==='one'}"
+        >
+          <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{ typeSlug | lowercase }}"
+          >
+            <div class="card rounded-0 border-0 h-100" [ngClass]="typeSlug=='monthlydetailspage' ? 'bg-gray' : ''">
+              <img
+                appYoutubeImage
+                data-src="{{ item.media | defaultImage: 1280:720 }}"
+                class="w-100 img-fluid lazyload"
+                width="196"
+                height="110"
+                alt="editorial"
+                loading="lazy"
+              />
+              <div class="card-body">
+                <span class="small-red-headers" *ngIf="type==='four-brand'"> {{ item?.brand.name }}</span>
+                <h3 class="card-title articleTitles">
+                  {{ item.title }}
+                </h3>
+              </div>
+              <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
+                <span *ngIf="commonService.isUpdate(item)"
+                  >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+                  {{ item.last_modified | date: "shortTime" }}
+                </span>
+                <span *ngIf="!commonService.isUpdate(item)"
+                  >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+                  {{ item.posted_on | date: "shortTime" }}</span
+                >
+              </small>
+            </div>
+          </a>
+        </div>
+        </ng-container>
+</div>
