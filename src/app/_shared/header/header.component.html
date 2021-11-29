@@ -601,30 +601,7 @@
 
           <div class="container customContainer py-md-2">
             <div class="row mt-2">
-              <div
-                class="col-sm-6 col-md-3 mb-2"
-                *ngFor="let list of news; index as i"
-              >
-                <div class="items card border-0 rounded-0 h-100">
-                  <a
-                    routerLink="{{ commonService.readMore(list) }}"
-                    fragment="franbuzz"
-                    (click)="closeModal()"
-                    ><img
-                      data-src="{{ list.media | defaultImage: 257:138 }}"
-                      class="card-img-top lazyload"
-                      alt="story"
-                      width="257"
-                      height="138"
-                    />
-                    <div class="card-body">
-                      <p class="card-text mb-1 text-black text-capitalize">
-                        {{ list.title }}
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
+              <app-article-component [typeSlug]="'franbuzz'" [contents]="news" [type]="'four'"></app-article-component>
             </div>
           </div>
         </div>
