@@ -5,23 +5,26 @@
     .items {
     font-family: $roboto;
     font-weight: 700;
-    img {
-        background-color: $light-gray-1;
-    }
-    > .card-body {
-        padding: 8px 16px 15px;
-        > .card-text {
-        font-size: 10px;
+        img {
+            background-color: $light-gray-1;
         }
-        a {
-        > small {
-            font-family: $roboto;
-            font-weight: 500;
-            font-size: 11px;
-            line-height: 12px;
+        .card{
+            border-radius: 0;
+            > .card-body {
+                padding: 8px 16px 15px;
+                > .card-text {
+                font-size: 10px;
+                }
+                a {
+                > small {
+                    font-family: $roboto;
+                    font-weight: 500;
+                    font-size: 11px;
+                    line-height: 12px;
+                }
+                }
+            }
         }
-        }
-    }
     }
    
     .bg-gray{
