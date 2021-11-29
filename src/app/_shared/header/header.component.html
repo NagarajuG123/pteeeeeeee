@@ -492,72 +492,71 @@
   </div>
   <div class="bottom-head" (click)="closeSidebar()" *ngIf="trending">
     <div class="container py-2">
-      <div class="col-12 d-flex">
-        <ul class="list-group list-group-horizontal">
-          <li class="pe-3">
-            <img
-              data-src="{{ s3Url }}trending_header.png"
-              height="28"
-              width="96"
-              alt="trending"
-              class="lazyload"
-            />
-          </li>
-          <li>
-            <div
-              class="carousel slide vertical carousel-fade"
-              data-bs-ride="carousel"
-              data-bs-interval="6000"
-              id="carouselTrendingIndicators"
-            >
-              <div class="carousel-inner">
-                <ng-container *ngFor="let item of trending; index as i">
-                  <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="trending"
-                      class="title"
-                    >
-                      {{ item.title }}</a
-                    >
-                  </div>
-                </ng-container>
-              </div>
+      <div class="d-flex align-items-center">
+        <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3">
+          <img
+            data-src="{{ s3Url }}trending_header.png"
+            height="28"
+            width="96"
+            alt="trending"
+            class="lazyload pe-3"
+          />
+        </div>
 
-              <!-- <button
-                class="carousel-control-prev d-none d-lg-block"
-                type="button"
-                data-bs-target="#carouselTrendingIndicators"
-                data-bs-slide="prev"
-              >
-                <img
-                  data-src="{{ s3Url }}uparrow_header.png"
-                  height="10"
-                  width="20"
-                  alt="trending"
-                  class="lazyload"
-                />
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                #carouselBtn
-                class="carousel-control-next d-none d-lg-block"
-                type="button"
-                data-bs-target="#carouselTrendingIndicators"
-                data-bs-slide="next"
-              >
-                <img
-                  data-src="{{ s3Url }}downarrow_header.png"
-                  height="10"
-                  width="20"
-                  alt="trending"
-                  class="lazyload"
-                />
-                <span class="visually-hidden">Next</span>
-              </button> -->
+        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-6">
+          <div
+            class="carousel slide vertical carousel-fade"
+            data-bs-ride="carousel"
+            data-bs-interval="6000"
+            id="carouselTrendingIndicators"
+          >
+            <div class="carousel-inner">
+              <ng-container *ngFor="let item of trending; index as i">
+                <div class="carousel-item" [ngClass]="{ active: i === 0 }">
+                  <a
+                    routerLink="/{{ commonService.readMore(item) }}"
+                    fragment="trending"
+                    class="title"
+                  >
+                    {{ item.title }}</a
+                  >
+                </div>
+              </ng-container>
             </div>
-          </li>
-        </ul>
+
+            <button
+              class="carousel-control-prev d-none d-lg-block"
+              type="button"
+              data-bs-target="#carouselTrendingIndicators"
+              data-bs-slide="prev"
+            >
+              <img
+                data-src="{{ s3Url }}uparrow_header.png"
+                height="10"
+                width="20"
+                alt="trending"
+                class="lazyload"
+              />
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              #carouselBtn
+              class="carousel-control-next d-none d-lg-block"
+              type="button"
+              data-bs-target="#carouselTrendingIndicators"
+              data-bs-slide="next"
+            >
+              <img
+                data-src="{{ s3Url }}downarrow_header.png"
+                height="10"
+                width="20"
+                alt="trending"
+                class="lazyload"
+              />
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

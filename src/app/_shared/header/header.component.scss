@@ -198,13 +198,12 @@ header {
     font-size: 18px;
     line-height: 25.41px;
     text-transform: capitalize;
-    ul {
-      padding-left: 0rem;
 
-      @media only screen and (min-width: 1024px) {
-        padding-left: 17rem;
-      }
+    padding-left: 0rem;
+    @media only screen and (min-width: 1024px) {
+      padding-left: 17rem;
     }
+
     .title {
       color: $white_2;
       text-overflow: ellipsis;
