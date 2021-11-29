@@ -79,7 +79,7 @@ img {
   a {
     display: block;
     width: 100%;
-    background: #ec0044;
+    background:$red;
     font-size: 20px;
     line-height: 52px;
     height: 52px;
@@ -89,9 +89,9 @@ img {
     cursor: unset;
   }
   h1 {
-    line-height: 33px !important;
+    line-height: 39px !important;
     padding: 0;
-    font-size: 30px;
+    font-size: 33px;
     color: $white;
     font-family: $proxiBold;
     font-weight: 400;
@@ -100,7 +100,7 @@ img {
 .banner-right_about {
   max-width: 21%;
   -webkit-flex: 0 0 21%;
-  -webkit-box-shadow: 6px 0 15px #00000045;
+  -webkit-box-shadow: 6px 0 15px $black_2;
   @include desk-lg-below1 {
     max-width: 29%;
     flex: 0 0 29%;
@@ -180,7 +180,7 @@ img {
 .banner-right-info {
   display: flex;
   -webkit-align-items: flex-end;
-  background: #263645;
+  background:$dark-gray-1;
   z-index: 10;
 }
 .buffalo_wings {
@@ -252,19 +252,19 @@ img {
   display: block;
 }
 .publication_main {
-  box-shadow: 0 6px 12px #00000045;
+  box-shadow: 0 6px 12px $black_2;
   position: relative;
   z-index: 1;
 }
 .publication_content {
-  background: #f0f0f1;
+  background: $white_1;
 }
 .flex-wrap {
   flex-wrap: wrap !important;
 }
 .publication_left {
   padding: 0;
-  background: #fff;
+  background: $white;
   figure {
     img {
       display: block;
@@ -283,7 +283,7 @@ img {
   padding: 15px 0;
   h3 {
     line-height: 30px;
-    color: #263645;
+    color: $dark-gray-1;
     padding: 0 0 15px;
     font-family: $proxiMedium;
     font-size: 24px;
@@ -307,9 +307,9 @@ p {
   padding: 0;
 }
 .partner_main {
-  background: #fff;
+  background: $white;
   padding: 73px 0;
-  box-shadow: 0 13px 19px #00000045;
+  box-shadow: 0 13px 19px $black_2;
   position: relative;
 }
 .partner_left {
@@ -337,33 +337,29 @@ p {
   p {
     font-size: 18px;
     line-height: 21px;
-    color: #263645;
+    color: $dark-gray-1;
     letter-spacing: 0.1px;
     padding: 0 0 48px;
     text-align: left;
   }
   .submit_btn {
-    font-family: $proxiRegular;
     display: block;
     text-align: center;
     width: 160px;
     color: $white;
-    background: #ec0044;
-    font-size: 16px;
-    line-height: 38px;
     height: 38px;
     border: 1px solid $white;
     position: relative;
     cursor: pointer;
     margin-left: auto;
-    padding: 0 34px 0 0;
+    padding: 10px 34px 28px 5px;
     fa-icon {
       color: $white;
       font-size: 25px;
       line-height: 44px;
       height: 36px;
       width: 36px;
-      background: #b00034;
+      background: $primary-3;
       position: absolute;
       right: 0;
       top: 0;
@@ -379,6 +375,7 @@ p {
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
+      color:$dark_gray_8;
      
     }
   }
@@ -392,7 +389,7 @@ p {
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
-      color: $light_gray_1;
+      color:$dark_gray_8;
     }
   }
   @include tablet-portrait {
