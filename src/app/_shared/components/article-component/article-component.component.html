@@ -1,6 +1,6 @@
 <div class="article-section row gx-2">
         <ng-container  *ngFor="let item of contents; index as i">
-        <div
+        <div class="py-2"
             [ngClass]="{'mb-3 col-12 col-sm-6 col-md-5': type==='five',
             'mb-3 col-12 col-sm-6 col-md-3': type==='four' || type==='four-brand',
             'mb-3 col-12 col-sm-6 col-md-3 bg-gray': type==='fourGray',
@@ -11,7 +11,7 @@
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ typeSlug | lowercase }}"
           >
-            <div class="items card border-0 h-100">
+            <div class="items card rounded-0 border-0 h-100">
               <img
                 appYoutubeImage
                 data-src="{{ item.media | defaultImage: 1280:720 }}"
