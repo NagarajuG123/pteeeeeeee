@@ -131,7 +131,7 @@ header {
         font-size: 14px;
         line-height: 30.8px;
         text-transform: uppercase;
-        color: $white;
+        color: $white_2;
         margin-bottom: 0;
       }
       hr {
@@ -139,6 +139,7 @@ header {
         left: 25px;
         border: 1px solid $red;
         margin: 0 0 10px;
+        opacity: 0.75;
       }
       ul {
         li {
@@ -200,7 +201,9 @@ header {
     ul {
       padding-left: 17rem;
     }
-
+    .title {
+      color: $white_2;
+    }
     .vertical .carousel-item {
       width: 100%;
       padding-right: 50px;
