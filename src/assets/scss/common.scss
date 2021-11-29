@@ -3,7 +3,7 @@
 
 //color
 .primary-color {
-  color: $primary !important;
+  color: $red !important;
   &.link {
     &:hover {
       color: $primary-1;
@@ -95,8 +95,18 @@ hr {
 
 //modal
 
-.modal-body {
-  padding: 0rem !important;
+.modal {
+  .modal-body {
+    padding: 0rem !important;
+  }
+  .modal-title {
+    font-family: $aktiv;
+    font-weight: 500;
+    line-height: 25.6px;
+    font-size: 20px;
+    color: $black;
+    text-transform: capitalize;
+  }
 }
 .btn-close {
   position: absolute;
@@ -112,7 +122,17 @@ hr {
 .form-control {
   border-radius: 0px;
 }
-
+input::-webkit-input-placeholder {
+  font-family: $roboto;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25.74px;
+  color: $light_gray_8 !important;
+}
+.input-group-text {
+  background-color: $red;
+  border: 1px solid $dark_gray;
+}
 button {
   font-family: $roboto;
   font-weight: 700;

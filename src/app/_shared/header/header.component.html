@@ -562,24 +562,21 @@
   </div>
 
   <!-- Search Modal -->
-
-  <div ng-cloak *ngIf="isBrowser" class="search_pop_up modal" id="searchModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <div class="modal" tabindex="-1" *ngIf="isBrowser" id="searchModal">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content px-5">
         <button
           type="button"
-          class="close text-right"
-          #searchCloseBtn
+          class="btn-close"
           data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
+          aria-label="Close"
+        ></button>
+        <h5 class="modal-title mb-3 mt-5">Search 1851 Franchise</h5>
         <form
           [formGroup]="searchForm"
           (ngSubmit)="onSearchSubmit(searchForm, 'header')"
         >
-          <h1>SEARCH 1851 FRANCHISE</h1>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 pe-5">
             <input
               type="text"
               class="form-control"
@@ -591,46 +588,21 @@
               class="input-group-text"
               (click)="onSearchSubmit(searchForm, 'header')"
             >
-              <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon
-            ></span>
+              <img
+                data-src="{{ s3Url }}search_white.png"
+                height="18"
+                width="18"
+                alt="search"
+                class="lazyload"
+            /></span>
           </div>
         </form>
-        <h5>MOST RECENT MATCHES</h5>
-        <div class="ArticlesNewsSection">
-          <h6 class="text-center" *ngIf="news == null">No articles found</h6>
-
-          <div class="container customContainer py-md-2">
-            <div class="row mt-2">
-              <div
-                class="col-sm-6 col-md-3 mb-2"
-                *ngFor="let list of news; index as i"
-              >
-                <div class="items card border-0 rounded-0 h-100">
-                  <a
-                    routerLink="{{ commonService.readMore(list) }}"
-                    fragment="franbuzz"
-                    (click)="closeModal()"
-                    ><img
-                      data-src="{{ list.media | defaultImage: 257:138 }}"
-                      class="card-img-top lazyload"
-                      alt="story"
-                      width="257"
-                      height="138"
-                    />
-                    <div class="card-body">
-                      <p class="card-text mb-1 text-black text-capitalize">
-                        {{ list.title }}
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <hr />
+        <h5 class="text-uppercase">Most Recent Stories</h5>
       </div>
     </div>
   </div>
+
   <!-- Search Modal close -->
 
   <!-- Sponsor Modal -->

@@ -255,4 +255,10 @@ header {
       height: 15px;
     }
   }
+  form {
+    input {
+      height: 49px;
+      border: 1px solid $dark_gray;
+    }
+  }
 }
