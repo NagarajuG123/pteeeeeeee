@@ -261,4 +261,16 @@ header {
       border: 1px solid $dark_gray;
     }
   }
+  .modal {
+    .searchTitle {
+      font-family: $roboto;
+      font-weight: 400;
+      line-height: 24px;
+      font-size: 17px;
+      color: $dark_black;
+    }
+    .btn-close {
+      position: unset;
+    }
+  }
 }
