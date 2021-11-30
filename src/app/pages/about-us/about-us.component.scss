@@ -369,13 +369,14 @@ p {
     font-family: $proxiRegular;
     font-size: 16px;
     line-height: 20px;
-    color: $light_gray_1;
+    color:$light-gray-3;
     height: 39px;
     border: 1px solid $white_5;
     &::placeholder {
       text-transform: uppercase;
       font-family: $proxiRegular;
-      color:$dark_gray_8;
+      color:$dark_gray_8 !important;
+      font-size: 16px;
      
     }
   }
@@ -384,7 +385,7 @@ p {
     font-size: 16px;
     line-height: 20px;
     border: 1px solid $white_5;
-    color: $light_gray_1;
+    color: $light-gray-3;
 
     &::placeholder {
       text-transform: uppercase;

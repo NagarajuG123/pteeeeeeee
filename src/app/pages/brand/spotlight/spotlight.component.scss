@@ -2,11 +2,7 @@
 
 .editorial-section {
   background: $white;
-  h2 {
-    font-family: $balingerBold;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+  .sectionTitle{
     color: $red;
   }
   .innerContent {
@@ -60,36 +56,6 @@
             }
           }
           border-color: $light-gray-1;
-        }
-      }
-    }
-  }
-  .tabs-container {
-    > .tabItemList {
-      .spotlight-detail {
-        padding: 8px 4px;
-        h2 {
-          font-family: $roboto;
-          font-size: 14px;
-          line-height: 16.38px;
-          color: $dark_gray;
-          font-weight: 700;
-        }
-        p {
-          font-family: $roboto;
-          font-size: 11px;
-          line-height: 12px;
-          color: $dark_gray;
-          font-weight: 500;
-        }
-      }
-      @media screen and (min-width: 992px) {
-        .row {
-          margin: 0 -5px;
-          .col-md-4 {
-            max-width: 20%;
-            padding: 0 5px;
-          }
         }
       }
     }

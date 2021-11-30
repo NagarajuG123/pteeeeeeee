@@ -1,6 +1,6 @@
 <div class="container py-3 sidebar-blur featured" *ngIf="isLoaded">
   <div class="row">
-    <div class="col-6 position-relative">
+    <div class="col-lg-6 col-sm-12 position-relative featuredList">
       <div class="tag position-absolute text-center top-0 text-uppercase">
         Featured Article
       </div>
@@ -45,7 +45,7 @@
           height="71"
         />
       </a>
-      <h2 class="large-main-article mt-1">
+      <h2 class="large-main-article mt-2">
         {{ featured[0].title }}
       </h2>
       <span *ngIf="commonService.isUpdate(featured[0])" class="timeStamp"
@@ -58,7 +58,7 @@
       >
     </div>
     <!-- Industry 1851 news list -->
-    <div *ngIf="!isAwards()" class="col-3">
+    <div *ngIf="!isAwards()" class="col-lg-3 col-sm-12">
       <span class="small-red-headers">Latest Franchise Industry News</span>
       <ul class="industry-list list-group">
         <li *ngFor="let item of news; index as i">
@@ -66,7 +66,7 @@
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
           >
-            <h3 class="m-0 articleTitles">{{ item.title }}</h3>
+            <h3 class="articleTitles">{{ item.title }}</h3>
           </a>
           <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
             >{{ item.last_modified | date: "MM-dd-YYYY" }} |
@@ -92,8 +92,8 @@
     <div *ngIf="slug === '1851'" class="col brand-list border-start">
       <span class="small-red-headers">LATEST FRANCHISE BRAND NEWS</span>
 
-      <ul class="industry-list list-inline">
-        <li *ngFor="let item of brandNews; index as i" class="list-inline-item">
+      <ul class="industry-list">
+        <li *ngFor="let item of brandNews; index as i">
           <div class="d-flex">
             <div class="col-5">
               <a
@@ -111,16 +111,15 @@
                   data-src="{{ item.media | defaultImage: 1280:720 }}"
               /></a>
             </div>
-            <div class="col-7 ps-2">
+            <div class="col-lg-7 col-sm-7 ps-2">
               <h2 class="small-red-headers">{{ item.brand.name }}</h2>
-              <h3 class="articleTitles">
-                <a
-                  routerLink="/{{ commonService.readMore(item) }}"
-                  fragment="industry"
-                >
-                  {{ item.title }}
-                </a>
-              </h3>
+
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h3 class="articleTitles">{{ item.title }}</h3>
+              </a>
             </div>
           </div>
         </li>

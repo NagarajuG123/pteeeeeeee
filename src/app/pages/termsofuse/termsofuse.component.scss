@@ -4,7 +4,6 @@
 .banner {
   -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
   -webkit-flex-wrap: wrap;
-
   position: relative;
   z-index: 5;
 }
@@ -103,7 +102,7 @@ img {
     font-size: 24px;
     font-weight: 400;
     color: $dark_gray_1;
-    border-bottom: 1px solid $light_gray_1;
+    border-bottom: 1px solid $light-gray-3;
     padding: 0 0 22px 0;
     letter-spacing: 0.1px;
     margin: 0 0 16px 0;

@@ -2,6 +2,11 @@
 @import "../../../../assets/scss/mixins.scss";
 
 .featured {
+  .featuredList {
+    @include mobile-portrait {
+      margin-bottom: 1rem;
+    }
+  }
   .video-play {
     height: 71px;
     width: 120px;
@@ -25,7 +30,11 @@
     //   width: 100%;
     // }
   }
-
+  .brand-list {
+    .articleTitles {
+      font-size: 13px;
+    }
+  }
   // .news-list {
   //   li {
   //     display: flex;
