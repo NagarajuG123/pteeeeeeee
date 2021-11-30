@@ -298,7 +298,7 @@
           onclick="return false;"
           data-bs-toggle="modal"
           data-bs-target="#searchModal"
-          class="pe-4 d-none d-xl-block"
+          class="pe-5 d-none d-xl-block"
           ><img
             data-src="{{ s3Url }}search_header.png"
             height="18"
@@ -306,7 +306,7 @@
             alt="search"
             class="lazyload"
         /></a>
-        <a class="pe-4" routerLink="/subscribe"
+        <a class="pe-5" routerLink="/subscribe"
           ><button class="subscribe">Subscribe</button></a
         >
         <a
@@ -317,9 +317,9 @@
           <figure>
             <img
               appYoutubeImage
-              data-src="{{ header?.monthlyCover | defaultImage: 119:117 }}"
-              width="119"
-              height="117"
+              data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
+              width="97"
+              height="127"
               alt="Monthly"
               class="lazyload"
             /></figure
@@ -600,10 +600,7 @@
           Most Recent Stories
         </h5>
         <div class="article">
-          <app-article
-            [contents]="news"
-            [type]="'four'"
-          ></app-article>
+          <app-article [contents]="news" [type]="'four'"></app-article>
         </div>
       </div>
     </div>
