@@ -67,19 +67,7 @@ h4 {
 .frannews-top-right {
     padding: 7px 0 0;
     a {
-        font-size: 11.67px;
-        line-height: 13px;
-        color: $dark_gray_1;
-        font-weight: 400;
-        font-family: $proxiMedium;
         float: right;
-        .rightIcon {
-            font-size: 14px;
-            line-height: 10px;
-            color: $red;
-            padding: 0 0 0 5px;
-            vertical-align: top;
-        }
     }
 }
 @media (min-width: 992px){
