@@ -66,7 +66,7 @@
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
           >
-            <h3 class="articleTitles">{{ item.title }}</h3>
+            <h3 class="articleTitles mb-0">{{ item.title }}</h3>
           </a>
           <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
             >{{ item.last_modified | date: "MM-dd-YYYY" }} |
@@ -118,7 +118,7 @@
                 routerLink="/{{ commonService.readMore(item) }}"
                 fragment="industry"
               >
-                <h3 class="articleTitles">{{ item.title }}</h3>
+                <h3 class="articleTitles mb-0">{{ item.title }}</h3>
               </a>
             </div>
           </div>

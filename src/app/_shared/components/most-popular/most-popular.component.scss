@@ -6,18 +6,11 @@
 
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
-  .customContainer{
-    padding-left: 35px;
-    padding-right: 35px;
-  }
-  .card{
+
+  .card {
     > .card-body {
-      padding-top: 31px;
-      padding-bottom: 31px;
       background-color: $red;
       > span {
-        width: 48px;
-        height: 15px;
         font-family: $roboto;
         font-weight: 700;
         font-size: 10px;
@@ -28,44 +21,28 @@
         > span {
           font-size: 49px;
           line-height: 103%;
-          font-weight: bold;
+          font-weight: 700;
           color: $white_4;
         }
-        font-size: 21px;
-        font-family: $roboto;
-        font-weight: 700;
+        .articleTitles {
+          color: $white_2;
+        }
       }
     }
     > .card-footer {
-      font-family: $balingerBold;
-      font-size: 15px;
-      line-height: 18px;
-      height: 24px;
       background-color: $dark_red;
-      border: unset;
+      border-radius: 0;
+      border: none;
     }
   }
   .subItem {
-    margin-bottom: 47px;
     .card-body {
-      > div {
-        > span {
-          font-size: 31px;
-          line-height: 36px;
-          font-weight: 700;
-          font-family: $roboto;
-          color: $red;
-        }
-        > h3 {
-          color: $dark_gray;
-          font-size: 18px;
-          line-height: 1.2rem;
-          font-family: $roboto;
-          font-weight: 700;
-          > strong {
-            font-weight: 700;
-          }
-        }
+      .number {
+        font-size: 31px;
+        line-height: 36px;
+        font-weight: 700;
+        font-family: $roboto;
+        color: $red;
       }
     }
   }
