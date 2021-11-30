@@ -20,15 +20,18 @@ header {
 
   .middle-head {
     .logo {
-      padding-left: 2.25rem;
+      padding-left: 1rem;
+      @include mobile-portrait {
+        padding-left: 0.5rem;
+      }
+      @include tablet-landscape {
+        padding-left: 2rem;
+      }
       img {
         @include mobile-portrait {
           width: 36px;
           height: 36px;
         }
-      }
-      @include mobile-portrait {
-        padding-left: 0.5rem;
       }
     }
     .menu {
@@ -250,13 +253,20 @@ header {
       height: 15px;
     }
   }
-  form {
-    input {
-      height: 49px;
-      border: 1px solid $dark_gray;
+  .searchModal {
+    input::-webkit-input-placeholder {
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25.74px;
+      color: $light_gray_8 !important;
     }
-  }
-  .modal {
+    form {
+      input {
+        height: 49px;
+        border: 1px solid $dark_gray;
+      }
+    }
     .searchTitle {
       font-family: $roboto;
       font-weight: 400;
