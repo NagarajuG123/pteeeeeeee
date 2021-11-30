@@ -150,3 +150,16 @@ button {
     line-height: 14px;
   }
 }
+.see-more--wrapper {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
+.seem-more-text-wrapper {
+  color: $dark_gray;
+  font-size: 17px;
+  line-height: 24px;
+  font-family: $proxiRegular;
+  cursor: pointer;
+}

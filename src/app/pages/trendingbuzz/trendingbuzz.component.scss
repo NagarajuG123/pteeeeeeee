@@ -83,17 +83,13 @@ img {
       -webkit-flex: 0 0 100%;
     }
   }
-  .buffalowings-bottom {
+  .readMore {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     background: $red;
-    font-size: 9.1px;
-    line-height: 11px;
     color: $white;
-    font-weight: 400;
-    font-family: $proxiRegular;
     padding: 10px;
     @include tablet-portrait {
       position: static;
@@ -215,29 +211,6 @@ h6 {
         }
       }
     }
-  }
-}
-
-.see-more--wrapper {
-  margin-top: 57px;
-  width: 50%;
-  height: 2px;
-  border: 1px solid $red;
-}
-.see-more-right--wrapper {
-  margin-top: 57px;
-  width: 50%;
-  height: 2px;
-  border: 1px solid $red;
-}
-.seem-more-text-wrapper {
-  color: $dark_gray;
-  font-size: 17px;
-  line-height: 24px;
-
-  cursor: pointer;
-  @include media("<md") {
-    font-size: 15px;
   }
 }
 .sponsored {
