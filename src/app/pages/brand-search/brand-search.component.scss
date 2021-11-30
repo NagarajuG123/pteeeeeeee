@@ -16,7 +16,7 @@
 }
 
 .list-data--contentWrapper {
-  border-top: 1px solid $light-gray-1;
+  border-top: 1px solid $light_gray_8;
 }
 .list-data--wrapper {
   display: flex;
@@ -36,7 +36,7 @@
   }
 
   &.isHead {
-    background: $border-color;
+    background: $white_6;
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
@@ -57,7 +57,7 @@
   }
 
   &.list-data-wrapper--2 {
-    background-color: $text-secondary-color;
+    background-color: $white_3;
   }
 
   &.list-data-wrapper--1 {
@@ -213,7 +213,7 @@
         gap: 0;
       }
       .c-filter-item--wrapper {
-        background: $filter-box-color;
+        background: ;
         @include media("<lg") {
           flex: 1 0 auto;
         }

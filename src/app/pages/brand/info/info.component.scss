@@ -141,7 +141,7 @@
   }
 
   .financial-description {
-    background-color: $border-color;
+    background-color:$white_6;
     font-family: $roboto;
     font-weight: 700;
     padding: 30px 23px;
@@ -302,7 +302,7 @@
 
 .recent-feature-article-section {
   padding: 30px 25px;
-  background-color: $border-color;
+  background-color:$white_6;
 
   @include mobile-portrait {
     padding: 20px 15px;
@@ -355,7 +355,7 @@
 }
 
 .feature-article-section {
-  background-color: $border-color;
+  background-color: $white_6;
   padding: 40px 20px 20px;
 
   @include mobile-portrait {
@@ -399,7 +399,7 @@
 }
 
 .trending-section {
-  background-color: $border-color;
+  background-color: $white_6;
   padding: 30px 40px 40px;
 
   @include mobile-portrait {
@@ -473,7 +473,7 @@
     span {
       min-width: 132px;
       height: 100%;
-      color: $light-gray-1;
+      color: $light_gray_8;
       cursor: pointer;
       font-family: $proxiRegular;
       font-weight: bold;
@@ -515,7 +515,7 @@
       }
     }
 
-    border-color: $light-gray-1;
+    border-color: $light_gray_8;
   }
 }
 
@@ -578,7 +578,7 @@
       font-family: $roboto;
       font-weight: 700;
       img {
-        background-color: $light-gray-1;
+        background-color:$light_gray_8;
       }
       > .card-body {
         padding: 8px 16px 15px;
