@@ -100,11 +100,11 @@
                     loading="lazy"
                   />
                   <img
+                    *ngIf="type === 'video'"
                     data-src="{{ s3Url }}videoIcon.png"
                     alt="Play"
-                    class="img-fluid lazyload"
+                    class="img-fluid video-play lazyload"
                     loading="lazy"
-                    [ngClass]="type==='video' ? 'video-play' : ''"
                   />
                 </a>
                 <h3 [ngClass] = "type =='video' ? '' : 'text-white'" class="articleTitles align-items-center">
