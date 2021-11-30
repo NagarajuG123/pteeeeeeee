@@ -1,103 +1,81 @@
-<div class="container py-3 sidebar-blur" *ngIf="isLoaded">
+<div class="container py-3 sidebar-blur featured" *ngIf="isLoaded">
   <div class="row">
-    <div class="col-12 col-lg mb-3 mb-sm-0">
-      <div class="row">
-        <div class="position-relative main-image">
-          <div
-            class="tag position-absolute text-center top-0 text-uppercase"
-            [ngClass]="slug !== '1851' ? 'tagBrand' : ''"
-          >
-            Featured Article
-          </div>
-          <a
-            *ngIf="!commonService.isVideo(featured[0])"
-            routerLink="/{{ commonService.readMore(featured[0]) }}"
-            fragment="featured"
-          >
-            <img
-              appYoutubeImage
-              class="w-100 img-fluid lazyload"
-              alt="featured"
-              loading="lazy"
-              width="661"
-              height="372"
-              data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
-            />
-          </a>
-
-          <a
-            *ngIf="commonService.isVideo(featured[0])"
-            data-bs-toggle="modal"
-            data-bs-target="#featuredModal"
-            fragment="featured"
-            class="video-btn"
-          >
-            <img
-              appYoutubeImage
-              class="w-100 img-fluid lazyload"
-              alt="featured"
-              loading="lazy"
-              width="661"
-              height="372"
-              data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
-            />
-            <img
-              data-src="{{ s3Url }}videoIcon.png"
-              alt="Play"
-              class="img-fluid video-play lazyload"
-              loading="lazy"
-              width="120"
-              height="71"
-            />
-          </a>
-          <h2 class="large-main-article bottom-0 w-100">
-            {{ featured[0].title }}
-          </h2>
-          <span class="timeStamp" *ngIf="commonService.isDate(featured[0])">
-            <span *ngIf="commonService.isUpdate(featured[0])"
-              >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
-              {{ featured[0].last_modified | date: "shortTime" }}
-            </span>
-            <span *ngIf="!commonService.isUpdate(featured[0])"
-              >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
-              {{ featured[0].posted_on | date: "shortTime" }}</span
-            >
-          </span>
-        </div>
+    <div class="col-6 position-relative">
+      <div class="tag position-absolute text-center top-0 text-uppercase">
+        Featured Article
       </div>
+      <a
+        *ngIf="!commonService.isVideo(featured[0])"
+        routerLink="/{{ commonService.readMore(featured[0]) }}"
+        fragment="featured"
+      >
+        <img
+          appYoutubeImage
+          class="img-fluid lazyload"
+          alt="featured"
+          loading="lazy"
+          width="1280"
+          height="720"
+          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+        />
+      </a>
+
+      <a
+        *ngIf="commonService.isVideo(featured[0])"
+        data-bs-toggle="modal"
+        data-bs-target="#featuredModal"
+        fragment="featured"
+        class="video-btn"
+      >
+        <img
+          appYoutubeImage
+          class="img-fluid lazyload"
+          alt="featured"
+          loading="lazy"
+          width="1280"
+          height="720"
+          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+        />
+        <img
+          data-src="{{ s3Url }}videoIcon.png"
+          alt="Play"
+          class="img-fluid video-play lazyload"
+          loading="lazy"
+          width="120"
+          height="71"
+        />
+      </a>
+      <h2 class="large-main-article mt-1">
+        {{ featured[0].title }}
+      </h2>
+      <span *ngIf="commonService.isUpdate(featured[0])" class="timeStamp"
+        >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
+        {{ featured[0].last_modified | date: "shortTime" }}
+      </span>
+      <span *ngIf="!commonService.isUpdate(featured[0])" class="timeStamp"
+        >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
+        {{ featured[0].posted_on | date: "shortTime" }}</span
+      >
     </div>
     <!-- Industry 1851 news list -->
-    <div
-      *ngIf="!isAwards()"
-      class="
-        position-relative
-        col-12 col-sm-6 col-lg-4
-        align-items-stretch
-        mb-3 mb-sm-0
-        latestListing
-      "
-    >
+    <div *ngIf="!isAwards()" class="col-3">
       <span class="small-red-headers">Latest Franchise Industry News</span>
-      <ul class="brand-list list-group">
-        <li *ngFor="let item of news; index as i" class="">
-          <h3 class="m-0 articleTitles">
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
-            >
-              {{ item.title }}
-            </a>
-          </h3>
-          <span class="timeStamp" *ngIf="commonService.isDate(item)">
-            <span *ngIf="commonService.isUpdate(item)"
-              >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-              {{ item.last_modified | date: "shortTime" }}
-            </span>
-            <span *ngIf="!commonService.isUpdate(item)"
-              >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-              {{ item.posted_on | date: "shortTime" }}</span
-            >
+      <ul class="industry-list list-group">
+        <li *ngFor="let item of news; index as i">
+          <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
+          >
+            <h3 class="m-0 articleTitles">{{ item.title }}</h3>
+          </a>
+          <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+            >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+            {{ item.last_modified | date: "shortTime" }}
           </span>
+          <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+            >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+            {{ item.posted_on | date: "shortTime" }}</span
+          >
           <a
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
@@ -111,50 +89,39 @@
     </div>
 
     <!-- Brand news list -->
-    <div
-      *ngIf="slug === '1851'"
-      class="
-        position-relative
-        col-12 col-sm-6 col-lg-4
-        align-items-stretch
-        mb-3 mb-sm-0
-        border-start border-2
-        latestListing
-      "
-    >
-      <span class="small-red-headers m-0" *ngIf="slug === '1851'"
-        >LATEST FRANCHISE BRAND NEWS</span
-      >
-      <span class="small-red-headers m-0" *ngIf="slug !== '1851'"
-        >Franchise Brand Features
-      </span>
-      <ul class="news-list list-group">
-        <li *ngFor="let item of brandNews; index as i">
-          <div class="newsImage me-2 me-md-3">
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="industry"
-            >
-              <img
-                appYoutubeImage
-                width="128"
-                class="lazyload"
-                alt="industry"
-                loading="lazy"
-                height="72"
-                data-src="{{ item.media | defaultImage: 1280:720 }}"
-            /></a>
-          </div>
-          <div>
-            <h2 class="small-red-headers m-0">{{ item.brand.name }}</h2>
-            <h3 class="m-0 articleTitles">
+    <div *ngIf="slug === '1851'" class="col brand-list border-start">
+      <span class="small-red-headers">LATEST FRANCHISE BRAND NEWS</span>
+
+      <ul class="industry-list list-inline">
+        <li *ngFor="let item of brandNews; index as i" class="list-inline-item">
+          <div class="d-flex">
+            <div class="col-5">
               <a
                 routerLink="/{{ commonService.readMore(item) }}"
                 fragment="industry"
+                class="pe-2"
               >
-                {{ item.title }}
-              </a>
-            </h3>
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="industry"
+                  loading="lazy"
+                  height="72"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-7 ps-2">
+              <h2 class="small-red-headers">{{ item.brand.name }}</h2>
+              <h3 class="articleTitles">
+                <a
+                  routerLink="/{{ commonService.readMore(item) }}"
+                  fragment="industry"
+                >
+                  {{ item.title }}
+                </a>
+              </h3>
+            </div>
           </div>
         </li>
       </ul>
