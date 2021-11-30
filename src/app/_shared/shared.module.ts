@@ -20,7 +20,7 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ArticleComponentComponent } from './components/article-component/article-component.component';
+import { ArticleComponent } from './components/article/article.component';
 
 // Pipes
 
@@ -39,7 +39,7 @@ import { ArticleComponentComponent } from './components/article-component/articl
     MostPopularComponent,
     SpecialFeatureComponent,
     CarouselComponent,
-    ArticleComponentComponent,
+    ArticleComponent,
   ],
   imports: [
     CommonModule,
@@ -70,7 +70,7 @@ import { ArticleComponentComponent } from './components/article-component/articl
     ShareButtonModule,
     CarouselModule,
     CarouselComponent,
-    ArticleComponentComponent
+    ArticleComponent
   ],
 })
 export class SharedModule {}
