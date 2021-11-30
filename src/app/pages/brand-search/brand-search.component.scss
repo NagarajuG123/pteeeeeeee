@@ -213,7 +213,7 @@
         gap: 0;
       }
       .c-filter-item--wrapper {
-        background: ;
+        background:$light_gray_11 ;
         @include media("<lg") {
           flex: 1 0 auto;
         }
