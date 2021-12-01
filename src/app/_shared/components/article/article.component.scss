@@ -15,14 +15,7 @@
     background-color: $white_8;
   }
 }
-.searchPopup {
-  .articleTitles {
-    font-size: 13px;
-  }
-  .card {
-    filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.08));
-  }
-}
+
 @media screen and (min-width: 992px) {
   .row {
     margin: 0 -5px;

@@ -10,7 +10,6 @@ export class ArticleComponent implements OnInit {
   @Input() contents: any;
   @Input() type = '';
   @Input() typeSlug!: string;
-  @Input() class!: string;
 
   constructor(public commonService: CommonService) {}
 
