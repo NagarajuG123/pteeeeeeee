@@ -6,7 +6,7 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
-import { faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,6 +22,7 @@ export class MonthlyCoversComponent implements OnInit {
   publication!: string;
   faPlus = faPlus;
   faAngleRight = faAngleRight;
+  faArrowLeft = faArrowLeft;
   s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();

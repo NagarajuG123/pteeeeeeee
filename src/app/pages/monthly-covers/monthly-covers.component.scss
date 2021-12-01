@@ -4,22 +4,7 @@
 .c-ml--auto {
   margin-left: auto;
 }
-.c-link--btn {
-  font-family: $proxiBold;
-  color: $red;
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  margin-top: 15px;
-  display: inline-block;
-  transition: all 0.35s ease;
-  line-height: 18px;
-  &:hover {
-    text-decoration: none;
-    color: $black_1;
-  }
-}
+
 // Card Design
 .c-card-box--section {
   padding-top: 100px;
@@ -92,7 +77,7 @@
       background-color: $white;
       .month-business--wrapper {
         max-width: 54%;
-        margin-left: 50%;
+        margin-left: 45%;
         // flex: unset;
         padding: 20px 0;
         @include media("<xxl") {
@@ -110,24 +95,18 @@
       }
     }
     .c-card-box--contentGroup {
-      .c-card-box--subTitle {
+      font-family: $roboto;
+      .title {
         color: $red;
-        margin-top: 0;
-        font-size: 20px;
-        font-weight: 700;
-        font-family: $balingerBold;
-        line-height: 25.74px;
+        font-size: 13.33px;
+        font-weight: 500;
+        line-height: 15.63px;
         @include media("<md") {
           font-size: 16px;
         }
       }
-      .c-card-box--title {
-        font-family: $balingerBold;
-        font-size: 44px;
-        font-weight: 700;
+      .large-main-article {
         color: $dark_gray;
-        text-transform: capitalize;
-        line-height: 53px;
         @include media("<xl") {
           font-size: 36px;
         }
@@ -135,12 +114,11 @@
           font-size: 30px;
         }
       }
-      .c-card-box--content {
+      .content {
         max-width: 480px;
         font-weight: 500;
         font-size: 18px;
         color: $dark_gray;
-        font-family: $roboto;
         line-height: 23.16px;
         @include media("<xl") {
           margin-bottom: 0;
@@ -226,20 +204,9 @@
           margin: 0 0 10px;
         }
       }
-      .c-card-box--itemTitle {
-        font-family: $balingerBold;
-        padding-top: 6px;
+      .articleTitles {
         color: $red;
-        font-weight: 700;
-        font-size: 15px;
-        -webkit-line-clamp: 1;
-        height: 26px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        margin-bottom: 2px;
-        line-height: 18.55px;
+        line-height: 20.59px;
       }
       .c-card-box--itemDec {
         font-family: $roboto;
@@ -253,20 +220,14 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         margin-bottom: 4px;
-        font-size: 12.974px;
-        line-height: 16.7px;
+        font-size: 13px;
+        line-height: 16.73px;
       }
-
-      .c-link--btn {
-        font-size: 11px;
-        margin-top: 5px;
+      .view{
         font-family: $roboto;
-        font-weight: 500;
-        text-transform: lowercase;
-        line-height: 13px;
-        &:hover {
-          color: $white;
-        }
+        font-size: 12px;
+        color: $red;
+        line-height: 14px;
       }
     }
   }
@@ -275,8 +236,9 @@
 //Bottom Section
 .monthy-cover {
   padding-top: 40px;
-  .all-cover-header-content {
-    padding-left: 28px;
+  .sectionTitle {
+    color: $dark_gray;
+    font-weight: 700;
     @include media("<xl") {
       padding-left: 20px;
     }
@@ -310,31 +272,6 @@
       }
     }
   }
-  &::before {
-    content: "";
-    position: absolute;
-    margin-top: 45px;
-    width: 100%;
-    height: 2px;
-    background-color: $red;
-    transform: translateY(-50%);
-  }
-  h2 {
-    font-family: $balingerBold;
-    padding-left: 20px;
-    font-weight: 700;
-    line-height: 42px;
-    font-style: normal;
-    font-size: 35px;
-    color: $dark_gray;
-    @include media("<xxl") {
-      // margin-left: 50px;
-    }
-    @include media("<xl") {
-      // margin-left: 10px;
-      padding-left: 0;
-    }
-  }
   .monthly-covers-bottom {
     .monthly-covers1 {
       display: inline-block;
@@ -356,7 +293,7 @@
       }
     }
   }
-  background-color: white;
+  background-color: $white;
   .userDetail {
     max-width: 300px;
   }
