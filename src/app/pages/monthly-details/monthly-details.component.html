@@ -7,15 +7,15 @@
           <div class="c-card-box--row c-card-box--contentRow">
             <div class="c-card-box--col month-business--wrapper">
               <div class="c-card-box--contentGroup">
-                <h4 class="c-card-box--subTitle">{{ title }}</h4>
-                <h1 class="c-card-box--title">Back to Business</h1>
-                <p class="c-card-box--content">
+                <h4 class="articleTitles">{{ title }}</h4>
+                <h1 class="large-main-article">Back to Business</h1>
+                <p class="content mb-0">
                   {{ banner[0]?.title }}
                 </p>
                 <a
                   routerLink="/{{ commonService.readMore(banner[0]) }}"
                   fragment="monthlydetailspage"
-                  class="c-link--btn"
+                  class="timeStamp text-uppercase"
                   >Read more <fa-icon [icon]="faAngleRight"></fa-icon
                 ></a>
               </div>
@@ -52,14 +52,17 @@
 
 <div class="ArticlesNewsSection sidebar-blur">
   <div class="container customContainer py-md-2">
-    <div class="row">
-      <div class="col-12">
-        <h4 class="py-2 mb-2 text-uppercase cover-title">
+    <!-- <div class="row">
+      <div class="col-12"> -->
+        <h4 class="sectionTitle">
           {{ title }}
         </h4>
-      </div>
+  </div>
+  <hr />
+  <div class="container customContainer py-md-2">
+      <!-- </div> -->
       <app-article [typeSlug]="'monthlydetailspage'" [contents]="details" [type]="'four'"></app-article>
-    </div>
+    <!-- </div> -->
   </div>
   <div class="d-flex">
     <div class="see-more--wrapper"></div>
