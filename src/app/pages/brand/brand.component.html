@@ -21,7 +21,7 @@
 </div>
 
 <div *ngIf="type === 'dynamic_page'">
-  <div class="banner position-relative container contact-banner sidebar-blur">
+  <div class="banner position-relative container sidebar-blur">
     <img
       data-srcset="{{ topBlock.image | defaultImage: 500:250 }} 500w, 
                       {{ topBlock.image | defaultImage: 1000:300 }} 1000w, 
@@ -47,10 +47,10 @@
           routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
           fragment="franbuzz"
         >
-          <h1>Franchise Broker Awards</h1>
-          <p>{{ topBlock?.description }}</p>
-          <div class="readmore-btn">
-            <button class="align-items-center">Read More</button>
+          <h1 class="mb-0">Franchise Broker Awards</h1>
+          <p class="description text-black">{{ topBlock?.description }}</p>
+          <div class="">
+            <button class="align-items-center text-white">Read More</button>
           </div>
         </a>
       </div>
@@ -66,7 +66,7 @@
     <div class="nextLine position-relative mb-5 mt-2">
       <div class="container customContainer">
         <div class="row d-flex align-items-center">
-          <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1 bg-white">
               <img
                 data-src="{{s3Url}}nextIcon.svg"

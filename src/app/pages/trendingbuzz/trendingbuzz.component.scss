@@ -192,27 +192,6 @@ h6 {
     }
   }
 }
-.nextLine {
-  .customContainer {
-    div {
-      width: 220px;
-      padding: 0 18px;
-      @include media("<md") {
-        width: 157px;
-        padding: 0 7px;
-      }
-      .nextBtn {
-        font-family: $proxiRegular;
-        font-size: 15px;
-        z-index: 1;
-        margin-top: 35px;
-        img {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
 .sponsored {
   position: absolute;
   padding: 0;

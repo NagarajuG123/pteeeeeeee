@@ -360,26 +360,5 @@
   .userDetail {
     max-width: 300px;
   }
-  .nextLine {
-    .customContainer {
-      div {
-        width: 220px;
-        padding: 0 18px;
-        @include media("<md") {
-          width: 187px;
-          padding: 0 7px;
-        }
-        .nextBtn {
-          font-family: "ProximaNova-Regular";
-          font-size: 15px;
-          z-index: 1;
-          margin-top: 35px;
-          img {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
 }
 

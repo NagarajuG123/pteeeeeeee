@@ -174,3 +174,14 @@ button {
   font-family: $proxiRegular;
   cursor: pointer;
 }
+.nextLine {
+  .seeMore {
+      width: 220px;
+      padding: 0 18px;
+      margin-top: 35px;
+      @include tablet-landscape1 {
+        width: 165px;
+        padding: 0 7px;
+      }
+  }
+}

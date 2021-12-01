@@ -208,15 +208,7 @@
       transform: translateY(-50%);
     }
     .nextBtn {
-      font-family: "ProximaNova-Regular";
-      font-size: 17px;
-      line-height: 24px;
       z-index: 1;
-      img,
-      span {
-        font-family: $proxiRegular;
-        cursor: pointer;
-      }
     }
   }
 }
