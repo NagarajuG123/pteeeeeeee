@@ -14,10 +14,6 @@
     object-fit: cover;
   }
 }
-
-.list-data--contentWrapper {
-  border-top: 1px solid $light_gray_8;
-}
 .list-data--wrapper {
   display: flex;
   align-items: center;
@@ -36,7 +32,7 @@
   }
 
   &.isHead {
-    background: $white_6;
+    background:$white_8;
     font-family: $proxiBold;
     font-weight: 700;
     line-height: 28.24px;
@@ -58,7 +54,7 @@
   }
 
   &.list-data-wrapper--2 {
-    background-color: $white_3;
+    background-color: $white_8;
   }
 
   &.list-data-wrapper--1 {
