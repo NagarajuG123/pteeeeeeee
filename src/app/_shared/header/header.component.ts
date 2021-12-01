@@ -121,7 +121,7 @@ export class HeaderComponent implements OnInit {
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
-          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}`
+          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}&limit=4&offset=0`
         )
         .subscribe((res) => {
           this.news = res.data;
@@ -161,7 +161,9 @@ export class HeaderComponent implements OnInit {
       headerApi = `header?slug=${this.brandSlug}`;
     }
     const header = this.apiService.getAPI2(headerApi);
-    const news = this.apiService.getAPI(`${this.brandSlug}/news`);
+    const news = this.apiService.getAPI(
+      `${this.brandSlug}/news?limit=4&offset=0`
+    );
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const trending = this.apiService.getAPI(

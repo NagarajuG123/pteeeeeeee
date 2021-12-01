@@ -608,13 +608,13 @@
         <h5 class="text-uppercase text-center searchTitle mb-4">
           Most Recent Stories
         </h5>
+        <h5 *ngIf="news == null" class="text-center searchTitle">
+          No articles found
+        </h5>
         <div class="article d-flex row row-cols-4">
           <ng-container *ngFor="let item of news; index as i">
             <div class="py-2 mb-3">
-              <a
-                routerLink="/{{ commonService.readMore(item) }}"
-                fragment="franbuzz"
-              >
+              <a href="/{{ commonService.readMore(item) }}#franbuzz">
                 <div class="card rounded-0 border-0 h-100">
                   <img
                     appYoutubeImage
