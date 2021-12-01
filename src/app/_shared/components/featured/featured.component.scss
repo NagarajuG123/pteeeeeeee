@@ -29,7 +29,53 @@
   }
   .brand-list {
     .articleTitles {
+<<<<<<< HEAD
       font-size: 13px;
+=======
+      padding-top: 5px;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    position: relative;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .latestListing {
+    max-width: 318px;
+  }
+}
+
+//Special Feature
+.feature-article-section {
+  .feature-item {
+    padding-bottom: 20px;
+    position: relative;
+    .image-tag {
+      position: absolute;
+      background-color: $red;
+      color: $white;
+      font-family: "ProximaNova-Semibold";
+      font-size: 12.27px;
+      padding: 4px;
+    }
+    .image-area {
+      background-color:$light_gray_8;
+      height: 126px;
+    }
+    .image-description {
+      padding: 5px;
+      background-color:$light_gray_10;
+      color: $dark_gray;
+      font-family: $roboto;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+>>>>>>> repeatedvar
     }
   }
 }

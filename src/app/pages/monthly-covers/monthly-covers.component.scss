@@ -208,7 +208,7 @@
       display: flex;
       flex-flow: row wrap;
       align-self: flex-start;
-      gap: $cardGroupSpacing;
+      gap: 14px;
       margin-top: 10px;
       @include media("<xl") {
         justify-content: space-between;
