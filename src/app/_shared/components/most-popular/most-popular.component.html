@@ -4,7 +4,7 @@
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
-    <div class="row d-none d-lg-flex" *ngIf="type == 'home'">
+    <div class="row d-none d-md-flex" *ngIf="type == 'home'">
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">

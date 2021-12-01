@@ -1,8 +1,6 @@
 <div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded">
   <div class="container customContainer">
-    <h2 class="py-3 m-0 sectionTitle  ">
-      Editorial Sections
-    </h2>
+    <h2 class="py-3 m-0 sectionTitle">Editorial Sections</h2>
   </div>
 
   <div class="tabs">
@@ -14,17 +12,17 @@
       >
         <img
           data-src="{{ s3Url }}left-arrow.svg"
-          width="20px"
-          height="39px"
+          width="20"
+          height="39"
           loading="lazy"
           alt="arrow"
           class="lazyload"
         />
       </div>
-      <ul class="row innerContent m-0">
+      <ul class="row m-0 px-5">
         <li
           *ngFor="let item of tabName; index as i"
-          class="col col-sm-6 col-md-4 col-lg border-end text-center"
+          class="col-sm-6 col-md-4 col-lg border-end text-center"
           [ngClass]="
             i < commonService.vtabsItem + skipTab && i >= skipTab
               ? 'active'
@@ -55,8 +53,8 @@
         <img
           data-src="{{ s3Url }}right-arrow.svg"
           loading="lazy"
-          width="20px"
-          height="39px"
+          width="20"
+          height="39"
           alt="arrow"
           class="lazyload"
         />
@@ -64,9 +62,7 @@
     </div>
   </div>
 
-  <div class="tabs-container container customContainer">
-    <div class="tabItemList mt-4 py-3">
-     <app-article [typeSlug]="tab" [contents]="items" [type]="'five'"></app-article>
-    </div>
+  <div class="container customContainer mt-4 py-3">
+    <app-article [typeSlug]="tab" [contents]="items" [col]="'5'"></app-article>
   </div>
 </div>
