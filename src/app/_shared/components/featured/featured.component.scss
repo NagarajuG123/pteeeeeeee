@@ -1,111 +1,35 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
-a {
-  color: $black;
-}
-
-.tagBrand {
-  line-height: 20.57px;
-  font-size: 17.14px;
-}
-.over-layer {
-  font-family: $aktiv;
-  font-size: 34px;
-  color: $black;
-  font-weight: 700;
-  line-height: 125%;
-  margin: 0 0 -15px 0;
-  padding: 8px 16px 8px 0;
-}
-.main-image {
+.featured {
+  .featuredList {
+    @include mobile-portrait {
+      margin-bottom: 1rem;
+    }
+  }
   .video-play {
     height: 71px;
     width: 120px;
   }
-}
 
-@media screen and (max-width: 760px) {
-  .tag {
-    font-size: 12px;
-  }
-  .over-layer {
-    font-size: 24px;
-  }
-}
-
-.brand-list {
-  color: $black;
-  font-family: $roboto;
-  font-weight: 700;
-  height: calc(100% - 27px);
-  li {
-    border-bottom: 1px solid $light_gray_9;
-    padding: 25px 0 25px !important;
-    &:last-child {
-      border: 0;
+  .industry-list {
+    color: $black;
+    font-family: $roboto;
+    font-weight: 700;
+    li {
+      border-bottom: 1px solid $light_gray_9;
+      padding: 25px 0 25px !important;
+      &:first-child {
+        padding-top: 0px !important;
+      }
+      &:last-child {
+        border: 0;
+      }
     }
   }
-  @media screen and (max-width: 960px) {
-    position: relative;
-    height: 100%;
-    overflow: visible;
-    width: 100%;
-  }
-}
-
-.news-list {
-  li {
-    display: flex;
-    border-bottom: 1px solid $light_gray_9;
-    padding: 25px 0 25px !important;
-    &:last-child {
-      border: 0;
-    }
+  .brand-list {
     .articleTitles {
-      padding-top: 5px;
-    }
-  }
-
-  @media screen and (max-width: 960px) {
-    position: relative;
-    height: 100%;
-    overflow: visible;
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .latestListing {
-    max-width: 318px;
-  }
-}
-
-//Special Feature
-.feature-article-section {
-  .feature-item {
-    padding-bottom: 20px;
-    position: relative;
-    .image-tag {
-      position: absolute;
-      background-color: $red;
-      color: $white;
-      font-family: "ProximaNova-Semibold";
-      font-size: 12.27px;
-      padding: 4px;
-    }
-    .image-area {
-      background-color: $light-gray-1;
-      height: 126px;
-    }
-    .image-description {
-      padding: 5px;
-      background-color: $feature-article-description;
-      color: $dark_gray;
-      font-family: $roboto;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 16px;
+      font-size: 13px;
     }
   }
 }

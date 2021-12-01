@@ -1,31 +1,23 @@
-<div
-  class="most-popular sidebar-blur"
-  *ngIf="isLoaded"
-  [ngClass]="type == 'brand' ? 'brand-most-popular' : ''"
->
+<div class="most-popular sidebar-blur" *ngIf="isLoaded">
   <div class="container customContainer">
     <h2 class="py-3 m-0 sectionTitle">MOST POPULAR</h2>
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
     <div class="row d-none d-sm-flex" *ngIf="type == 'home'">
-      <div class="col col-sm-4" *ngFor="let item of data; index as i">
-        <a
-          routerLink="/{{ commonService.readMore(item) }}"
-          fragment="trending"
-          class="text-black"
-        >
+      <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
+        <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
-              width="380px"
+              width="380"
               height="223"
               data-src="{{ item.media | defaultImage: 1280:720 }}"
               alt="most-popular"
               loading="lazy"
               class="img-fluid lazyload"
             />
-            <div class="card-body position-relative px-3 d-block">
+            <div class="card-body position-relative px-3 pt-5">
               <span
                 class="
                   position-absolute
@@ -35,54 +27,48 @@
                   d-flex
                   align-items-center
                   justify-content-center
+                  py-1
+                  px-2
                 "
                 >POPULAR</span
               >
               <h2 class="position-relative ps-4 card-title">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
-                <strong class="ms-3 d-block articleTitles text-white">
+                <p class="ms-3 articleTitles">
                   {{ item.title }}
-                </strong>
+                </p>
               </h2>
             </div>
-            <div
-              class="
-                card-footer
-                d-flex
-                flex-row-reverse
-                py-1
-                px-2
-              "
-            >
-              <a class="text-white timeStamp p-0"
+            <div class="card-footer d-flex flex-row-reverse py-1 px-2">
+              <a class="seeMore p-0"
                 >READ MORE
-                <fa-icon
-                  [icon]="faAngleRight"
-                  class="ng-fa-icon fa-icon"
-                ></fa-icon>
+                <fa-icon [icon]="faAngleRight"></fa-icon>
               </a>
             </div>
           </div>
           <ng-template #elseBlock>
             <div class="subItem px-md-3">
-              <div class="card-body position-relative px-3 d-block">
+              <div class="card-body position-relative px-3">
                 <div class="position-relative ps-4">
-                  <span class="position-absolute top-0 start-0">{{
+                  <span class="position-absolute top-0 start-0 number">{{
                     i + 1
                   }}</span>
-                  <h3 class="mb-0 ms-3 d-block card-title">
+                  <h3 class="mb-0 ms-3 card-title articleTitles">
                     {{ item.title }}
                   </h3>
-                  <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
-                    <span *ngIf="commonService.isUpdate(item)"
-                      >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-                      {{ item.last_modified | date: "shortTime" }}
-                    </span>
-                    <span *ngIf="!commonService.isUpdate(item)"
-                      >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-                      {{ item.posted_on | date: "shortTime" }}</span
-                    >
-                  </small>
+
+                  <span
+                    *ngIf="commonService.isUpdate(item)"
+                    class="timeStamp ms-3"
+                    >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+                    {{ item.last_modified | date: "shortTime" }}
+                  </span>
+                  <span
+                    *ngIf="!commonService.isUpdate(item)"
+                    class="timeStamp ms-3"
+                    >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+                    {{ item.posted_on | date: "shortTime" }}</span
+                  >
                   <p class="ms-3 description">
                     {{ item.short_description }}
                   </p>
@@ -141,18 +127,12 @@
                   <span class="position-absolute top-0 start-0">{{
                     i + 1
                   }}</span>
-                  <strong class="ms-3 d-block articleTitles text-white">{{ item.title }}</strong>
+                  <strong class="ms-3 d-block articleTitles text-white">{{
+                    item.title
+                  }}</strong>
                 </h2>
               </div>
-              <div
-                class="
-                  slide-footer
-                  d-flex
-                  flex-row-reverse
-                  py-1
-                  px-2
-                "
-              >
+              <div class="slide-footer d-flex flex-row-reverse py-1 px-2">
                 <a class="timeStamp text-white p-0"
                   >READ MORE
                   <fa-icon

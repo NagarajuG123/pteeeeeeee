@@ -28,6 +28,7 @@
   font-family: $aktiv;
   text-transform: none;
 }
+
 .description {
   font-weight: 400;
   font-size: 12px;
@@ -75,8 +76,18 @@ hr {
   font-weight: 500;
   font-size: 10px;
   text-transform: uppercase;
-  display: block;
   line-height: 12px;
+}
+.seeMore {
+  color: $white_2;
+  font-family: $roboto;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 14.62px;
+  &:hover {
+    color: $white_2;
+  }
 }
 //video
 
@@ -128,9 +139,9 @@ hr {
 }
 input::-webkit-input-placeholder {
   font-family: $roboto;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 25.74px;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 12.71px;
   color: $light_gray_8 !important;
 }
 .input-group-text {

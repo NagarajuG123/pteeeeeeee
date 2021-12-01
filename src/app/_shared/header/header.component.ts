@@ -439,7 +439,7 @@ export class HeaderComponent implements OnInit {
   closeSidebar() {
     if (this.commonService.showmenu) {
       this.commonService.showmenu = false;
-      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar').removeClass('show');
       $('.sidebar-blur').removeClass('show');
       $('body').removeClass('noscroll');
     }
@@ -450,7 +450,7 @@ export class HeaderComponent implements OnInit {
       this._elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
       this.commonService.showmenu = false;
-      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar').removeClass('show');
       $('.sidebar-blur').removeClass('show');
       $('body').removeClass('noscroll');
     }

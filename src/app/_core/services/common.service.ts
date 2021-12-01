@@ -24,11 +24,11 @@ export class CommonService {
     this.showmenu = !this.showmenu;
     window.scrollTo(0, 0);
     if (this.showmenu) {
-      $('.sidebar-dropdown-menu').addClass('show');
+      $('.sidebar').addClass('show');
       $('.sidebar-blur').addClass('show');
       $('body').addClass('noscroll');
     } else {
-      $('.sidebar-dropdown-menu').removeClass('show');
+      $('.sidebar').removeClass('show');
       $('.sidebar-blur').removeClass('show');
       $('body').removeClass('noscroll');
     }
@@ -73,14 +73,14 @@ export class CommonService {
     return false;
   }
 
-  isDate(story:any) {
-    if ( new Date(story?.posted_on) || new Date(story?.last_modified) ) {
+  isDate(story: any) {
+    if (new Date(story?.posted_on) || new Date(story?.last_modified)) {
       return true;
     }
     return false;
   }
 
-  isUpdate(story:any) {
+  isUpdate(story: any) {
     let post = new Date(story?.posted_on).toDateString();
     let last = new Date(story?.last_modified).toDateString();
     if (post !== last) {
