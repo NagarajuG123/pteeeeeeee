@@ -436,7 +436,7 @@
                 class="my-1"
                 routerLink="/{{ brandSlug }}"
                 (click)="commonService.toggle()"
-                >{{ brandTitle }} Most read Stories</a
+                >{{ brandTitle }} Most read Matches</a
               >
             </h3>
             <ul class="mb-2 ms-2">
@@ -607,7 +607,11 @@
           Most Recent Stories
         </h5>
         <div class="article">
-          <app-article [contents]="news" [type]="'four'"></app-article>
+          <app-article
+            [contents]="news"
+            [type]="'four'"
+            [class]="'searchPopup'"
+          ></app-article>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="article-section row">
+<div class="article-section row" [ngClass]="class">
   <ng-container *ngFor="let item of contents; index as i">
     <div
       class="py-2"
@@ -25,24 +25,24 @@
             alt="editorial"
             loading="lazy"
           />
-          <div class="card-body">
+          <div class="card-body pb-0 py-0 pt-2">
             <span class="small-red-headers" *ngIf="type === 'four-brand'">
               {{ item?.brand.name }}</span
             >
-            <h3 class="card-title articleTitles">
+            <h3 class="card-title articleTitles mb-0 ps-3">
               {{ item.title }}
             </h3>
           </div>
-          <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
-            <span *ngIf="commonService.isUpdate(item)"
+          <div class="card-footer ps-3">
+            <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
               >{{ item.last_modified | date: "MM-dd-YYYY" }} |
               {{ item.last_modified | date: "shortTime" }}
             </span>
-            <span *ngIf="!commonService.isUpdate(item)"
+            <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
               >{{ item.posted_on | date: "MM-dd-YYYY" }} |
               {{ item.posted_on | date: "shortTime" }}</span
             >
-          </small>
+          </div>
         </div>
       </a>
     </div>

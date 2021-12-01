@@ -255,6 +255,9 @@ header {
     }
   }
   .searchModal {
+    .modal-title {
+      font-weight: 700;
+    }
     input::-webkit-input-placeholder {
       font-family: $roboto;
       font-weight: 500;
