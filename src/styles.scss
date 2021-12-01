@@ -32,7 +32,9 @@ ul {
     list-style: none;
   }
 }
-
+.card-img-top {
+  border-radius: unset !important;
+}
 .primary-bg {
   background-color: $red;
 }
