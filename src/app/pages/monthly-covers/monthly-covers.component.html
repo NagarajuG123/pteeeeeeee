@@ -80,30 +80,30 @@
 
 <div class="monthy-cover sidebar-blur" *ngIf="secondBlock">
   <div class="container customContainer">
-    <!-- <div class="row">
-      <div class="col-12"> -->
+    
         <h2 class="sectionTitle">ALL COVERS</h2>
   </div>
   <hr />
   <div class="container customContainer d-flex">
-    <div class="monthly-covers-bottom" *ngFor="let cover of secondBlock">
-      <a class="monthly-covers1" routerLink="{{ cover?.url }}">
-        <figure class="m-0">
-          <img
-            appYoutubeImage
-            data-src="{{ cover.media | defaultImage: 288:379 }}"
-            width="305"
-            height="380"
-            alt="monthly-covers"
-            loading="lazy"
-            class="lazyload"
-          />
-        </figure>
-      </a>
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-5 ">
+      <div class="monthly-covers-bottom p-0" *ngFor="let cover of secondBlock">
+        <a class="monthly-covers1" routerLink="{{ cover?.url }}">
+          <figure class="m-0">
+            <img
+              appYoutubeImage
+              data-src="{{ cover.media | defaultImage: 288:379 }}"
+              width="305"
+              height="380"
+              alt="monthly-covers"
+              loading="lazy"
+              class="lazyload"
+            />
+          </figure>
+        </a>
+      </div>
     </div>
   </div>
-      <!-- </div>
-    </div> -->
+     
   
 
   <!-- See More -->

@@ -44,7 +44,7 @@ export class MonthlyCoversComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         this.firstBlock = response[0].data;
-        this.secondBlock = response[0].data.slice(4, 12);
+        this.secondBlock = response[0].data.slice(4, 14);
         this.hasMore = response[0].has_more;
         this.metaData = response[1].data;
         this.publication = response[2].title;
