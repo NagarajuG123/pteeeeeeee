@@ -13,7 +13,7 @@
   text-decoration: none;
   margin-top: 15px;
   display: inline-block;
-  transition: $defaultTransition;
+  transition: all 0.35s ease;
   font-family: $proxiBold;
   line-height: 18px;
   &:hover {
@@ -178,15 +178,15 @@
       display: flex;
       flex-flow: row wrap;
       align-self: flex-start;
-      gap: $cardGroupSpacing;
+      gap: 14px;
       margin-top: 10px;
       @include media("<lg") {
         gap: 0;
         justify-content: space-between;
       }
       .c-card-box--item {
-        flex: 1 0 calc(33.3333% - #{$cardGroupSpacing});
-        max-width: calc(33.3333% - #{$cardGroupSpacing});
+        flex: 1 0 calc(33.3333% - 14px);
+        max-width: calc(33.3333% - 14px);
         @include media("<sm") {
           flex: 1 0 100%;
           max-width: 100%;
@@ -242,7 +242,7 @@
   }
   .items {
     font-family: $roboto;
-    background: $border-color;
+    background: $white_6;
     .card-body {
       h6,
       h6 a {
@@ -287,24 +287,4 @@
       }
     }
   }
-  .see-more--wrapper {
-    margin-top: 57px;
-    width: 50%;
-    height: 2px;
-    border: 1px solid $red;
-  }
-  .see-more-right--wrapper {
-    margin-top: 57px;
-    width: 50%;
-    height: 2px;
-    border: 1px solid $red;
-  }
-}
-.seem-more-text-wrapper {
-  color: $dark_gray;
-  font-size: 17px;
-  font-family: $proxiRegular;
-  font-weight: 400;
-  line-height: 24px;
-  cursor: pointer;
 }
