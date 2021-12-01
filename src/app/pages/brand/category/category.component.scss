@@ -152,49 +152,6 @@
       }
     }
   }
-  .tabs-container {
-    > .tabItemList {
-      .items {
-        img {
-          width: 100%;
-          background-color: $light-gray-1;
-        }
-        > .card-body {
-          padding: 8px 16px 15px;
-          > h6.card-title {
-            font-size: 12px;
-            color: $dark_gray;
-            font-family: $roboto;
-            font-weight: 700;
-            line-height: 14.04px;
-          }
-          > .card-text {
-            font-size: 10px;
-            color: $dark_gray_5;
-            font-family: $roboto;
-            font-weight: 500;
-          }
-          a {
-            > small {
-              font-family: $roboto;
-              font-weight: 500;
-              font-size: 11px;
-              line-height: 12px;
-            }
-          }
-        }
-      }
-      @media screen and (min-width: 992px) {
-        .row {
-          margin: 0 -5px;
-          .col-md-4 {
-            max-width: 20%;
-            padding: 0 5px;
-          }
-        }
-      }
-    }
-  }
   .nextLine {
     &::after {
       content: "";
