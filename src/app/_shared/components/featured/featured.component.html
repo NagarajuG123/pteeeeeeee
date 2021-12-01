@@ -60,7 +60,7 @@
     <!-- Industry 1851 news list -->
     <div *ngIf="!isAwards()" class="col-lg-3 col-sm-12">
       <span class="small-red-headers">Latest Franchise Industry News</span>
-      <ul class="industry-list list-group">
+      <ul class="industry-list pt-1">
         <li *ngFor="let item of news; index as i">
           <a
             routerLink="/{{ commonService.readMore(item) }}"
@@ -80,7 +80,7 @@
             routerLink="/{{ commonService.readMore(item) }}"
             fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
           >
-            <p class="description">
+            <p class="description mb-0">
               {{ item.short_description }}
             </p>
           </a>
@@ -92,7 +92,7 @@
     <div *ngIf="slug === '1851'" class="col brand-list border-start">
       <span class="small-red-headers">LATEST FRANCHISE BRAND NEWS</span>
 
-      <ul class="industry-list">
+      <ul class="industry-list pt-1">
         <li *ngFor="let item of brandNews; index as i">
           <div class="d-flex">
             <div class="col-5">
@@ -107,7 +107,7 @@
                   class="lazyload img-fluid"
                   alt="industry"
                   loading="lazy"
-                  height="72"
+                  height="90"
                   data-src="{{ item.media | defaultImage: 1280:720 }}"
               /></a>
             </div>

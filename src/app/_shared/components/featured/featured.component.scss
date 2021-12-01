@@ -19,6 +19,9 @@
     li {
       border-bottom: 1px solid $light_gray_9;
       padding: 25px 0 25px !important;
+      &:first-child {
+        padding-top: 0px !important;
+      }
       &:last-child {
         border: 0;
       }
