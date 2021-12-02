@@ -60,14 +60,14 @@
                   <span
                     *ngIf="commonService.isUpdate(item)"
                     class="timeStamp ms-3"
-                    >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-                    {{ item.last_modified | date: "shortTime" }}
+                    >{{ commonService.formatDate(item.last_modified) }} |
+                    {{ commonService.formatTime(item.last_modified) }}
                   </span>
                   <span
                     *ngIf="!commonService.isUpdate(item)"
                     class="timeStamp ms-3"
-                    >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-                    {{ item.posted_on | date: "shortTime" }}</span
+                    >{{ commonService.formatDate(item.posted_on) }} |
+                    {{ commonService.formatTime(item.posted_on) }}</span
                   >
                   <p class="ms-3 mb-0 description">
                     {{ item.short_description }}

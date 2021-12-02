@@ -49,12 +49,12 @@
         {{ featured[0].title }}
       </h2>
       <span *ngIf="commonService.isUpdate(featured[0])" class="timeStamp"
-        >{{ featured[0].last_modified | date: "MM-dd-YYYY" }} |
-        {{ featured[0].last_modified | date: "shortTime" }}
+        >{{ commonService.formatDate(featured[0].last_modified) }} |
+        {{ commonService.formatTime(featured[0].last_modified) }}
       </span>
       <span *ngIf="!commonService.isUpdate(featured[0])" class="timeStamp"
-        >{{ featured[0].posted_on | date: "MM-dd-YYYY" }} |
-        {{ featured[0].posted_on | date: "shortTime" }}</span
+        >{{ commonService.formatDate(featured[0].posted_on) }} |
+        {{ commonService.formatTime(featured[0].posted_on) }}</span
       >
     </div>
     <!-- Industry 1851 news list -->
@@ -69,12 +69,12 @@
             <h3 class="articleTitles mb-0">{{ item.title }}</h3>
           </a>
           <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-            >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-            {{ item.last_modified | date: "shortTime" }}
+            >{{ commonService.formatDate(item.last_modified) }} |
+            {{ commonService.formatTime(item.last_modified) }}
           </span>
           <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
-            >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-            {{ item.posted_on | date: "shortTime" }}</span
+            >{{ commonService.formatDate(item.posted_on) }} |
+            {{ commonService.formatTime(item.posted_on) }}</span
           >
           <a
             routerLink="/{{ commonService.readMore(item) }}"

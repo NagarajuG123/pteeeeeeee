@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { DatePipe, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,7 +12,10 @@ export class CommonService {
 
   isBrowser: boolean = false;
   isPageLoaded = new BehaviorSubject<boolean>(false);
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
+    public datepipe: DatePipe
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
       this.resizeSidebar(window.innerWidth);
@@ -73,11 +76,14 @@ export class CommonService {
     return false;
   }
 
-  isDate(story: any) {
-    if (new Date(story?.posted_on) || new Date(story?.last_modified)) {
-      return true;
-    }
-    return false;
+  formatDate(date: any) {
+    return this.datepipe.transform(
+      new Date(date.replace(/-/g, '/')),
+      'MM-d-YYYY'
+    );
+  }
+  formatTime(date: any) {
+    return this.datepipe.transform(new Date(date.replace(/-/g, '/')), 'h:mma');
   }
 
   isUpdate(story: any) {
