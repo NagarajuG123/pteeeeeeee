@@ -87,11 +87,11 @@
         <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
           >{{ commonService.formatTime(details.last_modified) }} •
-           {{ date_time | date: "MM/dd/yy" }}
+          {{  last_modified | date: "MM/dd/yy" }}
         </span>
         <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
           >{{ commonService.formatTime(details.posted_on) }} •
-            {{ date_time | date: "MM/dd/yy" }}
+          {{ date_time | date: "MM/dd/yy" }}
         </span>
         <hr />
 
