@@ -5,16 +5,14 @@
         routerLink="/{{ commonService.readMore(item) }}"
         fragment="{{ typeSlug | lowercase }}"
       >
-        <div
-          class="card rounded-0 border-0 h-100"
-        >
+        <div class="card rounded-0 border-0 h-100">
           <img
             appYoutubeImage
             data-src="{{ item.media | defaultImage: 1280:720 }}"
             class="w-100 img-fluid lazyload card-img-top"
             width="196"
             height="110"
-            alt="editorial"
+            alt=""
             loading="lazy"
           />
           <div class="card-body p-0 pt-2 rounded-0">
@@ -27,13 +25,13 @@
           </div>
           <div class="card-footer ps-3 border-0 pt-0">
             <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-              >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-              {{ item.last_modified | date: "shortTime" }}
+              >{{ commonService.formatDate(item.last_modified) }} |
+              {{ commonService.formatTime(item.last_modified) }}
             </span>
             <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
-              >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-              {{ item.posted_on | date: "shortTime" }}</span
-            >
+              >{{ commonService.formatDate(item.posted_on) }} |
+              {{ commonService.formatTime(item.posted_on) }}
+            </span>
           </div>
         </div>
       </a>
