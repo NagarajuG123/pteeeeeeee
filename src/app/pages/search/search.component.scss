@@ -82,6 +82,19 @@ span {
       display: block;
     }
   }
+  .input-group
+{
+
+ input{
+  border: 1px solid $dark_gray;
+  height:49px;
+  &::placeholder{
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25.74px;
+    }
+  }
+}
   .form-group {
     width: 80% !important;
     input {
@@ -290,19 +303,4 @@ form {
     line-height: 24px;
     color: $dark_gray;
   }
-}
-.input-group
-{
- input{
-  border: 1px solid $dark_gray;
-  &::placeholder{
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 25.74px;
-    }
-  }
-.input-group-text {
-  background: $red;
-  color:$white;
-}
 }

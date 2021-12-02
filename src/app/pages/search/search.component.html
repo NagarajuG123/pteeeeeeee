@@ -18,7 +18,9 @@
         >
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
-            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
+            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> 
+              <img _ngcontent-serverapp-c47="" height="18" width="18" alt="search" class=" ls-is-cached lazyloaded" src="https://dmprqkmvewks9.cloudfront.net/search_white.png">
+            </span>
           </div>
         </form>
         <div class="py-3 filter-section">
@@ -152,21 +154,6 @@
         "
       >
       <app-article [typeSlug]="'franbuzz'" [contents]="recentPeoples" [type]="'three'"></app-article>
-        <div class="row seeMoreIcon mt-4 desktop-only">
-          <div
-            class="col d-flex align-items-center justify-content-center py-1"
-          >
-            <img
-              data-src="{{s3Url}}nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3 lazyload"
-              (click)="getMoreItems()"
-            />
-            <span class="see-more text-uppercase" (click)="getMoreItems()"
-              >See More</span
-            >
-          </div>
         </div>
       </div>
       <div
@@ -179,21 +166,6 @@
         <hr />
         <app-article [typeSlug]="'franbuzz'" [contents]="brandPeoples" [type]="'one'"></app-article>
       </div>
-    </div>
-    <div class="row seeMoreIcon mobile-only">
-      <div class="col d-flex align-items-center justify-content-center py-1">
-        <img
-          data-src="{{s3Url}}nextIcon.svg"
-          width="32"
-          alt="next articles"
-          class="me-3 lazyload"
-          (click)="getMoreItems()"
-        />
-        <span class="see-more text-uppercase" (click)="getMoreItems()"
-          >See More</span
-        >
-      </div>
-    </div>
   </div>
 </div>
 
