@@ -1,13 +1,6 @@
-<div class="article-section row">
+<div class="article gx-3 row row-cols-sm-1 row-cols-md-2" [ngClass]="rowClass">
   <ng-container *ngFor="let item of contents; index as i">
-    <div
-      class="py-2"
-      [ngClass]="{
-        'mb-3 col-12 col-sm-6 col-md-5': type === 'five',
-        'mb-3 col-12 col-sm-6 col-md-3': type === 'four',
-        'mb-3 col-12 col-sm-6 col-md-12': type === 'one'
-      }"
-    >
+    <div class="py-2">
       <a
         routerLink="/{{ commonService.readMore(item) }}"
         fragment="{{ typeSlug | lowercase }}"
@@ -25,24 +18,24 @@
             alt="editorial"
             loading="lazy"
           />
-          <div class="card-body">
+          <div class="card-body p-0 pt-2 rounded-0">
             <span class="small-red-headers" *ngIf="type === 'four-brand'">
               {{ item?.brand.name }}</span
             >
-            <h3 class="card-title articleTitles mb-0">
+            <h3 class="card-title articleTitles mb-0 ps-3">
               {{ item.title }}
             </h3>
           </div>
-          <small class="timeStamp ms-3" *ngIf="commonService.isDate(item)">
-            <span *ngIf="commonService.isUpdate(item)"
+          <div class="card-footer ps-3 border-0 pt-0">
+            <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
               >{{ item.last_modified | date: "MM-dd-YYYY" }} |
               {{ item.last_modified | date: "shortTime" }}
             </span>
-            <span *ngIf="!commonService.isUpdate(item)"
+            <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
               >{{ item.posted_on | date: "MM-dd-YYYY" }} |
               {{ item.posted_on | date: "shortTime" }}</span
             >
-          </small>
+          </div>
         </div>
       </a>
     </div>

@@ -131,6 +131,7 @@
                     type="text"
                     class="form-control ps-0"
                     placeholder="Search"
+                    [formControl]="searchForm.controls['searchInput']"
                   />
                 </div>
               </form>
@@ -435,7 +436,7 @@
                 class="my-1"
                 routerLink="/{{ brandSlug }}"
                 (click)="commonService.toggle()"
-                >{{ brandTitle }} Most read Stories</a
+                >{{ brandTitle }} Most read Matches</a
               >
             </h3>
             <ul class="mb-2 ms-2">
@@ -569,17 +570,20 @@
         <div class="modal-header">
           <button
             type="button"
-            class="btn-close"
+            class="close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+            #searchCloseBtn
+          >
+            &times;
+          </button>
         </div>
-        <h5 class="modal-title mb-3 px-5">Search 1851 Franchise</h5>
+        <h5 class="modal-title mb-3">Search 1851 Franchise</h5>
         <form
           [formGroup]="searchForm"
           (ngSubmit)="onSearchSubmit(searchForm, 'header')"
         >
-          <div class="input-group mb-3 px-5">
+          <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
@@ -604,8 +608,44 @@
         <h5 class="text-uppercase text-center searchTitle mb-4">
           Most Recent Stories
         </h5>
-        <div class="article">
-          <app-article [contents]="news" [type]="'four'"></app-article>
+        <h5 *ngIf="news == null" class="text-center searchTitle">
+          No articles found
+        </h5>
+        <div class="article d-flex row row-cols-4">
+          <ng-container *ngFor="let item of news; index as i">
+            <div class="py-2 mb-3">
+              <a href="/{{ commonService.readMore(item) }}#franbuzz">
+                <div class="card rounded-0 border-0 h-100">
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    class="w-100 img-fluid lazyload"
+                    width="196"
+                    height="110"
+                    alt="editorial"
+                    loading="lazy"
+                  />
+                  <div class="card-body pb-0 py-0 pt-2">
+                    <h3 class="card-title articleTitles mb-0">
+                      {{ item.title }}
+                    </h3>
+                  </div>
+                  <div class="card-footer ps-3">
+                    <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+                      >{{ item.last_modified | date: "MM-dd-YYYY" }} |
+                      {{ item.last_modified | date: "shortTime" }}
+                    </span>
+                    <span
+                      *ngIf="!commonService.isUpdate(item)"
+                      class="timeStamp"
+                      >{{ item.posted_on | date: "MM-dd-YYYY" }} |
+                      {{ item.posted_on | date: "shortTime" }}</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>

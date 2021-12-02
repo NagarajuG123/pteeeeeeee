@@ -32,13 +32,15 @@ ul {
     list-style: none;
   }
 }
-
+.card-img-top {
+  border-radius: unset !important;
+}
 .primary-bg {
   background-color: $red;
 }
 
 .primary-bg-1 {
-  background-color: $primary-1;
+  background-color: $dark_red_1;
 }
 
 .gray-color {

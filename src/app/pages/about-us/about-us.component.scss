@@ -180,7 +180,7 @@ img {
 .banner-right-info {
   display: flex;
   -webkit-align-items: flex-end;
-  background:$dark-gray-1;
+  background:$dark_gray_1;
   z-index: 10;
 }
 .buffalo_wings {
@@ -205,7 +205,7 @@ img {
       font-size: 30px;
       line-height: 32px;
       font-weight: 400;
-      color: $dark-gray-1;
+      color: $dark_gray_1;
       font-family: $proxiLight;
       padding: 0 0 30px 0;
       @include desk-lg-below1 {
@@ -228,7 +228,7 @@ img {
       font-size: 20px;
       line-height: 28px;
       letter-spacing: 0px;
-      color: $dark-gray-1;
+      color:$dark_gray_1;
       font-family: "ProximaNova-Regular";
       @include tablet-landscape1 {
         font-size: 18px;
@@ -283,7 +283,7 @@ img {
   padding: 15px 0;
   h3 {
     line-height: 30px;
-    color: $dark-gray-1;
+    color: $dark_gray_1;
     padding: 0 0 15px;
     font-family: $proxiMedium;
     font-size: 24px;
@@ -337,7 +337,7 @@ p {
   p {
     font-size: 18px;
     line-height: 21px;
-    color: $dark-gray-1;
+    color: $dark_gray_1;
     letter-spacing: 0.1px;
     padding: 0 0 48px;
     text-align: left;
@@ -359,7 +359,7 @@ p {
       line-height: 44px;
       height: 36px;
       width: 36px;
-      background: $primary-3;
+      background: $dark_red_2;
       position: absolute;
       right: 0;
       top: 0;
@@ -369,7 +369,7 @@ p {
     font-family: $proxiRegular;
     font-size: 16px;
     line-height: 20px;
-    color:$light-gray-3;
+    color:$light_gray_1;
     height: 39px;
     border: 1px solid $white_5;
     &::placeholder {
@@ -385,7 +385,7 @@ p {
     font-size: 16px;
     line-height: 20px;
     border: 1px solid $white_5;
-    color: $light-gray-3;
+    color: $light_gray_1;
 
     &::placeholder {
       text-transform: uppercase;
