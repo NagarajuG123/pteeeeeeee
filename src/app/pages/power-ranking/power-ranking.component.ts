@@ -40,7 +40,7 @@ export class PowerRankingComponent implements OnInit {
         this.contents = result[0].data;
         this.items = result[0].data.brands;
         this.metaData = result[0].meta;
-        this.publication = result[1].title;
+        this.publication = result[1];
         this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(
           `Power Rankings | Franchise Brands | ${this.publication.title}`
