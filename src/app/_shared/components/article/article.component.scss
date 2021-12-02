@@ -2,11 +2,16 @@
 @import "../../../../assets/scss/variables.scss";
 
 .article {
+  .small-red-headers{
+    padding-bottom: 5px;
+  }
   .card-footer {
     border-radius: 0px;
     background-color: unset;
   }
-  .bg-gray {
-    background-color: $white_8;
+  &.monthlyDetail {
+    .card{
+      background-color: $white_8;
+    }
   }
 }

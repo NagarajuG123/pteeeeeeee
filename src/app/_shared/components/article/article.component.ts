@@ -11,11 +11,12 @@ export class ArticleComponent implements OnInit {
   @Input() type = '';
   @Input() typeSlug!: string;
   @Input() col!: string;
+  @Input() class!: string;
 
   rowClass: string;
   constructor(public commonService: CommonService) {}
 
   ngOnInit(): void {
-    this.rowClass = `row-cols-lg-${this.col} `;
+    this.rowClass = `row-cols-lg-${this.col} ${this.class} `;
   }
 }
