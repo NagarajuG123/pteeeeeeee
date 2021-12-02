@@ -5,16 +5,14 @@
         routerLink="/{{ commonService.readMore(item) }}"
         fragment="{{ typeSlug | lowercase }}"
       >
-        <div
-          class="card rounded-0 border-0 h-100"
-        >
+        <div class="card rounded-0 border-0 h-100">
           <img
             appYoutubeImage
             data-src="{{ item.media | defaultImage: 1280:720 }}"
             class="w-100 img-fluid lazyload card-img-top"
             width="196"
             height="110"
-            alt="editorial"
+            alt=""
             loading="lazy"
           />
           <div class="card-body p-0 pt-2 rounded-0">
