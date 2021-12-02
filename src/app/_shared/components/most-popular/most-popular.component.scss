@@ -1,5 +1,3 @@
-@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
-@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
@@ -7,18 +5,45 @@
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
 
+  .carousel-inner .carousel-item.active,
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+  .carousel-control-prev {
+    @include mobile-portrait {
+      left: -4%;
+    }
+  }
+  .carousel-control-next {
+    @include mobile-portrait {
+      right: -4%;
+    }
+  }
+  @media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+      display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+      display: block;
+    }
+  }
   .card {
-    > .card-body {
+    .card-body {
       background-color: $red;
-      > span {
+      @include mobile-portrait {
+        min-height: 130px;
+        max-height: 150px;
+      }
+      span {
         font-family: $roboto;
         font-weight: 700;
         font-size: 10px;
         line-height: 10.3px;
         color: $red;
       }
-      > h2 {
-        > span {
+      h2 {
+        span {
           font-size: 49px;
           line-height: 103%;
           font-weight: 700;
@@ -29,7 +54,7 @@
         }
       }
     }
-    > .card-footer {
+    .card-footer {
       background-color: $dark_red;
       border-radius: 0;
       border: none;
@@ -43,73 +68,6 @@
         font-weight: 700;
         font-family: $roboto;
         color: $red;
-      }
-    }
-  }
-}
-
-// carousel
-:host ::ng-deep {
-  .owl-carousel {
-    .owl-stage-outer {
-      overflow: hidden;
-      .owl-stage {
-        display: flex;
-        .slideItem {
-          padding: 0 20px;
-          box-sizing: border-box;
-          @media (min-width: 481px) {
-            width: 380px;
-          }
-          @media only screen and (min-width: 768px) and (max-width: 1024px) {
-            padding: 0 30px;
-            width: 350px;
-          }
-          @media only screen and (min-width: 834px) and (max-width: 1112px) {
-            padding: 0 30px;
-          }
-          @media (min-width: 1200px) {
-            padding: 0 10px;
-          }
-        }
-      }
-    }
-    .owl-nav {
-      .owl-prev,
-      .owl-next {
-        position: absolute;
-        top: 110px;
-        background: transparent !important;
-        img {
-          width: 22px;
-          height: 39px;
-        }
-        &.owl-prev {
-          left: -40px;
-          @include desk-lg-below2 {
-            left: -17px;
-          }
-          @include media("<md") {
-            left: -17px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
-        &.owl-next {
-          right: -20px;
-          @include desk-lg-below2 {
-            right: -17px;
-          }
-          @include media("<md") {
-            right: -17px;
-            img {
-              width: 15px;
-              margin-top: 5px;
-            }
-          }
-        }
       }
     }
   }

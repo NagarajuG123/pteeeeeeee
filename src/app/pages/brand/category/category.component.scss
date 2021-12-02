@@ -26,7 +26,7 @@
     padding: 0;
   }
   > h3 {
-    font-family: $balingerBold;
+    font-family: $aktiv;
     font-size: 64px !important;
     font-weight: 700;
     color: $dark_gray;
@@ -62,9 +62,7 @@
   height: calc(100% - 27px);
   width: calc(100% - 30px);
   margin-left: 10px;
-  a {
-    color: $red;
-  }
+  
   li {
     display: flex;
     border-bottom: 1px solid $dark_gray;
@@ -73,16 +71,16 @@
     }
     h3 {
       font-family: $roboto;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 16px;
       color: $red;
       line-height: 18.72px;
+      a {
+        color: $red;
+      }
     }
-    span {
-      font-size: 11px;
+    .timeStamp {
       color: $dark_gray;
-      font-family: $roboto;
-      line-height: 12px;
     }
     @include mobile-landscape {
       padding: 10px 0 10px;
@@ -123,7 +121,7 @@
             color: $light_gray_8;
             cursor: pointer;
             font-family: $proxiBold;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 20px;
             line-height: 28.24px;
             &.active,
@@ -154,49 +152,6 @@
       }
     }
   }
-  .tabs-container {
-    > .tabItemList {
-      .items {
-        img {
-          width: 100%;
-          background-color:$light_gray_8;
-        }
-        > .card-body {
-          padding: 8px 16px 15px;
-          > h6.card-title {
-            font-size: 12px;
-            color: $dark_gray;
-            font-family: $roboto;
-            font-weight: 700;
-            line-height: 14.04px;
-          }
-          > .card-text {
-            font-size: 10px;
-            color: $dark_gray_5;
-            font-family: $roboto;
-            font-weight: 500;
-          }
-          a {
-            > small {
-              font-family: $roboto;
-              font-weight: 500;
-              font-size: 11px;
-              line-height: 12px;
-            }
-          }
-        }
-      }
-      @media screen and (min-width: 992px) {
-        .row {
-          margin: 0 -5px;
-          .col-md-4 {
-            max-width: 20%;
-            padding: 0 5px;
-          }
-        }
-      }
-    }
-  }
   .nextLine {
     &::after {
       content: "";
@@ -208,15 +163,7 @@
       transform: translateY(-50%);
     }
     .nextBtn {
-      font-family: "ProximaNova-Regular";
-      font-size: 17px;
-      line-height: 24px;
       z-index: 1;
-      img,
-      span {
-        font-family: $proxiRegular;
-        cursor: pointer;
-      }
     }
   }
 }

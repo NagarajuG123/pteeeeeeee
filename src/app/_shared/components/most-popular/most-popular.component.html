@@ -4,7 +4,7 @@
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
-    <div class="row d-none d-sm-flex" *ngIf="type == 'home'">
+    <div class="row d-none d-md-flex" *ngIf="type == 'home'">
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
@@ -15,7 +15,7 @@
               data-src="{{ item.media | defaultImage: 1280:720 }}"
               alt="most-popular"
               loading="lazy"
-              class="img-fluid lazyload"
+              class="img-fluid lazyload card-img-top"
             />
             <div class="card-body position-relative px-3 pt-5">
               <span
@@ -34,7 +34,7 @@
               >
               <h2 class="position-relative ps-4 card-title">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
-                <p class="ms-3 articleTitles">
+                <p class="ms-3 mb-0 articleTitles">
                   {{ item.title }}
                 </p>
               </h2>
@@ -69,7 +69,7 @@
                     >{{ item.posted_on | date: "MM-dd-YYYY" }} |
                     {{ item.posted_on | date: "shortTime" }}</span
                   >
-                  <p class="ms-3 description">
+                  <p class="ms-3 mb-0 description">
                     {{ item.short_description }}
                   </p>
                 </div>
@@ -79,72 +79,86 @@
         </a>
       </div>
     </div>
-    <div class="row d-flex">
-      <owl-carousel-o
-        [options]="customOptions"
-        class="position-relative"
-        [ngClass]="type == 'brand' ? 'brand-carousel' : 'd-sm-none'"
-      >
-        <ng-template carouselSlide *ngFor="let item of data; index as i">
-          <div class="slideItem col-md-4 col-sm-4">
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="trending"
+    <div class="row d-flex d-sm-none pb-3">
+      <div class="carousel" id="carouselPopularIndicators">
+        <div class="carousel-inner popular-inner">
+          <ng-container *ngFor="let item of data; index as i">
+            <div
+              class="carousel-item popular-item"
+              [ngClass]="{ active: i === 0 }"
             >
-              <img
-                appYoutubeImage
-                data-srcset="{{ item.media | defaultImage: 380:223 }} 380w, {{
-                  item.media | defaultImage: 350:200
-                }} 350w, 
-          {{ item.media | defaultImage: 555:310 }} 555w"
-                data-sizes="{{
-                  '(max-width: 576px) 555px,
-              (max-width: 992px) 350px,
-              (max-width: 1200px) 380px,
-              380px'
-                }}"
-                class="img-fluid lazyload"
-                width="380px"
-                height="223"
-                data-src="{{ item.media | defaultImage: 380:223 }}"
-                alt="most-popular"
-                loading="lazy"
-              />
-              <div class="slide-body position-relative px-3 d-block">
-                <span
-                  class="
-                    position-absolute
-                    top-0
-                    start-0
-                    bg-white
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  "
-                  >POPULAR</span
-                >
-                <h2 class="position-relative ps-4 text-white">
-                  <span class="position-absolute top-0 start-0">{{
-                    i + 1
-                  }}</span>
-                  <strong class="ms-3 d-block articleTitles text-white">{{
-                    item.title
-                  }}</strong>
-                </h2>
+              <div class="col-lg-4 col-sm-12 px-3">
+                <div class="card border-0 h-100">
+                  <a
+                    routerLink="/{{ commonService.readMore(item) }}"
+                    fragment="trending"
+                  >
+                    <img
+                      appYoutubeImage
+                      width="380"
+                      height="223"
+                      data-src="{{ item.media | defaultImage: 1280:720 }}"
+                      alt="most-popular"
+                      loading="lazy"
+                      class="img-fluid lazyload card-img-top"
+                    />
+                    <div class="card-body position-relative px-3 pt-5">
+                      <span
+                        class="
+                          position-absolute
+                          top-0
+                          start-0
+                          bg-white
+                          d-flex
+                          align-items-center
+                          justify-content-center
+                          py-1
+                          px-2
+                        "
+                        >POPULAR</span
+                      >
+                      <h2 class="position-relative ps-4 card-title">
+                        <span class="position-absolute top-0 start-0">{{
+                          i + 1
+                        }}</span>
+                        <p class="ms-3 mb-0 articleTitles">
+                          {{ item.title }}
+                        </p>
+                      </h2>
+                    </div>
+                    <div class="card-footer d-flex flex-row-reverse py-1 px-2">
+                      <a class="seeMore p-0"
+                        >READ MORE
+                        <fa-icon [icon]="faAngleRight"></fa-icon>
+                      </a>
+                    </div>
+                  </a>
+                </div>
               </div>
-              <div class="slide-footer d-flex flex-row-reverse py-1 px-2">
-                <a class="timeStamp text-white p-0"
-                  >READ MORE
-                  <fa-icon
-                    [icon]="faAngleRight"
-                    class="ng-fa-icon fa-icon"
-                  ></fa-icon
-                ></a>
-              </div>
-            </a>
-          </div>
-        </ng-template>
-      </owl-carousel-o>
+            </div>
+          </ng-container>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselPopularIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          #carouselBtn
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselPopularIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

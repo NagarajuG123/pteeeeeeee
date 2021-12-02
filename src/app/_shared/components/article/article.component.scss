@@ -1,20 +1,12 @@
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
 
-.article-section{
-    > .card-body {
-        padding: 8px 16px 15px;
-    }   
-    .bg-gray{
-        background-color: $white_8;
-    }
-}
-@media screen and (min-width: 992px) {
-    .row {
-        margin: 0 -5px;
-        .col-md-5 {
-        max-width: 20%;
-        padding: 0 5px;
-        }
-     }
+.article {
+  .card-footer {
+    border-radius: 0px;
+    background-color: unset;
+  }
+  .bg-gray {
+    background-color: $white_8;
+  }
 }

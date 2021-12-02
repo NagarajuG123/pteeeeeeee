@@ -21,11 +21,12 @@ header {
   .middle-head {
     .logo {
       padding-left: 1rem;
-      @include mobile-portrait {
-        padding-left: 0.5rem;
-      }
+
       @include tablet-landscape {
         padding-left: 2rem;
+      }
+      @include mobile-portrait {
+        padding-left: 0.5rem;
       }
       img {
         @include mobile-portrait {
@@ -254,6 +255,11 @@ header {
     }
   }
   .searchModal {
+    .modal-title {
+      font-weight: 700;
+      padding-left: 7rem;
+      padding-right: 7rem;
+    }
     input::-webkit-input-placeholder {
       font-family: $roboto;
       font-weight: 500;
@@ -266,6 +272,10 @@ header {
         height: 49px;
         border: 1px solid $dark_gray;
       }
+      .input-group {
+        padding-left: 7rem;
+        padding-right: 8rem;
+      }
     }
     .searchTitle {
       font-family: $roboto;
@@ -274,11 +284,32 @@ header {
       font-size: 17px;
       color: $dark_black;
     }
-    .btn-close {
-      position: unset;
+    button {
+      background-color: transparent;
+    }
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 22px;
+      color: $red;
+      font-size: 39px;
+      outline: 0;
+      opacity: 1;
     }
     .article {
       padding: 0 30px;
+      .articleTitles {
+        font-size: 13px;
+      }
+      .card {
+        filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.08));
+        .card-footer {
+          border: 0px;
+          border-radius: 0px;
+          padding: 0px;
+          background-color: unset;
+        }
+      }
     }
   }
 }
