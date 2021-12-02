@@ -12,20 +12,8 @@
       <img
         appYoutubeImage
         width="1240"
-        data-src="{{ media | defaultImage: 1240:697 }}"
+        data-src="{{ media | defaultImage: 1280:720 }}"
         height="697"
-        data-srcset="{{ media | defaultImage: 800:400 }} 800w,
-                        {{ media | defaultImage: 950:475 }} 950w,
-                         {{ media | defaultImage: 1000:500 }} 1000w,
-                          {{ media | defaultImage: 1210:605 }} 1210w,
-                         {{ media | defaultImage: 1240:697 }} 1240w"
-        data-sizes="{{
-          '(max-width: 576px) 800px,
-            (max-width: 768px) 950px,
-            (max-width: 992px) 1000px,
-            (max-width: 1200px) 1210px,
-            1240px'
-        }}"
         alt="article"
         class="lazyload img-fluid"
       />
@@ -46,19 +34,7 @@
         appYoutubeImage
         width="1240"
         height="697"
-        data-src="{{ media | defaultImage: 1240:697 }}"
-        data-srcset="{{ media | defaultImage: 800:400 }} 800w,
-                        {{ media | defaultImage: 950:475 }} 950w,
-                         {{ media | defaultImage: 1000:500 }} 1000w,
-                          {{ media | defaultImage: 1210:605 }} 1210w,
-                         {{ media | defaultImage: 1240:697 }} 1400w"
-        data-sizes="{{
-          '(max-width: 576px) 800px,
-            (max-width: 768px) 950px,
-            (max-width: 992px) 1000px,
-            (max-width: 1200px) 1210px,
-            1240px'
-        }}"
+        data-src="{{ media | defaultImage: 1280:720 }}"
         alt="article"
         class="lazyload img-fluid"
       />
