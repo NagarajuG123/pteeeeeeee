@@ -197,41 +197,46 @@ button {
       cursor: pointer;
     }
   }
-  li {
-    background-color: $white;
-    height: 60px;
-    span {
-      min-width: 132px;
-      height: 100%;
-      color: $dark_gray_5;
-      cursor: pointer;
-      font-family: $roboto;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 28.24px;
-      &.active,
-      &:hover {
-        color: $red;
-        &::after {
-          content: "";
-          height: 7px;
-          position: absolute;
-          bottom: -13px;
-          width: 7px;
-          border-width: 16px 16px 0 16px;
-          border-style: solid;
-          border-color: $red transparent transparent transparent;
-        }
-        &::before {
-          content: "";
-          height: 7px;
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          background-color: $red;
+  .innerContent {
+    padding: 0 53px;
+    border-bottom: 1px solid $light_gray_8;
+    border-top: 1px solid $light_gray_8;
+    li {
+      background-color: $white;
+      height: 60px;
+      span {
+        min-width: 132px;
+        height: 100%;
+        color: $dark_gray_5;
+        cursor: pointer;
+        font-family: $roboto;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28.24px;
+        &.active,
+        &:hover {
+          color: $red;
+          &::after {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: -13px;
+            width: 7px;
+            border-width: 16px 16px 0 16px;
+            border-style: solid;
+            border-color: $red transparent transparent transparent;
+          }
+          &::before {
+            content: "";
+            height: 7px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: $red;
+          }
         }
       }
+      border-color: $light_gray_8;
     }
-    border-color: $light_gray_8;
   }
 }

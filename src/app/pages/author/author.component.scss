@@ -37,6 +37,9 @@ figure {
   .sectionTitle{
     color: $red;
   }
+  .description{
+    min-height: 200px;
+  }
   .authorProfile {
     bottom: 50%;
     left: 10%;
@@ -49,46 +52,11 @@ figure {
   }
   .authorDetail {
     background-color: $white_3;
-
-    // h1 {
-    //   font-family: $balingerBold;
-    //   font-size: 42px;
-    //   line-height: 56.57px;
-    //   letter-spacing: -0.015em;
-    //   color: $dark_gray;
-    //   margin-bottom: 0;
-    //   margin-top: -15px;
-    //   font-weight: 700;
-    //   padding: 8px 0 8px;
-    // }
-    // .about {
-    //   font-family: $roboto;
-    //   font-weight: 500;
-    //   font-size: 14px;
-    //   line-height: 16.41px;
-    //   color: $red;
-    //   margin-bottom: 0;
-    // }
-    // h5 {
-    //   font-family: $roboto;
-    //   color: $red;
-    //   margin-bottom: 0;
-    // }
-
     hr {
       background: $dark_gray;
       margin: 13px 0;
       width: 300px;
     }
-    // .designation {
-    //   margin-top: -15px;
-    //   font-family: $balingerBold;
-    //   font-weight: 700;
-    //   color: $red;
-    //   line-height: 28.24px;
-    //   font-size: 20px;
-    // }
-
     .social {
       > li {
         > a {
@@ -105,16 +73,6 @@ figure {
       }
     }
   }
-  // .authorDescription {
-  //   p {
-  //     padding-top: 10px;
-  //     font-family: $roboto;
-  //     font-weight: 500;
-  //     min-height: 200px;
-  //     font-size: 13px;
-  //     line-height: 16.73px;
-  //   }
-  // }
   .details {
     @include mobile-landscape {
       padding-bottom: 0 !important;
@@ -166,34 +124,34 @@ figure {
     }
   }
 }
-// .readmore {
-//   width: 177px;
-//   height: 36px;
-//   background: $red;
-//   position: relative;
-//   margin: 72px auto 0 auto;
-//   font-size: 15.66px;
-//   line-height: 36px;
-//   color: $white;
-//   padding: 0 40px 0 30px;
-//   font-family: $proxiRegular;
-//   @include desk-lg-below {
-//     margin: 20px auto 0 auto;
-//   }
-//   span {
-//     width: 36px;
-//     height: 36px;
-//     background: $dark_red;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     .fa {
-//       font-size: 33px;
-//       line-height: 36px;
-//       color: $white;
-//     }
-//   }
-//   &:hover {
-//     color: $white;
-//   }
-// }
+.readmore {
+  width: 177px;
+  height: 36px;
+  background: $red;
+  position: relative;
+  margin: 72px auto 0 auto;
+  font-size: 15.66px;
+  line-height: 36px;
+  color: $white;
+  padding: 0 40px 0 30px;
+  font-family: $proxiRegular;
+  @include desk-lg-below {
+    margin: 20px auto 0 auto;
+  }
+  span {
+    width: 36px;
+    height: 36px;
+    background: $dark_red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .fa {
+      font-size: 33px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+  &:hover {
+    color: $white;
+  }
+}

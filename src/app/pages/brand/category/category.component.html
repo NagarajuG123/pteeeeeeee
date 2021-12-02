@@ -94,7 +94,7 @@
               : 'd-none'
           "
         >
-          <h3
+          <span
             class="
               d-inline-flex
               justify-content-around
@@ -106,7 +106,7 @@
             (click)="setActiveTab(i + 1, item)"
           >
             {{ item?.shortName }}
-          </h3>
+          </span>
         </li>
       </ul>
       <div
@@ -129,7 +129,7 @@
   </div>
 
   <div class="container customContainer  mt-4 py-3">
-    <app-article [typeSlug]="tab" [contents]="featuredData" [col]="'5'"></app-article>
+    <app-article [typeSlug]="tab" [contents]="featuredData" [class]="'row-cols-lg-5'"></app-article>
   </div>
 
   <div class="nextLine position-relative mb-5 mt-2">

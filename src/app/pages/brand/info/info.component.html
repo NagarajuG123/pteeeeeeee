@@ -88,7 +88,7 @@
   </ng-container>
   <!-- story tab banner -->
   <div
-    class="brand-page-row--wrapper"
+    class="container customContainer brand-page-row--wrapper"
     [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
@@ -259,7 +259,7 @@
 
           <div *ngIf="isStory && items">
             <div class="container customContainer mt-4 py-3">
-                <app-article [typeSlug]="tab" [contents]="items" [col]="'5'"></app-article>
+                <app-article [typeSlug]="tab" [contents]="items" [class]="'row-cols-lg-5'"></app-article>
             </div>
           </div>
 
