@@ -19,10 +19,10 @@
           class="lazyload"
         />
       </div>
-      <ul class="row m-0 px-5">
+      <ul class="row m-0 px-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-1">
         <li
           *ngFor="let item of tabName; index as i"
-          class="col-sm-6 col-md-4 col-lg border-end text-center"
+          class="border-end text-center"
           [ngClass]="
             i < commonService.vtabsItem + skipTab && i >= skipTab
               ? 'active'
