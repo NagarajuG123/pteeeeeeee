@@ -55,7 +55,7 @@
     .title {
       color: $white_4;
       font-weight: 700;
-      font-family: $balingerBold;
+      font-family:$aktiv;
       font-size: 20px;
       line-height: 28.24px;
       text-align: center;
@@ -117,7 +117,7 @@
       font-weight: 700;
       font-size: 30px;
       text-align: center;
-      font-family: $balingerBold;
+      font-family: $aktiv;
       line-height: 36px;
 
       @include mobile-landscape1 {
@@ -199,7 +199,7 @@
         font-weight: 700;
         font-size: 30px;
         text-align: center;
-        font-family: $balingerBold;
+        font-family: $aktiv;
         line-height: 36px;
       }
       &.market-header {
@@ -325,7 +325,7 @@
       font-size: 18px;
       line-height: 21.06px;
       margin-bottom: 0.5rem !important;
-      font-family: $balingerBold;
+      font-family: $aktiv;
       font-weight: 700;
     }
 
@@ -524,7 +524,7 @@
     }
     li {
       h2 {
-        font-family: $balingerBold;
+        font-family: $aktiv;
         font-weight: 700 !important;
         font-size: 35px !important;
         line-height: 42px !important;
@@ -610,7 +610,7 @@
   }
 
   .frannews-top-left {
-    font-family: $balingerBold;
+    font-family: $aktiv;
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
@@ -696,7 +696,7 @@
     justify-content: center;
 
     .titleMarket {
-      font-family: $balingerBold;
+      font-family: $aktiv;
       font-weight: 700;
       font-size: 30px;
       line-height: 36px;
@@ -758,7 +758,7 @@
 
 .download-btn {
   line-height: 21.6px;
-  font-family: $balingerBold;
+  font-family: $aktiv;
   font-weight: 700;
   font-size: 18px;
 }
@@ -1125,7 +1125,7 @@ button.close {
       .divider-recent-feature {
         .btn {
           height: 36px;
-          font-family: $balingerBold;
+          font-family:$aktiv;
           font-weight: 700;
           font-size: 18px;
         }
@@ -1212,7 +1212,7 @@ button.close {
     right: 0;
     margin: 0 auto;
     z-index: 9;
-    font-family: $balingerBold;
+    font-family: $aktiv;
     font-weight: 700;
     line-height: 28.24px;
     font-size: 20px;
