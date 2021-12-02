@@ -56,7 +56,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-1 d-flex">
+      <div class="col-lg-1 d-flex justify-content-end">
         <ul class="list-group list-group-horizontal py-1">
           <li *ngFor="let item of header?.socialMedia; index as i" class="mx-1">
             <a
@@ -299,7 +299,7 @@
           onclick="return false;"
           data-bs-toggle="modal"
           data-bs-target="#searchModal"
-          class="pe-5 d-none d-xl-block"
+          class="pe-4 d-none d-xl-block"
           ><img
             data-src="{{ s3Url }}search_header.png"
             height="18"
@@ -307,7 +307,7 @@
             alt="search"
             class="lazyload"
         /></a>
-        <a class="pe-5" routerLink="/subscribe"
+        <a class="pe-4" routerLink="/subscribe"
           ><button class="subscribe">Subscribe</button></a
         >
         <a
