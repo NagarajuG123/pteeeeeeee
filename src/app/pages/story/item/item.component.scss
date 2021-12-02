@@ -3,27 +3,9 @@
 
 .articles {
   overflow-x: hidden;
-  .banner {
-    min-height: 130px;
-    max-height: 754px;
-    overflow: hidden;
-    // padding: 0;
-    img {
-      @include mobile-portrait {
-        height: 300px;
-      }
-    }
-  }
-
   .userDetail {
     max-width: 300px;
-    span {
-      font-family: $roboto;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 20.59px;
-
+    .timeStamp {
       color: $dark_gray;
     }
     .userImage {
@@ -39,43 +21,18 @@
         height: 200px !important;
       }
     }
-    h3 {
-      font-family: $balingerBold;
-      font-weight: 700;
-      font-size: 42px;
-      line-height: 80px;
-      letter-spacing: -0.015em;
+    .large-main-article{
       color: $dark_gray;
     }
-    h5 {
-      font-family: $balingerBold;
-      font-weight: 700;
-      line-height: 28px;
+    .sectionTitle {
+      color: $red;
+    }
+    .seeMore{
+      color: $dark_gray;
     }
     hr {
       background: $dark_gray;
       margin: 13px 0;
-    }
-    .fs-21 {
-      font-size: 21px;
-      line-height: 29.65px;
-      color: $dark_gray;
-    }
-
-    .social {
-      > li {
-        > a {
-          height: 33px;
-          width: 33px;
-          transition: all 0.5s ease;
-          color: $white;
-          &:hover,
-          &:focus {
-            background-color: $white;
-            color: $red;
-          }
-        }
-      }
     }
     @media screen and (max-width: 767px) {
       max-width: inherit;
@@ -85,9 +42,6 @@
       h1,
       h1 + h5 {
         text-align: center;
-      }
-      ul.social {
-        justify-content: center;
       }
     }
   }
@@ -131,29 +85,18 @@
       bottom: 100%;
       font-family: $roboto;
       min-height: 186px;
-      .title {
-        font-weight: 700;
-        font-size: 38px;
-        line-height: 45px;
-        color: $dark_gray !important;
-        @include tablet-landscape {
-          padding-top: 20px;
-        }
+      .large-main-article {
+        color: $dark_gray;
       }
     }
-    .category,
-    .subTitle {
-      min-width: 141px;
-      font-size: 20px;
-      font-family: $balingerBold;
+    .sectionTitle {
       line-height: 28.24px;
       font-weight: 700;
-      color: $white_4 !important;
+      color: $white_4;
+      text-transform: none;
     }
     .description {
-      font-family: $roboto;
       font-size: 14px;
-      line-height: 24px;
     }
 
     @media screen and (max-width: 767px) {
@@ -179,67 +122,16 @@
     }
   }
   .ArticlesNewsSection {
-    h4 {
-      font-family: $balingerBold;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 700;
-    }
-    .items {
-      font-family: $roboto;
-      background: $white_6;
-      .card-body {
-        h6,
-        h6 a {
-          font-size: 18px;
-          font-family: $balingerBold;
-          color: $black;
-          font-weight: 700;
-        }
-        span,
-        span a {
-          font-weight: 500;
-          font-size: 11px;
-          line-height: 12px;
-          color: $dark_gray;
-        }
-        p,
-        p a {
-          font-size: 14px;
-          line-height: 14.12px;
-          font-family: $roboto;
-        }
-      }
+    .timeStamp{
+      text-transform: uppercase;
+      font-weight: 500;
     }
   }
-}
-.modal-body {
-  padding: 0rem !important;
-}
-.btn-close {
-  position: absolute;
-  right: -30px;
-  top: 0;
-  z-index: 999;
-  font-size: 1rem;
-  font-weight: 400;
-  opacity: 1;
-}
-.video-btn {
-  cursor: pointer;
-  position: relative;
-  .vide-play {
-    position: absolute;
-    left: calc(50% - 45px);
-    top: calc(50% - 45px);
-    z-index: 1000;
-    height: 47px;
-    width: 75.34px;
+  .next-article {
+    font-size: 17px;
+    font-family: $proxiRegular;
+    font-weight: 400;
+    line-height: 24px;
   }
 }
-.next-article {
-  font-size: 17px;
-  font-family: $proxiRegular;
-  font-weight: 400;
-  line-height: 24px;
-}
+
