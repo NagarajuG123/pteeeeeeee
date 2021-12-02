@@ -16,7 +16,5 @@ export class ArticleComponent implements OnInit {
   rowClass: string;
   constructor(public commonService: CommonService) {}
 
-  ngOnInit(): void {
-    this.rowClass = `row-cols-lg-${this.col} ${this.class} `;
-  }
+  ngOnInit(): void {}
 }
