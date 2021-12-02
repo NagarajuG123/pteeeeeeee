@@ -8,6 +8,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import 'lazysizes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-subscribe',
@@ -15,7 +16,6 @@ import 'lazysizes';
   styleUrls: ['./subscribe.component.scss'],
 })
 export class SubscribeComponent implements OnInit {
-  data: any;
   slug = '1851';
   title!: string;
   isCheckBoxVisible: boolean = true;
@@ -28,6 +28,7 @@ export class SubscribeComponent implements OnInit {
   isSuccess: boolean = false;
   faCaretRight = faCaretRight;
   isLoaded: boolean = false;
+  s3Url = environment.s3Url;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -75,14 +76,12 @@ export class SubscribeComponent implements OnInit {
     this.contactForm.reset({
       signUpNewsletter: true,
     });
-    const subscribe = this.apiService.getAPI(`${this.slug}/subscribe`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const meta = this.apiService.getAPI(`1851/meta`);
-    forkJoin([subscribe, publication, meta, publication]).subscribe(
+    forkJoin([publication, meta, publication]).subscribe(
       (results) => {
-        this.data = results[0].data;
-        this.publication = results[1];
-        this.metaService.setSeo(results[2].data);
+        this.publication = results[0];
+        this.metaService.setSeo(results[1].data);
         this.isLoaded = true;
         let defaultTitle = '';
         if (this.publication.id === '1851') {

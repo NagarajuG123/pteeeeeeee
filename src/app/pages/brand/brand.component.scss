@@ -48,19 +48,12 @@ a {
       width: 60%;
     }
 
-    p {
-      font-size: 13.76px;
-      line-height: 20px;
-      font-weight: 400;
-      color: $black;
-      font-family: $proxiRegular;
-    }
     h1 {
       font-weight: 700;
-      font-size: 64px;
+      font-size: 62px;
       line-height: 77px;
       color: $dark_gray;
-      font-family: $balingerBold;
+      font-family: $aktiv;
       @include tablet-landscape1 {
         font-size: 40px;
       }
@@ -73,24 +66,6 @@ a {
         line-height: 30px;
       }
     }
-    button {
-      height: 35px;
-      background-color: $red;
-      color: $white;
-      position: absolute;
-      border: 0;
-      cursor: pointer;
-      margin: auto;
-      width: 100px;
-      font-family: $balingerBold;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 21.6px;
-    }
-    .readmore-btn {
-      text-align: left;
-      padding-right: 25%;
-    }
   }
   img{
     @include mobile-portrait{
@@ -99,27 +74,6 @@ a {
   }
 }
 
-.nextLine {
-  .customContainer {
-    div {
-      width: 220px;
-      padding: 0 18px;
-      @include media("<md") {
-        width: 157px;
-        padding: 0 7px;
-      }
-      .nextBtn {
-        font-family: "ProximaNova-Regular";
-        font-size: 15px;
-        z-index: 1;
-        margin-top: 35px;
-        cursor: pointer;
-        img {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
+
 
 
