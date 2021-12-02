@@ -153,7 +153,22 @@
             : 'brandSearch'
         "
       >
-      <app-article [typeSlug]="'franbuzz'" [contents]="recentPeoples" [type]="'three'"></app-article>
+      <app-article [typeSlug]="'franbuzz'" [contents]="recentPeoples" [col]="'3'"></app-article>
+        <div class="row seeMoreIcon mt-4 desktop-only">
+          <div
+            class="col d-flex align-items-center justify-content-center py-1"
+          >
+            <img
+              data-src="{{s3Url}}nextIcon.svg"
+              width="32"
+              alt="next articles"
+              class="me-3 lazyload"
+              (click)="getMoreItems()"
+            />
+            <span class="see-more text-uppercase" (click)="getMoreItems()"
+              >See More</span
+            >
+          </div>
         </div>
       </div>
       <div
@@ -164,7 +179,7 @@
       >
         <h5 class="ps-4 mt-2">BRAND NEWS</h5>
         <hr />
-        <app-article [typeSlug]="'franbuzz'" [contents]="brandPeoples" [type]="'one'"></app-article>
+        <app-article [typeSlug]="'franbuzz'" [contents]="brandPeoples" [col]="'1'"></app-article>
       </div>
   </div>
 </div>
