@@ -1,5 +1,4 @@
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { Subject } from 'rxjs';
@@ -20,7 +19,6 @@ export class MostPopularComponent implements OnInit {
   @Input() slug: string;
 
   data: Details[] = [];
-  customOptions: OwlOptions = {};
   faAngleRight = faAngleRight;
   isLoaded: boolean = false;
   isBrowser: boolean;
@@ -37,11 +35,6 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setOption();
-    this.getMostPopular();
-  }
-
-  getMostPopular() {
     this.apiService
       .getAPI(`${this.slug}/trending?limit=9&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
@@ -52,36 +45,7 @@ export class MostPopularComponent implements OnInit {
         }
       });
   }
-  setOption() {
-    this.customOptions = {
-      autoplay: false,
-      loop: true,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: false,
-      dots: false,
-      navSpeed: 700,
-      navText: [
-        `<img src="${environment.s3Url}left-arrow.svg" alt="slider arrow" />`,
-        `<img src="${environment.s3Url}right-arrow.svg" alt="slider arrow" />`,
-      ],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        400: {
-          items: 2,
-        },
-        740: {
-          items: 3,
-        },
-        940: {
-          items: 3,
-        },
-      },
-      nav: true,
-    };
-  }
+
   ngAfterViewInit() {
     if (this.isBrowser) {
       const minPerSlide = 3;

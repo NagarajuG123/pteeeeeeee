@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
@@ -48,36 +47,6 @@ export class BrandComponent implements OnInit {
     private metaService: MetaService,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {}
-
-  customOptions: OwlOptions = {
-    loop: true,
-    autoplay: false,
-    center: true,
-    dots: false,
-    autoHeight: true,
-    autoWidth: true,
-    margin: 10,
-    navSpeed: 700,
-    lazyLoad: true,
-
-    navText: ['', ''],
-    items: this.data.length > 2 ? 3 : this.data.length > 1 ? 2 : 1,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
-    },
-    nav: true,
-  };
 
   ngOnInit(): void {
     this.isBrand = false;
