@@ -82,18 +82,16 @@
           </a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
-          ><h3 class="mb-0 large-main-article">{{ details.author.name }}</h3></a
+          ><h3 class="mb-0 mt-3 large-main-article">{{ details.author.name }}</h3></a
         >
         <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
-        <span *ngIf="isDate()" class="timeStamp">
-          <span *ngIf="isUpdate()"
-            >Updated {{ last_modified | date: "h:mm a" }} •
-            {{ last_modified | date: "MM/dd/yy" }}
-          </span>
-          <span *ngIf="!isUpdate()"
-            >{{ date_time | date: "h:mm a" }} •
-            {{ date_time | date: "MM/dd/yy" }}</span
-          >
+        <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.last_modified) }} •
+          {{ details.last_modified | date: "MM/dd/yy" }}
+        </span>
+        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.posted_on) }} •
+          {{ details.posted_on | date: "MM/dd/yy" }}
         </span>
         <hr />
 
@@ -128,14 +126,14 @@
               </a>
             </div>
             <div>
-              <p class="m-0">
-                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
-              </p>
               <span class="m-0">
-                <a href="#" class="primary-color text-uppercase"
+                <a href="#" class="small-red-headers"
                   >By {{ author_name }}</a
                 >
               </span>
+              <p class="m-0 articleTitles">
+                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
+              </p>
             </div>
           </li>
         </ul>

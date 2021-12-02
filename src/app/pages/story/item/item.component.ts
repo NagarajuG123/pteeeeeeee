@@ -345,22 +345,6 @@ export class ItemComponent implements OnInit {
     return `${window.location.origin}/${subUrl}`;
   }
 
-  isDate() {
-    if (this.date_time || this.last_modified) {
-      return true;
-    }
-    return false;
-  }
-
-  isUpdate() {
-    let postDate = this.date_time.toDateString();
-    let lastDate = this.last_modified.toDateString();
-    if (postDate === lastDate) {
-      return false;
-    }
-    return true;
-  }
-
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
