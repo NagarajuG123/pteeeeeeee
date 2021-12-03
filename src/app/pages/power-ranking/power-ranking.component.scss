@@ -73,16 +73,13 @@
   }
 }
 
-.list-data--contentWrapper {
-  border-top: 1px solid $light_gray_8;
-}
 .list-data--wrapper {
   display: flex;
   align-items: center;
   justify-content: space-around;
   min-height: 160px;
 
-  @include media("<md") {
+  @include media("<md") {  
     flex-flow: row wrap;
   }
 
@@ -104,7 +101,7 @@
     }
   }
   &.list-data-wrapper--1 {
-    background-color: $white_3;
+    background-color: $white_8;
   }
 
   &.list-data-wrapper--2 {
@@ -237,7 +234,6 @@
           font-size: 16px;
           font-weight: 700;
           line-height: 18.72px;
-          text-decoration: underline;
           @include media("<lg") {
             font-size: 18px;
           }

@@ -1,60 +1,44 @@
 @import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins.scss";
 
 .signUp {
   h2 {
-    font-family: $balingerBold !important;
-    width: 407px;
-    font-size: 30px;
-    line-height: 36px;
-    font-weight: 700;
+    font-family: $aktiv;
+    line-height: 25.6px;
+    font-size: 20px;
+    color: $white_2;
+  }
+  input::-webkit-input-placeholder {
+    font-family: $proxiRegular;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.83px;
+    color: $black !important;
   }
 
-  input {
-    font-family: $proxiRegular;
-    font-size: 13px;
-    line-height: 16px;
-    height: 37px;
-    color: $dark_gray;
-    width: 287px;
-
-    &::placeholder {
-      color: $dark_gray;
+  button {
+    width: 80%;
+    background-color: $dark_gray;
+    color: $white_2;
+    @include tablet-landscape {
+      width: 100%;
     }
   }
-
-  .joinBtn {
-    min-width: 189px;
-    background: $dark_gray;
-    border-color: $dark_gray;
-    font-family: $proxiBold;
-    font-size: 25px;
-    line-height: 30px;
-    height: 38px;
-    font-weight: 700;
+  .col-sm-12 {
+    @include tablet-landscape {
+      margin-bottom: 1rem;
+    }
   }
-}
-
-.success {
-  color: $white;
-}
-.pl12 {
-  padding-left: 12px;
-}
-#hideAfter5Sec {
-  animation: hideAnimation 0s ease-in 5s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes hideAnimation {
-  to {
-    visibility: hidden;
-    width: 0;
-    height: 0;
+  #hideAfter5Sec {
+    animation: hideAnimation 0s ease-in 5s;
+    animation-fill-mode: forwards;
   }
-}
-@media (min-width: 992px) {
-  .col-lg-auto {
-    flex: 0 0 auto;
-    width: 31%;
+
+  @keyframes hideAnimation {
+    to {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
   }
 }

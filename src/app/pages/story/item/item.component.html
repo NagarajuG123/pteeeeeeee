@@ -12,27 +12,15 @@
       <img
         appYoutubeImage
         width="1240"
-        data-src="{{ media | defaultImage: 1240:697 }}"
+        data-src="{{ media | defaultImage: 1280:720 }}"
         height="697"
-        data-srcset="{{ media | defaultImage: 800:400 }} 800w,
-                        {{ media | defaultImage: 950:475 }} 950w,
-                         {{ media | defaultImage: 1000:500 }} 1000w,
-                          {{ media | defaultImage: 1210:605 }} 1210w,
-                         {{ media | defaultImage: 1240:697 }} 1240w"
-        data-sizes="{{
-          '(max-width: 576px) 800px,
-            (max-width: 768px) 950px,
-            (max-width: 992px) 1000px,
-            (max-width: 1200px) 1210px,
-            1240px'
-        }}"
         alt="article"
         class="lazyload img-fluid"
       />
       <img
         data-src="{{ s3Url }}play.png"
         alt="Play"
-        class="img-fluid vide-play lazyload"
+        class="img-fluid video-play lazyload"
         loading="lazy"
       />
     </a>
@@ -46,19 +34,7 @@
         appYoutubeImage
         width="1240"
         height="697"
-        data-src="{{ media | defaultImage: 1240:697 }}"
-        data-srcset="{{ media | defaultImage: 800:400 }} 800w,
-                        {{ media | defaultImage: 950:475 }} 950w,
-                         {{ media | defaultImage: 1000:500 }} 1000w,
-                          {{ media | defaultImage: 1210:605 }} 1210w,
-                         {{ media | defaultImage: 1240:697 }} 1400w"
-        data-sizes="{{
-          '(max-width: 576px) 800px,
-            (max-width: 768px) 950px,
-            (max-width: 992px) 1000px,
-            (max-width: 1200px) 1210px,
-            1240px'
-        }}"
+        data-src="{{ media | defaultImage: 1280:720 }}"
         alt="article"
         class="lazyload img-fluid"
       />
@@ -82,18 +58,16 @@
           </a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
-          ><h3 class="mb-0">{{ details.author.name }}</h3></a
+          ><h3 class="mb-0 mt-3 large-main-article">{{ details.author.name }}</h3></a
         >
-        <h5 class="primary-color" [innerHTML]="designation"></h5>
-        <span *ngIf="isDate()">
-          <span *ngIf="isUpdate()"
-            >Updated {{ last_modified | date: "h:mm a" }} •
-            {{ last_modified | date: "MM/dd/yy" }}
-          </span>
-          <span *ngIf="!isUpdate()"
-            >{{ date_time | date: "h:mm a" }} •
-            {{ date_time | date: "MM/dd/yy" }}</span
-          >
+        <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+        <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.last_modified) }} •
+          {{  last_modified | date: "MM/dd/yy" }}
+        </span>
+        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.posted_on) }} •
+          {{ date_time | date: "MM/dd/yy" }}
         </span>
         <hr />
 
@@ -102,7 +76,7 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="fs-21 mb-0" *ngIf="trendingNews.length">
+        <h5 class="seeMore mb-0" *ngIf="trendingNews.length">
           TRENDING ARTICLES
         </h5>
         <fa-icon
@@ -121,21 +95,21 @@
                   appYoutubeImage
                   width="139"
                   height="84"
-                  data-src="{{ item.media | defaultImage: 139:84 }}"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
                   alt="news"
                   class="lazyload"
                 />
               </a>
             </div>
             <div>
-              <p class="m-0">
-                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
-              </p>
               <span class="m-0">
-                <a href="#" class="primary-color text-uppercase"
+                <a href="#" class="small-red-headers"
                   >By {{ author_name }}</a
                 >
               </span>
+              <p class="m-0 articleTitles">
+                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
+              </p>
             </div>
           </li>
         </ul>
@@ -157,7 +131,7 @@
           >
             <div
               class="
-                category
+                tag
                 position-absolute
                 top-0
                 start-50
@@ -173,14 +147,14 @@
                 category.name
               }}</a>
             </div>
-            <h1 class="title text-center text-black" [innerHTML]="title"></h1>
+            <h1 class="large-main-article text-center mb-0" [innerHTML]="title"></h1>
           </div>
 
           <h2
-            class="subTitle text-center gray-bg position-relative mb-4 p-3"
+            class="sectionTitle text-center gray-bg position-relative mb-4 p-3"
             [innerHTML]="short_description"
           ></h2>
-          <div id="{{ id }}" class="description" [innerHTML]="content"></div>
+          <div id="{{ id }}" class="description text-black" [innerHTML]="content"></div>
         </div>
       </div>
     </div>
@@ -209,19 +183,11 @@
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg py-5">
     <div class="container customContainer py-md-2">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="primary-color mb-3">Featured Franchise News</h4>
-        </div>
-        <app-article [typeSlug]="frannews" [contents]="mainNews" [col]="'4'"></app-article>
-      </div>
+          <h4 class="timeStamp mb-0">Featured Franchise News</h4>
+        <app-article [typeSlug]="frannews" [contents]="mainNews" [class]="'row-cols-lg-4'"></app-article>
 
-      <div class="row mt-5">
-        <div class="col-12">
-          <h4 class="primary-color mb-3">Featured Brand News</h4>
-        </div>
-        <app-article [typeSlug]="frannews" [contents]="brandNews" [col]="'4'" [type]="'brandNews'"></app-article>
-      </div>
+          <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
+        <app-article [typeSlug]="frannews" [contents]="brandNews" [class]="'row-cols-lg-4'" [type]="'brandNews'"></app-article>
     </div>
   </div>
 </div>

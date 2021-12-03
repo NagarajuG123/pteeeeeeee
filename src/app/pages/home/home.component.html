@@ -10,68 +10,62 @@
   <!-- signUp for next webinar section-->
   <div class="primary-bg sidebar-blur signUp" *ngIf="isLoad">
     <div class="container customContainer">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-12 col-lg-auto text-uppercase text-white">
-          <h2 class="py-3 m-0 text-white text-uppercase fs-30">
-            Sign up for our newsletter
-          </h2>
+      <form
+        [formGroup]="newsletterForm"
+        (ngSubmit)="onNewsletterSubmit(newsletterForm)"
+      >
+        <div class="row gx-2 py-3 justify-content-center align-items-center">
+          <div class="col-lg-3 col-sm-12">
+            <h2 class="m-0 text-uppercase fw-bold">
+              Sign up for our newsletter
+            </h2>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <input
+              type="text"
+              placeholder="Name*"
+              class="form-control rounded-0"
+              [formControl]="newsletterForm.controls['name']"
+            />
+            <app-error-message
+              [type]="'signUpform'"
+              *ngIf="isSubmitted"
+              [control]="newsletterForm.controls['name']"
+            ></app-error-message>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <input
+              type="email"
+              placeholder="Email*"
+              class="form-control rounded-0"
+              [formControl]="newsletterForm.controls['email']"
+            />
+            <app-error-message
+              [type]="'signUpform'"
+              *ngIf="isSubmitted"
+              [control]="newsletterForm.controls['email']"
+            ></app-error-message>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <button class="btn" (click)="onNewsletterSubmit(newsletterForm)">
+              Join now
+            </button>
+          </div>
         </div>
-
-        <div class="col-12 col-sm">
-          <form
-            [formGroup]="newsletterForm"
-            (ngSubmit)="onNewsletterSubmit(newsletterForm)"
+        <div class="row">
+          <span *ngIf="isSubmitted" class="errS text-white text-center">{{
+            submitErrMsg
+          }}</span>
+          <span
+            *ngIf="!isSubmitted"
+            class="text-white text-center"
+            id="hideAfter5Sec"
+            >{{ successMsg }}</span
           >
-            <div class="row gx-2">
-              <div class="col-12 col-sm">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  class="form-control rounded-0 mb-3 mb-lg-0"
-                  [formControl]="newsletterForm.controls['name']"
-                />
-                <app-error-message
-                  [type]="'signUpform'"
-                  *ngIf="isSubmitted"
-                  [control]="newsletterForm.controls['name']"
-                ></app-error-message>
-              </div>
-              <div class="col-12 col-sm">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  class="form-control rounded-0 mb-3 mb-lg-0"
-                  [formControl]="newsletterForm.controls['email']"
-                />
-                <app-error-message
-                  [type]="'signUpform'"
-                  *ngIf="isSubmitted"
-                  [control]="newsletterForm.controls['email']"
-                ></app-error-message>
-              </div>
-              <div
-                class="
-                  col-12 col-sm-auto
-                  text-uppercase text-white
-                  pb-3 pb-lg-0
-                  pl12
-                "
-              >
-                <button
-                  class="btn btn-dark text-uppercase joinBtn py-0"
-                  (click)="onNewsletterSubmit(newsletterForm)"
-                >
-                  Join now
-                </button>
-              </div>
-              <span *ngIf="isSubmitted" class="errS">{{ submitErrMsg }}</span>
-              <span *ngIf="!isSubmitted" class="success" id="hideAfter5Sec">{{
-                successMsg
-              }}</span>
-            </div>
-          </form>
         </div>
-      </div>
+      </form>
+      <!-- </div> -->
+      <!-- </div> -->
     </div>
   </div>
 

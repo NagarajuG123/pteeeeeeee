@@ -90,7 +90,7 @@ export class SubscribeComponent implements OnInit {
         if (defaultTitle) {
           this.metaService.setTitle(defaultTitle);
         }
-        this.title = `SUBSCRIBE TO ${this.publication.title.toUpperCase()}`;
+        this.title = `Subscribe to ${this.publication.title}`;
         this.setCheckBoxVisibility();
       }
     );

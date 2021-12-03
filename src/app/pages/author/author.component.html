@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-md-5 col-sm-6 py-4 px-4"></div>
         <div class="col-md-7 col-sm-6 py-5 px-4 details">
-          <span class="about">ABOUT</span>
-          <h1>{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
-          <h5 class="designation">{{ author?.data?.designation }}</h5>
+          <span class="small-red-headers">ABOUT</span>
+          <h1 class="large-main-article mb-0">{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+          <h5 class="sectionTitle">{{ author?.data?.designation }}</h5>
           <hr />
 
           <ul class="social d-flex p-0" *ngIf="author?.data">
@@ -35,11 +35,11 @@
       </div>
     </div>
   </div>
-  <div class="container customContainer authorDescription position-relative">
+  <div class="container customContainer position-relative">
     <div class="row">
       <div class="col-md-5 col-sm-6 px-4"></div>
-      <div class="col-md-7 col-sm-6 px-4">
-        <p [innerHtml]="author?.data?.about"></p>
+      <div class="col-md-7 col-sm-6 px-4 py-3">
+        <p [innerHtml]="author?.data?.about" class="description text-black"></p>
       </div>
     </div>
     <div class="position-absolute authorProfile">

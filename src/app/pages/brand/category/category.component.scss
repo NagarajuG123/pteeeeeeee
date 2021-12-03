@@ -98,60 +98,6 @@
     padding-top: 100px;
   }
   background: $white_3;
-  .tabs {
-    height: 60px;
-    .prev,
-    .next {
-      img {
-        width: auto;
-        cursor: pointer;
-      }
-    }
-    .customContainer {
-      .innerContent {
-        padding: 0 53px;
-        border-bottom: 1px solid #c4c4c4;
-        border-top: 1px solid #c4c4c4;
-        li {
-          background-color: $white;
-          height: 60px;
-          h3 {
-            min-width: 132px;
-            height: 100%;
-            color: $light_gray_8;
-            cursor: pointer;
-            font-family: $proxiBold;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 28.24px;
-            &.active,
-            &:hover {
-              color: $red;
-              &::after {
-                content: "";
-                height: 7px;
-                position: absolute;
-                bottom: -13px;
-                width: 7px;
-                border-width: 16px 16px 0 16px;
-                border-style: solid;
-                border-color: $red transparent transparent transparent;
-              }
-              &::before {
-                content: "";
-                height: 7px;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                background-color: $red;
-              }
-            }
-          }
-          border-color: $light_gray_8;
-        }
-      }
-    }
-  }
   .nextLine {
     &::after {
       content: "";
