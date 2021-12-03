@@ -32,7 +32,6 @@ export class BrandComponent implements OnInit {
   activeTab = 1;
   skipTab = 0;
   tab!: string;
-  length: number;
   isCategory: boolean;
   isBrand: boolean;
   s3Url = environment.s3Url;
@@ -66,14 +65,6 @@ export class BrandComponent implements OnInit {
               this.isCategory = false;
               this.isBrand = true;
               this.apiUrl = `${this.slug}/featured-articles`;
-              this.apiService
-                .getAPI(`${this.apiUrl}`)
-                .pipe(takeUntil(this.onDestroy$))
-                .subscribe((response) => {
-                  if (response.data.length) {
-                    this.length = response.data.length;
-                  }
-                });
               this.getMeta();
               this.getMostPopular();
               this.getSpotlight();

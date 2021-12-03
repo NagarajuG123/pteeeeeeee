@@ -11,11 +11,13 @@
     display: flex;
   }
   .carousel-control-prev {
+    left: -10%;
     @include mobile-portrait {
       left: -4%;
     }
   }
   .carousel-control-next {
+    right: -10%;
     @include mobile-portrait {
       right: -4%;
     }
