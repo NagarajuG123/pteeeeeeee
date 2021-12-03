@@ -40,9 +40,7 @@ export class SpotlightComponent implements OnInit {
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
-        console.log(results[0]);
         this.tabName = results[0].categories;
-        console.log(this.tabName);
         this.defaultTab = this.tab = results[0].defaultTab;
         
           this.apiService
