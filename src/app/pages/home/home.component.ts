@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   isLoad: boolean = false;
   submitErrMsg = '';
   successMsg = '';
-  specialFeature: Details[] = [];
-  title: string;
   constructor(
     private metaService: MetaService,
     private apiService: ApiService,
@@ -40,8 +38,6 @@ export class HomeComponent implements OnInit {
     forkJoin([publication, meta, featureData]).subscribe((results) => {
       this.publication = results[0];
       this.metaService.setSeo(results[1].data);
-      this.specialFeature = results[2].data.stories;
-      this.title = results[2].data.title;
       this.isLoad = true;
     });
 
