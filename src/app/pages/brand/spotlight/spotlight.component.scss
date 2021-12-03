@@ -1,14 +1,15 @@
 @import "../../../../assets/scss/variables.scss";
 
-.editorial-section {
+.spotlight {
   background: $white;
-  .sectionTitle{
+  .sectionTitle {
     color: $red;
   }
-  .innerContent {
-    padding: 0 53px;
+  .tabs {
+    height: 62px;
+    ul {
+      border-top: 0.5px solid $dark_gray;
+      border-bottom: 0.5px solid $dark_gray;
+    }
   }
-}
-a {
-  color: $dark_gray;
 }
