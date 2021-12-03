@@ -79,7 +79,7 @@
         </a>
       </div>
     </div>
-    <div class="row d-flex d-sm-none pb-3">
+    <div class="row d-flex pb-3" [ngClass]="slug === '1851' ? 'd-sm-none' : '' ">
       <div class="carousel" id="carouselPopularIndicators">
         <div class="carousel-inner popular-inner">
           <ng-container *ngFor="let item of data; index as i">
