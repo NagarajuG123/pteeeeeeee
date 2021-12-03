@@ -1,13 +1,5 @@
 <div *ngIf="type === 'brand_page'">
-  <app-special-feature
-    *ngIf="length < 8 || length == 8"
-    [apiUrl]="apiUrl"
-    [slug]="slug"
-    [type]="'brand'"
-    [company]="company"
-  ></app-special-feature>
   <app-featured
-    *ngIf="length > 8"
     [apiUrl]="apiUrl"
     [slug]="slug"
   ></app-featured>

@@ -22,6 +22,8 @@ export class FeaturedComponent implements OnInit {
   brandInfoNews: Details[] = [];
   isLoaded: boolean = false;
   s3Url = environment.s3Url;
+  length: number;
+  title: string;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -32,8 +34,9 @@ export class FeaturedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.title = "Feature Article";
     const featureApi = this.apiService.getAPI(
-      `${this.apiUrl}?limit=5&offset=0`
+      `${this.apiUrl}`
     );
     const newsApi = this.apiService.getAPI(
       `${this.slug}/spotlight/industry?limit=3&offset=0`
@@ -46,6 +49,8 @@ export class FeaturedComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.featured = results[0].data;
+        this.length = this.featured.length;
+        console.log(this.length);
         this.news = results[1].data;
         this.brandNews = results[2].data;
         this.isLoaded = true;
@@ -59,6 +64,7 @@ export class FeaturedComponent implements OnInit {
         .subscribe((response) => {
           this.brandInfoNews = response;
         });
+        this.title = this.length < 8 ? 'Special Feature' : 'Feature Article';
     }
   }
 

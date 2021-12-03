@@ -10,6 +10,11 @@
     ul {
       border-top: 0.5px solid $dark_gray;
       border-bottom: 0.5px solid $dark_gray;
+      li {
+        span{
+          font-family: $proxiBold;
+        }
+      }
     }
   }
 }
