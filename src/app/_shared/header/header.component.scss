@@ -20,13 +20,13 @@ header {
 
   .middle-head {
     .logo {
-      padding-left: 1rem;
+      margin-left: -0.5rem;
 
       @include tablet-landscape {
-        padding-left: 2rem;
+        margin-left: 0rem;
       }
       @include mobile-portrait {
-        padding-left: 0.5rem;
+        margin-left: -1rem;
       }
       img {
         @include mobile-portrait {
