@@ -33,7 +33,7 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit(): void {
     const featureApi = this.apiService.getAPI(
-      `${this.apiUrl}?limit=1&offset=0`
+      `${this.apiUrl}?limit=5&offset=0`
     );
     const newsApi = this.apiService.getAPI(
       `${this.slug}/spotlight/industry?limit=3&offset=0`
