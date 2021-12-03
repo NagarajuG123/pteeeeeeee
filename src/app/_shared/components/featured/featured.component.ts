@@ -63,7 +63,7 @@ export class FeaturedComponent implements OnInit {
         .subscribe((response) => {
           this.brandInfoNews = response;
         });
-        this.title = this.length < 8 ? 'Special Feature' : 'Feature Article';
+        this.title = this.length < 8 ? 'Special Feature' : 'Featured Article';
     }
   }
 

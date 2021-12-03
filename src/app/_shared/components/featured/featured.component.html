@@ -127,7 +127,7 @@
     </div>
 
     <!-- Brand Info News -->
-    <div *ngIf="slug !== '1851'" class="col brand-list border-start border-3">
+    <div *ngIf="slug !== '1851' && !isAwards()" class="col brand-list border-start border-3">
 
       <ul class="industry-list pt-1">
         <li *ngFor="let item of brandInfoNews; index as i">
@@ -156,6 +156,48 @@
               >
                 <h3 class="articleTitles mb-0">{{ item?.description }}</h3>
               </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Awards -->
+    <div *ngIf="isAwards()" class="col brand-list border-start border-3">
+
+      <ul class="industry-list pt-1">
+        <li *ngFor="let item of featured | slice: 1:5; index as i">
+          <div class="d-flex">
+            <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+              <a
+                routerLink="/{{ slug }}/{{ item.slug }}"
+                class="pe-2"
+              >
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="info"
+                  loading="lazy"
+                  height="90"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h2 class="articleTitles mb-0 p-0">{{ item.title }}</h2>
+              </a>
+              <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+                >{{ commonService.formatDate(item.last_modified) }} |
+                {{ commonService.formatTime(item.last_modified) }}
+              </span>
+              <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+                >{{ commonService.formatDate(item.posted_on) }} |
+                {{ commonService.formatTime(item.posted_on) }}</span
+              >
             </div>
           </div>
         </li>

@@ -14,4 +14,9 @@
       background-color: $white_8;
     }
   }
+  &.spotlight {
+    .card-title , .card-footer {
+      padding-left: 0 !important;
+    }
+  }
 }
