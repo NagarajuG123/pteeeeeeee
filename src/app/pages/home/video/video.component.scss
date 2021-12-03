@@ -1,0 +1,77 @@
+@import "../../../../assets/scss/typography.scss";
+@import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.video {
+  background: $white_8;
+  color: $black;
+
+  .sectionTitle {
+    line-height: 25.6px;
+    color: $dark_gray;
+  }
+
+  .timeStamp {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14.06px;
+  }
+  .subTitle {
+    color: $dark_gray_5;
+    font-family: $roboto;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.58px;
+    text-transform: none;
+    &::before {
+      content: "|";
+      padding-left: 15px;
+      padding-right: 15px;
+      display: inline-block;
+    }
+  }
+  .topSection {
+    .video-play {
+      height: 57px;
+      width: 97px;
+    }
+    h2 {
+      font-size: 20px;
+      line-height: 23.4px;
+      font-weight: 700;
+      font-family: $aktiv;
+    }
+  }
+  .bottomSection {
+    .video-play {
+      height: 22px;
+      width: 38px;
+    }
+    .col-md-3 {
+      width: 20%;
+    }
+  }
+  .carousel-control-prev {
+    left: -9%;
+    bottom: 20%;
+  }
+  .carousel-control-next {
+    right: -7.5%;
+    bottom: 20%;
+  }
+  .carousel-inner .carousel-item.active,
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+
+  @media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+      display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+      display: block;
+    }
+  }
+}

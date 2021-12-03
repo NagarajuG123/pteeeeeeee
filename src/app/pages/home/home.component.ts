@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   isLoad: boolean = false;
   submitErrMsg = '';
   successMsg = '';
-  videoData: Details[] = [];
   specialFeature: Details[] = [];
   title: string;
   constructor(
@@ -34,17 +33,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const meta = this.apiService.getAPI(`1851/meta`);
-    const videoData = this.apiService.getAPI(`1851/videos?site=1851`);
     const featureData = this.apiService.getAPI(`home-page-featured-content`);
-    forkJoin([publication, meta, videoData, featureData]).subscribe((results) => {
+    forkJoin([publication, meta, featureData]).subscribe((results) => {
       this.publication = results[0];
       this.metaService.setSeo(results[1].data);
-      this.videoData = results[2].data;
-      this.specialFeature = results[3].data.stories;
-      this.title = results[3].data.title;
+      this.specialFeature = results[2].data.stories;
+      this.title = results[2].data.title;
       this.isLoad = true;
     });
 
