@@ -1,27 +1,30 @@
-<div class="awards sidebar-blur" *ngIf="data">
+<div class="awards py-4 sidebar-blur" *ngIf="data">
   <div class="container customContainer">
     <div class="d-flex">
       <div class="col-lg-11">
         <h2 class="sectionTitle py-3 m-0 text-white">
-          {{ title }}
+          {{ result?.title }}
         </h2>
       </div>
       <div class="col-lg-1 d-flex justify-content-end align-items-center">
-        <span class="timeStamp p-0"
+        <a routerLink="{{ result?.url }}" class="seeMore p-0"
           >See More <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon
-        ></span>
+        ></a>
       </div>
     </div>
   </div>
   <hr />
 
-  <div class="container customContainer py-2">
+  <div class="container customContainer py-2 px-4">
     <div class="row row-cols-lg-2">
       <div
         *ngFor="let item of data | slice: 0:2; index as i"
         class="topSection"
       >
-        <a href="#" class="d-flex justify-content-center align-items-center">
+        <a
+          routerLink="{{ commonService.readMore(item) }}"
+          fragment="dynamicpage"
+        >
           <img
             data-src="{{ item.media | defaultImage: 1280:720 }}"
             class="w-100 img-fluid lazyload"
@@ -30,35 +33,41 @@
             height="301"
             loading="lazy"
           />
+
+          <h2 class="m-0 pt-2 pb-5">
+            {{ item.title }}
+          </h2>
         </a>
-        <h2 class="m-0 pt-2 pb-5">
-          {{ item.title }}
-        </h2>
       </div>
     </div>
-    <div class="row row-cols-lg-5">
-      <div id="carouselAwardControls" class="carousel carousel-dark">
-        <div class="carousel-inner w-100" role="listbox">
+    <div class="row gx-2 bottomSection">
+      <div id="carouselAwardControls" class="carousel">
+        <div class="carousel-inner award-inner">
           <ng-container *ngFor="let item of data | slice: 2:10; index as i">
-            <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-              <a
-                *ngIf="item?.media"
-                attr.data-src="{{ item.media.url }}"
-                href="#"
-                class="d-flex align-items-center"
-              >
-                <img
-                  data-src="{{ item.media | defaultImage: 1280:720 }}"
-                  class="img-fluid lazyload video-img"
-                  width="225"
-                  height="131"
-                  alt="video"
-                  loading="lazy"
-                />
-              </a>
-              <h3 class="articleTitles align-items-center">
-                {{ item.title }}
-              </h3>
+            <div
+              class="carousel-item award-item"
+              [ngClass]="{ active: i === 0 }"
+            >
+              <div class="col-sm-12 col-md-3">
+                <a
+                  *ngIf="item?.media"
+                  routerLink="{{ commonService.readMore(item) }}"
+                  fragment="dynamicpage"
+                >
+                  <img
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    class="img-fluid lazyload"
+                    width="209"
+                    height="117"
+                    alt="article"
+                    loading="lazy"
+                  />
+
+                  <h3 class="articleTitles align-items-center m-0 pt-2">
+                    {{ item.title }}
+                  </h3>
+                </a>
+              </div>
             </div>
           </ng-container>
         </div>
