@@ -80,220 +80,218 @@
   </div>
 
   <div class="container middle-head">
-    <div class="d-flex g-0 align-items-center">
-      <div class="col-lg-9 col-md-10 col-sm-8 col-10 d-flex">
-        <div class="col-lg-1 col-sm-1 dropdown">
-          <a
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            (click)="commonService.toggle()"
-          >
-            <img
-              data-src="{{
-                commonService.showmenu
-                  ? 'assets/img/menu_close.png'
-                  : 'assets/img/menu_open.png'
-              }}"
-              width="78"
-              height="72"
-              alt="menu"
-              class="lazyload menu"
-            />
-          </a>
-          <ul
-            class="sidebar dropdown-menu"
-            aria-labelledby="dropdownMenu2"
-            *ngIf="brandSlug === '1851'"
-          >
-            <li class="menu-search">
-              <form
-                [formGroup]="searchForm"
-                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
-              >
-                <div class="input-group mb-1">
-                  <button
-                    class="ps-2"
-                    type="button"
-                    (click)="onSearchSubmit(searchForm, 'sidebar')"
-                  >
-                    <img
-                      data-src="{{ s3Url }}search-p.svg"
-                      alt="search"
-                      width="11px"
-                      height="11px"
-                      class="lazyload"
-                    />
-                  </button>
-                  <input
-                    type="text"
-                    class="form-control ps-0"
-                    placeholder="Search"
-                    [formControl]="searchForm.controls['searchInput']"
-                  />
-                </div>
-              </form>
-            </li>
-            <li>
-              <a routerLink="/monthlycovers" (click)="commonService.toggle()">
-                <h3>MONTHLY COVERS</h3></a
-              >
-              <hr />
-              <a
-                routerLink="{{ header?.monthlyCover?.coverUrl }}"
-                (click)="commonService.toggle()"
-                *ngIf="header?.monthlyCover"
-              >
-                <img
-                  appYoutubeImage
-                  data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
-                  width="97"
-                  height="127"
-                  alt="monthly "
-                  class="mb-2 lazyload"
-                />
-              </a>
-            </li>
-            <li>
-              <h3>Topics</h3>
-              <hr />
-              <ul class="mb-2 ms-2">
-                <li
-                  class="ms-1"
-                  *ngFor="let item of header?.sidebar?.categories"
-                >
-                  <a
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      my-1
-                      text-capitalize
-                    "
-                    routerLink="{{ item?.url }}"
-                    (click)="commonService.toggle()"
-                    >{{ item.name }}
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <hr />
-
-            <li>
-              <h3>Awards</h3>
-              <ul class="mb-2 ms-2">
-                <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
-                  <a
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      my-1
-                      text-capitalize
-                    "
-                    routerLink="{{ item?.url }}"
-                    (click)="commonService.toggle()"
-                    >{{ item.title }}
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <hr />
-
-              <a
-                routerLink="{{ menu.url }}"
-                (click)="commonService.toggle()"
-                *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
-                ><h3>{{ menu.title }}</h3></a
-              >
-            </li>
-            <li>
-              <hr />
-              <div *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
-                <a
-                  routerLink="{{ menu.url }}"
-                  *ngIf="!menu.fragment && menu.title != 'Login'"
-                >
-                  <h3>
-                    {{ menu.title }}
-                  </h3>
-                </a>
-                <a
-                  *ngIf="menu.fragment && menu.title != 'Login'"
-                  routerLink="{{ menu.url }}"
-                  [fragment]="menu.fragment"
-                  (click)="commonService.toggle()"
-                  ><h3>{{ menu.title }}</h3></a
-                >
-                <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}"
-                  ><h3>{{ menu.title }}</h3></a
-                >
-              </div>
-            </li>
-
-            <li>
-              <a
-                href="{{ menu.url }}"
-                *ngFor="let menu of header?.sidebar?.menus | slice: 7:8"
-                ><h3>{{ menu.title }}</h3></a
-              >
-            </li>
-          </ul>
-        </div>
-        <div
-          class="col-lg-10 col-10 d-flex align-items-center logo"
-          (click)="closeSidebar()"
+    <div class="row gx-0 align-items-center">
+      <div class="col-lg-1 col-md-2 col-sm-3 col-3 dropdown">
+        <a
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          (click)="commonService.toggle()"
         >
-          <a
-            [routerLink]="header?.logo?.url"
-            (click)="closeSidebar()"
-            class="pe-lg-5 pe-2"
-            ><img
-              data-src="{{ header?.logo?.image }}"
-              height="{{ header?.logo?.height }}"
-              width="{{ header?.logo?.width }}"
-              alt="logo"
-              class="lazyload"
-          /></a>
-          <nav class="pt-2">
-            <ul class="nav justify-content-center">
-              <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
-                <a [routerLink]="menu.url" (click)="closeSidebar()"
-                  ><h6>{{ menu.title }}</h6>
-                </a>
-              </li>
-              <li
-                class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
-                *ngFor="let action of header?.actions; index as i"
-              >
-                <a class="d-flex align-items-center" (click)="closeSidebar()"
-                  ><h6>{{ action.title }}</h6>
+          <img
+            data-src="{{
+              commonService.showmenu
+                ? 'assets/img/menu_close.png'
+                : 'assets/img/menu_open.png'
+            }}"
+            width="78"
+            height="72"
+            alt="menu"
+            class="lazyload menu"
+          />
+        </a>
+        <ul
+          class="sidebar dropdown-menu"
+          aria-labelledby="dropdownMenu2"
+          *ngIf="brandSlug === '1851'"
+        >
+          <li class="menu-search">
+            <form
+              [formGroup]="searchForm"
+              (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
+            >
+              <div class="input-group mb-1">
+                <button
+                  class="ps-2"
+                  type="button"
+                  (click)="onSearchSubmit(searchForm, 'sidebar')"
+                >
                   <img
-                    data-src="{{ s3Url }}down-arrow.svg"
-                    height="15"
-                    width="15"
-                    alt="down-arrow"
-                    class="ms-1 lazyload pb-2"
-                /></a>
-                <ul class="dropdown-menu">
-                  <li *ngFor="let item of action.items">
-                    <a
-                      class="dropdown-item"
-                      [href]="item.url"
-                      (click)="closeSidebar()"
-                      >{{ item?.title }}</a
-                    >
-                  </li>
-                </ul>
+                    data-src="{{ s3Url }}search-p.svg"
+                    alt="search"
+                    width="11px"
+                    height="11px"
+                    class="lazyload"
+                  />
+                </button>
+                <input
+                  type="text"
+                  class="form-control ps-0"
+                  placeholder="Search"
+                  [formControl]="searchForm.controls['searchInput']"
+                />
+              </div>
+            </form>
+          </li>
+          <li>
+            <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+              <h3>MONTHLY COVERS</h3></a
+            >
+            <hr />
+            <a
+              routerLink="{{ header?.monthlyCover?.coverUrl }}"
+              (click)="commonService.toggle()"
+              *ngIf="header?.monthlyCover"
+            >
+              <img
+                appYoutubeImage
+                data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
+                width="97"
+                height="127"
+                alt="monthly "
+                class="mb-2 lazyload"
+              />
+            </a>
+          </li>
+          <li>
+            <h3>Topics</h3>
+            <hr />
+            <ul class="mb-2 ms-2">
+              <li class="ms-1" *ngFor="let item of header?.sidebar?.categories">
+                <a
+                  class="
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    my-1
+                    text-capitalize
+                  "
+                  routerLink="{{ item?.url }}"
+                  (click)="commonService.toggle()"
+                  >{{ item.name }}
+                </a>
               </li>
             </ul>
-          </nav>
-        </div>
+          </li>
+          <hr />
+
+          <li>
+            <h3>Awards</h3>
+            <ul class="mb-2 ms-2">
+              <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
+                <a
+                  class="
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    my-1
+                    text-capitalize
+                  "
+                  routerLink="{{ item?.url }}"
+                  (click)="commonService.toggle()"
+                  >{{ item.title }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <hr />
+
+            <a
+              routerLink="{{ menu.url }}"
+              (click)="commonService.toggle()"
+              *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
+              ><h3>{{ menu.title }}</h3></a
+            >
+          </li>
+          <li>
+            <hr />
+            <div *ngFor="let menu of header?.sidebar?.menus | slice: 2:7">
+              <a
+                routerLink="{{ menu.url }}"
+                *ngIf="!menu.fragment && menu.title != 'Login'"
+              >
+                <h3>
+                  {{ menu.title }}
+                </h3>
+              </a>
+              <a
+                *ngIf="menu.fragment && menu.title != 'Login'"
+                routerLink="{{ menu.url }}"
+                [fragment]="menu.fragment"
+                (click)="commonService.toggle()"
+                ><h3>{{ menu.title }}</h3></a
+              >
+              <a *ngIf="menu.title == 'Login'" href="{{ menu.url }}"
+                ><h3>{{ menu.title }}</h3></a
+              >
+            </div>
+          </li>
+
+          <li>
+            <a
+              href="{{ menu.url }}"
+              *ngFor="let menu of header?.sidebar?.menus | slice: 7:8"
+              ><h3>{{ menu.title }}</h3></a
+            >
+          </li>
+        </ul>
       </div>
-      <div class="col-lg-3 d-flex align-items-center" (click)="closeSidebar()">
+      <div
+        class="col-lg-8 col-sm-8 col-md-7 col-7 d-flex align-items-center logo"
+        (click)="closeSidebar()"
+      >
+        <a
+          [routerLink]="header?.logo?.url"
+          (click)="closeSidebar()"
+          class="pe-lg-4 pe-2"
+          ><img
+            data-src="{{ header?.logo?.image }}"
+            height="{{ header?.logo?.height }}"
+            width="{{ header?.logo?.width }}"
+            alt="logo"
+            class="lazyload"
+        /></a>
+        <nav class="pt-2">
+          <ul class="nav justify-content-center">
+            <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
+              <a [routerLink]="menu.url" (click)="closeSidebar()"
+                ><h6>{{ menu.title }}</h6>
+              </a>
+            </li>
+            <li
+              class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
+              *ngFor="let action of header?.actions; index as i"
+            >
+              <a class="d-flex align-items-center" (click)="closeSidebar()"
+                ><h6>{{ action.title }}</h6>
+                <img
+                  data-src="{{ s3Url }}down-arrow.svg"
+                  height="15"
+                  width="15"
+                  alt="down-arrow"
+                  class="ms-1 lazyload pb-2"
+              /></a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let item of action.items">
+                  <a
+                    class="dropdown-item"
+                    [href]="item.url"
+                    (click)="closeSidebar()"
+                    >{{ item?.title }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div
+        class="col-lg-3 col-sm-2 col-md-3 col-2 d-flex align-items-center"
+        (click)="closeSidebar()"
+      >
         <a
           href="#"
           onclick="return false;"

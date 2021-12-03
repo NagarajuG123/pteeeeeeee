@@ -50,7 +50,6 @@ export class FeaturedComponent implements OnInit {
       .subscribe((results) => {
         this.featured = results[0].data;
         this.length = this.featured.length;
-        console.log(this.length);
         this.news = results[1].data;
         this.brandNews = results[2].data;
         this.isLoaded = true;

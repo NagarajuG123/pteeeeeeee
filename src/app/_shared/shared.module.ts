@@ -17,7 +17,6 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './components/article/article.component';
 
@@ -37,7 +36,6 @@ import { ArticleComponent } from './components/article/article.component';
     FiveColumnComponent,
     MostPopularComponent,
     SpecialFeatureComponent,
-    CarouselComponent,
     ArticleComponent,
   ],
   imports: [
@@ -66,7 +64,6 @@ import { ArticleComponent } from './components/article/article.component';
     SpecialFeatureComponent,
     FontAwesomeModule,
     ShareButtonModule,
-    CarouselComponent,
     ArticleComponent,
   ],
 })

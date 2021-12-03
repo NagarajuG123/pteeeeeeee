@@ -1,0 +1,95 @@
+<div class="awards py-4 sidebar-blur" *ngIf="data">
+  <div class="container customContainer">
+    <div class="d-flex">
+      <div class="col-lg-11">
+        <h2 class="sectionTitle py-3 m-0 text-white">
+          {{ result?.title }}
+        </h2>
+      </div>
+      <div class="col-lg-1 d-flex justify-content-end align-items-center">
+        <a routerLink="{{ result?.url }}" class="seeMore p-0"
+          >See More <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon
+        ></a>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <div class="container customContainer py-2 px-4">
+    <div class="row row-cols-lg-2">
+      <div
+        *ngFor="let item of data | slice: 0:2; index as i"
+        class="topSection"
+      >
+        <a
+          routerLink="{{ commonService.readMore(item) }}"
+          fragment="dynamicpage"
+        >
+          <img
+            data-src="{{ item.media | defaultImage: 1280:720 }}"
+            class="w-100 img-fluid lazyload"
+            alt="story"
+            width="536"
+            height="301"
+            loading="lazy"
+          />
+
+          <h2 class="m-0 pt-2 pb-5">
+            {{ item.title }}
+          </h2>
+        </a>
+      </div>
+    </div>
+    <div class="row gx-2 bottomSection">
+      <div id="carouselAwardControls" class="carousel">
+        <div class="carousel-inner award-inner">
+          <ng-container *ngFor="let item of data | slice: 2:10; index as i">
+            <div
+              class="carousel-item award-item"
+              [ngClass]="{ active: i === 0 }"
+            >
+              <div class="col-sm-12 col-md-3">
+                <a
+                  *ngIf="item?.media"
+                  routerLink="{{ commonService.readMore(item) }}"
+                  fragment="dynamicpage"
+                >
+                  <img
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    class="img-fluid lazyload"
+                    width="209"
+                    height="117"
+                    alt="article"
+                    loading="lazy"
+                  />
+
+                  <h3 class="articleTitles align-items-center m-0 pt-2">
+                    {{ item.title }}
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselAwardControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselAwardControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
