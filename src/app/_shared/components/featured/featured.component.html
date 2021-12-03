@@ -1,6 +1,6 @@
 <div class="container py-3 sidebar-blur featured" *ngIf="isLoaded">
   <div class="row">
-    <div class="col-lg-6 col-sm-12 position-relative featuredList">
+    <div class="col-sm-12 position-relative featuredList" [ngClass]="isAwards() || length < 9 ? 'col-lg-9' : 'col-lg-6'">
       <div class="tag position-absolute text-center top-0 text-uppercase">
         Featured Article
       </div>
@@ -58,7 +58,7 @@
       >
     </div>
     <!-- Industry 1851 news list -->
-    <div *ngIf="!isAwards()" class="col-lg-3 col-sm-12">
+    <div *ngIf="length > 8 && !isAwards()" class="col-lg-3 col-sm-12">
       <span class="small-red-headers">Latest Franchise Industry News</span>
       <ul class="industry-list pt-1">
         <li *ngFor="let item of news; index as i">
@@ -89,7 +89,7 @@
     </div>
 
     <!-- Brand news list -->
-    <div *ngIf="slug === '1851'" class="col brand-list border-start">
+    <div *ngIf="slug == '1851'" class="col brand-list border-start">
       <span class="small-red-headers">LATEST FRANCHISE BRAND NEWS</span>
 
       <ul class="industry-list pt-1">
@@ -126,47 +126,38 @@
       </ul>
     </div>
 
-    <div
-      *ngIf="slug !== '1851' && !isAwards()"
-      class="
-        position-relative
-        col-12 col-sm-6 col-lg-4
-        align-items-stretch
-        mb-3 mb-sm-0
-        border-start border-2
-        latestListing
-      "
-    >
-      <ul class="list-group">
+    <!-- Brand Info News -->
+    <div *ngIf="slug !== '1851' && !isAwards()" class="col brand-list border-start border-3">
+
+      <ul class="industry-list pt-1">
         <li *ngFor="let item of brandInfoNews; index as i">
-          <div class="position-relative small-image">
-            <a routerLink="{{ item.slug }}">
-              <div
-                class="
-                  tag
-                  brandInfo
-                  position-absolute
-                  text-center
-                  top-0
-                  text-uppercase
-                  articleTitles
-                "
+          <div class="d-flex">
+            <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+                class="pe-2"
               >
-                {{ item?.title }}
-              </div>
-              <img
-                appYoutubeImage
-                class="img-fluid lazyload"
-                width="253"
-                height="137"
-                data-src="{{ item.media | defaultImage: 253:137 }}"
-                alt="featured"
-                loading="lazy"
-              />
-              <h3 class="over-layer-brand bottom-0 p-2">
-                {{ item?.description }}
-              </h3>
-            </a>
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="info"
+                  loading="lazy"
+                  height="90"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+              <h2 class="small-red-headers mb-0">{{ item.slug }}</h2>
+
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h3 class="articleTitles mb-0">{{ item?.description }}</h3>
+              </a>
+            </div>
           </div>
         </li>
       </ul>
