@@ -125,16 +125,17 @@ figure {
   }
 }
 .readmore {
-  width: 177px;
+  width: 160px;
   height: 36px;
   background: $red;
   position: relative;
   margin: 72px auto 0 auto;
-  font-size: 15.66px;
+  font-size: 12px;
   line-height: 36px;
+  font-weight: 700;
   color: $white;
   padding: 0 40px 0 30px;
-  font-family: $proxiRegular;
+  font-family: $roboto;
   @include desk-lg-below {
     margin: 20px auto 0 auto;
   }

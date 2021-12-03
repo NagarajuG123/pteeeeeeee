@@ -17,10 +17,10 @@
           class="lazyload"
         />
       </div>
-      <ul class="row innerContent m-0">
+      <ul class="row m-0 px-5 row-cols-lg-6 row-cols-md-3 row-cols-sm-1">
         <li
           *ngFor="let item of categories; index as i"
-          class="col col-sm-6 col-md-4 col-lg border-end text-center"
+          class="border-end text-center p-0"
           [ngClass]="
             i < commonService.brandInfoTabs + skipTab && i >= skipTab
               ? 'active'

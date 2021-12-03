@@ -20,7 +20,7 @@
       padding-top: 15px;
     }
   }
-
+  
   .header-highlighter {
     position: relative;
 
@@ -435,37 +435,6 @@
       line-height: 14.06px;
       a {
         color: $dark_gray;
-      }
-    }
-  }
-}
-
-.innerContent {
-  li {
-    @include media("<lg") {
-      flex: 1 0 0%;
-    }
-    span {
-      font-family: $proxiRegular;
-      @include desk-lg-below2 {
-        font-size: 13px;
-      }
-      &.active,
-      &:hover {
-        color: $red;
-        &::after {            
-          content: "";
-          bottom: -20px;
-          @include mobile-portrait2
-           {
-            display: flex;
-            left:50px;
-          }
-        }
-        &::before {
-          content: "";
-          bottom: -5px;
-        }
       }
     }
   }
