@@ -1197,31 +1197,7 @@ button.close {
 .info-wrapper {
   background: #f3f8fb;
   padding: 0;
-
-  .customContainer {
-    .innerContent {
-      .row {
-        @include media("<md") {
-          justify-content: space-between;
-        }
-      }
-
-      li {
-        height: auto;
-        background: transparent;
-        margin-bottom: 12px;
-
-        @include media("<md") {
-          max-width: 50% !important;
-        }
-
-        @include media("<sm") {
-          max-width: 100% !important;
-        }
-      }
-    }
-  }
-
+  
   .card-body {
     padding: 11px 10px 15px !important;
   }
