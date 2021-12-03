@@ -23,6 +23,7 @@ export class FeaturedComponent implements OnInit {
   isLoaded: boolean = false;
   s3Url = environment.s3Url;
   length: number;
+  title: string;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -33,6 +34,7 @@ export class FeaturedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.title = "Feature Article";
     const featureApi = this.apiService.getAPI(
       `${this.apiUrl}`
     );
@@ -62,6 +64,7 @@ export class FeaturedComponent implements OnInit {
         .subscribe((response) => {
           this.brandInfoNews = response;
         });
+        this.title = this.length < 8 ? 'Special Feature' : 'Feature Article';
     }
   }
 
