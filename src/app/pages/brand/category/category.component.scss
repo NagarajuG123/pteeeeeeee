@@ -112,9 +112,13 @@
       z-index: 1;
     }
   }
-}
-a {
-  color: $dark_gray;
+  .tabs {
+    height: 62px;
+    ul {
+      border-top: 0.5px solid $dark_gray;
+      border-bottom: 0.5px solid $dark_gray;
+    }
+  }
 }
 .bg-blue {
   background: $white_3;

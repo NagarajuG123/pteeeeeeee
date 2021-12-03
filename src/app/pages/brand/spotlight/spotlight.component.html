@@ -1,9 +1,9 @@
-<div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded && items.length">
+<div class="spotlight sidebar-blur pb-4" *ngIf="isLoaded && items.length">
   <div class="container customContainer">
     <h2 class="py-3 m-0 text-uppercase sectionTitle">Spotlights</h2>
   </div>
 
-  <div class="tabs primary-bg">
+  <div class="tabs">
     <div class="container customContainer position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
@@ -12,8 +12,8 @@
       >
         <img
           data-src="{{ s3Url }}left-arrow.svg"
-          width="20px"
-          height="39px"
+          width="20"
+          height="39"
           loading="lazy"
           alt="arrow"
           class="lazyload"
@@ -53,8 +53,8 @@
         <img
           data-src="{{ s3Url }}right-arrow.svg"
           loading="lazy"
-          width="20px"
-          height="39px"
+          width="20"
+          height="39"
           alt="arrow"
           class="lazyload"
         />
@@ -63,6 +63,10 @@
   </div>
 
   <div class="container customContainer mt-4 py-3">
-      <app-article [typeSlug]="tab" [contents]="items" [class]="'row-cols-lg-5'"></app-article>
+    <app-article
+      [typeSlug]="tab"
+      [contents]="items"
+      [class]="'row-cols-lg-5'"
+    ></app-article>
   </div>
 </div>
