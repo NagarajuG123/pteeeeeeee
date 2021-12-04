@@ -3,7 +3,7 @@
     <div class="container customContainer">
       <div class="row">
         <div class="col-md-5 col-sm-6 py-4 px-4"></div>
-        <div class="col-md-7 col-sm-6 py-5 px-4 details">
+        <div class="col-md-7 col-sm-6 pt-5 pb-2 px-4 details">
           <span class="small-red-headers">ABOUT</span>
           <h1 class="large-main-article mb-0">{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
           <h5 class="sectionTitle">{{ author?.data?.designation }}</h5>
@@ -39,7 +39,7 @@
     <div class="row">
       <div class="col-md-5 col-sm-6 px-4"></div>
       <div class="col-md-7 col-sm-6 px-4 py-3">
-        <p [innerHtml]="author?.data?.about" class="description text-black"></p>
+        <p [innerHtml]="author?.data?.about" class="description"></p>
       </div>
     </div>
     <div class="position-absolute authorProfile">
