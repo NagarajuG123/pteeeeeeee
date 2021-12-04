@@ -312,4 +312,21 @@ header {
       }
     }
   }
+  .inquireModal {
+   form{
+     input{
+       font-family: $roboto;
+       font-size: 17px;
+       line-height: 24px;
+       color: $dark_gray_6;
+       font-weight: 400;
+     }
+     .submit{
+        color: $white;
+        background-color: $red;
+        height: 40px;
+        width: 150px;
+     }
+   }
+  }
 }

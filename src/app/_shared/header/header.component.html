@@ -656,8 +656,8 @@
 
   <!-- Sponsor Modal -->
 
-  <div ng-cloak class="search_pop_up modal fade" id="sponsoredModal">
-    <div class="modal-dialog modal-lg">
+  <div ng-cloak class="searchModal modal fade" id="sponsoredModal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="sponsored-modal-content">
           <button
@@ -689,26 +689,29 @@
   <div
     ng-cloak
     *ngIf="isBrowser && isInquire"
-    class="search_pop_up modal"
+    class="searchModal inquireModal modal"
     id="inquireModal"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
-        <button
-          id="inquireModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
         <div class="modal-header">
-          <h1>{{ inquireTitle }}</h1>
+          <button
+            id="inquireModalClose"
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <h5 class="large-main-article text-capitalize">{{ inquireTitle }}</h5>
+          <hr />
         </div>
+          
         <form
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
           (ngSubmit)="submitInquireForm(inquireForm.value)"
+          class="mx-2"
         >
           <div *ngFor="let fields of inquireFields" class="form-row mb-3">
             <input
@@ -761,10 +764,10 @@
             </div>
           </div>
 
-          <div class="d-grid inquireSubmit">
+          <div class="d-grid text-right">
             <button
               type="submit"
-              class="btn text-end align-items-center rounded-0 btn-sm nextBtn"
+              class="submit"
             >
               Submit
             </button>
@@ -796,26 +799,27 @@
   <div
     ng-cloak
     *ngIf="isBrowser && isContact && contactFields"
-    class="search_pop_up modal"
+    class="searchModal inquireModal modal"
     id="contactModal"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
-        <button
-          id="contactModalClose"
-          type="button"
-          class="close text-right"
-          data-bs-dismiss="modal"
-        >
-          &times;
-        </button>
         <div class="modal-header">
-          <h1>{{ contactTitle }}</h1>
+          <button
+            id="contactModalClose"
+            type="button"
+            class="close text-right"
+            data-bs-dismiss="modal"
+          >
+            &times;
+          </button>
+          <h5 class="large-main-article text-capitalize">{{ contactTitle }}</h5>
         </div>
         <form
           *ngIf="contactForm"
           [formGroup]="contactForm"
           (ngSubmit)="submitContactForm(contactForm.value)"
+          class="mx-3"
         >
           <div *ngFor="let fields of contactFields" class="form-row mb-3">
             <input
@@ -880,8 +884,8 @@
               {{ fields.errorMsg }}
             </div>
           </div>
-          <div class="d-grid contactSubmit">
-            <button type="submit" class="btn text-end rounded-0 btn-sm nextBtn">
+          <div class="d-grid text-right">
+            <button type="submit" class="submit">
               Next
             </button>
           </div>
