@@ -170,17 +170,11 @@ button {
     width: 220px;
     padding: 0 18px;
     margin-top: 35px;
+    color: $dark_gray;
     @include tablet-landscape1 {
       width: 165px;
       padding: 0 7px;
     }
-  }
-  .seeMoreText {
-    color: $dark_gray;
-    font-size: 17px;
-    line-height: 24px;
-    font-family: $proxiRegular;
-    cursor: pointer;
   }
 }
 .seeMoreLine {
