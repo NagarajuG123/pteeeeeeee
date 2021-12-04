@@ -324,11 +324,11 @@
             /></figure
         ></a>
       </div>
-      <div class="col-3 col-md-auto d-flex position-relative leftMenuItem">
+      <div class="col-lg-1 col-md-2 col-sm-3 col-3 dropdown">
         <!-- Submenu brand -->
         <ul
           ng-cloak
-          class="sidebar dropdown-menu submenu-list dropdown-menu-dark"
+          class="sidebar dropdown-menu"
           aria-labelledby="dropdownMenu2"
           *ngIf="brandSlug !== '1851'"
         >
@@ -356,24 +356,21 @@
                     type="text"
                     class="form-control ps-0"
                     placeholder="Search"
+                    [formControl]="searchForm.controls['searchInput']"
                   />
                 </div>
               </form>
             </div>
           </li>
           <li>
-            <h3>
-              <a routerLink="/" (click)="commonService.toggle()">
-                Return to Main Site
-              </a>
-            </h3>
-            <h3>
-              <a
-                routerLink="/{{ brandSlug }}"
-                (click)="commonService.toggle()"
-                >{{ brandTitle }}</a
-              >
-            </h3>
+            <a routerLink="/" (click)="commonService.toggle()">
+            <h3> Return to Main Site </h3>
+           </a>
+          <a
+            routerLink="/{{ brandSlug }}"
+            (click)="commonService.toggle()"
+            > <h3>{{ brandTitle }}</h3></a
+          >
             <ul class="mb-2 ms-2">
               <li class="ms-1">
                 <a
@@ -427,18 +424,16 @@
             </ul>
           </li>
 
-          <li class="ms-1" *ngIf="trending">
-            <hr />
-            <h3>
+          <li class="ms-1" *ngIf="trending.length">
+            <hr /> 
               <a
                 class="my-1"
                 routerLink="/{{ brandSlug }}"
                 (click)="commonService.toggle()"
-                >{{ brandTitle }} Most read Matches</a
+                ><h3>{{ brandTitle }} Most read Stories</h3></a
               >
-            </h3>
             <ul class="mb-2 ms-2">
-              <li class="ms-1" *ngFor="let story of trending | slice: 0:2">
+              <li class="ms-1" *ngFor="let story of trending | slice: 0:3">
                 <a
                   class="
                     d-flex
@@ -457,28 +452,25 @@
           </li>
           <li>
             <hr class="mb-2" />
-            <h3 *ngIf="header?.sidebar?.login">
-              <a href="{{ header?.sidebar?.login }}"> Login</a>
-            </h3>
+              <a *ngIf="header?.sidebar?.login" href="{{ header?.sidebar?.login }}" > <h3>Login</h3></a>
             <hr class="mb-2" />
-            <h3 *ngIf="header?.sidebar?.about">
               <a
+                *ngIf="header?.sidebar?.about"
                 routerLink="/{{ header?.sidebar?.about }}"
                 (click)="commonService.toggle()"
-                >About <span class="text-capitalize">{{ brandTitle }}</span></a
-              >
-            </h3>
-            <h3 *ngIf="header?.sidebar?.contact?.hasOwnProperty()">
+                > 
+                <h3 >About <span class="text-capitalize">{{ brandTitle }}</span></h3>
+                </a>
+            
               <a
+                *ngIf="header?.sidebar?.hasOwnProperty('contact')"
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#contactModal"
                 (click)="commonService.toggle()"
-                >Contact
-
-                <span class="text-capitalize">{{ brandTitle }}</span></a
-              >
-            </h3>
+                >
+                <h3 >Contact <span class="text-capitalize">{{ brandTitle }}</span></h3>
+              </a>
           </li>
         </ul>
       </div>
