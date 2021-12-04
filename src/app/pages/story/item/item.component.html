@@ -89,6 +89,7 @@
 
         <ul class="most-like-articles list-group mt-4 mb-3">
           <li *ngFor="let item of trendingNews; index as i" class="mb-2">
+            <div class="d-flex">
             <div class="newsImage me-2 pe-1 position-relative">
               <a href="{{ readMore(item, 'trending') }}">
                 <img
@@ -102,15 +103,12 @@
               </a>
             </div>
             <div>
-              <span class="m-0">
-                <a href="#" class="small-red-headers"
-                  >By {{ author_name }}</a
-                >
-              </span>
+              <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
               <p class="m-0 articleTitles">
                 <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
               </p>
             </div>
+          </div>
           </li>
         </ul>
       </div>
