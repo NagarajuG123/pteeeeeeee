@@ -42,7 +42,7 @@ export class MonthlyCoversComponent implements OnInit {
     forkJoin([coverApi, metaApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
-        this.firstBlock = response[0].data.slice(1,4);
+        this.firstBlock = response[0].data.slice(0,4);
         this.secondBlock = response[0].data.slice(4, 14);
         this.hasMore = response[0].has_more;
         this.metaData = response[1].data;

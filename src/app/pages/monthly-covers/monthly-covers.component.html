@@ -6,7 +6,7 @@
           <div class="c-card-box--row c-card-box--contentRow">
             <div class="c-card-box--col month-business--wrapper">
               <div class="c-card-box--contentGroup">
-                <h4 class="articleTitles"> 
+                <h4 class="monthIsssue"> 
                   <img
                   data-src="{{ s3Url }}monthly_issue_arrow.png"
                   height="21px"
@@ -21,7 +21,7 @@
                 <a
                   routerLink="{{ firstBlock[0]?.story?.slug }}"
                   fragment="monthlydetailspage"
-                  class="timeStamp text-uppercase"
+                  class="seeMore text-uppercase"
                   >Read more <fa-icon [icon]="faAngleRight"></fa-icon
                 ></a>
               </div>
@@ -54,7 +54,7 @@
           <div class="c-card-box--group">
             <div
               class="c-card-box--item"
-              *ngFor="let item of firstBlock"
+              *ngFor="let item of firstBlock | slice: 1:4"
             >
               <div class="c-card-box--imageWrapper">
                 <img
@@ -74,7 +74,7 @@
               <a
                 routerLink="{{ item.story.slug }}"
                 fragment="monthlydetailspage"
-                class="view text-capitalize"
+                class="seeMore text-capitalize"
                 >view details <fa-icon [icon]="faPlus"></fa-icon
               ></a>
             </div>

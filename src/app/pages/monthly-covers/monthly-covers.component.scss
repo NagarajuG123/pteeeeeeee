@@ -96,9 +96,12 @@
     }
     .c-card-box--contentGroup {
       font-family: $roboto;
-      .articleTitles {
+      .monthIsssue {
         color: $red;
-        font-size: 13px;
+        font-size: 13.33px;
+        font-weight: 500;
+        line-height: 16px;
+        font-family: $roboto;
         @include media("<md") {
           font-size: 16px;
         }
@@ -221,15 +224,12 @@
         font-size: 13px;
         line-height: 16.73px;
       }
-      .view{
-        font-family: $roboto;
-        font-size: 12px;
-        color: $red;
-        line-height: 14px;
-      }
     }
   }
 }
+.seeMore{
+  color: $red;
+ }
 
 //Bottom Section
 .monthy-cover {
