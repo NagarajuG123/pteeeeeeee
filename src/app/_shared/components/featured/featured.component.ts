@@ -34,7 +34,7 @@ export class FeaturedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.title = "Feature Article";
+    this.title = "Featured Article";
     const featureApi = this.apiService.getAPI(
       `${this.apiUrl}`
     );
