@@ -256,6 +256,17 @@
         /></a>
         <nav class="pt-2">
           <ul class="nav justify-content-center">
+            <li class="pe-lg-4 pe-2">
+              <a
+                  href="#"
+                  onclick="return false;"
+                  class="text-uppercase"
+                  data-bs-toggle="modal"
+                  data-bs-target="#inquireModal"
+                >
+                 <h6>{{ header?.inquire }}</h6> 
+              </a>
+            </li>
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
                 ><h6>{{ menu.title }}</h6>
