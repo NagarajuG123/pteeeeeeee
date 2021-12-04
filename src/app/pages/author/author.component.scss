@@ -36,6 +36,7 @@ figure {
 .authorSection {
   .sectionTitle{
     color: $red;
+    font-weight: 700;
   }
   .description{
     min-height: 200px;
@@ -52,18 +53,6 @@ figure {
   }
   .authorDetail {
     background-color: $white_3;
-
-    h1 {
-      font-family:$aktiv;
-      font-size: 42px;
-      line-height: 56.57px;
-      letter-spacing: -0.015em;
-      color: $dark_gray;
-      margin-bottom: 0;
-      margin-top: -15px;
-      font-weight: 700;
-      padding: 8px 0 8px;
-    }
     .about {
       font-family: $roboto;
       font-weight: 500;
@@ -72,12 +61,6 @@ figure {
       color: $red;
       margin-bottom: 0;
     }
-    h5 {
-      font-family: $roboto;
-      color: $red;
-      margin-bottom: 0;
-    }
-
     hr {
       background: $dark_gray;
       margin: 13px 0;
