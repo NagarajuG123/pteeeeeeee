@@ -18,7 +18,9 @@
         >
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search" [formControl]="searchForm.controls['searchInput']">
-            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> <fa-icon [icon]="faSearch" class="searchIcon"></fa-icon></span>
+            <span class="input-group-text" (click)="onSearchBannerSubmit(searchForm)"> 
+              <img _ngcontent-serverapp-c47="" height="18" width="18" alt="search" class=" ls-is-cached lazyloaded" src="https://dmprqkmvewks9.cloudfront.net/search_white.png">
+            </span>
           </div>
         </form>
         <div class="py-3 filter-section">
@@ -32,6 +34,7 @@
             SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
           </h6>
           <h6
+            class="sectionTitle"
             *ngIf="
               brand_id === '1851' ||
               brand_id === 'ee' ||
@@ -45,7 +48,7 @@
             <ul class="d-flex text-center justify-content-center">
               <li
                 *ngFor="let duration of published_duration; let i = index"
-                class="px-2 time-filter"
+                class="px-3 time-filter"
               >
                 <a (click)="set_duration(i)">
                   <span
@@ -56,7 +59,7 @@
                   >
                 </a>
               </li>
-              <li class="px-2">
+              <li class="px-3">
                 <a (click)="set_range()">
                   <span
                     [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
@@ -70,25 +73,25 @@
           <div class="sort_main">
             <h6 class="primary-color">FILTER BY:</h6>
             <ul class="d-flex text-center justify-content-center">
-              <li class="form-check px-2">
+              <li class="form-check px-3">
                 <input class="form-check-input" type="checkbox" [checked]="by_author" (change)="onChangeFilter('author')" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   BY AUTHOR
                 </label>
               </li>
-              <li class="form-check px-2">
+              <li class="form-check px-3">
                 <input class="form-check-input" [checked]="by_title" type="checkbox"  (change)="onChangeFilter('title')" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   BY TITLE
                 </label>
               </li>
-              <li class="form-check px-2">
+              <li class="form-check px-3">
                 <input class="form-check-input" type="checkbox" [checked]="by_desc" (change)="onChangeFilter('desc')" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   BY DESCRIPTION
                 </label>
               </li>
-              <li class="form-check px-2">
+              <li class="form-check px-3">
                 <input class="form-check-input" type="checkbox" [checked]="by_keywords" (change)="onChangeFilter('keyword')" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   BY KEYWORDS
@@ -106,7 +109,7 @@
               [formGroup]="specificSearchForm"
               (ngSubmit)="onSearchSubmit(specificSearchForm)"
             >
-              <div class="form-group d-block">
+              <div class="input-group  mb-3">
                 <input
                   type="text"
                   ngxDaterangepickerMd
@@ -121,13 +124,12 @@
                   placeholder="Select please.../"
                   readonly
                 />
-                <button
-                  type="button"
-                  class="d-block text-center button"
+                <span
+                  class="input-group-text"
                   (click)="onSearchSubmit(specificSearchForm)"
                 >
-                  <fa-icon [icon]="faSearch" class="searchFav"></fa-icon>
-                </button>
+                <img _ngcontent-serverapp-c47="" height="18" width="18" alt="search" class=" ls-is-cached lazyloaded" src="https://dmprqkmvewks9.cloudfront.net/search_white.png">
+                </span>
               </div>
             </form>
           </div>
@@ -152,21 +154,21 @@
       >
       <app-article [typeSlug]="'franbuzz'" [contents]="recentPeoples" [class]="'row-cols-lg-3'"></app-article>
         <div class="row seeMoreIcon mt-4 desktop-only">
-          <div
-            class="col d-flex align-items-center justify-content-center py-1"
-          >
-            <img
-              data-src="{{s3Url}}nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3 lazyload"
-              (click)="getMoreItems()"
-            />
-            <span class="see-more text-uppercase" (click)="getMoreItems()"
-              >See More</span
+            <div
+              class="col d-flex align-items-center justify-content-center py-1"
             >
-          </div>
-        </div>
+                  <img
+                    data-src="{{s3Url}}nextIcon.svg"
+                    width="32"
+                    alt="next articles"
+                    class="me-3 lazyload"
+                    (click)="getMoreItems()"
+                  />
+                      <span class="seeMore " (click)="getMoreItems()"
+                        >See More</span
+                      >
+                </div>
+      </div>
       </div>
       <div
         class="col-sm-12 col-md-3 rightSide brand-news"
@@ -174,25 +176,10 @@
           brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
         "
       >
-        <h5 class="ps-4 mt-2">BRAND NEWS</h5>
+        <h5 class="mt-3 sectionTitle ">BRAND NEWS</h5>
         <hr />
         <app-article [typeSlug]="'franbuzz'" [contents]="brandPeoples" [class]="'row-cols-lg-1'"></app-article>
       </div>
-    </div>
-    <div class="row seeMoreIcon mobile-only">
-      <div class="col d-flex align-items-center justify-content-center py-1">
-        <img
-          data-src="{{s3Url}}nextIcon.svg"
-          width="32"
-          alt="next articles"
-          class="me-3 lazyload"
-          (click)="getMoreItems()"
-        />
-        <span class="see-more text-uppercase" (click)="getMoreItems()"
-          >See More</span
-        >
-      </div>
-    </div>
-  </div>
+</div>
 </div>
 
