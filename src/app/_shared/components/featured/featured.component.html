@@ -45,9 +45,11 @@
           height="71"
         />
       </a>
+      <a routerLink="/{{ commonService.readMore(featured[0]) }}" fragment="featured">
       <h2 class="large-main-article mt-2">
         {{ featured[0].title }}
       </h2>
+     </a>
       <span *ngIf="commonService.isUpdate(featured[0])" class="timeStamp"
         >{{ commonService.formatDate(featured[0].last_modified) }} |
         {{ commonService.formatTime(featured[0].last_modified) }}

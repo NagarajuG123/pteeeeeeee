@@ -5,7 +5,7 @@
         <div class="col-12 p-0">
           <div class="c-card-box--row c-card-box--contentRow">
             <div class="c-card-box--col month-business--wrapper">
-              <div class="c-card-box--contentGroup">
+              <div class="c-card-box--contentGroup ps-3">
                 <h4 class="monthIsssue"> 
                   <img
                   data-src="{{ s3Url }}monthly_issue_arrow.png"
@@ -22,8 +22,7 @@
                   routerLink="{{ firstBlock[0]?.story?.slug }}"
                   fragment="monthlydetailspage"
                   class="seeMore text-uppercase"
-                  >Read more <fa-icon [icon]="faAngleRight"></fa-icon
-                ></a>
+                  >Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -40,9 +39,9 @@
             >
               <img
                 appYoutubeImage
-                data-src="{{ firstBlock[0]?.media | defaultImage: 574:750 }}"
+                data-src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
                 width="574"
-                height="750"
+                height="775"
                 alt="monthly-covers-main"
                 class="card-image lazyload"
                 loading="lazy"
@@ -75,8 +74,7 @@
                 routerLink="{{ item.story.slug }}"
                 fragment="monthlydetailspage"
                 class="seeMore text-capitalize"
-                >view details <fa-icon [icon]="faPlus"></fa-icon
-              ></a>
+                >view details <i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>

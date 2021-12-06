@@ -79,7 +79,7 @@
         max-width: 54%;
         margin-left: 45%;
         // flex: unset;
-        padding: 20px 0;
+        padding: 25px 0 35px;
         @include media("<xxl") {
           max-width: 54.5%;
         }
@@ -223,6 +223,12 @@
         margin-bottom: 4px;
         font-size: 13px;
         line-height: 16.73px;
+      }
+    }
+    .seeMore{
+      color: $red;
+      .fa-angle-right{
+        font-weight: 700;
       }
     }
   }
