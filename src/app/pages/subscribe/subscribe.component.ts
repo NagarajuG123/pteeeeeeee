@@ -27,7 +27,6 @@ export class SubscribeComponent implements OnInit {
   submitSuccessMsg: string = '';
   isSuccess: boolean = false;
   faCaretRight = faCaretRight;
-  isLoaded: boolean = false;
   s3Url = environment.s3Url;
   constructor(
     private apiService: ApiService,
@@ -82,7 +81,6 @@ export class SubscribeComponent implements OnInit {
       (results) => {
         this.publication = results[0];
         this.metaService.setSeo(results[1].data);
-        this.isLoaded = true;
         let defaultTitle = '';
         if (this.publication.id === '1851') {
           defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
