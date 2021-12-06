@@ -258,13 +258,13 @@
           <ul class="nav justify-content-center">
             <li class="pe-lg-4 pe-2">
               <a
-                  href="#"
-                  onclick="return false;"
-                  class="text-uppercase"
-                  data-bs-toggle="modal"
-                  data-bs-target="#inquireModal"
-                >
-                 <h6>{{ header?.inquire }}</h6> 
+                href="#"
+                onclick="return false;"
+                class="text-uppercase"
+                data-bs-toggle="modal"
+                data-bs-target="#inquireModal"
+              >
+                <h6>{{ header?.inquire }}</h6>
               </a>
             </li>
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
@@ -375,13 +375,11 @@
           </li>
           <li>
             <a routerLink="/" (click)="commonService.toggle()">
-            <h3> Return to Main Site </h3>
-           </a>
-          <a
-            routerLink="/{{ brandSlug }}"
-            (click)="commonService.toggle()"
-            > <h3>{{ brandTitle }}</h3></a
-          >
+              <h3>Return to Main Site</h3>
+            </a>
+            <a routerLink="/{{ brandSlug }}" (click)="commonService.toggle()">
+              <h3>{{ brandTitle }}</h3></a
+            >
             <ul class="mb-2 ms-2">
               <li class="ms-1">
                 <a
@@ -435,14 +433,14 @@
             </ul>
           </li>
 
-          <li class="ms-1" *ngIf="trending.length">
-            <hr /> 
-              <a
-                class="my-1"
-                routerLink="/{{ brandSlug }}"
-                (click)="commonService.toggle()"
-                ><h3>{{ brandTitle }} Most read Stories</h3></a
-              >
+          <li class="ms-1" *ngIf="trending && trending.length">
+            <hr />
+            <a
+              class="my-1"
+              routerLink="/{{ brandSlug }}"
+              (click)="commonService.toggle()"
+              ><h3>{{ brandTitle }} Most read Stories</h3></a
+            >
             <ul class="mb-2 ms-2">
               <li class="ms-1" *ngFor="let story of trending | slice: 0:3">
                 <a
@@ -463,31 +461,44 @@
           </li>
           <li>
             <hr class="mb-2" />
-              <a *ngIf="header?.sidebar?.login" href="{{ header?.sidebar?.login }}" > <h3>Login</h3></a>
+            <a
+              *ngIf="header?.sidebar?.login"
+              href="{{ header?.sidebar?.login }}"
+            >
+              <h3>Login</h3></a
+            >
             <hr class="mb-2" />
-              <a
-                *ngIf="header?.sidebar?.about"
-                routerLink="/{{ header?.sidebar?.about }}"
-                (click)="commonService.toggle()"
-                > 
-                <h3 >About <span class="text-capitalize">{{ brandTitle }}</span></h3>
-                </a>
-            
-              <a
-                *ngIf="header?.sidebar?.hasOwnProperty('contact')"
-                href="#"
-                data-bs-toggle="modal"
-                data-bs-target="#contactModal"
-                (click)="commonService.toggle()"
-                >
-                <h3 >Contact <span class="text-capitalize">{{ brandTitle }}</span></h3>
-              </a>
+            <a
+              *ngIf="header?.sidebar?.about"
+              routerLink="/{{ header?.sidebar?.about }}"
+              (click)="commonService.toggle()"
+            >
+              <h3>
+                About <span class="text-capitalize">{{ brandTitle }}</span>
+              </h3>
+            </a>
+
+            <a
+              *ngIf="header?.sidebar?.hasOwnProperty('contact')"
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#contactModal"
+              (click)="commonService.toggle()"
+            >
+              <h3>
+                Contact <span class="text-capitalize">{{ brandTitle }}</span>
+              </h3>
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="bottom-head" (click)="closeSidebar()" *ngIf="trending">
+  <div
+    class="bottom-head"
+    (click)="closeSidebar()"
+    *ngIf="trending && trending.length"
+  >
     <div class="container py-2">
       <div class="d-flex align-items-center">
         <div class="col-xl-2 col-lg-1 col-sm-1"></div>
@@ -706,7 +717,7 @@
           <h5 class="large-main-article text-capitalize">{{ inquireTitle }}</h5>
           <hr />
         </div>
-          
+
         <form
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
@@ -765,12 +776,7 @@
           </div>
 
           <div class="d-grid text-right">
-            <button
-              type="submit"
-              class="submit"
-            >
-              Submit
-            </button>
+            <button type="submit" class="submit">Submit</button>
           </div>
           <br />
           <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
@@ -885,9 +891,7 @@
             </div>
           </div>
           <div class="d-grid text-right">
-            <button type="submit" class="submit">
-              Next
-            </button>
+            <button type="submit" class="submit">Next</button>
           </div>
           <br />
           <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
