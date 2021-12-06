@@ -98,25 +98,13 @@
     padding-top: 100px;
   }
   background: $white_3;
-  .nextLine {
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      height: 1px;
-      background-color: $red;
-      transform: translateY(-50%);
-    }
-    .nextBtn {
-      z-index: 1;
-    }
-  }
   .tabs {
-    height: 62px;
-    ul {
-      border-top: 0.5px solid $dark_gray;
-      border-bottom: 0.5px solid $dark_gray;
+    ul 
+    {
+      li{
+        border-top: 0.5px solid $light_gray_8;
+        border-bottom: 0.5px solid $light_gray_8;
+      }
     }
   }
 }

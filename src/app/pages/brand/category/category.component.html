@@ -131,23 +131,29 @@
   <div class="container customContainer  mt-4 py-3">
     <app-article [typeSlug]="tab" [contents]="featuredData" [class]="'row-cols-lg-5'"></app-article>
   </div>
-
-  <div class="nextLine position-relative mb-5 mt-2">
-    <div class="container customContainer">
-      <div class="row d-flex align-items-center">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="nextBtn px-1 bg-blue">
-            <img
-              data-src="{{ s3Url }}nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3 lazyload"
-              (click)="getMore(slug)"
-            />
-            <span class="gray-color text-uppercase">See More </span>
+  <div class="d-flex">
+    <div class="seeMoreLine"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
+            <div class="px-1 bg-blue">
+              <img
+                data-src="{{s3Url}}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMore(slug)"
+                loading="lazy"
+              />
+              <span class="seeMore" (click)="getMore(slug)"
+                >SEE MORE</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="seeMoreLine"></div>
   </div>
 </div>
