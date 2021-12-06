@@ -320,6 +320,7 @@
           ><button class="subscribe">Subscribe</button></a
         >
         <a
+          *ngIf="brandSlug === '1851'"
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
           class="cover d-none d-lg-block"

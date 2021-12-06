@@ -3,6 +3,10 @@
 
 .articles {
   overflow-x: hidden;
+  .video-play{
+    height: 71px;
+    width: 120px;
+  }
   .userDetail {
     max-width: 300px;
     .timeStamp {

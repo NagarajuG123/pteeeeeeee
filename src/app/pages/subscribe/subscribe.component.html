@@ -9,7 +9,7 @@
         data-src="{{ s3Url }}subscribepage-banner.jpeg"
       />
     </div>
-    <div class="col subscribe px-5 py-4">
+    <div class="col subscribe px-5 py-5">
       <h1 class="large-main-article ">{{ title }}</h1>
       <h5>Please provide us with the following information:</h5>
       <div *ngIf="!isSuccess" class="editors">
@@ -36,7 +36,7 @@
             </li>
           </ul>
           <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
-            <h6 class="pb-0 mb-1 clickall">Click all of which apply to you:</h6>
+            <h6 class="pb-0 mb-1 clickall pt-2">Click all of which apply to you:</h6>
             <ul class="pl-2">
               <li>
                 <div class="form-check">
@@ -147,7 +147,7 @@
                 </div>
               </li>
               <li>
-                <div *ngIf="isCheckBoxVisible" class="signmeup">
+                <div *ngIf="isCheckBoxVisible" class="signmeup pb-2">
                   <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['signUpNewsletter']" id="news">
                   <label class="form-check-label">
                     Sign me up for the 1851 newsletter
