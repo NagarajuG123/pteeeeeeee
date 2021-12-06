@@ -153,6 +153,13 @@
             [innerHTML]="short_description"
           ></h2>
           <div id="{{ id }}" class="description text-black" [innerHTML]="content"></div>
+          <div *ngIf="sponsorContent" >
+            <p class="brandPartner">
+              *This brand is a paid partner of {{ publication.title }}. For more
+              information on paid partnerships please
+              <span class="tooltiptext-link">click here.</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

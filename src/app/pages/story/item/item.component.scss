@@ -69,6 +69,12 @@
   //   articles detail style
   .details {
     line-height: 141.19%;
+    .brandPartner{
+      color: $light_gray_4;
+      font-size: 13px;
+      font-style: italic;
+      font-family: $proxiRegular;
+    }
     .detailHead {
       bottom: 100%;
       font-family: $roboto;
