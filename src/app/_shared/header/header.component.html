@@ -256,7 +256,14 @@
             class="lazyload"
         /></a>
         <nav class="pt-2">
+<<<<<<< HEAD
           <ul class="nav justify-content-center" [ngClass]="brandSlug === '1851' ? '' : 'brandNav'">
+=======
+          <ul
+            class="nav justify-content-center"
+            [style.padding-left]="brandSlug === '1851' ? '0' : '400px'"
+          >
+>>>>>>> 9805ff140393442cd875907e407df123870aef3c
             <li class="pe-lg-4 pe-2">
               <a
                 href="#"
@@ -507,7 +514,7 @@
         <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3">
           <img
             data-src="{{ s3Url }}trending_header.png"
-            height="28"
+            height="23"
             width="96"
             alt="trending"
             class="lazyload pe-3"

@@ -47,27 +47,30 @@
         <span class="small-red-headers align-top">Featured series</span>
         <ul>
           <li *ngFor="let item of seriesData | slice: 1:4" class="d-flex">
-            <a routerLink="{{ seriesData[0]?.url }}">
-              <img
-                appYoutubeImage
-                class="img-fluid lazyload"
-                width="192"
-                height="108"
-                data-src="{{ item.media | defaultImage: 1280:720 }}"
-                alt="featured"
-                loading="lazy"
-              />
-            </a>
-            <div>
-              <a routerLink="{{ seriesData[0]?.url }}">
-                <h3 class="px-3 mb-0 articleTitles">{{ item.title }}</h3>
-                <span class="px-3 seeMore"
-                  >SEE ALL
-                  <fa-icon
-                    [icon]="faAngleRight"
-                    class="fa-icon"
-                  ></fa-icon></span
-              ></a>
+            <div class="d-flex">
+              <div class="col-lg-5 col-md-4 col-sm-5 col-5">
+                <a routerLink="/{{ item?.url }}" class="pe-2">
+                  <img
+                    appYoutubeImage
+                    class="img-fluid lazyload"
+                    width="192"
+                    height="108"
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    alt="featured"
+                    loading="lazy"
+                /></a>
+              </div>
+              <div class="col-lg-7 col-sm-7 col-md-8 ps-2">
+                <a routerLink="{{ item?.url }}">
+                  <h3 class="px-3 mb-0 articleTitles">{{ item.title }}</h3>
+                  <span class="px-3 seeMore"
+                    >SEE ALL
+                    <fa-icon
+                      [icon]="faAngleRight"
+                      class="fa-icon"
+                    ></fa-icon></span
+                ></a>
+              </div>
             </div>
           </li>
         </ul>

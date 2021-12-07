@@ -31,6 +31,7 @@
           class="d-flex justify-content-center align-items-center video-btn"
         >
           <img
+            appYoutubeImage
             data-src="{{ item.media | defaultImage: 1280:720 }}"
             class="w-100 img-fluid lazyload"
             alt="video"
@@ -69,6 +70,7 @@
                   class="video-btn"
                 >
                   <img
+                    appYoutubeImage
                     data-src="{{ item.media | defaultImage: 1280:720 }}"
                     class="img-fluid lazyload video-img"
                     width="209"
