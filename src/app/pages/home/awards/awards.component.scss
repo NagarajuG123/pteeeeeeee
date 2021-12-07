@@ -29,30 +29,47 @@
     .articleTitles {
       color: $white_2;
     }
-    .col-md-3 {
-      width: 20%;
+  }
+  .awardCarousel {
+    padding: 0 10px;
+    @include mobile-portrait {
+      padding: 0 20px;
     }
   }
-  .carousel-control-prev {
-    left: -9%;
-    bottom: 20%;
-  }
-  .carousel-control-next {
-    right: -7.5%;
-    bottom: 20%;
-  }
-  .carousel-inner .carousel-item.active,
-  .carousel-inner .carousel-item-next,
-  .carousel-inner .carousel-item-prev {
-    display: flex;
-  }
+}
+:host ::ng-deep {
+  .owl-carousel {
+    .owl-item {
+      img {
+        width: 95% !important;
+      }
+    }
 
-  @media (max-width: 767px) {
-    .carousel-inner .carousel-item > div {
-      display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-      display: block;
+    .owl-nav {
+      div {
+        background-color: transparent;
+        position: absolute;
+        top: 35%;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        height: 43px;
+        width: 22px;
+        cursor: pointer;
+        &.owl-prev {
+          background-image: url("https://1851-static.s3.amazonaws.com/left-arrow.png");
+          left: -3%;
+          @include mobile-portrait {
+            left: -10%;
+          }
+        }
+        &.owl-next {
+          background-image: url("https://1851-static.s3.amazonaws.com/right-arrow.png");
+          right: -2%;
+          @include mobile-portrait {
+            right: -10%;
+          }
+        }
+      }
     }
   }
 }

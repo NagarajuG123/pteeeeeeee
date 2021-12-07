@@ -41,57 +41,36 @@
         </a>
       </div>
     </div>
-    <div class="row gx-2 bottomSection">
-      <div id="carouselAwardControls" class="carousel">
-        <div class="carousel-inner award-inner">
-          <ng-container *ngFor="let item of data | slice: 2:10; index as i">
-            <div
-              class="carousel-item award-item"
-              [ngClass]="{ active: i === 0 }"
-            >
-              <div class="col-sm-12 col-md-3">
-                <a
-                  *ngIf="item?.media"
-                  routerLink="{{ commonService.readMore(item) }}"
-                  fragment="dynamicpage"
-                >
-                  <img
-                    appYoutubeImage
-                    data-src="{{ item.media | defaultImage: 1280:720 }}"
-                    class="img-fluid lazyload"
-                    width="209"
-                    height="117"
-                    alt="article"
-                    loading="lazy"
-                  />
 
-                  <h3 class="articleTitles align-items-center m-0 pt-2">
-                    {{ item.title }}
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselAwardControls"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselAwardControls"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+    <div class="row gx-2 bottomSection">
+      <owl-carousel-o
+        [options]="customOptions"
+        class="position-relative awardCarousel"
+      >
+        <ng-template carouselSlide *ngFor="let item of data; index as i">
+          <div class="col-sm-12 col">
+            <a
+              *ngIf="item?.media"
+              routerLink="{{ commonService.readMore(item) }}"
+              fragment="dynamicpage"
+            >
+              <img
+                appYoutubeImage
+                data-src="{{ item.media | defaultImage: 1280:720 }}"
+                class="img-fluid lazyload"
+                width="209"
+                height="117"
+                alt="article"
+                loading="lazy"
+              />
+
+              <h3 class="articleTitles align-items-center m-0 pt-2">
+                {{ item.title }}
+              </h3>
+            </a>
+          </div>
+        </ng-template></owl-carousel-o
+      >
     </div>
   </div>
 </div>
