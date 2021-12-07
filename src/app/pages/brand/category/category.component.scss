@@ -27,22 +27,17 @@
   }
   > h3 {
     font-family: $aktiv;
-    font-size: 64px !important;
+    font-size: 50px !important;
     font-weight: 700;
     color: $dark_gray;
-    line-height: 77px;
+    line-height: 62.5px;
     @include mobile-landscape {
       font-size: 32px !important;
     }
   }
   > span {
-    font-family: $proxiRegular;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 13.76px !important;
-    line-height: 19.43px;
     color: $black;
-    max-width: 50%;
+    max-width: 70%;
     @include mobile-landscape {
       max-width: 100%;
     }
@@ -69,19 +64,6 @@
     &:last-child {
       border: 0;
     }
-    h3 {
-      font-family: $roboto;
-      font-weight: 700;
-      font-size: 16px;
-      color: $red;
-      line-height: 18.72px;
-      a {
-        color: $red;
-      }
-    }
-    .timeStamp {
-      color: $dark_gray;
-    }
     @include mobile-landscape {
       padding: 10px 0 10px;
     }
@@ -104,6 +86,10 @@
       li{
         border-top: 0.5px solid $light_gray_8;
         border-bottom: 0.5px solid $light_gray_8;
+        span{
+          font-family: $proxiBold;
+          color: $light_gray_8;
+        }
       }
     }
   }

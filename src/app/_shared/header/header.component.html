@@ -240,7 +240,8 @@
         </ul>
       </div>
       <div
-        class="col-lg-8 col-sm-8 col-md-7 col-7 d-flex align-items-center logo"
+        class="d-flex align-items-center logo"
+        [ngClass]="brandSlug ==='1851' ? 'col-lg-8 col-sm-8 col-md-7 col-7' : 'col-lg-10 col-sm-8 col-md-9 col-8'"
         (click)="closeSidebar()"
       >
         <a
@@ -255,10 +256,7 @@
             class="lazyload"
         /></a>
         <nav class="pt-2">
-          <ul
-            class="nav justify-content-center"
-            [style.padding-left]="brandSlug === '1851' ? '0' : '400px'"
-          >
+          <ul class="nav justify-content-center" [ngClass]="brandSlug === '1851' ? '' : 'brandNav'">
             <li class="pe-lg-4 pe-2">
               <a
                 href="#"
@@ -303,7 +301,8 @@
         </nav>
       </div>
       <div
-        class="col-lg-3 col-sm-2 col-md-3 col-2 d-flex align-items-center"
+        class=" d-flex align-items-center"
+        [ngClass]="brandSlug ==='1851' ? 'col-lg-3 col-sm-2 col-md-3 col-2' : 'col-lg-1 col-sm-1 col-md-1 col-1'"
         (click)="closeSidebar()"
       >
         <a
@@ -455,9 +454,8 @@
                     my-1
                     text-capitalize
                   "
-                  [routerLink]="commonService.readMore(story)"
+                  [href]="commonService.readMore(story)"
                   (click)="commonService.toggle()"
-                  target="_blank"
                   >{{ story.title }}
                 </a>
               </li>
@@ -647,15 +645,17 @@
                     </h3>
                   </div>
                   <div class="card-footer ps-3">
-                    <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-                      >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-                      {{ item.last_modified | date: "shortTime" }}
+                    <span
+                      *ngIf="commonService.isUpdate(item)"
+                      class="timeStamp"
+                      >{{ commonService.formatDate(item.last_modified) }} |
+                      {{ commonService.formatTime(item.last_modified) }}
                     </span>
                     <span
                       *ngIf="!commonService.isUpdate(item)"
                       class="timeStamp"
-                      >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-                      {{ item.posted_on | date: "shortTime" }}</span
+                      >{{ commonService.formatDate(item.posted_on) }} |
+                      {{ commonService.formatTime(item.posted_on) }}</span
                     >
                   </div>
                 </div>
@@ -779,7 +779,7 @@
             </div>
           </div>
 
-          <div class="d-grid text-right">
+          <div class="d-grid float-end mb-4">
             <button type="submit" class="submit">Submit</button>
           </div>
           <br />
