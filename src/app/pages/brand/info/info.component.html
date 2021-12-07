@@ -176,6 +176,7 @@
                   ></iframe>
                 </div>
                 <p
+                  class="descriptionDetails"
                   *ngIf="item?.short_description"
                   [innerHTML]="item?.short_description"
                 ></p>
@@ -195,7 +196,7 @@
               "
             >
               <div class="frannews-left--wrapper">
-                <div class="frannews-top-left d-flex">LEARN MORE ABOUT</div>
+                <div class="frannews-top-left large-main-article d-flex text-capitalize">Learn More About</div>
                 <img
                   class="lazyload"
                   width="298"
@@ -204,7 +205,7 @@
                   alt="brand_logo"
                   loading="lazy"
                 />
-                <div class="pt-3 download-btn">
+                <div class="pt-3">
                   <button
                     *ngIf="items?.email_popup"
                     data-bs-toggle="modal"
@@ -229,7 +230,6 @@
                     <button
                       type="submit"
                       class="
-                        btn
                         text-center
                         submit-btn
                         text-white
@@ -276,23 +276,23 @@
                 </li>
               </ul>
             </div>
-            <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
+            <p class="descriptionDetails" *ngIf="items?.content" [innerHTML]="items?.content"></p>
           </div>
 
           <div class="container customContainer whyIBought" *ngIf="isExecutive">
             <div>
               <ul class="d-flex">
                 <li class="header-title">
-                  <h2 class="text-uppercase">
+                  <h2 class="text-uppercase sectionTitle mb-0">
                     {{ items?.name }}
                   </h2>
                 </li>
                 <li>
-                  <h2 class="text-uppercase">EXECUTIVE Q&A</h2>
+                  <h2 class="text-uppercase sectionTitle mb-0">EXECUTIVE Q&A</h2>
                 </li>
               </ul>
             </div>
-            <p *ngIf="items?.content" [innerHTML]="items?.content"></p>
+            <p class="descriptionDetails" *ngIf="items?.content" [innerHTML]="items?.content"></p>
           </div>
 
           <div class="container whyIBought d-flex" *ngIf="isMarket">
