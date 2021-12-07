@@ -34,7 +34,7 @@
               >
               <h2 class="position-relative ps-4 card-title">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
-                <p class="ms-3 mb-0 articleTitles">
+                <p class="ms-3 mb-0 articleTitles pt-1">
                   {{ item.title }}
                 </p>
               </h2>
@@ -79,7 +79,10 @@
         </a>
       </div>
     </div>
-    <div class="row d-flex pb-3 d-sm-none d-md-block">
+    <div
+      class="row d-flex pb-3 d-sm-none"
+      [ngClass]="slug !== '1851' ? 'd-md-block' : ''"
+    >
       <div class="carousel" id="carouselPopularIndicators">
         <div class="carousel-inner popular-inner">
           <ng-container *ngFor="let item of data; index as i">
