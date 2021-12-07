@@ -11,7 +11,7 @@ header {
     height: 21px;
     color: $light_gray_9;
 
-    > div {
+    div {
       font-weight: 700;
       font-size: 12px;
       line-height: 15.44px;
@@ -180,7 +180,7 @@ header {
           }
         }
       }
-      > .dropdown-menu {
+      .dropdown-menu {
         &:hover {
           display: block;
           border-radius: 0rem;
@@ -346,7 +346,8 @@ header {
     background: rgba(0, 0, 0, 0.5);
     padding: 0 !important;
     .modal-content {
-      background: url("https://1851-static.s3.amazonaws.com/thanks.png") no-repeat 0 0;
+      background: url("https://1851-static.s3.amazonaws.com/thanks.png")
+        no-repeat 0 0;
       height: 234px;
       width: 480px;
       border: unset;
