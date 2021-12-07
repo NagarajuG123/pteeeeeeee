@@ -29,30 +29,52 @@
     .articleTitles {
       color: $white_2;
     }
-    .col-md-3 {
-      width: 20%;
+  }
+  .awardCarousel {
+    @include mobile-portrait {
+      padding: 0 10px;
     }
   }
-  .carousel-control-prev {
-    left: -9%;
-    bottom: 20%;
-  }
-  .carousel-control-next {
-    right: -7.5%;
-    bottom: 20%;
-  }
-  .carousel-inner .carousel-item.active,
-  .carousel-inner .carousel-item-next,
-  .carousel-inner .carousel-item-prev {
-    display: flex;
-  }
+}
+:host ::ng-deep {
+  .owl-carousel {
+    .owl-item {
+      padding: 0 5px;
+    }
 
-  @media (max-width: 767px) {
-    .carousel-inner .carousel-item > div {
-      display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-      display: block;
+    .owl-nav {
+      div {
+        background-color: transparent;
+        position: absolute;
+        top: 20%;
+        transform: translateY(-20%);
+        background-repeat: no-repeat;
+        cursor: pointer;
+        color: $white_2;
+        font-size: 45px !important;
+        &.owl-prev {
+          left: -3%;
+
+          @include mobile-portrait {
+            left: -8%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
+        &.owl-next {
+          right: -3%;
+
+          @include mobile-portrait {
+            right: -8%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
+      }
     }
   }
 }

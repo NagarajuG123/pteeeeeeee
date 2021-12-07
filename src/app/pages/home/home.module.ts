@@ -9,10 +9,17 @@ import { EditorialSectionsComponent } from './editorial-sections/editorial-secti
 import { SeriesComponent } from './series/series.component';
 import { VideoComponent } from './video/video.component';
 import { AwardsComponent } from './awards/awards.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
-  declarations: [HomeComponent, EditorialSectionsComponent, SeriesComponent, VideoComponent, AwardsComponent],
-  imports: [CommonModule, HomeRoutingModule, SharedModule],
+  declarations: [
+    HomeComponent,
+    EditorialSectionsComponent,
+    SeriesComponent,
+    VideoComponent,
+    AwardsComponent,
+  ],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, CarouselModule],
   providers: [],
 })
 export class HomeModule {}

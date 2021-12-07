@@ -49,6 +49,7 @@ header {
       @include mobile-portrait {
         font-size: 11px;
         line-height: 14px;
+        color: $red;
       }
     }
     .subscribe {
@@ -192,17 +193,17 @@ header {
         }
       }
     }
-    .brandNav{
-        padding-left: 630px;
-        @include tablet-landscape{
-          padding-left: 200px;
-        }
-        @include tablet-landscape1{
-          padding-left: 0;
-        }
-        @media (min-width: 1024px) and (max-width: 1350px) {
-          padding-left: 400px;
-        }
+    .brandNav {
+      padding-left: 630px;
+      @include tablet-landscape {
+        padding-left: 200px;
+      }
+      @include tablet-landscape1 {
+        padding-left: 0;
+      }
+      @media (min-width: 1024px) and (max-width: 1350px) {
+        padding-left: 400px;
+      }
     }
   }
 
@@ -325,21 +326,21 @@ header {
     }
   }
   .inquireModal {
-   form{
-     input{
-       font-family: $roboto;
-       font-size: 17px;
-       line-height: 24px;
-       color: $dark_gray_6;
-       font-weight: 400;
-     }
-     .submit{
+    form {
+      input {
+        font-family: $roboto;
+        font-size: 17px;
+        line-height: 24px;
+        color: $dark_gray_6;
+        font-weight: 400;
+      }
+      .submit {
         color: $white;
         background-color: $red;
         height: 40px;
         width: 150px;
-     }
-   }
+      }
+    }
   }
   .thanksModal {
     background: rgba(0, 0, 0, 0.5);

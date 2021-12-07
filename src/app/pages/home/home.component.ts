@@ -4,7 +4,6 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { forkJoin } from 'rxjs';
-import { Details } from 'src/app/_core/models/details.model';
 
 @Component({
   selector: 'app-home',
