@@ -94,10 +94,19 @@
 }
 
 .tabs {
-  height: 62px;
   ul {
-    border-top: 0.5px solid $dark_gray;
-    border-bottom: 0.5px solid $dark_gray;
+    li {
+        border-top: 0.5px solid $light_gray_8;
+        border-bottom: 0.5px solid $light_gray_8;
+      span{
+        font-family: $proxiBold;
+        color: $light_gray_8;
+        &.active,
+          &:hover {
+            color: $red;
+        } 
+      }
+    }
   }
 }
 
