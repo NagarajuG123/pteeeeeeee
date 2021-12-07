@@ -477,14 +477,8 @@
       flex-direction: column;
     }
     li {
-      h2 {
-        font-family: $aktiv;
-        font-weight: 700 !important;
-        font-size: 35px !important;
-        line-height: 42px !important;
-        color: $dark_gray;
-      }
       &.marketHeading h2 {
+        color: $dark_gray;
         @include mobile-portrait {
           font-size: 25px !important;
         }
@@ -644,7 +638,7 @@
 .more-brand--wrapper {
   .headerMarket {
     height: 60px;
-    background: #eb0444;
+    background: $red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1012,24 +1006,19 @@ button.close {
 
 .available-marketing--wrapper {
   position: relative;
-  // padding: 0 95px 0 65px;
 
   @include media("<xl") {
     padding: 0 15px;
   }
 
-  // @include media("<md") {
-  //   margin: 0 -12px !important;
-  // }
-
   &:before {
     position: absolute;
     content: "";
     background: #eb0444;
-    width: 101.5%;
+    width: 130%;
     height: 2px;
     top: 49px;
-    left: -12px;
+    left: -140px;
     right: 0;
 
     @include media("<md") {
@@ -1078,7 +1067,6 @@ button.close {
 
       .divider-recent-feature {
         .btn {
-          height: 36px;
           font-family:$aktiv;
           font-weight: 700;
           font-size: 18px;
@@ -1116,7 +1104,7 @@ button.close {
 
 .map-legend {
   padding: 20px 30px 40px 120px;
-  background: #e8eef2;
+  background: $white_8;
   font-weight: 700;
   font-family: $roboto;
   font-size: 16px;
