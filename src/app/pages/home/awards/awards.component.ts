@@ -17,7 +17,7 @@ export class AwardsComponent implements OnInit {
   faAngleRight = faAngleRight;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
-
+  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object,
@@ -31,6 +31,7 @@ export class AwardsComponent implements OnInit {
     this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
       this.data = result.data.stories;
       this.result = result.data;
+      this.isLoaded = true;
     });
   }
   setConfig() {
