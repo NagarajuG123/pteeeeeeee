@@ -89,6 +89,10 @@
         span{
           font-family: $proxiBold;
           color: $light_gray_8;
+          &.active,
+          &:hover {
+            color: $red;
+          }
         }
       }
     }
