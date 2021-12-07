@@ -1,129 +1,39 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
-img {
-  height: 514px;
-  width: 100%;
-  @include tablet-landscape1 {
-    height: auto;
-  }
-}
-.row {
-  @include mobile-landscape1 {
+.subscribe {
+  @include mobile-portrait {
     flex-direction: column;
   }
-}
-.f_error {
-  display: block;
-  margin: 10px 0;
-  text-align: center;
-  color: $red;
-}
-
-.editors-details {
-  padding: 8px 20px 0 46px;
-  display: none;
-  @include desk-lg-below1 {
-    padding: 8px 20px 0 35px;
-  }
-  ul {
-    margin: 0;
-    padding: 6px 20px 0 20px;
-    @include desk-lg-below1 {
-      padding: 6px 0 0 10px;
-    }
-    li {
-      vertical-align: top;
-      padding: 0 16px 0 0;
-      font-family: $roboto;
+  img {
+    height: 514px;
+    @include tablet-landscape1 {
+      height: auto;
     }
   }
-
-  .radio_btns {
-    color: $light_gray;
-  }
-  span {
-    padding: 0 0 0 17px;
-    font-size: 17px;
-    line-height: 30.46px;
-    font-weight: 400;
-    font-family: $roboto;
-    color: $dark_black;
-  }
-  strong {
-    font-size: 11px;
-    line-height: 13px;
-    font-weight: normal;
-    font-family: $proxiRegular;
-    color: $light_gray_5;
-    letter-spacing: 0.3px;
-  }
-}
-
-.f_success {
-  color: $green;
-  display: block;
-  margin: 10px 0;
-  text-align: center;
-}
-#hideAfter5Sec {
-  animation: hideAnimation 0s ease-in 5s;
-  animation-fill-mode: forwards;
-}
-@keyframes hideAnimation {
-  to {
-    visibility: hidden;
-    width: 0;
-    height: 0;
-  }
-}
-
-//Redesign
-.subscribe {
   background-color: $white_3;
-  .large-main-article  {
+  .large-main-article {
     line-height: 42.5px;
     color: $red;
-    text-align: left;
+    @include mobile-portrait {
+      font-size: 27px;
+    }
   }
-   h5 {
+  h3 {
     font-size: 20px;
     font-family: $roboto;
     line-height: 25.74px;
-    text-align: left;
     font-weight: 500;
     color: $dark_black;
-    }
-   .clickall {
-    font-size: 20px;
-    font-family: $roboto;
-    line-height: 25.74px;
-    text-align: left;
-    font-weight: 500;
-    color: $dark-gray;
   }
-  .form-control {
-    border: 1px solid $dark_gray_5 !important ;
-    width: 74%;
-    height: 47px;
-    background: $white;
 
-  }
-  input{
-    &::placeholder {
-    font-family: $roboto;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 25.74px;
-    color: $light_gray_8;
-  }
-}
-  .contact-editorial-main {
-    label {
-      margin: 0;
-    }
-    .radio_btns1 {
-      color: $dark_gray_1;
+  .editors {
+    h6 {
+      font-size: 17px;
+      font-family: $roboto;
+      line-height: 24px;
+      font-weight: 400;
+      color: $dark_gray;
     }
     label {
       font-size: 14px;
@@ -133,7 +43,116 @@ img {
       color: $dark_black;
       letter-spacing: 0.4px;
     }
+    .form-control {
+      border: 1px solid $dark_gray_5 !important ;
+      width: 65%;
+      height: 47px;
+      background: $white;
+    }
+    input {
+      &::placeholder {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 25.74px;
+        color: $light_gray_8;
+      }
+    }
+    .form-check-input:checked {
+      background-color: $red;
+      border-color: $red;
+    }
+    .form-check-input[type="checkbox"] {
+      border: 1px solid $red !important;
+      border-radius: 0rem;
+    }
+    button {
+      position: relative;
+      border: 0;
+      width: 118px;
+      height: 35px;
+      padding: 9px 15px 16px 0px;
+      color: $white;
+
+      span {
+        position: absolute;
+        top: 0;
+        width: 13px;
+        height: 10px;
+        left: unset;
+        padding: 8px 1px 0px 7px;
+        fa-icon {
+          font-size: 18px;
+          color: $white;
+        }
+      }
+    }
+    .f_error {
+      display: block;
+      margin: 10px 0;
+      text-align: center;
+      color: $red;
+    }
+    .f_success {
+      color: $green;
+      display: block;
+      margin: 10px 0;
+      text-align: center;
+    }
+    #hideAfter5Sec {
+      animation: hideAnimation 0s ease-in 5s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes hideAnimation {
+      to {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
+    }
+    .signmeup {
+      label {
+        padding: 0 0 0 10px;
+        font-size: 9px;
+        line-height: 12.71px;
+        font-weight: 700;
+        font-family: $roboto;
+        letter-spacing: 0.4px;
+        color: $dark_gray;
+      }
+      .signmeup input:checked + span {
+        font-size: 9px;
+        font-family: $roboto;
+        font-weight: 700;
+        line-height: 12.71px;
+        color: $dark_gray;
+      }
+    }
     .editors-details {
+      padding: 8px 20px 0 46px;
+      display: none;
+      @include desk-lg-below1 {
+        padding: 8px 20px 0 35px;
+      }
+      ul {
+        margin: 0;
+        padding: 6px 20px 0 20px;
+        @include desk-lg-below1 {
+          padding: 6px 0 0 10px;
+        }
+        li {
+          vertical-align: top;
+          padding: 0 16px 0 0;
+          font-family: $roboto;
+        }
+      }
+      strong {
+        font-size: 11px;
+        line-height: 13px;
+        font-weight: 400;
+        font-family: $proxiRegular;
+        color: $light_gray_5;
+        letter-spacing: 0.3px;
+      }
       label {
         font-size: 12px;
         line-height: 17px;
@@ -143,95 +162,9 @@ img {
         padding: 0 0 0 10px;
         letter-spacing: 0.4px;
       }
-    }
-  }
-  .signmeup {
-    .checks {
-      margin: 0;
-    }
-    label {
-      padding: 0 0 0 10px;
-      font-size: 9px;
-      line-height: 12.71px;
-      font-weight: 700;
-      font-family: $roboto;
-      letter-spacing: 0.4px;
-      color: $dark_gray;
-    }
-  }
-  .signmeup input:checked + span {
-    font-size: 9px;
-    font-family: $roboto;
-    font-weight: 700;
-    line-height: 12.71px;
-    color: $dark_gray;
-  }
-  .editors {
-    .form-group {
-      margin: 0;
-    }
-
-    ul {
-      margin: 0 -6px;
-      li {
-        padding: 0 6px 6px;
+      .d-inline-block .form-check-input {
+        margin-left: 0;
       }
     }
-    button {
-      border: 0;
-      width: 118px;
-      height: 35px;
-      padding: 9px 15px 16px 0px;
-      color: $white;
-      span {
-        left: unset;
-        padding: 8px 1px 0px 7px;
-      }
-    }
-    a {
-      font-size: 12px;
-      line-height: 14px;
-      color: $light_gray_1;
-      font-family: $proxiLight;
-      letter-spacing: 0.4px;
-      margin: 19px 0 0;
-    }
-  }
-
-  .back {
-    position: relative;
-    span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 13px;
-      height: 10px;
-      fa-icon {
-        font-size: 18px;
-        color: $white;
-      }
-    }
-  }
-  .form-check-input:checked {
-    background-color: $red;
-    border-color: $red;
-  }
-  .form-check-input[type=checkbox] {
-    border: 1px solid $red !important;
-    border-radius:0rem;
-
-}
-  .d-inline-block {
-    .form-check-input {
-      margin-left: 0;
-    }
-  }
-}
-
-.bannerSection {
-  width: 50%;
-  padding-right: 0;
-  @include mobile-landscape1 {
-    width: 100%;
   }
 }

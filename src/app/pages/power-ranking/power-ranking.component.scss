@@ -28,7 +28,7 @@
     border-bottom: 3px solid $dark_gray;
     text-align: center;
     width: 829px;
-    height:186px;
+    height: 186px;
     margin: 0 auto;
     background-color: $white;
     @include media("<md") {
@@ -39,10 +39,10 @@
     @include media("<sm") {
       width: 70%;
     }
-    @include tablet-landscape{
-      width:60%;
+    @include tablet-landscape {
+      width: 60%;
     }
-    .large-main-article { 
+    .large-main-article {
       margin: 0;
       color: $dark_black;
       line-height: 42.5px;
@@ -79,7 +79,7 @@
   justify-content: space-around;
   min-height: 160px;
 
-  @include media("<md") {  
+  @include media("<md") {
     flex-flow: row wrap;
   }
 
@@ -263,7 +263,7 @@
   }
 }
 .otherBrand {
-  height: 322px;
+  height: 250px;
   align-items: flex-start;
   padding-top: 60px;
   @include media("<xl") {
@@ -279,7 +279,7 @@
       background-color: transparent;
       .list-data-row--wrapper {
         &:nth-child(even) {
-          background-color:$white_3;
+          background-color: $white_3;
         }
       }
     }

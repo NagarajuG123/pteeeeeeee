@@ -1,176 +1,304 @@
-<div class="sidebar-blur" *ngIf="isLoaded">
-  <div class="row">
-    <div class="bannerSection">
-      <img
-        class="lazyload img-fluid"
-        height="514"
-        width="763"
-        alt="subscribe_banner"
-        data-src="{{ s3Url }}subscribepage-banner.jpeg"
-      />
-    </div>
-    <div class="col subscribe px-5">
-      <h1 class="large-main-article ">{{ title }}</h1>
-      <h5>Please provide us with the following information:</h5>
-      <div *ngIf="!isSuccess" class="editors">
-        <form
-          [formGroup]="contactForm"
-          class="fill-form"
-          (ngSubmit)="onContactSubmit(contactForm)"
-        >
-          <ul class="d-flex">
-            <li class="col-12">
-              <div class="form-group">
+<div class="sidebar-blur row subscribe">
+  <div class="col">
+    <img
+      class="lazyload img-fluid"
+      height="514"
+      width="763"
+      alt="subscribe"
+      data-src="{{ s3Url }}subscribepage-banner.jpeg"
+    />
+  </div>
+  <div class="px-5 py-4 col">
+    <h1 class="large-main-article m-0 pb-1">{{ title }}</h1>
+    <h3 class="m-0 pb-2">Please provide us with the following information:</h3>
+    <div class="editors">
+      <form [formGroup]="contactForm" (ngSubmit)="onContactSubmit(contactForm)">
+        <div class="form-group pb-3">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="EMAIL ADDRESS*"
+            [formControl]="contactForm.controls['email']"
+          />
+          <app-error-message
+            *ngIf="isSubmitted"
+            class="full-width"
+            [control]="contactForm.controls['email']"
+          ></app-error-message>
+        </div>
+
+        <div *ngIf="isCheckBoxVisible">
+          <h6 class="pb-2 m-0">Click all of which apply to you:</h6>
+          <ul class="pl-2">
+            <li>
+              <div class="form-check">
                 <input
-                  type="email"
-                  class="form-control"
-                  placeholder="EMAIL ADDRESS*"
-                  [formControl]="contactForm.controls['email']"
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['currentFranchisee']"
+                  (change)="toggleCurrent($event)"
+                  id="current"
                 />
-                <app-error-message
-                  *ngIf="isSubmitted"
-                  class="full-width"
-                  [control]="contactForm.controls['email']"
-                ></app-error-message>
+                <label class="form-check-label"> Current Franchisee </label>
+                <div class="editors-details current-details">
+                  <strong class="d-block">Number of Units</strong>
+                  <ul class="pl-3">
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls['currentFranchiseeOwnsUp10units']
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'currentFranchiseeOwns10Plusunits'
+                          ].setValue('')
+                        "
+                        id="units"
+                        name="unit"
+                        value="1-10"
+                      />
+                      <label class="form-check-label"> 1-10 </label>
+                    </li>
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls[
+                            'currentFranchiseeOwns10Plusunits'
+                          ]
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'currentFranchiseeOwnsUp10units'
+                          ].setValue('')
+                        "
+                        id="units1"
+                        name="unit"
+                        value="10+"
+                      />
+                      <label class="form-check-label"> 10+ </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['prospectiveFranchisee']"
+                  (change)="toggleProspective($event)"
+                  id="prospective"
+                />
+                <label class="form-check-label"> Prospective Franchisee </label>
+                <div class="editors-details prospective-details">
+                  <strong class="d-block"
+                    >How soon do you want to become a franchisee?</strong
+                  >
+                  <ul class="pl-3">
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls[
+                            'prospectiveFranchiseeUnder6Months'
+                          ]
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'prospectiveFranchiseeOver6Months'
+                          ].setValue('')
+                        "
+                        id="months"
+                        name="unit1"
+                        value="Under 6 months"
+                      />
+                      <label class="form-check-label"> Under 6 months </label>
+                    </li>
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls[
+                            'prospectiveFranchiseeOver6Months'
+                          ]
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'prospectiveFranchiseeUnder6Months'
+                          ].setValue('')
+                        "
+                        id="months1"
+                        name="unit1"
+                        value="Over 6 months"
+                      />
+                      <label class="form-check-label"> Over 6 months </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['franchiseExecutive']"
+                  (change)="toggleExecutive($event)"
+                  id="executive"
+                />
+                <label class="form-check-label"> Franchise Executive </label>
+                <div class="editors-details executive-details">
+                  <ul class="pl-3">
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls['franchiseExecutiveLeadership']
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'franchiseNonExecutiveLeadership'
+                          ].setValue('')
+                        "
+                        id="leadership"
+                        name="unit2"
+                        value="Executive leadership"
+                      />
+                      <label class="form-check-label">
+                        Executive leadership
+                      </label>
+                    </li>
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls[
+                            'franchiseNonExecutiveLeadership'
+                          ]
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'franchiseExecutiveLeadership'
+                          ].setValue('')
+                        "
+                        id="leadership1"
+                        name="unit2"
+                        value="Non-executive leadership"
+                      />
+                      <label class="form-check-label">
+                        Non-executive leadership
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['businessExecutive']"
+                  (change)="toggleExecutive1($event)"
+                  id="executive1"
+                />
+                <label class="form-check-label"> Business Executive </label>
+                <div class="editors-details executive1-details">
+                  <ul class="pl-3">
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls['businessExecutiveLeadership']
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'businessNonExecutiveLeadership'
+                          ].setValue('')
+                        "
+                        id="leadership2"
+                        name="unit3"
+                        value="Executive leadership"
+                      />
+                      <label class="form-check-label">
+                        Executive leadership
+                      </label>
+                    </li>
+                    <li class="d-inline-block">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [formControl]="
+                          contactForm.controls['businessNonExecutiveLeadership']
+                        "
+                        (click)="
+                          contactForm.controls[
+                            'businessExecutiveLeadership'
+                          ].setValue('')
+                        "
+                        id="leadership3"
+                        name="unit3"
+                        value="Non-executive leadership"
+                      />
+                      <label class="form-check-label">
+                        Non-executive leadership
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['other']"
+                  (change)="toggleOther($event)"
+                  id="other"
+                />
+                <label class="form-check-label"> Other </label>
+              </div>
+            </li>
+            <li>
+              <div *ngIf="isCheckBoxVisible" class="signmeup">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [formControl]="contactForm.controls['signUpNewsletter']"
+                  id="news"
+                />
+                <label class="form-check-label">
+                  Sign me up for the 1851 newsletter
+                </label>
               </div>
             </li>
           </ul>
-          <div *ngIf="isCheckBoxVisible" class="contact-editorial-main">
-            <h6 class="pb-0 mb-1 clickall">Click all of which apply to you:</h6>
-            <ul class="pl-2">
-              <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox"  [formControl]="contactForm.controls['currentFranchisee']" (change)="toggleCurrent($event)" id="current">
-                  <label class="form-check-label">
-                    Current Franchisee
-                  </label>
-                  <div class="editors-details current-details">
-                    <strong class="d-block">Number of Units</strong>
-                    <ul class="pl-3">
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['currentFranchiseeOwnsUp10units']" (click)="contactForm.controls['currentFranchiseeOwns10Plusunits'].setValue('')" id="units" name="unit" value="1-10">
-                        <label class="form-check-label">
-                          1-10
-                        </label>
-                      </li>
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['currentFranchiseeOwns10Plusunits']" (click)="contactForm.controls['currentFranchiseeOwnsUp10units'].setValue('')" id="units1" name="unit" value="10+">
-                        <label class="form-check-label">
-                          10+
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['prospectiveFranchisee']" (change)="toggleProspective($event)" id="prospective">
-                  <label class="form-check-label">
-                    Prospective Franchisee
-                  </label>
-                  <div class="editors-details prospective-details">
-                    <strong class="d-block"
-                      >How soon do you want to become a franchisee?</strong
-                    >
-                    <ul class="pl-3">
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['prospectiveFranchiseeUnder6Months']" (click)="contactForm.controls['prospectiveFranchiseeOver6Months'].setValue('')" id="months" name="unit1" value="Under 6 months">
-                        <label class="form-check-label">
-                          Under 6 months
-                        </label>
-                      </li>
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['prospectiveFranchiseeOver6Months']" (click)="contactForm.controls['prospectiveFranchiseeUnder6Months'].setValue('')" id="months1" name="unit1" value="Over 6 months">
-                        <label class="form-check-label">
-                          Over 6 months
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['franchiseExecutive']" (change)="toggleExecutive($event)" id="executive">
-                  <label class="form-check-label">
-                    Franchise Executive
-                  </label>
-                  <div class="editors-details executive-details">
-                    <ul class="pl-3">
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['franchiseExecutiveLeadership']" (click)="contactForm.controls['franchiseNonExecutiveLeadership'].setValue('')" id="leadership" name="unit2" value="Executive leadership">
-                        <label class="form-check-label">
-                          Executive leadership
-                        </label>
-                      </li>
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['franchiseNonExecutiveLeadership']" (click)="contactForm.controls['franchiseExecutiveLeadership'].setValue('')" id="leadership1" name="unit2" value="Non-executive leadership">
-                        <label class="form-check-label">
-                          Non-executive leadership
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['businessExecutive']" (change)="toggleExecutive1($event)" id="executive1">
-                  <label class="form-check-label">
-                    Business Executive
-                  </label>
-                  <div class="editors-details executive1-details">
-                    <ul class="pl-3">
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['businessExecutiveLeadership']" (click)="contactForm.controls['businessNonExecutiveLeadership'].setValue('')" id="leadership2" name="unit3" value="Executive leadership">
-                        <label class="form-check-label">
-                          Executive leadership
-                        </label>
-                      </li>
-                      <li class="d-inline-block">
-                        <input class="form-check-input" type="radio"  [formControl]="contactForm.controls['businessNonExecutiveLeadership']" (click)="contactForm.controls['businessExecutiveLeadership'].setValue('')" id="leadership3" name="unit3" value="Non-executive leadership">
-                        <label class="form-check-label">
-                          Non-executive leadership
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['other']" (change)="toggleOther($event)" id="other">
-                  <label class="form-check-label">
-                    Other
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div *ngIf="isCheckBoxVisible" class="signmeup">
-                  <input class="form-check-input" type="checkbox" [formControl]="contactForm.controls['signUpNewsletter']" id="news">
-                  <label class="form-check-label">
-                    Sign me up for the 1851 newsletter
-                  </label>
-                </div>
-              </li>
-            </ul>
-          </div>
+        </div>
 
-          <button
-            type="button"
-            class="back d-block submit_btn"
-            (click)="onContactSubmit(contactForm)"
-          >
-            Subscribe
-            <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
-          </button>
-          <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
-          <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
-            submitSuccessMsg
-          }}</span>
-        </form>
-      </div>
+        <button
+          type="button"
+          class="back d-block"
+          (click)="onContactSubmit(contactForm)"
+        >
+          Subscribe
+          <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
+        </button>
+        <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+        <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
+          submitSuccessMsg
+        }}</span>
+      </form>
     </div>
   </div>
 </div>

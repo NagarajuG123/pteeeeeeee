@@ -35,7 +35,6 @@ export class AwardsComponent implements OnInit {
       const parent = document.querySelector('.award-inner');
       if (parent) {
         document.querySelectorAll('.award-item').forEach(function (item) {
-          console.log(document.querySelectorAll('.award-item'));
           let next = item.nextElementSibling;
           if (!next) {
             next = parent.querySelector('.carousel-item');
