@@ -12,8 +12,12 @@
           border-bottom: 0.5px solid $light_gray_8;
         span{
           font-family: $proxiBold;
+          color: $light_gray_8;
         }
       }
     }
+  }
+  .article {
+    padding: 0 58px;
   }
 }
