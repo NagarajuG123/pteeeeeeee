@@ -645,15 +645,17 @@
                     </h3>
                   </div>
                   <div class="card-footer ps-3">
-                    <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-                      >{{ item.last_modified | date: "MM-dd-YYYY" }} |
-                      {{ item.last_modified | date: "shortTime" }}
+                    <span
+                      *ngIf="commonService.isUpdate(item)"
+                      class="timeStamp"
+                      >{{ commonService.formatDate(item.last_modified) }} |
+                      {{ commonService.formatTime(item.last_modified) }}
                     </span>
                     <span
                       *ngIf="!commonService.isUpdate(item)"
                       class="timeStamp"
-                      >{{ item.posted_on | date: "MM-dd-YYYY" }} |
-                      {{ item.posted_on | date: "shortTime" }}</span
+                      >{{ commonService.formatDate(item.posted_on) }} |
+                      {{ commonService.formatTime(item.posted_on) }}</span
                     >
                   </div>
                 </div>
