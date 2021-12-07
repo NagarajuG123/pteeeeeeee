@@ -34,6 +34,20 @@ header {
           height: 36px;
         }
       }
+      .sponsor {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23.16px;
+        font-family: $roboto;
+        color: $dark_gray;
+      }
+      .sponsorLogo {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12.87px;
+        font-family: $roboto;
+        color: $dark_gray_6;
+      }
     }
     .menu {
       @include mobile-portrait {
@@ -191,18 +205,6 @@ header {
             background: $dark_gray_7;
           }
         }
-      }
-    }
-    .brandNav {
-      padding-left: 630px;
-      @include tablet-landscape {
-        padding-left: 200px;
-      }
-      @include tablet-landscape1 {
-        padding-left: 0;
-      }
-      @media (min-width: 1024px) and (max-width: 1350px) {
-        padding-left: 400px;
       }
     }
   }
