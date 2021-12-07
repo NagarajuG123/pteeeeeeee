@@ -5,13 +5,14 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { forkJoin } from 'rxjs';
-import { faAngleRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import {
   faFacebookF,
   faLinkedinIn,
   faYoutube,
   faInstagram,
+  faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-author',
@@ -28,10 +29,10 @@ export class AuthorComponent implements OnInit {
   faAngleRight = faAngleRight;
   socialIcons: any = [
     faFacebookF,
+    faTwitter,
     faInstagram,
     faLinkedinIn,
     faYoutube,
-    faEnvelope,
   ];
   constructor(
     private route: ActivatedRoute,

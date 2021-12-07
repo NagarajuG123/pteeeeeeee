@@ -7,13 +7,7 @@
             <div class="c-card-box--col month-business--wrapper">
               <div class="c-card-box--contentGroup ps-3">
                 <h4 class="monthIsssue"> 
-                  <img
-                  data-src="{{ s3Url }}monthly_issue_arrow.png"
-                  height="21px"
-                  width="21px"
-                  alt="1903"
-                  class="lazyload"
-                /> THIS MONTH'S ISSUE</h4>
+                  <i class="far fa-long-arrow-alt-left"></i> THIS MONTH'S ISSUE</h4>
                 <h1 class="large-main-article">Back to Business</h1>
                 <p class="content mb-0">
                   {{ firstBlock[0]?.story?.title }}
@@ -22,7 +16,7 @@
                   routerLink="{{ firstBlock[0]?.story?.slug }}"
                   fragment="monthlydetailspage"
                   class="seeMore text-uppercase"
-                  >Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                  >Read more <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -56,25 +50,27 @@
               *ngFor="let item of firstBlock | slice: 1:4"
             >
               <div class="c-card-box--imageWrapper">
-                <img
-                  appYoutubeImage
-                  data-src="{{ item?.media | defaultImage: 288:379 }}"
-                  width="288"
-                  height="379"
-                  alt="monthly-covers-main"
-                  class="card-image lazyload img-fluid"
-                  loading="lazy"
-                />
-              </div>
-              <h4 class="articleTitles">{{ item.story.title }}</h4>
-              <p class="c-card-box--itemDec">
-                {{ item.story.title }}
-              </p>
-              <a
+                <a
                 routerLink="{{ item.story.slug }}"
                 fragment="monthlydetailspage"
+                >
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item?.media | defaultImage: 288:379 }}"
+                    width="288"
+                    height="379"
+                    alt="monthly-covers-main"
+                    class="card-image lazyload img-fluid"
+                    loading="lazy"
+                  />
+                  <h4 class="articleTitles">{{ item.story.title }}</h4>
+                  <p class="c-card-box--itemDec">
+                    {{ item.story.title }}
+                  </p>
+              <span
                 class="seeMore text-capitalize"
-                >view details <i class="fa fa-plus" aria-hidden="true"></i></a>
+                >view details <i class="fa fa-plus" aria-hidden="true"></i></span></a> 
+              </div>
             </div>
           </div>
         </div>

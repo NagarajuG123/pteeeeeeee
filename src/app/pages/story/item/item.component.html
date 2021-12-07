@@ -11,9 +11,9 @@
     >
       <img
         appYoutubeImage
-        width="1240"
+        width="1440"
         data-src="{{ media | defaultImage: 1280:720 }}"
-        height="697"
+        height="810"
         alt="article"
         class="lazyload img-fluid"
       />
@@ -166,23 +166,27 @@
   </div>
 
   <!-- next article line -->
-  <div class="nextLine position-relative mb-5 mt-2">
-    <div class="container customContainer">
-      <div class="row">
-        <div class="col d-none d-md-block userDetail"></div>
-        <div class="col d-flex justify-content-center align-items-center p-0 mt-0">
-          <div class="nextBtn px-5 bg-white">
-            <img
-              data-src="{{ s3Url }}nextIcon.svg"
-              width="32"
-              alt="next articles"
-              class="me-3 lazyload"
-            />
-            <span class="gray-color next-article">Next Article</span>
+  <div class="d-flex">
+    <div class="seeMoreLine"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
+            <div class="px-1 bg-white">
+              <img
+                data-src="{{s3Url}}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                loading="lazy"
+              />
+              <span class="seeMore">Next Article</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="seeMoreLine"></div>
   </div>
 
   <!-- news blocks -->
