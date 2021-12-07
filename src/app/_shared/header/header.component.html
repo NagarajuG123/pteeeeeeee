@@ -255,9 +255,8 @@
             alt="logo"
             class="lazyload"
         /></a>
-        <nav class="pt-2">
-          <ul class="nav justify-content-center"
-          [style.padding-left]="brandSlug === '1851' ? '0' : '630px'">
+        <nav class="pt-2" [ngClass]="brandSlug === '1851' ? '' : 'brandNav'">
+          <ul class="nav justify-content-center">
             <li class="pe-lg-4 pe-2">
               <a
                 href="#"
@@ -778,7 +777,7 @@
             </div>
           </div>
 
-          <div class="d-grid text-right">
+          <div class="d-grid float-end mb-4">
             <button type="submit" class="submit">Submit</button>
           </div>
           <br />

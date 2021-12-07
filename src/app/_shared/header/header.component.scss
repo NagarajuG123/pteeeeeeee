@@ -161,6 +161,20 @@ header {
       @include mobile-portrait {
         flex-wrap: nowrap;
       }
+      .brandNav{
+        ul{
+          padding-left: 630px;
+          @include tablet-landscape{
+            padding-left: 200px;
+          }
+          @include tablet-landscape1{
+            padding-left: 0;
+          }
+          @media (min-width: 1024px) and (max-width: 1350px) {
+            padding-left: 400px;
+          }
+        }
+      }
     }
     .nav-item {
       a {
