@@ -54,9 +54,7 @@
         font-size: 45px !important;
         &.owl-prev {
           left: -3%;
-          @include tablet-landscape {
-            left: -4%;
-          }
+
           @include mobile-portrait {
             left: -8%;
           }
@@ -67,9 +65,7 @@
         }
         &.owl-next {
           right: -3%;
-          @include tablet-landscape {
-            right: -4%;
-          }
+
           @include mobile-portrait {
             right: -8%;
           }

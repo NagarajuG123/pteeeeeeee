@@ -1,12 +1,14 @@
 <div class="awards py-4 sidebar-blur" *ngIf="data">
   <div class="container customContainer">
     <div class="d-flex">
-      <div class="col-lg-11">
+      <div class="col-lg-11 col-md-10 col">
         <h2 class="sectionTitle py-3 m-0 text-white">
           {{ result?.title }}
         </h2>
       </div>
-      <div class="col-lg-1 d-flex justify-content-end align-items-center">
+      <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center"
+      >
         <a routerLink="{{ result?.url }}" class="seeMore p-0"
           >See More <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon
         ></a>
