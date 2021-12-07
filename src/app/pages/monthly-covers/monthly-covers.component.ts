@@ -58,7 +58,7 @@ export class MonthlyCoversComponent implements OnInit {
   getMoreData() {
     const offset = this.secondBlock.length + 4;
     this.apiService
-      .getAPI(`1851/journal/monthly-covers?limit=4&offset=${offset}`)
+      .getAPI(`1851/journal/monthly-covers?limit=5&offset=${offset}`)
       .subscribe((response) => {
         this.hasMore = response.has_more;
         response.data.forEach((item: any) => {

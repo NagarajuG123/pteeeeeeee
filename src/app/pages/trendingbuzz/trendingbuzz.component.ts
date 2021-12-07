@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -14,7 +13,6 @@ export class TrendingbuzzComponent implements OnInit {
   trendingData: Details[] = [];
   slug: string = '1851';
   hasMore: boolean = false;
-  faAngleRight = faAngleRight;
   isLoaded: boolean;
   s3Url = environment.s3Url;
   constructor(
