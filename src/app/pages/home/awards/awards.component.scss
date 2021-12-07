@@ -53,10 +53,13 @@
         color: $white_2;
         font-size: 45px !important;
         &.owl-prev {
-          left: -3%;
+          left: -4%;
 
           @include mobile-portrait {
             left: -8%;
+          }
+          @include tablet-landscape {
+            left: -3%;
           }
           &:hover {
             background-color: transparent;
@@ -64,10 +67,13 @@
           }
         }
         &.owl-next {
-          right: -3%;
+          right: -4%;
 
           @include mobile-portrait {
             right: -8%;
+          }
+          @include tablet-landscape {
+            right: -3%;
           }
           &:hover {
             background-color: transparent;

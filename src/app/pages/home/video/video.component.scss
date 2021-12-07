@@ -55,6 +55,9 @@
   .owl-carousel {
     .owl-item {
       padding: 0 5px;
+      img {
+        display: unset;
+      }
     }
 
     .owl-nav {
@@ -68,10 +71,13 @@
         color: $dark_gray;
         font-size: 45px !important;
         &.owl-prev {
-          left: -3%;
+          left: -4%;
 
           @include mobile-portrait {
-            left: -8%;
+            left: -10%;
+          }
+          @include tablet-landscape {
+            left: -3%;
           }
           &:hover {
             background-color: transparent;
@@ -79,10 +85,13 @@
           }
         }
         &.owl-next {
-          right: -3%;
+          right: -4%;
 
           @include mobile-portrait {
-            right: -8%;
+            right: -10%;
+          }
+          @include tablet-landscape {
+            right: -3%;
           }
           &:hover {
             background-color: transparent;
