@@ -17,7 +17,7 @@ export class VideoComponent implements OnInit {
   isBrowser: boolean;
   s3Url = environment.s3Url;
   customOptions: OwlOptions = {};
-
+  isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
     @Inject(PLATFORM_ID) platformId: Object
@@ -31,6 +31,7 @@ export class VideoComponent implements OnInit {
       .getAPI(`1851/videos?site=1851`)
       .subscribe((result) => {
         this.data = result.data;
+        this.isLoaded = true;
       });
   }
   updateVideoUrl(url: string) {
