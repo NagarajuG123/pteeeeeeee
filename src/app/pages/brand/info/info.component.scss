@@ -109,7 +109,9 @@
     }
   }
 }
-
+.sectionTitle{
+  color: $dark_gray;
+}
 .financial-requirement-section {
   @include mobile-portrait {
     padding: 0 20px;
@@ -490,7 +492,7 @@
       &:after {
         content: "";
         position: absolute;
-        top: 2px;
+        top: -10px;
         right: 16px;
         background: $light_gray_4;
         width: 3px;
