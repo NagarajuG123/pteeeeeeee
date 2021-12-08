@@ -153,7 +153,7 @@ export class BrandComponent implements OnInit {
 
   getDynamic() {
     this.apiService
-      .getAPI(`page/${this.dynamicUrl}?limit=12&offset=${this.scrollOffset}`)
+      .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
       .subscribe((response) => {
         this.topBlock = response.data;
         this.dynamicStories = response.data.stories;
@@ -173,7 +173,7 @@ export class BrandComponent implements OnInit {
   getMoreDynamic() {
     this.apiService
       .getAPI(
-        `page/${this.dynamicUrl}?limit=4&offset=${this.dynamicStories.length}`
+        `page/${this.dynamicUrl}?limit=5&offset=${this.dynamicStories.length}`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;
