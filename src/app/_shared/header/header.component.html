@@ -854,7 +854,9 @@
           (ngSubmit)="submitInquireForm(inquireForm.value)"
           class="px-5 pb-5"
         >
-          <div class="row row-cols-2">
+          <div
+            class="row row-cols-xl-2 row-cols-lg-1 row-cols-md-1 row-cols-sm-1"
+          >
             <div *ngFor="let fields of inquireFields" class="mb-3">
               <input
                 *ngIf="fields.type === 'text'"
@@ -963,7 +965,9 @@
           >
             &times;
           </button>
-          <h5 class="large-main-article text-capitalize px-5">{{ contactTitle }}</h5>
+          <h5 class="large-main-article text-capitalize px-5">
+            {{ contactTitle }}
+          </h5>
         </div>
         <div class="px-3 mb-3 borderLine"><hr /></div>
         <form
@@ -972,71 +976,73 @@
           (ngSubmit)="submitContactForm(contactForm.value)"
           class="px-5 pb-5"
         >
-        <div class="row row-cols-2">
-          <div *ngFor="let fields of contactFields" class="mb-3">
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              placeholder="{{ fields.title }}*"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
+          <div
+            class="row row-cols-xl-2 row-cols-lg-1 row-cols-md-1 row-cols-sm-1"
+          >
+            <div *ngFor="let fields of contactFields" class="mb-3">
+              <input
+                *ngIf="fields.type === 'text'"
+                [formControlName]="fields.key"
+                placeholder="{{ fields.title }}*"
+                [id]="fields.key"
+                [type]="fields.type"
+                class="form-control rounded-0"
+                [pattern]="fields.pattern"
+                [maxLength]="fields.maxLength || 1000"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedContactForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              />
+              <textarea
+                *ngIf="fields.type === 'textarea'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control rounded-0"
+                rows="3"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedContactForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              ></textarea>
+              <select
+                required
+                *ngIf="fields.type === 'dropdown'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control form-select rounded-0"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsContactValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsContactValues[fields.key].errors?.required
+                }"
+              >
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
+                <option *ngFor="let value of fields.enum" value="{{ value }}">
+                  <span>{{ value }}</span>
+                </option>
+              </select>
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
                   (formControlsContactValues[fields.key].touched ||
                     submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            />
-            <textarea
-              *ngIf="fields.type === 'textarea'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control rounded-0"
-              rows="3"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedContactForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            ></textarea>
-            <select
-              required
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control form-select rounded-0"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsContactValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsContactValues[fields.key].errors?.required
-              }"
-            >
-              <option value="" disabled selected hidden>
-                {{ fields.title }}*
-              </option>
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsContactValues[fields.key].touched ||
-                  submittedContactForm) &&
-                (formControlsContactValues[fields.key].errors?.required ||
-                  formControlsContactValues[fields.key].errors?.email ||
-                  formControlsContactValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
+                  (formControlsContactValues[fields.key].errors?.required ||
+                    formControlsContactValues[fields.key].errors?.email ||
+                    formControlsContactValues[fields.key].errors?.pattern)
+                "
+              >
+                {{ fields.errorMsg }}
+              </div>
             </div>
           </div>
-        </div>
           <div class="float-end">
             <button type="submit">
               Next
