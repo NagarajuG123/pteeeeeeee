@@ -72,7 +72,7 @@
           class="lazyload"
           width="888"
           height="506"
-          data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
+          data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
           alt="brand_img"
           loading="lazy"
         />
@@ -111,7 +111,7 @@
               class="lazyload"
               width="888"
               height="506"
-              data-src="{{ brandInfo.media | defaultImage: 888:506 }}"
+              data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
               alt="brand_img"
               loading="lazy"
             />
@@ -617,7 +617,7 @@
                     /></a>
                   </div>
                   <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
-                    <h2 class="small-red-headers mb-0">FEATURED</h2>
+                    <h2 class="small-red-headers mb-0">FEATURED ARTICLE</h2>
                     <a
                       routerLink="/{{ commonService.readMore(item) }}"
                       fragment="featured"
