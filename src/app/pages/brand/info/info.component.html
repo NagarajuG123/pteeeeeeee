@@ -644,7 +644,7 @@
           <div class="trending-section" *ngIf="trending.length && !isMarket">
             <div class="title-tag ml-1">TRENDING</div>
 
-            <div class="row trending-item" *ngFor="let item of trending">
+            <!-- <div class="row trending-item" *ngFor="let item of trending">
               <div class="col-5">
                 <a
                   routerLink="/{{ commonService.readMore(item) }}"
@@ -668,7 +668,37 @@
                   >{{ item?.title }}
                 </a>
               </div>
-            </div>
+            </div> -->
+            <ul class="pt-1">
+              <li *ngFor="let item of trending; index as i">
+                <div class="d-flex">
+                  <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+                    <a
+                      routerLink="/{{ commonService.readMore(item) }}"
+                      fragment="trending"
+                      class="pe-2"
+                    >
+                      <img
+                        appYoutubeImage
+                        width="139"
+                        class="lazyload img-fluid"
+                        alt="trending"
+                        loading="lazy"
+                        height="84"
+                        data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    /></a>
+                  </div>
+                  <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+                    <a
+                      routerLink="/{{ commonService.readMore(item) }}"
+                      fragment="trending"
+                    >
+                      <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

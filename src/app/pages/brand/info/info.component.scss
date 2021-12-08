@@ -350,7 +350,7 @@
     position: absolute;
     top: -5px;
     right: 22px;
-    height: 3px;
+    height: 1px;
     width: 90%;
     background-color: $red;
   }
@@ -414,30 +414,13 @@
     font-weight: 500;
     font-size: 10px;
     line-height: 11.72px;
-    padding-bottom: 15px;
     margin-left: -5px;
   }
-
-  .trending-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-
-    .image-area {
-      height: 84px;
-      width: 139px;
-      margin-right: 15px;
-    }
-
-    .image-description {
+  li{
+    padding: 10px 0!important;
+    .articleTitles{
+      font-size: 13px;
       color: $dark_gray;
-      font-family: $roboto;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 14.06px;
-      a {
-        color: $dark_gray;
-      }
     }
   }
 }
