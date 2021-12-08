@@ -25,13 +25,14 @@
         </form>
         <div class="py-3 filter-section">
           <h6
+           class="sectionTitle"
             *ngIf="
               brand_id !== '1851' &&
               brand_id !== 'ee' &&
               brand_id !== 'room-1903'
             "
           >
-            SHOWING SEARCH RESULTS FOR: <span>{{ showSearchKey }}</span>
+            Showing Search Results For: <span>{{ showSearchKey }}</span>
           </h6>
           <h6
             class="sectionTitle"
@@ -41,7 +42,7 @@
               brand_id === 'room-1903'
             "
           >
-            VIEW SEARCH FILTERS
+            View Search Filters
           </h6>
           <div class="sort_main">
             <h6 class="primary-color">SORT BY:</h6>

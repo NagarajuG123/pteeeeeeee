@@ -110,6 +110,7 @@ span {
   }
   .form-check-label {
     padding-left: 10px;
+    color: $dark_gray_5;
   }
   h6,
   span {
@@ -117,6 +118,7 @@ span {
     font-size: 20px;
     line-height: 25.74px;
     font-weight: 500 !important;
+    color: $dark_gray_5;
   }
   @include tablet-portrait {
     h6,
@@ -153,13 +155,6 @@ span {
   }
 }
 .filter-section {
-  h6 {
-    font-family: $roboto;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 25.74px;
-    color: $dark_gray;
-  }
   .sectionTitle
   {
   font-weight: 700;

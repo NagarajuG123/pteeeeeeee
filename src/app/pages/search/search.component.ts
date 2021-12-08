@@ -109,7 +109,7 @@ export class SearchComponent implements OnInit {
     'This Month': [this.currentMonthfirstDay, this.currentMonthLastDay],
     'Last Month': [this.lastMonthfirstDay, this.lastMonthLastDay],
   };
-  showSearchKey: String = 'SEARCH KEYWORD HERE';
+  showSearchKey: String = 'Search Keyword Here';
   has_more: Boolean = true;
   hiddenSearchBar: Boolean = false;
 

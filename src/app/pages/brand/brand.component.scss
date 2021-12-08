@@ -66,6 +66,9 @@ a {
         line-height: 30px;
       }
     }
+    button{
+      padding: 0.5rem;
+    }
   }
   img{
     @include mobile-portrait{
