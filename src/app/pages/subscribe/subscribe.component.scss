@@ -7,6 +7,7 @@
   }
   img {
     height: 514px;
+    width: 100%;
     @include tablet-landscape1 {
       height: auto;
     }
