@@ -66,12 +66,19 @@
               rel="noopener"
             >
               <img
+                *ngIf="item?.media?.image"
                 data-src="{{ item?.media?.image }}"
                 width="{{ item?.media?.width }}"
                 height="{{ item?.media?.height }}"
                 alt="social"
                 class="lazyload"
               />
+              <i
+                *ngIf="!item?.media?.image"
+                class="fa fa-globe"
+                aria-hidden="true"
+                title="{{ item.title }}"
+              ></i>
             </a>
           </li>
         </ul>
