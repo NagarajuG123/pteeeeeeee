@@ -5,38 +5,10 @@
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
 
-  .carousel-inner .carousel-item.active,
-  .carousel-inner .carousel-item-next,
-  .carousel-inner .carousel-item-prev {
-    display: flex;
-  }
-  .carousel-control-prev {
-    left: -10%;
-    @include mobile-portrait {
-      left: -4%;
-    }
-  }
-  .carousel-control-next {
-    right: -10%;
-    @include mobile-portrait {
-      right: -4%;
-    }
-  }
-  @media (max-width: 767px) {
-    .carousel-inner .carousel-item > div {
-      display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-      display: block;
-    }
-  }
   .card {
     .card-body {
       background-color: $red;
-      @include mobile-portrait {
-        min-height: 130px;
-        max-height: 150px;
-      }
+
       span {
         font-family: $roboto;
         font-weight: 700;
@@ -61,6 +33,10 @@
       border-radius: 0;
       border: none;
     }
+    .carouselBody {
+      min-height: 140px;
+      max-height: 140px;
+    }
   }
   .subItem {
     .card-body {
@@ -70,6 +46,56 @@
         font-weight: 700;
         font-family: $roboto;
         color: $red;
+      }
+    }
+  }
+  .popularCarousel {
+    @include mobile-portrait {
+      padding: 0 15px;
+    }
+  }
+}
+:host ::ng-deep {
+  .owl-carousel {
+    .owl-item {
+      padding: 0 10px;
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+        padding: 0 20px;
+      }
+    }
+
+    .owl-nav {
+      div {
+        background-color: transparent;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-40%);
+        background-repeat: no-repeat;
+        cursor: pointer;
+        color: $white_2;
+        font-size: 45px !important;
+        &.owl-prev {
+          left: -3%;
+
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            left: -5%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
+        &.owl-next {
+          right: -3%;
+
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            right: -5%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
       }
     }
   }

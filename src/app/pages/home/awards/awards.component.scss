@@ -46,20 +46,19 @@
       div {
         background-color: transparent;
         position: absolute;
-        top: 20%;
-        transform: translateY(-20%);
+        top: 30%;
+        transform: translateY(-30%);
         background-repeat: no-repeat;
         cursor: pointer;
         color: $white_2;
         font-size: 45px !important;
         &.owl-prev {
           left: -4%;
-
-          @include mobile-portrait {
-            left: -8%;
-          }
           @include tablet-landscape {
             left: -3%;
+          }
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            left: -8%;
           }
           &:hover {
             background-color: transparent;
@@ -68,12 +67,11 @@
         }
         &.owl-next {
           right: -4%;
-
-          @include mobile-portrait {
-            right: -8%;
-          }
           @include tablet-landscape {
             right: -3%;
+          }
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            right: -8%;
           }
           &:hover {
             background-color: transparent;

@@ -9,7 +9,6 @@ import { EditorialSectionsComponent } from './editorial-sections/editorial-secti
 import { SeriesComponent } from './series/series.component';
 import { VideoComponent } from './video/video.component';
 import { AwardsComponent } from './awards/awards.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     VideoComponent,
     AwardsComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, SharedModule, CarouselModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
   providers: [],
 })
 export class HomeModule {}

@@ -6,8 +6,8 @@ import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-most-popular',
@@ -22,6 +22,7 @@ export class MostPopularComponent implements OnInit {
   faAngleRight = faAngleRight;
   isLoaded: boolean = false;
   isBrowser: boolean;
+  customOptions: OwlOptions = {};
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -44,28 +45,32 @@ export class MostPopularComponent implements OnInit {
           this.isLoaded = true;
         }
       });
-  }
-
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      const minPerSlide = 3;
-      const parent = document.querySelector(' .popular-inner');
-      document.querySelectorAll('.popular-item').forEach(function (item) {
-        let next = item.nextElementSibling;
-        if (!next) {
-          next = parent.querySelector('.carousel-item');
-        }
-        let clone = next.querySelector('div').cloneNode(true);
-        item.appendChild(clone);
-        for (var i = 0; i < minPerSlide; i++) {
-          next = next.nextElementSibling;
-          if (!next) {
-            next = parent.querySelector('.carousel-item');
-          }
-          clone = next.querySelector('div').cloneNode(true);
-          item.appendChild(clone);
-        }
-      });
-    }
+    this.customOptions = {
+      loop: true,
+      mouseDrag: false,
+      touchDrag: false,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      nav: true,
+      navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+      ],
+      responsive: {
+        0: {
+          items: 1,
+        },
+        400: {
+          items: 1,
+        },
+        740: {
+          items: 3,
+        },
+        940: {
+          items: 3,
+        },
+      },
+    };
   }
 }

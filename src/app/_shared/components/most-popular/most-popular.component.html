@@ -80,10 +80,65 @@
       </div>
     </div>
     <div
-      class="row d-flex pb-3 d-sm-none"
+      class="row d-flex gx-3 pb-3 d-sm-none"
       [ngClass]="slug !== '1851' ? 'd-md-block' : ''"
     >
-      <div class="carousel" id="carouselPopularIndicators">
+      <owl-carousel-o
+        [options]="customOptions"
+        class="position-relative popularCarousel"
+      >
+        <ng-template carouselSlide *ngFor="let item of data; index as i">
+          <div class="col">
+            <a
+              routerLink="/{{ commonService.readMore(item) }}"
+              fragment="trending"
+            >
+              <div class="card border-0 h-100">
+                <img
+                  appYoutubeImage
+                  width="380"
+                  height="223"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+                  alt="most-popular"
+                  loading="lazy"
+                  class="img-fluid lazyload card-img-top"
+                />
+                <div class="card-body carouselBody position-relative px-3 pt-5">
+                  <span
+                    class="
+                      position-absolute
+                      top-0
+                      start-0
+                      bg-white
+                      d-flex
+                      align-items-center
+                      justify-content-center
+                      py-1
+                      px-2
+                    "
+                    >POPULAR</span
+                  >
+                  <h2 class="position-relative ps-4 card-title m-0 pb-4">
+                    <span class="position-absolute top-0 start-0">{{
+                      i + 1
+                    }}</span>
+                    <p class="ms-3 mb-0 articleTitles pt-1">
+                      {{ item.title }}
+                    </p>
+                  </h2>
+                </div>
+                <div class="card-footer d-flex flex-row-reverse py-1 px-2">
+                  <a class="seeMore p-0"
+                    >READ MORE
+                    <fa-icon [icon]="faAngleRight"></fa-icon>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+      <!-- <div class="carousel" id="carouselPopularIndicators">
         <div class="carousel-inner popular-inner">
           <ng-container *ngFor="let item of data; index as i">
             <div
@@ -161,7 +216,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

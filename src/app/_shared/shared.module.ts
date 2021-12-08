@@ -6,7 +6,7 @@ import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
 import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -45,12 +45,14 @@ import { ArticleComponent } from './components/article/article.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     ShareButtonModule,
+    CarouselModule,
   ],
   exports: [
     RouterModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule,
     DefaultImagePipe,
     ImagePreloadDirective,
     SafeUrlPipe,
