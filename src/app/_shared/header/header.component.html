@@ -305,6 +305,7 @@
               <a
                 routerLink="{{ menu.url }}"
                 *ngIf="!menu.fragment && menu.title != 'Login'"
+                (click)="commonService.toggle()"
               >
                 <h3>
                   {{ menu.title }}

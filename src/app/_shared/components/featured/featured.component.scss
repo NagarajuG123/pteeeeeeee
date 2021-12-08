@@ -33,5 +33,15 @@
       font-size: 13px;
       padding-top: 5px;
     }
+    &.brandPage {
+      .research {
+        font-family: $proxiBold;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24.36px;
+        color: $light_gray_9;
+        border: 1px solid $light_gray_8;
+      }
+    }
   }
 }
