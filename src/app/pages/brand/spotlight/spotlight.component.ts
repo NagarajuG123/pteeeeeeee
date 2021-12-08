@@ -18,11 +18,11 @@ export class SpotlightComponent implements OnInit {
   items: Details[] = [];
   tabName: any;
   defaultTab!: string;
-  noOfTabsShow = 5;
   activeTab = 1;
   skipTab = 0;
   tab!: string;
   isLoaded: boolean = false;
+  rows: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -36,26 +36,25 @@ export class SpotlightComponent implements OnInit {
       `${this.slug}/spotlights/categories`
     );
     const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
-    
+
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.tabName = results[0].categories;
+        this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = results[0].defaultTab;
-        
-          this.apiService
-            .getAPI(
-              `${this.slug}/spotlight/${this.defaultTab}?limit=5&offset=0`
-            )
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe((result) => {
-              const data: any[] = [];
-              result['data'].forEach((item: any) => {
-                data.push(item);
-              });
-              this.items = data;
-              this.isLoaded = true;
+
+        this.apiService
+          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=5&offset=0`)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe((result) => {
+            const data: any[] = [];
+            result['data'].forEach((item: any) => {
+              data.push(item);
             });
+            this.items = data;
+            this.isLoaded = true;
+          });
       });
   }
   setActiveTab(val: any, item: any) {
