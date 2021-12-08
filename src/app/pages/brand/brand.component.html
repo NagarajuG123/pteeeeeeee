@@ -15,20 +15,9 @@
 <div *ngIf="type === 'dynamic_page'">
   <div class="banner position-relative container sidebar-blur">
     <img
-      data-srcset="{{ topBlock.image | defaultImage: 500:250 }} 500w, 
-                      {{ topBlock.image | defaultImage: 1000:300 }} 1000w, 
-                    {{ topBlock.image | defaultImage: 700:200 }} 700w, 
-                      {{ topBlock.image | defaultImage: 1439:559 }} 1439w"
-      data-sizes="{{
-        '(max-width: 576px) 500x,
-                  (max-width: 768px) 700px,
-                  (max-width: 992px) 1000px,
-                  (max-width: 1200px) 1439px,
-                  1439px'
-      }}"
-      data-src="{{ topBlock.image | defaultImage: 1439:559 }}"
-      width="1440"
-      height="559"
+      data-src="{{ topBlock.image | defaultImage: 1280:720 }}"
+      width="1439"
+      height="518"
       alt="banner"
       loading="lazy"
       class="lazyload img-fluid"
