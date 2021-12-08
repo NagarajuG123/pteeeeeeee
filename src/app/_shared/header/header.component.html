@@ -828,12 +828,11 @@
   <!-- Inquire Modal -->
 
   <div
-    ng-cloak
     *ngIf="isBrowser && isInquire"
-    class="searchModal inquireModal modal"
+    class="inquireModal modal"
     id="inquireModal"
   >
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <button
@@ -844,7 +843,9 @@
           >
             &times;
           </button>
-          <h5 class="large-main-article text-capitalize">{{ inquireTitle }}</h5>
+          <h5 class="large-main-article text-capitalize px-5">
+            {{ inquireTitle }}
+          </h5>
           <hr />
         </div>
 
@@ -852,61 +853,68 @@
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
           (ngSubmit)="submitInquireForm(inquireForm.value)"
-          class="mx-2"
+          class="px-5 pb-5"
         >
-          <div *ngFor="let fields of inquireFields" class="form-row mb-3">
-            <input
-              *ngIf="fields.type === 'text'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              [type]="fields.type"
-              class="form-control rounded-0"
-              placeholder="{{ fields.title }}*"
-              [pattern]="fields.pattern"
-              [maxLength]="fields.maxLength || 1000"
-              [ngClass]="{
-                'is-invalid':
+          <div class="row row-cols-2">
+            <div *ngFor="let fields of inquireFields" class="mb-3">
+              <input
+                *ngIf="fields.type === 'text'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                [type]="fields.type"
+                class="form-control rounded-0"
+                placeholder="{{ fields.title }}*"
+                [pattern]="fields.pattern"
+                [maxLength]="fields.maxLength || 1000"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsValues[fields.key].errors?.required
+                }"
+              />
+              <select
+                required
+                *ngIf="fields.type === 'dropdown'"
+                [formControlName]="fields.key"
+                [id]="fields.key"
+                class="form-control form-select"
+                [ngClass]="{
+                  'is-invalid':
+                    (formControlsValues[fields.key].touched ||
+                      submittedInquireForm) &&
+                    formControlsValues[fields.key].errors?.required
+                }"
+              >
+                <option value="" disabled selected hidden>
+                  {{ fields.title }}*
+                </option>
+                <option *ngFor="let value of fields.enum" value="{{ value }}">
+                  <span>{{ value }}</span>
+                </option>
+              </select>
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
                   (formControlsValues[fields.key].touched ||
                     submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            />
-            <select
-              required
-              *ngIf="fields.type === 'dropdown'"
-              [formControlName]="fields.key"
-              [id]="fields.key"
-              class="form-control form-select"
-              [ngClass]="{
-                'is-invalid':
-                  (formControlsValues[fields.key].touched ||
-                    submittedInquireForm) &&
-                  formControlsValues[fields.key].errors?.required
-              }"
-            >
-              <option value="" disabled selected hidden>
-                {{ fields.title }}*
-              </option>
-              <option *ngFor="let value of fields.enum" value="{{ value }}">
-                <span>{{ value }}</span>
-              </option>
-            </select>
-            <div
-              class="invalid-feedback d-block"
-              *ngIf="
-                (formControlsValues[fields.key].touched ||
-                  submittedInquireForm) &&
-                (formControlsValues[fields.key].errors?.required ||
-                  formControlsValues[fields.key].errors?.email ||
-                  formControlsValues[fields.key].errors?.pattern)
-              "
-            >
-              {{ fields.errorMsg }}
+                  (formControlsValues[fields.key].errors?.required ||
+                    formControlsValues[fields.key].errors?.email ||
+                    formControlsValues[fields.key].errors?.pattern)
+                "
+              >
+                {{ fields.errorMsg }}
+              </div>
             </div>
           </div>
-
-          <div class="d-grid float-end mb-4">
-            <button type="submit" class="submit">Submit</button>
+          <div class="float-end position-relative">
+            <button
+              type="submit"
+              class="d-block"
+              (click)="onContactSubmit(contactForm)"
+            >
+              Submit <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
+            </button>
           </div>
           <br />
           <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{

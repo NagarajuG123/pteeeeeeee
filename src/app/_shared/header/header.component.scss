@@ -284,6 +284,20 @@ header {
       height: 15px;
     }
   }
+  .modal {
+    button {
+      background-color: transparent;
+    }
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 22px;
+      color: $red;
+      font-size: 39px;
+      outline: 0;
+      opacity: 1;
+    }
+  }
   .searchModal {
     .modal-title {
       font-weight: 700;
@@ -314,18 +328,7 @@ header {
       font-size: 17px;
       color: $dark_black;
     }
-    button {
-      background-color: transparent;
-    }
-    .close {
-      position: absolute;
-      right: 35px;
-      top: 22px;
-      color: $red;
-      font-size: 39px;
-      outline: 0;
-      opacity: 1;
-    }
+
     .article {
       padding: 0 30px;
       .articleTitles {
@@ -356,19 +359,42 @@ header {
   }
   .inquireModal {
     form {
-      input {
+      .form-control {
         font-family: $roboto;
         font-size: 17px;
         line-height: 24px;
         color: $dark_gray_6;
-        font-weight: 400;
+        font-weight: 500;
+        height: 42px;
+        border: 1px solid $dark_gray_6;
       }
-      .submit {
-        color: $white;
+      button {
+        position: relative;
+        border: 0;
+        width: 110px;
+        height: 39px;
+        color: $white_2;
         background-color: $red;
-        height: 40px;
-        width: 150px;
+        span {
+          position: absolute;
+          top: 0;
+          width: 13px;
+          height: 10px;
+          left: unset;
+          padding: 8px 1px 0px 7px;
+          fa-icon {
+            font-size: 18px;
+            color: $white;
+          }
+        }
       }
+    }
+    input::-webkit-input-placeholder {
+      font-size: 17px;
+      line-height: 24px;
+      color: $dark_gray_6 !important;
+      font-weight: 500;
+      font-family: $roboto;
     }
   }
   .thanksModal {
