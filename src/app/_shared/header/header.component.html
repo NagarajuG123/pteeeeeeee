@@ -846,9 +846,8 @@
           <h5 class="large-main-article text-capitalize px-5">
             {{ inquireTitle }}
           </h5>
-          <hr />
         </div>
-
+        <div class="px-3 mb-3 borderLine"><hr /></div>
         <form
           *ngIf="inquireForm"
           [formGroup]="inquireForm"
@@ -907,13 +906,13 @@
               </div>
             </div>
           </div>
-          <div class="float-end position-relative">
-            <button
-              type="submit"
-              class="d-block"
-              (click)="onContactSubmit(contactForm)"
-            >
-              Submit <span><fa-icon [icon]="faCaretRight"></fa-icon></span>
+
+          <div class="float-end">
+            <button type="submit">
+              Submit
+              <span class="position-absolute ps-2"
+                ><fa-icon [icon]="faCaretRightIcon"></fa-icon
+              ></span>
             </button>
           </div>
           <br />
@@ -966,6 +965,7 @@
           </button>
           <h5 class="large-main-article text-capitalize">{{ contactTitle }}</h5>
         </div>
+        <div class="px-3 mb-3 borderLine"><hr /></div>
         <form
           *ngIf="contactForm"
           [formGroup]="contactForm"
@@ -1036,7 +1036,12 @@
             </div>
           </div>
           <div class="d-grid float-end mb-4">
-            <button type="submit" class="submit">Next</button>
+            <button type="submit" class="submit">
+              Next
+              <span class="position-absolute ps-2"
+                ><fa-icon [icon]="faCaretRightIcon"></fa-icon
+              ></span>
+            </button>
           </div>
           <br />
           <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{

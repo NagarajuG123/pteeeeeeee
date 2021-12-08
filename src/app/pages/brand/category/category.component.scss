@@ -27,7 +27,7 @@
   }
   > h3 {
     font-family: $aktiv;
-    font-size: 50px !important;
+    font-size: 64px !important;
     font-weight: 700;
     color: $dark_gray;
     line-height: 62.5px;
@@ -46,7 +46,7 @@
 @media screen and (min-width: 992px) {
   .latestListing {
     max-width: 450px;
-    border-left: 2px solid $dark_gray;
+    border-left: 1px solid $dark_gray;
     p {
       line-height: 114.99%;
     }

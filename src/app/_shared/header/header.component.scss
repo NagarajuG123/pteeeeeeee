@@ -395,6 +395,9 @@ header {
       color: $dark_gray_6 !important;
       font-weight: 500;
       font-family: $roboto;
+      .borderLine {
+        margin-top: -15px;
+      }
     }
   }
   .thanksModal {
