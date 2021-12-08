@@ -202,7 +202,7 @@ h6 {
     left: 0;
     width: 36px;
     height: 36px;
-    background: $dark_red_2;
+    background: $dark_red;
     fa-icon {
       font-size: 25px;
       line-height: 36px;
@@ -210,7 +210,6 @@ h6 {
     }
   }
 }
-
 
 .contact-editorial-main {
   padding: 19px 0 36px 0;
@@ -226,7 +225,7 @@ h6 {
   label {
     margin: 0;
   }
-  .d-inline-block{
+  .d-inline-block {
     color: $dark_gray_1;
   }
   label {
@@ -235,7 +234,7 @@ h6 {
     font-weight: normal;
     font-family: $proxiMedium;
     letter-spacing: 0.4px;
-    color:$dark_gray_1;
+    color: $dark_gray_1;
   }
 }
 .editors-details {
@@ -381,13 +380,12 @@ h6 {
   background-color: $red;
   border-color: $red;
 }
-.form-check-input[type=checkbox]
-{
+.form-check-input[type="checkbox"] {
   border-radius: 0%;
   border: 1px solid $red !important;
 }
-.d-inline-block{
+.d-inline-block {
   .form-check-input {
     margin-left: 0;
-   }
+  }
 }

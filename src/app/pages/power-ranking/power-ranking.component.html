@@ -1,4 +1,4 @@
-<div class="top-container sidebar-blur">
+<div class="top-container position-relative sidebar-blur">
   <img
     data-src="{{ s3Url }}powerranking.jpg"
     width="100%"
@@ -7,13 +7,11 @@
     loading="lazy"
     class="lazyload img-fluid"
   />
-  <div class="text-box">
-    <div style="padding: 40px 0">
-      <h1 class="large-main-article">{{ contents.title }}</h1>
-      <p class="description">
-        {{ contents.short_description }}
-      </p>
-    </div>
+  <div class="text-box position-absolute row py-5">
+    <h1 class="large-main-article m-0">{{ contents.title }}</h1>
+    <p class="description">
+      {{ contents.short_description }}
+    </p>
   </div>
 </div>
 <div class="sidebar-blur">
