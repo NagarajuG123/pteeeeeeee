@@ -102,3 +102,9 @@
     }
   }
 }
+.modal {
+  top: 0;
+  @include desk-lg-below1 {
+    top: 8%;
+  }
+}
