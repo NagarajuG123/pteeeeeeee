@@ -235,6 +235,7 @@ export class HeaderComponent implements OnInit {
           setTimeout(() => {
             $('#thanksModal').hide();
           }, 10000);
+          this.inquireForm.reset();
         } else {
           this.submitErrMsg = result.error.message;
           this.isSubmitFailed = true;
@@ -373,6 +374,7 @@ export class HeaderComponent implements OnInit {
           setTimeout(() => {
             $('#thanksModal').hide();
           }, 10000);
+          this.contactForm.reset();
         } else {
           this.submitErrMsg = result.error.message;
           this.isSubmitFailed = true;

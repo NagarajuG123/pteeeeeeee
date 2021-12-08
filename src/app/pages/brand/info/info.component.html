@@ -78,7 +78,7 @@
         />
         <img
           *ngIf="brandInfo.media.type === 'video'"
-          data-src="{{ s3Url }}play.png"
+          data-src="{{ s3Url }}videoIcon.png"
           alt="Play"
           class="img-fluid vide-play lazyload"
           loading="lazy"
@@ -117,7 +117,7 @@
             />
             <img
               *ngIf="brandInfo.media && brandInfo.media.type === 'video'"
-              data-src="{{ s3Url }}play.png"
+              data-src="{{ s3Url }}videoIcon.png"
               alt="Play"
               class="img-fluid vide-play lazyload"
               loading="lazy"
@@ -137,7 +137,7 @@
               *ngFor="let item of items; let i = index"
             >
               <div class="header header-highlighter align-items-center">
-                <h3 class="col-md-12 title">
+                <h3 class="col-md-12 title mb-0">
                   {{ item?.title }}
                 </h3>
               </div>
@@ -212,7 +212,6 @@
                     data-bs-target="#pdfModal"
                     type="submit"
                     class="
-                      btn
                       text-center
                       submit-btn
                       text-white

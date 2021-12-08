@@ -572,6 +572,7 @@
   .submit-btn {
     width: 148px;
     padding: 9px 6px;
+    font-size: 16px;
   }
 
   .frannews-left--wrapper {
@@ -1000,7 +1001,7 @@ button.close {
   &:before {
     position: absolute;
     content: "";
-    background: #eb0444;
+    background: $red;
     width: 130%;
     height: 2px;
     top: 49px;
