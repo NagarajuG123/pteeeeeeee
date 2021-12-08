@@ -79,7 +79,8 @@
     </div>
   </div>
 
-  <div class="container middle-head">
+  <div class="container middle-head" *ngIf="isMain">
+    <!-- main -->
     <div class="row gx-0 align-items-center">
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
         <a
@@ -106,12 +107,7 @@
         </a>
       </div>
       <div
-        class="d-flex align-items-center logo"
-        [ngClass]="
-          brandSlug === '1851'
-            ? 'col-lg-8 col-sm-8 col-md-7 col-7'
-            : 'col-lg-5 col-sm-5 col-md-5 col-5'
-        "
+        class="d-flex align-items-center logo col-lg-8 col-sm-8 col-md-7 col-7"
         (click)="closeSidebar()"
       >
         <a
@@ -125,7 +121,7 @@
             alt="logo"
             class="lazyload"
         /></a>
-        <nav class="pt-2" *ngIf="brandSlug === '1851'">
+        <nav class="pt-2">
           <ul class="nav justify-content-center">
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
@@ -146,7 +142,7 @@
                   class="ms-1 lazyload pb-2"
               /></a>
               <ul class="dropdown-menu">
-                <li *ngFor="let item of action.items">
+                <li *ngFor="let item of action.items" class="pb-1">
                   <a
                     class="dropdown-item"
                     [href]="item.url"
@@ -158,70 +154,11 @@
             </li>
           </ul>
         </nav>
-        <a
-          data-bs-toggle="modal"
-          data-bs-target="#sponsoredModal"
-          href=""
-          *ngIf="brandSlug !== '1851'"
-          ><h6 class="text-uppercase sponsor m-0">
-            {{ brandTitle }}
-          </h6>
-          <span class="sponsorLogo">POWERED BY</span>
-        </a>
       </div>
       <div
-        class="d-flex align-items-center"
+        class="d-flex align-items-center col-lg-3 col-sm-2 col-md-3 col-2"
         (click)="closeSidebar()"
-        [ngClass]="
-          brandSlug === '1851'
-            ? 'col-lg-3 col-sm-2 col-md-3 col-2'
-            : 'col-lg-6 col-sm-4 col-md-4 col-4 justify-content-end'
-        "
       >
-        <nav class="pt-2" *ngIf="brandSlug !== '1851'">
-          <ul class="nav justify-content-center">
-            <li class="pe-lg-4 pe-2">
-              <a
-                href="#"
-                onclick="return false;"
-                class="text-uppercase"
-                data-bs-toggle="modal"
-                data-bs-target="#inquireModal"
-              >
-                <h6>{{ header?.inquire }}</h6>
-              </a>
-            </li>
-            <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
-              <a [routerLink]="menu.url" (click)="closeSidebar()"
-                ><h6>{{ menu.title }}</h6>
-              </a>
-            </li>
-            <li
-              class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
-              *ngFor="let action of header?.actions; index as i"
-            >
-              <a class="d-flex align-items-center" (click)="closeSidebar()"
-                ><h6>{{ action.title }}</h6>
-                <img
-                  data-src="{{ s3Url }}down-arrow.svg"
-                  height="15"
-                  width="15"
-                  alt="down-arrow"
-                  class="ms-1 lazyload pb-2"
-              /></a>
-              <ul class="dropdown-menu">
-                <li *ngFor="let item of action.items">
-                  <a
-                    class="dropdown-item"
-                    [href]="item.url"
-                    (click)="closeSidebar()"
-                    >{{ item?.title }}</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
         <a
           href="#"
           onclick="return false;"
@@ -235,11 +172,10 @@
             alt="search"
             class="lazyload"
         /></a>
-        <a *ngIf="brandSlug === '1851'" class="pe-4" routerLink="/subscribe"
+        <a class="pe-4" routerLink="/subscribe"
           ><button class="subscribe">Subscribe</button></a
         >
         <a
-          *ngIf="brandSlug === '1851'"
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
           class="cover d-none d-lg-block"
@@ -256,11 +192,7 @@
         ></a>
       </div>
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <ul
-          class="sidebar dropdown-menu sidebar-dropdown-menu"
-          aria-labelledby="dropdownMenu2"
-          *ngIf="brandSlug === '1851'"
-        >
+        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2">
           <li class="menu-search">
             <form
               [formGroup]="searchForm"
@@ -392,12 +324,131 @@
             >
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container middle-head" *ngIf="!isMain">
+    <div class="row gx-0 align-items-center" *ngIf="brandSlug !== '1851'">
+      <div class="col-lg-1 col-md-2 col-sm-3 col-3">
+        <a
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-bs-display="static"
+          (click)="commonService.toggle()"
+          (onclick)="closeSidebar()"
+        >
+          <img
+            data-src="{{
+              commonService.showmenu
+                ? 'assets/img/menu_close.png'
+                : 'assets/img/menu_open.png'
+            }}"
+            width="78"
+            height="72"
+            alt="menu"
+            class="lazyload menu"
+          />
+        </a>
+      </div>
+      <div
+        class="d-flex align-items-center logo col-lg-5 col-sm-5 col-md-5 col-5"
+        (click)="closeSidebar()"
+      >
+        <a
+          [routerLink]="header?.logo?.url"
+          (click)="closeSidebar()"
+          class="pe-lg-4 pe-2"
+          ><img
+            data-src="{{ header?.logo?.image }}"
+            height="{{ header?.logo?.height }}"
+            width="{{ header?.logo?.width }}"
+            alt="logo"
+            class="lazyload"
+        /></a>
+
+        <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href=""
+          ><h6 class="sponsor m-0">
+            {{ brandTitle }}
+          </h6>
+          <span class="sponsorLogo">POWERED BY</span>
+        </a>
+      </div>
+      <div
+        class="
+          d-flex
+          align-items-center
+          col-lg-6 col-sm-4 col-md-4 col-4
+          justify-content-end
+        "
+        (click)="closeSidebar()"
+      >
+        <nav class="pt-2">
+          <ul class="nav justify-content-center">
+            <li class="pe-lg-4 pe-2">
+              <a
+                href="#"
+                onclick="return false;"
+                class="text-uppercase"
+                data-bs-toggle="modal"
+                data-bs-target="#inquireModal"
+              >
+                <h6>{{ header?.inquire }}</h6>
+              </a>
+            </li>
+            <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
+              <a [routerLink]="menu.url" (click)="closeSidebar()"
+                ><h6>{{ menu.title }}</h6>
+              </a>
+            </li>
+            <li
+              class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
+              *ngFor="let action of header?.actions; index as i"
+            >
+              <a class="d-flex align-items-center" (click)="closeSidebar()"
+                ><h6>{{ action.title }}</h6>
+                <img
+                  data-src="{{ s3Url }}down-arrow.svg"
+                  height="15"
+                  width="15"
+                  alt="down-arrow"
+                  class="ms-1 lazyload pb-2"
+              /></a>
+              <ul class="dropdown-menu brandNav">
+                <li *ngFor="let item of action.items" class="pb-1">
+                  <a
+                    class="dropdown-item"
+                    [href]="item.url"
+                    (click)="closeSidebar()"
+                    >{{ item?.title }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="#"
+          onclick="return false;"
+          data-bs-toggle="modal"
+          data-bs-target="#searchModal"
+          class="pe-4 d-none d-xl-block"
+          ><img
+            data-src="{{ s3Url }}search_header.png"
+            height="18"
+            width="18"
+            alt="search"
+            class="lazyload"
+        /></a>
+      </div>
+      <div class="col-lg-1 col-md-2 col-sm-3 col-3">
         <!-- Submenu brand -->
         <ul
           ng-cloak
           class="sidebar dropdown-menu"
           aria-labelledby="dropdownMenu2"
-          *ngIf="brandSlug !== '1851'"
         >
           <li>
             <div class="menu-search">

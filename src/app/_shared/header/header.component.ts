@@ -88,6 +88,7 @@ export class HeaderComponent implements OnInit {
   trending: any;
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
+  isMain: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -117,7 +118,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSlug();
-
     this.subject.subscribe(() => {
       this.apiService
         .getAPI(
@@ -157,7 +157,11 @@ export class HeaderComponent implements OnInit {
   }
   setInit() {
     let headerApi = 'header';
+    this.isMain = true;
+
     if (this.brandSlug !== '1851') {
+      this.isMain = false;
+
       headerApi = `header?slug=${this.brandSlug}`;
     }
     const header = this.apiService.getAPI2(headerApi);
