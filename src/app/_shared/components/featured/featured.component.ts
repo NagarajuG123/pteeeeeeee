@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { forkJoin, Subject } from 'rxjs';
@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-featured',
@@ -24,20 +25,21 @@ export class FeaturedComponent implements OnInit {
   s3Url = environment.s3Url;
   length: number;
   title: string;
-
+  isBrowser: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
-    public commonService: CommonService
-  ) {}
+    public commonService: CommonService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    this.title = "Featured Article";
-    const featureApi = this.apiService.getAPI(
-      `${this.apiUrl}`
-    );
+    this.title = 'Featured Article';
+    const featureApi = this.apiService.getAPI(`${this.apiUrl}`);
     const newsApi = this.apiService.getAPI(
       `${this.slug}/spotlight/industry?limit=3&offset=0`
     );
@@ -63,11 +65,19 @@ export class FeaturedComponent implements OnInit {
         .subscribe((response) => {
           this.brandInfoNews = response;
         });
-        this.title = this.length < 8 ? 'Special Feature' : 'Featured Article';
+      this.title = this.length < 8 ? 'Special Feature' : 'Featured Article';
     }
   }
 
   isAwards() {
     return this.slug === 'franchisedevelopmentawards' ? true : false;
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $('.modal').on('hidden.bs.modal', function () {
+        $('.modal').hide();
+        $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
+      });
+    }
   }
 }

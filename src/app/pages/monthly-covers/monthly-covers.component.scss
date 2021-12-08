@@ -96,12 +96,17 @@
     }
     .c-card-box--contentGroup {
       font-family: $roboto;
+      .fa {
+        color: $red;
+        font-size: 20px;
+      }
       .monthIsssue {
         color: $red;
         font-size: 13.33px;
         font-weight: 500;
         line-height: 16px;
         font-family: $roboto;
+        margin-top: 5px;
         @include media("<md") {
           font-size: 16px;
         }
@@ -225,9 +230,9 @@
         line-height: 16.73px;
       }
     }
-    .seeMore{
+    .seeMore {
       color: $red;
-      .fa-angle-right{
+      .fa-angle-right {
         font-weight: 700;
       }
     }
@@ -299,4 +304,3 @@
     max-width: 300px;
   }
 }
-
