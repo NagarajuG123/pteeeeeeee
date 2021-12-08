@@ -78,9 +78,9 @@
       </div>
     </div>
   </div>
+  <!-- main -->
 
   <div class="container middle-head" *ngIf="isMain">
-    <!-- main -->
     <div class="row gx-0 align-items-center">
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
         <a
@@ -327,6 +327,7 @@
       </div>
     </div>
   </div>
+  <!-- brand -->
   <div class="container middle-head" *ngIf="!isMain">
     <div class="row gx-0 align-items-center" *ngIf="brandSlug !== '1851'">
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
@@ -354,13 +355,13 @@
         </a>
       </div>
       <div
-        class="d-flex align-items-center logo col-lg-5 col-sm-5 col-md-5 col-5"
+        class="d-flex align-items-center logo col-lg-5 col-sm-3 col-md-3 col-3"
         (click)="closeSidebar()"
       >
         <a
           [routerLink]="header?.logo?.url"
           (click)="closeSidebar()"
-          class="pe-lg-4 pe-2"
+          class="pe-lg-4 pe-4"
           ><img
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
@@ -369,7 +370,11 @@
             class="lazyload"
         /></a>
 
-        <a data-bs-toggle="modal" data-bs-target="#sponsoredModal" href=""
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#sponsoredModal"
+          href=""
+          class="d-none d-lg-block"
           ><h6 class="sponsor m-0">
             {{ brandTitle }}
           </h6>
@@ -380,14 +385,14 @@
         class="
           d-flex
           align-items-center
-          col-lg-6 col-sm-4 col-md-4 col-4
+          col-lg-6 col-sm-6 col-md-6 col-6
           justify-content-end
         "
         (click)="closeSidebar()"
       >
         <nav class="pt-2">
           <ul class="nav justify-content-center">
-            <li class="pe-lg-4 pe-2">
+            <li class="pe-lg-4 pe-4">
               <a
                 href="#"
                 onclick="return false;"
