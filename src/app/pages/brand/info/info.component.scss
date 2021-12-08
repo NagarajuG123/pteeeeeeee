@@ -358,44 +358,16 @@
 
 .feature-article-section {
   background-color: $white_6;
-  padding: 40px 20px 20px;
+  padding: 20px 20px 20px;
 
   @include mobile-portrait {
     padding: 20px 15px;
   }
-
-  .feature-item {
-    padding-bottom: 20px;
-    position: relative;
-
-    @include tablet-portrait {
-      margin: 0 auto;
-      max-width: 280px;
-    }
-
-    .image-tag {
-      position: absolute;
-      background-color: $red;
-      color: $white;
-      font-family: $proxiSemiBold;
-      font-size: 12.27px;
-      line-height: 14.95px;
-      padding: 4px;
-    }
-
-    .image-area {
-      background-color: $white_6;
-      height: 126px;
-    }
-
-    .image-description {
-      padding-top: 10px;
-      background-color: $white_6;
-      color: $dark_gray;
-      font-family: $roboto;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 16.41px;
+  li{
+    padding: 10px 0;
+    .articleTitles{
+      font-size: 13px;
+      padding-top: 5px;
     }
   }
 }
