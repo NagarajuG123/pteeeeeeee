@@ -16,6 +16,9 @@ header {
       font-size: 12px;
       line-height: 15.44px;
     }
+    .fa {
+      color: $white_2;
+    }
   }
 
   .middle-head {
@@ -40,6 +43,7 @@ header {
         line-height: 23.16px;
         font-family: $roboto;
         color: $dark_gray;
+        text-transform: capitalize;
       }
       .sponsorLogo {
         font-weight: 500;
@@ -47,6 +51,10 @@ header {
         line-height: 12.87px;
         font-family: $roboto;
         color: $dark_gray_6;
+        background: url("https://1851-static.s3.amazonaws.com/1851_logo_subscribe.png")
+          no-repeat 100% 0;
+        padding: 0 13px 0 0;
+        background-size: 10px;
       }
     }
     .menu {
@@ -207,6 +215,13 @@ header {
         }
       }
     }
+    .brandNav {
+      right: 100px;
+      width: 380px;
+      .dropdown-item {
+        white-space: normal;
+      }
+    }
   }
 
   .bottom-head {
@@ -324,6 +339,18 @@ header {
           padding: 0px;
           background-color: unset;
         }
+      }
+    }
+  }
+  .sponsorModal {
+    h2 {
+      color: $red;
+    }
+    .content {
+      font-family: $proxiRegular;
+      text-transform: none;
+      span {
+        color: $dark_gray_3;
       }
     }
   }
