@@ -57,7 +57,7 @@
   height: calc(100% - 27px);
   width: calc(100% - 30px);
   margin-left: 10px;
-  
+
   li {
     display: flex;
     border-bottom: 1px solid $dark_gray;
@@ -79,14 +79,13 @@
   @include mobile-landscape {
     padding-top: 100px;
   }
-  background: $white_3;
+  background: $white_8;
   .tabs {
-    ul 
-    {
-      li{
+    ul {
+      li {
         border-top: 0.5px solid $light_gray_8;
         border-bottom: 0.5px solid $light_gray_8;
-        span{
+        span {
           font-family: $proxiBold;
           color: $light_gray_8;
           &.active,

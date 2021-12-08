@@ -61,7 +61,7 @@ img {
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
     }
-    @include tablet-landscape1{
+    @include tablet-landscape1 {
       max-width: 100%;
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
@@ -77,24 +77,22 @@ img {
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
     }
-    @include tablet-landscape1{
+    @include tablet-landscape1 {
       max-width: 100%;
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
     }
   }
-  .readMore {
-    position: absolute;
+  .seeMore {
     bottom: 0;
     left: 0;
     width: 100%;
     background: $red;
-    color: $white;
     padding: 10px;
     @include tablet-portrait {
       position: static;
     }
-    @include tablet-landscape1{
+    @include tablet-landscape1 {
       position: static;
     }
   }
@@ -112,7 +110,7 @@ img {
     position: static;
     padding: 30px 15px;
   }
-  @include tablet-landscape1{
+  @include tablet-landscape1 {
     padding: 30px 15px;
     position: static;
   }
