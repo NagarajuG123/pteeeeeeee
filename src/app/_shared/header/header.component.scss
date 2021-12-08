@@ -335,6 +335,7 @@ header {
         line-height: 24px;
         color: $dark_gray_6;
         font-weight: 400;
+        border: 1px solid $dark_gray_6;
       }
       .submit {
         color: $white;
@@ -342,6 +343,9 @@ header {
         height: 40px;
         width: 150px;
       }
+    }
+    .borderLine{
+      margin-top: -15px;
     }
   }
   .thanksModal {

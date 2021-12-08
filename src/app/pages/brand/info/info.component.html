@@ -387,7 +387,7 @@
       >
         <div class="financial-requirement-section more-brand--wrapper">
           <div class="header" *ngIf="isInfo">
-            <h1 class="title text-uppercase">Financial Requirements</h1>
+            <h1 class="sectionTitle title text-capitalize mb-0">Financial Requirements</h1>
           </div>
           <div class="headerMarket" *ngIf="isMarket">
             <h2 class="titleMarket">More Brand Info</h2>
@@ -471,7 +471,7 @@
 
         <div class="inquiry-form-section">
           <div class="header py-2" *ngIf="!isMarket">
-            <h1 class="title">INQUIRE NOW</h1>
+            <h1 class="title mb-0 text-capitalize">Inquire Now</h1>
           </div>
           <div class="header" *ngIf="isMarket">
             <h1 class="market-header text-uppercase">Inquire about services</h1>
@@ -568,18 +568,28 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="title-tag">RECENT FEATURES</div>
-                <div
-                  class="recent-item"
+                <ul>
+                <li
+                  class="w-90"
                   *ngFor="let item of featured | slice: 0:3"
                 >
                   <a
                     routerLink="/{{ commonService.readMore(item) }}"
                     fragment="featured"
                   >
-                    <p class="title">{{ item.title }}</p>
-                    <p class="description">{{ item.short_description }}</p>
+                    <p class="articleTitles mb-0">{{ item.title }}</p>
+                    <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+                      >{{ commonService.formatDate(item.last_modified) }} |
+                      {{ commonService.formatTime(item.last_modified) }}
+                    </span>
+                    <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+                      >{{ commonService.formatDate(item.posted_on) }} |
+                      {{ commonService.formatTime(item.posted_on) }}</span
+                    >
+                    <p class="description mb-0">{{ item.short_description }}</p>
                   </a>
-                </div>
+                </li>
+              </ul>
               </div>
             </div>
           </div>
