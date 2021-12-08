@@ -785,30 +785,42 @@
 
   <!-- Sponsor Modal -->
 
-  <div ng-cloak class="searchModal modal fade" id="sponsoredModal">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="sponsored-modal-content">
+  <div
+    class="searchModal modal sponsorModal"
+    tabindex="-1"
+    *ngIf="isBrowser"
+    id="sponsoredModal"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content px-5 py-5">
+        <div class="modal-header">
           <button
             type="button"
-            class="close text-right"
+            class="close"
             data-bs-dismiss="modal"
+            aria-label="Close"
+            #searchCloseBtn
           >
             &times;
           </button>
-          <h2 class="text-uppercase" *ngIf="brandTitle">{{ brandTitle }}</h2>
-          <p>
-            This brand page has been paid for by
-            <span class="text-uppercase">{{ brandTitle }}</span
-            >. Content within this page that is paid will showcase a Sponsored
-            icon. This means the brand has engaged
-            <span class="text-uppercase">{{ publication?.shortTitle }}</span>
-            to write the content. Content without the Sponsored Icon is
-            aggregated media placements the brand earned. Questions can be sent
-            to
-            <span>{{ editorialEmail }}</span>
-          </p>
         </div>
+
+        <h2
+          class="text-uppercase m-0 pb-3 large-main-article"
+          *ngIf="brandTitle"
+        >
+          {{ brandTitle }}
+        </h2>
+        <p class="content">
+          This brand page has been paid for by
+          <span class="text-uppercase">{{ brandTitle }}</span
+          >. Content within this page that is paid will showcase a Sponsored
+          icon. This means the brand has engaged
+          <span class="text-uppercase">{{ publication?.shortTitle }}</span>
+          to write the content. Content without the Sponsored Icon is aggregated
+          media placements the brand earned. Questions can be sent to
+          <span>{{ editorialEmail }}</span>
+        </p>
       </div>
     </div>
   </div>

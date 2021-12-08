@@ -342,6 +342,18 @@ header {
       }
     }
   }
+  .sponsorModal {
+    h2 {
+      color: $red;
+    }
+    .content {
+      font-family: $proxiRegular;
+      text-transform: none;
+      span {
+        color: $dark_gray_3;
+      }
+    }
+  }
   .inquireModal {
     form {
       input {
