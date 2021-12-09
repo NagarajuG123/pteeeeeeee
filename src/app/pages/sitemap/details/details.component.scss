@@ -1,0 +1,69 @@
+@import "../../../../assets/scss/mixins.scss";
+@import "../../../../assets/scss/variables.scss";
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  a {
+    color: $light_blue;
+  }
+}
+.container {
+  max-width: 970px !important;
+  margin: 0 auto;
+  display: block;
+  @include desk-lg-below {
+    max-width: 100%;
+  }
+}
+.bws-sitemap {
+  padding: 40px 15px !important;
+}
+
+.bws-sitemap-title {
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-family: $proxiRegular;
+  line-height: 35.2px;
+}
+
+.bws-sitemap-subtitle {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: $proxiRegular;
+  line-height: 30.8px;
+  color: $dark_gray_1;
+}
+
+.bws-sitemap-col {
+  margin-bottom: 40px;
+}
+
+.bws-sitemap ul {
+  list-style: none;
+  li {
+    line-height: 1.5;
+    font-family: $proxiRegular;
+  }
+}
+
+li {
+  a {
+    color: $light_blue;
+    font-size: 17px;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../../../assets/scss/variables.scss";
+
+.error-message {
+  color: $red;
+  font-family: $proxiRegular;
+  line-height: 17.6px;
+}
+.signup {
+  color: $white;
+}

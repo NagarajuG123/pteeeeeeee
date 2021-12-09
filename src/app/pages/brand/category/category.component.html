@@ -1,0 +1,151 @@
+<div class="sidebar-blur category" *ngIf="isLoaded">
+  <div class="banner" [style.background-image]="'url(' + banner + ')'">
+    <div class="container customContainer position-relative py-3">
+      <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-12 mb-3 mb-sm-0">
+          <div class="content">
+            <h3 class="text-capitalize">{{ mainText }}</h3>
+            <span class="d-flex description" *ngIf="description">{{
+              description
+            }}</span>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6 mb-3 mb-sm-0 catArticle">
+          <ul class="industry-list pt-1">
+            <li *ngFor="let item of featuredData | slice: 0:4; index as i">
+              <div class="d-flex">
+                <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+                  <a
+                    routerLink="/{{ commonService.readMore(item) }}"
+                    fragment="featured"
+                    class="pe-2"
+                  >
+                    <img
+                      appYoutubeImage
+                      width="121"
+                      class="lazyload img-fluid"
+                      alt="article"
+                      loading="lazy"
+                      height="114"
+                      data-src="{{ item.media | defaultImage: 1280:720 }}"
+                  /></a>
+                </div>
+                <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+                  <a
+                    routerLink="/{{ commonService.readMore(item) }}"
+                    fragment="featured"
+                  >
+                    <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+                  </a>
+                  <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+                    >{{ commonService.formatDate(item.last_modified) }} |
+                    {{ commonService.formatTime(item.last_modified) }}
+                  </span>
+                  <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+                    >{{ commonService.formatDate(item.posted_on) }} |
+                    {{ commonService.formatTime(item.posted_on) }}</span
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- tabs -->
+  <div class="bottomSection">
+    <div class="tabs primary-bg">
+      <div class="container customContainer position-relative">
+        <div
+          class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+          [ngClass]="tabName?.length > commonService.vtabsItem ? '' : 'd-none'"
+          (click)="prev()"
+        >
+          <img
+            data-src="{{ s3Url }}left-arrow.svg"
+            width="20px"
+            height="39px"
+            loading="lazy"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+        <ul class="row m-0 px-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-1">
+          <li
+            *ngFor="let item of tabName; index as i"
+            class="border-end text-center"
+            [ngClass]="
+              i < commonService.vtabsItem + skipTab && i >= skipTab
+                ? 'active'
+                : 'd-none'
+            "
+          >
+            <span
+              class="
+                d-inline-flex
+                justify-content-around
+                align-items-center
+                mx-auto
+                position-relative
+              "
+              [ngClass]="i + 1 === activeTab ? 'active' : ''"
+              (click)="setActiveTab(i + 1, item)"
+            >
+              {{ item?.shortName }}
+            </span>
+          </li>
+        </ul>
+        <div
+          class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+          [ngClass]="
+            tabName?.length > this.commonService.vtabsItem ? '' : 'd-none'
+          "
+          (click)="next()"
+        >
+          <img
+            data-src="{{ s3Url }}right-arrow.svg"
+            loading="lazy"
+            width="20px"
+            height="39px"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container customContainer mt-4 py-3 article">
+      <app-home-article
+        [typeSlug]="tab"
+        [contents]="featuredData"
+        [class]="'row-cols-lg-5 gx-2'"
+      ></app-home-article>
+    </div>
+    <div class="d-flex">
+      <div class="seeMoreLine"></div>
+      <div class="nextLine position-relative mb-5 mt-2">
+        <div class="container customContainer">
+          <div class="row d-flex align-items-center">
+            <div
+              class="d-flex justify-content-center align-items-center seeMore"
+            >
+              <div class="px-1 bg-blue">
+                <img
+                  data-src="{{ s3Url }}nextIcon.svg"
+                  width="32"
+                  alt="next articles"
+                  class="me-3 lazyload"
+                  (click)="getMore(slug)"
+                  loading="lazy"
+                />
+                <span class="seeMore" (click)="getMore(slug)">SEE MORE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="seeMoreLine"></div>
+    </div>
+  </div>
+</div>

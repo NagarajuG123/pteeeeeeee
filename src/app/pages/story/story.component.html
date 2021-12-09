@@ -1,0 +1,31 @@
+<div
+  *ngIf="isBrowser"
+  class="search-results sidebar-blur"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScrollDown()"
+>
+    <div *ngIf="detailsData.length">
+      <app-item
+        *ngFor="let details of detailsData; let i = index"
+        class="element"
+        [details]="details"
+        attr.data-title="{{ details['slug'] }}"
+        attr.data-id="{{ details['id'] }}"
+        [trending]="trendingData"
+        [mainNewsData]="mainNews"
+        [brandNewsData]="brandNews"
+        [brandSlug]="brandSlug"
+        [index]="i"
+        [type]="type"
+        [isLoading]="isLoading"
+        [socialImage]="social_image"
+        [isSmallWindow]="isSmallWindow"
+        [publication]="publication"
+      ></app-item>
+    </div>
+</div>
+
+<ngx-json-ld [json]="schema"></ngx-json-ld>

@@ -1,0 +1,109 @@
+<div class="authorSection">
+  <div class="sidebar-blur authorDetail">
+    <div class="container customContainer">
+      <div class="row">
+        <div class="col-md-5 col-sm-6 py-4 px-4"></div>
+        <div class="col-md-7 col-sm-6 pt-5 pb-2 px-4 details">
+          <span class="small-red-headers">ABOUT</span>
+          <h1 class="large-main-article mb-0">{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+          <h5 class="sectionTitle">{{ author?.data?.designation }}</h5>
+          <hr />
+
+          <ul class="social d-flex p-0" *ngIf="author?.data">
+            <li *ngFor="let item of author?.data?.socialMedia; index as i">
+              <a
+                href="{{ item?.url }}"
+                target="blank"
+                class="
+                  rounded-circle
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  me-1
+                  primary-bg
+                "
+              >
+                <fa-icon
+                  [icon]="socialIcons[item.index]"
+                  class="searchIcon"
+                ></fa-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container customContainer position-relative">
+    <div class="row">
+      <div class="col-md-5 col-sm-6 px-4"></div>
+      <div class="col-md-7 col-sm-6 px-4 py-3">
+        <p [innerHtml]="author?.data?.about" class="description"></p>
+      </div>
+    </div>
+    <div class="position-absolute authorProfile">
+      <figure>
+        <img
+          *ngIf="author?.data"
+          appYoutubeImage
+          src="{{ author?.data?.media | defaultImage: 298:297 }}"
+          width="298"
+          height="297"
+          alt="authorpage"
+        />
+      </figure>
+    </div>
+  </div>
+</div>
+
+<div class="main-content sidebar-blur">
+  <div class="editorial-stories">
+    <div class="container">
+      <div class="editorial-stories-details col-xl-11">
+        <div class="frannews-bottom" *ngIf="editorials.length > 0">
+          <h3 class="text-center text-uppercase">
+            EDITORIAL STORIES BY {{ author?.data?.first_name }}
+            {{ author?.data?.last_name }}
+          </h3>
+          <app-five-column
+            [contents]="editorials"
+            [type]="'authorpage'"
+            [typeSlug]="'editorials'"
+          ></app-five-column>
+          <a
+            routerLink="/{{ commonService.readMore(editorials[0]) }}"
+            fragment="editorials"
+            class="readmore d-block text-uppercase"
+          >
+            READ MORE
+            <span class="d-block text-center">
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </span>
+          </a>
+        </div>
+        <div class="frannews-bottom" *ngIf="brandedContents.length > 0">
+          <h3 class="text-center text-uppercase">
+            BRANDED CONTENT BY {{ author?.data?.first_name }}
+            {{ author?.data?.last_name }}
+          </h3>
+          <app-five-column
+            [contents]="brandedContents"
+            [type]="'authorpage'"
+            [typeSlug]="'brand-latest-stories'"
+          ></app-five-column>
+          <a
+            routerLink="/{{ commonService.readMore(brandedContents[0]) }}"
+            fragment="brand-latest-stories"
+            class="readmore d-block text-uppercase"
+          >
+            READ MORE
+            <span class="d-block text-center">
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-json-ld [json]="schema"></ngx-json-ld>

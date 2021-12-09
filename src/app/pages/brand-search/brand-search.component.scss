@@ -1,0 +1,296 @@
+@import "../../../assets/scss/typography.scss";
+@import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/variables.scss";
+
+.c-subheader--wrapper {
+  width: 100%;
+  height: 250px;
+  @include media("<md") {
+    height: 180px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.list-data--wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 400px !important;
+  @include media("<xl") {
+    padding-left: 300px !important;
+  }
+
+  @include media("<md") {
+    flex-flow: row wrap;
+  }
+
+  @include media("<lg") {
+    padding-left: 0 !important;
+  }
+
+  &.isHead {
+    background:$white_8;
+    font-family: $proxiBold;
+    font-weight: 700;
+    line-height: 28.24px;
+    color: $dark_gray;
+    font-size: 20px;
+    padding: 15px 15px;
+    text-align: center;
+    height: 68px;
+    @include media("<md") {
+      display: none;
+    }
+  }
+
+  &.isRow {
+    padding: 40px 15px;
+    @include media("<md") {
+      padding: 20px 15px;
+    }
+  }
+
+  &.list-data-wrapper--2 {
+    background-color: $white_8;
+  }
+
+  &.list-data-wrapper--1 {
+    background-color: $white;
+  }
+
+  .list-data--item {
+    flex: 1 0 25%;
+    max-width: 25%;
+    padding: 0 15px;
+    @include media("<md") {
+      flex: 1 0 100%;
+      max-width: 100%;
+    }
+    &.isBrandCol {
+      text-align: center;
+      .list-data--itemImg {
+        max-width: 190px;
+        @include media("<xl") {
+          max-width: 160px;
+        }
+        @include media("<md") {
+          max-width: 140px;
+          margin-bottom: 15px;
+        }
+        @include media("<sm") {
+          max-width: 120px;
+        }
+      }
+    }
+    &.isInvestmentCol {
+      .list-data--investment {
+        font-family: $proxiMedium;
+        font-weight: 500;
+        color: $dark_gray;
+        font-size: 20px;
+        margin-bottom: 0;
+        line-height: 28.24px;
+        text-align: center;
+        a {
+          color: $dark_gray;
+        }
+        @include media("<md") {
+          margin-bottom: 10px;
+          font-size: 18px;
+          text-align: left;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Investment";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    &.isIndustryCol {
+      .articleTitles  {
+        color: $dark_gray;
+        margin-bottom: -1px;
+
+        a {
+          color: $dark_gray;
+        }
+        @include media("<md") {
+          margin-bottom: 10px;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Industry";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    &.isLstSotryCol {
+      .list-data--latestStory {
+        margin-bottom: 0;
+        .articleTitles {
+          color: $red;
+        }
+        @include media("<md") {
+          font-size: 18px;
+          margin-bottom: 10px;
+          &::before {
+            font-family: "ProximaNova-Bold";
+            content: "Latest Story";
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none !important;
+            color: $dark_gray;
+          }
+        }
+      }
+    }
+  }
+}
+.scroll-bottom {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  .scroll-bottom--img {
+    max-width: 100%;
+  }
+}
+.c-filter-with-box--wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  @include media("<lg") {
+    flex-flow: row wrap;
+  }
+  .c-filter--wrapper {
+    position: relative;
+    margin-right: -400px;
+    padding-left: 55px;
+    width: 400px;
+    flex: 1 1 400px;
+    z-index: 5;
+    @include media("<xl") {
+      width: 300px;
+      flex: 1 1 300px;
+      margin-right: -300px;
+      padding-left: 15px;
+    }
+    @include media("<lg") {
+      width: 100%;
+      flex: 1 1 100%;
+      margin-right: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-bottom: 30px;
+    }
+    .c-filter-sub--wrapper {
+      margin-top: -30px;
+      @include media("<lg") {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      @include media("<md") {
+        flex-flow: row wrap;
+        gap: 0;
+      }
+      .c-filter-item--wrapper {
+        background:$light_gray_11 ;
+        @include media("<lg") {
+          flex: 1 0 auto;
+        }
+
+        @include media("<md") {
+          flex: 1 0 100%;
+        }
+
+        + .c-filter-item--wrapper {
+          margin-top: 45px;
+          @include media("<lg") {
+            margin-top: 0;
+          }
+          @include media("<md") {
+            margin-top: 15px;
+          }
+        }
+        .large-main-article  {
+          padding: 20px 8px;
+          text-transform: uppercase;
+          color: $white;
+          margin: 0;
+          text-align: center;
+          background: $red;
+          @include media("<md") {
+            padding: 10px 14px;
+            font-size: 20px;
+          }
+        }
+        .c-filter-item--contentGroup {
+          padding: 15px 30px 40px;
+          @include media("<xl") {
+            padding: 15px 15px 20px;
+          }
+          @include media("<lg") {
+            max-height: 300px;
+            overflow-y: auto;
+          }
+          .c-filter-item--content {
+            + .c-filter-item--content {
+              margin-top: 15px;
+            }
+            .form-check-input {
+              background-color: $light_gray_8;
+              border-color: $light_gray_8;
+              border-radius: 0;
+              width: 17px;
+              height: 17px;
+            }
+            .form-check-label {
+              font-family: $roboto;
+              color: $dark_gray_5;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 32.27px;
+              margin-left: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .list-data--section {
+    flex: 1 1 100%;
+  }
+}
+
+.c-filter-action--btnGroup {
+  text-align: center;
+  margin-bottom: 30px;
+  @include media("<md") {
+    margin-bottom: 20px;
+  }
+  input {
+    display: none;
+  }
+  .c-filter-action--btn {
+    font-family: $roboto;
+    line-height: 15.23px;
+    color: $red;
+    text-decoration: underline;
+    font-weight: 700;
+    width: 104px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+}
+.form-check-input {
+  margin-top: 0.5rem !important;
+}

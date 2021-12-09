@@ -1,0 +1,90 @@
+//For Responsive meadia queries
+@mixin desk-xxlg {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+@mixin desk-xlg {
+  @media (max-width: 1800px) {
+    @content;
+  }
+}
+@mixin desk-lg {
+  @media (max-width: 1500px) {
+    @content;
+  }
+}
+@mixin desk-lg-below {
+  @media (max-width: 1420px) {
+    @content;
+  }
+}
+@mixin desk-lg-below3 {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+@mixin desk-lg-below1 {
+  @media (max-width: 1274px) {
+    @content;
+  }
+}
+@mixin desk-lg-below2 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+/*-- media query for tablet */
+@mixin tablet-portrait {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+@mixin tablet-landscape {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape1 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin tablet-landscape2 {
+  @media (max-width: 1124px) {
+    @content;
+  }
+}
+/*-- media query for mobile landscape */
+@mixin mobile-landscape {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin mobile-landscape1 {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+@mixin mobile-landscape2 {
+  @media (max-width: 568px) {
+    @content;
+  }
+}
+/*-- media query for mobile portrait */
+@mixin mobile-portrait {
+  @media (max-width: 479px) {
+    @content;
+  }
+}
+@mixin mobile-portrait1 {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+@mixin mobile-portrait2 {
+  @media (min-width: 390px) and (max-width: 900px) {
+    @content;
+  }
+}

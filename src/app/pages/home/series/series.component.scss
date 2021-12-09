@@ -1,0 +1,37 @@
+@import "./../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.series {
+  .sectionTitle {
+    color: $dark_gray;
+  }
+  .seeMore {
+    color: $red;
+  }
+  .title {
+    font-family: $aktiv;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 125%;
+    color: $black;
+    margin-top: 10px;
+    span {
+      float: right;
+    }
+  }
+  .rightSide {
+    @include mobile-portrait {
+      padding-top: 2rem;
+    }
+    li {
+      border-bottom: 1px solid $dark_gray_5;
+      padding: 25px 0;
+      &:first-child {
+        padding-top: 0px;
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}

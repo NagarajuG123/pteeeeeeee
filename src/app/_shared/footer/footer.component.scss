@@ -1,0 +1,98 @@
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins.scss";
+
+footer {
+  background-color: $dark_gray;
+  color: $white;
+  width: 100%;
+  transition: all 0.5s ease;
+
+  .logos {
+    ul {
+      @include mobile-portrait {
+        align-items: center;
+      }
+    }
+  }
+  a {
+    color: $white_2;
+    &:hover {
+      color: $red;
+    }
+  }
+
+  h1 {
+    color: rgba(232, 238, 242, 0.11);
+    font-family: $aktiv;
+    font-weight: 400;
+    font-size: 90px;
+    line-height: 127.07px;
+  }
+  .border-end {
+    border-right: 1px solid $white_2 !important;
+  }
+  h4 {
+    font-size: 12px;
+    font-family: $aktiv;
+    font-weight: 700;
+    line-height: 12.36px;
+    color: $red;
+
+    > a {
+      line-height: 15.36px;
+    }
+    &.socialText {
+      font-family: $roboto;
+      color: $white_2;
+    }
+  }
+
+  @media screen and (max-width: 766px) {
+    .row {
+      > .col-12 {
+        border-left-width: 0px !important;
+        border-right-width: 0px !important;
+      }
+
+      > div.border-end {
+        border-bottom: 1px solid;
+      }
+
+      > div.border-start {
+        border-top: 1px solid;
+      }
+    }
+  }
+  .social {
+    li {
+      a {
+        height: 33px;
+        width: 33px;
+        transition: all 0.5s ease;
+
+        &:hover,
+        &:focus {
+          background-color: $white;
+          color: $red;
+        }
+      }
+    }
+  }
+}
+
+.modal-header {
+  border-bottom: 3px solid $red;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+}
+
+.form-check-input {
+  border-radius: 50%;
+  height: 20px !important;
+  border: 1px solid $red;
+  margin-top: 0em;
+}

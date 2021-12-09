@@ -1,0 +1,177 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+a {
+  display: inline-block;
+  vertical-align: top;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 100%;
+  img {
+    border-radius: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    min-height: 1px;
+    vertical-align: middle;
+    border: 0;
+  }
+}
+.row {
+  @include mobile-landscape1 {
+    flex-direction: column;
+  }
+}
+.authorSection {
+  .sectionTitle{
+    color: $red;
+    font-weight: 700;
+  }
+  .description{
+    min-height: 200px;
+    color: $black;
+  }
+  .authorProfile {
+    bottom: 50%;
+    left: 10%;
+    @include mobile-landscape {
+      position: static !important;
+    }
+    @include mobile-portrait {
+      position: static !important;
+    }
+  }
+  .authorDetail {
+    background-color: $white_3;
+    .about {
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16.41px;
+      color: $red;
+      margin-bottom: 0;
+    }
+    hr {
+      background: $dark_gray;
+      margin: 13px 0;
+      width: 300px;
+    }
+    .designation {
+      margin-top: -15px;
+      font-family: $aktiv;
+      font-weight: 700;
+      color: $red;
+      line-height: 28.24px;
+      font-size: 20px;
+    }
+
+    .social {
+      > li {
+        > a {
+          height: 33px;
+          width: 33px;
+          transition: all 0.5s ease;
+          color: $white;
+          &:hover,
+          &:focus {
+            background-color: $white;
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+  .details {
+    @include mobile-landscape {
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+/* editorial-stories */
+.editorial-stories {
+  background: $dark_gray_1;
+}
+.editorial-stories-details {
+  padding: 51px 39px 56px 39px;
+  margin: 0 auto;
+  @include desk-lg-below1 {
+    padding: 30px 0 0 0;
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 26px;
+    color: $white;
+    font-family: $proxiMedium;
+    letter-spacing: 0.3px;
+    padding: 0 0 66px 0;
+    font-weight: 400;
+    @include tablet-landscape {
+      font-size: 23px;
+      line-height: 25px;
+    }
+    @include tablet-landscape1 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    @include mobile-landscape1 {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    @include desk-lg-below {
+      padding: 0 0 20px 0;
+    }
+  }
+  p {
+    color: $white;
+  }
+  .frannews-bottom {
+    padding: 35px 0 87px 0;
+    @include desk-lg-below1 {
+      padding: 0 0 50px 0;
+    }
+  }
+}
+.readmore {
+  width: 160px;
+  height: 36px;
+  background: $red;
+  position: relative;
+  margin: 72px auto 0 auto;
+  font-size: 12px;
+  line-height: 36px;
+  font-weight: 700;
+  color: $white;
+  padding: 0 40px 0 30px;
+  font-family: $roboto;
+  @include desk-lg-below {
+    margin: 20px auto 0 auto;
+  }
+  span {
+    width: 36px;
+    height: 36px;
+    background: $dark_red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .fa {
+      font-size: 33px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+  &:hover {
+    color: $white;
+  }
+}

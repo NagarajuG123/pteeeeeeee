@@ -1,0 +1,80 @@
+<div class="series sidebar-blur py-3" *ngIf="seriesData">
+  <div class="container customContainer">
+    <h2 class="py-3 m-0 sectionTitle">Featured Series</h2>
+  </div>
+  <hr />
+  <div class="container customContainer pt-2">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        <div class="position-relative">
+          <div class="tag text-center top-0 position-absolute text-uppercase">
+            Featured series
+          </div>
+          <a routerLink="{{ seriesData[0]?.url }}">
+            <img
+              appYoutubeImage
+              class="img-fluid lazyload"
+              width="741"
+              height="417"
+              data-src="{{ seriesData[0].media | defaultImage: 1280:720 }}"
+              alt="series"
+              loading="lazy"
+            />
+            <div class="d-flex pt-2">
+              <div class="col-lg-11 col-md-10 col-sm-10 col-10">
+                <h3 class="m-0 title">
+                  {{ seriesData[0]?.title }}
+                </h3>
+              </div>
+              <div
+                class="
+                  col-lg-1 col-md-2 col-sm-2 col-2
+                  d-flex
+                  justify-content-end
+                  align-items-center
+                "
+              >
+                <a class="seeMore p-0 me-2"
+                  >See All
+                  <fa-icon [icon]="faAngleRight" class="fa-icon"></fa-icon
+                ></a>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 rightSide">
+        <span class="small-red-headers align-top">Featured series</span>
+        <ul>
+          <li *ngFor="let item of seriesData | slice: 1:4" class="d-flex">
+            <div class="d-flex">
+              <div class="col-lg-5 col-md-4 col-sm-5 col-5">
+                <a routerLink="/{{ item?.url }}" class="pe-2">
+                  <img
+                    appYoutubeImage
+                    class="img-fluid lazyload"
+                    width="192"
+                    height="108"
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    alt="featured"
+                    loading="lazy"
+                /></a>
+              </div>
+              <div class="col-lg-7 col-sm-7 col-md-8 ps-2">
+                <a routerLink="{{ item?.url }}">
+                  <h3 class="px-3 mb-0 articleTitles">{{ item.title }}</h3>
+                  <span class="px-3 seeMore"
+                    >SEE ALL
+                    <fa-icon
+                      [icon]="faAngleRight"
+                      class="fa-icon"
+                    ></fa-icon></span
+                ></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

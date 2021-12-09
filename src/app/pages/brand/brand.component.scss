@@ -1,0 +1,82 @@
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/mixins.scss";
+
+a {
+  color: $dark_gray;
+}
+
+.items {
+  font-family: "Roboto";
+  .card-body {
+    padding: 1rem 0;
+    h2 {
+      font-size: 16px;
+      line-height: 18.72px;
+      font-family: $roboto;
+      font-weight: 700;
+      color: $dark_gray !important;
+    }
+    p,
+    p a {
+      font-size: 12.97px;
+      line-height: 16.7px;
+      font-family: $proxiRegular;
+      color: $dark_gray_5;
+      font-weight: 600;
+    }
+  }
+}
+
+.banner {
+  height: auto;
+  @include mobile-portrait {
+    img {
+      height: 250px;
+    }
+  }
+  .left-text {
+    top: 35%;
+    left: 7%;
+    @include tablet-landscape2 {
+      top: 25%;
+    }
+    @include tablet-portrait {
+      width: 50%;
+    }
+    @include mobile-portrait {
+      width: 60%;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 62px;
+      line-height: 77px;
+      color: $dark_gray;
+      font-family: $aktiv;
+      @include tablet-landscape1 {
+        font-size: 40px;
+      }
+      @include tablet-landscape2 {
+        font-size: 40px;
+        line-height: 42px;
+      }
+      @include mobile-landscape {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+    button{
+      padding: 0.5rem;
+    }
+  }
+  img{
+    @include mobile-portrait{
+      height: 300px;
+    } 
+  }
+}
+
+
+
+

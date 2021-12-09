@@ -1,0 +1,39 @@
+<div class="article row row-cols-sm-1 row-cols-md-2" [ngClass]="class">
+  <ng-container *ngFor="let item of contents; index as i">
+    <a
+      href="/{{ commonService.readMore(item) }}"
+      fragment="{{ typeSlug | lowercase }}"
+      class="py-2"
+    >
+      <div class="card rounded-0 border-0 h-100">
+        <img
+          appYoutubeImage
+          data-src="{{ item.media | defaultImage: 1280:720 }}"
+          class="w-100 img-fluid lazyload card-img-top"
+          width="196"
+          height="110"
+          alt=""
+          loading="lazy"
+        />
+        <div class="card-body p-0 pt-2 rounded-0">
+          <span class="small-red-headers ps-3" *ngIf="type === 'brandNews'">
+            {{ item?.brand.name }}</span
+          >
+          <h3 class="card-title articleTitles mb-0 px-3">
+            {{ item.title }}
+          </h3>
+        </div>
+        <div class="card-footer ps-3 border-0 pt-0">
+          <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+            >{{ commonService.formatDate(item.last_modified) }} |
+            {{ commonService.formatTime(item.last_modified) }}
+          </span>
+          <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+            >{{ commonService.formatDate(item.posted_on) }} |
+            {{ commonService.formatTime(item.posted_on) }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </ng-container>
+</div>

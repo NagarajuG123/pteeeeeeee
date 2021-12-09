@@ -1,0 +1,68 @@
+<div *ngIf="type === 'brand_page'">
+  <app-featured
+    [apiUrl]="apiUrl"
+    [slug]="slug"
+  ></app-featured>
+  <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
+
+  <app-spotlight [slug]="slug"></app-spotlight>
+</div>
+
+<div *ngIf="isCategory && type === 'category_page'">
+  <app-category [slug]="slug" [type]="'1851'"></app-category>
+</div>
+
+<div *ngIf="type === 'dynamic_page'">
+  <div class="banner position-relative container sidebar-blur">
+    <img
+      data-src="{{ topBlock.image | defaultImage: 1280:720 }}"
+      width="1439"
+      height="518"
+      alt="banner"
+      loading="lazy"
+      class="lazyload img-fluid"
+    />
+    <div class="left-text position-absolute row">
+      <div class="col-md-9 col-lg-12">
+        <a
+          routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
+          fragment="franbuzz"
+        >
+          <h1 class="mb-0">{{ topBlock?.title }}</h1>
+          <p class="description text-black">{{ topBlock?.description }}</p>
+          <div class="">
+            <button class="align-items-center text-white">Read More</button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container customContainer py-md-4 mt-2 sidebar-blur">
+      <app-home-article [typeSlug]="'franbuzz'" [contents]="dynamicStories" [class]="'row-cols-lg-5'"></app-home-article>
+  </div>
+  <div class="d-flex sidebar-blur">
+    <div class="seeMoreLine"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
+            <div class="nextBtn px-1 bg-white">
+              <img
+                data-src="{{s3Url}}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreDynamic()"
+                loading="lazy"
+              />
+              <span class="seeMore" (click)="getMoreDynamic()"
+                >SEE MORE</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seeMoreLine"></div>
+  </div>
+</div>

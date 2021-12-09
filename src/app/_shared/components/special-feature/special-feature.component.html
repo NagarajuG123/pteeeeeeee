@@ -1,0 +1,177 @@
+<div class="sidebar-blur" *ngIf="isLoaded">
+  <div
+    class="c-video-section--wrapper container customContainer pt-4"
+    [ngClass]="type == 'brand' ? 'brand' : ''"
+  >
+    <div class="frannews-top d-flex">
+      <div class="frannews-top-left col-lg-11 col-md-10 p-0">
+        <ul>
+          <li>
+            <h2 *ngIf="slug === '1851'" class="text-uppercase">{{ title }}</h2>
+            <h1 *ngIf="slug !== '1851'" class="text-uppercase">
+              {{ company }} Features
+            </h1>
+          </li>
+          <li class="frannews-subtitle">
+            <span *ngIf="slug == '1851'"
+              >Indepth coverage of franchise industry topics</span
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="c-divider--wrapper"></div>
+
+  <div class="container customContainer sidebar-blur">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg mb-3 mb-sm-0">
+        <div class="row" *ngIf="specialFeature.length">
+          <div class="col-12 mb-2 mb-md-3">
+            <div class="main-image position-relative">
+              <div
+                class="tag position-absolute text-center top-0 text-uppercase"
+              >
+                Special Feature
+              </div>
+              <a
+                routerLink="/{{ commonService.readMore(specialFeature[0]) }}"
+                fragment="{{ fragment }}"
+                ><img
+                  appYoutubeImage
+                  class="img-fluid lazyload"
+                  width="780"
+                  height="425"
+                  data-src="{{
+                    specialFeature[0].media | defaultImage: 780:425
+                  }}"
+                  data-srcset="{{
+                    specialFeature[0].media | defaultImage: 555:300
+                  }} 555w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 700:400
+                  }} 760w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 600:340
+                  }} 600w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 700:400
+                  }} 700w, 
+                      {{
+                    specialFeature[0].media | defaultImage: 780:450
+                  }} 780w"
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
+                    (max-width: 768px) 760px
+                    (max-width: 992px) 600px,
+                    (max-width: 1200px) 700px,
+                    780px'
+                  }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <div class="content text-capitalize bottom-0 w-100 pt-3">
+                  <h2>
+                    {{ specialFeature[0].title }}
+                  </h2>
+                  <p>
+                    {{ specialFeature[0].short_description }}
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="
+          position-relative
+          col-12 col-sm-6 col-lg-3
+          align-items-stretch
+          mb-3 mb-sm-0
+          latestListing
+        "
+      >
+        <ul class="news-list  list-group" *ngIf="slug === '1851'">
+          <li
+            class="mb-3"
+            *ngFor="let item of specialFeature | slice: 1:4; index as i"
+          >
+            <div class="position-relative small-image">
+              <div
+                class="tag position-absolute text-center top-0 text-uppercase"
+              >
+                Special Feature
+              </div>
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="dynamicpage"
+                ><img
+                  appYoutubeImage
+                  class="img-fluid lazyload"
+                  data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
+                  {{ item.media | defaultImage: 244:133 }} 244w, 
+                  {{ item.media | defaultImage: 400:224 }} 400w, 
+                  {{ item.media | defaultImage: 555:310 }} 555w"
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
+                    (max-width: 992px) 400px,
+                    (max-width: 1200px) 238px,
+                    244px'
+                  }}"
+                  width="244"
+                  height="133"
+                  data-src="{{ item.media | defaultImage: 244:133 }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <h3 class="over-layer bottom-0 w-100 p-2">
+                  {{ item.title }}
+                </h3>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <!-- Brand -->
+        <ul class="news-list  list-group" *ngIf="slug !== '1851'">
+          <li class="mb-3" *ngFor="let item of brandInfoNews; index as i">
+            <div class="position-relative small-image">
+              <a routerLink="{{ item.slug }}">
+                <div
+                  class="tag position-absolute text-center top-0 text-uppercase"
+                >
+                  {{ item?.title }}
+                </div>
+                <img
+                  appYoutubeImage
+                  class="img-fluid lazyload"
+                  data-srcset="{{ item.media | defaultImage: 238:93 }} 238w, 
+                {{ item.media | defaultImage: 300:168 }} 244w, 
+                {{ item.media | defaultImage: 400:224 }} 400w, 
+                {{ item.media | defaultImage: 555:310 }} 555w"
+                  data-sizes="{{
+                    '(max-width: 576px) 555px,
+                  (max-width: 992px) 400px,
+                  (max-width: 1200px) 238px,
+                  244px'
+                  }}"
+                  width="244"
+                  height="93"
+                  data-src="{{ item.media | defaultImage: 244:93 }}"
+                  alt="featured"
+                  loading="lazy"
+                />
+                <h3
+                  class="over-layer text-capitalize bottom-0 w-100 p-2"
+                  *ngIf="item?.description"
+                >
+                  {{ item?.description }}
+                </h3>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

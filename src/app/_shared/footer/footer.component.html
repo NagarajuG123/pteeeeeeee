@@ -1,0 +1,139 @@
+<footer *ngIf="footer">
+  <div class="container customContainer sidebar-blur">
+    <div class="row d-none d-xl-block">
+      <h1 class="text-uppercase text-center">For the love of franchising</h1>
+    </div>
+    <div class="row mx-4 pt-3 pb-5">
+      <div class="col-12 col-sm-4 col-lg-2 border-end py-4 px-0 logos">
+        <ul class="d-flex flex-column justify-content-between m-0">
+          <li
+            class="d-flex align-items-center pb-2 d-md-flex"
+            *ngFor="let publication of footer?.publication | slice: 0:1"
+          >
+            <div class="me-3">
+              <a href="{{ publication.url }}" target="_blank"
+                ><img
+                  data-src="{{ publication?.logo }}"
+                  alt="logo"
+                  width="{{ publication.width }}"
+                  height="{{ publication.height }}"
+                  class="lazyload"
+              /></a>
+            </div>
+          </li>
+          <li class="d-flex align-items-center pb-2 d-md-flex">
+            <div
+              class="me-1"
+              *ngFor="let publication of footer?.publication | slice: 1"
+            >
+              <a href="{{ publication.url }}" target="_blank"
+                ><img
+                  data-src="{{ publication?.logo }}"
+                  alt="logo"
+                  width="{{ publication.width }}"
+                  height="{{ publication.height }}"
+                  class="lazyload"
+              /></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-7 col-sm-4 py-3 px-4 border-end desktop-only">
+        <div class="row row-cols-lg-5">
+          <div *ngFor="let menu of footer?.menus">
+            <h4 *ngIf="menu.title == 'Spotlight'">
+              {{ menu?.title }}
+            </h4>
+            <a
+              routerLink="{{ menu.url }}"
+              *ngIf="menu.title != 'Spotlight' && menu.url != ''"
+            >
+              <h4>
+                {{ menu?.title }}
+              </h4>
+            </a>
+            <a
+              *ngIf="menu.url == ''"
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#contactModal"
+            >
+              <h4>
+                {{ menu.title }}
+              </h4>
+            </a>
+            <h4 class="text-capitalize mb-2" *ngFor="let item of menu.items">
+              <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7 py-3 px-4 border-end mobile-only">
+        <div class="d-flex">
+          <div class="col-md-6 pe-5">
+            <ngContainer *ngFor="let menu of footer?.menus">
+              <h4 *ngIf="menu.title == 'Spotlight'">
+                {{ menu?.title }}
+              </h4>
+
+              <h4 class="text-capitalize mb-2" *ngFor="let item of menu.items">
+                <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
+              </h4>
+            </ngContainer>
+          </div>
+          <div class="col-md-6 pe-5">
+            <ngContainer *ngFor="let menu of footer?.menus">
+              <a
+                routerLink="{{ menu.url }}"
+                *ngIf="menu.title != 'Spotlight' && menu.url != ''"
+              >
+                <h4>
+                  {{ menu?.title }}
+                </h4>
+              </a>
+              <a
+                *ngIf="menu.url == ''"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#contactModal"
+              >
+                <h4>
+                  {{ menu.title }}
+                </h4>
+              </a>
+            </ngContainer>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-12 col-sm-4 col-lg-3 d-flex flex-column py-3 py-lg-1 px-4"
+      >
+        <h4 class="mb-4 text-uppercase socialText">Find us on social</h4>
+
+        <ul class="social d-flex p-0">
+          <li *ngFor="let footer of footer?.socialMedia; index as i">
+            <a
+              href="{{ footer?.url }}"
+              target="blank"
+              class="
+                rounded-circle
+                d-flex
+                justify-content-center
+                align-items-center
+                me-1
+                primary-bg
+              "
+            >
+              <fa-icon
+                [icon]="socialIcons[footer.index]"
+                class="searchIcon"
+              ></fa-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

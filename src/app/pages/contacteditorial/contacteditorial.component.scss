@@ -1,0 +1,391 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.d-flex {
+  -webkit-flex-wrap: wrap;
+  display: flex !important;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: block;
+}
+
+.banner {
+  -webkit-box-shadow: 0 20px 8px rgb(0 0 0 / 8%);
+  position: relative;
+}
+.contact-banner {
+  figure {
+    width: 100%;
+    img {
+      min-height: 493px;
+      object-fit: cover;
+      height: 522px;
+      display: block;
+      width: 100%;
+    }
+  }
+  h1 {
+    letter-spacing: 0.8px;
+  }
+
+  .termsofuse-banner-main {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    margin: 0 auto;
+    background: $dark_gray_1;
+    @include tablet-landscape1 {
+      position: static;
+    }
+    h2,
+    h1 {
+      font-size: 28.92px;
+      line-height: 31px;
+      color: $white;
+      font-weight: 400;
+      font-family: $proxiMedium;
+      @include tablet-landscape {
+        font-size: 26px;
+        line-height: 28px;
+      }
+      @include tablet-landscape1 {
+        font-size: 24px;
+        line-height: 26px;
+      }
+      @include mobile-landscape1 {
+        font-size: 22px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+.termsofuse-banner-content {
+  padding: 43px 5px 33px 5px;
+  @include desk-lg-below1 {
+    padding: 20px 5px;
+  }
+  @include tablet-landscape1 {
+    padding: 15px;
+  }
+}
+.contact-editorial-details {
+  margin: 0 auto;
+  padding: 71px 10px 56px;
+  h4 {
+    letter-spacing: 0.5px;
+    font-family: $proxiSemiBold;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    color: $dark_gray_1;
+  }
+  p {
+    color: $dark_gray_1;
+    font-family: $proxiRegular;
+    letter-spacing: 0.4px;
+    padding: 5px 0 0;
+  }
+
+  input {
+    font-family: $proxiRegular;
+    border: 1px solid $light_gray_2;
+    font-size: 16px;
+    line-height: 44px;
+    color: $light_gray_1;
+
+    &::placeholder {
+      color: $light_gray_1;
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 44px;
+    }
+  }
+  textarea {
+    font-family: $proxiRegular;
+    border: 1px solid $light_gray_2;
+    height: 129px;
+    color: $light_gray_1;
+    line-height: 19px;
+    &::placeholder {
+      color: $light_gray_1;
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 44px;
+    }
+  }
+  .sucess-message {
+    display: block !important;
+  }
+}
+.f_error {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+  color: $red;
+}
+.editors {
+  .form-group {
+    margin: 0;
+  }
+  form {
+    padding: 50px 20px 15px;
+    @include desk-lg-below1 {
+      padding: 20px 0 15px 0;
+    }
+  }
+  ul {
+    margin: 0 -6px;
+    li {
+      padding: 0 6px 16px;
+      @include desk-lg-below1 {
+        padding: 0 6px 12px 6px;
+      }
+    }
+  }
+
+  h6 {
+    font-size: 16px;
+    line-height: 18px;
+    color: $light_gray_1;
+    font-family: $proxiRegular;
+    letter-spacing: 0.4px;
+    padding: 0 0 20px;
+    @include desk-lg-below1 {
+      padding: 0 0 12px 0;
+    }
+  }
+  button {
+    outline: 0;
+    width: 159px;
+    padding: 0 67px 0 32px;
+    cursor: pointer;
+    span {
+      left: auto;
+      right: 0;
+    }
+  }
+  a {
+    font-size: 12px;
+    line-height: 14px;
+    color: $light_gray_1;
+    font-family: $proxiLight;
+    letter-spacing: 0.4px;
+    margin: 19px 0 0;
+  }
+}
+
+h6 {
+  font-weight: 400;
+}
+
+.back {
+  line-height: 36px;
+  color: $white;
+  position: relative;
+  margin: 0 auto;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: $dark_red;
+    fa-icon {
+      font-size: 25px;
+      line-height: 36px;
+      color: $white;
+    }
+  }
+}
+
+.contact-editorial-main {
+  padding: 19px 0 36px 0;
+  @include desk-lg-below1 {
+    padding: 15px 0 25px 0;
+  }
+  @include tablet-landscape1 {
+    padding: 10px 0 15px 0;
+  }
+  ul {
+    padding: 0 0 0 12px;
+  }
+  label {
+    margin: 0;
+  }
+  .d-inline-block {
+    color: $dark_gray_1;
+  }
+  label {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+    font-family: $proxiMedium;
+    letter-spacing: 0.4px;
+    color: $dark_gray_1;
+  }
+}
+.editors-details {
+  padding: 8px 20px 0 46px;
+  display: none;
+  @include desk-lg-below1 {
+    padding: 8px 20px 0 35px;
+  }
+  ul {
+    margin: 0;
+    padding: 6px 20px 0 20px;
+    @include desk-lg-below1 {
+      padding: 6px 0 0 10px;
+    }
+    li {
+      vertical-align: top;
+      padding: 0 16px 0 0;
+    }
+  }
+
+  .radio_btns {
+    color: $light_gray;
+  }
+  label {
+    padding: 0 0 0 10px;
+    font-size: 11px;
+    line-height: 17px;
+    font-weight: normal;
+    font-family: $proxiRegular;
+    letter-spacing: 0.4px;
+    color: $light_gray_5;
+  }
+  strong {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: normal;
+    font-family: $proxiRegular;
+    color: $light_gray_5;
+    letter-spacing: 0.3px;
+  }
+}
+
+.sucess-message {
+  margin: 0 auto;
+  padding: 32px 4px 66px 1px;
+  display: none;
+  @include desk-lg-below1 {
+    padding: 15px 0 15px 0;
+  }
+  figure {
+    margin: 0 0 0 0px;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  em {
+    font-style: normal;
+    font-size: 70px;
+    line-height: 111px;
+    color: $white;
+    position: absolute;
+    top: 15px;
+    right: 3.4%;
+    background: url("https://1851-static.s3.amazonaws.com/contacteditorial-img3.png")
+      no-repeat left top;
+    width: 111px;
+    height: 111px;
+    @include mobile-portrait {
+      width: 75px;
+      height: 75px;
+      background-size: 75px;
+      right: 3.4%;
+      line-height: 75px;
+      font-size: 46px;
+      top: 9px;
+    }
+  }
+  h3 {
+    color: $dark_gray_2;
+    font-family: $proxiLight;
+    position: absolute;
+    top: 33.4%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    line-height: 28px;
+    strong {
+      font-family: $proxiMedium;
+    }
+    @include mobile-portrait {
+      font-size: 16px;
+      line-height: 20px;
+      top: 28.4%;
+    }
+  }
+  h2 {
+    background: $dark_gray_1;
+    padding: 26px 0 21px 0;
+    font-size: 30.75px;
+    line-height: 32px;
+    color: $white;
+    font-family: $proxiRegular;
+    margin: -81px 0 32px 0;
+    position: relative;
+    z-index: 1;
+    @include mobile-portrait {
+      margin: -70px 0 20px 0;
+      padding: 20px 0 18px 0;
+      font-size: 24px;
+      line-height: 26px;
+    }
+  }
+  a {
+    margin: 0 auto;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    color: $white;
+    background: $red;
+    font-size: 9.1px;
+    display: inline-block;
+    vertical-align: top;
+    font-family: $proxiRegular;
+    fa-icon {
+      font-size: 23px;
+      line-height: 35px;
+      color: $white;
+      padding: 0 10px 0 0;
+      vertical-align: top;
+    }
+  }
+}
+.sucess-message-details {
+  position: relative;
+  width: 380px;
+  margin: 0 auto;
+  @include mobile-portrait {
+    width: 274px;
+  }
+}
+.form-check-input:checked {
+  background-color: $red;
+  border-color: $red;
+}
+.form-check-input[type="checkbox"] {
+  border-radius: 0%;
+  border: 1px solid $red !important;
+}
+.d-inline-block {
+  .form-check-input {
+    margin-left: 0;
+  }
+}

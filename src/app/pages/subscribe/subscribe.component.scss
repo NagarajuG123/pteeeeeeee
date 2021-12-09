@@ -1,0 +1,171 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+.subscribe {
+  @include mobile-portrait {
+    flex-direction: column;
+  }
+  img {
+    height: 514px;
+    width: 100%;
+    @include tablet-landscape1 {
+      height: auto;
+    }
+  }
+  background-color: $white_3;
+  .large-main-article {
+    line-height: 42.5px;
+    color: $red;
+    @include mobile-portrait {
+      font-size: 27px;
+    }
+  }
+  h3 {
+    font-size: 20px;
+    font-family: $roboto;
+    line-height: 25.74px;
+    font-weight: 500;
+    color: $dark_black;
+  }
+
+  .editors {
+    h6 {
+      font-size: 17px;
+      font-family: $roboto;
+      line-height: 24px;
+      font-weight: 400;
+      color: $dark_gray;
+    }
+    label {
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 400;
+      font-family: $roboto;
+      color: $dark_black;
+      letter-spacing: 0.4px;
+    }
+    .form-control {
+      border: 1px solid $dark_gray_5 !important ;
+      width: 65%;
+      height: 47px;
+      background: $white;
+    }
+    input {
+      &::placeholder {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 25.74px;
+        color: $light_gray_8;
+      }
+    }
+    .form-check-input:checked {
+      background-color: $red;
+      border-color: $red;
+    }
+    .form-check-input[type="checkbox"] {
+      border: 1px solid $red !important;
+      border-radius: 0rem;
+    }
+    button {
+      position: relative;
+      border: 0;
+      width: 118px;
+      height: 35px;
+      padding: 9px 15px 16px 0px;
+      color: $white;
+
+      span {
+        position: absolute;
+        top: 0;
+        width: 13px;
+        height: 10px;
+        left: unset;
+        padding: 8px 1px 0px 7px;
+        fa-icon {
+          font-size: 18px;
+          color: $white;
+        }
+      }
+    }
+    .f_error {
+      display: block;
+      margin: 10px 0;
+      text-align: center;
+      color: $red;
+    }
+    .f_success {
+      color: $green;
+      display: block;
+      margin: 10px 0;
+      text-align: center;
+    }
+    #hideAfter5Sec {
+      animation: hideAnimation 0s ease-in 5s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes hideAnimation {
+      to {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
+    }
+    .signmeup {
+      label {
+        padding: 0 0 0 10px;
+        font-size: 9px;
+        line-height: 12.71px;
+        font-weight: 700;
+        font-family: $roboto;
+        letter-spacing: 0.4px;
+        color: $dark_gray;
+      }
+      .signmeup input:checked + span {
+        font-size: 9px;
+        font-family: $roboto;
+        font-weight: 700;
+        line-height: 12.71px;
+        color: $dark_gray;
+      }
+    }
+    .editors-details {
+      padding: 8px 20px 0 46px;
+      display: none;
+      @include desk-lg-below1 {
+        padding: 8px 20px 0 35px;
+      }
+      ul {
+        margin: 0;
+        padding: 6px 20px 0 20px;
+        @include desk-lg-below1 {
+          padding: 6px 0 0 10px;
+        }
+        li {
+          vertical-align: top;
+          padding: 0 16px 0 0;
+          font-family: $roboto;
+        }
+      }
+      strong {
+        font-size: 11px;
+        line-height: 13px;
+        font-weight: 400;
+        font-family: $proxiRegular;
+        color: $light_gray_5;
+        letter-spacing: 0.3px;
+      }
+      label {
+        font-size: 12px;
+        line-height: 17px;
+        font-weight: 400;
+        font-family: $proxiRegular;
+        color: $light_gray_5;
+        padding: 0 0 0 10px;
+        letter-spacing: 0.4px;
+      }
+      .d-inline-block .form-check-input {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,241 @@
+<div class="container py-3 sidebar-blur featured" *ngIf="isLoaded">
+  <div class="row">
+    <div
+      class="col-sm-12 position-relative featuredList"
+      [ngClass]="isAwards() || length < 9 ? 'col-lg-9' : 'col-lg-6'"
+    >
+      <div class="tag position-absolute text-center top-0 text-uppercase">
+        {{ title }}
+      </div>
+      <a
+        *ngIf="!commonService.isVideo(featured[0])"
+        routerLink="/{{ commonService.readMore(featured[0]) }}"
+        fragment="featured"
+      >
+        <img
+          appYoutubeImage
+          class="img-fluid lazyload"
+          alt="featured"
+          loading="lazy"
+          width="1280"
+          height="720"
+          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+        />
+      </a>
+
+      <a
+        *ngIf="commonService.isVideo(featured[0])"
+        data-bs-toggle="modal"
+        data-bs-target="#featuredModal"
+        fragment="featured"
+        class="video-btn"
+      >
+        <img
+          appYoutubeImage
+          class="img-fluid lazyload"
+          alt="featured"
+          loading="lazy"
+          width="1280"
+          height="720"
+          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+        />
+        <img
+          data-src="{{ s3Url }}videoIcon.png"
+          alt="Play"
+          class="img-fluid video-play lazyload"
+          loading="lazy"
+          width="120"
+          height="71"
+        />
+      </a>
+      <a
+        routerLink="/{{ commonService.readMore(featured[0]) }}"
+        fragment="featured"
+      >
+        <h2 class="large-main-article mt-2">
+          {{ featured[0].title }}
+        </h2>
+      </a>
+      <span *ngIf="commonService.isUpdate(featured[0])" class="timeStamp"
+        >{{ commonService.formatDate(featured[0].last_modified) }} |
+        {{ commonService.formatTime(featured[0].last_modified) }}
+      </span>
+      <span *ngIf="!commonService.isUpdate(featured[0])" class="timeStamp"
+        >{{ commonService.formatDate(featured[0].posted_on) }} |
+        {{ commonService.formatTime(featured[0].posted_on) }}</span
+      >
+    </div>
+    <!-- Industry 1851 news list -->
+    <div *ngIf="length > 8 && !isAwards()" class="col-lg-3 col-sm-12">
+      <span class="small-red-headers">Latest Franchise Industry News</span>
+      <ul class="industry-list pt-1">
+        <li *ngFor="let item of news; index as i">
+          <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
+          >
+            <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+          </a>
+          <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+            >{{ commonService.formatDate(item.last_modified) }} |
+            {{ commonService.formatTime(item.last_modified) }}
+          </span>
+          <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+            >{{ commonService.formatDate(item.posted_on) }} |
+            {{ commonService.formatTime(item.posted_on) }}</span
+          >
+          <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{ item?.category?.slug.replace('-spotlight', '') }}"
+          >
+            <p class="description mb-0">
+              {{ item.short_description }}
+            </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Brand news list -->
+    <div *ngIf="slug == '1851'" class="col brand-list border-start">
+      <span class="small-red-headers">LATEST FRANCHISE BRAND NEWS</span>
+
+      <ul class="industry-list pt-1">
+        <li *ngFor="let item of brandNews; index as i">
+          <div class="d-flex">
+            <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+                class="pe-2"
+              >
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="industry"
+                  loading="lazy"
+                  height="90"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+              <h2 class="small-red-headers mb-0">{{ item.brand.name }}</h2>
+
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Brand Info News -->
+    <div
+      *ngIf="slug !== '1851' && !isAwards()"
+      class="col brand-list brandPage"
+    >
+      <h2 class="research text-center m-0 p-2 mb-2">Franchisor Research</h2>
+
+      <ul class="industry-list pt-1">
+        <li *ngFor="let item of brandInfoNews; index as i">
+          <div class="d-flex">
+            <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+              <a routerLink="/{{ slug }}/{{ item.slug }}" class="pe-2">
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="info"
+                  loading="lazy"
+                  height="90"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+              <h2 class="small-red-headers mb-0">{{ item.title }}</h2>
+
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h3 class="articleTitles mb-0">{{ item?.description }}</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Awards -->
+    <div *ngIf="isAwards()" class="col brand-list border-start border-3">
+      <ul class="industry-list pt-1">
+        <li *ngFor="let item of featured | slice: 1:6; index as i">
+          <div class="d-flex">
+            <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+              <a routerLink="/{{ slug }}/{{ item.slug }}" class="pe-2">
+                <img
+                  appYoutubeImage
+                  width="128"
+                  class="lazyload img-fluid"
+                  alt="info"
+                  loading="lazy"
+                  height="90"
+                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+              /></a>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+              <a
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="industry"
+              >
+                <h2 class="articleTitles mb-0 p-0">{{ item.title }}</h2>
+              </a>
+              <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
+                >{{ commonService.formatDate(item.last_modified) }} |
+                {{ commonService.formatTime(item.last_modified) }}
+              </span>
+              <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
+                >{{ commonService.formatDate(item.posted_on) }} |
+                {{ commonService.formatTime(item.posted_on) }}</span
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="featuredModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    (click)="openVideoPlayer = true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="openVideoPlayer = false"
+          ></button>
+          <iframe
+            [src]="featured[0]?.media.url | safeUrl"
+            frameborder="0"
+            width="100%"
+            height="496px"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

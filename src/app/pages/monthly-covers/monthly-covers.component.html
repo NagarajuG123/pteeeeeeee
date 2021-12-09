@@ -1,0 +1,138 @@
+<section class="c-card-box--section sidebar-blur" *ngIf="firstBlock">
+  <div class="c-card-box--wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 p-0">
+          <div class="c-card-box--row c-card-box--contentRow">
+            <div class="c-card-box--col month-business--wrapper">
+              <div class="c-card-box--contentGroup ps-3">
+                <span class="d-flex">
+                  <i
+                    class="fa fa-long-arrow-left pe-2 d-none d-lg-block arrow"
+                    aria-hidden="true"
+                  ></i>
+                  <h4 class="monthIsssue">THIS MONTH'S ISSUE</h4>
+                </span>
+                <h1 class="large-main-article">Back to Business</h1>
+                <p class="content mb-0">
+                  {{ firstBlock[0]?.story?.title }}
+                </p>
+                <a
+                  routerLink="{{ firstBlock[0]?.story?.slug }}"
+                  fragment="monthlydetailspage"
+                  class="seeMore text-uppercase"
+                  >Read more
+                  <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="c-card-box--row">
+        <div class="c-card-box--col c-card-main-imagebox--wrapper">
+          <div class="c-card-box--imageWrapper isMainCardBox">
+            <a
+              routerLink="/{{ firstBlock[0]?.url }}"
+              class="maincardbox-link--wrapper"
+            >
+              <img
+                appYoutubeImage
+                data-src="{{ firstBlock[0]?.media | defaultImage: 574:775 }}"
+                width="574"
+                height="775"
+                alt="monthly-covers-main"
+                class="card-image lazyload"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="c-card-box--col c-card-main-content-box--wrapper">
+          <div class="c-card-box--group">
+            <div
+              class="c-card-box--item"
+              *ngFor="let item of firstBlock | slice: 1:4"
+            >
+              <div class="c-card-box--imageWrapper">
+                <a
+                  routerLink="{{ item.story.slug }}"
+                  fragment="monthlydetailspage"
+                >
+                  <img
+                    appYoutubeImage
+                    data-src="{{ item?.media | defaultImage: 288:379 }}"
+                    width="288"
+                    height="379"
+                    alt="monthly-covers-main"
+                    class="card-image lazyload img-fluid"
+                    loading="lazy" />
+                  <h4 class="articleTitles m-0 py-2">{{ item.story.title }}</h4>
+                  <p class="c-card-box--itemDec">
+                    {{ item.story.title }}
+                  </p>
+                  <span class="seeMore text-capitalize"
+                    >view details
+                    <i class="fa fa-plus" aria-hidden="true"></i></span
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="monthy-cover sidebar-blur" *ngIf="secondBlock">
+  <div class="container customContainer">
+    <h2 class="sectionTitle">ALL COVERS</h2>
+  </div>
+  <hr />
+  <div class="container customContainer d-flex">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-5">
+      <div class="monthly-covers-bottom p-0" *ngFor="let cover of secondBlock">
+        <a class="monthly-covers1" routerLink="{{ cover?.url }}">
+          <figure class="m-0">
+            <img
+              appYoutubeImage
+              data-src="{{ cover.media | defaultImage: 288:379 }}"
+              width="305"
+              height="380"
+              alt="monthly-covers"
+              loading="lazy"
+              class="lazyload"
+            />
+          </figure>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- See More -->
+  <div class="d-flex">
+    <div class="seeMoreLine"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
+            <div class="px-1 bg-white">
+              <img
+                data-src="{{ s3Url }}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreData()"
+                loading="lazy"
+              />
+              <span class="seeMore" (click)="getMoreData()">SEE MORE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seeMoreLine"></div>
+  </div>
+</div>

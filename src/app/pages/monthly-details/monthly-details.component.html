@@ -1,0 +1,87 @@
+<!--Top Section-->
+<section class="c-card-box--section sidebar-blur" *ngIf="banner">
+  <div class="c-card-box--wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 p-0">
+          <div class="c-card-box--row c-card-box--contentRow">
+            <div class="c-card-box--col month-business--wrapper">
+              <div class="c-card-box--contentGroup">
+                <h4 class="articleTitles">{{ title }}</h4>
+                <h1 class="large-main-article">Back to Business</h1>
+                <p class="content mb-0">
+                  {{ banner[0]?.title }}
+                </p>
+                <a
+                  routerLink="/{{ commonService.readMore(banner[0]) }}"
+                  fragment="monthlydetailspage"
+                  class="seeMore primary-color text-uppercase"
+                  >Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="c-card-box--row">
+        <div class="c-card-box--col c-card-main-imagebox--wrapper">
+          <div class="c-card-box--imageWrapper isMainCardBox">
+            <a
+              routerLink="/{{ commonService.readMore(banner[0]) }}"
+              class="maincardbox-link--wrapper"
+            >
+              <img
+                appYoutubeImage
+                data-src="{{ banner[0]?.media | defaultImage: 700:650 }}"
+                width="700px"
+                height="650px"
+                alt="monthly-details-main"
+                class="card-image lazyload mt-2"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Bottom Section-->
+
+<div class="ArticlesNewsSection sidebar-blur">
+  <div class="container customContainer py-md-2">
+        <h4 class="sectionTitle">
+          {{ title }}
+        </h4>
+  </div>
+  <hr />
+  <div class="container customContainer py-md-2">
+      <app-home-article [typeSlug]="'monthlydetailspage'" [contents]="details" [class]="'row-cols-lg-4 monthlyDetail'"></app-home-article>
+  </div>
+  <div class="d-flex">
+    <div class="seeMoreLine"></div>
+    <div class="nextLine position-relative mb-5 mt-2">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div class="d-flex justify-content-center align-items-center seeMore">
+            <div class="px-1 bg-white">
+              <img
+                data-src="{{s3Url}}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreData()"
+                loading="lazy"
+              />
+              <span class="seeMore" (click)="getMoreData()"
+                >SEE MORE</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seeMoreLine"></div>
+  </div>
+</div>

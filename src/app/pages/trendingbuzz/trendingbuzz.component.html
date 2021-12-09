@@ -1,0 +1,95 @@
+<div class="sidebar-blur" *ngIf="isLoaded">
+  <div
+    class="
+      banner
+      d-flex
+      trendingbrandbuzz-banner
+      flex-row-reverse
+      monthlydetails-banner
+    "
+    *ngIf="trendingData[0]"
+  >
+    <div class="banner-right col-md-8 p-0" *ngIf="trendingData[0].media">
+      <a class="d-block" href="" onclick="return false;">
+        <figure>
+          <img
+            appYoutubeImage
+            data-src="{{ trendingData[0].media | defaultImage: 1023:576 }}"
+            width="1023"
+            height="576"
+            class="lazyload"
+            alt="monthly-details-banner"
+          />
+        </figure>
+      </a>
+    </div>
+    <a
+      class="banner-left col-md-4 p-0"
+      routerLink="/{{ commonService.readMore(trendingData[0]) }}"
+      fragment="trendingbrandbuzz"
+    >
+      <div class="trendingbrandbuzz-content">
+        <h4 class="text-center d-inline-block">TRENDING BRAND BUZZ</h4>
+        <h1>
+          {{ trendingData[0]?.title }}
+        </h1>
+        <p>
+          {{ trendingData[0]?.short_description }}
+        </p>
+      </div>
+      <a class="seeMore position-absolute text-end">
+        READ MORE
+        <i
+          class="fa fa-angle-right fw-bold"
+          aria-hidden="true"
+          *ngIf="trendingData[0]?.title"
+        ></i>
+      </a>
+    </a>
+  </div>
+
+  <div class="container customContainer pt-md-5 pt-5 trending-bottom">
+    <h6>SPONSORED</h6>
+    <div class="row mt-2">
+      <app-five-column
+        [slug]="'1851'"
+        [contents]="trendingData"
+        [type]="'trendingbrandbuzz'"
+        [typeSlug]="'trendingbrandbuzz'"
+      >
+      </app-five-column>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="seeMoreLine mt-3"></div>
+    <div class="nextLine position-relative pb-5">
+      <div class="container customContainer">
+        <div class="row d-flex align-items-center">
+          <div
+            class="
+              d-flex
+              justify-content-center
+              align-items-center
+              seeMore
+              mt-0
+            "
+          >
+            <div class="nextBtn px-1 bg-white">
+              <img
+                data-src="{{ s3Url }}nextIcon.svg"
+                width="32"
+                alt="next articles"
+                class="me-3 lazyload"
+                (click)="getMoreData()"
+                loading="lazy"
+              />
+              <span class="seeMore" (click)="getMoreData()">SEE MORE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seeMoreLine mt-3"></div>
+  </div>
+</div>

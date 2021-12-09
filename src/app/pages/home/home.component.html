@@ -1,0 +1,75 @@
+<app-featured
+  [apiUrl]="'1851/featured-articles'"
+  [slug]="'1851'"
+></app-featured>
+<ng-container *ngIf="isLoaded">
+  <app-most-popular [slug]="'1851'" [type]="'home'"></app-most-popular>
+
+  <app-editorial-sections [slug]="'1851'"></app-editorial-sections>
+
+  <!-- signUp for next webinar section-->
+  <div class="primary-bg sidebar-blur signUp" *ngIf="isLoad">
+    <div class="container customContainer">
+      <form
+        [formGroup]="newsletterForm"
+        (ngSubmit)="onNewsletterSubmit(newsletterForm)"
+      >
+        <div class="row gx-2 py-3">
+          <div class="col-lg-3 col-sm-12 pt-2">
+            <h2 class="m-0 text-uppercase fw-bold">
+              Sign up for our newsletter
+            </h2>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <input
+              type="text"
+              placeholder="Name*"
+              class="form-control rounded-0"
+              [formControl]="newsletterForm.controls['name']"
+            />
+            <app-error-message
+              [type]="'signUpform'"
+              *ngIf="isSubmitted"
+              [control]="newsletterForm.controls['name']"
+            ></app-error-message>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <input
+              type="email"
+              placeholder="Email*"
+              class="form-control rounded-0"
+              [formControl]="newsletterForm.controls['email']"
+            />
+            <app-error-message
+              [type]="'signUpform'"
+              *ngIf="isSubmitted"
+              [control]="newsletterForm.controls['email']"
+            ></app-error-message>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <button class="btn" (click)="onNewsletterSubmit(newsletterForm)">
+              Join now
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <span *ngIf="isSubmitted" class="errS text-white text-center">{{
+            submitErrMsg
+          }}</span>
+          <span
+            *ngIf="!isSubmitted"
+            class="text-white text-center"
+            id="hideAfter5Sec"
+            >{{ successMsg }}</span
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <app-video></app-video>
+
+  <app-awards></app-awards>
+
+  <app-series></app-series>
+</ng-container>

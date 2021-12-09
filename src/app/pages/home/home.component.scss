@@ -1,0 +1,44 @@
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins.scss";
+
+.signUp {
+  h2 {
+    font-family: $aktiv;
+    line-height: 25.6px;
+    font-size: 20px;
+    color: $white_2;
+  }
+  input::-webkit-input-placeholder {
+    font-family: $proxiRegular;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.83px;
+    color: $black !important;
+  }
+
+  button {
+    width: 80%;
+    background-color: $dark_gray;
+    color: $white_2;
+    @include tablet-landscape {
+      width: 100%;
+    }
+  }
+  .col-sm-12 {
+    @include tablet-landscape {
+      margin-bottom: 1rem;
+    }
+  }
+  #hideAfter5Sec {
+    animation: hideAnimation 0s ease-in 5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hideAnimation {
+    to {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+  }
+}

@@ -1,0 +1,270 @@
+<div *ngIf="data" class="sidebar-blur">
+  <div *ngIf="data?.media" class="banner d-flex flex-row-reverse">
+    <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
+      <a
+        class="d-block video-btn"
+        *ngIf="data?.media"
+        data-bs-target="#aboutModal"
+        data-bs-toggle="modal"
+        onclick="return false"
+      >
+        <figure>
+          <img
+            appYoutubeImage
+            data-src="{{ data?.media | defaultImage: 1300:730 }}"
+            width="1023"
+            height="575"
+            alt="about"
+            (imageLoad)="bannerImageLoad()"
+            loading="lazy"
+            class="lazyload"
+          />
+        </figure>
+      </a>
+    </div>
+    <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
+      <div class="buffalo_wings">
+        <div class="info_btn text-center">
+          <a
+            *ngIf="publication?.id !== 'EE'"
+            onclick="return false;"
+            class="text-center"
+          >
+            ABOUT 1851
+          </a>
+          <h1 class="text-start">{{ data.title }}</h1>
+          <em class="text-start d-block">{{ data.description }}</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div *ngIf="data.contents" class="franchise_main text-center">
+      <div class="container">
+        <div class="franchise_data">
+          <h1>{{ data.contents[0].title }}</h1>
+          <p [innerHtml]="data.contents[0].short_description"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="publication_main" *ngIf="publicationContents">
+      <div
+        *ngFor="let content of publicationContents; let i = index"
+        class="publication_content d-flex flex-wrap"
+        [class.flex-row-reverse]="i % 2 === 0"
+      >
+        <div class="publication_left col-lg-6 col-md-12">
+          <figure>
+            <img
+              *ngIf="i === 0"
+              data-src="{{ content['media']['url'] }}"
+              width="720"
+              height="485"
+              alt="about"
+              loading="lazy"
+              class="lazyload"
+            />
+            <img
+              *ngIf="i === 1"
+              data-src="{{ content['media']['url'] }}"
+              width="720"
+              height="485"
+              alt="about"
+              loading="lazy"
+              class="lazyload"
+            />
+          </figure>
+        </div>
+        <div
+          class="
+            publication_right
+            d-flex
+            justify-content-center
+            align-items-center
+            col-lg-6 col-md-12
+          "
+        >
+          <div class="publication_right_data col-lg-5 col-md-12">
+            <h3>{{ content.title }}</h3>
+            <p
+              style="color: black !important"
+              [innerHtml]="content.short_description"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div #tellus id="tellus">
+      <div class="partner_main d-flex" *ngIf="isBrowser">
+        <div
+          class="
+            partner_left
+            d-flex
+            justify-content-center
+            text-center
+            align-items-center
+            col-lg-6
+          "
+        >
+          <figure>
+            <img
+              *ngIf="data?.demo?.media?.url"
+              data-src="{{ data?.demo?.media?.url }}"
+              width="491"
+              height="615"
+              alt="about-us-demo"
+              loading="lazy"
+              class="lazyload"
+            />
+          </figure>
+        </div>
+        <div
+          class="
+            partner_right
+            d-flex
+            justify-content-center
+            text-center
+            align-items-center
+            col-lg-6
+          "
+        >
+          <div class="partner_right_data col-lg-7">
+            <h4>REQUEST A DEMO</h4>
+            <p>
+              {{ data?.demo?.description }}
+            </p>
+            <form
+              [formGroup]="contactForm"
+              (ngSubmit)="onContactSubmit(contactForm)"
+            >
+              <div class="row gx-2">
+                <div class="col-6 col-sm">
+                  <input
+                    type="text"
+                    placeholder="First Name*"
+                    class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
+                    [formControl]="contactForm.controls['first_name']"
+                  />
+                  <app-error-message
+                    *ngIf="isSubmitted"
+                    [control]="contactForm.controls['first_name']"
+                  >
+                  </app-error-message>
+                </div>
+                <div class="col-6 col-sm">
+                  <input
+                    type="text"
+                    placeholder="Last Name*"
+                    class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
+                    [formControl]="contactForm.controls['last_name']"
+                  />
+                  <app-error-message
+                    *ngIf="isSubmitted"
+                    [control]="contactForm.controls['last_name']"
+                  >
+                  </app-error-message>
+                </div>
+              </div>
+              <br />
+              <div class="row gx-2">
+                <div class="col-12 col-sm">
+                  <input
+                    type="text"
+                    placeholder="Email Address*"
+                    class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
+                    [formControl]="contactForm.controls['email']"
+                  />
+                  <app-error-message
+                    *ngIf="isSubmitted"
+                    [control]="contactForm.controls['email']"
+                  ></app-error-message>
+                </div>
+              </div>
+              <br />
+
+              <div class="row gx-2">
+                <div class="col-12 col-sm">
+                  <textarea
+                    cols="3"
+                    rows="3"
+                    placeholder="Your Message*"
+                    class="form-control form-control-lg rounded-0 mb-3 mb-lg-0"
+                    [formControl]="contactForm.controls['message']"
+                  ></textarea>
+                  <app-error-message
+                    *ngIf="isSubmitted"
+                    [control]="contactForm.controls['message']"
+                  >
+                  </app-error-message>
+                </div>
+              </div>
+              <br />
+              <div class="row gx-2" id="recaptchaBlock">
+                <div class="col-8 col-sm">
+                  <re-captcha
+                    (resolved)="resolved($event)"
+                    formControlName="reCaptchaCode"
+                    siteKey="{{ siteKey }}"
+                  >
+                  </re-captcha>
+                  <app-error-message
+                    *ngIf="isSubmitted"
+                    class="full-width"
+                    [control]="contactForm.controls['reCaptchaCode']"
+                  ></app-error-message>
+                </div>
+                <div class="col-4 col-sm">
+                  <button
+                    type="button"
+                    class="col-12 submit_btn"
+                    (click)="onContactSubmit(contactForm)"
+                  >
+                    SUBMIT
+                    <fa-icon [icon]="faAngleRight"></fa-icon>
+                  </button>
+                </div>
+              </div>
+
+              <span *ngIf="isSubmitted" class="f_error">{{
+                submitErrMsg
+              }}</span>
+              <span *ngIf="!isSubmitted" class="f_success" id="hideAfter5Sec">{{
+                submitSuccessMsg
+              }}</span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+<div
+  class="modal fade"
+  id="aboutModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+        <iframe
+          [src]="videoUrl | safeUrl"
+          frameborder="0"
+          width="100%"
+          height="496px"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

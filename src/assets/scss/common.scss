@@ -1,0 +1,235 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+//color
+.primary-color {
+  color: $red !important;
+  &.link {
+    &:hover {
+      color: $dark_red_1;
+    }
+  }
+}
+.primary-bg {
+  background-color: $red;
+}
+
+//content
+.timeStamp {
+  font-family: $roboto;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: $red;
+  padding: 10px 0 10px;
+  display: inline-block;
+}
+.articleTitles {
+  font-size: 16px;
+  line-height: 117%;
+  color: $black;
+  font-weight: 700;
+  font-family: $aktiv;
+  text-transform: none;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 12px;
+  color: $dark_gray_5;
+  font-family: $roboto;
+  line-height: 128.7%;
+}
+.sectionTitle {
+  font-family: $aktiv;
+  font-size: 20px;
+  font-weight: 800;
+  color: $white;
+  text-transform: uppercase;
+}
+
+.large-main-article {
+  font-size: 34px;
+  line-height: 125%;
+  font-family: $aktiv;
+  font-weight: 700;
+  color: $black;
+}
+.tag {
+  background: $red;
+  font-family: $roboto;
+  color: $white;
+  font-weight: 700;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-radius: unset;
+  z-index: 1;
+  padding: 3px 6px;
+}
+
+hr {
+  border-color: $red;
+  background-color: $red;
+  height: 2px;
+  opacity: 1;
+  margin-top: 0;
+}
+.small-red-headers {
+  color: $red;
+  font-family: $roboto;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 12px;
+}
+.seeMore {
+  color: $white_2;
+  font-family: $roboto;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 14.62px;
+  &:hover {
+    color: $white_2;
+  }
+}
+//video
+
+.video-btn {
+  cursor: pointer;
+  position: relative;
+  .video-play {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: calc(50% - 20px);
+    z-index: 1000;
+    height: 28px;
+    width: 49px;
+    border-radius: 5px;
+  }
+}
+
+//modal
+
+.modal {
+  .modal-header {
+    border-bottom: 0px;
+  }
+  .modal-body {
+    padding: 0rem !important;
+  }
+  .modal-title {
+    font-family: $aktiv;
+    font-weight: 500;
+    line-height: 25.6px;
+    font-size: 20px;
+    color: $black;
+    text-transform: capitalize;
+  }
+}
+.btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
+}
+
+//Forms
+.form-control {
+  border-radius: 0px;
+}
+input::-webkit-input-placeholder {
+  font-family: $roboto;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 12.71px;
+  color: $light_gray_8 !important;
+}
+.input-group-text {
+  background-color: $red;
+  border: 1px solid $dark_gray;
+}
+button {
+  font-family: $roboto;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18.75px;
+  text-transform: uppercase;
+  border-width: 0px;
+  background-color: $red;
+  @include mobile-portrait {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+.nextLine {
+  .seeMore {
+    width: 220px;
+    padding: 0 18px;
+    margin-top: 35px;
+    color: $dark_gray;
+    @include tablet-landscape1 {
+      width: 165px;
+      padding: 0 7px;
+    }
+  }
+}
+.seeMoreLine {
+  margin-top: 57px;
+  width: 50%;
+  height: 2px;
+  border: 1px solid $red;
+}
+//tabs
+.tabs {
+  height: 60px;
+  background-color: $red;
+  .prev,
+  .next {
+    img {
+      width: auto;
+      cursor: pointer;
+    }
+  }
+  li {
+    background-color: $white;
+    height: 60px;
+    span {
+      min-width: 132px;
+      height: 100%;
+      color: $dark_gray_5;
+      cursor: pointer;
+      font-family: $roboto;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 28.24px;
+      &.active,
+      &:hover {
+        color: $red;
+        &::after {
+          content: "";
+          height: 7px;
+          position: absolute;
+          bottom: -13px;
+          width: 7px;
+          border-width: 16px 16px 0 16px;
+          border-style: solid;
+          border-color: $red transparent transparent transparent;
+        }
+        &::before {
+          content: "";
+          height: 7px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          background-color: $red;
+        }
+      }
+    }
+    border-color: $light_gray_8;
+  }
+}

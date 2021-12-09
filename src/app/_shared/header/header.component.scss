@@ -1,0 +1,425 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/scss/variables.scss";
+
+header {
+  font-family: $roboto;
+  text-transform: uppercase;
+  background-color: $white;
+
+  .top-head {
+    background-color: $dark_gray;
+    height: 21px;
+    color: $light_gray_9;
+
+    div {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15.44px;
+    }
+    .fa {
+      color: $white_2;
+    }
+  }
+
+  .middle-head {
+    .logo {
+      margin-left: -0.5rem;
+
+      @include tablet-landscape {
+        margin-left: 0rem;
+      }
+      @include mobile-portrait {
+        margin-left: -1rem;
+      }
+      img {
+        @include mobile-portrait {
+          width: 36px;
+          height: 36px;
+        }
+      }
+      .sponsor {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23.16px;
+        font-family: $roboto;
+        color: $dark_gray;
+        text-transform: capitalize;
+      }
+      .sponsorLogo {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12.87px;
+        font-family: $roboto;
+        color: $dark_gray_6;
+        background: url("https://1851-static.s3.amazonaws.com/1851_logo_subscribe.png")
+          no-repeat 100% 0;
+        padding: 0 13px 0 0;
+        background-size: 10px;
+      }
+    }
+    .menu {
+      @include mobile-portrait {
+        width: 55px;
+        height: 51px;
+      }
+    }
+    h6 {
+      font-size: 16px;
+      line-height: 20.59px;
+      font-weight: 500;
+      color: $dark_gray;
+      @include mobile-portrait {
+        font-size: 11px;
+        line-height: 14px;
+        color: $red;
+      }
+    }
+    .subscribe {
+      color: $white_2;
+      padding: 0.5rem;
+      @include mobile-portrait {
+        padding: 0.25rem;
+      }
+    }
+    .cover {
+      height: 60px;
+      overflow: hidden;
+      padding-top: 0;
+      bottom: -6px;
+      position: relative;
+
+      figure {
+        height: 75px;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .sidebar {
+      padding: 25px 18px;
+      width: 300px;
+      border: none !important;
+      border-radius: 0rem !important;
+      background-color: $dark_gray;
+      transform: none !important;
+      inset: auto !important;
+
+      overflow-y: auto;
+      max-height: 80vh;
+
+      &.show {
+        margin-top: 0.125rem;
+        top: 100%;
+        left: 0;
+        height: 600px;
+        overflow-x: auto;
+
+        @include desk-lg-below3 {
+          height: 550px;
+        }
+        @include tablet-landscape {
+          height: 700px;
+        }
+      }
+      .menu-search {
+        width: 200px;
+
+        button {
+          background: $white;
+          border: 0;
+          border-radius: 0;
+          z-index: 1;
+          box-sizing: border-box;
+          color: $red;
+        }
+
+        input {
+          border-color: $white;
+          border-radius: 0;
+          height: 27px;
+          font-family: $roboto;
+          font-weight: 400;
+          font-size: 9px;
+          line-height: 12.71px;
+          color: $light_gray_8;
+
+          &:focus,
+          &:hover {
+            outline: 0;
+            box-shadow: 0 0 0;
+          }
+        }
+      }
+      h3 {
+        font-family: $aktiv;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 30.8px;
+        text-transform: uppercase;
+        color: $white_2;
+        margin-bottom: 0;
+      }
+      hr {
+        height: 0px;
+        left: 25px;
+        border: 1px solid $red;
+        margin: 0 0 10px;
+        opacity: 0.75;
+      }
+      ul {
+        li {
+          a {
+            font-family: $roboto;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14.16px;
+            color: $white_4;
+          }
+        }
+      }
+    }
+    .nav {
+      @include mobile-portrait {
+        flex-wrap: nowrap;
+      }
+    }
+    .nav-item {
+      a {
+        font-size: 14px;
+        line-height: 16.73px;
+        &:hover {
+          & + .dropdown-menu {
+            display: block;
+            border-radius: 0rem;
+            background: $dark_gray_7;
+
+            a {
+              color: $white;
+              background: $dark_gray_7;
+            }
+          }
+        }
+      }
+      .dropdown-menu {
+        &:hover {
+          display: block;
+          border-radius: 0rem;
+          background: $dark_gray_7 !important;
+
+          a {
+            color: $white;
+            background: $dark_gray_7;
+          }
+        }
+      }
+    }
+    .brandNav {
+      right: 100px;
+      width: 380px;
+      .dropdown-item {
+        white-space: normal;
+      }
+    }
+  }
+
+  .bottom-head {
+    background-color: $dark_gray;
+    height: 41px;
+    font-family: $aktiv;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25.41px;
+    text-transform: capitalize;
+
+    .title {
+      color: $white_2;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .vertical .carousel-item {
+      width: 100%;
+      padding-right: 50px;
+      transition: 0.6s ease-in-out;
+    }
+
+    .vertical .active.carousel-item-right,
+    .carousel-item-next {
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+      width: 100%;
+    }
+
+    .vertical .active.carousel-item-left,
+    .carousel-item-prev {
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+      width: 100%;
+    }
+
+    .vertical .carousel-control-prev,
+    .vertical .carousel-control-next {
+      position: absolute;
+      display: block;
+      left: inherit;
+      right: 0;
+      width: 50px;
+    }
+
+    .vertical .carousel-control-prev {
+      bottom: 50%;
+      top: -3px;
+    }
+
+    .vertical .carousel-control-next {
+      top: 50%;
+      bottom: 0;
+    }
+
+    .vertical .carousel-control-prev-icon,
+    .vertical .carousel-control-next-icon {
+      width: 100%;
+      height: 15px;
+    }
+  }
+  .modal {
+    button {
+      background-color: transparent;
+    }
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 22px;
+      color: $red;
+      font-size: 39px;
+      outline: 0;
+      opacity: 1;
+    }
+  }
+  .searchModal {
+    .modal-title {
+      font-weight: 700;
+      padding-left: 7rem;
+      padding-right: 7rem;
+    }
+    input::-webkit-input-placeholder {
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25.74px;
+      color: $light_gray_8 !important;
+    }
+    form {
+      input {
+        height: 49px;
+        border: 1px solid $dark_gray;
+      }
+      .input-group {
+        padding-left: 7rem;
+        padding-right: 8rem;
+      }
+    }
+    .searchTitle {
+      font-family: $roboto;
+      font-weight: 400;
+      line-height: 24px;
+      font-size: 17px;
+      color: $dark_black;
+    }
+
+    .article {
+      padding: 0 30px;
+      .articleTitles {
+        font-size: 13px;
+      }
+      .card {
+        filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.08));
+        .card-footer {
+          border: 0px;
+          border-radius: 0px;
+          padding: 0px;
+          background-color: unset;
+        }
+      }
+    }
+  }
+  .sponsorModal {
+    h2 {
+      color: $red;
+    }
+    .content {
+      font-family: $proxiRegular;
+      text-transform: none;
+      span {
+        color: $dark_gray_3;
+      }
+    }
+  }
+  .inquireModal {
+    form {
+      .form-control {
+        font-family: $roboto;
+        font-size: 17px;
+        line-height: 24px;
+        color: $dark_gray_6;
+        font-weight: 500;
+        height: 42px;
+        border: 1px solid $dark_gray_6;
+      }
+      button {
+        position: relative;
+        border: 0;
+        width: 110px;
+        height: 39px;
+        color: $white_2;
+        background-color: $red;
+        span {
+          position: absolute;
+          top: 2px;
+          width: 13px;
+          height: 10px;
+          left: unset;
+          padding: 8px 1px 0px 7px;
+          fa-icon {
+            font-size: 18px;
+            color: $white;
+          }
+        }
+      }
+    }
+    input::-webkit-input-placeholder {
+      font-size: 17px;
+      line-height: 24px;
+      color: $dark_gray_6 !important;
+      font-weight: 500;
+      font-family: $roboto;
+      .borderLine {
+        margin-top: -15px;
+      }
+    }
+    .invalid-feedback {
+      margin-bottom: 10px;
+      color: $red;
+    }
+  }
+  .thanksModal {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 !important;
+    .modal-content {
+      background: url("https://1851-static.s3.amazonaws.com/thanks.png")
+        no-repeat 0 0;
+      height: 234px;
+      width: 480px;
+      border: unset;
+      .close {
+        padding: 0;
+        background-color: initial;
+        border: 0;
+        -webkit-appearance: none;
+        color: $white;
+      }
+    }
+  }
+}

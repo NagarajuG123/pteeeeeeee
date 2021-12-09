@@ -1,0 +1,117 @@
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.articles {
+  overflow-x: hidden;
+  .tag{
+    line-height: 18.75px;
+  }
+  .video-play{
+    height: 71px;
+    width: 120px;
+  }
+  .userDetail {
+    max-width: 300px;
+    .timeStamp {
+      color: $dark_gray;
+    }
+    .userImage {
+      width: 179px;
+      margin-top: 80px;
+      background: $white;
+      border-radius: 100%;
+      height: 190px;
+
+      .author-img {
+        border-radius: 50%;
+        width: 200px !important;
+        height: 200px !important;
+      }
+    }
+    .large-main-article{
+      color: $dark_gray;
+    }
+    .sectionTitle {
+      color: $red;
+      font-weight: 700;
+    }
+    .seeMore{
+      color: $dark_gray;
+    }
+    hr {
+      background: $dark_gray;
+      margin: 13px 0;
+    }
+    @media screen and (max-width: 767px) {
+      max-width: inherit;
+      .userImage {
+        margin: 80px auto 0;
+      }
+      h1,
+      h1 + h5 {
+        text-align: center;
+      }
+    }
+  }
+
+  .most-like-articles {
+    font-family: $aktiv;
+
+    li {
+      display: flex;
+      .articleTitles {
+        color: $dark_gray;
+        font-size: 13px;
+        padding-top: 5px;
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      position: relative;
+      height: 100%;
+      overflow: visible;
+      width: 100%;
+    }
+  }
+
+  //   articles detail style
+  .details {
+    line-height: 141.19%;
+    .brandPartner{
+      color: $light_gray_4;
+      font-size: 13px;
+      font-style: italic;
+      font-family: $proxiRegular;
+    }
+    .detailHead {
+      bottom: 100%;
+      font-family: $roboto;
+      min-height: 186px;
+      .large-main-article {
+        color: $dark_gray;
+      }
+    }
+    .sectionTitle {
+      line-height: 28.24px;
+      font-weight: 700;
+      color: $white_4;
+      text-transform: none;
+    }
+    .description {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .detailHead {
+        position: relative !important;
+        border-top: 1px solid $dark_gray;
+      }
+    }
+  }
+  .ArticlesNewsSection {
+    .timeStamp{
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
