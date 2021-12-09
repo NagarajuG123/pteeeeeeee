@@ -36,18 +36,8 @@ a {
     }
   }
   .left-text {
-    top: 35%;
+    top: 20%;
     left: 7%;
-    @include tablet-landscape2 {
-      top: 25%;
-    }
-    @include tablet-portrait {
-      width: 50%;
-    }
-    @include mobile-portrait {
-      width: 60%;
-    }
-
     h1 {
       font-weight: 700;
       font-size: 62px;
@@ -55,11 +45,11 @@ a {
       color: $dark_gray;
       font-family: $aktiv;
       @include tablet-landscape1 {
-        font-size: 40px;
+        font-size: 35px;
       }
       @include tablet-landscape2 {
-        font-size: 40px;
-        line-height: 42px;
+        font-size: 18px;
+        line-height: 23px;
       }
       @include mobile-landscape {
         font-size: 20px;
@@ -68,6 +58,12 @@ a {
     }
     button{
       padding: 0.5rem;
+    }
+    .description{
+      color: $black;
+      @include tablet-landscape2 {
+        font-size: 8px;
+      }
     }
   }
   img{
