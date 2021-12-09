@@ -12,7 +12,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './components/error/error.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { FiveColumnComponent } from './components/five-column/five-column.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
@@ -35,7 +34,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     DefaultImagePipe,
     SafeUrlPipe,
     ImagePreloadDirective,
-    FiveColumnComponent,
     MostPopularComponent,
     SpecialFeatureComponent,
     ArticleComponent,
@@ -64,7 +62,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     FooterComponent,
     TrendingBuzzComponent,
     MostPopularComponent,
-    FiveColumnComponent,
     FeaturedComponent,
     ErrorMessageComponent,
     SpecialFeatureComponent,

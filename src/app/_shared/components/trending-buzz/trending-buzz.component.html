@@ -1,5 +1,5 @@
 <div
-  *ngIf="isLoaded && trending?.data?.length"
+  *ngIf=" trending?.data?.length"
   class="frannews frannews-trending sidebar-blur"
 >
   <div class="container">
@@ -23,11 +23,7 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      <app-five-column
-        [slug]="'1851'"
-        [contents]="trending?.data"
-        [typeSlug]="'trendingbrandbuzz'"
-      ></app-five-column>
+        <app-home-article [typeSlug]="'trendingbrandbuzz'" [contents]="trending?.data" [class]="'row-cols-lg-5'"></app-home-article>
     </div>
   </div>
 </div>
