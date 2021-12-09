@@ -168,6 +168,7 @@
     padding: 30px 23px;
     .topContent {
       font-weight: 400;
+      color: $black;
     }
     @include mobile-landscape1 {
       padding: 15px;
