@@ -687,7 +687,7 @@ export class StoryComponent implements OnInit {
               return;
             }
           }
-
+          this.storyIndex = true;
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;
           if (!this.isFirstSEO) {
