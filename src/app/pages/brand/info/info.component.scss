@@ -786,6 +786,8 @@
     opacity: 1;
     border: 1px;
     background-color: $white;
+    margin: -15px;
+    margin-right: -25px;
 
     @include desk-lg-below1 {
       top: 10px;
