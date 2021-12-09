@@ -82,6 +82,34 @@
       font-size: 13px;
       font-style: italic;
       font-family: $proxiRegular;
+      span{
+        color:$blue;
+        cursor: pointer;
+      }
+      .tooltiptext {
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -150px;
+        visibility: hidden;
+        width: 300px;
+        background-color: $dark_gray_9;
+        color: $white;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 14px;
+        cursor: context-menu;
+    
+        .tooltiptext-link {
+          color: $red;
+          cursor: pointer;
+          opacity: 0.8;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
     }
     .detailHead {
       bottom: 100%;
