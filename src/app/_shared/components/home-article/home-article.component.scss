@@ -2,7 +2,7 @@
 @import "../../../../assets/scss/variables.scss";
 
 .article {
-  .small-red-headers{
+  .small-red-headers {
     padding-bottom: 5px;
   }
   .card-footer {
@@ -10,12 +10,13 @@
     background-color: unset;
   }
   &.monthlyDetail {
-    .card{
+    .card {
       background-color: $white_8;
     }
   }
   &.spotlight {
-    .card-title , .card-footer {
+    .card-title,
+    .card-footer {
       padding: 0 !important;
     }
   }

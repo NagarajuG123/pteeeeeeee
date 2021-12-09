@@ -56,23 +56,19 @@ a {
         line-height: 30px;
       }
     }
-    button{
+    button {
       padding: 0.5rem;
     }
-    .description{
+    .description {
       color: $black;
       @include tablet-landscape2 {
         font-size: 8px;
       }
     }
   }
-  img{
-    @include mobile-portrait{
+  img {
+    @include mobile-portrait {
       height: 300px;
-    } 
+    }
   }
 }
-
-
-
-
