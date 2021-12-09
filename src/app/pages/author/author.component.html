@@ -65,11 +65,15 @@
             EDITORIAL STORIES BY {{ author?.data?.first_name }}
             {{ author?.data?.last_name }}
           </h3>
+<<<<<<< HEAD
           <app-five-column
             [contents]="editorials"
             [type]="'authorpage'"
             [typeSlug]="'editorials'"
           ></app-five-column>
+=======
+          <app-home-article [typeSlug]="'editorials'" [contents]="editorials" [class]="'row-cols-lg-5'"></app-home-article>
+>>>>>>> 01378f50615afe9dcec51bc8fe0e7a8c92cb5d9f
           <a
             routerLink="/{{ commonService.readMore(editorials[0]) }}"
             fragment="editorials"
@@ -86,11 +90,15 @@
             BRANDED CONTENT BY {{ author?.data?.first_name }}
             {{ author?.data?.last_name }}
           </h3>
+<<<<<<< HEAD
           <app-five-column
             [contents]="brandedContents"
             [type]="'authorpage'"
             [typeSlug]="'brand-latest-stories'"
           ></app-five-column>
+=======
+          <app-home-article [typeSlug]="'brand-latest-stories'" [contents]="brandedContents" [class]="'row-cols-lg-5'"></app-home-article>
+>>>>>>> 01378f50615afe9dcec51bc8fe0e7a8c92cb5d9f
           <a
             routerLink="/{{ commonService.readMore(brandedContents[0]) }}"
             fragment="brand-latest-stories"

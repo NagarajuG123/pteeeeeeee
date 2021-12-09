@@ -23,18 +23,17 @@
       class="lazyload img-fluid"
     />
     <div class="left-text position-absolute row">
-      <div class="col-md-9 col-lg-12">
         <a
+          class="w-50"
           routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
           fragment="franbuzz"
         >
           <h1 class="mb-0">{{ topBlock?.title }}</h1>
-          <p class="description text-black">{{ topBlock?.description }}</p>
+          <p class="description">{{ topBlock?.description }}</p>
           <div class="">
             <button class="align-items-center text-white">Read More</button>
           </div>
         </a>
-      </div>
     </div>
   </div>
   <div class="container customContainer py-md-4 mt-2 sidebar-blur">

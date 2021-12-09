@@ -51,13 +51,11 @@
   <div class="container customContainer pt-md-5 pt-5 trending-bottom">
     <h6>SPONSORED</h6>
     <div class="row mt-2">
-      <app-five-column
-        [slug]="'1851'"
-        [contents]="trendingData"
-        [type]="'trendingbrandbuzz'"
+      <app-home-article
         [typeSlug]="'trendingbrandbuzz'"
-      >
-      </app-five-column>
+        [contents]="trendingData"
+        [class]="'row-cols-lg-5'"
+      ></app-home-article>
     </div>
   </div>
 
