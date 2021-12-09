@@ -17,6 +17,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 declare var ga: Function;
 
 @Component({
@@ -36,6 +37,7 @@ export class ItemComponent implements OnInit {
   @Input() publication: any;
   @Input() mainNewsData: any;
   @Input() brandNewsData: any;
+  customOptions: OwlOptions = {};
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
 
@@ -108,7 +110,34 @@ export class ItemComponent implements OnInit {
           }
         }
       });
-
+      this.customOptions = {
+        loop: true,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 700,
+        nav: true,
+        navText: [
+          '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+          '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+        ],
+        responsive: {
+          0: {
+            items: 1,
+          },
+          400: {
+            items: 1,
+          },
+          740: {
+            items: 3,
+          },
+          940: {
+            items: 3,
+          },
+        },
+      };
+      
     this.shareHashtags = '1851, Social';
     this.isViewComment = false;
     this.isBrand = this.brandSlug === '1851' ? false : true;

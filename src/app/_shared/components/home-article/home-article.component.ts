@@ -8,7 +8,6 @@ import { CommonService } from 'src/app/_core/services/common.service';
 })
 export class HomeArticleComponent implements OnInit {
   @Input() contents: any;
-  @Input() type = '';
   @Input() typeSlug!: string;
   @Input() col!: string;
   @Input() class!: string;
