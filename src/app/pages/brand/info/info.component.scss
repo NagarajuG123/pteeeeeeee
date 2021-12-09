@@ -158,7 +158,9 @@
     font-family: $roboto;
     font-weight: 700;
     padding: 30px 23px;
-
+    .topContent {
+      font-weight: 400;
+    }
     @include mobile-landscape1 {
       padding: 15px;
     }

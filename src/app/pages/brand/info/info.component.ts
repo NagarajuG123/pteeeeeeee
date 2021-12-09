@@ -65,7 +65,7 @@ export class InfoComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
   categorySlug: string;
-  
+
   constructor(
     public commonService: CommonService,
     private apiService: ApiService,
@@ -231,7 +231,7 @@ export class InfoComponent implements OnInit {
         this.isStory =
           false;
     } else if (item === 'latest_stories') {
-      path = 'brand-latest-stories';
+      path = 'brand-latest-stories?limit=20&offset=0';
       this.isStory = true;
       this.isInfo =
         this.isBought =
