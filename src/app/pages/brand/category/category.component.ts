@@ -24,14 +24,13 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryComponent implements OnInit {
   @Input() slug!: string;
-  @Input() type!:string;
+  @Input() type!: string;
 
   isBrowser: boolean;
   featuredData: any[] = [];
   mostRecent: Details[] = [];
   tabName: any;
   defaultTab!: string;
-  noOfTabsShow = 5;
   activeTab = 1;
   skipTab = 0;
   tab!: string;
@@ -59,7 +58,7 @@ export class CategoryComponent implements OnInit {
       this.slug = param.slug;
     });
     this.route.paramMap.subscribe((params) => {
-      if(this.type !== '1851'){
+      if (this.type !== '1851') {
         this.slug = params.get('item');
       }
       this.mainText = this.slug.replace('-', ' ');
@@ -74,7 +73,7 @@ export class CategoryComponent implements OnInit {
       forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
-          if(results[0].data.length){
+          if (results[0].data.length) {
             this.featuredData = results[0].data;
             this.metaService.setSeo(results[1].data);
             this.tabName = results[2].categories;
@@ -89,8 +88,7 @@ export class CategoryComponent implements OnInit {
             ).description;
             this.banner = this.tabName.find((x) => x.slug == this.slug).image;
             this.isLoaded = true;
-          }
-          else{
+          } else {
             this.router.navigateByUrl(`/${this.type}`);
           }
         });

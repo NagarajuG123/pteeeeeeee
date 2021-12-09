@@ -1,105 +1,86 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
-.banner {
-  background-repeat: no-repeat;
-  width: 100%;
-  height: auto;
-  background-size: 100%;
-}
-.sidebar-blur {
-  overflow: hidden;
-}
-
-.top-section {
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  min-height: 665px;
-}
-.content {
-  padding: 150px 0 0 0;
-  @include mobile-landscape {
-    padding: 0 0 0 15px;
-  }
-  @include tablet-portrait {
-    padding: 0;
-  }
-  > h3 {
-    font-family: $aktiv;
-    font-size: 64px !important;
-    font-weight: 700;
-    color: $dark_gray;
-    line-height: 62.5px;
-    @include mobile-landscape {
-      font-size: 32px !important;
-    }
-  }
-  > span {
-    color: $black;
-    max-width: 70%;
-    @include mobile-landscape {
-      max-width: 100%;
-    }
-  }
-}
-@media screen and (min-width: 992px) {
-  .latestListing {
-    max-width: 450px;
-    border-left: 1px solid $dark_gray;
-    p {
-      line-height: 114.99%;
-    }
-  }
-}
-.news-list {
-  font-family: $roboto;
-  height: calc(100% - 27px);
-  width: calc(100% - 30px);
-  margin-left: 10px;
-
-  li {
-    display: flex;
-    border-bottom: 1px solid $dark_gray;
-    &:last-child {
-      border: 0;
-    }
-    @include mobile-landscape {
-      padding: 10px 0 10px;
-    }
-  }
-
-  @media screen and (max-width: 960px) {
-    position: relative;
-    height: 100%;
-    overflow: visible;
-  }
-}
 .category {
-  @include mobile-landscape {
-    padding-top: 100px;
+  &.sidebar-blur {
+    overflow: hidden;
   }
-  background: $white_8;
-  .tabs {
-    ul {
+  .banner {
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    background-size: auto;
+  }
+  .bg-blue {
+    background: $white_3;
+  }
+  .article {
+    padding: 0 58px;
+  }
+  .content {
+    padding: 150px 0 0 0;
+    @include mobile-landscape {
+      padding: 0 0 0 15px;
+    }
+    @include tablet-portrait {
+      padding: 0;
+    }
+    h3 {
+      font-family: $aktiv;
+      font-size: 64px !important;
+      font-weight: 700;
+      color: $dark_gray;
+      line-height: 62.5px;
+      @include mobile-landscape {
+        font-size: 32px !important;
+      }
+    }
+    span {
+      color: $black;
+      max-width: 70%;
+      @include mobile-landscape {
+        max-width: 100%;
+      }
+    }
+  }
+  .catArticle {
+    border-left: 1px solid $dark_gray;
+    @include mobile-portrait {
+      border-left: none;
+    }
+    .industry-list {
+      color: $black;
+      font-family: $roboto;
+      font-weight: 700;
       li {
-        border-top: 0.5px solid $light_gray_8;
-        border-bottom: 0.5px solid $light_gray_8;
-        span {
-          font-family: $proxiBold;
-          color: $light_gray_8;
-          &.active,
-          &:hover {
-            color: $red;
+        border-bottom: 1px solid $dark_gray;
+        padding: 25px 0 25px !important;
+        &:first-child {
+          padding-top: 0px !important;
+        }
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+  }
+  .bottomSection {
+    background: $white_8;
+    .tabs {
+      ul {
+        li {
+          border-top: 0.5px solid $light_gray_8;
+          border-bottom: 0.5px solid $light_gray_8;
+          span {
+            font-family: $proxiBold;
+            color: $light_gray_8;
+            &.active,
+            &:hover {
+              color: $red;
+            }
           }
         }
       }
     }
   }
-}
-.bg-blue {
-  background: $white_3;
-}
-.article {
-  padding: 0 58px;
 }
