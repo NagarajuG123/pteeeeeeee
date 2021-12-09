@@ -19,6 +19,8 @@ import { SpecialFeatureComponent } from './components/special-feature/special-fe
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './components/article/article.component';
+import { HomeArticleComponent } from './components/home-article/home-article.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 // Pipes
 
@@ -37,6 +39,8 @@ import { ArticleComponent } from './components/article/article.component';
     MostPopularComponent,
     SpecialFeatureComponent,
     ArticleComponent,
+    HomeArticleComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +71,8 @@ import { ArticleComponent } from './components/article/article.component';
     FontAwesomeModule,
     ShareButtonModule,
     ArticleComponent,
+    HomeArticleComponent,
+    CarouselComponent,
   ],
 })
 export class SharedModule {}

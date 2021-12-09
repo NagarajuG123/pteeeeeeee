@@ -44,7 +44,7 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-12 col-md userDetail">
-        <div class="userImage position-relative">
+        <div class="userImage position-relative d-none d-md-flex">
           <a routerLink="/author/{{ details?.author?.slug }}">
             <img
               src="{{ author_media | defaultImage: 200:200 }}"
@@ -190,13 +190,22 @@
   </div>
 
   <!-- news blocks -->
-  <div class="ArticlesNewsSection gray-bg py-5">
+  <div class="ArticlesNewsSection gray-bg py-5 d-none d-md-flex">
     <div class="container customContainer py-md-2">
           <h4 class="timeStamp mb-0">Featured Franchise News</h4>
         <app-article [typeSlug]="'frannews'" [contents]="mainNews" [class]="'row-cols-lg-4'"></app-article>
 
           <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
         <app-article [typeSlug]="'frannews'" [contents]="brandNews" [class]="'row-cols-lg-4'" [type]="'brandNews'"></app-article>
+    </div>
+  </div>
+
+  <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none">
+    <div class="container customContainer py-md-2">
+      <h4 class="timeStamp mb-0">Featured Franchise News</h4>
+      <app-carousel [typeSlug]="'frannews'" [contents]="mainNews"></app-carousel>
+      <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
+      <app-carousel  [typeSlug]="'frannews'" [contents]="brandNews" [type]="'brandNews'"></app-carousel>
     </div>
   </div>
 </div>

@@ -108,7 +108,7 @@ export class ItemComponent implements OnInit {
           }
         }
       });
-
+      
     this.shareHashtags = '1851, Social';
     this.isViewComment = false;
     this.isBrand = this.brandSlug === '1851' ? false : true;

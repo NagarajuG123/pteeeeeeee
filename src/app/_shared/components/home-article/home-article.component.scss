@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+
+.article {
+  .small-red-headers{
+    padding-bottom: 5px;
+  }
+  .card-footer {
+    border-radius: 0px;
+    background-color: unset;
+  }
+  &.monthlyDetail {
+    .card{
+      background-color: $white_8;
+    }
+  }
+  &.spotlight {
+    .card-title , .card-footer {
+      padding-left: 0 !important;
+    }
+  }
+}

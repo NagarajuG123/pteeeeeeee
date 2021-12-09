@@ -269,6 +269,7 @@
         line-height: 15.23px;
         font-size: 13px;
         height: 40px;
+        color: $dark_gray;
         &:focus {
           outline: none;
           box-shadow: none;
@@ -277,8 +278,8 @@
         &::placeholder {
           position: absolute;
           font-size: 13px;
-          color: $dark_gray;
-          top: 5px;
+          color: $light_gray_8;
+          top: 10px;
           left: 10px;
           font-family: $roboto;
           font-weight: 400;
@@ -359,7 +360,7 @@
 }
 
 .feature-article-section {
-  background-color: $white_6;
+  background-color: $white_8;
   padding: 20px 20px 20px;
 
   @include mobile-portrait {
@@ -375,7 +376,7 @@
 }
 
 .trending-section {
-  background-color: $white_6;
+  background-color: $white_8;
   padding: 30px 40px 40px;
 
   @include mobile-portrait {
@@ -650,6 +651,7 @@
 //search popup
 .search_pop_up {
   .modal-dialog {
+    left:10%;
     @media only screen and (min-device-width: 768px) {
       max-width: 800px;
       margin: 0 auto;
@@ -786,6 +788,8 @@
     opacity: 1;
     border: 1px;
     background-color: $white;
+    margin: -15px;
+    margin-right: -25px;
 
     @include desk-lg-below1 {
       top: 10px;
@@ -794,7 +798,7 @@
   }
 
   .sponsored-modal-content {
-    padding: 70px 50px;
+    padding: 70px 40px;
 
     h2 {
       color: $red;
@@ -819,8 +823,8 @@
         padding: 0 12px;
         outline: 0;
         letter-spacing: 0.3px;
-        @include mobile-portrait {
-          width: 300px;
+        @include mobile-landscape1 {
+          width: 250px;
         }
       }
 
