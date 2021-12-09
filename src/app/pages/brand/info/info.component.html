@@ -196,7 +196,16 @@
               "
             >
               <div class="frannews-left--wrapper">
-                <div class="frannews-top-left large-main-article d-flex text-capitalize">Learn More About</div>
+                <div
+                  class="
+                    frannews-top-left
+                    large-main-article
+                    d-flex
+                    text-capitalize
+                  "
+                >
+                  Learn More About
+                </div>
                 <img
                   class="lazyload"
                   width="298"
@@ -211,13 +220,7 @@
                     data-bs-toggle="modal"
                     data-bs-target="#pdfModal"
                     type="submit"
-                    class="
-                      text-center
-                      submit-btn
-                      text-white
-                      rounded-0
-                      btn-sm
-                    "
+                    class="text-center submit-btn text-white rounded-0 btn-sm"
                   >
                     Download PDF
                   </button>
@@ -228,13 +231,7 @@
                   >
                     <button
                       type="submit"
-                      class="
-                        text-center
-                        submit-btn
-                        text-white
-                        rounded-0
-                        btn-sm
-                      "
+                      class="text-center submit-btn text-white rounded-0 btn-sm"
                     >
                       Download PDF
                     </button>
@@ -256,9 +253,13 @@
             </div>
           </div>
 
-          <div *ngIf="isStory && items">
+          <div *ngIf="isStory && items && items.length && items[0].id">
             <div class="container customContainer mt-4 py-3">
-                <app-article [typeSlug]="tab" [contents]="items" [class]="'row-cols-lg-5'"></app-article>
+              <app-article
+                [typeSlug]="tab"
+                [contents]="items"
+                [class]="'row-cols-lg-5'"
+              ></app-article>
             </div>
           </div>
 
@@ -275,7 +276,11 @@
                 </li>
               </ul>
             </div>
-            <p class="descriptionDetails" *ngIf="items?.content" [innerHTML]="items?.content"></p>
+            <p
+              class="descriptionDetails"
+              *ngIf="items?.content"
+              [innerHTML]="items?.content"
+            ></p>
           </div>
 
           <div class="container customContainer whyIBought" *ngIf="isExecutive">
@@ -287,17 +292,25 @@
                   </h2>
                 </li>
                 <li>
-                  <h2 class="text-uppercase sectionTitle mb-0">EXECUTIVE Q&A</h2>
+                  <h2 class="text-uppercase sectionTitle mb-0">
+                    EXECUTIVE Q&A
+                  </h2>
                 </li>
               </ul>
             </div>
-            <p class="descriptionDetails" *ngIf="items?.content" [innerHTML]="items?.content"></p>
+            <p
+              class="descriptionDetails"
+              *ngIf="items?.content"
+              [innerHTML]="items?.content"
+            ></p>
           </div>
 
           <div class="container whyIBought d-flex" *ngIf="isMarket">
             <ul>
               <li class="marketHeading">
-                <h2 class="text-uppercase sectionTitle mb-0">Available Markets</h2>
+                <h2 class="text-uppercase sectionTitle mb-0">
+                  Available Markets
+                </h2>
               </li>
             </ul>
           </div>
@@ -387,7 +400,9 @@
       >
         <div class="financial-requirement-section more-brand--wrapper">
           <div class="header" *ngIf="isInfo">
-            <h1 class="sectionTitle title text-capitalize mb-0">Financial Requirements</h1>
+            <h1 class="sectionTitle title text-capitalize mb-0">
+              Financial Requirements
+            </h1>
           </div>
           <div class="headerMarket" *ngIf="isMarket">
             <h2 class="titleMarket">More Brand Info</h2>
@@ -569,27 +584,30 @@
               <div class="col-md-12">
                 <div class="title-tag">RECENT FEATURES</div>
                 <ul>
-                <li
-                  class="w-90"
-                  *ngFor="let item of featured | slice: 0:3"
-                >
-                  <a
-                    routerLink="/{{ commonService.readMore(item) }}"
-                    fragment="featured"
-                  >
-                    <p class="articleTitles mb-0">{{ item.title }}</p>
-                    <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-                      >{{ commonService.formatDate(item.last_modified) }} |
-                      {{ commonService.formatTime(item.last_modified) }}
-                    </span>
-                    <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
-                      >{{ commonService.formatDate(item.posted_on) }} |
-                      {{ commonService.formatTime(item.posted_on) }}</span
+                  <li class="w-90" *ngFor="let item of featured | slice: 0:3">
+                    <a
+                      routerLink="/{{ commonService.readMore(item) }}"
+                      fragment="featured"
                     >
-                    <p class="description mb-0">{{ item.short_description }}</p>
-                  </a>
-                </li>
-              </ul>
+                      <p class="articleTitles mb-0">{{ item.title }}</p>
+                      <span
+                        *ngIf="commonService.isUpdate(item)"
+                        class="timeStamp"
+                        >{{ commonService.formatDate(item.last_modified) }} |
+                        {{ commonService.formatTime(item.last_modified) }}
+                      </span>
+                      <span
+                        *ngIf="!commonService.isUpdate(item)"
+                        class="timeStamp"
+                        >{{ commonService.formatDate(item.posted_on) }} |
+                        {{ commonService.formatTime(item.posted_on) }}</span
+                      >
+                      <p class="description mb-0">
+                        {{ item.short_description }}
+                      </p>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
