@@ -17,7 +17,7 @@
           class="lazyload"
         />
       </div>
-      <ul class="row m-0 px-5 row-cols-lg-6 row-cols-md-3 row-cols-sm-1">
+      <ul class="row m-0 row-cols-lg-6 row-cols-md-3 row-cols-sm-1">
         <li
           *ngFor="let item of categories; index as i"
           class="border-end text-center p-0"
@@ -88,7 +88,7 @@
   </ng-container>
   <!-- story tab banner -->
   <div
-    class="container brand-page-row--wrapper"
+    class="container px-4 brand-page-row--wrapper"
     [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
@@ -255,7 +255,11 @@
 
           <div *ngIf="isStory && items && items.length && items[0].id">
             <div class="container customContainer mt-4 py-3">
-                <app-home-article [typeSlug]="tab" [contents]="items" [class]="'row-cols-lg-5'"></app-home-article>
+              <app-home-article
+                [typeSlug]="tab"
+                [contents]="items"
+                [class]="'row-cols-lg-5'"
+              ></app-home-article>
             </div>
           </div>
 
@@ -404,76 +408,84 @@
             <h2 class="titleMarket">More Brand Info</h2>
           </div>
           <div class="financial-description" *ngIf="isInfo">
-            <p class="text topContent">
+            <p class="topContent m-0 pb-3">
               {{ brandInfo?.more_info }}
             </p>
-            <p class="text">
+            <p class="text m-0 pb-3">
               Initial Franchise Fee:
               <span class="highlight-text">
                 {{ brandInfo?.franchise_fee }}
               </span>
             </p>
-            <p class="text">
+            <p class="text m-0 pb-3">
               Initial Investment Range:
               <span class="highlight-text">
                 {{ brandInfo?.startup_costs }}
               </span>
             </p>
-            <p class="text">Minimum Qualifications:</p>
+            <p class="text m-0">Minimum Qualifications:</p>
             <p
-              class="highlight-text min-qualification"
+              class="highlight-text min-qualification m-0"
               *ngFor="let info of brandInfo?.optional_info"
             >
               {{ info.title }} {{ info.value }} <br />
             </p>
-            <p class="text">
-              Territory: Protected territory with geographic rights to the
-              Sylvan system in a well-defined area
+            <p class="text m-0 pt-3">Territory:</p>
+            <p class="highlight-text m-0 pb-3">
+              Protected territory with geographic rights to the Sylvan system in
+              a well-defined area
             </p>
-            <p class="text">
+            <p class="highlight-text m-0">
               With an average gross revenue of $518,159 among the top 25% of
               territories, Sylvan Learning offers a business opportunity with
               both financial and emotional rewards.
             </p>
-            <p class="text" *ngFor="let info of brandInfo?.optional_info">
+            <p
+              class="text m-0 pt-3"
+              *ngFor="let info of brandInfo?.optional_info"
+            >
               {{ info.title }} :
-              <span class="highlight-text">{{ info.value }}</span>
+              <span class="highlight-text m-0 pb-3">{{ info.value }}</span>
             </p>
           </div>
 
           <div class="market" *ngIf="isMarket">
-            <p class="text">
+            <p class="text m-0 pb-3">
               {{ brandInfo?.more_info }}
             </p>
-            <p class="text">
+            <p class="text m-0 pb-3">
               Initial Franchise Fee:
-              <span class="highlight-text">
+              <span class="highlight-text m-0">
                 {{ brandInfo?.franchise_fee }}
               </span>
             </p>
-            <p class="text">
+            <p class="text m-0 pb-3">
               Initial Investment Range:
-              <span class="highlight-text">
+              <span class="highlight-text m-0">
                 {{ brandInfo?.startup_costs }}
               </span>
             </p>
-            <p class="text">Minimum Qualifications:</p>
+            <p class="text m-0">Minimum Qualifications:</p>
             <p
-              class="highlight-text min-qualification"
+              class="highlight-text m-0 min-qualification"
               *ngFor="let info of brandInfo?.optional_info"
             >
               {{ info.title }} {{ info.value }} <br />
             </p>
-            <p class="text">
-              Territory: Protected territory with geographic rights to the
-              Sylvan system in a well-defined area
+            <p class="text m-0 pt-3">Territory:</p>
+            <p class="highlight-text m-0 pb-3">
+              Protected territory with geographic rights to the Sylvan system in
+              a well-defined area
             </p>
-            <p class="text">
+            <p class="highlight-text m-0">
               With an average gross revenue of $518,159 among the top 25% of
               territories, Sylvan Learning offers a business opportunity with
               both financial and emotional rewards.
             </p>
-            <p class="text" *ngFor="let info of brandInfo?.optional_info">
+            <p
+              class="text m-0 pt-3"
+              *ngFor="let info of brandInfo?.optional_info"
+            >
               {{ info.title }} :
               <span class="highlight-text">{{ info.value }}</span>
             </p>
@@ -647,7 +659,7 @@
           <!-- Trending Secion -->
           <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
           <div class="trending-section" *ngIf="trending.length && !isMarket">
-            <div class="title-tag ml-1">TRENDING</div>
+            <div class="title-tag ms-1">TRENDING</div>
             <ul class="pt-1">
               <li *ngFor="let item of trending; index as i">
                 <div class="d-flex">

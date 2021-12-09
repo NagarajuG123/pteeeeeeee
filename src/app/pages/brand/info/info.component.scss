@@ -95,6 +95,14 @@
 
 .tabs {
   ul {
+    @include mobile-portrait {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+    @include tablet-landscape {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
     li {
       border-top: 0.5px solid $light_gray_8;
       border-bottom: 0.5px solid $light_gray_8;
@@ -169,6 +177,7 @@
       font-size: 16px;
       color: $black;
       line-height: 18.72px;
+      font-family: $aktiv;
       @include tablet-portrait {
         font-size: 16px;
       }
@@ -651,7 +660,7 @@
 //search popup
 .search_pop_up {
   .modal-dialog {
-    left:10%;
+    left: 10%;
     @media only screen and (min-device-width: 768px) {
       max-width: 800px;
       margin: 0 auto;
