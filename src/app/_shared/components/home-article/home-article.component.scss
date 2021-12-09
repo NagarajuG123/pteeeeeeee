@@ -9,7 +9,8 @@
     border-radius: 0px;
     background-color: unset;
   }
-  &.monthlyDetail {
+  &.monthlyDetail,
+  &.trending {
     .card {
       background-color: $white_8;
     }
