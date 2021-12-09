@@ -452,6 +452,10 @@ export class HeaderComponent implements OnInit {
       $('body').removeClass('noscroll');
     }
   }
+  formReset() {
+    this.contactForm.reset();
+    this.inquireForm.reset();
+  }
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement) {
     const clickedInside =

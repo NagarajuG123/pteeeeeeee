@@ -403,7 +403,7 @@
             <li class="pe-lg-4 pe-4">
               <a
                 href="#"
-                onclick="return false;"
+                (click)="formReset()"
                 class="text-uppercase"
                 data-bs-toggle="modal"
                 data-bs-target="#inquireModal"
@@ -458,11 +458,7 @@
       </div>
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
         <!-- Submenu brand -->
-        <ul
-          ng-cloak
-          class="sidebar dropdown-menu"
-          aria-labelledby="dropdownMenu2"
-        >
+        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2">
           <li>
             <div class="menu-search">
               <form
@@ -602,7 +598,7 @@
               href="#"
               data-bs-toggle="modal"
               data-bs-target="#contactModal"
-              (click)="commonService.toggle()"
+              (click)="formReset()"
             >
               <h3>
                 Contact <span class="text-capitalize">{{ brandTitle }}</span>
