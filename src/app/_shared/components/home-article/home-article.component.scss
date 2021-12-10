@@ -13,12 +13,27 @@
   &.trending {
     .card {
       background-color: $white_8;
+      position: initial;
     }
   }
   &.spotlight {
     .card-title,
     .card-footer {
       padding: 0 !important;
+    }
+  }
+  .sponsored{
+    position: absolute;
+    span{
+      background: $red;
+      font-size: 17px;
+      line-height: 19px;
+      color: $white;
+      font-weight: 400;
+      font-family: $proxiBold;
+      vertical-align: top;
+      width: 35px;
+      padding: 7px 5px 9px;
     }
   }
 }

@@ -15,16 +15,15 @@
 <div *ngIf="type === 'dynamic_page'">
   <div class="banner position-relative container sidebar-blur">
     <img
-      data-src="{{ topBlock.image | defaultImage: 1280:720 }}"
-      width="1439"
-      height="518"
+      data-src="{{ topBlock.image | defaultImage: 1140:418 }}"
+      width="1140"
+      height="418"
       alt="banner"
       loading="lazy"
       class="lazyload img-fluid"
     />
     <div class="left-text position-absolute row">
         <a
-          class="w-50"
           routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
           fragment="franbuzz"
         >
@@ -45,7 +44,7 @@
       <div class="container customContainer">
         <div class="row d-flex align-items-center">
           <div class="d-flex justify-content-center align-items-center seeMore">
-            <div class="nextBtn px-1 bg-white">
+            <div class="nextBtn px-1">
               <img
                 data-src="{{s3Url}}nextIcon.svg"
                 width="32"

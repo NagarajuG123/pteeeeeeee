@@ -49,7 +49,7 @@
             <ul class="d-flex text-center justify-content-center">
               <li
                 *ngFor="let duration of published_duration; let i = index"
-                class="px-3 time-filter"
+                class="px-4 time-filter"
               >
                 <a (click)="set_duration(i)">
                   <span
@@ -60,7 +60,7 @@
                   >
                 </a>
               </li>
-              <li class="px-3">
+              <li class="px-4">
                 <a (click)="set_range()">
                   <span
                     [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"

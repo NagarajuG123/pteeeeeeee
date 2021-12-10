@@ -183,4 +183,8 @@ body.noscroll {
 .md-drppicker {
   width: 700px !important;
   top: 60px !important;
+  .clear svg {
+    color: $red !important;
+    vertical-align: text-bottom !important; 
+  }
 }

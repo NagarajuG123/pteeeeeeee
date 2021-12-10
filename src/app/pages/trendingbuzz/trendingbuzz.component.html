@@ -52,6 +52,7 @@
     <h6>SPONSORED</h6>
     <div class="row mt-2">
       <app-home-article
+        [type] ="'trendingbrandbuzz'"
         [typeSlug]="'trendingbrandbuzz'"
         [contents]="trendingData"
         [class]="'row-cols-lg-5 trending gx-3'"
@@ -73,7 +74,7 @@
               mt-0
             "
           >
-            <div class="nextBtn px-1 bg-white">
+            <div class="nextBtn px-1">
               <img
                 data-src="{{ s3Url }}nextIcon.svg"
                 width="32"
