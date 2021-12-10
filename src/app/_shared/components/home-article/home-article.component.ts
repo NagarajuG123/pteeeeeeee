@@ -11,6 +11,7 @@ export class HomeArticleComponent implements OnInit {
   @Input() typeSlug!: string;
   @Input() col!: string;
   @Input() class!: string;
+  @Input() type!: string;
   rowClass: string;
 
   constructor(public commonService: CommonService) { }

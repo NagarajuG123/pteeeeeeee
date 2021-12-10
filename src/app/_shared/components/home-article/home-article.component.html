@@ -5,7 +5,17 @@
       fragment="{{ typeSlug | lowercase }}"
       class="py-2"
     >
-      <div class="card rounded-0 border-0 h-100">
+    <div
+        class="sponsored justify-content-center"
+        *ngIf="type === 'trendingbrandbuzz'"
+      >
+        <span
+          class="d-inline-block text-center"
+        >
+          {{ i + 1}}
+        </span>
+    </div>
+      <div class="card rounded-0 border-0 h-100 position-initial">
         <img
           appYoutubeImage
           data-src="{{ item.media | defaultImage: 1280:720 }}"
