@@ -5,6 +5,9 @@
   @include mobile-portrait {
     flex-direction: column;
   }
+  @include tablet-landscape {
+    flex-direction: column;
+  }
   img {
     height: 514px;
     width: 100%;

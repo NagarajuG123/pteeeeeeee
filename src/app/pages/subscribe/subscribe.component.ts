@@ -27,7 +27,8 @@ export class SubscribeComponent implements OnInit {
   submitSuccessMsg: string = '';
   isSuccess: boolean = false;
   faCaretRight = faCaretRight;
-  s3Url = environment.s3Url;
+  banner = `${environment.imageResizeUrl}/insecure/fill/1280/720/sm/0/plain/${environment.s3Url}subscribepage-banner.jpeg`;
+
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -77,21 +78,19 @@ export class SubscribeComponent implements OnInit {
     });
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const meta = this.apiService.getAPI(`1851/meta`);
-    forkJoin([publication, meta, publication]).subscribe(
-      (results) => {
-        this.publication = results[0];
-        this.metaService.setSeo(results[1].data);
-        let defaultTitle = '';
-        if (this.publication.id === '1851') {
-          defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
-        }
-        if (defaultTitle) {
-          this.metaService.setTitle(defaultTitle);
-        }
-        this.title = `Subscribe to ${this.publication.title}`;
-        this.setCheckBoxVisibility();
+    forkJoin([publication, meta, publication]).subscribe((results) => {
+      this.publication = results[0];
+      this.metaService.setSeo(results[1].data);
+      let defaultTitle = '';
+      if (this.publication.id === '1851') {
+        defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
       }
-    );
+      if (defaultTitle) {
+        this.metaService.setTitle(defaultTitle);
+      }
+      this.title = `Subscribe to ${this.publication.title}`;
+      this.setCheckBoxVisibility();
+    });
   }
 
   setCheckBoxVisibility() {
@@ -230,7 +229,6 @@ export class SubscribeComponent implements OnInit {
           $('.prospective-details').slideUp();
           $('.executive-details').slideUp();
           $('.executive1-details').slideUp();
-
         } else {
           this.submitErrMsg = result.error.message;
         }
