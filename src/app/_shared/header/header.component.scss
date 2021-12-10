@@ -240,11 +240,14 @@ header {
     height: 41px;
     font-family: $aktiv;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 25.41px;
-    text-transform: capitalize;
+    font-size: 17px;
+    line-height: 20px;
+    text-transform: none;
     .ticker {
       width: 22.3%;
+    }
+    .tickerText {
+      width: 70%;
     }
     .title {
       color: $white_2;
