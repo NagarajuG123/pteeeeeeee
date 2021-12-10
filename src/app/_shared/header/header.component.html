@@ -90,28 +90,27 @@
   <div class="container middle-head" *ngIf="isMain">
     <div class="row gx-0 align-items-center">
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <a
-          href="#"
-          role="button"
+        <button
           id="dropdownMenuLink"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           data-bs-display="static"
           (click)="commonService.toggle()"
-          (onclick)="closeSidebar()"
+          class="menuBtn"
         >
           <img
             data-src="{{
               commonService.showmenu
-                ? 'assets/img/menu_close.png'
-                : 'assets/img/menu_open.png'
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
             }}"
-            width="78"
-            height="72"
+            width="35"
+            height="24"
             alt="menu"
             class="lazyload menu"
           />
-        </a>
+          <small class="text-center d-none d-md-block">MENU</small>
+        </button>
       </div>
       <div
         class="d-flex align-items-center logo col-lg-8 col-sm-8 col-md-7 col-7"
@@ -339,28 +338,27 @@
   <div class="container middle-head" *ngIf="!isMain">
     <div class="row gx-0 align-items-center" *ngIf="brandSlug !== '1851'">
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <a
-          href="#"
-          role="button"
+        <button
           id="dropdownMenuLink"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           data-bs-display="static"
           (click)="commonService.toggle()"
-          (onclick)="closeSidebar()"
+          class="menuBtn"
         >
           <img
             data-src="{{
               commonService.showmenu
-                ? 'assets/img/menu_close.png'
-                : 'assets/img/menu_open.png'
+                ? 'assets/img/close.png'
+                : 'assets/img/menu.png'
             }}"
-            width="78"
-            height="72"
+            width="35"
+            height="24"
             alt="menu"
             class="lazyload menu"
           />
-        </a>
+          <small class="text-center d-none d-md-block">MENU</small>
+        </button>
       </div>
       <div
         class="d-flex align-items-center logo col-lg-5 col-sm-3 col-md-3 col-3"
@@ -616,7 +614,7 @@
   >
     <div class="container py-2">
       <div class="d-flex align-items-center">
-        <div class="col-xl-2 col-lg-1 col-sm-1"></div>
+        <div class="col-xl-2 col-lg-1 col-sm-1 ticker"></div>
         <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3">
           <img
             data-src="{{ s3Url }}trending.svg"

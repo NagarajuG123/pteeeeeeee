@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class TrendingbuzzComponent implements OnInit {
   trendingData: Details[] = [];
+  banner: Details[] = [];
+
   slug: string = '1851';
   hasMore: boolean = false;
   isLoaded: boolean;
@@ -27,10 +29,11 @@ export class TrendingbuzzComponent implements OnInit {
 
   getTrending() {
     this.apiService
-      .getAPI(`${this.slug}/trending-buzz?limit=10&offset=0`)
+      .getAPI(`${this.slug}/trending-buzz?limit=11&offset=0`)
       .subscribe((response) => {
         this.metaService.setSeo(response.data[0].meta);
-        this.trendingData = response.data;
+        this.trendingData = response.data.slice(1);
+        this.banner = response.data[0];
         this.hasMore = response.has_more;
         this.isLoaded = true;
         this.apiService
@@ -43,7 +46,9 @@ export class TrendingbuzzComponent implements OnInit {
   getMoreData() {
     this.apiService
       .getAPI(
-        `${this.slug}/trending-buzz?limit=5&offset=${this.trendingData.length}`
+        `${this.slug}/trending-buzz?limit=5&offset=${
+          this.trendingData.length + 1
+        }`
       )
       .subscribe((result) => {
         this.hasMore = result.has_more;

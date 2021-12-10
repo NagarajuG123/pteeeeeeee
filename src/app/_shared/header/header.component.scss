@@ -22,6 +22,20 @@ header {
   }
 
   .middle-head {
+    .menuBtn {
+      width: 78px;
+      height: 71px;
+      img {
+        filter: brightness(10);
+        margin-bottom: 8px;
+      }
+      small {
+        line-height: 17.43px;
+        font-size: 12.34px;
+        font-weight: 500;
+        color: $white_2;
+      }
+    }
     .logo {
       margin-left: -0.5rem;
 
@@ -232,7 +246,9 @@ header {
     font-size: 18px;
     line-height: 25.41px;
     text-transform: capitalize;
-
+    .ticker {
+      width: 22.3%;
+    }
     .title {
       color: $white_2;
       text-overflow: ellipsis;
