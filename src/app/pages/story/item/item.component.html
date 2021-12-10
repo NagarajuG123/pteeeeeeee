@@ -59,7 +59,7 @@
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
           ><h3 class="mb-0 mt-3 large-main-article">
-            By {{ details.author.name }}
+            By <span>{{ details.author.name }}</span>
           </h3></a
         >
         <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
@@ -78,18 +78,18 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="seeMore mb-0" *ngIf="trendingNews.length">
+        <h5 class="seeMore mb-0 d-none d-md-flex" *ngIf="trendingNews.length">
           TRENDING ARTICLES
         </h5>
         <fa-icon
           *ngIf="trendingNews.length"
           [icon]="faCaretDown"
           [styles]="{ width: '14px', 'margin-top': '-6px' }"
-          class="primary-color"
+          class="primary-color d-none d-md-flex"
           size="lg"
         ></fa-icon>
 
-        <ul class="most-like-articles list-group mt-4 mb-3">
+        <ul class="most-like-articles list-group mt-4 mb-3 d-none d-md-flex">
           <li *ngFor="let item of trendingNews; index as i" class="mb-2">
             <div class="d-flex">
               <div class="newsImage me-2 pe-1 position-relative">
@@ -200,6 +200,19 @@
     <div class="seeMoreLine"></div>
   </div>
 
+  <div class="most-like-articles pb-5 d-flex d-sm-none">
+    <div class="container customContainer py-md-2">
+      <h5 class="seeMore mb-0" *ngIf="trendingNews.length">
+        TRENDING ARTICLES
+      </h5>
+      <app-article
+        [typeSlug]="'trending'"
+        [contents]="trendingNews"
+        [type]="'articleTrending'"
+        [class]="'row-cols-sm-2 row-cols-2 articleTrending'"
+      ></app-article>
+    </div>
+   </div>   
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg py-5 d-none d-md-flex">
     <div class="container customContainer py-md-2">
@@ -207,15 +220,15 @@
       <app-article
         [typeSlug]="'frannews'"
         [contents]="mainNews"
-        [class]="'row-cols-lg-4'"
+        [class]="'row-cols-sm-1'"
       ></app-article>
 
       <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
       <app-article
         [typeSlug]="'frannews'"
         [contents]="brandNews"
-        [class]="'row-cols-lg-4'"
         [type]="'brandNews'"
+        [class]="'row-cols-sm-1'"
       ></app-article>
     </div>
   </div>

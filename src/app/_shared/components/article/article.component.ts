@@ -13,7 +13,6 @@ export class ArticleComponent implements OnInit {
   @Input() col!: string;
   @Input() class!: string;
 
-  rowClass: string;
   constructor(public commonService: CommonService) {}
 
   ngOnInit(): void {}
