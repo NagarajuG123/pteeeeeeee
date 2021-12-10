@@ -23,6 +23,7 @@ export class MonthlyCoversComponent implements OnInit {
   faPlus = faPlus;
   faAngleRight = faAngleRight;
   s3Url = environment.s3Url;
+  isLoaded: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -33,6 +34,7 @@ export class MonthlyCoversComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoaded = false;
     const coverApi = this.apiService.getAPI(
       `1851/journal/monthly-covers?limit=14&offset=0`
     );
@@ -42,7 +44,8 @@ export class MonthlyCoversComponent implements OnInit {
     forkJoin([coverApi, metaApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
-        this.firstBlock = response[0].data.slice(0,4);
+        this.isLoaded = true;
+        this.firstBlock = response[0].data.slice(0, 4);
         this.secondBlock = response[0].data.slice(4, 14);
         this.hasMore = response[0].has_more;
         this.metaData = response[1].data;

@@ -58,12 +58,14 @@
           </a>
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
-          ><h3 class="mb-0 mt-3 large-main-article">{{ details.author.name }}</h3></a
+          ><h3 class="mb-0 mt-3 large-main-article">
+            By {{ details.author.name }}
+          </h3></a
         >
         <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
           >{{ commonService.formatTime(details.last_modified) }} •
-          {{  last_modified | date: "MM/dd/yy" }}
+          {{ last_modified | date: "MM/dd/yy" }}
         </span>
         <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
           >{{ commonService.formatTime(details.posted_on) }} •
@@ -90,25 +92,27 @@
         <ul class="most-like-articles list-group mt-4 mb-3">
           <li *ngFor="let item of trendingNews; index as i" class="mb-2">
             <div class="d-flex">
-            <div class="newsImage me-2 pe-1 position-relative">
-              <a href="{{ readMore(item, 'trending') }}">
-                <img
-                  appYoutubeImage
-                  width="139"
-                  height="84"
-                  data-src="{{ item.media | defaultImage: 1280:720 }}"
-                  alt="news"
-                  class="lazyload"
-                />
-              </a>
+              <div class="newsImage me-2 pe-1 position-relative">
+                <a href="{{ readMore(item, 'trending') }}">
+                  <img
+                    appYoutubeImage
+                    width="139"
+                    height="84"
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    alt="news"
+                    class="lazyload"
+                  />
+                </a>
+              </div>
+              <div>
+                <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
+                <p class="m-0 articleTitles">
+                  <a href="{{ readMore(item, 'trending') }}">
+                    {{ item.title }}</a
+                  >
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
-              <p class="m-0 articleTitles">
-                <a href="{{ readMore(item, 'trending') }}"> {{ item.title }}</a>
-              </p>
-            </div>
-          </div>
           </li>
         </ul>
       </div>
@@ -145,15 +149,22 @@
                 category.name
               }}</a>
             </div>
-            <h1 class="large-main-article text-center mb-0" [innerHTML]="title"></h1>
+            <h1
+              class="large-main-article text-center mb-0"
+              [innerHTML]="title"
+            ></h1>
           </div>
 
           <h2
             class="sectionTitle text-center gray-bg position-relative mb-4 p-3"
             [innerHTML]="short_description"
           ></h2>
-          <div id="{{ id }}" class="description text-black" [innerHTML]="content"></div>
-          <div *ngIf="sponsorContent" >
+          <div
+            id="{{ id }}"
+            class="description text-black"
+            [innerHTML]="content"
+          ></div>
+          <div *ngIf="sponsorContent">
             <p class="brandPartner">
               *This brand is a paid partner of {{ publication.title }}. For more
               information on paid partnerships please
@@ -174,7 +185,7 @@
           <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1">
               <img
-                data-src="{{s3Url}}nextIcon.svg"
+                data-src="{{ s3Url }}nextIcon.svg"
                 width="32"
                 alt="next articles"
                 class="me-3 lazyload"
@@ -192,20 +203,36 @@
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg py-5 d-none d-md-flex">
     <div class="container customContainer py-md-2">
-          <h4 class="timeStamp mb-0">Featured Franchise News</h4>
-        <app-article [typeSlug]="'frannews'" [contents]="mainNews" [class]="'row-cols-lg-4'"></app-article>
+      <h4 class="timeStamp mb-0">Featured Franchise News</h4>
+      <app-article
+        [typeSlug]="'frannews'"
+        [contents]="mainNews"
+        [class]="'row-cols-lg-4'"
+      ></app-article>
 
-          <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
-        <app-article [typeSlug]="'frannews'" [contents]="brandNews" [class]="'row-cols-lg-4'" [type]="'brandNews'"></app-article>
+      <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
+      <app-article
+        [typeSlug]="'frannews'"
+        [contents]="brandNews"
+        [class]="'row-cols-lg-4'"
+        [type]="'brandNews'"
+      ></app-article>
     </div>
   </div>
 
   <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none">
     <div class="container customContainer py-md-2">
       <h4 class="timeStamp mb-0">Featured Franchise News</h4>
-      <app-carousel [typeSlug]="'frannews'" [contents]="mainNews"></app-carousel>
+      <app-carousel
+        [typeSlug]="'frannews'"
+        [contents]="mainNews"
+      ></app-carousel>
       <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
-      <app-carousel  [typeSlug]="'frannews'" [contents]="brandNews" [type]="'brandNews'"></app-carousel>
+      <app-carousel
+        [typeSlug]="'frannews'"
+        [contents]="brandNews"
+        [type]="'brandNews'"
+      ></app-carousel>
     </div>
   </div>
 </div>

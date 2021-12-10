@@ -25,6 +25,7 @@ export class MonthlyDetailsComponent implements OnInit {
   coverDate: any;
   title: any;
   s3Url = environment.s3Url;
+  isLoaded: boolean;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class MonthlyDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoaded = false;
     this.route.paramMap.subscribe((params) => {
       this.year = params.get('year');
       this.month = params.get('month');
@@ -55,6 +57,8 @@ export class MonthlyDetailsComponent implements OnInit {
             this.apiService
               .getAPI(`1851/publication-instance`)
               .subscribe((result) => {
+                this.isLoaded = true;
+
                 this.title = this.datePipe.transform(
                   this.coverDate,
                   'MMMM YYYY'
