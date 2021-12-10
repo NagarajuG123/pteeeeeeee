@@ -168,6 +168,7 @@
     padding: 30px 23px;
     .topContent {
       font-weight: 400;
+      color: $black;
     }
     @include mobile-landscape1 {
       padding: 15px;
@@ -801,8 +802,8 @@
     margin-right: -25px;
 
     @include desk-lg-below1 {
-      top: 10px;
-      right: 15px;
+      top: 40px;
+      right: 55px;
     }
   }
 

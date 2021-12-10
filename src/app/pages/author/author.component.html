@@ -5,7 +5,9 @@
         <div class="col-md-5 col-sm-6 py-4 px-4"></div>
         <div class="col-md-7 col-sm-6 pt-5 pb-2 px-4 details">
           <span class="small-red-headers">ABOUT</span>
-          <h1 class="large-main-article mb-0">{{ author?.data?.first_name }} {{ author?.data?.last_name }}</h1>
+          <h1 class="large-main-article mb-0">
+            {{ author?.data?.first_name }} {{ author?.data?.last_name }}
+          </h1>
           <h5 class="sectionTitle">{{ author?.data?.designation }}</h5>
           <hr />
 
@@ -65,15 +67,11 @@
             EDITORIAL STORIES BY {{ author?.data?.first_name }}
             {{ author?.data?.last_name }}
           </h3>
-<<<<<<< HEAD
-          <app-five-column
-            [contents]="editorials"
-            [type]="'authorpage'"
+          <app-home-article
             [typeSlug]="'editorials'"
-          ></app-five-column>
-=======
-          <app-home-article [typeSlug]="'editorials'" [contents]="editorials" [class]="'row-cols-lg-5'"></app-home-article>
->>>>>>> 01378f50615afe9dcec51bc8fe0e7a8c92cb5d9f
+            [contents]="editorials"
+            [class]="'row-cols-lg-5'"
+          ></app-home-article>
           <a
             routerLink="/{{ commonService.readMore(editorials[0]) }}"
             fragment="editorials"
@@ -90,15 +88,11 @@
             BRANDED CONTENT BY {{ author?.data?.first_name }}
             {{ author?.data?.last_name }}
           </h3>
-<<<<<<< HEAD
-          <app-five-column
-            [contents]="brandedContents"
-            [type]="'authorpage'"
+          <app-home-article
             [typeSlug]="'brand-latest-stories'"
-          ></app-five-column>
-=======
-          <app-home-article [typeSlug]="'brand-latest-stories'" [contents]="brandedContents" [class]="'row-cols-lg-5'"></app-home-article>
->>>>>>> 01378f50615afe9dcec51bc8fe0e7a8c92cb5d9f
+            [contents]="brandedContents"
+            [class]="'row-cols-lg-5'"
+          ></app-home-article>
           <a
             routerLink="/{{ commonService.readMore(brandedContents[0]) }}"
             fragment="brand-latest-stories"
