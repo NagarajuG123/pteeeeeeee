@@ -39,26 +39,10 @@
           </div>
         </form>
         <div class="py-3 filter-section">
-          <h6
-            class="sectionTitle"
-            *ngIf="
-              brand_id !== '1851' &&
-              brand_id !== 'ee' &&
-              brand_id !== 'room-1903'
-            "
-          >
+          <h6 class="sectionTitle" *ngIf="!isMainSite()">
             Showing Search Results For: <span>{{ showSearchKey }}</span>
           </h6>
-          <h6
-            class="sectionTitle"
-            *ngIf="
-              brand_id === '1851' ||
-              brand_id === 'ee' ||
-              brand_id === 'room-1903'
-            "
-          >
-            View Search Filters
-          </h6>
+          <h6 class="sectionTitle" *ngIf="isMainSite()">View Search Filters</h6>
           <div class="sort_main">
             <h6 class="primary-color mb-0">SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
@@ -184,14 +168,7 @@
       </div>
     </div>
   </div>
-  <div
-    class="bottomSection"
-    [ngClass]="
-      brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
-        ? ''
-        : 'brandSearch'
-    "
-  >
+  <div class="bottomSection" [ngClass]="isMainSite() ? '' : 'brandSearch'">
     <div
       class="container position-relative"
       [ngClass]="!recentPeoples.length ? 'd-none' : ''"
