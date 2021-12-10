@@ -45,7 +45,7 @@ export class SpotlightComponent implements OnInit {
         this.defaultTab = this.tab = results[0].defaultTab;
 
         this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=5&offset=0`)
+          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];
@@ -65,7 +65,7 @@ export class SpotlightComponent implements OnInit {
   getData(tabName: any) {
     const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
     this.apiService
-      .getAPI(`${apiUrl}?limit=5&offset=0`)
+      .getAPI(`${apiUrl}?limit=8&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -74,6 +74,22 @@ export class SpotlightComponent implements OnInit {
             data.push(item);
           });
           this.items = data;
+        }
+      });
+  }
+  getMore(tabName: any) {
+    this.apiService
+      .getAPI(
+        `${this.slug}/spotlight/${tabName.toLowerCase()}?limit=4&offset=${
+          this.items.length + 1
+        }`
+      )
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            this.items.push(item);
+          });
         }
       });
   }
