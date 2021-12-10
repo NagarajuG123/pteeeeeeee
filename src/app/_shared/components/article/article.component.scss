@@ -14,7 +14,8 @@
       background-color: $white_8;
     }
   }
-  &.spotlight {
+  &.spotlight,
+  &.articleTrending {
     .card-title,
     .card-footer {
       padding-left: 0 !important;
