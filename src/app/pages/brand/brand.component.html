@@ -15,16 +15,15 @@
 <div *ngIf="type === 'dynamic_page'">
   <div class="banner position-relative container sidebar-blur">
     <img
-      data-src="{{ topBlock.image | defaultImage: 1280:720 }}"
-      width="1439"
-      height="518"
+      data-src="{{ topBlock.image | defaultImage: 1140:418 }}"
+      width="1140"
+      height="418"
       alt="banner"
       loading="lazy"
       class="lazyload img-fluid"
     />
     <div class="left-text position-absolute row">
         <a
-          class="w-50"
           routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
           fragment="franbuzz"
         >
