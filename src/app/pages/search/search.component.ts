@@ -274,6 +274,17 @@ export class SearchComponent implements OnInit {
       this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     }
   }
+  isMainSite() {
+    if (
+      this.brand_id === '1851' ||
+      this.brand_id === 'ee' ||
+      this.brand_id === 'room-1903'
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   ngAfterViewInit() {
     if (this.isBrowser) {
       $(document).ready(function (e) {

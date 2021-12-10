@@ -243,11 +243,42 @@ header {
     font-size: 17px;
     line-height: 20px;
     text-transform: none;
+    @include tablet-landscape {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 11px;
+    }
+    @include mobile-portrait {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 10px;
+    }
+
     .ticker {
       width: 22.3%;
+      @include tablet-landscape {
+        width: 0%;
+      }
+      @include mobile-portrait {
+        width: 0%;
+      }
+    }
+    .trendingLogo {
+      @include tablet-landscape {
+        width: 90px;
+      }
+      @include mobile-portrait {
+        width: 90px;
+      }
     }
     .tickerText {
       width: 70%;
+      @include tablet-landscape {
+        width: 80%;
+      }
+      @include mobile-portrait {
+        width: 100%;
+      }
     }
     .title {
       color: $white_2;
@@ -284,6 +315,9 @@ header {
     .vertical .carousel-control-prev {
       bottom: 50%;
       top: -3px;
+      @include tablet-landscape {
+        top: -8px;
+      }
     }
 
     .vertical .carousel-control-next {
