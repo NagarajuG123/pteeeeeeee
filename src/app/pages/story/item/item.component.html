@@ -78,8 +78,8 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="seeMore mb-0 d-none d-md-flex" *ngIf="trendingNews.length">
-          TRENDING ARTICLES
+        <h5 class="seeMore mb-0 d-none d-md-flex text-uppercase" *ngIf="trendingNews.length">
+          More like this
         </h5>
         <fa-icon
           *ngIf="trendingNews.length"
@@ -202,8 +202,8 @@
 
   <div class="most-like-articles pb-5 d-flex d-sm-none">
     <div class="container customContainer py-md-2">
-      <h5 class="seeMore mb-0" *ngIf="trendingNews.length">
-        TRENDING ARTICLES
+      <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews.length">
+       More like this
       </h5>
       <app-article
         [typeSlug]="'trending'"
