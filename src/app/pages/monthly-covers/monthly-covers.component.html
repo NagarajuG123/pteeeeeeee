@@ -2,32 +2,27 @@
   <section class="c-card-box--section" *ngIf="firstBlock">
     <div class="c-card-box--wrapper">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 p-0">
-            <div class="c-card-box--row c-card-box--contentRow">
-              <div class="c-card-box--col month-business--wrapper">
-                <div class="c-card-box--contentGroup ps-3">
-                  <span class="d-flex">
-                    <i
-                      class="fa fa-long-arrow-left pe-2 d-none d-lg-block arrow"
-                      aria-hidden="true"
-                    ></i>
-                    <h4 class="monthIsssue">THIS MONTH'S ISSUE</h4>
-                  </span>
-                  <h1 class="large-main-article">Back to Business</h1>
-                  <p class="content mb-0">
-                    {{ firstBlock[0]?.story?.title }}
-                  </p>
-                  <a
-                    routerLink="{{ firstBlock[0]?.story?.slug }}"
-                    fragment="monthlydetailspage"
-                    class="seeMore text-uppercase"
-                    >Read more
-                    <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+        <div class="row bg-white">
+          <div class="col-12 col-sm-12 col-md-6"></div>
+          <div class="col-12 col-sm-12 col-md-6 coverContent">
+            <span class="d-flex">
+              <i
+                class="fa fa-long-arrow-left pe-2 d-none d-lg-block arrow"
+                aria-hidden="true"
+              ></i>
+              <h4 class="monthIsssue">THIS MONTH'S ISSUE</h4>
+            </span>
+            <h1 class="large-main-article">Back to Business</h1>
+            <p class="content mb-0">
+              {{ firstBlock[0]?.story?.title }}
+            </p>
+            <a
+              routerLink="{{ firstBlock[0]?.story?.slug }}"
+              fragment="monthlydetailspage"
+              class="seeMore text-uppercase"
+              >Read more
+              <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
+            ></a>
           </div>
         </div>
       </div>

@@ -2,26 +2,21 @@
   <section class="c-card-box--section" *ngIf="banner">
     <div class="c-card-box--wrapper">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 p-0">
-            <div class="c-card-box--row c-card-box--contentRow">
-              <div class="c-card-box--col month-business--wrapper">
-                <div class="c-card-box--contentGroup">
-                  <h4 class="articleTitles">{{ title }}</h4>
-                  <h1 class="large-main-article">Back to Business</h1>
-                  <p class="content mb-0">
-                    {{ banner[0]?.title }}
-                  </p>
-                  <a
-                    routerLink="/{{ commonService.readMore(banner[0]) }}"
-                    fragment="monthlydetailspage"
-                    class="seeMore primary-color text-uppercase"
-                    >Read more
-                    <i class="fa fa-angle-right" aria-hidden="true"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+        <div class="row bg-white">
+          <div class="col-12 col-sm-12 col-md-6"></div>
+          <div class="col-12 col-sm-12 col-md-6 p-4 coverContent">
+            <h4 class="articleTitles">{{ title }}</h4>
+            <h1 class="large-main-article">Back to Business</h1>
+            <p class="content mb-0">
+              {{ banner[0]?.title }}
+            </p>
+            <a
+              routerLink="/{{ commonService.readMore(banner[0]) }}"
+              fragment="monthlydetailspage"
+              class="seeMore primary-color text-uppercase"
+              >Read more
+              <i class="fa fa-angle-right" aria-hidden="true"></i
+            ></a>
           </div>
         </div>
       </div>

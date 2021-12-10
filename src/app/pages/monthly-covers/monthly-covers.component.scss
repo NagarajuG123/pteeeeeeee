@@ -73,28 +73,8 @@
         }
       }
     }
-    .c-card-box--contentRow {
-      background-color: $white;
-      .month-business--wrapper {
-        max-width: 54%;
-        margin-left: 45%;
-        // flex: unset;
-        padding: 25px 0 35px;
-        @include media("<xxl") {
-          max-width: 54.5%;
-        }
-        @include media("<xl") {
-          max-width: 58%;
-          padding: 15px 0;
-        }
-        @include media("<lg") {
-          max-width: 100%;
-          padding: 15px 0 15px 30px;
-          margin-left: unset;
-        }
-      }
-    }
-    .c-card-box--contentGroup {
+    .coverContent {
+      padding: 25px 8px 35px;
       font-family: $roboto;
       .arrow {
         color: $red;
