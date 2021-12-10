@@ -251,8 +251,7 @@ export class SearchComponent implements OnInit {
             searchPopData['brandPeoples'] = results[1]['data'];
           }
           let title = results[2].title;
-          searchPopData['has_more'] =
-            results[0].has_more || results[1].has_more;
+          searchPopData['has_more'] = results[0].has_more;
 
           this.recentPeoples = searchPopData['recentPeoples'];
           this.brandPeoples = searchPopData['brandPeoples'];
@@ -397,7 +396,7 @@ export class SearchComponent implements OnInit {
         } else {
           this.brandPeoples = results[1]['data'];
         }
-        this.has_more = results[0].has_more || results[1].has_more;
+        this.has_more = results[0].has_more;
       });
     this.updateUrlState();
   }
@@ -439,7 +438,7 @@ export class SearchComponent implements OnInit {
           });
           this.brandPeoples = JSON.parse(JSON.stringify(this.brandPeoples));
         }
-        this.has_more = results[0].has_more || results[1].has_more;
+        this.has_more = results[0].has_more;
       });
   }
 
@@ -503,7 +502,7 @@ export class SearchComponent implements OnInit {
           } else {
             this.brandPeoples = results[1]['data'];
           }
-          this.has_more = results[0].has_more || results[1].has_more;
+          this.has_more = results[0].has_more;
         });
       this.updateUrlState(start, end);
     }
