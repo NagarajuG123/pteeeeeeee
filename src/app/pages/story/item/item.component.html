@@ -59,7 +59,7 @@
         </div>
         <a routerLink="/author/{{ details?.author?.slug }}"
           ><h3 class="mb-0 mt-3 large-main-article">
-            By {{ details.author.name }}
+            By <span>{{ details.author.name }}</span>
           </h3></a
         >
         <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
@@ -89,32 +89,37 @@
           size="lg"
         ></fa-icon>
 
-        <ul class="most-like-articles list-group mt-4 mb-3">
-          <li *ngFor="let item of trendingNews; index as i" class="mb-2">
-            <div class="d-flex">
-              <div class="newsImage me-2 pe-1 position-relative">
-                <a href="{{ readMore(item, 'trending') }}">
+        <div class="most-like-articles row row-cols-2 row-cols-sm-2 row-cols-md-1">
+          <ng-container class="trending" *ngFor="let item of trendingNews; index as i">
+            <a
+              href="{{ readMore(item, 'trending') }}"
+              fragment="'trending'"
+              class="py-2"
+            >
+              <div class="card rounded-0 border-0 h-100">
+                <div class="d-md-flex d-sm-block">
                   <img
                     appYoutubeImage
+                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    class="img-fluid lazyload pe-1 me-2"
                     width="139"
                     height="84"
-                    data-src="{{ item.media | defaultImage: 1280:720 }}"
-                    alt="news"
-                    class="lazyload"
+                    alt="trending"
+                    loading="lazy"
                   />
-                </a>
+                <div class="card-body p-0 rounded-0">
+                  <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
+                  <p class="m-0 articleTitles">
+                    <a href="{{ readMore(item, 'trending') }}">
+                      {{ item.title }}</a
+                    >
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
-                <p class="m-0 articleTitles">
-                  <a href="{{ readMore(item, 'trending') }}">
-                    {{ item.title }}</a
-                  >
-                </p>
               </div>
-            </div>
-          </li>
-        </ul>
+            </a>
+          </ng-container>
+        </div>
       </div>
 
       <!-- Articles detail section -->

@@ -51,26 +51,37 @@
       h1 + h5 {
         text-align: center;
       }
+      .large-main-article{
+        font-size: 13px;
+        span{
+          color: $red;
+        }
+      }
+      h5{
+        font-size: 10px;
+      }
     }
   }
 
   .most-like-articles {
     font-family: $aktiv;
-
-    li {
+    .trending {
       display: flex;
-      .articleTitles {
-        color: $dark_gray;
-        font-size: 13px;
-        padding-top: 5px;
-      }
     }
-
+    .articleTitles {
+      color: $dark_gray;
+      font-size: 13px;
+      padding-top: 5px;
+    }
     @media screen and (max-width: 960px) {
       position: relative;
-      height: 100%;
       overflow: visible;
       width: 100%;
+    }
+    @include tablet-landscape1{
+      .card-body{
+        padding-top: 8px !important;
+      }
     }
   }
 
@@ -117,6 +128,10 @@
       min-height: 186px;
       .large-main-article {
         color: $dark_gray;
+        @include tablet-landscape1{
+          font-size: 22px;
+          line-height: 117%;
+        }
       }
     }
     .sectionTitle {
@@ -124,15 +139,31 @@
       font-weight: 700;
       color: $white_4;
       text-transform: none;
+      @include tablet-landscape1{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        color: #9d9c9c;
+      }  
     }
     .description {
       font-size: 14px;
     }
-
     @media screen and (max-width: 767px) {
+      h2{
+        text-align: left !important;
+        background-color: unset;
+        padding: 0 !important;
+      }
       .detailHead {
         position: relative !important;
         border-top: 1px solid $dark_gray;
+        h1{
+          text-align: left !important;
+        }
+      }
+      .tag{
+        display: none;
       }
     }
   }
