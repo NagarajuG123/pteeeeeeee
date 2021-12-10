@@ -3,7 +3,7 @@
     <div class="row py-lg-4">
       <div class="col-lg-2 d-flex col-sm-12 col-12 logo">
         <img
-          class="img-fluid lazyload"
+          class="lazyload"
           data-src="{{ s3Url }}logo1.png"
           width="195px"
           height="195px"
@@ -184,21 +184,27 @@
       </div>
     </div>
   </div>
-  <div class="bottomSection" [ngClass]="!recentPeoples.length ? 'd-none' : ''">
-    <div class="container position-relative">
+  <div
+    class="bottomSection"
+    [ngClass]="
+      brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
+        ? ''
+        : 'brandSearch'
+    "
+  >
+    <div
+      class="container position-relative"
+      [ngClass]="!recentPeoples.length ? 'd-none' : ''"
+    >
       <div class="row">
         <div
-          class="col-md-9 col-sm-12 pt-3 leftSide"
-          [ngClass]="
-            brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
-              ? ''
-              : 'brandSearch'
-          "
+          class="pt-3 leftSide"
+          [ngClass]="isMainSite() ? 'col-md-9 col-sm-12' : 'col-12'"
         >
           <app-home-article
             [typeSlug]="'franbuzz'"
             [contents]="recentPeoples"
-            [class]="'row-cols-lg-3 gx-2'"
+            [class]="isMainSite() ? 'row-cols-lg-3 gx-2' : 'row-cols-lg-4 gx-2'"
           ></app-home-article>
           <div class="row seeMoreIcon mt-4 desktop-only">
             <div
@@ -218,9 +224,7 @@
         </div>
         <div
           class="col-sm-12 col-md-3 rightSide brand-news"
-          *ngIf="
-            brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
-          "
+          *ngIf="isMainSite()"
         >
           <h5 class="mt-3 sectionTitle">BRAND NEWS</h5>
           <hr />
