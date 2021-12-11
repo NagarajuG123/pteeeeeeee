@@ -41,7 +41,7 @@
     </a>
   </div>
   <!-- main articles details -->
-  <div class="container customContainer">
+  <div class="container customContainer scrollBlock" #target>
     <div class="row">
       <div class="col-12 col-md userDetail">
         <div class="userImage position-relative d-none d-md-flex">
@@ -191,7 +191,7 @@
                 class="me-3 lazyload"
                 loading="lazy"
               />
-              <span class="seeMore">Next Article</span>
+              <span class="seeMore" (activate)="onActivate($event)" >Next Article</span>
             </div>
           </div>
         </div>

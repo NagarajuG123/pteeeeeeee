@@ -38,6 +38,7 @@ export class ItemComponent implements OnInit {
   @Input() brandNewsData: any;
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
+  @ViewChild('target') private myScrollContainer: ElementRef;
 
   public isBrowser = false;
   public isServer: boolean;
@@ -136,7 +137,19 @@ export class ItemComponent implements OnInit {
       this.fb_url = environment.fbUrl;
     }
   }
-
+  scrollToElement(el): void {
+    this.myScrollContainer.nativeElement.scroll({
+      top: this.myScrollContainer.nativeElement.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+  onActivate(event) {
+    window.scroll(0,0);
+    //or document.body.scrollTop = 0;
+    //or document.querySelector('body').scrollTo(0,0)
+    
+}
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
     const trending: SimpleChange = changes.trending;
