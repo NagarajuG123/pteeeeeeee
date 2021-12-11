@@ -169,6 +169,23 @@ button {
 .nextLine {
   .nextBtn{
     cursor: pointer;
+    .circle{
+      background: $red;
+      text-decoration:none;
+      border-radius: 50%;
+      display: block;
+      height: 35px;
+      width: 35px;
+    }
+    .circle::after {
+      content:"\25bc";
+      display: block;
+      color: $white;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      padding:10px 0;
+    }
   }  
   .seeMore {
     width: 220px;
