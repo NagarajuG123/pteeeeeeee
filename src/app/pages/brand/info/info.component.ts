@@ -291,6 +291,22 @@ export class InfoComponent implements OnInit {
       }
     });
   }
+  getMore() {
+    this.apiService
+      .getAPI(
+        `${this.brandSlug}/brand-latest-stories?limit=5&offset=${
+          this.items.length
+        }`
+      )
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((result) => {
+        if (result.data.length) {
+          result['data'].forEach((item: any, index: number) => {
+            this.items.push(item);
+          });
+        }
+      });
+  }
   getInquiry() {
     this.apiService
       .getAPI(`${this.brandSlug}/brand/inquire`)
