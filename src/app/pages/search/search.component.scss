@@ -176,6 +176,8 @@ span {
   }
   .leftSide {
     background-color: $dark_gray;
+    padding-left: 40px;
+    padding-right: 50px;
   }
   .rightSide {
     background-color: $white;
@@ -183,6 +185,7 @@ span {
 }
 .seeMoreIcon {
   background-color: $white_6;
+  margin-left: -90px;
   .seeMore {
     color: $dark_gray;
     line-height: 14px;
