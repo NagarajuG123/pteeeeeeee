@@ -21,105 +21,160 @@
       <h1 class="large-main-article m-0 px-xl-5">
         {{ contents.title }}
       </h1>
-      <p class="description m-0">
+      <p class="description m-0 pb-2">
         {{ contents.short_description }}
       </p>
     </div>
   </div>
 
-  <div class="c-filter-with-box--wrapper">
-    <div class="list-data--section">
-      <div class="list-data--wrapper isHead">
-        <div class="list-data--item rank-number--wrapper">Rank</div>
-        <div class="list-data--item isBrandCol">Brand Page</div>
-        <div class="list-data--item isInvestmentCol">Trending</div>
-        <div class="list-data--item isLstSotryCol">Latest Story</div>
-      </div>
-      <div>
-        <ng-container *ngFor="let item of items | slice: 0:10; let i = index">
-          <div
-            class="list-data--wrapper isRow"
-            [ngClass]="
-              i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
-            "
-          >
-            <div class="list-data--item rankCol">
-              <p class="list-data--rank">
-                {{ item.rank }}
-              </p>
-            </div>
-            <div class="list-data--item brandCol">
-              <a routerLink="/{{ item.slug }}">
-                <img
-                  class="list-data--itemImg"
-                  data-src="{{ item.logo }}"
-                  alt="logo"
-                  width="149px"
-                  height="103px"
-                  loading="lazy"
-                  class="lazyload"
-              /></a>
-            </div>
-            <div class="list-data--item lastWeekCol">
-              <p class="list-data--trending">Last Week</p>
-              <p class="list-data--number">
-                {{ item.last_week_rank }}
-              </p>
-            </div>
-            <div class="list-data--item isLstSotryCol">
-              <p class="list-data--latestStory">
+  <div class="desktop-only">
+    <div class="c-filter-with-box--wrapper d-flex position-relative">
+      <div class="list-data--section">
+        <div class="list-data--wrapper align-items-center d-flex isHead">
+          <div class="list-data--item rank-number--wrapper">Rank</div>
+          <div class="list-data--item isBrandCol">Brand Page</div>
+          <div class="list-data--item isInvestmentCol">Trending</div>
+          <div class="list-data--item isLstSotryCol">Latest Story</div>
+        </div>
+        <div>
+          <ng-container *ngFor="let item of items | slice: 0:10; let i = index">
+            <div
+              class="list-data--wrapper align-items-center d-flex isRow"
+              [ngClass]="
+                i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
+              "
+            >
+              <div class="list-data--item rankCol">
+                <p class="highRank m-0 text-center">
+                  {{ item.rank }}
+                </p>
+              </div>
+              <div class="list-data--item brandCol">
+                <a routerLink="/{{ item.slug }}">
+                  <img
+                    class="list-data--itemImg"
+                    data-src="{{ item.logo }}"
+                    alt="logo"
+                    width="149px"
+                    height="103px"
+                    loading="lazy"
+                    class="lazyload"
+                /></a>
+              </div>
+              <div class="list-data--item lastWeekCol">
+                <p class="lastWeekText m-0 text-center">Last Week</p>
+                <p class="list-data--number">
+                  {{ item.last_week_rank }}
+                </p>
+              </div>
+              <div class="list-data--item isLstSotryCol">
                 <a
                   routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
                   fragment="brand-latest-stories"
-                  class="list-data--latestStoryLink"
                 >
-                  {{ item.latest_story_title }}
+                  <p class="latestStory m-0">
+                    {{ item.latest_story_title }}
+                  </p>
                 </a>
-              </p>
+              </div>
             </div>
-          </div>
-        </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <!-- bottom -->
+    <div class="bottomSection align-items-center justify-content-center d-flex">
+      <div class="container">
+        <div class="row row-cols-lg-5 row-cols-md-3">
+          <ngContainer *ngFor="let item of items | slice: 10:15">
+            <div class="d-flex">
+              <p class="text-center pe-4">
+                {{ item.rank }}
+              </p>
+              <a routerLink="/{{ item.slug }}">
+                <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
+              /></a>
+            </div>
+          </ngContainer>
+        </div>
+      </div>
+    </div>
+    <div
+      class="
+        bottomSection
+        bottomSection2
+        align-items-center
+        justify-content-center
+        d-flex
+      "
+    >
+      <div class="container">
+        <div class="row row-cols-lg-5 row-cols-md-3">
+          <ngContainer *ngFor="let item of items | slice: 15:20">
+            <div class="d-flex">
+              <p class="text-center pe-4">
+                {{ item.rank }}
+              </p>
+              <a routerLink="/{{ item.slug }}">
+                <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
+              /></a>
+            </div>
+          </ngContainer>
+        </div>
       </div>
     </div>
   </div>
-  <!-- bottom -->
-  <div class="bottomSection align-items-center justify-content-center d-flex">
-    <div class="container">
-      <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-3">
-        <ngContainer *ngFor="let item of items | slice: 10:15">
-          <div class="d-flex">
-            <p class="text-center pe-4">
-              {{ item.rank }}
-            </p>
-            <a routerLink="/{{ item.slug }}">
-              <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
-            /></a>
-          </div>
-        </ngContainer>
+  <div class="mobile-only mobileView">
+    <ng-container *ngFor="let item of items | slice: 0:10; let i = index">
+      <div
+        class="list-data--wrapper p-4 d-flex flex-column"
+        [ngClass]="i % 2 == 0 ? 'list-data-wrapper--1' : 'list-data-wrapper--2'"
+      >
+        <div class="d-flex">
+          <p class="highRank m-0 px-4">
+            {{ item.rank }}
+          </p>
+          <a routerLink="/{{ item.slug }}" class="px-4">
+            <img
+              class="list-data--itemImg"
+              data-src="{{ item.logo }}"
+              alt="logo"
+              width="149px"
+              height="103px"
+              loading="lazy"
+              class="lazyload"
+          /></a>
+        </div>
+        <div class="ps-3">
+          <p class="lastWeekText mb-1 text-uppercase">
+            Last Week
+            <span class="lastWeekText lastRank">
+              {{ item.last_week_rank }}
+            </span>
+          </p>
+
+          <a
+            routerLink="/{{ item.slug }}/{{ item.latest_story.slug }}"
+            fragment="brand-latest-stories"
+          >
+            <p class="latestStory m-0">{{ item.latest_story_title }}</p>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-  <div
-    class="
-      bottomSection
-      bottomSection2
-      align-items-center
-      justify-content-center
-      d-flex
-    "
-  >
-    <div class="container">
-      <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-3">
-        <ngContainer *ngFor="let item of items | slice: 15:20">
-          <div class="d-flex">
-            <p class="text-center pe-4">
-              {{ item.rank }}
-            </p>
-            <a routerLink="/{{ item.slug }}">
-              <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
-            /></a>
-          </div>
-        </ngContainer>
+    </ng-container>
+    <div class="row row-cols-2 px-3">
+      <div *ngFor="let item of items | slice: 10:20">
+        <div class="col-6 d-flex py-4">
+          <p class="pe-3 shortRank">
+            {{ item.rank }}
+          </p>
+          <a routerLink="/{{ item.slug }}">
+            <img
+              class="lazyload bottomLogo"
+              data-src="{{ item.logo }}"
+              alt="logo"
+          /></a>
+        </div>
       </div>
     </div>
   </div>

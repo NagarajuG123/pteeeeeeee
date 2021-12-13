@@ -46,6 +46,10 @@
         margin: 0;
         color: $dark_black;
         line-height: 42.5px;
+        @include mobile-portrait {
+          line-height: 25.74px;
+          font-size: 22px;
+        }
       }
       .description {
         color: $red;
@@ -75,10 +79,22 @@
       margin-bottom: 0;
     }
   }
+  .highRank {
+    font-family: $proxiBold;
+    font-weight: 700;
+    color: $red;
+    font-size: 84px;
+    line-height: 102.31px;
+  }
+  .lastWeekText {
+    font-family: $roboto;
+    font-weight: 700;
+    color: $dark_black;
+    font-size: 12px;
+    line-height: 14.06px;
+  }
+
   .list-data--wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     min-height: 160px;
 
     &.isHead {
@@ -125,36 +141,8 @@
       &.rankCol {
         flex: 1 0 15%;
         max-width: 15%;
-
-        .list-data--rank {
-          font-family: $proxiBold;
-          font-weight: 700;
-          color: $red;
-          font-size: 84px;
-          line-height: 102.31px;
-          margin-bottom: 0;
-          text-align: center;
-        }
-        .list-data--bottom-rank {
-          font-family: $proxiBold;
-          font-weight: 700;
-          color: $red;
-          font-size: 56px;
-          line-height: 68.21px;
-          margin-bottom: 0;
-          text-align: center;
-        }
       }
       &.lastWeekCol {
-        .list-data--trending {
-          font-family: $roboto;
-          font-weight: 700;
-          color: $dark_black;
-          font-size: 12px;
-          line-height: 14.06px;
-          margin-bottom: 0;
-          text-align: center;
-        }
         .list-data--number {
           font-family: $roboto;
           font-weight: 700;
@@ -165,28 +153,38 @@
           text-align: center;
         }
       }
-      &.isLstSotryCol {
-        .list-data--latestStory {
-          margin-bottom: 0;
-          .list-data--latestStoryLink {
-            font-family: $aktiv;
-            color: $red;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 18.72px;
-          }
-        }
-      }
     }
   }
 
   .c-filter-with-box--wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-
     .list-data--section {
       flex: 1 1 100%;
+    }
+  }
+  .latestStory {
+    font-family: $aktiv;
+    color: $red;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.72px;
+  }
+
+  .mobileView {
+    .lastWeekText {
+      &.lastRank {
+        color: $red;
+      }
+    }
+    .bottomLogo {
+      width: 90px;
+      height: 55px;
+    }
+    .shortRank {
+      font-family: $proxiBold;
+      color: $red;
+      font-size: 39.24px;
+      font-weight: 700;
+      line-height: 47.79px;
     }
   }
 }
