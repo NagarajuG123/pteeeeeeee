@@ -136,7 +136,6 @@ export class ItemComponent implements OnInit {
       this.fb_url = environment.fbUrl;
     }
   }
-
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
     const trending: SimpleChange = changes.trending;
