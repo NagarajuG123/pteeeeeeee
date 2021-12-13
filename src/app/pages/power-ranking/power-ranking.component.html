@@ -83,48 +83,43 @@
     </div>
   </div>
   <!-- bottom -->
-  <div class="list-data--wrapper otherBrand list-data-wrapper--1">
-    <div
-      class="list-data-row--wrapper"
-      *ngFor="let item of items | slice: 10:15"
-    >
-      <div class="row d-flex">
-        <div class="list-data--item rankCol">
-          <p class="list-data--bottom-rank">
-            {{ item.rank }}
-          </p>
-        </div>
-        <div class="list-data--item brandCol">
-          <a routerLink="/{{ item.slug }}">
-            <img
-              class="list-data--itemImg lazyload"
-              data-src="{{ item.logo }}"
-              alt="logo"
-          /></a>
-        </div>
+  <div class="bottomSection align-items-center justify-content-center d-flex">
+    <div class="container">
+      <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-3">
+        <ngContainer *ngFor="let item of items | slice: 10:15">
+          <div class="d-flex">
+            <p class="text-center pe-4">
+              {{ item.rank }}
+            </p>
+            <a routerLink="/{{ item.slug }}">
+              <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
+            /></a>
+          </div>
+        </ngContainer>
       </div>
     </div>
   </div>
-  <div class="list-data--wrapper otherBrand list-data-wrapper--2">
-    <div
-      class="list-data-row--wrapper"
-      *ngFor="let item of items | slice: 15:20"
-    >
-      <div class="row g-0 d-flex">
-        <div class="list-data--item rankCol">
-          <p class="list-data--bottom-rank">
-            {{ item.rank }}
-          </p>
-        </div>
-        <div class="list-data--item brandCol">
-          <a routerLink="/{{ item.slug }}">
-            <img
-              class="list-data--itemImg lazyload"
-              data-src="{{ item.logo }}"
-              alt="logo"
-              loading="lazy"
-          /></a>
-        </div>
+  <div
+    class="
+      bottomSection
+      bottomSection2
+      align-items-center
+      justify-content-center
+      d-flex
+    "
+  >
+    <div class="container">
+      <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-3">
+        <ngContainer *ngFor="let item of items | slice: 15:20">
+          <div class="d-flex">
+            <p class="text-center pe-4">
+              {{ item.rank }}
+            </p>
+            <a routerLink="/{{ item.slug }}">
+              <img class="lazyload" data-src="{{ item.logo }}" alt="logo"
+            /></a>
+          </div>
+        </ngContainer>
       </div>
     </div>
   </div>
