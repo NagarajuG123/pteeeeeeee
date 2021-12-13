@@ -37,6 +37,7 @@
     }
     span {
       color: $black;
+      font-size: 13.76px;
       max-width: 70%;
       @include mobile-landscape {
         max-width: 100%;
