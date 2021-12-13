@@ -608,7 +608,7 @@
     </div>
   </div>
   <div
-    class="bottom-head"
+    class="bottom-head d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
     (click)="closeSidebar()"
     *ngIf="trending && trending.length"
   >
@@ -621,7 +621,7 @@
             height="23"
             width="115"
             alt="trending"
-            class="lazyload pe-3"
+            class="lazyload pe-3 trendingLogo"
           />
         </div>
 
@@ -745,8 +745,8 @@
                     appYoutubeImage
                     data-src="{{ item.media | defaultImage: 1280:720 }}"
                     class="w-100 img-fluid lazyload"
-                    width="196"
-                    height="110"
+                    width="203"
+                    height="114"
                     alt="editorial"
                     loading="lazy"
                   />

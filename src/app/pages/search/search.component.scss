@@ -49,6 +49,7 @@ span {
       padding-bottom: 1rem;
     }
     img {
+      width: 100%;
       @include mobile-portrait {
         height: 51px;
         width: 55px;
@@ -156,19 +157,7 @@ span {
     }
   }
 }
-.brandSearch {
-  width: 100%;
-  padding-left: 100px !important;
-  @include mobile-landscape1 {
-    width: 100%;
-    padding-left: 50px !important;
-  }
-}
-.bottom-right {
-  @include tablet-portrait {
-    display: none;
-  }
-}
+
 .filter-section {
   .sectionTitle {
     font-weight: 700;
@@ -182,9 +171,13 @@ span {
 }
 .bottomSection {
   background: linear-gradient(to left, $white 40%, $dark_gray 60%);
-
+  &.brandSearch {
+    background: linear-gradient(to left, $dark_gray 40%, $dark_gray 60%);
+  }
   .leftSide {
     background-color: $dark_gray;
+    padding-left: 40px;
+    padding-right: 50px;
   }
   .rightSide {
     background-color: $white;
@@ -192,6 +185,7 @@ span {
 }
 .seeMoreIcon {
   background-color: $white_6;
+  margin-left: -90px;
   .seeMore {
     color: $dark_gray;
     line-height: 14px;

@@ -71,7 +71,7 @@ export class SearchComponent implements OnInit {
   ];
 
   published_range = 'SPECIFIC DATES';
-  limit = 6;
+  limit;
   offset = 0;
   params = '';
   isSpecificDate: boolean = false;
@@ -194,12 +194,11 @@ export class SearchComponent implements OnInit {
       } else {
         this.brand_id = '1851';
       }
-
+      this.limit = this.isMainSite() ? 6 : 8;
       const searchPopData = {};
       let apiParams = '';
       let brandParams = '';
       apiParams = `?q=${this.search_input}`;
-      // tslint:disable-next-line:max-line-length
       apiParams =
         this.published_value !== -1
           ? `${apiParams}&published_duration=${
@@ -272,6 +271,17 @@ export class SearchComponent implements OnInit {
       this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
     } else {
       this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
+    }
+  }
+  isMainSite() {
+    if (
+      this.brand_id === '1851' ||
+      this.brand_id === 'ee' ||
+      this.brand_id === 'room-1903'
+    ) {
+      return true;
+    } else {
+      return false;
     }
   }
   ngAfterViewInit() {

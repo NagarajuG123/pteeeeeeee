@@ -57,7 +57,13 @@ a {
       }
     }
     a{
-      width: 70%;
+      width: 55%;
+      @include tablet-landscape{
+        width: 80%;
+      }
+      @include mobile-landscape{
+        width: 50%;
+      }
     }
     button {
       padding: 0.5rem;

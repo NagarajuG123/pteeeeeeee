@@ -3,7 +3,7 @@
     <div class="row py-lg-4">
       <div class="col-lg-2 d-flex col-sm-12 col-12 logo">
         <img
-          class="img-fluid lazyload"
+          class="lazyload"
           data-src="{{ s3Url }}logo1.png"
           width="195px"
           height="195px"
@@ -39,26 +39,10 @@
           </div>
         </form>
         <div class="py-3 filter-section">
-          <h6
-            class="sectionTitle"
-            *ngIf="
-              brand_id !== '1851' &&
-              brand_id !== 'ee' &&
-              brand_id !== 'room-1903'
-            "
-          >
+          <h6 class="sectionTitle" *ngIf="!isMainSite()">
             Showing Search Results For: <span>{{ showSearchKey }}</span>
           </h6>
-          <h6
-            class="sectionTitle"
-            *ngIf="
-              brand_id === '1851' ||
-              brand_id === 'ee' ||
-              brand_id === 'room-1903'
-            "
-          >
-            View Search Filters
-          </h6>
+          <h6 class="sectionTitle" *ngIf="isMainSite()">View Search Filters</h6>
           <div class="sort_main">
             <h6 class="primary-color mb-0">SORT BY:</h6>
             <ul class="d-flex text-center justify-content-center">
@@ -95,9 +79,8 @@
                   type="checkbox"
                   [checked]="by_author"
                   (change)="onChangeFilter('author')"
-                  id="flexCheckDefault"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label class="form-check-label">
                   BY AUTHOR
                 </label>
               </li>
@@ -107,9 +90,8 @@
                   [checked]="by_title"
                   type="checkbox"
                   (change)="onChangeFilter('title')"
-                  id="flexCheckDefault"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label class="form-check-label">
                   BY TITLE
                 </label>
               </li>
@@ -119,9 +101,8 @@
                   type="checkbox"
                   [checked]="by_desc"
                   (change)="onChangeFilter('desc')"
-                  id="flexCheckDefault"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label class="form-check-label">
                   BY DESCRIPTION
                 </label>
               </li>
@@ -131,9 +112,8 @@
                   type="checkbox"
                   [checked]="by_keywords"
                   (change)="onChangeFilter('keyword')"
-                  id="flexCheckDefault"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label class="form-check-label">
                   BY KEYWORDS
                 </label>
               </li>
@@ -184,23 +164,22 @@
       </div>
     </div>
   </div>
-  <div class="bottomSection" [ngClass]="!recentPeoples.length ? 'd-none' : ''">
-    <div class="container position-relative">
+  <div class="bottomSection" [ngClass]="isMainSite() ? '' : 'brandSearch'">
+    <div
+      class="container position-relative"
+      [ngClass]="!recentPeoples.length ? 'd-none' : ''"
+    >
       <div class="row">
         <div
-          class="col-md-9 col-sm-12 pt-3 leftSide"
-          [ngClass]="
-            brand_id === '1851' || brand_id === 'room-1903' || brand_id === 'ee'
-              ? ''
-              : 'brandSearch'
-          "
+          class="pt-4 leftSide"
+          [ngClass]="isMainSite() ? 'col-md-9 col-sm-12' : 'col-12'"
         >
           <app-home-article
             [typeSlug]="'franbuzz'"
             [contents]="recentPeoples"
-            [class]="'row-cols-lg-3 gx-2'"
+            [class]="isMainSite() ? 'row-cols-lg-3 gx-2' : 'row-cols-lg-4 gx-2'"
           ></app-home-article>
-          <div class="row seeMoreIcon mt-4 desktop-only">
+          <div class="row seeMoreIcon mt-5 desktop-only">
             <div
               *ngIf="has_more"
               class="col d-flex align-items-center justify-content-center py-1"
@@ -218,13 +197,11 @@
         </div>
         <div
           class="col-sm-12 col-md-3 rightSide brand-news"
-          *ngIf="
-            brand_id === '1851' || brand_id === 'ee' || brand_id === 'room-1903'
-          "
+          *ngIf="isMainSite()"
         >
           <h5 class="mt-3 sectionTitle">BRAND NEWS</h5>
           <hr />
-          <div *ngIf="brandPeoples && brandPeoples.length">
+          <div class="px-5" *ngIf="brandPeoples && brandPeoples.length">
             <app-home-article
               [typeSlug]="'franbuzz'"
               [contents]="brandPeoples"

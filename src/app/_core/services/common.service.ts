@@ -77,10 +77,13 @@ export class CommonService {
   }
 
   formatDate(date: any) {
-    return this.datepipe.transform(new Date(date), 'MM-d-YYYY');
+    return this.datepipe.transform(
+      new Date(date.replace(/-/g, '/')),
+      'MM-d-YYYY'
+    );
   }
   formatTime(date: any) {
-    return this.datepipe.transform(new Date(date), 'h:mma');
+    return this.datepipe.transform(new Date(date.replace(/-/g, '/')), 'h:mma');
   }
 
   isUpdate(story: any) {
