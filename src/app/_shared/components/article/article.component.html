@@ -28,14 +28,17 @@
           <span class="small-red-headers ps-3" *ngIf="type === 'brandNews'">
             {{ item?.brand.name }}</span
           >
-          <span class="small-red-headers ps-3" *ngIf="type === 'articleTrending'">
+          <span class="small-red-headers" *ngIf="type === 'articleTrending'">
             By {{ item?.author?.name }}</span
           >
           <h3 class="card-title articleTitles mb-0 px-3">
             {{ item.title }}
           </h3>
         </div>
-        <div class="card-footer ps-3 border-0 pt-0" *ngIf="type !== 'articleTrending'">
+        <div
+          class="card-footer ps-3 border-0 pt-0"
+          *ngIf="type !== 'articleTrending'"
+        >
           <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
             >{{ commonService.formatDate(item.last_modified) }} |
             {{ commonService.formatTime(item.last_modified) }}
