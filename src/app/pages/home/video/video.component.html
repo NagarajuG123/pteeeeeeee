@@ -32,11 +32,11 @@
         >
           <img
             appYoutubeImage
-            data-src="{{ item.media | defaultImage: 1280:720 }}"
+            data-src="{{ item.media | defaultImage: 536:302 }}"
             class="w-100 img-fluid lazyload story"
             alt="video"
             width="536"
-            height="301"
+            height="302"
             loading="lazy"
           />
           <img
@@ -72,10 +72,19 @@
             >
               <img
                 appYoutubeImage
-                data-src="{{ item.media | defaultImage: 1280:720 }}"
+                data-src="{{ item.media | defaultImage: 209:118 }}"
+                srcset="{{item.media | defaultImage:545:305}} 545w,
+                  {{item.media | defaultImage:355:199}} 355w, 
+                  {{item.media | defaultImage:209:118}} 209w"
+                sizes="{{
+                  '(max-width: 576px) 545px,
+                    (max-width: 768px) 355px,
+                    (max-width: 992px) 300px,
+                    209px'
+                }}"
                 class="img-fluid lazyload video-img d-inline"
                 width="209"
-                height="117"
+                height="118"
                 alt="video"
                 loading="lazy"
               />

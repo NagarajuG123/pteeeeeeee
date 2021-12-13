@@ -12,7 +12,7 @@
       <img
         appYoutubeImage
         width="1440"
-        data-src="{{ media | defaultImage: 1280:720 }}"
+        data-src="{{ media | defaultImage: 1440:810 }}"
         height="810"
         alt="article"
         class="lazyload img-fluid"
@@ -34,7 +34,7 @@
         appYoutubeImage
         width="1440"
         height="810"
-        data-src="{{ media | defaultImage: 1280:720 }}"
+        data-src="{{ media | defaultImage: 1440:810 }}"
         alt="article"
         class="lazyload img-fluid"
       />
@@ -97,8 +97,17 @@
                   <img
                     appYoutubeImage
                     width="139"
-                    height="84"
-                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    height="78"
+                    data-src="{{ item.media | defaultImage: 139:78 }}"
+                    srcset="{{item.media | defaultImage:545:305}} 545w,
+                      {{item.media | defaultImage:355:199}} 355w, 
+                      {{item.media | defaultImage:139:78}} 139w"
+                    sizes="{{
+                      '(max-width: 576px) 545px,
+                        (max-width: 768px) 355px,
+                        (max-width: 992px) 300px,
+                        139px'
+                    }}"
                     alt="news"
                     class="lazyload"
                   />

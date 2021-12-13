@@ -17,9 +17,9 @@
           class="img-fluid lazyload"
           alt="featured"
           loading="lazy"
-          width="1280"
-          height="720"
-          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+          width="661"
+          height="372"
+          data-src="{{ featured[0].media | defaultImage: 661:372 }}"
         />
       </a>
 
@@ -35,9 +35,9 @@
           class="img-fluid lazyload"
           alt="featured"
           loading="lazy"
-          width="1280"
-          height="720"
-          data-src="{{ featured[0].media | defaultImage: 1280:720 }}"
+          width="661"
+          height="372"
+          data-src="{{ featured[0].media | defaultImage: 661:372 }}"
         />
         <img
           data-src="{{ s3Url }}videoIcon.png"
@@ -115,8 +115,17 @@
                   class="lazyload img-fluid"
                   alt="industry"
                   loading="lazy"
-                  height="90"
-                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+                  height="72"
+                  data-src="{{ item.media | defaultImage: 128:72 }}"
+                  srcset="{{item.media | defaultImage:545:305}} 545w,
+                    {{item.media | defaultImage:355:199}} 355w, 
+                    {{item.media | defaultImage:128:72}} 128w"
+                  sizes="{{
+                    '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      128px'
+                  }}"
               /></a>
             </div>
             <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
@@ -148,12 +157,21 @@
               <a routerLink="/{{ slug }}/{{ item.slug }}" class="pe-2">
                 <img
                   appYoutubeImage
-                  width="128"
+                  width="130"
                   class="lazyload img-fluid"
                   alt="info"
                   loading="lazy"
-                  height="90"
-                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+                  height="73"
+                  data-src="{{ item.media | defaultImage: 130:73 }}"
+                  srcset="{{item.media | defaultImage:545:305}} 545w,
+                    {{item.media | defaultImage:355:199}} 355w, 
+                    {{item.media | defaultImage:130:73}} 130w"
+                  sizes="{{
+                    '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      130px'
+                  }}"
               /></a>
             </div>
             <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
@@ -180,12 +198,21 @@
               <a routerLink="/{{ slug }}/{{ item.slug }}" class="pe-2">
                 <img
                   appYoutubeImage
-                  width="128"
+                  width="130"
                   class="lazyload img-fluid"
                   alt="info"
                   loading="lazy"
-                  height="90"
-                  data-src="{{ item.media | defaultImage: 1280:720 }}"
+                  height="73"
+                  data-src="{{ item.media | defaultImage: 130:73 }}"
+                  srcset="{{item.media | defaultImage:545:305}} 545w,
+                    {{item.media | defaultImage:355:199}} 355w, 
+                    {{item.media | defaultImage:130:73}} 130w"
+                  sizes="{{
+                    '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      130px'
+                  }}"
               /></a>
             </div>
             <div class="col-lg-7 col-sm-7 col-md-7 ps-2">

@@ -14,7 +14,6 @@ import { ErrorComponent } from './components/error/error.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
-import { SpecialFeatureComponent } from './components/special-feature/special-feature.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './components/article/article.component';
@@ -35,7 +34,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     SafeUrlPipe,
     ImagePreloadDirective,
     MostPopularComponent,
-    SpecialFeatureComponent,
     ArticleComponent,
     HomeArticleComponent,
     CarouselComponent,
@@ -64,7 +62,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     MostPopularComponent,
     FeaturedComponent,
     ErrorMessageComponent,
-    SpecialFeatureComponent,
     FontAwesomeModule,
     ShareButtonModule,
     ArticleComponent,

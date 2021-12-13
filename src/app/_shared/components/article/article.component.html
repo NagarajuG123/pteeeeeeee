@@ -8,10 +8,19 @@
       <div class="card rounded-0 border-0 h-100">
         <img
           appYoutubeImage
-          data-src="{{ item.media | defaultImage: 1280:720 }}"
+          data-src="{{ item.media | defaultImage: 267:150 }}"
+          srcset="{{item.media | defaultImage:545:305}} 545w,
+            {{item.media | defaultImage:355:199}} 355w, 
+            {{item.media | defaultImage:267:150}} 267w"
+          sizes="{{
+            '(max-width: 576px) 545px,
+              (max-width: 768px) 355px,
+              (max-width: 992px) 300px,
+              267px'
+          }}"
           class="w-100 img-fluid lazyload card-img-top"
-          width="196"
-          height="110"
+          width="267"
+          height="150"
           alt=""
           loading="lazy"
         />

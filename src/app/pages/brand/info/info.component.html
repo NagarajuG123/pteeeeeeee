@@ -71,8 +71,18 @@
           appYoutubeImage
           class="lazyload"
           width="888"
-          height="506"
-          data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
+          height="500"
+          data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
+          srcset="{{item.media | defaultImage:545:306}} 545w,
+            {{item.media | defaultImage:600:337}} 600w,
+            {{item.media | defaultImage:700:393}} 700w,
+            {{item.media | defaultImage:161:91}} 161w"
+          sizes="{{
+            '(max-width: 576px) 545px,
+              (max-width: 768px) 600px,
+              (max-width: 992px) 700px,
+              161px'
+          }}"
           alt="brand_img"
           loading="lazy"
         />
@@ -110,8 +120,18 @@
               appYoutubeImage
               class="lazyload"
               width="888"
-              height="506"
-              data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
+              height="500"
+              data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
+              srcset="{{item.media | defaultImage:545:306}} 545w,
+                {{item.media | defaultImage:600:337}} 600w,
+                {{item.media | defaultImage:700:393}} 700w,
+                {{item.media | defaultImage:161:91}} 161w"
+              sizes="{{
+                '(max-width: 576px) 545px,
+                  (max-width: 768px) 600px,
+                  (max-width: 992px) 700px,
+                  161px'
+              }}"
               alt="brand_img"
               loading="lazy"
             />
@@ -664,7 +684,16 @@
                         alt="featured"
                         loading="lazy"
                         height="91"
-                        data-src="{{ item.media | defaultImage: 1280:720 }}"
+                        data-src="{{ item.media | defaultImage: 161:91 }}"
+                        srcset="{{item.media | defaultImage:545:305}} 545w,
+                          {{item.media | defaultImage:355:199}} 355w, 
+                          {{item.media | defaultImage:161:91}} 161w"
+                        sizes="{{
+                          '(max-width: 576px) 545px,
+                            (max-width: 768px) 355px,
+                            (max-width: 992px) 300px,
+                            161px'
+                        }}"
                     /></a>
                   </div>
                   <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
@@ -700,8 +729,17 @@
                         class="lazyload img-fluid"
                         alt="trending"
                         loading="lazy"
-                        height="84"
-                        data-src="{{ item.media | defaultImage: 1280:720 }}"
+                        height="78"
+                        data-src="{{ item.media | defaultImage: 139:78 }}"
+                        srcset="{{item.media | defaultImage:545:305}} 545w,
+                          {{item.media | defaultImage:355:199}} 355w, 
+                          {{item.media | defaultImage:139:78}} 139w"
+                        sizes="{{
+                          '(max-width: 576px) 545px,
+                            (max-width: 768px) 355px,
+                            (max-width: 992px) 300px,
+                            139px'
+                        }}"
                     /></a>
                   </div>
                   <div class="col-lg-7 col-sm-7 col-md-7 ps-2">

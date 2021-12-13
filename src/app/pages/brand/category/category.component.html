@@ -27,7 +27,16 @@
                       alt="article"
                       loading="lazy"
                       height="114"
-                      data-src="{{ item.media | defaultImage: 1280:720 }}"
+                      data-src="{{ item.media | defaultImage: 121:68 }}"
+                      srcset="{{item.media | defaultImage:545:305}} 545w,
+                        {{item.media | defaultImage:355:199}} 355w, 
+                        {{item.media | defaultImage:121:68}} 121w"
+                      sizes="{{
+                        '(max-width: 576px) 545px,
+                          (max-width: 768px) 355px,
+                          (max-width: 992px) 300px,
+                          121px'
+                      }}"
                   /></a>
                 </div>
                 <div class="col-lg-7 col-sm-7 col-md-7 ps-2">

@@ -16,7 +16,7 @@
               class="img-fluid lazyload"
               width="741"
               height="417"
-              data-src="{{ seriesData[0].media | defaultImage: 1280:720 }}"
+              data-src="{{ seriesData[0].media | defaultImage: 741:417 }}"
               alt="series"
               loading="lazy"
             />
@@ -55,7 +55,16 @@
                     class="img-fluid lazyload"
                     width="192"
                     height="108"
-                    data-src="{{ item.media | defaultImage: 1280:720 }}"
+                    data-src="{{ item.media | defaultImage: 192:108 }}"
+                    srcset="{{item.media | defaultImage:545:305}} 545w,
+                      {{item.media | defaultImage:355:199}} 355w, 
+                      {{item.media | defaultImage:192:108}} 192w"
+                    sizes="{{
+                      '(max-width: 576px) 545px,
+                        (max-width: 768px) 355px,
+                        (max-width: 992px) 300px,
+                        192px'
+                    }}"
                     alt="featured"
                     loading="lazy"
                 /></a>
