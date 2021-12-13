@@ -69,7 +69,7 @@
       >
         <img
           appYoutubeImage
-          class="lazyload"
+          class="lazyload img-fluid"
           width="888"
           height="500"
           data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
@@ -118,7 +118,7 @@
           >
             <img
               appYoutubeImage
-              class="lazyload"
+              class="lazyload img-fluid"
               width="888"
               height="500"
               data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
@@ -287,7 +287,12 @@
                 <div class="container customContainer">
                   <div class="row d-flex align-items-center">
                     <div
-                      class="d-flex justify-content-center align-items-center seeMore"
+                      class="
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                        seeMore
+                      "
                     >
                       <div class="nextBtn px-1">
                         <a (click)="getMore()" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg">
