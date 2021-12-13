@@ -336,6 +336,10 @@ export class ItemComponent implements OnInit {
     }
   }
 
+  nextArticle() {
+    window.scrollTo(0,document.body.scrollHeight);
+  }
+
   shareUrl() {
     const subUrl =
       this.brandSlug !== '1851'
