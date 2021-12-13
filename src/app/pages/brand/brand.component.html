@@ -45,17 +45,9 @@
         <div class="row d-flex align-items-center">
           <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1">
-              <img
-                data-src="{{s3Url}}nextIcon.svg"
-                width="32"
-                alt="next articles"
-                class="me-3 lazyload"
-                (click)="getMoreDynamic()"
-                loading="lazy"
-              />
-              <span class="seeMore" (click)="getMoreDynamic()"
-                >SEE MORE</span
-              >
+              <a (click)="getMoreDynamic()" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg">
+              </a>
+              <span class="seeMore" (click)="getMoreDynamic()">SEE MORE</span>
             </div>
           </div>
         </div>

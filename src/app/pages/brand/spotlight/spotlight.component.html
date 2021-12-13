@@ -78,14 +78,7 @@
             class="d-flex justify-content-center align-items-center seeMore"
           >
             <div class="nextBtn px-1">
-              <img
-                data-src="{{ s3Url }}nextIcon.svg"
-                width="32"
-                alt="next articles"
-                class="me-3 lazyload"
-                (click)="getMore(tab)"
-                loading="lazy"
-              />
+              <a (click)="getMore(tab)" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg"></a>
               <span class="seeMore" (click)="getMore(tab)">SEE MORE</span>
             </div>
           </div>

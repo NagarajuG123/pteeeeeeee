@@ -169,6 +169,17 @@ button {
 .nextLine {
   .nextBtn{
     cursor: pointer;
+    a{
+      height: 33px;
+      width: 33px;
+      transition: all .5s ease;
+      color: $white;
+    }
+    a::after {
+      content:"\25BE";
+      font-size: 25px;
+      text-align: center;
+    }
   }  
   .seeMore {
     width: 220px;
