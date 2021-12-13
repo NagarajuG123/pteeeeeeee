@@ -37,6 +37,7 @@
     }
     span {
       color: $black;
+      font-size: 13.76px;
       max-width: 70%;
       @include mobile-landscape {
         max-width: 100%;
@@ -84,15 +85,18 @@
     }
   }
 }
-.nextBtn{
-  a{
+.nextBtn {
+  display: -webkit-inline-box;
+
+  a {
     height: 33px;
     width: 33px;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     color: $white;
+    margin-top: -9px;
   }
   a::after {
-    content:"\25BE";
+    content: "\25BE";
     font-size: 25px;
     text-align: center;
   }
