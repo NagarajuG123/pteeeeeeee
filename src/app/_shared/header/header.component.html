@@ -171,13 +171,9 @@
           data-bs-toggle="modal"
           data-bs-target="#searchModal"
           class="pe-4 d-none d-xl-block"
-          ><img
-            data-src="{{ s3Url }}search_header.png"
-            height="18"
-            width="18"
-            alt="search"
-            class="lazyload"
-        /></a>
+        >
+          <i class="fa fa-search"></i>
+        </a>
         <a class="pe-4" routerLink="/subscribe"
           ><button class="subscribe">Subscribe</button></a
         >
@@ -720,13 +716,8 @@
               class="input-group-text"
               (click)="onSearchSubmit(searchForm, 'header')"
             >
-              <img
-                data-src="{{ s3Url }}search_white.png"
-                height="18"
-                width="18"
-                alt="search"
-                class="lazyload"
-            /></span>
+              <i class="fa fa-search"></i>
+            </span>
           </div>
         </form>
         <div class="px-3 my-3"><hr /></div>

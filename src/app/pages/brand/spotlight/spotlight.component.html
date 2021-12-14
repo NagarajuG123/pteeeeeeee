@@ -1,6 +1,6 @@
 <div class="spotlight sidebar-blur pb-4" *ngIf="isLoaded && items.length">
   <div class="container customContainer">
-    <h2 class="py-3 m-0 text-uppercase sectionTitle">Spotlights</h2>
+    <h2 class="py-4 m-0 text-uppercase sectionTitle">Spotlights</h2>
   </div>
 
   <div class="tabs">
@@ -74,11 +74,18 @@
     <div class="nextLine position-relative mb-5 mt-2">
       <div class="container customContainer">
         <div class="row d-flex align-items-center">
-          <div
-            class="d-flex justify-content-center align-items-center seeMore"
-          >
+          <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1">
-              <a (click)="getMore(tab)" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg"></a>
+              <a
+                (click)="getMore(tab)"
+                class="
+                  rounded-circle
+                  d-inline-flex
+                  justify-content-center
+                  align-items-center
+                  primary-bg
+                "
+              ></a>
               <span class="seeMore" (click)="getMore(tab)">SEE MORE</span>
             </div>
           </div>

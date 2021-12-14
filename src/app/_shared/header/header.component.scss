@@ -95,14 +95,13 @@ header {
       }
     }
     .cover {
-      height: 60px;
+      height: 70px;
       overflow: hidden;
       padding-top: 0;
-      bottom: -6px;
       position: relative;
 
       figure {
-        height: 75px;
+        height: 70px;
         overflow: hidden;
         img {
           width: 100%;
@@ -232,6 +231,10 @@ header {
       .dropdown-item {
         white-space: normal;
       }
+    }
+    i {
+      font-size: 20px;
+      color: $dark_gray;
     }
   }
 
@@ -366,6 +369,10 @@ header {
       .input-group {
         padding-left: 7rem;
         padding-right: 8rem;
+        i {
+          color: $white_2;
+          font-size: 22px;
+        }
       }
     }
     .searchTitle {

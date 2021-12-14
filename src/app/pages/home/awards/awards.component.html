@@ -1,8 +1,8 @@
-<div class="awards py-4 sidebar-blur" *ngIf="isLoaded && data">
+<div class="awards sidebar-blur pb-3" *ngIf="isLoaded && data">
   <div class="container customContainer">
     <div class="d-flex">
       <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-3 m-0 text-white">
+        <h2 class="sectionTitle py-4 m-0 text-white">
           {{ result?.title }}
         </h2>
       </div>
@@ -65,12 +65,12 @@
                 srcset="{{item.media | defaultImage:545:305}} 545w,
                       {{item.media | defaultImage:355:199}} 355w, 
                       {{item.media | defaultImage:209:118}} 209w"
-                    sizes="{{
-                      '(max-width: 576px) 545px,
+                sizes="{{
+                  '(max-width: 576px) 545px,
                         (max-width: 768px) 355px,
                         (max-width: 992px) 300px,
                         209px'
-                    }}"
+                }}"
                 class="img-fluid lazyload"
                 width="209"
                 height="118"

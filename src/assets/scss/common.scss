@@ -141,16 +141,19 @@ hr {
 .form-control {
   border-radius: 0px;
 }
-input::-webkit-input-placeholder {
-  font-family: $roboto;
-  font-weight: 400;
-  font-size: 9px;
-  line-height: 12.71px;
-  color: $light_gray_8 !important;
+input {
+  &::placeholder {
+    font-family: $roboto;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 12.71px;
+    color: $light_gray_8 !important;
+  }
 }
 .input-group-text {
   background-color: $red;
-  border: 1px solid $dark_gray;
+  border: 1px solid $red;
+  border-radius: 0px;
 }
 button {
   font-family: $roboto;
@@ -169,22 +172,22 @@ button {
 .nextLine {
   .nextBtn {
     cursor: pointer;
-    a{
+    a {
       height: 33px;
       width: 33px;
-      transition: all .5s ease;
+      transition: all 0.5s ease;
       color: $white;
     }
     a::after {
-      content:"\25BE";
+      content: "\25BE";
       font-size: 25px;
       text-align: center;
     }
-  }  
+  }
   .seeMore {
     width: 220px;
     padding: 0 18px;
-    margin-top: 35px;
+    margin-top: 25px;
     color: $dark_gray;
     @include tablet-landscape1 {
       width: 165px;

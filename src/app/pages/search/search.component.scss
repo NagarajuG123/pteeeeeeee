@@ -40,20 +40,37 @@ span {
   }
   background-color: $white_8;
   .logo {
+    &.col-lg-2 {
+      width: 17%;
+    }
+    &.col-xl-2 {
+      width: 19%;
+    }
+
     @include mobile-portrait {
       justify-content: center;
       align-items: center;
       padding-bottom: 1rem;
     }
     img {
-      width: 100%;
       @include mobile-portrait {
         height: 51px;
         width: 55px;
       }
+      @include tablet-landscape1 {
+        height: 150px;
+        width: 150px;
+      }
     }
   }
-
+  .filters {
+    &.col-lg-10 {
+      width: 83%;
+    }
+    &.col-xl-10 {
+      width: 81%;
+    }
+  }
   .input-group {
     input {
       border: 1px solid $dark_gray;
@@ -64,6 +81,10 @@ span {
         font-size: 20px;
         line-height: 25.74px;
       }
+    }
+    i {
+      color: $white_2;
+      font-size: 22px;
     }
   }
 }
@@ -135,8 +156,8 @@ span {
   }
   @include tablet-portrait {
     h6,
-    span, 
-    label{
+    span,
+    label {
       font-size: 12px;
     }
   }
@@ -168,19 +189,9 @@ span {
   }
 }
 .bottomSection {
-  background: linear-gradient(to left, $white 40%, $dark_gray 60%);
-  &.brandSearch {
-    background: linear-gradient(to left, $dark_gray 40%, $dark_gray 60%);
-  }
-  .leftSide {
-    background-color: $dark_gray;
-  }
-  .rightSide {
-    background-color: $white;
-  }
+  background-color: $white;
 }
 .seeMoreIcon {
-  background-color: $white_6;
   .seeMore {
     color: $dark_gray;
     line-height: 14px;
