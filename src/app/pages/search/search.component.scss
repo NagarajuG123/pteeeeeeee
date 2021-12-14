@@ -53,6 +53,7 @@ span {
       padding-bottom: 1rem;
     }
     img {
+      width: 100%;
       @include mobile-portrait {
         height: 51px;
         width: 55px;
