@@ -3,7 +3,7 @@
 </div>
 <div class="sidebar-blur" *ngIf="isInfoPage">
   <div class="tabs primary-bg">
-    <div class="container customContainer position-relative">
+    <div class="container px-5 position-relative">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-4"
         [ngClass]="
@@ -20,7 +20,7 @@
       <ul class="row m-0 row-cols-lg-6 row-cols-md-3 row-cols-sm-1">
         <li
           *ngFor="let item of categories; index as i"
-          class="border-end text-center p-0"
+          class="text-center p-0"
           [ngClass]="
             i < commonService.brandInfoTabs + skipTab && i >= skipTab
               ? 'active'

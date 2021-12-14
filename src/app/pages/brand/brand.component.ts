@@ -28,7 +28,6 @@ export class BrandComponent implements OnInit {
   items: Details[] = [];
   tabName: any;
   defaultTab!: string;
-  noOfTabsShow = 5;
   activeTab = 1;
   skipTab = 0;
   tab!: string;

@@ -1,8 +1,5 @@
 <div *ngIf="type === 'brand_page'">
-  <app-featured
-    [apiUrl]="apiUrl"
-    [slug]="slug"
-  ></app-featured>
+  <app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
   <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
 
   <app-spotlight [slug]="slug"></app-spotlight>
@@ -23,29 +20,42 @@
       class="lazyload img-fluid"
     />
     <div class="left-text position-absolute row">
-        <a
-          routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
-          fragment="franbuzz"
-        >
-          <h1 class="mb-0">{{ topBlock?.title }}</h1>
-          <p class="description">{{ topBlock?.description }}</p>
-          <div class="">
-            <button class="align-items-center text-white">Read More</button>
-          </div>
-        </a>
+      <a
+        routerLink="/{{ commonService.readMore(dynamicStories[0]) }}"
+        fragment="franbuzz"
+      >
+        <h1 class="mb-0">{{ topBlock?.title }}</h1>
+        <p class="description">{{ topBlock?.description }}</p>
+        <div class="">
+          <button class="align-items-center text-white">Read More</button>
+        </div>
+      </a>
     </div>
   </div>
   <div class="container customContainer py-md-4 mt-2 sidebar-blur">
-      <app-home-article [typeSlug]="'franbuzz'" [contents]="dynamicStories" [class]="'row-cols-md-2 row-cols-lg-5'"></app-home-article>
+    <app-home-article
+      [typeSlug]="'franbuzz'"
+      [contents]="dynamicStories"
+      [class]="'row-cols-md-2 row-cols-lg-5'"
+    ></app-home-article>
   </div>
-  <div class="d-flex sidebar-blur">
+  <div class="d-flex sidebar-blur" *ngIf="hasMore">
     <div class="seeMoreLine"></div>
     <div class="nextLine position-relative mb-5 mt-2">
       <div class="container customContainer">
         <div class="row d-flex align-items-center">
           <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1">
-              <a (click)="getMoreDynamic()" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg">
+              <a
+                (click)="getMoreDynamic()"
+                class="
+                  rounded-circle
+                  d-inline-flex
+                  justify-content-center
+                  align-items-center
+                  primary-bg
+                "
+              >
               </a>
               <span class="seeMore" (click)="getMoreDynamic()">SEE MORE</span>
             </div>
