@@ -57,7 +57,9 @@
             />
           </a>
         </div>
-        <a routerLink="/author/{{ details?.author?.slug }}"
+        <a
+          routerLink="/author/{{ details?.author?.slug }}"
+          *ngIf="details?.author"
           ><h3 class="mb-0 mt-3 large-main-article">
             By <span>{{ details.author.name }}</span>
           </h3></a
@@ -78,7 +80,10 @@
         <!-- social icons -->
         <hr />
 
-        <h5 class="seeMore mb-0 d-none d-md-flex text-uppercase" *ngIf="trendingNews.length">
+        <h5
+          class="seeMore mb-0 d-none d-md-flex text-uppercase"
+          *ngIf="trendingNews.length"
+        >
           More like this
         </h5>
         <fa-icon
@@ -193,7 +198,16 @@
         <div class="row d-flex align-items-center">
           <div class="d-flex justify-content-center align-items-center seeMore">
             <div class="nextBtn px-1">
-              <a (click)="nextArticle()" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg"></a>
+              <a
+                (click)="nextArticle()"
+                class="
+                  rounded-circle
+                  d-inline-flex
+                  justify-content-center
+                  align-items-center
+                  primary-bg
+                "
+              ></a>
               <span class="seeMore" (click)="nextArticle()">Next Article</span>
             </div>
           </div>
@@ -206,7 +220,7 @@
   <div class="most-like-articles pb-5 d-flex d-sm-none">
     <div class="container customContainer py-md-2">
       <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews.length">
-       More like this
+        More like this
       </h5>
       <app-article
         [typeSlug]="'trending'"
@@ -215,7 +229,7 @@
         [class]="'row-cols-sm-2 row-cols-2 articleTrending'"
       ></app-article>
     </div>
-   </div>   
+  </div>
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg py-5 d-none d-md-flex">
     <div class="container customContainer py-md-2">
