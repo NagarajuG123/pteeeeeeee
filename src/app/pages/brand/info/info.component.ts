@@ -133,7 +133,7 @@ export class InfoComponent implements OnInit {
                 });
 
               const featuredApi = this.apiService.getAPI(
-                `${this.brandSlug}/featured-articles?limit=6&offset=0`
+                `${this.brandSlug}/featured-articles?limit=7&offset=0`
               );
               const trendingApi = this.apiService.getAPI(
                 `${this.brandSlug}/trending?limit=4&offset=0`
@@ -294,9 +294,7 @@ export class InfoComponent implements OnInit {
   getMore() {
     this.apiService
       .getAPI(
-        `${this.brandSlug}/brand-latest-stories?limit=5&offset=${
-          this.items.length
-        }`
+        `${this.brandSlug}/brand-latest-stories?limit=5&offset=${this.items.length}`
       )
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {

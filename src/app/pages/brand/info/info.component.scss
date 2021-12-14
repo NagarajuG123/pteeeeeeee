@@ -104,7 +104,9 @@
       padding-right: 3rem;
     }
     li {
-      border: 1px solid $light_gray_8;
+      border-top: 1px solid $light_gray_8;
+      border-bottom: 1px solid $light_gray_8;
+
       span {
         font-family: $proxiBold;
         color: $light_gray_8;
@@ -319,8 +321,8 @@
   }
 }
 
-.divider-recent-feature .btn {
-  height: 54px;
+.divider-recent-feature button {
+  height: 36px;
   background-color: $red;
   text-align: center;
 }

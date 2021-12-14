@@ -20,7 +20,7 @@
       <ul class="row m-0 row-cols-lg-6 row-cols-md-3 row-cols-sm-1">
         <li
           *ngFor="let item of categories; index as i"
-          class="text-center p-0"
+          class="border-end text-center p-0"
           [ngClass]="
             i < commonService.brandInfoTabs + skipTab && i >= skipTab
               ? 'active'
@@ -58,7 +58,7 @@
   </div>
   <!-- Tabs end -->
   <ng-container *ngIf="isStory">
-    <div class="strory-banner--img container customContainer">
+    <div class="strory-banner--img container">
       <a
         href="#"
         onclick="return false;"
@@ -70,18 +70,18 @@
         <img
           appYoutubeImage
           class="lazyload img-fluid"
-          width="888"
-          height="500"
-          data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
+          width="1280"
+          height="720"
+          data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
           srcset="{{brandInfo.media | defaultImage:545:306}} 545w,
             {{brandInfo.media | defaultImage:600:337}} 600w,
             {{brandInfo.media | defaultImage:700:393}} 700w,
-            {{brandInfo.media | defaultImage:888:500}} 888w"
+            {{brandInfo.media | defaultImage:1280:720}} 1024w"
           sizes="{{
             '(max-width: 576px) 545px,
               (max-width: 768px) 600px,
               (max-width: 992px) 700px,
-              888px'
+              1024px'
           }}"
           alt="brand_img"
           loading="lazy"
@@ -98,315 +98,354 @@
   </ng-container>
   <!-- story tab banner -->
   <div
-    class="container px-4 brand-page-row--wrapper"
+    class="px-4 brand-page-row--wrapper"
     [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="row d-flex">
-      <div
-        class="col-md-12 pl-0 brand-left-info--wrapper"
-        [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
-      >
-        <div class="brand-main-img--wrapper" *ngIf="isInfo">
-          <a
-            href="#"
-            onclick="return false;"
-            class="d-block video-btn"
-            data-bs-toggle="modal"
-            data-bs-target="#brandInfoModal"
-            (click)="openVideoPlayer = true"
-          >
-            <img
-              appYoutubeImage
-              class="lazyload img-fluid"
-              width="888"
-              height="500"
-              data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
-              srcset="{{brandInfo.media | defaultImage:545:306}} 545w,
+    <div class="container">
+      <div class="row d-flex">
+        <div
+          class="col-md-12 pl-0 brand-left-info--wrapper"
+          [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
+        >
+          <div class="brand-main-img--wrapper" *ngIf="isInfo">
+            <a
+              href="#"
+              onclick="return false;"
+              class="d-block video-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#brandInfoModal"
+              (click)="openVideoPlayer = true"
+            >
+              <img
+                appYoutubeImage
+                class="lazyload img-fluid"
+                width="888"
+                height="500"
+                data-src="{{ brandInfo.media | defaultImage: 888:500 }}"
+                srcset="{{brandInfo.media | defaultImage:545:306}} 545w,
                 {{brandInfo.media | defaultImage:600:337}} 600w,
                 {{brandInfo.media | defaultImage:700:393}} 700w,
                 {{brandInfo.media | defaultImage:888:500}} 888w"
-              sizes="{{
-                '(max-width: 576px) 545px,
+                sizes="{{
+                  '(max-width: 576px) 545px,
                   (max-width: 768px) 600px,
                   (max-width: 992px) 700px,
                   888px'
-              }}"
-              alt="brand_img"
-              loading="lazy"
-            />
-            <img
-              *ngIf="brandInfo.media && brandInfo.media.type === 'video'"
-              data-src="{{ s3Url }}videoIcon.png"
-              alt="Play"
-              class="img-fluid vide-play lazyload"
-              loading="lazy"
-            />
-          </a>
-        </div>
-        <div class="main-desc-bottom--wrapper">
-          <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
-            {{ brandInfo?.name }} INFO
-          </h2>
-          <div
-            class="question-container container customContainer"
-            *ngIf="isInfo"
-          >
+                }}"
+                alt="brand_img"
+                loading="lazy"
+              />
+              <img
+                *ngIf="brandInfo.media && brandInfo.media.type === 'video'"
+                data-src="{{ s3Url }}videoIcon.png"
+                alt="Play"
+                class="img-fluid vide-play lazyload"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div class="main-desc-bottom--wrapper">
+            <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
+              {{ brandInfo?.name }} INFO
+            </h2>
             <div
-              class="question-section"
-              *ngFor="let item of items; let i = index"
+              class="question-container container customContainer"
+              *ngIf="isInfo"
             >
-              <div class="header header-highlighter align-items-center">
-                <h3 class="col-md-12 title mb-0">
-                  {{ item?.title }}
-                </h3>
-              </div>
-              <div class="description pt-4 px-3">
-                <a
-                  *ngIf="item?.media && item?.media?.type === 'image'"
-                  href="#"
-                  onclick="return false;"
-                  class="d-block"
-                >
-                  <figure>
-                    <img
-                      appYoutubeImage
-                      data-src="{{ item?.media | defaultImage: 796:0 }}"
-                      width="100%"
-                      height="0"
-                      alt="info-image"
-                      class="lazyload"
-                    />
-                  </figure>
-                </a>
-                <div
-                  *ngIf="item?.media && item?.media?.type === 'video'"
-                  class="d-block video-btn"
-                >
-                  <iframe
-                    [src]="item?.media?.url | safeUrl"
-                    style="max-width: 100%; height: 400"
-                    height="400"
-                    width="100%"
-                    scrolling="no"
-                    frameborder="0"
-                    webkitallowfullscreen
-                    mozallowfullscreen
-                    allowfullscreen
-                  ></iframe>
+              <div
+                class="question-section"
+                *ngFor="let item of items; let i = index"
+              >
+                <div class="header header-highlighter align-items-center">
+                  <h3 class="col-md-12 title mb-0 pt-1">
+                    {{ item?.title }}
+                  </h3>
                 </div>
-                <p
-                  class="descriptionDetails"
-                  *ngIf="item?.short_description"
-                  [innerHTML]="item?.short_description"
-                ></p>
+                <div class="description pt-4 px-3">
+                  <a
+                    *ngIf="item?.media && item?.media?.type === 'image'"
+                    href="#"
+                    onclick="return false;"
+                    class="d-block"
+                  >
+                    <figure>
+                      <img
+                        appYoutubeImage
+                        data-src="{{ item?.media | defaultImage: 796:0 }}"
+                        width="100%"
+                        height="0"
+                        alt="info-image"
+                        class="lazyload"
+                      />
+                    </figure>
+                  </a>
+                  <div
+                    *ngIf="item?.media && item?.media?.type === 'video'"
+                    class="d-block video-btn"
+                  >
+                    <iframe
+                      [src]="item?.media?.url | safeUrl"
+                      style="max-width: 100%; height: 400"
+                      height="400"
+                      width="100%"
+                      scrolling="no"
+                      frameborder="0"
+                      webkitallowfullscreen
+                      mozallowfullscreen
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                  <p
+                    class="descriptionDetails"
+                    *ngIf="item?.short_description"
+                    [innerHTML]="item?.short_description"
+                  ></p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div *ngIf="isPdf">
-            <div
-              class="
-                container
-                customContainer
-                py-md-5 py-3
-                pl-5
-                ml-5
-                download-pdf--wrapper
-              "
-            >
-              <div class="frannews-left--wrapper">
-                <div
-                  class="
-                    frannews-top-left
-                    large-main-article
-                    d-flex
-                    text-capitalize
-                  "
-                >
-                  Learn More About
-                </div>
-                <img
-                  class="lazyload"
-                  width="298"
-                  height="112"
-                  data-src="{{ logo }}"
-                  alt="brand_logo"
-                  loading="lazy"
-                />
-                <div class="pt-3">
-                  <button
-                    *ngIf="items?.email_popup"
-                    data-bs-toggle="modal"
-                    data-bs-target="#pdfModal"
-                    type="submit"
-                    class="text-center submit-btn text-white rounded-0 btn-sm"
+            <div *ngIf="isPdf">
+              <div
+                class="
+                  container
+                  customContainer
+                  py-md-5 py-3
+                  pl-5
+                  ml-5
+                  download-pdf--wrapper
+                "
+              >
+                <div class="frannews-left--wrapper">
+                  <div
+                    class="
+                      frannews-top-left
+                      large-main-article
+                      d-flex
+                      text-capitalize
+                    "
                   >
-                    Download PDF
-                  </button>
-                  <a
-                    *ngIf="!items?.email_popup"
-                    href="{{ changeDownPDFUrl(items?.media?.url) }}"
-                    target="_blank"
-                  >
+                    Learn More About
+                  </div>
+                  <img
+                    class="lazyload"
+                    width="298"
+                    height="112"
+                    data-src="{{ logo }}"
+                    alt="brand_logo"
+                    loading="lazy"
+                  />
+                  <div class="pt-3">
                     <button
+                      *ngIf="items?.email_popup"
+                      data-bs-toggle="modal"
+                      data-bs-target="#pdfModal"
                       type="submit"
                       class="text-center submit-btn text-white rounded-0 btn-sm"
                     >
                       Download PDF
                     </button>
-                  </a>
-                </div>
-              </div>
-              <div class="frannews-right--wrapper" *ngIf="items.image">
-                <div class="frannews-image--wrapper">
-                  <img
-                    appYoutubeImage
-                    data-src="{{ items?.image | defaultImage: 417:353 }}"
-                    class="lazyload"
-                    width="417"
-                    height="353"
-                    alt="pdf"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div *ngIf="isStory && items && items.length && items[0].id">
-            <div class="container customContainer mt-4 py-3">
-              <app-home-article
-                [typeSlug]="tab"
-                [contents]="items"
-                [class]="'row-cols-md-2 row-cols-lg-5'"
-              ></app-home-article>
-            </div>
-            <div class="d-flex">
-              <div class="seeMoreLine"></div>
-              <div class="nextLine position-relative mb-5 mt-2">
-                <div class="container customContainer">
-                  <div class="row d-flex align-items-center">
-                    <div
-                      class="
-                        d-flex
-                        justify-content-center
-                        align-items-center
-                        seeMore
-                      "
+                    <a
+                      *ngIf="!items?.email_popup"
+                      href="{{ changeDownPDFUrl(items?.media?.url) }}"
+                      target="_blank"
                     >
-                      <div class="nextBtn px-1">
-                        <a
-                          (click)="getMore()"
-                          class="
-                            rounded-circle
-                            d-inline-flex
-                            justify-content-center
-                            align-items-center
-                            primary-bg
-                          "
-                        >
-                        </a>
-                        <span class="seeMore" (click)="getMore()"
-                          >SEE MORE</span
-                        >
+                      <button
+                        type="submit"
+                        class="
+                          text-center
+                          submit-btn
+                          text-white
+                          rounded-0
+                          btn-sm
+                        "
+                      >
+                        Download PDF
+                      </button>
+                    </a>
+                  </div>
+                </div>
+                <div class="frannews-right--wrapper" *ngIf="items.image">
+                  <div class="frannews-image--wrapper">
+                    <img
+                      appYoutubeImage
+                      data-src="{{ items?.image | defaultImage: 417:353 }}"
+                      class="lazyload"
+                      width="417"
+                      height="353"
+                      alt="pdf"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isStory && items && items.length && items[0].id">
+              <div class="container customContainer mt-4 py-3">
+                <app-home-article
+                  [typeSlug]="tab"
+                  [contents]="items"
+                  [class]="'row-cols-md-2 row-cols-lg-5 gx-2'"
+                ></app-home-article>
+              </div>
+              <div class="d-flex">
+                <div class="seeMoreLine"></div>
+                <div class="nextLine position-relative mb-5 mt-2">
+                  <div class="container customContainer">
+                    <div class="row d-flex align-items-center">
+                      <div
+                        class="
+                          d-flex
+                          justify-content-center
+                          align-items-center
+                          seeMore
+                        "
+                      >
+                        <div class="nextBtn px-1">
+                          <a
+                            (click)="getMore()"
+                            class="
+                              rounded-circle
+                              d-inline-flex
+                              justify-content-center
+                              align-items-center
+                              primary-bg
+                            "
+                          >
+                          </a>
+                          <span class="seeMore" (click)="getMore()"
+                            >SEE MORE</span
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="seeMoreLine"></div>
               </div>
-              <div class="seeMoreLine"></div>
             </div>
-          </div>
 
-          <div class="container customContainer whyIBought" *ngIf="isBought">
-            <div>
-              <ul class="d-flex">
-                <li class="header-title">
-                  <h2 class="text-uppercase sectionTitle mb-0">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase sectionTitle mb-0">WHY I BOUGHT</h2>
-                </li>
-              </ul>
+            <div class="container customContainer whyIBought" *ngIf="isBought">
+              <div>
+                <ul class="d-flex">
+                  <li class="header-title">
+                    <h2 class="text-uppercase sectionTitle mb-0">
+                      {{ items?.name }}
+                    </h2>
+                  </li>
+                  <li>
+                    <h2 class="text-uppercase sectionTitle mb-0">
+                      WHY I BOUGHT
+                    </h2>
+                  </li>
+                </ul>
+              </div>
+              <p
+                class="descriptionDetails"
+                *ngIf="items?.content"
+                [innerHTML]="items?.content"
+              ></p>
             </div>
-            <p
-              class="descriptionDetails"
-              *ngIf="items?.content"
-              [innerHTML]="items?.content"
-            ></p>
-          </div>
 
-          <div class="container customContainer whyIBought" *ngIf="isExecutive">
-            <div>
-              <ul class="d-flex">
-                <li class="header-title">
-                  <h2 class="text-uppercase sectionTitle mb-0">
-                    {{ items?.name }}
-                  </h2>
-                </li>
-                <li>
-                  <h2 class="text-uppercase sectionTitle mb-0">
-                    EXECUTIVE Q&A
-                  </h2>
-                </li>
-              </ul>
-            </div>
-            <p
-              class="descriptionDetails"
-              *ngIf="items?.content"
-              [innerHTML]="items?.content"
-            ></p>
-          </div>
-
-          <div class="container whyIBought d-flex" *ngIf="isMarket">
-            <ul>
-              <li class="marketHeading">
-                <h2 class="text-uppercase sectionTitle mb-0">
-                  Available Markets
-                </h2>
-              </li>
-            </ul>
-          </div>
-          <div>
             <div
-              *ngIf="
-                isMarket &&
-                items['available-markets'] != null &&
-                items['available-markets'].length
-              "
-              class="mapcontainer mt-5"
+              class="container customContainer whyIBought"
+              *ngIf="isExecutive"
             >
-              <div class="lg-map-wrapper" style="width: 100%; height: auto">
-                <svg id="map" width="800" height="500"></svg>
+              <div>
+                <ul class="d-flex">
+                  <li class="header-title">
+                    <h2 class="text-uppercase sectionTitle mb-0">
+                      {{ items?.name }}
+                    </h2>
+                  </li>
+                  <li>
+                    <h2 class="text-uppercase sectionTitle mb-0">
+                      EXECUTIVE Q&A
+                    </h2>
+                  </li>
+                </ul>
               </div>
+              <p
+                class="descriptionDetails"
+                *ngIf="items?.content"
+                [innerHTML]="items?.content"
+              ></p>
             </div>
-            <div class="market-map-legend">
+
+            <div class="container whyIBought d-flex" *ngIf="isMarket">
+              <ul>
+                <li class="marketHeading">
+                  <h2 class="text-uppercase sectionTitle mb-0">
+                    Available Markets
+                  </h2>
+                </li>
+              </ul>
+            </div>
+            <div>
               <div
                 *ngIf="
                   isMarket &&
                   items['available-markets'] != null &&
                   items['available-markets'].length
                 "
-                class="map-legend"
+                class="mapcontainer mt-5"
               >
-                MAP LEGEND:
-                <div class="row items">
-                  <div class="col-xl-8 col-md-12">
-                    <div class="row m-0">
-                      <div
-                        *ngFor="let market of items['available-markets']"
-                        class="col-sm-5 map-legend-item"
-                      >
-                        <div class="market-names">
-                          <div class="">
-                            <div
-                              class="market-status-color"
-                              [style.backgroundColor]="market.color"
-                            ></div>
+                <div class="lg-map-wrapper" style="width: 100%; height: auto">
+                  <svg id="map" width="800" height="500"></svg>
+                </div>
+              </div>
+              <div class="market-map-legend">
+                <div
+                  *ngIf="
+                    isMarket &&
+                    items['available-markets'] != null &&
+                    items['available-markets'].length
+                  "
+                  class="map-legend"
+                >
+                  MAP LEGEND:
+                  <div class="row items">
+                    <div class="col-xl-8 col-md-12">
+                      <div class="row m-0">
+                        <div
+                          *ngFor="let market of items['available-markets']"
+                          class="col-sm-5 map-legend-item"
+                        >
+                          <div class="market-names">
+                            <div class="">
+                              <div
+                                class="market-status-color"
+                                [style.backgroundColor]="market.color"
+                              ></div>
+                            </div>
+                            <div class="align-self-center lh-base">
+                              <span class="text-uppercase market-name">{{
+                                market.name
+                              }}</span>
+                            </div>
                           </div>
-                          <div class="align-self-center lh-base">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="
+                      isMarket &&
+                      items['international-markets'] != null &&
+                      items['international-markets'].length
+                    "
+                    class="mt-2"
+                  >
+                    <h3 class="map-legend-internatioal">
+                      INTERNATIONAL MARKETS:
+                    </h3>
+                    <div class="row ms-1 items">
+                      <div
+                        class="col-sm-3 map-legend-item"
+                        *ngFor="let market of items['international-markets']"
+                      >
+                        <div class="row market-names">
+                          <div class="col-xs-10">
                             <span class="text-uppercase market-name">{{
                               market.name
                             }}</span>
@@ -416,398 +455,380 @@
                     </div>
                   </div>
                 </div>
-                <div
-                  *ngIf="
-                    isMarket &&
-                    items['international-markets'] != null &&
-                    items['international-markets'].length
-                  "
-                  class="mt-2"
-                >
-                  <h3 class="map-legend-internatioal">
-                    INTERNATIONAL MARKETS:
-                  </h3>
-                  <div class="row ms-1 items">
-                    <div
-                      class="col-sm-3 map-legend-item"
-                      *ngFor="let market of items['international-markets']"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-12 pr-0 pl-0"
+          *ngIf="isInfo || isMarket"
+          [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
+        >
+          <div class="financial-requirement-section more-brand--wrapper">
+            <div class="header" *ngIf="isInfo">
+              <h1 class="sectionTitle title text-capitalize mb-0">
+                Financial Requirements
+              </h1>
+            </div>
+            <div class="headerMarket" *ngIf="isMarket">
+              <h2 class="titleMarket">More Brand Info</h2>
+            </div>
+            <div class="financial-description" *ngIf="isInfo">
+              <p class="topContent m-0 pb-3">
+                {{ brandInfo?.more_info }}
+              </p>
+              <p class="text m-0 pb-3">
+                Initial Franchise Fee:
+                <span class="highlight-text">
+                  {{ brandInfo?.franchise_fee }}
+                </span>
+              </p>
+              <p class="text m-0 pb-3">
+                Initial Investment Range:
+                <span class="highlight-text">
+                  {{ brandInfo?.startup_costs }}
+                </span>
+              </p>
+              <p class="text m-0">Minimum Qualifications:</p>
+              <p
+                class="highlight-text min-qualification m-0"
+                *ngFor="let info of brandInfo?.optional_info"
+              >
+                {{ info.title }} {{ info.value }} <br />
+              </p>
+              <p class="text m-0 pt-3">Territory:</p>
+              <p class="highlight-text m-0 pb-3">
+                Protected territory with geographic rights to the Sylvan system
+                in a well-defined area
+              </p>
+              <p class="highlight-text m-0">
+                With an average gross revenue of $518,159 among the top 25% of
+                territories, Sylvan Learning offers a business opportunity with
+                both financial and emotional rewards.
+              </p>
+              <p
+                class="text m-0 pt-3"
+                *ngFor="let info of brandInfo?.optional_info"
+              >
+                {{ info.title }} :
+                <span class="highlight-text m-0 pb-3">{{ info.value }}</span>
+              </p>
+            </div>
+
+            <div class="market" *ngIf="isMarket">
+              <p class="text m-0 pb-3">
+                {{ brandInfo?.more_info }}
+              </p>
+              <p class="text m-0 pb-3">
+                Initial Franchise Fee:
+                <span class="highlight-text m-0">
+                  {{ brandInfo?.franchise_fee }}
+                </span>
+              </p>
+              <p class="text m-0 pb-3">
+                Initial Investment Range:
+                <span class="highlight-text m-0">
+                  {{ brandInfo?.startup_costs }}
+                </span>
+              </p>
+              <p class="text m-0">Minimum Qualifications:</p>
+              <p
+                class="highlight-text m-0 min-qualification"
+                *ngFor="let info of brandInfo?.optional_info"
+              >
+                {{ info.title }} {{ info.value }} <br />
+              </p>
+              <p class="text m-0 pt-3">Territory:</p>
+              <p class="highlight-text m-0 pb-3">
+                Protected territory with geographic rights to the Sylvan system
+                in a well-defined area
+              </p>
+              <p class="highlight-text m-0">
+                With an average gross revenue of $518,159 among the top 25% of
+                territories, Sylvan Learning offers a business opportunity with
+                both financial and emotional rewards.
+              </p>
+              <p
+                class="text m-0 pt-3"
+                *ngFor="let info of brandInfo?.optional_info"
+              >
+                {{ info.title }} :
+                <span class="highlight-text">{{ info.value }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="inquiry-form-section">
+            <div class="header py-2" *ngIf="!isMarket">
+              <h1 class="title mb-0 text-capitalize">Inquire Now</h1>
+            </div>
+            <div class="header" *ngIf="isMarket">
+              <h1 class="market-header text-uppercase">
+                Inquire about services
+              </h1>
+            </div>
+            <form
+              *ngIf="inquireForm"
+              [formGroup]="inquireForm"
+              (ngSubmit)="submitInquireForm(inquireForm.value)"
+            >
+              <div class="row" *ngFor="let fields of inquireFields">
+                <div class="col-12 inquirefrom-row">
+                  <input
+                    [ngClass]="
+                      (formControlsValues[fields.key].touched ||
+                        submittedInquireForm) &&
+                      (formControlsValues[fields.key].errors?.required ||
+                        formControlsValues[fields.key].errors?.email ||
+                        formControlsValues[fields.key].errors?.pattern)
+                        ? 'isError'
+                        : ''
+                    "
+                    *ngIf="fields.type === 'text'"
+                    [formControlName]="fields.key"
+                    placeholder="{{ fields.title }}*"
+                    [id]="fields.key"
+                    class="form-control"
+                    [type]="fields.type"
+                    [pattern]="fields.pattern"
+                    [maxLength]="fields.maxLength || 1000"
+                  />
+
+                  <textarea
+                    *ngIf="fields.type === 'textarea'"
+                    [placeholder]="fields.title"
+                    [formControlName]="fields.key"
+                    [id]="fields.key"
+                    class="form-control"
+                    rows="3"
+                    [ngClass]="{
+                      'is-invalid':
+                        (formControlsValues[fields.key].touched ||
+                          submittedInquireForm) &&
+                        formControlsValues[fields.key].errors?.required
+                    }"
+                  ></textarea>
+
+                  <select
+                    required
+                    *ngIf="fields.type === 'dropdown'"
+                    [formControlName]="fields.key"
+                    [id]="fields.key"
+                    class="form-select"
+                    [ngClass]="{
+                      'is-invalid':
+                        (formControlsValues[fields.key].touched ||
+                          submittedInquireForm) &&
+                        formControlsValues[fields.key].errors?.required
+                    }"
+                  >
+                    <option value="" disabled selected hidden>
+                      {{ fields.title }}*
+                    </option>
+                    <option
+                      *ngFor="let value of fields.enum"
+                      value="{{ value }}"
                     >
-                      <div class="row market-names">
-                        <div class="col-xs-10">
-                          <span class="text-uppercase market-name">{{
-                            market.name
-                          }}</span>
-                        </div>
-                      </div>
-                    </div>
+                      <span>{{ value }}</span>
+                    </option>
+                  </select>
+                  <div
+                    class="invalid-feedback d-block"
+                    *ngIf="
+                      (formControlsValues[fields.key].touched ||
+                        submittedInquireForm) &&
+                      (formControlsValues[fields.key].errors?.required ||
+                        formControlsValues[fields.key].errors?.email ||
+                        formControlsValues[fields.key].errors?.pattern)
+                    "
+                  >
+                    {{ fields.errorMsg }}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <div class="divider-recent-feature row">
+                <button type="submit" class="text-white rounded-0 w-100">
+                  Next
+                </button>
+              </div>
+              <br />
+              <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+                submitErrMsg
+              }}</span>
+            </form>
 
-      <div
-        class="col-lg-4 col-md-12 pr-0 pl-0"
-        *ngIf="isInfo || isMarket"
-        [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
-      >
-        <div class="financial-requirement-section more-brand--wrapper">
-          <div class="header" *ngIf="isInfo">
-            <h1 class="sectionTitle title text-capitalize mb-0">
-              Financial Requirements
-            </h1>
-          </div>
-          <div class="headerMarket" *ngIf="isMarket">
-            <h2 class="titleMarket">More Brand Info</h2>
-          </div>
-          <div class="financial-description" *ngIf="isInfo">
-            <p class="topContent m-0 pb-3">
-              {{ brandInfo?.more_info }}
-            </p>
-            <p class="text m-0 pb-3">
-              Initial Franchise Fee:
-              <span class="highlight-text">
-                {{ brandInfo?.franchise_fee }}
-              </span>
-            </p>
-            <p class="text m-0 pb-3">
-              Initial Investment Range:
-              <span class="highlight-text">
-                {{ brandInfo?.startup_costs }}
-              </span>
-            </p>
-            <p class="text m-0">Minimum Qualifications:</p>
-            <p
-              class="highlight-text min-qualification m-0"
-              *ngFor="let info of brandInfo?.optional_info"
-            >
-              {{ info.title }} {{ info.value }} <br />
-            </p>
-            <p class="text m-0 pt-3">Territory:</p>
-            <p class="highlight-text m-0 pb-3">
-              Protected territory with geographic rights to the Sylvan system in
-              a well-defined area
-            </p>
-            <p class="highlight-text m-0">
-              With an average gross revenue of $518,159 among the top 25% of
-              territories, Sylvan Learning offers a business opportunity with
-              both financial and emotional rewards.
-            </p>
-            <p
-              class="text m-0 pt-3"
-              *ngFor="let info of brandInfo?.optional_info"
-            >
-              {{ info.title }} :
-              <span class="highlight-text m-0 pb-3">{{ info.value }}</span>
-            </p>
-          </div>
-
-          <div class="market" *ngIf="isMarket">
-            <p class="text m-0 pb-3">
-              {{ brandInfo?.more_info }}
-            </p>
-            <p class="text m-0 pb-3">
-              Initial Franchise Fee:
-              <span class="highlight-text m-0">
-                {{ brandInfo?.franchise_fee }}
-              </span>
-            </p>
-            <p class="text m-0 pb-3">
-              Initial Investment Range:
-              <span class="highlight-text m-0">
-                {{ brandInfo?.startup_costs }}
-              </span>
-            </p>
-            <p class="text m-0">Minimum Qualifications:</p>
-            <p
-              class="highlight-text m-0 min-qualification"
-              *ngFor="let info of brandInfo?.optional_info"
-            >
-              {{ info.title }} {{ info.value }} <br />
-            </p>
-            <p class="text m-0 pt-3">Territory:</p>
-            <p class="highlight-text m-0 pb-3">
-              Protected territory with geographic rights to the Sylvan system in
-              a well-defined area
-            </p>
-            <p class="highlight-text m-0">
-              With an average gross revenue of $518,159 among the top 25% of
-              territories, Sylvan Learning offers a business opportunity with
-              both financial and emotional rewards.
-            </p>
-            <p
-              class="text m-0 pt-3"
-              *ngFor="let info of brandInfo?.optional_info"
-            >
-              {{ info.title }} :
-              <span class="highlight-text">{{ info.value }}</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="inquiry-form-section">
-          <div class="header py-2" *ngIf="!isMarket">
-            <h1 class="title mb-0 text-capitalize">Inquire Now</h1>
-          </div>
-          <div class="header" *ngIf="isMarket">
-            <h1 class="market-header text-uppercase">Inquire about services</h1>
-          </div>
-          <form
-            *ngIf="inquireForm"
-            [formGroup]="inquireForm"
-            (ngSubmit)="submitInquireForm(inquireForm.value)"
-          >
-            <div class="row" *ngFor="let fields of inquireFields">
-              <div class="col-12 inquirefrom-row">
-                <input
-                  [ngClass]="
-                    (formControlsValues[fields.key].touched ||
-                      submittedInquireForm) &&
-                    (formControlsValues[fields.key].errors?.required ||
-                      formControlsValues[fields.key].errors?.email ||
-                      formControlsValues[fields.key].errors?.pattern)
-                      ? 'isError'
-                      : ''
-                  "
-                  *ngIf="fields.type === 'text'"
-                  [formControlName]="fields.key"
-                  placeholder="{{ fields.title }}*"
-                  [id]="fields.key"
-                  class="form-control"
-                  [type]="fields.type"
-                  [pattern]="fields.pattern"
-                  [maxLength]="fields.maxLength || 1000"
-                />
-
-                <textarea
-                  *ngIf="fields.type === 'textarea'"
-                  [placeholder]="fields.title"
-                  [formControlName]="fields.key"
-                  [id]="fields.key"
-                  class="form-control"
-                  rows="3"
-                  [ngClass]="{
-                    'is-invalid':
-                      (formControlsValues[fields.key].touched ||
-                        submittedInquireForm) &&
-                      formControlsValues[fields.key].errors?.required
-                  }"
-                ></textarea>
-
-                <select
-                  required
-                  *ngIf="fields.type === 'dropdown'"
-                  [formControlName]="fields.key"
-                  [id]="fields.key"
-                  class="form-select"
-                  [ngClass]="{
-                    'is-invalid':
-                      (formControlsValues[fields.key].touched ||
-                        submittedInquireForm) &&
-                      formControlsValues[fields.key].errors?.required
-                  }"
-                >
-                  <option value="" disabled selected hidden>
-                    {{ fields.title }}*
-                  </option>
-                  <option *ngFor="let value of fields.enum" value="{{ value }}">
-                    <span>{{ value }}</span>
-                  </option>
-                </select>
-                <div
-                  class="invalid-feedback d-block"
-                  *ngIf="
-                    (formControlsValues[fields.key].touched ||
-                      submittedInquireForm) &&
-                    (formControlsValues[fields.key].errors?.required ||
-                      formControlsValues[fields.key].errors?.email ||
-                      formControlsValues[fields.key].errors?.pattern)
-                  "
-                >
-                  {{ fields.errorMsg }}
+            <!-- Recent Features -->
+            <div class="recent-feature-article-section" *ngIf="!isMarket">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="title-tag">RECENT FEATURES</div>
+                  <ul>
+                    <li class="w-90" *ngFor="let item of featured | slice: 0:3">
+                      <a
+                        routerLink="/{{ commonService.readMore(item) }}"
+                        fragment="featured"
+                      >
+                        <p class="articleTitles mb-0">{{ item.title }}</p>
+                        <span
+                          *ngIf="commonService.isUpdate(item)"
+                          class="timeStamp"
+                          >{{ commonService.formatDate(item.last_modified) }} |
+                          {{ commonService.formatTime(item.last_modified) }}
+                        </span>
+                        <span
+                          *ngIf="!commonService.isUpdate(item)"
+                          class="timeStamp"
+                          >{{ commonService.formatDate(item.posted_on) }} |
+                          {{ commonService.formatTime(item.posted_on) }}</span
+                        >
+                        <p class="description mb-0">
+                          {{ item.short_description }}
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="divider-recent-feature row">
-              <button type="submit" class="btn text-white rounded-0 w-100 h-50">
-                Next
-              </button>
-            </div>
-            <br />
-            <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-              submitErrMsg
-            }}</span>
-          </form>
 
-          <!-- Recent Features -->
-          <div class="recent-feature-article-section" *ngIf="!isMarket">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="title-tag">RECENT FEATURES</div>
-                <ul>
-                  <li class="w-90" *ngFor="let item of featured | slice: 0:3">
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="featured"
-                    >
-                      <p class="articleTitles mb-0">{{ item.title }}</p>
-                      <span
-                        *ngIf="commonService.isUpdate(item)"
-                        class="timeStamp"
-                        >{{ commonService.formatDate(item.last_modified) }} |
-                        {{ commonService.formatTime(item.last_modified) }}
-                      </span>
-                      <span
-                        *ngIf="!commonService.isUpdate(item)"
-                        class="timeStamp"
-                        >{{ commonService.formatDate(item.posted_on) }} |
-                        {{ commonService.formatTime(item.posted_on) }}</span
+            <!-- Featured Article Section -->
+            <div class="divider-main" *ngIf="!isMarket"></div>
+            <div class="feature-article-section" *ngIf="!isMarket">
+              <ul class="pt-1">
+                <li *ngFor="let item of featured | slice: 3:7; index as i">
+                  <div class="d-flex">
+                    <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+                      <a
+                        routerLink="/{{ commonService.readMore(item) }}"
+                        fragment="featured"
+                        class="pe-2"
                       >
-                      <p class="description mb-0">
-                        {{ item.short_description }}
-                      </p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Featured Article Section -->
-          <div class="divider-main" *ngIf="!isMarket"></div>
-          <div class="feature-article-section" *ngIf="!isMarket">
-            <ul class="pt-1">
-              <li *ngFor="let item of featured; index as i">
-                <div class="d-flex">
-                  <div class="col-lg-5 col-md-3 col-sm-5 col-5">
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="featured"
-                      class="pe-2"
-                    >
-                      <img
-                        appYoutubeImage
-                        width="161"
-                        class="lazyload img-fluid"
-                        alt="featured"
-                        loading="lazy"
-                        height="91"
-                        data-src="{{ item.media | defaultImage: 161:91 }}"
-                        srcset="{{item.media | defaultImage:545:305}} 545w,
+                        <img
+                          appYoutubeImage
+                          width="161"
+                          class="lazyload img-fluid"
+                          alt="featured"
+                          loading="lazy"
+                          height="91"
+                          data-src="{{ item.media | defaultImage: 161:91 }}"
+                          srcset="{{item.media | defaultImage:545:305}} 545w,
                           {{item.media | defaultImage:355:199}} 355w, 
                           {{item.media | defaultImage:161:91}} 161w"
-                        sizes="{{
-                          '(max-width: 576px) 545px,
+                          sizes="{{
+                            '(max-width: 576px) 545px,
                             (max-width: 768px) 355px,
                             (max-width: 992px) 300px,
                             161px'
-                        }}"
-                    /></a>
+                          }}"
+                      /></a>
+                    </div>
+                    <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+                      <h2 class="small-red-headers mb-0">FEATURED ARTICLE</h2>
+                      <a
+                        routerLink="/{{ commonService.readMore(item) }}"
+                        fragment="featured"
+                      >
+                        <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
-                    <h2 class="small-red-headers mb-0">FEATURED ARTICLE</h2>
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="featured"
-                    >
-                      <h3 class="articleTitles mb-0">{{ item.title }}</h3>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+                </li>
+              </ul>
+            </div>
 
-          <!-- Trending Secion -->
-          <div class="divider-main" *ngIf="trending.length && !isMarket"></div>
-          <div class="trending-section" *ngIf="trending.length && !isMarket">
-            <div class="title-tag ms-1">TRENDING</div>
-            <ul class="pt-1">
-              <li *ngFor="let item of trending; index as i">
-                <div class="d-flex">
-                  <div class="col-lg-5 col-md-3 col-sm-5 col-5">
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="trending"
-                      class="pe-2"
-                    >
-                      <img
-                        appYoutubeImage
-                        width="139"
-                        class="lazyload img-fluid"
-                        alt="trending"
-                        loading="lazy"
-                        height="78"
-                        data-src="{{ item.media | defaultImage: 139:78 }}"
-                        srcset="{{item.media | defaultImage:545:305}} 545w,
+            <!-- Trending Secion -->
+            <div
+              class="divider-main"
+              *ngIf="trending.length && !isMarket"
+            ></div>
+            <div class="trending-section" *ngIf="trending.length && !isMarket">
+              <div class="title-tag ms-1">TRENDING</div>
+              <ul class="pt-1">
+                <li *ngFor="let item of trending; index as i">
+                  <div class="d-flex">
+                    <div class="col-lg-5 col-md-3 col-sm-5 col-5">
+                      <a
+                        routerLink="/{{ commonService.readMore(item) }}"
+                        fragment="trending"
+                        class="pe-2"
+                      >
+                        <img
+                          appYoutubeImage
+                          width="139"
+                          class="lazyload img-fluid"
+                          alt="trending"
+                          loading="lazy"
+                          height="78"
+                          data-src="{{ item.media | defaultImage: 139:78 }}"
+                          srcset="{{item.media | defaultImage:545:305}} 545w,
                           {{item.media | defaultImage:355:199}} 355w, 
                           {{item.media | defaultImage:139:78}} 139w"
-                        sizes="{{
-                          '(max-width: 576px) 545px,
+                          sizes="{{
+                            '(max-width: 576px) 545px,
                             (max-width: 768px) 355px,
                             (max-width: 992px) 300px,
                             139px'
-                        }}"
-                    /></a>
+                          }}"
+                      /></a>
+                    </div>
+                    <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
+                      <a
+                        routerLink="/{{ commonService.readMore(item) }}"
+                        fragment="trending"
+                      >
+                        <h3 class="articleTitles mb-0">{{ item.title }}</h3>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
-                    <a
-                      routerLink="/{{ commonService.readMore(item) }}"
-                      fragment="trending"
-                    >
-                      <h3 class="articleTitles mb-0">{{ item.title }}</h3>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="sponsored-modal-content">
-              <button
-                type="button"
-                class="close text-right"
-                data-bs-dismiss="modal"
-              >
-                &times;
-              </button>
-              <h2 class="text-uppercase">Download PDF</h2>
-              <div class="email-content">
-                <form
-                  [formGroup]="pdfForm"
-                  (ngSubmit)="emailSubscribe(pdfForm)"
+        <div *ngIf="isBrowser" class="search_pop_up modal" id="pdfModal">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="sponsored-modal-content">
+                <button
+                  type="button"
+                  class="close text-right"
+                  data-bs-dismiss="modal"
                 >
-                  <div class="form-group">
-                    <label>Enter Email:</label>
-                    <input
-                      type="text"
-                      [formControl]="pdfForm.controls['emailInput']"
-                      class="form-control"
-                    />
-                    <app-error-message
-                      *ngIf="isEmailSubmit"
-                      class="full-width"
-                      [control]="pdfForm.controls['emailInput']"
-                    ></app-error-message>
-                    <p *ngIf="emailSubValid" class="invalid">
-                      {{ emailSubMessage }}
-                    </p>
-                    <button
-                      type="button"
-                      id="pdf-btn"
-                      (click)="emailSubscribe(pdfForm)"
-                    >
-                      Download
-                    </button>
-                  </div>
-                </form>
+                  &times;
+                </button>
+                <h2 class="text-uppercase">Download PDF</h2>
+                <div class="email-content">
+                  <form
+                    [formGroup]="pdfForm"
+                    (ngSubmit)="emailSubscribe(pdfForm)"
+                  >
+                    <div class="form-group">
+                      <label>Enter Email:</label>
+                      <input
+                        type="text"
+                        [formControl]="pdfForm.controls['emailInput']"
+                        class="form-control"
+                      />
+                      <app-error-message
+                        *ngIf="isEmailSubmit"
+                        class="full-width"
+                        [control]="pdfForm.controls['emailInput']"
+                      ></app-error-message>
+                      <p *ngIf="emailSubValid" class="invalid">
+                        {{ emailSubMessage }}
+                      </p>
+                      <button
+                        type="button"
+                        id="pdf-btn"
+                        (click)="emailSubscribe(pdfForm)"
+                      >
+                        Download
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
