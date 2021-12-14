@@ -44,7 +44,10 @@ span {
       width: 17%;
     }
     &.col-xl-2 {
-      width: 19%;
+      width: 18.9%;
+      @include mobile-portrait {
+        width: 100%;
+      }
     }
 
     @include mobile-portrait {
@@ -54,13 +57,13 @@ span {
     }
     img {
       width: 100%;
-      @include mobile-portrait {
-        height: 51px;
-        width: 55px;
-      }
       @include tablet-landscape1 {
         height: 150px;
         width: 150px;
+      }
+      @include mobile-portrait {
+        height: 51px;
+        width: 55px;
       }
     }
   }
