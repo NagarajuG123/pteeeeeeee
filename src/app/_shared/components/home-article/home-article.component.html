@@ -5,16 +5,14 @@
       fragment="{{ typeSlug | lowercase }}"
       class="py-2"
     >
-    <div
+      <div
         class="sponsored justify-content-center"
         *ngIf="type === 'trendingbrandbuzz'"
       >
-        <span
-          class="d-inline-block text-center"
-        >
-          {{ i + 1}}
+        <span class="d-inline-block text-center">
+          {{ i + 1 }}
         </span>
-    </div>
+      </div>
       <div class="card rounded-0 border-0 h-100 position-initial">
         <img
           appYoutubeImage
@@ -25,6 +23,8 @@
             {{item.media | defaultImage:210:118}} 210w"
           class="w-100 img-fluid lazyload card-img-top"
           alt=""
+          width="210"
+          height="118"
           loading="lazy"
           sizes="{{
             '(max-width: 576px) 545px,
