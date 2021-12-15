@@ -2,7 +2,13 @@
   <section class="c-card-box--section" *ngIf="banner">
     <div class="c-card-box--wrapper">
       <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 bg-white flex-row-reverse">
+        <div
+          class="
+            row row-cols-1 row-cols-sm-1 row-cols-md-2
+            bg-white
+            flex-row-reverse
+          "
+        >
           <div class="coverContent p-4">
             <h4 class="articleTitles">{{ title }}</h4>
             <h1 class="large-main-article">Back to Business</h1>
@@ -13,8 +19,7 @@
               routerLink="/{{ commonService.readMore(banner[0]) }}"
               fragment="monthlydetailspage"
               class="seeMore primary-color text-uppercase"
-              >Read more
-              <i class="fa fa-angle-right" aria-hidden="true"></i
+              >Read more <i class="fa fa-angle-right" aria-hidden="true"></i
             ></a>
           </div>
         </div>
@@ -59,22 +64,21 @@
         [class]="'row-cols-md-2 row-cols-lg-4 monthlyDetail'"
       ></app-home-article>
     </div>
-    <div class="d-flex">
+    <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
       <div class="seeMoreLine"></div>
-      <div class="nextLine position-relative mb-5 mt-2">
-        <div class="container customContainer">
-          <div class="row d-flex align-items-center">
-            <div
-              class="d-flex justify-content-center align-items-center seeMore"
-            >
-              <div class="nextBtn px-1">
-                <a (click)="getMoreData()" class="rounded-circle  d-inline-flex justify-content-center align-items-center primary-bg"></a>
-                <span class="seeMore" (click)="getMoreData()">SEE MORE</span>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="d-inline ps-1">
+        <a (click)="getMoreData()">
+          <i
+            class="fa fa-caret-down rounded-circle p-2 primary-bg"
+            aria-hidden="true"
+          ></i
+        ></a>
       </div>
+      <div class="d-inline">
+        <a (click)="getMoreData()"><span class="seeMore">See More</span></a>
+      </div>
+
       <div class="seeMoreLine"></div>
     </div>
   </div>

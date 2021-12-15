@@ -164,7 +164,7 @@
               }}</a>
             </div>
             <h1
-              class="large-main-article text-center mb-0"
+              class="large-main-article text-center mb-0 px-1"
               [innerHTML]="title"
             ></h1>
           </div>
@@ -191,29 +191,22 @@
   </div>
 
   <!-- next article line -->
-  <div class="d-flex">
+
+  <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
     <div class="seeMoreLine"></div>
-    <div class="nextLine position-relative mb-5 mt-2">
-      <div class="container customContainer">
-        <div class="row d-flex align-items-center">
-          <div class="d-flex justify-content-center align-items-center seeMore">
-            <div class="nextBtn px-1">
-              <a
-                (click)="nextArticle()"
-                class="
-                  rounded-circle
-                  d-inline-flex
-                  justify-content-center
-                  align-items-center
-                  primary-bg
-                "
-              ></a>
-              <span class="seeMore" (click)="nextArticle()">Next Article</span>
-            </div>
-          </div>
-        </div>
-      </div>
+
+    <div class="d-inline ps-1">
+      <a (click)="nextArticle()">
+        <i
+          class="fa fa-caret-down rounded-circle p-2 primary-bg"
+          aria-hidden="true"
+        ></i
+      ></a>
     </div>
+    <div class="d-inline">
+      <a (click)="nextArticle()"><span class="seeMore">Next Article</span></a>
+    </div>
+
     <div class="seeMoreLine"></div>
   </div>
 
