@@ -573,7 +573,7 @@
               [formGroup]="inquireForm"
               (ngSubmit)="submitInquireForm(inquireForm.value)"
             >
-              <div class="row" *ngFor="let fields of inquireFields">
+              <div class="row position-relative" *ngFor="let fields of inquireFields">
                 <div class="col-12 inquirefrom-row">
                   <input
                     [ngClass]="
@@ -647,8 +647,8 @@
                   </div>
                 </div>
               </div>
-              <div class="divider-recent-feature row">
-                <button type="submit" class="text-white rounded-0 w-100">
+              <div class="divider-recent-feature position-absolute w-100">
+                <button type="submit" class="text-white text-center rounded-0 w-100">
                   Next
                 </button>
               </div>
