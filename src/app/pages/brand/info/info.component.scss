@@ -3,7 +3,6 @@
 @import "../../../../assets/scss/media.scss";
 
 .question-section {
-  padding-top: 40px;
 
   @include tablet-landscape1 {
     padding-top: 30px;
@@ -14,7 +13,6 @@
   }
 
   + .question-section {
-    padding-top: 30px;
 
     @include mobile-landscape1 {
       padding-top: 15px;
@@ -1094,7 +1092,6 @@ button.close {
 
   .title-highlighter {
     position: absolute;
-    top: 25px;
     left: 0;
     right: 0;
     margin: 0 auto;
