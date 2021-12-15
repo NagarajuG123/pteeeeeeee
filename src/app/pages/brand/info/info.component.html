@@ -572,8 +572,9 @@
               *ngIf="inquireForm"
               [formGroup]="inquireForm"
               (ngSubmit)="submitInquireForm(inquireForm.value)"
+              class="position-relative"
             >
-              <div class="row position-relative" *ngFor="let fields of inquireFields">
+              <div class="row" *ngFor="let fields of inquireFields">
                 <div class="col-12 inquirefrom-row">
                   <input
                     [ngClass]="

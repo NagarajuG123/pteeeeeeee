@@ -254,10 +254,6 @@
     padding: 25px 20px 10px;
     background-color: $dark_gray;
 
-    @include mobile-landscape {
-      padding: 20px 15px 25px;
-    }
-
     .inquirefrom-row {
       .isError {
         margin-bottom: 10px !important;
