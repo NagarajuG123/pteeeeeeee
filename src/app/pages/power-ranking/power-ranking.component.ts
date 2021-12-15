@@ -21,6 +21,7 @@ export class PowerRankingComponent implements OnInit {
   publication!: any;
   items: Brandsrank[] = [];
   s3Url = environment.s3Url;
+  oddRows = [0, 1, 4, 5, 8, 9];
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 

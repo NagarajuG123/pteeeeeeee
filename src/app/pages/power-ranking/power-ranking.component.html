@@ -171,7 +171,13 @@
       </div>
     </ng-container>
     <div class="row row-cols-2 px-3">
-      <div *ngFor="let item of items | slice: 10:20">
+      <div
+        class="list-data--wrapper"
+        *ngFor="let item of items | slice: 10:20; let i = index"
+        [ngClass]="
+          oddRows.includes(i) ? 'list-data-wrapper--1' : 'list-data-wrapper--2'
+        "
+      >
         <div class="col-6 d-flex py-4">
           <p class="pe-3 shortRank">
             {{ item.rank }}
