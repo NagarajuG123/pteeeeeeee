@@ -193,7 +193,16 @@ span {
   }
 }
 .bottomSection {
-  background-color: $white;
+  background: linear-gradient(to left, $white 40%, $white_8 60%);
+  &.brandSearch {
+    background: linear-gradient(to left, $white_8 40%, $white_8 60%);
+  }
+  .leftSide {
+    background-color: $white_8;
+  }
+  .rightSide {
+    background-color: $white;
+  }
 }
 .seeMoreIcon {
   .seeMore {
