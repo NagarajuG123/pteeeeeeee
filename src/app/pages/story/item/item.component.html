@@ -44,19 +44,20 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-12 col-md userDetail">
-        <div class="userImage position-relative d-none d-md-flex">
+        <div class="userImage d-none d-md-flex justify-content-center align-items-center">
           <a routerLink="/author/{{ details?.author?.slug }}">
             <img
               src="{{ author_media | defaultImage: 150:150 }}"
               width="150"
               height="150"
-              class="author-img position-absolute d-block lazyload"
+              class="author-img d-block lazyload"
               [alt]="details?.author?.name + ' Headshot'"
               (error)="author_img.src = 'assets/img/placeholder.svg'"
               #author_img
             />
           </a>
         </div>
+        <div class="userDescription text-center">
         <a
           routerLink="/author/{{ details?.author?.slug }}"
           *ngIf="details?.author"
@@ -73,6 +74,7 @@
           >{{ commonService.formatTime(details.posted_on) }} •
           {{ date_time | date: "MM/dd/yy" }}
         </span>
+      </div>
         <hr />
 
         <!-- social icons -->
