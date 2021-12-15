@@ -47,9 +47,9 @@
         <div class="userImage position-relative d-none d-md-flex">
           <a routerLink="/author/{{ details?.author?.slug }}">
             <img
-              src="{{ author_media | defaultImage: 200:200 }}"
-              width="200"
-              height="200"
+              src="{{ author_media | defaultImage: 150:150 }}"
+              width="150"
+              height="150"
               class="author-img position-absolute d-block lazyload"
               [alt]="details?.author?.name + ' Headshot'"
               (error)="author_img.src = 'assets/img/placeholder.svg'"

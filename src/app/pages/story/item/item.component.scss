@@ -3,10 +3,10 @@
 
 .articles {
   overflow-x: hidden;
-  .tag{
+  .tag {
     line-height: 18.75px;
   }
-  .video-play{
+  .video-play {
     height: 71px;
     width: 120px;
   }
@@ -17,25 +17,25 @@
     }
     .userImage {
       width: 179px;
-      margin-top: 80px;
+      margin-top: 60px;
       background: $white;
       border-radius: 100%;
-      height: 190px;
+      height: 140px;
 
       .author-img {
         border-radius: 50%;
-        width: 200px !important;
-        height: 200px !important;
       }
     }
-    .large-main-article{
+    .large-main-article {
       color: $dark_gray;
+      font-size: 28px;
     }
     .sectionTitle {
       color: $red;
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 16px;
     }
-    .seeMore{
+    .seeMore {
       color: $dark_gray;
     }
     hr {
@@ -51,13 +51,13 @@
       h1 + h5 {
         text-align: center;
       }
-      .large-main-article{
+      .large-main-article {
         font-size: 13px;
-        span{
+        span {
           color: $red;
         }
       }
-      h5{
+      h5 {
         font-size: 10px;
       }
     }
@@ -75,7 +75,7 @@
       overflow: visible;
       width: 100%;
     }
-    .seeMore{
+    .seeMore {
       color: $dark_gray;
     }
   }
@@ -83,13 +83,13 @@
   //   articles detail style
   .details {
     line-height: 141.19%;
-    .brandPartner{
+    .brandPartner {
       color: $light_gray_4;
       font-size: 13px;
       font-style: italic;
       font-family: $proxiRegular;
-      span{
-        color:$blue;
+      span {
+        color: $blue;
         cursor: pointer;
       }
       .tooltiptext {
@@ -106,7 +106,7 @@
         padding: 15px 20px;
         font-size: 14px;
         cursor: context-menu;
-    
+
         .tooltiptext-link {
           color: $red;
           cursor: pointer;
@@ -123,7 +123,7 @@
       min-height: 186px;
       .large-main-article {
         color: $dark_gray;
-        @include tablet-landscape1{
+        @include tablet-landscape1 {
           font-size: 22px;
           line-height: 117%;
         }
@@ -134,18 +134,18 @@
       font-weight: 700;
       color: $white_4;
       text-transform: none;
-      @include tablet-landscape1{
+      @include tablet-landscape1 {
         font-size: 14px;
         font-weight: 400;
         line-height: 18px;
         color: #9d9c9c;
-      }  
+      }
     }
     .description {
       font-size: 14px;
     }
     @media screen and (max-width: 767px) {
-      h2{
+      h2 {
         text-align: left !important;
         background-color: unset;
         padding: 0 !important;
@@ -153,17 +153,17 @@
       .detailHead {
         position: relative !important;
         min-height: 50px !important;
-        h1{
+        h1 {
           text-align: left !important;
         }
       }
-      .tag{
+      .tag {
         display: none;
       }
     }
   }
   .ArticlesNewsSection {
-    .timeStamp{
+    .timeStamp {
       text-transform: uppercase;
       font-weight: 500;
     }
