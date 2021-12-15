@@ -162,19 +162,20 @@
             "
           ></app-home-article>
           <div class="row seeMoreIcon my-4 desktop-only">
-            <div
-              *ngIf="has_more"
-              class="col d-flex align-items-center justify-content-center py-1"
-            >
-              <img
-                data-src="{{ s3Url }}nextIcon.svg"
-                width="32"
-                alt="next articles"
-                class="me-3 lazyload"
-                (click)="getMoreItems()"
-              />
-              <span class="seeMore" (click)="getMoreItems()">See More</span>
+          <div *ngIf="has_more" class="nextBtn d-flex py-1 justify-content-center align-items-center">
+            <div class="d-inline ps-1">
+              <a (click)="getMoreItems()">
+                <i
+                  class="fa fa-caret-down rounded-circle d-flex justify-content-center
+                            align-items-center primary-bg"
+                  aria-hidden="true"
+                ></i
+              ></a>
             </div>
+            <div class="d-inline">
+              <a (click)="getMoreItems()"><span class="seeMore">See More</span></a>
+            </div>
+          </div>
           </div>
         </div>
         <div

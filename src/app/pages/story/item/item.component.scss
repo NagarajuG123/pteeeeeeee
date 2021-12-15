@@ -81,8 +81,10 @@
       color: $dark_gray;
     }
   }
-  .seeMore{
-    padding: 0 12px;
+  .nextBtn{
+    .seeMore{
+      padding: 0 12px;
+    }
   }
   //   articles detail style
   .details {
