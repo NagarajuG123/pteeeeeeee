@@ -154,7 +154,7 @@
               *ngIf="isInfo"
             >
               <div
-                class="question-section"
+                class="question-section pt-3"
                 *ngFor="let item of items; let i = index"
               >
                 <div class="header header-highlighter align-items-center">
@@ -564,6 +564,7 @@
               *ngIf="inquireForm"
               [formGroup]="inquireForm"
               (ngSubmit)="submitInquireForm(inquireForm.value)"
+              class="position-relative"
             >
               <div class="row" *ngFor="let fields of inquireFields">
                 <div class="col-12 inquirefrom-row">
@@ -639,8 +640,8 @@
                   </div>
                 </div>
               </div>
-              <div class="divider-recent-feature row">
-                <button type="submit" class="text-white rounded-0 w-100">
+              <div class="divider-recent-feature position-absolute w-100">
+                <button type="submit" class="text-white text-center rounded-0 w-100">
                   Next
                 </button>
               </div>

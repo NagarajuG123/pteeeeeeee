@@ -16,7 +16,6 @@
       color: $dark_gray;
     }
     .userImage {
-      width: 179px;
       margin-top: 60px;
       background: $white;
       border-radius: 100%;
@@ -44,6 +43,9 @@
     }
     @media screen and (max-width: 767px) {
       max-width: inherit;
+      .userDescription{
+        text-align: unset !important;
+      }
       .userImage {
         margin: 80px auto 0;
       }
