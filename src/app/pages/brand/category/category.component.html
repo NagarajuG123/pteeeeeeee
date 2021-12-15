@@ -132,22 +132,24 @@
       ></app-home-article>
     </div>
     <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
-      <div class="seeMoreLine"></div>
-
-      <div class="d-inline ps-1">
-        <a (click)="getMore(slug)">
+      <div class="col-5 seeMoreLine"></div>
+      <div class="col-2 d-flex align-items-center justify-content-center">
+        <a (click)="getMore(slug)" class="pe-3">
           <i
-            class="fa fa-caret-down rounded-circle d-flex justify-content-center
-                      align-items-center primary-bg"
+            class="
+              fa fa-caret-down
+              rounded-circle
+              d-flex
+              justify-content-center
+              align-items-center
+              primary-bg
+            "
             aria-hidden="true"
           ></i
         ></a>
+        <span class="seeMore"><a (click)="getMore(slug)">See More</a></span>
       </div>
-      <div class="d-inline">
-        <a (click)="getMore(slug)"><span class="seeMore">See More</span></a>
-      </div>
-
-      <div class="seeMoreLine"></div>
+      <div class="col-5 seeMoreLine"></div>
     </div>
   </div>
 </div>

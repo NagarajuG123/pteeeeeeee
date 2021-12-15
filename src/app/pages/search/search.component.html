@@ -162,20 +162,38 @@
             "
           ></app-home-article>
           <div class="row seeMoreIcon my-4 desktop-only">
-          <div *ngIf="has_more" class="nextBtn d-flex py-1 justify-content-center align-items-center">
-            <div class="d-inline ps-1">
-              <a (click)="getMoreItems()">
-                <i
-                  class="fa fa-caret-down rounded-circle d-flex justify-content-center
-                            align-items-center primary-bg"
-                  aria-hidden="true"
-                ></i
-              ></a>
+            <div
+              class="
+                nextBtn
+                d-flex
+                py-5
+                justify-content-center
+                align-items-center
+              "
+            >
+              <div class="col-5 seeMoreLine"></div>
+              <div
+                class="col-2 d-flex align-items-center justify-content-center"
+              >
+                <a (click)="getMoreItems()" class="pe-3">
+                  <i
+                    class="
+                      fa fa-caret-down
+                      rounded-circle
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      primary-bg
+                    "
+                    aria-hidden="true"
+                  ></i
+                ></a>
+                <span class="seeMore"
+                  ><a (click)="getMoreItems()">See More</a></span
+                >
+              </div>
+              <div class="col-5 seeMoreLine"></div>
             </div>
-            <div class="d-inline">
-              <a (click)="getMoreItems()"><span class="seeMore">See More</span></a>
-            </div>
-          </div>
           </div>
         </div>
         <div

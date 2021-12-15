@@ -170,6 +170,9 @@ button {
 }
 
 .nextBtn {
+  .seeMoreLine {
+    border: 1px solid $red;
+  }
   i {
     color: $white;
     font-size: 18px;
@@ -178,24 +181,13 @@ button {
   }
 }
 .seeMore {
-  width: 220px;
-  padding: 0 18px;
-  margin-top: 25px;
   color: $dark_gray;
 
   &:hover {
     color: $dark_gray;
   }
+}
 
-  @include tablet-landscape1 {
-    width: 165px;
-    padding: 0 7px;
-  }
-}
-.seeMoreLine {
-  width: 45%;
-  border: 1px solid $red;
-}
 //tabs
 .tabs {
   height: 60px;

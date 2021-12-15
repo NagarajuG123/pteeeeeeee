@@ -297,24 +297,28 @@
                   align-items-center
                 "
               >
-                <div class="seeMoreLine"></div>
-
-                <div class="d-inline ps-1">
-                  <a (click)="getMore()">
+                <div class="col-5 seeMoreLine"></div>
+                <div
+                  class="col-2 d-flex align-items-center justify-content-center"
+                >
+                  <a (click)="getMore()" class="pe-3">
                     <i
-                      class="fa fa-caret-down rounded-circle d-flex justify-content-center
-                      align-items-center primary-bg"
+                      class="
+                        fa fa-caret-down
+                        rounded-circle
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                        primary-bg
+                      "
                       aria-hidden="true"
                     ></i
                   ></a>
-                </div>
-                <div class="d-inline">
-                  <a (click)="getMore()"
-                    ><span class="seeMore">See More</span></a
+                  <span class="seeMore"
+                    ><a (click)="getMore()">See More</a></span
                   >
                 </div>
-
-                <div class="seeMoreLine"></div>
+                <div class="col-5 seeMoreLine"></div>
               </div>
             </div>
 
@@ -642,7 +646,10 @@
                 </div>
               </div>
               <div class="divider-recent-feature position-absolute w-100">
-                <button type="submit" class="text-white text-center rounded-0 w-100">
+                <button
+                  type="submit"
+                  class="text-white text-center rounded-0 w-100"
+                >
                   Next
                 </button>
               </div>

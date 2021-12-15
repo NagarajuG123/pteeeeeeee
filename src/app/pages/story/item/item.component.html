@@ -44,7 +44,14 @@
   <div class="container customContainer">
     <div class="row">
       <div class="col-12 col-md userDetail">
-        <div class="userImage d-none d-md-flex justify-content-center align-items-center">
+        <div
+          class="
+            userImage
+            d-none d-md-flex
+            justify-content-center
+            align-items-center
+          "
+        >
           <a routerLink="/author/{{ details?.author?.slug }}">
             <img
               src="{{ author_media | defaultImage: 150:150 }}"
@@ -58,23 +65,23 @@
           </a>
         </div>
         <div class="userDescription text-center">
-        <a
-          routerLink="/author/{{ details?.author?.slug }}"
-          *ngIf="details?.author"
-          ><h3 class="mb-0 mt-3 large-main-article">
-            By <span>{{ details.author.name }}</span>
-          </h3></a
-        >
-        <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
-        <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
-          >{{ commonService.formatTime(details.last_modified) }} •
-          {{ last_modified | date: "MM/dd/yy" }}
-        </span>
-        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
-          >{{ commonService.formatTime(details.posted_on) }} •
-          {{ date_time | date: "MM/dd/yy" }}
-        </span>
-      </div>
+          <a
+            routerLink="/author/{{ details?.author?.slug }}"
+            *ngIf="details?.author"
+            ><h3 class="mb-0 mt-3 large-main-article">
+              By <span>{{ details.author.name }}</span>
+            </h3></a
+          >
+          <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+          <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
+            >{{ commonService.formatTime(details.last_modified) }} •
+            {{ last_modified | date: "MM/dd/yy" }}
+          </span>
+          <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+            >{{ commonService.formatTime(details.posted_on) }} •
+            {{ date_time | date: "MM/dd/yy" }}
+          </span>
+        </div>
         <hr />
 
         <!-- social icons -->
@@ -195,22 +202,24 @@
   <!-- next article line -->
 
   <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
-    <div class="seeMoreLine"></div>
-
-    <div class="d-inline ps-1">
-      <a (click)="nextArticle()">
+    <div class="col-5 seeMoreLine"></div>
+    <div class="col-2 d-flex align-items-center justify-content-center">
+      <a (click)="nextArticle()" class="pe-3">
         <i
-          class="fa fa-caret-down rounded-circle d-flex justify-content-center
-                      align-items-center primary-bg"
+          class="
+            fa fa-caret-down
+            rounded-circle
+            d-flex
+            justify-content-center
+            align-items-center
+            primary-bg
+          "
           aria-hidden="true"
         ></i
       ></a>
+      <span class="seeMore"><a (click)="nextArticle()">Next Article</a></span>
     </div>
-    <div class="d-inline">
-      <a (click)="nextArticle()"><span class="seeMore">Next Article</span></a>
-    </div>
-
-    <div class="seeMoreLine"></div>
+    <div class="col-5 seeMoreLine"></div>
   </div>
 
   <div class="most-like-articles pb-5 d-flex d-sm-none">
