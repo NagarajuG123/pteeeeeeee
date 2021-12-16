@@ -48,11 +48,24 @@ export class SpotlightComponent implements OnInit {
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
-            const data: any[] = [];
-            result['data'].forEach((item: any) => {
-              data.push(item);
-            });
-            this.items = data;
+            if(result.data[0]){
+              const data: any[] = [];
+              result['data'].forEach((item: any) => {
+                data.push(item);
+              });
+              this.items = data;
+            } else{
+              this.apiService
+              .getAPI(`${this.slug}/spotlight/${this.tabName[0].shortName.toLowerCase()}?limit=8&offset=0`)
+              .pipe(takeUntil(this.onDestroy$))
+              .subscribe((result) => {
+                const data: any[] = [];
+                result['data'].forEach((item: any) => {
+                  data.push(item);
+                });
+                this.items = data;
+              });
+            }
             this.isLoaded = true;
           });
       });

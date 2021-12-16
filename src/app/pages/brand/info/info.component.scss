@@ -215,10 +215,7 @@
         text-align: center;
         font-family: $roboto;
         line-height: 22.27px;
-        @include media("<md") {
-          height: 60px;
-        }
-
+      
         @include mobile-landscape {
           padding-left: 15px;
         }

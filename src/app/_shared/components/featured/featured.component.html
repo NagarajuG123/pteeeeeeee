@@ -66,7 +66,7 @@
       >
     </div>
     <!-- Industry 1851 news list -->
-    <div *ngIf="length > 8 && !isAwards()" class="col-lg-3 col-sm-12">
+    <div *ngIf="length > 8 && !isAwards() && news.length" class="col-lg-3 col-sm-12">
       <span class="small-red-headers">Latest Franchise Industry News</span>
       <ul class="industry-list pt-1">
         <li *ngFor="let item of news; index as i">
