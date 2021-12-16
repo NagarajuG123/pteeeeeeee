@@ -28,7 +28,6 @@
       font-size: 20px;
       text-align: center;
       padding: 1px 7px;
-      top: -18px;
       display: table;
     }
   }
@@ -389,8 +388,6 @@
   font-size: 20px;
   text-align: center;
   padding: 1px 7px;
-
-  top: -18px;
 }
 
 //Why I Bought
@@ -1078,7 +1075,6 @@ button.close {
     display: table;
     width: -webkit-fit-content;
     @include mobile-portrait {
-      top: 8px;
       font-size: 14px;
       width: -webkit-fit-content;
       line-height: 20px;
