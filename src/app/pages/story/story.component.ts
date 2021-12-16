@@ -270,15 +270,11 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
-                    let headerApi = 'header';
-                    if (this.brandId !== '1851') {
-                      headerApi = `header?slug=${this.brandSlug}`;
-                    }
                     this.apiService
-                      .getAPI2(headerApi)
+                      .getAPI2(`header`)
                       .subscribe((result) => {
                         let coverDate =
-                          result.data['monthly-cover'].cover_url;
+                          result.data.monthlyCover.coverUrl;
                         let data = coverDate.split('/monthlydetails/').pop();
                         this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
                       });
@@ -354,17 +350,10 @@ export class StoryComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         this.publication = result[2];
+        this.footer = result[3];
 
         result['story'] = result[0];
         result['header'] = result[1]['data'];
-
-        if (
-          result['header']['logo'] &&
-          result['header']['logo']['width'] > 240
-        ) {
-          result['header']['logo']['width'] = 240;
-          result['header']['logo']['height'] = 24;
-        }
 
         if (result['story'].data === null) {
           window.location.href = '404';
@@ -390,6 +379,10 @@ export class StoryComponent implements OnInit {
             (modified_date.getHours() - modified_date.getTimezoneOffset()) % 60;
           modified_date.setHours(hours);
           modified_date.setMinutes(minutes);
+          let socialLinks = [];
+          result['header'].socialMedia.forEach((item:any)=>{
+            socialLinks.push(item.url);
+          });
           const json = {
             '@context': 'https://schema.org/',
             '@type': 'Article',
@@ -433,12 +426,7 @@ export class StoryComponent implements OnInit {
                 width: result['header']['logo']['width'],
                 height: result['header']['logo']['height'],
               },
-              sameAs: [
-                result[3].data['learn-more']['social-media']['fb-url'],
-                result[3].data['learn-more']['social-media']['twitter-url'],
-                result[3].data['learn-more']['social-media']['instagram-url'],
-                result[3].data['learn-more']['social-media']['linkedin-url'],
-              ],
+              sameAs: socialLinks,
             },
           };
           this.schema = json;
@@ -793,6 +781,10 @@ export class StoryComponent implements OnInit {
           (posted_date.getHours() - posted_date.getTimezoneOffset()) % 60;
         posted_date.setHours(hoursDiff);
         posted_date.setMinutes(minutesDiff);
+        let socialLinks = [];
+        this.footer.socialMedia.forEach((item:any)=>{
+          socialLinks.push(item.url);
+        });
         this.schema = {
           '@context': 'https://schema.org/',
           '@type': 'Article',
@@ -837,10 +829,7 @@ export class StoryComponent implements OnInit {
               height: this.header['logo']['height'],
             },
             sameAs: [
-              this.footer.data['learn-more']['social-media']['fb-url'],
-              this.footer.data['learn-more']['social-media']['twitter-url'],
-              this.footer.data['learn-more']['social-media']['instagram-url'],
-              this.footer.data['learn-more']['social-media']['linkedin-url'],
+              socialLinks
             ],
           },
         };

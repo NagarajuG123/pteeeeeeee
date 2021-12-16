@@ -67,7 +67,11 @@ export class AuthorComponent implements OnInit {
             );
             this.brandedContents = results[2].data;
             this.editorials = results[3].data;
-            this.footer = results[4].data;
+            this.footer = results[4];
+            let socialLinks = [];
+            this.footer.socialMedia.forEach((item:any)=>{
+              socialLinks.push(item.url);
+            });
             this.schema = {
               '@context': 'https://schema.org/',
               '@type': 'Person',
@@ -84,10 +88,7 @@ export class AuthorComponent implements OnInit {
                 '@id': `${environment.appUrl}`,
               },
               sameAs: [
-                this.footer['learn-more']['social-media']['fb-url'],
-                this.footer['learn-more']['social-media']['twitter-url'],
-                this.footer['learn-more']['social-media']['instagram-url'],
-                this.footer['learn-more']['social-media']['linkedin-url'],
+                socialLinks
               ],
             };
           }
