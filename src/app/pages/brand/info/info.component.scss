@@ -3,7 +3,6 @@
 @import "../../../../assets/scss/media.scss";
 
 .question-section {
-
   @include tablet-landscape1 {
     padding-top: 30px;
   }
@@ -13,7 +12,6 @@
   }
 
   + .question-section {
-
     @include mobile-landscape1 {
       padding-top: 15px;
     }
@@ -124,22 +122,12 @@
     padding: 0 20px;
   }
   .header {
-    height: 67px;
     background-color: $dark_gray;
     display: flex;
     align-items: center;
 
-    @include tablet-portrait {
-      height: 60px;
-    }
-
-    @include mobile-landscape1 {
-      height: 50px;
-    }
-
     .title {
       color: $white;
-      padding-left: 23px;
       @include mobile-landscape1 {
         font-size: 26px;
       }
@@ -164,13 +152,9 @@
     background-color: $white_8;
     font-family: $roboto;
     font-weight: 700;
-    padding: 30px 23px;
     .topContent {
       font-weight: 400;
       color: $black;
-    }
-    @include mobile-landscape1 {
-      padding: 15px;
     }
 
     .text {
@@ -213,7 +197,6 @@
     display: flex;
     align-items: center;
     background-color: $dark_gray;
-    padding-left: 10px;
     border-bottom: 2px solid $red;
 
     h1 {
@@ -251,7 +234,6 @@
   }
 
   form {
-    padding: 25px 20px 10px;
     background-color: $dark_gray;
 
     .inquirefrom-row {
@@ -300,12 +282,6 @@
     margin-bottom: 25px;
   }
 
-  .row {
-    .inquirefrom-row {
-      padding: 0;
-    }
-  }
-
   .row:last-child {
     .inquirefrom-row {
       .form-control {
@@ -315,12 +291,13 @@
   }
 }
 
-.divider-recent-feature button {
-  height: 36px;
-  background-color: $red;
-  margin-left: -20px;
+.divider-recent-feature {
+  padding-right: 3rem;
+  button {
+    height: 36px;
+    background-color: $red;
+  }
 }
-
 .recent-feature-article-section {
   padding: 30px 25px;
   background-color: $white_8;
@@ -412,8 +389,7 @@
   font-size: 20px;
   text-align: center;
   padding: 1px 7px;
-  // width: -webkit-max-content;
-  // width: max-content;
+
   top: -18px;
 }
 

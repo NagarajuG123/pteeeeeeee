@@ -102,7 +102,7 @@
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="container">
+    <div class="container" [ngClass]="isMarket ? 'customContainer' : ''">
       <div class="row d-flex">
         <div
           class="col-md-12 pl-0 brand-left-info--wrapper"
@@ -472,14 +472,14 @@
         >
           <div class="financial-requirement-section more-brand--wrapper">
             <div class="header" *ngIf="isInfo">
-              <h1 class="sectionTitle title text-capitalize mb-0">
+              <h1 class="sectionTitle title text-capitalize mb-0 p-4">
                 Financial Requirements
               </h1>
             </div>
             <div class="headerMarket" *ngIf="isMarket">
               <h2 class="titleMarket">More Brand Info</h2>
             </div>
-            <div class="financial-description" *ngIf="isInfo">
+            <div class="financial-description p-4" *ngIf="isInfo">
               <p class="topContent m-0 pb-3">
                 {{ brandInfo?.more_info }}
               </p>
@@ -565,11 +565,11 @@
           </div>
 
           <div class="inquiry-form-section">
-            <div class="header py-2" *ngIf="!isMarket">
-              <h1 class="title mb-0 text-capitalize">Inquire Now</h1>
+            <div class="header" *ngIf="!isMarket">
+              <h1 class="title mb-0 text-capitalize p-4">Inquire Now</h1>
             </div>
             <div class="header" *ngIf="isMarket">
-              <h1 class="market-header text-uppercase">
+              <h1 class="market-header text-uppercase p-4">
                 Inquire about services
               </h1>
             </div>
@@ -577,7 +577,7 @@
               *ngIf="inquireForm"
               [formGroup]="inquireForm"
               (ngSubmit)="submitInquireForm(inquireForm.value)"
-              class="position-relative"
+              class="position-relative p-4"
             >
               <div class="row" *ngFor="let fields of inquireFields">
                 <div class="col-12 inquirefrom-row">
