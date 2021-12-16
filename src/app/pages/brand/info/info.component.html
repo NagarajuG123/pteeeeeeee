@@ -99,7 +99,7 @@
   <!-- story tab banner -->
   <div
     class="px-4 brand-page-row--wrapper"
-    [ngClass]="isMarket ? 'mb-4 available-marketing--wrapper' : ''"
+    [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
     <div class="container">
@@ -327,7 +327,10 @@
               </div>
             </div>
 
-            <div class="container customContainer whyIBought" *ngIf="isBought">
+            <div
+              class="container customContainer whyIBought pb-5"
+              *ngIf="isBought"
+            >
               <div>
                 <ul class="d-flex">
                   <li class="header-title">
@@ -350,7 +353,7 @@
             </div>
 
             <div
-              class="container customContainer whyIBought"
+              class="container customContainer whyIBought pb-5"
               *ngIf="isExecutive"
             >
               <div>
