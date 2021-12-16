@@ -258,30 +258,10 @@ header {
     }
 
     .ticker {
-      width: 22.3%;
-      @include tablet-landscape {
-        width: 0%;
-      }
-      @include mobile-portrait {
-        width: 0%;
-      }
-    }
-    .trendingLogo {
-      @include tablet-landscape {
-        width: 90px;
-      }
-      @include mobile-portrait {
-        width: 90px;
-      }
+      width: 20%;
     }
     .tickerText {
-      width: 70%;
-      @include tablet-landscape {
-        width: 80%;
-      }
-      @include mobile-portrait {
-        width: 100%;
-      }
+      width: 73%;
     }
     .title {
       color: $white_2;

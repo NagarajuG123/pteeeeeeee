@@ -270,11 +270,15 @@ export class StoryComponent implements OnInit {
                     break;
 
                   case 'monthlydetailspage':
+                    let headerApi = 'header';
+                    if (this.brandId !== '1851') {
+                      headerApi = `header?slug=${this.brandSlug}`;
+                    }
                     this.apiService
-                      .getAPI('1851/header')
+                      .getAPI2(headerApi)
                       .subscribe((result) => {
                         let coverDate =
-                          result.data['monthly-cover'].media.url.cover_url;
+                          result.data['monthly-cover'].cover_url;
                         let data = coverDate.split('/monthlydetails/').pop();
                         this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
                       });
@@ -337,11 +341,15 @@ export class StoryComponent implements OnInit {
       });
   }
   initLoad() {
+    let headerApi = 'header';
+    if (this.brandSlug !== '1851') {
+      headerApi = `header?slug=${this.brandSlug}`;
+    }
     forkJoin([
       this.apiService.getAPI(`${this.storyApiUrl}`),
-      this.apiService.getAPI(`${this.brandSlug}/header`),
+      this.apiService.getAPI2(headerApi),
       this.apiService.getAPI(`1851/publication-instance`),
-      this.apiService.getAPI(`1851/footer`),
+      this.apiService.getAPI2(`footer`),
     ])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {

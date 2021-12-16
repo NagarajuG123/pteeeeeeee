@@ -53,7 +53,7 @@ export class AuthorComponent implements OnInit {
       const editorial = this.apiService.getAPI(
         `author/${this.authorSlug}/editorials?limit=10&offset=0`
       );
-      const footer = this.apiService.getAPI('1851/footer');
+      const footer = this.apiService.getAPI2('footer');
 
       forkJoin([author, publication, brand, editorial, footer]).subscribe(
         (results) => {
