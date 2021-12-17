@@ -4,7 +4,16 @@
 
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
-
+  .subTitle {
+    color: $white;
+    font-weight: 700;
+    &::before {
+      content: "|";
+      padding-left: 15px;
+      padding-right: 15px;
+      display: inline-block;
+    }
+  }
   .card {
     .card-body {
       background-color: $red;
