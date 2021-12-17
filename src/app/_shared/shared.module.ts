@@ -12,7 +12,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './components/error/error.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
-import { FeaturedComponent } from './components/featured/featured.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -24,7 +23,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
-    FeaturedComponent,
     HeaderComponent,
     FooterComponent,
     ErrorComponent,
@@ -60,7 +58,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     FooterComponent,
     TrendingBuzzComponent,
     MostPopularComponent,
-    FeaturedComponent,
     ErrorMessageComponent,
     FontAwesomeModule,
     ShareButtonModule,

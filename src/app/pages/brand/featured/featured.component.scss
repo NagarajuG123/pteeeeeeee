@@ -1,0 +1,47 @@
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.featured {
+  .featuredList {
+    @include mobile-portrait {
+      margin-bottom: 1rem;
+    }
+  }
+  .video-play {
+    height: 71px;
+    width: 120px;
+  }
+
+  .industry-list {
+    color: $black;
+    font-family: $roboto;
+    font-weight: 700;
+    li {
+      border-bottom: 1px solid $light_gray_9;
+      padding: 25px 0 25px !important;
+      &:first-child {
+        padding-top: 0px !important;
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+  .brand-list {
+    border-left: 3px solid $white_6;
+    .articleTitles {
+      font-size: 13px;
+      padding-top: 5px;
+    }
+    &.brandPage {
+      .research {
+        font-family: $proxiBold;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24.36px;
+        color: $light_gray_9;
+        border: 1px solid $light_gray_8;
+      }
+    }
+  }
+}
