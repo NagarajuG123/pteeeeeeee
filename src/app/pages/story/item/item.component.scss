@@ -3,12 +3,92 @@
 
 .articles {
   overflow-x: hidden;
+  font-family: $roboto;
+  min-height: 186px;
+  line-height: 141.19%;
+  .articleContainer {
+    max-width: 900px !important;
+  }
   .tag {
     line-height: 18.75px;
   }
   .video-play {
     height: 71px;
     width: 120px;
+  }
+
+  .large-main-article {
+    color: $dark_gray;
+    @include tablet-landscape1 {
+      font-size: 22px;
+      line-height: 117%;
+    }
+  }
+  .sectionTitle {
+    line-height: 28.24px;
+    font-weight: 700;
+    color: $white_4;
+    text-transform: none;
+    @include tablet-landscape1 {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #9d9c9c;
+    }
+  }
+  .description {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    h2 {
+      text-align: left !important;
+      background-color: unset;
+      padding: 0 !important;
+    }
+    .detailHead {
+      position: relative !important;
+      min-height: 50px !important;
+      h1 {
+        text-align: left !important;
+      }
+    }
+    .tag {
+      display: none;
+    }
+  }
+  .brandPartner {
+    color: $light_gray_4;
+    font-size: 13px;
+    font-style: italic;
+    font-family: $proxiRegular;
+    span {
+      color: $blue;
+      cursor: pointer;
+    }
+    .tooltiptext {
+      position: absolute;
+      z-index: 1;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -150px;
+      visibility: hidden;
+      width: 300px;
+      background-color: $dark_gray_9;
+      color: $white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 14px;
+      cursor: context-menu;
+
+      .tooltiptext-link {
+        color: $red;
+        cursor: pointer;
+        opacity: 0.8;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
   .userDetail {
     max-width: 300px;
@@ -83,87 +163,7 @@
   }
 
   //   articles detail style
-  .details {
-    line-height: 141.19%;
-    .brandPartner {
-      color: $light_gray_4;
-      font-size: 13px;
-      font-style: italic;
-      font-family: $proxiRegular;
-      span {
-        color: $blue;
-        cursor: pointer;
-      }
-      .tooltiptext {
-        position: absolute;
-        z-index: 1;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -150px;
-        visibility: hidden;
-        width: 300px;
-        background-color: $dark_gray_9;
-        color: $white;
-        text-align: center;
-        padding: 15px 20px;
-        font-size: 14px;
-        cursor: context-menu;
 
-        .tooltiptext-link {
-          color: $red;
-          cursor: pointer;
-          opacity: 0.8;
-          &:hover {
-            opacity: 1;
-          }
-        }
-      }
-    }
-    .detailHead {
-      bottom: 100%;
-      font-family: $roboto;
-      min-height: 186px;
-      .large-main-article {
-        color: $dark_gray;
-        @include tablet-landscape1 {
-          font-size: 22px;
-          line-height: 117%;
-        }
-      }
-    }
-    .sectionTitle {
-      line-height: 28.24px;
-      font-weight: 700;
-      color: $white_4;
-      text-transform: none;
-      @include tablet-landscape1 {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 18px;
-        color: #9d9c9c;
-      }
-    }
-    .description {
-      font-size: 14px;
-    }
-    @media screen and (max-width: 767px) {
-      h2 {
-        text-align: left !important;
-        background-color: unset;
-        padding: 0 !important;
-      }
-      .detailHead {
-        position: relative !important;
-        min-height: 50px !important;
-        h1 {
-          text-align: left !important;
-        }
-      }
-      .tag {
-        display: none;
-      }
-    }
-  }
   .ArticlesNewsSection {
     .timeStamp {
       text-transform: uppercase;

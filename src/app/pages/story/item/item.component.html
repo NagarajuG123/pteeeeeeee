@@ -1,202 +1,210 @@
 <div *ngIf="details" class="articles">
-  <div class="d-block container">
-    <a
-      *ngIf="media && media.type === 'video'"
-      class="d-block video-btn"
-      (click)="openVideoPlayer = true"
-      data-bs-toggle="modal"
-      attr.data-bs-target="#storyModal{{ index }}"
-      href="#"
-      onclick="return false;"
-    >
-      <img
-        appYoutubeImage
-        width="1440"
-        data-src="{{ media | defaultImage: 1440:810 }}"
-        height="810"
-        alt="article"
-        class="lazyload img-fluid"
-      />
-      <img
-        data-src="{{ s3Url }}videoIcon.png"
-        alt="Play"
-        class="img-fluid video-play lazyload"
-        loading="lazy"
-      />
-    </a>
-    <a
-      *ngIf="media && media.type !== 'video'"
-      class="d-block"
-      href="#"
-      onclick="return false;"
-    >
-      <img
-        appYoutubeImage
-        width="1440"
-        height="810"
-        data-src="{{ media | defaultImage: 1440:810 }}"
-        alt="article"
-        class="lazyload img-fluid"
-      />
-    </a>
-  </div>
-  <!-- main articles details -->
-  <div class="container customContainer">
-    <div class="row">
-      <div class="col-12 col-md userDetail">
-        <div
-          class="
-            userImage
-            d-none d-md-flex
-            justify-content-center
-            align-items-center
-          "
-        >
-          <a routerLink="/author/{{ details?.author?.slug }}">
-            <img
-              src="{{ author_media | defaultImage: 150:150 }}"
-              width="150"
-              height="150"
-              class="author-img d-block lazyload"
-              [alt]="details?.author?.name + ' Headshot'"
-              (error)="author_img.src = 'assets/img/placeholder.svg'"
-              #author_img
-            />
-          </a>
-        </div>
-        <div class="userDescription text-center">
-          <a
-            routerLink="/author/{{ details?.author?.slug }}"
-            *ngIf="details?.author"
-            ><h3 class="mb-0 mt-3 large-main-article">
-              By <span>{{ details.author.name }}</span>
-            </h3></a
-          >
-          <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
-          <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
-            >{{ commonService.formatTime(details.last_modified) }} •
-            {{ last_modified | date: "MM/dd/yy" }}
-          </span>
-          <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
-            >{{ commonService.formatTime(details.posted_on) }} •
-            {{ date_time | date: "MM/dd/yy" }}
-          </span>
-        </div>
-        <hr />
-
-        <!-- social icons -->
-        <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
-        <!-- social icons -->
-        <hr />
-
-        <h5
-          class="seeMore mb-0 d-none d-md-flex text-uppercase p-0"
-          *ngIf="trendingNews.length"
-        >
-          More like this
-        </h5>
-        <fa-icon
-          *ngIf="trendingNews.length"
-          [icon]="faCaretDown"
-          [styles]="{ width: '14px', 'margin-top': '-6px' }"
-          class="primary-color d-none d-md-flex"
-          size="lg"
-        ></fa-icon>
-
-        <ul class="most-like-articles list-group mt-4 mb-3 d-none d-md-flex">
-          <li *ngFor="let item of trendingNews; index as i" class="mb-2">
-            <div class="d-flex">
-              <div class="newsImage me-2 pe-1 position-relative">
-                <a href="{{ readMore(item, 'trending') }}">
-                  <img
-                    appYoutubeImage
-                    width="139"
-                    height="78"
-                    data-src="{{ item.media | defaultImage: 139:78 }}"
-                    srcset="{{item.media | defaultImage:545:305}} 545w,
-                      {{item.media | defaultImage:355:199}} 355w, 
-                      {{item.media | defaultImage:139:78}} 139w"
-                    sizes="{{
-                      '(max-width: 576px) 545px,
-                        (max-width: 768px) 355px,
-                        (max-width: 992px) 300px,
-                        139px'
-                    }}"
-                    alt="news"
-                    class="lazyload"
-                  />
-                </a>
-              </div>
-              <div>
-                <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
-                <p class="m-0 articleTitles">
-                  <a href="{{ readMore(item, 'trending') }}">
-                    {{ item.title }}</a
-                  >
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
+  <div class="container customContainer articleContainer">
+    <div class="position-relative">
+      <a
+        *ngIf="media && media.type === 'video'"
+        class="video-btn"
+        (click)="openVideoPlayer = true"
+        data-bs-toggle="modal"
+        attr.data-bs-target="#storyModal{{ index }}"
+        href="#"
+        onclick="return false;"
+      >
+        <img
+          appYoutubeImage
+          width="900"
+          data-src="{{ media | defaultImage: 900:504 }}"
+          height="504"
+          alt="article"
+          class="lazyload img-fluid"
+        />
+        <img
+          data-src="{{ s3Url }}videoIcon.png"
+          alt="Play"
+          class="img-fluid video-play lazyload"
+          loading="lazy"
+        />
+      </a>
+      <a
+        *ngIf="media && media.type !== 'video'"
+        href="#"
+        onclick="return false;"
+      >
+        <img
+          appYoutubeImage
+          width="900"
+          height="504"
+          data-src="{{ media | defaultImage: 900:504 }}"
+          alt="article"
+          class="lazyload img-fluid"
+        />
+      </a>
+      <div
+        class="
+          tag
+          position-absolute
+          start-50
+          translate-middle
+          primary-bg
+          text-white text-center
+          py-1
+          px-2
+        "
+        *ngIf="category.name"
+      >
+        <a routerLink="/{{ category.slug }}" class="text-white">{{
+          category.name
+        }}</a>
       </div>
+    </div>
+    <div
+      class="py-4 d-flex justify-content-center text-center align-items-center"
+    >
+      <h1 class="large-main-article mb-0" [innerHTML]="title"></h1>
+    </div>
 
-      <!-- Articles detail section -->
-      <div class="col-md ps-md-5">
-        <div class="details position-relative bg-white">
+    <div class="gray-bg text-center">
+      <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
+    </div>
+
+    <div
+      id="{{ id }}"
+      class="description text-black py-4"
+      [innerHTML]="content"
+    ></div>
+    <div *ngIf="sponsorContent">
+      <p class="brandPartner">
+        *This brand is a paid partner of {{ publication.title }}. For more
+        information on paid partnerships please
+        <span class="tooltiptext-link">click here.</span>
+      </p>
+    </div>
+    <!-- main articles details -->
+    <!-- <div class="container customContainer">
+      <div class="row">
+        <div class="col-12 col-md userDetail">
           <div
             class="
-              detailHead
-              position-absolute
-              bg-white
-              w-100
-              d-flex
+              userImage
+              d-none d-md-flex
               justify-content-center
               align-items-center
             "
           >
+            <a routerLink="/author/{{ details?.author?.slug }}">
+              <img
+                src="{{ author_media | defaultImage: 150:150 }}"
+                width="150"
+                height="150"
+                class="author-img d-block lazyload"
+                [alt]="details?.author?.name + ' Headshot'"
+                (error)="author_img.src = 'assets/img/placeholder.svg'"
+                #author_img
+              />
+            </a>
+          </div>
+          <div class="userDescription text-center">
+            <a
+              routerLink="/author/{{ details?.author?.slug }}"
+              *ngIf="details?.author"
+              ><h3 class="mb-0 mt-3 large-main-article">
+                By <span>{{ details.author.name }}</span>
+              </h3></a
+            >
+            <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+            <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
+              >{{ commonService.formatTime(details.last_modified) }} •
+              {{ last_modified | date: "MM/dd/yy" }}
+            </span>
+            <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+              >{{ commonService.formatTime(details.posted_on) }} •
+              {{ date_time | date: "MM/dd/yy" }}
+            </span>
+          </div>
+          <hr />
+
+          <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
+          <hr />
+
+          <h5
+            class="seeMore mb-0 d-none d-md-flex text-uppercase p-0"
+            *ngIf="trendingNews.length"
+          >
+            More like this
+          </h5>
+          <fa-icon
+            *ngIf="trendingNews.length"
+            [icon]="faCaretDown"
+            [styles]="{ width: '14px', 'margin-top': '-6px' }"
+            class="primary-color d-none d-md-flex"
+            size="lg"
+          ></fa-icon>
+
+          <ul class="most-like-articles list-group mt-4 mb-3 d-none d-md-flex">
+            <li *ngFor="let item of trendingNews; index as i" class="mb-2">
+              <div class="d-flex">
+                <div class="newsImage me-2 pe-1 position-relative">
+                  <a href="{{ readMore(item, 'trending') }}">
+                    <img
+                      appYoutubeImage
+                      width="139"
+                      height="78"
+                      data-src="{{ item.media | defaultImage: 139:78 }}"
+                      srcset="{{item.media | defaultImage:545:305}} 545w,
+                      {{item.media | defaultImage:355:199}} 355w, 
+                      {{item.media | defaultImage:139:78}} 139w"
+                      sizes="{{
+                        '(max-width: 576px) 545px,
+                        (max-width: 768px) 355px,
+                        (max-width: 992px) 300px,
+                        139px'
+                      }}"
+                      alt="news"
+                      class="lazyload"
+                    />
+                  </a>
+                </div>
+                <div>
+                  <h2 class="small-red-headers mb-0">By {{ author_name }}</h2>
+                  <p class="m-0 articleTitles">
+                    <a href="{{ readMore(item, 'trending') }}">
+                      {{ item.title }}</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md ps-md-5">
+          <div class="details position-relative bg-white">
             <div
               class="
-                tag
+                detailHead
                 position-absolute
-                top-0
-                start-50
-                translate-middle
-                primary-bg
-                text-white text-center
-                py-1
-                px-2
+                bg-white
+                w-100
+                d-flex
+                justify-content-center
+                align-items-center
               "
-              *ngIf="category.name"
             >
-              <a routerLink="/{{ category.slug }}" class="text-white">{{
-                category.name
-              }}</a>
+            
+             
             </div>
-            <h1
-              class="large-main-article text-center mb-0 px-1"
-              [innerHTML]="title"
-            ></h1>
-          </div>
 
-          <h2
-            class="sectionTitle text-center gray-bg position-relative mb-4 p-3"
-            [innerHTML]="short_description"
-          ></h2>
-          <div
-            id="{{ id }}"
-            class="description text-black"
-            [innerHTML]="content"
-          ></div>
-          <div *ngIf="sponsorContent">
-            <p class="brandPartner">
-              *This brand is a paid partner of {{ publication.title }}. For more
-              information on paid partnerships please
-              <span class="tooltiptext-link">click here.</span>
-            </p>
+           
+            <div
+              id="{{ id }}"
+              class="description text-black"
+              [innerHTML]="content"
+            ></div>
+          
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- next article line -->
@@ -204,7 +212,12 @@
   <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
     <div class="col-lg-5 col-sm-4 col-4 seeMoreLine"></div>
     <div
-      class="col-lg-2 col-sm-4 col-4 d-flex align-items-center justify-content-center"
+      class="
+        col-lg-2 col-sm-4 col-4
+        d-flex
+        align-items-center
+        justify-content-center
+      "
     >
       <a (click)="nextArticle()" class="pe-3">
         <i
@@ -238,16 +251,16 @@
     </div>
   </div>
   <!-- news blocks -->
-  <div class="ArticlesNewsSection gray-bg py-5 d-none d-md-flex">
-    <div class="container customContainer py-md-2">
-      <h4 class="timeStamp mb-0">Featured Franchise News</h4>
+  <div class="ArticlesNewsSection gray-bg pb-5 d-none d-md-flex">
+    <div class="container customContainer">
+      <h4 class="timeStamp mb-0 pt-3">Featured Franchise News</h4>
       <app-article
         [typeSlug]="'frannews'"
         [contents]="mainNews"
         [class]="'row-cols-sm-1'"
       ></app-article>
 
-      <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
+      <h4 class="timeStamp mb-0">Featured Brand News</h4>
       <app-article
         [typeSlug]="'frannews'"
         [contents]="brandNews"
