@@ -11,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
-  styleUrls: ['./featured.component.scss'],
+  styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent implements OnInit {
   @Input() apiUrl!: string;
@@ -19,7 +19,6 @@ export class FeaturedComponent implements OnInit {
 
   featured: Details[] = [];
   news: Details[] = [];
-  brandNews: Details[] = [];
   brandInfoNews: Details[] = [];
   isLoaded: boolean = false;
   s3Url = environment.s3Url;
@@ -28,47 +27,31 @@ export class FeaturedComponent implements OnInit {
   isBrowser: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-
-  constructor(
-    private apiService: ApiService,
+  constructor( private apiService: ApiService,
     public commonService: CommonService,
-    @Inject(PLATFORM_ID) platformId: Object
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+    @Inject(PLATFORM_ID) platformId: Object) {
+      this.isBrowser = isPlatformBrowser(platformId);
+     }
 
   ngOnInit(): void {
-    this.title = 'Featured Article';
     const featureApi = this.apiService.getAPI(`${this.apiUrl}`);
     const newsApi = this.apiService.getAPI(
       `${this.slug}/spotlight/industry?limit=3&offset=0`
     );
-    const brandNews = this.apiService.getAPI(
-      `${this.slug}/latest?limit=4&offset=0`
-    );
+    const brandInfoApi = this.apiService.getAPI(`info?slug=${this.slug}`);
 
-    forkJoin([featureApi, newsApi, brandNews])
+    forkJoin([featureApi, newsApi, brandInfoApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.featured = results[0].data;
         this.length = this.featured.length;
         this.news = results[1].data;
-        this.brandNews = results[2].data;
+        this.brandInfoNews = results[2];
         this.isLoaded = true;
         this.commonService.isPageLoaded.next(true);
       });
-
-    if (this.slug !== '1851') {
-      this.apiService
-        .getAPI(`info?slug=${this.slug}`)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe((response) => {
-          this.brandInfoNews = response;
-        });
       this.title = this.length < 8 ? 'Special Feature' : 'Featured Article';
-    }
   }
-
   isAwards() {
     return this.slug === 'franchisedevelopmentawards' ? true : false;
   }
@@ -81,3 +64,4 @@ export class FeaturedComponent implements OnInit {
     }
   }
 }
+

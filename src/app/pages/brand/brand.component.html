@@ -1,6 +1,6 @@
 <div *ngIf="type === 'brand_page'">
   <app-featured [apiUrl]="apiUrl" [slug]="slug"></app-featured>
-  <app-most-popular [slug]="slug" [type]="'brand'"></app-most-popular>
+  <app-most-popular [slug]="slug" [apiUrl]="'trending?limit=9&offset=0'" [type]="'brand'" [title]="'Most Popular'"></app-most-popular>
 
   <app-spotlight [slug]="slug"></app-spotlight>
 </div>

@@ -17,6 +17,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class MostPopularComponent implements OnInit {
   @Input() type: string;
   @Input() slug: string;
+  @Input() apiUrl: string;
 
   data: Details[] = [];
   faAngleRight = faAngleRight;
@@ -37,7 +38,7 @@ export class MostPopularComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService
-      .getAPI(`${this.slug}/trending?limit=9&offset=0`)
+      .getAPI(`${this.slug}/${this.apiUrl}`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         if (response.data.length) {

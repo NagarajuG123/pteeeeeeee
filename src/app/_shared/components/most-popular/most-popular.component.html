@@ -1,10 +1,13 @@
 <div class="most-popular sidebar-blur" *ngIf="isLoaded">
   <div class="container customContainer">
-    <h2 class="py-4 m-0 sectionTitle">MOST POPULAR</h2>
+    <h2 *ngIf="type != 'homeFeature';else elseBlock" class="py-4 m-0 sectionTitle">MOST POPULAR</h2>
+    <ng-template #elseBlock><h2 class="py-4 m-0 sectionTitle text-uppercase">Everything Franchising
+      <span class="subTitle py-3 text-capitalize"> To help you buy,grow and build </span>
+    </h2></ng-template>
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
-    <div class="row d-none d-md-flex" *ngIf="type == 'home'">
+    <div class="row d-none d-md-flex" *ngIf="type == 'home' || type == 'homeFeature'">
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">

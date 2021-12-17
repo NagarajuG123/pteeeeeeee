@@ -608,9 +608,8 @@
     (click)="closeSidebar()"
     *ngIf="trending && trending.length"
   >
-    <div class="container py-2">
-      <div class="d-flex align-items-center">
-        <div class="col-xl-2 col-lg-1 col-sm-1 ticker"></div>
+    <div class="container customContainer py-2">
+      <div class="d-flex">
         <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3">
           <img
             data-src="{{ s3Url }}trending.svg"
@@ -621,7 +620,7 @@
           />
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6 ps-4 tickerText">
+        <div class="col-xl-11 col-lg-10 col-md-10 col-sm-6 ps-4 tickerText">
           <div
             class="carousel slide vertical carousel-fade"
             data-bs-ride="carousel"
