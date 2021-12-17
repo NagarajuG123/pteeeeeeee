@@ -22,6 +22,11 @@
           display: inline-block;
         }
     }
+    .featuredCarousel {
+        @include mobile-portrait {
+          padding: 0 10px;
+        }
+      }
 }
 :host ::ng-deep {
     .owl-carousel {
