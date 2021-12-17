@@ -76,10 +76,7 @@ header {
       }
     }
 
-    h6 {
-      font-size: 16px;
-      line-height: 20.59px;
-      font-weight: 500;
+    .articleTitles  {
       color: $dark_gray;
       @include mobile-portrait {
         font-size: 11px;
