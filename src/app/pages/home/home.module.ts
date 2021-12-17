@@ -9,6 +9,7 @@ import { EditorialSectionsComponent } from './editorial-sections/editorial-secti
 import { SeriesComponent } from './series/series.component';
 import { VideoComponent } from './video/video.component';
 import { AwardsComponent } from './awards/awards.component';
+import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AwardsComponent } from './awards/awards.component';
     SeriesComponent,
     VideoComponent,
     AwardsComponent,
+    FeaturedCarouselComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
   providers: [],
