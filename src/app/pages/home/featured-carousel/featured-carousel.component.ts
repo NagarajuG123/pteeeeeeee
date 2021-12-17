@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-featured-carousel',
@@ -17,7 +18,10 @@ export class FeaturedCarouselComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    public commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.apiService
