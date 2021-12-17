@@ -68,7 +68,7 @@
     </div>
 
     <div class="row row-cols-3 authorDetails pt-3 px-5">
-      <div class="row row-cols-2">
+      <div class="row row-cols-2 align-items-center">
           <a routerLink="/author/{{ details?.author?.slug }}" class="authorImg" *ngIf="details?.author">
           <img
             src="{{ author_media | defaultImage: 41:62 }}"
@@ -85,8 +85,7 @@
           <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
         </a>
       </div>
-      
-      <div>
+      <div class="align-items-center border-start text-center">
         <div *ngIf="sponsorship && sponsorship_position === 'author_title_section'">
         <a
           href="#"
@@ -97,18 +96,17 @@
         >
           SPONSORED
         </a>
-      </div>
+        </div>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
-        >{{ commonService.formatTime(details.last_modified) }} •
-        {{ last_modified | date: "MM/dd/yy" }}
-      </span>
-      <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
-        >{{ commonService.formatTime(details.posted_on) }} •
-        {{ date_time | date: "MM/dd/yy" }}
-      </span>
-    
+          >{{ commonService.formatTime(details.last_modified) }} •
+          {{ last_modified | date: "MM/dd/yy" }}
+        </span>
+        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.posted_on) }} •
+          {{ date_time | date: "MM/dd/yy" }}
+        </span>
     </div>
-      <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
+    <div id="{{ 'inline-buttons-' + index }}" class="social-links align-items-center border-start text-center"></div>
     </div>
 
     <div
@@ -122,6 +120,17 @@
         information on paid partnerships please
         <span class="tooltiptext-link">click here.</span>
       </p>
+    </div>
+    <div class="most-like-articles mb-3">
+      <h5 class="seeMore mb-0 d-none d-md-flex text-uppercase pb-2" *ngIf="trendingNews.length">
+        More Stories like this
+      </h5>
+      <app-article
+        [typeSlug]="'trending'"
+        [contents]="trendingNews"
+        [type]="'articleTrending'"
+        [class]="'row-cols-sm-2 row-cols-2 articleTrending'"
+      ></app-article>
     </div>
     <!-- main articles details -->
     <!-- <div class="container customContainer">
