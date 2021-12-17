@@ -25,6 +25,19 @@
       font-size: 12px;
       line-height: 15px;
     }
+    .tag{
+      background-color: unset;
+      color: $red;
+    }
+    .timeStamp{
+      color: $dark_gray;
+    }
+    .authorImg{
+      width: 30%;
+    }
+    .description{
+      width: 70%;
+    }
   }
   .large-main-article {
     color: $dark_gray;
@@ -46,7 +59,9 @@
     }
   }
   .description {
-    font-size: 14px;
+    font-size: 16px;
+    color: $dark_gray_3;
+    line-height: 150%;
   }
   @media screen and (max-width: 767px) {
     h2 {

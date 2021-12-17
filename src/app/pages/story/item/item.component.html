@@ -67,14 +67,37 @@
       <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
     </div>
 
-    <div class="row row-cols-3 authorDetails mt-3">
-      <div>
-        <a routerLink="/author/{{ details?.author?.slug }}" *ngIf="details?.author">
-          <h3 class="mb-0 large-main-article"> By <span>{{ details.author.name }}</span></h3>
+    <div class="row row-cols-3 authorDetails pt-3 px-5">
+      <div class="row row-cols-2">
+          <a routerLink="/author/{{ details?.author?.slug }}" class="authorImg" *ngIf="details?.author">
+          <img
+            src="{{ author_media | defaultImage: 41:62 }}"
+            width="41"
+            height="62"
+            class="author-img d-block lazyload rounded-circle"
+            [alt]="details?.author?.name + ' Headshot'"
+            (error)="author_img.src = 'assets/img/placeholder.svg'"
+            #author_img
+          />
         </a>
-        <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+        <a routerLink="/author/{{ details?.author?.slug }}" *ngIf="details?.author" class="description">
+          <h3 class="mb-0 large-main-article"> By <span>{{ details.author.name }}</span></h3>
+          <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+        </a>
       </div>
+      
       <div>
+        <div *ngIf="sponsorship && sponsorship_position === 'author_title_section'">
+        <a
+          href="#"
+          onclick="return false;"
+          data-bs-toggle="modal"
+          data-bs-target="#sponsoredModal"
+          class="tag p-0"
+        >
+          SPONSORED
+        </a>
+      </div>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
         >{{ commonService.formatTime(details.last_modified) }} •
         {{ last_modified | date: "MM/dd/yy" }}
@@ -83,6 +106,7 @@
         >{{ commonService.formatTime(details.posted_on) }} •
         {{ date_time | date: "MM/dd/yy" }}
       </span>
+    
     </div>
       <div id="{{ 'inline-buttons-' + index }}" class="social-links"></div>
     </div>
