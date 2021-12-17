@@ -1,9 +1,9 @@
 <div class="most-popular sidebar-blur" *ngIf="isLoaded">
   <div class="container customContainer">
-    <h2 *ngIf="type != 'homeFeature'" class="py-4 m-0 sectionTitle">MOST POPULAR</h2>
-    <h2 *ngIf="type == 'homeFeature'" class="py-4 m-0 sectionTitle text-uppercase">Everything Franchising
+    <h2 *ngIf="type != 'homeFeature';else elseBlock" class="py-4 m-0 sectionTitle">MOST POPULAR</h2>
+    <ng-template #elseBlock><h2 class="py-4 m-0 sectionTitle text-uppercase">Everything Franchising
       <span class="subTitle py-3 text-capitalize"> To help you buy,grow and build </span>
-    </h2>
+    </h2></ng-template>
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
