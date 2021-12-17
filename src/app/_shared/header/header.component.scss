@@ -76,10 +76,7 @@ header {
       }
     }
 
-    h6 {
-      font-size: 16px;
-      line-height: 20.59px;
-      font-weight: 500;
+    .articleTitles  {
       color: $dark_gray;
       @include mobile-portrait {
         font-size: 11px;
@@ -240,6 +237,7 @@ header {
 
   .bottom-head {
     background-color: $dark_gray;
+    border-bottom: 1px solid $white_2;
     height: 41px;
     font-family: $aktiv;
     font-weight: 700;

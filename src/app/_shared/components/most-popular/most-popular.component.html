@@ -1,13 +1,26 @@
 <div class="most-popular sidebar-blur" *ngIf="isLoaded">
   <div class="container customContainer">
-    <h2 *ngIf="type != 'homeFeature';else elseBlock" class="py-4 m-0 sectionTitle">MOST POPULAR</h2>
-    <ng-template #elseBlock><h2 class="py-4 m-0 sectionTitle text-uppercase">Everything Franchising
-      <span class="subTitle py-3 text-capitalize"> To help you buy,grow and build </span>
-    </h2></ng-template>
+    <h2
+      *ngIf="type != 'homeFeature'; else elseBlock"
+      class="py-4 m-0 sectionTitle"
+    >
+      MOST POPULAR
+    </h2>
+    <ng-template #elseBlock
+      ><h2 class="py-4 m-0 sectionTitle text-uppercase">
+        Everything Franchising
+        <span class="subTitle py-3 text-capitalize">
+          To help you buy, grow and build
+        </span>
+      </h2></ng-template
+    >
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
-    <div class="row d-none d-md-flex" *ngIf="type == 'home' || type == 'homeFeature'">
+    <div
+      class="row d-none d-md-flex"
+      *ngIf="type == 'home' || type == 'homeFeature'"
+    >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
@@ -31,6 +44,7 @@
             />
             <div class="card-body position-relative px-3 pt-5">
               <span
+                *ngIf="type == 'homeFeature'; else titleBlock"
                 class="
                   position-absolute
                   top-0
@@ -42,7 +56,23 @@
                   py-1
                   px-2
                 "
-                >POPULAR</span
+                >Featured Article</span
+              >
+              <ng-template #titleBlock>
+                <span
+                  class="
+                    position-absolute
+                    top-0
+                    start-0
+                    bg-white
+                    d-flex
+                    align-items-center
+                    justify-content-center
+                    py-1
+                    px-2
+                  "
+                  >Popular</span
+                ></ng-template
               >
               <h2 class="position-relative ps-4 card-title m-0 pb-4">
                 <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>

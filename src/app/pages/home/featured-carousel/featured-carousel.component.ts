@@ -4,11 +4,12 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-featured-carousel',
   templateUrl: './featured-carousel.component.html',
-  styleUrls: ['./featured-carousel.component.scss']
+  styleUrls: ['./featured-carousel.component.scss'],
 })
 export class FeaturedCarouselComponent implements OnInit {
   brandNews: Details[] = [];
@@ -17,16 +18,19 @@ export class FeaturedCarouselComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
-  constructor(private apiService: ApiService,) { }
+  constructor(
+    private apiService: ApiService,
+    public commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.apiService
-    .getAPI(`1851/latest?limit=4&offset=0`)
+      .getAPI(`1851/latest?limit=10&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
-        .subscribe((result) => {
-          this.brandNews = result.data;
-          this.isLoaded = true;
-        }); 
+      .subscribe((result) => {
+        this.brandNews = result.data;
+        this.isLoaded = true;
+      });
     this.customOptions = {
       loop: true,
       mouseDrag: false,
