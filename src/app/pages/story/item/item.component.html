@@ -67,27 +67,46 @@
       <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
     </div>
 
-    <div class="row row-cols-3 authorDetails pt-3 px-5">
-      <div class="row row-cols-2 align-items-center">
-          <a routerLink="/author/{{ details?.author?.slug }}" class="authorImg" *ngIf="details?.author">
+    <div class="row row-cols-3 authorDetails pt-3 px-3">
+      <div class="d-flex justify-content-center align-items-center">
+        <a
+          routerLink="/author/{{ details?.author?.slug }}"
+          class="authorImg"
+          *ngIf="details?.author"
+        >
           <img
-            src="{{ author_media | defaultImage: 41:62 }}"
-            width="41"
-            height="62"
+            src="{{ author_media | defaultImage: 50:50 }}"
+            width="50"
+            height="50"
             class="author-img d-block lazyload rounded-circle"
             [alt]="details?.author?.name + ' Headshot'"
             (error)="author_img.src = 'assets/img/placeholder.svg'"
             #author_img
           />
         </a>
-        <a routerLink="/author/{{ details?.author?.slug }}" *ngIf="details?.author" class="description">
-          <h3 class="mb-0 large-main-article"> By <span>{{ details.author.name }}</span></h3>
+        <a
+          routerLink="/author/{{ details?.author?.slug }}"
+          *ngIf="details?.author"
+          class="description"
+        >
+          <h3 class="mb-0 large-main-article">
+            By <span>{{ details.author.name }}</span>
+          </h3>
           <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
         </a>
       </div>
-      <div class="align-items-center border-start text-center">
-        <div *ngIf="sponsorship && sponsorship_position === 'author_title_section'">
+      <div
+        class="
+          align-items-center
+          d-flex
+          flex-column
+          justify-content-center
+          border-start
+          text-center
+        "
+      >
         <a
+          *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
           href="#"
           onclick="return false;"
           data-bs-toggle="modal"
@@ -96,7 +115,6 @@
         >
           SPONSORED
         </a>
-        </div>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
           >{{ commonService.formatTime(details.last_modified) }} •
           {{ last_modified | date: "MM/dd/yy" }}
@@ -105,8 +123,18 @@
           >{{ commonService.formatTime(details.posted_on) }} •
           {{ date_time | date: "MM/dd/yy" }}
         </span>
-    </div>
-    <div id="{{ 'inline-buttons-' + index }}" class="social-links align-items-center border-start text-center"></div>
+      </div>
+      <div
+        id="{{ 'inline-buttons-' + index }}"
+        class="
+          social-links
+          d-flex
+          justify-content-center
+          align-items-center
+          border-start
+          text-center
+        "
+      ></div>
     </div>
 
     <div
@@ -122,7 +150,10 @@
       </p>
     </div>
     <div class="most-like-articles mb-3">
-      <h5 class="seeMore mb-0 d-none d-md-flex text-uppercase pb-2" *ngIf="trendingNews.length">
+      <h5
+        class="seeMore mb-0 d-none d-md-flex text-uppercase pb-2"
+        *ngIf="trendingNews.length"
+      >
         More Stories like this
       </h5>
       <app-article

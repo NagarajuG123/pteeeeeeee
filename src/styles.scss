@@ -73,6 +73,8 @@ ul {
 }
 
 .social-links {
+  z-index: 0 !important;
+
   .st-btn {
     background-color: $red !important;
     border-radius: 50% !important;
@@ -185,6 +187,6 @@ body.noscroll {
   top: 60px !important;
   .clear svg {
     color: $red !important;
-    vertical-align: text-bottom !important; 
+    vertical-align: text-bottom !important;
   }
 }
