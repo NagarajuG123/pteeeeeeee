@@ -1,16 +1,21 @@
 <div class="featured sidebar-blur pb-4" *ngIf="isLoaded && brandNews">
   <div class="container customContainer">
     <div class="d-flex">
-      <div class="col-lg-11 col-md-10 col-sm-10 col-10">
+      <div class="col-lg-11 col-md-10 col-sm-9 col">
         <h2 class="sectionTitle py-4 m-0">
           Featured Brand Stories
           <span class="subTitle py-3"> Sponsored Articles </span>
         </h2>
       </div>
-      <div class="col-lg-1 col-md-2 col-sm-4 py-4 m-0">
-        <span class="text-end seeMore">
-          See More <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i>
-        </span>
+      <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center"
+      >
+        <a
+          class="seeMore p-0"
+          routerLink="/{{ commonService.readMore(brandNews[0]) }}"
+          fragment="trending"
+          >See More <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
+        ></a>
       </div>
     </div>
   </div>
