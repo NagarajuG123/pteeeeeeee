@@ -126,7 +126,7 @@
           SPONSORED
         </a>
         <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
-          >{{ commonService.formatTime(details.last_modified) }} •
+          >Updated {{ commonService.formatTime(details.last_modified) }} •
           {{ last_modified | date: "MM/dd/yy" }}
         </span>
         <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
