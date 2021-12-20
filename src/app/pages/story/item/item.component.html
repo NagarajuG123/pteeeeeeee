@@ -76,30 +76,11 @@
     <div class="gray-bg text-center subTitle">
       <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
     </div>
-    <div class="d-md-none d-flex mobile-only">
-      <a
-        routerLink="/author/{{ details?.author?.slug }}"
-        *ngIf="details?.author"
-        class="description"
-      >
-        <h3 class="mb-0 large-main-article">
-          By <span class="text-decoration-underline">{{ details.author.name }}</span>
-        </h3>
-        <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
-          >{{ commonService.formatTime(details.last_modified) }} •
-          {{ last_modified | date: "MM/dd/yy" }}
-        </span>
-        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
-          >{{ commonService.formatTime(details.posted_on) }} •
-          {{ date_time | date: "MM/dd/yy" }}
-        </span>
-      </a>
-    </div>
-    <div class="row row-cols-3 authorDetails pt-3 px-3 d-none d-md-flex">
+    <div class="row row-cols-md-3 row-cols-sm-1 authorDetails pt-3 px-3">
       <div class="d-flex justify-content-center align-items-center">
         <a
           routerLink="/author/{{ details?.author?.slug }}"
-          class="authorImg"
+          class="authorImg d-none d-md-flex"
           *ngIf="details?.author"
         >
           <img
@@ -120,7 +101,7 @@
           <h3 class="mb-0 large-main-article">
             By <span>{{ details.author.name }}</span>
           </h3>
-          <h5 class="sectionTitle mb-0" [innerHTML]="designation"></h5>
+          <h5 class="sectionTitle mb-0 d-none d-md-flex" [innerHTML]="designation"></h5>
         </a>
       </div>
       <div
@@ -131,6 +112,7 @@
           justify-content-center
           border-start
           text-center
+          sponsored
         "
       >
         <a
@@ -139,7 +121,7 @@
           onclick="return false;"
           data-bs-toggle="modal"
           data-bs-target="#sponsoredModal"
-          class="tag p-0"
+          class="tag p-0 d-md-flex"
         >
           SPONSORED
         </a>

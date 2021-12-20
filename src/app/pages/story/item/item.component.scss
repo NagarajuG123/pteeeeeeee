@@ -16,14 +16,6 @@
     height: 71px;
     width: 120px;
   }
-  .mobile-only{
-    .timeStamp{
-      color: $dark_gray;
-    }
-    span{
-      color: $red;
-    }
-  }
   .authorDetails{
     .large-main-article{
       font-size: 20px;
@@ -81,6 +73,23 @@
     padding-top: 10px;
   }
   @media screen and (max-width: 767px) {
+    .authorDetails{
+      padding-left: 0 !important;
+      .social-links,.sponsored{
+        border-left: unset !important;
+      }
+      & div{
+       justify-content: unset !important;
+       align-items: unset !important;
+       text-align: left !important;
+      }
+      .large-main-article{
+        span{
+          color: $red;
+          text-decoration: underline;
+        }
+      }
+    }
     .nextBtn{
       .faIcon{
         padding-right: 8px !important;
