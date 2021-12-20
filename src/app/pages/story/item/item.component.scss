@@ -16,6 +16,14 @@
     height: 71px;
     width: 120px;
   }
+  .mobile-only{
+    .timeStamp{
+      color: $dark_gray;
+    }
+    span{
+      color: $red;
+    }
+  }
   .authorDetails{
     .large-main-article{
       font-size: 20px;
@@ -44,6 +52,7 @@
     @include tablet-landscape1 {
       font-size: 22px;
       line-height: 117%;
+      text-align: left !important;
     }
   }
   .sectionTitle {
@@ -63,10 +72,23 @@
     color: $dark_gray_3;
     line-height: 150%;
   }
+  .sponsored{
+    font-family: $aktiv;
+    font-size: 13px;
+    line-height: 18.75px;
+    color: $red;
+    font-weight: 700;
+    padding: 10px 0;
+  }
   @media screen and (max-width: 767px) {
+    .title{
+      padding: 0 0 10px !important;
+    }
+    .subTitle{
+      background-color: unset;
+    }
     h2 {
       text-align: left !important;
-      background-color: unset;
       padding: 0 !important;
     }
     .detailHead {

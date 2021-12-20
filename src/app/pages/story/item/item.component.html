@@ -57,17 +57,49 @@
         }}</a>
       </div>
     </div>
+    <a
+      *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
+      href="#"
+      onclick="return false;"
+      data-bs-toggle="modal"
+      data-bs-target="#sponsoredModal"
+      class="sponsored d-md-none d-flex"
+    >
+      SPONSORED
+    </a>
     <div
-      class="py-4 d-flex justify-content-center text-center align-items-center"
+      class="py-4 d-flex justify-content-center text-center align-items-center title"
     >
       <h1 class="large-main-article mb-0" [innerHTML]="title"></h1>
     </div>
 
-    <div class="gray-bg text-center">
+    <div class="gray-bg text-center subTitle">
       <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
     </div>
-
-    <div class="row row-cols-3 authorDetails pt-3 px-3">
+    <div class="d-md-none d-flex mobile-only">
+      <a
+        routerLink="/author/{{ details?.author?.slug }}"
+        *ngIf="details?.author"
+        class="description"
+      >
+        <h3 class="mb-0 large-main-article">
+          By <span class="text-decoration-underline">{{ details.author.name }}</span>
+        </h3>
+        <span *ngIf="commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.last_modified) }} •
+          {{ last_modified | date: "MM/dd/yy" }}
+        </span>
+        <span *ngIf="!commonService.isUpdate(details)" class="timeStamp"
+          >{{ commonService.formatTime(details.posted_on) }} •
+          {{ date_time | date: "MM/dd/yy" }}
+        </span>
+      </a>
+      <!-- <div
+        id="{{ 'inline-buttons-' + index }}"
+        class="social-links d-flex align-items-center text-center">
+      </div> -->
+    </div>
+    <div class="row row-cols-3 authorDetails pt-3 px-3 d-none d-md-flex">
       <div class="d-flex justify-content-center align-items-center">
         <a
           routerLink="/author/{{ details?.author?.slug }}"
