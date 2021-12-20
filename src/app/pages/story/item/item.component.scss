@@ -78,11 +78,16 @@
     line-height: 18.75px;
     color: $red;
     font-weight: 700;
-    padding: 10px 0;
+    padding-top: 10px;
   }
   @media screen and (max-width: 767px) {
+    .nextBtn{
+      .faIcon{
+        padding-right: 8px !important;
+      }
+    }
     .title{
-      padding: 0 0 10px !important;
+      padding: 10px 0 10px !important;
     }
     .subTitle{
       background-color: unset;
