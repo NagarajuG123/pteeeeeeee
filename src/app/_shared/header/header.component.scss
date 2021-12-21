@@ -75,7 +75,15 @@ header {
         background-size: 10px;
       }
     }
-
+    .menu-items
+    {
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 16px;
+      line-height:21px;
+      color:  $dark_gray;
+      text-transform: capitalize;
+    }
     .articleTitles  {
       color: $dark_gray;
       @include mobile-portrait {
