@@ -401,12 +401,12 @@
                 data-bs-toggle="modal"
                 data-bs-target="#inquireModal"
               >
-                <h6 class="menu-items">{{ header?.inquire }}</h6>
+                <h6 class="small-red-headers">{{ header?.inquire }}</h6>
               </a>
             </li>
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
-                ><h6 class="menu-items">{{ menu.title }}</h6>
+                ><h6 class="small-red-headers">{{ menu.title }}</h6>
               </a>
             </li>
             <li
@@ -414,7 +414,7 @@
               *ngFor="let action of header?.actions; index as i"
             >
               <a class="d-flex align-items-center" (click)="closeSidebar()"
-                ><h6 class="menu-items">{{ action.title }}</h6>
+                ><h6 class="small-red-headers">{{ action.title }}</h6>
                 <img
                   data-src="{{ s3Url }}down-arrow.svg"
                   height="15"
