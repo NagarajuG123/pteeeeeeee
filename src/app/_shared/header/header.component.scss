@@ -76,11 +76,13 @@ header {
       }
     
     }
-    .small-red-headers {
-      font-size: 16px;
-      line-height:21px;
-      color:  $dark_gray;
-      text-transform: capitalize;
+    .brandHeader{
+      .articleTitles {
+        font-family: $roboto;
+        line-height:20.59px;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
     }
     .articleTitles  {
       color: $dark_gray;
