@@ -1,0 +1,11 @@
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.featured{
+    .sectionTitle{
+        color: $dark_gray;
+    }
+    .seeMore{
+        color: $red;
+    }
+}

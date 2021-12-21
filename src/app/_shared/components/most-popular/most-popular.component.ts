@@ -18,6 +18,8 @@ export class MostPopularComponent implements OnInit {
   @Input() type: string;
   @Input() slug: string;
   @Input() apiUrl: string;
+  @Input() title: string;
+  @Input() subTitle: string;
 
   data: Details[] = [];
   faAngleRight = faAngleRight;

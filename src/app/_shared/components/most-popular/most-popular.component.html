@@ -1,16 +1,16 @@
 <div class="most-popular sidebar-blur" *ngIf="isLoaded">
   <div class="container customContainer">
     <h2
-      *ngIf="type != 'homeFeature'; else elseBlock"
+      *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
     >
-      MOST POPULAR
+      {{ title }}
     </h2>
     <ng-template #elseBlock
       ><h2 class="py-4 m-0 sectionTitle text-uppercase">
-        Everything Franchising
+        {{ title }}
         <span class="subTitle py-3 text-capitalize">
-          To help you buy, grow and build
+         {{ subTitle }}
         </span>
       </h2></ng-template
     >
@@ -55,6 +55,7 @@
                   justify-content-center
                   py-1
                   px-2
+                  text-uppercase
                 "
                 >Featured Article</span
               >
@@ -70,6 +71,7 @@
                     justify-content-center
                     py-1
                     px-2
+                    text-uppercase
                   "
                   >Popular</span
                 ></ng-template
@@ -123,6 +125,7 @@
     </div>
     <div
       class="row d-flex gx-xl-3 gx-lg-2 pb-3 d-sm-none"
+      *ngIf = "type != 'homeFeature'"
       [ngClass]="slug !== '1851' ? 'd-md-block' : ''"
     >
       <owl-carousel-o
