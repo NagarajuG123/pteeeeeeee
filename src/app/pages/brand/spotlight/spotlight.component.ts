@@ -23,6 +23,7 @@ export class SpotlightComponent implements OnInit {
   tab!: string;
   isLoaded: boolean = false;
   rows: any;
+  hasMore: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -54,6 +55,7 @@ export class SpotlightComponent implements OnInit {
                 data.push(item);
               });
               this.items = data;
+              this.hasMore = result.has_more;
             } else{
               this.apiService
               .getAPI(`${this.slug}/spotlight/${this.tabName[0].shortName.toLowerCase()}?limit=8&offset=0`)
@@ -64,6 +66,7 @@ export class SpotlightComponent implements OnInit {
                   data.push(item);
                 });
                 this.items = data;
+                this.hasMore = result.has_more;
               });
             }
             this.isLoaded = true;
@@ -87,6 +90,7 @@ export class SpotlightComponent implements OnInit {
             data.push(item);
           });
           this.items = data;
+          this.hasMore = result.has_more;
         }
       });
   }
@@ -103,6 +107,7 @@ export class SpotlightComponent implements OnInit {
           result['data'].forEach((item: any, index: number) => {
             this.items.push(item);
           });
+          this.hasMore = result.has_more;
         }
       });
   }

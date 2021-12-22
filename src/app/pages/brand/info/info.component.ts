@@ -272,6 +272,7 @@ export class InfoComponent implements OnInit {
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
     forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
+      this.hasMore = results[0].has_more;
       this.logo = results[2].data.logo.image;
       if (results[0].meta) {
         this.metaService.setSeo(results[0].meta);
@@ -302,6 +303,7 @@ export class InfoComponent implements OnInit {
           result['data'].forEach((item: any, index: number) => {
             this.items.push(item);
           });
+          this.hasMore = result.has_more;
         }
       });
   }

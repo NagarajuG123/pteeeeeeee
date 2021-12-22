@@ -39,6 +39,7 @@ export class CategoryComponent implements OnInit {
   description: string;
   banner: string;
   isLoaded: boolean;
+  hasMore: boolean;
   s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -77,6 +78,7 @@ export class CategoryComponent implements OnInit {
           if (results[0].data.length) {
             this.topData = results[0].data.slice(0,4);
             this.featuredData = results[0].data.slice(4,24);
+            this.hasMore = results[0].has_more;
             this.metaService.setSeo(results[1].data);
             this.tabName = results[2].categories;
             this.activeTab =
@@ -131,6 +133,7 @@ export class CategoryComponent implements OnInit {
           });
           this.topData = data.slice(0,4);
           this.featuredData = data.slice(4,24);
+          this.hasMore = result.has_more;
         }
       });
   }
@@ -147,6 +150,7 @@ export class CategoryComponent implements OnInit {
           result['data'].forEach((item: any, index: number) => {
             this.featuredData.push(item);
           });
+          this.hasMore = result.has_more;
         }
       });
   }
