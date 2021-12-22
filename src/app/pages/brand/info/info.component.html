@@ -573,12 +573,13 @@
                 Inquire about services
               </h1>
             </div>
+       
             <form
               *ngIf="inquireForm"
               [formGroup]="inquireForm"
               (ngSubmit)="submitInquireForm(inquireForm.value)"
-              class="position-relative p-4"
             >
+            <div  class="position-relative p-4">
               <div class="row" *ngFor="let fields of inquireFields">
                 <div class="col-12 inquirefrom-row">
                   <input
@@ -652,21 +653,21 @@
                     {{ fields.errorMsg }}
                   </div>
                 </div>
-              </div>
-              <div class="divider-recent-feature position-absolute w-100">
-                <button
-                  type="submit"
-                  class="text-white text-center rounded-0 w-100"
-                >
-                  Next
-                </button>
-              </div>
-              <br />
-              <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
-                submitErrMsg
-              }}</span>
+              </div>  
+            </div>
+            <div class="divider-recent-feature container-fluid p-0 w-100">
+              <button
+                type="submit"
+                class="text-white text-center rounded-0 w-100"
+              >
+                Next
+              </button>
+            </div>
+            <span *ngIf="isSubmitted && isSubmitFailed" class="errS">{{
+              submitErrMsg
+            }}</span>
             </form>
-
+        
             <!-- Recent Features -->
             <div class="recent-feature-article-section" *ngIf="!isMarket">
               <div class="row">
