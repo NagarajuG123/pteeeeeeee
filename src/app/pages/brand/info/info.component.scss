@@ -259,11 +259,9 @@
         }
 
         &::placeholder {
-          position: absolute;
+         
           font-size: 13px;
           color: $light_gray_8;
-          top: 10px;
-          left: 10px;
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
