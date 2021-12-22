@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -22,7 +21,6 @@ export class MostPopularComponent implements OnInit {
   @Input() subTitle: string;
 
   data: Details[] = [];
-  faAngleRight = faAngleRight;
   isLoaded: boolean = false;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
