@@ -52,7 +52,10 @@
         "
         *ngIf="category.name"
       >
-        <a routerLink="/{{ category.slug }}" class="text-white">{{
+        <a *ngIf="brandSlug =='1851'" routerLink="/{{ category.slug }}" class="text-white">{{
+          category.name
+        }}</a>
+        <a *ngIf="brandSlug !='1851'" routerLink="/{{brandSlug}}/{{ category.slug }}" class="text-white">{{
           category.name
         }}</a>
       </div>
