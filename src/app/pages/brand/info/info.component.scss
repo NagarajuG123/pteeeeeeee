@@ -104,9 +104,8 @@
 
       span {
         font-family: $proxiBold;
-        color: $light_gray_8;
-        &.active,
-        &:hover {
+        color: $dark_gray_5;
+        &.active {
           color: $red;
         }
       }
