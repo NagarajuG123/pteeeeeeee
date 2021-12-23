@@ -2,6 +2,9 @@
 @import "../../../assets/scss/variables.scss";
 
 header {
+  top: 0;
+  left: 0;
+  z-index: 9999;
   font-family: $roboto;
   text-transform: uppercase;
   background-color: $white;

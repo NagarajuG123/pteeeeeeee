@@ -424,19 +424,7 @@ export class HeaderComponent implements OnInit {
   ngAfterViewInit() {
     // For sticky header
     if (this.isBrowser) {
-      const distance = $('header').offset().top,
-        $window = $(window);
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > 5) {
-          $('body').addClass('sticky');
-          const ht = $('header').innerHeight();
-          $('.empty').css({ 'min-height': ht });
-          $('.banner').css({ 'margin-top': ht });
-        } else {
-          $('body').removeClass('sticky');
-          $('.banner').css({ 'margin-top': '0' });
-        }
-      });
+      
       if (this.isBrowser && $('.carousel').hasClass('carousel-control-next')) {
         setInterval(() => {
           this.carouselBtn.nativeElement.click();

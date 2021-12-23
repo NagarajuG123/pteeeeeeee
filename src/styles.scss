@@ -59,15 +59,6 @@ ul {
   cursor: pointer;
 }
 
-.sticky {
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-  }
-}
-
 .empty {
   display: none;
 }
@@ -189,4 +180,7 @@ body.noscroll {
     color: $red !important;
     vertical-align: text-bottom !important;
   }
+}
+.top{
+  margin-top: 132px;
 }
