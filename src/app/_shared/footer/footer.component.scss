@@ -16,9 +16,6 @@ footer {
   }
   a {
     color: $white_2;
-    &:hover {
-      color: $red;
-    }
   }
 
   h1 {
@@ -70,12 +67,6 @@ footer {
         height: 33px;
         width: 33px;
         transition: all 0.5s ease;
-
-        &:hover,
-        &:focus {
-          background-color: $white;
-          color: $red;
-        }
       }
     }
   }
