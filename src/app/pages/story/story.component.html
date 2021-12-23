@@ -2,9 +2,9 @@
   *ngIf="isBrowser"
   class="search-results sidebar-blur"
   infinite-scroll
-  [infiniteScrollDistance]="scrollDistance"
-  [infiniteScrollUpDistance]="scrollUpDistance"
-  [infiniteScrollThrottle]="throttle"
+  [infiniteScrollDistance]="0.1"
+  [infiniteScrollUpDistance]="2"
+  [infiniteScrollThrottle]="500"
   (scrolled)="onScrollDown()"
 >
     <div *ngIf="detailsData.length">
