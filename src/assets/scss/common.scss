@@ -213,7 +213,6 @@ button {
       line-height: 28.24px;
       &.active,
       &:hover {
-        color: $red;
         &::after {
           content: "";
           height: 7px;
@@ -232,6 +231,10 @@ button {
           width: 100%;
           background-color: $red;
         }
+      }
+      &.active
+      {
+        color: $red;
       }
     }
     border-color: $light_gray_8;
