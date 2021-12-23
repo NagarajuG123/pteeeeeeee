@@ -52,12 +52,13 @@
         "
         *ngIf="category.name"
       >
-        <a *ngIf="brandSlug =='1851'" routerLink="/{{ category.slug }}" class="text-white">{{
+        <a *ngIf="brandSlug =='1851';else elseBlock" routerLink="/{{ category.slug }}" class="text-white">{{
           category.name
         }}</a>
-        <a *ngIf="brandSlug !='1851'" routerLink="/{{brandSlug}}/{{ category.slug }}" class="text-white">{{
+        <ng-template #elseBlock>
+          <a routerLink="/{{brandSlug}}/{{ category.slug }}" class="text-white">{{
           category.name
-        }}</a>
+        }}</a></ng-template>
       </div>
     </div>
     <a
