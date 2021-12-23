@@ -675,6 +675,7 @@ export class StoryComponent implements OnInit {
               : `story/${storyId}`;
             this.apiService.getAPI(`${url}`).subscribe((result) => {
               this.detailsData.push(this.htmlBinding(result.data));
+              this.setTrending(result.data);
             });
           } else {
             if (this.detailsData.length == 1) {
@@ -683,6 +684,7 @@ export class StoryComponent implements OnInit {
               return;
             }
           }
+          
           this.storyIndex = true;
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;
