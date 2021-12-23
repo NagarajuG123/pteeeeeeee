@@ -477,9 +477,9 @@
                 Financial Requirements
               </h1>
             </div>
-            <div class="headerMarket" *ngIf="isMarket">
+            <!-- <div class="headerMarket" *ngIf="isMarket">
               <h2 class="titleMarket">More Brand Info</h2>
-            </div>
+            </div> -->
             <div class="financial-description p-4" *ngIf="isInfo">
               <p class="topContent m-0 pb-3">
                 {{ brandInfo?.more_info }}
@@ -522,8 +522,8 @@
               </p>
             </div>
 
-            <div class="market" *ngIf="isMarket">
-              <p class="text m-0 pb-3">
+            <div  *ngIf="isMarket">
+              <!-- <p class="text m-0 pb-3">
                 {{ brandInfo?.more_info }}
               </p>
               <p class="text m-0 pb-3">
@@ -561,7 +561,7 @@
               >
                 {{ info.title }} :
                 <span class="highlight-text">{{ info.value }}</span>
-              </p>
+              </p> -->
             </div>
           </div>
 
@@ -571,7 +571,7 @@
             </div>
             <div class="header" *ngIf="isMarket">
               <h1 class="market-header text-uppercase p-4">
-                Inquire about services
+                Inquire Now
               </h1>
             </div>
        
