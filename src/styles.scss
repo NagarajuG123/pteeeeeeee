@@ -183,4 +183,7 @@ body.noscroll {
 }
 .top{
   margin-top: 132px;
+  @include tablet-landscape1{
+    margin-top: 50px;
+  }
 }
