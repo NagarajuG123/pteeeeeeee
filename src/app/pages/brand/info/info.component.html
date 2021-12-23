@@ -477,9 +477,6 @@
                 Financial Requirements
               </h1>
             </div>
-            <!-- <div class="headerMarket" *ngIf="isMarket">
-              <h2 class="titleMarket">More Brand Info</h2>
-            </div> -->
             <div class="financial-description p-4" *ngIf="isInfo">
               <p class="topContent m-0 pb-3">
                 {{ brandInfo?.more_info }}
@@ -520,48 +517,6 @@
                 {{ info.title }} :
                 <span class="highlight-text m-0 pb-3">{{ info.value }}</span>
               </p>
-            </div>
-
-            <div  *ngIf="isMarket">
-              <!-- <p class="text m-0 pb-3">
-                {{ brandInfo?.more_info }}
-              </p>
-              <p class="text m-0 pb-3">
-                Initial Franchise Fee:
-                <span class="highlight-text m-0">
-                  {{ brandInfo?.franchise_fee }}
-                </span>
-              </p>
-              <p class="text m-0 pb-3">
-                Initial Investment Range:
-                <span class="highlight-text m-0">
-                  {{ brandInfo?.startup_costs }}
-                </span>
-              </p>
-              <p class="text m-0">Minimum Qualifications:</p>
-              <p
-                class="highlight-text m-0 min-qualification"
-                *ngFor="let info of brandInfo?.optional_info"
-              >
-                {{ info.title }} {{ info.value }} <br />
-              </p>
-              <p class="text m-0 pt-3">Territory:</p>
-              <p class="highlight-text m-0 pb-3">
-                Protected territory with geographic rights to the Sylvan system
-                in a well-defined area
-              </p>
-              <p class="highlight-text m-0">
-                With an average gross revenue of $518,159 among the top 25% of
-                territories, Sylvan Learning offers a business opportunity with
-                both financial and emotional rewards.
-              </p>
-              <p
-                class="text m-0 pt-3"
-                *ngFor="let info of brandInfo?.optional_info"
-              >
-                {{ info.title }} :
-                <span class="highlight-text">{{ info.value }}</span>
-              </p> -->
             </div>
           </div>
 

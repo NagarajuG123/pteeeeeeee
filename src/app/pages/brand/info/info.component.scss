@@ -136,16 +136,6 @@
     }
   }
 
-  // .market {
-  //   background: #243444;
-  //   font-family: $roboto;
-  //   font-weight: 400;
-  //   font-size: 13px;
-  //   color: #f3f8fb;
-  //   padding: 22px 33px;
-  //   line-height: 15.23px;
-  // }
-
   .financial-description {
     background-color: $white_8;
     font-family: $roboto;
@@ -542,27 +532,6 @@
 }
 
 .more-brand--wrapper {
-  .headerMarket {
-    height: 60px;
-    background: $red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .titleMarket {
-      font-family: $aktiv;
-      font-weight: 700;
-      font-size: 30px;
-      line-height: 36px;
-      text-transform: uppercase;
-      color: $white;
-
-      @include mobile-portrait {
-        font-size: 24px;
-      }
-    }
-  }
-
   .brand-list {
     display: flex;
     flex-flow: column;
