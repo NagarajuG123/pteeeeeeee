@@ -591,7 +591,7 @@
               href="#"
               data-bs-toggle="modal"
               data-bs-target="#contactModal"
-              (click)="formReset()"
+              (click)="[commonService.toggle(),formReset()]"
             >
               <h3>
                 Contact <span class="text-capitalize">{{ brandTitle }}</span>
