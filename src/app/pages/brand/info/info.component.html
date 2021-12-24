@@ -482,6 +482,13 @@
               <p class="topContent m-0 pb-3">
                 {{ brandInfo?.more_info }}
               </p>
+            </div>
+              <div class="header" *ngIf="isInfo">
+                <h1 class="sectionTitle title text-capitalize  p-4">
+                 More Info
+                </h1>
+              </div>
+            <div class="financial-description p-4" *ngIf="isInfo">
               <p class="text m-0 pb-3">
                 Initial Franchise Fee:
                 <span class="highlight-text">
