@@ -26,7 +26,6 @@ declare var ga: Function;
 })
 export class ItemComponent implements OnInit {
   @Input() details: any;
-  @Input() trending: any;
   @Input() brandSlug = '1851';
   @Input() index: string;
   @Input() type: string;
@@ -54,7 +53,6 @@ export class ItemComponent implements OnInit {
   last_modified: Date;
   media: any;
   brandNews: any;
-  newsShow = false;
   designation: any;
   author_media: any;
   url: string;
@@ -138,7 +136,7 @@ export class ItemComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
-    const trending: SimpleChange = changes.trending;
+    // const trending: SimpleChange = changes.trending;
     const mainNewsData: SimpleChange = changes.mainNewsData;
     const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
@@ -169,6 +167,7 @@ export class ItemComponent implements OnInit {
       this.media = details.currentValue.media;
       this.sponsorship = details.currentValue.sponsorship.is_sponsored;
       this.sponsorship_position = details.currentValue.sponsorship.position;
+      this.setTrending(this.category);
       if (typeof this.media !== 'undefined') {
         if (
           typeof this.media.type !== 'undefined' &&
@@ -190,13 +189,6 @@ export class ItemComponent implements OnInit {
       }
     }
     if (
-      typeof trending !== 'undefined' &&
-      typeof trending.currentValue !== 'undefined'
-    ) {
-      this.trendingNews = trending.currentValue;
-      this.newsShow = true;
-    }
-    if (
       typeof mainNewsData !== 'undefined' &&
       typeof mainNewsData.currentValue !== 'undefined'
     ) {
@@ -207,6 +199,23 @@ export class ItemComponent implements OnInit {
       typeof brandNewsData.currentValue !== 'undefined'
     ) {
       this.brandNews = brandNewsData.currentValue;
+    }
+  }
+  setTrending(category) {
+    if (category.slug) {
+      this.apiService
+        .getAPI(
+          `${this.brandSlug}/${category.slug}/trending?limit=4&offset=0`
+        )
+        .subscribe((response) => {
+          this.trendingNews = response.data;
+        });
+    } else {
+      this.apiService
+        .getAPI(`${this.brandSlug}/news?limit=4&offset=0`)
+        .subscribe((response) => {
+          this.trendingNews = response.data;
+        });
     }
   }
   readMore(story: any, fragment) {

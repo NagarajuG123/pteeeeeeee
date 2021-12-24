@@ -3,9 +3,9 @@
   *ngIf="isBrowser"
   class="search-results sidebar-blur"
   infinite-scroll
-  [infiniteScrollDistance]="0.1"
-  [infiniteScrollUpDistance]="2"
-  [infiniteScrollThrottle]="500"
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
   (scrolled)="onScrollDown()"
 >
     <div *ngIf="detailsData.length">
@@ -15,7 +15,6 @@
         [details]="details"
         attr.data-title="{{ details['slug'] }}"
         attr.data-id="{{ details['id'] }}"
-        [trending]="trendingData"
         [mainNewsData]="mainNews"
         [brandNewsData]="brandNews"
         [brandSlug]="brandSlug"

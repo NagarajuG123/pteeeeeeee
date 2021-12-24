@@ -32,7 +32,6 @@ declare var ga: Function;
 })
 export class StoryComponent implements OnInit {
   detailsData: any[] = [];
-  trendingData: any[] = [];
   publication: any = [];
   storySlug: any = '';
   storyId: any;
@@ -360,7 +359,6 @@ export class StoryComponent implements OnInit {
           return;
         }
         this.detailsData.push(this.htmlBinding(result['story'].data));
-        this.setTrending(result['story'].data);
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
@@ -494,23 +492,6 @@ export class StoryComponent implements OnInit {
         }
         this.createCanonicalURL(url);
       });
-  }
-  setTrending(story) {
-    if (story.category.slug) {
-      this.apiService
-        .getAPI(
-          `${this.brandId}/${story.category.slug}/trending?limit=4&offset=0`
-        )
-        .subscribe((response) => {
-          this.trendingData = response.data;
-        });
-    } else {
-      this.apiService
-        .getAPI(`${this.brandId}/news?limit=4&offset=0`)
-        .subscribe((response) => {
-          this.trendingData = response.data;
-        });
-    }
   }
   setMeta(metas) {
     if (typeof metas === 'undefined' || metas === null) {
@@ -675,7 +656,6 @@ export class StoryComponent implements OnInit {
               : `story/${storyId}`;
             this.apiService.getAPI(`${url}`).subscribe((result) => {
               this.detailsData.push(this.htmlBinding(result.data));
-              this.setTrending(result.data);
             });
           } else {
             if (this.detailsData.length == 1) {
