@@ -225,23 +225,21 @@
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg pb-5 d-none d-md-flex"
        *ngIf="brandSlug=='1851'">
-           <div class="container customContainer" >
-      <h4 class="timeStamp mb-0 pt-3" >Featured Franchise News</h4>
-    <app-article 
-        [typeSlug]="'frannews'"
-        [contents]="mainNews"
-        [class]="'row-cols-sm-1'"
-        
-      ></app-article>
-
-      <h4 class="timeStamp mb-0">Featured Brand News</h4>
-      <app-article
-        [typeSlug]="'frannews'"
-        [contents]="brandNews"
-        [type]="'brandNews'"
-        [class]="'row-cols-sm-1'"
-      ></app-article>
-    </div>
+      <div class="container customContainer" >
+          <h4 class="timeStamp mb-0 pt-3" >Featured Franchise News</h4>
+          <app-article 
+              [typeSlug]="'frannews'"
+              [contents]="mainNews"
+              [class]="'row-cols-sm-1'"
+            ></app-article>
+          <h4 class="timeStamp mb-0">Featured Brand News</h4>
+          <app-article
+            [typeSlug]="'frannews'"
+            [contents]="brandNews"
+            [type]="'brandNews'"
+            [class]="'row-cols-sm-1'"
+          ></app-article>
+      </div>
   </div>
 
   <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none">
