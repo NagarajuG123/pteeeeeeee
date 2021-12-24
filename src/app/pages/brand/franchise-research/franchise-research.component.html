@@ -9,11 +9,11 @@
     <hr />
   
     <div class="container customContainer py-2 px-4">
-      <div class="d-flex">
+      <div class="d-flex row row-cols-sm-1 row-cols-md-4">
           <ng-container
             *ngFor="let item of brandInfoNews | slice: 0:10; index as i"
           >
-            <div class="col-3">
+            <div class="text-center">
               <h3 class="seeMore">{{ item.title }}</h3>
               <a
                 routerLink="/{{ slug }}/{{ item.slug }}"
