@@ -19,6 +19,7 @@ export class MostPopularComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() title: string;
   @Input() subTitle: string;
+  @Input() class!: string;
 
   data: Details[] = [];
   isLoaded: boolean = false;
