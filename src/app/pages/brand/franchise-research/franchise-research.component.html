@@ -13,18 +13,21 @@
           <ng-container
             *ngFor="let item of brandInfoNews | slice: 0:10; index as i"
           >
-            <div class="text-center">
-              <h3 class="seeMore">{{ item.title }}</h3>
+            <div >
+              <h3 class="small-red-headers  m-0 pb-2">
+                {{ item.headline }}
+              </h3>
               <a
-                routerLink="/{{ slug }}/{{ item.slug }}"
-                fragment="frannews"
+                href="{{item.url}}"
+                target="_blank"
               >
+              
                 <img
                   appYoutubeImage
-                  data-src="{{ item.media | defaultImage: 209:118 }}"
+                  data-src="{{ item.media | defaultImage: 209:116 }}"
                   srcset="{{item.media | defaultImage:545:305}} 545w,
                       {{item.media | defaultImage:355:199}} 355w, 
-                      {{item.media | defaultImage:209:118}} 209w"
+                      {{item.media | defaultImage:209:116}} 209w"
                   sizes="{{
                     '(max-width: 576px) 545px,
                         (max-width: 768px) 355px,
@@ -39,7 +42,7 @@
                 />
   
                 <h3 class="articleTitles align-items-center m-0 pt-2">
-                  {{ item.description }}
+                  {{ item.title }}
                 </h3>
               </a>
             </div>
