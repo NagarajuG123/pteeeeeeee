@@ -7,7 +7,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { EditorialSectionsComponent } from './editorial-sections/editorial-sections.component';
 import { SeriesComponent } from './series/series.component';
-import { VideoComponent } from './video/video.component';
 import { AwardsComponent } from './awards/awards.component';
 import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel.component';
 
@@ -16,7 +15,6 @@ import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel
     HomeComponent,
     EditorialSectionsComponent,
     SeriesComponent,
-    VideoComponent,
     AwardsComponent,
     FeaturedCarouselComponent,
   ],

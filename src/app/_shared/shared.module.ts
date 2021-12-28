@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './components/article/article.component';
 import { HomeArticleComponent } from './components/home-article/home-article.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { VideoComponent } from './components/video/video.component';
 
 // Pipes
 
@@ -35,6 +36,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ArticleComponent,
     HomeArticleComponent,
     CarouselComponent,
+    VideoComponent
   ],
   imports: [
     CommonModule,
@@ -64,6 +66,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ArticleComponent,
     HomeArticleComponent,
     CarouselComponent,
+    VideoComponent
   ],
 })
 export class SharedModule {}
