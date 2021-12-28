@@ -26,7 +26,7 @@
                   appYoutubeImage
                   data-src="{{ item.media | defaultImage: 209:116 }}"
                   srcset="{{item.media | defaultImage:545:305}} 545w,
-                      {{item.media | defaultImage:355:199}} 355w, 
+                      {{item.media | defaultImage:350 :199}} 355w, 
                       {{item.media | defaultImage:209:116}} 209w"
                   sizes="{{
                     '(max-width: 576px) 545px,
@@ -35,8 +35,8 @@
                         209px'
                   }}"
                   class="img-fluid lazyload d-inline"
-                  width="209"
-                  height="118"
+                  width="250"
+                  height="140"
                   alt="featured"
                   loading="lazy"
                 />
