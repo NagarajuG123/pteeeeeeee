@@ -13,6 +13,9 @@
   <app-most-popular [slug]="slug" [apiUrl]="'trending?limit=9&offset=0'" [type]="'brand'" [title]="'Most Popular'" class="'d-sm-block'"></app-most-popular>
 
   <app-spotlight [slug]="slug"></app-spotlight>
+
+  <app-video [slug]="slug"></app-video>
+
 </div>
 
 <div *ngIf="isCategory && type === 'category_page'">
@@ -80,4 +83,3 @@
     <div class="col-lg-5 col-sm-4 col-4 seeMoreLine"></div>
   </div>
 </div>
-<app-video></app-video>

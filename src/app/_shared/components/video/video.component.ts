@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
@@ -11,6 +11,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./video.component.scss'],
 })
 export class VideoComponent implements OnInit {
+  @Input() slug: string;
+
   data: Details[] = [];
   openVideoPlayer: boolean;
   url: string;
@@ -28,7 +30,7 @@ export class VideoComponent implements OnInit {
   ngOnInit(): void {
     this.setConfig();
     const videoData = this.apiService
-      .getAPI(`1851/videos?site=1851`)
+      .getAPI(`${this.slug}/videos`)
       .subscribe((result) => {
         this.data = result.data;
         this.isLoaded = true;
