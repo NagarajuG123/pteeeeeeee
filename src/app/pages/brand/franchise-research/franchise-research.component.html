@@ -8,13 +8,13 @@
     </div>
     <hr />
   
-    <div class="container customContainer py-2 px-4">
+    <div class="container customContainer pb-2 px-4">
       <div class="d-flex row row-cols-sm-1 row-cols-md-4">
           <ng-container
             *ngFor="let item of brandInfoNews | slice: 0:10; index as i"
           >
             <div >
-              <h3 class="small-red-headers  m-0 pb-2">
+              <h3 class="small-red-headers  m-0 py-2">
                 {{ item.headline }}
               </h3>
               <a
@@ -23,22 +23,26 @@
               >
               
                 <img
-                  appYoutubeImage
-                  data-src="{{ item.media | defaultImage: 209:116 }}"
-                  srcset="{{item.media | defaultImage:545:305}} 545w,
-                      {{item.media | defaultImage:350 :199}} 355w, 
-                      {{item.media | defaultImage:209:116}} 209w"
-                  sizes="{{
-                    '(max-width: 576px) 545px,
-                        (max-width: 768px) 355px,
-                        (max-width: 992px) 300px,
-                        209px'
-                  }}"
-                  class="img-fluid lazyload d-inline"
-                  width="260"
-                  height="146"
-                  alt="featured"
-                  loading="lazy"
+                appYoutubeImage
+          data-src="{{ item.media | defaultImage: 210:118 }}"
+          srcset="{{item.media | defaultImage:545:305}} 545w, 
+            {{item.media | defaultImage:355:199}} 355w, 
+            {{item.media | defaultImage:300:168}} 300w,
+            {{item.media | defaultImage:210:118}} 210w"
+          class="w-100 img-fluid lazyload "
+          alt=""
+          width="210"
+          height="118"
+          loading="lazy"
+          sizes="{{
+            '(max-width: 576px) 545px,
+             (max-width: 768px) 355px,
+             (max-width: 992px) 300px,
+             210px'
+          }}"
+
+            
+                 
                 />
   
                 <h3 class="articleTitles align-items-center m-0 pt-2">
