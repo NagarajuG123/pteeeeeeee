@@ -107,7 +107,13 @@
         color: $dark_gray_5;
         &.active {
           color: $red;
+          &::after {
+          @media(max-width :670px)
+          {
+          left: 50px;
+          }
         }
+      }
       }
     }
   }
