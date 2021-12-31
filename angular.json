@@ -57,6 +57,23 @@
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
+            "SCPROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.sc.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "commonChunk": true,
+              "buildOptimizer": true
+            },
             "1851PROD": {
               "fileReplacements": [
                 {
@@ -113,6 +130,23 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.1851.qa.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "commonChunk": true,
+              "buildOptimizer": true
+            },
+            "SCQA": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.sc.qa.ts"
                 }
               ],
               "optimization": true,
@@ -209,6 +243,9 @@
             "1851PROD": {
               "browserTarget": "1851:build:1851PROD"
             },
+            "SCPROD": {
+              "browserTarget": "sc:build:SCPROD"
+            },
             "EEPROD": {
               "browserTarget": "1851:build:EEPROD"
             },
@@ -217,6 +254,9 @@
             },
             "1851QA": {
               "browserTarget": "1851:build:1851QA"
+            },
+            "SCQA": {
+              "browserTarget": "1851:build:SCQA"
             },
             "EEQA": {
               "browserTarget": "1851:build:EEQA"
@@ -296,6 +336,18 @@
               "sourceMap": false,
               "extractLicenses": true
             },
+            "SCPROD": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.sc.prod.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
             "EEPROD": {
               "fileReplacements": [
                 {
@@ -325,6 +377,18 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.1851.qa.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
+            "SCQA": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.sc.qa.ts"
                 }
               ],
               "outputHashing": "media",
@@ -375,6 +439,10 @@
               "browserTarget": "1851:build:1851PROD",
               "serverTarget": "1851:server:1851PROD"
             },
+            "SCPROD": {
+              "browserTarget": "1851:build:SCPROD",
+              "serverTarget": "1851:server:SCPROD"
+            },
             "EEPROD": {
               "browserTarget": "1851:build:EEPROD",
               "serverTarget": "1851:server:EEPROD"
@@ -386,6 +454,10 @@
             "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
+            },
+            "SCQA": {
+              "browserTarget": "1851:build:SCQA",
+              "serverTarget": "1851:server:SCQA"
             },
             "EEQA": {
               "browserTarget": "1851:build:EEQA",
@@ -416,6 +488,10 @@
               "browserTarget": "1851:build:1851PROD",
               "serverTarget": "1851:server:1851PROD"
             },
+            "SCPROD": {
+              "browserTarget": "1851:build:SCPROD",
+              "serverTarget": "1851:server:SCPROD"
+            },
             "EEPROD": {
               "browserTarget": "1851:build:EEPROD",
               "serverTarget": "1851:server:EEPROD"
@@ -427,6 +503,10 @@
             "1851QA": {
               "browserTarget": "1851:build:1851QA",
               "serverTarget": "1851:server:1851QA"
+            },
+            "SCQA": {
+              "browserTarget": "1851:build:SCQA",
+              "serverTarget": "1851:server:SCQA"
             },
             "EEQA": {
               "browserTarget": "1851:build:EEQA",
