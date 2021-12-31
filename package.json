@@ -20,7 +20,9 @@
     "build:ee:prod": "ng build --configuration=EEPROD && ng run 1851:server --configuration=EEPROD",
     "build:ee:qa": "ng build --configuration=EEQA && ng run 1851:server --configuration=EEQA",
     "build:1903:prod": "ng build --configuration=1903PROD && ng run 1851:server --configuration=1903PROD",
-    "build:1903:qa": "ng build --configuration=1903QA && ng run 1851:server --configuration=1903QA"
+    "build:1903:qa": "ng build --configuration=1903QA && ng run 1851:server --configuration=1903QA",
+    "build:sc:qa": "ng build --configuration=SCQA && ng run 1851:server --configuration=SCQA",
+    "build:sc:prod": "ng build --configuration=SCPROD && ng run 1851:server --configuration=SCPROD"
   },
   "private": true,
   "dependencies": {
