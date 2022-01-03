@@ -140,13 +140,8 @@
             >
               <a class="d-flex align-items-center" (click)="closeSidebar()"
                 ><h6 class="articleTitles">{{ action.title }}</h6>
-                <img
-                  data-src="{{ s3Url }}down-arrow.svg"
-                  height="15"
-                  width="15"
-                  alt="down-arrow"
-                  class="ms-1 lazyload pb-2"
-              /></a>
+                <i class="fa fa-angle-down ms-1 lazyload pb-2"></i>
+            </a>
               <ul class="dropdown-menu">
                 <li *ngFor="let item of action.items" class="pb-1">
                   <a
@@ -415,13 +410,8 @@
             >
               <a class="d-flex align-items-center" (click)="closeSidebar()"
                 ><h6 class="articleTitles">{{ action.title }}</h6>
-                <img
-                  data-src="{{ s3Url }}down-arrow.svg"
-                  height="15"
-                  width="15"
-                  alt="down-arrow"
-                  class="ms-1 lazyload pb-2"
-              /></a>
+                <i class="fa fa-angle-down ms-1 lazyload pb-2"></i>
+            </a>
               <ul class="dropdown-menu brandNav">
                 <li *ngFor="let item of action.items" class="pb-1">
                   <a
