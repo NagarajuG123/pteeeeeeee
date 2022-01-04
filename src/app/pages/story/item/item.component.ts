@@ -345,8 +345,8 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  nextArticle() {
-   const doctBottom = $(window).scrollTop() + $(window).height() + 600;
+  nextArticle(slug) {
+    const doctBottom = (slug == '1851') ? $(window).scrollTop() + $(window).height() + 600 : $(window).scrollTop() + $(window).height() + 100;
     window.scrollTo(0,doctBottom);
   }
 
