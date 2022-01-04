@@ -16,6 +16,13 @@
     }
   }
   background-color: $white_3;
+  .container
+  {
+    padding-left: 110px;
+    @include mobile-portrait2{
+      padding-left: 20px;
+    }
+  }
   .large-main-article {
     line-height: 42.5px;
     color: $red;
@@ -49,8 +56,8 @@
     }
     .form-control {
       border: 1px solid $dark_gray_5 !important ;
-      width: 65%;
       height: 47px;
+      width: 75%;
       background: $white;
     }
     input {
