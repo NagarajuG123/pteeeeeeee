@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    const meta = this.apiService.getAPI(`1851/meta`);
+    const meta = this.apiService.getAPI2(`meta`);
     const featureData = this.apiService.getAPI(`home-page-featured-content`);
     forkJoin([publication, meta, featureData]).subscribe((results) => {
       this.publication = results[0];
