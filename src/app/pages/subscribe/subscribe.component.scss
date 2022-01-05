@@ -19,7 +19,7 @@
   .container
   {
     padding-left: 110px;
-    @include mobile-portrait2{
+    @media (min-width: 360px) and (max-width: 900px) {
       padding-left: 20px;
     }
   }
