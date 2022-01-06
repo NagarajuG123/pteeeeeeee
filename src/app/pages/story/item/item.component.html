@@ -166,7 +166,7 @@
     <div class="most-like-articles mb-3">
       <h5
         class="seeMore mb-0 d-none d-md-flex text-uppercase pb-2"
-        *ngIf="trendingNews.length"
+        *ngIf="trendingNews && trendingNews.length"
       >
         More Stories like this
       </h5>
@@ -181,7 +181,7 @@
 
   <!-- next article line -->
 
-  <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
+  <div class="nextBtn d-flex py-5 justify-content-center align-items-center" *ngIf="hasMore">
     <div class="col-lg-5 col-sm-4 col-4 seeMoreLine"></div>
     <div
       class="
@@ -211,7 +211,7 @@
 
   <div class="most-like-articles pb-5 d-sm-flex d-md-none">
     <div class="container customContainer py-md-2">
-      <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews.length">
+      <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews && trendingNews.length">
         More Stories like this
       </h5>
       <app-article

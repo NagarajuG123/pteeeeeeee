@@ -67,6 +67,7 @@ export class StoryComponent implements OnInit {
   isServer: boolean;
   mainNews: any;
   brandNews: any;
+hasMore:any;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -626,12 +627,14 @@ export class StoryComponent implements OnInit {
   addItems(limit, offset) {
     if (this.pageType === 'details' && !this.isLoading && this.apiUrl) {
       this.isLoading = true;
+      this.hasMore = false;
       this.apiService
         .getAPI(`${this.apiUrl}?limit=${limit}&offset=${offset}`)
         .subscribe((result) => {
           let storyId;
           this.isLoading = false;
-          if (typeof result !== 'undefined') {
+          if (typeof result !== 'undefined' && result.data.length > 0) {
+            this.hasMore = true;
             if (
               this.type === 'dynamicpage' ||
               (this.type === 'brand-latest-stories' && this.brandId === '1851')
@@ -642,7 +645,7 @@ export class StoryComponent implements OnInit {
             } else {
               storyId = result.data[0].id;
             }
-          }
+          
           if (
             this.detailsData.find((o) => o.id == storyId) &&
             !this.duplicate
@@ -664,7 +667,7 @@ export class StoryComponent implements OnInit {
               return;
             }
           }
-          
+        }
           this.storyIndex = true;
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;

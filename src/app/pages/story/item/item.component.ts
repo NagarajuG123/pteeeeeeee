@@ -35,6 +35,7 @@ export class ItemComponent implements OnInit {
   @Input() publication: any;
   @Input() mainNewsData: any;
   @Input() brandNewsData: any;
+  @Input() hasMore: any;
 
   @ViewChild('virtualScroll') virtualScroll: ElementRef;
 
