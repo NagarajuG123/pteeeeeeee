@@ -60,8 +60,7 @@
               >
                 <div class="c-card-box--imageWrapper">
                   <a
-                    routerLink="{{ item.story.slug }}"
-                    fragment="monthlydetailspage"
+                    routerLink="/{{item.url}}"
                   >
                     <img
                       appYoutubeImage
@@ -71,16 +70,21 @@
                       alt="monthly-covers-main"
                       class="card-image lazyload img-fluid"
                       loading="lazy" />
+                  </a>
+                  <a
+                       routerLink="{{ item.story.slug }}"
+                       fragment="monthlydetailspage">
                     <h4 class="articleTitles m-0 py-2">
                       {{ item.story.title }}
                     </h4>
                     <p class="c-card-box--itemDec">
-                      {{ item.story.title }}
+                      {{ item.story.description }}
                     </p>
-                    <span class="seeMore text-capitalize"
-                      >view details
-                      <i class="fa fa-plus" aria-hidden="true"></i></span
-                  ></a>
+                  </a>
+                  <a class="seeMore text-capitalize" routerLink="/{{item.url}}"
+                    >view details
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </a>   
                 </div>
               </div>
             </div>
