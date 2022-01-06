@@ -182,8 +182,8 @@ body.noscroll {
   }
 }
 .top{
-  margin-top: 132px;
-  @include tablet-landscape1{
-    margin-top: 50px;
+  margin-top: 150px;
+  @media only screen and (min-device-width: 768px){
+  margin-top: 90px;
   }
 }

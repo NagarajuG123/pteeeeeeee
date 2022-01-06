@@ -26,11 +26,11 @@ header {
 
   .middle-head {
     .menuBtn {
-      width: 85px;
+      width: 90px;
       height: 90px;
       @include mobile-portrait {
-        width: 55px;
-        height: 51px;
+        width: 65px;
+        height: 70px;
       }
       img {
         filter: brightness(10);
@@ -54,8 +54,8 @@ header {
       }
       img {
         @include mobile-portrait {
-          width: 36px;
-          height: 36px;
+          width: 50px;
+          height: 50px;
         }
       }
       .sponsor {
