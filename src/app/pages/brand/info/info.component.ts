@@ -65,6 +65,7 @@ export class InfoComponent implements OnInit {
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
   categorySlug: string;
+  tabClass:string;
 
   constructor(
     public commonService: CommonService,
@@ -114,6 +115,7 @@ export class InfoComponent implements OnInit {
               .getAPI(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
                 this.categories = result.categories;
+                this.tabClass = `row-cols-lg-${this.categories.length}`;
                 this.activeTab =
                   this.categories
                     .map(function (e) {
@@ -372,6 +374,9 @@ export class InfoComponent implements OnInit {
     this.activeTab = val;
     this.tab = item?.value;
     this.getContents(this.tab);
+  }
+  showFinance(brandInfo) {
+    return brandInfo?.units || brandInfo?.expected_to_open || brandInfo?.startup_costs || brandInfo?.franchise_fee || brandInfo?.royalty || brandInfo?.startup_costs || brandInfo?.optional_info.length > 0;
   }
   prev() {
     if (this.skipTab > 0) {
