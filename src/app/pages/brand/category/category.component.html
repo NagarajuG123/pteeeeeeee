@@ -1,63 +1,12 @@
 <div class="sidebar-blur category" *ngIf="isLoaded">
   <div class="banner" [style.background-image]="'url(' + banner + ')'">
     <div class="container customContainer position-relative py-3">
-      <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-12 mb-3 mb-sm-0">
-          <div class="content">
-            <h3 class="text-capitalize">{{ mainText }}</h3>
-            <span class="d-flex description" *ngIf="description">{{
-              description
-            }}</span>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6 mb-3 mb-sm-0 catArticle">
-          <ul class="industry-list pt-1">
-            <li *ngFor="let item of topData; index as i">
-              <div class="d-flex">
-                <div class="col-lg-5 col-md-3 col-sm-5 col-5">
-                  <a
-                    routerLink="/{{ commonService.readMore(item) }}"
-                    fragment="featured"
-                    class="pe-2"
-                  >
-                    <img
-                      appYoutubeImage
-                      width="121"
-                      class="lazyload img-fluid"
-                      alt="article"
-                      loading="lazy"
-                      height="114"
-                      data-src="{{ item.media | defaultImage: 121:68 }}"
-                      srcset="{{item.media | defaultImage:545:305}} 545w,
-                        {{item.media | defaultImage:355:199}} 355w, 
-                        {{item.media | defaultImage:121:68}} 121w"
-                      sizes="{{
-                        '(max-width: 576px) 545px,
-                          (max-width: 768px) 355px,
-                          (max-width: 992px) 300px,
-                          121px'
-                      }}"
-                  /></a>
-                </div>
-                <div class="col-lg-7 col-sm-7 col-md-7 ps-2">
-                  <a
-                    routerLink="/{{ commonService.readMore(item) }}"
-                    fragment="featured"
-                  >
-                    <h3 class="articleTitles mb-0">{{ item.title }}</h3>
-                  </a>
-                  <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
-                    >{{ commonService.formatDate(item.last_modified) }} |
-                    {{ commonService.formatTime(item.last_modified) }}
-                  </span>
-                  <span *ngIf="!commonService.isUpdate(item)" class="timeStamp"
-                    >{{ commonService.formatDate(item.posted_on) }} |
-                    {{ commonService.formatTime(item.posted_on) }}</span
-                  >
-                </div>
-              </div>
-            </li>
-          </ul>
+      <div class="col-12 mb-sm-0 align-items-center">
+        <div class="content">
+          <h3 class="text-capitalize">{{ mainText }}</h3>
+          <span class="d-flex description" *ngIf="description">{{
+            description
+          }}</span>
         </div>
       </div>
     </div>
