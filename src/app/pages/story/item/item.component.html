@@ -61,7 +61,16 @@
         }}</a></ng-template>
       </div>
     </div>
-    <a
+    <div *ngIf="category.name" class="d-md-none d-flex">
+      <a *ngIf="brandSlug =='1851';else elseBlock" routerLink="/{{ category.slug }}" class="category">{{
+        category.name
+      }}</a>
+      <ng-template #elseBlock>
+        <a routerLink="/{{brandSlug}}/{{ category.slug }}" class="category">{{
+        category.name
+      }}</a></ng-template>
+    </div>
+    <!-- <a
       *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
       href="#"
       onclick="return false;"
@@ -70,7 +79,7 @@
       class="sponsored d-md-none d-flex"
     >
       SPONSORED
-    </a>
+    </a> -->
     <div
       class="py-4 d-flex justify-content-center text-center align-items-center title"
     >
@@ -126,6 +135,16 @@
           data-bs-toggle="modal"
           data-bs-target="#sponsoredModal"
           class="tag p-0 d-md-flex"
+        >
+          SPONSORED
+        </a>
+        <a
+          *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
+          href="#"
+          onclick="return false;"
+          data-bs-toggle="modal"
+          data-bs-target="#sponsoredModal"
+          class="sponsored pt-1 d-md-none d-flex"
         >
           SPONSORED
         </a>

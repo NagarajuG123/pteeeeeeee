@@ -65,12 +65,19 @@
     line-height: 150%;
   }
   .sponsored{
-    font-family: $aktiv;
-    font-size: 13px;
-    line-height: 18.75px;
+    font-family: $roboto;
+    font-size: 10px;
+    line-height: 12px;
     color: $red;
-    font-weight: 700;
-    padding-top: 10px;
+    font-weight: 400;
+  }
+  .category{
+      font-family: $aktiv;
+      font-size: 13px;
+      line-height: 13px;
+      color: $red;
+      font-weight: 700;
+      padding-top: 10px;
   }
   @media screen and (max-width: 767px) {
     .articleImage{
