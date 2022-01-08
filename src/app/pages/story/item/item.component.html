@@ -70,16 +70,6 @@
         category.name
       }}</a></ng-template>
     </div>
-    <!-- <a
-      *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
-      href="#"
-      onclick="return false;"
-      data-bs-toggle="modal"
-      data-bs-target="#sponsoredModal"
-      class="sponsored d-md-none d-flex"
-    >
-      SPONSORED
-    </a> -->
     <div
       class="py-4 d-flex justify-content-center text-center align-items-center title"
     >
@@ -134,17 +124,7 @@
           onclick="return false;"
           data-bs-toggle="modal"
           data-bs-target="#sponsoredModal"
-          class="tag p-0 d-md-flex"
-        >
-          SPONSORED
-        </a>
-        <a
-          *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
-          href="#"
-          onclick="return false;"
-          data-bs-toggle="modal"
-          data-bs-target="#sponsoredModal"
-          class="sponsored pt-1 d-md-none d-flex"
+          class="tag p-0 sponsored"
         >
           SPONSORED
         </a>

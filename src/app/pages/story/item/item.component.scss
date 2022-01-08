@@ -64,13 +64,6 @@
     color: $dark_gray_3;
     line-height: 150%;
   }
-  .sponsored{
-    font-family: $roboto;
-    font-size: 10px;
-    line-height: 12px;
-    color: $red;
-    font-weight: 400;
-  }
   .category{
       font-family: $aktiv;
       font-size: 13px;
@@ -101,6 +94,15 @@
           color: $red;
           text-decoration: underline;
         }
+      }
+      .sponsored{
+        font-family: $roboto;
+        font-size: 10px;
+        line-height: 12px;
+        color: $red;
+        font-weight: 400;
+        display: block;
+        padding-top: 8px;
       }
     }
     .nextBtn{
