@@ -115,9 +115,18 @@ hr {
   .modal-header {
     border-bottom: 0px;
   }
-  .modal-body {
-    padding: 0rem !important;
-  }
+  .modal-body{
+    top:-140px;
+    position: absolute;
+    width:800px;
+    margin-top:-20px;
+    @media (min-width:360px) and (max-width:860px) 
+    {  
+      position: relative;
+      top:40px;
+      width:auto;
+    }
+    }
   .modal-title {
     font-family: $aktiv;
     font-weight: 500;
