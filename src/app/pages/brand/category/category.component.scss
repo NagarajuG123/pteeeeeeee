@@ -8,7 +8,7 @@
   .banner {
     background-repeat: no-repeat;
     width: 100%;
-    height: auto;
+    height: 400px;
     background-size: auto;
   }
   .bg-blue {
@@ -31,7 +31,7 @@
     span {
       color: $black;
       font-size: 13.76px;
-      max-width: 70%;
+      max-width: 90%;
       @include mobile-landscape {
         max-width: 100%;
       }
