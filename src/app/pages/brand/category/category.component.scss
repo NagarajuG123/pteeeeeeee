@@ -33,12 +33,8 @@
       font-size: 13.76px;
       @include mobile-landscape {
         max-width: 100%;
-        
       }
-    }
-    @include tablet-landscape1{
-      padding-left: 0 !important;
-    }
+    } 
   }
   .bottomSection {
     background: $white_8;
