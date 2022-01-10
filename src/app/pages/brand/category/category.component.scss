@@ -31,14 +31,13 @@
     span {
       color: $black;
       font-size: 13.76px;
-      // max-width: 90%;
       @include mobile-landscape {
         max-width: 100%;
+        
       }
     }
     @include tablet-landscape1{
       padding-left: 0 !important;
-      margin-left: 24px !important;
     }
   }
   .bottomSection {
