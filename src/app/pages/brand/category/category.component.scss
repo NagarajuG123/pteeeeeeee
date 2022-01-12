@@ -18,15 +18,41 @@
     padding: 0 58px;
   }
   .content {
+    &.row-cols-2 > * {
+      width: 59%;
+      @include mobile-portrait {
+        width: 100%;
+      }
+      @include tablet-landscape {
+        width: 100%;
+      }
+    }
+    @include mobile-portrait {
+      position: static;
+      transform: none;
+      border: none;
+      justify-content: start !important;
+      align-items: start !important;
+      padding: 2rem !important;
+    }
+    @include tablet-landscape {
+      position: static;
+      transform: none;
+      justify-content: start !important;
+      align-items: start !important;
+      padding: 3rem !important;
+      margin-top: 20px;
+    }
     h3 {
       font-family: $aktiv;
       font-size: 64px !important;
       font-weight: 700;
       color: $dark_gray;
       line-height: 62.5px;
-      @include mobile-landscape {
+      @media  (min-width:360px) and (max-width:760px){
         font-size: 32px !important;
-      }
+        margin-bottom: 0px;
+      } 
     }
     span {
       color: $black;
