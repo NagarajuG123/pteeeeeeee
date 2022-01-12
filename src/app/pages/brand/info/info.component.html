@@ -601,14 +601,14 @@
                         formControlsValues[fields.key].errors?.required
                     }"
                   >
-                    <option  value="" disabled selected hidden>
+                    <option value="" disabled selected hidden>
                       {{ fields.title }}*
                     </option>
                     <option 
                       *ngFor="let value of fields.enum"
                       value="{{ value }}"
                     >
-                      <span  style="color: tomato;">{{ value }}</span>
+                      <span>{{ value }}</span>
                     </option>
                   </select>
                   <div
