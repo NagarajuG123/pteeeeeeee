@@ -226,7 +226,17 @@
 
   form {
     background-color: $dark_gray;
-
+    select 
+    {    color: black;
+        &:first-child [value=""] {
+          color: red !important;
+       option {
+         color:blue
+       }
+      }
+   
+  
+}
     .inquirefrom-row {
       .isError {
         margin-bottom: 10px !important;
