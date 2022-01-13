@@ -38,6 +38,9 @@
     .description{
       width: 70%;
     }
+    .sponsored{
+      flex-direction: column;
+    }
   }
   .large-main-article {
     color: $dark_gray;
@@ -102,7 +105,11 @@
         color: $red;
         font-weight: 400;
         display: block;
-        padding-top: 8px;
+        padding: 8px 0 8px 6px !important;
+        flex-direction: unset;
+      }
+      .timeStamp{
+        padding-left: 8px !important;
       }
     }
     .nextBtn{

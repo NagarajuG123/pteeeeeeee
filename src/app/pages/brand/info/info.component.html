@@ -537,10 +537,12 @@
 
           <div class="inquiry-form-section">
             <div class="header" *ngIf="!isMarket">
-              <h1 class="title mb-0 text-capitalize p-4">Inquire Now</h1>
+              <h1 class="title mb-0 text-capitalize p-4"
+                  *ngIf="inquireForm">Inquire Now</h1>
             </div>
-            <div class="header" *ngIf="isMarket">
-              <h1 class="market-header text-uppercase p-4">
+            <div class="header" *ngIf="isMarket && inquireForm ">
+              <h1 class="market-header text-uppercase p-4"
+                  >
                 Inquire Now
               </h1>
             </div>
