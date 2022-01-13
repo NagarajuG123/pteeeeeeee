@@ -227,7 +227,15 @@
     background-color: $dark_gray;
      border-top: 2px solid $red;
 
-
+     select:required:invalid {
+      color: $light_gray_8;
+    }
+    // option[value=""][disabled] {
+    //   display: none;
+    // }
+    option {
+      color:$dark_gray;
+    }
     .inquirefrom-row {
       .isError {
         margin-bottom: 10px !important;
