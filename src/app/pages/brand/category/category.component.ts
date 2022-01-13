@@ -40,6 +40,7 @@ export class CategoryComponent implements OnInit {
   isLoaded: boolean;
   hasMore: boolean;
   s3Url = environment.s3Url;
+  rows: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -79,6 +80,7 @@ export class CategoryComponent implements OnInit {
             this.hasMore = results[0].has_more;
             this.metaService.setSeo(results[1].data);
             this.tabName = results[2].categories;
+            this.rows = `row-cols-lg-${this.tabName.length}`;
             this.activeTab =
               this.tabName
                 .map(function (e) {

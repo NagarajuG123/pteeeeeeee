@@ -115,16 +115,24 @@ hr {
   .modal-header {
     border-bottom: 0px;
   }
+  .modal-dialog{
+    @include tablet-landscape{
+      max-width: 100%;
+    } 
+  }
   .modal-body{
     top:-140px;
     position: absolute;
     width:800px;
     margin-top:-20px;
-    @media (min-width:360px) and (max-width:860px) 
-    {  
-      position: relative;
-      top:20px;
-      width:auto;
+    @include tablet-landscape1{
+      position: absolute;
+      top: -200px;
+    }
+    @include tablet-landscape{
+      width: 90%;
+      padding: 0;
+      top: -200px;
     }
    
   }
