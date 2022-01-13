@@ -47,7 +47,11 @@ header {
       margin-left: -0.5rem;
 
       @include tablet-landscape {
-        margin-left: 0rem;
+        margin-left: 1rem;
+      }
+      @include  tablet-portrait
+      {
+        margin-left: -2rem;
       }
       @include mobile-portrait {
         margin-left: -1rem;
@@ -319,13 +323,18 @@ header {
       bottom: 50%;
       top: -3px;
       @include tablet-landscape {
-        top: -8px;
+        top: -6px;
+
       }
     }
 
     .vertical .carousel-control-next {
       top: 50%;
       bottom: 0;
+      @include tablet-landscape {
+        bottom: -5px;
+
+      }
     }
 
     .vertical .carousel-control-prev-icon,
