@@ -270,9 +270,21 @@ header {
       font-size: 10px;
       line-height: 10px;
     }
+    .trendingLogo
+
+    {
+      @include desk-lg-below2  {
+        margin-left: 100px;
+      }
+    }
     .title {
       color: $white_2;
       max-width: 950px;
+      @include desk-lg-below2
+      {
+        max-width: 650px;
+        margin:5px 0 0 50px;
+      }
     }
     .vertical .carousel-item {
       width: 100%;
