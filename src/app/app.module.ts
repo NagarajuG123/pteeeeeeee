@@ -21,7 +21,6 @@ import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.mo
 import { GoogleAnalyticsService } from './google-analytics.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import * as Sentry from '@sentry/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,22 +47,7 @@ import * as Sentry from '@sentry/angular';
   ],
   providers: [
     GoogleAnalyticsService,
-    {
-      provide: ErrorHandler,
-      useValue: Sentry.createErrorHandler({
-        showDialog: false,
-      }),
-    },
-    {
-      provide: Sentry.TraceService,
-      deps: [Router],
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: () => () => {},
-      deps: [Sentry.TraceService],
-      multi: true,
-    },
+    
   ],
   bootstrap: [AppComponent],
 })
