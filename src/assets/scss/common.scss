@@ -127,13 +127,12 @@ hr {
     margin-top:-20px;
     @include tablet-landscape1{
       position: absolute;
-      padding: 0;
       top: -200px;
-      width: 100%;
     }
     @include tablet-landscape{
-      width: 100%;
+      width: 90%;
       padding: 0;
+      top: -200px;
     }
    
   }
