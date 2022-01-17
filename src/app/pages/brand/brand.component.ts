@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 })
 export class BrandComponent implements OnInit {
   slug: any;
+  name: any;
   type: string = '';
   company: string = '';
   scrollOffset: number = 0;
@@ -58,6 +59,7 @@ export class BrandComponent implements OnInit {
             this.router.navigateByUrl('/404');
           } else {
             this.type = response.type;
+            this.name=response.name;
             this.company = response.name;
             this.isCategory = true;
             if (this.type === 'brand_page') {
