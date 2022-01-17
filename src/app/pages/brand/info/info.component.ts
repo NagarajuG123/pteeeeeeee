@@ -699,10 +699,4 @@ export class InfoComponent implements OnInit {
   getBB(selection: any) {
     selection.each((d) => {});
   }
-  checkValid(string){
-    if (/\S/.test(string)) {
-        return true;
-    }
-    return false;
-  }
 }
