@@ -28,7 +28,7 @@
               : 'd-none'
           "
         >
-          <span
+         <a  href="{{ brandSlug }}/{{ item['value'] }}"> <span
             class="
               d-inline-flex
               justify-content-around
@@ -38,8 +38,8 @@
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
             (click)="setActiveTab(i + 1, item)"
-            >{{ item?.name }}</span
-          >
+            >{{ item?.name }}</span>
+         </a>
         </li>
       </ul>
       <div
