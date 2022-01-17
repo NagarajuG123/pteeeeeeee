@@ -376,7 +376,7 @@ export class InfoComponent implements OnInit {
     this.getContents(this.tab);
   }
   showFinance(brandInfo) {
-    return brandInfo?.units || brandInfo?.expected_to_open || brandInfo?.startup_costs || brandInfo?.franchise_fee || brandInfo?.royalty || brandInfo?.startup_costs || brandInfo?.optional_info.length > 0;
+    return brandInfo?.units || brandInfo?.expected_to_open || brandInfo?.startup_costs || brandInfo?.franchise_fee || brandInfo?.royalty || brandInfo?.startup_costs || brandInfo?.optional_info &&  brandInfo?.optional_info.length > 0;
   }
   prev() {
     if (this.skipTab > 0) {
