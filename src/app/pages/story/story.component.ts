@@ -56,7 +56,7 @@ export class StoryComponent implements OnInit {
   isBrand: boolean;
   brandList: any = [];
   type = '';
-  brandSlug = '1851';
+  brandSlug :string;
   originalUrl = '';
   gaVisitedUrls: Array<any> = [];
   storyApiUrl = '';
