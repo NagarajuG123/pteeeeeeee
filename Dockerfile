@@ -14,7 +14,7 @@ RUN npm run build:1851:qa
 
 RUN chown node:node -R /app/dist
 
-EXPOSE 4700
+EXPOSE 4400
 
 USER node
 
