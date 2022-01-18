@@ -480,7 +480,7 @@
               <h3>{{ brandTitle }}</h3></a
             >
             <ul class="mb-2 ms-2">
-              <li class="ms-1">
+              <li class="ms-1" *ngIf="header?.sidebar?.pdf?.url">
                 <a
                   class="d-flex justify-content-between align-items-center my-1"
                   [href]="header?.sidebar?.pdf?.url"
