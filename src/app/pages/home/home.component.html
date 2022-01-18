@@ -1,4 +1,4 @@
-<div class="top"></div>
+<div [ngClass]="commonService.trendingClass"></div>
 <app-most-popular
   [slug]="'1851'"
   [apiUrl]="'featured-articles?limit=6&offset=0'"

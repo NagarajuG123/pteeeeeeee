@@ -181,6 +181,9 @@ export class HeaderComponent implements OnInit {
         this.inquireData = results[2].schema;
         this.publication = results[3];
         this.trending = results[4].data;
+        if(this.trending && this.trending.length == 0) {
+          this.commonService.trendingClass = 'topNoTrending'
+        }
         this.setFavicon();
         if (this.brandSlug != '1851') {
           this.getInquiry();

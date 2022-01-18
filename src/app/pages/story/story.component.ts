@@ -22,6 +22,7 @@ import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
 import { takeUntil } from 'rxjs/operators';
+import { CommonService } from 'src/app/_core/services/common.service';
 declare var FB: any;
 declare var ga: Function;
 
@@ -86,7 +87,9 @@ hasMore:any;
     private rendererFactory: RendererFactory2,
     @Inject(DOCUMENT) private dom,
     private location: Location,
-    private meta: Meta
+    private meta: Meta,
+    public commonService: CommonService
+
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.isServer = isPlatformServer(platformId);

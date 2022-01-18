@@ -1,4 +1,4 @@
-<div class="top"></div>
+<div [ngClass]="commonService.trendingClass"></div>
 <div *ngIf="type === 'brand_page'">
   <app-most-popular 
   [slug]="slug" 
