@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { CommonService } from 'src/app/_core/services/common.service';
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
@@ -14,7 +15,8 @@ export class ErrorComponent implements OnInit {
   s3Url = environment.s3Url;
   constructor(
     private metaService: MetaService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public commonService: CommonService
   ) {}
 
   ngOnInit(): void {

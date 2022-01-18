@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-power-ranking',
@@ -27,7 +28,8 @@ export class PowerRankingComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    public commonService: CommonService
   ) {}
 
   ngOnInit(): void {

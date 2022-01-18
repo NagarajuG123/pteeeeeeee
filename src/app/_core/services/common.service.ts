@@ -9,6 +9,7 @@ export class CommonService {
   public showmenu: boolean = false;
   public vtabsItem: number = 5;
   public brandInfoTabs: number = 5;
+  public trendingClass = 'top';
 
   isBrowser: boolean = false;
   isPageLoaded = new BehaviorSubject<boolean>(false);

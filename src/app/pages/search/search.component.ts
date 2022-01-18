@@ -124,7 +124,7 @@ export class SearchComponent implements OnInit {
     private location: Location,
     private metaService: MetaService,
     private datePipe: DatePipe,
-    private commonService: CommonService
+    public commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.specificSearchForm = new FormGroup({

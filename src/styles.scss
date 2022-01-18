@@ -187,3 +187,12 @@ body.noscroll {
   margin-top: 90px;
   }
 }
+.topNoTrending {
+  margin-top: 110px;
+  @media only screen and (max-device-width: 768px){
+  margin-top: 70px;
+  }
+  @include tablet-portrait {
+    margin-top: 90px;
+  }
+}

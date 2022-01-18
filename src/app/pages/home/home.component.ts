@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     private metaService: MetaService,
     private apiService: ApiService,
     fb: FormBuilder,
-    private commonService: CommonService
+    public commonService: CommonService
   ) {
     this.newsletterForm = fb.group({
       name: ['', Validators.compose([Validators.required])],
