@@ -8,8 +8,8 @@
   .banner {
     background-repeat: no-repeat;
     width: 100%;
-    height: auto;
-    background-size: auto;
+    height: 400px;
+    background-size: cover;
   }
   .bg-blue {
     background: $white_3;
@@ -18,12 +18,30 @@
     padding: 0 58px;
   }
   .content {
-    padding: 150px 0 0 0;
-    @include mobile-landscape {
-      padding: 0 0 0 15px;
+    &.row-cols-2 > * {
+      width: 59%;
+      @include mobile-portrait {
+        width: 100%;
+      }
+      @include tablet-landscape {
+        width: 100%;
+      }
     }
-    @include tablet-landscape2 {
-      padding: 150px 0 0 15px;
+    @include mobile-portrait {
+      position: static;
+      transform: none;
+      border: none;
+      justify-content: start !important;
+      align-items: start !important;
+      padding: 2rem !important;
+    }
+    @include tablet-landscape {
+      position: static;
+      transform: none;
+      justify-content: start !important;
+      align-items: start !important;
+      padding: 3rem !important;
+      margin-top: 20px;
     }
     h3 {
       font-family: $aktiv;
@@ -31,39 +49,19 @@
       font-weight: 700;
       color: $dark_gray;
       line-height: 62.5px;
-      @include mobile-landscape {
+      @media  (min-width:360px) and (max-width:760px){
         font-size: 32px !important;
-      }
+        margin-bottom: 0;
+        padding:0;
+      } 
     }
     span {
       color: $black;
       font-size: 13.76px;
-      max-width: 70%;
       @include mobile-landscape {
         max-width: 100%;
       }
-    }
-  }
-  .catArticle {
-    border-left: 1px solid $dark_gray;
-    @include mobile-portrait {
-      border-left: none;
-    }
-    .industry-list {
-      color: $black;
-      font-family: $roboto;
-      font-weight: 700;
-      li {
-        border-bottom: 1px solid $dark_gray;
-        padding: 25px 0 25px !important;
-        &:first-child {
-          padding-top: 0px !important;
-        }
-        &:last-child {
-          border: 0;
-        }
-      }
-    }
+    } 
   }
   .bottomSection {
     background: $white_8;

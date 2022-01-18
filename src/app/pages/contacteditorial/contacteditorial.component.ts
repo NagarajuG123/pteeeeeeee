@@ -16,6 +16,7 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 @Component({
@@ -43,7 +44,9 @@ export class ContacteditorialComponent implements OnInit {
     private apiService: ApiService,
     private metaService: MetaService,
     @Inject(PLATFORM_ID) platformId: Object,
-    fb: FormBuilder
+    fb: FormBuilder,
+    public commonService: CommonService
+
   ) {
     this.contactForm = fb.group({
       first_name: ['', Validators.compose([Validators.required])],

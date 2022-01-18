@@ -15,9 +15,7 @@ export const environment = {
   room1903Url: 'https://room1903.com/',
   eeUrl: 'https://estatenvy.com/',
   enableSW: false,
-  env: 'local',
-  sentryDsn:
-    'https://ab986fe6fce04ddebd8785260a08f048@o1061606.ingest.sentry.io/6052001',
+  env: 'local'
 };
 
 /*

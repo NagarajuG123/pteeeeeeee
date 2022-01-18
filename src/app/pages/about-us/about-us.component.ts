@@ -10,6 +10,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-about-us',
@@ -36,7 +37,8 @@ export class AboutUsComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object,
     fb: FormBuilder,
     private toastr: ToastrService,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    public commonService: CommonService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = fb.group({

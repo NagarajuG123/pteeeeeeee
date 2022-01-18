@@ -28,7 +28,6 @@ export class CategoryComponent implements OnInit {
 
   isBrowser: boolean;
   featuredData: any[] = [];
-  topData: any[] = [];
   mostRecent: Details[] = [];
   tabName: any;
   defaultTab!: string;
@@ -41,6 +40,7 @@ export class CategoryComponent implements OnInit {
   isLoaded: boolean;
   hasMore: boolean;
   s3Url = environment.s3Url;
+  rows: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       this.mainText = this.slug.replace('-', ' ');
       this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
-        `${this.type}/${this.slug}/featured?limit=24&offset=0`
+        `${this.type}/${this.slug}/featured?limit=20&offset=0`
       );
       const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
@@ -76,11 +76,11 @@ export class CategoryComponent implements OnInit {
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0].data.length) {
-            this.topData = results[0].data.slice(0,4);
-            this.featuredData = results[0].data.slice(4,24);
+            this.featuredData = results[0].data;
             this.hasMore = results[0].has_more;
             this.metaService.setSeo(results[1].data);
             this.tabName = results[2].categories;
+            this.rows = `row-cols-lg-${this.tabName.length}`;
             this.activeTab =
               this.tabName
                 .map(function (e) {
@@ -123,7 +123,7 @@ export class CategoryComponent implements OnInit {
   }
   getData(tabName: any) {
     this.apiService
-      .getAPI(`${this.type}/${tabName}/featured?limit=24&offset=0`)
+      .getAPI(`${this.type}/${tabName}/featured?limit=20&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -131,8 +131,7 @@ export class CategoryComponent implements OnInit {
           result['data'].forEach((item: any, index: number) => {
             data.push(item);
           });
-          this.topData = data.slice(0,4);
-          this.featuredData = data.slice(4,24);
+          this.featuredData = data;
           this.hasMore = result.has_more;
         }
       });

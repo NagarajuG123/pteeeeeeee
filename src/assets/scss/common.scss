@@ -115,8 +115,26 @@ hr {
   .modal-header {
     border-bottom: 0px;
   }
-  .modal-body {
-    padding: 0rem !important;
+  .modal-dialog{
+    @include tablet-landscape{
+      max-width: 100%;
+    } 
+  }
+  .modal-body{
+    top:-140px;
+    position: absolute;
+    width:800px;
+    margin-top:-20px;
+    @include tablet-landscape1{
+      position: absolute;
+      top: -200px;
+    }
+    @include tablet-landscape{
+      width: 90%;
+      padding: 0;
+      top: -200px;
+    }
+   
   }
   .modal-title {
     font-family: $aktiv;
@@ -209,7 +227,7 @@ button {
       cursor: pointer;
       font-family: $roboto;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 28.24px;
       &.active{
         &::after {

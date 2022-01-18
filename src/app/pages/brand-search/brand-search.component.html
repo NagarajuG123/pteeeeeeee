@@ -1,4 +1,4 @@
-<div class="top"></div>
+<div [ngClass]="commonService.trendingClass"></div>
 <div class="c-subheader--wrapper sidebar-blur">
   <img
     data-src="{{ bannerImage }}"
@@ -133,7 +133,7 @@
                     >
                   </p>
                 </div>
-                <div class="list-data--item isLstSotryCol">
+                <div class="list-data--item isLstSotryCol" *ngIf="data.latest_story">
                   <p class="list-data--latestStory">
                     <a
                       routerLink="/{{ data.slug }}/{{ data.latest_story.slug }}"

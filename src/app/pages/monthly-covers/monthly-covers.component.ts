@@ -8,6 +8,7 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import 'lazysizes';
 import { faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-monthly-covers',
@@ -30,7 +31,9 @@ export class MonthlyCoversComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private cdr: ChangeDetectorRef,
-    private metaService: MetaService
+    private metaService: MetaService,
+    public commonService: CommonService
+
   ) {}
 
   ngOnInit(): void {

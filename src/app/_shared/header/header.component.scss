@@ -26,15 +26,16 @@ header {
 
   .middle-head {
     .menuBtn {
-      width: 78px;
-      height: 71px;
+      width: 90px;
+      height: 90px;
       @include mobile-portrait {
-        width: 55px;
-        height: 51px;
+        width: 65px;
+        height: 70px;
       }
       img {
         filter: brightness(10);
         margin-bottom: 8px;
+        margin-top: 8px;
       }
       small {
         line-height: 17.43px;
@@ -47,15 +48,19 @@ header {
       margin-left: -0.5rem;
 
       @include tablet-landscape {
-        margin-left: 0rem;
+        margin-left: 1rem;
+      }
+      @include  tablet-portrait
+      {
+        margin-left: -2rem;
       }
       @include mobile-portrait {
         margin-left: -1rem;
       }
       img {
         @include mobile-portrait {
-          width: 36px;
-          height: 36px;
+          width: 50px;
+          height: 50px;
         }
       }
       .sponsor {
@@ -103,13 +108,13 @@ header {
       }
     }
     .cover {
-      height: 70px;
+      height: 90px;
       overflow: hidden;
       padding-top: 0;
       position: relative;
 
       figure {
-        height: 70px;
+        height: 90px;
         overflow: hidden;
         img {
           width: 100%;
@@ -270,8 +275,21 @@ header {
       font-size: 10px;
       line-height: 10px;
     }
+    .trendingLogo
+
+    {
+      @include desk-lg-below2  {
+        margin-left: 100px;
+      }
+    }
     .title {
       color: $white_2;
+      max-width: 950px;
+      @include desk-lg-below2
+      {
+        max-width: 650px;
+        margin:5px 0 0 50px;
+      }
     }
     .vertical .carousel-item {
       width: 100%;
@@ -306,13 +324,18 @@ header {
       bottom: 50%;
       top: -3px;
       @include tablet-landscape {
-        top: -8px;
+        top: -6px;
+
       }
     }
 
     .vertical .carousel-control-next {
       top: 50%;
       bottom: 0;
+      @include tablet-landscape {
+        bottom: -5px;
+
+      }
     }
 
     .vertical .carousel-control-prev-icon,

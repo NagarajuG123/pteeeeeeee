@@ -9,6 +9,7 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-subscribe',
@@ -33,7 +34,9 @@ export class SubscribeComponent implements OnInit {
     private apiService: ApiService,
     private metaService: MetaService,
     fb: FormBuilder,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: Object,
+    public commonService: CommonService
+
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
 

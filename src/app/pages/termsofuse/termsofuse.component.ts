@@ -10,6 +10,7 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { Meta } from 'src/app/_core/models/meta.model';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 const RESULT_KEY = makeStateKey<any>('termsState');
 
@@ -35,7 +36,9 @@ export class TermsofuseComponent implements OnInit {
     private route: ActivatedRoute,
     private tstate: TransferState,
     private pageScrollService: PageScrollService,
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
+    public commonService: CommonService
+
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

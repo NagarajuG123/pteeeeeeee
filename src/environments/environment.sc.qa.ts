@@ -9,7 +9,5 @@ export const environment = {
   appUrl: 'https://stachecow.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/1851magazine/',
   enableSW: false,
-  env: 'development',
-  sentryDsn:
-    'https://e9ff1121f65c4c23aa8562431a68e558@o1063486.ingest.sentry.io/6054469',
+  env: 'development'
 };

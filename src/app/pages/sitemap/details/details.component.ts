@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Sitemap } from 'src/app/_core/models/sitemap';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 
 @Component({
@@ -20,7 +21,9 @@ export class DetailsComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private metaService: MetaService
+    private metaService: MetaService,
+    public commonService: CommonService
+
   ) {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {

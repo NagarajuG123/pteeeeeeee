@@ -33,7 +33,7 @@
   }
 
   .header {
-    height: 67px;
+    height: 71.97px;
     background-color: $dark_gray;
     display: flex;
     align-items: center;
@@ -191,8 +191,7 @@
     display: flex;
     align-items: center;
     background-color: $dark_gray;
-    border-bottom: 2px solid $red;
-
+ 
     h1 {
       &.title {
         color: $white;
@@ -226,7 +225,14 @@
 
   form {
     background-color: $dark_gray;
+     border-top: 2px solid $red;
 
+     select:required:invalid {
+      color: $light_gray_8;
+    }
+    option {
+      color:$dark_gray;
+    }
     .inquirefrom-row {
       .isError {
         margin-bottom: 10px !important;
@@ -289,6 +295,7 @@
 .recent-feature-article-section {
   padding: 30px 25px;
   background-color: $white_8;
+  border-top: 2px solid $red;
 
   @include mobile-portrait {
     padding: 20px 15px;
