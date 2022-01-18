@@ -782,8 +782,9 @@ hasMore:any;
 
     const elemTop = $(elem).offset().top;
     const elemBottom = elemTop + $(elem).height();
+    const elemView = elemTop + 1400;
 
-    return elemBottom <= docViewBottom && elemTop >= docViewTop;
+    return elemBottom <= docViewBottom && elemView >= docViewTop;
   }
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
