@@ -8,7 +8,7 @@ export const environment = {
   api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   port: 4200,
-  imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
+  imageResizeUrl: 'https://dnnxwdlxu3h63.cloudfront.net',
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',

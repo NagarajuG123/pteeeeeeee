@@ -13,17 +13,10 @@ export class DefaultImagePipe implements PipeTransform {
     }
     if (value.type === 'Image' || value.type === 'image') {
       if (typeof value.url.image_url !== 'undefined') {
-        image = `${environment.imageResizeUrl}/insecure/fill/${width}/${height}/sm/0/plain/${value.url.image_url}`;
+        image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.url.path}`;
       } else {
-        image = `${environment.imageResizeUrl}/insecure/fill/${width}/${height}/sm/0/plain/${value.url}`;
+        image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.path}`;
       }
-    }
-    if (
-      value.type === 'VideoURL' ||
-      value.type === 'Video' ||
-      value.type === 'video'
-    ) {
-      image = `${environment.imageResizeUrl}/insecure/fill/${width}/${height}/sm/0/plain/${value.placeholder}`;
     }
     return image;
   }

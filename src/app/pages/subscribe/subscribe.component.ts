@@ -28,7 +28,7 @@ export class SubscribeComponent implements OnInit {
   submitSuccessMsg: string = '';
   isSuccess: boolean = false;
   faCaretRight = faCaretRight;
-  banner = `${environment.imageResizeUrl}/insecure/fill/1280/720/sm/0/plain/${environment.s3Url}subscribepage-banner.jpeg`;
+  banner = `${environment.imageResizeUrl}/subscribepage-banner.jpeg`
 
   constructor(
     private apiService: ApiService,

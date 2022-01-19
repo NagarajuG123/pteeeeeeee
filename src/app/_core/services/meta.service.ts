@@ -29,7 +29,7 @@ export class MetaService {
           this.meta.updateTag(
             {
               property: `og:image`,
-              content: `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${data.og.media.url}`,
+              content: `${environment.imageResizeUrl}/fit-in/500x261/${data.og.media.path}`,
             },
             `property='og:image'`
           );
@@ -48,7 +48,7 @@ export class MetaService {
           this.meta.updateTag(
             {
               name: `twitter:image`,
-              content: `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${data.twitter['media']['url']}`,
+              content: `${environment.imageResizeUrl}/fit-in/500x261/${data.twitter['media']['path']}`,
             },
             `name='twitter:image'`
           );

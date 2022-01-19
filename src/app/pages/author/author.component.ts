@@ -97,12 +97,6 @@ export class AuthorComponent implements OnInit {
     });
   }
   getUserAvater(media: any) {
-    if (typeof media === 'undefined' || media === null) {
-      return `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/https://placeimg.com/279/279/any`;
-    } else {
-      return media.type === 'image'
-        ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.url}`
-        : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${media.placeholder}`;
+       return `${environment.imageResizeUrl}/fit-in/500x261/${media.path}`;
     }
-  }
 }

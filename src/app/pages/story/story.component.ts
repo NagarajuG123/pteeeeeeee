@@ -412,10 +412,7 @@ hasMore:any;
             },
             image: {
               '@type': 'ImageObject',
-              url:
-                result['story'].data.media.type === 'image'
-                  ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result['story'].data.media.url}`
-                  : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result['story'].data.media.placeholder}`,
+              url: `${environment.imageResizeUrl}/fit-in/500x261/${result['story'].data.media.path}`,
               width: 802,
               height: 451,
             },
@@ -526,10 +523,8 @@ hasMore:any;
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          const image_url = `${
-            environment.imageResizeUrl
-          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-            this.changeMaxResultImg(metas.og['media']['url'])
+          const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
+            this.changeMaxResultImg(metas.og['media']['path'])
           )}`;
           this.meta.updateTag(
             { property: `og:image`, content: image_url },
@@ -563,10 +558,8 @@ hasMore:any;
       const twitterKeys = Object.keys(metas.twitter);
       for (const key of twitterKeys) {
         if (key === 'media' && metas.twitter[key] !== null) {
-          const twitter_url = `${
-            environment.imageResizeUrl
-          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-            this.changeMaxResultImg(metas.twitter['media']['url'])
+          const twitter_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
+            this.changeMaxResultImg(metas.twitter['media']['path'])
           )}`;
           this.meta.updateTag(
             { name: `twitter:image`, content: twitter_url },
