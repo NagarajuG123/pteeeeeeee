@@ -246,6 +246,11 @@
         color: $red;
       }
 
+      input{
+        &::placeholder{
+          color: $dark_gray !important;
+        }
+      }
       .form-control {
         margin-bottom: 15px;
         background: $white;
@@ -263,9 +268,8 @@
         }
 
         &::placeholder {
-         
           font-size: 13px;
-          color: $light_gray_8;
+          color: $dark_gray;
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
