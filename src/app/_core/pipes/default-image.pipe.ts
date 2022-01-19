@@ -11,12 +11,11 @@ export class DefaultImagePipe implements PipeTransform {
     if (typeof value === 'undefined' || value === null) {
       return image;
     }
-    if (value.type === 'Image' || value.type === 'image') {
-      if (typeof value.url.image_url !== 'undefined') {
-        image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.url.path}`;
-      } else {
-        image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.path}`;
-      }
+   
+    if (typeof value.url.image_url !== 'undefined') {
+      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.url.path}`;
+    } else {
+      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.path}`;
     }
     return image;
   }
