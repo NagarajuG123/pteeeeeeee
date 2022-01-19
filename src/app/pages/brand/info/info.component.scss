@@ -273,8 +273,10 @@
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
-          overflow-wrap: break-word !important;
-          white-space: normal !important;
+          white-space:pre-line; 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
         }
       }
     }
