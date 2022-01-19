@@ -877,7 +877,9 @@ button.close {
 
 .brand-page-row--wrapper {
   margin-top: 40px;
-
+  &.info-wrapper {
+    margin: 0px;
+  }
   @include tablet-portrait {
     padding: 0px 45px 15px 45px;
   }

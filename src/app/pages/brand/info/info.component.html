@@ -57,47 +57,7 @@
       </div>
     </div>
   </div>
-  <!-- Tabs end -->
-  <ng-container *ngIf="isStory">
-    <div class="strory-banner--img container">
-      <a
-        href="#"
-        onclick="return false;"
-        class="d-block video-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#brandInfoModal"
-        (click)="openVideoPlayer = true"
-      >
-        <img
-          appYoutubeImage
-          class="lazyload img-fluid"
-          width="1280"
-          height="720"
-          data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
-          srcset="{{brandInfo.media | defaultImage:545:306}} 545w,
-            {{brandInfo.media | defaultImage:600:337}} 600w,
-            {{brandInfo.media | defaultImage:700:393}} 700w,
-            {{brandInfo.media | defaultImage:1280:720}} 1024w"
-          sizes="{{
-            '(max-width: 576px) 545px,
-              (max-width: 768px) 600px,
-              (max-width: 992px) 700px,
-              1024px'
-          }}"
-          alt="brand_img"
-          loading="lazy"
-        />
-        <img
-          *ngIf="brandInfo.media.type === 'video'"
-          data-src="{{ s3Url }}videoIcon.png"
-          alt="Play"
-          class="img-fluid vide-play lazyload"
-          loading="lazy"
-        />
-      </a>
-    </div>
-  </ng-container>
-  <!-- story tab banner -->
+ 
   <div
     class="px-4 brand-page-row--wrapper"
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
