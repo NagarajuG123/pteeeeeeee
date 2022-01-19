@@ -70,7 +70,10 @@ header {
         }
       }
       &.brandLogo {
+
         img {
+          max-height: 90px;
+
           @include mobile-portrait {
             width: 80px;
             height: auto;
