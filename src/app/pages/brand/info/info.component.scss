@@ -864,6 +864,8 @@ button.close {
 
 .brand-left-info--wrapper {
   padding-right: 15px;
+  flex: 0 0 calc(100% - 300px);
+  max-width: calc(100% - 300px);
 
   @include media("<md") {
     padding: 0;
@@ -882,6 +884,9 @@ button.close {
       padding: 20px;
     }
   }
+}
+.brand-info-right{
+  max-width: 300px;
 }
 
 .brand-page-row--wrapper {

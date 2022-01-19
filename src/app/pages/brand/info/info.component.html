@@ -63,7 +63,7 @@
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="container" [ngClass]="isMarket ? 'customContainer' : ''">
+    <div class="container" [ngClass]="isMarket && isInfoPage ? 'customContainer' : ''">
       <div class="row d-flex">
         <div
           class="col-md-12 pl-0 brand-left-info--wrapper"
@@ -428,7 +428,7 @@
         </div>
 
         <div
-          class="col-lg-4 col-md-12 pr-0 pl-0"
+          class="col-lg-4 col-md-12 pr-0 pl-0 brand-info-right"
           *ngIf="isInfo || isMarket"
           [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
         >
