@@ -2,6 +2,9 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
+.infoContainer {
+  max-width: 900px !important;
+}
 .question-section {
   @include tablet-landscape1 {
     padding-top: 30px;
