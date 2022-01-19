@@ -260,7 +260,7 @@
         font-family: $roboto;
         line-height: 15.23px;
         font-size: 13px;
-        height: 40px;
+        min-height: 50px;
         color: $dark_gray;
         &:focus {
           outline: none;
@@ -273,6 +273,8 @@
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
+          overflow-wrap: break-word !important;
+          white-space: normal !important;
         }
       }
     }
