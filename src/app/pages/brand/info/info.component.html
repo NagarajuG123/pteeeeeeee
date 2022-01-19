@@ -63,11 +63,11 @@
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="container" [ngClass]="isMarket && isInfoPage ? 'customContainer' : ''">
+    <div class="container" [ngClass]="(isMarket || isInfo) ? 'customContainer' : ''">
       <div class="row d-flex">
         <div
           class="col-md-12 pl-0 brand-left-info--wrapper"
-          [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
+          [ngClass]="!isInfo ? 'col-lg-12' : 'brand-info-page col-lg-8'"
         >
           <div class="brand-main-img--wrapper" *ngIf="isInfo">
             <a
