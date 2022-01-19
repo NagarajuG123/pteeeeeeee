@@ -529,7 +529,7 @@
                     [formControlName]="fields.key"
                     placeholder="{{ fields.title }}*"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control pb-3"
                     [type]="fields.type"
                     [pattern]="fields.pattern"
                     [maxLength]="fields.maxLength || 1000"
@@ -540,7 +540,7 @@
                     [placeholder]="fields.title"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control pb-3"
                     rows="3"
                     [ngClass]="{
                       'is-invalid':
@@ -555,7 +555,7 @@
                     *ngIf="fields.type === 'dropdown'"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-select"
+                    class="form-select pb-3"
                     [ngClass]="{
                       'is-invalid':
                         (formControlsValues[fields.key].touched ||
