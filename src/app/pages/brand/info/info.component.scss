@@ -888,9 +888,17 @@ button.close {
 .brand-info-page{
   flex: 0 0 calc(100% - 300px);
   max-width: 900px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 .brand-info-right{
   max-width: 300px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 .brand-page-row--wrapper {
