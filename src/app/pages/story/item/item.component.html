@@ -1,4 +1,4 @@
-<div *ngIf="details" class="articles">
+<div *ngIf="details" class="articles" [ngClass]="brandSlug =='1851' ? 'mainArticle' : ''">
   <div class="container customContainer articleContainer">
     <div class="position-relative articleImage">
       <a
