@@ -2,8 +2,7 @@
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/mixins.scss";
 
-.coverDetail {
-}
+
 // Global Class
 .c-ml--auto {
   margin-left: auto;
@@ -139,7 +138,7 @@
         }
       }
       img {
-        max-width: 100%;
+        max-width: 94%;
         @include media("<sm") {
           height: auto;
         }
