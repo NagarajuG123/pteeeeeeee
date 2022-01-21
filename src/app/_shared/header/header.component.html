@@ -620,7 +620,7 @@
               <ng-container *ngFor="let item of trending; index as i">
                 <div class="carousel-item" [ngClass]="{ active: i === 0 }">
                   <a
-                    routerLink="/{{ commonService.readMore(item) }}"
+                    href="/{{ commonService.readMore(item) }}"
                     fragment="trending"
                     class="title d-inline-block text-truncate"
                   >
