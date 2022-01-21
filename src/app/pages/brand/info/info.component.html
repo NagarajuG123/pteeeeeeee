@@ -63,11 +63,11 @@
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="container" [ngClass]="isMarket ? 'customContainer' : ''">
+    <div class="container" [ngClass]="(isMarket || isInfo) ? 'customContainer' : ''">
       <div class="row d-flex">
         <div
           class="col-md-12 pl-0 brand-left-info--wrapper"
-          [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
+          [ngClass]="!isInfo ? 'col-lg-12' : 'brand-info-page col-lg-8'"
         >
           <div class="brand-main-img--wrapper" *ngIf="isInfo">
             <a
@@ -428,7 +428,7 @@
         </div>
 
         <div
-          class="col-lg-4 col-md-12 pr-0 pl-0"
+          class="col-lg-4 col-md-12 pr-0 pl-0 brand-info-right"
           *ngIf="isInfo || isMarket"
           [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
         >
@@ -529,7 +529,7 @@
                     [formControlName]="fields.key"
                     placeholder="{{ fields.title }}*"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control "
                     [type]="fields.type"
                     [pattern]="fields.pattern"
                     [maxLength]="fields.maxLength || 1000"
@@ -540,7 +540,7 @@
                     [placeholder]="fields.title"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control "
                     rows="3"
                     [ngClass]="{
                       'is-invalid':
@@ -555,7 +555,7 @@
                     *ngIf="fields.type === 'dropdown'"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-select"
+                    class="form-select "
                     [ngClass]="{
                       'is-invalid':
                         (formControlsValues[fields.key].touched ||

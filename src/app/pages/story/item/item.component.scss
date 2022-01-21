@@ -6,6 +6,11 @@
   font-family: $roboto;
   min-height: 186px;
   line-height: 141.19%;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  &.mainArticle {
+    box-shadow:0 8px 16px #0000005c;
+  }
+  padding-top: 48px;
   .articleContainer {
     max-width: 900px !important;
   }

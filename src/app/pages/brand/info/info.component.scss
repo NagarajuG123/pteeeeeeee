@@ -246,6 +246,11 @@
         color: $red;
       }
 
+      input{
+        &::placeholder{
+          color: $dark_gray !important;
+        }
+      }
       .form-control {
         margin-bottom: 15px;
         background: $white;
@@ -255,7 +260,7 @@
         font-family: $roboto;
         line-height: 15.23px;
         font-size: 13px;
-        height: 40px;
+        min-height: 50px;
         color: $dark_gray;
         &:focus {
           outline: none;
@@ -263,12 +268,15 @@
         }
 
         &::placeholder {
-         
           font-size: 13px;
-          color: $light_gray_8;
+          color: $dark_gray;
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
+          white-space:pre-line; 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
         }
       }
     }
@@ -875,6 +883,21 @@ button.close {
     @include media("<md") {
       padding: 20px;
     }
+  }
+}
+.brand-info-page{
+  flex: 0 0 calc(100% - 300px);
+  max-width: 900px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.brand-info-right{
+  max-width: 300px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 
