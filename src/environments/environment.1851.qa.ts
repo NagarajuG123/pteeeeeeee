@@ -8,6 +8,7 @@ export const environment = {
   apiUrl: 'https://api.1851franchise.com/v1',
   api2Url: 'https://api2.1851franchise.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
+  s3BucketUrl: "https://1851-dev.s3.amazonaws.com",
   imageResizeUrl: 'https://d3idlmh4hcsex5.cloudfront.net',
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
   appUrl: 'https://1851-v2.nlasandbox2.info',
