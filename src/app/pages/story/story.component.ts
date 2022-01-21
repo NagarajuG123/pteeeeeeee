@@ -629,7 +629,7 @@ hasMore:any;
         .subscribe((result) => {
           let storyId;
           this.isLoading = false;
-          if (typeof result !== 'undefined' && result.data.length > 0) {
+          if (typeof result !== 'undefined') {
             this.hasMore = true;
             if (
               this.type === 'dynamicpage' ||
@@ -641,7 +641,6 @@ hasMore:any;
             } else {
               storyId = result.data[0].id;
             }
-          
           if (
             this.detailsData.find((o) => o.id == storyId) &&
             !this.duplicate
@@ -664,6 +663,7 @@ hasMore:any;
             }
           }
         }
+       
           this.storyIndex = true;
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;
