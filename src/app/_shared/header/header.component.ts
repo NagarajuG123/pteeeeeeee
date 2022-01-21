@@ -183,6 +183,8 @@ export class HeaderComponent implements OnInit {
         this.trending = results[4].data;
         if(this.trending && this.trending.length == 0) {
           this.commonService.trendingClass = 'topNoTrending'
+        } else {
+          this.commonService.trendingClass = 'top';
         }
         this.setFavicon();
         if (this.brandSlug != '1851') {
