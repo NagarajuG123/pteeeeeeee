@@ -76,4 +76,11 @@ export class MostPopularComponent implements OnInit {
       },
     };
   }
+  formatTitle(title) {
+    let text = title;
+    if (text.length > 150) {
+      text = text.substring(0, 150) + '...';
+   }
+   return text;
+  }
 }
