@@ -11,6 +11,9 @@
     box-shadow:0 8px 16px #0000005c;
   }
   padding-top: 48px;
+  @include mobile-portrait {
+    padding-top: 0.75rem;
+  }
   .articleContainer {
     max-width: 900px !important;
   }
