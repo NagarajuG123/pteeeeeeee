@@ -186,6 +186,9 @@ body.noscroll {
   @media only screen and (max-device-width: 768px){
   margin-top: 70px;
   }
+  @include mobile-portrait {
+    margin-top: 70px;
+  }
   @include tablet-portrait {
     margin-top: 130px;
   }
@@ -194,6 +197,9 @@ body.noscroll {
   margin-top: 110px;
   @media only screen and (max-device-width: 768px){
   margin-top: 70px;
+  }
+  @include mobile-portrait {
+    margin-top: 70px;
   }
   @include tablet-portrait {
     margin-top: 90px;
