@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'https://api.1851.nlasandbox2.info/v1',
   api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
+  s3BucketUrl: "https://1851-dev.s3.amazonaws.com",
   port: 4200,
   imageResizeUrl: 'https://dnnxwdlxu3h63.cloudfront.net',
   reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',

@@ -22,7 +22,7 @@
       *ngIf="type == 'home' || type == 'homeFeature'"
     >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
-        <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
+        <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
             <img
               appYoutubeImage
@@ -134,7 +134,7 @@
           <div class="col">
             <a
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="trending"
+              fragment="{{fragment}}"
             >
               <div class="card border-0 h-100">
                 <img
