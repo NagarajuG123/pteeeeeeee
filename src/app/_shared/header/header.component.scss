@@ -70,10 +70,12 @@ header {
         }
       }
       &.brandLogo {
-
+        .logoDiv {
+          width:150px;
+        }
         img {
           max-height: 85px;
-
+          max-width: 100%;
           @include mobile-portrait {
             width: 80px;
             height: auto;
