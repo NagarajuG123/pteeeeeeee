@@ -20,7 +20,8 @@ export class MostPopularComponent implements OnInit {
   @Input() title: string;
   @Input() subTitle: string;
   @Input() class!: string;
-
+  @Input() fragment:string;
+  
   data: Details[] = [];
   isLoaded: boolean = false;
   isBrowser: boolean;
