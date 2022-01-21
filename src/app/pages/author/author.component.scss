@@ -41,6 +41,9 @@ figure {
   .description{
     min-height: 200px;
     color: $black;
+    @include mobile-landscape{
+      min-height: unset !important;
+    }
   }
   .authorProfile {
     bottom: 50%;
