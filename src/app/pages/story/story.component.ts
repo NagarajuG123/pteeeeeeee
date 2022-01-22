@@ -523,9 +523,11 @@ hasMore:any;
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
-            this.changeMaxResultImg(metas.og['media']['path'])
-          )}`;
+          // const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
+          //   this.changeMaxResultImg(metas.og['media']['path'])
+          // )}`;
+          const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.og['media']['path']
+          }`;
           this.meta.updateTag(
             { property: `og:image`, content: image_url },
             `property='og:image'`
@@ -558,9 +560,8 @@ hasMore:any;
       const twitterKeys = Object.keys(metas.twitter);
       for (const key of twitterKeys) {
         if (key === 'media' && metas.twitter[key] !== null) {
-          const twitter_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
-            this.changeMaxResultImg(metas.twitter['media']['path'])
-          )}`;
+          const twitter_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.twitter['media']['path']
+          }`;
           this.meta.updateTag(
             { name: `twitter:image`, content: twitter_url },
             `name='twitter:image'`
