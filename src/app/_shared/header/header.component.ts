@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn: ElementRef<HTMLInputElement>;
   @ViewChild('carouselBtn', { read: ElementRef, static: true })
   carouselBtn: ElementRef;
-  fragment: string ='hello';
+  fragment: string ='';
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
