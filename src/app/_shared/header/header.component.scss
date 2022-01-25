@@ -82,6 +82,7 @@ header {
           }
         }
       }
+     
       .sponsor {
         font-weight: 500;
         font-size: 18px;
@@ -205,6 +206,15 @@ header {
         color: $white_2;
         margin-bottom: 0;
       }
+      .megamenu  {
+
+        .dropdown-menu{
+          display: block;
+          color:$white_2;
+          border-radius: 0rem;
+            background: $dark_gray_7;
+      }
+    }
       hr {
         height: 0px;
         left: 25px;

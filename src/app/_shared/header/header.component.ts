@@ -63,6 +63,8 @@ export class HeaderComponent implements OnInit {
   inquireFields: any = [];
   isInquire: boolean = false;
   inquireTitle = '';
+  isLearnMenu: boolean = false;
+  isBrandLearnMenu: boolean = false;
   inquireData: any;
   submitErrMsg: string = '';
   s3Url = environment.s3Url;
@@ -437,7 +439,17 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
+  LearnMenu()
+  {
+    this.isLearnMenu = !this.isLearnMenu;
+  }
+  BrandMenu()
+  {
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
+  }
   closeSidebar() {
+    this.isLearnMenu = !this.isLearnMenu;
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
     if (this.commonService.showmenu) {
       this.commonService.showmenu = false;
       $('.sidebar').removeClass('show');
