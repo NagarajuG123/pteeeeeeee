@@ -213,3 +213,21 @@ body.noscroll {
     }
   }
 }
+.articles{
+  .description{
+    a{
+      display: contents;
+      text-decoration: underline!important;
+      color: $blue_1!important;
+    }
+    blockquote{
+      margin: 0 50px 22px;
+      padding: 5px 30px;
+      border-left: 1.5px solid $dark_red_3;
+      p{
+        padding: unset;
+        font-weight: 700;
+      }
+    }
+  }
+}
