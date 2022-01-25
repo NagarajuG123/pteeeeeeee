@@ -120,15 +120,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSlug();
-    this.subject.subscribe(() => {
-      this.apiService
-        .getAPI(
-          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}&limit=4&offset=0`
-        )
-        .subscribe((res) => {
-          this.news = res.data;
-        });
-    });
+   
   }
 
   setSlug() {
@@ -221,9 +213,7 @@ export class HeaderComponent implements OnInit {
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
-  onKeyUp(): void {
-    this.subject.next();
-  }
+ 
   closeModal() {
     this.searchCloseBtn.nativeElement.click();
   }
