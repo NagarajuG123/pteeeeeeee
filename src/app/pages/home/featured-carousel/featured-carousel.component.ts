@@ -29,7 +29,9 @@ export class FeaturedCarouselComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         this.brandNews = result.data;
-        this.isLoaded = true;
+        if(this.brandNews.length > 0) {
+          this.isLoaded = true;
+        }
       });
     this.customOptions = {
       loop: true,

@@ -53,7 +53,9 @@ export class EditorialSectionsComponent implements OnInit {
               data.push(item);
             });
             this.items = data;
-            this.isLoaded = true;
+            if(this.items.length > 0) {
+              this.isLoaded = true;
+            }
           });
       });
   }
