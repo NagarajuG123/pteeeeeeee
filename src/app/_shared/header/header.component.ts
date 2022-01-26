@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn: ElementRef<HTMLInputElement>;
   @ViewChild('carouselBtn', { read: ElementRef, static: true })
   carouselBtn: ElementRef;
-
+  fragment: string ='';
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
@@ -63,6 +63,8 @@ export class HeaderComponent implements OnInit {
   inquireFields: any = [];
   isInquire: boolean = false;
   inquireTitle = '';
+  isLearnMenu: boolean = false;
+  isBrandLearnMenu: boolean = false;
   inquireData: any;
   submitErrMsg: string = '';
   s3Url = environment.s3Url;
@@ -118,7 +120,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSlug();
-   
+    
   }
 
   setSlug() {
@@ -179,13 +181,15 @@ export class HeaderComponent implements OnInit {
           this.commonService.trendingClass = 'top';
         }
         this.setFavicon();
+        this.fragment ="most-recent-stories";
         if (this.brandSlug != '1851') {
           this.getInquiry();
           this.getContact();
           this.setEditorialEmail();
+          this.fragment="brand-latest-stories";
         }
       }
-    );
+    ); 
   }
   setEditorialEmail() {
     if (this.publication.id === '1851') {
@@ -426,8 +430,19 @@ export class HeaderComponent implements OnInit {
         }, 6000);
       }
     }
+    
+  }
+  learnMenu()
+  {
+    this.isLearnMenu = !this.isLearnMenu;
+  }
+  brandMenu()
+  {
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
   }
   closeSidebar() {
+    this.isLearnMenu = !this.isLearnMenu;
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
     if (this.commonService.showmenu) {
       this.commonService.showmenu = false;
       $('.sidebar').removeClass('show');
