@@ -8,6 +8,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { Details } from 'src/app/_core/models/details.model';
 import { environment } from 'src/environments/environment';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-monthly-details',
   templateUrl: './monthly-details.component.html',
@@ -26,6 +27,7 @@ export class MonthlyDetailsComponent implements OnInit {
   title: any;
   s3Url = environment.s3Url;
   isLoaded: boolean;
+  coverImage: string;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -44,14 +46,14 @@ export class MonthlyDetailsComponent implements OnInit {
       this.id = params.get('id');
       const date_number = Number(this.date);
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
-      this.apiService
-        .getAPI(
-          `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`
-        )
+      const monthlyDetail = this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`);
+      const headerApi = this.apiService.getAPI2(`header`);
+      forkJoin([monthlyDetail, headerApi])
         .subscribe((response) => {
-          this.banner = response.data;
-          this.details = response.data.slice(1, 9);
-          this.hasMore = response.has_more;
+          this.banner = response[0].data;
+          this.details = response[0].data.slice(1, 9);
+          this.hasMore = response[0].has_more;
+          this.coverImage = response[1].data.monthlyCover;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
             this.apiService
