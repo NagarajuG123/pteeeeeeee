@@ -404,17 +404,9 @@ export class HeaderComponent implements OnInit {
       });
   }
   setFavicon() {
-    let favicon;
-    if (this.publication.id == 'EE') {
-      favicon = 'ee';
-    } else if (this.publication.id == '1851') {
-      favicon = '1851';
-    } else {
-      favicon = '1903';
-    }
     this._document
       .getElementById('appFavicon')
-      .setAttribute('href', `${favicon}-favicon.ico`);
+      .setAttribute('href', `${this.publication.id}-favicon.ico`);
   }
   ngAfterViewInit() {
     // For sticky header

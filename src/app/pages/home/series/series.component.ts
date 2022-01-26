@@ -14,7 +14,7 @@ export class SeriesComponent implements OnInit {
   faAngleRight = faAngleRight;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
-  
+  isLoaded:boolean;
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
@@ -23,6 +23,9 @@ export class SeriesComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
           this.seriesData = result.data;
+          if(this.seriesData.length > 0) {
+            this.isLoaded = true;
+          }
         }); 
   }
 
