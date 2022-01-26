@@ -183,17 +183,14 @@ export class HeaderComponent implements OnInit {
           this.getInquiry();
           this.getContact();
           this.setEditorialEmail();
+          this.fragment="brand-latest-stories";
+        }
+        else
+        {
+          this.fragment ="most-recent-stories";
         }
       }
-    );
-    if (this.brandSlug == '1851')
-    {
-      this.fragment ="most-recent-stories";
-    }
-    else
-    {
-      this.fragment="brand-latest-stories";
-    }
+    ); 
   }
   setEditorialEmail() {
     if (this.publication.id === '1851') {
