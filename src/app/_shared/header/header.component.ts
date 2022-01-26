@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn: ElementRef<HTMLInputElement>;
   @ViewChild('carouselBtn', { read: ElementRef, static: true })
   carouselBtn: ElementRef;
-
+  fragment: string ='';
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
@@ -120,7 +120,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSlug();
-   
+    
   }
 
   setSlug() {
@@ -181,13 +181,15 @@ export class HeaderComponent implements OnInit {
           this.commonService.trendingClass = 'top';
         }
         this.setFavicon();
+        this.fragment ="most-recent-stories";
         if (this.brandSlug != '1851') {
           this.getInquiry();
           this.getContact();
           this.setEditorialEmail();
+          this.fragment="brand-latest-stories";
         }
       }
-    );
+    ); 
   }
   setEditorialEmail() {
     if (this.publication.id === '1851') {
@@ -428,6 +430,7 @@ export class HeaderComponent implements OnInit {
         }, 6000);
       }
     }
+    
   }
   learnMenu()
   {
