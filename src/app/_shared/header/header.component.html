@@ -385,7 +385,7 @@
                 *ngFor="let action of header?.actions; index as i"
               >
                 <div *ngIf ="action.title=='Learn'">
-                <a class="d-flex align-items-center" (click)="LearnMenu()"
+                <a class="d-flex align-items-center" (click)="learnMenu()"
                   ><h3>{{ action.title }}</h3>
                   <i class="fa fa-angle-down ms-1 lazyload"></i>
               </a>
@@ -559,7 +559,7 @@
                   class="nav-item d-sm-block d-md-none"
                   *ngFor="let action of header?.actions; index as i"
                 >
-                  <a class="d-flex align-items-center" (click)="BrandMenu()"
+                  <a class="d-flex align-items-center" (click)="brandMenu()"
                     ><h3>{{ action.title }}</h3>
                     <i class="fa fa-angle-down ms-1 lazyload"></i>
                 </a>

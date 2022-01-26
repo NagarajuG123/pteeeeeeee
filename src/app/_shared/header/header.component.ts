@@ -429,11 +429,11 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  LearnMenu()
+  learnMenu()
   {
     this.isLearnMenu = !this.isLearnMenu;
   }
-  BrandMenu()
+  brandMenu()
   {
     this.isBrandLearnMenu= !this.isBrandLearnMenu;
   }
