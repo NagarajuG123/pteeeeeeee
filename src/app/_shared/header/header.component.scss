@@ -82,6 +82,7 @@ header {
           }
         }
       }
+     
       .sponsor {
         font-weight: 500;
         font-size: 18px;
@@ -204,6 +205,25 @@ header {
         text-transform: uppercase;
         color: $white_2;
         margin-bottom: 0;
+      }
+      .megamenu  {
+        .dropdown-menu{
+          display: block;
+          color:$white_2;
+          border-radius: 0rem;
+          background: $dark_gray_7;
+            li{
+              height: 30px;
+              width:260px;
+              .main{
+                white-space: pre-line;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 250px;
+              }
+            }
+        }
       }
       hr {
         height: 0px;
