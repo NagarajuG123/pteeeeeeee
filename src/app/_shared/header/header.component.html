@@ -123,11 +123,20 @@
           (click)="closeSidebar()"
           class="pe-lg-4 pe-2 ps-3 logoDiv"
           ><img
+            *ngIf="isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
             alt="logo"
-            class=" lazyload img-fluid"
-        /></a>
+            class=" lazyload "
+        />
+        <img
+          *ngIf="!isMain"
+            data-src="{{ header?.logo?.image }}"
+            height="{{ header?.logo?.height }}"
+            alt="logo"
+            class=" lazyload"
+        />
+      </a>
         <!-- brand -->
         <a
           data-bs-toggle="modal"
@@ -1019,8 +1028,6 @@
       </div>
     </div>
   </div>
-
-
   <!-- Sponsor Modal -->
 
   <div
