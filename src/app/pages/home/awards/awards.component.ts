@@ -31,7 +31,7 @@ export class AwardsComponent implements OnInit {
     this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
       this.data = result.data.stories;
       this.result = result.data;
-      if(this.result.length > 0) {
+      if(this.data.length > 0) {
         this.isLoaded = true;
       }
     });
