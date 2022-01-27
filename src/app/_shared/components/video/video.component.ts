@@ -33,7 +33,7 @@ export class VideoComponent implements OnInit {
       .getAPI(`${this.slug}/videos`)
       .subscribe((result) => {
         this.data = result.data;
-        if(this.data.length > 0) {
+        if(this.data) {
           this.isLoaded = true;
         }
       });
