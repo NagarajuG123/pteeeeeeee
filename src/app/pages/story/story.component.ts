@@ -252,6 +252,26 @@ hasMore:any;
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
                     break;
 
+                  case 'personal-finance':
+                    this.apiUrl = `${this.brandId}/spotlight/personal-finance`;
+                    break;
+                  
+                  case 'luxury-living':
+                    this.apiUrl = `${this.brandId}/spotlight/luxury-living`;
+                    break;
+
+                  case 'investing':
+                    this.apiUrl = `${this.brandId}/spotlight/investing`;
+                    break;
+
+                  case 'business':
+                    this.apiUrl = `${this.brandId}/spotlight/business`;
+                    break;
+
+                  case 'retirement':
+                    this.apiUrl = `${this.brandId}/spotlight/retirement`;
+                    break;
+
                   case 'brand-news':
                     this.apiUrl = `${this.brandId}/brand-news/most-recent`;
                     break;
