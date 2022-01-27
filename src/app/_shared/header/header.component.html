@@ -198,7 +198,7 @@
         <a
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
-          class="cover d-none d-lg-block" *ngIf="isMain"
+          class="cover d-none d-lg-block" *ngIf="isMain && header?.monthlyCover?.coverUrl"
         >
           <figure>
             <img
@@ -293,10 +293,10 @@
             </form>
           </li>
           <li>
-            <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+            <a routerLink="/monthlycovers" (click)="commonService.toggle()" *ngIf="header?.monthlyCover">
               <h3>MONTHLY COVERS</h3></a
             >
-            <hr />
+            <hr *ngIf="header?.monthlyCover" />
             <a
               routerLink="{{ header?.monthlyCover?.coverUrl }}"
               (click)="commonService.toggle()"
