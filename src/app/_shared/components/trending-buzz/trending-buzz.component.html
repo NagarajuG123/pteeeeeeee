@@ -1,5 +1,6 @@
 <div
   *ngIf="trending?.data?.length"
+  [ngClass]="'trending?.data?.length = 0 '? 'trending-data':''"
   class="frannews frannews-trending sidebar-blur"
 >
   <div class="container">
