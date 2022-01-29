@@ -47,7 +47,7 @@ export class EditorialSectionsComponent implements OnInit {
         this.defaultTab = this.tab = results[0].defaultTab;
 
         this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=10&offset=0`)
+          .getAPI(`${this.slug}/spotlight/${this.defaultTab.toLowerCase()}?limit=10&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];
