@@ -69,11 +69,21 @@ export class FooterComponent implements OnInit {
       this.footer = results[0];
       this.publication=results[1];
     });
-    this.footerText="For the love of franchising";
-    if(this.publication.id.toLowerCase() == 'stachecow') {
-     this.footerText= "Build the life you deserve" ;
+    this.footerHeading();
   }
-  }
+  footerHeading()
+    {
+    if(this.publication.id.toLowerCase() == "stachecow") {
+      this.footerText="Build the life you deserve"
+    } else if(this.publication.id.toLowerCase() =="1851") {
+      this.footerText= "For the love of franchising"
+    } else if(this.publication.id.toLowerCase() =="ee") {
+      this.footerText="For the love of home"
+    }
+    else {
+      this.footerText="For the love of travel"
+    }
+    }
   isAwards() {
     return this.brandSlug === 'franchisedevelopmentawards' ? true : false;
   }
