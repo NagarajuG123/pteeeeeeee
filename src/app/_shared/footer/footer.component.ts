@@ -20,6 +20,7 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 export class FooterComponent implements OnInit {
   footer: any = [];
   brandSlug: string;
+  publication: any;
   s3Url = environment.s3Url;
   socialIcons: any = [
     faFacebookF,
@@ -62,11 +63,13 @@ export class FooterComponent implements OnInit {
       footerApi = `footer?slug=${this.brandSlug}`;
     }
     const footer = this.apiService.getAPI2(footerApi);
-
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    console.log(publication)
     forkJoin([footer]).subscribe((results) => {
       this.footer = results[0];
     });
   }
+ 
   isAwards() {
     return this.brandSlug === 'franchisedevelopmentawards' ? true : false;
   }
