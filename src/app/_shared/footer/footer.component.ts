@@ -19,6 +19,7 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent implements OnInit {
   footer: any = [];
+  footerText:any;
   brandSlug: string;
   publication: any;
   s3Url = environment.s3Url;
@@ -64,12 +65,15 @@ export class FooterComponent implements OnInit {
     }
     const footer = this.apiService.getAPI2(footerApi);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    console.log(publication)
-    forkJoin([footer]).subscribe((results) => {
+    forkJoin([footer,publication]).subscribe((results) => {
       this.footer = results[0];
+      this.publication=results[1];
     });
+    this.footerText="For the love of franchising";
+    if(this.publication.id.toLowerCase() == 'stachecow') {
+     this.footerText= "Build the life you deserve" ;
   }
- 
+  }
   isAwards() {
     return this.brandSlug === 'franchisedevelopmentawards' ? true : false;
   }
