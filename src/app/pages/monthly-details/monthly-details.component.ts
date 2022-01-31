@@ -46,14 +46,12 @@ export class MonthlyDetailsComponent implements OnInit {
       this.id = params.get('id');
       const date_number = Number(this.date);
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
-      const monthlyDetail = this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`);
-      const headerApi = this.apiService.getAPI2(`header`);
-      forkJoin([monthlyDetail, headerApi])
+      this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`)
         .subscribe((response) => {
-          this.banner = response[0].data;
-          this.details = response[0].data.slice(1, 9);
-          this.hasMore = response[0].has_more;
-          this.coverImage = response[1].data.monthlyCover;
+          this.banner = response.data;
+          this.details = response.data.slice(1, 9);
+          this.hasMore = response.has_more;
+          this.coverImage = response.cover;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
             this.apiService
