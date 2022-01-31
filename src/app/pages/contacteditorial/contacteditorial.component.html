@@ -210,6 +210,7 @@
               </ul>
             </div>
             <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+            <div [ngClass]="publication.id != '1851' ? 'pt-5' : ''">
             <button
               type="button"
               class="back d-block submit_btn"
@@ -218,6 +219,7 @@
               SUBMIT
               <span><fa-icon [icon]="faAngleRight"></fa-icon></span>
             </button>
+          </div>
             <a href="#" onclick="return false;" class="text-center d-block"
               >*Indicates required field</a
             >
