@@ -212,6 +212,7 @@ header {
           color:$white_2;
           border-radius: 0rem;
           background: $dark_gray_7;
+          position: relative;
             li{
               height: 30px;
               width:260px;
@@ -292,6 +293,7 @@ header {
   .nav{
     i{
       color: $red;
+      padding: 0 0 1px 2px;
     }
   }
 

@@ -355,11 +355,45 @@
           </li>
           <li>
             <hr />
-
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"
-              *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
+              *ngFor="let menu of header?.sidebar?.menus | slice: 0:1"
+              ><h3>{{ menu.title }}</h3></a
+            >
+          </li>
+          <nav  *ngIf="isMain">
+            <ul class="nav">
+              <li
+                class="nav-item d-sm-block d-md-none position-relative"
+                *ngFor="let action of header?.actions; index as i"
+              >
+                <div *ngIf ="action.title=='Learn'">
+                <a class="d-flex align-items-center" (click)="learnMenu()"
+                  ><h3>{{ action.title }}</h3>
+                  <i class="fa fa-angle-down ms-1 lazyload"></i>
+              </a>
+              <div [ngClass]="isLearnMenu ? 'megamenu' : ''">
+                <ul class="dropdown-menu">
+                  <li *ngFor="let item of action.items" class="pb-1">
+                    <a
+                      class="dropdown-item main "
+                      [href]="item.url"
+                      (click)="closeSidebar()"
+                      >{{ item?.title }}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              </div>
+              </li>
+            </ul>
+          </nav>
+          <li>
+            <a
+              routerLink="{{ menu.url }}"
+              (click)="commonService.toggle()"
+              *ngFor="let menu of header?.sidebar?.menus | slice:1:2"
               ><h3>{{ menu.title }}</h3></a
             >
           </li>
@@ -387,33 +421,6 @@
               >
             </div>
           </li>
-          <nav class="pt-2" *ngIf="isMain">
-            <ul class="nav">
-              <li
-                class="nav-item d-sm-block d-md-none position-relative"
-                *ngFor="let action of header?.actions; index as i"
-              >
-                <div *ngIf ="action.title=='Learn'">
-                <a class="d-flex align-items-center" (click)="learnMenu()"
-                  ><h3>{{ action.title }}</h3>
-                  <i class="fa fa-angle-down ms-1 lazyload"></i>
-              </a>
-              <div [ngClass]="isLearnMenu ? 'megamenu' : ''">
-                <ul class="dropdown-menu">
-                  <li *ngFor="let item of action.items" class="pb-1">
-                    <a
-                      class="dropdown-item main "
-                      [href]="item.url"
-                      (click)="closeSidebar()"
-                      >{{ item?.title }}</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              </div>
-              </li>
-            </ul>
-          </nav>
         </ul>
           <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2" *ngIf="!isMain">
             <li>
@@ -562,7 +569,7 @@
                 </h3>
               </a>
             </li>
-            <nav class="pt-2" *ngIf="!isMain">
+            <nav  *ngIf="!isMain">
               <ul class="nav">
                 <li
                   class="nav-item d-sm-block d-md-none"
@@ -952,7 +959,7 @@
             &times;
           </button>
         </div>
-        <h5 class="modal-title mb-3">Search 1851 Franchise</h5>
+        <h5 class="modal-title mb-3">Search {{header?.publication?.name}}</h5>
         <form
           [formGroup]="searchForm"
           (ngSubmit)="onSearchSubmit(searchForm, 'header')"

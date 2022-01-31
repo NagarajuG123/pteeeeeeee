@@ -4,6 +4,10 @@
 .frannews-trending {
     margin-top: -40px;
     padding-top: 40px;
+    &.trending-data
+    {
+        margin-bottom: -100px;
+    }
     .frannews-details {
         padding: 66px 41px 69px 40px;
         margin: 0 auto;
