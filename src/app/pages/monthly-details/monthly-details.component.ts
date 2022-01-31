@@ -27,7 +27,6 @@ export class MonthlyDetailsComponent implements OnInit {
   title: any;
   s3Url = environment.s3Url;
   isLoaded: boolean;
-  coverImage: string;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -48,10 +47,9 @@ export class MonthlyDetailsComponent implements OnInit {
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
       this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`)
         .subscribe((response) => {
-          this.banner = response.data;
+          this.banner = response;
           this.details = response.data.slice(1, 9);
           this.hasMore = response.has_more;
-          this.coverImage = response.cover;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
             this.apiService
