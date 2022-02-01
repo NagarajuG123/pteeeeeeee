@@ -8,7 +8,7 @@ export const environment = {
   imageResizeUrl: 'https://d13ofr2bv2bm2u.cloudfront.net',
   reCaptchaKey: '6LdzgjYeAAAAAMJut3Y3nEkAwCJ6Ae5gibY3-6F9',
   appUrl: 'https://stachecow.com',
-  fbUrl: 'https://www.facebook.com/stachecow/',
+  fbUrl: 'https://www.facebook.com/stachecow',
   enableSW: true,
   env: 'production'
 };

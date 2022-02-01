@@ -43,8 +43,7 @@ export class SpotlightComponent implements OnInit {
       .subscribe((results) => {
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
-        this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].shortName;
-        
+        this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
 
         this.apiService
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)

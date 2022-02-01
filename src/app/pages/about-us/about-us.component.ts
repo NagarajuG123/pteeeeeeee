@@ -74,6 +74,9 @@ export class AboutUsComponent implements OnInit {
     });
   }
 
+  isShow() {
+    return this.publication.id == '1851';
+  }
   onContactSubmit(contactForm: FormGroup) {
     this.isSubmitted = true;
     if (!contactForm.valid) {

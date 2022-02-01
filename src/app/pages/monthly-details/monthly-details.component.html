@@ -1,6 +1,6 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <div class="coverDetail sidebar-blur" *ngIf="isLoaded">
-  <section class="c-card-box--section" *ngIf="banner">
+  <section class="c-card-box--section" *ngIf="banner?.data">
     <div class="c-card-box--wrapper">
       <div class="container-fluid">
         <div
@@ -14,10 +14,10 @@
             <h4 class="articleTitles">{{ title }}</h4>
             <h1 class="large-main-article">Back to Business</h1>
             <p class="content mb-0">
-              {{ banner[0]?.title }}
+              {{ banner?.data[0]?.title }}
             </p>
             <a
-              routerLink="/{{ commonService.readMore(banner[0]) }}"
+              routerLink="/{{ commonService.readMore(banner.data[0]) }}"
               fragment="monthlydetailspage"
               class="seeMore primary-color text-uppercase"
               >Read more <i class="fa fa-angle-right" aria-hidden="true"></i
@@ -30,12 +30,12 @@
           <div class="c-card-box--col c-card-main-imagebox--wrapper">
             <div class="c-card-box--imageWrapper isMainCardBox">
               <a
-                routerLink="/{{ commonService.readMore(banner[0]) }}"
+                routerLink="/{{ commonService.readMore(banner.data[0]) }}"
                 class="maincardbox-link--wrapper"
               >
                 <img
                   appYoutubeImage
-                  data-src="{{ banner[0]?.media | defaultImage: 502:650 }}"
+                  data-src="{{ banner?.cover | defaultImage: 502:650 }}"
                   width="502px"
                   height="650px"
                   alt="monthly-details-main"

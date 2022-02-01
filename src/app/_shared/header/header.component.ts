@@ -192,12 +192,13 @@ export class HeaderComponent implements OnInit {
     ); 
   }
   setEditorialEmail() {
-    if (this.publication.id === '1851') {
-      this.editorialEmail = 'editorial@1851franchise.com';
-    } else if (this.publication.id.toLowerCase() === 'ee') {
+    this.editorialEmail = 'editorial@1851franchise.com';
+    if (this.publication.id.toLowerCase() === 'ee') {
       this.editorialEmail = 'editorial@estatenvy.com';
-    } else {
+    } else if(this.publication.id == 'ROOM-1903') {
       this.editorialEmail = 'editorial@room1903.com';
+    } else if(this.publication.id.toLowerCase() == 'stachecow') {
+      this.editorialEmail = 'editorial@stachecow.com';
     }
   }
 
@@ -408,17 +409,9 @@ export class HeaderComponent implements OnInit {
       });
   }
   setFavicon() {
-    let favicon;
-    if (this.publication.id == 'EE') {
-      favicon = 'ee';
-    } else if (this.publication.id == '1851') {
-      favicon = '1851';
-    } else {
-      favicon = '1903';
-    }
     this._document
       .getElementById('appFavicon')
-      .setAttribute('href', `${favicon}-favicon.ico`);
+      .setAttribute('href', `${this.publication.id}-favicon.ico`);
   }
   ngAfterViewInit() {
     // For sticky header
