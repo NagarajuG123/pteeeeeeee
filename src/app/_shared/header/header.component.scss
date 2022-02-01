@@ -170,6 +170,10 @@ header {
       .menu-search {
         width: 200px;
 
+        .fa {
+          font-size: 10px;
+          color:$red;
+        }
         button {
           background: $white;
           border: 0;
