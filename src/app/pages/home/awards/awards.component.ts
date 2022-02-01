@@ -29,10 +29,12 @@ export class AwardsComponent implements OnInit {
   ngOnInit(): void {
     this.setConfig();
     this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
-      this.data = result.data.stories;
-      this.result = result.data;
-      if(this.data.length > 0) {
-        this.isLoaded = true;
+      if(result.data != null) {
+        this.result = result.data;
+        this.data = result.data.stories;
+        if(this.data.length > 0) {
+          this.isLoaded = true;
+        }
       }
     });
   }
