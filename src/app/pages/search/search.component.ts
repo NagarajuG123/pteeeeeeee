@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
   faSearch = faSearch;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
-  s3Url = environment.s3Url;
+  s3BucketUrl = environment.s3BucketUrl;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
@@ -260,29 +260,20 @@ export class SearchComponent implements OnInit {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
           this.metaService.setTitle(title);
-          this.setBannerImage(results[2]);
         });
     });
   }
-  setBannerImage(publication) {
-    if (publication.id == '1851') {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else if (publication.id == 'EE') {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    }
-  }
+  
   isMainSite() {
     if (
       this.brand_id === '1851' ||
       this.brand_id === 'ee' ||
-      this.brand_id === 'room-1903'
+      this.brand_id === 'room-1903' ||
+      this.brand_id === 'stachecow'
     ) {
       return true;
-    } else {
+    } 
       return false;
-    }
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
@@ -357,7 +348,6 @@ export class SearchComponent implements OnInit {
 
   getDataByParams() {
     this.params = `?q=${this.search_input}`;
-    // tslint:disable-next-line:max-line-length
     this.params =
       this.published_value !== -1
         ? `${this.params}&published_duration=${
