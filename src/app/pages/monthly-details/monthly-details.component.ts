@@ -8,6 +8,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 import 'lazysizes';
 import { Details } from 'src/app/_core/models/details.model';
 import { environment } from 'src/environments/environment';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-monthly-details',
   templateUrl: './monthly-details.component.html',
@@ -44,12 +45,9 @@ export class MonthlyDetailsComponent implements OnInit {
       this.id = params.get('id');
       const date_number = Number(this.date);
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
-      this.apiService
-        .getAPI(
-          `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`
-        )
+      this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`)
         .subscribe((response) => {
-          this.banner = response.data;
+          this.banner = response;
           this.details = response.data.slice(1, 9);
           this.hasMore = response.has_more;
           this.apiService.getAPI(`1851/meta`).subscribe((response) => {

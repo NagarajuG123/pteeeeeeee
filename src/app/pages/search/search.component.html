@@ -154,7 +154,7 @@
           [ngClass]="isMainSite() ? 'col-md-9 col-sm-12' : 'col-12'"
         >
           <app-home-article
-            [typeSlug]="'franbuzz'"
+            [typeSlug]="'most-recent-stories'"
             [contents]="recentPeoples"
             [class]="
               isMainSite()
@@ -211,7 +211,7 @@
           <hr />
           <div class="px-4" *ngIf="brandPeoples && brandPeoples.length">
             <app-home-article
-              [typeSlug]="'franbuzz'"
+              [typeSlug]="'brand-latest-stories'"
               [contents]="brandPeoples"
               [class]="'row-cols-md-1 row-cols-lg-1'"
             ></app-home-article>

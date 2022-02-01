@@ -123,11 +123,20 @@
           (click)="closeSidebar()"
           class="pe-lg-4 pe-2 ps-3 logoDiv"
           ><img
+            *ngIf="isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
             alt="logo"
-            class=" lazyload img-fluid"
-        /></a>
+            class=" lazyload "
+        />
+        <img
+          *ngIf="!isMain"
+            data-src="{{ header?.logo?.image }}"
+            height="{{ header?.logo?.height }}"
+            alt="logo"
+            class=" lazyload"
+        />
+      </a>
         <!-- brand -->
         <a
           data-bs-toggle="modal"
@@ -153,7 +162,7 @@
             >
               <a class="d-flex align-items-center" (click)="closeSidebar()"
                 ><h6 class="articleTitles">{{ action.title }}</h6>
-                <i class="fa fa-angle-down ms-1 lazyload pb-2"></i>
+                <i class="fa fa-angle-down ms-1 lazyload pb-2" ></i>
             </a>
               <ul class="dropdown-menu">
                 <li *ngFor="let item of action.items" class="pb-1">
@@ -189,7 +198,7 @@
         <a
           routerLink="{{ header?.monthlyCover?.coverUrl }}"
           (click)="closeSidebar()"
-          class="cover d-none d-lg-block" *ngIf="isMain"
+          class="cover d-none d-lg-block" *ngIf="isMain && header?.monthlyCover?.coverUrl"
         >
           <figure>
             <img
@@ -284,10 +293,10 @@
             </form>
           </li>
           <li>
-            <a routerLink="/monthlycovers" (click)="commonService.toggle()">
+            <a routerLink="/monthlycovers" (click)="commonService.toggle()" *ngIf="header?.monthlyCover">
               <h3>MONTHLY COVERS</h3></a
             >
-            <hr />
+            <hr *ngIf="header?.monthlyCover" />
             <a
               routerLink="{{ header?.monthlyCover?.coverUrl }}"
               (click)="commonService.toggle()"
@@ -346,11 +355,45 @@
           </li>
           <li>
             <hr />
-
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"
-              *ngFor="let menu of header?.sidebar?.menus | slice: 0:2"
+              *ngFor="let menu of header?.sidebar?.menus | slice: 0:1"
+              ><h3>{{ menu.title }}</h3></a
+            >
+          </li>
+          <nav  *ngIf="isMain">
+            <ul class="nav">
+              <li
+                class="nav-item d-sm-block d-md-none position-relative"
+                *ngFor="let action of header?.actions; index as i"
+              >
+                <div *ngIf ="action.title=='Learn'">
+                <a class="d-flex align-items-center" (click)="learnMenu()"
+                  ><h3>{{ action.title }}</h3>
+                  <i class="fa fa-angle-down ms-1 lazyload"></i>
+              </a>
+              <div [ngClass]="isLearnMenu ? 'megamenu' : ''">
+                <ul class="dropdown-menu">
+                  <li *ngFor="let item of action.items" class="pb-1">
+                    <a
+                      class="dropdown-item main "
+                      [href]="item.url"
+                      (click)="closeSidebar()"
+                      >{{ item?.title }}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              </div>
+              </li>
+            </ul>
+          </nav>
+          <li>
+            <a
+              routerLink="{{ menu.url }}"
+              (click)="commonService.toggle()"
+              *ngFor="let menu of header?.sidebar?.menus | slice:1:2"
               ><h3>{{ menu.title }}</h3></a
             >
           </li>
@@ -377,14 +420,6 @@
                 ><h3>{{ menu.title }}</h3></a
               >
             </div>
-          </li>
-
-          <li>
-            <a
-              href="{{ menu.url }}"
-              *ngFor="let menu of header?.sidebar?.menus | slice: 7:8"
-              ><h3>{{ menu.title }}</h3></a
-            >
           </li>
         </ul>
           <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2" *ngIf="!isMain">
@@ -534,6 +569,31 @@
                 </h3>
               </a>
             </li>
+            <nav  *ngIf="!isMain">
+              <ul class="nav">
+                <li
+                  class="nav-item d-sm-block d-md-none"
+                  *ngFor="let action of header?.actions; index as i"
+                >
+                  <a class="d-flex align-items-center" (click)="brandMenu()"
+                    ><h3>{{ action.title }}</h3>
+                    <i class="fa fa-angle-down ms-1 lazyload"></i>
+                </a>
+                <div [ngClass]="isBrandLearnMenu ? 'megamenu' : ''">
+                  <ul class="dropdown-menu brandNav">
+                    <li *ngFor="let item of action.items" class="pb-1">
+                      <a
+                        class="dropdown-item"
+                        [href]="item.url"
+                        (click)="closeSidebar()"
+                        >{{ item?.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                </li>
+              </ul>
+            </nav>
           </ul>
       </div>
     </div>
@@ -899,7 +959,7 @@
             &times;
           </button>
         </div>
-        <h5 class="modal-title mb-3">Search 1851 Franchise</h5>
+        <h5 class="modal-title mb-3">Search {{header?.publication?.name}}</h5>
         <form
           [formGroup]="searchForm"
           (ngSubmit)="onSearchSubmit(searchForm, 'header')"
@@ -929,7 +989,8 @@
         <div class="article d-flex row row-cols-4">
           <ng-container *ngFor="let item of news; index as i">
             <div class="py-2 mb-3">
-              <a href="/{{ commonService.readMore(item) }}#franbuzz">
+              <a href="/{{ commonService.readMore(item)}}#{{fragment}}"
+               >
                 <div class="card rounded-0 border-0 h-100">
                   <img
                     appYoutubeImage
@@ -974,9 +1035,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Search Modal close -->
-
   <!-- Sponsor Modal -->
 
   <div

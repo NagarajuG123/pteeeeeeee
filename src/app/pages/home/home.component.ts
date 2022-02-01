@@ -33,8 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const meta = this.apiService.getAPI2(`meta`);
-    const featureData = this.apiService.getAPI(`home-page-featured-content`);
-    forkJoin([publication, meta, featureData]).subscribe((results) => {
+    forkJoin([publication, meta]).subscribe((results) => {
       this.publication = results[0];
       this.metaService.setSeo(results[1].data);
       this.isLoad = true;

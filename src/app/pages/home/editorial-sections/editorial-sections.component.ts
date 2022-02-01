@@ -24,6 +24,7 @@ export class EditorialSectionsComponent implements OnInit {
   tab!: string;
   isLoaded: boolean = false;
   s3Url = environment.s3Url;
+  rows: any;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -42,6 +43,7 @@ export class EditorialSectionsComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.tabName = results[0].categories;
+        this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = results[0].defaultTab;
 
         this.apiService
@@ -53,14 +55,16 @@ export class EditorialSectionsComponent implements OnInit {
               data.push(item);
             });
             this.items = data;
-            this.isLoaded = true;
+            if(this.items.length > 0) {
+              this.isLoaded = true;
+            }
           });
       });
   }
 
   setActiveTab(val: any, item: any) {
     this.activeTab = val;
-    this.tab = item?.shortName;
+    this.tab = item?.slug;
     this.getData(this.tab);
   }
   getData(tabName: any) {

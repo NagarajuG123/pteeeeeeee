@@ -1,4 +1,4 @@
-<div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded">
+<div class="editorial-section sidebar-blur pb-4" *ngIf="isLoaded && items.length">
   <div class="container customContainer">
     <h2 class="py-4 m-0 sectionTitle">Editorial Sections</h2>
   </div>
@@ -20,7 +20,7 @@
           class="lazyload"
         />
       </div>
-      <ul class="row m-0 px-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-1">
+      <ul class="row m-0 px-5 row-cols-md-3 row-cols-sm-1" [ngClass]="rows">
         <li
           *ngFor="let item of tabName; index as i"
           class="border-end text-center"

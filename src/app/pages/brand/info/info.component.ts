@@ -61,6 +61,7 @@ export class InfoComponent implements OnInit {
   submitErrMsg: string = '';
   openVideoPlayer: boolean;
   brandVideoUrl: string;
+  isSubmitted: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
@@ -163,6 +164,7 @@ export class InfoComponent implements OnInit {
     return url?.replace('api.', '');
   }
   submitInquireForm(values: any) {
+    this.isSubmitted = true;
     this.submittedInquireForm = true;
     if (this.inquireForm.invalid) {
       return;

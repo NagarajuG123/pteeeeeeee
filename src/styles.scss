@@ -213,3 +213,64 @@ body.noscroll {
     }
   }
 }
+.articles{
+  .description{
+    a{
+      text-decoration: underline!important;
+      color: $blue_1!important;
+    }
+    blockquote{
+      margin: 0 50px 22px;
+      padding: 5px 30px;
+      border-left: 1.5px solid $dark_red_3;
+      p{
+        padding: unset;
+        font-weight: 700;
+      }
+    }
+    ul{
+      padding-left: 2rem;
+      li{
+        list-style-type: disc;
+      }
+    }
+    .image-style-align-left{
+      float: left;
+      width: 50%;
+      margin-right: 20px;
+    }
+    .image-style-align-right{
+      float: right;
+      width: 50%;
+      margin-right: 20px;
+    }
+    figure{
+      margin: 0 0 30px;
+      line-height: 1.5;
+      figcaption{
+        visibility: unset!important;
+        opacity: 1;
+        background-color: $white;
+        position: static!important;
+        font-size: 12px!important;
+      }
+    }
+    table{
+       display: table;
+       border-spacing: 0;
+       border: 1px double $light_gray_12;
+       tbody, td, tfoot, th, thead, tr{
+         border-width: 0.25px;
+       }
+       td{
+         padding: 0.5rem 1rem;
+       }
+    }
+  }
+}
+.inquiry-form-section {
+  .errS{
+    color: $red !important;
+    font-size: 0.875em  !important;
+  }
+}
