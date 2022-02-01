@@ -19,7 +19,6 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent implements OnInit {
   footer: any = [];
-  footerText:any;
   brandSlug: string;
   s3Url = environment.s3Url;
   socialIcons: any = [
