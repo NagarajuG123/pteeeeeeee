@@ -239,7 +239,8 @@
         /></a>
       </div>
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2" *ngIf="isMain">
+        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2"
+            [ngClass]="publication.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
           <li class="menu-search">
             <form
               [formGroup]="searchForm"
@@ -310,7 +311,7 @@
           </li>
           <hr />
 
-          <li>
+          <li *ngIf="publication.id == '1851'">
             <h3>Awards</h3>
             <ul class="mb-2 ms-2">
               <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
@@ -328,9 +329,9 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li>
             <hr />
+          </li>
+          <li *ngIf="publication.id == '1851'">
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"
