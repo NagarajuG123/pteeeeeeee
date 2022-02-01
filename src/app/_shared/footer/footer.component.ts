@@ -62,10 +62,10 @@ export class FooterComponent implements OnInit {
       footerApi = `footer?slug=${this.brandSlug}`;
     }
     const footer = this.apiService.getAPI2(footerApi);
-
     forkJoin([footer]).subscribe((results) => {
       this.footer = results[0];
     });
+
   }
   isAwards() {
     return this.brandSlug === 'franchisedevelopmentawards' ? true : false;
