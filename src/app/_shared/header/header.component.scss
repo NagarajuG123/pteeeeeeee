@@ -160,7 +160,6 @@ header {
         left: 0;
         height: 600px;
         overflow-x: auto;
-
         @include desk-lg-below3 {
           height: 550px;
         }
