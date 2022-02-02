@@ -102,14 +102,14 @@
             *ngIf="isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
-            alt="logo"
+            alt=""
             class=" lazyload "
         />
         <img
           *ngIf="!isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
-            alt="logo"
+            alt=""
             class=" lazyload"
         />
       </a>
@@ -240,7 +240,7 @@
       </div>
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
         <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2"
-            [ngClass]="publication.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
+            [ngClass]="publication?.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
           <li class="menu-search">
             <form
               [formGroup]="searchForm"
@@ -306,7 +306,7 @@
           </li>
           <hr />
 
-          <li *ngIf="publication.id == '1851'">
+          <li *ngIf="publication?.id == '1851'">
             <h3>Awards</h3>
             <ul class="mb-2 ms-2">
               <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
@@ -326,7 +326,7 @@
             </ul>
             <hr />
           </li>
-          <li *ngIf="publication.id == '1851'">
+          <li *ngIf="publication?.id == '1851'">
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"
