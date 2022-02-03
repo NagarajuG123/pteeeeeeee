@@ -74,7 +74,10 @@ header {
         //   width:150px;
         // }
         img {
-          // max-height: 85px;
+          min-height: 30px;
+          max-height: 80px;
+          min-width: 100px;
+          max-width: 125px;
           // max-width: 100%;
           @include mobile-portrait {
             width: 80px;
