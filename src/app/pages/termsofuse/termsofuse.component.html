@@ -3,7 +3,7 @@
   <div class="banner d-flex termsofuse-banner">
     <figure>
       <img
-        data-src="{{ termsData?.data?.media  }}"
+        src="{{ termsData?.data?.media | defaultImage: 1440:493 }}"
         width="1440"
         height="493"
         alt="termsofuse-banner"
