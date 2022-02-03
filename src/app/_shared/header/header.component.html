@@ -6,45 +6,21 @@
         <span class="py-1">Publications in the Mainland Community:</span>
 
         <ul class="list-group list-group-horizontal ms-1">
-          <li class="me-3">
+          <li class="me-3" *ngFor="let publication of header?.otherPublication">
             <a
-              href="{{ header?.publication?.room1903Url }}"
+              href="{{ publication?.url }}"
               target="_blank"
               class="text-white"
               rel="noopener"
             >
               <img
-                data-src="{{ s3Url }}room1903_header.png"
+                data-src="{{ publication.logo }}"
                 height="21px"
                 width="21px"
-                alt="1903"
+                alt="publication"
                 class="lazyload"
               />
-              <span class="py-1 me-1"> Room 1903</span>
-              <img
-                data-src="{{ s3Url }}rightIcon.png"
-                height="10px"
-                width="5px"
-                alt="icon"
-                class="lazyload"
-              />
-            </a>
-          </li>
-          <li class="me-3">
-            <a
-              href="{{ header?.publication?.eeUrl }}"
-              target="_blank"
-              class="text-white"
-              rel="noopener"
-            >
-              <img
-                data-src="{{ s3Url }}ee_header.png"
-                height="22px"
-                width="22px"
-                alt="EE"
-                class="lazyload"
-              />
-              <span class="py-1 me-1">Estatenvy</span>
+              <span class="py-1 me-1"> {{publication.name}}</span>
               <img
                 data-src="{{ s3Url }}rightIcon.png"
                 height="10px"
@@ -126,14 +102,13 @@
             *ngIf="isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
-            alt="logo"
+            alt=""
             class=" lazyload "
         />
         <img
           *ngIf="!isMain"
             data-src="{{ header?.logo?.image }}"
-            height="{{ header?.logo?.height }}"
-            alt="logo"
+            alt=""
             class=" lazyload"
         />
       </a>
@@ -263,7 +238,8 @@
         /></a>
       </div>
       <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2" *ngIf="isMain">
+        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2"
+            [ngClass]="publication?.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
           <li class="menu-search">
             <form
               [formGroup]="searchForm"
@@ -275,13 +251,8 @@
                   type="button"
                   (click)="onSearchSubmit(searchForm, 'sidebar')"
                 >
-                  <img
-                    data-src="{{ s3Url }}search-p.svg"
-                    alt="search"
-                    width="11px"
-                    height="11px"
-                    class="lazyload"
-                  />
+                <i class="fa fa-search"></i>
+
                 </button>
                 <input
                   type="text"
@@ -334,7 +305,7 @@
           </li>
           <hr />
 
-          <li>
+          <li *ngIf="publication?.id == '1851'">
             <h3>Awards</h3>
             <ul class="mb-2 ms-2">
               <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
@@ -352,9 +323,9 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li>
             <hr />
+          </li>
+          <li *ngIf="publication?.id == '1851'">
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"

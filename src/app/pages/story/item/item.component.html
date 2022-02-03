@@ -224,14 +224,14 @@
   <div class="ArticlesNewsSection gray-bg pb-5 d-none d-md-flex"
        *ngIf="brandSlug=='1851'">
       <div class="container customContainer">
-          <h4 class="timeStamp mb-0 pt-3" *ngIf="mainNews.length > 0">
+          <h4 class="timeStamp mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0">
             Featured Franchise News</h4>
           <app-article 
               [typeSlug]="'frannews'"
               [contents]="mainNews"
               [class]="'row-cols-sm-1'"
             ></app-article>
-          <h4 class="timeStamp mb-0" *ngIf="brandNews.length > 0">
+          <h4 class="timeStamp mb-0" *ngIf="brandNews && brandNews.length > 0">
             Featured Brand News</h4>
           <app-article
             [typeSlug]="'frannews'"

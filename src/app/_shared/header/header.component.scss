@@ -70,12 +70,15 @@ header {
         }
       }
       &.brandLogo {
-        .logoDiv {
-          width:150px;
-        }
+        // .logoDiv {
+        //   width:150px;
+        // }
         img {
-          max-height: 85px;
-          max-width: 100%;
+          min-height: 30px;
+          max-height: 80px;
+          min-width: 100px;
+          max-width: 125px;
+          // max-width: 100%;
           @include mobile-portrait {
             width: 80px;
             height: auto;
@@ -160,7 +163,6 @@ header {
         left: 0;
         height: 600px;
         overflow-x: auto;
-
         @include desk-lg-below3 {
           height: 550px;
         }
@@ -171,6 +173,10 @@ header {
       .menu-search {
         width: 200px;
 
+        .fa {
+          font-size: 10px;
+          color:$red;
+        }
         button {
           background: $white;
           border: 0;
