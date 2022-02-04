@@ -8,7 +8,7 @@
   [infiniteScrollThrottle]="throttle"
   (scrolled)="onScrollDown()"
 >
-    <div *ngIf="detailsData.length">
+    <div *ngIf="detailsData && detailsData.length">
       <app-item
         *ngFor="let details of detailsData; let i = index"
         class="element"
