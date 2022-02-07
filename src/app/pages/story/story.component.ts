@@ -223,6 +223,18 @@ hasMore:any;
                   case 'franchisor':
                     this.apiUrl = `${this.brandId}/spotlight/franchisor`;
                     break;
+                  
+                    case 'people-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/people`;
+                    break;
+
+                  case 'franchisee-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/franchisee`;
+                    break;
+
+                  case 'franchisor-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/franchisor`;
+                    break;
 
                   case 'home-envy':
                     this.apiUrl = `${this.brandId}/spotlight/home-envy`;
@@ -251,6 +263,10 @@ hasMore:any;
                   case 'industry':
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
                     break;
+
+                    case 'industry-spotlight':
+                      this.apiUrl = `${this.brandId}/spotlight/industry`;
+                      break;
 
                   case 'personal-finance':
                     this.apiUrl = `${this.brandId}/spotlight/personal-finance`;
@@ -660,29 +676,33 @@ hasMore:any;
             } else if (this.type === 'brand') {
               storyId = result.data.articles[0].id;
             } else {
-              storyId = result.data[0].id;
+              if(result.data.length > 0) {
+                storyId = result.data[0].id;
+              }
             }
-          if (
-            this.detailsData.find((o) => o.id == storyId) &&
-            !this.duplicate
-          ) {
-            this.addItems(1, this.detailsData.length);
-            this.duplicate = true;
-            return;
-          } else if (this.detailsData.find((o) => o.id !== storyId)) {
-            let url = this.brandSlug
-              ? `${this.brandSlug}/story/${storyId}`
-              : `story/${storyId}`;
-            this.apiService.getAPI(`${url}`).subscribe((result) => {
-              this.detailsData.push(this.htmlBinding(result.data));
-            });
-          } else {
-            if (this.detailsData.length == 1) {
-              this.addItems(1, 1);
-              this.first = true;
-              return;
-            }
-          }
+            if(storyId != undefined) {
+              if (
+                this.detailsData.find((o) => o.id == storyId) &&
+                !this.duplicate
+              ) {
+                this.addItems(1, this.detailsData.length);
+                this.duplicate = true;
+                return;
+              } else if (this.detailsData.find((o) => o.id !== storyId)) {
+                let url = this.brandSlug
+                  ? `${this.brandSlug}/story/${storyId}`
+                  : `story/${storyId}`;
+                this.apiService.getAPI(`${url}`).subscribe((result) => {
+                  this.detailsData.push(this.htmlBinding(result.data));
+                });
+              } else {
+                if (this.detailsData.length == 1) {
+                  this.addItems(1, 1);
+                  this.first = true;
+                  return;
+                }
+              }
+            } 
         }
        
           this.storyIndex = true;
