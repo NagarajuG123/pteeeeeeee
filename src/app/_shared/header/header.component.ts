@@ -140,10 +140,14 @@ export class HeaderComponent implements OnInit {
         }  else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
-        } else {
-          if(this.utmSlug){
+        }  else {
+          if(this.brandSlug.includes('?')) {
+            this.brandSlug = this.brandSlug.split('?')[0];
+          } 
+          if(!this.brandSlug && this.utmSlug){
             this.brandSlug = this.utmSlug;
           }
+
           this.apiService
             .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
             .subscribe((response) => {

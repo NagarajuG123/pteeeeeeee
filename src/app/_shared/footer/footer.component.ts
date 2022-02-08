@@ -50,7 +50,10 @@ export class FooterComponent implements OnInit {
           this.brandSlug = '1851';
           this.setInit();
         } else {
-          if(this.utmSlug){
+          if(this.brandSlug.includes('?')) {
+            this.brandSlug = this.brandSlug.split('?')[0];
+          } 
+          if(!this.brandSlug && this.utmSlug){
             this.brandSlug = this.utmSlug;
           }
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
