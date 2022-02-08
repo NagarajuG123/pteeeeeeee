@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import 'lazysizes';
 import { environment } from 'src/environments/environment';
@@ -21,6 +21,7 @@ export class FooterComponent implements OnInit {
   footer: any = [];
   brandSlug: string;
   s3Url = environment.s3Url;
+  utmSlug:string;
   socialIcons: any = [
     faFacebookF,
     faInstagram,
@@ -30,7 +31,16 @@ export class FooterComponent implements OnInit {
     faGlobe,
   ];
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router,    
+     private route: ActivatedRoute,
+    ) {
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.utm) {
+          this.utmSlug = params.utm;
+        }
+      });
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe((events) => {
@@ -40,6 +50,9 @@ export class FooterComponent implements OnInit {
           this.brandSlug = '1851';
           this.setInit();
         } else {
+          if(this.utmSlug){
+            this.brandSlug = this.utmSlug;
+          }
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
           this.apiService
             .getAPI(`get-brand-by-slug/${this.brandSlug}`)
