@@ -211,13 +211,7 @@ export class ItemComponent implements OnInit {
         .subscribe((response) => {
           this.trendingNews = response.data;
         });
-    } else {
-      this.apiService
-        .getAPI(`${this.brandSlug}/news?limit=4&offset=0`)
-        .subscribe((response) => {
-          this.trendingNews = response.data;
-        });
-    }
+    } 
   }
   readMore(story: any, fragment) {
     let slug = '';
