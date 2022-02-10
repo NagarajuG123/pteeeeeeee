@@ -9,18 +9,20 @@
     border-radius: 0px;
     background-color: unset;
   }
-  &.monthlyDetail {
-    .card {
-      background-color: $white_8;
-    }
-  }
-  &.spotlight,
   &.articleTrending {
     padding-top: 10px;
+    .card-img-top {
+      height: 7.5vw;
+    }
     .card-title,
     .card-footer {
       padding-left: 0 !important;
       padding-right: 0 !important;
+    }
+  }
+  &.newsSection {
+    .card-img-top {
+      height: 9vw;
     }
   }
 }

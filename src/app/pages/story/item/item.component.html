@@ -229,7 +229,7 @@
           <app-article 
               [typeSlug]="'frannews'"
               [contents]="mainNews"
-              [class]="'row-cols-sm-1'"
+              [class]="'row-cols-sm-1 newsSection'"
             ></app-article>
           <h4 class="timeStamp mb-0" *ngIf="brandNews && brandNews.length > 0">
             Featured Brand News</h4>
@@ -237,7 +237,7 @@
             [typeSlug]="'frannews'"
             [contents]="brandNews"
             [type]="'brandNews'"
-            [class]="'row-cols-sm-1'"
+            [class]="'row-cols-sm-1 newsSection'"
           ></app-article>
       </div>
   </div>
