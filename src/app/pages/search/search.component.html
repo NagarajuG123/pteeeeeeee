@@ -158,8 +158,8 @@
             [contents]="recentPeoples"
             [class]="
               isMainSite()
-                ? 'row-cols-md-3 row-cols-lg-3 gx-3'
-                : 'row-cols-md-3 row-cols-lg-4 gx-3'
+                ? 'row-cols-md-3 row-cols-lg-3 gx-3 searchPage'
+                : 'row-cols-md-3 row-cols-lg-4 gx-3 searchPage'
             "
           ></app-home-article>
           <div class="row seeMoreIcon my-4 desktop-only">
@@ -213,7 +213,7 @@
             <app-home-article
               [typeSlug]="'brand-latest-stories'"
               [contents]="brandPeoples"
-              [class]="'row-cols-md-1 row-cols-lg-1'"
+              [class]="'row-cols-md-1 row-cols-lg-1 searchPage'"
             ></app-home-article>
           </div>
         </div>

@@ -5,10 +5,24 @@
   .small-red-headers {
     padding-bottom: 5px;
   }
+  .card-img-top {
+    height: 9vw;
+  }
+  &.monthlyDetail, &.searchPage {
+    .card-img-top {
+      height: 10vw;
+    }
+  }
+   &.searchPage {
+    .card-img-top {
+      height: 11.5vw;
+    }
+  }
   .card-footer {
     border-radius: 0px;
     background-color: unset;
   }
+  
   &.monthlyDetail,
   &.trending {
     .card {
