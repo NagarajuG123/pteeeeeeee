@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ApiService } from '../../_core/services/api.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
@@ -91,6 +91,8 @@ export class HeaderComponent implements OnInit {
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
   isMain: boolean;
+  utmSlug: string;
+
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -98,6 +100,7 @@ export class HeaderComponent implements OnInit {
     private apiService: ApiService,
     public commonService: CommonService,
     private router: Router,
+    private route: ActivatedRoute,
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
     @Inject(DOCUMENT) private _document: HTMLDocument,
@@ -116,6 +119,12 @@ export class HeaderComponent implements OnInit {
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.utm) {
+          this.utmSlug = params.utm;
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -128,10 +137,17 @@ export class HeaderComponent implements OnInit {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === 'robots.txt') {
-        } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+        }  else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
-        } else {
+        }  else {
+          if(this.brandSlug.includes('?')) {
+            this.brandSlug = this.brandSlug.split('?')[0];
+          } 
+          if(!this.brandSlug && this.utmSlug){
+            this.brandSlug = this.utmSlug;
+          }
+
           this.apiService
             .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
             .subscribe((response) => {
