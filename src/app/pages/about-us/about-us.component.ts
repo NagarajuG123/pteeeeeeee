@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,  FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { forkJoin } from 'rxjs';
@@ -87,12 +87,12 @@ export class AboutUsComponent implements OnInit {
     //     console.log("contactForm invalid");
     //   return;
     // } if (contactForm.invalid) {
-    //   for (const control of Object.keys(contactForm.controls)) {
-    //     contactForm.controls[control].markAsTouched();
-    //   }
+      for (const control of Object.keys(contactForm.controls)) {
+        contactForm.controls[control].markAsTouched();
+      }
     //   return;
     // }
-    console.log(contactForm);
+    console.log(contactForm.controls);
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
@@ -106,10 +106,19 @@ export class AboutUsComponent implements OnInit {
         }
       });
      
-      this.recaptchaV3Service.execute('importantAction')
+      this.recaptchaV3Service.execute('recaptcha')
       .subscribe((token: string) => {
-        console.log(`Token [${token}] generated`);
+        console.log(token);
+        if(this.contactForm.controls.reCaptchaCode.value ==token)
+        {
+          console.log("matched");
+        }
+        else
+        {
+          console.log("not matched")
+        }
       });
+
     }
   resetForm() {
     this.contactForm.patchValue({
@@ -117,7 +126,7 @@ export class AboutUsComponent implements OnInit {
       last_name: '',
       email: '',
       message: '',
-      reCaptchaCode: '',
+      // reCaptchaCode: '',
     });
   }
   resolved(event) {} 
