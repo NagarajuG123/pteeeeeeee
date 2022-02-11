@@ -24,7 +24,9 @@ export class FranchiseResearchComponent implements OnInit {
       .getAPI2(`franchise-research?slug=${this.slug}`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        this.brandInfoNews = result.data;
+        if(result){
+          this.brandInfoNews = result.data;
+        }
       });
   }
 
