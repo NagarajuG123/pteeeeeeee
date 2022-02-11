@@ -13,6 +13,7 @@ import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 
+
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -30,7 +31,6 @@ export class AboutUsComponent implements OnInit {
   submitSuccessMsg: string = '';
   isBrowser: boolean;
   data: any = [];
-  
   videoUrl;
 
   constructor(
@@ -83,17 +83,20 @@ export class AboutUsComponent implements OnInit {
 
   onContactSubmit(contactForm: FormGroup) {
     this.isSubmitted = true;
-      if (!contactForm.valid) {
-      return;
-    } if (contactForm.invalid) {
-      for (const control of Object.keys(contactForm.controls)) {
-        contactForm.controls[control].markAsTouched();
-      }
-      return;
-    }
+    //   if (!contactForm.valid) {
+    //     console.log("contactForm invalid");
+    //   return;
+    // } if (contactForm.invalid) {
+    //   for (const control of Object.keys(contactForm.controls)) {
+    //     contactForm.controls[control].markAsTouched();
+    //   }
+    //   return;
+    // }
+    console.log(contactForm);
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
+        console.log(result);
         if (typeof result.data !== 'undefined') {
           this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;
@@ -102,9 +105,10 @@ export class AboutUsComponent implements OnInit {
           this.submitErrMsg = result.error.message;
         }
       });
+     
       this.recaptchaV3Service.execute('importantAction')
       .subscribe((token: string) => {
-        console.debug(`Token [${token}] generated`);
+        console.log(`Token [${token}] generated`);
       });
     }
   resetForm() {
@@ -116,6 +120,7 @@ export class AboutUsComponent implements OnInit {
       reCaptchaCode: '',
     });
   }
+  resolved(event) {} 
   ngAfterViewInit(){
     if(this.isBrowser){
       $('.modal').on('hidden.bs.modal', function(){

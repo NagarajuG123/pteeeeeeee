@@ -208,7 +208,10 @@
                   [size]="'invisible'"
                   [hide]="false" 
                   formControlName="reCaptchaCode"
-                  (captchaResponse)="login($event)">
+                  (resolved)="resolved($event)"
+                  ngDefaultControl
+                  class="g-recaptcha"
+                >
                   </recaptcha>
                   <app-error-message
                     *ngIf="isSubmitted"
