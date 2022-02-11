@@ -21,10 +21,10 @@ export class FranchiseResearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService
-      .getAPI(`info?slug=${this.slug}`)
+      .getAPI2(`franchise-research?slug=${this.slug}`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        this.brandInfoNews = result;
+        this.brandInfoNews = result.data;
       });
   }
 
