@@ -1,22 +1,15 @@
-@import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .article {
+  img {
+    @include mobile-landscape {
+      height: auto;    
+    }            
+    height: 118px;
+  }
   .small-red-headers {
     padding-bottom: 5px;
-  }
-  .card-img-top {
-    height: 9vw;
-  }
-  &.monthlyDetail, &.searchPage {
-    .card-img-top {
-      height: 10vw;
-    }
-  }
-   &.searchPage {
-    .card-img-top {
-      height: 11.5vw;
-    }
   }
   .card-footer {
     border-radius: 0px;

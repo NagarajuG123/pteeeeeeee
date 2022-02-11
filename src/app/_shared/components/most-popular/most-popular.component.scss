@@ -15,8 +15,8 @@
     }
   }
   .card {
-    .card-img-top {
-      height: 13.5vw;
+    img {
+      max-height: 213px;
     }
     .card-body {
       background-color: $red;

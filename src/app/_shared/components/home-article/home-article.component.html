@@ -14,13 +14,11 @@
         </span>
       </div>
       <div class="card rounded-0 border-0 h-100 position-initial">
+        <figure>
         <img
           appYoutubeImage
           data-src="{{ item.media | defaultImage: 210:118 }}"
-          srcset="{{item.media | defaultImage:545:305}} 545w, 
-            {{item.media | defaultImage:355:199}} 355w, 
-            {{item.media | defaultImage:300:168}} 300w,
-            {{item.media | defaultImage:210:118}} 210w"
+          data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
           class="w-100 lazyload img-fluid card-img-top"
           alt=""
           width="210"
@@ -32,7 +30,7 @@
              (max-width: 992px) 300px,
              210px'
           }}"
-        />
+        /></figure>
         <div class="card-body p-0 pt-2 rounded-0">
           <h3 class="card-title articleTitles mb-0 px-3">
             {{ item.title }}

@@ -274,3 +274,9 @@ body.noscroll {
     font-size: 0.875em  !important;
   }
 }
+figure {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
