@@ -92,11 +92,23 @@ export class AboutUsComponent implements OnInit {
       }
     //   return;
     // }
-    console.log(contactForm.controls);
+    this.recaptchaV3Service.execute('recaptcha')
+    .subscribe((token: string) => {
+      console.log(token);
+      console.log(contactForm.controls);
+      // this.contactForm.controls.reCaptchaCode.patchValue(token);
+      // console.log(contactForm.controls);
+      // {
+      //   console.log("matched");
+      // }
+      // else
+      // {
+      //   console.log("not matched")
+      // }
+    });
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
-        console.log(result);
         if (typeof result.data !== 'undefined') {
           this.isSubmitted = false;
           this.submitSuccessMsg = result.data.message;
@@ -106,18 +118,7 @@ export class AboutUsComponent implements OnInit {
         }
       });
      
-      this.recaptchaV3Service.execute('recaptcha')
-      .subscribe((token: string) => {
-        console.log(token);
-        if(this.contactForm.controls.reCaptchaCode.value ==token)
-        {
-          console.log("matched");
-        }
-        else
-        {
-          console.log("not matched")
-        }
-      });
+    
 
     }
   resetForm() {

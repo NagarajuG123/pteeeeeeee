@@ -207,8 +207,10 @@
                   <recaptcha 
                   [size]="'invisible'"
                   [hide]="false" 
+                  formControlName="reCaptchaCode"
                   (resolved)="resolved($event)"
-                  class="g-recaptcha"
+                  ngDefaultControl
+                  value ={{token}}
                 >
                   </recaptcha>
                   <app-error-message
