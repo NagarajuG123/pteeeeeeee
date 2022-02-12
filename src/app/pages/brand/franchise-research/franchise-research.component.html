@@ -1,4 +1,4 @@
-<div class="featured sidebar-blur pb-4">
+<div class="featured sidebar-blur pb-4" *ngIf="brandInfoNews">
     <div class="container customContainer">
       <div class="col-12 d-flex">
         <h2 class="sectionTitle py-4 m-0">
@@ -22,13 +22,11 @@
                 href="{{item.url}}"
                 target="_blank"
               >
-              
                 <img
                 appYoutubeImage
           data-src="{{ item.media | defaultImage: 210:118 }}"
           srcset="{{item.media | defaultImage:545:305}} 545w, 
-            {{item.media | defaultImage:355:199}} 355w, 
-            {{item.media | defaultImage:300:168}} 300w,
+            {{item.media | defaultImage:355:199}} 355w,
             {{item.media | defaultImage:210:118}} 210w"
           class="w-100 img-fluid lazyload "
           alt=""
@@ -60,8 +58,7 @@
                   appYoutubeImage
             data-src="{{ item.media | defaultImage: 210:118 }}"
             srcset="{{item.media | defaultImage:545:305}} 545w, 
-              {{item.media | defaultImage:355:199}} 355w, 
-              {{item.media | defaultImage:300:168}} 300w,
+              {{item.media | defaultImage:355:199}} 355w,
               {{item.media | defaultImage:210:118}} 210w"
             class="w-100 img-fluid lazyload "
             alt=""
@@ -80,7 +77,7 @@
                   />
     
                   <h3 class="articleTitles align-items-center m-0 pt-2">
-                    {{ item.title }}
+                    {{ item.description }}
                   </h3>
                 </a>
 

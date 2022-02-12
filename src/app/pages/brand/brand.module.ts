@@ -11,10 +11,9 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 import { CategoryComponent } from './category/category.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
-import { FeaturedComponent } from './featured/featured.component';
 import { FranchiseResearchComponent } from './franchise-research/franchise-research.component';
 @NgModule({
-  declarations: [BrandComponent, InfoComponent, CategoryComponent,SpotlightComponent, FeaturedComponent, FranchiseResearchComponent],
+  declarations: [BrandComponent, InfoComponent, CategoryComponent,SpotlightComponent, FranchiseResearchComponent],
   imports: [
     CommonModule,
     BrandRoutingModule,
