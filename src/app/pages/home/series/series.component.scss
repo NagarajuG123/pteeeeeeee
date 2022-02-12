@@ -19,7 +19,25 @@
       float: right;
     }
   }
+  .leftSide {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 435px;
+      }
+    }
+  }
   .rightSide {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 108px;
+      }
+    }
     @include mobile-portrait {
       padding-top: 2rem;
     }

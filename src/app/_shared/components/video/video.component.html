@@ -70,24 +70,24 @@
               href="#"
               class="video-btn"
             >
+            <figure>
               <img
                 appYoutubeImage
-                data-src="{{ item.media | defaultImage: 209:118 }}"
-                srcset="{{item.media | defaultImage:545:305}} 545w,
-                  {{item.media | defaultImage:355:199}} 355w, 
-                  {{item.media | defaultImage:209:118}} 209w"
+                data-src="{{ item.media | defaultImage: 210:118 }}"
+                data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
+                class="lazyload img-fluid card-img-top"
+                alt=""
+                width="210"
+                height="118"
+                loading="lazy"
                 sizes="{{
                   '(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    209px'
+                   (max-width: 768px) 355px,
+                   (max-width: 992px) 300px,
+                   210px'
                 }}"
-                class="img-fluid lazyload video-img d-inline"
-                width="209"
-                height="118"
-                alt="video"
-                loading="lazy"
-              />
+              /></figure>
+
               <img
                 data-src="{{ s3Url }}videoIcon.png"
                 alt="Play"

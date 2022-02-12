@@ -26,6 +26,14 @@
     }
   }
   .bottomSection {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 118px;
+      }
+    }
     .articleTitles {
       color: $white_2;
     }

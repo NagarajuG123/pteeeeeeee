@@ -8,6 +8,22 @@
     }            
     height: 118px;
   }
+  .fourColumn {
+    img {
+      @include tablet-landscape {
+        height: auto;    
+      } 
+      height:150px;
+    }
+  }
+  .threeColumn {
+    img {
+      @include tablet-landscape {
+        height: auto;    
+      } 
+      height:180px;
+    }
+  }
   .small-red-headers {
     padding-bottom: 5px;
   }

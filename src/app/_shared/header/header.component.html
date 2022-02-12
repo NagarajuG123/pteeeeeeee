@@ -569,272 +569,7 @@
       </div>
     </div>
   </div>
-  <!-- brand -->
-  <!-- <div class="container middle-head" *ngIf="!isMain">
-    <div class="row gx-0 align-items-center" *ngIf="brandSlug !== '1851'">
-      <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <button
-          id="dropdownMenuLink"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          data-bs-display="static"
-          (click)="commonService.toggle()"
-          class="menuBtn  brandMenuBtn"
-        >
-          <img
-            data-src="{{
-              commonService.showmenu
-                ? 'assets/img/close.png'
-                : 'assets/img/menu.png'
-            }}"
-            width="35"
-            height="24"
-            alt="menu"
-            class="lazyload menu"
-          />
-          <small class="text-center d-md-block">MENU</small>
-        </button>
-      </div>
-      <div
-        class="d-flex align-items-center brandLogo logo col-lg-5 col-sm-3 col-md-3 col-3"
-        (click)="closeSidebar()"
-      >
-        <a
-          [routerLink]="header?.logo?.url"
-          (click)="closeSidebar()"
-          class="pe-lg-4 pe-4"
-          ><img
-            data-src="{{ header?.logo?.image }}"
-            height="{{ header?.logo?.height }}"
-            width="{{ header?.logo?.width }}"
-            alt="logo"
-            class="ms-4 img-fluid lazyload"
-        /></a>
-
-        <a
-          data-bs-toggle="modal"
-          data-bs-target="#sponsoredModal"
-          href=""
-          class="d-none d-lg-block"
-          ><h6 class="sponsor m-0 pt-3">
-            {{ brandTitle }}
-          </h6>
-          <span class="sponsorLogo">POWERED BY</span>
-        </a>
-      </div>
-      <div
-        class="
-          d-flex
-          align-items-center
-          col-lg-6 col-sm-6 col-md-6 col-6
-          justify-content-end
-        "
-        (click)="closeSidebar()"
-      >
-        <nav class="pt-2 brandHeader">
-          <ul class="nav justify-content-center">
-            <li class="pe-lg-4 pe-4">
-              <a
-                href="#"
-                (click)="formReset()"
-                data-bs-toggle="modal"
-                data-bs-target="#inquireModal"
-              >
-                <h6 class="articleTitles">{{ header?.inquire }}</h6>
-              </a>
-            </li>
-            <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
-              <a [routerLink]="menu.url" (click)="closeSidebar()"
-                ><h6 class="articleTitles">{{ menu.title }}</h6>
-              </a>
-            </li>
-            <li
-              class="nav-item pe-lg-4 pe-2 d-none d-xl-block"
-              *ngFor="let action of header?.actions; index as i"
-            >
-              <a class="d-flex align-items-center" (click)="closeSidebar()"
-                ><h6 class="articleTitles">{{ action.title }}</h6>
-                <i class="fa fa-angle-down ms-1 lazyload pb-2"></i>
-            </a>
-              <ul class="dropdown-menu brandNav">
-                <li *ngFor="let item of action.items" class="pb-1">
-                  <a
-                    class="dropdown-item"
-                    [href]="item.url"
-                    (click)="closeSidebar()"
-                    >{{ item?.title }}</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <a
-          href="#"
-          onclick="return false;"
-          data-bs-toggle="modal"
-          data-bs-target="#searchModal"
-          class="pe-4 d-none d-xl-block"
-          ><img
-            data-src="{{ s3Url }}search_header.png"
-            height="18"
-            width="18"
-            alt="search"
-            class="lazyload"
-        /></a>
-      </div>
-      <div class="col-lg-1 col-md-2 col-sm-3 col-3">
-        <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li>
-            <div class="menu-search">
-              <form
-                [formGroup]="searchForm"
-                (ngSubmit)="onSearchSubmit(searchForm, 'sidebar')"
-              >
-                <div class="input-group mb-1">
-                  <button
-                    class="ps-2"
-                    type="button"
-                    (click)="onSearchSubmit(searchForm, 'sidebar')"
-                  >
-                    <img
-                      data-src="{{ s3Url }}search-p.svg"
-                      alt="search"
-                      width="11px"
-                      height="11px"
-                      class="lazyload"
-                    />
-                  </button>
-                  <input
-                    type="text"
-                    class="form-control ps-0"
-                    placeholder="Search"
-                    [formControl]="searchForm.controls['searchInput']"
-                  />
-                </div>
-              </form>
-            </div>
-          </li>
-          <li>
-            <a routerLink="/" (click)="commonService.toggle()">
-              <h3>Return to Main Site</h3>
-            </a>
-            <a routerLink="/{{ brandSlug }}" (click)="commonService.toggle()">
-              <h3>{{ brandTitle }}</h3></a
-            >
-            <ul class="mb-2 ms-2">
-              <li class="ms-1" *ngIf="header?.sidebar?.pdf?.url">
-                <a
-                  class="d-flex justify-content-between align-items-center my-1"
-                  [href]="header?.sidebar?.pdf?.url"
-                  target="_blank"
-                  >Download pdf
-                </a>
-              </li>
-              <li class="ms-1">
-                <a
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-center
-                    my-1
-                    text-capitalize
-                  "
-                  (click)="commonService.toggle()"
-                  [href]="header?.sidebar?.website"
-                  target="_blank"
-                  >Visit Website
-                </a>
-              </li>
-            </ul>
-          </li>
-          <hr />
-
-          <li>
-            <h3>Social Media</h3>
-            <ul class="mb-2 ms-2">
-              <li
-                class="ms-1"
-                *ngFor="let item of header?.sidebar?.socialMedia"
-              >
-                <a
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-center
-                    my-1
-                    text-capitalize
-                  "
-                  (click)="commonService.toggle()"
-                  [href]="item.url"
-                  target="_blank"
-                  rel="noopener"
-                  >{{ item.title }}
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="ms-1" *ngIf="trending && trending.length">
-            <hr />
-            <a
-              class="my-1"
-              routerLink="/{{ brandSlug }}"
-              (click)="commonService.toggle()"
-              ><h3>{{ brandTitle }} Most read Stories</h3></a
-            >
-            <ul class="mb-2 ms-2">
-              <li class="ms-1" *ngFor="let story of trending | slice: 0:3">
-                <a
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-center
-                    my-1
-                    text-capitalize
-                  "
-                  [href]="commonService.readMore(story)"
-                  (click)="commonService.toggle()"
-                  >{{ story.title }}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <hr class="mb-2" />
-            <a
-              *ngIf="header?.sidebar?.login"
-              href="{{ header?.sidebar?.login }}"
-            >
-              <h3>Login</h3></a
-            >
-            <hr class="mb-2" />
-            <a
-              *ngIf="header?.sidebar?.about"
-              routerLink="/{{ header?.sidebar?.about }}"
-              (click)="commonService.toggle()"
-            >
-              <h3>
-                About <span class="text-capitalize">{{ brandTitle }}</span>
-              </h3>
-            </a>
-
-            <a
-              *ngIf="header?.sidebar?.hasOwnProperty('contact')"
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#contactModal"
-              (click)="[commonService.toggle(),formReset()]"
-            >
-              <h3>
-                Contact <span class="text-capitalize">{{ brandTitle }}</span>
-              </h3>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
+ 
   <div
     class="bottom-head d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
     (click)="closeSidebar()"
@@ -963,24 +698,25 @@
               <a href="/{{ commonService.readMore(item)}}#{{fragment}}"
                >
                 <div class="card rounded-0 border-0 h-100">
+                  <figure>
                   <img
                     appYoutubeImage
-                    data-src="{{ item.media | defaultImage: 203:114 }}"
+                    data-src="{{ item.media | defaultImage: 240:140 }}"
                     srcset="{{item.media | defaultImage:545:305}} 545w,
                       {{item.media | defaultImage:355:199}} 355w, 
-                      {{item.media | defaultImage:203:114}} 203w"
+                      {{item.media | defaultImage:248:140}} 248w"
                     sizes="{{
                       '(max-width: 576px) 545px,
                         (max-width: 768px) 355px,
                         (max-width: 992px) 300px,
-                        203px'
+                        248px'
                     }}"
                     class="w-100 img-fluid lazyload"
-                    width="203"
-                    height="114"
+                    width="248"
+                    height="140"
                     alt="editorial"
                     loading="lazy"
-                  />
+                  /></figure>
                   <div class="card-body pb-0 py-0 pt-2">
                     <h3 class="card-title articleTitles mb-0">
                       {{ item.title }}

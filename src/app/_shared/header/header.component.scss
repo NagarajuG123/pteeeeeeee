@@ -70,15 +70,12 @@ header {
         }
       }
       &.brandLogo {
-        // .logoDiv {
-        //   width:150px;
-        // }
+       
         img {
           min-height: 30px;
           max-height: 80px;
           min-width: 100px;
           max-width: 125px;
-          // max-width: 100%;
           @include mobile-portrait {
             width: 80px;
             height: auto;
@@ -446,6 +443,12 @@ header {
         font-size: 13px;
       }
       .card {
+        img {
+          @include mobile-landscape {
+            height: auto;    
+          }            
+          height: 140px;
+        }
         filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.08));
         .card-footer {
           border: 0px;

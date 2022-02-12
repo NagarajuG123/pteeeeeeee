@@ -156,6 +156,7 @@
           <app-home-article
             [typeSlug]="'most-recent-stories'"
             [contents]="recentPeoples"
+            [column]="'three'"
             [class]="
               isMainSite()
                 ? 'row-cols-md-3 row-cols-lg-3 gx-3 searchPage'
@@ -213,6 +214,7 @@
             <app-home-article
               [typeSlug]="'brand-latest-stories'"
               [contents]="brandPeoples"
+              [column]="'three'"
               [class]="'row-cols-md-1 row-cols-lg-1 searchPage'"
             ></app-home-article>
           </div>
