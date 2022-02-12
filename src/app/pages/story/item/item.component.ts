@@ -210,6 +210,12 @@ export class ItemComponent implements OnInit {
         )
         .subscribe((response) => {
           this.trendingNews = response.data;
+          if(!(this.trendingNews.length >= 4)){
+            this.apiService.getAPI(`${this.brandSlug}/${category.slug}/most-recent?limit=4&offset=0`)
+            .subscribe((result) => {
+              this.trendingNews = response.data;
+            });
+          }
         });
     } 
   }
