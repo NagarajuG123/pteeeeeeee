@@ -25,19 +25,12 @@
         @include mobile-landscape {
           height: auto;    
         }            
-        height: 435px;
+        height: 417px;
       }
     }
   }
   .rightSide {
-    figure {
-      img {
-        @include mobile-landscape {
-          height: auto;    
-        }            
-        height: 108px;
-      }
-    }
+    
     @include mobile-portrait {
       padding-top: 2rem;
     }

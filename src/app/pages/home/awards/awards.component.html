@@ -30,7 +30,7 @@
           <img
             appYoutubeImage
             data-src="{{ item.media | defaultImage: 536:302 }}"
-            class="w-100 img-fluid lazyload"
+            class="img-fluid lazyload"
             alt="story"
             width="536"
             height="302"
@@ -61,21 +61,21 @@
             >
             <figure>
               <img
-                appYoutubeImage
-                data-src="{{ item.media | defaultImage: 210:118 }}"
-                data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:210:118}} 210w"
-                class="lazyload img-fluid card-img-top"
-                alt=""
-                width="210"
-                height="118"
-                loading="lazy"
-                sizes="{{
-                  '(max-width: 576px) 545px,
-                   (max-width: 768px) 355px,
-                   (max-width: 992px) 300px,
-                   210px'
-                }}"
-              /></figure>
+              appYoutubeImage
+              data-src="{{ item.media | defaultImage: 212:119 }}"
+              data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
+              class=" lazyload img-fluid card-img-top d-inline"
+              alt=""
+              width="212"
+              height="119"
+              loading="lazy"
+              sizes="{{
+                '(max-width: 576px) 400px,
+                 (max-width: 768px) 355px,
+                 (max-width: 992px) 300px,
+                 212px'
+              }}"
+            /></figure>
 
               <h3 class="articleTitles align-items-center m-0 pt-2">
                 {{ item.title }}
