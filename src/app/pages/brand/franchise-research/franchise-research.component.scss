@@ -3,8 +3,11 @@
 
 .featured{
     img {
-        width:100%;
-    }
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 150px;
+      }
     .sectionTitle{
         color: $dark_gray;
     }
