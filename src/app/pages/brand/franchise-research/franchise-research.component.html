@@ -39,32 +39,32 @@
                   (max-width: 992px) 300px,
                   210px'
                 }}"/>
+                <h3 class="articleTitles align-items-center m-0 pt-2">
+                  {{ item.description }}
+                </h3>
               </a>
               
                 <a
                 *ngIf="!item.isExternal"
                 href="{{item.url}}"
                 >
-                
-                  <img
-                  appYoutubeImage
-                  data-src="{{ item.media | defaultImage: 210:118 }}"
-                  srcset="{{item.media | defaultImage:545:305}} 545w, 
-                    {{item.media | defaultImage:355:199}} 355w,
-                    {{item.media | defaultImage:210:118}} 210w"
-                  class="w-100 img-fluid lazyload "
-                  alt=""
-                  width="210"
-                  height="118"
-                  loading="lazy"
-                  sizes="{{
-                    '(max-width: 576px) 545px,
-                    (max-width: 768px) 355px,
-                    (max-width: 992px) 300px,
-                    210px'
-                  }}"
-                  />
-    
+                <figure>
+                <img
+                appYoutubeImage
+                data-src="{{ item.media | defaultImage: 266:150 }}"
+                data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:266:150}} 266w"
+                class="w-100 lazyload img-fluid card-img-top"
+                alt=""
+                width="266"
+                height="150"
+                loading="lazy"
+                sizes="{{
+                  '(max-width: 576px) 545px,
+                   (max-width: 768px) 355px,
+                   (max-width: 992px) 300px,
+                   266px'
+                }}"
+              /></figure>
                   <h3 class="articleTitles align-items-center m-0 pt-2" *ngIf="item.description">
                     {{ item.description }}
                   </h3>
