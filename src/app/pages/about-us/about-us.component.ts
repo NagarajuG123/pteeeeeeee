@@ -85,7 +85,6 @@ export class AboutUsComponent implements OnInit {
   }
 
   onContactSubmit(contactForm: FormGroup) {
-    console.log(contactForm.controls)
     this.isSubmitted = true;
     if (!contactForm.valid) {
       return;
