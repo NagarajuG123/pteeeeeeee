@@ -75,7 +75,9 @@ export class AboutUsComponent implements OnInit {
       this.metaService.setSeo(results[2].data);
     });
     this.recaptchaV3Service.execute('recaptcha')
-    .subscribe((token: string) => {this.contactForm.controls.reCaptchaCode.setValue(token);});
+    .subscribe((token: string) => {
+      this.contactForm.controls.reCaptchaCode.setValue(token);
+    });
   }
 
   isShow() {
@@ -83,6 +85,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   onContactSubmit(contactForm: FormGroup) {
+    console.log(contactForm.controls)
     this.isSubmitted = true;
     if (!contactForm.valid) {
       return;
