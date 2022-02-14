@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-about-us',
@@ -34,6 +35,7 @@ export class AboutUsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
+    private recaptchaV3Service: ReCaptchaV3Service,
     @Inject(PLATFORM_ID) platformId: Object,
     fb: FormBuilder,
     private toastr: ToastrService,
@@ -72,11 +74,16 @@ export class AboutUsComponent implements OnInit {
       }
       this.metaService.setSeo(results[2].data);
     });
+    this.recaptchaV3Service.execute('recaptcha')
+    .subscribe((token: string) => {
+      this.contactForm.controls.reCaptchaCode.setValue(token);
+    });
   }
 
   isShow() {
     return this.publication.id == '1851';
   }
+
   onContactSubmit(contactForm: FormGroup) {
     this.isSubmitted = true;
     if (!contactForm.valid) {
@@ -93,7 +100,7 @@ export class AboutUsComponent implements OnInit {
           this.submitErrMsg = result.error.message;
         }
       });
-  }
+   }
   resetForm() {
     this.contactForm.patchValue({
       first_name: '',
@@ -103,7 +110,6 @@ export class AboutUsComponent implements OnInit {
       reCaptchaCode: '',
     });
   }
-  resolved(event) {}
   ngAfterViewInit(){
     if(this.isBrowser){
       $('.modal').on('hidden.bs.modal', function(){

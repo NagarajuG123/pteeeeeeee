@@ -204,12 +204,12 @@
               <br />
               <div class="row gx-2" id="recaptchaBlock">
                 <div class="col-8 col-sm">
-                  <re-captcha
-                    (resolved)="resolved($event)"
-                    formControlName="reCaptchaCode"
-                    siteKey="{{ siteKey }}"
-                  >
-                  </re-captcha>
+                  <recaptcha 
+                  [size]="'invisible'"
+                  [hide]="false" 
+                  formControlName="reCaptchaCode"
+                >
+                  </recaptcha>
                   <app-error-message
                     *ngIf="isSubmitted"
                     class="full-width"
