@@ -140,10 +140,10 @@ export class CategoryComponent implements OnInit {
         }
       });
   }
-  getMore(tabName: any) {
+  getMore() {
     this.apiService
       .getAPI(
-        `${this.type}/${tabName}/featured?limit=5&offset=${
+        `${this.type}/${this.tab.toLowerCase()}/featured?limit=5&offset=${
           this.featuredData.length + 4
         }`
       )
