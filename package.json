@@ -45,7 +45,6 @@
     "@nguniversal/common": "^13.0.2",
     "@nguniversal/express-engine": "^12.1.0",
     "@popperjs/core": "^2.10.2",
-    "angular-recaptcha3": "^2.0.0",
     "bootstrap": "^5.1.0",
     "d3": "^7.0.0",
     "express": "^4.15.2",
