@@ -12,6 +12,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -82,30 +83,23 @@ export class AboutUsComponent implements OnInit {
   }
 
   onContactSubmit(contactForm: FormGroup) {
-    this.isSubmitted = true;
-    //   if (!contactForm.valid) {
-    //     console.log("contactForm invalid");
-    //   return;
-    // } if (contactForm.invalid) {
-      for (const control of Object.keys(contactForm.controls)) {
-        contactForm.controls[control].markAsTouched();
-      }
-    //   return;
-    // }
+    
     this.recaptchaV3Service.execute('recaptcha')
     .subscribe((token: string) => {
       console.log(token);
-      console.log(contactForm.controls);
-      // this.contactForm.controls.reCaptchaCode.patchValue(token);
-      // console.log(contactForm.controls);
-      // {
-      //   console.log("matched");
-      // }
-      // else
-      // {
-      //   console.log("not matched")
-      // }
-    });
+          console.log(contactForm.controls);
+          this.contactForm.controls.reCaptchaCode.setValue(token);
+          console.log(contactForm.controls);
+    this.isSubmitted = true;
+      if (!contactForm.valid) {
+        console.log("contactForm invalid");
+      return;
+    } if (contactForm.invalid) {
+      for (const control of Object.keys(contactForm.controls)) {
+        contactForm.controls[control].markAsTouched();
+      }
+      return;
+    }
     this.apiService
       .postAPI('1851/about-us', contactForm.value)
       .subscribe((result) => {
@@ -117,8 +111,15 @@ export class AboutUsComponent implements OnInit {
           this.submitErrMsg = result.error.message;
         }
       });
-     
     
+        // {
+        //   console.log("matched");
+        // }
+        // else
+        // {
+        //   console.log("not matched")
+        // }
+      });
 
     }
   resetForm() {

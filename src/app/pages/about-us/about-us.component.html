@@ -209,10 +209,12 @@
                   [hide]="false" 
                   formControlName="reCaptchaCode"
                   (resolved)="resolved($event)"
-                  ngDefaultControl
-                  value ={{token}}
+                  
+                  class="g-recaptcha"
                 >
                   </recaptcha>
+                  <div class="g-recaptcha" data-sitekey= siteKey
+                  formControl="contactForm.controls['reCaptchaCode']"></div>
                   <app-error-message
                     *ngIf="isSubmitted"
                     class="full-width"
