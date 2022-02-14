@@ -6,7 +6,7 @@ export const environment = {
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   imageResizeUrl: 'https://dnnxwdlxu3h63.cloudfront.net',
   s3BucketUrl: "https://1851-dev.s3.amazonaws.com",
-  reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
+  reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
   appUrl: 'https://1851-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/1851magazine/',
   enableSW: true,
