@@ -76,6 +76,8 @@ export class AboutUsComponent implements OnInit {
       }
       this.metaService.setSeo(results[2].data);
     });
+    this.recaptchaV3Service.execute('recaptcha')
+    .subscribe((token: string) => {this.contactForm.controls.reCaptchaCode.setValue(token);});
   }
 
   isShow() {
@@ -83,16 +85,8 @@ export class AboutUsComponent implements OnInit {
   }
 
   onContactSubmit(contactForm: FormGroup) {
-    
-    this.recaptchaV3Service.execute('recaptcha')
-    .subscribe((token: string) => {
-      console.log(token);
-          console.log(contactForm.controls);
-          this.contactForm.controls.reCaptchaCode.setValue(token);
-          console.log(contactForm.controls);
     this.isSubmitted = true;
       if (!contactForm.valid) {
-        console.log("contactForm invalid");
       return;
     } if (contactForm.invalid) {
       for (const control of Object.keys(contactForm.controls)) {
@@ -111,24 +105,14 @@ export class AboutUsComponent implements OnInit {
           this.submitErrMsg = result.error.message;
         }
       });
-    
-        // {
-        //   console.log("matched");
-        // }
-        // else
-        // {
-        //   console.log("not matched")
-        // }
-      });
-
-    }
+   }
   resetForm() {
     this.contactForm.patchValue({
       first_name: '',
       last_name: '',
       email: '',
       message: '',
-      // reCaptchaCode: '',
+      reCaptchaCode: '',
     });
   }
   resolved(event) {} 
