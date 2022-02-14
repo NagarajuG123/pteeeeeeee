@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormBuilder,  FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { forkJoin } from 'rxjs';
@@ -12,8 +12,6 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
-import { Token } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-about-us',
@@ -86,12 +84,7 @@ export class AboutUsComponent implements OnInit {
 
   onContactSubmit(contactForm: FormGroup) {
     this.isSubmitted = true;
-      if (!contactForm.valid) {
-      return;
-    } if (contactForm.invalid) {
-      for (const control of Object.keys(contactForm.controls)) {
-        contactForm.controls[control].markAsTouched();
-      }
+    if (!contactForm.valid) {
       return;
     }
     this.apiService
@@ -115,7 +108,6 @@ export class AboutUsComponent implements OnInit {
       reCaptchaCode: '',
     });
   }
-  resolved(event) {} 
   ngAfterViewInit(){
     if(this.isBrowser){
       $('.modal').on('hidden.bs.modal', function(){
