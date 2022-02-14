@@ -41,6 +41,7 @@ export class SpotlightComponent implements OnInit {
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
+        if(results[0].categories){
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
@@ -71,6 +72,7 @@ export class SpotlightComponent implements OnInit {
             }
             this.isLoaded = true;
           });
+        }
       });
   }
   setActiveTab(val: any, item: any) {
