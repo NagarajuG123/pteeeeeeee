@@ -1,11 +1,9 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
-import { makeStateKey } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-editorial-sections',

@@ -3,12 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { Details } from 'src/app/_core/models/details.model';
 import { environment } from 'src/environments/environment';
-import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-monthly-details',
   templateUrl: './monthly-details.component.html',
@@ -22,7 +19,6 @@ export class MonthlyDetailsComponent implements OnInit {
   date!: any;
   id!: any;
   hasMore: boolean = false;
-  faAngleRight = faAngleRight;
   coverDate: any;
   title: any;
   s3Url = environment.s3Url;

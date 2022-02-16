@@ -2,16 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
-import {
-  faFacebookF,
-  faLinkedinIn,
-  faYoutube,
-  faInstagram,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -23,12 +14,12 @@ export class FooterComponent implements OnInit {
   s3Url = environment.s3Url;
   utmSlug:string;
   socialIcons: any = [
-    faFacebookF,
-    faInstagram,
-    faLinkedinIn,
-    faYoutube,
-    faTwitter,
-    faGlobe,
+    "fa fa-facebook-f",
+    "fa fa-instagram",
+    "fa fa-linkedin",
+    "fa fa-youtube-play",
+    "fa fa-twitter",
+    "fa fa-globe",
   ];
 
   constructor(private apiService: ApiService, private router: Router,    

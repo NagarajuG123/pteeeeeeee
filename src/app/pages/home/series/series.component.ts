@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-series',
@@ -11,7 +10,6 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class SeriesComponent implements OnInit {
   seriesData: any;
-  faAngleRight = faAngleRight;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   isLoaded:boolean;

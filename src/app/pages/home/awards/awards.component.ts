@@ -1,6 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
@@ -14,7 +13,6 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class AwardsComponent implements OnInit {
   data: Details[] = [];
   result: string;
-  faAngleRight = faAngleRight;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;

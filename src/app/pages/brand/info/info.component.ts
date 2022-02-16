@@ -17,7 +17,6 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { Details } from 'src/app/_core/models/details.model';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-info',

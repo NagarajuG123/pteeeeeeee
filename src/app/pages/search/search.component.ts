@@ -13,12 +13,6 @@ import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
-import {
-  faSearch,
-  faAngleUp,
-  faAngleDown,
-} from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 
@@ -45,9 +39,6 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
-  faSearch = faSearch;
-  faAngleUp = faAngleUp;
-  faAngleDown = faAngleDown;
   s3BucketUrl = environment.s3BucketUrl;
   sort_keys: Array<object> = [
     {

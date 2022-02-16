@@ -5,8 +5,6 @@ import { Cover } from 'src/app/_core/models/cover.model';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import 'lazysizes';
-import { faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -21,8 +19,6 @@ export class MonthlyCoversComponent implements OnInit {
   secondBlock: Cover[] = [];
   metaData: Meta[] = [];
   publication!: string;
-  faPlus = faPlus;
-  faAngleRight = faAngleRight;
   s3Url = environment.s3Url;
   isLoaded: boolean;
   private onDestroySubject = new Subject();

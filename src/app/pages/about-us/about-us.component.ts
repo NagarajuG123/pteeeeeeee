@@ -8,8 +8,6 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 
@@ -19,7 +17,6 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
   styleUrls: ['./about-us.component.scss'],
 })
 export class AboutUsComponent implements OnInit {
-  faAngleRight = faAngleRight;
   siteKey: string = environment.reCaptchaKey;
 
   publicationContents: any = [];

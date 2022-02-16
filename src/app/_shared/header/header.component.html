@@ -860,20 +860,18 @@
                     submittedInquireForm) &&
                   (formControlsValues[fields.key].errors?.required ||
                     formControlsValues[fields.key].errors?.email ||
-                    formControlsValues[fields.key].errors?.pattern)
-                "
+                    formControlsValues[fields.key].errors?.pattern)"
               >
                 {{ fields.errorMsg }}
               </div>
             </div>
           </div>
-
           <div class="float-end">
             <button type="submit">
               Submit
-              <span class="position-absolute ps-2"
-                ><fa-icon [icon]="faCaretRightIcon"></fa-icon
-              ></span>
+              <span class="position-absolute ps-2">
+                <i class="fa fa-caret-right"></i>
+              </span>
             </button>
           </div>
           <br />
@@ -978,9 +976,7 @@
                   'is-invalid':
                     (formControlsContactValues[fields.key].touched ||
                       submittedInquireForm) &&
-                    formControlsContactValues[fields.key].errors?.required
-                }"
-              >
+                    formControlsContactValues[fields.key].errors?.required}">
                 <option value="" disabled selected hidden>
                   {{ fields.title }}*
                 </option>
@@ -995,9 +991,7 @@
                     submittedContactForm) &&
                   (formControlsContactValues[fields.key].errors?.required ||
                     formControlsContactValues[fields.key].errors?.email ||
-                    formControlsContactValues[fields.key].errors?.pattern)
-                "
-              >
+                    formControlsContactValues[fields.key].errors?.pattern)">
                 {{ fields.errorMsg }}
               </div>
             </div>
@@ -1006,8 +1000,7 @@
             <button type="submit">
               Submit
               <span class="position-absolute ps-2"
-                ><fa-icon [icon]="faCaretRightIcon"></fa-icon
-              ></span>
+                ><i class="fa fa-caret-right"></i></span>
             </button>
           </div>
           <br />

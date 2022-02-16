@@ -8,7 +8,6 @@ import { takeUntil } from 'rxjs/operators';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { Meta } from 'src/app/_core/models/meta.model';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 

@@ -20,20 +20,6 @@ import {
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import {
-  faCaretRight,
-  faAngleDown,
-  faAngleUp,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebookF,
-  faLinkedinIn,
-  faYoutube,
-  faInstagram,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -68,15 +54,6 @@ export class HeaderComponent implements OnInit {
   inquireData: any;
   submitErrMsg: string = '';
   s3Url = environment.s3Url;
-  socialIcons: any = [
-    faFacebookF,
-    faInstagram,
-    faLinkedinIn,
-    faYoutube,
-    faTwitter,
-  ];
-  faCaretRightIcon = faCaretRight;
-  faSearch = faSearch;
   pdfForm: any;
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
@@ -88,8 +65,6 @@ export class HeaderComponent implements OnInit {
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
   trending: any;
-  faAngleDown = faAngleDown;
-  faAngleUp = faAngleUp;
   isMain: boolean;
   utmSlug: string;
 
