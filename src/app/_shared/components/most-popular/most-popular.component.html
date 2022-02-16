@@ -122,9 +122,8 @@
         class="position-relative popularCarousel"
       >
       <ng-template carouselSlide *ngFor="let item of data; index as i" >
-        <li  [ngClass]="data.length == 1 ? 'col-sm-1 col-md-4' : data.length == 2 ? 'col' : 'col'"
-        >
-            <a
+        <div [ngClass]="data.length == 1 ? 'col-sm-1 col-md-4' : data.length == 2 ? 'col' : 'col'">
+            <a 
               routerLink="/{{ commonService.readMore(item) }}"
               fragment="{{fragment}}"
             >
@@ -170,7 +169,7 @@
                   </a>
                 </div>
               </div>
-            </a></li>
+            </a></div>
         </ng-template>
       </owl-carousel-o>
     </div>
