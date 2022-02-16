@@ -307,7 +307,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -320,7 +320,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -333,7 +333,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -346,7 +346,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -359,7 +359,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -372,7 +372,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -385,7 +385,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
@@ -398,7 +398,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "media",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
