@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { StoryComponent } from './pages/story/story.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
@@ -37,8 +38,7 @@ export function isArticlePage(url: UrlSegment[]) {
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
+    component: HomeComponent,
   },
 
   {

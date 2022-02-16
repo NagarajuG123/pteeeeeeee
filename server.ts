@@ -25,7 +25,6 @@ export function app(): express.Express {
     'html',
     ngExpressEngine({
       bootstrap: AppServerModule,
-      inlineCriticalCss: true,
     })
   );
 
