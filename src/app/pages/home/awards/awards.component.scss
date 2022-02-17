@@ -17,6 +17,12 @@
   }
 
   .topSection {
+    img {
+      @include mobile-landscape {
+        height: auto;    
+      }            
+      height: 302px;
+    }
     h2 {
       font-size: 20px;
       line-height: 23.4px;
