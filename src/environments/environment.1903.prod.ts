@@ -1,11 +1,14 @@
 export const environment = {
   production: true,
-  port: 4100,
+  port: 4000,
   apiUrl: 'https://api.room1903.com/v1',
-  api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
-  imageResizeUrl: 'https://d3idlmh4hcsex5.cloudfront.net',
-  reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
+  api2Url: 'https://api2.room1903.com/v1',
+  s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
+  s3BucketUrl: "https://1903-prod.s3.amazonaws.com",
+  imageResizeUrl: 'https://da37ptofyxygh.cloudfront.net',
+  reCaptchaKey: '6LeWIoQeAAAAANYro3H8HzkUFuYLb7hWEY9IgUGS',
   appUrl: 'https://room1903.com',
   fbUrl: 'https://www.facebook.com/Room1903/',
-  enableSW: false,
+  enableSW: true,
+  env: 'production'
 };
