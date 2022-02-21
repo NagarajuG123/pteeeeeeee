@@ -20,6 +20,7 @@ export class MostPopularComponent implements OnInit {
   @Input() subTitle: string;
   @Input() class!: string;
   @Input() fragment:string;
+  @Input() stories: any;
   
   data: Details[] = [];
   isLoaded: boolean = false;
@@ -38,16 +39,19 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService
+    if(this.type == 'widget'){
+      this.data = this.stories;
+    } else {
+      this.apiService
       .getAPI(`${this.slug}/${this.apiUrl}`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         if (response.data.length) {
           this.data = response.data;
-          //if type widget save the passed stories data
-          this.isLoaded = true;
         }
       });
+    }
+    this.isLoaded = true;
     this.customOptions = {
       loop: true,
       mouseDrag: false,

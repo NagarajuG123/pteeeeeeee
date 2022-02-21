@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WidgetRoutingModule } from './widget-routing.module';
 import { WidgetComponent } from './widget.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { WidgetComponent } from './widget.component';
   ],
   imports: [
     CommonModule,
-    WidgetRoutingModule
+    WidgetRoutingModule,
+    SharedModule
   ]
 })
 export class WidgetModule { }
