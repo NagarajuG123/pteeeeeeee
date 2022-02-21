@@ -7,3 +7,9 @@
     [class] ="'d-sm-none d-flex'"
     ></app-most-popular>
 </div>
+<div *ngIf="data?.layout == 2">
+    <app-video
+    [type]="'widget'"
+    [stories]="data.stories"
+    ></app-video>
+</div>
