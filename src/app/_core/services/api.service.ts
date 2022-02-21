@@ -22,6 +22,15 @@ export class ApiService {
 
   getAPI(endpoint: string): Observable<any> {
     return this.http
+      .get(`${environment.apiGatewayUrl}/${endpoint}`, this.httpOptions)
+      .pipe(
+        timeout(defaultTimeout),
+        retry(1),
+        catchError((err) => this.handleError(err, endpoint))
+      );
+  }
+  getAPI1(endpoint: string): Observable<any> {
+    return this.http
       .get(`${environment.apiUrl}/${endpoint}`, this.httpOptions)
       .pipe(
         timeout(defaultTimeout),
@@ -29,7 +38,6 @@ export class ApiService {
         catchError((err) => this.handleError(err, endpoint))
       );
   }
-
   getAPI2(endpoint: string): Observable<any> {
     return this.http
       .get(`${environment.api2Url}/${endpoint}`, this.httpOptions)
