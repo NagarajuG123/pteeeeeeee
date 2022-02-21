@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
   trending: any;
   isMain: boolean;
   utmSlug: string;
-
+isShow:boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -111,7 +111,8 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
-        if (this.brandSlug === 'robots.txt') {
+        if (this.brandSlug === 'robots.txt' || this.brandSlug === 'widget') {
+          this.isShow = false;
         }  else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
@@ -141,6 +142,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   setInit() {
+    this.isShow = true;
     let headerApi = 'header';
     this.isMain = true;
 

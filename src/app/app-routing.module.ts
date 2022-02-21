@@ -68,6 +68,11 @@ const routes: Routes = [
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
   },
   {
+    path: 'widget',
+    loadChildren: () =>
+      import('./pages/widget/widget.module').then((m) => m.WidgetModule),
+  },
+  {
     path: 'termsofuse',
     loadChildren: () =>
       import('./pages/termsofuse/termsofuse.module').then(

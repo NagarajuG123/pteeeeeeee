@@ -44,6 +44,7 @@ export class MostPopularComponent implements OnInit {
       .subscribe((response) => {
         if (response.data.length) {
           this.data = response.data;
+          //if type widget save the passed stories data
           this.isLoaded = true;
         }
       });
