@@ -4,8 +4,8 @@
   [apiUrl]="'featured-articles?limit=6&offset=0'"
   [type]="'homeFeature'"
   [fragment]="'featured'"
-  [title]="'Everything Franchising'"
-  [subTitle]="'To help you buy, grow and build'"
+  [title]="getTitle()"
+  [subTitle]="getSubTitle()"
   [class] ="'d-sm-none d-flex'"
 ></app-most-popular>
 <app-featured-carousel></app-featured-carousel>
