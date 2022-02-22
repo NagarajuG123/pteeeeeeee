@@ -49,7 +49,7 @@ export class FooterComponent implements OnInit {
           }
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .getAPI2(`${this.brandSlug}`)
             .subscribe((response) => {
               if (response.type === 'brand_page') {
                 this.brandSlug = response.slug;
