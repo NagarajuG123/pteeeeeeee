@@ -72,4 +72,18 @@ export class HomeComponent implements OnInit {
       email: '',
     });
   }
+  getTitle() {
+    let title = 'Everything Franchising';
+    if(this.publication.id == 'Stachecow') {
+      title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
+    }
+    return title;
+  }
+  getSubTitle() {
+    let subTitle = 'To help you buy, grow and build';
+    if(this.publication.id == 'Stachecow') {
+      subTitle = 'To help you build the life you deserve ';
+    }
+    return subTitle;
+  }
 }
