@@ -33,15 +33,18 @@ export class VideoComponent implements OnInit {
     this.setConfig();
     if(this.type == 'widget'){
       this.data = this.stories;
+      if(this.data) {
+        this.isLoaded = true;
+      }
     } else{
       const videoData = this.apiService
       .getAPI(`${this.slug}/videos`)
       .subscribe((result) => {
         this.data = result.data;
+        if(this.data) {
+          this.isLoaded = true;
+        }
       });
-    }
-    if(this.data) {
-      this.isLoaded = true;
     }
   }
   updateVideoUrl(url: string) {

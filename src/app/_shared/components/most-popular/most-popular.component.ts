@@ -41,6 +41,7 @@ export class MostPopularComponent implements OnInit {
   ngOnInit(): void {
     if(this.type == 'widget'){
       this.data = this.stories;
+      this.isLoaded = true;
     } else {
       this.apiService
       .getAPI(`${this.slug}/${this.apiUrl}`)
@@ -48,10 +49,10 @@ export class MostPopularComponent implements OnInit {
       .subscribe((response) => {
         if (response.data.length) {
           this.data = response.data;
+          this.isLoaded = true;
         }
       });
     }
-    this.isLoaded = true;
     this.customOptions = {
       loop: true,
       mouseDrag: false,
