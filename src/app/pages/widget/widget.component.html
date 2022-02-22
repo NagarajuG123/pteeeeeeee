@@ -1,15 +1,85 @@
 <div *ngIf="data?.layout == 1">
+    <app-awards
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [title] ="data?.title"
+    ></app-awards>
+</div>
+<div *ngIf="data?.layout == 2">
+    <app-awards
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [title] ="data?.title"
+    [class]="'widget2'"
+    ></app-awards>
+</div>
+<div *ngIf="data?.layout == 3">
+    <app-layout3
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [title] ="data?.title"
+    [class]="'widget3'"
+    ></app-layout3>
+</div>
+<div *ngIf="data?.layout == 4">
+    <app-layout3
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [title] ="data?.title"
+    [class]="'widget4'"
+    ></app-layout3>
+</div>
+<div *ngIf="data?.layout == 5">
     <app-most-popular
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
     [stories]="data.stories"
-    [class] ="'d-sm-none d-flex'"
+    [class] ="'widget5'"
     ></app-most-popular>
 </div>
-<div *ngIf="data?.layout == 2">
-    <app-video
+<div *ngIf="data?.layout == 6">
+    <app-most-popular
     [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
     [stories]="data.stories"
-    ></app-video>
+    [class] ="'widget6'"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 7">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget7'"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 8">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories | slice: 0:3"
+    [class] ="'widget5'"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 9">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories | slice: 0:3"
+    [class] ="'widget7'"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 10">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories | slice: 0:3"
+    [class] ="'widget6'"
+    ></app-most-popular>
 </div>

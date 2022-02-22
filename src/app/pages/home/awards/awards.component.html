@@ -1,9 +1,12 @@
-<div class="awards sidebar-blur pb-3" *ngIf="isLoaded && data">
+<div class="awards sidebar-blur pb-3" *ngIf="isLoaded && data" [ngClass]="class">
   <div class="container customContainer">
     <div class="d-flex">
       <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-4 m-0 text-white">
+        <h2 class="sectionTitle py-4 m-0">
           {{ result?.title }}
+        </h2>
+        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget'">
+          {{ title }}
         </h2>
       </div>
       <div

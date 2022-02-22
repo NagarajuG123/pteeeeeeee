@@ -1,4 +1,4 @@
-<div class="most-popular sidebar-blur" *ngIf="isLoaded && data && data.length">
+<div class="most-popular sidebar-blur" *ngIf="isLoaded && data && data.length" [ngClass]="type == 'widget' ? class : ''">
   <div class="container customContainer">
     <h2
       *ngIf="type == 'home'|| type == 'brand' || type == 'widget'; else elseBlock"
@@ -115,7 +115,7 @@
       </div>
     </div>
     <div
-      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="class"
+      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="type == 'widget' ? 'd-sm-none d-flex' : class"
     >
       <owl-carousel-o
         [options]="customOptions"
