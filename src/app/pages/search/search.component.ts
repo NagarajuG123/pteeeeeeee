@@ -223,8 +223,8 @@ export class SearchComponent implements OnInit {
         `offset=${this.brandPeoples.length}`
       );
 
-      const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
-      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+      const main_searchAPI = this.apiService.getAPI1(`search${apiParams}`);
+      const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
       const publication = this.apiService.getAPI(`1851/publication-instance`);
 
       forkJoin([main_searchAPI, brand_searchAPI, publication])
@@ -369,8 +369,8 @@ export class SearchComponent implements OnInit {
       /offset=[0-9]*/g,
       `offset=${this.brandPeoples.length}`
     );
-    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+    const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
     forkJoin(main_searchAPI, brand_searchAPI)
       .pipe(takeUntil(this.onDestroy$))
@@ -405,8 +405,8 @@ export class SearchComponent implements OnInit {
       `offset=${this.brandPeoples.length}`
     );
 
-    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+    const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
     forkJoin(main_searchAPI, brand_searchAPI)
       .pipe(takeUntil(this.onDestroy$))
@@ -475,8 +475,8 @@ export class SearchComponent implements OnInit {
         /offset=[0-9]*/g,
         `offset=${this.brandPeoples.length}`
       );
-      const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+      const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+      const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
       forkJoin(main_searchAPI, brand_searchAPI)
         .pipe(takeUntil(this.onDestroy$))
