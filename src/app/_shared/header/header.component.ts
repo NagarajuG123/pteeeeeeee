@@ -125,7 +125,7 @@ isShow:boolean;
           }
 
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+            .getAPI2(`${this.brandSlug.replace(/\+/g, '')}`)
             .subscribe((response) => {
               if (response.status != 404 && response.type === 'brand_page') {
                 this.brandTitle = response.name;

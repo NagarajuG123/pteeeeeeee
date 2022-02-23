@@ -52,7 +52,7 @@ export class BrandComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.slug = params.get('slug');
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.slug}`)
+        .getAPI2(`${this.slug}`)
         .subscribe(async (response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');

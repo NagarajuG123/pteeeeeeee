@@ -275,7 +275,7 @@ export class ItemComponent implements OnInit {
         .subscribe((val) => {
           const data = $(val).data();
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .getAPI2(`${this.brandSlug}`)
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((result) => {
               if (typeof result.id !== 'undefined' && result.id !== null) {
@@ -302,7 +302,7 @@ export class ItemComponent implements OnInit {
             });
         });
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .getAPI2(`${this.brandSlug}`)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
           if (typeof result.id !== 'undefined' && result.id !== null) {

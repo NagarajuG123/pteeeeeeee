@@ -94,7 +94,7 @@ export class InfoComponent implements OnInit {
     });
     this.route.paramMap.subscribe((params) => {
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .getAPI2(`${this.brandSlug}`)
         .subscribe((response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
