@@ -1,10 +1,22 @@
 <div class="featured sidebar-blur pb-4" *ngIf="stories" [ngClass]="class">
     <div class="container customContainer">
-      <div class="col-12 d-flex">
+    <div class="d-flex">
+      <div class="col-lg-11 col-md-10 col-sm-9 col">
         <h2 class="sectionTitle py-4 m-0">
-        {{ title }}
+            {{ widget?.title  }}
         </h2>
       </div>
+      <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center py-4"
+      >
+        <a
+          class="seeMore"
+          routerLink="/{{ widget?.pageUrl }}"
+          *ngIf = "widget?.seeMore"
+          >See More <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
+        ></a>
+      </div>
+    </div>
     </div>
     <hr />
   

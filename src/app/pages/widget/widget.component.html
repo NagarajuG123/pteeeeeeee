@@ -2,31 +2,31 @@
     <app-awards
     [type]="'widget'"
     [stories]="data?.stories"
-    [title] ="data?.title"
+    [widget]="data"
     ></app-awards>
 </div>
 <div *ngIf="data?.layout == 2">
     <app-awards
     [type]="'widget'"
     [stories]="data?.stories"
-    [title] ="data?.title"
     [class]="'widget2'"
+    [widget]="data"
     ></app-awards>
 </div>
 <div *ngIf="data?.layout == 3">
     <app-layout3
     [type]="'widget'"
     [stories]="data?.stories"
-    [title] ="data?.title"
     [class]="'widget3'"
+    [widget]="data"
     ></app-layout3>
 </div>
 <div *ngIf="data?.layout == 4">
     <app-layout3
     [type]="'widget'"
     [stories]="data?.stories"
-    [title] ="data?.title"
     [class]="'widget4'"
+    [widget]="data"
     ></app-layout3>
 </div>
 <div *ngIf="data?.layout == 5">
@@ -36,6 +36,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget5'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 6">
@@ -45,6 +46,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget6'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 7">
@@ -54,6 +56,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget7'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 8">
@@ -63,6 +66,7 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget5'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 9">
@@ -72,6 +76,7 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget7'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 10">
@@ -81,5 +86,6 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget6'"
+    [seeMore]="data"
     ></app-most-popular>
 </div>

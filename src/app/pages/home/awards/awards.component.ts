@@ -12,8 +12,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class AwardsComponent implements OnInit {
   @Input() type: string;
-  @Input() title: string;
   @Input() class: string;
+  @Input() widget: string;
   @Input() stories: Details[] = [];
   data: Details[] = [];
   result: string;
@@ -31,6 +31,7 @@ export class AwardsComponent implements OnInit {
   ngOnInit(): void {
     this.setConfig();
     if(this.type == 'widget'){
+      console.log(this.widget);
       this.data = this.stories;
       if(this.data.length > 0) {
         this.isLoaded = true;

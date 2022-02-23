@@ -16,6 +16,11 @@
     color: $white;
   }
 }
+.widget{
+  .seeMore{
+    color: $red;
+  }
+}
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
   .subTitle {

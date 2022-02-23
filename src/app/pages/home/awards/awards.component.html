@@ -1,21 +1,31 @@
 <div class="awards sidebar-blur pb-3" *ngIf="isLoaded && data" [ngClass]="class">
   <div class="container customContainer">
-    <div class="d-flex">
+    <div class="d-flex" *ngIf="type == 'widget';else elseBlock">
       <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-4 m-0">
-          {{ result?.title }}
+        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget';else elseBlock">
+          {{ widget?.title }}
         </h2>
-        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget'">
-          {{ title }}
-        </h2>
-      </div>
-      <div
-        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center"
-      >
-        <a routerLink="{{ result?.url }}" class="seeMore p-0"
+       </div> 
+       <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0"
           >See More  <i class="fa fa-angle-right"></i></a>
       </div>
     </div>
+    <ng-template #elseBlock>
+      <div class="d-flex">
+        <div class="col-lg-11 col-md-10 col">
+          <h2 class="sectionTitle py-4 m-0">
+            {{ result?.title }}
+          </h2>
+        </div>
+        <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+        <a routerLink="{{ result?.url }}" class="seeMore p-0"
+          >See More  <i class="fa fa-angle-right"></i></a>
+      </div>
+      </div>
+    </ng-template>
   </div>
   <hr />
 

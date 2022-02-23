@@ -9,13 +9,13 @@ import { CommonService } from 'src/app/_core/services/common.service';
 })
 export class Layout3Component implements OnInit {
  @Input() type: string;
- @Input() title: string;
  @Input() class: string;
+ @Input() widget: string;
  @Input() stories: Details[] =[];
   constructor(public commonService: CommonService) { }
 
   ngOnInit(): void {
-
+    console.log(this.widget);
   }
 
 }
