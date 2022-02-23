@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   port: 4600,
   apiUrl: 'https://api.1903.nlasandbox2.info/v1',
-  api2Url: 'https://apiv2.1903.nlasandbox2.info/v1',
+  api2Url: 'https://api2.1903.nlasandbox2.info/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   s3BucketUrl: "https://d3fsgnupkxt1z2.cloudfront.net",
   imageResizeUrl: 'https://d2qz89k9anyyc5.cloudfront.net',
