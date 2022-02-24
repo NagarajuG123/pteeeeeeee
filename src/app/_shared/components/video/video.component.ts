@@ -12,6 +12,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class VideoComponent implements OnInit {
   @Input() slug: string;
+  @Input() type: string;
+  @Input() stories: Details[] = [];
 
   data: Details[] = [];
   openVideoPlayer: boolean;
@@ -29,7 +31,13 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
     this.setConfig();
-    const videoData = this.apiService
+    if(this.type == 'widget'){
+      this.data = this.stories;
+      if(this.data) {
+        this.isLoaded = true;
+      }
+    } else{
+      const videoData = this.apiService
       .getAPI(`${this.slug}/videos`)
       .subscribe((result) => {
         this.data = result.data;
@@ -37,6 +45,7 @@ export class VideoComponent implements OnInit {
           this.isLoaded = true;
         }
       });
+    }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;

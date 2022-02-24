@@ -1,6 +1,19 @@
-<div class="most-popular sidebar-blur" *ngIf="isLoaded">
+<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="type == 'widget' ? class : ''">
   <div class="container customContainer">
-    <h2
+    <div class="d-flex widget" *ngIf="type == 'widget';else mostBlock">
+      <div class="col-lg-11 col-md-10 col">
+        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget';else elseBlock">
+          {{ title }}
+        </h2>
+       </div> 
+       <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0"
+          >See More  <i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+    <ng-template #mostBlock>
+      <h2
       *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
     >
@@ -14,12 +27,14 @@
         </span>
       </h2></ng-template
     >
+      </ng-template>
+   
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
     <div
       class="row d-none d-md-flex"
-      *ngIf="type == 'home' || type == 'homeFeature'"
+      *ngIf="type == 'home' || type == 'homeFeature' || type == 'widget'"
     >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
@@ -115,7 +130,7 @@
       </div>
     </div>
     <div
-      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="class"
+      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="type == 'widget' ? 'd-sm-none d-flex' : class"
     >
       <owl-carousel-o
         [options]="customOptions"

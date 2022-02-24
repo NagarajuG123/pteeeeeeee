@@ -1,7 +1,26 @@
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
-
+.widget6{
+  background: $white !important;
+  .sectionTitle{
+    color: $dark_gray;
+  }
+}
+.widget7{
+  background: $dark_gray !important;
+  .articleTitles{
+    color: $white;
+  }
+  .description{
+    color: $white;
+  }
+}
+.widget{
+  .seeMore{
+    color: $red;
+  }
+}
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
   .subTitle {

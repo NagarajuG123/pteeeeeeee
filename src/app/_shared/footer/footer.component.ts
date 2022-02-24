@@ -13,6 +13,8 @@ export class FooterComponent implements OnInit {
   brandSlug: string;
   s3Url = environment.s3Url;
   utmSlug:string;
+  isShow:boolean;
+
   socialIcons: any = [
     "fa fa-facebook-f",
     "fa fa-instagram",
@@ -37,7 +39,9 @@ export class FooterComponent implements OnInit {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
-        if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+        if (this.brandSlug === 'robots.txt' || this.brandSlug === 'widget') {
+          this.isShow = false;
+        } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
         } else {
@@ -49,7 +53,7 @@ export class FooterComponent implements OnInit {
           }
           this.brandSlug = this.brandSlug.replace(/\+/g, '');
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .getAPI2(`${this.brandSlug}`)
             .subscribe((response) => {
               if (response.type === 'brand_page') {
                 this.brandSlug = response.slug;
@@ -64,6 +68,7 @@ export class FooterComponent implements OnInit {
   }
 
   setInit() {
+    this.isShow = true;
     let footerApi = 'footer';
     if (this.brandSlug !== '1851') {
       footerApi = `footer?slug=${this.brandSlug}`;

@@ -158,9 +158,8 @@ hasMore:any;
               .subscribe((result) => {
                 this.publication = result;
               });
-
             this.apiService
-              .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+              .getAPI2(`${this.brandSlug}`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((result) => {
                 if (typeof result.id !== 'undefined' && result.id !== null) {
