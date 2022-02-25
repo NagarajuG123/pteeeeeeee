@@ -8,7 +8,7 @@
        </div> 
        <div
         class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
-        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0"
+        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0" *ngIf="widget?.seeMore"
           >See More  <i class="fa fa-angle-right"></i></a>
       </div>
     </div>
