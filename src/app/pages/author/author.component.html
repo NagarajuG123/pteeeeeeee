@@ -7,9 +7,9 @@
         <div class="col-md-5 col-sm-6 pe-3 pt-5">
           <figure>
             <img
-              *ngIf="author?.data"
+              *ngIf="author"
               appYoutubeImage
-              src="{{ author?.data?.media | defaultImage: 528:297 }}"
+              src="{{ author?.media | defaultImage: 528:297 }}"
               width="528"
               height="297"
               alt="authorpage"
@@ -19,12 +19,12 @@
         <div class="col-md-7 col-sm-6 pt-5 pb-2 px-4 details">
           <span class="small-red-headers">ABOUT</span>
           <h1 class="large-main-article mb-0">
-            {{ author?.data?.first_name }} {{ author?.data?.last_name }}
+            {{ author?.first_name }} {{ author?.last_name }}
           </h1>
-          <h5 class="sectionTitle">{{ author?.data?.designation }}</h5>
+          <h5 class="sectionTitle">{{ author?.designation }}</h5>
           <hr />
-          <ul class="social d-flex p-0" *ngIf="author?.data?.socialMedia">
-            <li *ngFor="let item of author?.data?.socialMedia; index as i">
+          <ul class="social d-flex p-0" *ngIf="author?.socialMedia">
+            <li *ngFor="let item of author?.socialMedia; index as i">
               <a
                 href="{{ item?.url }}"
                 target="blank"
@@ -41,7 +41,7 @@
               </a>
             </li>
           </ul>
-          <p [innerHtml]="author?.data?.about" class="description"></p>
+          <p [innerHtml]="author?.about" class="description"></p>
         </div>
       </div>
     </div>
@@ -54,8 +54,8 @@
       <div class="editorial-stories-details col-xl-11">
         <div class="frannews-bottom" *ngIf="editorials.length > 0">
           <h3 class="text-center text-uppercase">
-            EDITORIAL STORIES BY {{ author?.data?.first_name }}
-            {{ author?.data?.last_name }}
+            EDITORIAL STORIES BY {{ author?.first_name }}
+            {{ author?.last_name }}
           </h3>
           <app-home-article
             [typeSlug]="'editorials'"
@@ -75,8 +75,8 @@
         </div>
         <div class="frannews-bottom" *ngIf="brandedContents.length > 0">
           <h3 class="text-center text-uppercase">
-            BRANDED CONTENT BY {{ author?.data?.first_name }}
-            {{ author?.data?.last_name }}
+            BRANDED CONTENT BY {{ author?.first_name }}
+            {{ author?.last_name }}
           </h3>
           <app-home-article
             [typeSlug]="'brand-latest-stories'"

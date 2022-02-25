@@ -59,7 +59,6 @@ export class ItemComponent implements OnInit {
   scrollbarOptions: any;
   openVideoPlayer = false;
   sponsorship = false;
-  sponsorship_position: string;
   isViewComment: boolean;
   full_url;
   slideConfig: any;
@@ -134,7 +133,6 @@ export class ItemComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
-    // const trending: SimpleChange = changes.trending;
     const mainNewsData: SimpleChange = changes.mainNewsData;
     const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
@@ -163,8 +161,7 @@ export class ItemComponent implements OnInit {
         details.currentValue.last_modified.replace(/-/g, '/')
       );
       this.media = details.currentValue.media;
-      this.sponsorship = details.currentValue.sponsorship.is_sponsored;
-      this.sponsorship_position = details.currentValue.sponsorship.position;
+      this.sponsorship = details.currentValue.sponsorship;
       this.setTrending(this.category);
       if (typeof this.media !== 'undefined') {
         if (
