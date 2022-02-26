@@ -36,7 +36,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget5'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 6">
@@ -46,7 +46,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget6'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 7">
@@ -56,7 +56,7 @@
     [title]="data.title"
     [stories]="data.stories"
     [class] ="'widget7'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 8">
@@ -66,7 +66,7 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget5'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 9">
@@ -76,7 +76,7 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget7'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
 <div *ngIf="data?.layout == 10">
@@ -86,6 +86,6 @@
     [title]="data.title"
     [stories]="data.stories | slice: 0:3"
     [class] ="'widget6'"
-    [seeMore]="data"
+    [widget]="data"
     ></app-most-popular>
 </div>
