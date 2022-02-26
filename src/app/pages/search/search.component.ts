@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
-  s3BucketUrl = environment.s3BucketUrl;
+  imageResizeUrl = environment.imageResizeUrl;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',

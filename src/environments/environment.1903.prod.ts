@@ -4,7 +4,6 @@ export const environment = {
   apiUrl: 'https://api.room1903.com/v1',
   api2Url: 'https://api2.room1903.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
-  s3BucketUrl: "https://1903-prod.s3.amazonaws.com",
   imageResizeUrl: 'https://da37ptofyxygh.cloudfront.net',
   reCaptchaKey: '6LeWIoQeAAAAANYro3H8HzkUFuYLb7hWEY9IgUGS',
   appUrl: 'https://room1903.com',

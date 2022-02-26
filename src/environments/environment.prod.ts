@@ -1,12 +1,15 @@
 export const environment = {
-  production: true,
-  port: 4000,
-  apiUrl: 'https://api.1851franchise.com/v1',
+  production: false,
+  apiUrl: 'https://api.1851.nlasandbox2.info/v1',
   api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
-  imageResizeUrl: 'https://d3idlmh4hcsex5.cloudfront.net',
-  s3BucketUrl: "https://1851-dev.s3.amazonaws.com",
-  reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
+  s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
+  port: 4200,
+  imageResizeUrl: 'https://dnnxwdlxu3h63.cloudfront.net',
+  reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
+  room1903Url: 'https://room1903.com/',
+  eeUrl: 'https://estatenvy.com/',
   enableSW: false,
+  env: 'local'
 };

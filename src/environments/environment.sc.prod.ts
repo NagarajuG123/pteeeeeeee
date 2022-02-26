@@ -4,7 +4,6 @@ export const environment = {
   apiUrl: 'https://api.stachecow.com/v1',
   api2Url: 'https://api2.stachecow.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
-  s3BucketUrl: "https://stachecow-prod.s3.amazonaws.com",
   imageResizeUrl: 'https://d13ofr2bv2bm2u.cloudfront.net',
   reCaptchaKey: '6Ldq0FIeAAAAAL0_RblWHQAVyOfABp0CP_i00BGq',
   appUrl: 'https://stachecow.com',
