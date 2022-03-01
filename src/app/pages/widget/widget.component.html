@@ -1,7 +1,7 @@
 <div *ngIf="data?.layout == 1">
     <app-awards
     [type]="'widget'"
-    [stories]="data?.stories | slice: 0:7"
+    [stories]="data?.stories"
     [widget]="data"
     ></app-awards>
 </div>
@@ -51,7 +51,7 @@
           <div
             class="row d-none d-md-flex"
           >
-            <div class="col col-sm-4 pb-3" *ngFor="let item of data.stories | slice: 0:6; index as i">
+            <div class="col col-sm-4 pb-3" *ngFor="let item of data.stories; index as i">
               <a routerLink="/{{ commonService.readMore(item) }}" fragment="'featured'">
                 <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
                 <figure><img
@@ -194,7 +194,7 @@
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
-    [stories]="data.stories | slice: 0:6"
+    [stories]="data.stories"
     [class] ="'widget6'"
     [widget]="data"
     ></app-most-popular>
@@ -204,7 +204,7 @@
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
-    [stories]="data.stories | slice: 0:6"
+    [stories]="data.stories"
     [class] ="'widget7'"
     [widget]="data"
     ></app-most-popular>
@@ -214,7 +214,7 @@
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
-    [stories]="data.stories | slice: 0:3"
+    [stories]="data.stories"
     [class] ="'widget5'"
     [widget]="data"
     ></app-most-popular>
@@ -224,7 +224,7 @@
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
-    [stories]="data.stories | slice: 0:3"
+    [stories]="data.stories"
     [class] ="'widget7'"
     [widget]="data"
     ></app-most-popular>
@@ -234,7 +234,7 @@
     [type]="'widget'"
     [fragment]="'featured'"
     [title]="data.title"
-    [stories]="data.stories | slice: 0:3"
+    [stories]="data.stories"
     [class] ="'widget6'"
     [widget]="data"
     ></app-most-popular>
