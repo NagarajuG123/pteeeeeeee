@@ -15,6 +15,8 @@ export class AwardsComponent implements OnInit {
   @Input() class: string;
   @Input() widget: string;
   @Input() stories: Details[] = [];
+  @Input() fragment: string;
+
   data: Details[] = [];
   result: string;
   isBrowser: boolean;
@@ -31,21 +33,17 @@ export class AwardsComponent implements OnInit {
   ngOnInit(): void {
     this.setConfig();
     if(this.type == 'widget'){
-      console.log(this.widget);
       this.data = this.stories;
-      if(this.data.length > 0) {
-        this.isLoaded = true;
-      }
     } else{
       this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
         if(result.data != null) {
           this.result = result.data;
           this.data = result.data.stories;
-          if(this.data.length > 0) {
-            this.isLoaded = true;
-          }
         }
       });
+    }
+    if(this.data.length > 0) {
+      this.isLoaded = true;
     }
   }
   setConfig() {
