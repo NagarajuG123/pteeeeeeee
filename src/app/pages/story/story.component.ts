@@ -558,13 +558,11 @@ hasMore:any;
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          // const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
-          //   this.changeMaxResultImg(metas.og['media']['path'])
-          // )}`;
-          const image_url = `${environment.imageResizeUrl}/fit-in/1200x627/${metas.og['media']['path']
+       
+          const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.og['media']['path']
           }`;
           this.meta.updateTag(
-            { name:"image", property: `og:image`, content: image_url },
+            { property: `og:image`, content: image_url },
             `property='og:image'`
           );
           this.meta.updateTag(
@@ -583,11 +581,11 @@ hasMore:any;
         `property='og:type'`
       );
       this.meta.updateTag(
-        { property: `og:image:width`, content: `1200` },
+        { property: `og:image:width`, content: `500` },
         `property='og:image:width'`
       );
       this.meta.updateTag(
-        { property: `og:image:height`, content: `627` },
+        { property: `og:image:height`, content: `261` },
         `property='og:image:height'`
       );
     }
@@ -595,7 +593,7 @@ hasMore:any;
       const twitterKeys = Object.keys(metas.twitter);
       for (const key of twitterKeys) {
         if (key === 'media' && metas.twitter[key] !== null) {
-          const twitter_url = `${environment.imageResizeUrl}/fit-in/1200x627/${metas.twitter['media']['path']
+          const twitter_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.twitter['media']['path']
           }`;
           this.meta.updateTag(
             { name: `twitter:image`, content: twitter_url },
