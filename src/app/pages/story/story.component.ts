@@ -564,7 +564,7 @@ hasMore:any;
           const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.og['media']['path']
           }`;
           this.meta.updateTag(
-            { property: `og:image`, content: image_url },
+            { name:"image", property: `og:image`, content: image_url },
             `property='og:image'`
           );
           this.meta.updateTag(
