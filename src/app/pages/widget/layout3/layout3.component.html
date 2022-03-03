@@ -11,8 +11,8 @@
       >
         <a
           class="seeMore"
-          routerLink="/{{ widget?.pageUrl }}"
-          *ngIf = "widget?.seeMore"
+          href="{{ widget?.pageUrl }}"
+          *ngIf = "widget?.seeMore && widget?.pageUrl"
           >See More <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i
         ></a>
       </div>
@@ -27,7 +27,7 @@
           >
             <div >
               <a
-              routerLink="{{ commonService.readMore(item) }}"
+              routerLink="/{{ commonService.readMore(item) }}"
               fragment="featured"
               >
                 <img
