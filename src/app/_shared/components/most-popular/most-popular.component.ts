@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -27,6 +27,7 @@ export class MostPopularComponent implements OnInit {
   isLoaded: boolean = false;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
+  publication: string;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -40,16 +41,18 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('most popular');
     if(this.type == 'widget'){
       this.data = this.stories;
       this.isLoaded = true;
     } else {
-      this.apiService
-      .getAPI(`${this.slug}/${this.apiUrl}`)
-      .pipe(takeUntil(this.onDestroy$))
+      const publication = this.apiService.getAPI(`1851/publication-instance`);
+      const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
+      forkJoin([publication, mostPopular])
       .subscribe((response) => {
-        if (response.data.length) {
-          this.data = response.data;
+        if (response[1].data.length) {
+          this.data = response[1].data;
+          this.publication = response[0];
           this.isLoaded = true;
         }
       });
