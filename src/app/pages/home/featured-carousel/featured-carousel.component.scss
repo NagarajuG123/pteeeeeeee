@@ -2,6 +2,12 @@
 @import "../../../../assets/scss/mixins.scss";
 
 .featured{
+  img {
+    @include mobile-landscape {
+      height: auto;    
+    }            
+    height: 119px;
+  }
     .sectionTitle{
         color: $dark_gray;
     }

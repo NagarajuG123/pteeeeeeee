@@ -5,7 +5,7 @@
       <div class="col-xl-2 col-lg-2 col-md-2 d-flex col-sm-12 col-12 logo">
         <img
           class="lazyload"
-          data-src="{{ s3Url }}logo1.png"
+          data-src="{{ imageResizeUrl }}/static/search_page_logo.png"
           width="195"
           height="195"
           loading="lazy"
@@ -154,12 +154,13 @@
           [ngClass]="isMainSite() ? 'col-md-9 col-sm-12' : 'col-12'"
         >
           <app-home-article
-            [typeSlug]="'franbuzz'"
+            [typeSlug]="'most-recent-stories'"
             [contents]="recentPeoples"
+            [column]="'three'"
             [class]="
               isMainSite()
-                ? 'row-cols-md-3 row-cols-lg-3 gx-3'
-                : 'row-cols-md-3 row-cols-lg-4 gx-3'
+                ? 'row-cols-md-3 row-cols-lg-3 gx-3 searchPage'
+                : 'row-cols-md-3 row-cols-lg-4 gx-3 searchPage'
             "
           ></app-home-article>
           <div class="row seeMoreIcon my-4 desktop-only">
@@ -211,9 +212,10 @@
           <hr />
           <div class="px-4" *ngIf="brandPeoples && brandPeoples.length">
             <app-home-article
-              [typeSlug]="'franbuzz'"
+              [typeSlug]="'brand-latest-stories'"
               [contents]="brandPeoples"
-              [class]="'row-cols-md-1 row-cols-lg-1'"
+              [column]="'three'"
+              [class]="'row-cols-md-1 row-cols-lg-1 searchPage'"
             ></app-home-article>
           </div>
         </div>

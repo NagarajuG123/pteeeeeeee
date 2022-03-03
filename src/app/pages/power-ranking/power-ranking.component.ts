@@ -6,7 +6,6 @@ import { Brandsrank } from 'src/app/_core/models/brandsrank.model';
 import { Powerranking } from 'src/app/_core/models/powerranking.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 

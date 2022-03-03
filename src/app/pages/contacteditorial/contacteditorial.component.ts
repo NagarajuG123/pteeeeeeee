@@ -14,8 +14,6 @@ import { environment } from 'src/environments/environment';
 import * as $ from 'jquery';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 
 const RESULT_KEY = makeStateKey<any>('contactEditorialState');
@@ -35,8 +33,6 @@ export class ContacteditorialComponent implements OnInit {
   isServer: boolean;
   control!: FormControl;
   metaData: Meta[] = [];
-  faAngleRight = faAngleRight;
-  faAngleLeft = faAngleLeft;
   s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();

@@ -1,6 +1,19 @@
-<div class="most-popular sidebar-blur" *ngIf="isLoaded">
+<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="type == 'widget' ? class : ''">
   <div class="container customContainer">
-    <h2
+    <div class="d-flex widget" *ngIf="type == 'widget';else mostBlock">
+      <div class="col-lg-11 col-md-10 col">
+        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget';else elseBlock">
+          {{ title }}
+        </h2>
+       </div> 
+       <div
+        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0" *ngIf="widget?.seeMore"
+          >See More  <i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+    <ng-template #mostBlock>
+      <h2
       *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
     >
@@ -9,39 +22,32 @@
     <ng-template #elseBlock
       ><h2 class="py-4 m-0 sectionTitle text-uppercase">
         {{ title }}
-        <span class="subTitle py-3 text-capitalize">
+        <span class="subTitle py-3">
          {{ subTitle }}
         </span>
       </h2></ng-template
     >
+      </ng-template>
+   
   </div>
   <hr class="m-0 mb-4" />
   <div class="container customContainer">
     <div
       class="row d-none d-md-flex"
-      *ngIf="type == 'home' || type == 'homeFeature'"
+      *ngIf="type == 'home' || type == 'homeFeature' || type == 'widget'"
     >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
-        <a routerLink="/{{ commonService.readMore(item) }}" fragment="trending">
+        <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
-            <img
+          <figure><img
               appYoutubeImage
-              width="380"
-              height="213"
-              data-src="{{ item.media | defaultImage: 380:213 }}"
-              srcset="{{item.media | defaultImage:545:305}} 545w,
-                {{item.media | defaultImage:355:199}} 355w, 
-                {{item.media | defaultImage:380:213}} 380w"
-              sizes="{{
-                '(max-width: 576px) 545px,
-                  (max-width: 768px) 355px,
-                  (max-width: 992px) 300px,
-                  380px'
-              }}"
+              width="366"
+              height="206"
+              data-src="{{ item.media | defaultImage: 366:206 }}"
               alt="most-popular"
               loading="lazy"
-              class="img-fluid lazyload card-img-top"
-            />
+              class="lazyload img-fluid card-img-top"
+            /></figure>
             <div class="card-body position-relative px-3 pt-5">
               <span
                 *ngIf="type == 'homeFeature'; else titleBlock"
@@ -124,37 +130,29 @@
       </div>
     </div>
     <div
-      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="class"
+      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="type == 'widget' ? 'd-sm-none d-flex' : class"
     >
       <owl-carousel-o
         [options]="customOptions"
         class="position-relative popularCarousel"
       >
-        <ng-template carouselSlide *ngFor="let item of data; index as i">
-          <div class="col">
-            <a
+      <ng-template carouselSlide *ngFor="let item of data; index as i" >
+        <div [ngClass]="data.length == 1 ? 'col-sm-1 col-md-4' : data.length == 2 ? 'col' : 'col'">
+            <a 
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="trending"
+              fragment="{{fragment}}"
             >
               <div class="card border-0 h-100">
+                <figure>
                 <img
                   appYoutubeImage
-                  width="380"
-                  height="213"
-                  data-src="{{ item.media | defaultImage: 380:213 }}"
-                  srcset="{{item.media | defaultImage:545:305}} 545w,
-                    {{item.media | defaultImage:355:199}} 355w, 
-                    {{item.media | defaultImage:380:213}} 380w"
-                  sizes="{{
-                    '(max-width: 576px) 545px,
-                      (max-width: 768px) 355px,
-                      (max-width: 992px) 300px,
-                      380px'
-                  }}"
+                  width="366"
+                  height="206"
+                  data-src="{{ item.media | defaultImage: 366:206 }}"
                   alt="most-popular"
                   loading="lazy"
-                  class="img-fluid lazyload card-img-top"
-                />
+                  class="lazyload img-fluid card-img-top"
+                /></figure>
                 <div class="card-body carouselBody position-relative px-3 pt-5">
                   <span
                     class="
@@ -175,7 +173,7 @@
                       i + 1
                     }}</span>
                     <p class="ms-3 mb-0 articleTitles pt-1">
-                      {{ item.title }}
+                      {{ formatTitle(item.title) }}
                     </p>
                   </h2>
                 </div>
@@ -186,8 +184,7 @@
                   </a>
                 </div>
               </div>
-            </a>
-          </div>
+            </a></div>
         </ng-template>
       </owl-carousel-o>
     </div>

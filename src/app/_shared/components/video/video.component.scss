@@ -39,6 +39,14 @@
     }
   }
   .bottomSection {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 118px;
+      }
+    }
     .video-play {
       height: 22px;
       width: 38px;

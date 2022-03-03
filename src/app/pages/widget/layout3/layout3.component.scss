@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/variables.scss";
+.widget3{
+    .sectionTitle{
+        color: $dark_gray;
+    }
+}
+.widget4{
+    background-color: $dark_gray;
+    .articleTitles{
+        color: $white;
+    }
+}
+.seeMore{
+    color: $red;
+}

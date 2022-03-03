@@ -1,0 +1,142 @@
+@import "../../../assets/scss/media.scss";
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins.scss";
+
+.widget6{
+  background: $white !important;
+  .sectionTitle{
+    color: $dark_gray;
+  }
+}
+.widget7{
+  background: $dark_gray !important;
+  .articleTitles{
+    color: $white;
+  }
+  .description{
+    color: $white;
+  }
+}
+.widget{
+  .seeMore{
+    color: $red;
+  }
+}
+.most-popular {
+  background: linear-gradient($dark_gray 385px, $white 0);
+  .subTitle {
+    color: $white;
+    font-weight: 700;
+    text-transform: none;
+    &::before {
+      content: "|";
+      padding-left: 15px;
+      padding-right: 15px;
+      display: inline-block;
+    }
+  }
+  .card {
+    .card-body {
+      background-color: $red;
+
+      span {
+        font-family: $roboto;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 10.3px;
+        color: $red;
+      }
+      h2 {
+        span {
+          font-size: 49px;
+          line-height: 103%;
+          font-weight: 700;
+          color: $white_4;
+        }
+        .articleTitles {
+          color: $white_2;
+       
+        }
+      }
+    }
+    .card-footer {
+      background-color: $dark_red;
+      border-radius: 0;
+      border: none;
+    }
+    .carouselBody {
+        min-height: 160px;
+        max-height: 160px;
+    }
+  }
+  .subItem {
+    .card-body {
+      .number {
+        font-size: 31px;
+        line-height: 36px;
+        font-weight: 700;
+        font-family: $roboto;
+        color: $red;
+      }
+    }
+  }
+  .popularCarousel {
+    @include mobile-portrait {
+      padding: 0 15px;
+    }
+  }
+}
+:host ::ng-deep {
+  .owl-carousel {
+    .owl-item {
+      padding: 0 10px;
+      @media only screen and (min-width: 768px) and (max-width: 1366px) {
+        padding: 0 15px;
+      }
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+        padding: 0 20px;
+      }
+    }
+
+    .owl-nav {
+      div {
+        background-color: transparent;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-40%);
+        background-repeat: no-repeat;
+        cursor: pointer;
+        color: $white_2;
+        font-size: 45px !important;
+        &.owl-prev {
+          left: -3%;
+
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            left: -5%;
+          }
+          @media only screen and (min-width: 768px) and (max-width: 1366px) {
+            left: -2%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
+        &.owl-next {
+          right: -3%;
+
+          @media only screen and (min-width: 320px) and (max-width: 768px) {
+            right: -5%;
+          }
+          @media only screen and (min-width: 768px) and (max-width: 1366px) {
+            right: -2%;
+          }
+          &:hover {
+            background-color: transparent;
+            color: $white_2;
+          }
+        }
+      }
+    }
+  }
+}

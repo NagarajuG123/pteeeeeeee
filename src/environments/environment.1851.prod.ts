@@ -3,11 +3,13 @@ export const environment = {
   port: 4000,
   apiUrl: 'https://api.1851franchise.com/v1',
   api2Url: 'https://api2.1851franchise.com/v1',
+  apiGatewayUrl:'https://api.1851franchise.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
-  imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
-  reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
+  imageResizeUrl: 'https://d3idlmh4hcsex5.cloudfront.net',
+  // reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
+  reCaptchaKey: '6Lev138eAAAAAF7Zxz5sHAZAQEZFqnaqeLrxCYTz',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
-  enableSW: false,
+  enableSW: true,
   env: 'production'
 };

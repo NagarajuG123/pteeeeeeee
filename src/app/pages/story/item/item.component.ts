@@ -14,9 +14,7 @@ import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 declare var ga: Function;
 
 @Component({
@@ -43,7 +41,6 @@ export class ItemComponent implements OnInit {
   public isServer: boolean;
 
   s3Url = environment.s3Url;
-  faCaretDown = faCaretDown;
   id: string;
   title: string;
   short_description: string;
@@ -62,7 +59,6 @@ export class ItemComponent implements OnInit {
   scrollbarOptions: any;
   openVideoPlayer = false;
   sponsorship = false;
-  sponsorship_position: string;
   isViewComment: boolean;
   full_url;
   slideConfig: any;
@@ -137,7 +133,6 @@ export class ItemComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges) {
     const details: SimpleChange = changes.details;
-    // const trending: SimpleChange = changes.trending;
     const mainNewsData: SimpleChange = changes.mainNewsData;
     const brandNewsData: SimpleChange = changes.brandNewsData;
     if (
@@ -166,8 +161,7 @@ export class ItemComponent implements OnInit {
         details.currentValue.last_modified.replace(/-/g, '/')
       );
       this.media = details.currentValue.media;
-      this.sponsorship = details.currentValue.sponsorship.is_sponsored;
-      this.sponsorship_position = details.currentValue.sponsorship.position;
+      this.sponsorship = details.currentValue.sponsorship;
       this.setTrending(this.category);
       if (typeof this.media !== 'undefined') {
         if (
@@ -210,14 +204,14 @@ export class ItemComponent implements OnInit {
         )
         .subscribe((response) => {
           this.trendingNews = response.data;
+          if(!(this.trendingNews.length >= 4)){
+            this.apiService.getAPI(`${this.brandSlug}/${category.slug}/most-recent?limit=4&offset=0`)
+            .subscribe((response) => {
+              this.trendingNews = response.data;
+            });
+          }
         });
-    } else {
-      this.apiService
-        .getAPI(`${this.brandSlug}/news?limit=4&offset=0`)
-        .subscribe((response) => {
-          this.trendingNews = response.data;
-        });
-    }
+    } 
   }
   readMore(story: any, fragment) {
     let slug = '';
@@ -278,7 +272,7 @@ export class ItemComponent implements OnInit {
         .subscribe((val) => {
           const data = $(val).data();
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+            .getAPI2(`${this.brandSlug}`)
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((result) => {
               if (typeof result.id !== 'undefined' && result.id !== null) {
@@ -305,7 +299,7 @@ export class ItemComponent implements OnInit {
             });
         });
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .getAPI2(`${this.brandSlug}`)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
           if (typeof result.id !== 'undefined' && result.id !== null) {

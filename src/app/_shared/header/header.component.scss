@@ -32,6 +32,12 @@ header {
         width: 65px;
         height: 70px;
       }
+      &.brandMenuBtn {
+        @include mobile-portrait {
+          width: 70px;
+          height: 80px;
+        }
+      }
       img {
         filter: brightness(10);
         margin-bottom: 8px;
@@ -63,6 +69,20 @@ header {
           height: 50px;
         }
       }
+      &.brandLogo {
+       
+        img {
+          min-height: 30px;
+          max-height: 80px;
+          min-width: 100px;
+          max-width: 125px;
+          @include mobile-portrait {
+            width: 80px;
+            height: auto;
+          }
+        }
+      }
+     
       .sponsor {
         font-weight: 500;
         font-size: 18px;
@@ -140,7 +160,6 @@ header {
         left: 0;
         height: 600px;
         overflow-x: auto;
-
         @include desk-lg-below3 {
           height: 550px;
         }
@@ -151,6 +170,10 @@ header {
       .menu-search {
         width: 200px;
 
+        .fa {
+          font-size: 10px;
+          color:$red;
+        }
         button {
           background: $white;
           border: 0;
@@ -185,6 +208,26 @@ header {
         text-transform: uppercase;
         color: $white_2;
         margin-bottom: 0;
+      }
+      .megamenu  {
+        .dropdown-menu{
+          display: block;
+          color:$white_2;
+          border-radius: 0rem;
+          background: $dark_gray_7;
+          position: relative;
+            li{
+              height: 30px;
+              width:260px;
+              .main{
+                white-space: pre-line;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 250px;
+              }
+            }
+        }
       }
       hr {
         height: 0px;
@@ -253,6 +296,7 @@ header {
   .nav{
     i{
       color: $red;
+      padding: 0 0 1px 2px;
     }
   }
 
@@ -399,6 +443,12 @@ header {
         font-size: 13px;
       }
       .card {
+        img {
+          @include mobile-landscape {
+            height: auto;    
+          }            
+          height: 140px;
+        }
         filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.08));
         .card-footer {
           border: 0px;
@@ -446,7 +496,7 @@ header {
           height: 10px;
           left: unset;
           padding: 8px 1px 0px 7px;
-          fa-icon {
+          .fa {
             font-size: 18px;
             color: $white;
           }

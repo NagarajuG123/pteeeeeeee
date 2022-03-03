@@ -3,7 +3,6 @@ import { Media } from "./media.model";
 import { Brand } from "./brand.model";
 import { Author } from "./author.model";
 import { Category } from "./category.model";
-import { Sponsorship } from "./sponsorship.model";
 
 export interface Details {
   id?: string;
@@ -16,6 +15,6 @@ export interface Details {
   brand?: Brand;
   author?: Author;
   category?: Category;
-  sponsorship?: Sponsorship;
+  sponsorship?: boolean;
   slug?: string;
 }

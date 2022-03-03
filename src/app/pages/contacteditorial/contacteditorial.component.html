@@ -27,7 +27,7 @@
         <div class="editors">
           <h4 class="text-center">
             Have a great story that you'd like to see featured on
-            <span>{{ publication.shortTitle.toUpperCase() }}</span
+            <span>{{ publication.shortTitle }}</span
             >?
           </h4>
           <p class="text-center">
@@ -210,14 +210,16 @@
               </ul>
             </div>
             <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
+            <div [ngClass]="publication.id != '1851' ? 'pt-5' : ''">
             <button
               type="button"
               class="back d-block submit_btn"
               (click)="onContactSubmit(contactForm)"
             >
               SUBMIT
-              <span><fa-icon [icon]="faAngleRight"></fa-icon></span>
+              <span><i class="fa fa-angle-right"></i></span>
             </button>
+          </div>
             <a href="#" onclick="return false;" class="text-center d-block"
               >*Indicates required field</a
             >
@@ -245,8 +247,7 @@
           </div>
           <h2 class="text-uppercase">THANK YOU</h2>
           <a href="/">
-            <fa-icon [icon]="faAngleLeft"></fa-icon>BACK TO HOMEPAGE</a
-          >
+            <i class="fa fa-angle-left"></i>BACK TO HOMEPAGE</a>
         </div>
       </div>
     </div>

@@ -14,14 +14,12 @@ import { ErrorComponent } from './components/error/error.component';
 import { TrendingBuzzComponent } from './components/trending-buzz/trending-buzz.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './components/article/article.component';
 import { HomeArticleComponent } from './components/home-article/home-article.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { VideoComponent } from './components/video/video.component';
 
 // Pipes
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -43,7 +41,6 @@ import { VideoComponent } from './components/video/video.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule,
     ShareButtonModule,
     CarouselModule,
   ],
@@ -61,7 +58,6 @@ import { VideoComponent } from './components/video/video.component';
     TrendingBuzzComponent,
     MostPopularComponent,
     ErrorMessageComponent,
-    FontAwesomeModule,
     ShareButtonModule,
     ArticleComponent,
     HomeArticleComponent,

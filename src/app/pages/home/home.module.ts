@@ -20,5 +20,6 @@ import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
   providers: [],
+  exports: [AwardsComponent]
 })
 export class HomeModule {}

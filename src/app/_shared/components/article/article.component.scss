@@ -1,7 +1,13 @@
-@import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/variables.scss";
 
 .article {
+  img {
+    @include tablet-landscape {
+      height: auto;    
+    } 
+    height:150px;
+  }
   .small-red-headers {
     padding-bottom: 5px;
   }
@@ -9,18 +15,19 @@
     border-radius: 0px;
     background-color: unset;
   }
-  &.monthlyDetail {
-    .card {
-      background-color: $white_8;
-    }
-  }
-  &.spotlight,
   &.articleTrending {
     padding-top: 10px;
+    img {
+      @include tablet-landscape {
+        height: auto;    
+      } 
+      height:110px;
+    }
     .card-title,
     .card-footer {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
   }
+  
 }

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import {
-  PreloadAllModules,
   RouterModule,
   Routes,
   UrlSegment,
 } from '@angular/router';
 import { ErrorComponent } from './_shared/components/error/error.component';
 import { StoryComponent } from './pages/story/story.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export function isArticlePage(url: UrlSegment[]) {
   if (url.length === 1 && url[0].path.match(/-[0-9-]+$/)) {
@@ -37,8 +37,7 @@ export function isArticlePage(url: UrlSegment[]) {
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
+    component: HomeComponent,
   },
 
   {
@@ -67,6 +66,11 @@ const routes: Routes = [
     path: 'sitemap',
     loadChildren: () =>
       import('./pages/sitemap/sitemap.module').then((m) => m.SitemapModule),
+  },
+  {
+    path: 'widget',
+    loadChildren: () =>
+      import('./pages/widget/widget.module').then((m) => m.WidgetModule),
   },
   {
     path: 'termsofuse',
@@ -156,7 +160,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules,
       initialNavigation: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),

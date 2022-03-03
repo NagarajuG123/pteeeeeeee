@@ -1,6 +1,10 @@
 @import "../../../assets/scss/mixins.scss";
 @import "../../../assets/scss/variables.scss";
 
+.profile {
+  padding: 47px 0 25px 0;
+  margin:0 auto;
+}
 a {
   display: inline-block;
   vertical-align: top;
@@ -10,7 +14,6 @@ a {
 }
 img {
   max-width: 100%;
-  height: auto;
   display: inline-block;
 }
 figure {
@@ -39,8 +42,10 @@ figure {
     font-weight: 700;
   }
   .description{
-    min-height: 200px;
     color: $black;
+    @include mobile-landscape{
+      min-height: unset !important;
+    }
   }
   .authorProfile {
     bottom: 50%;

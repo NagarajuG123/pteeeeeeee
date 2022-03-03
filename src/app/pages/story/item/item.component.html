@@ -1,4 +1,4 @@
-<div *ngIf="details" class="articles">
+<div *ngIf="details" class="articles" [ngClass]="brandSlug =='1851' ? 'mainArticle' : ''">
   <div class="container customContainer articleContainer">
     <div class="position-relative articleImage">
       <a
@@ -118,7 +118,7 @@
         "
       >
         <a
-          *ngIf="sponsorship && sponsorship_position === 'author_title_section'"
+          *ngIf="sponsorship"
           href="#"
           onclick="return false;"
           data-bs-toggle="modal"
@@ -164,7 +164,7 @@
     <div class="most-like-articles mb-3">
       <h5
         class="seeMore mb-0 d-none d-md-flex text-uppercase pb-2"
-        *ngIf="trendingNews && trendingNews.length"
+        *ngIf="trendingNews && trendingNews.length > 0"
       >
         More Stories like this
       </h5>
@@ -179,7 +179,7 @@
 
   <!-- next article line -->
 
-  <div class="nextBtn d-flex py-5 justify-content-center align-items-center" *ngIf="hasMore">
+  <div class="nextBtn d-flex py-5 justify-content-center align-items-center">
     <div class="col-lg-5 col-sm-4 col-4 seeMoreLine"></div>
     <div
       class="
@@ -209,7 +209,7 @@
 
   <div class="most-like-articles pb-5 d-sm-flex d-md-none">
     <div class="container customContainer py-md-2">
-      <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews && trendingNews.length">
+      <h5 class="seeMore mb-0 text-uppercase" *ngIf="trendingNews && trendingNews.length > 0">
         More Stories like this
       </h5>
       <app-article
@@ -223,32 +223,34 @@
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg pb-5 d-none d-md-flex"
        *ngIf="brandSlug=='1851'">
-      <div class="container customContainer" >
-          <h4 class="timeStamp mb-0 pt-3" >Featured Franchise News</h4>
+      <div class="container customContainer">
+          <h4 class="timeStamp mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0">
+            Featured Franchise News</h4>
           <app-article 
               [typeSlug]="'frannews'"
               [contents]="mainNews"
-              [class]="'row-cols-sm-1'"
+              [class]="'row-cols-sm-1 newsSection'"
             ></app-article>
-          <h4 class="timeStamp mb-0">Featured Brand News</h4>
+          <h4 class="timeStamp mb-0" *ngIf="brandNews && brandNews.length > 0">
+            Featured Brand News</h4>
           <app-article
             [typeSlug]="'frannews'"
             [contents]="brandNews"
             [type]="'brandNews'"
-            [class]="'row-cols-sm-1'"
+            [class]="'row-cols-sm-1 newsSection'"
           ></app-article>
       </div>
   </div>
 
-  <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none"
+  <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none "
        *ngIf="brandSlug=='1851'">
     <div class="container customContainer py-md-2">
-      <h4 class="timeStamp mb-0">Featured Franchise News</h4>
+      <h4 class="timeStamp mb-0" *ngIf="mainNews && mainNews.length > 0" >Featured Franchise News</h4>
       <app-carousel
         [typeSlug]="'frannews'"
         [contents]="mainNews"
       ></app-carousel>
-      <h4 class="timeStamp mb-0 mt-2">Featured Brand News</h4>
+      <h4 class="timeStamp mb-0 mt-2" *ngIf="brandNews && brandNews.length > 0" >Featured Brand News</h4>
       <app-carousel
         [typeSlug]="'frannews'"
         [contents]="brandNews"
@@ -282,6 +284,7 @@
           width="100%"
           height="496px"
           allowfullscreen
+          loading = "lazy"
         >
         </iframe>
       </div>

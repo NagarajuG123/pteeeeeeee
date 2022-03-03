@@ -1,7 +1,29 @@
-@import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 
 .article {
+  img {
+    @include mobile-landscape {
+      height: auto;    
+    }            
+    height: 118px;
+  }
+  .fourColumn {
+    img {
+      @include tablet-landscape {
+        height: auto;    
+      } 
+      height:150px;
+    }
+  }
+  .threeColumn {
+    img {
+      @include tablet-landscape {
+        height: auto;    
+      } 
+      height:180px;
+    }
+  }
   .small-red-headers {
     padding-bottom: 5px;
   }
@@ -9,6 +31,7 @@
     border-radius: 0px;
     background-color: unset;
   }
+  
   &.monthlyDetail,
   &.trending {
     .card {

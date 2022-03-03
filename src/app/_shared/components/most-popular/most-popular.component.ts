@@ -4,7 +4,6 @@ import { Details } from 'src/app/_core/models/details.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -20,7 +19,10 @@ export class MostPopularComponent implements OnInit {
   @Input() title: string;
   @Input() subTitle: string;
   @Input() class!: string;
-
+  @Input() widget: string;
+  @Input() fragment:string;
+  @Input() stories: Details[] = [];
+  
   data: Details[] = [];
   isLoaded: boolean = false;
   isBrowser: boolean;
@@ -38,7 +40,11 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService
+    if(this.type == 'widget'){
+      this.data = this.stories;
+      this.isLoaded = true;
+    } else {
+      this.apiService
       .getAPI(`${this.slug}/${this.apiUrl}`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
@@ -47,6 +53,7 @@ export class MostPopularComponent implements OnInit {
           this.isLoaded = true;
         }
       });
+    }
     this.customOptions = {
       loop: true,
       mouseDrag: false,
@@ -74,5 +81,12 @@ export class MostPopularComponent implements OnInit {
         },
       },
     };
+  }
+  formatTitle(title) {
+    let text = title;
+    if (text.length > 150) {
+      text = text.substring(0, 150) + '...';
+   }
+   return text;
   }
 }

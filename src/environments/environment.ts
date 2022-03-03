@@ -4,12 +4,13 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.1851.nlasandbox2.info/v1',
-  api2Url: 'https://apiv2.1851.nlasandbox2.info/v1',
+  apiUrl: 'https://api.poonkodi.nlasandbox2.info/v1',
+  api2Url: 'https://api2.1851.nlasandbox2.info/v1',
+  apiGatewayUrl:'https://pnrf2az30h.execute-api.us-east-1.amazonaws.com/dev/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   port: 4200,
-  imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
-  reCaptchaKey: '6LforqAbAAAAAO5u6tru-RkUBn8TBYkCSrZqPJvn',
+  imageResizeUrl: 'https://dnnxwdlxu3h63.cloudfront.net',
+  reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
   room1903Url: 'https://room1903.com/',

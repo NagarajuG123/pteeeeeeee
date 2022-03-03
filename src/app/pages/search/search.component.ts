@@ -13,12 +13,6 @@ import { takeUntil } from 'rxjs/operators';
 import { forkJoin, Subject } from 'rxjs';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
-import {
-  faSearch,
-  faAngleUp,
-  faAngleDown,
-} from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
 
@@ -45,10 +39,7 @@ export class SearchComponent implements OnInit {
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
-  faSearch = faSearch;
-  faAngleUp = faAngleUp;
-  faAngleDown = faAngleDown;
-  s3Url = environment.s3Url;
+  imageResizeUrl = environment.imageResizeUrl;
   sort_keys: Array<object> = [
     {
       title: 'NEWEST',
@@ -232,8 +223,8 @@ export class SearchComponent implements OnInit {
         `offset=${this.brandPeoples.length}`
       );
 
-      const main_searchAPI = this.apiService.getAPI(`search${apiParams}`);
-      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+      const main_searchAPI = this.apiService.getAPI1(`search${apiParams}`);
+      const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
       const publication = this.apiService.getAPI(`1851/publication-instance`);
 
       forkJoin([main_searchAPI, brand_searchAPI, publication])
@@ -260,29 +251,20 @@ export class SearchComponent implements OnInit {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
           this.metaService.setTitle(title);
-          this.setBannerImage(results[2]);
         });
     });
   }
-  setBannerImage(publication) {
-    if (publication.id == '1851') {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else if (publication.id == 'EE') {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else {
-      this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    }
-  }
+  
   isMainSite() {
     if (
       this.brand_id === '1851' ||
       this.brand_id === 'ee' ||
-      this.brand_id === 'room-1903'
+      this.brand_id === 'room-1903' ||
+      this.brand_id === 'stachecow'
     ) {
       return true;
-    } else {
+    } 
       return false;
-    }
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
@@ -357,7 +339,6 @@ export class SearchComponent implements OnInit {
 
   getDataByParams() {
     this.params = `?q=${this.search_input}`;
-    // tslint:disable-next-line:max-line-length
     this.params =
       this.published_value !== -1
         ? `${this.params}&published_duration=${
@@ -388,8 +369,8 @@ export class SearchComponent implements OnInit {
       /offset=[0-9]*/g,
       `offset=${this.brandPeoples.length}`
     );
-    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+    const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
     forkJoin(main_searchAPI, brand_searchAPI)
       .pipe(takeUntil(this.onDestroy$))
@@ -424,8 +405,8 @@ export class SearchComponent implements OnInit {
       `offset=${this.brandPeoples.length}`
     );
 
-    const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-    const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+    const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+    const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
     forkJoin(main_searchAPI, brand_searchAPI)
       .pipe(takeUntil(this.onDestroy$))
@@ -494,8 +475,8 @@ export class SearchComponent implements OnInit {
         /offset=[0-9]*/g,
         `offset=${this.brandPeoples.length}`
       );
-      const main_searchAPI = this.apiService.getAPI(`search${this.params}`);
-      const brand_searchAPI = this.apiService.getAPI(`search${brandParams}`);
+      const main_searchAPI = this.apiService.getAPI1(`search${this.params}`);
+      const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
 
       forkJoin(main_searchAPI, brand_searchAPI)
         .pipe(takeUntil(this.onDestroy$))

@@ -3,13 +3,26 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
+.widget2{
+    background: $white !important;
+    .topSection{
+      h2{
+        color: $dark_gray !important;
+      }
+    }
+  .sectionTitle{
+    color: $dark_gray;
+  }
+  .articleTitles{
+    color: $dark_gray !important;
+  }
+}
 .awards {
   background: $dark_gray;
   color: $black;
 
   .sectionTitle {
     line-height: 25.6px;
-    color: $dark_gray;
   }
 
   .seeMore {
@@ -17,6 +30,12 @@
   }
 
   .topSection {
+    img {
+      @include mobile-landscape {
+        height: auto;    
+      }            
+      height: 302px;
+    }
     h2 {
       font-size: 20px;
       line-height: 23.4px;
@@ -26,6 +45,14 @@
     }
   }
   .bottomSection {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 118px;
+      }
+    }
     .articleTitles {
       color: $white_2;
     }
@@ -39,6 +66,7 @@
 :host ::ng-deep {
   .owl-carousel {
     .owl-item {
+      width:222.4px !important;
       padding: 0 5px;
     }
 

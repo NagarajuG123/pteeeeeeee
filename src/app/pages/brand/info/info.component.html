@@ -57,57 +57,17 @@
       </div>
     </div>
   </div>
-  <!-- Tabs end -->
-  <ng-container *ngIf="isStory">
-    <div class="strory-banner--img container">
-      <a
-        href="#"
-        onclick="return false;"
-        class="d-block video-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#brandInfoModal"
-        (click)="openVideoPlayer = true"
-      >
-        <img
-          appYoutubeImage
-          class="lazyload img-fluid"
-          width="1280"
-          height="720"
-          data-src="{{ brandInfo.media | defaultImage: 1280:720 }}"
-          srcset="{{brandInfo.media | defaultImage:545:306}} 545w,
-            {{brandInfo.media | defaultImage:600:337}} 600w,
-            {{brandInfo.media | defaultImage:700:393}} 700w,
-            {{brandInfo.media | defaultImage:1280:720}} 1024w"
-          sizes="{{
-            '(max-width: 576px) 545px,
-              (max-width: 768px) 600px,
-              (max-width: 992px) 700px,
-              1024px'
-          }}"
-          alt="brand_img"
-          loading="lazy"
-        />
-        <img
-          *ngIf="brandInfo.media.type === 'video'"
-          data-src="{{ s3Url }}videoIcon.png"
-          alt="Play"
-          class="img-fluid vide-play lazyload"
-          loading="lazy"
-        />
-      </a>
-    </div>
-  </ng-container>
-  <!-- story tab banner -->
+ 
   <div
     class="px-4 brand-page-row--wrapper"
     [ngClass]="isMarket ? 'pb-5 available-marketing--wrapper' : ''"
     [class.info-wrapper]="isStory"
   >
-    <div class="container" [ngClass]="isMarket ? 'customContainer' : ''">
+    <div class="container" [ngClass]="(isMarket || isInfo) ? 'customContainer' : ''">
       <div class="row d-flex">
         <div
           class="col-md-12 pl-0 brand-left-info--wrapper"
-          [ngClass]="!isInfo ? 'col-lg-12' : 'col-lg-8'"
+          [ngClass]="!isInfo ? 'col-lg-12' : 'brand-info-page col-lg-8'"
         >
           <div class="brand-main-img--wrapper" *ngIf="isInfo">
             <a
@@ -195,6 +155,7 @@
                       webkitallowfullscreen
                       mozallowfullscreen
                       allowfullscreen
+                      loading = "lazy"
                     ></iframe>
                   </div>
                   <p
@@ -282,10 +243,11 @@
             </div>
 
             <div *ngIf="isStory && items && items.length && items[0].id">
-              <div class="container customContainer mt-4 py-3">
+              <div class="container customContainer mt-4 py-3 article">
                 <app-home-article
                   [typeSlug]="tab"
                   [contents]="items"
+                  [column]="'five'"
                   [class]="'row-cols-md-2 row-cols-lg-5 gx-2'"
                 ></app-home-article>
               </div>
@@ -330,7 +292,7 @@
             </div>
 
             <div
-              class="container customContainer whyIBought pb-5"
+              class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isBought"
             >
               <div>
@@ -355,7 +317,7 @@
             </div>
 
             <div
-              class="container customContainer whyIBought pb-5"
+              class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isExecutive"
             >
               <div>
@@ -468,7 +430,7 @@
         </div>
 
         <div
-          class="col-lg-4 col-md-12 pr-0 pl-0"
+          class="col-lg-4 col-md-12 pr-0 pl-0 brand-info-right"
           *ngIf="isInfo || isMarket"
           [ngClass]="isMarket ? 'market-rightsiderbar' : ''"
         >
@@ -569,7 +531,7 @@
                     [formControlName]="fields.key"
                     placeholder="{{ fields.title }}*"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control "
                     [type]="fields.type"
                     [pattern]="fields.pattern"
                     [maxLength]="fields.maxLength || 1000"
@@ -580,7 +542,7 @@
                     [placeholder]="fields.title"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-control"
+                    class="form-control "
                     rows="3"
                     [ngClass]="{
                       'is-invalid':
@@ -595,7 +557,7 @@
                     *ngIf="fields.type === 'dropdown'"
                     [formControlName]="fields.key"
                     [id]="fields.key"
-                    class="form-select"
+                    class="form-select "
                     [ngClass]="{
                       'is-invalid':
                         (formControlsValues[fields.key].touched ||
@@ -846,6 +808,7 @@
           width="100%"
           height="496px"
           allowfullscreen
+          loading = "lazy"
         >
         </iframe>
       </div>

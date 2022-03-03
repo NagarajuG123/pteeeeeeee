@@ -17,7 +17,6 @@ import { MetaService } from 'src/app/_core/services/meta.service';
 import * as d3 from 'd3';
 import { ValidationService } from 'src/app/_core/services/validation.service';
 import { Details } from 'src/app/_core/models/details.model';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-info',
@@ -61,6 +60,7 @@ export class InfoComponent implements OnInit {
   submitErrMsg: string = '';
   openVideoPlayer: boolean;
   brandVideoUrl: string;
+  isSubmitted: boolean = false;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
@@ -94,7 +94,7 @@ export class InfoComponent implements OnInit {
     });
     this.route.paramMap.subscribe((params) => {
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+        .getAPI2(`${this.brandSlug}`)
         .subscribe((response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');
@@ -163,6 +163,7 @@ export class InfoComponent implements OnInit {
     return url?.replace('api.', '');
   }
   submitInquireForm(values: any) {
+    this.isSubmitted = true;
     this.submittedInquireForm = true;
     if (this.inquireForm.invalid) {
       return;

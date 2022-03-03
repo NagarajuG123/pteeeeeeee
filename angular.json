@@ -2,7 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": "3e4140e9-98c7-4327-a93d-a205928133a9",
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@angular-eslint/schematics",
+    "cache": {
+      "enabled": true,
+      "path": ".angular/cache",
+      "environment": "all" 
+    }
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -45,12 +50,14 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "src/styles.scss",
               "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/jquery/dist/jquery.js"
             ],
             "serviceWorker": true,
@@ -68,11 +75,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "1851PROD": {
               "fileReplacements": [
@@ -85,11 +88,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "EEPROD": {
               "fileReplacements": [
@@ -102,11 +101,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "1903PROD": {
               "fileReplacements": [
@@ -119,11 +114,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "1851QA": {
               "fileReplacements": [
@@ -136,11 +127,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "SCQA": {
               "fileReplacements": [
@@ -153,11 +140,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "EEQA": {
               "fileReplacements": [
@@ -170,11 +153,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "1903QA": {
               "fileReplacements": [
@@ -187,11 +166,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "commonChunk": true,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "production": {
               "budgets": [
@@ -331,9 +306,10 @@
                   "with": "src/environments/environment.1851.prod.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "SCPROD": {
@@ -343,9 +319,10 @@
                   "with": "src/environments/environment.sc.prod.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "EEPROD": {
@@ -355,9 +332,10 @@
                   "with": "src/environments/environment.ee.prod.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "1903PROD": {
@@ -367,9 +345,10 @@
                   "with": "src/environments/environment.1903.prod.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "1851QA": {
@@ -379,9 +358,10 @@
                   "with": "src/environments/environment.1851.qa.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "SCQA": {
@@ -391,9 +371,10 @@
                   "with": "src/environments/environment.sc.qa.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "EEQA": {
@@ -403,9 +384,10 @@
                   "with": "src/environments/environment.ee.qa.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             },
             "1903QA": {
@@ -415,9 +397,10 @@
                   "with": "src/environments/environment.1903.qa.ts"
                 }
               ],
-              "outputHashing": "media",
               "optimization": true,
+              "outputHashing": "media",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true
             }
           },

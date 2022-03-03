@@ -1,4 +1,4 @@
-<div class="featured sidebar-blur pb-4" *ngIf="isLoaded && brandNews">
+<div class="featured sidebar-blur pb-4" *ngIf="isLoaded">
   <div class="container customContainer">
     <div class="d-flex">
       <div class="col-lg-11 col-md-10 col-sm-9 col">
@@ -34,27 +34,26 @@
             <h3 class="seeMore">{{ item.brand.name }}</h3>
             <a
               routerLink="/{{ commonService.readMore(item) }}"
-              fragment="frannews"
+              fragment="trendingbrandbuzz"
             >
+            <figure>
               <img
                 appYoutubeImage
-                data-src="{{ item.media | defaultImage: 209:118 }}"
-                srcset="{{item.media | defaultImage:545:305}} 545w,
-                    {{item.media | defaultImage:355:199}} 355w, 
-                    {{item.media | defaultImage:209:118}} 209w"
-                sizes="{{
-                  '(max-width: 576px) 545px,
-                      (max-width: 768px) 355px,
-                      (max-width: 992px) 300px,
-                      209px'
-                }}"
-                class="img-fluid lazyload d-inline"
-                width="209"
-                height="118"
-                alt="featured"
+                data-src="{{ item.media | defaultImage: 212:119 }}"
+                data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
+                class=" lazyload img-fluid card-img-top d-inline"
+                alt=""
+                width="212"
+                height="119"
                 loading="lazy"
+                sizes="{{
+                  '(max-width: 576px) 400px,
+                   (max-width: 768px) 355px,
+                   (max-width: 992px) 300px,
+                   212px'
+                }}"
               />
-
+            </figure>
               <h3 class="articleTitles align-items-center m-0 pt-2">
                 {{ item.title }}
               </h3>

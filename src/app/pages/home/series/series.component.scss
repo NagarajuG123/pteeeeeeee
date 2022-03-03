@@ -19,7 +19,18 @@
       float: right;
     }
   }
+  .leftSide {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 417px;
+      }
+    }
+  }
   .rightSide {
+    
     @include mobile-portrait {
       padding-top: 2rem;
     }
@@ -34,4 +45,9 @@
       }
     }
   }
+}
+i {
+  color: $red;
+  font-weight: 700;
+font-size: 14px;
 }

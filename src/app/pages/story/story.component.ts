@@ -158,9 +158,8 @@ hasMore:any;
               .subscribe((result) => {
                 this.publication = result;
               });
-
             this.apiService
-              .getAPI(`get-brand-by-slug/${this.brandSlug}`)
+              .getAPI2(`${this.brandSlug}`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((result) => {
                 if (typeof result.id !== 'undefined' && result.id !== null) {
@@ -223,6 +222,18 @@ hasMore:any;
                   case 'franchisor':
                     this.apiUrl = `${this.brandId}/spotlight/franchisor`;
                     break;
+                  
+                    case 'people-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/people`;
+                    break;
+
+                  case 'franchisee-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/franchisee`;
+                    break;
+
+                  case 'franchisor-spotlight':
+                    this.apiUrl = `${this.brandId}/spotlight/franchisor`;
+                    break;
 
                   case 'home-envy':
                     this.apiUrl = `${this.brandId}/spotlight/home-envy`;
@@ -250,6 +261,30 @@ hasMore:any;
 
                   case 'industry':
                     this.apiUrl = `${this.brandId}/spotlight/industry`;
+                    break;
+
+                    case 'industry-spotlight':
+                      this.apiUrl = `${this.brandId}/spotlight/industry`;
+                      break;
+
+                  case 'personal-finance':
+                    this.apiUrl = `${this.brandId}/spotlight/personal-finance`;
+                    break;
+                  
+                  case 'luxury-living':
+                    this.apiUrl = `${this.brandId}/spotlight/luxury-living`;
+                    break;
+
+                  case 'investing':
+                    this.apiUrl = `${this.brandId}/spotlight/investing`;
+                    break;
+
+                  case 'business':
+                    this.apiUrl = `${this.brandId}/spotlight/business`;
+                    break;
+
+                  case 'retirement':
+                    this.apiUrl = `${this.brandId}/spotlight/retirement`;
                     break;
 
                   case 'brand-news':
@@ -412,10 +447,7 @@ hasMore:any;
             },
             image: {
               '@type': 'ImageObject',
-              url:
-                result['story'].data.media.type === 'image'
-                  ? `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result['story'].data.media.url}`
-                  : `${environment.imageResizeUrl}/insecure/fill/500/261/no/0/plain/${result['story'].data.media.placeholder}`,
+              url: `${environment.imageResizeUrl}/fit-in/500x261/${result['story'].data.media.path}`,
               width: 802,
               height: 451,
             },
@@ -526,11 +558,11 @@ hasMore:any;
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          const image_url = `${
-            environment.imageResizeUrl
-          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-            this.changeMaxResultImg(metas.og['media']['url'])
-          )}`;
+          // const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
+          //   this.changeMaxResultImg(metas.og['media']['path'])
+          // )}`;
+          const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.og['media']['path']
+          }`;
           this.meta.updateTag(
             { property: `og:image`, content: image_url },
             `property='og:image'`
@@ -563,11 +595,8 @@ hasMore:any;
       const twitterKeys = Object.keys(metas.twitter);
       for (const key of twitterKeys) {
         if (key === 'media' && metas.twitter[key] !== null) {
-          const twitter_url = `${
-            environment.imageResizeUrl
-          }/insecure/fill/500/261/no/0/plain/${encodeURIComponent(
-            this.changeMaxResultImg(metas.twitter['media']['url'])
-          )}`;
+          const twitter_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.twitter['media']['path']
+          }`;
           this.meta.updateTag(
             { name: `twitter:image`, content: twitter_url },
             `name='twitter:image'`
@@ -636,7 +665,7 @@ hasMore:any;
         .subscribe((result) => {
           let storyId;
           this.isLoading = false;
-          if (typeof result !== 'undefined' && result.data.length > 0) {
+          if (typeof result !== 'undefined') {
             this.hasMore = true;
             if (
               this.type === 'dynamicpage' ||
@@ -646,31 +675,35 @@ hasMore:any;
             } else if (this.type === 'brand') {
               storyId = result.data.articles[0].id;
             } else {
-              storyId = result.data[0].id;
+              if(result.data.length > 0) {
+                storyId = result.data[0].id;
+              }
             }
-          
-          if (
-            this.detailsData.find((o) => o.id == storyId) &&
-            !this.duplicate
-          ) {
-            this.addItems(1, this.detailsData.length);
-            this.duplicate = true;
-            return;
-          } else if (this.detailsData.find((o) => o.id !== storyId)) {
-            let url = this.brandSlug
-              ? `${this.brandSlug}/story/${storyId}`
-              : `story/${storyId}`;
-            this.apiService.getAPI(`${url}`).subscribe((result) => {
-              this.detailsData.push(this.htmlBinding(result.data));
-            });
-          } else {
-            if (this.detailsData.length == 1) {
-              this.addItems(1, 1);
-              this.first = true;
-              return;
-            }
-          }
+            if(storyId != undefined) {
+              if (
+                this.detailsData.find((o) => o.id == storyId) &&
+                !this.duplicate
+              ) {
+                this.addItems(1, this.detailsData.length);
+                this.duplicate = true;
+                return;
+              } else if (this.detailsData.find((o) => o.id !== storyId)) {
+                let url = this.brandSlug
+                  ? `${this.brandSlug}/story/${storyId}`
+                  : `story/${storyId}`;
+                this.apiService.getAPI(`${url}`).subscribe((result) => {
+                  this.detailsData.push(this.htmlBinding(result.data));
+                });
+              } else {
+                if (this.detailsData.length == 1) {
+                  this.addItems(1, 1);
+                  this.first = true;
+                  return;
+                }
+              }
+            } 
         }
+       
           this.storyIndex = true;
           this.detailsData = Object.assign([], this.detailsData);
           this.dataLoading = false;

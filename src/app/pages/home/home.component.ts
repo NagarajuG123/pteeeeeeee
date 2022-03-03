@@ -33,8 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     const meta = this.apiService.getAPI2(`meta`);
-    const featureData = this.apiService.getAPI(`home-page-featured-content`);
-    forkJoin([publication, meta, featureData]).subscribe((results) => {
+    forkJoin([publication, meta]).subscribe((results) => {
       this.publication = results[0];
       this.metaService.setSeo(results[1].data);
       this.isLoad = true;
@@ -72,5 +71,19 @@ export class HomeComponent implements OnInit {
       name: '',
       email: '',
     });
+  }
+  getTitle() {
+    let title = 'Everything Franchising';
+    if(this.publication.id == 'Stachecow') {
+      title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
+    }
+    return title;
+  }
+  getSubTitle() {
+    let subTitle = 'To help you buy, grow and build';
+    if(this.publication.id == 'Stachecow') {
+      subTitle = 'To help you build the life you deserve ';
+    }
+    return subTitle;
   }
 }

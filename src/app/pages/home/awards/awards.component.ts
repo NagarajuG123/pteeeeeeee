@@ -1,6 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
@@ -12,9 +11,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./awards.component.scss'],
 })
 export class AwardsComponent implements OnInit {
+  @Input() type: string;
+  @Input() class: string;
+  @Input() widget: string;
+  @Input() stories: Details[] = [];
   data: Details[] = [];
   result: string;
-  faAngleRight = faAngleRight;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;
@@ -28,11 +30,23 @@ export class AwardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setConfig();
-    this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
-      this.data = result.data.stories;
-      this.result = result.data;
-      this.isLoaded = true;
-    });
+    if(this.type == 'widget'){
+      console.log(this.widget);
+      this.data = this.stories;
+      if(this.data.length > 0) {
+        this.isLoaded = true;
+      }
+    } else{
+      this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
+        if(result.data != null) {
+          this.result = result.data;
+          this.data = result.data.stories;
+          if(this.data.length > 0) {
+            this.isLoaded = true;
+          }
+        }
+      });
+    }
   }
   setConfig() {
     this.customOptions = {

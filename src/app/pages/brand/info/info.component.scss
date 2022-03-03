@@ -2,6 +2,12 @@
 @import "../../../../assets/scss/mixins.scss";
 @import "../../../../assets/scss/media.scss";
 
+.infoContainer {
+  max-width: 900px !important;
+}
+.article {
+  padding: 0 58px;
+}
 .question-section {
   @include tablet-landscape1 {
     padding-top: 30px;
@@ -243,6 +249,11 @@
         color: $red;
       }
 
+      input{
+        &::placeholder{
+          color: $dark_gray !important;
+        }
+      }
       .form-control {
         margin-bottom: 15px;
         background: $white;
@@ -252,7 +263,7 @@
         font-family: $roboto;
         line-height: 15.23px;
         font-size: 13px;
-        height: 40px;
+        min-height: 50px;
         color: $dark_gray;
         &:focus {
           outline: none;
@@ -260,12 +271,15 @@
         }
 
         &::placeholder {
-         
           font-size: 13px;
-          color: $light_gray_8;
+          color: $dark_gray;
           font-family: $roboto;
           font-weight: 400;
           line-height: 15.23px;
+          white-space:pre-line; 
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }
@@ -354,7 +368,7 @@
 
 .trending-section {
   background-color: $white_8;
-  padding: 30px 40px 40px;
+  padding: 20px 20px 20px;
 
   @include mobile-portrait {
     padding: 20px 15px;
@@ -874,10 +888,27 @@ button.close {
     }
   }
 }
+.brand-info-page{
+  flex: 0 0 calc(100% - 300px);
+  max-width: 900px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.brand-info-right{
+  max-width: 300px;
+  @include media("<lg") {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
 
 .brand-page-row--wrapper {
   margin-top: 40px;
-
+  &.info-wrapper {
+    margin: 0px;
+  }
   @include tablet-portrait {
     padding: 0px 45px 15px 45px;
   }

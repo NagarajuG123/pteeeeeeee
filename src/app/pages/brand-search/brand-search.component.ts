@@ -5,7 +5,6 @@ import { Publication } from 'src/app/_core/models/publication.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-brand-search',
@@ -33,7 +32,7 @@ export class BrandSearchComponent implements OnInit {
   ngOnInit(): void {
     const params = `?q=&sort=brand&limit=10&offset=0`;
     const brandSearchData: any = [];
-    const brandSearchApi = this.apiService.getAPI(`brand-search${params}`);
+    const brandSearchApi = this.apiService.getAPI1(`brand-search${params}`);
     const brandFilterApi = this.apiService.getAPI(`brand-filters`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     forkJoin([brandFilterApi, brandSearchApi, publication])
@@ -144,7 +143,7 @@ export class BrandSearchComponent implements OnInit {
       this.sortBrandValue === 'asc' ? 'brand' : '-brand'
     }`;
     const params = `?q=${this.investValues}${this.industryValues}${sortValue}&limit=10&offset=0`;
-    this.apiService.getAPI(`brand-search${params}`).subscribe((res) => {
+    this.apiService.getAPI1(`brand-search${params}`).subscribe((res) => {
       this.items = res['data'];
       this.hasMore = res['has_more'];
     });
@@ -154,7 +153,7 @@ export class BrandSearchComponent implements OnInit {
       this.sortBrandValue === 'asc' ? 'brand' : '-brand'
     }`;
     const params = `?q=${this.investValues}${this.industryValues}${sortValue}&limit=10&offset=${this.items.length}`;
-    this.apiService.getAPI(`brand-search${params}`).subscribe((res) => {
+    this.apiService.getAPI1(`brand-search${params}`).subscribe((res) => {
       res['data'].forEach((brand: any) => {
         this.items.push(brand);
       });

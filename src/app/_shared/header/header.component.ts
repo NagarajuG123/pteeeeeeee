@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ApiService } from '../../_core/services/api.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { CommonService } from '../../_core/services/common.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
@@ -20,20 +20,6 @@ import {
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import {
-  faCaretRight,
-  faAngleDown,
-  faAngleUp,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebookF,
-  faLinkedinIn,
-  faYoutube,
-  faInstagram,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -45,7 +31,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn: ElementRef<HTMLInputElement>;
   @ViewChild('carouselBtn', { read: ElementRef, static: true })
   carouselBtn: ElementRef;
-
+  fragment: string ='';
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
@@ -63,18 +49,11 @@ export class HeaderComponent implements OnInit {
   inquireFields: any = [];
   isInquire: boolean = false;
   inquireTitle = '';
+  isLearnMenu: boolean = false;
+  isBrandLearnMenu: boolean = false;
   inquireData: any;
   submitErrMsg: string = '';
   s3Url = environment.s3Url;
-  socialIcons: any = [
-    faFacebookF,
-    faInstagram,
-    faLinkedinIn,
-    faYoutube,
-    faTwitter,
-  ];
-  faCaretRightIcon = faCaretRight;
-  faSearch = faSearch;
   pdfForm: any;
   isEmailSubmit: boolean = false;
   emailSubMessage: string;
@@ -86,9 +65,9 @@ export class HeaderComponent implements OnInit {
   submittedContactForm: boolean = false;
   downloadPdfUrl: any;
   trending: any;
-  faAngleDown = faAngleDown;
-  faAngleUp = faAngleUp;
   isMain: boolean;
+  utmSlug: string;
+isShow:boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -96,6 +75,7 @@ export class HeaderComponent implements OnInit {
     private apiService: ApiService,
     public commonService: CommonService,
     private router: Router,
+    private route: ActivatedRoute,
     @Inject(PLATFORM_ID) platformId: Object,
     private fb: FormBuilder,
     @Inject(DOCUMENT) private _document: HTMLDocument,
@@ -114,32 +94,38 @@ export class HeaderComponent implements OnInit {
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.utm) {
+          this.utmSlug = params.utm;
+        }
+      });
   }
 
   ngOnInit(): void {
     this.setSlug();
-    this.subject.subscribe(() => {
-      this.apiService
-        .getAPI(
-          `search?q=${this.searchForm.controls['searchInput'].value}&filter_by[]=author&filter_by[]=title&filter_by[]=description&filter_by[]=keywords&limit=10&sort_by=newest&brand_id=${this.brandId}&limit=4&offset=0`
-        )
-        .subscribe((res) => {
-          this.news = res.data;
-        });
-    });
+    
   }
 
   setSlug() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         this.brandSlug = events.url.split('/')[1];
-        if (this.brandSlug === 'robots.txt') {
-        } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+        if (this.brandSlug === 'robots.txt' || this.brandSlug === 'widget') {
+          this.isShow = false;
+        }  else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
-        } else {
+        }  else {
+          if(this.brandSlug.includes('?')) {
+            this.brandSlug = this.brandSlug.split('?')[0];
+          } 
+          if(!this.brandSlug && this.utmSlug){
+            this.brandSlug = this.utmSlug;
+          }
+
           this.apiService
-            .getAPI(`get-brand-by-slug/${this.brandSlug.replace(/\+/g, '')}`)
+            .getAPI2(`${this.brandSlug.replace(/\+/g, '')}`)
             .subscribe((response) => {
               if (response.status != 404 && response.type === 'brand_page') {
                 this.brandTitle = response.name;
@@ -156,6 +142,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   setInit() {
+    this.isShow = true;
     let headerApi = 'header';
     this.isMain = true;
 
@@ -183,23 +170,28 @@ export class HeaderComponent implements OnInit {
         this.trending = results[4].data;
         if(this.trending && this.trending.length == 0) {
           this.commonService.trendingClass = 'topNoTrending'
+        } else {
+          this.commonService.trendingClass = 'top';
         }
         this.setFavicon();
+        this.fragment ="most-recent-stories";
         if (this.brandSlug != '1851') {
           this.getInquiry();
           this.getContact();
           this.setEditorialEmail();
+          this.fragment="brand-latest-stories";
         }
       }
-    );
+    ); 
   }
   setEditorialEmail() {
-    if (this.publication.id === '1851') {
-      this.editorialEmail = 'editorial@1851franchise.com';
-    } else if (this.publication.id.toLowerCase() === 'ee') {
+    this.editorialEmail = 'editorial@1851franchise.com';
+    if (this.publication.id.toLowerCase() === 'ee') {
       this.editorialEmail = 'editorial@estatenvy.com';
-    } else {
+    } else if(this.publication.id == 'ROOM-1903') {
       this.editorialEmail = 'editorial@room1903.com';
+    } else if(this.publication.id.toLowerCase() == 'stachecow') {
+      this.editorialEmail = 'editorial@stachecow.com';
     }
   }
 
@@ -217,9 +209,7 @@ export class HeaderComponent implements OnInit {
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
-  onKeyUp(): void {
-    this.subject.next();
-  }
+ 
   closeModal() {
     this.searchCloseBtn.nativeElement.click();
   }
@@ -412,17 +402,9 @@ export class HeaderComponent implements OnInit {
       });
   }
   setFavicon() {
-    let favicon;
-    if (this.publication.id == 'EE') {
-      favicon = 'ee';
-    } else if (this.publication.id == '1851') {
-      favicon = '1851';
-    } else {
-      favicon = '1903';
-    }
     this._document
       .getElementById('appFavicon')
-      .setAttribute('href', `${favicon}-favicon.ico`);
+      .setAttribute('href', `${this.publication.id}-favicon.ico`);
   }
   ngAfterViewInit() {
     // For sticky header
@@ -434,8 +416,19 @@ export class HeaderComponent implements OnInit {
         }, 6000);
       }
     }
+    
+  }
+  learnMenu()
+  {
+    this.isLearnMenu = !this.isLearnMenu;
+  }
+  brandMenu()
+  {
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
   }
   closeSidebar() {
+    this.isLearnMenu = !this.isLearnMenu;
+    this.isBrandLearnMenu= !this.isBrandLearnMenu;
     if (this.commonService.showmenu) {
       this.commonService.showmenu = false;
       $('.sidebar').removeClass('show');

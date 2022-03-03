@@ -5,9 +5,7 @@ import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { ValidationService } from 'src/app/_core/services/validation.service';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 
@@ -27,8 +25,7 @@ export class SubscribeComponent implements OnInit {
   submitErrMsg: string = '';
   submitSuccessMsg: string = '';
   isSuccess: boolean = false;
-  faCaretRight = faCaretRight;
-  banner = `${environment.imageResizeUrl}/insecure/fill/1280/720/sm/0/plain/${environment.s3Url}subscribepage-banner.jpeg`;
+  banner = `${environment.imageResizeUrl}/static/subscribe.jpg`
 
   constructor(
     private apiService: ApiService,

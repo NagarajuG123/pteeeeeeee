@@ -1,13 +1,14 @@
 export const environment = {
   production: true,
   port: 4000,
-  apiUrl: 'https://api.1851franchise.com/v1',
-  api2Url: 'https://api2.1851franchise.com/v1',
+  apiUrl: 'https://api.stachecow.com/v1',
+  api2Url: 'https://api2.stachecow.com/v1',
+  apiGatewayUrl:'https://api.stachecow.com/v1',
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
-  imageResizeUrl: 'https://dze0oudb6zz9z.cloudfront.net',
-  reCaptchaKey: '6Ldr6S0aAAAAAA014vqQCdLZw7RJbOBI2XI2kp4V',
-  appUrl: 'https://1851franchise.com',
-  fbUrl: 'https://www.facebook.com/1851magazine/',
-  enableSW: false,
+  imageResizeUrl: 'https://d13ofr2bv2bm2u.cloudfront.net',
+  reCaptchaKey: '6Ldq0FIeAAAAAL0_RblWHQAVyOfABp0CP_i00BGq',
+  appUrl: 'https://stachecow.com',
+  fbUrl: 'https://www.facebook.com/stachecow',
+  enableSW: true,
   env: 'production'
 };

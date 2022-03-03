@@ -13,7 +13,6 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import 'lazysizes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -35,7 +34,7 @@ export class CategoryComponent implements OnInit {
   skipTab = 0;
   tab!: string;
   mainText: string;
-  description: string;
+  description: string = '';
   banner: string;
   isLoaded: boolean;
   hasMore: boolean;
@@ -75,26 +74,30 @@ export class CategoryComponent implements OnInit {
       forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
-          if (results[0].data.length) {
-            this.featuredData = results[0].data;
-            this.hasMore = results[0].has_more;
-            this.metaService.setSeo(results[1].data);
+          // if (results[0].data.length) {
             this.tabName = results[2].categories;
+            this.metaService.setSeo(results[1].data);
             this.rows = `row-cols-lg-${this.tabName.length}`;
             this.activeTab =
-              this.tabName
-                .map(function (e) {
-                  return e.slug;
-                })
-                .indexOf(this.slug) + 1;
-            this.description = this.tabName.find(
+            this.tabName
+              .map(function (e) {
+                return e.slug;
+              })
+              .indexOf(this.slug) + 1;
+            if(this.tabName.find(
               (x) => x.slug == this.slug
-            ).description;
-            this.banner = this.tabName.find((x) => x.slug == this.slug).image;
-            this.isLoaded = true;
-          } else {
-            this.router.navigateByUrl(`/${this.type}`);
-          }
+            ) != undefined) {
+              this.featuredData = results[0].data;
+              this.hasMore = results[0].has_more;
+                this.description = this.tabName.find(
+                  (x) => x.slug == this.slug
+                ).description;
+                this.banner = this.tabName.find((x) => x.slug == this.slug).image;
+              this.isLoaded = true;
+            }
+          // } else {
+          //   this.router.navigateByUrl(`/${this.type}`);
+          // }
         });
     });
   }
@@ -136,10 +139,10 @@ export class CategoryComponent implements OnInit {
         }
       });
   }
-  getMore(tabName: any) {
+  getMore() {
     this.apiService
       .getAPI(
-        `${this.type}/${tabName}/featured?limit=5&offset=${
+        `${this.type}/${this.tab.toLowerCase()}/featured?limit=5&offset=${
           this.featuredData.length + 4
         }`
       )

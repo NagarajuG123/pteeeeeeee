@@ -1,0 +1,241 @@
+<div *ngIf="data?.layout == 1">
+    <app-awards
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [widget]="data"
+    ></app-awards>
+</div>
+<div *ngIf="data?.layout == 2">
+    <app-awards
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [class]="'widget2'"
+    [widget]="data"
+    ></app-awards>
+</div>
+<div *ngIf="data?.layout == 3">
+    <app-layout3
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [class]="'widget3'"
+    [widget]="data"
+    ></app-layout3>
+</div>
+<div *ngIf="data?.layout == 4">
+    <app-layout3
+    [type]="'widget'"
+    [stories]="data?.stories"
+    [class]="'widget4'"
+    [widget]="data"
+    ></app-layout3>
+</div>
+<div *ngIf="data?.layout == 5">
+    <div class="most-popular p-5 container-fluid" [ngClass]="widget5">
+        <div class="">
+          <div class="d-flex widget">
+            <div class="col-lg-11 col-md-10 col">
+              <h2 class="sectionTitle py-4 m-0">
+                {{ data.title }}
+              </h2>
+             </div> 
+             <div
+              class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+              <a routerLink="{{ data?.pageUrl }}" class="seeMore p-0"
+                >See More  <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+         
+        </div>
+        <hr class="m-0 mb-4" />
+        <div class="">
+          <div
+            class="row d-none d-md-flex"
+          >
+            <div class="col col-sm-4 pb-3" *ngFor="let item of data.stories; index as i">
+              <a routerLink="/{{ commonService.readMore(item) }}" fragment="'featured'">
+                <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
+                <figure><img
+                    appYoutubeImage
+                    width="366"
+                    height="206"
+                    data-src="{{ item.media | defaultImage: 366:206 }}"
+                    alt="most-popular"
+                    loading="lazy"
+                    class="lazyload img-fluid card-img-top"
+                  /></figure>
+                  <div class="card-body position-relative px-3 pt-5">
+                    <span
+                      class="
+                        position-absolute
+                        top-0
+                        start-0
+                        bg-white
+                        d-flex
+                        align-items-center
+                        justify-content-center
+                        py-1
+                        px-2
+                        text-uppercase
+                      "
+                      >Featured Article</span
+                    >
+                    <h2 class="position-relative ps-4 card-title m-0 pb-4">
+                      <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
+                      <p class="ms-3 mb-0 articleTitles pt-1">
+                        {{ item.title }}
+                      </p>
+                    </h2>
+                  </div>
+                  <div class="card-footer text-end py-1 px-2">
+                    <a class="seeMore p-0 text-white"
+                      >READ MORE
+                      <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+                <ng-template #elseBlock>
+                  <div class="subItem pe-md-3">
+                    <div class="card-body position-relative px-3">
+                      <div class="position-relative ps-4">
+                        <span class="position-absolute top-0 start-0 number">{{
+                          i + 1
+                        }}</span>
+                        <h3 class="mb-0 ms-3 card-title articleTitles">
+                          {{ item.title }}
+                        </h3>
+      
+                        <span
+                          *ngIf="commonService.isUpdate(item)"
+                          class="timeStamp ms-3"
+                          >{{ commonService.formatDate(item.last_modified) }} |
+                          {{ commonService.formatTime(item.last_modified) }}
+                        </span>
+                        <span
+                          *ngIf="!commonService.isUpdate(item)"
+                          class="timeStamp ms-3"
+                          >{{ commonService.formatDate(item.posted_on) }} |
+                          {{ commonService.formatTime(item.posted_on) }}</span
+                        >
+                        <p class="ms-3 mb-0 description">
+                          {{ item.short_description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </a>
+            </div>
+          </div>
+          <div
+            class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="'d-sm-none d-flex'"
+          >
+            <owl-carousel-o
+              [options]="customOptions"
+              class="position-relative popularCarousel"
+            >
+            <ng-template carouselSlide *ngFor="let item of data.stories; index as i" >
+              <div [ngClass]="data.stories.length == 1 ? 'col-sm-1 col-md-4' : data.stories.length == 2 ? 'col' : 'col'">
+                  <a 
+                    routerLink="/{{ commonService.readMore(item) }}"
+                    fragment="{{fragment}}"
+                  >
+                    <div class="card border-0 h-100">
+                      <figure>
+                      <img
+                        appYoutubeImage
+                        width="366"
+                        height="206"
+                        data-src="{{ item.media | defaultImage: 366:206 }}"
+                        alt="most-popular"
+                        loading="lazy"
+                        class="lazyload img-fluid card-img-top"
+                      /></figure>
+                      <div class="card-body carouselBody position-relative px-3 pt-5">
+                        <span
+                          class="
+                            position-absolute
+                            top-0
+                            start-0
+                            bg-white
+                            d-flex
+                            align-items-center
+                            justify-content-center
+                            py-1
+                            px-2
+                          "
+                          >POPULAR</span
+                        >
+                        <h2 class="position-relative ps-4 card-title m-0 pb-4">
+                          <span class="position-absolute top-0 start-0">{{
+                            i + 1
+                          }}</span>
+                          <p class="ms-3 mb-0 articleTitles pt-1">
+                            {{ formatTitle(item.title) }}
+                          </p>
+                        </h2>
+                      </div>
+                      <div class="card-footer text-end py-1 px-2">
+                        <a class="seeMore p-0 text-white"
+                          >READ MORE
+                          <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </a></div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </div>
+      
+</div>
+<div *ngIf="data?.layout == 6">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget6'"
+    [widget]="data"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 7">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget7'"
+    [widget]="data"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 8">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget5'"
+    [widget]="data"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 9">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget7'"
+    [widget]="data"
+    ></app-most-popular>
+</div>
+<div *ngIf="data?.layout == 10">
+    <app-most-popular
+    [type]="'widget'"
+    [fragment]="'featured'"
+    [title]="data.title"
+    [stories]="data.stories"
+    [class] ="'widget6'"
+    [widget]="data"
+    ></app-most-popular>
+</div>

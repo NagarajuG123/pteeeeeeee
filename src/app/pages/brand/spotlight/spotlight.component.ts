@@ -4,7 +4,6 @@ import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-spotlight',
@@ -41,9 +40,10 @@ export class SpotlightComponent implements OnInit {
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
+        if(results[0].categories){
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
-        this.defaultTab = this.tab = results[0].defaultTab;
+        this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
 
         this.apiService
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)
@@ -71,6 +71,7 @@ export class SpotlightComponent implements OnInit {
             }
             this.isLoaded = true;
           });
+        }
       });
   }
   setActiveTab(val: any, item: any) {

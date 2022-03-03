@@ -7,7 +7,6 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
-import 'lazysizes';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-brand',
@@ -53,7 +52,7 @@ export class BrandComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.slug = params.get('slug');
       this.apiService
-        .getAPI(`get-brand-by-slug/${this.slug}`)
+        .getAPI2(`${this.slug}`)
         .subscribe(async (response) => {
           if (response.status === 404) {
             this.router.navigateByUrl('/404');

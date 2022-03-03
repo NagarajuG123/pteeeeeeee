@@ -1,6 +1,6 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <div *ngIf="data" class="sidebar-blur">
-  <div *ngIf="data?.media" class="banner d-flex flex-row-reverse">
+  <div *ngIf="isShow() && data?.media" class="banner d-flex flex-row-reverse">
     <div class="banner-left-info banner-left_about col-sm-9 col-12 p-0">
       <a
         class="d-block video-btn"
@@ -12,7 +12,7 @@
         <figure>
           <img
             appYoutubeImage
-            data-src="{{ data?.media | defaultImage: 1300:730 }}"
+            data-src="{{ data?.media.placeholder }}"
             width="1023"
             height="575"
             alt="about"
@@ -204,12 +204,12 @@
               <br />
               <div class="row gx-2" id="recaptchaBlock">
                 <div class="col-8 col-sm">
-                  <re-captcha
-                    (resolved)="resolved($event)"
-                    formControlName="reCaptchaCode"
-                    siteKey="{{ siteKey }}"
-                  >
-                  </re-captcha>
+                  <recaptcha 
+                  [size]="'invisible'"
+                  [hide]="false" 
+                  formControlName="reCaptchaCode"
+                >
+                  </recaptcha>
                   <app-error-message
                     *ngIf="isSubmitted"
                     class="full-width"
@@ -223,7 +223,7 @@
                     (click)="onContactSubmit(contactForm)"
                   >
                     SUBMIT
-                    <fa-icon [icon]="faAngleRight"></fa-icon>
+                    <i class="fa fa-angle-right"></i>
                   </button>
                 </div>
               </div>
@@ -263,6 +263,7 @@
           width="100%"
           height="496px"
           allowfullscreen
+          loading = "lazy"
         >
         </iframe>
       </div>

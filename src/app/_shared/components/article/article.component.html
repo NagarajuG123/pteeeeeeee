@@ -6,6 +6,7 @@
       class="py-2"
     >
       <div class="card rounded-0 border-0 h-100">
+        <figure>
         <img
           appYoutubeImage
           data-src="{{ item.media | defaultImage: 267:150 }}"
@@ -18,12 +19,12 @@
               (max-width: 992px) 300px,
               267px'
           }}"
-          class="w-100 img-fluid lazyload card-img-top"
+          class="w-100 lazyload img-fluid card-img-top"
           width="267"
           height="150"
           alt=""
           loading="lazy"
-        />
+        /></figure>
         <div class="card-body p-0 pt-2 rounded-0">
           <span class="small-red-headers ps-3" *ngIf="type === 'brandNews'">
             {{ item?.brand.name }}</span
