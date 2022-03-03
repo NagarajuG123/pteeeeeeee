@@ -104,6 +104,7 @@
             height="{{ header?.logo?.height }}"
             alt=""
             class=" lazyload "
+            [ngClass]="publication?.id == 'EE' ? 'ee-logo' : ''"
         />
         <img
           *ngIf="!isMain"
@@ -186,7 +187,9 @@
             /></figure
         ></a>
         <nav class="pt-2 brandHeader" *ngIf="!isMain">
-          <ul class="nav justify-content-center">
+          <ul class="nav justify-content-center"
+          [ngClass]="publication?.id != 'EE' ? '': 'eeheaderMenu' "
+          >
             <li class="pe-lg-4 pe-4">
               <a
                 href="#"

@@ -8,7 +8,10 @@ header {
   font-family: $roboto;
   text-transform: uppercase;
   background-color: $white;
-
+  .ee-logo{
+    width: 300px;
+    height: 28px;
+  }
   .top-head {
     background-color: $dark_gray;
     height: 21px;
@@ -104,7 +107,12 @@ header {
       }
     
     }
-    .brandHeader{
+    .brandHeader{ 
+      .eeheaderMenu
+      {
+        font-family: $roboto;
+        color:$black_3;
+      }
       .articleTitles {
         font-family: $roboto;
         line-height:20.59px;
