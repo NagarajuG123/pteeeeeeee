@@ -2,14 +2,14 @@
   <div class="container customContainer">
     <div class="d-flex widget" *ngIf="type == 'widget';else mostBlock">
       <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-4 m-0" *ngIf="type == 'widget';else elseBlock">
+        <h2 class="sectionTitle py-4 m-0">
           {{ title }}
         </h2>
        </div> 
        <div
         class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
-        <a routerLink="{{ widget?.pageUrl }}" class="seeMore p-0" *ngIf="widget?.seeMore"
-          >See More  <i class="fa fa-angle-right"></i></a>
+        <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
+        >See More  <i class="fa fa-angle-right"></i></a>
       </div>
     </div>
     <ng-template #mostBlock>
