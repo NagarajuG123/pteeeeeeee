@@ -104,6 +104,7 @@
             height="{{ header?.logo?.height }}"
             alt=""
             class=" lazyload "
+            [ngClass]="publication?.id == 'EE' ? 'ee-logo' : ''"
         />
         <img
           *ngIf="!isMain"
