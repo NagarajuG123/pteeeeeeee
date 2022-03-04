@@ -66,6 +66,7 @@ export class InfoComponent implements OnInit {
   hasMore: boolean = false;
   categorySlug: string;
   tabClass:string;
+  publication: string;
 
   constructor(
     public commonService: CommonService,
@@ -276,6 +277,7 @@ export class InfoComponent implements OnInit {
     forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
       this.hasMore = results[0].has_more;
+      this.publication = results[1];
       this.logo = results[2].data.logo.image;
       if (results[0].meta) {
         this.metaService.setSeo(results[0].meta);
