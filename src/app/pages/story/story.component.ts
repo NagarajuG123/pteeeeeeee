@@ -6,6 +6,7 @@ import {
   PLATFORM_ID,
   RendererFactory2,
   ViewEncapsulation,
+  Renderer2
 } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -85,6 +86,7 @@ hasMore:any;
     private sanitizer: DomSanitizer,
     private googleAnalyticsService: GoogleAnalyticsService,
     private rendererFactory: RendererFactory2,
+    private renderer2: Renderer2,
     @Inject(DOCUMENT) private dom,
     private location: Location,
     private meta: Meta,
@@ -96,6 +98,8 @@ hasMore:any;
   }
 
   ngOnInit(): void {
+    this.loadScript('https://cdn.iframe.ly/embed.js?api_key=c14ba928acf9cfecbbb987');
+    this.loadScript("https://dmprqkmvewks9.cloudfront.net/sharethis.js#property=5cb792e5de419c001204327a&product=custom-share-buttons");
     this.getBrandList();
     this.setbrand();
     this.isLoading = false;
@@ -105,6 +109,16 @@ hasMore:any;
     this.duplicate = false;
   }
 
+  loadScript(url:string) {
+    const body = this.dom.body;
+    const script = this.renderer2.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.type = "text/javascript";
+    script.async = false;
+    script.defer = true;
+    this.renderer2.appendChild(body, script);
+  }
   setbrand() {
     this.route.queryParams
       .pipe(takeUntil(this.onDestroy$))
@@ -558,9 +572,7 @@ hasMore:any;
       const ogKeys = Object.keys(metas.og);
       for (const key of ogKeys) {
         if (key === 'media' && metas.og[key] !== null) {
-          // const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${encodeURIComponent(
-          //   this.changeMaxResultImg(metas.og['media']['path'])
-          // )}`;
+       
           const image_url = `${environment.imageResizeUrl}/fit-in/500x261/${metas.og['media']['path']
           }`;
           this.meta.updateTag(

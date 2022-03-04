@@ -77,12 +77,18 @@ export class HomeComponent implements OnInit {
     if(this.publication.id == 'Stachecow') {
       title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
     }
+    if(this.publication.id == 'EE') {
+      title = 'THE FUTURE OF REAL ESTATE';
+    }
     return title;
   }
   getSubTitle() {
     let subTitle = 'To help you buy, grow and build';
     if(this.publication.id == 'Stachecow') {
       subTitle = 'To help you build the life you deserve ';
+    }
+    else if(this.publication.id == 'EE') {
+      subTitle = 'To help you build the home';
     }
     return subTitle;
   }

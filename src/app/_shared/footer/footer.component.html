@@ -38,7 +38,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-lg-7 col-sm-4 py-3 px-4 border-end desktop-only">
+      <div class="col-12 col-lg-7 col-sm-4 py-3 px-4 border-end desktop-only" [ngClass]="publication?.id == 'EE' ? 'footer-middle' : '' ">
         <div class="row row-cols-lg-5">
           <div *ngFor="let menu of footer?.menus">
             <h4 *ngIf="menu.title == 'Spotlight'">
@@ -69,7 +69,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-7 py-3 px-4 border-end mobile-only">
+      <div class="col-12 col-lg-7 py-3 px-4 border-end mobile-only" [ngClass]="publication?.id == 'EE' ? 'footer-middle' : '' ">
         <div class="d-flex">
           <div class="col-md-6 pe-5">
             <ngContainer *ngFor="let menu of footer?.menus">

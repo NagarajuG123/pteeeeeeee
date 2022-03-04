@@ -14,6 +14,7 @@ export class FooterComponent implements OnInit {
   s3Url = environment.s3Url;
   utmSlug:string;
   isShow:boolean;
+  publication: string;
 
   socialIcons: any = [
     "fa fa-facebook-f",
@@ -29,8 +30,11 @@ export class FooterComponent implements OnInit {
     ) {
     this.route.queryParams
       .subscribe(params => {
-        if(params.utm) {
-          this.utmSlug = params.utm;
+        if(params.utm || params.utm_source || params.utm_medium || params.utm_campaign || params.utm_term || params.utm_content) {
+          this.utmSlug = '1851';
+          if(params.utm) {
+            this.utmSlug = params.utm;
+          }
         }
       });
   }
@@ -74,8 +78,10 @@ export class FooterComponent implements OnInit {
       footerApi = `footer?slug=${this.brandSlug}`;
     }
     const footer = this.apiService.getAPI2(footerApi);
-    forkJoin([footer]).subscribe((results) => {
+    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    forkJoin([footer,publication]).subscribe((results) => {
       this.footer = results[0];
+      this.publication = results[1];
     });
 
   }

@@ -96,8 +96,11 @@ isShow:boolean;
     this.isBrowser = isPlatformBrowser(platformId);
     this.route.queryParams
       .subscribe(params => {
-        if(params.utm) {
-          this.utmSlug = params.utm;
+        if(params.utm || params.utm_source || params.utm_medium || params.utm_campaign || params.utm_term || params.utm_content) {
+          this.utmSlug = '1851';
+          if(params.utm) {
+            this.utmSlug = params.utm;
+          }
         }
       });
   }

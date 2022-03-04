@@ -21,6 +21,10 @@
     color: $red;
   }
 }
+.ee-hrline{
+  border-color: $white_2;
+  background-color: $white_2;
+}
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
   .subTitle {
@@ -41,7 +45,6 @@
     }
     .card-body {
       background-color: $red;
-
       span {
         font-family: $roboto;
         font-weight: 700;
