@@ -257,3 +257,13 @@ button {
     border-color: $light_gray_8;
   }
 }
+.ee-tabs{
+  span {
+    &.active{
+      &::after {
+        border-color: $white_2 transparent transparent transparent !important;
+        bottom: -15px !important;
+      }
+    }
+  }    
+}
