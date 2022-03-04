@@ -30,7 +30,7 @@
       </ng-template>
    
   </div>
-  <hr class="m-0 mb-4" />
+  <hr class="m-0 mb-4" [ngClass]="publication.id == 'EE' ? 'ee-hrline' : ''"/>
   <div class="container customContainer">
     <div
       class="row d-none d-md-flex"
