@@ -48,7 +48,7 @@
               loading="lazy"
               class="lazyload img-fluid card-img-top"
             /></figure>
-            <div class="card-body position-relative px-3 pt-5"  [ngClass]="publication.id == 'EE' ? 'ee-span' : ''">
+            <div class="card-body position-relative px-3 pt-5">
               <span
                 *ngIf="type == 'homeFeature'; else titleBlock"
                 class="
@@ -62,7 +62,6 @@
                   py-1
                   px-2
                   text-uppercase
-                  tag
                 "
                 >Featured Article</span
               >
@@ -79,7 +78,6 @@
                     py-1
                     px-2
                     text-uppercase
-                    tag
                   "
                   >Popular</span
                 ></ng-template

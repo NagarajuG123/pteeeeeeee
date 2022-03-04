@@ -1,0 +1,38 @@
+@import "./variables.scss";
+
+.timeStamp{
+    color: $violet_1;
+}
+.tabs{
+    span {
+      &.active{
+        &::after {
+          border-color: $white_2 transparent transparent transparent !important;
+          bottom: -15px !important;
+        }
+      }
+    }    
+}
+.bottom-head{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.59px;
+}
+header{
+    .middle-head{
+        .articleTitles{
+            font-family: $roboto !important;
+            color:$black_3;
+        }
+    }
+}
+.most-popular{
+    .card{
+        .card-body{
+            span{
+                color: $dark_red;
+            }
+        }
+    }
+}

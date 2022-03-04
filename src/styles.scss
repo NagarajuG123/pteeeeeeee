@@ -3,6 +3,7 @@
 @import "./assets/scss/mixins.scss";
 @import "./assets/scss/variables.scss";
 @import "./assets/scss/common.scss";
+@import "./assets/scss/publication.scss";
 
 html,
 body {
@@ -283,14 +284,5 @@ figure {
 .ee-span{
   .tag{
     color: $dark_red !important;
-  }
-}
-.eeheaderMenu
-{
-  li{
-    h6{
-      font-family: $roboto !important;
-      color:$black_3 !important;
-    }
   }
 }
