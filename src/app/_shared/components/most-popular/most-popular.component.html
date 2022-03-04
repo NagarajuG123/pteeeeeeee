@@ -63,6 +63,7 @@
                   px-2
                   text-uppercase
                 "
+                [ngClass]="publication.id == 'EE' ? 'ee-span' : ''"
                 >Featured Article</span
               >
               <ng-template #titleBlock>

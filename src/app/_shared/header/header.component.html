@@ -1,6 +1,6 @@
 <header class="col-12 position-fixed" *ngIf="isShow">
   <!-- Top header section Start -->
-  <div class="top-head d-none d-xl-block" (click)="closeSidebar()">
+  <div class="top-head d-none d-xl-block" (click)="closeSidebar()" [ngClass]="publication?.id == 'EE' ? 'top-head-text' : ''">
     <div class="d-flex container">
       <div class="col-lg-11 d-flex">
         <span class="py-1">Publications in the Mainland Community:</span>
@@ -126,7 +126,7 @@
           <span class="sponsorLogo">POWERED BY</span>
         </a>
         <nav class="pt-2" *ngIf="isMain">
-          <ul class="nav justify-content-center">
+          <ul class="nav justify-content-center" [ngClass]="publication?.id != 'EE' ? '': 'eeheaderMenu' ">
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
                 ><h6 class="articleTitles">{{ menu.title }}</h6>
@@ -187,8 +187,7 @@
             /></figure
         ></a>
         <nav class="pt-2 brandHeader" *ngIf="!isMain">
-          <ul class="nav justify-content-center"
-          [ngClass]="publication?.id != 'EE' ? '': 'eeheaderMenu' "
+          <ul class="nav justify-content-center" [ngClass]="publication?.id == 'EE' ? 'eeheaderMenu' : '' "
           >
             <li class="pe-lg-4 pe-4">
               <a
