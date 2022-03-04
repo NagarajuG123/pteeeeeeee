@@ -1,6 +1,6 @@
 <header class="col-12 position-fixed" *ngIf="isShow">
   <!-- Top header section Start -->
-  <div class="top-head d-none d-xl-block" (click)="closeSidebar()">
+  <div class="top-head d-none d-xl-block" (click)="closeSidebar()" [ngClass]="publication?.id == 'EE' ? 'top-head-text' : ''">
     <div class="d-flex container">
       <div class="col-lg-11 d-flex">
         <span class="py-1">Publications in the Mainland Community:</span>
