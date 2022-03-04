@@ -281,7 +281,9 @@ figure {
   display: block;
 }
 .ee-span{
-  color: $dark_red !important;
+  .tag{
+    color: $dark_red !important;
+  }
 }
 .eeheaderMenu
 {
