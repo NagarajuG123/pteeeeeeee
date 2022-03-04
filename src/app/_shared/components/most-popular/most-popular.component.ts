@@ -41,7 +41,6 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('most popular');
     if(this.type == 'widget'){
       this.data = this.stories;
       this.isLoaded = true;
