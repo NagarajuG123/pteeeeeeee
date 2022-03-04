@@ -280,3 +280,17 @@ figure {
   padding: 0;
   display: block;
 }
+.ee-span{
+  .tag{
+    color: $dark_red !important;
+  }
+}
+.eeheaderMenu
+{
+  li{
+    h6{
+      font-family: $roboto !important;
+      color:$black_3 !important;
+    }
+  }
+}
