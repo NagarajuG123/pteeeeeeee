@@ -574,6 +574,7 @@
  
   <div
     class="bottom-head d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
+    [ngClass]="publication?.id == 'EE' ? 'ee-bottom-head' : ''"
     (click)="closeSidebar()"
     *ngIf="trending && trending.length"
   >
