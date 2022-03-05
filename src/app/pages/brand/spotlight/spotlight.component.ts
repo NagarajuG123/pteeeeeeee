@@ -23,6 +23,7 @@ export class SpotlightComponent implements OnInit {
   isLoaded: boolean = false;
   rows: any;
   hasMore: boolean;
+  publication: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -44,7 +45,7 @@ export class SpotlightComponent implements OnInit {
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
-
+        this.publication = results[1];
         this.apiService
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)
           .pipe(takeUntil(this.onDestroy$))
@@ -58,7 +59,7 @@ export class SpotlightComponent implements OnInit {
               this.hasMore = result.has_more;
             } else{
               this.apiService
-              .getAPI(`${this.slug}/spotlight/${this.tabName[0].shortName.toLowerCase()}?limit=8&offset=0`)
+              .getAPI(`${this.slug}/spotlight/${this.tabName[0].slug}?limit=8&offset=0`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((result) => {
                 const data: any[] = [];

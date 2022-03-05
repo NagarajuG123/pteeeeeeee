@@ -23,6 +23,7 @@ export class EditorialSectionsComponent implements OnInit {
   isLoaded: boolean = false;
   s3Url = environment.s3Url;
   rows: any;
+  publication: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -43,7 +44,7 @@ export class EditorialSectionsComponent implements OnInit {
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = results[0].defaultTab;
-
+        this.publication = results[1];
         this.apiService
           .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=10&offset=0`)
           .pipe(takeUntil(this.onDestroy$))

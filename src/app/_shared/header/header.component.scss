@@ -26,6 +26,9 @@ header {
       color: $white_2;
     }
   }
+  .top-head-text{
+    color: $light_gray_13 !important;
+  }
 
   .middle-head {
     .menuBtn {
@@ -107,7 +110,7 @@ header {
       }
     
     }
-    .brandHeader{
+    .brandHeader{ 
       .articleTitles {
         font-family: $roboto;
         line-height:20.59px;
@@ -302,7 +305,12 @@ header {
       padding: 0 0 1px 2px;
     }
   }
-
+  .ee-bottom-head{
+    font-family: $roboto !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 22.59px !important;
+  }
   .bottom-head {
     background-color: $dark_gray;
     border-bottom: 1px solid $white_2;
