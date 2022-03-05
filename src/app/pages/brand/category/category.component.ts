@@ -66,9 +66,9 @@ export class CategoryComponent implements OnInit {
       this.mainText = this.slug.replace('-', ' ');
       this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
-        `${this.type}/${this.slug}/featured?limit=20&offset=0`
+        `${this.type}/${this.tab}/featured?limit=20&offset=0`
       );
-      const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
+      const metaApi = this.apiService.getAPI(`1851/${this.tab}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
         `${this.type}/spotlights/categories`
       );
@@ -86,16 +86,16 @@ export class CategoryComponent implements OnInit {
               .map(function (e) {
                 return e.slug;
               })
-              .indexOf(this.slug) + 1;
+              .indexOf(this.tab) + 1;
             if(this.tabName.find(
-              (x) => x.slug == this.slug
+              (x) => x.slug == this.tab
             ) != undefined) {
               this.featuredData = results[0].data;
               this.hasMore = results[0].has_more;
                 this.description = this.tabName.find(
-                  (x) => x.slug == this.slug
+                  (x) => x.slug == this.tab
                 ).description;
-                this.banner = this.tabName.find((x) => x.slug == this.slug).image;
+                this.banner = this.tabName.find((x) => x.slug == this.tab).image;
               this.isLoaded = true;
             }
           // } else {
