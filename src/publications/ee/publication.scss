@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "assets/scss/mixins.scss";
 
 .timeStamp{
     color: $violet_1;
@@ -20,9 +21,11 @@
     line-height: 22.59px;
 }
 header{
-    .nav{
-        li{
-            padding-right: 0 !important;
+    @include tablet-landscape{
+        .nav{
+            li{
+                padding-right: 0 !important;
+            }
         }
     }
     .middle-head{
@@ -68,5 +71,10 @@ header{
     h4{
       color: $light_gray_14 !important;
       font-family: $roboto !important;
+    }
+}
+@include tablet-landscape{
+    .featuredSeries{
+        padding-bottom: 2rem !important;
     }
 }
