@@ -103,8 +103,7 @@
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
             alt=""
-            class=" lazyload "
-            [ngClass]="publication?.id == 'EE' ? 'ee-logo' : ''"
+            class=" lazyload mainLogo"
         />
         <img
           *ngIf="!isMain"
@@ -574,7 +573,6 @@
  
   <div
     class="bottom-head d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
-    [ngClass]="publication?.id == 'EE' ? 'ee-bottom-head' : ''"
     (click)="closeSidebar()"
     *ngIf="trending && trending.length"
   >

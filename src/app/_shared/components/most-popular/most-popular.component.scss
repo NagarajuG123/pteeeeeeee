@@ -21,10 +21,6 @@
     color: $red;
   }
 }
-.ee-hrline{
-  border-color: $white_2;
-  background-color: $white_2;
-}
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
   .subTitle {
@@ -50,7 +46,6 @@
         font-weight: 700;
         font-size: 10px;
         line-height: 10.3px;
-        color: $red;
       }
       h2 {
         span {
