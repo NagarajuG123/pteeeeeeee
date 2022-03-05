@@ -1,4 +1,4 @@
-<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="type == 'widget' ? class : ''">
+<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="type == 'widget' ? class : class2">
   <div class="container customContainer">
     <div class="d-flex widget" *ngIf="type == 'widget';else mostBlock">
       <div class="col-lg-11 col-md-10 col">
@@ -16,7 +16,6 @@
       <h2
       *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
-      [ngClass]="publication.id == 'EE' ? 'fw-bold' : ''"
     >
       {{ title }}
     </h2>
@@ -31,7 +30,7 @@
       </ng-template>
    
   </div>
-  <hr class="m-0 mb-4" [ngClass]="publication.id == 'EE' ? 'ee-hrline' : ''"/>
+  <hr class="m-0 mb-4"/>
   <div class="container customContainer">
     <div
       class="row d-none d-md-flex"

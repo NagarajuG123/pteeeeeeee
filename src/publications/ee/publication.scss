@@ -36,3 +36,22 @@ header{
         }
     }
 }
+.popularSection{
+    hr{
+        border-color: $white_2;
+        background-color: $white_2; 
+    }
+}
+.featuredSection{
+    .sectionTitle{
+        color: $violet_2 !important;
+        font-weight: 700 !important;
+    }
+    .subTitle{
+        color: $violet_2 !important;
+    }
+    hr{
+        border-color: $light_gray_8;
+        background-color: $light_gray_8;
+    }
+}
