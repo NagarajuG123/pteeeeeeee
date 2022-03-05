@@ -16,6 +16,7 @@
       <h2
       *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
+      [ngClass]="publication.id == 'EE' ? 'fw-bold' : ''"
     >
       {{ title }}
     </h2>
