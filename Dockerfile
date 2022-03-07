@@ -14,6 +14,8 @@ RUN cp src/publications/ee/index.html src/
 
 RUN cp src/publications/ee/variables.scss src/assets/scss/
 
+RUN cp src/publications/ee/publication.scss src/assets/scss/
+
 RUN npm run build:ee:qa
 
 VOLUME /app/dist/1851/browser
