@@ -26,6 +26,12 @@ header{
             font-family: $roboto !important;
             color:$black_3;
         }
+        .logo{
+            img{
+                width: 140px;
+                height: 30px;
+            }
+        }
     }
     .mainLogo{
         width: 280px;
