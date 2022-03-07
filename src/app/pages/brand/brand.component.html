@@ -7,12 +7,14 @@
   [fragment]="'featured'"
    title="{{name}}"
   [subTitle]="'Features'"
-  [class] ="'d-sm-none d-flex'">
+  [class] ="'d-sm-none d-flex'"
+  [class2]="'featuredSection'">
 </app-most-popular>
 <app-franchise-research [slug]="slug"></app-franchise-research>
 
   <app-most-popular   [fragment]="'trending'"
-  [slug]="slug" [apiUrl]="'trending?limit=9&offset=0'" [type]="'brand'" [title]="'Most Popular'" class="'d-sm-block'"></app-most-popular>
+  [slug]="slug" [apiUrl]="'trending?limit=9&offset=0'" [type]="'brand'" [title]="'Most Popular'" class="'d-sm-block'"
+  [class2]="'popularSection'"></app-most-popular>
 
   <app-spotlight [slug]="slug"></app-spotlight>
 

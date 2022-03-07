@@ -1,0 +1,39 @@
+@import "./variables.scss";
+.timeStamp{
+    color: $red;
+}
+.tabs{
+    span {
+      &.active{
+        &::after {
+          border-color: $red transparent transparent transparent !important;
+          bottom: -13px !important;
+        }
+      }
+    }    
+}
+.bottom-head{
+    font-family: $aktiv;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+}
+header{
+    .middle-head{
+        .articleTitles{
+            color: $dark_gray;
+        }
+    }
+    .mainLogo{
+        height: 54px;
+    }
+}
+.most-popular{
+    .card{
+        .card-body{
+            span{
+                color: $red;
+            }
+        }
+    }
+}

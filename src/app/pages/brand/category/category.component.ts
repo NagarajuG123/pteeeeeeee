@@ -38,7 +38,6 @@ export class CategoryComponent implements OnInit {
   banner: string;
   isLoaded: boolean;
   hasMore: boolean;
-  publication: string;
   s3Url = environment.s3Url;
   rows: any;
   private onDestroySubject = new Subject();
@@ -72,14 +71,12 @@ export class CategoryComponent implements OnInit {
       const spotlightCategoriesApi = this.apiService.getAPI(
         `${this.type}/spotlights/categories`
       );
-      const publicationApi = this.apiService.getAPI(`1851/publication-instance`); 
-      forkJoin([featureApi, metaApi, spotlightCategoriesApi,publicationApi])
+      forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           // if (results[0].data.length) {
             this.tabName = results[2].categories;
             this.metaService.setSeo(results[1].data);
-            this.publication = results[3];
             this.rows = `row-cols-lg-${this.tabName.length}`;
             this.activeTab =
             this.tabName
