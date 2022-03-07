@@ -21,11 +21,6 @@
     line-height: 22.59px;
 }
 header{
-    .nav{
-        @include mobile-landscape{
-            display: none;
-        }
-    }
     .middle-head{
         .articleTitles{
             font-family: $roboto !important;
