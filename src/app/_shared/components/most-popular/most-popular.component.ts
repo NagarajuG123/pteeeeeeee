@@ -22,13 +22,13 @@ export class MostPopularComponent implements OnInit {
   @Input() class2!: string;
   @Input() widget: string;
   @Input() fragment:string;
+  @Input() publication:string;
   @Input() stories: Details[] = [];
   
   data: Details[] = [];
   isLoaded: boolean = false;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
-  publication: string;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -46,13 +46,11 @@ export class MostPopularComponent implements OnInit {
       this.data = this.stories;
       this.isLoaded = true;
     } else {
-      const publication = this.apiService.getAPI(`1851/publication-instance`);
       const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
-      forkJoin([publication, mostPopular])
+      forkJoin([ mostPopular])
       .subscribe((response) => {
-        if (response[1].data.length) {
-          this.data = response[1].data;
-          this.publication = response[0];
+        if (response[0].data.length) {
+          this.data = response[0].data;
           this.isLoaded = true;
         }
       });
