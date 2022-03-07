@@ -33,6 +33,12 @@
           padding: 0 10px;
         }
       }
+    .seeAll{
+      @include mobile-landscape {
+        align-items: unset !important;
+        padding-top: 24px;
+      }
+    }
 }
 :host ::ng-deep {
     .owl-carousel {
