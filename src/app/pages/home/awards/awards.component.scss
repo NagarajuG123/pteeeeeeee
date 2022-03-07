@@ -67,6 +67,7 @@
   .owl-carousel {
     .owl-stage{
       @media only screen and (min-width: 320px) and (max-width: 768px) {
+        width: 5800px !important;
         transform: translate3d(-732px, 0px, 0px) !important;
       }  
       .owl-item {
@@ -82,7 +83,7 @@
       div {
         background-color: transparent;
         position: absolute;
-        top: 20%;
+        top: 30%;
         transform: translateY(-30%);
         background-repeat: no-repeat;
         cursor: pointer;
