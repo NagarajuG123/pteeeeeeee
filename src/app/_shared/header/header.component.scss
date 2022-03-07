@@ -8,10 +8,6 @@ header {
   font-family: $roboto;
   text-transform: uppercase;
   background-color: $white;
-  .ee-logo{
-    width: 300px;
-    height: 28px;
-  }
   .top-head {
     background-color: $dark_gray;
     height: 21px;
@@ -119,7 +115,6 @@ header {
       }
     }
     .articleTitles  {
-      color: $dark_gray;
       @include mobile-portrait {
         font-size: 11px;
         line-height: 14px !important;
@@ -305,20 +300,11 @@ header {
       padding: 0 0 1px 2px;
     }
   }
-  .ee-bottom-head{
-    font-family: $roboto !important;
-    font-weight: 500 !important;
-    font-size: 16px !important;
-    line-height: 22.59px !important;
-  }
+
   .bottom-head {
     background-color: $dark_gray;
     border-bottom: 1px solid $white_2;
     height: 41px;
-    font-family: $aktiv;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 20px;
     text-transform: none;
     @include tablet-landscape {
       font-weight: 500;

@@ -1,0 +1,67 @@
+@import "./variables.scss";
+
+.timeStamp{
+    color: $violet_1;
+}
+.tabs{
+    span {
+      &.active{
+        &::after {
+          border-color: $white_2 transparent transparent transparent !important;
+          bottom: -15px !important;
+        }
+      }
+    }    
+}
+.bottom-head{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.59px;
+}
+header{
+    .middle-head{
+        .articleTitles{
+            font-family: $roboto !important;
+            color:$black_3;
+        }
+    }
+    .mainLogo{
+        width: 280px;
+        height: 28px;
+    }
+}
+.most-popular{
+    .card{
+        .card-body{
+            span{
+                color: $dark_red;
+            }
+        }
+    }
+}
+.popularSection{
+    hr{
+        border-color: $white_2;
+        background-color: $white_2; 
+    }
+}
+.featuredSection{
+    .sectionTitle{
+        color: $violet_2 !important;
+        font-weight: 700 !important;
+    }
+    .subTitle{
+        color: $violet_2 !important;
+    }
+    hr{
+        border-color: $light_gray_8;
+        background-color: $light_gray_8;
+    }
+}
+.footer-middle{
+    h4{
+      color: $light_gray_14 !important;
+      font-family: $roboto !important;
+    }
+}

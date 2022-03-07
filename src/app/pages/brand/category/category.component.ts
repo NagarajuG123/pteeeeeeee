@@ -38,7 +38,6 @@ export class CategoryComponent implements OnInit {
   banner: string;
   isLoaded: boolean;
   hasMore: boolean;
-  publication: string;
   s3Url = environment.s3Url;
   rows: any;
   private onDestroySubject = new Subject();
@@ -66,36 +65,34 @@ export class CategoryComponent implements OnInit {
       this.mainText = this.slug.replace('-', ' ');
       this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
-        `${this.type}/${this.slug}/featured?limit=20&offset=0`
+        `${this.type}/${this.tab}/featured?limit=20&offset=0`
       );
-      const metaApi = this.apiService.getAPI(`1851/${this.slug}/meta`);
+      const metaApi = this.apiService.getAPI(`1851/${this.tab}/meta`);
       const spotlightCategoriesApi = this.apiService.getAPI(
         `${this.type}/spotlights/categories`
       );
-      const publicationApi = this.apiService.getAPI(`1851/publication-instance`); 
-      forkJoin([featureApi, metaApi, spotlightCategoriesApi,publicationApi])
+      forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           // if (results[0].data.length) {
             this.tabName = results[2].categories;
             this.metaService.setSeo(results[1].data);
-            this.publication = results[3];
             this.rows = `row-cols-lg-${this.tabName.length}`;
             this.activeTab =
             this.tabName
               .map(function (e) {
                 return e.slug;
               })
-              .indexOf(this.slug) + 1;
+              .indexOf(this.tab) + 1;
             if(this.tabName.find(
-              (x) => x.slug == this.slug
+              (x) => x.slug == this.tab
             ) != undefined) {
               this.featuredData = results[0].data;
               this.hasMore = results[0].has_more;
                 this.description = this.tabName.find(
-                  (x) => x.slug == this.slug
+                  (x) => x.slug == this.tab
                 ).description;
-                this.banner = this.tabName.find((x) => x.slug == this.slug).image;
+                this.banner = this.tabName.find((x) => x.slug == this.tab).image;
               this.isLoaded = true;
             }
           // } else {

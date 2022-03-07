@@ -19,6 +19,7 @@ export class MostPopularComponent implements OnInit {
   @Input() title: string;
   @Input() subTitle: string;
   @Input() class!: string;
+  @Input() class2!: string;
   @Input() widget: string;
   @Input() fragment:string;
   @Input() stories: Details[] = [];
