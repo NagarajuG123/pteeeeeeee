@@ -79,3 +79,49 @@ header{
       font-family: $roboto !important;
     }
 }
+.articles{
+    .large-main-article{
+        color: $black_3;
+    }
+    .sectionTitle{
+        color: $white_9;
+    }
+    .subTitle{
+        width: 900px;
+    }
+    .authorDetails{
+        .sectionTitle{
+            font-weight: 700 !important;
+            font-family: $roboto;
+            color: $red !important;
+        }
+    }
+    .most-like-articles{
+        .seeMore{
+            color: $black_3 !important;
+            font-family: $aktiv;
+            border-bottom: 1px solid $black_3 !important;
+        }
+        .articleTrending{
+            .card-title{
+                color: $black_4 !important;
+            }
+        }
+    }
+    .ArticlesNewsSection{
+        .newsSection{
+            color: $white_10 !important;
+        }
+        .articleTitles{
+            color: $black_4 !important;
+        }
+    }
+}
+.nextBtn {
+    .seeMoreLine{
+        border: 1px solid $dark_black !important;
+    }
+    .seeMore{
+        color: $black_3 !important;
+    }
+}
