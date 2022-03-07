@@ -1,6 +1,7 @@
 @import "../../../../assets/scss/media.scss";
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
+
 .widget6{
   background: $white !important;
   .sectionTitle{
@@ -85,6 +86,9 @@
     @include mobile-portrait {
       padding: 0 15px;
     }
+  }
+  &.widget5 {
+    background: linear-gradient($dark_gray 365px, $white 0);
   }
 }
 :host ::ng-deep {

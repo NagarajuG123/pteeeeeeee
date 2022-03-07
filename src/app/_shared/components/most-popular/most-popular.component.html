@@ -65,7 +65,7 @@
                 "
                 >Featured Article</span
               >
-              <ng-template #titleBlock>
+              <ng-template #titleBlock *ngIf="type == 'home' || type == 'brand'">
                 <span
                   class="
                     position-absolute
