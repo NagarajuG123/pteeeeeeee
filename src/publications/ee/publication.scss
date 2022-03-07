@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./mixins.scss";
 
 .timeStamp{
     color: $violet_1;
@@ -25,6 +26,14 @@ header{
             font-family: $roboto !important;
             color:$black_3;
         }
+        .logo{
+            img{
+                @include mobile-landscape{
+                    width: 140px;
+                    height: 30px;
+                }
+            }
+        }
     }
     .mainLogo{
         width: 280px;
@@ -50,6 +59,11 @@ header{
             span{
                 color: $dark_red;
             }
+        }
+        .carouselBody{
+            @include mobile-landscape {
+                min-height: unset !important;
+            }    
         }
     }
 }

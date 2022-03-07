@@ -62,12 +62,27 @@
       padding: 0 10px;
     }
   }
+  .seeAll{
+    @include mobile-landscape{
+      align-items: unset !important;
+      padding-top: 26px;
+    }
+  }
 }
 :host ::ng-deep {
   .owl-carousel {
-    .owl-item {
-      width:222.4px !important;
-      padding: 0 5px;
+    .owl-stage{
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+        width: 5800px !important;
+        transform: translate3d(-732px, 0px, 0px) !important;
+      }  
+      .owl-item {
+        width:222.4px !important;
+        padding: 0 5px;
+        @media only screen and (min-width: 320px) and (max-width: 768px) {
+          width: 360px !important;
+        }
+      } 
     }
 
     .owl-nav {
