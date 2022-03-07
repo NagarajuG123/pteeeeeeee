@@ -103,7 +103,7 @@
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
             alt=""
-            class=" lazyload mainLogo d-md-block"
+            class=" lazyload mainLogo"
         />
         <img
           *ngIf="!isMain"
@@ -112,7 +112,7 @@
             class=" lazyload"
         />
         <img
-          class=" lazyload eeLogo d-sm-block d-md-none"
+          class=" lazyload eeLogo"
             src='assets/img/EElogo.png'
             height="{{ header?.logo?.height }}"
             alt=""
@@ -131,7 +131,7 @@
           <span class="sponsorLogo">POWERED BY</span>
         </a>
         <nav class="pt-2" *ngIf="isMain">
-          <ul class="nav justify-content-center">
+          <ul class="nav justify-content-center" [ngClass]="publication?.id != 'EE' ? '': 'eeheaderMenu' ">
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
                 ><h6 class="articleTitles">{{ menu.title }}</h6>
@@ -192,7 +192,7 @@
             /></figure
         ></a>
         <nav class="pt-2 brandHeader" *ngIf="!isMain">
-          <ul class="nav justify-content-center"
+          <ul class="nav justify-content-center" [ngClass]="publication?.id == 'EE' ? 'eeheaderMenu' : '' "
           >
             <li class="pe-lg-4 pe-4">
               <a
