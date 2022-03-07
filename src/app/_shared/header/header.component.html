@@ -103,13 +103,19 @@
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
             alt=""
-            class=" lazyload mainLogo"
+            class=" lazyload mainLogo d-md-block"
         />
         <img
           *ngIf="!isMain"
             data-src="{{ header?.logo?.image }}"
             alt=""
             class=" lazyload"
+        />
+        <img
+          class=" lazyload eeLogo d-sm-block d-md-none"
+            src='assets/img/EElogo.png'
+            height="{{ header?.logo?.height }}"
+            alt=""
         />
       </a>
         <!-- brand -->
