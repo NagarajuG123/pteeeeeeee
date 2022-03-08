@@ -38,17 +38,15 @@ header{
     .mainLogo{
         width: 280px;
         height: 28px;
-        @media only screen and (min-width: 320px) and (max-width: 768px) {
+        @include tablet-landscape1{
             display: none;
         }
     }
     .eeLogo
     {
-        @media only screen and (min-width: 320px) and (max-width: 768px) {
+        display: none;
+        @include tablet-landscape1{
             display: block;
-        }
-        @media only screen and (min-width: 900px) and (max-width: 1400px)  {
-            display:none
         }
 
     }
