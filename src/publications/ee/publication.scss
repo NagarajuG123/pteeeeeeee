@@ -81,13 +81,13 @@ header{
 }
 .articles{
     .large-main-article{
-        color: $black_3;
+        color: $black_3 !important;
     }
     .sectionTitle{
-        color: $white_9;
+        color: $white_9 !important;
     }
     .subTitle{
-        width: 900px;
+        width: 900px !important;
     }
     .authorDetails{
         .sectionTitle{
