@@ -22,6 +22,35 @@
           />
         </figure>
       </a>
+            <!-- modal -->
+      <div
+      class="modal fade"
+      id="aboutModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <iframe
+              [src]="data?.media?.url | safeUrl"
+              frameborder="0"
+              width="100%"
+              height="496px"
+              allowfullscreen
+              loading = "lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
     <div class="banner-right-info banner-right_about col-sm-3 col-12 p-0">
       <div class="buffalo_wings">
@@ -237,35 +266,6 @@
             </form>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal -->
-<div
-  class="modal fade"
-  id="aboutModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
->
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-        <iframe
-          [src]="videoUrl | safeUrl"
-          frameborder="0"
-          width="100%"
-          height="496px"
-          allowfullscreen
-          loading = "lazy"
-        >
-        </iframe>
       </div>
     </div>
   </div>

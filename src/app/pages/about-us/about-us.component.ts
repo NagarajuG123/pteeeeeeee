@@ -27,7 +27,6 @@ export class AboutUsComponent implements OnInit {
   submitSuccessMsg: string = '';
   isBrowser: boolean;
   data: any = [];
-  videoUrl;
 
   constructor(
     private apiService: ApiService,
@@ -61,7 +60,6 @@ export class AboutUsComponent implements OnInit {
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     forkJoin([publication, aboutus, meta]).subscribe((results) => {
       this.data = results[1].data;
-      this.videoUrl = this.data.media.url;
 
       this.publication = results[0];
       if (this.data?.contents?.length > 1) {

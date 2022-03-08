@@ -20,6 +20,17 @@
     }
   }
   .leftSide {
+    .seeAll{
+      @include mobile-landscape{
+        align-items: unset !important;
+        padding-top: 10px !important
+      }
+      .seeMore{
+        @include mobile-landscape{
+          margin-right: unset !important;
+        }
+      }
+    }
     figure {
       img {
         @include mobile-landscape {
