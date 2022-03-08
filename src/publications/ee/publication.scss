@@ -95,6 +95,9 @@ header{
             font-family: $roboto;
             color: $red !important;
         }
+        .timeStamp{
+            color: $black_3 !important;
+        }
     }
     .most-like-articles{
         .seeMore{
@@ -109,6 +112,7 @@ header{
         }
     }
     .ArticlesNewsSection{
+        background-color: $red !important;
         .newsSection{
             color: $white_10 !important;
         }
