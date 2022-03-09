@@ -1,0 +1,69 @@
+@import "../../../../assets/scss/typography.scss";
+@import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.widget2{
+    background: $white !important;
+    .topSection{
+      h2{
+        color: $dark_gray !important;
+      }
+    }
+  .sectionTitle{
+    color: $dark_gray;
+  }
+  .articleTitles{
+    color: $dark_gray !important;
+  }
+}
+.awards {
+  background: $dark_gray;
+  color: $black;
+
+  .sectionTitle {
+    line-height: 25.6px;
+  }
+
+  .seeMore {
+    color: $red;
+  }
+
+  .topSection {
+    img {
+      @include mobile-landscape {
+        height: auto;    
+      }            
+      height: 302px;
+    }
+    h2 {
+      font-size: 20px;
+      line-height: 23.4px;
+      font-weight: 700;
+      font-family: $aktiv;
+      color: $white_2;
+    }
+  }
+  .bottomSection {
+    figure {
+      img {
+        @include mobile-landscape {
+          height: auto;    
+        }            
+        height: 118px;
+      }
+    }
+    .articleTitles {
+      color: $white_2;
+    }
+  }
+  .seeAll{
+    @include mobile-landscape{
+      align-items: unset !important;
+      padding-top: 26px;
+    }
+  }
+  .col-sm-12{
+      width: 20% !important;
+  }
+}

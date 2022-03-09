@@ -3,20 +3,6 @@
 @import "../../../../assets/scss/variables.scss";
 @import "../../../../assets/scss/mixins.scss";
 
-.widget2{
-    background: $white !important;
-    .topSection{
-      h2{
-        color: $dark_gray !important;
-      }
-    }
-  .sectionTitle{
-    color: $dark_gray;
-  }
-  .articleTitles{
-    color: $dark_gray !important;
-  }
-}
 .awards {
   background: $dark_gray;
   color: $black;

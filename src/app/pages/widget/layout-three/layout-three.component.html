@@ -1,0 +1,81 @@
+<div class="most-popular sidebar-blur" [ngClass]="class">
+    <div class="container customContainer">
+      <div class="d-flex widget">
+        <div class="col-lg-11 col-md-10 col">
+          <h2 class="sectionTitle py-4 m-0">
+            {{ widget?.title }}
+          </h2>
+         </div> 
+         <div
+          class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+          <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
+          >See More  <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr class="m-0 mb-4"/>
+    <div class="container customContainer">
+      <div class="row d-none d-md-flex">
+        <div class="col col-sm-4 pb-3" *ngFor="let item of widget?.stories; index as i">
+          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
+            <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
+            <figure><img
+                appYoutubeImage
+                width="366"
+                height="206"
+                data-src="{{ item.media | defaultImage: 366:206 }}"
+                alt="most-popular"
+                loading="lazy"
+                class="lazyload img-fluid card-img-top"
+              /></figure>
+              <div class="card-body position-relative px-3 pt-5">
+                <h2 class="position-relative ps-4 card-title m-0 pb-4">
+                  <span class="position-absolute top-0 start-0">{{ i + 1 }}</span>
+                  <p class="ms-3 mb-0 articleTitles pt-1">
+                    {{ item.title }}
+                  </p>
+                </h2>
+              </div>
+              <div class="card-footer text-end py-1 px-2">
+                <a class="seeMore p-0 text-white"
+                  >READ MORE
+                  <i class="fa fa-angle-right fw-bold" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <ng-template #elseBlock>
+              <div class="subItem pe-md-3">
+                <div class="card-body position-relative px-3">
+                  <div class="position-relative ps-4">
+                    <span class="position-absolute top-0 start-0 number">{{
+                      i + 1
+                    }}</span>
+                    <h3 class="mb-0 ms-3 card-title articleTitles">
+                      {{ item.title }}
+                    </h3>
+  
+                    <span
+                      *ngIf="commonService.isUpdate(item)"
+                      class="timeStamp ms-3"
+                      >{{ commonService.formatDate(item.last_modified) }} |
+                      {{ commonService.formatTime(item.last_modified) }}
+                    </span>
+                    <span
+                      *ngIf="!commonService.isUpdate(item)"
+                      class="timeStamp ms-3"
+                      >{{ commonService.formatDate(item.posted_on) }} |
+                      {{ commonService.formatTime(item.posted_on) }}</span
+                    >
+                    <p class="ms-3 mb-0 description">
+                      {{ item.short_description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

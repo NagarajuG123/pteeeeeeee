@@ -1,0 +1,83 @@
+<div class="awards sidebar-blur pb-3" [ngClass]="class">
+    <div class="container customContainer">
+      <div class="d-flex">
+        <div class="col-lg-11 col-md-10 col">
+          <h2 class="sectionTitle py-4 m-0" >
+            {{ widget?.title }}
+          </h2>
+         </div> 
+         <div
+          class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center seeAll">
+          <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
+          >See More  <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  
+    <div class="container customContainer py-2 px-4">
+      <div class="row row-cols-lg-2">
+        <div
+          *ngFor="let item of widget?.stories | slice: 0:2; index as i"
+          class="topSection"
+        >
+          <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{fragment}}"
+          >
+            <img
+              appYoutubeImage
+              data-src="{{ item.media | defaultImage: 536:302 }}"
+              class="img-fluid lazyload"
+              alt="story"
+              width="536"
+              height="302"
+              loading="lazy"
+            />
+  
+            <h2 class="m-0 pt-2 pb-5">
+              {{ item.title }}
+            </h2>
+          </a>
+        </div>
+      </div>
+
+      <div class="row gx-2 bottomSection">
+        <ng-container *ngFor="let item of widget?.stories | slice: 2:11; index as i">
+            <div class="col-sm-12 col">
+              <a
+                *ngIf="item?.media"
+                routerLink="/{{ commonService.readMore(item) }}"
+                fragment="dynamicpage"
+              >
+              <figure>
+                <img
+                appYoutubeImage
+                data-src="{{ item.media | defaultImage: 212:119 }}"
+                data-srcset="{{item.media | defaultImage:400:225}} 400w, 
+                            {{item.media | defaultImage:355:199}} 355w, 
+                            {{item.media | defaultImage:300:168}} 300w, 
+                            {{item.media | defaultImage:212:119}} 212w"
+                class=" lazyload img-fluid card-img-top d-inline"
+                alt=""
+                width="212"
+                height="119"
+                loading="lazy"
+                sizes="{{
+                  '(max-width: 576px) 400px,
+                   (max-width: 768px) 355px,
+                   (max-width: 992px) 300px,
+                   212px'
+                }}"
+              /></figure>
+  
+                <h3 class="articleTitles align-items-center m-0 pt-2">
+                  {{ item.title }}
+                </h3>
+              </a>
+            </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
