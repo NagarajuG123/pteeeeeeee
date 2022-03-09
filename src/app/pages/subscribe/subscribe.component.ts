@@ -17,7 +17,7 @@ import { CommonService } from 'src/app/_core/services/common.service';
 export class SubscribeComponent implements OnInit {
   slug = '1851';
   title!: string;
-  isCheckBoxVisible: boolean = true;
+  isCheckBoxVisible: boolean = false;
   publication: any;
   isBrowser: boolean = false;
   contactForm: FormGroup;
@@ -94,10 +94,10 @@ export class SubscribeComponent implements OnInit {
   }
 
   setCheckBoxVisibility() {
-    if (this.publication.id === '1851') {
-      return;
-    }
     this.isCheckBoxVisible = false;
+    if (this.publication.id == '1851') {
+      this.isCheckBoxVisible = true;
+    }
   }
 
   toggleCurrent(e) {
