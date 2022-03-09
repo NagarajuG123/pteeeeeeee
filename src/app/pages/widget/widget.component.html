@@ -1,94 +1,59 @@
 <div *ngIf="data?.layout == 1">
-    <app-awards
-    [type]="'widget'"
-    [stories]="data?.stories"
+    <app-layout-one
     [widget]="data"
-    [fragment]="'featured'"
-    ></app-awards>
+    [fragment]="'featured'"></app-layout-one>
 </div>
 <div *ngIf="data?.layout == 2">
-    <app-awards
-    [type]="'widget'"
-    [stories]="data?.stories"
+    <app-layout-one
     [class]="'widget2'"
     [widget]="data"
-    [fragment]="'featured'"
-    ></app-awards>
+    [fragment]="'featured'"></app-layout-one>
 </div>
 <div *ngIf="data?.layout == 3">
-    <app-layout3
+    <app-layout-two
     [type]="'widget'"
-    [stories]="data?.stories"
     [class]="'widget3'"
-    [widget]="data"
-    ></app-layout3>
+    [widget]="data"></app-layout-two>
 </div>
 <div *ngIf="data?.layout == 4">
-    <app-layout3
+    <app-layout-two
     [type]="'widget'"
-    [stories]="data?.stories"
     [class]="'widget4'"
-    [widget]="data"
-    ></app-layout3>
+    [widget]="data"></app-layout-two>
 </div>
 <div *ngIf="data?.layout == 5">
-  <app-most-popular
-  [type]="'widget'"
-  [fragment]="'featured'"
-  [title]="data.title"
-  [stories]="data.stories"
-  [class] ="'widget5'"
-  [widget]="data"
-  ></app-most-popular>
-      
+    <app-layout-three
+    [class]="'widget5'"
+    [widget]="data"
+    [fragment]="'featured'"></app-layout-three>
 </div>
 <div *ngIf="data?.layout == 6">
-    <app-most-popular
-    [type]="'widget'"
-    [fragment]="'featured'"
-    [title]="data.title"
-    [stories]="data.stories"
-    [class] ="'widget6'"
+    <app-layout-three
+    [class]="'widget6'"
     [widget]="data"
-    ></app-most-popular>
+    [fragment]="'featured'"></app-layout-three>
 </div>
 <div *ngIf="data?.layout == 7">
-    <app-most-popular
-    [type]="'widget'"
-    [fragment]="'featured'"
-    [title]="data.title"
-    [stories]="data.stories"
-    [class] ="'widget7'"
+    <app-layout-three
+    [class]="'widget7'"
     [widget]="data"
-    ></app-most-popular>
+    [fragment]="'featured'"></app-layout-three>
 </div>
 <div *ngIf="data?.layout == 8">
-    <app-most-popular
-    [type]="'widget'"
-    [fragment]="'featured'"
-    [title]="data.title"
-    [stories]="data.stories"
-    [class] ="'widget5'"
+    <app-layout-three
+    [class]="'widget5'"
     [widget]="data"
-    ></app-most-popular>
+    [fragment]="'featured'"></app-layout-three>
 </div>
 <div *ngIf="data?.layout == 9">
-    <app-most-popular
-    [type]="'widget'"
-    [fragment]="'featured'"
-    [title]="data.title"
-    [stories]="data.stories"
-    [class] ="'widget7'"
+    <app-layout-three
+    [class]="'widget7'"
     [widget]="data"
-    ></app-most-popular>
+    [fragment]="'featured'"></app-layout-three>
 </div>
 <div *ngIf="data?.layout == 10">
-    <app-most-popular
-    [type]="'widget'"
-    [fragment]="'featured'"
-    [title]="data.title"
-    [stories]="data.stories"
-    [class] ="'widget6'"
+    <app-layout-three
+    [class]="'widget6'"
     [widget]="data"
-    ></app-most-popular>
+    [fragment]="'featured'"></app-layout-three>
 </div>

@@ -1,18 +1,5 @@
 <div class="awards sidebar-blur pb-3" *ngIf="isLoaded" [ngClass]="class">
   <div class="container customContainer">
-    <div class="d-flex" *ngIf="type == 'widget';else elseBlock">
-      <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-4 m-0" >
-          {{ widget?.title }}
-        </h2>
-       </div> 
-       <div
-        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center seeAll">
-        <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
-        >See More  <i class="fa fa-angle-right"></i></a>
-      </div>
-    </div>
-    <ng-template #elseBlock>
       <div class="d-flex">
         <div class="col-lg-11 col-md-10 col">
           <h2 class="sectionTitle py-4 m-0">
@@ -25,7 +12,6 @@
           >See More  <i class="fa fa-angle-right"></i></a>
       </div>
       </div>
-    </ng-template>
   </div>
   <hr />
 

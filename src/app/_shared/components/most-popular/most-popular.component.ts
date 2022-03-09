@@ -20,10 +20,8 @@ export class MostPopularComponent implements OnInit {
   @Input() subTitle: string;
   @Input() class!: string;
   @Input() class2!: string;
-  @Input() widget: string;
   @Input() fragment:string;
   @Input() publication:string;
-  @Input() stories: Details[] = [];
   
   data: Details[] = [];
   isLoaded: boolean = false;
@@ -42,19 +40,14 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.type == 'widget'){
-      this.data = this.stories;
-      this.isLoaded = true;
-    } else {
-      const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
-      forkJoin([ mostPopular])
-      .subscribe((response) => {
-        if (response[0].data.length) {
-          this.data = response[0].data;
-          this.isLoaded = true;
-        }
-      });
-    }
+    const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
+    forkJoin([ mostPopular])
+    .subscribe((response) => {
+      if (response[0].data.length) {
+        this.data = response[0].data;
+        this.isLoaded = true;
+      }
+    });
     this.customOptions = {
       loop: true,
       mouseDrag: false,
