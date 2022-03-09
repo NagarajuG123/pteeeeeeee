@@ -40,7 +40,9 @@ export class MonthlyDetailsComponent implements OnInit {
       this.date = params.get('date');
       this.id = params.get('id');
       const date_number = Number(this.date);
+      this.month = this.month.length == 1 ? this.month.padStart(2, '0') : this.month;
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
+     
       this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`)
         .subscribe((response) => {
           this.banner = response;
