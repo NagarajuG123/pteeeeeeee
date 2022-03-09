@@ -17,7 +17,7 @@
     <div class="container customContainer">
       <div class="row d-none d-md-flex">
         <div class="col col-sm-4 pb-3" *ngFor="let item of widget?.stories; index as i">
-          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
+          <a href="{{ commonService.readMore(item) }}" target="_blank" fragment="{{fragment}}">
             <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
             <figure><img
                 appYoutubeImage
@@ -84,7 +84,7 @@
       <ng-template carouselSlide *ngFor="let item of widget?.stories; index as i" >
         <div [ngClass]="widget?.stories.length == 1 ? 'col-sm-1 col-md-4' : widget?.stories.length == 2 ? 'col' : 'col'">
             <a 
-              routerLink="/{{ commonService.readMore(item) }}"
+              href="{{ commonService.readMore(item) }}" target="_blank"
               fragment="{{fragment}}"
             >
               <div class="card border-0 h-100">
