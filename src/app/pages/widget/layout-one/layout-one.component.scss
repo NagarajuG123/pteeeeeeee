@@ -65,5 +65,8 @@
   }
   .col-sm-12{
       width: 20% !important;
+      @include mobile-landscape{
+          width: unset !important;
+      }
   }
 }
