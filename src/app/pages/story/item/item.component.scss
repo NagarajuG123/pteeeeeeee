@@ -134,6 +134,10 @@
     }
     .most-like-articles{
       padding-top: 30px !important;
+      .seeMore{
+        border-bottom: unset !important;
+        padding-bottom: 10px;
+      }
     }
     .title{
       padding: 10px 0 10px !important;
