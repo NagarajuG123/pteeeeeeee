@@ -75,6 +75,9 @@
     color: $dark_gray_3;
     line-height: 150%;
     overflow: auto;
+    @include mobile-landscape{
+      overflow: unset !important;
+    }
   }
   .category{
       font-family: $aktiv;
