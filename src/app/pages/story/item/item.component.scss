@@ -123,9 +123,14 @@
     }
     .nextBtn{
       padding-top: 15px !important;
+      padding-bottom: 30px !important;
+      -webkit-box-shadow: 0 5px 8px rgb(0 0 0 / 20%);
       .faIcon{
         padding-right: 8px !important;
       }
+    }
+    .most-like-articles{
+      padding-top: 30px !important;
     }
     .title{
       padding: 10px 0 10px !important;

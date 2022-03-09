@@ -18,6 +18,9 @@
   &.articleTrending {
     padding-top: 10px;
     img {
+      @include mobile-landscape{
+        height: 110px !important;
+      }
       @include tablet-landscape {
         height: auto;    
       } 
