@@ -63,7 +63,10 @@
       padding-top: 26px;
     }
   }
-  .col-sm-12{
-      width: 20% !important;
+  .col-md-4{
+      width: 20% ;
+      @include mobile-portrait {
+        width: 100%;
+      }
   }
 }

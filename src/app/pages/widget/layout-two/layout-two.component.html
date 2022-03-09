@@ -22,14 +22,14 @@
     <hr />
   
     <div class="container customContainer pb-2 px-4">
-      <div class="d-flex row row-cols-sm-1 row-cols-md-5">
+      <div class="d-flex row row-cols-sm-1 row-cols-md-3 row-cols-lg-5">
           <ng-container
             *ngFor="let item of widget?.stories | slice: 0:10; index as i"
           >
             <div >
               <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="featured"
+              href="{{ commonService.readMore(item) }}"
+              target="_blank"
               >
                 <img
                 appYoutubeImage
@@ -48,7 +48,7 @@
                   (max-width: 992px) 300px,
                   210px'
                 }}"/>
-                <h3 class="articleTitles align-items-center m-0 pt-2">
+                <h3 class="articleTitles align-items-center m-0 py-2">
                   {{ item.title }}
                 </h3>
               </a>

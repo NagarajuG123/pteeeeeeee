@@ -16,14 +16,14 @@
     <hr />
   
     <div class="container customContainer py-2 px-4">
-      <div class="row row-cols-lg-2">
+      <div class="row row-cols-lg-2 row-cols-md-2">
         <div
           *ngFor="let item of widget?.stories | slice: 0:2; index as i"
           class="topSection"
         >
           <a
-            routerLink="/{{ commonService.readMore(item) }}"
-            fragment="{{fragment}}"
+            href="{{ commonService.readMore(item) }}"
+            target="_blank"
           >
             <img
               appYoutubeImage
@@ -44,7 +44,7 @@
 
       <div class="row gx-2 bottomSection">
         <ng-container *ngFor="let item of widget?.stories | slice: 2:11; index as i">
-            <div class="col-sm-12 col">
+            <div class="col-sm-12 col-md-4 pb-2">
               <a
                 *ngIf="item?.media"
                 routerLink="/{{ commonService.readMore(item) }}"
