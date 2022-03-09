@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Layout3Component } from './layout3.component';
+import { LayoutTwoComponent } from './layout-two.component';
 
-describe('Layout3Component', () => {
-  let component: Layout3Component;
-  let fixture: ComponentFixture<Layout3Component>;
+describe('LayoutTwoComponent', () => {
+  let component: LayoutTwoComponent;
+  let fixture: ComponentFixture<LayoutTwoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Layout3Component ]
+      declarations: [ LayoutTwoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Layout3Component);
+    fixture = TestBed.createComponent(LayoutTwoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

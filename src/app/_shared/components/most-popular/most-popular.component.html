@@ -1,19 +1,6 @@
-<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="type == 'widget' ? class : class2">
+<div class="most-popular sidebar-blur" *ngIf="isLoaded" [ngClass]="class2">
   <div class="container customContainer">
-    <div class="d-flex widget" *ngIf="type == 'widget';else mostBlock">
-      <div class="col-lg-11 col-md-10 col">
-        <h2 class="sectionTitle py-4 m-0">
-          {{ title }}
-        </h2>
-       </div> 
-       <div
-        class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
-        <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
-        >See More  <i class="fa fa-angle-right"></i></a>
-      </div>
-    </div>
-    <ng-template #mostBlock>
-      <h2
+   <h2
       *ngIf="type == 'home'|| type == 'brand'; else elseBlock"
       class="py-4 m-0 sectionTitle"
     >
@@ -27,14 +14,13 @@
         </span>
       </h2></ng-template
     >
-      </ng-template>
    
   </div>
   <hr class="m-0 mb-4"/>
   <div class="container customContainer">
     <div
       class="row d-none d-md-flex"
-      *ngIf="type == 'home' || type == 'homeFeature' || type == 'widget'"
+      *ngIf="type == 'home' || type == 'homeFeature'"
     >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
@@ -65,7 +51,7 @@
                 "
                 >Featured Article</span
               >
-              <ng-template #titleBlock>
+              <ng-template #titleBlock *ngIf="type == 'home' || type == 'brand'">
                 <span
                   class="
                     position-absolute
@@ -130,7 +116,7 @@
       </div>
     </div>
     <div
-      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="type == 'widget' ? 'd-sm-none d-flex' : class"
+      class="row gx-xl-3 gx-lg-2 pb-3" [ngClass]="class"
     >
       <owl-carousel-o
         [options]="customOptions"
@@ -164,7 +150,7 @@
                       align-items-center
                       justify-content-center
                       py-1
-                      px-2
+                      px-4
                     "
                     >POPULAR</span
                   >

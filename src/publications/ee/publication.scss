@@ -38,6 +38,17 @@ header{
     .mainLogo{
         width: 280px;
         height: 28px;
+        @include tablet-landscape1{
+            display: none;
+        }
+    }
+    .eeLogo
+    {
+        display: none;
+        @include tablet-landscape1{
+            display: block;
+        }
+
     }
 }
 .most-popular{
@@ -81,13 +92,13 @@ header{
 }
 .articles{
     .large-main-article{
-        color: $black_3;
+        color: $black_3 !important;
     }
     .sectionTitle{
-        color: $white_9;
+        color: $white_9 !important;
     }
     .subTitle{
-        width: 900px;
+        width: 900px !important;
     }
     .authorDetails{
         .sectionTitle{
@@ -127,5 +138,15 @@ header{
     }
     .seeMore{
         color: $black_3 !important;
+    }
+}
+.series
+{
+    .rightSide
+    {
+        .card-img-top{
+            width: 130px;
+            height: 85px;
+        }
     }
 }

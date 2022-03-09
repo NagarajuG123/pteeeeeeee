@@ -1,0 +1,78 @@
+@import "../../../../assets/scss/media.scss";
+@import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
+
+.widget6{
+  background: $white !important;
+  .sectionTitle{
+    color: $dark_gray;
+  }
+}
+.widget7{
+  background: $dark_gray !important;
+  .articleTitles{
+    color: $white;
+  }
+  .description{
+    color: $white;
+  }
+}
+.widget{
+  .seeMore{
+    color: $red;
+  }
+}
+.most-popular {
+  background: linear-gradient($dark_gray 385px, $white 0);
+  .subTitle {
+    color: $white;
+    font-weight: 700;
+    text-transform: none;
+    &::before {
+      content: "|";
+      padding-left: 15px;
+      padding-right: 15px;
+      display: inline-block;
+    }
+  }
+  .card {
+    img {
+      max-height: 206px;
+      height: 206px;
+    }
+    .card-body {
+      background-color: $red;
+      h2 {
+        span {
+          font-size: 49px;
+          line-height: 103%;
+          font-weight: 700;
+          color: $white_4;
+        }
+        .articleTitles {
+          color: $white_2;
+       
+        }
+      }
+    }
+    .card-footer {
+      background-color: $dark_red;
+      border-radius: 0;
+      border: none;
+    }
+  }
+  .subItem {
+    .card-body {
+      .number {
+        font-size: 31px;
+        line-height: 36px;
+        font-weight: 700;
+        font-family: $roboto;
+        color: $red;
+      }
+    }
+  }
+  &.widget5 {
+    background: linear-gradient($dark_gray 365px, $white 0);
+  }
+}
