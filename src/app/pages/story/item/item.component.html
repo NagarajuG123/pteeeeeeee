@@ -225,7 +225,7 @@
        *ngIf="brandSlug=='1851'">
       <div class="container customContainer">
           <h4 class="timeStamp newsSection mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0">
-            Featured Franchise News</h4>
+            Featured {{ publication.newsType }}</h4>
           <app-article 
               [typeSlug]="'frannews'"
               [contents]="mainNews"
