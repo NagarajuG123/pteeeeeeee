@@ -34,6 +34,12 @@ export class LayoutThreeComponent implements OnInit {
         400: {
           items: 1,
         },
+        740: {
+          items: 3,
+        },
+        940: {
+          items: 3,
+        },
       },
     };
   }

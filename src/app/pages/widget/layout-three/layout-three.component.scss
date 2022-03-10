@@ -54,6 +54,10 @@
        
         }
       }
+      &.carouselBody {
+        min-height: 160px;
+        max-height: 160px;
+    }
     }
     .card-footer {
       background-color: $dark_red;
