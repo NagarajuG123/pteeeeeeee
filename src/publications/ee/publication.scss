@@ -186,7 +186,10 @@ header{
      } 
  }
  .awards {
-    .seeMore, hr {
-      color: $dark_gray_11 !important;
+    .seeMore {
+      color: $dark_black !important;
+    }
+    hr {
+        color:$white !important;
     }
   }
