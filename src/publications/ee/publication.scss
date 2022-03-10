@@ -65,11 +65,7 @@ header{
                 color: $dark_red;
             }
         }
-        .carouselBody{
-            @include mobile-landscape {
-                min-height: unset !important;
-            }    
-        }
+       
     }
 }
 .popularSection{

@@ -31,10 +31,14 @@
 
   .topSection {
     img {
-      @include mobile-landscape {
-        height: auto;    
-      }            
       height: 302px;
+
+      @include tablet-portrait {
+        height: auto;    
+      }     
+      @include mobile-landscape {
+        height:auto;
+      }            
     }
     h2 {
       font-size: 20px;
@@ -47,10 +51,14 @@
   .bottomSection {
     figure {
       img {
-        @include mobile-landscape {
-          height: auto;    
-        }            
         height: 118px;
+
+        @include tablet-portrait {
+          height: auto;    
+        }   
+        @include mobile-landscape {
+          height:auto;
+        }          
       }
     }
     .articleTitles {

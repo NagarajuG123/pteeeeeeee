@@ -34,11 +34,12 @@ export class AwardsComponent implements OnInit {
         if(result.data != null) {
           this.result = result.data;
           this.data = result.data.stories;
+          if(this.data.length > 0) {
+            this.isLoaded = true;
+          }
         }
       });
-    if(this.data.length > 0) {
-      this.isLoaded = true;
-    }
+  
   }
   setConfig() {
     this.customOptions = {
