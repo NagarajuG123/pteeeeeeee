@@ -502,7 +502,7 @@
                 ><h3>{{ brandTitle }} Most read Stories</h3></a
               >
               <ul class="mb-2 ms-2">
-                <li class="ms-1" *ngFor="let story of trending | slice: 0:3">
+                <li class="ms-1" *ngFor="let story of header?.sidebar?.articles">
                   <a
                     class="
                       d-flex
