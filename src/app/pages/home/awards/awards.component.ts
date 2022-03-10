@@ -16,7 +16,7 @@ export class AwardsComponent implements OnInit {
   @Input() fragment: string;
 
   data: Details[] = [];
-  result: string;
+  result: Details[] = [];
   isBrowser: boolean;
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;

@@ -4,15 +4,17 @@
 .timeStamp{
     color: $violet_1;
 }
-.tabs{
-    span {
-      &.active{
-        &::after {
-          border-color: $white_2 transparent transparent transparent !important;
-          bottom: -15px !important;
-        }
-      }
-    }    
+.editorial-section{
+    .tabs{
+        span {
+          &.active{
+            &::after {
+              border-color: $white_2 transparent transparent transparent !important;
+              bottom: -15px !important;
+            }
+          }
+        }    
+    }
 }
 .bottom-head{
     font-family: $roboto;
