@@ -141,6 +141,7 @@
                 /></figure>
                 <div class="card-body carouselBody position-relative px-3 pt-5">
                   <span
+                    *ngIf="type == 'homeFeature'; else titleBlock"
                     class="
                       position-absolute
                       top-0
@@ -151,9 +152,28 @@
                       justify-content-center
                       py-1
                       px-4
+                      text-uppercase
                     "
-                    >POPULAR</span
+                    >Featured Article</span
                   >
+                  <ng-template  #titleBlock *ngIf="type == 'home' || type == 'brand'">
+                    <span
+                    *ngIf="type == 'homeFeature'; else titleBlock"
+                    class="
+                      position-absolute
+                      top-0
+                      start-0
+                      bg-white
+                      d-flex
+                      align-items-center
+                      justify-content-center
+                      py-1
+                      px-4
+                      text-uppercase
+                    "
+                    >Popular</span
+                  >
+                  </ng-template>
                   <h2 class="position-relative ps-4 card-title m-0 pb-4">
                     <span class="position-absolute top-0 start-0">{{
                       i + 1
