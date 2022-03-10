@@ -46,6 +46,16 @@ header{
     .mainLogo{
         width: 280px;
         height: 28px;
+        @include tablet-landscape1{
+            display: none;
+        }
+    }
+    .eeLogo
+    {
+        display: none;
+        @include tablet-landscape1{
+            display: block;
+        }
     }
 }
 .most-popular{
@@ -146,4 +156,7 @@ header{
             height: 85px;
         }
     }
+}
+.timeStamp{
+    color: $black_3 !important;
 }
