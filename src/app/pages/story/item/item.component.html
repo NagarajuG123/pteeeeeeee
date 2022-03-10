@@ -222,18 +222,19 @@
   </div>
   <!-- news blocks -->
   <div class="ArticlesNewsSection gray-bg pb-5 d-none d-md-flex"
-       *ngIf="brandSlug=='1851'">
+       *ngIf="brandSlug=='1851' && mainNews && mainNews.length > 0">
       <div class="container customContainer">
-          <h4 class="timeStamp newsSection mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0">
+          <h4 class="timeStamp newsSection mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0 ">
             Featured {{ publication.newsType }}</h4>
           <app-article 
               [typeSlug]="'frannews'"
               [contents]="mainNews"
               [class]="'row-cols-sm-1 newsSection'"
             ></app-article>
-          <h4 class="timeStamp newsSection mb-0" *ngIf="brandNews && brandNews.length > 0">
+          <h4 class="timeStamp newsSection mb-0" *ngIf="brandNews && brandNews.length > 0 && publication?.id !== 'EE'">
             Featured Brand News</h4>
           <app-article
+            *ngIf= "publication?.id !== 'EE'"
             [typeSlug]="'frannews'"
             [contents]="brandNews"
             [type]="'brandNews'"
@@ -243,15 +244,16 @@
   </div>
 
   <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none "
-       *ngIf="brandSlug=='1851'">
+       *ngIf="brandSlug=='1851' && mainNews && mainNews.length > 0">
     <div class="container customContainer py-md-2">
       <h4 class="timeStamp newsSection mb-0" *ngIf="mainNews && mainNews.length > 0" >Featured Franchise News</h4>
       <app-carousel
         [typeSlug]="'frannews'"
         [contents]="mainNews"
       ></app-carousel>
-      <h4 class="timeStamp newsSection mb-0 mt-2" *ngIf="brandNews && brandNews.length > 0" >Featured Brand News</h4>
+      <h4 class="timeStamp newsSection mb-0 mt-2" *ngIf="brandNews && brandNews.length > 0 && publication?.id !== 'EE'" >Featured Brand News</h4>
       <app-carousel
+        *ngIf= "publication?.id !== 'EE'"
         [typeSlug]="'frannews'"
         [contents]="brandNews"
         [type]="'brandNews'"

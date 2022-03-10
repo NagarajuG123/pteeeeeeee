@@ -46,6 +46,16 @@ header{
     .mainLogo{
         width: 280px;
         height: 28px;
+        @include tablet-landscape1{
+            display: none;
+        }
+    }
+    .eeLogo
+    {
+        display: none;
+        @include tablet-landscape1{
+            display: block;
+        }
     }
 }
 .most-popular{
@@ -143,3 +153,35 @@ header{
         }
     }
 }
+.timeStamp{
+    color: $black_3 !important;
+}
+.c-card-box--section{
+   .c-card-box--wrapper{
+        .c-card-box--group{
+            .articleTitles{
+                color: $dark_black !important;
+            }
+        } 
+        .seeMore{
+            color: $dark_black !important;
+         } 
+         .coverContent{
+            .content{
+                color: $dark_red !important;
+            }
+         } 
+    }
+}
+.banner{
+    .left-text{
+        right: 10%;
+    }
+}
+.financial-requirement-section{
+    .financial-description{
+        .highlight-text {
+            color : $violet_1 !important;
+        }
+     } 
+ }

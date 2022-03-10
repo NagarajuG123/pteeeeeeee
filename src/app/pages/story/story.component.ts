@@ -199,10 +199,14 @@ hasMore:any;
                   this.apiService.getAPI(
                     `1851/latest?limit=4&offset=0`
                   ),
+                  this.apiService.getAPI('1851/trending?limit=4&offset=0')
                 ])
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((result) => {
                     this.mainNews = result[0].data;
+                    if(this.publication.id == 'EE'){
+                      this.mainNews = result[2].data;
+                    }
                     this.brandNews = result[1].data;
                   });
                 switch (this.type) {
