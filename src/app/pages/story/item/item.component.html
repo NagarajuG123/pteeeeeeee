@@ -80,14 +80,14 @@
       <h2 class="sectionTitle p-2" [innerHTML]="short_description"></h2>
     </div>
     <div class="row row-cols-md-3 row-cols-sm-1 authorDetails pt-3 px-3">
-      <div class="d-flex justify-content-center align-items-center">
+      <div class="d-flex ">
         <a
           routerLink="/author/{{ details?.author?.slug }}"
-          class="authorImg d-none d-md-flex"
+          class="d-none px-4 d-md-flex"
           *ngIf="details?.author"
         >
           <img
-            src="{{ author_media | defaultImage: 50:50 }}"
+            src="{{ author_media | defaultImage: 90:50 }}"
             width="50"
             height="50"
             class="author-img d-block lazyload rounded-circle"
