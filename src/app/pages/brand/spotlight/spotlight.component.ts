@@ -75,7 +75,7 @@ export class SpotlightComponent implements OnInit {
   }
   setActiveTab(val: any, item: any) {
     this.activeTab = val;
-    this.tab = item?.shortName;
+    this.tab = item?.slug;
     this.getData(this.tab);
   }
   getData(tabName: any) {

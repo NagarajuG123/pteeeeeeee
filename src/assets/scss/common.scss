@@ -204,7 +204,6 @@ button {
     color: $dark_gray;
   }
 }
-
 //tabs
 .tabs {
   height: 60px;
@@ -236,6 +235,8 @@ button {
           width: 7px;
           border-width: 16px 16px 0 16px;
           border-style: solid;
+          border-color: $red transparent transparent transparent !important;
+          bottom: -13px !important;
         }
         &::before {
           content: "";
