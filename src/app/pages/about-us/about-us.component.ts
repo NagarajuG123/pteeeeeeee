@@ -112,5 +112,15 @@ export class AboutUsComponent implements OnInit {
         $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
       });
     }
+    const recaptchaElement = document.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (recaptchaElement) {
+      recaptchaElement.style.visibility = 'visible';
+    }
+  }
+  ngOnDestroy() {
+    const recaptchaElement = document.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (recaptchaElement) {
+      recaptchaElement.style.visibility = 'hidden';
+    }
   }
 }
