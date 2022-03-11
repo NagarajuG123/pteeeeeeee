@@ -80,6 +80,9 @@ header{
         }
        
     }
+    .seeMore{
+        color: $white !important;
+    }
 }
 .popularSection{
     hr{
@@ -219,3 +222,6 @@ header{
         }
     }
 } 
+.seeMore{
+    color: $dark_gray_11 !important;
+}
