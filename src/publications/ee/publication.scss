@@ -80,6 +80,9 @@ header{
         }
        
     }
+    .seeMore{
+        color: $white !important;
+    }
 }
 .popularSection{
     hr{
@@ -107,6 +110,9 @@ header{
     }
 }
 .articles{
+    @include mobile-portrait{
+        padding-top: 20px !important;
+    }
     .large-main-article{
         color: $black_3 !important;
     }
@@ -206,3 +212,26 @@ header{
         color:$white !important;
     }
   }
+  @include mobile-portrait{
+    .download-pdf--wrapper{
+       .frannews-right--wrapper{
+           .frannews-image--wrapper,img{
+               width: 100% !important;
+               height: auto !important;
+           }
+        }
+    }
+} 
+.seeMore{
+    color: $dark_gray_11 !important;
+}
+.frannews-details{
+    .frannews-top{
+        border-bottom: 1px solid $dark_gray !important;
+    }
+} 
+.error-banner-details{
+    h1{
+        color: $dark_black !important;
+    }
+}
