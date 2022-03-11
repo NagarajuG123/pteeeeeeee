@@ -185,7 +185,6 @@
         >
           <figure>
             <img
-              appYoutubeImage
               data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
               width="97"
               height="127"
@@ -283,7 +282,6 @@
               *ngIf="header?.monthlyCover"
             >
               <img
-                appYoutubeImage
                 data-src="{{ header?.monthlyCover | defaultImage: 97:127 }}"
                 width="97"
                 height="127"
@@ -709,7 +707,6 @@
                 <div class="card rounded-0 border-0 h-100">
                   <figure>
                   <img
-                    appYoutubeImage
                     data-src="{{ item.media | defaultImage: 240:140 }}"
                     srcset="{{item.media | defaultImage:545:305}} 545w,
                       {{item.media | defaultImage:355:199}} 355w, 

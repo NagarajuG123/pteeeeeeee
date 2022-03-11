@@ -26,7 +26,6 @@
           fragment="{{fragment}}"
         >
           <img
-            appYoutubeImage
             data-src="{{ item.media | defaultImage: 536:302 }}"
             class="img-fluid lazyload"
             alt="story"
@@ -59,7 +58,6 @@
             >
             <figure>
               <img
-              appYoutubeImage
               data-src="{{ item.media | defaultImage: 212:119 }}"
               data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
               class=" lazyload img-fluid card-img-top d-inline"

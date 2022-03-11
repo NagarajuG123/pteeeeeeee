@@ -79,7 +79,6 @@
               (click)="openVideoPlayer = true"
             >
               <img
-                appYoutubeImage
                 class="lazyload img-fluid"
                 width="888"
                 height="500"
@@ -132,7 +131,6 @@
                   >
                     <figure>
                       <img
-                        appYoutubeImage
                         data-src="{{ item?.media | defaultImage: 796:0 }}"
                         width="100%"
                         height="100%"
@@ -230,7 +228,6 @@
                 <div class="frannews-right--wrapper" *ngIf="items.image">
                   <div class="frannews-image--wrapper">
                     <img
-                      appYoutubeImage
                       data-src="{{ items?.image | defaultImage: 417:353 }}"
                       class="lazyload"
                       width="417"
@@ -650,7 +647,6 @@
                         class="pe-2"
                       >
                         <img
-                          appYoutubeImage
                           width="161"
                           class="lazyload img-fluid"
                           alt="featured"
@@ -699,7 +695,6 @@
                         class="pe-2"
                       >
                         <img
-                          appYoutubeImage
                           width="139"
                           class="lazyload img-fluid"
                           alt="trending"

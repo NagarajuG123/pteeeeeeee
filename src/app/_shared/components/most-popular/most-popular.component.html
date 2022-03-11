@@ -26,7 +26,6 @@
         <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
           <figure><img
-              appYoutubeImage
               width="366"
               height="206"
               data-src="{{ item.media | defaultImage: 366:206 }}"
@@ -131,7 +130,6 @@
               <div class="card border-0 h-100">
                 <figure>
                 <img
-                  appYoutubeImage
                   width="366"
                   height="206"
                   data-src="{{ item.media | defaultImage: 366:206 }}"

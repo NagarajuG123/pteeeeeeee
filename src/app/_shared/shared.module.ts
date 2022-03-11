@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from '../_core/pipes/default-image.pipe';
 import { ShareButtonModule } from 'ngx-sharebuttons/button';
 import { SafeUrlPipe } from '../_core/pipes/safe-url.pipe';
-import { ImagePreloadDirective } from '../_core/directives/image-preload.directive';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 // Header and Footer Components
 import { HeaderComponent } from './header/header.component';
@@ -29,7 +28,6 @@ import { VideoComponent } from './components/video/video.component';
     TrendingBuzzComponent,
     DefaultImagePipe,
     SafeUrlPipe,
-    ImagePreloadDirective,
     MostPopularComponent,
     ArticleComponent,
     HomeArticleComponent,
@@ -51,7 +49,6 @@ import { VideoComponent } from './components/video/video.component';
     ReactiveFormsModule,
     CarouselModule,
     DefaultImagePipe,
-    ImagePreloadDirective,
     SafeUrlPipe,
     HeaderComponent,
     FooterComponent,

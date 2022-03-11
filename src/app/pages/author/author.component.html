@@ -8,7 +8,6 @@
           <figure>
             <img
               *ngIf="author"
-              appYoutubeImage
               src="{{ author?.media | defaultImage: 528:297 }}"
               width="528"
               height="297"
