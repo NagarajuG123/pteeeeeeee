@@ -107,6 +107,9 @@ header{
     }
 }
 .articles{
+    @include mobile-portrait{
+        padding-top: 20px !important;
+    }
     .large-main-article{
         color: $black_3 !important;
     }
@@ -206,3 +209,13 @@ header{
         color:$white !important;
     }
   }
+  @include mobile-portrait{
+    .download-pdf--wrapper{
+       .frannews-right--wrapper{
+           .frannews-image--wrapper,img{
+               width: 100% !important;
+               height: auto !important;
+           }
+        }
+    }
+} 

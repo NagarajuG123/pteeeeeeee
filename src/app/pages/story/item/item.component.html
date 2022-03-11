@@ -246,7 +246,7 @@
   <div class="ArticlesNewsSection gray-bg py-5 d-flex d-sm-none "
        *ngIf="brandSlug=='1851' && mainNews && mainNews.length > 0">
     <div class="container customContainer py-md-2">
-      <h4 class="timeStamp newsSection mb-0" *ngIf="mainNews && mainNews.length > 0" >Featured Franchise News</h4>
+      <h4 class="timeStamp newsSection mb-0" *ngIf="mainNews && mainNews.length > 0" >Featured {{ publication.newsType }}</h4>
       <app-carousel
         [typeSlug]="'frannews'"
         [contents]="mainNews"
