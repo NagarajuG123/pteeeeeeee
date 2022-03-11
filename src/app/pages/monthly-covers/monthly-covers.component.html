@@ -41,7 +41,6 @@
                 class="maincardbox-link--wrapper"
               >
                 <img
-                  appYoutubeImage
                   data-src="{{ firstBlock[0]?.media | defaultImage: 600:775 }}"
                   width="600"
                   height="775"
@@ -63,7 +62,6 @@
                     routerLink="/{{item.url}}"
                   >
                     <img
-                      appYoutubeImage
                       data-src="{{ item?.media | defaultImage: 288:379 }}"
                       width="288"
                       height="379"
@@ -108,7 +106,6 @@
           <a class="monthly-covers1" routerLink="{{ cover?.url }}">
             <figure class="m-0">
               <img
-                appYoutubeImage
                 data-src="{{ cover.media | defaultImage: 288:379 }}"
                 width="305"
                 height="380"

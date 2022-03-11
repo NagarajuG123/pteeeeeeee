@@ -13,9 +13,9 @@ export class DefaultImagePipe implements PipeTransform {
     }
    
     if (typeof value.url.image_url !== 'undefined') {
-      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.url.path}`;
+      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/filters:format(webp)/${value.url.path}`;
     } else {
-      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/${value.path}`;
+      image = `${environment.imageResizeUrl}/fit-in/${width}x${height}/filters:format(webp)/${value.path}`;
     }
     return image;
   }

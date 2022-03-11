@@ -12,7 +12,6 @@
           </div>
           <a routerLink="{{ seriesData[0]?.url }}">
             <figure><img
-              appYoutubeImage
               class="img-fluid lazyload"
               width="741"
               height="417"
@@ -52,7 +51,6 @@
                 <a routerLink="/{{ item?.url }}" class="pe-2">
                   <figure>
                     <img
-                      appYoutubeImage
                       data-src="{{ item.media | defaultImage: 192:108 }}"
                       data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:192:108}} 192w"
                       class="lazyload img-fluid card-img-top"
