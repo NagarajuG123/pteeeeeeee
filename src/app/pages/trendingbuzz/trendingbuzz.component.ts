@@ -11,12 +11,14 @@ import { environment } from 'src/environments/environment';
 })
 export class TrendingbuzzComponent implements OnInit {
   trendingData: Details[] = [];
-  banner: Details[] = [];
+  banner: any = [];
 
   slug: string = '1851';
   hasMore: boolean = false;
   isLoaded: boolean;
   s3Url = environment.s3Url;
+  openVideoPlayer: boolean;
+  videoUrl: string;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -34,6 +36,9 @@ export class TrendingbuzzComponent implements OnInit {
         this.metaService.setSeo(response.data[0].meta);
         this.trendingData = response.data.slice(1);
         this.banner = response.data[0];
+        if (this.commonService.isVideo(this.banner)) {
+          this.videoUrl = this.banner.media.url;
+        }
         this.hasMore = response.has_more;
         this.isLoaded = true;
         this.apiService
