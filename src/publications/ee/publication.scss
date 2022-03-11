@@ -225,3 +225,13 @@ header{
 .seeMore{
     color: $dark_gray_11 !important;
 }
+.frannews-details{
+    .frannews-top{
+        border-bottom: 1px solid $dark_gray !important;
+    }
+} 
+.error-banner-details{
+    h1{
+        color: $dark_black !important;
+    }
+}
