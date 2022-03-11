@@ -10,6 +10,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-about-us',
@@ -27,6 +28,7 @@ export class AboutUsComponent implements OnInit {
   submitSuccessMsg: string = '';
   isBrowser: boolean;
   data: any = [];
+  body: any;
 
   constructor(
     private apiService: ApiService,
@@ -36,7 +38,8 @@ export class AboutUsComponent implements OnInit {
     fb: FormBuilder,
     private toastr: ToastrService,
     public sanitizer: DomSanitizer,
-    public commonService: CommonService
+    public commonService: CommonService,
+    @Inject(DOCUMENT) private dom,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = fb.group({
@@ -55,6 +58,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.body = this.dom.body;
     const aboutus = this.apiService.getAPI(`1851/about-us`);
     const meta = this.apiService.getAPI(`1851/meta`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
@@ -112,13 +116,14 @@ export class AboutUsComponent implements OnInit {
         $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
       });
     }
-    const recaptchaElement = document.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
-    if (recaptchaElement) {
+    const recaptchaElement = this.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (recaptchaElement) 
+    {
       recaptchaElement.style.visibility = 'visible';
     }
   }
   ngOnDestroy() {
-    const recaptchaElement = document.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    const recaptchaElement = this.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
     if (recaptchaElement) {
       recaptchaElement.style.visibility = 'hidden';
     }
