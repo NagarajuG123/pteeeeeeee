@@ -544,6 +544,16 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  getLogo() {
+    let publication = this.commonService.publication;
+    let logo;
+    if(publication.id === 'EE') {
+      logo = `${environment.imageResizeUrl}/static/search_page_logo.svg`;
+    } else {
+      logo = `${environment.imageResizeUrl}/static/search_page_logo.png`;
+    }
+    return logo;
+  }
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
     this.onDestroySubject.next(true);

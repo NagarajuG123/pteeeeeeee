@@ -4,6 +4,16 @@
 .timeStamp{
     color: $violet_1;
 }
+.tabs{
+    span {
+      &.active{
+        &::after {
+          border-color: $red transparent transparent transparent !important;
+          bottom: -15px !important;
+        }
+      }
+    }    
+}
 .editorial-section{
     .tabs{
         span {
@@ -16,6 +26,7 @@
         }    
     }
 }
+
 .bottom-head{
     font-family: $roboto;
     font-weight: 500;
@@ -188,7 +199,10 @@ header{
      } 
  }
  .awards {
-    .seeMore, hr {
-      color: $dark_gray_11 !important;
+    .seeMore {
+      color: $dark_black !important;
+    }
+    hr {
+        color:$white !important;
     }
   }

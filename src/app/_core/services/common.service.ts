@@ -1,6 +1,7 @@
 import { DatePipe, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,18 +11,24 @@ export class CommonService {
   public vtabsItem: number = 5;
   public brandInfoTabs: number = 5;
   public trendingClass = 'top';
+  public publication;
 
   isBrowser: boolean = false;
   isPageLoaded = new BehaviorSubject<boolean>(false);
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private apiService: ApiService,
+
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
       this.resizeSidebar(window.innerWidth);
       this.resizeBrandInfo(window.innerWidth);
     }
+    this.apiService.getAPI('1851/publication-instance').subscribe((result) => {
+      this.publication = result;
+    });
   }
 
   toggle() {
