@@ -114,14 +114,14 @@ export class AboutUsComponent implements OnInit {
         $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
       });
     }
-    const recaptchaElement =this.dom.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    const recaptchaElement =this.dom.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
     if (recaptchaElement) 
     {
       recaptchaElement.style.visibility = 'visible';
     }
   }
   ngOnDestroy() {
-    const recaptchaElement = this.dom.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    const recaptchaElement = this.dom.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
     if (recaptchaElement) {
       recaptchaElement.style.visibility = 'hidden';
     }
