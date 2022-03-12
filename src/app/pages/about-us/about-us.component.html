@@ -230,12 +230,13 @@
                 </div>
               </div>
               <br />
-              <div class="row gx-2" id="recaptchaBlock">
+              <div class="row gx-2" id="recaptchaBlock grecaptcha-badge">
                 <div class="col-8 col-sm">
                   <recaptcha 
                   [size]="'invisible'"
                   [hide]="false" 
                   formControlName="reCaptchaCode"
+                  
                 >
                   </recaptcha>
                   <app-error-message

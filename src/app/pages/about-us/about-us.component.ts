@@ -10,6 +10,7 @@ import { ValidationService } from 'src/app/_core/services/validation.service';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-about-us',
@@ -36,7 +37,8 @@ export class AboutUsComponent implements OnInit {
     fb: FormBuilder,
     private toastr: ToastrService,
     public sanitizer: DomSanitizer,
-    public commonService: CommonService
+    public commonService: CommonService,
+    @Inject(DOCUMENT) private dom,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = fb.group({
@@ -111,6 +113,17 @@ export class AboutUsComponent implements OnInit {
         $('.modal').hide();
         $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
       });
+    }
+    const recaptchaElement =this.dom.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (recaptchaElement) 
+    {
+      recaptchaElement.style.visibility = 'visible';
+    }
+  }
+  ngOnDestroy() {
+    const recaptchaElement = this.dom.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (recaptchaElement) {
+      recaptchaElement.style.visibility = 'hidden';
     }
   }
 }
