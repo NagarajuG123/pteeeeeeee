@@ -16,6 +16,8 @@ RUN cp src/publications/1903/variables.scss src/assets/scss/
 
 RUN cp src/publications/1903/publication.scss src/assets/scss/
 
+RUN cp src/publications/1903/manifest.webmanifest src/
+
 RUN npm run build:1903:qa
 
 VOLUME /app/dist/1851/browser
