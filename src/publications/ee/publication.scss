@@ -1,32 +1,13 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
+
+.seeMore{
+    color: $dark_gray_11 !important;
+}
 .timeStamp{
     color: $violet_1;
 }
-.tabs{
-    span {
-      &.active{
-        &::after {
-          border-color: $red transparent transparent transparent !important;
-          bottom: -15px !important;
-        }
-      }
-    }    
-}
-.editorial-section{
-    .tabs{
-        span {
-          &.active{
-            &::after {
-              border-color: $white_2 transparent transparent transparent !important;
-              bottom: -15px !important;
-            }
-          }
-        }    
-    }
-}
-
 .bottom-head{
     font-family: $roboto;
     font-weight: 500;
@@ -180,15 +161,20 @@ header{
    .c-card-box--wrapper{
         .c-card-box--group{
             .articleTitles{
-                color: $dark_black !important;
+                color: $white !important;
             }
         } 
         .seeMore{
-            color: $dark_black !important;
+            color: $white !important;
          } 
          .coverContent{
             .content{
                 color: $dark_red !important;
+            }
+            a {
+                &.seeMore {
+                    color: $dark_black !important;
+                }
             }
          } 
     }
@@ -207,7 +193,7 @@ header{
  }
  .awards {
     .seeMore {
-      color: $dark_black !important;
+      color: $white !important;
     }
     hr {
         color:$white !important;
@@ -223,9 +209,7 @@ header{
         }
     }
 } 
-.seeMore{
-    color: $dark_gray_11 !important;
-}
+
 .frannews-details{
     .frannews-top{
         border-bottom: 1px solid $dark_gray !important;
@@ -234,5 +218,10 @@ header{
 .error-banner-details{
     h1{
         color: $dark_black !important;
+    }
+}
+.trendingbrandbuzz-banner {
+    .seeMore {
+        color:$white !important;
     }
 }
