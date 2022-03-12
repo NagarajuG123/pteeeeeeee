@@ -102,4 +102,8 @@ export class CommonService {
     }
     return false;
   }
+  otherSites(publication:any)
+  {
+    return publication == 'EE' || publication == 'ROOM-1903';
+  }
 }

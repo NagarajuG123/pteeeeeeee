@@ -9,7 +9,7 @@
     <ng-template #elseBlock
       ><h2 class="py-4 m-0 sectionTitle text-uppercase">
         {{ title }}
-        <span class="subTitle py-3" *ngIf="publication != 'EE' && publication != 'ROOM-1903'">
+        <span class="subTitle py-3" *ngIf='!commonService.otherSites(publication)'>
          {{ subTitle }}
         </span>
       </h2></ng-template

@@ -77,10 +77,10 @@ export class HomeComponent implements OnInit {
     if(this.publication.id == 'Stachecow') {
       title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
     }
-    if(this.publication.id == 'EE') {
+    else if(this.publication.id == 'EE') {
       title = 'THE FUTURE OF REAL ESTATE';
     }
-    if(this.publication.id == 'ROOM-1903') {
+    else if(this.publication.id == 'ROOM-1903') {
       title = 'FOR THE LOVE OF TRAVEL';
     }
     return title;
