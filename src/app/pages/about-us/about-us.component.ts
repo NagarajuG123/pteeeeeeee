@@ -28,7 +28,6 @@ export class AboutUsComponent implements OnInit {
   submitSuccessMsg: string = '';
   isBrowser: boolean;
   data: any = [];
-  body: any;
 
   constructor(
     private apiService: ApiService,
@@ -58,7 +57,6 @@ export class AboutUsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.body = this.dom.body;
     const aboutus = this.apiService.getAPI(`1851/about-us`);
     const meta = this.apiService.getAPI(`1851/meta`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
@@ -116,14 +114,14 @@ export class AboutUsComponent implements OnInit {
         $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
       });
     }
-    const recaptchaElement = this.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    const recaptchaElement =this.dom.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
     if (recaptchaElement) 
     {
       recaptchaElement.style.visibility = 'visible';
     }
   }
   ngOnDestroy() {
-    const recaptchaElement = this.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    const recaptchaElement = this.dom.body.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
     if (recaptchaElement) {
       recaptchaElement.style.visibility = 'hidden';
     }
