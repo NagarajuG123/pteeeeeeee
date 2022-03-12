@@ -23,8 +23,11 @@ header{
     .card{
         .card-body{
             span{
-                color: $red;
+                color:$dark_gray;
             }
         }
     }
+}
+.tag {
+    background: $dark_gray;
 }
