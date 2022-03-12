@@ -106,9 +106,9 @@
             </a>
           </div>
           <div class="main-desc-bottom--wrapper">
-            <h2 class="title-highlighter text-uppercase" *ngIf="isInfo">
+            <h1 class="title-highlighter text-uppercase" *ngIf="isInfo">
               {{ brandInfo?.name }} INFO
-            </h2>
+            </h1>
             <div
               class="question-container container customContainer"
               *ngIf="isInfo"
@@ -432,9 +432,9 @@
         >
           <div class="financial-requirement-section more-brand--wrapper" *ngIf="isInfo && showFinance(brandInfo)">
             <div class="header" >
-              <h1 class="sectionTitle title text-capitalize mb-0 p-4">
+              <h2 class="sectionTitle title text-capitalize mb-0 p-4">
                 Financial Requirements
-              </h1>
+              </h2>
             </div>
             <div class="financial-description p-4" *ngIf="isInfo">
               <p class="text m-0 pb-3" *ngIf="brandInfo?.units">
@@ -482,9 +482,9 @@
               </p>
             </div>
               <div class="header" *ngIf="isInfo && brandInfo?.more_info">
-                <h1 class="sectionTitle title text-capitalize  mb-0 p-4">
+                <h2 class="sectionTitle title text-capitalize  mb-0 p-4">
                  More Info
-                </h1>
+                </h2>
               </div>
               <div class="financial-description p-4" *ngIf="isInfo && brandInfo?.more_info">
                 <p class="topContent m-0 pb-3">
@@ -495,14 +495,14 @@
 
           <div class="inquiry-form-section">
             <div class="header" *ngIf="!isMarket">
-              <h1 class="title mb-0 text-capitalize p-4"
-                  *ngIf="inquireForm">Inquire Now</h1>
+              <h2 class="title mb-0 text-capitalize p-4"
+                  *ngIf="inquireForm">Inquire Now</h2>
             </div>
             <div class="header" *ngIf="isMarket && inquireForm ">
-              <h1 class="market-header text-uppercase p-4"
+              <h2 class="market-header text-uppercase p-4"
                   >
                 Inquire Now
-              </h1>
+              </h2>
             </div>
        
             <form
