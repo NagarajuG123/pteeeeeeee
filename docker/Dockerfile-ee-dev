@@ -18,6 +18,8 @@ RUN cp src/publications/ee/publication.scss src/assets/scss/
 
 RUN cp src/publications/ee/manifest.webmanifest src/
 
+RUN cp -r src/publications/ee/icons src/assets
+
 RUN npm run build:ee:qa
 
 VOLUME /app/dist/1851/browser
