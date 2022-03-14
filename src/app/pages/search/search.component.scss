@@ -75,6 +75,11 @@ span {
       width: 81%;
     }
   }
+  .col-sm-11{
+    @include mobile-portrait{
+      width: 100% !important;
+    }
+  }
   .input-group {
     input {
       border: 1px solid $dark_gray;
