@@ -37,8 +37,9 @@
   }
   .card {
     img {
-      max-height: 206px;
-      height: 206px;
+      // max-height: 206px;
+      // height: 206px;
+      width:100%;
     }
     .card-body {
       background-color: $red;
@@ -106,7 +107,7 @@
             left: -3%;
   
             @media only screen and (min-width: 320px) and (max-width: 768px) {
-              left: -7%;
+              left: -5%;
             }
             @media only screen and (min-width: 768px) and (max-width: 1366px) {
               left: -2%;
@@ -120,7 +121,7 @@
             right: -3%;
   
             @media only screen and (min-width: 320px) and (max-width: 768px) {
-              right: -7%;
+              right: -5%;
             }
             @media only screen and (min-width: 768px) and (max-width: 1366px) {
               right: -2%;
