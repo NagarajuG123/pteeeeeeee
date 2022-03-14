@@ -1,5 +1,5 @@
 <div class="most-popular sidebar-blur" [ngClass]="class">
-    <div class="container customContainer">
+    <div class="container-fluid">
       <div class="d-flex widget">
         <div class="col-lg-11 col-md-10 col">
           <h2 class="sectionTitle py-4 m-0">
@@ -14,8 +14,8 @@
       </div>
     </div>
     <hr class="m-0 mb-4"/>
-    <div class="container customContainer">
-      <div class="row d-none d-md-flex">
+    <div class="container-fluid">
+      <div class="row d-none d-sm-flex">
         <div class="col col-sm-4 pb-3" *ngFor="let item of widget?.stories; index as i">
           <a href="{{ commonService.readMore(item) }}" target="_blank">
             <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
