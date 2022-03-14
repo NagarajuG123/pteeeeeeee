@@ -31,3 +31,18 @@ header{
 .tag {
     background: $dark_gray;
 }
+.articles{
+    .sectionTitle{
+        color: $white_2 !important;
+    }
+}
+.most-like-articles{
+    h5{
+        font-family: $aktiv !important;
+    }
+}
+.article{
+    .card-title{
+        color: $black_4 !important;
+    }
+}
