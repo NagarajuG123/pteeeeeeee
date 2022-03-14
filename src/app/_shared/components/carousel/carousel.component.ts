@@ -24,6 +24,7 @@ export class CarouselComponent implements OnInit {
       dots: false,
       navSpeed: 700,
       nav: true,
+      lazyLoad : true,
       navText: [
         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
         '<i class="fa fa-angle-right" aria-hidden="true"></i>',
