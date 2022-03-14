@@ -15,7 +15,7 @@
     </div>
     <hr class="m-0 mb-4"/>
     <div class="container-fluid">
-      <div class="row d-none d-sm-none d-md-flex">
+      <div class="row d-none d-sm-flex ">
         <div class="col col-sm-4 pb-3" *ngFor="let item of widget?.stories; index as i">
           <a href="{{ commonService.readMore(item) }}" target="_blank">
             <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
