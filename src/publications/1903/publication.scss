@@ -1,6 +1,6 @@
 @import "./variables.scss";
 .timeStamp{
-    color: $red;
+    color: $dark_red;
 }
 .bottom-head{
     font-family: $aktiv;
@@ -12,11 +12,16 @@ header{
     .middle-head{
         .articleTitles{
             color: $dark_gray;
+            font-family: $roboto !important;
+            font-weight: 500;
         }
     }
     .eeLogo
     {
         display: none;
+    }
+    .top-head{
+        color: $red !important;
     }
 }
 .most-popular{
@@ -25,9 +30,30 @@ header{
             span{
                 color:$dark_gray;
             }
+            .articleTitles{
+                color: $white_2 !important;
+            }
         }
     }
 }
 .tag {
     background: $dark_gray;
+}
+.articles{
+    .sectionTitle{
+        color: $white_2 !important;
+    }
+}
+.most-like-articles{
+    h5{
+        font-family: $aktiv !important;
+    }
+}
+.article{
+    .card-title{
+        color: $black_4 !important;
+    }
+}
+.articleTitles{
+    color: $black_5 !important;
 }
