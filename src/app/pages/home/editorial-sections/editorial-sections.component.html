@@ -36,10 +36,24 @@
               align-items-center
               mx-auto
               position-relative
+              desktop-only
             "
             [ngClass]="i + 1 === activeTab ? 'active' : ''"
             (click)="setActiveTab(i + 1, item)"
             >{{ item?.shortName }}</span
+          >
+          <span
+            class="
+              d-inline-flex
+              justify-content-around
+              align-items-center
+              mx-auto
+              position-relative
+              mobile-only
+              active
+            "
+            (click)="setActiveTab(activeTab, item)"
+            >{{ tabName[activeTab - 1]?.shortName }}</span
           >
         </li>
       </ul>

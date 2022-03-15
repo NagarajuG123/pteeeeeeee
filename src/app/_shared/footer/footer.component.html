@@ -80,7 +80,7 @@
                 {{ menu?.title }}
               </h4>
 
-              <h4 class="text-capitalize mb-2" *ngFor="let item of menu.items">
+              <h4 class="text-capitalize mb-2 spotlight-items" *ngFor="let item of menu.items">
                 <a routerLink="/{{ item.url }}">{{ item?.shortName }}</a>
               </h4>
             </ngContainer>
