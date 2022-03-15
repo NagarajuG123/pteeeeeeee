@@ -47,7 +47,7 @@
                 <a (click)="set_duration(i)">
                   <span
                     [style.font-weight]="
-                      published_value === i ? 'bold' : 'normal'
+                      published_value === i ? 'bold' : ''
                     "
                     >{{ duration.title }}</span
                   >
@@ -56,7 +56,7 @@
               <li class="px-4">
                 <a (click)="set_range()">
                   <span
-                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
+                    [style.font-weight]="isSpecificDate ? 'bold' : ''"
                     >{{ published_range }}</span
                   >
                 </a>
