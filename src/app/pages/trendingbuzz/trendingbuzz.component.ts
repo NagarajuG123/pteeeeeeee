@@ -36,7 +36,7 @@ export class TrendingbuzzComponent implements OnInit {
         this.metaService.setSeo(response.data[0].meta);
         this.trendingData = response.data.slice(1);
         this.banner = response.data[0];
-        if (this.commonService.isVideo(this.banner)) {
+        if (this.isVideo(this.banner)) {
           this.videoUrl = this.banner.media.url;
         }
         this.hasMore = response.has_more;
@@ -47,6 +47,16 @@ export class TrendingbuzzComponent implements OnInit {
             this.metaService.setTitle(`Trending Brand Buzz | ${result.title}`);
           });
       });
+  }
+  isVideo(item: { media: { type: string } | null } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   getMoreData() {
     this.apiService

@@ -72,7 +72,4 @@ export class MetaService {
     this.title.setTitle(data);
   }
 
-  updateTag(data, type) {
-    this.meta.updateTag(data, type);
-  }
 }

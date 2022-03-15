@@ -52,16 +52,7 @@ export class CommonService {
     }
     return `${slug}${story?.slug}`;
   }
-  isVideo(item: { media: { type: string } | null } | null) {
-    if (typeof item !== 'undefined' && item !== null) {
-      if (typeof item.media !== 'undefined' && item.media !== null) {
-        if (item.media.type === 'video') {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+ 
   resizeSidebar(val: any) {
     if (val > 992) this.vtabsItem = 5;
     else if (val < 993 && val > 767) this.vtabsItem = 3;
@@ -75,13 +66,6 @@ export class CommonService {
     else if (val < 768 && val > 575) this.brandInfoTabs = 2;
     else if (val < 576) this.brandInfoTabs = 1;
     else this.brandInfoTabs = 6;
-  }
-
-  authorName(item: any) {
-    if (item?.author != null) {
-      return true;
-    }
-    return false;
   }
 
   formatDate(date: any) {
