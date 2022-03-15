@@ -23,6 +23,11 @@ header{
     .top-head{
         color: $red !important;
     }
+    .mainLogo{
+        @include tablet-landscape1{
+            display: none;
+        }
+    }
 }
 .most-popular{
     .card{
