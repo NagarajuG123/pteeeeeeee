@@ -135,7 +135,7 @@ body.noscroll {
   display: none !important;
 
   @media only screen and (min-width: 600px) {
-    display: block !important;
+    display: flex !important;
   }
 }
 
@@ -143,7 +143,7 @@ body.noscroll {
   display: none !important;
 
   @media only screen and (max-width: 599px) {
-    display: block !important;
+    display: flex !important;
   }
 }
 
