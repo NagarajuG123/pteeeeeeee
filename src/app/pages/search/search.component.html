@@ -46,9 +46,7 @@
               >
                 <a (click)="set_duration(i)">
                   <span
-                    [style.font-weight]="
-                      published_value === i ? 'bold' : 'normal'
-                    "
+                    [ngClass]=" published_value === i ? 'fw-bold' : ''"
                     >{{ duration.title }}</span
                   >
                 </a>
@@ -56,7 +54,7 @@
               <li class="px-4">
                 <a (click)="set_range()">
                   <span
-                    [style.font-weight]="isSpecificDate ? 'bold' : 'normal'"
+                  [ngClass]="isSpecificDate ? 'fw-bold' : ''"
                     >{{ published_range }}</span
                   >
                 </a>

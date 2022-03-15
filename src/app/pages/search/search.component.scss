@@ -131,7 +131,7 @@ span {
 }
 .sort_main {
   font-family: $roboto;
-  font-weight: 500 !important;
+  font-weight: 500;
   font-size: 20px;
   line-height: 25.74px;
   color: $dark_gray;
@@ -160,7 +160,7 @@ span {
     font-family: $roboto;
     font-size: 20px;
     line-height: 25.74px;
-    font-weight: 500 !important;
+    font-weight: 500;
     color: $dark_gray_5;
   }
   @include tablet-portrait {
