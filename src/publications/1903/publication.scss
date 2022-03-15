@@ -10,8 +10,8 @@
 }
 header{
     .middle-head{
-        .articleTitles{
-            color: $dark_gray;
+        .articleTitles{ 
+            color: $dark_gray !important;
             font-family: $roboto !important;
             font-weight: 500;
         }
@@ -36,17 +36,25 @@ header{
         }
     }
 }
-.tag {
-    background: $dark_gray;
-}
 .articles{
     .sectionTitle{
         color: $white_2 !important;
+    }
+    h4{
+        color: $white_2 !important;
+    }
+    .title {
+        h1{
+            color: $black_5 !important;
+        }
     }
 }
 .most-like-articles{
     h5{
         font-family: $aktiv !important;
+    }
+    .seeMore{
+        border-bottom: 1px solid $black_5 !important;
     }
 }
 .article{
@@ -60,5 +68,11 @@ header{
 .footer{
     .spotlight-items{
         font-family: $roboto !important;
+    }
+}
+.nextBtn{
+    .seeMoreLine {
+        border: 1px solid $black_5 !important;
+        background-color: $black_5 !important;
     }
 }

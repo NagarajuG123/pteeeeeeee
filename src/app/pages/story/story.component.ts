@@ -204,7 +204,7 @@ hasMore:any;
                   .pipe(takeUntil(this.onDestroy$))
                   .subscribe((result) => {
                     this.mainNews = result[0].data;
-                    if(this.publication.id == 'EE'){
+                    if(this.publication.id == 'EE' || this.publication.id == 'ROOM-1903'){
                       this.mainNews = result[2].data;
                     }
                     this.brandNews = result[1].data;
