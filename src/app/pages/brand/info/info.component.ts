@@ -129,7 +129,7 @@ export class InfoComponent implements OnInit {
                 .getAPI(`${this.brandSlug}/brand-view`)
                 .subscribe((response) => {
                   this.brandInfo = response.data;
-                  if (this.commonService.isVideo(response.data)) {
+                  if (this.isVideo(response.data)) {
                     this.brandVideoUrl = response.data.media.url;
                   }
                 });
@@ -158,6 +158,16 @@ export class InfoComponent implements OnInit {
           }
         });
     });
+  }
+  isVideo(item: { media: { type: string } | null } | null) {
+    if (typeof item !== 'undefined' && item !== null) {
+      if (typeof item.media !== 'undefined' && item.media !== null) {
+        if (item.media.type === 'video') {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   changeDownPDFUrl(url: any) {
     return url?.replace('api.', '');
