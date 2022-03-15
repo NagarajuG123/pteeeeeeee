@@ -62,7 +62,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 18px;
-      color: #9d9c9c;
+      color: $light_gray_15 !important;
     }
   }
   .description {
@@ -136,6 +136,7 @@
     }
     .title{
       padding: 10px 0 10px !important;
+      justify-content: unset !important;
     }
     .subTitle{
       background-color: unset;
