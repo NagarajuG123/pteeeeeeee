@@ -31,9 +31,10 @@ header{
                 color: $dark_gray_10 !important;
             }
             .sponsorLogo{
-                background: url("https://dmprqkmvewks9.cloudfront.net/ee_logo_subscribe.png")
-                         no-repeat 100% 0 !important;
+                background: url("https://dmprqkmvewks9.cloudfront.net/eeLogo_subscribe.svg")
+                            no-repeat 100% 0 !important;
                 padding: 0 17px 0 0 !important;
+                background-size: 14px !important;
             }
         }
     }
