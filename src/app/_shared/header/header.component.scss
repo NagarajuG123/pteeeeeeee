@@ -253,6 +253,13 @@ header {
       @include mobile-portrait {
         flex-wrap: nowrap;
       }
+      li{
+        &:first-child {
+          h6{
+            padding-top: 2px;
+          }
+        }  
+      }
     }
     .nav-item {
       a {

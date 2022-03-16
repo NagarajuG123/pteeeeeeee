@@ -136,7 +136,7 @@
           <ul class="nav justify-content-center">
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
-                ><h6 class="articleTitles pb-1">{{ menu.title }}</h6>
+                ><h6 class="articleTitles">{{ menu.title }}</h6>
               </a>
             </li>
             <li
