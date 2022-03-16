@@ -172,7 +172,7 @@ isShow:boolean;
         this.inquireData = results[2].schema;
         this.publication = results[3];
         if(this.commonService.otherSites()){
-          this.logo = `assets/img/${this.publication?.id }logo.png`;
+          this.logo = `${environment.imageResizeUrl}/static/${this.publication?.id}small-logo.png`;
         } 
         this.trending = results[4].data;
         if(this.trending && this.trending.length == 0) {
