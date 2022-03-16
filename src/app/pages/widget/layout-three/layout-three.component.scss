@@ -104,13 +104,10 @@
           color: $white_2;
           font-size: 45px !important;
           &.owl-prev {
-            left: -3%;
+            left: -5%;
   
             @media only screen and (min-width: 320px) and (max-width: 768px) {
-              left: -7%;
-            }
-            @media only screen and (min-width: 768px) and (max-width: 1366px) {
-              left: -2%;
+              left: -5%;
             }
             &:hover {
               background-color: transparent;
@@ -118,13 +115,10 @@
             }
           }
           &.owl-next {
-            right: -3%;
+            right: -5%;
   
             @media only screen and (min-width: 320px) and (max-width: 768px) {
-              right: -7%;
-            }
-            @media only screen and (min-width: 768px) and (max-width: 1366px) {
-              right: -2%;
+              right: -5%;
             }
             &:hover {
               background-color: transparent;
