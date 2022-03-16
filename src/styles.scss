@@ -138,6 +138,13 @@ body.noscroll {
     display: flex !important;
   }
 }
+.footer-middle{
+  &.desktop-only{
+    @media only screen and (min-width: 600px) {
+      display: block !important;
+    }
+  }
+}
 
 .mobile-only {
   display: none !important;

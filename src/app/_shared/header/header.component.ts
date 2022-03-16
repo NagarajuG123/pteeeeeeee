@@ -67,6 +67,7 @@ export class HeaderComponent implements OnInit {
   trending: any;
   isMain: boolean;
   utmSlug: string;
+  logo: string;
 isShow:boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -170,6 +171,9 @@ isShow:boolean;
         this.news = results[1].data;
         this.inquireData = results[2].schema;
         this.publication = results[3];
+        if(this.commonService.otherSites()){
+          this.logo = `${environment.imageResizeUrl}/static/${this.publication?.id}small-logo.png`;
+        } 
         this.trending = results[4].data;
         if(this.trending && this.trending.length == 0) {
           this.commonService.trendingClass = 'topNoTrending'

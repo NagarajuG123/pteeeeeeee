@@ -71,7 +71,7 @@
     .coverContent {
       font-family: $roboto;
       .articleTitles {
-        color: $red;
+        color: $red !important;
         font-size: 13px;
         @include media("<md") {
           font-size: 16px;

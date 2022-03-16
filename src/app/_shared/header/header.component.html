@@ -106,9 +106,9 @@
             class=" lazyload mainLogo"
         />
         <img
-        *ngIf="isMain && publication?.id == 'EE'"
+        *ngIf="isMain && commonService.otherSites()"
         class=" lazyload d-md-none d-sm-block"
-          src='assets/img/EElogo.png'
+          src= "{{ logo }}"
           height="{{ header?.logo?.height }}"
           alt=""
       />
