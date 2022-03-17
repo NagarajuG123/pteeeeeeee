@@ -252,6 +252,16 @@ button {
       {
         color: $red;
       }
+      &.desktop-only{
+        @media only screen and (min-width: 600px) {
+          display: flex !important;
+        }
+      }
+      &.mobile-only{
+        @media only screen and (max-width: 599px) {
+          display: flex !important;
+        }
+      }
     }
     border-color: $light_gray_8;
   }
