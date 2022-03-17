@@ -135,14 +135,7 @@ body.noscroll {
   display: none !important;
 
   @media only screen and (min-width: 600px) {
-    display: flex !important;
-  }
-}
-.footer-middle{
-  &.desktop-only{
-    @media only screen and (min-width: 600px) {
-      display: block !important;
-    }
+    display: block !important;
   }
 }
 
@@ -150,7 +143,7 @@ body.noscroll {
   display: none !important;
 
   @media only screen and (max-width: 599px) {
-    display: flex !important;
+    display: block !important;
   }
 }
 
