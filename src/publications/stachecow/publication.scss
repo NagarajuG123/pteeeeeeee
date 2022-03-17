@@ -9,6 +9,9 @@
     line-height: 20px;
 }
 header{
+    .nav{
+        padding-top: 0.25rem !important;
+    }
     .middle-head{
         .articleTitles{
             color: $dark_gray;

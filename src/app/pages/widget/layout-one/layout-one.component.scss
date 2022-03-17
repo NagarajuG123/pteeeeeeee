@@ -57,12 +57,12 @@
 
         height: 118px;
 
-        // @include tablet-portrait {
-        //   height: auto;    
-        // }   
-        // @include mobile-landscape {
-        //   height:auto;
-        // }          
+        @include tablet-portrait {
+          height: auto;    
+        }   
+        @include mobile-landscape {
+          height:auto;
+        }          
       }
     }
     .articleTitles {
