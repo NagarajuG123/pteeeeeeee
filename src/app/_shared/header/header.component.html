@@ -132,7 +132,7 @@
           </h6>
           <span class="sponsorLogo">POWERED BY</span>
         </a>
-        <nav class="pt-2" *ngIf="isMain">
+        <nav class="navItem" *ngIf="isMain">
           <ul class="nav justify-content-center">
             <li *ngFor="let menu of header?.menus" class="pe-lg-4 pe-2">
               <a [routerLink]="menu.url" (click)="closeSidebar()"
@@ -192,7 +192,7 @@
               class="lazyload"
             /></figure
         ></a>
-        <nav class="pt-2 brandHeader" *ngIf="!isMain">
+        <nav class="navItem brandHeader" *ngIf="!isMain">
           <ul class="nav justify-content-center"
           >
             <li class="pe-lg-4 pe-4">
