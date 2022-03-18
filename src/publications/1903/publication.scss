@@ -11,6 +11,9 @@
 header{
     .navItem {
         padding-top: 2rem!important;
+        &.brandHeader{
+            padding-top: 0.75rem !important;
+        }
     }
     .middle-head{
         .articleTitles{ 
