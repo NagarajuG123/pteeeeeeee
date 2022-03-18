@@ -105,9 +105,11 @@
           font-size: 45px !important;
           &.owl-prev {
             left: -5%;
-  
-            @media only screen and (min-width: 320px) and (max-width: 768px) {
+            @media only screen and (min-width: 390px) and (max-width: 768px){
               left: -5%;
+            }
+            @media only screen and (min-width: 320px) and (max-width: 389px) {
+              left: -7%;
             }
             &:hover {
               background-color: transparent;
@@ -116,9 +118,11 @@
           }
           &.owl-next {
             right: -5%;
-  
-            @media only screen and (min-width: 320px) and (max-width: 768px) {
+            @media only screen and (min-width: 390px) and (max-width: 768px){
               right: -5%;
+            }
+            @media only screen and (min-width: 320px) and (max-width: 389px) {
+              right: -7%;
             }
             &:hover {
               background-color: transparent;
