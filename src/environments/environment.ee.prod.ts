@@ -8,5 +8,5 @@ export const environment = {
   appUrl: 'https://estatenvy.com',
   fbUrl: 'https://www.facebook.com/estatenvy/',
   port: 4000,
-  enableSW: true,
+  enableSW: false,
 };

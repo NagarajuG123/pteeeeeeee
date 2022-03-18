@@ -9,6 +9,6 @@ export const environment = {
   port: 4700,
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
-  enableSW: true,
+  enableSW: false,
   env: 'development',
 };
