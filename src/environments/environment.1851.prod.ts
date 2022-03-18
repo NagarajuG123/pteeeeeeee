@@ -10,6 +10,6 @@ export const environment = {
   reCaptchaKey: '6Lev138eAAAAAF7Zxz5sHAZAQEZFqnaqeLrxCYTz',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
-  enableSW: true,
+  enableSW: false,
   env: 'production'
 };
