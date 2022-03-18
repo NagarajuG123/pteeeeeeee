@@ -106,7 +106,7 @@
           &.owl-prev {
             left: -5%;
             @media only screen and (min-width: 390px) and (max-width: 768px){
-              left: -5%;
+              left: -7%;
             }
             @media only screen and (min-width: 320px) and (max-width: 389px) {
               left: -7%;
@@ -117,7 +117,7 @@
             }
           }
           &.owl-next {
-            right: -5%;
+            right: -7%;
             @media only screen and (min-width: 390px) and (max-width: 768px){
               right: -5%;
             }
