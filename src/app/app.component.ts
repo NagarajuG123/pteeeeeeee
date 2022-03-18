@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
       this.swUpdate.versionUpdates.subscribe(() => {
         // if (confirm('New version available. Load New Version?')) {
         window.location.reload();
-        console.log('reload action service worker')
         // }
       });
     }

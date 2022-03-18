@@ -8,6 +8,6 @@ export const environment = {
   reCaptchaKey: '6LeWIoQeAAAAANYro3H8HzkUFuYLb7hWEY9IgUGS',
   appUrl: 'https://room1903.com',
   fbUrl: 'https://www.facebook.com/Room1903/',
-  enableSW: true,
+  enableSW: false,
   env: 'production'
 };

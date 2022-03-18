@@ -9,6 +9,6 @@ export const environment = {
   reCaptchaKey: '6Ldq0FIeAAAAAL0_RblWHQAVyOfABp0CP_i00BGq',
   appUrl: 'https://stachecow.com',
   fbUrl: 'https://www.facebook.com/stachecow',
-  enableSW: true,
+  enableSW: false,
   env: 'production'
 };

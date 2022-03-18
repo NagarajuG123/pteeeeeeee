@@ -9,6 +9,6 @@ export const environment = {
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
   appUrl: 'https://1903-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/Room1903/',
-  enableSW: true,
+  enableSW: false,
   env: 'development'
 };
