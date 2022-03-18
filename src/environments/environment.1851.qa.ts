@@ -9,6 +9,6 @@ export const environment = {
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
   appUrl: 'https://1851-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/1851magazine/',
-  enableSW: true,
+  enableSW: false,
   env: 'development'
 };
