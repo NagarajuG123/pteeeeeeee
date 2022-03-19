@@ -92,7 +92,7 @@
     </div>
   </section>
 
-  <div class="monthy-cover" *ngIf="secondBlock && secondBlock.length > 0">
+  <div class="monthy-cover" *ngIf="secondBlock && secondBlock.length > 0" [ngClass]="hasMore ? '' : 'pb-4'">
     <div class="container customContainer">
       <h2 class="sectionTitle">ALL COVERS</h2>
     </div>
