@@ -140,16 +140,9 @@
     }
     .subTitle{
       background-color: unset;
-    }
-    h2 {
-      text-align: left !important;
-      padding: 0 !important;
-    }
-    .detailHead {
-      position: relative !important;
-      min-height: 50px !important;
-      h1 {
+      h2 {
         text-align: left !important;
+        padding: 0 !important;
       }
     }
     .tag {
@@ -229,10 +222,6 @@
       .userImage {
         margin: 80px auto 0;
       }
-      h1,
-      h1 + h5 {
-        text-align: center;
-      }
       .large-main-article {
         font-size: 13px;
         span {
@@ -240,6 +229,7 @@
         }
       }
       h5 {
+        text-align: center;
         font-size: 10px;
       }
     }

@@ -88,7 +88,7 @@ img {
     font-weight: 400;
     cursor: unset;
   }
-  h1 {
+  h2 {
     line-height: 39px !important;
     padding: 0;
     font-size: 33px;
@@ -201,7 +201,7 @@ img {
     @include tablet-landscape1 {
       padding: unset;
     }
-    h1 {
+    h2 {
       font-size: 30px;
       line-height: 32px;
       font-weight: 400;

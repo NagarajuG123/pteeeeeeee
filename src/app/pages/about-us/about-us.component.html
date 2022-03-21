@@ -60,7 +60,7 @@
           >
             ABOUT 1851
           </a>
-          <h1 class="text-start">{{ data.title }}</h1>
+          <h2 class="text-start">{{ data.title }}</h2>
           <em class="text-start d-block">{{ data.description }}</em>
         </div>
       </div>
@@ -71,7 +71,7 @@
     <div *ngIf="data.contents" class="franchise_main text-center">
       <div class="container">
         <div class="franchise_data">
-          <h1>{{ data.contents[0].title }}</h1>
+          <h2>{{ data.contents[0].title }}</h2>
           <p [innerHtml]="data.contents[0].short_description"></p>
         </div>
       </div>
