@@ -44,11 +44,7 @@
       <div class="row gx-2 bottomSection">
         <ng-container *ngFor="let item of widget?.stories | slice: 2:11; index as i">
             <div class="col-sm-12 col-md-4 pb-2">
-              <a
-                *ngIf="item?.media"
-                routerLink="/{{ commonService.readMore(item) }}"
-                fragment="dynamicpage"
-              >
+              <a *ngIf="item?.media" href="{{ commonService.readMore(item) }}" target="_blank">
               <figure>
                 <img
                 data-src="{{ item.media | defaultImage: 212:119 }}"
