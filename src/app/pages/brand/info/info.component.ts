@@ -110,7 +110,13 @@ export class InfoComponent implements OnInit {
               'executive',
               'available-markets',
             ];
+            if(this.isBrowser) {
+              const isMobile = window.outerWidth < 600 ? true : false;
 
+              if(isMobile) {
+              this.skipTab = this.activeTab - 1;
+              }
+            }
             this.apiService
               .getAPI(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
@@ -123,7 +129,7 @@ export class InfoComponent implements OnInit {
                     })
                     .indexOf(params.get('item')) + 1;
               });
-              this.skipTab = this.activeTab - 1;
+             
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
               this.apiService
@@ -383,8 +389,6 @@ export class InfoComponent implements OnInit {
     return type;
   }
   setActiveTab(val, item) {
-    // console.log(val)//4
-    // console.log(item)
     this.activeTab = val;
     this.tab = item?.value;
     this.getContents(this.tab);
