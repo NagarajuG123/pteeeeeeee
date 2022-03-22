@@ -219,6 +219,16 @@ header{
            }
         }
     }
+    .tabs{
+        li{
+            span{
+                font-size: 16px !important;
+                &::after {
+                    left: 70px !important;
+                }    
+            }
+        }
+    }
 } 
 
 .frannews-details{
