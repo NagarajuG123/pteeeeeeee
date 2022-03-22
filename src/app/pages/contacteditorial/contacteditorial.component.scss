@@ -7,6 +7,10 @@
 }
 img {
   max-width: 100%;
+  @include mobile-portrait{
+    min-height: unset !important;
+    height: auto !important;
+  }
 }
 figure {
   line-height: 0;
@@ -33,9 +37,6 @@ figure {
       height: 522px;
       display: block;
       width: 100%;
-    }
-    @include tablet-landscape1{
-      height: auto !important;
     }
   }
 
