@@ -111,7 +111,7 @@
           <div class="search_form col-lg-6">
             <form
               [formGroup]="specificSearchForm"
-              (ngSubmit)="onSearchSubmit(specificSearchForm)"
+              (ngSubmit)="onSearchSubmit()"
             >
               <div class="input-group mb-3">
                 <input
@@ -130,7 +130,7 @@
                 />
                 <span
                   class="input-group-text"
-                  (click)="onSearchSubmit(specificSearchForm)"
+                  (click)="onSearchSubmit()"
                 >
                   <i class="fa fa-search"></i>
                 </span>

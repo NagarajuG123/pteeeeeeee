@@ -31,13 +31,7 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
     this.setConfig();
-    if(this.type == 'widget'){
-      this.data = this.stories;
-      if(this.data) {
-        this.isLoaded = true;
-      }
-    } else{
-      const videoData = this.apiService
+      this.apiService
       .getAPI(`${this.slug}/videos`)
       .subscribe((result) => {
         this.data = result.data;
@@ -45,7 +39,6 @@ export class VideoComponent implements OnInit {
           this.isLoaded = true;
         }
       });
-    }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;

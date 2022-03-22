@@ -74,7 +74,6 @@ export class CategoryComponent implements OnInit {
       forkJoin([featureApi, metaApi, spotlightCategoriesApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
-          // if (results[0].data.length) {
             this.tabName = results[2].categories;
             this.metaService.setSeo(results[1].data);
             this.rows = `row-cols-lg-${this.tabName.length}`;
@@ -95,9 +94,6 @@ export class CategoryComponent implements OnInit {
                 this.banner = this.tabName.find((x) => x.slug == this.tab).image;
               this.isLoaded = true;
             }
-          // } else {
-          //   this.router.navigateByUrl(`/${this.type}`);
-          // }
         });
     });
   }
@@ -131,7 +127,7 @@ export class CategoryComponent implements OnInit {
       .subscribe((result) => {
         const data: any[] = [];
         if (result.data.length ) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             data.push(item);
           });
           this.featuredData = data;
@@ -149,7 +145,7 @@ export class CategoryComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             this.featuredData.push(item);
           });
           this.hasMore = result.has_more;

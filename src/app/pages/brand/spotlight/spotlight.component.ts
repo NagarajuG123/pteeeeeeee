@@ -86,7 +86,7 @@ export class SpotlightComponent implements OnInit {
       .subscribe((result) => {
         const data: any[] = [];
         if (result.data.length) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             data.push(item);
           });
           this.items = data;
@@ -104,7 +104,7 @@ export class SpotlightComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             this.items.push(item);
           });
           this.hasMore = result.has_more;

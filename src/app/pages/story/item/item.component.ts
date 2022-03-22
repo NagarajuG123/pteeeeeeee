@@ -318,7 +318,7 @@ export class ItemComponent implements OnInit {
               a_tags[i]['hostname'].toLowerCase() !==
               window.location.hostname.toLowerCase()
             ) {
-              a_tags[i].addEventListener('click', function (event) {
+              a_tags[i].addEventListener('click', function () {
                 const action = a_tags[i]['hostname'].toLowerCase();
                 if (this.brand_id === '1851') {
                   ga('send', 'event', category, action, vm.brand_id);
