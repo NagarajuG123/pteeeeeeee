@@ -128,7 +128,7 @@ export class SearchComponent implements OnInit {
       searchInput: new FormControl(''),
     });
     this.route.paramMap.subscribe((slugParams) => {
-      if (slugParams.get('slug') != null) {
+      if (slugParams.get('slug') !== null) {
         this.brandSlug = slugParams.get('slug');
       }
     });

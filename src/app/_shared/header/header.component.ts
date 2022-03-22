@@ -254,7 +254,7 @@ isShow:boolean;
     return this.contactForm.controls;
   }
   getInquiry() {
-    if (this.inquireData != null) {
+    if (this.inquireData !== null) {
       this.isInquire = true;
       this.inquireTitle = this.inquireData.title;
       const group: any = {};
@@ -313,7 +313,7 @@ isShow:boolean;
     this.apiService
       .getAPI(`${this.brandSlug}/brand/contact`)
       .subscribe((response) => {
-        if (response.schema != null) {
+        if (response.schema !== null) {
           this.isContact = true;
           this.contactTitle = response.schema.title;
           const group: any = {};
