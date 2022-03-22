@@ -320,7 +320,7 @@ export class InfoComponent implements OnInit {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             this.items.push(item);
           });
           this.hasMore = result.has_more;
@@ -334,7 +334,7 @@ export class InfoComponent implements OnInit {
         if (response.schema) {
           const group: any = {};
           let objectKey = Object.keys(response.schema.properties);
-          this.inquireFields = objectKey.map((item, index) => {
+          this.inquireFields = objectKey.map((item) => {
             let value: any = {
               value: '',
               key: item,
@@ -356,7 +356,7 @@ export class InfoComponent implements OnInit {
             }
             return value;
           });
-          this.inquireFields.forEach((item, index) => {
+          this.inquireFields.forEach((item) => {
             let validation = [];
             if (item.required) {
               validation.push(Validators.required);
@@ -597,15 +597,15 @@ export class InfoComponent implements OnInit {
           ')'
         );
       })
-      .attr('width', function (d) {
+      .attr('width', function () {
         return 30;
       })
-      .attr('height', function (d) {
+      .attr('height', function () {
         return 20;
       })
       .attr('stroke', '#000000')
       .attr('stroke-width', '2')
-      .style('fill', function (d) {
+      .style('fill', function (d:any) {
         return vm.marketingColor(d, items);
       });
     gadget_labels = gadget_g
@@ -616,7 +616,7 @@ export class InfoComponent implements OnInit {
       .attr('class', 'label')
       .attr('stroke', '#f2f2f2')
       .attr('font-size', '12px')
-      .attr('transform', function (d) {
+      .attr('transform', function (d:any) {
         if (!isMobile && d.properties.abbr === 'HI') {
           return (
             'translate(' +
@@ -715,6 +715,6 @@ export class InfoComponent implements OnInit {
       .call(this.getBB);
   }
   getBB(selection: any) {
-    selection.each((d) => {});
+    selection.each(() => {});
   }
 }

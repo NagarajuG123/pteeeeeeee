@@ -11,8 +11,6 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
 
-const RESULT_KEY = makeStateKey<any>('termsState');
-
 @Component({
   selector: 'app-termsofuse',
   templateUrl: './termsofuse.component.html',

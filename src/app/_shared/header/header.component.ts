@@ -254,12 +254,12 @@ isShow:boolean;
     return this.contactForm.controls;
   }
   getInquiry() {
-    if (this.inquireData != null) {
+    if (this.inquireData !== null) {
       this.isInquire = true;
       this.inquireTitle = this.inquireData.title;
       const group: any = {};
       let objectKey = Object.keys(this.inquireData.properties);
-      this.inquireFields = objectKey.map((item, index) => {
+      this.inquireFields = objectKey.map((item) => {
         let value: any = {
           value: '',
           key: item,
@@ -282,7 +282,7 @@ isShow:boolean;
         }
         return value;
       });
-      this.inquireFields.forEach((item, index) => {
+      this.inquireFields.forEach((item) => {
         let validation = [];
         if (item.required) {
           validation.push(Validators.required);
@@ -313,12 +313,12 @@ isShow:boolean;
     this.apiService
       .getAPI(`${this.brandSlug}/brand/contact`)
       .subscribe((response) => {
-        if (response.schema != null) {
+        if (response.schema !== null) {
           this.isContact = true;
           this.contactTitle = response.schema.title;
           const group: any = {};
           let objectKey = Object.keys(response.schema.properties);
-          this.contactFields = objectKey.map((item, index) => {
+          this.contactFields = objectKey.map((item) => {
             let value: any = {
               value: '',
               key: item,
@@ -341,7 +341,7 @@ isShow:boolean;
             }
             return value;
           });
-          this.contactFields.forEach((item, index) => {
+          this.contactFields.forEach((item) => {
             let validation = [];
             if (item.required) {
               validation.push(Validators.required);

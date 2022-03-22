@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Observable, throwError, empty, TimeoutError } from 'rxjs';
-import { Router } from '@angular/router';
 import { retry, catchError } from 'rxjs/operators';
 import { timeout } from 'rxjs/operators';
 
@@ -18,7 +16,7 @@ export class ApiService {
     }),
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   getAPI(endpoint: string): Observable<any> {
     return this.http
@@ -66,7 +64,7 @@ export class ApiService {
     if (error instanceof TimeoutError) {
       return empty();
     }
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\API: ${endpoint}`;
     return throwError(errorMessage);
   }
 }

@@ -6,7 +6,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { makeStateKey } from '@angular/platform-browser';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/_core/services/api.service';
@@ -16,7 +15,6 @@ import { Meta } from 'src/app/_core/models/meta.model';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 
-const RESULT_KEY = makeStateKey<any>('contactEditorialState');
 @Component({
   selector: 'app-contacteditorial',
   templateUrl: './contacteditorial.component.html',

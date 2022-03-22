@@ -71,7 +71,7 @@ export class EditorialSectionsComponent implements OnInit {
       .subscribe((result) => {
         const data: any[] = [];
         if (result.data.length) {
-          result['data'].forEach((item: any, index: number) => {
+          result['data'].forEach((item: any) => {
             data.push(item);
           });
           this.items = data;

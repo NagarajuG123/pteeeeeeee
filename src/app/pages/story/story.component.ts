@@ -18,7 +18,7 @@ import {
   Location,
 } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Subject, forkJoin } from 'rxjs';
+import {  Subject, forkJoin } from 'rxjs';
 import { EmbedService } from 'src/app/_core/services/embed.service';
 import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { GoogleAnalyticsService } from 'src/app/google-analytics.service';
@@ -836,7 +836,7 @@ hasMore:any;
     return elemBottom <= docViewBottom && elemView >= docViewTop;
   }
   @HostListener('window:scroll', ['$event'])
-  scrollHandler(event) {
+  scrollHandler() {
     $('.element').each((index, element) => {
       if (this.pageType === 'details') {
         if (this.isScrolledIntoView(element)) {

@@ -128,7 +128,7 @@ export class SearchComponent implements OnInit {
       searchInput: new FormControl(''),
     });
     this.route.paramMap.subscribe((slugParams) => {
-      if (slugParams.get('slug') != null) {
+      if (slugParams.get('slug') !== null) {
         this.brandSlug = slugParams.get('slug');
       }
     });
@@ -266,22 +266,7 @@ export class SearchComponent implements OnInit {
     } 
       return false;
   }
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      $(document).ready(function (e) {
-        setTimeout(() => {
-          const size_li = 4;
-          let x = 4;
-          $('#myList li:lt(' + x + ')').show();
-          $('#loadMore').click(function () {
-            x = x + 1 <= size_li ? x + 1 : size_li;
-            $('#myList li:lt(' + x + ')').show();
-          });
-        }, 2000);
-      });
-    }
-  }
-
+ 
   ngAfterContentChecked() {
     this.cdref.detectChanges();
   }
@@ -433,7 +418,7 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  onSearchSubmit(searchForm: FormGroup) {
+  onSearchSubmit() {
     if (typeof this.dateSelected === 'undefined') {
       return;
     } else if (this.dateSelected.startDate === null) {
