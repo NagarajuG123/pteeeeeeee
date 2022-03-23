@@ -115,7 +115,7 @@ hasMore:any;
     script.innerHTML = '';
     script.src = url;
     script.type = "text/javascript";
-    script.async = false;
+    script.async = true;
     script.defer = true;
     this.renderer2.appendChild(body, script);
   }
