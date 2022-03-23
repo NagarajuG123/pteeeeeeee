@@ -43,7 +43,7 @@ header{
             .sponsorLogo{
                 background: url("https://dmprqkmvewks9.cloudfront.net/eeLogo_subscribe.svg")
                             no-repeat 100% 0 !important;
-                padding: 0 17px 0 0 !important;
+                padding: 0 19px 0 0 !important;
                 background-size: 17px !important;
             }
         }
@@ -219,6 +219,18 @@ header{
            }
         }
     }
+    .brandInfoPage{
+        .tabs{
+            li{
+                span{
+                    font-size: 16px !important;
+                    &::after {
+                        left: 80px !important;
+                    }    
+                }
+            }
+        }
+    } 
 } 
 
 .frannews-details{
