@@ -114,14 +114,16 @@ header{
            }
         }
     }
-    .tabs{
-        li{
-            span{
-                font-size: 16px !important;
-                &::after {
-                    left: 80px !important;
-                }    
+    .brandInfoPage{
+        .tabs{
+            li{
+                span{
+                    font-size: 16px !important;
+                    &::after {
+                        left: 80px !important;
+                    }    
+                }
             }
         }
-    }
+    } 
 } 
