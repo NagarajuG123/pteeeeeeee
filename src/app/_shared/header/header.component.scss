@@ -322,6 +322,11 @@ header {
       @include desk-lg-below2  {
         margin-left: 100px;
       }
+      @include tablet-landscape  {
+        margin-left: 90px;
+      }
+      
+      
     }
     .title {
       color: $white_2;
