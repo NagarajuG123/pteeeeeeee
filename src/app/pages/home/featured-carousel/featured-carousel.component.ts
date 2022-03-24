@@ -51,7 +51,7 @@ export class FeaturedCarouselComponent implements OnInit {
           items: 1,
         },
         400: {
-          items: 1,
+          items: 4,
         },
         740: {
           items: 4,

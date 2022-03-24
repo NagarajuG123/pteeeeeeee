@@ -3,9 +3,9 @@
 
 .featured{
   img {
-    @include mobile-landscape {
+    @include tablet-landscape {
       height: auto;    
-    }            
+    }
     height: 119px;
   }
     .sectionTitle{
@@ -61,10 +61,7 @@
           font-size: 45px !important;
           &.owl-prev {
             left: -4%;
-            @include tablet-landscape {
-              left: -3%;
-            }
-            @media only screen and (min-width: 320px) and (max-width: 850px) {
+            @include mobile-landscape{
               left: -10%;
             }
   
@@ -75,10 +72,7 @@
           }
           &.owl-next {
             right: -4%;
-            @include tablet-landscape {
-              right: -3%;
-            }
-            @media only screen and (min-width: 320px) and (max-width: 850px) {
+            @include mobile-landscape{
               right: -10%;
             }
   

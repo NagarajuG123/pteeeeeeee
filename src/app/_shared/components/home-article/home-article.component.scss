@@ -3,7 +3,7 @@
 
 .article {
   img {
-    @include mobile-landscape {
+    @include tablet-landscape {
       height: auto;    
     }            
     height: 118px;

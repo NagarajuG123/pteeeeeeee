@@ -19,6 +19,9 @@
     img {
       max-height: 206px;
       height: 206px;
+      @include tablet-landscape {
+        height: auto;    
+      }
     }
     .card-body {
       background-color: $red;
