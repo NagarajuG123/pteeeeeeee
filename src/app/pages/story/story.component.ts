@@ -105,10 +105,8 @@ hasMore:any;
     this.isAuthorPage = false;
     this.storyIndex = false;
     this.duplicate = false;
-    setTimeout(() => {
-      this.loadScript('https://cdn.iframe.ly/embed.js?api_key=c14ba928acf9cfecbbb987');
-      this.loadScript("https://platform-api.sharethis.com/js/sharethis.js#property=5cb792e5de419c001204327a&product=custom-share-buttons");
-    }, 2000);
+    this.loadScript('https://cdn.iframe.ly/embed.js?api_key=c14ba928acf9cfecbbb987');
+    this.loadScript("https://platform-api.sharethis.com/js/sharethis.js#property=5cb792e5de419c001204327a&product=custom-share-buttons");
   }
 
   loadScript(url:string) {
