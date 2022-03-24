@@ -3,10 +3,14 @@
 
 .article {
   img {
-    @include tablet-landscape {
-      height: auto;    
-    }            
     height: 118px;
+
+    @include tablet-landscape {
+      height: 180px;
+    }  
+    @include mobile-landscape {
+      height: auto;    
+    }           
   }
   .fourColumn {
     img {
