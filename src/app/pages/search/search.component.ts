@@ -530,9 +530,8 @@ export class SearchComponent implements OnInit {
   }
 
   getLogo() {
-    let publication = this.commonService.publication;
     let logo;
-    if(publication?.id === 'EE') {
+    if(this.commonService.otherSites()) {
       logo = `${environment.imageResizeUrl}/static/search_page_logo.svg`;
     } else {
       logo = `${environment.imageResizeUrl}/static/search_page_logo.png`;
