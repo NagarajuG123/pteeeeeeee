@@ -24,6 +24,12 @@ header{
             color:$black_3;
         }
         .logo{
+            img {
+                @include mobile-portrait {
+                  width: 50px !important;
+                  height: 28px !important;
+                }
+            }
             &.brandLogo{
                 img{
                     @include mobile-portrait{
