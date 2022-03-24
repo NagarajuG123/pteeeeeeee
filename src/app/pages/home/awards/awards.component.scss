@@ -13,10 +13,15 @@
 
   .topSection {
     img {
+      height: 302px;
+
+      @include tablet-landscape {
+        height: auto; 
+        width:100%;   
+      } 
       @include mobile-landscape {
         height: auto;    
       }            
-      height: 302px;
     }
     h2 {
       font-size: 20px;
