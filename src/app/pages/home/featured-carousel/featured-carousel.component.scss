@@ -13,6 +13,13 @@
     }
     .seeMore{
         color: $red;
+       
+        @include tablet-landscape {
+          font-size: 10px !important;    
+        }
+        @include mobile-landscape {
+          font-size: 12px !important;    
+        }
     }
     .subTitle {
         color: $dark_gray_5;
