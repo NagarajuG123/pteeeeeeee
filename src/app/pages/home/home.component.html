@@ -22,10 +22,10 @@
       (ngSubmit)="onNewsletterSubmit(newsletterForm)"
     >
       <div class="row gx-2 py-3">
-        <div class="col-lg-3 col-sm-12 pt-2">
+        <div class="col-lg-4 col-sm-12 pt-2 col-xl-3">
           <h2 class="m-0 text-uppercase fw-bold">Sign up for our newsletter</h2>
         </div>
-        <div class="col-lg-3 col-sm-12">
+        <div class="col-lg-3 col-sm-12 col-xl-3">
           <input
             type="text"
             placeholder="Name*"
@@ -38,7 +38,7 @@
             [control]="newsletterForm.controls['name']"
           ></app-error-message>
         </div>
-        <div class="col-lg-3 col-sm-12">
+        <div class="col-lg-3 col-sm-12 col-xl-3">
           <input
             type="email"
             placeholder="Email*"
@@ -51,7 +51,7 @@
             [control]="newsletterForm.controls['email']"
           ></app-error-message>
         </div>
-        <div class="col-lg-3 col-sm-12">
+        <div class="col-lg-2 col-sm-12 col-xl-3">
           <button class="btn" (click)="onNewsletterSubmit(newsletterForm)">
             Join now
           </button>
