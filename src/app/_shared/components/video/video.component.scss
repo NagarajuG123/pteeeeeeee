@@ -30,6 +30,9 @@
     .video-play {
       height: 57px;
       width: 97px;
+      @include tablet-portrait {
+        left: calc(50% - 120px);
+      }
     }
     h2 {
       font-size: 20px;
