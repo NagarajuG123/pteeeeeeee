@@ -133,6 +133,9 @@ header {
       overflow: hidden;
       padding-top: 0;
       position: relative;
+      @include tablet-landscape{
+        display: none !important;
+      }
 
       figure {
         height: 90px;
