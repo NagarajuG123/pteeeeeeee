@@ -160,9 +160,10 @@ hasMore:any;
                   )
                 : '';
             }
-            this.storyApiUrl = this.brandSlug
-              ? `${this.brandSlug}/story/${this.storyId}`
-              : `story/${this.storyId}`;
+            // this.storyApiUrl = this.brandSlug
+            //   ? `${this.brandSlug}/story/${this.storyId}`
+            //   : `story/${this.storyId}`;
+            this.storyApiUrl = `story/${this.storyId}`;
             let isAuthorPage = false;
             this.isBrand = this.brandSlug === '1851' ? false : true;
 
@@ -339,7 +340,7 @@ hasMore:any;
                   case 'editorials':
                     isAuthorPage = true;
                     this.apiService
-                      .getAPI(`1851/story/${this.storyId}`)
+                      .getAPI2(`story/${this.storyId}`)
                       .pipe(takeUntil(this.onDestroy$))
                       .subscribe((s_result) => {
                         this.apiUrl = `author/${s_result.data.author.slug}/editorials`;
@@ -350,7 +351,7 @@ hasMore:any;
                   case 'branded-contents':
                     isAuthorPage = true;
                     this.apiService
-                      .getAPI(`1851/story/${this.storyId}`)
+                      .getAPI2(`story/${this.storyId}`)
                       .pipe(takeUntil(this.onDestroy$))
                       .subscribe((s_result) => {
                         this.apiUrl = `author/${s_result.data.author.slug}/branded-contents`;
@@ -398,7 +399,7 @@ hasMore:any;
       headerApi = `header?slug=${this.brandSlug}`;
     }
     forkJoin([
-      this.apiService.getAPI(`${this.storyApiUrl}`),
+      this.apiService.getAPI2(`${this.storyApiUrl}`),
       this.apiService.getAPI2(headerApi),
       this.apiService.getAPI(`1851/publication-instance`),
       this.apiService.getAPI2(`footer`),
@@ -411,23 +412,23 @@ hasMore:any;
         result['story'] = result[0];
         result['header'] = result[1]['data'];
 
-        if (result['story'].data === null) {
+        if (result['story'] === null) {
           window.location.href = '404';
           return;
         }
-        this.detailsData.push(this.htmlBinding(result['story'].data));
+        this.detailsData.push(this.htmlBinding(result['story']));
         if (
           typeof result['story'].meta !== 'undefined' &&
           result['story'].meta !== null
         ) {
-          let posted_date = new Date(result['story'].data.posted_on);
+          let posted_date = new Date(result['story'].posted_on);
           let hoursDiff =
             posted_date.getHours() - posted_date.getTimezoneOffset() / 60;
           let minutesDiff =
             (posted_date.getHours() - posted_date.getTimezoneOffset()) % 60;
           posted_date.setHours(hoursDiff);
           posted_date.setMinutes(minutesDiff);
-          let modified_date = new Date(result['story'].data.last_modified);
+          let modified_date = new Date(result['story'].last_modified);
           let hours =
             modified_date.getHours() - modified_date.getTimezoneOffset() / 60;
           let minutes =
@@ -448,8 +449,8 @@ hasMore:any;
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
             dateModified:
               modified_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
-            articleSection: result['story'].data.category.name
-              ? result['story'].data.category.name
+            articleSection: result['story'].category.name
+              ? result['story'].category.name
               : this.defaultArticleSection,
             mainEntityOfPage: {
               '@type': 'WebPage',
@@ -458,14 +459,14 @@ hasMore:any;
             author: {
               '@type': 'Person',
               name:
-                result['story'].data.author === null ||
-                typeof result['story'].data.author === 'undefined'
+                result['story'].author === null ||
+                typeof result['story'].author === 'undefined'
                   ? ''
-                  : result['story'].data.author.name,
+                  : result['story'].author.name,
             },
             image: {
               '@type': 'ImageObject',
-              url: `${environment.imageResizeUrl}/fit-in/500x261/${result['story'].data.media.path}`,
+              url: `${environment.imageResizeUrl}/fit-in/500x261/${result['story'].media.path}`,
               width: 802,
               height: 451,
             },
@@ -486,15 +487,15 @@ hasMore:any;
           this.schema = {};
         }
         this.defaultFbUrl = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
-        if (result['story'].data.brand) {
+        if (result['story'].brand) {
           if (
-            typeof result['story'].data.brand.fb_page_url === 'undefined' ||
-            result['story'].data.brand.fb_page_url === null ||
-            result['story'].data.brand.fb_page_url === ''
+            typeof result['story'].brand.fb_page_url === 'undefined' ||
+            result['story'].brand.fb_page_url === null ||
+            result['story'].brand.fb_page_url === ''
           ) {
             this.fbUrl = environment.fbUrl;
           } else {
-            this.fbUrl = result['story'].data.brand.fb_page_url;
+            this.fbUrl = result['story'].brand.fb_page_url;
           }
         } else {
           this.fbUrl = environment.fbUrl;
@@ -531,15 +532,15 @@ hasMore:any;
         let url = '';
         if (this.brandId === '1851') {
           url = `${environment.appUrl}${
-            result['story'].data.brand.slug === '1851' ||
-            result['story'].data.brand.slug === ''
+            result['story'].brand.slug === '1851' ||
+            result['story'].brand.slug === ''
               ? ''
-              : `/${result['story'].data.brand.slug}`
+              : `/${result['story'].brand.slug}`
           }${this.router.url}`;
         } else if (this.brandId !== '1851') {
           url = `${environment.appUrl}${
-            result['story'].data.brand.slug === '1851' ||
-            result['story'].data.brand.slug === ''
+            result['story'].brand.slug === '1851' ||
+            result['story'].brand.slug === ''
               ? `/${this.storySlug}`
               : this.router.url
           }`;
@@ -704,11 +705,12 @@ hasMore:any;
                 this.duplicate = true;
                 return;
               } else if (this.detailsData.find((o) => o.id !== storyId)) {
-                let url = this.brandSlug
-                  ? `${this.brandSlug}/story/${storyId}`
-                  : `story/${storyId}`;
-                this.apiService.getAPI(`${url}`).subscribe((result) => {
-                  this.detailsData.push(this.htmlBinding(result.data));
+                // let url = this.brandSlug
+                //   ? `${this.brandSlug}/story/${storyId}`
+                //   : `story/${storyId}`;
+                let url = `story/${storyId}`;
+                this.apiService.getAPI2(`${url}`).subscribe((result) => {
+                  this.detailsData.push(this.htmlBinding(result));
                 });
               } else {
                 if (this.detailsData.length == 1) {
