@@ -500,9 +500,8 @@
                 </h2>
               </div>
               <div class="financial-description p-4" *ngIf="isInfo && brandInfo?.more_info">
-                <p class="topContent m-0 pb-3">
-                  {{ brandInfo?.more_info }}
-                </p>
+                <div class="topContent m-0 pb-3"  [innerHTML]=" brandInfo?.more_info">
+                </div>
               </div>
           </div>
 
