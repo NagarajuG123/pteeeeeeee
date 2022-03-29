@@ -30,13 +30,6 @@ header{
                   height: auto !important;
                 }
             }
-            &.brandLogo{
-                img{
-                    @include mobile-portrait{
-                        height: 70px !important;
-                    }
-                }
-            }
             img{
                 @include mobile-landscape{
                     width: 140px;
