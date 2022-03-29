@@ -160,9 +160,6 @@ hasMore:any;
                   )
                 : '';
             }
-            // this.storyApiUrl = this.brandSlug
-            //   ? `${this.brandSlug}/story/${this.storyId}`
-            //   : `story/${this.storyId}`;
             this.storyApiUrl = `story/${this.storyId}`;
             let isAuthorPage = false;
             this.isBrand = this.brandSlug === '1851' ? false : true;
@@ -705,9 +702,6 @@ hasMore:any;
                 this.duplicate = true;
                 return;
               } else if (this.detailsData.find((o) => o.id !== storyId)) {
-                // let url = this.brandSlug
-                //   ? `${this.brandSlug}/story/${storyId}`
-                //   : `story/${storyId}`;
                 let url = `story/${storyId}`;
                 this.apiService.getAPI2(`${url}`).subscribe((result) => {
                   this.detailsData.push(this.htmlBinding(result));
