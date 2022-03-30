@@ -116,7 +116,7 @@
       border-bottom: 1px solid $light_gray_8;
 
       span {
-        font-family: $proxiBold;
+        font-family: $roboto;
         color: $dark_gray_5;
         &.active {
           color: $red;
@@ -788,7 +788,7 @@
         font-size: 12px;
         line-height: 32px;
         color: $black;
-        font-family: $proxiLight;
+        font-family: $roboto;
         font-weight: 400;
         width: 350px;
         background: $white;

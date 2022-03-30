@@ -1,4 +1,4 @@
-@import "../../../assets/scss/typography.scss";
+
 @import "../../../assets/scss/media.scss";
 @import "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/mixins.scss";
@@ -75,7 +75,7 @@
       max-width: 160px;
     }
     p {
-      font-family: $proxiBold;
+      font-family: $roboto;
       font-weight: 700;
       color: $red;
       font-size: 56px;
@@ -84,7 +84,7 @@
     }
   }
   .highRank {
-    font-family: $proxiBold;
+    font-family: $roboto;
     font-weight: 700;
     color: $red;
     font-size: 84px;
@@ -102,7 +102,7 @@
     min-height: 160px;
 
     &.isHead {
-      font-family: $proxiBold;
+      font-family: $roboto;
       font-weight: 700;
       line-height: 28.24px;
       color: $dark_black;
@@ -193,7 +193,7 @@
       width: 90px;
     }
     .shortRank {
-      font-family: $proxiBold;
+      font-family: $roboto;
       color: $red;
       font-size: 39.24px;
       font-weight: 700;

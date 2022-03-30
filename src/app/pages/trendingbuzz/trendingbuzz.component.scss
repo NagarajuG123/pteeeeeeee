@@ -117,7 +117,7 @@ img {
   h4 {
     background: $red;
     color: $white;
-    font-family: $proxiLight;
+    font-family: $roboto;
     margin: 0 7px 0 0;
     padding: 17px 0 13px 0;
     letter-spacing: 0.5px;
@@ -133,7 +133,7 @@ img {
     line-height: 32px;
     color: $white;
     padding: 16px 0 5px 0;
-    font-family: $proxiBold;
+    font-family: $roboto;
     font-weight: 400;
     @include tablet-landscape {
       padding: 12px 0 5px 0;
@@ -149,7 +149,7 @@ img {
     font-size: 18px;
     line-height: 22px;
     color: $white;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     @include mobile-landscape1 {
       font-size: 16px;
       line-height: 23px;
@@ -161,7 +161,7 @@ h6 {
   font-size: 13px;
   line-height: 15px;
   color: $light_gray_7;
-  font-family: $proxiMedium;
+  font-family: $roboto;
   text-decoration: underline;
   padding: 0 0 45px;
   font-weight: 400;
@@ -184,7 +184,7 @@ h6 {
     p a {
       font-size: 12.97px;
       line-height: 16.7px;
-      font-family: $proxiMedium;
+      font-family: $roboto;
       color: $dark_gray_5 !important;
     }
   }
@@ -198,7 +198,7 @@ h6 {
     line-height: 19px;
     color: $white;
     font-weight: 400;
-    font-family: $proxiBold;
+    font-family: $roboto;
     vertical-align: top;
     padding: 7px 5px 9px;
     width: 35px;

@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./assets/scss/typography.scss";
 @import "./assets/scss/mixins.scss";
 @import "./assets/scss/variables.scss";
 @import "./assets/scss/common.scss";
@@ -152,7 +151,7 @@ body.noscroll {
   margin-left: 30px;
 
   b {
-    font-family: $proxiMedium !important;
+    font-family: $roboto !important;
     font-weight: 700;
   }
 

@@ -56,7 +56,7 @@ figure {
       line-height: 31px;
       color: $white;
       font-weight: 400;
-      font-family: $proxiMedium;
+      font-family: $roboto;
       letter-spacing: 0.8px;
       @include tablet-landscape {
         font-size: 26px;
@@ -87,7 +87,7 @@ figure {
   padding: 71px 10px 56px;
   h4 {
     letter-spacing: 0.5px;
-    font-family: $proxiSemiBold;
+    font-family: $roboto;
     font-size: 20px;
     font-weight: 400;
     line-height: 22px;
@@ -95,13 +95,13 @@ figure {
   }
   p {
     color: $dark_gray_1;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     letter-spacing: 0.4px;
     padding: 5px 0 0;
   }
 
   input {
-    font-family: $proxiRegular;
+    font-family: $roboto;
     border: 1px solid $light_gray_2;
     font-size: 16px;
     line-height: 44px;
@@ -115,7 +115,7 @@ figure {
     }
   }
   textarea {
-    font-family: $proxiRegular;
+    font-family: $roboto;
     border: 1px solid $light_gray_2;
     height: 129px;
     color: $light_gray_1;
@@ -161,7 +161,7 @@ figure {
     font-size: 16px;
     line-height: 18px;
     color: $light_gray_1;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     letter-spacing: 0.4px;
     padding: 0 0 20px;
     @include desk-lg-below1 {
@@ -182,7 +182,7 @@ figure {
     font-size: 12px;
     line-height: 14px;
     color: $light_gray_1;
-    font-family: $proxiLight;
+    font-family: $roboto;
     letter-spacing: 0.4px;
     margin: 19px 0 0;
   }
@@ -233,7 +233,7 @@ h6 {
     font-size: 15px;
     line-height: 19px;
     font-weight: normal;
-    font-family: $proxiMedium;
+    font-family: $roboto;
     letter-spacing: 0.4px;
     color: $dark_gray_1;
   }
@@ -264,7 +264,7 @@ h6 {
     font-size: 11px;
     line-height: 17px;
     font-weight: normal;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     letter-spacing: 0.4px;
     color: $light_gray_5;
   }
@@ -272,7 +272,7 @@ h6 {
     font-size: 11px;
     line-height: 13px;
     font-weight: normal;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     color: $light_gray_5;
     letter-spacing: 0.3px;
   }
@@ -316,7 +316,7 @@ h6 {
   }
   h3 {
     color: $dark_gray_2;
-    font-family: $proxiLight;
+    font-family: $roboto;
     position: absolute;
     top: 33.4%;
     left: 0;
@@ -324,7 +324,7 @@ h6 {
     margin: 0 auto;
     line-height: 28px;
     strong {
-      font-family: $proxiMedium;
+      font-family: $roboto;
     }
     @include mobile-portrait {
       font-size: 16px;
@@ -338,7 +338,7 @@ h6 {
     font-size: 30.75px;
     line-height: 32px;
     color: $white;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     margin: -81px 0 32px 0;
     position: relative;
     z-index: 1;
@@ -359,7 +359,7 @@ h6 {
     font-size: 9.1px;
     display: inline-block;
     vertical-align: top;
-    font-family: $proxiRegular;
+    font-family: $roboto;
     fa-icon {
       font-size: 23px;
       line-height: 35px;

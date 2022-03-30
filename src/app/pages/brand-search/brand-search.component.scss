@@ -1,4 +1,3 @@
-@import "../../../assets/scss/typography.scss";
 @import "../../../assets/scss/media.scss";
 @import "../../../assets/scss/variables.scss";
 
@@ -33,7 +32,7 @@
 
   &.isHead {
     background:$white_8;
-    font-family: $proxiBold;
+    font-family: $roboto;
     font-weight: 700;
     line-height: 28.24px;
     color: $dark_gray;
@@ -87,7 +86,7 @@
     }
     &.isInvestmentCol {
       .list-data--investment {
-        font-family: $proxiMedium;
+        font-family: $roboto;
         font-weight: 500;
         color: $dark_gray;
         font-size: 20px;
@@ -102,7 +101,7 @@
           font-size: 18px;
           text-align: left;
           &::before {
-            font-family: "ProximaNova-Bold";
+            font-family:  $roboto;
             content: "Investment";
             display: block;
             font-weight: 700;
@@ -122,7 +121,7 @@
         @include media("<md") {
           margin-bottom: 10px;
           &::before {
-            font-family: "ProximaNova-Bold";
+            font-family:  $roboto;
             content: "Industry";
             display: block;
             font-weight: 700;
@@ -141,7 +140,7 @@
           font-size: 18px;
           margin-bottom: 10px;
           &::before {
-            font-family: "ProximaNova-Bold";
+            font-family:  $roboto;
             content: "Latest Story";
             display: block;
             font-weight: 700;
