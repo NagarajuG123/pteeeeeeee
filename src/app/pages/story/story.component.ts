@@ -406,7 +406,7 @@ hasMore:any;
         this.publication = result[2];
         this.footer = result[3];
 
-        result['story'] = result[0];
+        result['story'] = result[0]['data'];
         result['header'] = result[1]['data'];
 
         if (result['story'] === null) {
