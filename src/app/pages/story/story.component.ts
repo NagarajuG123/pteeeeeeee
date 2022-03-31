@@ -704,7 +704,7 @@ hasMore:any;
               } else if (this.detailsData.find((o) => o.id !== storyId)) {
                 let url = `story/${storyId}`;
                 this.apiService.getAPI2(`${url}`).subscribe((result) => {
-                  this.detailsData.push(this.htmlBinding(result));
+                  this.detailsData.push(this.htmlBinding(result.data));
                 });
               } else {
                 if (this.detailsData.length == 1) {
