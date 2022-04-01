@@ -184,7 +184,7 @@ export class BrandComponent implements OnInit {
   }
 
   getMeta() {
-    this.apiService.getAPI(`${this.slug}/meta`).subscribe((response) => {
+    this.apiService.getAPI2(`meta?slug=${this.slug}&is_brand=true`).subscribe((response) => {
       this.metaService.setSeo(response.data);
       this.apiService
         .getAPI(`1851/publication-instance`)
