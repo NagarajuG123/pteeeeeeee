@@ -77,7 +77,7 @@ export class SubscribeComponent implements OnInit {
       signUpNewsletter: true,
     });
     const publication = this.apiService.getAPI(`1851/publication-instance`);
-    const meta = this.apiService.getAPI(`1851/meta`);
+    const meta = this.apiService.getAPI2(`meta`);
     forkJoin([publication, meta, publication]).subscribe((results) => {
       this.publication = results[0];
       this.metaService.setSeo(results[1].data);

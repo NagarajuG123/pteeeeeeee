@@ -42,7 +42,7 @@ export class TermsofuseComponent implements OnInit {
 
   ngOnInit(): void {
     const termsApi = this.apiService.getAPI(`${this.slug}/terms-of-use`);
-    const metaApi = this.apiService.getAPI(`${this.slug}/meta`);
+    const metaApi = this.apiService.getAPI2(`meta`);
     const publicationApi = this.apiService.getAPI(
       `${this.slug}/publication-instance`
     );

@@ -69,7 +69,7 @@ export class DetailsComponent implements OnInit {
     });
   }
   getMeta() {
-    this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+    this.apiService.getAPI2(`meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
       this.apiService
         .getAPI(`1851/publication-instance`)

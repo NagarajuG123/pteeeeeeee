@@ -47,7 +47,7 @@ export class MonthlyDetailsComponent implements OnInit {
           this.banner = response;
           this.details = response.data.slice(1, 9);
           this.hasMore = response.has_more;
-          this.apiService.getAPI(`1851/meta`).subscribe((response) => {
+          this.apiService.getAPI2(`meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
             this.apiService
               .getAPI(`1851/publication-instance`)

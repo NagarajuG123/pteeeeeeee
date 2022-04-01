@@ -58,7 +58,7 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {
     const aboutus = this.apiService.getAPI(`1851/about-us`);
-    const meta = this.apiService.getAPI(`1851/meta`);
+    const meta = this.apiService.getAPI2(`meta`);
     const publication = this.apiService.getAPI(`1851/publication-instance`);
     forkJoin([publication, aboutus, meta]).subscribe((results) => {
       this.data = results[1].data;
