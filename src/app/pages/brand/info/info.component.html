@@ -304,24 +304,17 @@
               class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isBought"
             >
-                <div class="imageSection">
-                <a
-                    href="#"
-                    onclick="return false;"
-                    class="d-block"
-                  >
-                    <figure>
-                      <img
-                        src="{{ item?.media | defaultImage: 796:0 }}"
-                        width="100%"
-                        height="100%"
-                        alt="why-i-bough"
-                        class="lazyload"
-                      />
-                    </figure>
-                  </a>
-                </div>
-                <div>
+              <figure>
+                <img
+                  *ngIf= "items?.media"
+                  data-src="{{ items?.media.url }}"
+                  width="100%"
+                  height="auto"
+                  alt="why-i-bought"
+                  class="lazyload"
+                />
+              </figure>
+                <div [ngClass]="items?.media ? 'pt-4' : ''">
                 <ul class="d-flex">
                   <li class="header-title">
                     <h2 class="text-uppercase sectionTitle mb-0">
@@ -346,24 +339,17 @@
               class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isExecutive"
             >
-            <div class="imageSection">
-              <a
-                  href="#"
-                  onclick="return false;"
-                  class="d-block"
-                >
-                  <figure>
-                    <img
-                      data-src="{{ item?.media | defaultImage: 796:0 }}"
-                      width="100%"
-                      height="100%"
-                      alt="executive-image"
-                      class="lazyload"
-                    />
-                  </figure>
-                </a>
-              </div>
-              <div>
+            <figure>
+              <img
+                *ngIf= "items?.media"
+                data-src="{{ items?.media.url }}"
+                width="100%"
+                height="auto"
+                alt="executive"
+                class="lazyload"
+              />
+            </figure>
+              <div [ngClass]="items?.media ? 'pt-4' : ''">
                 <ul class="d-flex">
                   <li class="header-title">
                     <h2 class="text-uppercase sectionTitle mb-0">
