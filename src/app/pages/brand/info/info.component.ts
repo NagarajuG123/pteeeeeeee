@@ -118,7 +118,7 @@ export class InfoComponent implements OnInit {
               }
             }
             this.apiService
-              .getAPI(`${this.brandSlug}/info-tab`)
+              .getAPI2(`${this.brandSlug}/info-tab`)
               .subscribe((result) => {
                 this.categories = result.categories;
                 this.tabClass = `row-cols-lg-${this.categories.length}`;
