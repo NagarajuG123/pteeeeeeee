@@ -304,9 +304,8 @@
               class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isBought"
             >
-              <figure>
+              <figure *ngIf= "items?.media">
                 <img
-                  *ngIf= "items?.media"
                   data-src="{{ items?.media.url }}"
                   width="100%"
                   height="auto"
@@ -339,9 +338,8 @@
               class="container customContainer infoContainer whyIBought pb-5"
               *ngIf="isExecutive"
             >
-            <figure>
+            <figure *ngIf= "items?.media">
               <img
-                *ngIf= "items?.media"
                 data-src="{{ items?.media.url }}"
                 width="100%"
                 height="auto"
