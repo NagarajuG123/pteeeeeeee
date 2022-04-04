@@ -160,6 +160,7 @@
     font-family: $roboto;
     font-weight: 700;
     .topContent {
+      word-break: break-word;
       font-weight: 400;
       color: $black;
     }
