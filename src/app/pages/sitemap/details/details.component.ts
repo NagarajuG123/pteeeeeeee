@@ -53,8 +53,8 @@ export class DetailsComponent implements OnInit {
             this.apiUrl = `${this.brandSlug}/sitemap-page/${this.year}/${this.month}`;
           } else {
             this.apiUrl = `sitemap-page/${this.year}/${this.month}`;
-            this.getSitemapDetail();
           }
+          this.getSitemapDetail();
         });
     });
     this.getMeta();

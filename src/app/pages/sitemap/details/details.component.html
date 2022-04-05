@@ -12,7 +12,7 @@
       </h2>
       <ul class="nobullet col3">
         <li *ngFor="let item of sitemap">
-          <a [routerLink]="item['url']">{{ item["title"] }}</a>
+          <a routerLink="/{{ item['url'] }}">{{ item["title"] }}</a>
         </li>
       </ul>
     </div>
