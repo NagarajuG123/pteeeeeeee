@@ -35,7 +35,7 @@ header {
         height: 70px;
       }
       &.brandMenuBtn {
-        @include mobile-portrait {
+        @include mobile-landscape {
           width: 70px;
           height: 80px;
         }
@@ -62,7 +62,7 @@ header {
       {
         margin-left: -2rem;
       }
-      @include mobile-portrait {
+      @include mobile-landscape {
         margin-left: -1rem;
       }
       img {
@@ -72,13 +72,17 @@ header {
         }
       }
       &.brandLogo {
-       
+       a{
+        @include mobile-portrait1 {
+          padding: 0 16px 0px 30px !important;
+        } 
+       }
         img {
           min-height: 30px;
           max-height: 80px;
           min-width: 100px;
           max-width: 125px;
-          @include mobile-portrait {
+          @include mobile-landscape {
             width: 80px !important;
             height: auto !important;
           }
