@@ -35,7 +35,7 @@ header {
         height: 70px;
       }
       &.brandMenuBtn {
-        @include mobile-portrait {
+        @include tablet-landscape1 {
           width: 70px;
           height: 80px;
         }
@@ -56,14 +56,14 @@ header {
       margin-left: -0.5rem;
 
       @include tablet-landscape {
-        margin-left: 1rem;
+        margin-left: 1rem !important;
       }
       @include  tablet-portrait
       {
-        margin-left: -2rem;
+        margin-left: -2rem !important;
       }
-      @include mobile-portrait {
-        margin-left: -1rem;
+      @include tablet-landscape1{
+        margin-left: -1rem !important;
       }
       img {
         @include mobile-portrait {
@@ -72,15 +72,24 @@ header {
         }
       }
       &.brandLogo {
-       
+       a{
+        @include mobile-portrait1 {
+          padding: 0 16px 0px 30px !important;
+        } 
+       }
         img {
           min-height: 30px;
           max-height: 80px;
           min-width: 100px;
           max-width: 125px;
-          @include mobile-portrait {
+          @include mobile-landscape {
             width: 80px !important;
             height: auto !important;
+          }
+        }
+        &.col-sm-8{
+          @include tablet-landscape1{
+             width: 40.66666667% !important;
           }
         }
       }
