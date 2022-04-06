@@ -87,7 +87,7 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
     this.storyContent = this.details.content;
     this.apiService
-      .getAPI(`terms`)
+      .getAPI2(`terms`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (typeof result !== 'undefined') {

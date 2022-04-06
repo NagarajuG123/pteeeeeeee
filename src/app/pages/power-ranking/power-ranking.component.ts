@@ -32,7 +32,7 @@ export class PowerRankingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const powerApi = this.apiService.getAPI(`1851/power-ranking`);
+    const powerApi = this.apiService.getAPI2(`powerranking`);
     const publicationApi = this.apiService.getAPI('1851/publication-instance');
 
     forkJoin([powerApi, publicationApi])
@@ -41,12 +41,9 @@ export class PowerRankingComponent implements OnInit {
         this.data = result[0];
         this.contents = result[0].data;
         this.items = result[0].data.brands;
-        this.metaData = result[0].meta;
+        this.metaData = result[0].data.meta;
         this.publication = result[1];
         this.metaService.setSeo(this.metaData);
-        this.metaService.setTitle(
-          `Power Rankings | Franchise Brands | ${this.publication.title}`
-        );
       });
   }
 }
