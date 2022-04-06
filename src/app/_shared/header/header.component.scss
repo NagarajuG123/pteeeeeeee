@@ -72,11 +72,16 @@ header {
         }
       }
       &.brandLogo {
-       a{
         @include mobile-portrait1 {
-          padding: 0 16px 0px 30px !important;
+          a{
+            padding: 0 16px 0px 30px !important;
+            img{
+              min-width: 40px;
+              width: 60px !important;
+            }
+          }
+          
         } 
-       }
         img {
           min-height: 30px;
           max-height: 80px;
@@ -128,6 +133,9 @@ header {
         font-size: 11px;
         line-height: 14px !important;
         color: $red;
+      }
+      @include mobile-portrait1{
+        font-size: 8px !important;
       }
     }
     .subscribe {
