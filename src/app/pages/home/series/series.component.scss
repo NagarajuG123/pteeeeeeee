@@ -18,6 +18,9 @@
     span {
       float: right;
     }
+    @include mobile-portrait1{
+      font-size:  20px;
+    }
   }
   .leftSide {
     .seeAll{

@@ -131,10 +131,12 @@ header {
       }
     }
     .subscribe {
-      color: $white_2;
-      padding: 0.5rem;
-      @include mobile-portrait {
-        padding: 0.25rem;
+      button{
+        color: $white_2;
+        padding: 0.5rem;
+        @include mobile-portrait {
+          padding: 0.25rem;
+        }
       }
     }
     .cover {

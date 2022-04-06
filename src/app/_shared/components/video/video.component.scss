@@ -85,6 +85,9 @@
         font-size: 45px !important;
         &.owl-prev {
           left: -4%;
+          @include mobile-portrait1{
+            left: -15% !important;
+          }
           @include mobile-landscape{
             left: -10%;
           }
@@ -96,6 +99,9 @@
         }
         &.owl-next {
           right: -4%;
+          @include mobile-portrait1{
+            right: -15% !important;
+          }
           @include mobile-landscape {
             right: -10%;
           }

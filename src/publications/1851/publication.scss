@@ -8,10 +8,29 @@
     font-size: 17px;
     line-height: 20px;
 }
+@include mobile-portrait1{
+    .sectionTitle{
+        font-size: 15px;
+    }
+}
 header{
     .middle-head{
         .articleTitles{
             color: $dark_gray;
+        }
+        @include mobile-portrait1{
+            .logo{
+                img{
+                    width: 30px !important;
+                    height: auto !important;
+                }
+            }   
+            .logoDiv{
+                padding-left: 1.25rem !important;
+            }  
+            .subscribe{
+                padding-right: 0.5rem !important;
+            }
         }
     }
     .mainLogo{
