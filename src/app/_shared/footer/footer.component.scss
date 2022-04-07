@@ -44,8 +44,13 @@ footer {
       color: $white_2;
     }
   }
-
-  @media screen and (max-width: 767px) {
+  @media  screen and (min-width:576px) and (max-width:650px) {
+    .footer-middle{
+      padding-right: 0.25rem!important;
+      padding-left: 0.5rem!important;
+    }
+  }
+  @media screen and (max-width: 575px) {
     .row {
       > .col-12 {
         border-left-width: 0px !important;
@@ -74,12 +79,14 @@ footer {
     @include mobile-portrait1{
       padding-right: 1.5rem !important;
     }
-  }
-  @include mobile-portrait{
-    .spotlight{
+    @include mobile-portrait{
       padding-right: 2.5rem !important;
+    } 
+    @include mobile-portrait2{
+      padding-right: 0.75rem !important;
     }
-  } 
+  }
+  
  @include mobile-portrait1{
    .spotlight{
      padding-right: 1rem !important;
