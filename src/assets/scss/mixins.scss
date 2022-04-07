@@ -89,7 +89,7 @@
   }
 }
 @mixin mobile-portrait2 {
-  @media (min-width: 390px) and (max-width: 900px) {
+  @media (min-width: 479px) and (max-width: 767px) {
     @content;
   }
 }
