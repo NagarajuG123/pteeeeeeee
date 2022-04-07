@@ -21,6 +21,7 @@
       height: 206px;
       @include tablet-landscape {
         height: auto;    
+        max-height: unset;
       }
     }
     .card-body {
@@ -99,6 +100,9 @@
           @include mobile-portrait1{
             left: -10% !important;
           }
+          @include mobile-landscape3 {
+            left: -4% !important;
+          }
           @include tablet-landscape1 {
             left: -5%;
           }
@@ -115,6 +119,9 @@
 
           @include mobile-portrait1{
             right: -10% !important;
+          }
+          @include mobile-landscape3 {
+            right: -4% !important;
           }
           @include tablet-landscape1 {
             right: -5%;

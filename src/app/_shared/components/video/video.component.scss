@@ -91,6 +91,9 @@
           @include mobile-landscape{
             left: -10%;
           }
+          @include mobile-landscape3{
+            left: -7%;
+          }
 
           &:hover {
             background-color: transparent;
@@ -104,6 +107,9 @@
           }
           @include mobile-landscape {
             right: -10%;
+          }
+          @include mobile-landscape3{
+            right: -7%;
           }
 
           &:hover {

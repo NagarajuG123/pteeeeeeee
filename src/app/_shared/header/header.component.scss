@@ -30,7 +30,7 @@ header {
     .menuBtn {
       width: 90px;
       height: 90px;
-      @include mobile-portrait {
+      @include mobile-landscape {
         width: 65px;
         height: 70px;
       }
@@ -64,6 +64,9 @@ header {
       }
       @include tablet-landscape1{
         margin-left: -1rem !important;
+      }
+      @include mobile-landscape3{
+        margin-left: -4rem !important;
       }
       img {
         @include mobile-portrait {
@@ -269,7 +272,7 @@ header {
       }
     }
     .nav {
-      @include mobile-portrait {
+      @include mobile-landscape {
         flex-wrap: nowrap;
       }
     }
