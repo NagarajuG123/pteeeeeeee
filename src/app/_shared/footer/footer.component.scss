@@ -70,6 +70,25 @@ footer {
       }
     }
   }
+  .spotlight{
+    @include mobile-portrait1{
+      padding-right: 1.5rem !important;
+    }
+  }
+  @include mobile-portrait{
+    .spotlight{
+      padding-right: 2.5rem !important;
+    }
+  } 
+ @include mobile-portrait1{
+   .spotlight{
+     padding-right: 1rem !important;
+   }
+   .footer-middle{
+     padding-right: 0.5rem !important;
+     padding-left: 0.5rem !important;
+   }
+ }
 }
 
 .modal-header {
