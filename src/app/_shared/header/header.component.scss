@@ -275,6 +275,16 @@ header {
           }
         }
       }
+      @include mobile-portrait1 {
+        ul{
+          li{
+            font-size: 10px !important;
+          }
+        }
+        h3{
+          font-size: 10px !important;
+        }
+      }
     }
     .nav {
       @include mobile-landscape {
