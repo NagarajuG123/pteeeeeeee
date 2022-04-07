@@ -253,12 +253,12 @@ button {
         color: $red;
       }
       &.desktop-only{
-        @media only screen and (min-width: 600px) {
+        @media only screen and (min-width: 768px) {
           display: flex !important;
         }
       }
       &.mobile-only{
-        @media only screen and (max-width: 599px) {
+        @media only screen and (max-width: 767px) {
           display: flex !important;
         }
       }
