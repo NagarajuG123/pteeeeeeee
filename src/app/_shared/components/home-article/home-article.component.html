@@ -1,4 +1,4 @@
-<div class="article row row-cols-sm-1" [ngClass]="class">
+<div class="article row row-cols-sm-2" [ngClass]="class">
   <ng-container *ngFor="let item of contents; index as i">
     <a
       routerLink="/{{ commonService.readMore(item) }}"
