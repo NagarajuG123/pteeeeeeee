@@ -103,13 +103,13 @@
 
 .tabs {
   ul {
-    @include mobile-portrait {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
     @include tablet-landscape {
       padding-left: 3rem;
       padding-right: 3rem;
+    }
+    @include mobile-portrait1 {
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
     }
     li {
       border-top: 1px solid $light_gray_8;
@@ -121,10 +121,12 @@
         &.active {
           color: $red;
           &::after {
-          @media(max-width :670px)
-          {
-          left: 50px;
-          }
+            @include mobile-portrait{
+              left: 50px;
+            }
+            @include mobile-portrait2{
+              left: 150px;
+            }
         }
       }
       }
