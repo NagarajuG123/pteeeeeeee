@@ -44,7 +44,7 @@ header{
         }
         .logo{
             img {
-                @include mobile-landscape{
+                @include tablet-landscape1{
                   width: 50px !important;
                   height: auto !important;
                 }

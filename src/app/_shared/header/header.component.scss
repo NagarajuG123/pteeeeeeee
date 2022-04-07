@@ -30,7 +30,7 @@ header {
     .menuBtn {
       width: 90px;
       height: 90px;
-      @include mobile-landscape {
+      @include tablet-landscape1 {
         width: 65px;
         height: 70px;
       }
