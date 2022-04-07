@@ -52,6 +52,11 @@ header {
         color: $white_2;
       }
     }
+    .col-sm-8{
+        @include  mobile-portrait2 {
+          width: 50%;
+        }
+    }
     .logo {
       margin-left: -0.5rem;
 
@@ -62,11 +67,11 @@ header {
       {
         margin-left: -2rem !important;
       }
-      @include tablet-landscape1{
-        margin-left: -1rem !important;
-      }
-      @include mobile-landscape3{
+      @include tablet-landscape1 {
         margin-left: -4rem !important;
+      }
+      @include mobile-portrait{
+        margin-left: -1rem !important;
       }
       img {
         @include mobile-portrait {
