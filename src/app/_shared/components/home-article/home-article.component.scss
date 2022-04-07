@@ -8,7 +8,7 @@
     @include tablet-landscape {
       height: 180px;
     }  
-    @include mobile-landscape {
+    @include tablet-landscape1 {
       height: auto;    
     }           
   }

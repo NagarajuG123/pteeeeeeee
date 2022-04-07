@@ -72,6 +72,11 @@
     @content;
   }
 }
+@mixin mobile-landscape3 {
+  @media (min-width: 480px) and (max-width: 599px) {
+    @content;
+  }
+}
 /*-- media query for mobile portrait */
 @mixin mobile-portrait {
   @media (max-width: 479px) {
@@ -84,7 +89,7 @@
   }
 }
 @mixin mobile-portrait2 {
-  @media (min-width: 390px) and (max-width: 900px) {
+  @media (min-width: 479px) and (max-width: 767px) {
     @content;
   }
 }

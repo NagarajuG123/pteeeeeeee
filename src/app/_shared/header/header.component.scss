@@ -30,7 +30,7 @@ header {
     .menuBtn {
       width: 90px;
       height: 90px;
-      @include mobile-portrait {
+      @include tablet-landscape1 {
         width: 65px;
         height: 70px;
       }
@@ -52,6 +52,11 @@ header {
         color: $white_2;
       }
     }
+    .col-sm-8{
+        @include  mobile-portrait2 {
+          width: 50%;
+        }
+    }
     .logo {
       margin-left: -0.5rem;
 
@@ -62,7 +67,10 @@ header {
       {
         margin-left: -2rem !important;
       }
-      @include tablet-landscape1{
+      @include tablet-landscape1 {
+        margin-left: -4rem !important;
+      }
+      @include mobile-portrait{
         margin-left: -1rem !important;
       }
       img {
@@ -269,7 +277,7 @@ header {
       }
     }
     .nav {
-      @include mobile-portrait {
+      @include mobile-landscape {
         flex-wrap: nowrap;
       }
     }
