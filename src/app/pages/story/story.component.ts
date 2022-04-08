@@ -267,8 +267,8 @@ hasMore:any;
                     this.apiUrl = `${this.brandId}/spotlight/celebrities`;
                     break;
                   
-                  case 'people&celebrities':
-                    this.apiUrl = `${this.brandId}/spotlight/people&celebrities`;
+                  case 'people-celebrities':
+                    this.apiUrl = `${this.brandId}/spotlight/people-celebrities`;
                     break;
 
                   case 'awesomehomes':
