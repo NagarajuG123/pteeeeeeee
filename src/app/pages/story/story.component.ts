@@ -266,6 +266,26 @@ hasMore:any;
                   case 'celebrities':
                     this.apiUrl = `${this.brandId}/spotlight/celebrities`;
                     break;
+                  
+                  case 'people&celebrities':
+                    this.apiUrl = `${this.brandId}/spotlight/people&celebrities`;
+                    break;
+
+                  case 'awesomehomes':
+                    this.apiUrl = `${this.brandId}/spotlight/awesomehomes`;
+                    break;
+
+                  case 'homeservices':
+                  this.apiUrl = `${this.brandId}/spotlight/homeservices`;
+                  break;
+
+                  case 'homeproducts':
+                  this.apiUrl = `${this.brandId}/spotlight/homeproducts`;
+                  break;
+
+                  case 'hometechnology':
+                  this.apiUrl = `${this.brandId}/spotlight/hometechnology`;
+                  break;
 
                   case 'products':
                     this.apiUrl = `${this.brandId}/spotlight/products`;
