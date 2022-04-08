@@ -56,6 +56,9 @@ header {
         @include  mobile-portrait2 {
           width: 48%;
         }
+        @include mobile-landscape1{
+          width: 60% !important;
+        }
     }
     @include mobile-portrait{
       .col-4{
