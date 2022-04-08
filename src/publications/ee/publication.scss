@@ -29,12 +29,6 @@ header{
             color:$black_3;
         }
         @include mobile-portrait1{
-            .logo{
-                img{
-                    width: 30px !important;
-                    height: auto !important;
-                }
-            }   
             .logoDiv{
                 padding-left: 1.25rem !important;
             }  
@@ -47,6 +41,10 @@ header{
                 @include tablet-landscape1{
                   width: 50px !important;
                   height: auto !important;
+                }
+                @include mobile-portrait1 {
+                    width: 30px !important;
+                    height: auto !important;
                 }
             }
             .sponsor{
