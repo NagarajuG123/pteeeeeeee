@@ -54,8 +54,13 @@ header {
     }
     .col-sm-8{
         @include  mobile-portrait2 {
-          width: 50%;
+          width: 48%;
         }
+    }
+    @include mobile-portrait{
+      .col-4{
+        width:  36.33% !important;
+      }
     }
     .logo {
       margin-left: -0.5rem;
@@ -68,8 +73,11 @@ header {
         margin-left: -2rem !important;
       }
       @include tablet-landscape1 {
-        margin-left: -3.5rem !important;
+        margin-left: -5rem !important;
       }
+     @include mobile-landscape3 {
+       margin-left: -3.5rem !important;
+     }
       @include mobile-portrait{
         margin-left: -1rem !important;
       }
