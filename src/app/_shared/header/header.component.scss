@@ -68,7 +68,7 @@ header {
         margin-left: -2rem !important;
       }
       @include tablet-landscape1 {
-        margin-left: -4rem !important;
+        margin-left: -3.5rem !important;
       }
       @include mobile-portrait{
         margin-left: -1rem !important;
@@ -236,6 +236,9 @@ header {
         text-transform: uppercase;
         color: $white_2;
         margin-bottom: 0;
+        @include mobile-portrait1 {
+          font-size: 10px !important;
+        }
       }
       .megamenu  {
         .dropdown-menu{
@@ -272,6 +275,9 @@ header {
             font-size: 12px;
             line-height: 14.16px;
             color: $white_4;
+            @include mobile-portrait1 {
+              font-size: 10px !important;
+            }
           }
         }
       }
