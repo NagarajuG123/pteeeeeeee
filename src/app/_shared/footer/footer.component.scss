@@ -9,7 +9,7 @@ footer {
 
   .logos {
     ul {
-      @include mobile-portrait {
+      @include mobile-landscape1 {
         align-items: center;
       }
     }
@@ -95,6 +95,12 @@ footer {
      padding-right: 0.5rem !important;
      padding-left: 0.5rem !important;
    }
+ }
+ .social-links{
+  @include mobile-landscape1 {
+    align-items: center;
+    justify-content: center;
+  }
  }
 }
 

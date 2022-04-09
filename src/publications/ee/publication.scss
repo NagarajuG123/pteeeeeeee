@@ -123,6 +123,9 @@ header{
     }
     .subTitle{
         width: 900px !important;
+        @include tablet-landscape1{
+            width: unset !important;
+        }
     }
     .authorDetails{
         .sectionTitle{

@@ -19,7 +19,7 @@
   .container
   {
     padding-left: 110px;
-    @media (min-width: 360px) and (max-width: 900px) {
+    @media screen and (max-width: 900px) {
       padding-left: 20px;
     }
   }

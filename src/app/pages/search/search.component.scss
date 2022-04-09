@@ -45,12 +45,12 @@ span {
     }
     &.col-xl-2 {
       width: 18.9%;
-      @include mobile-portrait {
+      @include tablet-landscape1 {
         width: 100%;
       }
     }
 
-    @include mobile-portrait {
+    @include tablet-landscape1 {
       justify-content: center;
       align-items: center;
       padding-bottom: 1rem;
@@ -73,6 +73,9 @@ span {
     }
     &.col-xl-10 {
       width: 81%;
+      @include tablet-landscape1 {
+        width: 100%;
+      }
     }
   }
   .col-sm-11{
@@ -136,7 +139,7 @@ span {
   line-height: 25.74px;
   color: $dark_gray;
   display: flex;
-  @include mobile-portrait {
+  @include tablet-landscape1 {
     display: block !important;
   }
   .form-check {
@@ -170,7 +173,7 @@ span {
       font-size: 12px;
     }
   }
-  @include mobile-portrait {
+  @include tablet-landscape1 {
     h6 {
       -webkit-flex: 0 0 100%;
       text-align: center;
@@ -192,8 +195,8 @@ span {
     line-height: 26px;
     color: $dark_black;
     text-transform: capitalize;
-    @include mobile-portrait {
-      text-align: center;
+    @include tablet-landscape1 {
+      text-align: center !important;
     }
   }
 }
