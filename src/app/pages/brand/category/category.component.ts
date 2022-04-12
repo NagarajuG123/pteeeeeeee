@@ -62,7 +62,6 @@ export class CategoryComponent implements OnInit {
       if (this.type !== '1851') {
         this.slug = params.get('item');
       }
-      this.mainText = this.slug.replace('-', ' ');
       this.tab = this.slug.replace('-spotlight', '');
       const featureApi = this.apiService.getAPI(
         `${this.type}/${this.tab}/featured?limit=20&offset=0`
@@ -83,6 +82,8 @@ export class CategoryComponent implements OnInit {
                 return e.slug;
               })
               .indexOf(this.tab) + 1;
+            this.mainText = this.tabName.find((x) => x.slug == this.tab).name;
+
             if(this.tabName.find(
               (x) => x.slug == this.tab
             ) != undefined) {
