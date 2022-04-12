@@ -10,6 +10,8 @@ RUN npm install
 
 COPY . .
 
+RUN cp src/publications/ee/robots.txt src/
+
 RUN cp src/publications/ee/index.html src/
 
 RUN cp src/publications/ee/variables.scss src/assets/scss/
