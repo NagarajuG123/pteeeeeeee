@@ -207,7 +207,7 @@ isShow:boolean;
       this.commonService.toggle();
     }
     this.searchCloseBtn.nativeElement.click();
-    if (this.brandId === '1851' && this.brandSlug === '1851') {
+    if (this.brandId === '1851') {
       window.location.href = `/searchpopup?search_input=${
         searchForm.controls['searchInput'].value
       }&brand_id=${this.header.publication.id.toLowerCase()}`;
