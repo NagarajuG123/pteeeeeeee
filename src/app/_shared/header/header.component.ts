@@ -171,7 +171,7 @@ isShow:boolean;
         this.news = results[1].data;
         this.inquireData = results[2].schema;
         this.publication = results[3];
-        if(this.commonService.otherSites()){
+        if(this.commonService.otherSites() || this.commonService.stachecow()){
           this.logo = `${environment.imageResizeUrl}/static/${this.publication?.id}small-logo.png`;
         } 
         this.trending = results[4].data;

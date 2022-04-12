@@ -65,13 +65,6 @@ header{
             display: none;
         }
     }
-    .eeLogo
-    {
-        display: none;
-        @include tablet-landscape1{
-            display: block;
-        }
-    }
 }
 .most-popular{
     .card{

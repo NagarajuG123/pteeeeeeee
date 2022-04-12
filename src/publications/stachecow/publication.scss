@@ -17,9 +17,10 @@ header{
             color: $dark_gray;
         }
     }
-    .eeLogo
-    {
-        display: none;
+    .mainLogo{
+        @include tablet-landscape1{
+            display: none;
+        }
     }
 }
 .most-popular{
