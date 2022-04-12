@@ -211,6 +211,9 @@ header {
         @include tablet-landscape {
           height: 700px;
         }
+        @include tablet-portrait{
+          left: 0 !important;
+        }
       }
       .menu-search {
         width: 200px;

@@ -266,3 +266,17 @@ button {
     border-color: $light_gray_8;
   }
 }
+@include mobile-portrait{
+    .brandInfoPage{
+      .tabs{
+          li{
+              span{
+                  font-size: 16px !important;
+                  &::after {
+                      left: 80px !important;
+                  }    
+              }
+          }
+      }
+  } 
+}
