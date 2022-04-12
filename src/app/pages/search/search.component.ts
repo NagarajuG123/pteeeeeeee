@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
   by_title: Boolean = false;
   by_desc: Boolean = false;
   by_keywords: Boolean = false;
-  brand_id: string = '';
+  brand_id: string = '1851';
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
@@ -250,8 +250,12 @@ export class SearchComponent implements OnInit {
           if (typeof this.recentPeoples[0] != 'undefined') {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
+          if(this.brandSlug == '1851'){
+            this.brand_id = results[2].id.toLowerCase();
+          }
           this.metaService.setTitle(title);
         });
+        this.updateUrlState();
     });
   }
   
