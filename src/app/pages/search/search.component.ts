@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
   by_title: Boolean = false;
   by_desc: Boolean = false;
   by_keywords: Boolean = false;
-  brand_id: string = '';
+  brand_id: string = '1851';
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
@@ -180,7 +180,7 @@ export class SearchComponent implements OnInit {
         this.sort_by = -1;
         this.published_value = -1;
       }
-      if (typeof params.brand_id !== 'undefined' && params.brand_id !== '') {
+      if (typeof params.brand_id !== 'undefined' && params.brand_id !== '' && this.brandSlug != '1851') {
         this.brand_id = params.brand_id;
       } else {
         this.brand_id = '1851';
@@ -250,8 +250,12 @@ export class SearchComponent implements OnInit {
           if (typeof this.recentPeoples[0] != 'undefined') {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
+          if(this.brandSlug == '1851'){
+            this.brand_id = results[2].id.toLowerCase();
+          }
           this.metaService.setTitle(title);
         });
+        this.updateUrlState();
     });
   }
   
