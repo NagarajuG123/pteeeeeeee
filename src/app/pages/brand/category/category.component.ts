@@ -139,7 +139,7 @@ export class CategoryComponent implements OnInit {
   getMore() {
     this.apiService
       .getAPI(
-        `${this.type}/${this.tab.toLowerCase()}/featured?limit=5&offset=${
+        `${this.type}/${this.tabName[this.activeTab-1].slug}/featured?limit=5&offset=${
           this.featuredData.length + 4
         }`
       )
