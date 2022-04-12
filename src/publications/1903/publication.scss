@@ -31,10 +31,6 @@ header{
             background-size: 14px !important;
         }
     }
-    .eeLogo
-    {
-        display: none;
-    }
     .top-head{
         color: $red !important;
     }
@@ -117,16 +113,4 @@ header{
            }
         }
     }
-    .brandInfoPage{
-        .tabs{
-            li{
-                span{
-                    font-size: 16px !important;
-                    &::after {
-                        left: 80px !important;
-                    }    
-                }
-            }
-        }
-    } 
 } 

@@ -90,4 +90,8 @@ export class CommonService {
   {
     return this.publication?.id == 'EE' || this.publication?.id == 'ROOM-1903';
   }
+  stachecow()
+  {
+    return this.publication?.id == 'Stachecow';
+  }
 }

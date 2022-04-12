@@ -106,7 +106,7 @@
             class=" lazyload mainLogo"
         />
         <img
-        *ngIf="isMain && commonService.otherSites()"
+        *ngIf="isMain && commonService.otherSites() || commonService.stachecow()"
         class=" lazyload d-md-none d-sm-block"
           src= "{{ logo }}"
           height="{{ header?.logo?.height }}"
