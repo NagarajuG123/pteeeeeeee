@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
   by_title: Boolean = false;
   by_desc: Boolean = false;
   by_keywords: Boolean = false;
-  brand_id: string = '1851';
+  brand_id: string = '';
   brandSlug: string = '1851';
   searchForm!: FormGroup;
   bannerImage: string;
