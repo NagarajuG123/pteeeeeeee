@@ -106,7 +106,7 @@
             class=" lazyload mainLogo"
         />
         <img
-        *ngIf="isMain && commonService.otherSites() || commonService.stachecow()"
+        *ngIf="isMain && commonService.otherSites() || isMain && commonService.stachecow()"
         class=" lazyload d-md-none d-sm-block"
           src= "{{ logo }}"
           height="{{ header?.logo?.height }}"
@@ -401,7 +401,7 @@
             </div>
           </li>
         </ul>
-          <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2" *ngIf="!isMain">
+          <ul class="sidebar dropdown-menu brand-sidebar" aria-labelledby="dropdownMenu2" *ngIf="!isMain">
             <li>
               <div class="menu-search">
                 <form
