@@ -301,6 +301,11 @@ header {
           }
         }
       }
+      &.brand-sidebar{
+        @include tablet-portrait{
+          margin-top: 3rem !important;
+        }
+      }
     }
     .nav {
       @include mobile-landscape {
