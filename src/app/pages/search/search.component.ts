@@ -411,7 +411,7 @@ export class SearchComponent implements OnInit {
           this.recentPeoples = [];
         }
         if (results[1].data === null) {
-          this.brandPeoples = [];
+          this.brandPeoples = this.brandPeoples;
         } else {
           results[1]['data'].forEach((article) => {
             this.brandPeoples.push(article);
