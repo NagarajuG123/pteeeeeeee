@@ -4,6 +4,7 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CommonService } from 'src/app/_core/services/common.service';
 
 @Component({
   selector: 'app-video',
@@ -24,6 +25,7 @@ export class VideoComponent implements OnInit {
   isLoaded: boolean = false;
   constructor(
     private apiService: ApiService,
+    public commonService: CommonService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -73,6 +75,19 @@ export class VideoComponent implements OnInit {
         },
       },
     };
+  }
+  getTitle() {
+    let title = 'Covering the franchise industry';
+    if(this.commonService.publication.id == 'Stachecow') {
+      title = 'Covering everything personal wealth and finance';
+    }
+    else if(this.commonService.publication.id == 'EE') {
+      title = 'Covering everything real estate';
+    }
+    else if(this.commonService.publication.id == 'ROOM-1903') {
+      title = 'Covering everything travel & hospitality';
+    }
+    return title;
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
