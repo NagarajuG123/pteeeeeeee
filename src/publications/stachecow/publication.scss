@@ -16,6 +16,26 @@ header{
         .articleTitles{
             color: $dark_gray;
         }
+        @include mobile-portrait1{
+            .logoDiv{
+                padding-left: 1.25rem !important;
+            }  
+            .subscribe{
+                padding-right: 0.5rem !important;
+            }
+        }
+        .logo{
+            img {
+                @include tablet-landscape1{
+                  width: 50px !important;
+                  height: auto !important;
+                }
+                @include mobile-portrait1 {
+                    width: 30px !important;
+                    height: auto !important;
+                }
+            }
+        }
     }
     .mainLogo{
         @include tablet-landscape1{
