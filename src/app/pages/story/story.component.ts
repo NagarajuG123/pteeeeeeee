@@ -161,7 +161,6 @@ hasMore:any;
                 : '';
             }
             this.storyApiUrl = `story/${this.storyId}`;
-            let isAuthorPage = false;
             this.isBrand = this.brandSlug === '1851' ? false : true;
 
             this.apiService
@@ -207,208 +206,227 @@ hasMore:any;
                     }
                     this.brandNews = result[1].data;
                   });
-                switch (this.type) {
-                  case 'stories':
-                    this.apiUrl = `${this.brandId}/featured-articles`;
-                    break;
-                  case 'trending':
-                    this.apiUrl = `${this.brandId}/trending`;
-                    break;
-
-                  case 'columns':
-                    this.apiUrl = `${this.brandId}/columns`;
-                    break;
-
-                  case 'franbuzz':
-                    this.apiUrl = `${this.brandId}/news?lean=true`;
-                    break;
-
-                  case 'trending-sponsored':
-                    this.apiUrl = `${this.brandId}/trending/sponsored`;
-                    break;
-
-                  case 'people':
-                    this.apiUrl = `${this.brandId}/spotlight/people`;
-                    break;
-
-                  case 'franchisee':
-                    this.apiUrl = `${this.brandId}/spotlight/franchisee`;
-                    break;
-
-                  case 'franchisor':
-                    this.apiUrl = `${this.brandId}/spotlight/franchisor`;
-                    break;
-                  
-                    case 'people-spotlight':
-                    this.apiUrl = `${this.brandId}/spotlight/people`;
-                    break;
-
-                  case 'franchisee-spotlight':
-                    this.apiUrl = `${this.brandId}/spotlight/franchisee`;
-                    break;
-
-                  case 'franchisor-spotlight':
-                    this.apiUrl = `${this.brandId}/spotlight/franchisor`;
-                    break;
-
-                  case 'home-envy':
-                    this.apiUrl = `${this.brandId}/spotlight/home-envy`;
-                    break;
-
-                  case 'home-buzz':
-                    this.apiUrl = `${this.brandId}/spotlight/home-buzz`;
-                    break;
-
-                  case 'homes-to-own':
-                    this.apiUrl = `${this.brandId}/spotlight/homes-to-own`;
-                    break;
-
-                  case 'celebrities':
-                    this.apiUrl = `${this.brandId}/spotlight/celebrities`;
-                    break;
-                  
-                  case 'people-celebrities':
-                    this.apiUrl = `${this.brandId}/spotlight/people-celebrities`;
-                    break;
-
-                  case 'awesomehomes':
-                    this.apiUrl = `${this.brandId}/spotlight/awesomehomes`;
-                    break;
-
-                  case 'homeservices':
-                  this.apiUrl = `${this.brandId}/spotlight/homeservices`;
-                  break;
-
-                  case 'homeproducts':
-                  this.apiUrl = `${this.brandId}/spotlight/homeproducts`;
-                  break;
-
-                  case 'hometechnology':
-                  this.apiUrl = `${this.brandId}/spotlight/hometechnology`;
-                  break;
-
-                  case 'products':
-                    this.apiUrl = `${this.brandId}/spotlight/products`;
-                    break;
-
-                  case 'destinations':
-                    this.apiUrl = `${this.brandId}/spotlight/destinations`;
-                    break;
-
-                  case 'industry':
-                    this.apiUrl = `${this.brandId}/spotlight/industry`;
-                    break;
-
-                    case 'industry-spotlight':
-                      this.apiUrl = `${this.brandId}/spotlight/industry`;
-                      break;
-
-                  case 'personal-finance':
-                    this.apiUrl = `${this.brandId}/spotlight/personal-finance`;
-                    break;
-                  
-                  case 'luxury-living':
-                    this.apiUrl = `${this.brandId}/spotlight/luxury-living`;
-                    break;
-
-                  case 'investing':
-                    this.apiUrl = `${this.brandId}/spotlight/investing`;
-                    break;
-
-                  case 'business':
-                    this.apiUrl = `${this.brandId}/spotlight/business`;
-                    break;
-
-                  case 'retirement':
-                    this.apiUrl = `${this.brandId}/spotlight/retirement`;
-                    break;
-
-                  case 'brand-news':
-                    this.apiUrl = `${this.brandId}/brand-news/most-recent`;
-                    break;
-
-                  case 'dynamicpage':
-                    this.apiUrl = `home-page-featured-content`;
-                    break;
-
-                  case 'brand-latest-stories':
-                    if (this.brandId === '1851') {
-                      this.apiUrl = `brand-latest-stories`;
-                    } else {
-                      this.apiUrl = `${this.brandId}/brand-latest-stories`;
-                    }
-                    break;
-
-                  case 'most-recent':
-                    this.apiUrl = `${this.brandId}/people/most-recent`;
-                    break;
-
-                  case 'monthlydetailspage':
-                    this.apiService
-                      .getAPI2(`header`)
-                      .subscribe((result) => {
-                        let coverDate =
-                          result.data.monthlyCover.coverUrl;
-                        let data = coverDate.split('/monthlydetails/').pop();
-                        this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
-                      });
-                    break;
-
-                  case 'editorials':
-                    isAuthorPage = true;
-                    this.apiService
-                      .getAPI2(`story/${this.storyId}`)
-                      .pipe(takeUntil(this.onDestroy$))
-                      .subscribe((s_result) => {
-                        this.apiUrl = `author/${s_result.data.author.slug}/editorials`;
-                        this.initLoad();
-                      });
-                    break;
-
-                  case 'branded-contents':
-                    isAuthorPage = true;
-                    this.apiService
-                      .getAPI2(`story/${this.storyId}`)
-                      .pipe(takeUntil(this.onDestroy$))
-                      .subscribe((s_result) => {
-                        this.apiUrl = `author/${s_result.data.author.slug}/branded-contents`;
-                        this.initLoad();
-                      });
-                    break;
-
-                  case 'brand':
-                    this.apiUrl = `${this.brandId}/brand-view`;
-                    break;
-
-                  case 'category-banner':
-                    this.apiUrl = `${this.brandId}/people/featured`;
-                    break;
-
-                  case 'featured':
-                    this.apiUrl = `${this.brandId}/featured-articles`;
-                    break;
-
-                  case 'frannews':
-                    this.apiUrl = `${this.brandId}/news`;
-                    break;
-
-                  case 'trendingbrandbuzz':
-                    this.apiUrl = `${this.brandId}/trending-buzz`;
-                    break;
-
-                  case 'category-trending':
-                    this.apiUrl = `${this.brandId}/people/trending`;
-                    break;
-
-                  default:
-                    break;
-                }
-                if (!isAuthorPage) {
-                  this.initLoad();
-                }
+                  this.getApiUrl();
               });
           });
       });
+  }
+  getApiUrl(){
+    switch (this.type) {
+      case 'stories':
+        this.apiUrl = `${this.brandId}/featured-articles`;
+        break;
+      case 'trending':
+        this.apiUrl = `${this.brandId}/trending`;
+        break;
+
+      case 'columns':
+        this.apiUrl = `${this.brandId}/columns`;
+        break;
+
+      case 'franbuzz':
+        this.apiUrl = `${this.brandId}/news?lean=true`;
+        break;
+
+      case 'trending-sponsored':
+        this.apiUrl = `${this.brandId}/trending/sponsored`;
+        break;
+
+      case 'people':
+        this.apiUrl = `${this.brandId}/spotlight/people`;
+        break;
+
+      case 'franchisee':
+        this.apiUrl = `${this.brandId}/spotlight/franchisee`;
+        break;
+
+      case 'franchisor':
+        this.apiUrl = `${this.brandId}/spotlight/franchisor`;
+        break;
+      
+        case 'people-spotlight':
+        this.apiUrl = `${this.brandId}/spotlight/people`;
+        break;
+
+      case 'franchisee-spotlight':
+        this.apiUrl = `${this.brandId}/spotlight/franchisee`;
+        break;
+
+      case 'franchisor-spotlight':
+        this.apiUrl = `${this.brandId}/spotlight/franchisor`;
+        break;
+
+      case 'home-envy':
+        this.apiUrl = `${this.brandId}/spotlight/home-envy`;
+        break;
+
+      case 'home-buzz':
+        this.apiUrl = `${this.brandId}/spotlight/home-buzz`;
+        break;
+
+      case 'homes-to-own':
+        this.apiUrl = `${this.brandId}/spotlight/homes-to-own`;
+        break;
+
+      case 'celebrities':
+        this.apiUrl = `${this.brandId}/spotlight/celebrities`;
+        break;
+      
+      case 'people-celebrities':
+        this.apiUrl = `${this.brandId}/spotlight/people-celebrities`;
+        break;
+
+      case 'awesomehomes':
+        this.apiUrl = `${this.brandId}/spotlight/awesomehomes`;
+        break;
+
+      case 'homeservices':
+      this.apiUrl = `${this.brandId}/spotlight/homeservices`;
+      break;
+
+      case 'homeproducts':
+      this.apiUrl = `${this.brandId}/spotlight/homeproducts`;
+      break;
+
+      case 'hometechnology':
+      this.apiUrl = `${this.brandId}/spotlight/hometechnology`;
+      break;
+
+      case 'products':
+        this.apiUrl = `${this.brandId}/spotlight/products`;
+        break;
+
+      case 'destinations':
+        this.apiUrl = `${this.brandId}/spotlight/destinations`;
+        break;
+
+      case 'industry':
+        this.apiUrl = `${this.brandId}/spotlight/industry`;
+        break;
+
+      case 'travel-news':
+        this.apiUrl = `${this.brandId}/spotlight/travel-news`;
+        break;
+      
+      case 'travel-tricks':
+        this.apiUrl = `${this.brandId}/spotlight/travel-tricks`;
+        break;
+
+      case 'hotels':
+        this.apiUrl = `${this.brandId}/spotlight/hotels`;
+        break;
+
+      case 'airlines':
+        this.apiUrl = `${this.brandId}/spotlight/airlines`;
+        break;
+
+      case 'industry-spotlight':
+        this.apiUrl = `${this.brandId}/spotlight/industry`;
+        break;
+
+      case 'personal-finance':
+        this.apiUrl = `${this.brandId}/spotlight/personal-finance`;
+        break;
+      
+      case 'luxury-living':
+        this.apiUrl = `${this.brandId}/spotlight/luxury-living`;
+        break;
+
+      case 'investing':
+        this.apiUrl = `${this.brandId}/spotlight/investing`;
+        break;
+
+      case 'business':
+        this.apiUrl = `${this.brandId}/spotlight/business`;
+        break;
+
+      case 'retirement':
+        this.apiUrl = `${this.brandId}/spotlight/retirement`;
+        break;
+
+      case 'brand-news':
+        this.apiUrl = `${this.brandId}/brand-news/most-recent`;
+        break;
+
+      case 'dynamicpage':
+        this.apiUrl = `home-page-featured-content`;
+        break;
+
+      case 'brand-latest-stories':
+        if (this.brandId === '1851') {
+          this.apiUrl = `brand-latest-stories`;
+        } else {
+          this.apiUrl = `${this.brandId}/brand-latest-stories`;
+        }
+        break;
+
+      case 'most-recent':
+        this.apiUrl = `${this.brandId}/people/most-recent`;
+        break;
+
+      case 'monthlydetailspage':
+        this.apiService
+          .getAPI2(`header`)
+          .subscribe((result) => {
+            let coverDate =
+              result.data.monthlyCover.coverUrl;
+            let data = coverDate.split('/monthlydetails/').pop();
+            this.apiUrl = `${this.brandId}/journal/cover-details/${data}`;
+          });
+        break;
+
+      case 'editorials':
+        this.isAuthorPage = true;
+        this.apiService
+          .getAPI2(`story/${this.storyId}`)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe((s_result) => {
+            this.apiUrl = `author/${s_result.data.author.slug}/editorials`;
+            this.initLoad();
+          });
+        break;
+
+      case 'branded-contents':
+        this.isAuthorPage = true;
+        this.apiService
+          .getAPI2(`story/${this.storyId}`)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe((s_result) => {
+            this.apiUrl = `author/${s_result.data.author.slug}/branded-contents`;
+            this.initLoad();
+          });
+        break;
+
+      case 'brand':
+        this.apiUrl = `${this.brandId}/brand-view`;
+        break;
+
+      case 'category-banner':
+        this.apiUrl = `${this.brandId}/people/featured`;
+        break;
+
+      case 'featured':
+        this.apiUrl = `${this.brandId}/featured-articles`;
+        break;
+
+      case 'frannews':
+        this.apiUrl = `${this.brandId}/news`;
+        break;
+
+      case 'trendingbrandbuzz':
+        this.apiUrl = `${this.brandId}/trending-buzz`;
+        break;
+
+      case 'category-trending':
+        this.apiUrl = `${this.brandId}/people/trending`;
+        break;
+
+      default:
+        break;
+    }
+    if (!this.isAuthorPage) {
+      this.initLoad();
+    }
   }
   initLoad() {
     let headerApi = 'header';
