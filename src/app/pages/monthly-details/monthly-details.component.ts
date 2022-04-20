@@ -50,7 +50,7 @@ export class MonthlyDetailsComponent implements OnInit {
           this.apiService.getAPI2(`meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
             this.apiService
-              .getAPI(`1851/publication-instance`)
+              .getAPI2(`publication`)
               .subscribe((result) => {
                 this.isLoaded = true;
 

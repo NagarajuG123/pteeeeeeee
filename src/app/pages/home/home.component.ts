@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const publication = this.apiService.getAPI2(`publication`);
     const meta = this.apiService.getAPI2(`meta`);
     forkJoin([publication, meta]).subscribe((results) => {
       this.publication = results[0];

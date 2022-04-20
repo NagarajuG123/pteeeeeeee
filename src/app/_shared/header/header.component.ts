@@ -160,7 +160,7 @@ isShow:boolean;
       `${this.brandSlug}/news?limit=4&offset=0`
     );
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const publication = this.apiService.getAPI2(`publication`);
     const trending = this.apiService.getAPI(
       `${this.brandSlug}/trending?limit=9&offset=0`
     );

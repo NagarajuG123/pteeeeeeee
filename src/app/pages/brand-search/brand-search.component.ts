@@ -34,7 +34,7 @@ export class BrandSearchComponent implements OnInit {
     const brandSearchData: any = [];
     const brandSearchApi = this.apiService.getAPI1(`brand-search${params}`);
     const brandFilterApi = this.apiService.getAPI(`brand-filters`);
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const publication = this.apiService.getAPI2(`publication`);
     forkJoin([brandFilterApi, brandSearchApi, publication])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {

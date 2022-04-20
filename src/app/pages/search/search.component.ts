@@ -225,7 +225,7 @@ export class SearchComponent implements OnInit {
 
       const main_searchAPI = this.apiService.getAPI1(`search${apiParams}`);
       const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
-      const publication = this.apiService.getAPI(`1851/publication-instance`);
+      const publication = this.apiService.getAPI2(`publication`);
 
       forkJoin([main_searchAPI, brand_searchAPI, publication])
         .pipe(takeUntil(this.onDestroy$))

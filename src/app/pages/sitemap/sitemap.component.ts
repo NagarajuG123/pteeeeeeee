@@ -83,7 +83,7 @@ export class SitemapComponent implements OnInit {
     this.apiService.getAPI2(`meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
       this.apiService
-        .getAPI(`1851/publication-instance`)
+        .getAPI2(`publication`)
         .subscribe((result) => {
           if (this.brandSlug === '1851') {
             this.metaService.setTitle(

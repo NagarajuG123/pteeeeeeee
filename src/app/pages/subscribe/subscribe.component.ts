@@ -76,7 +76,7 @@ export class SubscribeComponent implements OnInit {
     this.contactForm.reset({
       signUpNewsletter: true,
     });
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const publication = this.apiService.getAPI2(`publication`);
     const meta = this.apiService.getAPI2(`meta`);
     forkJoin([publication, meta, publication]).subscribe((results) => {
       this.publication = results[0];

@@ -78,7 +78,7 @@ export class FooterComponent implements OnInit {
       footerApi = `footer?slug=${this.brandSlug}`;
     }
     const footer = this.apiService.getAPI2(footerApi);
-    const publication = this.apiService.getAPI(`1851/publication-instance`);
+    const publication = this.apiService.getAPI2(`publication`);
     forkJoin([footer,publication]).subscribe((results) => {
       this.footer = results[0];
       this.publication = results[1];

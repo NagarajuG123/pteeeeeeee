@@ -38,7 +38,7 @@ export class MonthlyCoversComponent implements OnInit {
       `1851/journal/monthly-covers?limit=14&offset=0`
     );
     const metaApi = this.apiService.getAPI2(`meta`);
-    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+    const publicationApi = this.apiService.getAPI2(`publication`);
 
     forkJoin([coverApi, metaApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))

@@ -100,7 +100,7 @@ export class BrandComponent implements OnInit {
     const spotlightCategoriesApi = this.apiService.getAPI(
       `1851/spotlights/categories`
     );
-    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+    const publicationApi = this.apiService.getAPI2(`publication`);
 
     forkJoin([spotlightCategoriesApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
@@ -160,7 +160,7 @@ export class BrandComponent implements OnInit {
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicStories[0].meta);
         this.apiService
-          .getAPI(`1851/publication-instance`)
+          .getAPI2(`1851/publication`)
           .subscribe((result) => {
             const Title =
               this.dynamicUrl.charAt(0).toUpperCase() +
@@ -187,7 +187,7 @@ export class BrandComponent implements OnInit {
     this.apiService.getAPI2(`meta?slug=${this.slug}&is_brand=true`).subscribe((response) => {
       this.metaService.setSeo(response.data);
       this.apiService
-        .getAPI(`1851/publication-instance`)
+        .getAPI(`publication`)
         .subscribe((result) => {
           this.metaService.setTitle(
             `${response.data.seo.title} | ${result.title}`

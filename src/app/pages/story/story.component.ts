@@ -164,7 +164,7 @@ hasMore:any;
             this.isBrand = this.brandSlug === '1851' ? false : true;
 
             this.apiService
-              .getAPI('1851/publication-instance')
+              .getAPI2('publication')
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((result) => {
                 this.publication = result;
@@ -332,7 +332,7 @@ hasMore:any;
     forkJoin([
       this.apiService.getAPI2(`${this.storyApiUrl}`),
       this.apiService.getAPI2(headerApi),
-      this.apiService.getAPI(`1851/publication-instance`),
+      this.apiService.getAPI2(`publication`),
       this.apiService.getAPI2(`footer`),
     ])
       .pipe(takeUntil(this.onDestroy$))

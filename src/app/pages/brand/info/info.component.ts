@@ -288,7 +288,7 @@ export class InfoComponent implements OnInit {
           false;
     }
     const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
-    const publicationApi = this.apiService.getAPI(`1851/publication-instance`);
+    const publicationApi = this.apiService.getAPI2(`publication`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
     forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;

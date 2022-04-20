@@ -42,7 +42,7 @@ export class TrendingbuzzComponent implements OnInit {
         this.hasMore = response.has_more;
         this.isLoaded = true;
         this.apiService
-          .getAPI(`1851/publication-instance`)
+          .getAPI2(`publication`)
           .subscribe((result) => {
             this.metaService.setTitle(`Trending Brand Buzz | ${result.title}`);
           });

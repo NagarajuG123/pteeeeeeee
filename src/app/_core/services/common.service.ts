@@ -26,7 +26,7 @@ export class CommonService {
       this.resizeSidebar(window.innerWidth);
       this.resizeBrandInfo(window.innerWidth);
     }
-    this.apiService.getAPI('1851/publication-instance').subscribe((result) => {
+    this.apiService.getAPI2('publication').subscribe((result) => {
       this.publication = result;
     });
   }

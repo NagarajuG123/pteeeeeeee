@@ -39,7 +39,7 @@ export class AuthorComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.authorSlug = params.get('authorSlug');
       const author = this.apiService.getAPI2(`author/${this.authorSlug}`);
-      const publication = this.apiService.getAPI(`1851/publication-instance`);
+      const publication = this.apiService.getAPI2(`publication`);
       const brand = this.apiService.getAPI(
         `author/${this.authorSlug}/branded-contents?limit=10&offset=0`
       );

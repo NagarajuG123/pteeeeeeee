@@ -33,7 +33,7 @@ export class PowerRankingComponent implements OnInit {
 
   ngOnInit(): void {
     const powerApi = this.apiService.getAPI2(`powerranking`);
-    const publicationApi = this.apiService.getAPI('1851/publication-instance');
+    const publicationApi = this.apiService.getAPI2('publication');
 
     forkJoin([powerApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))

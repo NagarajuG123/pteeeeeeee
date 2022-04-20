@@ -10,6 +10,7 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { publicEncrypt } from 'crypto';
 
 @Component({
   selector: 'app-termsofuse',
@@ -43,10 +44,9 @@ export class TermsofuseComponent implements OnInit {
   ngOnInit(): void {
     const termsApi = this.apiService.getAPI(`${this.slug}/terms-of-use`);
     const metaApi = this.apiService.getAPI2(`meta`);
-    const publicationApi = this.apiService.getAPI(
-      `${this.slug}/publication-instance`
+    const publicationApi = this.apiService.getAPI2(
+      `publication`
     );
-
     forkJoin([termsApi, metaApi, publicationApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
