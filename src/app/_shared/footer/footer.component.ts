@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
+import { CommonService } from 'src/app/_core/services/common.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -14,7 +16,7 @@ export class FooterComponent implements OnInit {
   s3Url = environment.s3Url;
   utmSlug:string;
   isShow:boolean;
-  publication: string;
+  publication:any;
 
   socialIcons: any = [
     "fa fa-facebook-f",
@@ -27,6 +29,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private apiService: ApiService, private router: Router,    
      private route: ActivatedRoute,
+     public commonService: CommonService
     ) {
     this.route.queryParams
       .subscribe(params => {
@@ -78,10 +81,9 @@ export class FooterComponent implements OnInit {
       footerApi = `footer?slug=${this.brandSlug}`;
     }
     const footer = this.apiService.getAPI2(footerApi);
-    const publication = this.apiService.getAPI2(`publication`);
-    forkJoin([footer,publication]).subscribe((results) => {
+    forkJoin([footer]).subscribe((results) => {
       this.footer = results[0];
-      this.publication = results[1];
+      this.publication =this.commonService.publication;
     });
 
   }

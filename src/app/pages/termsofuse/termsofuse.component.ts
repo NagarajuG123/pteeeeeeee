@@ -10,7 +10,7 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { Meta } from 'src/app/_core/models/meta.model';
 import { environment } from 'src/environments/environment';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { publicEncrypt } from 'crypto';
+
 
 @Component({
   selector: 'app-termsofuse',
@@ -20,7 +20,6 @@ import { publicEncrypt } from 'crypto';
 export class TermsofuseComponent implements OnInit {
   termsData: any = [];
   metaData: Meta[] = [];
-  publication!: string;
   slug = '1851';
   isBrowser!: boolean;
   isSponsored: boolean = false;
@@ -44,17 +43,14 @@ export class TermsofuseComponent implements OnInit {
   ngOnInit(): void {
     const termsApi = this.apiService.getAPI(`${this.slug}/terms-of-use`);
     const metaApi = this.apiService.getAPI2(`meta`);
-    const publicationApi = this.apiService.getAPI2(
-      `publication`
-    );
-    forkJoin([termsApi, metaApi, publicationApi])
+    forkJoin([termsApi, metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         this.termsData = response[0];
         this.metaData = response[1].data;
-        this.publication = response[2].title;
+
         this.metaService.setSeo(this.metaData);
-        this.metaService.setTitle(`Terms of use | ${this.publication}`);
+        this.metaService.setTitle(`Terms of use | ${this.commonService.publication.title}`);
       });
   }
   ngAfterViewInit() {

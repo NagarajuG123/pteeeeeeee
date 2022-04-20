@@ -18,7 +18,6 @@ export class MonthlyCoversComponent implements OnInit {
   firstBlock: Cover = {};
   secondBlock: Cover[] = [];
   metaData: Meta[] = [];
-  publication!: string;
   s3Url = environment.s3Url;
   isLoaded: boolean;
   private onDestroySubject = new Subject();
@@ -38,9 +37,8 @@ export class MonthlyCoversComponent implements OnInit {
       `1851/journal/monthly-covers?limit=14&offset=0`
     );
     const metaApi = this.apiService.getAPI2(`meta`);
-    const publicationApi = this.apiService.getAPI2(`publication`);
 
-    forkJoin([coverApi, metaApi, publicationApi])
+    forkJoin([coverApi, metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         this.isLoaded = true;
@@ -48,9 +46,8 @@ export class MonthlyCoversComponent implements OnInit {
         this.secondBlock = response[0].data.slice(4, 14);
         this.hasMore = response[0].has_more;
         this.metaData = response[1].data;
-        this.publication = response[2].title;
-        this.metaService.setSeo(this.metaData);
-        this.metaService.setTitle(`Monthly Issues | ${this.publication}`);
+       this.metaService.setSeo(this.metaData);
+        this.metaService.setTitle(`Monthly Issues | ${this.commonService.publication.title}`);
       });
   }
   openDetails(date: any) {

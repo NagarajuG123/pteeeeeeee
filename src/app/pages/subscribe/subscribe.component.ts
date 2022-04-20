@@ -18,7 +18,6 @@ export class SubscribeComponent implements OnInit {
   slug = '1851';
   title!: string;
   isCheckBoxVisible: boolean = false;
-  publication: any;
   isBrowser: boolean = false;
   contactForm: FormGroup;
   isSubmitted: boolean;
@@ -76,26 +75,24 @@ export class SubscribeComponent implements OnInit {
     this.contactForm.reset({
       signUpNewsletter: true,
     });
-    const publication = this.apiService.getAPI2(`publication`);
-    const meta = this.apiService.getAPI2(`meta`);
-    forkJoin([publication, meta, publication]).subscribe((results) => {
-      this.publication = results[0];
-      this.metaService.setSeo(results[1].data);
+     const meta = this.apiService.getAPI2(`meta`);
+    forkJoin([meta]).subscribe((results) => {
+      this.metaService.setSeo(results[0].data);
       let defaultTitle = '';
-      if (this.publication.id === '1851') {
-        defaultTitle = `Subscribe to 1851 Franchise News | ${this.publication.title}`;
+      if (this.commonService.publication.id === '1851') {
+        defaultTitle = `Subscribe to 1851 Franchise News | ${this.commonService.publication.title}`;
       }
       if (defaultTitle) {
         this.metaService.setTitle(defaultTitle);
       }
-      this.title = `Subscribe to ${this.publication.title}`;
+      this.title = `Subscribe to ${this.commonService.publication.title}`;
       this.setCheckBoxVisibility();
     });
   }
 
   setCheckBoxVisibility() {
     this.isCheckBoxVisible = false;
-    if (this.publication.id == '1851') {
+    if (this.commonService.publication.id == '1851') {
       this.isCheckBoxVisible = true;
     }
   }

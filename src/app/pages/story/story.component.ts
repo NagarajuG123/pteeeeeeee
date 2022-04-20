@@ -34,7 +34,6 @@ declare var ga: Function;
 })
 export class StoryComponent implements OnInit {
   detailsData: any[] = [];
-  publication: any = [];
   storySlug: any = '';
   storyId: any;
   brandId = '1851';
@@ -162,13 +161,6 @@ hasMore:any;
             }
             this.storyApiUrl = `story/${this.storyId}`;
             this.isBrand = this.brandSlug === '1851' ? false : true;
-
-            this.apiService
-              .getAPI2('publication')
-              .pipe(takeUntil(this.onDestroy$))
-              .subscribe((result) => {
-                this.publication = result;
-              });
             this.apiService
               .getAPI2(`${this.brandSlug}`)
               .pipe(takeUntil(this.onDestroy$))
@@ -332,13 +324,11 @@ hasMore:any;
     forkJoin([
       this.apiService.getAPI2(`${this.storyApiUrl}`),
       this.apiService.getAPI2(headerApi),
-      this.apiService.getAPI2(`publication`),
       this.apiService.getAPI2(`footer`),
     ])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
-        this.publication = result[2];
-        this.footer = result[3];
+        this.footer = result[2];
 
         result['story'] = result[0]['data'];
         result['header'] = result[1]['data'];
@@ -374,7 +364,7 @@ hasMore:any;
             '@context': 'https://schema.org/',
             '@type': 'Article',
             headline: result['story'].meta.seo.title,
-            name: this.publication.title,
+            name: this.commonService.publication.title,
             url: `${environment.appUrl}${this.router.url}`,
             datePublished:
               posted_date.toISOString().replace(/.\d+Z$/g, '') + '-05:00',
@@ -403,7 +393,7 @@ hasMore:any;
             },
             publisher: {
               '@type': 'Organization',
-              name: this.publication.title,
+              name: this.commonService.publication.title,
               logo: {
                 '@type': 'ImageObject',
                 url: result['header']['logo']['url'],

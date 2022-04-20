@@ -49,9 +49,6 @@ export class MonthlyDetailsComponent implements OnInit {
           this.hasMore = response.has_more;
           this.apiService.getAPI2(`meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
-            this.apiService
-              .getAPI2(`publication`)
-              .subscribe((result) => {
                 this.isLoaded = true;
 
                 this.title = this.datePipe.transform(
@@ -59,9 +56,8 @@ export class MonthlyDetailsComponent implements OnInit {
                   'MMMM YYYY'
                 );
                 this.metaService.setTitle(
-                  `${this.title} Issues | ${result.title}`
+                  `${this.title} Issues | ${this.commonService.publication.title}`
                 );
-              });
           });
         });
     });

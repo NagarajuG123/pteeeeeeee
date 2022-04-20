@@ -71,19 +71,15 @@ export class DetailsComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI2(`meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      this.apiService
-        .getAPI2(`publication`)
-        .subscribe((result) => {
           if (this.brandSlug === '1851') {
             this.metaService.setTitle(
-              `Subscribe to | ${result.title} | ${result.newsType}`
+              `Subscribe to | ${this.commonService.publication.title} | ${this.commonService.publication.newsType}`
             );
           } else {
             this.metaService.setTitle(
-              `Subscribe to | ${this.brandSlug}  ${result.title}  | ${result.newsType}`
+              `Subscribe to | ${this.brandSlug}  ${this.commonService.publication.title}  | ${this.commonService.publication.newsType}`
             );
           }
-        });
     });
   }
   getMonth(month) {

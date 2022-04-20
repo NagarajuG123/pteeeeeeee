@@ -288,16 +288,15 @@ export class InfoComponent implements OnInit {
           false;
     }
     const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
-    const publicationApi = this.apiService.getAPI2(`publication`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
-    forkJoin([itemApi, publicationApi, headerApi]).subscribe((results) => {
+    forkJoin([itemApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
       this.hasMore = results[0].has_more;
-      this.logo = results[2].data.logo.image;
+      this.logo = results[1].data.logo.image;
       if (results[0].meta) {
         this.metaService.setSeo(results[0].meta);
         this.metaService.setTitle(
-          `${results[0].meta.seo.title} | ${results[1].title}`
+          `${results[0].meta.seo.title} | ${this.commonService.publication.title}`
         );
       }
       if (item === 'available-markets') {

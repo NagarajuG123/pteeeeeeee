@@ -100,9 +100,7 @@ export class BrandComponent implements OnInit {
     const spotlightCategoriesApi = this.apiService.getAPI(
       `1851/spotlights/categories`
     );
-    const publicationApi = this.apiService.getAPI2(`publication`);
-
-    forkJoin([spotlightCategoriesApi, publicationApi])
+    forkJoin([spotlightCategoriesApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
         this.tabName = results[0].categories;
@@ -159,14 +157,10 @@ export class BrandComponent implements OnInit {
         this.dynamicStories = response.data.stories;
         this.hasMore = response.has_more;
         this.metaService.setSeo(this.dynamicStories[0].meta);
-        this.apiService
-          .getAPI2(`1851/publication`)
-          .subscribe((result) => {
             const Title =
               this.dynamicUrl.charAt(0).toUpperCase() +
               this.dynamicUrl.slice(1);
-            this.metaService.setTitle(`${Title} | ${result.title}`);
-          });
+            this.metaService.setTitle(`${Title} | ${this.commonService.publication.title}`);
       });
   }
 
@@ -186,13 +180,9 @@ export class BrandComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI2(`meta?slug=${this.slug}&is_brand=true`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      this.apiService
-        .getAPI(`publication`)
-        .subscribe((result) => {
           this.metaService.setTitle(
-            `${response.data.seo.title} | ${result.title}`
+            `${response.data.seo.title} | ${this.commonService.publication.title}`
           );
-        });
     });
   }
 }

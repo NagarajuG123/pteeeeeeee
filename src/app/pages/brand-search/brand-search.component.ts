@@ -34,11 +34,9 @@ export class BrandSearchComponent implements OnInit {
     const brandSearchData: any = [];
     const brandSearchApi = this.apiService.getAPI1(`brand-search${params}`);
     const brandFilterApi = this.apiService.getAPI(`brand-filters`);
-    const publication = this.apiService.getAPI2(`publication`);
-    forkJoin([brandFilterApi, brandSearchApi, publication])
+    forkJoin([brandFilterApi, brandSearchApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
-        this.publication = results[2];
         brandSearchData['industryKeys'] = [];
         brandSearchData['investKeys'] = [];
         results[0].data.industries.forEach(
@@ -66,16 +64,16 @@ export class BrandSearchComponent implements OnInit {
         this.investKeys = brandSearchData['investKeys'];
         this.items = brandSearchData['items'];
         this.hasMore = brandSearchData['hasMore'];
-        const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.publication?.title}`;
+        const defaultTitle = `Franchise Opportunity Directory | Brand Search | ${this.commonService.publication?.title}`;
 
         this.metaService.setTitle(defaultTitle);
         this.setBannerImage();
       });
   }
   setBannerImage() {
-    if (this.publication.id == '1851') {
+    if (this.commonService.publication.id == '1851') {
       this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else if (this.publication.id == 'EE') {
+    } else if (this.commonService.publication.id == 'EE') {
       this.bannerImage = `${environment.s3Url}banner_search_ee.jpg`;
     } else {
       this.bannerImage = `${environment.s3Url}banner_search_page_1903.jpg`;

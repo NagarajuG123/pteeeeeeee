@@ -1,6 +1,6 @@
 <header class="col-12 position-fixed" *ngIf="isShow">
   <!-- Top header section Start -->
-  <div class="top-head d-none d-xl-block" (click)="closeSidebar()" [ngClass]="publication?.id == 'EE' ? 'top-head-text' : ''">
+  <div class="top-head d-none d-xl-block" (click)="closeSidebar()" [ngClass]="commonService.publication?.id == 'EE' ? 'top-head-text' : ''">
     <div class="d-flex container">
       <div class="col-lg-11 d-flex">
         <span class="py-1">Publications in the Mainland Community:</span>
@@ -248,7 +248,7 @@
       </div>
       <div class="col-lg-1 col-xl-1 col-md-1 col-sm-3 col-3">
         <ul class="sidebar dropdown-menu" aria-labelledby="dropdownMenu2"
-            [ngClass]="publication?.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
+            [ngClass]="commonService.publication?.id != '1851' ? 'h-auto': '' "  *ngIf="isMain">
           <li class="menu-search">
             <form
               [formGroup]="searchForm"
@@ -313,7 +313,7 @@
           </li>
           <hr />
 
-          <li *ngIf="publication?.id == '1851'">
+          <li *ngIf="commonService.publication?.id == '1851'">
             <h3>Awards</h3>
             <ul class="mb-2 ms-2">
               <li class="ms-1" *ngFor="let item of header?.sidebar?.awards">
@@ -333,7 +333,7 @@
             </ul>
             <hr />
           </li>
-          <li *ngIf="publication?.id == '1851'">
+          <li *ngIf="commonService.publication?.id == '1851'">
             <a
               routerLink="{{ menu.url }}"
               (click)="commonService.toggle()"
@@ -782,7 +782,7 @@
           <span class="text-uppercase">{{ brandTitle }}</span
           >. Content within this page that is paid will showcase a Sponsored
           icon. This means the brand has engaged
-          <span class="text-uppercase">{{ publication?.shortTitle }}</span>
+          <span class="text-uppercase">{{ commonService.publication?.shortTitle }}</span>
           to write the content. Content without the Sponsored Icon is aggregated
           media placements the brand earned. Questions can be sent to
           <span>{{ editorialEmail }}</span>

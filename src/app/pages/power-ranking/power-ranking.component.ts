@@ -18,7 +18,6 @@ export class PowerRankingComponent implements OnInit {
   data: Powerranking[] = [];
   contents: Brandsrank = {};
   metaData: Meta[] = [];
-  publication!: any;
   items: Brandsrank[] = [];
   s3Url = environment.s3Url;
   oddRows = [0, 1, 4, 5, 8, 9];
@@ -33,16 +32,14 @@ export class PowerRankingComponent implements OnInit {
 
   ngOnInit(): void {
     const powerApi = this.apiService.getAPI2(`powerranking`);
-    const publicationApi = this.apiService.getAPI2('publication');
 
-    forkJoin([powerApi, publicationApi])
+    forkJoin([powerApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         this.data = result[0];
         this.contents = result[0].data;
         this.items = result[0].data.brands;
         this.metaData = result[0].data.meta;
-        this.publication = result[1];
         this.metaService.setSeo(this.metaData);
       });
   }

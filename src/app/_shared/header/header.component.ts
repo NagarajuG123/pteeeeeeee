@@ -35,7 +35,6 @@ export class HeaderComponent implements OnInit {
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
-  publication: any;
   isBrowser!: boolean;
   news: any;
   editorialEmail: string;
@@ -160,21 +159,19 @@ isShow:boolean;
       `${this.brandSlug}/news?limit=4&offset=0`
     );
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
-    const publication = this.apiService.getAPI2(`publication`);
     const trending = this.apiService.getAPI(
       `${this.brandSlug}/trending?limit=9&offset=0`
     );
 
-    forkJoin([header, news, inquire, publication, trending]).subscribe(
+    forkJoin([header, news, inquire, trending]).subscribe(
       (results) => {
         this.header = results[0].data;
         this.news = results[1].data;
         this.inquireData = results[2].schema;
-        this.publication = results[3];
         if(this.commonService.otherSites() || this.commonService.stachecow()){
-          this.logo = `${environment.imageResizeUrl}/static/${this.publication?.id}small-logo.png`;
+          this.logo = `${environment.imageResizeUrl}/static/${this.commonService.publication?.id}small-logo.png`;
         } 
-        this.trending = results[4].data;
+        this.trending = results[3].data;
         if(this.trending && this.trending.length == 0) {
           this.commonService.trendingClass = 'topNoTrending'
         } else {
@@ -193,11 +190,11 @@ isShow:boolean;
   }
   setEditorialEmail() {
     this.editorialEmail = 'editorial@1851franchise.com';
-    if (this.publication.id.toLowerCase() === 'ee') {
+    if (this.commonService.publication.id.toLowerCase() === 'ee') {
       this.editorialEmail = 'editorial@estatenvy.com';
-    } else if(this.publication.id == 'ROOM-1903') {
+    } else if(this.commonService.publication.id == 'ROOM-1903') {
       this.editorialEmail = 'editorial@room1903.com';
-    } else if(this.publication.id.toLowerCase() == 'stachecow') {
+    } else if(this.commonService.publication.id.toLowerCase() == 'stachecow') {
       this.editorialEmail = 'editorial@stachecow.com';
     }
   }
@@ -411,7 +408,7 @@ isShow:boolean;
   setFavicon() {
     this._document
       .getElementById('appFavicon')
-      .setAttribute('href', `${this.publication.id}-favicon.ico`);
+      .setAttribute('href', `${this.commonService.publication.id}-favicon.ico`);
   }
   ngAfterViewInit() {
     // For sticky header

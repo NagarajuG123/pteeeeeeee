@@ -82,19 +82,15 @@ export class SitemapComponent implements OnInit {
   getMeta() {
     this.apiService.getAPI2(`meta`).subscribe((response) => {
       this.metaService.setSeo(response.data);
-      this.apiService
-        .getAPI2(`publication`)
-        .subscribe((result) => {
           if (this.brandSlug === '1851') {
             this.metaService.setTitle(
-              `Sitemap for ${result.title} | ${result.newsType}`
+              `Sitemap for ${this.commonService.publication.title} | ${this.commonService.publication.newsType}`
             );
           } else {
             this.metaService.setTitle(
-              `Sitemap for ${this.brandSlug}  ${result.title}  | ${result.newsType}`
+              `Sitemap for ${this.brandSlug}  ${this.commonService.publication.title}  | ${this.commonService.publication.newsType}`
             );
-          }
-        });
+            }
     });
   }
 }

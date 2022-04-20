@@ -21,13 +21,13 @@
 </div>
 
 <div class="main-content sidebar-blur">
-  <div class="contact-editorial" *ngIf="publication">
+  <div class="contact-editorial" *ngIf="commonService.publication">
     <div class="container">
       <div class="contact-editorial-details col-xl-5 col-lg-8">
         <div class="editors">
           <h4 class="text-center">
             Have a great story that you'd like to see featured on
-            <span>{{ publication.shortTitle }}</span
+            <span>{{ commonService.publication.shortTitle }}</span
             >?
           </h4>
           <p class="text-center">
@@ -94,7 +94,7 @@
               </div>
             </div>
             <div
-              *ngIf="publication.id == '1851'"
+              *ngIf="commonService.publication.id == '1851'"
               class="contact-editorial-main"
             >
               <h6>Click all of which apply to you:</h6>
@@ -210,7 +210,7 @@
               </ul>
             </div>
             <span *ngIf="isSubmitted" class="f_error">{{ submitErrMsg }}</span>
-            <div [ngClass]="publication.id != '1851' ? 'pt-5' : ''">
+            <div [ngClass]="commonService.publication.id != '1851' ? 'pt-5' : ''">
             <button
               type="button"
               class="back d-block submit_btn"

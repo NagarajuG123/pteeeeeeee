@@ -39,7 +39,6 @@ export class AuthorComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.authorSlug = params.get('authorSlug');
       const author = this.apiService.getAPI2(`author/${this.authorSlug}`);
-      const publication = this.apiService.getAPI2(`publication`);
       const brand = this.apiService.getAPI(
         `author/${this.authorSlug}/branded-contents?limit=10&offset=0`
       );
@@ -49,19 +48,19 @@ export class AuthorComponent implements OnInit {
       const meta = this.apiService.getAPI2(`meta`);
       const footer = this.apiService.getAPI2('footer');
 
-      forkJoin([author, publication, brand, editorial, footer,meta]).subscribe(
+      forkJoin([author, brand, editorial, footer,meta]).subscribe(
         (results) => {
           if (results[0]=== '') {
             this.router.navigateByUrl('/404');
           } else {
             this.author = results[0];
-            this.metaService.setSeo(results[5].data.seo);
+            this.metaService.setSeo(results[4].data.seo);
             this.metaService.setTitle(
-              `${results[0].first_name} ${results[0].last_name} | ${results[1].title}`
+              `${results[0].first_name} ${results[0].last_name} | ${this.commonService.publication.title}`
             );
-            this.brandedContents = results[2].data;
-            this.editorials = results[3].data;
-            this.footer = results[4];
+            this.brandedContents = results[1].data;
+            this.editorials = results[2].data;
+            this.footer = results[3];
             let socialLinks = [];
             this.footer.socialMedia.forEach((item:any)=>{
               socialLinks.push(item.url);

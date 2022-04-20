@@ -21,7 +21,6 @@ export class AboutUsComponent implements OnInit {
   siteKey: string = environment.reCaptchaKey;
 
   publicationContents: any = [];
-  publication: any = [];
   contactForm: FormGroup;
   isSubmitted: boolean = false;
   submitErrMsg: string = '';
@@ -59,17 +58,14 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     const aboutus = this.apiService.getAPI(`1851/about-us`);
     const meta = this.apiService.getAPI2(`meta`);
-    const publication = this.apiService.getAPI2(`publication`);
-    forkJoin([publication, aboutus, meta]).subscribe((results) => {
-      this.data = results[1].data;
-
-      this.publication = results[0];
+    forkJoin([ aboutus, meta]).subscribe((results) => {
+      this.data = results[0].data;
       if (this.data?.contents?.length > 1) {
         for (let i = 1; i < this.data.contents.length; i++) {
           this.publicationContents.push(this.data.contents[i]);
         }
       }
-      this.metaService.setSeo(results[2].data);
+      this.metaService.setSeo(results[1].data);
     });
     this.recaptchaV3Service.execute('recaptcha')
     .subscribe((token: string) => {
@@ -78,7 +74,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   isShow() {
-    return this.publication.id == '1851';
+    return this.commonService.publication.id == '1851';
   }
 
   onContactSubmit(contactForm: FormGroup) {

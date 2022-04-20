@@ -225,9 +225,7 @@ export class SearchComponent implements OnInit {
 
       const main_searchAPI = this.apiService.getAPI1(`search${apiParams}`);
       const brand_searchAPI = this.apiService.getAPI1(`search${brandParams}`);
-      const publication = this.apiService.getAPI2(`publication`);
-
-      forkJoin([main_searchAPI, brand_searchAPI, publication])
+      forkJoin([main_searchAPI, brand_searchAPI])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
           if (results[0]['data'] === null) {
@@ -240,7 +238,7 @@ export class SearchComponent implements OnInit {
           } else {
             searchPopData['brandPeoples'] = results[1]['data'];
           }
-          let title = results[2].title;
+          let title = this.commonService.publication.title;
           searchPopData['has_more'] = results[0].has_more;
 
           this.recentPeoples = searchPopData['recentPeoples'];
@@ -251,7 +249,7 @@ export class SearchComponent implements OnInit {
             this.metaService.setSeo(this.recentPeoples[0].meta);
           }
           if(this.brandSlug == '1851'){
-            this.brand_id = results[2].id.toLowerCase();
+            this.brand_id = this.commonService.publication.id.toLowerCase();
           }
           this.metaService.setTitle(title);
         });

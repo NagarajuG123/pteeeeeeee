@@ -21,7 +21,6 @@ import { CommonService } from 'src/app/_core/services/common.service';
   styleUrls: ['./contacteditorial.component.scss'],
 })
 export class ContacteditorialComponent implements OnInit {
-  publication: any;
   contactForm!: FormGroup;
   isSubmitted: boolean;
   submitErrMsg: string = '';
@@ -67,18 +66,16 @@ export class ContacteditorialComponent implements OnInit {
 
   ngOnInit(): void {
     const contactApi = this.apiService.getAPI('1851/contact-editorial');
-    const publicationApi = this.apiService.getAPI2(`publication`);
     const metaApi = this.apiService.getAPI2(`meta`);
 
-    forkJoin([contactApi, publicationApi, metaApi])
+    forkJoin([contactApi,  metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         this.data = response[0].data;
-        this.publication = response[1];
-        this.metaData = response[2].data;
+        this.metaData = response[1].data;
         this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(
-          `Contact Editorial | ${this.publication.title.toUpperCase()}`
+          `Contact Editorial | ${this.commonService.publication.title.toUpperCase()}`
         );
       });
   }

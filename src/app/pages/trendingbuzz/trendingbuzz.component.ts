@@ -41,11 +41,7 @@ export class TrendingbuzzComponent implements OnInit {
         }
         this.hasMore = response.has_more;
         this.isLoaded = true;
-        this.apiService
-          .getAPI2(`publication`)
-          .subscribe((result) => {
-            this.metaService.setTitle(`Trending Brand Buzz | ${result.title}`);
-          });
+        this.metaService.setTitle(`Trending Brand Buzz | ${this.commonService.publication.title}`);
       });
   }
   isVideo(item: { media: { type: string } | null } | null) {

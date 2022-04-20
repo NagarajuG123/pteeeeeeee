@@ -11,7 +11,6 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  publication: any = [];
   newsletterForm!: FormGroup;
   isSubmitted: boolean = false;
   isLoaded: Boolean = false;
@@ -31,11 +30,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const publication = this.apiService.getAPI2(`publication`);
     const meta = this.apiService.getAPI2(`meta`);
-    forkJoin([publication, meta]).subscribe((results) => {
-      this.publication = results[0];
-      this.metaService.setSeo(results[1].data);
+    forkJoin([meta]).subscribe((results) => {
+      this.metaService.setSeo(results[0].data);
       this.isLoad = true;
     });
 
@@ -74,20 +71,20 @@ export class HomeComponent implements OnInit {
   }
   getTitle() {
     let title = 'Everything Franchising';
-    if(this.publication.id == 'Stachecow') {
+    if(this.commonService.publication.id == 'Stachecow') {
       title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
     }
-    else if(this.publication.id == 'EE') {
+    else if(this.commonService.publication.id == 'EE') {
       title = 'THE FUTURE OF REAL ESTATE';
     }
-    else if(this.publication.id == 'ROOM-1903') {
+    else if(this.commonService.publication.id == 'ROOM-1903') {
       title = 'FOR THE LOVE OF TRAVEL';
     }
     return title;
   }
   getSubTitle() {
     let subTitle = 'To help you buy, grow and build';
-    if(this.publication.id == 'Stachecow') {
+    if(this.commonService.publication.id == 'Stachecow') {
       subTitle = 'To help you build the life you deserve ';
     }
     return subTitle;
