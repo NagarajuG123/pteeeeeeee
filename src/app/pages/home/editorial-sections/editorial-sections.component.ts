@@ -32,8 +32,8 @@ export class EditorialSectionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const spotlightCategoriesApi = this.apiService.getAPI(
-      `1851/spotlights/categories`
+    const spotlightCategoriesApi = this.apiService.getAPI2(
+      `category/tab`
     );
 
     forkJoin([spotlightCategoriesApi])

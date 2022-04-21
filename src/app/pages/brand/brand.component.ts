@@ -97,8 +97,8 @@ export class BrandComponent implements OnInit {
       });
   }
   getSpotlight() {
-    const spotlightCategoriesApi = this.apiService.getAPI(
-      `1851/spotlights/categories`
+    const spotlightCategoriesApi = this.apiService.getAPI2(
+      `category/tab`
     );
     forkJoin([spotlightCategoriesApi])
       .pipe(takeUntil(this.onDestroy$))
