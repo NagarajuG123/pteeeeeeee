@@ -16,7 +16,6 @@ export class FooterComponent implements OnInit {
   s3Url = environment.s3Url;
   utmSlug:string;
   isShow:boolean;
-  publication:any;
 
   socialIcons: any = [
     "fa fa-facebook-f",
@@ -83,7 +82,6 @@ export class FooterComponent implements OnInit {
     const footer = this.apiService.getAPI2(footerApi);
     forkJoin([footer]).subscribe((results) => {
       this.footer = results[0];
-      this.publication =this.commonService.publication;
     });
 
   }
