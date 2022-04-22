@@ -7,6 +7,7 @@ export const environment = {
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   imageResizeUrl: 'https://d3idlmh4hcsex5.cloudfront.net',
   reCaptchaKey: '6Lev138eAAAAAF7Zxz5sHAZAQEZFqnaqeLrxCYTz',
+  rollbarKey: '482846deaa2949c69afc6ffbe809c4d7',
   appUrl: 'https://1851franchise.com',
   fbUrl: 'https://www.facebook.com/1851magazine/',
   enableSW: false,
