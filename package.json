@@ -57,6 +57,7 @@
     "ngx-page-scroll-core": "^7.0.5",
     "ngx-sharebuttons": "^8.0.5",
     "ngx-toastr": "^14.1.0",
+    "rollbar": "^2.25.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

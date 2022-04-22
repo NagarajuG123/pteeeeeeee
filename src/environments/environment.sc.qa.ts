@@ -6,6 +6,7 @@ export const environment = {
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   imageResizeUrl: 'https://d2x2scmkn9im41.cloudfront.net',
   appUrl: 'https://stachecow.nlasandbox2.info',
+  rollbarKey: '3cc33cf350c9499681a19d63d6923644',
   fbUrl: 'https://www.facebook.com/stachecow/',
   port: 4700,
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',

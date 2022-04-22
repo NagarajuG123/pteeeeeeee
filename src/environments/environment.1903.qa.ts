@@ -7,6 +7,7 @@ export const environment = {
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   imageResizeUrl: 'https://d2qz89k9anyyc5.cloudfront.net',
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
+  rollbarKey: '3cc33cf350c9499681a19d63d6923644',
   appUrl: 'https://1903-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/Room1903/',
   enableSW: false,
