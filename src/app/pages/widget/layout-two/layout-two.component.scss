@@ -1,4 +1,5 @@
 @import "../../../../assets/scss/variables.scss";
+@import "../../../../assets/scss/mixins.scss";
 .widget3{
     .sectionTitle{
         color: $dark_gray;
@@ -12,4 +13,13 @@
 }
 .seeMore{
     color: $red;
+}
+img{
+    height: 160px;
+    @include tablet-landscape1 {
+        height: auto !important;
+    }
+    @include desk-lg-below1{
+        height: 118px;
+    }
 }
