@@ -14,9 +14,23 @@
     <div class="tabs primary-bg">
       <div class="container customContainer position-relative">
         <div
-          class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+          class="prev position-absolute top-50 start-0 translate-middle-y ps-3 desktop-only"
           [ngClass]="tabName?.length > commonService.vtabsItem ? '' : 'd-none'"
           (click)="prev()"
+        >
+          <img
+            data-src="{{ s3Url }}left-arrow.svg"
+            width="20px"
+            height="39px"
+            loading="lazy"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+        <div
+          class="prev position-absolute top-50 start-0 translate-middle-y ps-3 mobile-only"
+          [ngClass]="tabName?.length > commonService.vtabsItem && activeTab > 1 ? '' : 'd-none'"
+          (click)="prevMobile()"
         >
           <img
             data-src="{{ s3Url }}left-arrow.svg"
@@ -68,11 +82,27 @@
           </li>
         </ul>
         <div
-          class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+          class="next position-absolute top-50 end-0 translate-middle-y pe-3 desktop-only"
           [ngClass]="
             tabName?.length > this.commonService.vtabsItem ? '' : 'd-none'
           "
           (click)="next()"
+        >
+          <img
+            data-src="{{ s3Url }}right-arrow.svg"
+            loading="lazy"
+            width="20px"
+            height="39px"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+        <div
+          class="next position-absolute top-50 end-0 translate-middle-y pe-3 mobile-only"
+          [ngClass]="
+            tabName?.length > this.commonService.vtabsItem && activeTab < tabName.length ? '' : 'd-none'
+          "
+          (click)="nextMobile()"
         >
           <img
             data-src="{{ s3Url }}right-arrow.svg"

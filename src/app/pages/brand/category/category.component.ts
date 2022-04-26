@@ -100,6 +100,7 @@ export class CategoryComponent implements OnInit {
   }
 
   prev() {
+    console.log('jhkjh');
     if (this.skipTab > 0) {
       this.skipTab -= 1;
       this.activeTab -= 1;
@@ -107,9 +108,22 @@ export class CategoryComponent implements OnInit {
     } else this.skipTab = 0;
   }
   next() {
+    console.log('next ');
     if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
       this.skipTab += 1;
       this.activeTab += 1;
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab - 1]);
+    }
+  }
+  prevMobile() {
+    this.activeTab -= 1;
+    if(this.activeTab > 0){
+      this.setActiveTab(this.activeTab, this.tabName[this.activeTab - 1]);
+    }
+  }
+  nextMobile() {
+    this.activeTab += 1;
+    if(this.activeTab <= this.tabName.length){
       this.setActiveTab(this.activeTab, this.tabName[this.activeTab - 1]);
     }
   }
