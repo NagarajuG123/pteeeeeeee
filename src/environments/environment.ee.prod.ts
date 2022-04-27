@@ -6,6 +6,7 @@ export const environment = {
   s3Url: 'https://dmprqkmvewks9.cloudfront.net/',
   imageResizeUrl: 'https://d1y9xwfspocdum.cloudfront.net',
   reCaptchaKey: '6LcOIIQeAAAAAHxtEwM16m89fONoaYeCU_ofw1Sv',
+  rollbarKey: '482846deaa2949c69afc6ffbe809c4d7',
   appUrl: 'https://estatenvy.com',
   fbUrl: 'https://www.facebook.com/estatenvy/',
   port: 4000,

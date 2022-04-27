@@ -5,6 +5,7 @@
 <div class="sidebar-blur brandInfoPage" *ngIf="isInfoPage">
   <div class="tabs primary-bg">
     <div class="container px-5 position-relative">
+      <div class="desktop-only">
       <div
         class="prev position-absolute top-50 start-0 translate-middle-y ps-4"
         [ngClass]="
@@ -17,6 +18,22 @@
           loading="lazy"
           class="lazyload"
         />
+      </div>
+      </div>
+      <div class="mobile-only">
+        <div
+          class="prev position-absolute top-50 start-0 translate-middle-y ps-4"
+          [ngClass]="
+            categories.length > this.commonService.brandInfoTabs && activeTab > 1 ? '' : 'd-none'
+          "
+          (click)="prevMobile()"
+        >
+          <img
+            data-src="{{ s3Url }}left-arrow.svg"
+            loading="lazy"
+            class="lazyload"
+          />
+        </div>
       </div>
       <ul class="row m-0  row-cols-md-3 row-cols-sm-2" [ngClass]="tabClass">
         <li
@@ -55,6 +72,7 @@
          </a>
         </li>
       </ul>
+      <div class="desktop-only">
       <div
         class="next position-absolute top-50 end-0 translate-middle-y pe-4"
         [ngClass]="
@@ -67,6 +85,22 @@
           loading="lazy"
           class="lazyload"
         />
+      </div>
+    </div>
+      <div class="mobile-only">
+        <div
+          class="next position-absolute top-50 end-0 translate-middle-y pe-4"
+          [ngClass]="
+            categories.length > this.commonService.brandInfoTabs && activeTab < categories.length  ? '' : 'd-none'
+          "
+          (click)="nextMobile()"
+        >
+          <img
+            data-src="{{ s3Url }}right-arrow.svg"
+            loading="lazy"
+            class="lazyload"
+          />
+        </div>
       </div>
     </div>
   </div>

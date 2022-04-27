@@ -15,7 +15,7 @@
     color: $red;
 }
 img{
-    height: 160px;
+    height: 135px;
     @include tablet-landscape1 {
         height: auto !important;
     }

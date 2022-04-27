@@ -6,6 +6,7 @@ export const environment = {
   apiGatewayUrl:'https://api.ee.nlasandbox2.info/v1',
   imageResizeUrl: 'https://d1dhb95zbapaht.cloudfront.net',
   reCaptchaKey: '6LfMfnkeAAAAADzHNgZIgnJvPHa-UIDpHMHCXkcN',
+  rollbarKey: '3cc33cf350c9499681a19d63d6923644',
   appUrl: 'https://estatenvy.com',
   fbUrl: 'https://www.facebook.com/estatenvy/',
   port: 4500,
