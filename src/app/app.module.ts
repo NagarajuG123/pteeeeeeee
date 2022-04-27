@@ -18,28 +18,7 @@ import { MonthlyDetailsModule } from './pages/monthly-details/monthly-details.mo
 import { GoogleAnalyticsService } from './google-analytics.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import * as Rollbar from 'rollbar'; 
 
-const rollbarConfig = {
-  accessToken: environment.rollbarKey,
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-};
-
-@Injectable()
-export class RollbarErrorHandler implements ErrorHandler {
-  constructor(@Inject(RollbarService) private rollbar: Rollbar) {}
-
-  handleError(err:any) : void {
-    this.rollbar.error(err.originalError || err);
-  }
-}
-
-export function rollbarFactory() {
-    return new Rollbar(rollbarConfig);
-}
-
-export const RollbarService = new InjectionToken<Rollbar>('rollbar');
 
 @NgModule({
   declarations: [AppComponent],
@@ -64,8 +43,6 @@ export const RollbarService = new InjectionToken<Rollbar>('rollbar');
   ],
   providers: [
     GoogleAnalyticsService,
-    { provide: ErrorHandler, useClass: RollbarErrorHandler },
-    { provide: RollbarService, useFactory: rollbarFactory }
   ],
   bootstrap: [AppComponent],
 })

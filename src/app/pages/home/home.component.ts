@@ -71,13 +71,13 @@ export class HomeComponent implements OnInit {
   }
   getTitle() {
     let title = 'Everything Franchising';
-    if(this.commonService.publication?.id == 'Stachecow') {
+    if(this.commonService?.publication?.id == 'Stachecow') {
       title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
     }
-    else if(this.commonService.publication?.id == 'EE') {
+    else if(this.commonService?.publication?.id == 'EE') {
       title = 'THE FUTURE OF REAL ESTATE';
     }
-    else if(this.commonService.publication?.id == 'ROOM-1903') {
+    else if(this.commonService?.publication?.id == 'ROOM-1903') {
       title = 'FOR THE LOVE OF TRAVEL';
     }
     return title;
