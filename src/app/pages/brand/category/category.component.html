@@ -13,6 +13,7 @@
   <div class="bottomSection">
     <div class="tabs primary-bg">
       <div class="container customContainer position-relative">
+        <div class="desktop-only">
         <div
           class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
           [ngClass]="tabName?.length > commonService.vtabsItem ? '' : 'd-none'"
@@ -27,6 +28,23 @@
             class="lazyload"
           />
         </div>
+      </div>
+      <div class="mobile-only">
+        <div
+          class="prev position-absolute top-50 start-0 translate-middle-y ps-3"
+          [ngClass]="tabName?.length > commonService.vtabsItem && activeTab > 1 ? '' : 'd-none'"
+          (click)="prevMobile()"
+        >
+          <img
+            data-src="{{ s3Url }}left-arrow.svg"
+            width="20px"
+            height="39px"
+            loading="lazy"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+      </div>
         <ul class="row m-0 px-5 row-cols-md-3 row-cols-sm-2" [ngClass]="tabName.length >=5 ? 'row-cols-lg-5' : rows">
           <li
             *ngFor="let item of tabName; index as i"
@@ -67,6 +85,7 @@
             </span>
           </li>
         </ul>
+        <div class="desktop-only">
         <div
           class="next position-absolute top-50 end-0 translate-middle-y pe-3"
           [ngClass]="
@@ -83,6 +102,25 @@
             class="lazyload"
           />
         </div>
+      </div>
+      <div class="mobile-only">
+        <div
+          class="next position-absolute top-50 end-0 translate-middle-y pe-3"
+          [ngClass]="
+            tabName?.length > this.commonService.vtabsItem && activeTab < tabName.length ? '' : 'd-none'
+          "
+          (click)="nextMobile()"
+        >
+          <img
+            data-src="{{ s3Url }}right-arrow.svg"
+            loading="lazy"
+            width="20px"
+            height="39px"
+            alt="arrow"
+            class="lazyload"
+          />
+        </div>
+      </div>
       </div>
     </div>
 

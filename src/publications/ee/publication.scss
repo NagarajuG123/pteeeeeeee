@@ -242,3 +242,35 @@ header{
         color:$white !important;
     }
 }
+.widget7, .widget9{
+    .card-body{
+        span{
+            color: $red !important;
+        }
+    }
+    .card-footer{
+        background-color: $blue_3 !important;
+    }
+}
+.widget2{
+    .articleTitles, h2, h3{
+        color: $dark_red !important;
+    }
+}
+.awards{
+    .bottomSection{
+        .articleTitles{
+            color: $white !important;
+        } 
+    }
+} 
+.widget3{
+    h3{
+        color: $dark_red !important;
+    }
+}
+.widget4{
+    h3{
+        color: $white !important;
+    }
+}
