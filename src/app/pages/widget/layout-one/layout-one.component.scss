@@ -16,6 +16,13 @@
     color: $dark_gray !important;
   }
 }
+
+@media screen and (min-width: 992px) {
+  .sectionTitle{
+    padding: 0 5rem !important;
+  }
+}
+
 .awards {
   background: $dark_gray;
   color: $black;
@@ -54,7 +61,7 @@
       img {
         width:100%;
 
-        height: 160px;
+        height: 123px;
  
         @include mobile-landscape {
           height:auto;
