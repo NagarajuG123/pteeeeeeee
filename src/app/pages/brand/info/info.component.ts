@@ -413,6 +413,18 @@ export class InfoComponent implements OnInit {
       this.setActiveTab(this.activeTab, this.categories[this.activeTab - 1]);
     }
   }
+  prevMobile() {
+    this.activeTab -= 1;
+    if(this.activeTab > 0){
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab - 1]);
+    }
+  }
+  nextMobile() {
+    this.activeTab += 1;
+    if(this.activeTab <= this.categories.length){
+      this.setActiveTab(this.activeTab, this.categories[this.activeTab - 1]);
+    }
+  }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.commonService.resizeBrandInfo(event.target.innerWidth);
