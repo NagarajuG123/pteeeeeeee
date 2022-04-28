@@ -91,7 +91,7 @@ export class VideoComponent implements OnInit {
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
-      $('.modal').on('hide.bs.modal', function () {
+      $('.modal').on('hidden.bs.modal', function () {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
         const modalVideo = $(this).html();
