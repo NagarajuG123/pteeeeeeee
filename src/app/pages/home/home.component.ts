@@ -71,13 +71,13 @@ export class HomeComponent implements OnInit {
   }
   getTitle() {
     let title = 'Everything Franchising';
-    if(this.commonService.publication?.id == 'Stachecow') {
+    if(this.commonService?.publication?.id == 'Stachecow') {
       title = 'EVERYTHING PERSONAL WEALTH AND FINANCE';
     }
-    else if(this.commonService.publication?.id == 'EE') {
+    else if(this.commonService?.publication?.id == 'EE') {
       title = 'THE FUTURE OF REAL ESTATE';
     }
-    else if(this.commonService.publication?.id == 'ROOM-1903') {
+    else if(this.commonService?.publication?.id == 'ROOM-1903') {
       title = 'FOR THE LOVE OF TRAVEL';
     }
     return title;
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
     let subTitle = 'To help you buy, grow and build';
     if(this.commonService.publication?.id == 'Stachecow') {
       subTitle = 'To help you build the life you deserve ';
-    } else if (this.commonService.publication.id == 'ROOM-1903') {
+    } else if (this.commonService.publication?.id == 'ROOM-1903') {
       subTitle = 'We believe all travelers deserve the inside secrets';
     }
     return subTitle;
