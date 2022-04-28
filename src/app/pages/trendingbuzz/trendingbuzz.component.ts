@@ -77,7 +77,6 @@ export class TrendingbuzzComponent implements OnInit {
     {
       $('.modal').on('hidden.bs.modal', function(){
         $('.modal').hide();
-        $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
         const modalVideo = $(this).html();
         $(this).html(modalVideo);
       });

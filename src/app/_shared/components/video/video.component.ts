@@ -93,7 +93,6 @@ export class VideoComponent implements OnInit {
     if (this.isBrowser) {
       $('.modal').on('hidden.bs.modal', function () {
         $('.modal').hide();
-        $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
         const modalVideo = $(this).html();
         $(this).html(modalVideo);
       });
