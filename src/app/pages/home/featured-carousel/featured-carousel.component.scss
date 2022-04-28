@@ -7,18 +7,27 @@
       height: auto;    
     }
     height: 119px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
   }
     .sectionTitle{
         color: $dark_gray;
     }
     .seeMore{
         color: $red;
+        position: absolute;
+        z-index: 1;
+        word-break: break-word;
+      &.brandName{
+        margin-top: -25px;
+  }
        
         @include tablet-landscape {
-          font-size: 10px !important;    
+          font-size: 10px !important;   
         }
         @include mobile-landscape {
-          font-size: 12px !important;    
+          font-size: 12px !important;  
         }
     }
     .subTitle {
@@ -33,6 +42,10 @@
           padding-left: 15px;
           padding-right: 15px;
           display: inline-block;
+          @include mobile-landscape
+           {
+           padding-right: 80px;
+           }
         }
     }
     .featuredCarousel {
@@ -53,6 +66,13 @@
         padding: 0 5px;
         img {
           display: unset;
+          margin-top: 30px;
+          // @include tablet-landscape {
+          //   margin:unset;
+          // }
+          // @include mobile-landscape {
+          //   margin:unset;
+          // }
         }
       }
   
