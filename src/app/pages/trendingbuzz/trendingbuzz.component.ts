@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { environment } from 'src/environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-trendingbuzz',
   templateUrl: './trendingbuzz.component.html',
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class TrendingbuzzComponent implements OnInit {
   trendingData: Details[] = [];
   banner: any = [];
-
+  isBrowser: boolean;
   slug: string = '1851';
   hasMore: boolean = false;
   isLoaded: boolean;
@@ -22,8 +23,11 @@ export class TrendingbuzzComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
-    public commonService: CommonService
-  ) {}
+    public commonService: CommonService,
+    @Inject(PLATFORM_ID) platformId: Object
+    ) {
+      this.isBrowser = isPlatformBrowser(platformId);
+    }
 
   ngOnInit(): void {
     this.getTrending();
@@ -67,5 +71,16 @@ export class TrendingbuzzComponent implements OnInit {
           this.trendingData.push(element);
         });
       });
+  }
+  ngAfterViewInit(){
+    if(this.isBrowser)
+    {
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        $('.modal iframe').attr("src", jQuery(".modal iframe").attr("src"));
+        const modalVideo = $(this).html();
+        $(this).html(modalVideo);
+      });
+    }
   }
 }

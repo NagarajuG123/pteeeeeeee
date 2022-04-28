@@ -225,6 +225,8 @@ export class ItemComponent implements OnInit {
       $('.modal').on('hidden.bs.modal', function () {
         $('.modal').hide();
         $('.modal iframe').attr('src', $('.modal iframe').attr('src'));
+        const modalVideo = $(this).html();
+        $(this).html(modalVideo);
       });
       $('.tooltiptext').click(function (e) {
         e.preventDefault();
