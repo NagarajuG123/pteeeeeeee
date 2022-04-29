@@ -10,4 +10,4 @@ Disallow: /storypage/insertstats.html
 User-agent: *
 Disallow: /home/brandsearchajax.html
 
-Sitemap: https://1851franchise.com/sitemap.xml
+Sitemap: https://room1903.com/sitemap.xml
