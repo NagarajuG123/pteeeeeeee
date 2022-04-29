@@ -1,3 +1,3 @@
 FROM nginx:1.19.1-alpine
-COPY ./docker/vhost-ee-prod.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/vhost-1903-prod.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
