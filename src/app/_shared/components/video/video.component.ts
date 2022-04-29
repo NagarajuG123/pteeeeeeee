@@ -78,13 +78,13 @@ export class VideoComponent implements OnInit {
   }
   getTitle() {
     let title = 'Covering the franchise industry';
-    if(this.commonService.publication.id == 'Stachecow') {
+    if(this.commonService?.publication?.id == 'Stachecow') {
       title = 'Covering everything personal wealth and finance';
     }
-    else if(this.commonService.publication.id == 'EE') {
+    else if(this.commonService?.publication?.id == 'EE') {
       title = 'Covering everything real estate';
     }
-    else if(this.commonService.publication.id == 'ROOM-1903') {
+    else if(this.commonService?.publication?.id == 'ROOM-1903') {
       title = 'Covering everything travel & hospitality';
     }
     return title;

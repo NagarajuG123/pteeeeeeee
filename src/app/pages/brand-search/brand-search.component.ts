@@ -71,9 +71,9 @@ export class BrandSearchComponent implements OnInit {
       });
   }
   setBannerImage() {
-    if (this.commonService.publication.id == '1851') {
+    if (this.commonService?.publication?.id == '1851') {
       this.bannerImage = `${environment.s3Url}banner_search_1851.png`;
-    } else if (this.commonService.publication.id == 'EE') {
+    } else if (this.commonService?.publication?.id == 'EE') {
       this.bannerImage = `${environment.s3Url}banner_search_ee.jpg`;
     } else {
       this.bannerImage = `${environment.s3Url}banner_search_page_1903.jpg`;

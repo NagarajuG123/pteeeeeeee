@@ -74,7 +74,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   isShow() {
-    return this.commonService.publication.id == '1851';
+    return this.commonService?.publication?.id == '1851';
   }
 
   onContactSubmit(contactForm: FormGroup) {

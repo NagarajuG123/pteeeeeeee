@@ -190,11 +190,11 @@ isShow:boolean;
   }
   setEditorialEmail() {
     this.editorialEmail = 'editorial@1851franchise.com';
-    if (this.commonService.publication.id.toLowerCase() === 'ee') {
+    if (this.commonService?.publication?.id.toLowerCase() === 'ee') {
       this.editorialEmail = 'editorial@estatenvy.com';
-    } else if(this.commonService.publication.id == 'ROOM-1903') {
+    } else if(this.commonService?.publication?.id == 'ROOM-1903') {
       this.editorialEmail = 'editorial@room1903.com';
-    } else if(this.commonService.publication.id.toLowerCase() == 'stachecow') {
+    } else if(this.commonService?.publication?.id.toLowerCase() == 'stachecow') {
       this.editorialEmail = 'editorial@stachecow.com';
     }
   }
