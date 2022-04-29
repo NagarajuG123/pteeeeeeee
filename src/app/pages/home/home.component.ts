@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
     let subTitle = 'To help you buy, grow and build';
     if(this.commonService.publication?.id == 'Stachecow') {
       subTitle = 'To help you build the life you deserve ';
-    } else if (this.commonService.publication.id == 'ROOM-1903') {
+    } else if (this.commonService.publication?.id == 'ROOM-1903') {
       subTitle = 'We believe all travelers deserve the inside secrets';
     }
     return subTitle;

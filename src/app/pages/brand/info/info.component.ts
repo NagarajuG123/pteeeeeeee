@@ -728,4 +728,14 @@ export class InfoComponent implements OnInit {
   getBB(selection: any) {
     selection.each(() => {});
   }
+  ngAfterViewInit(){
+    if(this.isBrowser)
+    {
+      $('.modal').on('hidden.bs.modal', function(){
+        $('.modal').hide();
+        const modalVideo = $(this).html();
+        $(this).html(modalVideo);
+      });
+    }
+  }
 }
