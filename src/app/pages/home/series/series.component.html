@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="col-12 col-md-4 col-lg-4 rightSide">
-        <span class="small-red-headers align-top">Featured series</span>
+        <span class="small-red-headers align-top" *ngIf="seriesData && seriesData.length > 2">Featured series</span>
         <ul>
           <li *ngFor="let item of seriesData | slice: 1:4" class="d-flex">
             <div class="d-flex">
