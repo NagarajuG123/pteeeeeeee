@@ -415,7 +415,7 @@
               <div
                 *ngIf="
                   isMarket &&
-                  items['available-markets'] != null &&
+                  items['available-markets']  &&
                   items['available-markets'].length
                 "
                 class="mapcontainer mt-5"
@@ -428,7 +428,7 @@
                 <div
                   *ngIf="
                     isMarket &&
-                    items['available-markets'] != null &&
+                    items['available-markets'] &&
                     items['available-markets'].length
                   "
                   class="map-legend"
