@@ -121,9 +121,6 @@
         &.active {
           color: $red;
           &::after {
-            @include mobile-portrait{
-              left: 50px;
-            }
             @include mobile-portrait2{
               left: 150px;
             }
