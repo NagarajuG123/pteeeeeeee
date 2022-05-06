@@ -33,14 +33,25 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
     this.setConfig();
-      this.apiService
-      .getAPI(`${this.slug}/videos`)
-      .subscribe((result) => {
-        this.data = result.data;
-        if(this.data) {
-          this.isLoaded = true;
-        }
-      });
+      if(this.slug) {
+        this.apiService
+        .getAPI(`${this.slug}/videos`)
+        .subscribe((result) => {
+          this.data = result.data;
+          if(this.data) {
+            this.isLoaded = true;
+          }
+        });
+      } else {
+        this.apiService
+        .getAPI2(`videos`)
+        .subscribe((result) => {
+          this.data = result.data;
+          if(this.data) {
+            this.isLoaded = true;
+          }
+        });
+      }
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
