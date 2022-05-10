@@ -51,7 +51,7 @@ export class VideoComponent implements OnInit {
             this.isLoaded = true;
           }
         });
-      }
+      }        
   }
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
@@ -102,11 +102,15 @@ export class VideoComponent implements OnInit {
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
-      $('.modal').on('hidden.bs.modal', function () {
-        $('.modal').hide();
-        const modalVideo = $(this).html();
-        $(this).html(modalVideo);
-      });
+      $(document).ready(function() {
+        var $videoSrc;
+        $('.video-btn').click(function() {
+            $videoSrc = $(this).data("src");
+        });
+        $('#videoModal').on('hide.bs.modal', function(e) {
+            $("#video").attr('src', $videoSrc);
+        })
+    });
     }
   }
 }
