@@ -8,6 +8,14 @@
     color: $dark_gray;
   }
 }
+@media screen and (min-width: 992px) {
+  .sectionTitle{
+    padding: 1.5rem 5rem !important;
+  }
+  .seeAll{
+    padding-right: 4rem !important;
+  }
+}
 .widget7{
   background: $dark_gray !important;
   .articleTitles{
@@ -35,11 +43,23 @@
       display: inline-block;
     }
   }
+  .content{
+    @include tablet-portrait{
+      padding-left: 5rem !important;
+      padding-right: 5rem !important;
+    }
+    @media screen and (min-width: 992px) {
+      padding-left: 7rem !important;
+      padding-right: 7rem !important;
+    } 
+  }
   .card {
     img {
-      // max-height: 206px;
-      // height: 206px;
       width:100%;
+      @media screen and (min-width: 992px) {
+         max-height: 300px;
+         height: 300px;
+      }
     }
     .card-body {
       background-color: $red;

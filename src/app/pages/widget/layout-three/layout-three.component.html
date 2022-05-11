@@ -7,14 +7,14 @@
           </h2>
          </div> 
          <div
-          class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center">
+          class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center seeAll">
           <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
           >See More  <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
     </div>
     <hr class="m-0 mb-4"/>
-    <div class="container-fluid">
+    <div class="container-fluid content">
       <div class="row d-none d-sm-flex ">
         <div class="col col-sm-4 pb-3" *ngFor="let item of widget?.stories; index as i">
           <a href="{{ commonService.readMore(item) }}" target="_blank">
