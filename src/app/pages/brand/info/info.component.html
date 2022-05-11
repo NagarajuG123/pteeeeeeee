@@ -2,7 +2,7 @@
 <div class="sidebar-blur" *ngIf="isCategory">
   <app-category [slug]="categorySlug" [type]="brandSlug"></app-category>
 </div>
-<div class="sidebar-blur brandInfoPage" *ngIf="isInfoPage">
+<div class="sidebar-blur brandInfoPage" *ngIf="isInfoPage && categories && categories.length">
   <div class="tabs primary-bg">
     <div class="container px-5 position-relative">
       <div class="desktop-only">
