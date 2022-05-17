@@ -72,7 +72,7 @@ export class AuthorComponent implements OnInit {
               url: `${environment.appUrl}${this.router.url}`,
               image: {
                 '@type': 'ImageObject',
-                url: this.getUserAvater(this.author.data.media),
+                url: this.getUserAvater(this.author.data?.media),
                 width: 279,
                 height: 279,
               },
@@ -90,6 +90,6 @@ export class AuthorComponent implements OnInit {
     });
   }
   getUserAvater(media: any) {
-       return `${environment.imageResizeUrl}/fit-in/500x261/${media.path}`;
+       return `${environment.imageResizeUrl}/fit-in/500x261/${media?.path}`;
     }
 }
