@@ -20,7 +20,7 @@
   }
   .content {
     &.row-cols-2 > * {
-      width: 59%;
+      width: 100%;
       @include mobile-portrait {
         width: 100%;
       }
