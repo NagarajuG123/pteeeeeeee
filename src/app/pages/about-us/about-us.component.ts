@@ -56,12 +56,12 @@ export class AboutUsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const aboutus = this.apiService.getAPI(`1851/about-us`);
+    const aboutus = this.apiService.getAPI2(`about`);
     const meta = this.apiService.getAPI2(`meta`);
     forkJoin([ aboutus, meta]).subscribe((results) => {
-      this.data = results[0].data;
+      this.data = results[0].data[0];
       if (this.data?.contents?.length > 1) {
-        for (let i = 1; i < this.data.contents.length; i++) {
+        for (let i = 1; i < this.data?.contents.length; i++) {
           this.publicationContents.push(this.data.contents[i]);
         }
       }
