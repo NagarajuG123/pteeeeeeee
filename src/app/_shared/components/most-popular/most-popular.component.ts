@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-most-popular',
@@ -27,6 +28,9 @@ export class MostPopularComponent implements OnInit {
   isLoaded: boolean = false;
   isBrowser: boolean;
   customOptions: OwlOptions = {};
+  s3Url = environment.s3Url;
+  openVideoPlayer: boolean;
+  url: string;
 
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -83,5 +87,9 @@ export class MostPopularComponent implements OnInit {
       text = text.substring(0, 150) + '...';
    }
    return text;
+  }
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
   }
 }
