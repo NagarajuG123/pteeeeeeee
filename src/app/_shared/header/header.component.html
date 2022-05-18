@@ -102,7 +102,7 @@
             *ngIf="isMain"
             data-src="{{ header?.logo?.image }}"
             height="{{ header?.logo?.height }}"
-            alt=""
+            alt="logo"
             class=" lazyload mainLogo"
         />
         <img
@@ -110,12 +110,12 @@
         class=" lazyload d-md-none d-sm-block"
           src= "{{ logo }}"
           height="{{ header?.logo?.height }}"
-          alt=""
+          alt="logo"
       />
         <img
           *ngIf="!isMain"
             data-src="{{ header?.logo?.image }}"
-            alt=""
+            alt="logo"
             class=" lazyload"
         />
        
