@@ -20,7 +20,7 @@
               <a
               *ngIf="item.isExternal"
                 href="{{item.url}}"
-                target="_blank"
+                target="_blank" rel="noopener"
               >
                 <img
                 data-src="{{ item.media | defaultImage: 210:118 }}"

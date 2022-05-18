@@ -8,7 +8,7 @@
          </div> 
          <div
           class="col-lg-1 col-md-2 d-flex justify-content-end align-items-center seeAll">
-          <a href="{{ widget?.pageUrl }}" target="_blank" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
+          <a href="{{ widget?.pageUrl }}" target="_blank" rel="noopener" class="seeMore p-0" *ngIf="widget?.seeMore && widget?.pageUrl"
           >See More  <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
@@ -23,7 +23,7 @@
         >
           <a
             href="{{ commonService.readMore(item) }}"
-            target="_blank"
+            target="_blank" rel="noopener"
           >
             <img
               data-src="{{ item.media | defaultImage: 536:302 }}"
@@ -44,7 +44,7 @@
       <div class="row gx-2 bottomSection">
         <ng-container *ngFor="let item of widget?.stories | slice: 2:11; index as i">
             <div class="col-sm-12 col-md-4 pb-2">
-              <a *ngIf="item?.media" href="{{ commonService.readMore(item) }}" target="_blank">
+              <a *ngIf="item?.media" href="{{ commonService.readMore(item) }}" target="_blank" rel="noopener">
               <figure>
                 <img
                 data-src="{{ item.media | defaultImage: 212:119 }}"

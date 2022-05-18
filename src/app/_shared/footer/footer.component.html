@@ -14,7 +14,7 @@
             *ngFor="let publication of footer?.publication | slice: 0:1"
           >
             <div class="me-3">
-              <a href="{{ publication.url }}" target="_blank"
+              <a href="{{ publication.url }}" target="_blank"  rel="noopener"
                 ><img
                   data-src="{{ publication?.logo }}"
                   alt="logo"
@@ -28,7 +28,7 @@
               class="me-1"
               *ngFor="let publication of footer?.publication | slice: 1"
             >
-              <a href="{{ publication.url }}" target="_blank"
+              <a href="{{ publication.url }}" target="_blank"  rel="noopener"
                 ><img
                   data-src="{{ publication?.logo }}"
                   alt="logo"
