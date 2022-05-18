@@ -126,6 +126,7 @@
               (click)="openVideoPlayer = true"
             >
               <img
+              *ngIf="brandInfo.media"
                 class="lazyload img-fluid"
                 width="888"
                 height="500"
@@ -140,7 +141,7 @@
                   (max-width: 992px) 700px,
                   888px'
                 }}"
-                alt="brand_img"
+                alt="brand"
                 loading="lazy"
               />
               <img
