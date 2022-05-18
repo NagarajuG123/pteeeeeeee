@@ -9,6 +9,7 @@ import { EditorialSectionsComponent } from './editorial-sections/editorial-secti
 import { SeriesComponent } from './series/series.component';
 import { AwardsComponent } from './awards/awards.component';
 import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel.component';
+import { NgxJsonLdModule } from 'ngx-json-ld';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { FeaturedCarouselComponent } from './featured-carousel/featured-carousel
     AwardsComponent,
     FeaturedCarouselComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, SharedModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, NgxJsonLdModule],
   providers: [],
   exports: [AwardsComponent]
 })

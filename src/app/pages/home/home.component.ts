@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { forkJoin } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
   isLoad: boolean = false;
   submitErrMsg = '';
   successMsg = '';
+  schema: any;
+
   constructor(
     private metaService: MetaService,
     private apiService: ApiService,
@@ -34,6 +37,26 @@ export class HomeComponent implements OnInit {
     forkJoin([meta]).subscribe((results) => {
       this.metaService.setSeo(results[0].data);
       this.isLoad = true;
+      let socialLinks = [];
+      this.commonService?.publication?.socialLinks.forEach((item:any)=>{
+        socialLinks.push(item.url);
+      });      this.schema = {
+        '@context': 'https://schema.org/',
+        '@type': 'MainSite',
+        name: this.commonService?.publication?.title,
+        url: this.commonService?.publication?.url,
+        image: {
+          '@type': 'ImageObject',
+          url: this.commonService?.publication?.logo,
+          width: 279,
+          height: 279,
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${environment.appUrl}`,
+        },
+        sameAs: socialLinks,
+      };
     });
 
     this.commonService.isPageLoaded.subscribe((res) => {
