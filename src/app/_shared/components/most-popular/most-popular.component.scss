@@ -4,6 +4,10 @@
 
 .most-popular {
   background: linear-gradient($dark_gray 385px, $white 0);
+  .video-play {
+    height: 57px !important;
+    width: 97px;
+  }
   .subTitle {
     color: $white;
     font-weight: 700;
@@ -136,5 +140,11 @@
         }
       }
     }
+  }
+}
+.modal {
+  top: 0;
+  @include desk-lg-below1 {
+    top: 8%;
   }
 }
