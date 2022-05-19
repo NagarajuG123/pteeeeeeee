@@ -65,13 +65,13 @@ export class ContacteditorialComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const contactApi = this.apiService.getAPI('1851/contact-editorial');
+    const contactApi = this.apiService.getAPI2('contact');
     const metaApi = this.apiService.getAPI2(`meta`);
 
     forkJoin([contactApi,  metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
-        this.data = response[0].data;
+        this.data = response[0];
         this.metaData = response[1].data;
         this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(
