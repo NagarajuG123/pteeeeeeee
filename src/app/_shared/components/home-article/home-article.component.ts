@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Input,Inject, OnInit,PLATFORM_ID } from '@angular/core';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-home-article',
@@ -15,10 +18,35 @@ export class HomeArticleComponent implements OnInit {
   @Input() column!: string;
 
   rowClass: string;
+  isBrowser: boolean;
+  s3Url = environment.s3Url;
+  openVideoPlayer: boolean;
+  url: string;
 
-  constructor(public commonService: CommonService) { }
+  constructor(
+    public commonService: CommonService  ,
+     @Inject(PLATFORM_ID) platformId: Object
+    ) {
+      this.isBrowser = isPlatformBrowser(platformId);
+    }
 
   ngOnInit(): void {
   }
-
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function() {
+        var $videoSrc;
+        $('.video-btn').click(function() {
+            $videoSrc = $(this).data("src");
+        });
+        $('#editorialModal').on('hide.bs.modal', function(e) {
+            $("#video").attr('src', $videoSrc);
+        })
+    });
+    }
+  }
 }

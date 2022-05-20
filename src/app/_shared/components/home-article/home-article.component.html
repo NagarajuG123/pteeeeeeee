@@ -1,10 +1,5 @@
 <div class="article row row-cols-sm-2" [ngClass]="class">
   <ng-container *ngFor="let item of contents; index as i">
-    <a
-      routerLink="/{{ commonService.readMore(item) }}"
-      fragment="{{ typeSlug | lowercase }}"
-      class="py-2"
-    >
       <div
         class="sponsored justify-content-center"
         *ngIf="type === 'trendingbrandbuzz'"
@@ -16,7 +11,34 @@
       <div class="card rounded-0 border-0 h-100 position-initial">
           <ng-container [ngSwitch]="column">
             <figure class="fourColumn" *ngSwitchCase="'four'">
-              <img
+              <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}" class="py-2"
+              *ngIf="item.media && item.media.type != 'video'">
+                <img
+                  data-src="{{ item.media | defaultImage: 266:150 }}"
+                  data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:266:150}} 266w"
+                  class="w-100 lazyload img-fluid card-img-top"
+                  alt="story"
+                  width="266"
+                  height="150"
+                  loading="lazy"
+                  sizes="{{
+                    '(max-width: 576px) 545px,
+                    (max-width: 768px) 355px,
+                    (max-width: 992px) 300px,
+                    266px'
+                  }}"
+                />
+             </a>
+              <a *ngIf=" item.media && item.media.type === 'video'"
+              href="#"
+              (click)="openVideoPlayer = true"
+              onclick="return false;"
+              class="d-block video-btn"
+              attr.data-src="{{ item.media.url }}"
+              data-bs-toggle="modal"
+              data-bs-target="#editorialModal"
+              (click)="updateVideoUrl(item.media.url)">
+                <img
                 data-src="{{ item.media | defaultImage: 266:150 }}"
                 data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:266:150}} 266w"
                 class="w-100 lazyload img-fluid card-img-top"
@@ -26,12 +48,20 @@
                 loading="lazy"
                 sizes="{{
                   '(max-width: 576px) 545px,
-                   (max-width: 768px) 355px,
-                   (max-width: 992px) 300px,
-                   266px'
-                }}"
-              /></figure>
-              <figure class="fiveColumn" *ngSwitchCase="'five'">
+                  (max-width: 768px) 355px,
+                  (max-width: 992px) 300px,
+                  266px'
+                }}"/>
+                <img
+                data-src="{{ s3Url }}videoIcon.png"
+                alt="Play"
+                class="img-fluid video-play lazyload"
+                loading="lazy"/>
+             </a>
+           </figure>
+           <figure class="fiveColumn" *ngSwitchCase="'five'">
+            <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}" class="py-2"
+            *ngIf="item.media && item.media.type != 'video'">
                 <img
                 data-src="{{ item.media | defaultImage: 212:119 }}"
                 data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
@@ -46,8 +76,43 @@
                    (max-width: 992px) 300px,
                    212px'
                 }}"
-              /></figure>
-                <figure class="threeColumn" *ngSwitchCase="'three'">
+              />
+             </a>
+              <a *ngIf=" item.media && item.media.type === 'video'"
+              href="#"
+              (click)="openVideoPlayer = true"
+              onclick="return false;"
+              class="d-block video-btn"
+              attr.data-src="{{ item.media.url }}"
+              data-bs-toggle="modal"
+              data-bs-target="#editorialModal"
+              (click)="updateVideoUrl(item.media.url)">
+              <img
+              data-src="{{ item.media | defaultImage: 212:119 }}"
+              data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
+              class=" lazyload img-fluid card-img-top d-inline"
+              alt="story"
+              width="212"
+              height="119"
+              loading="lazy"
+              sizes="{{
+                '(max-width: 576px) 400px,
+                 (max-width: 768px) 355px,
+                 (max-width: 992px) 300px,
+                 212px'
+              }}"
+              /> 
+              <img
+              data-src="{{ s3Url }}videoIcon.png"
+              alt="Play"
+              class="img-fluid video-play lazyload"
+              loading="lazy"
+               />
+          </a>
+        </figure>
+            <figure class="threeColumn" *ngSwitchCase="'three'">
+              <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}" class="py-2"
+              *ngIf="item.media && item.media.type != 'video'">
                   <img
                     data-src="{{ item.media | defaultImage: 320:180 }}"
                     data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:320:180}} 320"
@@ -58,11 +123,44 @@
                     loading="lazy"
                     sizes="{{
                       '(max-width: 576px) 545px,
-                       (max-width: 768px) 355px,
-                       (max-width: 992px) 300px,
-                       320px'
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      320px'
                     }}"
-                  /></figure>
+                  />  
+                </a>
+                <a *ngIf=" item.media && item.media.type === 'video'"
+                href="#"
+                (click)="openVideoPlayer = true"
+                onclick="return false;"
+                class="d-block video-btn"
+                attr.data-src="{{ item.media.url }}"
+                data-bs-toggle="modal"
+                data-bs-target="#editorialModal"
+                (click)="updateVideoUrl(item.media.url)">
+                <img
+                    data-src="{{ item.media | defaultImage: 320:180 }}"
+                    data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:320:180}} 320"
+                    class="w-100 lazyload img-fluid card-img-top"
+                    alt="story"
+                    width="320"
+                    height="180"
+                    loading="lazy"
+                    sizes="{{
+                      '(max-width: 576px) 545px,
+                      (max-width: 768px) 355px,
+                      (max-width: 992px) 300px,
+                      320px'
+                    }}"
+                  />  
+                  <img
+                  data-src="{{ s3Url }}videoIcon.png"
+                  alt="Play"
+                  class="img-fluid video-play lazyload"
+                  loading="lazy"
+                   />
+              </a>
+            </figure>
           </ng-container>
        
       
@@ -82,6 +180,37 @@
           </span>
         </div>
       </div>
-    </a>
   </ng-container>
+  <!-- modal -->
+ <div
+ class="modal fade"
+ id="editorialModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ (click)="openVideoPlayer = true"
+ >
+ <div class="modal-dialog modal-dialog-centered modal-lg">
+   <div class="modal-content">
+     <div class="modal-body">
+       <button
+         type="button"
+         class="btn-close btn-close-white"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+         (click)="openVideoPlayer = false"
+       ></button>
+       <iframe
+         *ngIf="openVideoPlayer"
+         [src]="url | safeUrl"
+         frameborder="0"
+         width="100%"
+         height="496px"
+         allowfullscreen
+         loading = "lazy"
+         id="video" 
+       >
+       </iframe>
+     </div>
+   </div>
+ </div>
 </div>

@@ -2,6 +2,10 @@
 @import "../../../../assets/scss/mixins.scss";
 
 .article {
+  .video-play {
+    height: 37px !important;
+    width: 67px;
+  }
   img {
     height: 118px;
 
