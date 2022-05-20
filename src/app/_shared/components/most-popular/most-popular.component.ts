@@ -89,7 +89,9 @@ export class MostPopularComponent implements OnInit {
    return text;
   }
   updateVideoUrl(url: string) {
+    console.log(url);
     this.openVideoPlayer = true;
     this.url = url;
+    console.log(this.url);
   }
 }

@@ -24,7 +24,7 @@
     >
       <div class="col col-sm-4 pb-3" *ngFor="let item of data; index as i">
           <div class="card border-0 h-100" *ngIf="i < 3; else elseBlock">
-          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}" *ngIf="type != 'homeFeature'">
+          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}" *ngIf="item.media && item.media.type != 'video'">
             <img
               width="366"
               height="206"
@@ -34,25 +34,15 @@
               class="lazyload img-fluid card-img-top"
             />
           </a>
-          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}" *ngIf="type == 'homeFeature' && item.media && item.media.type != 'video'">
-            <img
-              width="366"
-              height="206"
-              data-src="{{ item.media | defaultImage: 366:206 }}"
-              alt="most-popular"
-              loading="lazy"
-              class="lazyload img-fluid card-img-top"
-            />
-          </a>
-          <a *ngIf="type == 'homeFeature' && item.media && item.media.type === 'video'"
-              href="#"
+          <a *ngIf="item?.media && item?.media.type == 'video'"
               (click)="openVideoPlayer = true"
-              onclick="return false;"
               class="d-block video-btn"
               attr.data-src="{{ item.media.url }}"
               data-bs-toggle="modal"
               data-bs-target="#featureModal"
-              (click)="updateVideoUrl(item.media.url)">
+              (click)="updateVideoUrl(item.media.url)"
+              href="#"
+              >
               <img
                 width="366"
                 height="206"
@@ -124,6 +114,7 @@
             <div class="subItem pe-md-3">
               <div class="card-body position-relative px-3">
                 <div class="position-relative ps-4">
+                  <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{fragment}}">
                   <span class="position-absolute top-0 start-0 number">{{
                     i + 1
                   }}</span>
@@ -146,6 +137,7 @@
                   <p class="ms-3 mb-0 description">
                     {{ item.short_description }}
                   </p>
+                </a>
                 </div>
               </div>
             </div>
@@ -238,6 +230,7 @@
  id="featureModal"
  tabindex="-1"
  aria-labelledby="exampleModalLabel"
+ (click)="openVideoPlayer = true"
  >
  <div class="modal-dialog modal-dialog-centered modal-lg">
    <div class="modal-content">
@@ -250,7 +243,6 @@
          (click)="openVideoPlayer = false"
        ></button>
        <iframe
-         *ngIf="openVideoPlayer"
          [src]="url | safeUrl"
          frameborder="0"
          width="100%"
