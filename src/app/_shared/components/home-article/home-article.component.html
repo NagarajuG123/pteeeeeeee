@@ -13,7 +13,7 @@
           <ng-container [ngSwitch]="column">
             <figure class="fourColumn" *ngSwitchCase="'four'">
               <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}"
-                 *ngIf="item.media && item.media.type != 'video'">
+                 *ngIf="!commonService.isVideo(item)">
               <img
                  data-src="{{ item.media | defaultImage: 266:150 }}"
                  data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:266:150}} 266w"
@@ -62,7 +62,7 @@
            </figure>
            <figure class="fiveColumn" *ngSwitchCase="'five'">
               <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}"
-                 *ngIf="item.media && item.media.type != 'video'">
+                 *ngIf="!commonService.isVideo(item)">
               <img
                  data-src="{{ item.media | defaultImage: 212:119 }}"
                  data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
@@ -113,7 +113,7 @@
            </figure>
            <figure class="threeColumn" *ngSwitchCase="'three'">
               <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}"
-                 *ngIf="item.media && item.media.type != 'video'">
+                 *ngIf="!commonService.isVideo(item)">
               <img
                  data-src="{{ item.media | defaultImage: 320:180 }}"
                  data-srcset="{{item.media | defaultImage:545:305}} 545w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:320:180}} 320"
