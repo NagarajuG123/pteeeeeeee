@@ -39,7 +39,7 @@
               class="d-block video-btn"
               attr.data-src="{{ item.media.url }}"
               data-bs-toggle="modal"
-              data-bs-target="{{ type }}"
+              attr.data-bs-target="#{{type}}"
               (click)="updateVideoUrl(item.media.url)"
               href="#"
               >
@@ -227,7 +227,7 @@
  <!-- modal -->
  <div
  class="modal fade"
- id="{{ type }}"
+ id=  "{{ type }}"
  tabindex="-1"
  aria-labelledby="exampleModalLabel"
  (click)="openVideoPlayer = true"
@@ -249,6 +249,7 @@
          height="496px"
          allowfullscreen
          loading = "lazy"
+          id="video" 
        >
        </iframe>
      </div>
