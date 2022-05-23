@@ -106,10 +106,10 @@ export class VideoComponent implements OnInit {
         var $videoSrc;
         $('.video-btn').click(function() {
             $videoSrc = $(this).data("src");
-        });
+          });
         $('#videoModal').on('hide.bs.modal', function(e) {
             $("#video").attr('src', $videoSrc);
-        })   
+        })
     });
     }
   }
