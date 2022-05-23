@@ -92,4 +92,18 @@ export class MostPopularComponent implements OnInit {
     this.openVideoPlayer = true;
     this.url = url;
   }
-}
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function() {
+        var $videoSrc;  
+        $('.video-btn').click(function() {
+            $videoSrc = $(this).data( "src" );
+        });
+        $(".modal").on('hide.bs.modal', function (e) {
+          $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
+      });
+       });
+    
+     }
+   }
+ }
