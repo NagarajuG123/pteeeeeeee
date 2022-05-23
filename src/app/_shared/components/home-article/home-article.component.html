@@ -30,7 +30,7 @@
                  }}"
                  />
               </a>
-              <a *ngIf=" item.media && item.media.type === 'video'"
+              <a *ngIf="commonService.isVideo(item)"
               href="#"
               (click)="openVideoPlayer = true"
               onclick="return false;"
@@ -79,7 +79,7 @@
                  }}"
                  />
               </a>
-              <a *ngIf=" item.media && item.media.type === 'video'"
+              <a *ngIf="commonService.isVideo(item)"
               href="#"
               (click)="openVideoPlayer = true"
               onclick="return false;"
@@ -130,7 +130,7 @@
                  }}"
                  />  
               </a>
-              <a *ngIf=" item.media && item.media.type === 'video'"
+              <a *ngIf="commonService.isVideo(item)"
               href="#"
               (click)="openVideoPlayer = true"
               onclick="return false;"

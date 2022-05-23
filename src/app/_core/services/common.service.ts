@@ -53,6 +53,13 @@ export class CommonService {
     return `${slug}${story?.slug}`;
   }
  
+  isVideo(item :any){
+   if(item.media && item.media.type === 'video'){
+     return true;
+   }
+   return false;
+  }
+
   resizeSidebar(val: any) {
     if (val > 992) this.vtabsItem = 5;
     else if (val < 993 && val > 767) this.vtabsItem = 3;
