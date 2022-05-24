@@ -164,9 +164,11 @@
            </figure>
          </ng-container>
         <div class="card-body p-0 pt-2 rounded-0">
+          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}">
           <h3 class="card-title articleTitles mb-0 px-3">
             {{ item.title }}
           </h3>
+        </a>
         </div>
         <div class="card-footer ps-3 border-0 pt-0">
           <span *ngIf="commonService.isUpdate(item)" class="timeStamp"
