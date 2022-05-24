@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject, PLATFORM_ID } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
+import { isPlatformBrowser } from '@angular/common';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-featured-carousel',
@@ -15,13 +18,20 @@ export class FeaturedCarouselComponent implements OnInit {
   brandNews: Details[] = [];
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;
+  isBrowser: boolean;
+  s3Url = environment.s3Url;
+  openVideoPlayer: boolean;
+  url: string;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
   constructor(
     private apiService: ApiService,
-    public commonService: CommonService
-  ) {}
+    public commonService: CommonService,
+    @Inject(PLATFORM_ID) platformId: Object
+    ) {
+      this.isBrowser = isPlatformBrowser(platformId);
+    }
 
   ngOnInit(): void {
     this.apiService
@@ -62,9 +72,26 @@ export class FeaturedCarouselComponent implements OnInit {
       },
     };
   }
-
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
+  }
   ngOnDestroy() {
     this.onDestroySubject.next(true);
     this.onDestroySubject.complete();
   }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function() {
+        var $videoSrc;  
+        $('.video-btn').click(function() {
+            $videoSrc = $(this).data( "src" );
+        });
+        $("#brandModal").on('hide.bs.modal', function (e) {
+          $("#brandModal iframe").attr("src", $("#brandModal iframe").attr("src"));
+      });
+       });
+    
+     }
+   }
 }

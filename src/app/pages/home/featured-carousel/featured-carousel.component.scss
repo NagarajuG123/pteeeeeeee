@@ -11,6 +11,12 @@
     padding-top: 10px;
     position: relative;
   }
+  .video-play {
+    height: 35px;
+    width: 55px;
+    top: calc(50% - 47px);
+    position: absolute;
+  }
     .sectionTitle{
         color: $dark_gray;
     }
@@ -19,10 +25,6 @@
         position: absolute;
         z-index: 1;
         word-break: break-word;
-      &.brandName{
-        margin-top: -25px;
-  }
-       
         @include tablet-landscape {
           font-size: 10px !important;   
         }
