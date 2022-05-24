@@ -62,9 +62,13 @@
             class="img-fluid video-play lazyload"
             loading="lazy"
             />
+            <a
+              routerLink="/{{ commonService.readMore(item) }}"
+              fragment="{{fragment}}">
             <h2 class="m-0 pt-2 pb-5">
               {{ item.title }}
             </h2>
+          </a>
           </a>
       </div>
     </div>
@@ -136,9 +140,13 @@
               loading="lazy"
             />
             </figure>
-              <h3 class="articleTitles align-items-center m-0 pt-2">
-                {{ item.title }}
-              </h3>
+            <a
+            routerLink="/{{ commonService.readMore(item) }}"
+            fragment="{{fragment}}">
+            <h3 class="articleTitles align-items-center m-0 pt-2">
+              {{ item.title }}
+            </h3>
+            </a>
         </a>
           </div>
         </ng-template></owl-carousel-o
