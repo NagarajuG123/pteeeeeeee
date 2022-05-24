@@ -5,12 +5,16 @@
 .awards {
   background: $dark_gray;
   color: $black;
-
   .sectionTitle {
     line-height: 25.6px;
   }
 
   .topSection {
+    .video-play {
+      height: 57px !important;
+      width: 97px;
+      top: calc(50% - 75px);
+    }
     img {
       height: 302px;
 
@@ -31,6 +35,11 @@
     }
   }
   .bottomSection {
+    .video-play {
+      height: 22px !important;
+      width: 38px;
+      top: calc(30% - 5px);
+    }
     figure {
       img {
         @include mobile-landscape {

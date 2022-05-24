@@ -4,6 +4,8 @@ import { Details } from 'src/app/_core/models/details.model';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-awards',
@@ -17,7 +19,10 @@ export class AwardsComponent implements OnInit {
 
   data: Details[] = [];
   result: Details[] = [];
+  openVideoPlayer: boolean;
+  url: string;
   isBrowser: boolean;
+  s3Url = environment.s3Url;
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;
   constructor(
@@ -40,6 +45,10 @@ export class AwardsComponent implements OnInit {
         }
       });
   
+  }
+  updateVideoUrl(url: string) {
+    this.openVideoPlayer = true;
+    this.url = url;
   }
   setConfig() {
     this.customOptions = {
@@ -70,5 +79,19 @@ export class AwardsComponent implements OnInit {
         },
       },
     };
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      $(document).ready(function() {
+        var $videoSrc;
+        $('.video-btn').click(function() {
+            $videoSrc = $(this).data("src");
+          });
+        $('#awardModal').on('hide.bs.modal', function() {
+          $("#awardModal iframe").attr("src", $("#awardModal iframe").attr("src"));
+        });
+        
+    });
+    }
   }
 }
