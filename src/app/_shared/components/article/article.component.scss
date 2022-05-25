@@ -2,6 +2,10 @@
 @import "../../../../assets/scss/variables.scss";
 
 .article {
+  .video-play {
+    height: 37px !important;
+    width: 67px;
+  }
   img {
     @include tablet-landscape {
       height: auto;    
