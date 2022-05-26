@@ -225,6 +225,7 @@
           <h4 class="timeStamp newsSection mb-0 pt-3" *ngIf="mainNews && mainNews.length > 0 ">
             Featured {{ publication.newsType }}</h4>
           <app-article 
+              [type]="'mainNews'"
               [typeSlug]="'frannews'"
               [contents]="mainNews"
               [class]="'row-cols-sm-1 newsSection'"
