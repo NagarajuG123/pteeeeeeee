@@ -10,6 +10,6 @@ export const environment = {
   rollbarKey: '3cc33cf350c9499681a19d63d6923644',
   appUrl: 'https://1851-v2.nlasandbox2.info',
   fbUrl: 'https://www.facebook.com/1851magazine/',
-  enableSW: false,
+  enableSW: true,
   env: 'development'
 };
