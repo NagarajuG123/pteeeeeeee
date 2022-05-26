@@ -3,7 +3,7 @@
     <div class="py-2">
       <div class="card rounded-0 border-0 h-100">
         <figure>
-          <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}"
+          <a href="{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}"
             *ngIf="!commonService.isVideo(item)">
             <img
               data-src="{{ item.media | defaultImage: 267:150 }}"
@@ -86,7 +86,7 @@
               loading="lazy"/>
           </a>
         </figure>
-      <a routerLink="/{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}">
+      <a href="{{ commonService.readMore(item) }}" fragment="{{ typeSlug | lowercase }}">
         <div class="card-body p-0 pt-2 rounded-0">
           <span class="small-red-headers ps-3" *ngIf="type === 'brandNews'">
             {{ item?.brand.name }}</span
