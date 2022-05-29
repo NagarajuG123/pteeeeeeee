@@ -39,7 +39,8 @@
               fragment="trendingbrandbuzz"
               *ngIf="!commonService.isVideo(item)"
             >
-            <figure>
+            <figure 
+            >
               <img
                 data-src="{{ item.media | defaultImage: 212:119 }}"
                 data-srcset="{{item.media | defaultImage:400:225}} 400w, {{item.media | defaultImage:355:199}} 355w, {{item.media | defaultImage:300:168}} 300w, {{item.media | defaultImage:212:119}} 212w"
@@ -56,9 +57,6 @@
                 }}"
               />
             </figure>
-              <h3 class="articleTitles align-items-center m-0 pt-2">
-                {{ item.title }}
-              </h3>
             </a>
             <a  *ngIf="commonService.isVideo(item)"
               (click)="openVideoPlayer = true"
@@ -92,13 +90,15 @@
                 loading="lazy"
               />
               </figure>
-              <a routerLink="/{{ commonService.readMore(item) }}"
-              fragment="trendingbrandbuzz">
-                <h3 class="articleTitles align-items-center m-0 pt-2">
-                  {{ item.title }}
-                </h3>
-              </a>
           </a>
+            <a
+              routerLink="/{{ commonService.readMore(item) }}"
+              fragment="trendingbrandbuzz"
+            >
+              <h3 class="articleTitles align-items-center m-0 pt-2">
+                {{ item.title }}
+              </h3>
+            </a>
           </div>
         </ng-template>
       </owl-carousel-o>

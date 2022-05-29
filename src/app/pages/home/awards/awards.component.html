@@ -34,10 +34,6 @@
             height="302"
             loading="lazy"
           />
-
-          <h2 class="m-0 pt-2 pb-5">
-            {{ item.title }}
-          </h2>
         </a>
         <a *ngIf="commonService.isVideo(item)"
               href="#"
@@ -62,14 +58,14 @@
             class="img-fluid video-play lazyload"
             loading="lazy"
             />
-            <a
-              routerLink="/{{ commonService.readMore(item) }}"
-              fragment="{{fragment}}">
-            <h2 class="m-0 pt-2 pb-5">
-              {{ item.title }}
-            </h2>
           </a>
-          </a>
+          <a
+          routerLink="/{{ commonService.readMore(item) }}"
+          fragment="{{fragment}}">
+        <h2 class="m-0 pt-2 pb-5">
+          {{ item.title }}
+        </h2>
+      </a>
       </div>
     </div>
 
@@ -104,9 +100,6 @@
                  212px'
               }}"
             /></figure>
-              <h3 class="articleTitles align-items-center m-0 pt-2">
-                {{ item.title }}
-              </h3>
             </a>
             <a  *ngIf="commonService.isVideo(item)"
             (click)="openVideoPlayer = true"
@@ -140,13 +133,13 @@
               loading="lazy"
             />
             </figure>
-            <a
-            routerLink="/{{ commonService.readMore(item) }}"
-            fragment="{{fragment}}">
-            <h3 class="articleTitles align-items-center m-0 pt-2">
-              {{ item.title }}
-            </h3>
-            </a>
+        </a>
+        <a
+        routerLink="/{{ commonService.readMore(item) }}"
+        fragment="{{fragment}}">
+        <h3 class="articleTitles align-items-center m-0 pt-2">
+          {{ item.title }}
+        </h3>
         </a>
           </div>
         </ng-template></owl-carousel-o
