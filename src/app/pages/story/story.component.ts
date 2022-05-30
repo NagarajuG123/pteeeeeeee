@@ -750,9 +750,8 @@ hasMore:any;
     const docViewBottom = docViewTop + $(window).height();
 
     const elemTop = $(elem).offset().top;
-    const elemBottom = elemTop + $(elem).height();
+    const elemBottom = elemTop + $(elem).scrollTop();
     const elemView = elemTop + 1400;
-
     return elemBottom <= docViewBottom && elemView >= docViewTop;
   }
   @HostListener('window:scroll', ['$event'])
