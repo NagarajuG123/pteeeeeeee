@@ -199,6 +199,9 @@ hasMore:any;
                     this.brandNews = result[1].data;
                   });
                   this.getApiUrl();
+                  if (!this.isAuthorPage) {
+                    this.initLoad();
+                  }
               });
           });
       });
@@ -311,9 +314,7 @@ hasMore:any;
             break;
         }
       }
-      if (!this.isAuthorPage) {
-        this.initLoad();
-      }
+      
   });
   }
   initLoad() {
