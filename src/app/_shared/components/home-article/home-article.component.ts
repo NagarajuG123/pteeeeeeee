@@ -35,7 +35,6 @@ export class HomeArticleComponent implements OnInit {
   updateVideoUrl(url: string) {
     this.openVideoPlayer = true;
     this.url = url;
-    console.log(this.url)
   }
   ngAfterViewInit() {
     if (this.isBrowser) {
