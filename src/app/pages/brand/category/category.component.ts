@@ -63,8 +63,11 @@ export class CategoryComponent implements OnInit {
         this.slug = params.get('item');
       }
       this.tab = this.slug.replace('-spotlight', '');
-      const featureApi = this.apiService.getAPI(
-        `${this.type}/${this.tab}/featured?limit=20&offset=0`
+      // const featureApi = this.apiService.getAPI(
+      //   `${this.type}/${this.tab}/featured?limit=20&offset=0`
+      // );
+      const featureApi = this.apiService.getAPI2(
+        `articles/featured?categorySlug=${this.tab}?limit=20&page=1`
       );
       const metaApi = this.apiService.getAPI2(`meta?slug=${this.tab}`);
       const spotlightCategoriesApi = this.apiService.getAPI(
@@ -135,7 +138,7 @@ export class CategoryComponent implements OnInit {
   }
   getData(tabName: any) {
     this.apiService
-      .getAPI(`${this.type}/${tabName}/featured?limit=20&offset=0`)
+      .getAPI2(`articles/featured?categorySlug=${tabName}?limit=20&page=1`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -151,7 +154,7 @@ export class CategoryComponent implements OnInit {
   getMore() {
     this.apiService
       .getAPI(
-        `${this.type}/${this.tabName[this.activeTab-1].slug}/featured?limit=5&offset=${
+        `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}?limit=5&page=${
           this.featuredData.length + 4
         }`
       )
