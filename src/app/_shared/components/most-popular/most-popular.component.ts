@@ -44,10 +44,7 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
-    if(this.type == 'homeFeature'){
-       mostPopular = this.apiService.getAPI2(`${this.apiUrl}`);
-    }
+    const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
     forkJoin([ mostPopular])
     .subscribe((response) => {
       if (response[0].data.length) {
