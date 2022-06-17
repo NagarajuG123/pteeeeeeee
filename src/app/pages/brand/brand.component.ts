@@ -64,7 +64,6 @@ export class BrandComponent implements OnInit {
             if (this.type === 'brand_page') {
               this.isCategory = false;
               this.isBrand = true;
-              this.apiUrl = `${this.slug}/featured-articles`;
               this.getMeta();
               this.getMostPopular();
               this.getSpotlight();

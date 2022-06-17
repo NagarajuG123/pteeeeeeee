@@ -2,7 +2,7 @@
 <div *ngIf="type === 'brand_page'">
   <app-most-popular 
   [slug]="slug" 
-  [apiUrl]="'featured-articles?limit=6&offset=0'"
+   apiUrl="articles/featured?limit=6&page=1&slug={{slug}}"
   [type]="'homeFeature'" 
   [fragment]="'featured'"
    title="{{name}}"

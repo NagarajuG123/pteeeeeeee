@@ -1,7 +1,7 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <app-most-popular
   [slug]="'1851'"
-  [apiUrl]="'featured-articles?limit=6&offset=0'"
+  [apiUrl]="'articles/featured?limit=6&page=1'"
   [type]="'homeFeature'"
   [fragment]="'featured'"
   [title]="getTitle()"

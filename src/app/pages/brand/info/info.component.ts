@@ -140,8 +140,10 @@ export class InfoComponent implements OnInit {
                     this.brandVideoUrl = response.data.media.url;
                   }
                 });
-                const featuredApi = this.apiService.getAPI(
-                  `${this.brandSlug}/featured-articles?limit=7&offset=0`)
+                
+              const featuredApi = this.apiService.getAPI2(
+                `articles/featured?limit=6&page=1&slug=${this.brandSlug}`
+              );
               const trendingApi = this.apiService.getAPI(
                 `${this.brandSlug}/trending?limit=4&offset=0`
               );
