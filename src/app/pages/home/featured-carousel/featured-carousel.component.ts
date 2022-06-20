@@ -35,7 +35,7 @@ export class FeaturedCarouselComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService
-      .getAPI(`1851/latest?limit=10&offset=0`)
+      .getAPI2(`articles/sponsored?limit=10&offset=0`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         this.brandNews = result.data;
