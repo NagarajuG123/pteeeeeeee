@@ -63,11 +63,8 @@ export class CategoryComponent implements OnInit {
         this.slug = params.get('item');
       }
       this.tab = this.slug.replace('-spotlight', '');
-      // const featureApi = this.apiService.getAPI(
-      //   `${this.type}/${this.tab}/featured?limit=20&offset=0`
-      // );
       const featureApi = this.apiService.getAPI2(
-        `articles/featured?categorySlug=${this.tab}?limit=20&page=1`
+        `articles/featured?categorySlug=${this.tab}&limit=20&page=1`
       );
       const metaApi = this.apiService.getAPI2(`meta?slug=${this.tab}`);
       const spotlightCategoriesApi = this.apiService.getAPI(
@@ -91,7 +88,7 @@ export class CategoryComponent implements OnInit {
               (x) => x.slug == this.tab
             ) != undefined) {
               this.featuredData = results[0].data;
-              this.hasMore = results[0].has_more;
+              this.hasMore = results[0].hasMore;
                 this.description = this.tabName.find(
                   (x) => x.slug == this.tab
                 ).description;
@@ -138,7 +135,7 @@ export class CategoryComponent implements OnInit {
   }
   getData(tabName: any) {
     this.apiService
-      .getAPI2(`articles/featured?categorySlug=${tabName}?limit=20&page=1`)
+      .getAPI2(`articles/featured?categorySlug=${tabName}&limit=20&page=1`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -147,14 +144,14 @@ export class CategoryComponent implements OnInit {
             data.push(item);
           });
           this.featuredData = data;
-          this.hasMore = result.has_more;
+          this.hasMore = result.hasMore;
         }
       });
   }
   getMore() {
     this.apiService
-      .getAPI(
-        `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}?limit=5&page=${
+      .getAPI2(
+        `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
           this.featuredData.length + 4
         }`
       )
@@ -164,7 +161,7 @@ export class CategoryComponent implements OnInit {
           result['data'].forEach((item: any) => {
             this.featuredData.push(item);
           });
-          this.hasMore = result.has_more;
+          this.hasMore = result.hasMore;
         }
       });
   }
