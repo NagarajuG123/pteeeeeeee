@@ -17,7 +17,7 @@ export class SeriesComponent implements OnInit {
 
   ngOnInit(): void {
   this.apiService
-    .getAPI(`series`)
+    .getAPI2(`series`)
       .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
           this.seriesData = result.data;
