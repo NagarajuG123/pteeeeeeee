@@ -63,9 +63,11 @@ export class CategoryComponent implements OnInit {
         this.slug = params.get('item');
       }
       this.tab = this.slug.replace('-spotlight', '');
-      const featureApi = this.apiService.getAPI2(
-        `articles/featured?categorySlug=${this.tab}&limit=20&page=1`
-      );
+      let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=`;
+      if (this.type !== '1851') {
+        categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
+      }
+      const featureApi = this.apiService.getAPI2(categoryApi);
       const metaApi = this.apiService.getAPI2(`meta?slug=${this.tab}`);
       const spotlightCategoriesApi = this.apiService.getAPI(
         `${this.type}/spotlights/categories`
@@ -134,8 +136,13 @@ export class CategoryComponent implements OnInit {
     this.getData(item.slug);
   }
   getData(tabName: any) {
+    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=`;
+    if (this.type !== '1851') {
+      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
+    }
+   
     this.apiService
-      .getAPI2(`articles/featured?categorySlug=${tabName}&limit=20&page=1`)
+      .getAPI2(categoryApi)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -149,12 +156,17 @@ export class CategoryComponent implements OnInit {
       });
   }
   getMore() {
+    let categoryApi = `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
+      this.featuredData.length + 4
+    }`;
+    if (this.type !== '1851') {
+      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
+        this.featuredData.length + 4
+      }`;
+    }
+
     this.apiService
-      .getAPI2(
-        `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
-          this.featuredData.length + 4
-        }`
-      )
+      .getAPI2(categoryApi)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
