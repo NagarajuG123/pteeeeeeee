@@ -36,6 +36,7 @@ export class CategoryComponent implements OnInit {
   mainText: string;
   description: string = '';
   banner: string;
+  topSection :any;
   isLoaded: boolean;
   hasMore: boolean;
   s3Url = environment.s3Url;
@@ -70,29 +71,30 @@ export class CategoryComponent implements OnInit {
       const spotlightCategoriesApi = this.apiService.getAPI(
         `${this.type}/spotlights/categories`
       );
-      forkJoin([featureApi, metaApi, spotlightCategoriesApi])
+      const topSectionApi = this.apiService.getAPI2(`category/details`);
+      forkJoin([featureApi, metaApi, spotlightCategoriesApi,topSectionApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((results) => {
             this.tabName = results[2].categories;
             this.metaService.setSeo(results[1].data);
             this.rows = `row-cols-lg-${this.tabName.length}`;
+            this.topSection =  results[3].data
             this.activeTab =
-            this.tabName
+            this.topSection
               .map(function (e) {
                 return e.slug;
               })
               .indexOf(this.tab) + 1;
-            this.mainText = this.tabName.find((x) => x.slug == this.tab).name;
-
-            if(this.tabName.find(
+            this.mainText = this.topSection.find((x) => x.slug == this.tab).title;
+            if(this.topSection.find(
               (x) => x.slug == this.tab
             ) != undefined) {
               this.featuredData = results[0].data;
               this.hasMore = results[0].hasMore;
-                this.description = this.tabName.find(
+                this.description = this.topSection.find(
                   (x) => x.slug == this.tab
                 ).description;
-                this.banner = this.tabName.find((x) => x.slug == this.tab).image;
+                this.banner = this.topSection.find((x) => x.slug == this.tab).media.url;
               this.isLoaded = true;
             }
         });
