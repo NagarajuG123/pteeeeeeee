@@ -150,12 +150,16 @@ export class BrandComponent implements OnInit {
   }
 
   getDynamic() {
-    this.apiService
+     const dynamicAPI = this.apiService
       .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
-      .subscribe((response) => {
-        this.topBlock = response.data;
-        this.dynamicStories = response.data.stories;
-        this.hasMore = response.has_more;
+      const bannerApi = this.apiService.getAPI2(`dynamic/details`);
+      forkJoin([dynamicAPI,bannerApi])
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((result) => {
+        console.log(result[1].data.media.url)
+        this.topBlock = result[1].data;
+        this.dynamicStories = result[0].data.stories;
+        this.hasMore = result[0].has_more;
         this.metaService.setSeo(this.dynamicStories[0].meta);
             const Title =
               this.dynamicUrl.charAt(0).toUpperCase() +
