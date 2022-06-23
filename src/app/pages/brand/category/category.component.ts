@@ -40,6 +40,7 @@ export class CategoryComponent implements OnInit {
   hasMore: boolean;
   s3Url = environment.s3Url;
   rows: any;
+  page= 1;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -157,7 +158,7 @@ export class CategoryComponent implements OnInit {
   }
   getMore() {
     let categoryApi = `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
-      this.featuredData.length + 4
+      this.page + 4
     }`;
     if (this.type !== '1851') {
       categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
@@ -175,6 +176,7 @@ export class CategoryComponent implements OnInit {
           });
           this.hasMore = result.hasMore;
         }
+       this.page++;
       });
   }
   @HostListener('window:resize', ['$event'])
