@@ -156,7 +156,6 @@ export class BrandComponent implements OnInit {
       forkJoin([dynamicAPI,bannerApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
-        console.log(result[1].data.media.url)
         this.topBlock = result[1].data;
         this.dynamicStories = result[0].data.stories;
         this.hasMore = result[0].has_more;
