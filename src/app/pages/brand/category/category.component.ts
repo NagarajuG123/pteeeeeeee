@@ -64,9 +64,9 @@ export class CategoryComponent implements OnInit {
         this.slug = params.get('item');
       }
       this.tab = this.slug.replace('-spotlight', '');
-      let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=`;
+      let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=${this.page}`;
       if (this.type !== '1851') {
-        categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
+        categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=${this.page}`;
       }
       const featureApi = this.apiService.getAPI2(categoryApi);
       const metaApi = this.apiService.getAPI2(`meta?slug=${this.tab}`);
@@ -137,9 +137,9 @@ export class CategoryComponent implements OnInit {
     this.getData(item.slug);
   }
   getData(tabName: any) {
-    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=`;
+    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=${this.page}`;
     if (this.type !== '1851') {
-      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
+      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=${this.page}`;
     }
    
     this.apiService
@@ -162,7 +162,7 @@ export class CategoryComponent implements OnInit {
     }`;
     if (this.type !== '1851') {
       categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
-        this.featuredData.length + 4
+        this.page + 4
       }`;
     }
 
