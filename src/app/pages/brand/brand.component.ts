@@ -152,7 +152,7 @@ export class BrandComponent implements OnInit {
   getDynamic() {
      const dynamicAPI = this.apiService
       .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
-      const bannerApi = this.apiService.getAPI2(`dynamic/details`);
+      const bannerApi = this.apiService.getAPI2(`dynamic/details?slug=${this.dynamicUrl}`);
       forkJoin([dynamicAPI,bannerApi])
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((result) => {
