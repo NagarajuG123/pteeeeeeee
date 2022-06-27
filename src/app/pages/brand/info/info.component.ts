@@ -231,7 +231,7 @@ export class InfoComponent implements OnInit {
   getContents(item: string | null) {
     let path;
     if (item === 'info') {
-      path = 'brand-info';
+      path = 'info';
       this.isInfo = true;
       this.isStory =
         this.isBought =
@@ -240,7 +240,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'brand_pdf') {
-      path = 'brand-pdf';
+      path = 'pdf';
       this.isPdf = true;
       this.isInfo =
         this.isBought =
@@ -258,7 +258,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'why-i-bought') {
-      path = 'brand-why-i-bought';
+      path = 'why-i-bought';
       this.isBought = true;
       this.isInfo =
         this.isStory =
@@ -267,7 +267,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'executive') {
-      path = 'brand-executive';
+      path = 'executive';
       this.isExecutive = true;
       this.isInfo =
         this.isBought =
@@ -276,7 +276,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'available-markets') {
-      path = 'brand-available-markets';
+      path = 'available-markets';
       this.isMarket = true;
       this.isInfo =
         this.isBought =
@@ -285,7 +285,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     }
-    const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
+    const itemApi = this.apiService.getAPI2(`${path}?slug=${this.brandSlug}`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
     forkJoin([itemApi, headerApi]).subscribe((results) => {
       this.items = results[0].data;
