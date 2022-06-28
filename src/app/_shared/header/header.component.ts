@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchCloseBtn') searchCloseBtn: ElementRef<HTMLInputElement>;
   @ViewChild('carouselBtn', { read: ElementRef, static: true })
   carouselBtn: ElementRef;
-  fragment: string ='';
+  fragment: string = '';
   header: any = [];
   brandSlug: string;
   brandTitle!: string;
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
   isMain: boolean;
   utmSlug: string;
   logo: string;
-isShow:boolean;
+  isShow: boolean;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -94,20 +94,25 @@ isShow:boolean;
       ],
     });
     this.isBrowser = isPlatformBrowser(platformId);
-    this.route.queryParams
-      .subscribe(params => {
-        if(params.utm || params.utm_source || params.utm_medium || params.utm_campaign || params.utm_term || params.utm_content) {
-          this.utmSlug = '1851';
-          if(params.utm) {
-            this.utmSlug = params.utm;
-          }
+    this.route.queryParams.subscribe((params) => {
+      if (
+        params.utm ||
+        params.utm_source ||
+        params.utm_medium ||
+        params.utm_campaign ||
+        params.utm_term ||
+        params.utm_content
+      ) {
+        this.utmSlug = '1851';
+        if (params.utm) {
+          this.utmSlug = params.utm;
         }
-      });
+      }
+    });
   }
 
   ngOnInit(): void {
     this.setSlug();
-    
   }
 
   setSlug() {
@@ -116,14 +121,14 @@ isShow:boolean;
         this.brandSlug = events.url.split('/')[1];
         if (this.brandSlug === 'robots.txt' || this.brandSlug === 'widget') {
           this.isShow = false;
-        }  else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
+        } else if (this.brandSlug === '' || this.brandSlug.includes('#')) {
           this.brandSlug = '1851';
           this.setInit();
-        }  else {
-          if(this.brandSlug.includes('?')) {
+        } else {
+          if (this.brandSlug.includes('?')) {
             this.brandSlug = this.brandSlug.split('?')[0];
-          } 
-          if(!this.brandSlug && this.utmSlug){
+          }
+          if (!this.brandSlug && this.utmSlug) {
             this.brandSlug = this.utmSlug;
           }
 
@@ -146,55 +151,54 @@ isShow:boolean;
   }
   setInit() {
     this.isShow = true;
-    let headerApi = 'header';
     this.isMain = true;
 
+    let headerApi = 'header';
+    let trendingApi = 'articles/trending?limit=9&page=1';
     if (this.brandSlug !== '1851') {
       this.isMain = false;
-
       headerApi = `header?slug=${this.brandSlug}`;
+      trendingApi = `articles/trending?limit=9&page=1&slug=${this.brandSlug}`;
     }
     const header = this.apiService.getAPI2(headerApi);
     const news = this.apiService.getAPI(
       `${this.brandSlug}/news?limit=4&offset=0`
     );
     const inquire = this.apiService.getAPI(`${this.brandSlug}/brand/inquire`);
-    const trending = this.apiService.getAPI(
-      `${this.brandSlug}/trending?limit=9&offset=0`
-    );
+    const trending = this.apiService.getAPI2(trendingApi);
 
-    forkJoin([header, news, inquire, trending]).subscribe(
-      (results) => {
-        this.header = results[0].data;
-        this.news = results[1].data;
-        this.inquireData = results[2].schema;
-        if(this.commonService.otherSites() || this.commonService.stachecow()){
-          this.logo = `${environment.imageResizeUrl}/static/${this.commonService.publication?.id}small-logo.png`;
-        } 
-        this.trending = results[3].data;
-        if(this.trending && this.trending.length == 0) {
-          this.commonService.trendingClass = 'topNoTrending'
-        } else {
-          this.commonService.trendingClass = 'top';
-        }
-        this.setFavicon();
-        this.fragment ="most-recent-stories";
-        if (this.brandSlug != '1851') {
-          this.getInquiry();
-          this.getContact();
-          this.setEditorialEmail();
-          this.fragment="brand-latest-stories";
-        }
+    forkJoin([header, news, inquire, trending]).subscribe((results) => {
+      this.header = results[0].data;
+      this.news = results[1].data;
+      this.inquireData = results[2].schema;
+      if (this.commonService.otherSites() || this.commonService.stachecow()) {
+        this.logo = `${environment.imageResizeUrl}/static/${this.commonService.publication?.id}small-logo.png`;
       }
-    ); 
+      this.trending = results[3].data;
+      if (this.trending && this.trending.length == 0) {
+        this.commonService.trendingClass = 'topNoTrending';
+      } else {
+        this.commonService.trendingClass = 'top';
+      }
+      this.setFavicon();
+      this.fragment = 'most-recent-stories';
+      if (this.brandSlug != '1851') {
+        this.getInquiry();
+        this.getContact();
+        this.setEditorialEmail();
+        this.fragment = 'brand-latest-stories';
+      }
+    });
   }
   setEditorialEmail() {
     this.editorialEmail = 'editorial@1851franchise.com';
     if (this.commonService?.publication?.id.toLowerCase() === 'ee') {
       this.editorialEmail = 'editorial@estatenvy.com';
-    } else if(this.commonService?.publication?.id == 'ROOM-1903') {
+    } else if (this.commonService?.publication?.id == 'ROOM-1903') {
       this.editorialEmail = 'editorial@room1903.com';
-    } else if(this.commonService?.publication?.id.toLowerCase() == 'stachecow') {
+    } else if (
+      this.commonService?.publication?.id.toLowerCase() == 'stachecow'
+    ) {
       this.editorialEmail = 'editorial@stachecow.com';
     }
   }
@@ -213,7 +217,7 @@ isShow:boolean;
     }
     this.searchForm.controls['searchInput'].setValue('');
   }
- 
+
   closeModal() {
     this.searchCloseBtn.nativeElement.click();
   }
@@ -413,26 +417,22 @@ isShow:boolean;
   ngAfterViewInit() {
     // For sticky header
     if (this.isBrowser) {
-      
       if (this.isBrowser && $('.carousel').hasClass('carousel-control-next')) {
         setInterval(() => {
           this.carouselBtn.nativeElement.click();
         }, 6000);
       }
     }
-    
   }
-  learnMenu()
-  {
+  learnMenu() {
     this.isLearnMenu = !this.isLearnMenu;
   }
-  brandMenu()
-  {
-    this.isBrandLearnMenu= !this.isBrandLearnMenu;
+  brandMenu() {
+    this.isBrandLearnMenu = !this.isBrandLearnMenu;
   }
   closeSidebar() {
     this.isLearnMenu = !this.isLearnMenu;
-    this.isBrandLearnMenu= !this.isBrandLearnMenu;
+    this.isBrandLearnMenu = !this.isBrandLearnMenu;
     if (this.commonService.showmenu) {
       this.commonService.showmenu = false;
       $('.sidebar').removeClass('show');
