@@ -34,6 +34,7 @@ export class InfoComponent implements OnInit {
   pdfForm: any;
   brandInfo: any = [];
   items: any;
+  story: any;
   tab: any;
   logo: string;
   featured: Details[] = [];
@@ -276,7 +277,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'available-markets') {
-      path = 'available-markets';
+      path = 'available-market';
       this.isMarket = true;
       this.isInfo =
         this.isBought =
@@ -286,9 +287,11 @@ export class InfoComponent implements OnInit {
           false;
     }
     const itemApi = this.apiService.getAPI2(`${path}?slug=${this.brandSlug}`);
+    const latestStories =  this.apiService.getAPI(`${this.brandSlug}/brand-latest-stories?limit=20&offset=0`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
-    forkJoin([itemApi, headerApi]).subscribe((results) => {
+    forkJoin([itemApi, headerApi,latestStories]).subscribe((results) => {
       this.items = results[0].data;
+      this.story = results[2].data;
       this.hasMore = results[0].has_more;
       this.logo = results[1].data.logo.image;
       if (results[0].meta) {
