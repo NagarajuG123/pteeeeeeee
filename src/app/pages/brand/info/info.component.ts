@@ -141,9 +141,9 @@ export class InfoComponent implements OnInit {
                   }
                 });
                 const featuredApi = this.apiService.getAPI(
-                  `${this.brandSlug}/featured-articles?limit=7&offset=0`)
+                  `articles/featured?limit=7&page=1&slug=${this.brandSlug}`)
               const trendingApi = this.apiService.getAPI(
-                `${this.brandSlug}/trending?limit=4&offset=0`
+                `articles/trending?limit=4&page=1&slug=${this.brandSlug}`
               );
               forkJoin([featuredApi, trendingApi])
                 .pipe(takeUntil(this.onDestroy$))
