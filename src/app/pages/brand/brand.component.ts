@@ -17,20 +17,13 @@ export class BrandComponent implements OnInit {
   slug: any;
   name: any;
   type: string = '';
-  company: string = '';
   scrollOffset: number = 0;
-  apiUrl: string = '';
+  featuredApiUrl: string = '';
+  trendingApiUrl: string = '';
   hasMore: boolean = false;
   dynamicUrl: any;
   dynamicStories: any = [];
   topBlock: any = [];
-  data: Details[] = [];
-  items: Details[] = [];
-  tabName: any;
-  defaultTab!: string;
-  activeTab = 1;
-  skipTab = 0;
-  tab!: string;
   isCategory: boolean;
   isBrand: boolean;
   s3Url = environment.s3Url;
@@ -59,15 +52,13 @@ export class BrandComponent implements OnInit {
           } else {
             this.type = response.type;
             this.name=response.name;
-            this.company = response.name;
             this.isCategory = true;
             if (this.type === 'brand_page') {
               this.isCategory = false;
               this.isBrand = true;
-              this.apiUrl = `${this.slug}/featured-articles`;
+              this.featuredApiUrl = `articles/featured?limit=6&page=1&slug=${this.slug}`;
+              this.trendingApiUrl = `articles/trending?limit=9&page=1&slug=${this.slug}`;
               this.getMeta();
-              this.getMostPopular();
-              this.getSpotlight();
               if (this.slug !== '1851' && response['ga']) {
                 this.googleAnalyticsService.appendGaTrackingCode(
                   response['ga']['1851_franchise'],
@@ -86,69 +77,7 @@ export class BrandComponent implements OnInit {
         });
     });
   }
-  getMostPopular() {
-    this.apiService
-      .getAPI(`${this.slug}/trending?limit=9&offset=0`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((response) => {
-        if (response.data.length) {
-          this.data = response.data;
-        }
-      });
-  }
-  getSpotlight() {
-    const spotlightCategoriesApi = this.apiService.getAPI2(
-      `category/tab`
-    );
-    forkJoin([spotlightCategoriesApi])
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((results) => {
-        this.tabName = results[0].categories;
-        this.defaultTab = results[0].defaultTab;
-
-        this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=4&offset=0`)
-          .pipe(takeUntil(this.onDestroy$))
-          .subscribe((result) => {
-            const data: any[] = [];
-            result['data'].forEach((item: any) => {
-              data.push(item);
-            });
-            this.items = data;
-          });
-      });
-  }
-  setActiveTab(val: any, item: any) {
-    this.activeTab = val;
-    this.tab = item?.shortName;
-    this.getData(this.tab);
-  }
-  prev() {
-    if (this.skipTab > 0) {
-      this.skipTab -= 1;
-    } else this.skipTab = 0;
-  }
-  next() {
-    if (this.skipTab < this.tabName.length - this.commonService.vtabsItem) {
-      this.skipTab += 1;
-    }
-  }
-  getData(tabName: any) {
-    const apiUrl = `1851/spotlight/${tabName.toLowerCase()}`;
-    this.apiService
-      .getAPI(`${apiUrl}?limit=10&offset=0`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((result) => {
-        const data: any[] = [];
-        if (result.data.length) {
-          result['data'].forEach((item: any) => {
-            data.push(item);
-          });
-          this.items = data;
-        }
-      });
-  }
-
+ 
   getDynamic() {
      const dynamicAPI = this.apiService
       .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)

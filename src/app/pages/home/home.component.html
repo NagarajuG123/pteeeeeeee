@@ -1,14 +1,13 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <app-most-popular
   [slug]="'1851'"
-  [apiUrl]="'featured-articles?limit=6&offset=0'"
+  [apiUrl]="'articles/featured?limit=6&page=1'"
   [type]="'homeFeature'"
   [fragment]="'featured'"
   [title]="getTitle()"
   [subTitle]="getSubTitle()"
   [class] ="'d-md-none d-flex'"
   [class2] = "'featuredSection'"
-  [publication] ="commonService.publication?.id"
 ></app-most-popular>
 <app-featured-carousel></app-featured-carousel>
 
@@ -73,7 +72,7 @@
 </div>
 <app-most-popular
   [slug]="'1851'"
-  [apiUrl]="'trending?limit=9&offset=0'"
+  [apiUrl]="'articles/trending?limit=9&page=1'"
   [type]="'home'"
   [fragment]="'trending'"
   [title]="'Most Popular'"

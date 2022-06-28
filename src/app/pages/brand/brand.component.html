@@ -1,25 +1,31 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <div *ngIf="type === 'brand_page'">
-  <app-most-popular 
-  [slug]="slug" 
-  [apiUrl]="'featured-articles?limit=6&offset=0'"
-  [type]="'homeFeature'" 
-  [fragment]="'featured'"
-   title="{{name}}"
-  [subTitle]="'Features'"
-  [class] ="'d-md-none d-flex'"
-  [class2]="'featuredSection'">
-</app-most-popular>
-<app-franchise-research [slug]="slug"></app-franchise-research>
+  <app-most-popular
+    [slug]="slug"
+    [apiUrl]="featuredApiUrl"
+    [type]="'homeFeature'"
+    [fragment]="'featured'"
+    title="{{ name }}"
+    [subTitle]="'Features'"
+    [class]="'d-md-none d-flex'"
+    [class2]="'featuredSection'"
+  >
+  </app-most-popular>
+  <app-franchise-research [slug]="slug"></app-franchise-research>
 
-  <app-most-popular   [fragment]="'trending'"
-  [slug]="slug" [apiUrl]="'trending?limit=9&offset=0'" [type]="'brand'" [title]="'Most Popular'" class="'d-sm-block'"
-  [class2]="'popularSection'"></app-most-popular>
+  <app-most-popular
+    [fragment]="'trending'"
+    [slug]="slug"
+    [apiUrl]="trendingApiUrl"
+    [type]="'brand'"
+    [title]="'Most Popular'"
+    class="'d-sm-block'"
+    [class2]="'popularSection'"
+  ></app-most-popular>
 
   <app-spotlight [slug]="slug"></app-spotlight>
 
   <app-video [slug]="slug"></app-video>
-
 </div>
 
 <div *ngIf="isCategory && type === 'category_page'">
@@ -29,7 +35,7 @@
 <div *ngIf="type === 'dynamic_page'">
   <div class="banner position-relative container sidebar-blur">
     <img
-      data-src="{{ topBlock?.media?.url}}"
+      data-src="{{ topBlock?.media?.url }}"
       width="1439"
       height="518"
       alt="banner"
@@ -63,23 +69,11 @@
   >
     <div class="col-lg-5 col-sm-4 col-4 seeMoreLine"></div>
     <div
-      class="
-        col-lg-2 col-sm-4 col-4
-        d-flex
-        align-items-center
-        justify-content-center
-      "
+      class="col-lg-2 col-sm-4 col-4 d-flex align-items-center justify-content-center"
     >
       <a (click)="getMoreDynamic()" class="pe-3">
         <i
-          class="
-            fa fa-caret-down
-            rounded-circle
-            d-flex
-            justify-content-center
-            align-items-center
-            primary-bg
-          "
+          class="fa fa-caret-down rounded-circle d-flex justify-content-center align-items-center primary-bg"
           aria-hidden="true"
         ></i
       ></a>

@@ -2,7 +2,6 @@ import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { forkJoin, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { isPlatformBrowser } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -22,7 +21,6 @@ export class MostPopularComponent implements OnInit {
   @Input() class!: string;
   @Input() class2!: string;
   @Input() fragment:string;
-  @Input() publication:string;
   
   data: Details[] = [];
   isLoaded: boolean = false;
@@ -44,7 +42,7 @@ export class MostPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const mostPopular = this.apiService.getAPI(`${this.slug}/${this.apiUrl}`);
+    const mostPopular = this.apiService.getAPI2(`${this.apiUrl}`);
     forkJoin([ mostPopular])
     .subscribe((response) => {
       if (response[0].data.length) {
