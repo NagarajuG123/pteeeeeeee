@@ -172,7 +172,7 @@
                 </div>
                 <div class="description pt-4 px-3">
                   <a
-                    *ngIf="item?.media && item?.media?.type === 'image'"
+                    *ngIf="item?.media && item?.media?.type === 'image' ||  item?.media?.type === 'photo'"
                     href="#"
                     onclick="return false;"
                     class="d-block"
@@ -286,11 +286,11 @@
               </div>
             </div>
 
-            <div *ngIf="isStory && items && items.length && items[0].id">
+            <div *ngIf="isStory && story && story.length && story[0].id">
               <div class="container customContainer mt-4 py-3 article">
                 <app-home-article
                   [typeSlug]="tab"
-                  [contents]="items"
+                  [contents]="story"
                   [column]="'five'"
                   [class]="'row-cols-md-2 row-cols-lg-5 gx-2'"
                 ></app-home-article>
