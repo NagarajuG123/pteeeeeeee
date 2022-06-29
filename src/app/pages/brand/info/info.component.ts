@@ -140,9 +140,9 @@ export class InfoComponent implements OnInit {
                     this.brandVideoUrl = response.data.media.url;
                   }
                 });
-                const featuredApi = this.apiService.getAPI(
+                const featuredApi = this.apiService.getAPI2(
                   `articles/featured?limit=7&page=1&slug=${this.brandSlug}`)
-              const trendingApi = this.apiService.getAPI(
+              const trendingApi = this.apiService.getAPI2(
                 `articles/trending?limit=4&page=1&slug=${this.brandSlug}`
               );
               forkJoin([featuredApi, trendingApi])
