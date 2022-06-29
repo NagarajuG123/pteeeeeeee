@@ -42,9 +42,7 @@ export class AuthorComponent implements OnInit {
       const brand = this.apiService.getAPI(
         `author/${this.authorSlug}/branded-contents?limit=10&offset=0`
       );
-      const editorial = this.apiService.getAPI(
-        `author/${this.authorSlug}/editorials?limit=10&offset=0`
-      );
+      const editorial = this.apiService.getAPI2(`articles/author?limit=10&page=1&slug=${this.authorSlug}&type=editorial`);
       const meta = this.apiService.getAPI2(`meta`);
       const footer = this.apiService.getAPI2('footer');
 
