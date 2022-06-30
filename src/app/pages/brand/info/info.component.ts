@@ -34,6 +34,7 @@ export class InfoComponent implements OnInit {
   pdfForm: any;
   brandInfo: any = [];
   items: any;
+  story: any;
   tab: any;
   logo: string;
   featured: Details[] = [];
@@ -231,7 +232,7 @@ export class InfoComponent implements OnInit {
   getContents(item: string | null) {
     let path;
     if (item === 'info') {
-      path = 'brand-info';
+      path = 'info';
       this.isInfo = true;
       this.isStory =
         this.isBought =
@@ -240,7 +241,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'brand_pdf') {
-      path = 'brand-pdf';
+      path = 'pdf';
       this.isPdf = true;
       this.isInfo =
         this.isBought =
@@ -258,7 +259,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'why-i-bought') {
-      path = 'brand-why-i-bought';
+      path = 'why-i-bought';
       this.isBought = true;
       this.isInfo =
         this.isStory =
@@ -267,7 +268,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'executive') {
-      path = 'brand-executive';
+      path = 'executive';
       this.isExecutive = true;
       this.isInfo =
         this.isBought =
@@ -276,7 +277,7 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     } else if (item === 'available-markets') {
-      path = 'brand-available-markets';
+      path = 'available-market';
       this.isMarket = true;
       this.isInfo =
         this.isBought =
@@ -285,10 +286,12 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     }
-    const itemApi = this.apiService.getAPI(`${this.brandSlug}/${path}`);
+    const itemApi = this.apiService.getAPI2(`${path}?slug=${this.brandSlug}`);
+    const latestStories =  this.apiService.getAPI(`${this.brandSlug}/brand-latest-stories?limit=20&offset=0`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
-    forkJoin([itemApi, headerApi]).subscribe((results) => {
+    forkJoin([itemApi, headerApi,latestStories]).subscribe((results) => {
       this.items = results[0].data;
+      this.story = results[2].data;
       this.hasMore = results[0].has_more;
       this.logo = results[1].data.logo.image;
       if (results[0].meta) {
