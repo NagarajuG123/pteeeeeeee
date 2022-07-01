@@ -159,7 +159,7 @@ hasMore:any;
                   )
                 : '';
             }
-            this.storyApiUrl = `story/${this.storyId}`;
+            this.storyApiUrl = `story?id=${this.storyId}`;
             this.isBrand = this.brandSlug === '1851' ? false : true;
             this.apiService
               .getAPI2(`${this.brandSlug}`)
@@ -627,7 +627,7 @@ hasMore:any;
                 this.duplicate = true;
                 return;
               } else if (this.detailsData.find((o) => o.id !== storyId)) {
-                let url = `story/${storyId}`;
+                let url = `story?id=${storyId}`;
                 this.apiService.getAPI2(`${url}`).subscribe((result) => {
                   this.detailsData.push(this.htmlBinding(result.data));
                 });

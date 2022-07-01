@@ -45,7 +45,7 @@ export class MostPopularComponent implements OnInit {
     const mostPopular = this.apiService.getAPI2(`${this.apiUrl}`);
     forkJoin([ mostPopular])
     .subscribe((response) => {
-      if (response[0].data.length) {
+      if (response[0].data && response[0].data.length) {
         this.data = response[0].data;
         this.isLoaded = true;
       }
