@@ -574,7 +574,7 @@ hasMore:any;
   }
 
   getBrandList() {
-    this.apiService.getAPI(`terms`).subscribe((result) => {
+    this.apiService.getAPI2(`terms`).subscribe((result) => {
       if (typeof result !== 'undefined') {
         if (typeof result.data !== 'undefined' && result.data !== null) {
           result.data.forEach((brand) => {

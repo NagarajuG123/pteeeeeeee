@@ -94,7 +94,8 @@ export class ItemComponent implements OnInit {
           if (typeof result.data !== 'undefined' && result.data !== null) {
             result.data.forEach((brand) => {
               if (brand !== '' && brand !== null) {
-                let brandRegex = new RegExp(brand);
+                let user = brand.replace(/&/g, '&amp;');
+                let brandRegex = new RegExp(user);
                 if (brandRegex.test(this.storyContent)) {
                   this.sponsorContent = true;
                 }
