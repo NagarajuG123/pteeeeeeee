@@ -61,9 +61,7 @@ export class StoryComponent implements OnInit {
   gaVisitedUrls: Array<any> = [];
   storyApiUrl = '';
   isAuthorPage: boolean;
-  defaultFbUrl: string;
   fbUrl: string;
-  isDefaultFb = false;
   isRedirect: boolean;
   isServer: boolean;
   mainNews: any;
@@ -408,7 +406,6 @@ hasMore:any;
         } else {
           this.schema = {};
         }
-        this.defaultFbUrl = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
         if (result['story'].brand) {
           if (
             typeof result['story'].brand.fb_page_url === 'undefined' ||
@@ -422,10 +419,7 @@ hasMore:any;
         } else {
           this.fbUrl = environment.fbUrl;
         }
-        if (this.isBrowser) {
-          this.isDefaultFb = true;
-          // this.checkFacebookPagePlugin(3000);
-        }
+       
         if (!this.isFirstSEO) {
           this.isFirstSEO = true;
           this.metaData = result['story'].meta;
@@ -564,17 +558,8 @@ hasMore:any;
     return encodeURIComponent(media);
   }
 
-  checkFacebookPagePlugin(delay) {
-    setTimeout(() => {
-      if ($('#block_fb_link').length === 1) {
-        FB.XFBML.parse();
-        this.checkFacebookPagePlugin(delay + 1500);
-      }
-    }, delay);
-  }
-
   getBrandList() {
-    this.apiService.getAPI(`terms`).subscribe((result) => {
+    this.apiService.getAPI2(`terms`).subscribe((result) => {
       if (typeof result !== 'undefined') {
         if (typeof result.data !== 'undefined' && result.data !== null) {
           result.data.forEach((brand) => {
@@ -729,22 +714,6 @@ hasMore:any;
     }
   }
 
-  setFbUrl(result) {
-    this.defaultFbUrl = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
-    if (result.data.brand) {
-      if (
-        typeof result.data.brand.fb_page_url === 'undefined' ||
-        result.data.brand.fb_page_url === null ||
-        result.data.brand.fb_page_url === ''
-      ) {
-        this.fbUrl = environment.fbUrl;
-      } else {
-        this.fbUrl = result.data.brand.fb_page_url;
-      }
-    } else {
-      this.fbUrl = environment.fbUrl;
-    }
-  }
 
   isScrolledIntoView(elem) {
     const docViewTop = $(window).scrollTop();
