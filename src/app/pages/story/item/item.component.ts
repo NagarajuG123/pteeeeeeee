@@ -94,7 +94,8 @@ export class ItemComponent implements OnInit {
           if (typeof result.data !== 'undefined' && result.data !== null) {
             result.data.forEach((brand) => {
               if (brand !== '' && brand !== null) {
-                let brandRegex = new RegExp(brand);
+                let user = brand.replace(/&/g, '&amp;');
+                let brandRegex = new RegExp(user);
                 if (brandRegex.test(this.storyContent)) {
                   this.sponsorContent = true;
                 }
@@ -107,16 +108,7 @@ export class ItemComponent implements OnInit {
     this.shareHashtags = '1851, Social';
     this.isViewComment = false;
     this.isBrand = this.brandSlug === '1851' ? false : true;
-    this.apiService
-      .getAPI(`${this.brandSlug}/ads`)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((a_result) => {
-        a_result['data'].forEach((ad) => {
-          if (ad.type === 'Story Ad') {
-            this.adsImages.push(ad);
-          }
-        });
-      });
+   
     this.default_fb_url = `https://www.facebook.com/plugins/page.php?href=${environment.fbUrl}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
     if (this.details.brand) {
       if (

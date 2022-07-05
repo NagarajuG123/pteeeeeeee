@@ -64,6 +64,14 @@ header{
             color: $black_5 !important;
         }
     }
+    .authorDetails {
+        .sectionTitle{
+            color: $red !important;
+        } 
+    }
+    .description blockquote {
+        border-left: 1.5px solid $red !important;
+    }
 }
 .most-like-articles{
     h5{
