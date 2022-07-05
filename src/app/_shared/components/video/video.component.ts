@@ -5,7 +5,6 @@ import { ApiService } from 'src/app/_core/services/api.service';
 import { environment } from 'src/environments/environment';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-video',
@@ -24,11 +23,8 @@ export class VideoComponent implements OnInit {
   s3Url = environment.s3Url;
   customOptions: OwlOptions = {};
   isLoaded: boolean = false;
-  brandSlug!: string;
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute,
-    private router: Router,
     public commonService: CommonService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
@@ -36,13 +32,10 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((param) => {
-      this.brandSlug = param.slug;
-    });
     this.setConfig();
       if(this.slug) {
         this.apiService
-        .getAPI(`${this.slug}/videos`)
+        .getAPI2(`videos?slug=${this.slug}`)
         .subscribe((result) => {
           this.data = result.data;
           if(this.data) {
@@ -51,7 +44,7 @@ export class VideoComponent implements OnInit {
         });
       } else {
         this.apiService
-        .getAPI2(`videos/slug=${this.brandSlug}`)
+        .getAPI2(`videos`)
         .subscribe((result) => {
           this.data = result.data;
           if(this.data) {
