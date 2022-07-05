@@ -265,7 +265,7 @@ hasMore:any;
           case 'editorials':
             this.isAuthorPage = true;
             this.apiService
-              .getAPI2(`story/${this.storyId}`)
+              .getAPI2(`story?id=${this.storyId}`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((s_result) => {
                 this.apiUrl = `author/${s_result.data.author.slug}/editorials`;
@@ -276,7 +276,7 @@ hasMore:any;
           case 'branded-contents':
             this.isAuthorPage = true;
             this.apiService
-              .getAPI2(`story/${this.storyId}`)
+              .getAPI2(`story?id=${this.storyId}`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((s_result) => {
                 this.apiUrl = `author/${s_result.data.author.slug}/branded-contents`;
