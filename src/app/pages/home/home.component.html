@@ -1,6 +1,5 @@
 <div [ngClass]="commonService.trendingClass"></div>
 <app-most-popular
-  [slug]="'1851'"
   [apiUrl]="'articles/featured?limit=6&page=1'"
   [type]="'homeFeature'"
   [fragment]="'featured'"
@@ -71,7 +70,6 @@
   </div>
 </div>
 <app-most-popular
-  [slug]="'1851'"
   [apiUrl]="'articles/trending?limit=9&page=1'"
   [type]="'home'"
   [fragment]="'trending'"
@@ -82,8 +80,7 @@
 
 <app-video></app-video>
 
-<app-awards     [fragment]="'dynamicpage'"
-></app-awards>
+<app-awards [fragment]="'dynamicpage'"></app-awards>
 
 <app-series></app-series>
 <ngx-json-ld [json]="schema"></ngx-json-ld>
