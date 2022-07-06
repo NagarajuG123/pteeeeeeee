@@ -42,8 +42,12 @@ export class EditorialSectionsComponent implements OnInit {
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = results[0].defaultTab;
+        let apiUrl = `articles/editorial?categorySlug=${this.defaultTab}&limit=10&offset=0`;
+        if(this.slug) {
+          apiUrl = `articles/editorial?slug=${this.slug}&categorySlug=${this.defaultTab}&limit=10&offset=0`;
+        }
         this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=10&offset=0`)
+          .getAPI2(apiUrl)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             const data: any[] = [];
@@ -64,9 +68,12 @@ export class EditorialSectionsComponent implements OnInit {
     this.getData(this.tab);
   }
   getData(tabName: any) {
-    const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
+    let apiUrl = `articles/editorial?categorySlug=${tabName.toLowerCase()}&limit=10&offset=0`;
+        if(this.slug) {
+          apiUrl = `articles/editorial?slug=${this.slug}&categorySlug=${tabName.toLowerCase()}&limit=10&offset=0`;
+        }
     this.apiService
-      .getAPI(`${apiUrl}?limit=10&offset=0`)
+      .getAPI2(apiUrl)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
