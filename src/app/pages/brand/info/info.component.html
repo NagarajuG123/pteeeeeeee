@@ -462,7 +462,7 @@
                   <div
                     *ngIf="
                       isMarket &&
-                      items['international-markets'] != null &&
+                      items['international-markets'] !== null &&
                       items['international-markets'].length
                     "
                     class="mt-2"
@@ -745,9 +745,9 @@
             <!-- Trending Secion -->
             <div
               class="divider-main"
-              *ngIf="trending.length && !isMarket"
+              *ngIf="trendingHasMore && !isMarket"
             ></div>
-            <div class="trending-section" *ngIf="trending.length && !isMarket">
+            <div class="trending-section" *ngIf="trendingHasMore  && !isMarket">
               <div class="title-tag ms-1">TRENDING</div>
               <ul class="pt-1">
                 <li *ngFor="let item of trending; index as i">

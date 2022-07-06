@@ -65,6 +65,7 @@ export class InfoComponent implements OnInit {
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
   hasMore: boolean = false;
+  trendingHasMore: boolean = false;
   categorySlug: string;
   tabClass:string;
 
@@ -134,7 +135,7 @@ export class InfoComponent implements OnInit {
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
               this.apiService
-                .getAPI(`${this.brandSlug}/brand-view`)
+                .getAPI2(`financial?slug=${this.brandSlug}`)
                 .subscribe((response) => {
                   this.brandInfo = response.data;
                   if (this.isVideo(response.data)) {
@@ -151,6 +152,7 @@ export class InfoComponent implements OnInit {
                 .subscribe((response) => {
                   this.featured = response[0].data;
                   this.trending = response[1].data;
+                  this.trendingHasMore = response[1].hasMore;
                 });
               this.isInfoPage = true;
               this.isCategory = false;
