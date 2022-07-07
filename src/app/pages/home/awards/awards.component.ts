@@ -35,10 +35,10 @@ export class AwardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setConfig();
-      this.apiService.getAPI(`home-page-featured-content`).subscribe((result) => {
+      this.apiService.getAPI2(`articles/awards?limit=10&offset=0`).subscribe((result) => {
         if(result.data !== null) {
-          this.result = result.data;
-          this.data = result.data.stories;
+          this.result = result;
+          this.data = result.data;
           if(this.data.length > 0) {
             this.isLoaded = true;
           }
