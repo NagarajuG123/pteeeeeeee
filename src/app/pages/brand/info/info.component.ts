@@ -134,7 +134,7 @@ export class InfoComponent implements OnInit {
             if (brandItems.includes(params.get('item'))) {
               this.company = response.name;
               this.apiService
-                .getAPI(`${this.brandSlug}/brand-view`)
+                .getAPI2(`financial?slug=${this.brandSlug}`)
                 .subscribe((response) => {
                   this.brandInfo = response.data;
                   if (this.isVideo(response.data)) {
