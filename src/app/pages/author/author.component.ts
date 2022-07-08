@@ -46,7 +46,7 @@ export class AuthorComponent implements OnInit {
 
       forkJoin([author, brand, editorial, footer,meta]).subscribe(
         (results) => {
-          if (results[0]=== '') {
+          if (!results[0].status) {
             this.router.navigateByUrl('/404');
           } else {
             this.author = results[0];
