@@ -38,7 +38,10 @@ export class AuthorComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.authorSlug = params.get('authorSlug');
-      const author = this.apiService.getAPI2(`author/${this.authorSlug}`);
+      console.log(this.authorSlug)
+
+
+      const author = this.apiService.getAPI2(`author?name=${this.authorSlug}`);
       const brand = this.apiService.getAPI2(`articles/author?limit=10&page=1&slug=${this.authorSlug}&type=branded-content`);
       const editorial = this.apiService.getAPI2(`articles/author?limit=10&page=1&slug=${this.authorSlug}&type=editorial`);
       const meta = this.apiService.getAPI2(`meta`);
@@ -46,9 +49,9 @@ export class AuthorComponent implements OnInit {
 
       forkJoin([author, brand, editorial, footer,meta]).subscribe(
         (results) => {
-          if (!results[0].status) {
+          if (results[0].status == false) {
             this.router.navigateByUrl('/404');
-          } else {
+          } 
             this.author = results[0];
             this.metaService.setSeo(results[4].data.seo);
             this.metaService.setTitle(
@@ -80,7 +83,6 @@ export class AuthorComponent implements OnInit {
                 socialLinks
               ],
             };
-          }
         }
       );
     });
