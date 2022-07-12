@@ -38,7 +38,7 @@ export class AuthorComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.authorSlug = params.get('authorSlug');
-      const author = this.apiService.getAPI2(`author?name=${this.authorSlug}`);
+      const author = this.apiService.getAPI2(`author?slug=${this.authorSlug}`);
       const brand = this.apiService.getAPI2(`articles/author?limit=10&page=1&slug=${this.authorSlug}&type=branded-content`);
       const editorial = this.apiService.getAPI2(`articles/author?limit=10&page=1&slug=${this.authorSlug}&type=editorial`);
       const meta = this.apiService.getAPI2(`meta`);
