@@ -251,7 +251,6 @@ export class InfoComponent implements OnInit {
         this.isStory =
           false;
     } else if (item === 'latest_stories') {
-      path = 'latest-stories?limit=20';
       this.isStory = true;
       this.isInfo =
         this.isBought =
