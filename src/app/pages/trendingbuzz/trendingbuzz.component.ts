@@ -20,6 +20,7 @@ export class TrendingbuzzComponent implements OnInit {
   s3Url = environment.s3Url;
   openVideoPlayer: boolean;
   videoUrl: string;
+  page= 1;
   constructor(
     private apiService: ApiService,
     private metaService: MetaService,
@@ -35,7 +36,7 @@ export class TrendingbuzzComponent implements OnInit {
 
   getTrending() {
     this.apiService
-      .getAPI(`${this.slug}/trending-buzz?limit=11&offset=0`)
+      .getAPI2(`articles/trending-buzz?limit=11&page=${this.page}`)
       .subscribe((response) => {
         this.metaService.setSeo(response.data[0].meta);
         this.trendingData = response.data.slice(1);
@@ -43,7 +44,7 @@ export class TrendingbuzzComponent implements OnInit {
         if (this.isVideo(this.banner)) {
           this.videoUrl = this.banner.media.url;
         }
-        this.hasMore = response.has_more;
+        this.hasMore = response.hasMore;
         this.isLoaded = true;
         this.metaService.setTitle(`Trending Brand Buzz | ${this.commonService.publication.title}`);
       });
@@ -60,13 +61,15 @@ export class TrendingbuzzComponent implements OnInit {
   }
   getMoreData() {
     this.apiService
-      .getAPI(
-        `${this.slug}/trending-buzz?limit=5&offset=${
-          this.trendingData.length + 1
+      .getAPI2(
+        `articles/trending-buzz?limit=5&page=
+        ${
+          this.page + 2
         }`
       )
       .subscribe((result) => {
-        this.hasMore = result.has_more;
+        this.hasMore = result.hasMore;
+        this.page++;
         result.data.forEach((element: any) => {
           this.trendingData.push(element);
         });

@@ -67,6 +67,7 @@ export class InfoComponent implements OnInit {
   hasMore: boolean = false;
   categorySlug: string;
   tabClass:string;
+  page= 1;
 
   constructor(
     public commonService: CommonService,
@@ -250,7 +251,7 @@ export class InfoComponent implements OnInit {
         this.isStory =
           false;
     } else if (item === 'latest_stories') {
-      path = 'brand-latest-stories?limit=20&offset=0';
+      path = 'latest-stories?limit=20';
       this.isStory = true;
       this.isInfo =
         this.isBought =
@@ -286,8 +287,8 @@ export class InfoComponent implements OnInit {
         this.isPdf =
           false;
     }
+    const latestStories =  this.apiService.getAPI2(`articles/latest-stories?limit=20&page=${this.page}&slug=${this.brandSlug}`);
     const itemApi = this.apiService.getAPI2(`${path}?slug=${this.brandSlug}`);
-    const latestStories =  this.apiService.getAPI(`${this.brandSlug}/brand-latest-stories?limit=20&offset=0`);
     const headerApi = this.apiService.getAPI2(`header?slug=${this.brandSlug}`);
     forkJoin([itemApi, headerApi,latestStories]).subscribe((results) => {
       this.items = results[0].data;
@@ -315,7 +316,7 @@ export class InfoComponent implements OnInit {
   getMore() {
     this.apiService
       .getAPI(
-        `${this.brandSlug}/brand-latest-stories?limit=5&offset=${this.items.length}`
+        `articles/latest-stories?slug=${this.brandSlug}&limit=5&page=${this.page + 4}`
       )
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
@@ -323,7 +324,8 @@ export class InfoComponent implements OnInit {
           result['data'].forEach((item: any) => {
             this.items.push(item);
           });
-          this.hasMore = result.has_more;
+          this.hasMore = result.hasMore;
+          this.page++;
         }
       });
   }
