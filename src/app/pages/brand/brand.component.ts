@@ -26,6 +26,7 @@ export class BrandComponent implements OnInit {
   topBlock: any = [];
   isCategory: boolean;
   isBrand: boolean;
+  page= 1;
   s3Url = environment.s3Url;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
@@ -79,16 +80,13 @@ export class BrandComponent implements OnInit {
   }
  
   getDynamic() {
-     const dynamicAPI = this.apiService
-      .getAPI(`page/${this.dynamicUrl}?limit=20&offset=${this.scrollOffset}`)
-      const bannerApi = this.apiService.getAPI2(`dynamic/details?slug=${this.dynamicUrl}`);
-      forkJoin([dynamicAPI,bannerApi])
-        .pipe(takeUntil(this.onDestroy$))
+     this.apiService
+      .getAPI2(`articles/awards?slug=${this.dynamicUrl}&limit=20&page=${this.page}`)
         .subscribe((result) => {
-        this.topBlock = result[1].data;
-        this.dynamicStories = result[0].data.stories;
-        this.hasMore = result[0].has_more;
-        this.metaService.setSeo(this.dynamicStories[0].meta);
+        this.topBlock = result;
+        this.dynamicStories = result.data;
+        this.hasMore = result.hasMore;
+        this.metaService.setSeo(this.dynamicStories.meta);
             const Title =
               this.dynamicUrl.charAt(0).toUpperCase() +
               this.dynamicUrl.slice(1);
@@ -98,12 +96,13 @@ export class BrandComponent implements OnInit {
 
   getMoreDynamic() {
     this.apiService
-      .getAPI(
-        `page/${this.dynamicUrl}?limit=5&offset=${this.dynamicStories.length}`
+      .getAPI2(
+        `articles/awards?slug=${this.dynamicUrl}&limit=5&page=${this.page + 4}`
       )
       .subscribe((result) => {
-        this.hasMore = result.has_more;
-        result.data.stories.forEach((element: any) => {
+        this.hasMore = result.hasMore;
+        this.page++;
+        result.data.forEach((element: any) => {
           this.dynamicStories.push(element);
         });
       });
