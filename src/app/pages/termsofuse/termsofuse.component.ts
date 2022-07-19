@@ -42,7 +42,7 @@ export class TermsofuseComponent implements OnInit {
 
   ngOnInit(): void {
     const termsApi = this.apiService.getAPI2(`terms-of-use`);
-    const metaApi = this.apiService.getAPI2(`meta`);
+    const metaApi = this.apiService.getAPI2(`meta?page=termsofuse`);
     forkJoin([termsApi, metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
