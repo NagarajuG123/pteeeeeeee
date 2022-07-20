@@ -23,7 +23,7 @@ export class SpotlightComponent implements OnInit {
   isLoaded: boolean = false;
   rows: any;
   hasMore: boolean;
-
+  page= 1;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -45,7 +45,7 @@ export class SpotlightComponent implements OnInit {
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
         this.apiService
-          .getAPI(`${this.slug}/spotlight/${this.defaultTab}?limit=8&offset=0`)
+          .getAPI2(`articles/editorial?slug=${this.slug}&categorySlug=${this.defaultTab}&limit=8&page=${this.page}`)
           .pipe(takeUntil(this.onDestroy$))
           .subscribe((result) => {
             if(result.data[0]){
@@ -54,10 +54,10 @@ export class SpotlightComponent implements OnInit {
                 data.push(item);
               });
               this.items = data;
-              this.hasMore = result.has_more;
+              this.hasMore = result.hasMore;
             } else{
               this.apiService
-              .getAPI(`${this.slug}/spotlight/${this.tabName[0].slug}?limit=8&offset=0`)
+              .getAPI2(`articles/editorial?slug=${this.slug}&categorySlug=${this.defaultTab}&limit=8&page=${this.page}`)
               .pipe(takeUntil(this.onDestroy$))
               .subscribe((result) => {
                 const data: any[] = [];
@@ -65,7 +65,7 @@ export class SpotlightComponent implements OnInit {
                   data.push(item);
                 });
                 this.items = data;
-                this.hasMore = result.has_more;
+                this.hasMore = result.hasMore;
               });
             }
             this.isLoaded = true;
@@ -77,11 +77,11 @@ export class SpotlightComponent implements OnInit {
     this.activeTab = val;
     this.tab = item?.slug;
     this.getData(this.tab);
+    this.page=1;
   }
   getData(tabName: any) {
-    const apiUrl = `${this.slug}/spotlight/${tabName.toLowerCase()}`;
     this.apiService
-      .getAPI(`${apiUrl}?limit=8&offset=0`)
+      .getAPI2(`articles/editorial?slug=${this.slug}&categorySlug=${tabName.toLowerCase()}&limit=8&page=1`)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         const data: any[] = [];
@@ -90,31 +90,29 @@ export class SpotlightComponent implements OnInit {
             data.push(item);
           });
           this.items = data;
-          this.hasMore = result.has_more;
+          this.hasMore = result.hasMore;
         }
       });
   }
   getMore(tabName: any) {
     this.apiService
-      .getAPI(
-        `${this.slug}/spotlight/${tabName.toLowerCase()}?limit=4&offset=${
-          this.items.length + 1
-        }`
+      .getAPI2(
+        `articles/editorial?slug=${this.slug}&categorySlug=${tabName.toLowerCase()}&limit=4&page=${this.page + 2}`
       )
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
-          result['data'].forEach((item: any) => {
+          result.data.forEach((item: any) => {
             this.items.push(item);
           });
-          this.hasMore = result.has_more;
+          this.hasMore = result.hasMore;
         }
+        this.page++;
       });
   }
   prev() {
     if (this.skipTab > 0) {
       this.skipTab -= 1;
-
       this.activeTab -= 1;
       this.setActiveTab(this.activeTab, this.tabName[this.activeTab - 1]);
     } else this.skipTab = 0;
