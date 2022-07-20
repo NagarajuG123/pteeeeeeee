@@ -66,7 +66,7 @@ export class ContacteditorialComponent implements OnInit {
 
   ngOnInit(): void {
     const contactApi = this.apiService.getAPI2('contact');
-    const metaApi = this.apiService.getAPI2(`meta`);
+    const metaApi = this.apiService.getAPI2(`meta?page=contact`);
 
     forkJoin([contactApi,  metaApi])
       .pipe(takeUntil(this.onDestroy$))
