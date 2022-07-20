@@ -292,7 +292,7 @@ export class InfoComponent implements OnInit {
     forkJoin([itemApi, headerApi,latestStories]).subscribe((results) => {
       this.items = results[0].data;
       this.story = results[2].data;
-      this.hasMore = results[0].has_more;
+      this.hasMore = results[2].hasMore;
       this.logo = results[1].data.logo.image;
       if (results[0].meta) {
         this.metaService.setSeo(results[0].meta);
@@ -314,14 +314,14 @@ export class InfoComponent implements OnInit {
   }
   getMore() {
     this.apiService
-      .getAPI(
+    .getAPI2(
         `articles/latest-stories?slug=${this.brandSlug}&limit=5&page=${this.page + 4}`
       )
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((result) => {
         if (result.data.length) {
           result['data'].forEach((item: any) => {
-            this.items.push(item);
+            this.story.push(item);
           });
           this.hasMore = result.hasMore;
           this.page++;
