@@ -33,14 +33,13 @@ export class SpotlightComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const spotlightCategoriesApi = this.apiService.getAPI(
-      `${this.slug}/spotlights/categories`
+    const spotlightCategoriesApi = this.apiService.getAPI2(
+      `category/tab?slug=${this.slug}`
     );
 
     forkJoin([spotlightCategoriesApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((results) => {
-        if(results[0].categories){
         this.tabName = results[0].categories;
         this.rows = `row-cols-lg-${this.tabName.length}`;
         this.defaultTab = this.tab = this.slug == '1851' ? results[0].defaultTab : results[0].categories[0].slug;
@@ -55,22 +54,9 @@ export class SpotlightComponent implements OnInit {
               });
               this.items = data;
               this.hasMore = result.hasMore;
-            } else{
-              this.apiService
-              .getAPI2(`articles/editorial?slug=${this.slug}&categorySlug=${this.defaultTab}&limit=8&page=${this.page}`)
-              .pipe(takeUntil(this.onDestroy$))
-              .subscribe((result) => {
-                const data: any[] = [];
-                result['data'].forEach((item: any) => {
-                  data.push(item);
-                });
-                this.items = data;
-                this.hasMore = result.hasMore;
-              });
             }
             this.isLoaded = true;
           });
-        }
       });
   }
   setActiveTab(val: any, item: any) {
