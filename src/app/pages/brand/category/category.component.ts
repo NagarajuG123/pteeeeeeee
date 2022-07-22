@@ -133,11 +133,12 @@ export class CategoryComponent implements OnInit {
     this.description = item.description;
     this.banner = item.image;
     this.getData(item.slug);
+    this.page=1;
   }
   getData(tabName: any) {
-    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=${this.page}`;
+    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=1`;
     if (this.type !== '1851') {
-      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=${this.page}`;
+      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
     }
    
     this.apiService
