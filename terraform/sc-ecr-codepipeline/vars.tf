@@ -1,7 +1,7 @@
 variable "environment" {}
 variable "source_branch_name" {}
 variable "ProjectName" {
-  default = "Stachecow"
+  default = "stachecow"
 }
 variable "region" {
   default = "us-east-1"
