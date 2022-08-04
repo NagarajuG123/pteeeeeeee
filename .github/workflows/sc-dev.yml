@@ -14,7 +14,7 @@ on:
 env:
   TF_IN_AUTOMATION: true
   TF_WORKSPACE: 1851-dev
-  TF_BACKEND_PATH: "./terraform/sc-ecr-codepipeline/backend/dev.tfvars"
+  TF_BACKEND_PATH: "backend/dev.tfvars"
   TF_VAR_tf_backend_bucket_name: tf-state-keeper-dev
 
 jobs:
