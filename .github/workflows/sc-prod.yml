@@ -5,7 +5,7 @@ on:
     branches:
       - production
     paths:
-      - "terraform/sc-ecs-codepipeline/**/*"
+      - "terraform/sc-ecr-codepipeline/**/*"
   pull_request:
       branches:
       - production
@@ -15,7 +15,7 @@ on:
 env:
   TF_IN_AUTOMATION: true
   TF_WORKSPACE: 1851-prod
-  TF_BACKEND_PATH: terraform/sc-ecs-codepipeline/backend/prod.tfvars
+  TF_BACKEND_PATH: terraform/sc-ecr-codepipeline/backend/prod.tfvars
   TF_VAR_tf_backend_bucket_name: tf-state-keeper-prod
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: terraform/sc-ecs-codepipeline
+        working-directory: terraform/sc-ecr-codepipeline
     steps:
 
     - name: Checkout
