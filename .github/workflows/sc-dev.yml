@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - development
+    paths:
+      - "terraform/sc-ecs-codepipeline/**/*"
   pull_request:
       branches:
       - development
@@ -20,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./terraform/sc-ecs-codepipeline
+        working-directory: terraform/sc-ecs-codepipeline
     steps:
 
     - name: Checkout
