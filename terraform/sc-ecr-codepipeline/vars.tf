@@ -1,5 +1,6 @@
 variable "environment" {}
 variable "source_branch_name" {}
+variable "tf_backend_bucket_name" {}
 variable "ProjectName" {
   default = "stachecow"
 }
