@@ -50,6 +50,26 @@ module "EcrCodepipeline-app" {
           }
         }
       ]
+    },
+    {
+      name = "Deploy"
+      action = [
+        {
+          "name"             = "Deploy"
+          "category"         = "Deploy"
+          "owner"            = "AWS"
+          "version"          = "1"
+          "provider"         = "ECS"
+          "input_artifacts"  = ["build_output"]
+
+          "configuration" = {
+            ClusterName = "1851-dev"
+            ServiceName = "stachecow-dev"
+            FileName =  "imagedefinitions.json"
+            DeploymentTimeout = "15"        
+         }
+        }
+      ]
     }
   ]
 }
