@@ -20,7 +20,6 @@ export class MonthlyCoversComponent implements OnInit {
   metaData: Meta[] = [];
   s3Url = environment.s3Url;
   isLoaded: boolean;
-  page= 1;
   private onDestroySubject = new Subject();
   onDestroy$ = this.onDestroySubject.asObservable();
 
@@ -34,16 +33,17 @@ export class MonthlyCoversComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoaded = false;
-    const bannerApi = this.apiService.getAPI2(`cover/banner`);
-    const coverApi = this.apiService.getAPI2(`cover/images?limit=10&page=${this.page}`);
+    const coverApi = this.apiService.getAPI(
+      `1851/journal/monthly-covers?limit=14&offset=0`
+    );
     const metaApi = this.apiService.getAPI2(`meta`);
-    forkJoin([bannerApi,coverApi, metaApi])
+    forkJoin([coverApi, metaApi])
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((response) => {
         this.isLoaded = true;
-        this.firstBlock = response[0].data;
-        this.secondBlock = response[1].data;
-        this.hasMore = response[1].hasMore;
+        this.firstBlock = response[0].data.slice(0, 4);
+        this.secondBlock = response[0].data.slice(4, 14);
+        this.hasMore = response[0].has_more;
         this.metaData = response[1].data;
        this.metaService.setSeo(this.metaData);
         this.metaService.setTitle(`Monthly Issues | ${this.commonService.publication.title}`);
@@ -54,14 +54,11 @@ export class MonthlyCoversComponent implements OnInit {
     return `/monthlydetails/${params[1]}/${params[0]}/${params[2]}/3`;
   }
   getMoreData() {
+    const offset = this.secondBlock.length + 4;
     this.apiService
-      .getAPI2(`cover/images?limit=5&page=
-      ${
-        this.page + 2
-      }`)
+      .getAPI(`1851/journal/monthly-covers?limit=5&offset=${offset}`)
       .subscribe((response) => {
-        this.hasMore = response.hasMore;
-        this.page++;
+        this.hasMore = response.has_more;
         response.data.forEach((item: any) => {
           this.secondBlock.push(item);
         });
