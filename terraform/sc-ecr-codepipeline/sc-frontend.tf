@@ -2,7 +2,7 @@ module "EcrCodepipeline-app" {
   source                  = "github.com/PearlThoughts2/terraform-ecs-codepipeline?ref=main"
   environment             = var.environment
   image_name              = "app"
-  build_spec_path         = "buildspec/buildspec-sc-dev.yml"
+  build_spec_path         = "buildspec/stachecow/buildspec-sc-${var.environment}-app.yml"
   vpc_id                  = data.aws_vpc.vpc.id
   subnet_id               = [data.aws_subnets.private_subnets_id.ids]
   source_branch_name      = var.source_branch_name
@@ -59,7 +59,7 @@ module "EcrCodepipeline-nginx" {
   source                  = "github.com/PearlThoughts2/terraform-ecs-codepipeline?ref=main"
   environment             = var.environment
   image_name              = "nginx"
-  build_spec_path         = "buildspec/buildspec-sc-dev-nginx.yml"
+  build_spec_path         = "buildspec/stachecow/buildspec-sc-${var.environment}-nginx.yml"
   vpc_id                  = data.aws_vpc.vpc.id
   subnet_id               = [data.aws_subnets.private_subnets_id.ids]
   source_branch_name      = var.source_branch_name
