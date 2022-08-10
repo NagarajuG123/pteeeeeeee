@@ -6,7 +6,7 @@ on:
       - production
     paths:
       - "terraform/1903-ecr-codepipeline/**/*"
-      - ".github/**/*"
+      - ".github/workflows/1903-prod.yml"
   pull_request:
       branches:
       - production
