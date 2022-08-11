@@ -5,8 +5,8 @@ on:
     branches:
       - production
     paths:
-      - "terraform/sc-ecr-codepipeline/**/*"
-      - ".github/workflows/sc-prod.yml"
+      - "terraform/1851-ecr-codepipeline/**/*"
+      - ".github/workflows/1851-prod.yml"
   pull_request:
       branches:
       - production
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: terraform/sc-ecr-codepipeline
+        working-directory: terraform/1851-ecr-codepipeline
     steps:
 
     - name: Checkout

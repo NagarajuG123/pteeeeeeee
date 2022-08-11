@@ -1,0 +1,35 @@
+FROM public.ecr.aws/docker/library/node:14-alpine3.13
+
+WORKDIR /app
+
+COPY ./package.json .
+
+COPY ./package-lock.json .
+
+RUN npm install
+
+COPY . .
+
+RUN cp src/publications/1903/robots.txt src/
+
+RUN cp src/publications/1903/index.html src/
+
+RUN cp src/publications/1903/variables.scss src/assets/scss/
+
+RUN cp src/publications/1903/publication.scss src/assets/scss/
+
+RUN cp src/publications/1903/manifest.webmanifest src/
+
+RUN cp -r src/publications/1903/icons src/assets
+
+RUN npm run build:1903:prod
+
+VOLUME /app/dist/1851/browser
+
+RUN chown node:node -R /app/dist
+
+EXPOSE 4000
+
+USER node
+
+CMD npm run serve:ssr

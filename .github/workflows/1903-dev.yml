@@ -1,23 +1,21 @@
-name: 'Terraform-Production'
+name: 'Terraform-Development'
 
 on:
   push:
     branches:
-      - production
+      - development
     paths:
-      - "terraform/sc-ecr-codepipeline/**/*"
-      - ".github/workflows/sc-prod.yml"
+      - "terraform/1903-ecr-codepipeline/**/*"
+      - ".github/workflows/1903-dev.yml"
   pull_request:
       branches:
-      - production
-      
-  
+      - development
 
 env:
   TF_IN_AUTOMATION: true
-  TF_WORKSPACE: 1851-prod
-  TF_BACKEND_PATH: "backend/prod.tfvars"
-  TF_VAR_tf_backend_bucket_name: tf-state-keeper-prod
+  TF_WORKSPACE: 1851-dev
+  TF_BACKEND_PATH: "backend/dev.tfvars"
+  TF_VAR_tf_backend_bucket_name: tf-state-keeper-dev
 
 jobs:
   terraform:
@@ -25,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: terraform/sc-ecr-codepipeline
+        working-directory: terraform/1903-ecr-codepipeline
     steps:
 
     - name: Checkout
@@ -41,7 +39,7 @@ jobs:
 
     - name: Copy the tfvars
       run: |
-        cp env/prod.tfvars prod.auto.tfvars
+        cp env/dev.tfvars dev.auto.tfvars
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -104,7 +102,7 @@ jobs:
       run: exit 1
 
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/production' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/development' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false 
 
     
