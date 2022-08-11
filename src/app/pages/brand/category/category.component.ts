@@ -65,9 +65,9 @@ export class CategoryComponent implements OnInit {
         this.slug = params.get('item');
       }
       this.tab = this.slug.replace('-spotlight', '');
-      let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=${this.page}`;
+      let categoryApi = `articles/editorial?categorySlug=${this.tab}&limit=20&page=${this.page}`;
       if (this.type !== '1851') {
-        categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=${this.page}`;
+        categoryApi = `articles/editorial?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=${this.page}`;
       }
       const featureApi = this.apiService.getAPI2(categoryApi);
       const metaApi = this.apiService.getAPI2(`meta?slug=${this.tab}`);
@@ -136,9 +136,9 @@ export class CategoryComponent implements OnInit {
     this.page=1;
   }
   getData(tabName: any) {
-    let categoryApi = `articles/featured?categorySlug=${this.tab}&limit=20&page=1`;
+    let categoryApi = `articles/editorial?categorySlug=${this.tab}&limit=20&page=1`;
     if (this.type !== '1851') {
-      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
+      categoryApi = `articles/editorial?slug=${this.type}&categorySlug=${this.tab}&limit=20&page=1`;
     }
    
     this.apiService
@@ -156,11 +156,11 @@ export class CategoryComponent implements OnInit {
       });
   }
   getMore() {
-    let categoryApi = `articles/featured?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
+    let categoryApi = `articles/editorial?categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
       this.page + 4
     }`;
     if (this.type !== '1851') {
-      categoryApi = `articles/featured?slug=${this.type}&categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
+      categoryApi = `articles/editorial?slug=${this.type}&categorySlug=${this.tabName[this.activeTab-1].slug}&limit=5&page=${
         this.page + 4
       }`;
     }
