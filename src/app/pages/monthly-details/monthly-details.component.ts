@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_core/services/api.service';
 import { MetaService } from 'src/app/_core/services/meta.service';
 import { DatePipe } from '@angular/common';
+import { forkJoin, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { Details } from 'src/app/_core/models/details.model';
 import { environment } from 'src/environments/environment';
@@ -23,6 +25,9 @@ export class MonthlyDetailsComponent implements OnInit {
   title: any;
   s3Url = environment.s3Url;
   isLoaded: boolean;
+  page= 1;
+  private onDestroySubject = new Subject();
+  onDestroy$ = this.onDestroySubject.asObservable();
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -41,12 +46,14 @@ export class MonthlyDetailsComponent implements OnInit {
       this.id = params.get('id');
       this.month = this.month.length == 1 ? this.month.padStart(2, '0') : this.month;
       this.coverDate = new Date(`${this.year}-${this.month}-${this.date}`);
-     
-      this.apiService.getAPI(`1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${this.id}?limit=11&offset=0`)
-        .subscribe((response) => {
-          this.banner = response;
-          this.details = response.data.slice(1, 9);
-          this.hasMore = response.has_more;
+      const bannerApi= this.apiService.getAPI2(`cover/banner?slug=${this.month}/${this.year}/${this.date}/${this.id}`)
+      const detailsApi = this.apiService.getAPI2(`cover/details?slug=${this.month}/${this.year}/${this.date}/${this.id}&limit=8&page=1`)
+      forkJoin([bannerApi,detailsApi])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((response) => {
+          this.banner = response[0];
+          this.details = response[1].data;
+          this.hasMore = response[1].hasMore;
           this.apiService.getAPI2(`meta`).subscribe((response) => {
             this.metaService.setSeo(response.data);
                 this.isLoaded = true;
@@ -64,16 +71,17 @@ export class MonthlyDetailsComponent implements OnInit {
   }
   getMoreData() {
     this.apiService
-      .getAPI(
-        `1851/journal/cover-details/${this.month}/${this.year}/${this.date}/${
-          this.id
-        }?limit=4&offset=${this.details.length + 1}`
+      .getAPI2(
+        `cover/details?slug=${this.month}/${this.year}/${this.date}/${this.id}&limit=4&page=${
+          this.page + 2
+        }`
       )
       .subscribe((result) => {
-        this.hasMore = result.has_more;
+       this.hasMore = result.hasMore;
         result.data.forEach((item: any) => {
           this.details.push(item);
         });
+        this.page++;
       });
     this.cdr.detectChanges();
   }
