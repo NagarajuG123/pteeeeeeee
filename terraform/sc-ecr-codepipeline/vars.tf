@@ -5,7 +5,7 @@ variable "source_branch_name" {
   default = "development"
 }
 variable "tf_backend_bucket_name" {
-  default = "tf-state-keeper-dev-sc"
+  default = "tf-state-keeper-dev-all"
 }
 variable "ProjectName" {
   default = "stachecow"
