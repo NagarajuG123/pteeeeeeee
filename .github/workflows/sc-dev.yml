@@ -15,7 +15,7 @@ env:
   TF_IN_AUTOMATION: true
   TF_WORKSPACE: 1851-dev
   TF_BACKEND_PATH: "backend/dev.tfvars"
-  TF_VAR_tf_backend_bucket_name: tf-state-keeper-dev
+  TF_VAR_tf_backend_bucket_name: tf-state-keeper-dev-all
 
 jobs:
   terraform:
@@ -104,5 +104,11 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/development' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false 
+      
+    - name: Terraform destroy
+      id: destroy
+      run: terraform destroy -auto-approve
+      
+
 
     
