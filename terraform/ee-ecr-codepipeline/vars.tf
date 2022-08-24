@@ -1,6 +1,12 @@
-variable "environment" {}
-variable "source_branch_name" {}
-variable "tf_backend_bucket_name" {}
+variable "environment" {
+  default = "dev-sc"
+}
+variable "source_branch_name" {
+  default = "development"
+}
+variable "tf_backend_bucket_name" {
+  default = "tf-state-keeper-dev-all"
+}
 variable "ProjectName" {
   default = "ee"
 }
@@ -8,7 +14,7 @@ variable "region" {
   default = "us-east-1"
 }
 variable "repo_id" {
-  default = "hellomainland/1851-ui3"
+  default = "pt1851/1851-ui3"
 }
 variable "publication" {
   default = "ee"

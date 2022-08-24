@@ -5,13 +5,15 @@ on:
   push:
     branches:
       - development
-  pull_request:
-      types: [opened, synchronize, reopened]
+  # pull_request:
+  #     types: [opened, synchronize, reopened]
 name: Main Workflow
 jobs:
   sonarcloud:
+    name: SonarCloud Trigger
     runs-on: ubuntu-latest
     steps:
+    - name: Clone Repository
     - uses: actions/checkout@v2
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
