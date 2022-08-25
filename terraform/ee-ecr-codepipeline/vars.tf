@@ -1,5 +1,5 @@
 variable "environment" {
-  default = "dev-sc"
+  default = "dev-all"
 }
 variable "source_branch_name" {
   default = "development"
