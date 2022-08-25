@@ -7,7 +7,7 @@ on:
       - development
     paths:
       - "src/*"
-      - ".github/workflows/1851-dev.yml"
+      - ".github/workflows/buildspec.yml"
   # pull_request:
   #     types: [opened, synchronize, reopened]
 name: Main Workflow
