@@ -6,7 +6,7 @@ on:
     branches:
       - development
     paths:
-      - "src/*"
+      - "src/**"
       - ".github/workflows/buildspec.yml"
   # pull_request:
   #     types: [opened, synchronize, reopened]
