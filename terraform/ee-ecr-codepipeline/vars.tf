@@ -1,12 +1,8 @@
-variable "environment" {
-  default = "dev-all"
-}
+variable "environment" {}
 variable "source_branch_name" {
   default = "development"
 }
-variable "tf_backend_bucket_name" {
-  default = "tf-state-keeper-dev-all"
-}
+variable "tf_backend_bucket_name" {}
 variable "ProjectName" {
   default = "ee"
 }
@@ -19,3 +15,5 @@ variable "repo_id" {
 variable "publication" {
   default = "ee"
 }
+variable "codebuild_bucket"  {}
+variable "codepipeline_bucket" {}

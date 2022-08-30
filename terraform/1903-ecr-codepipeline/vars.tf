@@ -10,3 +10,5 @@ variable "region" {
 variable "repo_id" {
   default = "hellomainland/1851-ui3"
 }
+variable "codebuild_bucket"  {}
+variable "codepipeline_bucket" {}

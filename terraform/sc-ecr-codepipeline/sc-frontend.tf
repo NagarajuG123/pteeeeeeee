@@ -1,12 +1,14 @@
 module "EcrCodepipeline-app" {
-  source                  = "github.com/PearlThoughts2/terraform-ecs-codepipeline?ref=main"
+  source                  = "github.com/pt1851/terraform-ecs-codepipeline?ref=main"
   environment             = var.environment
   image_name              = "app"
-  build_spec_path         = "buildspec/stachecow/buildspec-sc-${var.environment}-app.yml"
+  build_spec_path         = "buildspec/${var.publication}/buildspec-${var.publication}-${var.environment}-app.yml"
   vpc_id                  = data.aws_vpc.vpc.id
   subnet_id               = [data.aws_subnets.private_subnets_id.ids]
   source_branch_name      = var.source_branch_name
   region                  = var.region
+  codebuild_bucket        = var.codebuild_bucket
+  codepipeline_bucket     = var.codepipeline_bucket
   repo_id                 = var.repo_id
   common_name             = local.common_name
   codebuild_build_timeout = "15"
@@ -56,14 +58,16 @@ module "EcrCodepipeline-app" {
 
 
 module "EcrCodepipeline-nginx" {
-  source                  = "github.com/PearlThoughts2/terraform-ecs-codepipeline?ref=main"
+  source                  = "github.com/pt1851/terraform-ecs-codepipeline?ref=main"
   environment             = var.environment
   image_name              = "nginx"
-  build_spec_path         = "buildspec/stachecow/buildspec-sc-${var.environment}-nginx.yml"
+  build_spec_path         = "buildspec/${var.publication}/buildspec-${var.publication}-${var.environment}-app.yml"
   vpc_id                  = data.aws_vpc.vpc.id
   subnet_id               = [data.aws_subnets.private_subnets_id.ids]
   source_branch_name      = var.source_branch_name
   region                  = var.region
+  codebuild_bucket        = var.codebuild_bucket
+  codepipeline_bucket     = var.codepipeline_bucket
   repo_id                 = var.repo_id
   common_name             = local.common_name
   codebuild_build_timeout = "15"
