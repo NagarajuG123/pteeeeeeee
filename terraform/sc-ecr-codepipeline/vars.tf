@@ -1,8 +1,12 @@
-variable "environment" {}
+variable "environment" {
+  default = "dev-all"
+}
 variable "source_branch_name" {
   default = "development"
 }
-variable "tf_backend_bucket_name" {}
+variable "tf_backend_bucket_name" {
+  default = "tf-state-keeper-dev-all"
+}
 variable "ProjectName" {
   default = "stachecow"
 }
@@ -12,5 +16,9 @@ variable "region" {
 variable "repo_id" {
   default = "pt1851/1851-ui3"
 }
-variable "codebuild_bucket"  {}
-variable "codepipeline_bucket" {}
+variable "codebuild_bucket"  {
+  default = "terraform-codebuild-all"
+}
+variable "codepipeline_bucket" {
+  default = "terraform-codepipeline-all"
+}
