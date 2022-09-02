@@ -1,8 +1,12 @@
-variable "environment" {}
+variable "environment" {
+  default = "dev-all"
+}
 variable "source_branch_name" {
   default = "development"
 }
-variable "tf_backend_bucket_name" {}
+variable "tf_backend_bucket_name" {
+  default = "tf-state-keeper-dev-all"
+}
 variable "ProjectName" {
   default = "ee"
 }
@@ -15,5 +19,9 @@ variable "repo_id" {
 variable "publication" {
   default = "ee"
 }
-variable "codebuild_bucket"  {}
-variable "codepipeline_bucket" {}
+variable "codebuild_bucket"  {
+  default = "terraform-codebuild-all"
+}
+variable "codepipeline_bucket" {
+  default = "terraform-codepipeline-all"
+}
