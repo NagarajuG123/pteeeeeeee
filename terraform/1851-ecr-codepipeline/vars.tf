@@ -1,11 +1,11 @@
 variable "environment" {
-  default = "dev-all"
+  default = "dev"
 }
 variable "source_branch_name" {
   default = "development"
 }
 variable "tf_backend_bucket_name" {
-  default = "tf-state-keeper-all"
+  default = "tf-state-keeper-alll"
 }
 variable "ProjectName" {
   default = "1851"
@@ -14,7 +14,7 @@ variable "region" {
   default = "us-east-1"
 }
 variable "repo_id" {
-  default = "pt1851/1851-ui3"
+  default = "Nagaraju/"
 }
 variable "publication" {
   default = "1851"

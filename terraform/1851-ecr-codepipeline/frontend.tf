@@ -12,6 +12,7 @@ module "EcrCodepipeline-app" {
   repo_id                 = var.repo_id
   common_name             = local.common_name
   codebuild_build_timeout = "15"
+  publication             = var.publication
 
 
   stages = [
@@ -71,6 +72,7 @@ module "EcrCodepipeline-nginx" {
   repo_id                 = var.repo_id
   common_name             = local.common_name
   codebuild_build_timeout = "15"
+  publication             = var.publication
 
   stages = [
     {
