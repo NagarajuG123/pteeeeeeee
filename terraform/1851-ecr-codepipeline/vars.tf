@@ -14,15 +14,15 @@ variable "region" {
   default = "us-east-1"
 }
 variable "repo_id" {
-  default = "Nagaraju/"
+  default = "Nagaraju/pt18511"
 }
 variable "publication" {
   default = "1851"
 }
 variable "codebuild_bucket" {
-  default = "terraform-codebuild-all"
+  default = "codebuild-nagaraju"
 }
 variable "codepipeline_bucket"{
-  default = "terraform-codepipeline-all"
+  default = "codepipeline-nagaraju"
 }
  
